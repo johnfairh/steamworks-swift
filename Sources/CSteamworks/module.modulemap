@@ -1,0 +1,6 @@
+module CSteamworks [system] {
+  header "steamapi_headers.h"
+  link "steam_api"
+  requires cplusplus
+  export *
+}
