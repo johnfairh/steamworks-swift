@@ -1,6 +1,6 @@
 .PHONY: all build run clean test
 
-STEAM_SDK := ${CURDIR}/sdk
+STEAM_SDK ?= ${CURDIR}/sdk
 STEAM_INCLUDE := ${STEAM_SDK}/public
 
 ifeq (${OS},Windows_NT)
