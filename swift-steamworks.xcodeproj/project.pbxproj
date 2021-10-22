@@ -8,14 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		02D309D5272186AB00DE64F0 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D309D3272181D900DE64F0 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
+		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
+		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		OBJ_33 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* main.swift */; };
-		OBJ_40 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Stub.swift */; };
 		OBJ_47 /* TestStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* TestStub.swift */; };
 		OBJ_49 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		02D309CC27200D9300DE64F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "swift-steamworks::Steamworks";
+			remoteInfo = Steamworks;
+		};
+		02D309DA2722C55E00DE64F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -35,13 +44,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		02D309DC2722C55F00DE64F0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
+		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		OBJ_10 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		OBJ_12 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_14 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		OBJ_17 /* TestStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStub.swift; sourceTree = "<group>"; };
 		OBJ_24 /* sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sdk; sourceTree = SOURCE_ROOT; };
 		OBJ_25 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -50,7 +70,7 @@
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* steamapi_headers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = steamapi_headers.h; sourceTree = "<group>"; };
 		"swift-steamworks::Demo::Product" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
-		"swift-steamworks::Steamworks::Product" /* Steamworks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Steamworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"swift-steamworks::Steamworks::Product" /* Steamworks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Steamworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"swift-steamworks::SteamworksTests::Product" /* SteamworksTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = SteamworksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -59,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +120,7 @@
 		OBJ_13 /* Steamworks */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* Stub.swift */,
+				02D309D62722C49B00DE64F0 /* SteamAPI.swift */,
 			);
 			name = Steamworks;
 			path = Sources/Steamworks;
@@ -152,9 +173,9 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				OBJ_13 /* Steamworks */,
 				OBJ_8 /* CSteamworks */,
 				OBJ_11 /* Demo */,
-				OBJ_13 /* Steamworks */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -179,10 +200,12 @@
 				OBJ_32 /* Sources */,
 				OBJ_34 /* Frameworks */,
 				02D309D02721808D00DE64F0 /* CopyFiles */,
+				02D309DC2722C55F00DE64F0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				02D309DB2722C55E00DE64F0 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -263,7 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_40 /* Stub.swift in Sources */,
+				02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +301,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		02D309DB2722C55E00DE64F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "swift-steamworks::Steamworks" /* Steamworks */;
+			targetProxy = 02D309DA2722C55E00DE64F0 /* PBXContainerItemProxy */;
+		};
 		OBJ_50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-steamworks::Steamworks" /* Steamworks */;
@@ -305,7 +333,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/sdk/redistributable_bin/osx";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -Xfrontend -enable-cxx-interop";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
@@ -325,10 +353,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Sources/CSteamworks",
 				);
 				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Demo_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -355,10 +379,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Sources/CSteamworks",
 				);
 				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Demo_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -387,14 +407,17 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Sources/CSteamworks",
+				);
 				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Steamworks_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-cxx-interop";
 				PRODUCT_BUNDLE_IDENTIFIER = Steamworks;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -417,14 +440,17 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Sources/CSteamworks",
+				);
 				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Steamworks_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-cxx-interop";
 				PRODUCT_BUNDLE_IDENTIFIER = Steamworks;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -453,7 +479,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/sdk/redistributable_bin/osx";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/sdk/redistributable_bin/osx";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -Xfrontend -enable-cxx-interop";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";

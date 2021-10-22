@@ -19,7 +19,6 @@ endif
 STEAM_LIB := ${STEAM_SDK}/redistributable_bin/${PLATFORM}
 
 STEAM_SWIFT_FLAGS := \
-	-Xswiftc -Xfrontend -Xswiftc -enable-cxx-interop \
 	-Xswiftc -I${STEAM_INCLUDE} \
  	-Xlinker -L${STEAM_LIB} \
 
