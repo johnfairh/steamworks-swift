@@ -29,6 +29,7 @@ Limitations, on 5.5 and also swift/main as of 20/Oct:
 Plan then:
 * Offer a pure Swift module covering all of the current Steamworks API that does
   not dump the entire steamworks namespace into user code.
+* Leave out the deprecated and WIN32-only stuff.
 * Do not diverge too far from the 'real' API names to aid docs / searching / porting:
   I think this is a better starting point than doing a complete OO analysis to carve
   out function -- we'll see I guess.  Can always build that kind of thing on top of
