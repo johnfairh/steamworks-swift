@@ -36,7 +36,7 @@ run:
 	mkdir -p ${BINPATH}
 	ln -sf ${STEAM_LIB}/${STEAM_DYLIB} ${BINPATH}/
 	echo 480 > ${BINPATH}/steam_appid.txt
-	swift run Demo ${STEAM_SWIFT_FLAGS}
+	swift run Client ${STEAM_SWIFT_FLAGS}
 
 clean:
 	swift package clean

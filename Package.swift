@@ -18,8 +18,8 @@ let package = Package(
       name: "Steamworks",
       targets: ["Steamworks"]),
     .executable(
-      name: "Demo",
-      targets: ["Demo"])
+      name: "Client",
+      targets: ["Client"])
   ],
   dependencies: [
   ],
@@ -32,7 +32,7 @@ let package = Package(
           .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
         ]),
     .executableTarget(
-        name: "Demo",
+        name: "Client",
         dependencies: ["Steamworks"]),
     .testTarget(
         name: "SteamworksTests",

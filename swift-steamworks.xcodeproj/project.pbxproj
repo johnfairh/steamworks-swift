@@ -110,13 +110,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		OBJ_11 /* Demo */ = {
+		OBJ_11 /* Client */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_12 /* main.swift */,
 			);
-			name = Demo;
-			path = Sources/Demo;
+			name = Client;
+			path = Sources/Client;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_13 /* Steamworks */ = {
@@ -178,7 +178,7 @@
 			children = (
 				OBJ_13 /* Steamworks */,
 				OBJ_8 /* CSteamworks */,
-				OBJ_11 /* Demo */,
+				OBJ_11 /* Client */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -196,21 +196,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		"swift-steamworks::Demo" /* Demo */ = {
+		"swift-steamworks::Demo" /* Client */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_29 /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildConfigurationList = OBJ_29 /* Build configuration list for PBXNativeTarget "Client" */;
 			buildPhases = (
 				OBJ_32 /* Sources */,
 				OBJ_34 /* Frameworks */,
 				02D309D02721808D00DE64F0 /* CopyFiles */,
 				02D309DC2722C55F00DE64F0 /* Embed Frameworks */,
+				02D309DF2724205600DE64F0 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				02D309DB2722C55E00DE64F0 /* PBXTargetDependency */,
 			);
-			name = Demo;
+			name = Client;
 			productName = Demo;
 			productReference = "swift-steamworks::Demo::Product" /* Demo */;
 			productType = "com.apple.product-type.tool";
@@ -269,12 +270,32 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				"swift-steamworks::Demo" /* Demo */,
 				"swift-steamworks::Steamworks" /* Steamworks */,
 				"swift-steamworks::SteamworksTests" /* SteamworksTests */,
+				"swift-steamworks::Demo" /* Client */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02D309DF2724205600DE64F0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo 480 > ${CONFIGURATION_BUILD_DIR}/steam_appid.txt\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		OBJ_32 /* Sources */ = {
@@ -561,7 +582,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_29 /* Build configuration list for PBXNativeTarget "Demo" */ = {
+		OBJ_29 /* Build configuration list for PBXNativeTarget "Client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_30 /* Debug */,

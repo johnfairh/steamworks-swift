@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "swift-steamworks::Demo"
                BuildableName = "Demo"
-               BlueprintName = "Demo"
+               BlueprintName = "Client"
                ReferencedContainer = "container:swift-steamworks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -70,7 +70,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "swift-steamworks::Demo"
             BuildableName = "Demo"
-            BlueprintName = "Demo"
+            BlueprintName = "Client"
             ReferencedContainer = "container:swift-steamworks.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -86,7 +86,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "swift-steamworks::Demo"
             BuildableName = "Demo"
-            BlueprintName = "Demo"
+            BlueprintName = "Client"
             ReferencedContainer = "container:swift-steamworks.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
