@@ -2,8 +2,16 @@
 //  SteamAPI.swift
 //  Steamworks
 //
-//  Created by John on 22/10/2021.
+//  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
+
+// Leaving out:
+// * cegclient.h stuff eg. `Steamworks_InitCEGLibrary()` -- these seem to be
+//   legacy or at least unobtainable by mortals
+// * Windows 32-bit error reporting eg. `SteamAPI_WriteMiniDump()`
+// * Deprecated `SteamAPI_GetSteamInstallPath()`, `SteamAPI_InitSafe()`
+// * Breakpad stuff eg. `SteamAPI_SetBreakpadAppID()` -- undocumented
+// * `SteamAPI_SetTryCatchCallbacks()` - not required because manual dispatch
 
 @_implementationOnly import CSteamworks
 
@@ -27,8 +35,8 @@ public final class SteamAPI: @unchecked Sendable {
         SteamAPI_IsSteamRunning()
     }
 
-    public func dispatchMessages() {
-        messageDispatch.dispatch()
+    public func runCallbacks() {
+        messageDispatch.runCallbacks()
     }
 
     public func releaseCurrentThreadMemory() {

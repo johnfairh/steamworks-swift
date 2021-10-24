@@ -2,7 +2,7 @@
 //  MessageDispatch.swift
 //  Steamworks
 //
-//  Created by John on 22/10/2021.
+//  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
 @_implementationOnly import CSteamworks
@@ -10,7 +10,7 @@
 struct MessageDispatch {
     let steamPipe: HSteamPipe
 
-    func dispatch() {
+    func runCallbacks() {
         SteamAPI_ManualDispatch_RunFrame(steamPipe)
     }
 }

@@ -1,3 +1,10 @@
+//
+//  main.swift
+//  Client
+//
+//  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
+//
+
 import Steamworks
 import Foundation
 

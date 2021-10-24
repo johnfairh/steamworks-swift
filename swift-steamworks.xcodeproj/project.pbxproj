@@ -71,7 +71,7 @@
 		OBJ_27 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* steamapi_headers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = steamapi_headers.h; sourceTree = "<group>"; };
-		"swift-steamworks::Demo::Product" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
+		"swift-steamworks::Demo::Product" /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		"swift-steamworks::Steamworks::Product" /* Steamworks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Steamworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"swift-steamworks::SteamworksTests::Product" /* SteamworksTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = SteamworksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,13 +103,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02D309CE27217E6500DE64F0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		OBJ_11 /* Client */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +142,7 @@
 		OBJ_18 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				"swift-steamworks::Demo::Product" /* Demo */,
+				"swift-steamworks::Demo::Product" /* Client */,
 				"swift-steamworks::Steamworks::Product" /* Steamworks.framework */,
 				"swift-steamworks::SteamworksTests::Product" /* SteamworksTests.xctest */,
 			);
@@ -168,7 +161,6 @@
 				OBJ_26 /* Makefile */,
 				OBJ_27 /* README.md */,
 				02D309D3272181D900DE64F0 /* libsteam_api.dylib */,
-				02D309CE27217E6500DE64F0 /* Frameworks */,
 			);
 			name = "";
 			sourceTree = "<group>";
@@ -213,7 +205,7 @@
 			);
 			name = Client;
 			productName = Demo;
-			productReference = "swift-steamworks::Demo::Product" /* Demo */;
+			productReference = "swift-steamworks::Demo::Product" /* Client */;
 			productType = "com.apple.product-type.tool";
 		};
 		"swift-steamworks::Steamworks" /* Steamworks */ = {
@@ -379,7 +371,7 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Demo_Info.plist";
+				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Client_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
@@ -390,7 +382,7 @@
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_VERSION = 5.0;
-				TARGET_NAME = Demo;
+				TARGET_NAME = Client;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -405,7 +397,7 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Demo_Info.plist";
+				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Client_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
@@ -416,7 +408,7 @@
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_VERSION = 5.0;
-				TARGET_NAME = Demo;
+				TARGET_NAME = Client;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
