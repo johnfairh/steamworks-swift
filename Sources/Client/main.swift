@@ -34,7 +34,7 @@ final class Client {
     }
 
     func frame() {
-        api.dispatchMessages()
+        api.runCallbacks()
         frameCounter += 1
     }
 }
@@ -44,6 +44,13 @@ final class Client {
 func main() {
     guard let client = Client() else {
         return
+    }
+
+    client.api.onPersonaStateChange {
+        print("PersonaStateChange: \($0)")
+        SteamFriends.getFollowerCount(steamID: $0.steamID) {
+            print("FollowerCount: \($0)")
+        }
     }
 
     client.startFrameLoop()

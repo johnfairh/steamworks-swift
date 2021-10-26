@@ -11,7 +11,12 @@
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		02D309DE2722D81E00DE64F0 /* MessageDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309DD2722D81E00DE64F0 /* MessageDispatch.swift */; };
+		02D309DE2722D81E00DE64F0 /* SteamCallbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309DD2722D81E00DE64F0 /* SteamCallbacks.swift */; };
+		02D309E32728111A00DE64F0 /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E22728111A00DE64F0 /* Lock.swift */; };
+		02D309E52728122600DE64F0 /* TypeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E42728122600DE64F0 /* TypeUtils.swift */; };
+		02D309E8272813D000DE64F0 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E7272813CF00DE64F0 /* Callbacks.swift */; };
+		02D309EA2728145E00DE64F0 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E92728145E00DE64F0 /* Structs.swift */; };
+		02D309EC2728159700DE64F0 /* Bringup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EB2728159700DE64F0 /* Bringup.swift */; };
 		OBJ_33 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* main.swift */; };
 		OBJ_47 /* TestStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* TestStub.swift */; };
 		OBJ_49 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
@@ -61,7 +66,12 @@
 /* Begin PBXFileReference section */
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
-		02D309DD2722D81E00DE64F0 /* MessageDispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDispatch.swift; sourceTree = "<group>"; };
+		02D309DD2722D81E00DE64F0 /* SteamCallbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamCallbacks.swift; sourceTree = "<group>"; };
+		02D309E22728111A00DE64F0 /* Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
+		02D309E42728122600DE64F0 /* TypeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeUtils.swift; sourceTree = "<group>"; };
+		02D309E7272813CF00DE64F0 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
+		02D309E92728145E00DE64F0 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		02D309EB2728159700DE64F0 /* Bringup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bringup.swift; sourceTree = "<group>"; };
 		OBJ_10 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		OBJ_12 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		OBJ_17 /* TestStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStub.swift; sourceTree = "<group>"; };
@@ -103,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02D309E6272813B200DE64F0 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				02D309E7272813CF00DE64F0 /* Callbacks.swift */,
+				02D309E92728145E00DE64F0 /* Structs.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		OBJ_11 /* Client */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,8 +134,12 @@
 		OBJ_13 /* Steamworks */ = {
 			isa = PBXGroup;
 			children = (
+				02D309DD2722D81E00DE64F0 /* SteamCallbacks.swift */,
 				02D309D62722C49B00DE64F0 /* SteamAPI.swift */,
-				02D309DD2722D81E00DE64F0 /* MessageDispatch.swift */,
+				02D309E42728122600DE64F0 /* TypeUtils.swift */,
+				02D309E22728111A00DE64F0 /* Lock.swift */,
+				02D309EB2728159700DE64F0 /* Bringup.swift */,
+				02D309E6272813B200DE64F0 /* Generated */,
 			);
 			name = Steamworks;
 			path = Sources/Steamworks;
@@ -302,8 +325,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				02D309EA2728145E00DE64F0 /* Structs.swift in Sources */,
 				02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */,
-				02D309DE2722D81E00DE64F0 /* MessageDispatch.swift in Sources */,
+				02D309E8272813D000DE64F0 /* Callbacks.swift in Sources */,
+				02D309EC2728159700DE64F0 /* Bringup.swift in Sources */,
+				02D309E52728122600DE64F0 /* TypeUtils.swift in Sources */,
+				02D309E32728111A00DE64F0 /* Lock.swift in Sources */,
+				02D309DE2722D81E00DE64F0 /* SteamCallbacks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

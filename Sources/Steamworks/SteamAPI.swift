@@ -15,9 +15,7 @@
 
 @_implementationOnly import CSteamworks
 
-public final class SteamAPI: @unchecked Sendable {
-    let messageDispatch: MessageDispatch
-
+public final class SteamAPI: SteamCallbacks {
     public init?(appID: UInt32? = nil) {
         if let appID = appID, SteamAPI_RestartAppIfNecessary(appID) {
             return nil
@@ -28,15 +26,11 @@ public final class SteamAPI: @unchecked Sendable {
 
         SteamAPI_ManualDispatch_Init()
 
-        messageDispatch = MessageDispatch(steamPipe: SteamAPI_GetHSteamPipe())
+        super.init(steamPipe: SteamAPI_GetHSteamPipe())
     }
 
     public var isSteamRunning: Bool {
         SteamAPI_IsSteamRunning()
-    }
-
-    public func runCallbacks() {
-        messageDispatch.runCallbacks()
     }
 
     public func releaseCurrentThreadMemory() {
