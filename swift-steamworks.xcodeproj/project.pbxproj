@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02D309D5272186AB00DE64F0 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D309D3272181D900DE64F0 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -17,6 +16,7 @@
 		02D309E8272813D000DE64F0 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E7272813CF00DE64F0 /* Callbacks.swift */; };
 		02D309EA2728145E00DE64F0 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E92728145E00DE64F0 /* Structs.swift */; };
 		02D309EC2728159700DE64F0 /* Bringup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EB2728159700DE64F0 /* Bringup.swift */; };
+		02D309EE272969B900DE64F0 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D309D3272181D900DE64F0 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		OBJ_33 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* main.swift */; };
 		OBJ_47 /* TestStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* TestStub.swift */; };
 		OBJ_49 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
@@ -40,16 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		02D309D02721808D00DE64F0 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 6;
-			files = (
-				02D309D5272186AB00DE64F0 /* libsteam_api.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		02D309DC2722C55F00DE64F0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,6 +49,16 @@
 				02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		02D309ED272969AD00DE64F0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				02D309EE272969B900DE64F0 /* libsteam_api.dylib in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -217,7 +217,6 @@
 			buildPhases = (
 				OBJ_32 /* Sources */,
 				OBJ_34 /* Frameworks */,
-				02D309D02721808D00DE64F0 /* CopyFiles */,
 				02D309DC2722C55F00DE64F0 /* Embed Frameworks */,
 				02D309DF2724205600DE64F0 /* ShellScript */,
 			);
@@ -237,6 +236,7 @@
 			buildPhases = (
 				OBJ_39 /* Sources */,
 				OBJ_41 /* Frameworks */,
+				02D309ED272969AD00DE64F0 /* CopyFiles */,
 			);
 			buildRules = (
 			);
