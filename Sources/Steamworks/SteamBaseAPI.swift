@@ -1,5 +1,5 @@
 //
-//  SteamCallbacks.swift
+//  SteamBaseAPI.swift
 //  Steamworks
 //
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
@@ -11,8 +11,7 @@
 // 1) Steamworks doesn't let you do it
 // 2) The locking/cancellation honouring is horrendous
 
-public class SteamCallbacks: @unchecked Sendable {
-
+public class SteamBaseAPI: @unchecked Sendable {
     /// Type-erased client closure, expose this to other files because of code gen
     typealias RawClient = (UnsafeMutableRawPointer) -> Void
 
@@ -21,6 +20,8 @@ public class SteamCallbacks: @unchecked Sendable {
     SwiftType : SteamCreatable, SwiftType.SteamType == SteamType {
         { client(SwiftType($0.bindMemory(to: SteamType.self, capacity: 1).pointee)) }
     }
+
+    // MARK: Callbacks
 
     final class Callbacks {
         private var clients = [CallbackID : [RawClient]]()
@@ -74,9 +75,15 @@ public class SteamCallbacks: @unchecked Sendable {
     private let steamPipe: HSteamPipe
     private let lock: Lock
 
+    private static var initOnce: Void = {
+        SteamAPI_ManualDispatch_Init()
+    }()
+
     init(steamPipe: HSteamPipe) {
         self.steamPipe = steamPipe
         self.lock = Lock()
+
+        _ = SteamBaseAPI.initOnce
     }
 
     public func runCallbacks() {
@@ -98,7 +105,7 @@ public class SteamCallbacks: @unchecked Sendable {
         }
     }
 
-    // Workaround anonymous enums not imported
+    // Workaround anonymous enums not imported, special case here
     private let SteamAPICallCompleted_t_k_iCallback = CallbackID(703)
 
     private func onCallCompleted(callback: CallbackMsg_t) {

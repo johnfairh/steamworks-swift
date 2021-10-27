@@ -15,7 +15,7 @@
 
 @_implementationOnly import CSteamworks
 
-public final class SteamAPI: SteamCallbacks {
+public final class SteamAPI: SteamBaseAPI {
     public init?(appID: UInt32? = nil) {
         if let appID = appID, SteamAPI_RestartAppIfNecessary(appID) {
             return nil
@@ -23,8 +23,6 @@ public final class SteamAPI: SteamCallbacks {
         guard SteamAPI_Init() else {
             return nil
         }
-
-        SteamAPI_ManualDispatch_Init()
 
         super.init(steamPipe: SteamAPI_GetHSteamPipe())
     }
