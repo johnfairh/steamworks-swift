@@ -6,6 +6,8 @@
 //
 
 public extension SteamBaseAPI {
+    // MARK: Callback registration
+
     func onSteamServersConnected(_ client: @escaping (SteamServersConnected) -> Void) {
         callbacks.add(callbackID: CallbackID(2) /* Generated */, rawClient: SteamBaseAPI.makeRaw(client))
     }
@@ -16,6 +18,8 @@ public extension SteamBaseAPI {
 }
 
 public extension SteamBaseAPI {
+    // MARK: Callback async streams
+
     var steamServersConnected: AsyncStream<SteamServersConnected> {
         AsyncStream<SteamServersConnected> { continuation in
             onSteamServersConnected { continuation.yield($0) }

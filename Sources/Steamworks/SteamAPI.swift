@@ -15,7 +15,22 @@
 
 @_implementationOnly import CSteamworks
 
+/// An instance of the Steamworks user API
+///
+/// Create and retain one of these to access and use the Steamworks APIs.
+///
+/// Steamworks ref: [steam_api.h](https://partner.steamgames.com/doc/api/steam_api)
 public final class SteamAPI: SteamBaseAPI {
+
+    // MARK: Lifecycle
+
+    /// Initialize the Steamworks API.
+    ///
+    /// Calls `SteamAPI_Init()` and also, if `appID` is non-`nil`, `SteamAPI_RestartAppIfNecessary()`.
+    ///
+    /// The Steamworks API is shut down when this object goes out of scope.
+    ///
+    /// - returns: `nil` if the Steam API connection failed or app restart is necessary.
     public init?(appID: UInt32? = nil) {
         if let appID = appID, SteamAPI_RestartAppIfNecessary(appID) {
             return nil
@@ -27,12 +42,9 @@ public final class SteamAPI: SteamBaseAPI {
         super.init(steamPipe: SteamAPI_GetHSteamPipe())
     }
 
+    /// Calls `SteamAPI_IsSteamRunning()`.
     public var isSteamRunning: Bool {
         SteamAPI_IsSteamRunning()
-    }
-
-    public func releaseCurrentThreadMemory() {
-        SteamAPI_ReleaseCurrentThreadMemory()
     }
 
     deinit {

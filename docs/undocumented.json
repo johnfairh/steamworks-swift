@@ -1,0 +1,145 @@
+[
+  {
+    "kind" : "source.lang.swift.decl.enum",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Bringup.swift",
+      "first_line" : 10,
+      "last_line" : 15,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "SteamFriends"
+  },
+  {
+    "kind" : "source.lang.swift.decl.function.method.static",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Bringup.swift",
+      "first_line" : 11,
+      "last_line" : 14,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "getFollowerCount(steamID:completion:)"
+  },
+  {
+    "kind" : "source.lang.swift.decl.function.method.instance",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Callbacks.swift",
+      "first_line" : 11,
+      "last_line" : 13,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "onSteamServersConnected(_:)"
+  },
+  {
+    "kind" : "source.lang.swift.decl.function.method.instance",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Callbacks.swift",
+      "first_line" : 15,
+      "last_line" : 17,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "onPersonaStateChange(_:)"
+  },
+  {
+    "kind" : "source.lang.swift.decl.var.instance",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Callbacks.swift",
+      "first_line" : 23,
+      "last_line" : 27,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "steamServersConnected"
+  },
+  {
+    "kind" : "source.lang.swift.decl.struct",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Structs.swift",
+      "first_line" : 10,
+      "last_line" : 13,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "SteamServersConnected"
+  },
+  {
+    "kind" : "source.lang.swift.decl.struct",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Structs.swift",
+      "first_line" : 15,
+      "last_line" : 23,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "PersonaStateChange"
+  },
+  {
+    "kind" : "source.lang.swift.decl.var.instance",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Structs.swift",
+      "first_line" : 16,
+      "last_line" : 16,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "steamID"
+  },
+  {
+    "kind" : "source.lang.swift.decl.var.instance",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Structs.swift",
+      "first_line" : 17,
+      "last_line" : 17,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "changeFlags"
+  },
+  {
+    "kind" : "source.lang.swift.decl.struct",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Structs.swift",
+      "first_line" : 25,
+      "last_line" : 36,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "FriendsGetFollowerCount"
+  },
+  {
+    "kind" : "source.lang.swift.decl.var.instance",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Structs.swift",
+      "first_line" : 26,
+      "last_line" : 26,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "result"
+  },
+  {
+    "kind" : "source.lang.swift.decl.var.instance",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Structs.swift",
+      "first_line" : 27,
+      "last_line" : 27,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "steamID"
+  },
+  {
+    "kind" : "source.lang.swift.decl.var.instance",
+    "location" : {
+      "file_pathname" : "\/Users\/johnf\/project\/swift-steamworks\/Sources\/Steamworks\/Generated\/Structs.swift",
+      "first_line" : 28,
+      "last_line" : 28,
+      "module_name" : "Steamworks",
+      "pass_index" : 0
+    },
+    "symbol" : "count"
+  }
+]

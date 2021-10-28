@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>CFBundleIdentifier</key>
+      <string>com.bebop.steamworks</string>
+    <key>CFBundleName</key>
+      <string>Steamworks</string>
+    <key>DocSetPlatformFamily</key>
+      <string>steamworks</string>
+    <key>isDashDocset</key>
+      <true/>
+    <key>dashIndexFilePath</key>
+      <string>index.html</string>
+    <key>isJavaScriptEnabled</key>
+      <true/>
+    <key>DashDocSetDefaultFTSEnabled</key>
+      <true/>
+    <key>DashDocSetFamily</key>
+      <string>dashtoc</string>
+    
+    <key>DashDocSetFallbackURL</key>
+   <string>https://johnfairh.github.io/swift-steamworks/</string>
+  </dict>
+</plist>

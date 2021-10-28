@@ -1,0 +1,39 @@
+author: John Fairhurst
+author_url: http://github.com/johnfairh
+copyright: Distributed under the MIT license.  Maintained by [John Fairhurst](mailto:johnfairh@gmail.com).
+readme: README.md
+products:
+  - docs
+  - docset
+  - unresolved-json
+  - undocumented-json
+code_host: github
+code_host_url: https://github.com/johnfairh/swift-steamworks
+code_host_file_url: https://github.com/johnfairh/swift-steamworks/blob/main
+clean: true
+sdk: macosx
+theme: fw2020
+deployment_url: https://johnfairh.github.io/swift-steamworks/
+build_tool: spm
+modules: Steamworks
+build_tool_arguments:
+  - "-Xswiftc"
+  - "-I${PWD}/sdk/public"
+title: Steamworks v0.1.0
+module_version: 0.1.0
+topic_style: source-order-defs
+hide_coverage: true
+custom_groups:
+  - name: API clients
+    children:
+      - SteamBaseAPI
+      - SteamAPI
+      - SteamGameServerAPI
+  - name: Steamworks modules
+    children:
+      - SteamFriends
+  - name: Interface types
+    children:
+      - FriendsGetFollowerCount
+      - PersonaStateChange
+      - SteamServersConnected

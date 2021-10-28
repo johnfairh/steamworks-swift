@@ -5,12 +5,27 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
-@_implementationOnly import CSteamworks
-
+// SteamBase API - wrap up common interface stuff between user and gameserver APIs
+// * callbacks, callreturns dispatch
+// * methods to register for callbacks
+// * polymorphic interface getters
+//
 // Not offering a way to unregister callbacks:
 // 1) Steamworks doesn't let you do it
 // 2) The locking/cancellation honouring is horrendous
 
+@_implementationOnly import CSteamworks
+
+/// Behavior common to both the user and game server APIs.
+///
+/// You can't create this directly; instead use a `SteamAPI` or `SteamGameServerAPI`.
+///
+/// In Steamworks, a _callback_ is a broadcast notification.  In C++ you discover what notifications
+/// are available from the docs and use the `STEAM_CALLBACK()` macro to connect your method.
+/// In this Swift version you register using a run-time call to one of the [registration methods](#tpc-callback-registration)
+/// such as `onSteamServersConnected(...)`.  If you register after creating your API instance
+/// and before mkaing your first call to `runCallbacks()` then your code is equivalent to the C++
+/// version.
 public class SteamBaseAPI: @unchecked Sendable {
     /// Type-erased client closure, expose this to other files because of code gen
     typealias RawClient = (UnsafeMutableRawPointer) -> Void
@@ -86,6 +101,18 @@ public class SteamBaseAPI: @unchecked Sendable {
         _ = SteamBaseAPI.initOnce
     }
 
+    // MARK: Notifications
+
+    /// Dispatch callbacks and call-returns.
+    ///
+    /// _Callbacks_ are broadcast notifications.  _Call returns_ are asynchronous replies to
+    /// certain API functions such as `SteamFriends.getFollowerCount(...)`.
+    ///
+    /// Typically call once per frame on one thread.  The implementation uses the steamworks
+    /// 'manual dispatch' approach, but the docs from `SteamAPI_RunCallbacks` and
+    /// `SteamGameServer_RunCallbacks` apply.
+    ///
+    /// This routine is safe to call on multiple threads but will deadlock if called reentrantly.
     public func runCallbacks() {
         lock.locked {
             SteamAPI_ManualDispatch_RunFrame(steamPipe)
@@ -103,6 +130,11 @@ public class SteamBaseAPI: @unchecked Sendable {
                 }
             }
         }
+    }
+
+    /// Call periodically on all threads that are not calling `runCallbacks()`.
+    public func releaseCurrentThreadMemory() {
+        SteamAPI_ReleaseCurrentThreadMemory() // === SteamGameServer_ReleaseCur....
     }
 
     // Workaround anonymous enums not imported, special case here

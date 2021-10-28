@@ -1,0 +1,82 @@
+[
+  {
+    "context" : "index",
+    "name" : "-enable-cxx-interop"
+  },
+  {
+    "context" : "steamServersConnected",
+    "name" : "AsyncStream"
+  },
+  {
+    "context" : "index",
+    "name" : "CSteamworks"
+  },
+  {
+    "context" : "index",
+    "name" : "Foundation"
+  },
+  {
+    "context" : "init(ip:port:queryPort:serverMode:version:)",
+    "name" : "INADDR_ANY"
+  },
+  {
+    "context" : "init(ip:port:queryPort:serverMode:version:)",
+    "name" : "STEAMGAMESERVER_QUERY_PORT_SHARED"
+  },
+  {
+    "context" : "SteamBaseAPI",
+    "name" : "STEAM_CALLBACK()"
+  },
+  {
+    "context" : "index",
+    "name" : "STEAM_SDK"
+  },
+  {
+    "context" : "SteamBaseAPI",
+    "name" : "Sendable"
+  },
+  {
+    "context" : "init(appID:)",
+    "name" : "SteamAPI_Init()"
+  },
+  {
+    "context" : "isSteamRunning",
+    "name" : "SteamAPI_IsSteamRunning()"
+  },
+  {
+    "context" : "init(appID:)",
+    "name" : "SteamAPI_RestartAppIfNecessary()"
+  },
+  {
+    "context" : "runCallbacks()",
+    "name" : "SteamAPI_RunCallbacks"
+  },
+  {
+    "context" : "SteamServersConnected",
+    "name" : "SteamCreatable"
+  },
+  {
+    "context" : "index",
+    "name" : "SteamFriends.joinClanChatRoom(...)"
+  },
+  {
+    "context" : "runCallbacks()",
+    "name" : "SteamGameServer_RunCallbacks"
+  },
+  {
+    "context" : "index",
+    "name" : "SteamUtils.client.secondsSinceAppActive"
+  },
+  {
+    "context" : "init(appID:)",
+    "name" : "appID"
+  },
+  {
+    "context" : "index",
+    "name" : "make"
+  },
+  {
+    "context" : "index",
+    "name" : "sdk"
+  }
+]
