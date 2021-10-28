@@ -14,8 +14,15 @@ import Foundation
 
 final class Client {
     let api: SteamAPI
+
     let frameSource: DispatchSourceTimer
-    var frameCounter: Int
+    private(set) var frameCounter: Int
+
+    private var _quit: Bool
+
+    func requestQuit() {
+        _quit = true
+    }
 
     init?() {
         guard let api = SteamAPI() else {
@@ -25,12 +32,16 @@ final class Client {
         self.api = api
         frameSource = DispatchSource.makeTimerSource(queue: .main)
         frameCounter = 0
+        _quit = false
     }
 
-    func startFrameLoop() {
+    func runFrameLoop() {
         frameSource.schedule(deadline: .now(), repeating: .milliseconds(1000/60))
         frameSource.setEventHandler() { [weak self] in self?.frame() }
         frameSource.resume()
+
+        while !_quit && RunLoop.current.run(mode: .default, before: .distantFuture) {
+        }
     }
 
     func frame() {
@@ -50,11 +61,11 @@ func main() {
         print("PersonaStateChange: \($0)")
         SteamFriends.getFollowerCount(steamID: $0.steamID) {
             print("FollowerCount: \($0)")
+            client.requestQuit()
         }
     }
 
-    client.startFrameLoop()
-    RunLoop.current.run(until: Date().advanced(by: 2 /* seconds */))
+    client.runFrameLoop()
     print("Ran \(client.frameCounter) frames")
 }
 
