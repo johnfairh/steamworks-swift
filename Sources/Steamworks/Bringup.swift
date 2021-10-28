@@ -10,7 +10,7 @@
 public enum SteamFriends {
     public static func getFollowerCount(steamID: UInt64, completion: @escaping (FriendsGetFollowerCount) -> Void) {
         let rc = SteamAPI_ISteamFriends_GetFollowerCount(SteamAPI_SteamFriends_v017(), steamID)
-        SteamBaseAPI.CallResults.shared.add(rawClient: SteamBaseAPI.makeRaw(completion), callID: rc)
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 }
 

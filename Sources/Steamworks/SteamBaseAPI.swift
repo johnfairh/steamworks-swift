@@ -28,7 +28,7 @@ public class SteamBaseAPI: @unchecked Sendable {
         private var lock = Lock()
 
         /// Add a client
-        func add(rawClient: @escaping RawClient, callbackID: CallbackID) {
+        func add(callbackID: CallbackID, rawClient: @escaping RawClient) {
             lock.locked {
                 var list = clients[callbackID, default: []]
                 list.append(rawClient)
@@ -53,7 +53,7 @@ public class SteamBaseAPI: @unchecked Sendable {
         private var pending = [SteamAPICall_t : RawClient]()
         private var lock = Lock()
 
-        func add(rawClient: @escaping RawClient, callID: SteamAPICall_t) {
+        func add(callID: SteamAPICall_t, rawClient: @escaping RawClient) {
             lock.locked {
                 pending[callID] = rawClient
             }
