@@ -15,6 +15,7 @@
 // 2) The locking/cancellation honouring is horrendous
 
 @_implementationOnly import CSteamworks
+import Logging
 
 /// Behavior common to both the user and game server APIs.
 ///
@@ -152,18 +153,35 @@ public class SteamBaseAPI: @unchecked Sendable {
             defer { callResult.deallocate() }
 
             var failed = true
-            if SteamAPI_ManualDispatch_GetAPICallResult(
+            let success = SteamAPI_ManualDispatch_GetAPICallResult(
                 steamPipe,
                 callCompleted.m_hAsyncCall,
                 callResult,
                 Int32(callCompleted.m_cubParam),
                 callCompleted.m_iCallback,
-                &failed) {
-                print("Call completed failed=\(failed) for \(callCompleted.m_hAsyncCall), \(callCompleted.m_cubParam) bytes")
-                CallResults.shared.dispatch(callID: callCompleted.m_hAsyncCall, rawData: callResult)
+                &failed)
+
+            if !success {
+                logError("Failure return from SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_cubParam) bytes")
+            } else if failed {
+                logError("Failed flag set by SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_cubParam) bytes")
             } else {
-                print("Mysterious failure from GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_cubParam) bytes")
+                CallResults.shared.dispatch(callID: callCompleted.m_hAsyncCall, rawData: callResult)
             }
         }
     }
+
+    // MARK: Logging
+
+    /// Logger for the module.
+    ///
+    /// A [swift-log](https://github.com/apple/swift-log) `Logger`.
+    ///
+    /// Produces infrequent error-path diagnostic info at `Logger.Level.error` log level for the few
+    /// operations that are actually implemented by the `Steamworks` Swift module.
+    public static var logger = Logger(label: "steamworks")
+}
+
+func logError(_ message: @autoclosure () -> String) {
+    SteamBaseAPI.logger.error(.init(stringLiteral: message()))
 }

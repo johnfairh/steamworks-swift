@@ -31,6 +31,7 @@ public final class SteamGameServerAPI: SteamBaseAPI {
     /// - returns: `nil` if the API failed to initialize.
     public init?(ip: UInt32 = 0, port: UInt16, queryPort: UInt16? = nil, serverMode: Int = 0 /* XXX */, version: String) {
         guard SteamGameServer_Init(ip, port, queryPort ?? STEAMGAMESERVER_QUERY_PORT_SHARED, eServerModeNoAuthentication, version) else {
+            logError("SteamGameServerAPI.init() failed: SteamGameServer_Init() returned false")
             return nil
         }
 

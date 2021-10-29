@@ -14,6 +14,7 @@
 // * `SteamAPI_SetTryCatchCallbacks()` - not required because manual dispatch
 
 @_implementationOnly import CSteamworks
+import Logging
 
 /// An instance of the Steamworks user API
 ///
@@ -33,9 +34,11 @@ public final class SteamAPI: SteamBaseAPI {
     /// - returns: `nil` if the Steam API connection failed or app restart is necessary.
     public init?(appID: UInt32? = nil) {
         if let appID = appID, SteamAPI_RestartAppIfNecessary(appID) {
+            logError("SteamAPI.init() failed: SteamAPI_RestartAppIfNecessary(\(appID)) returned true")
             return nil
         }
         guard SteamAPI_Init() else {
+            logError("SteamAPI.init() failed: SteamAPI_Init() returned false")
             return nil
         }
 

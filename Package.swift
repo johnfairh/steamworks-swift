@@ -22,12 +22,16 @@ let package = Package(
       targets: ["Client"])
   ],
   dependencies: [
+    .package(url: "https://github.com/apple/swift-log.git", from: "1.4.2")
   ],
   targets: [
     .systemLibrary(name: "CSteamworks"),
     .target(
         name: "Steamworks",
-        dependencies: ["CSteamworks"],
+        dependencies: [
+          "CSteamworks",
+          .product(name: "Logging", package: "swift-log")
+        ],
         swiftSettings: [
           .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
         ]),
