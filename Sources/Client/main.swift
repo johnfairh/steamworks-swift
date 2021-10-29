@@ -14,6 +14,7 @@ import Foundation
 
 final class Client {
     let api: SteamAPI
+    let server: SteamGameServerAPI
 
     let frameSource: DispatchSourceTimer
     private(set) var frameCounter: Int
@@ -30,6 +31,11 @@ final class Client {
             return nil
         }
         self.api = api
+        guard let server = SteamGameServerAPI(port: 27100, version: "1.0.0.0") else {
+            print("SteamGameServerAPI init failed")
+            return nil
+        }
+        self.server = server
         frameSource = DispatchSource.makeTimerSource(queue: .main)
         frameCounter = 0
         _quit = false
@@ -46,6 +52,7 @@ final class Client {
 
     func frame() {
         api.runCallbacks()
+        server.runCallbacks()
         frameCounter += 1
     }
 }
@@ -57,7 +64,8 @@ func main() {
         return
     }
 
-    client.api.onPersonaStateChange {
+    client.api.onPersonaStateChange { [weak client] in
+        guard let client = client else { return }
         print("PersonaStateChange: \($0)")
         SteamFriends.getFollowerCount(steamID: $0.steamID) {
             print("FollowerCount: \($0)")
@@ -70,29 +78,3 @@ func main() {
 }
 
 main()
-
-//
-//public enum SteamFriends2 {
-//    static func HasFriend(steamIDFriend: UInt64, friendFlags: Int32) -> Bool {
-//        SteamAPI_ISteamFriends_HasFriend(SteamAPI_SteamFriends_v017(), steamIDFriend, friendFlags)
-//    }
-//}
-//
-//public struct SteamUtils {
-//    private var iSteamUtils: UnsafeMutablePointer<ISteamUtils>
-//    private init(isClient: Bool) {
-//        iSteamUtils = isClient ? SteamAPI_SteamUtils_v010() : SteamAPI_SteamGameServerUtils_v010()
-//    }
-//
-//    public static let client = SteamUtils(isClient: true)
-//    public static let server = SteamUtils(isClient: false)
-//
-//    public var secondsSinceAppActive: UInt32 {
-//        SteamAPI_ISteamUtils_GetSecondsSinceAppActive(iSteamUtils)
-//    }
-//
-//    static var secondsSinceAppActive: UInt32 {
-//        client.secondsSinceAppActive
-//    }
-//}
-//#endif
