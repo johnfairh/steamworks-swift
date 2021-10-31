@@ -38,9 +38,12 @@ let package = Package(
     .executableTarget(
         name: "Client",
         dependencies: ["Steamworks"]),
+    .executableTarget(
+        name: "Generate",
+        dependencies: []),
     .testTarget(
         name: "SteamworksTests",
-        dependencies: ["Steamworks"])
+        dependencies: ["Steamworks", "Generate"])
     ],
     cxxLanguageStandard: .cxx11
 )

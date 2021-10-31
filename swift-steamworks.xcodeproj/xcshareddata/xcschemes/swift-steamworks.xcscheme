@@ -34,6 +34,20 @@
                ReferencedContainer = "container:swift-steamworks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "02086099272EB98600725122"
+               BuildableName = "Generate"
+               BlueprintName = "Generate"
+               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

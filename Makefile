@@ -1,4 +1,4 @@
-.PHONY: all build run clean test
+.PHONY: all build run clean test generate
 
 STEAM_SDK ?= ${CURDIR}/sdk
 STEAM_INCLUDE := ${STEAM_SDK}/public
@@ -37,6 +37,9 @@ run:
 	ln -sf ${STEAM_LIB}/${STEAM_DYLIB} ${BINPATH}/
 	echo 480 > ${BINPATH}/steam_appid.txt
 	swift run Client ${STEAM_SWIFT_FLAGS}
+
+generate:
+	swift run Generate
 
 clean:
 	swift package clean
