@@ -30,6 +30,7 @@ final class Client {
             print("SteamAPI init failed")
             return nil
         }
+        api.useLoggerForSteamworksWarnings()
         self.api = api
         guard let server = SteamGameServerAPI(port: 27100, version: "1.0.0.0") else {
             print("SteamGameServerAPI init failed")
@@ -60,6 +61,7 @@ final class Client {
 // Incredibly `@main` is still broken....
 
 func main() {
+    SteamAPI.logger.logLevel = .trace
     guard let client = Client() else {
         return
     }

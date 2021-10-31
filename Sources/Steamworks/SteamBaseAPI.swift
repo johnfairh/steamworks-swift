@@ -125,7 +125,6 @@ public class SteamBaseAPI: @unchecked Sendable {
                 if ( callback.m_iCallback == SteamAPICallCompleted_t_k_iCallback ) {
                     onCallCompleted(callback: callback)
                 } else {
-                    print("Global notification for callback ID \(callback.m_iCallback), \(callback.m_cubParam) bytes")
                     callbacks.dispatch(callbackID: callback.m_iCallback,
                                        rawData: UnsafeMutableRawPointer(callback.m_pubParam))
                 }
@@ -180,8 +179,23 @@ public class SteamBaseAPI: @unchecked Sendable {
     /// Produces infrequent error-path diagnostic info at `Logger.Level.error` log level for the few
     /// operations that are actually implemented by the `Steamworks` Swift module.
     public static var logger = Logger(label: "steamworks")
+
+    /// XXX push into Utils in some way
+    public func useLoggerForSteamworksWarnings() {
+        SteamAPI_ISteamUtils_SetWarningMessageHook(SteamAPI_SteamUtils_v010(), steamApiWarningMessageHook)
+    }
 }
 
 func logError(_ message: @autoclosure () -> String) {
-    SteamBaseAPI.logger.error(.init(stringLiteral: message()))
+    SteamBaseAPI.logger.error(.init(stringLiteral: message()), metadata: ["layer" : "Steamworks module"])
+}
+
+private func steamApiWarningMessageHook(isWarning: Int32, message: UnsafePointer<CChar>?) {
+    let text = message.flatMap { String(cString: $0) } ?? ""
+    let metadata: Logger.Metadata = ["layer" : "Steamworks API"]
+    if isWarning == 0 {
+        SteamBaseAPI.logger.trace(.init(stringLiteral: text), metadata: metadata)
+    } else {
+        SteamBaseAPI.logger.debug(.init(stringLiteral: text), metadata: metadata)
+    }
 }
