@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IO {
+final class IO {
     let packageRootURL: URL
     let jsonURL: URL
     let outputDirURL: URL
@@ -31,5 +31,40 @@ struct IO {
         guard FileManager.default.fileExists(atPath: outputDirURL.path, isDirectory: &isDir), isDir.boolValue else {
             throw Failed("Output directory missing at: \(outputDirURL.path)")
         }
+    }
+
+    var sdkURL: URL {
+        packageRootURL.appendingPathComponent("sdk")
+    }
+
+    var readmeURL: URL {
+        sdkURL.appendingPathComponent("Readme.txt")
+    }
+
+    func fileHeader(fileName: String, moduleName: String = "Steamworks") -> String {
+        """
+        //
+        //  \(fileName)
+        //  \(moduleName)
+        //
+        //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
+        //
+        //  This file is generated code: any edits will be overwritten.
+        """
+    }
+
+    func write(fileName: String, contents: String) throws {
+        let url = outputDirURL.appendingPathComponent(fileName)
+        let fullContents = fileHeader(fileName: fileName) + "\n\n" + contents + "\n"
+
+        if let existing = try? String(contentsOf: url) {
+            if existing == fullContents {
+                print("\(fileName): unchanged")
+                return
+            }
+        }
+
+        try fullContents.write(to: url, atomically: false, encoding: .utf8)
+        print("\(fileName): updated")
     }
 }

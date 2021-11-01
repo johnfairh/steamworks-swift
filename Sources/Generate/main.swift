@@ -15,4 +15,4 @@ struct Failed: Error, CustomStringConvertible {
 }
 
 let generator = try Generator(packageRootPath: FileManager.default.currentDirectoryPath)
-generator.report()
+try generator.generate()

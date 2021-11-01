@@ -1,4 +1,4 @@
-.PHONY: all build run clean test generate
+.PHONY: all build run clean test generate docs
 
 STEAM_SDK ?= ${CURDIR}/sdk
 STEAM_INCLUDE := ${STEAM_SDK}/public
@@ -24,7 +24,7 @@ STEAM_SWIFT_FLAGS := \
 
 all: build run
 
-build:
+build: generate
 	swift build ${STEAM_SWIFT_FLAGS}
 
 test:
@@ -37,6 +37,9 @@ run:
 	ln -sf ${STEAM_LIB}/${STEAM_DYLIB} ${BINPATH}/
 	echo 480 > ${BINPATH}/steam_appid.txt
 	swift run Client ${STEAM_SWIFT_FLAGS}
+
+docs: generate
+	bebop
 
 generate:
 	swift run Generate

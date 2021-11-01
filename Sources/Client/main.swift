@@ -61,6 +61,7 @@ final class Client {
 // Incredibly `@main` is still broken....
 
 func main() {
+    print("Client testbed, steamworks version \(SteamAPI.steamworksVersion)")
     SteamAPI.logger.logLevel = .trace
     guard let client = Client() else {
         return
