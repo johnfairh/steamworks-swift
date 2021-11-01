@@ -40,6 +40,9 @@ let package = Package(
         dependencies: ["Steamworks"]),
     .executableTarget(
         name: "Generate",
+        dependencies: ["LibGenerate"]),
+    .target(
+        name: "LibGenerate",
         dependencies: []),
     .testTarget(
         name: "SteamworksTests",

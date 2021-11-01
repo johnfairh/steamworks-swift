@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "02086099272EB98600725122"
-               BuildableName = "Generate"
-               BlueprintName = "Generate"
+               BlueprintIdentifier = "020860AD273047D100725122"
+               BuildableName = "LibGenerate.framework"
+               BlueprintName = "LibGenerate"
                ReferencedContainer = "container:swift-steamworks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
