@@ -1,17 +1,20 @@
-.PHONY: all build run clean test generate docs
+.PHONY: all build run clean test generate docs bin_setup
 
 STEAM_SDK ?= ${CURDIR}/sdk
 STEAM_INCLUDE := ${STEAM_SDK}/public
 
 ifeq (${OS},Windows_NT)
 	PLATFORM := win64
+  XCTESTOS := Windows
 	STEAM_DYLIB := steam_api64.dll
 else
 	ifeq ($(shell uname -s),Darwin)
 		PLATFORM := osx
+    XCTESTOS := MacOS
 		STEAM_DYLIB := libsteam_api.dylib
 	else
 		PLATFORM := linux64
+    XCTESTOS := Linux
 		STEAM_DYLIB := libsteam_api.so
 	endif
 endif
@@ -27,15 +30,19 @@ all: build run
 build: generate
 	swift build ${STEAM_SWIFT_FLAGS}
 
-test:
+BINPATH := $(shell swift build --show-bin-path)
+TESTBINPATH := ${BINPATH}/swift-steamworksPackageTests.xctest/Contents/${XCTESTOS}
+
+bin_setup:
+	mkdir -p ${TESTBINPATH}
+	ln -sf ${STEAM_LIB}/${STEAM_DYLIB} ${BINPATH}/
+	ln -sf ${STEAM_LIB}/${STEAM_DYLIB} ${TESTBINPATH}/
+	echo 480 > ${BINPATH}/steam_appid.txt
+
+test: bin_setup
 	swift test ${STEAM_SWIFT_FLAGS}
 
-BINPATH := $(shell swift build --show-bin-path)
-
-run:
-	mkdir -p ${BINPATH}
-	ln -sf ${STEAM_LIB}/${STEAM_DYLIB} ${BINPATH}/
-	echo 480 > ${BINPATH}/steam_appid.txt
+run: bin_setup
 	swift run Client ${STEAM_SWIFT_FLAGS}
 
 docs: generate

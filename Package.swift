@@ -46,7 +46,7 @@ let package = Package(
         dependencies: []),
     .testTarget(
         name: "SteamworksTests",
-        dependencies: ["Steamworks", "Generate"],
+        dependencies: ["Steamworks", "LibGenerate"],
         exclude: ["Fixtures"])
     ],
     cxxLanguageStandard: .cxx11
