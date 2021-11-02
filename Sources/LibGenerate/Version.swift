@@ -5,8 +5,6 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
-import Foundation
-
 struct Version {
     let io: IO
 
@@ -35,6 +33,14 @@ struct Version {
         try io.write(fileName: "SteamBaseAPI+Version.swift", contents: contents)
     }
 
+    /// Grab version number from the file
+    ///
+    /// Format is like:
+    /// ```
+    /// ----------------------------------------------------------------
+    /// v1.52 14th September 2021
+    /// ----------------------------------------------------------------
+    /// ```
     func parseVersion(readme: String) throws -> String {
         guard let versionLine = readme
             .split(whereSeparator: { $0.isNewline }) /* \r\n going on ... */
@@ -43,9 +49,6 @@ struct Version {
         }
 
         let tokens = versionLine.split(separator: " ")
-        guard !tokens.isEmpty else {
-            throw Failed("Couldn't parse version from readme \(versionLine)")
-        }
         return String(tokens[0].dropFirst())
     }
 }

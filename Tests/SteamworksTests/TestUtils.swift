@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import XCTest
+import LibGenerate
 
 extension FileManager {
     /// Create a new empty temporary directory.  Caller must delete.
@@ -27,5 +29,31 @@ extension FileManager {
     /// A file URL for the current directory
     var currentDirectory: URL {
         URL(fileURLWithPath: currentDirectoryPath)
+    }
+}
+
+extension XCTestCase {
+    static var fixturesURL: URL {
+        URL(fileURLWithPath: #file)
+            .deletingLastPathComponent()
+            .appendingPathComponent("Fixtures")
+    }
+
+    static var fixturesSdkURL: URL {
+        fixturesURL.appendingPathComponent("sdk")
+    }
+
+    class Harness {
+        let outputDirURL: URL
+        let generator: Generator
+
+        init() throws {
+            outputDirURL = try! FileManager.default.createTemporaryDirectory()
+            generator = try Generator(sdkURL: fixturesSdkURL, outputDirURL: outputDirURL)
+        }
+
+        deinit {
+            try? FileManager.default.removeItem(at: outputDirURL)
+        }
     }
 }

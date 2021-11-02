@@ -11,37 +11,23 @@ import XCTest
 let replaceFixtures = false
 //let replaceFixtures = true
 
-/// Some kind of end-to-end tests
+/// End-to-end generation from interesting stub data
 class TestGenerate: XCTestCase {
-    var fixturesURL: URL {
-        URL(fileURLWithPath: #file)
-            .deletingLastPathComponent()
-            .appendingPathComponent("Fixtures")
-    }
-
-    var fixturesSdkURL: URL {
-        fixturesURL.appendingPathComponent("sdk")
-    }
-
     var fixturesExpectedURL: URL {
-        fixturesURL.appendingPathComponent("Expected")
+        Self.fixturesURL.appendingPathComponent("Expected")
     }
 
     // Run everything against the fixture stub / interesting data
     func testFixtures() throws {
-        let outputDirURL = try! FileManager.default.createTemporaryDirectory()
-        defer { try? FileManager.default.removeItem(at: outputDirURL) }
+        let harness = try Harness()
+        try harness.generator.generate()
 
-        let generator = try Generator(sdkURL: fixturesSdkURL, outputDirURL: outputDirURL)
-
-        try generator.generate()
-
-        let outputFileNames = outputDirURL.fileNames
+        let outputFileNames = harness.outputDirURL.fileNames
         let expectedFileNames = fixturesExpectedURL.fileNames
 
         guard !replaceFixtures else {
             try outputFileNames.forEach { fileName in
-                let fromURL = outputDirURL.appendingPathComponent(fileName)
+                let fromURL = harness.outputDirURL.appendingPathComponent(fileName)
                 let toURL = fixturesExpectedURL.appendingPathComponent(fileName)
                 try FileManager.default.copyItem(at: fromURL, to: toURL)
             }
@@ -51,7 +37,7 @@ class TestGenerate: XCTestCase {
         try expectedFileNames.forEach { fileName in
             if outputFileNames.contains(fileName) {
                 try compare(fixturesExpectedURL.appendingPathComponent(fileName),
-                            outputDirURL.appendingPathComponent(fileName))
+                            harness.outputDirURL.appendingPathComponent(fileName))
             } else {
                 XCTFail("Missing output file \(fileName)")
             }
