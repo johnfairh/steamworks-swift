@@ -16,25 +16,10 @@ struct Version {
 
     /// Generate `SteamBaseAPI.steamworksVersion` by parsing the readme file.
     ///
-    /// Readme file is a windows text file that swift + foundation utterly fail to figure out how
-    /// to manage without explicit instructions.
-    ///
     /// How long can I go without dropping in the regex library...
     func generate() throws {
-        let readme = try String(contentsOf: io.readmeURL, encoding: .windowsCP1252)
-
-        guard let versionLine = readme
-            .split(separator: "\r\n")
-            .first(where: { $0.hasPrefix("v") }) else {
-            throw Failed("Couldn't parse version line from readme \(io.readmeURL.path)")
-        }
-
-
-        let tokens = versionLine.split(separator: " ")
-        guard !tokens.isEmpty else {
-            throw Failed("Couldn't parse version from readme \(versionLine)")
-        }
-        let version = tokens[0].dropFirst()
+        let readme = try io.loadReadme()
+        let version = try parseVersion(readme: readme)
 
         let contents = """
         // MARK: SDK Version
@@ -48,5 +33,19 @@ struct Version {
         }
         """
         try io.write(fileName: "SteamBaseAPI+Version.swift", contents: contents)
+    }
+
+    func parseVersion(readme: String) throws -> String {
+        guard let versionLine = readme
+            .split(whereSeparator: { $0.isNewline }) /* \r\n going on ... */
+            .first(where: { $0.hasPrefix("v") }) else {
+            throw Failed("Couldn't parse version line from readme \(io.readmeURL.path)")
+        }
+
+        let tokens = versionLine.split(separator: " ")
+        guard !tokens.isEmpty else {
+            throw Failed("Couldn't parse version from readme \(versionLine)")
+        }
+        return String(tokens[0].dropFirst())
     }
 }

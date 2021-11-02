@@ -8,37 +8,36 @@
 import Foundation
 
 final class IO {
-    let packageRootURL: URL
-    let jsonURL: URL
+    let sdkURL: URL
     let outputDirURL: URL
 
-    init(packageRootURL: URL) throws {
-        self.packageRootURL = packageRootURL
-        self.jsonURL = packageRootURL
-            .appendingPathComponent("sdk")
-            .appendingPathComponent("public")
-            .appendingPathComponent("steam")
-            .appendingPathComponent("steam_api.json")
-        self.outputDirURL = packageRootURL
-            .appendingPathComponent("Sources")
-            .appendingPathComponent("Steamworks")
-            .appendingPathComponent("Generated")
+    init(sdkURL: URL, outputDirURL: URL) throws {
+        self.sdkURL = sdkURL
+        self.outputDirURL = outputDirURL
 
         guard FileManager.default.fileExists(atPath: jsonURL.path) else {
-            throw Failed("JSON file missing at :\(jsonURL.path)")
+            throw Failed("JSON file missing at \(jsonURL.path)")
         }
         var isDir = ObjCBool(false)
         guard FileManager.default.fileExists(atPath: outputDirURL.path, isDirectory: &isDir), isDir.boolValue else {
-            throw Failed("Output directory missing at: \(outputDirURL.path)")
+            throw Failed("Output directory missing at \(outputDirURL.path)")
         }
     }
 
-    var sdkURL: URL {
-        packageRootURL.appendingPathComponent("sdk")
+    var jsonURL: URL {
+        sdkURL.appendingPathComponent("public")
+            .appendingPathComponent("steam")
+            .appendingPathComponent("steam_api.json")
     }
 
     var readmeURL: URL {
         sdkURL.appendingPathComponent("Readme.txt")
+    }
+
+    /// Readme file is a windows text file that swift + foundation utterly fail to figure out how
+    /// to manage without explicit instructions.
+    func loadReadme() throws -> String {
+        try String(contentsOf: readmeURL, encoding: .windowsCP1252)
     }
 
     func fileHeader(fileName: String, moduleName: String = "Steamworks") -> String {
@@ -54,6 +53,8 @@ final class IO {
     }
 
     func write(fileName: String, contents: String) throws {
+        precondition(fileName.hasSuffix(".swift"))
+
         let url = outputDirURL.appendingPathComponent(fileName)
         let fullContents = fileHeader(fileName: fileName) + "\n\n" + contents + "\n"
 

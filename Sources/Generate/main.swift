@@ -8,5 +8,8 @@
 import LibGenerate
 import Foundation
 
-let generator = try Generator(packageRootPath: FileManager.default.currentDirectoryPath)
+let cwd = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+
+let generator = try Generator(sdkURL: cwd.appendingPathComponent("sdk"),
+                              outputDirURL: cwd.appendingPathComponent("Sources/Steamworks/Generated"))
 try generator.generate()

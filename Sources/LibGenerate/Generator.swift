@@ -11,8 +11,8 @@ public struct Generator {
     let io: IO
     let version: Version
 
-    public init(packageRootPath: String) throws {
-        try io = IO(packageRootURL: URL(fileURLWithPath: packageRootPath))
+    public init(sdkURL: URL, outputDirURL: URL) throws {
+        self.io = try IO(sdkURL: sdkURL, outputDirURL: outputDirURL)
         version = Version(io: io)
     }
 
