@@ -7,7 +7,11 @@
 
 import Foundation
 
-// Code gen the steamworks enums
+/// Code gen the steamworks enums
+///
+/// `Enums`is responsible for the top-level enums.  Some structures have nested enums defined in
+/// them -- we honour that structure (although it's probably a style bug) and have them generated from
+/// the corresponding Struct definition.
 struct Enums {
     let io: IO
     let json: JSON
@@ -27,7 +31,7 @@ extension SteamAPI.Enum {
     /// The Swift declaration for the enum
     var generated: String {
         """
-        /// Steamworks \(enumname)
+        /// Steamworks `\(enumname)`
         public enum \(enumname.asSwiftTypeName): Int {
         \(values.map { generate(value: $0) }.joined(separator: "\n"))
         }
@@ -38,8 +42,8 @@ extension SteamAPI.Enum {
     /// The Swift declaration for the enum case
     func generate(value: Value) -> String {
         """
-            /// Steamworks \(value.name)
-            case \(map(valueName: value.name)) = \(value.value)
+            /// Steamworks `\(value.name)`
+            case \(generate(valueName: value.name)) = \(value.value)
         """
     }
 
@@ -50,35 +54,9 @@ extension SteamAPI.Enum {
     }
 
     /// Convert the steamworks member name of this enum to Swift
-    func map(valueName: String) -> String {
+    func generate(valueName: String) -> String {
         valueName
             .re_sub("^\(valuePrefix)_?", with: "")
             .asSwiftIdentifier
     }
 }
-
-extension String {
-    /// Drop unwanted suffixes
-    var asSwiftTypeName: String {
-        re_sub("_t$", with: "")
-    }
-
-    /// Camel-case-with-leading-caps -> Swift casing with backticks if there's a keyword clash
-    var asSwiftIdentifier: String {
-        re_sub("^[A-Z]+?(?=$|[a-z]|[A-Z][a-z])", replacer: \.asLowerCase)
-            .backtickedIfNecessary
-    }
-
-    var asLowerCase: String {
-        map { $0.lowercased() }.joined()
-    }
-
-    var backtickedIfNecessary: String {
-        backtickKeywords.contains(self) ? "`\(self)`" : self
-    }
-}
-
-/// Just what we've seen necessary
-private let backtickKeywords = Set<String>([
-    "public", "private", "internal", "for", "switch", "case", "default"
-])

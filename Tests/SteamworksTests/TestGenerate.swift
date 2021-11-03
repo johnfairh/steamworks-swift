@@ -29,6 +29,7 @@ class TestGenerate: XCTestCase {
             try outputFileNames.forEach { fileName in
                 let fromURL = harness.outputDirURL.appendingPathComponent(fileName)
                 let toURL = fixturesExpectedURL.appendingPathComponent(fileName)
+                try FileManager.default.removeItem(at: toURL)
                 try FileManager.default.copyItem(at: fromURL, to: toURL)
             }
             return
