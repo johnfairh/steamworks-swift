@@ -34,10 +34,15 @@ final class IO {
         sdkURL.appendingPathComponent("Readme.txt")
     }
 
-    /// Readme file is a windows text file that swift + foundation utterly fail to figure out how
-    /// to manage without explicit instructions.
+    // Text files are normal windows-format that swift + foundation utterly
+    // fail to figure out how to manage without explicit instructions.
+
     func loadReadme() throws -> String {
         try String(contentsOf: readmeURL, encoding: .windowsCP1252)
+    }
+
+    func loadJson() throws -> Data {
+        try Data(contentsOf: jsonURL)
     }
 
     func fileHeader(fileName: String, moduleName: String = "Steamworks") -> String {
