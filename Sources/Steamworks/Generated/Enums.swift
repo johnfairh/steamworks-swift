@@ -473,15 +473,19 @@ public enum ChatRoomEnterResponse: Int {
 }
 
 /// Steamworks `EChatSteamIDInstanceFlags`
-public enum ChatSteamIDInstanceFlags: Int {
+public struct ChatSteamIDInstanceFlags: OptionSet {
+    /// The flags value.
+    public let rawValue: Int
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: Int) { self.rawValue = rawValue }
     /// Steamworks `k_EChatAccountInstanceMask`
-    case accountInstanceMask = 4095
+    public static let accountInstanceMask = ChatSteamIDInstanceFlags(rawValue: 4095)
     /// Steamworks `k_EChatInstanceFlagClan`
-    case clan = 524288
+    public static let clan = ChatSteamIDInstanceFlags(rawValue: 524288)
     /// Steamworks `k_EChatInstanceFlagLobby`
-    case lobby = 262144
+    public static let lobby = ChatSteamIDInstanceFlags(rawValue: 262144)
     /// Steamworks `k_EChatInstanceFlagMMSLobby`
-    case mmsLobby = 131072
+    public static let mmsLobby = ChatSteamIDInstanceFlags(rawValue: 131072)
 }
 
 /// Steamworks `ENotificationPosition`
@@ -549,41 +553,45 @@ public enum BroadcastUploadResult: Int {
 }
 
 /// Steamworks `EMarketNotAllowedReasonFlags`
-public enum MarketNotAllowedReasonFlags: Int {
+public struct MarketNotAllowedReasonFlags: OptionSet {
+    /// The flags value.
+    public let rawValue: Int
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: Int) { self.rawValue = rawValue }
     /// Steamworks `k_EMarketNotAllowedReason_None`
-    case none = 0
+    public static let none = MarketNotAllowedReasonFlags([])
     /// Steamworks `k_EMarketNotAllowedReason_TemporaryFailure`
-    case temporaryFailure = 1
+    public static let temporaryFailure = MarketNotAllowedReasonFlags(rawValue: 1)
     /// Steamworks `k_EMarketNotAllowedReason_AccountDisabled`
-    case accountDisabled = 2
+    public static let accountDisabled = MarketNotAllowedReasonFlags(rawValue: 2)
     /// Steamworks `k_EMarketNotAllowedReason_AccountLockedDown`
-    case accountLockedDown = 4
+    public static let accountLockedDown = MarketNotAllowedReasonFlags(rawValue: 4)
     /// Steamworks `k_EMarketNotAllowedReason_AccountLimited`
-    case accountLimited = 8
+    public static let accountLimited = MarketNotAllowedReasonFlags(rawValue: 8)
     /// Steamworks `k_EMarketNotAllowedReason_TradeBanned`
-    case tradeBanned = 16
+    public static let tradeBanned = MarketNotAllowedReasonFlags(rawValue: 16)
     /// Steamworks `k_EMarketNotAllowedReason_AccountNotTrusted`
-    case accountNotTrusted = 32
+    public static let accountNotTrusted = MarketNotAllowedReasonFlags(rawValue: 32)
     /// Steamworks `k_EMarketNotAllowedReason_SteamGuardNotEnabled`
-    case steamGuardNotEnabled = 64
+    public static let steamGuardNotEnabled = MarketNotAllowedReasonFlags(rawValue: 64)
     /// Steamworks `k_EMarketNotAllowedReason_SteamGuardOnlyRecentlyEnabled`
-    case steamGuardOnlyRecentlyEnabled = 128
+    public static let steamGuardOnlyRecentlyEnabled = MarketNotAllowedReasonFlags(rawValue: 128)
     /// Steamworks `k_EMarketNotAllowedReason_RecentPasswordReset`
-    case recentPasswordReset = 256
+    public static let recentPasswordReset = MarketNotAllowedReasonFlags(rawValue: 256)
     /// Steamworks `k_EMarketNotAllowedReason_NewPaymentMethod`
-    case newPaymentMethod = 512
+    public static let newPaymentMethod = MarketNotAllowedReasonFlags(rawValue: 512)
     /// Steamworks `k_EMarketNotAllowedReason_InvalidCookie`
-    case invalidCookie = 1024
+    public static let invalidCookie = MarketNotAllowedReasonFlags(rawValue: 1024)
     /// Steamworks `k_EMarketNotAllowedReason_UsingNewDevice`
-    case usingNewDevice = 2048
+    public static let usingNewDevice = MarketNotAllowedReasonFlags(rawValue: 2048)
     /// Steamworks `k_EMarketNotAllowedReason_RecentSelfRefund`
-    case recentSelfRefund = 4096
+    public static let recentSelfRefund = MarketNotAllowedReasonFlags(rawValue: 4096)
     /// Steamworks `k_EMarketNotAllowedReason_NewPaymentMethodCannotBeVerified`
-    case newPaymentMethodCannotBeVerified = 8192
+    public static let newPaymentMethodCannotBeVerified = MarketNotAllowedReasonFlags(rawValue: 8192)
     /// Steamworks `k_EMarketNotAllowedReason_NoRecentPurchases`
-    case noRecentPurchases = 16384
+    public static let noRecentPurchases = MarketNotAllowedReasonFlags(rawValue: 16384)
     /// Steamworks `k_EMarketNotAllowedReason_AcceptedWalletGift`
-    case acceptedWalletGift = 32768
+    public static let acceptedWalletGift = MarketNotAllowedReasonFlags(rawValue: 32768)
 }
 
 /// Steamworks `EDurationControlProgress`
@@ -735,31 +743,35 @@ public enum PersonaState: Int {
 }
 
 /// Steamworks `EFriendFlags`
-public enum FriendFlags: Int {
+public struct FriendFlags: OptionSet {
+    /// The flags value.
+    public let rawValue: Int
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: Int) { self.rawValue = rawValue }
     /// Steamworks `k_EFriendFlagNone`
-    case none = 0
+    public static let none = FriendFlags([])
     /// Steamworks `k_EFriendFlagBlocked`
-    case blocked = 1
+    public static let blocked = FriendFlags(rawValue: 1)
     /// Steamworks `k_EFriendFlagFriendshipRequested`
-    case friendshipRequested = 2
+    public static let friendshipRequested = FriendFlags(rawValue: 2)
     /// Steamworks `k_EFriendFlagImmediate`
-    case immediate = 4
+    public static let immediate = FriendFlags(rawValue: 4)
     /// Steamworks `k_EFriendFlagClanMember`
-    case clanMember = 8
+    public static let clanMember = FriendFlags(rawValue: 8)
     /// Steamworks `k_EFriendFlagOnGameServer`
-    case onGameServer = 16
+    public static let onGameServer = FriendFlags(rawValue: 16)
     /// Steamworks `k_EFriendFlagRequestingFriendship`
-    case requestingFriendship = 128
+    public static let requestingFriendship = FriendFlags(rawValue: 128)
     /// Steamworks `k_EFriendFlagRequestingInfo`
-    case requestingInfo = 256
+    public static let requestingInfo = FriendFlags(rawValue: 256)
     /// Steamworks `k_EFriendFlagIgnored`
-    case ignored = 512
+    public static let ignored = FriendFlags(rawValue: 512)
     /// Steamworks `k_EFriendFlagIgnoredFriend`
-    case ignoredFriend = 1024
+    public static let ignoredFriend = FriendFlags(rawValue: 1024)
     /// Steamworks `k_EFriendFlagChatMember`
-    case chatMember = 4096
+    public static let chatMember = FriendFlags(rawValue: 4096)
     /// Steamworks `k_EFriendFlagAll`
-    case all = 65535
+    public static let all = FriendFlags(rawValue: 65535)
 }
 
 /// Steamworks `EUserRestriction`
@@ -1017,7 +1029,7 @@ public enum RemoteStoragePublishedFileVisibility: Int {
 /// Steamworks `EWorkshopFileType`
 public enum WorkshopFileType: Int {
     /// Steamworks `k_EWorkshopFileTypeFirst`
-    public static let first = Self.init(rawValue: 0)!
+    public static let first = WorkshopFileType(rawValue: 0)!
     /// Steamworks `k_EWorkshopFileTypeCommunity`
     case community = 0
     /// Steamworks `k_EWorkshopFileTypeMicrotransaction`
@@ -3095,13 +3107,17 @@ public enum ItemPreviewType: Int {
 }
 
 /// Steamworks `ESteamItemFlags`
-public enum SteamItemFlags: Int {
+public struct SteamItemFlags: OptionSet {
+    /// The flags value.
+    public let rawValue: Int
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: Int) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamItemNoTrade`
-    case noTrade = 1
+    public static let noTrade = SteamItemFlags(rawValue: 1)
     /// Steamworks `k_ESteamItemRemoved`
-    case removed = 256
+    public static let removed = SteamItemFlags(rawValue: 256)
     /// Steamworks `k_ESteamItemConsumed`
-    case consumed = 512
+    public static let consumed = SteamItemFlags(rawValue: 512)
 }
 
 /// Steamworks `EParentalFeature`
@@ -3231,13 +3247,13 @@ public enum SteamNetConnectionEnd: Int {
     /// Steamworks `k_ESteamNetConnectionEnd_App_Min`
     case appMin = 1000
     /// Steamworks `k_ESteamNetConnectionEnd_App_Generic`
-    public static let appGeneric = Self.init(rawValue: 1000)!
+    public static let appGeneric = SteamNetConnectionEnd(rawValue: 1000)!
     /// Steamworks `k_ESteamNetConnectionEnd_App_Max`
     case appMax = 1999
     /// Steamworks `k_ESteamNetConnectionEnd_AppException_Min`
     case appExceptionMin = 2000
     /// Steamworks `k_ESteamNetConnectionEnd_AppException_Generic`
-    public static let appExceptionGeneric = Self.init(rawValue: 2000)!
+    public static let appExceptionGeneric = SteamNetConnectionEnd(rawValue: 2000)!
     /// Steamworks `k_ESteamNetConnectionEnd_AppException_Max`
     case appExceptionMax = 2999
     /// Steamworks `k_ESteamNetConnectionEnd_Local_Min`
@@ -3491,4 +3507,3 @@ public enum ServerMode: Int {
     /// Steamworks `eServerModeAuthenticationAndSecure`
     case authenticationAndSecure = 3
 }
-

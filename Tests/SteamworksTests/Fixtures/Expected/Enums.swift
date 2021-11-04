@@ -20,5 +20,20 @@ public enum SteamEnum: Int {
     case httpFailure = 5
     /// Steamworks `k_ESteamEnumOK`
     case ok = 6
+    /// Steamworks `esteamEnumLower_Case`
+    case lowerCase = 7
 }
 
+/// Steamworks `ESteamMiscFlags`
+public struct SteamMiscFlags: OptionSet {
+    /// The flags value.
+    public let rawValue: Int
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: Int) { self.rawValue = rawValue }
+    /// Steamworks `k_ESteamMiscFlagsNone`
+    public static let none = SteamMiscFlags([])
+    /// Steamworks `k_ESteamMiscFlagsSome`
+    public static let some = SteamMiscFlags(rawValue: 4)
+    /// Steamworks `k_ESteamMiscFlagsLoads`
+    public static let loads = SteamMiscFlags(rawValue: 512)
+}
