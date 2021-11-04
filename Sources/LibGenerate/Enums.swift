@@ -109,23 +109,28 @@ extension SteamAPI.Enum {
         !enumname.hasSuffix("Flags")
     }
 
+    var rawType: String {
+        values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
+    }
+
     /// The Swift declaration for the enum or optionset struct
     var generated: String {
         let swiftTypeName = enumname.asSwiftTypeName
+        let rawType = rawType
 
         let typeDecl: String
         let valueGen: (Value, String) -> String
 
         if isEnumNotOptionSet {
-            typeDecl = "public enum \(swiftTypeName): Int {"
+            typeDecl = "public enum \(swiftTypeName): \(rawType) {"
             valueGen = generateEnumCaseDecl
         } else {
             typeDecl = """
                        public struct \(swiftTypeName): OptionSet {
                            /// The flags value.
-                           public let rawValue: Int
+                           public let rawValue: \(rawType)
                            /// Create a new instance with `rawValue` flags set.
-                           public init(rawValue: Int) { self.rawValue = rawValue }
+                           public init(rawValue: \(rawType)) { self.rawValue = rawValue }
                        """
             valueGen = generateOptionSetDecl
         }

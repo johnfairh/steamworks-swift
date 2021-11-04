@@ -32,7 +32,7 @@ final class Client {
         }
         api.useLoggerForSteamworksWarnings()
         self.api = api
-        guard let server = SteamGameServerAPI(port: 27100, version: "1.0.0.0") else {
+        guard let server = SteamGameServerAPI(port: 27100, serverMode: .noAuthentication, version: "1.0.0.0") else {
             print("SteamGameServerAPI init failed")
             return nil
         }

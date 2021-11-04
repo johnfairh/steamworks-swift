@@ -7,7 +7,7 @@
 //  This file is generated code: any edits will be overwritten.
 
 /// Steamworks `ESteamIPType`
-public enum SteamIPType: Int {
+public enum SteamIPType: UInt32 {
     /// Steamworks `k_ESteamIPTypeIPv4`
     case ipv4 = 0
     /// Steamworks `k_ESteamIPTypeIPv6`
@@ -15,7 +15,7 @@ public enum SteamIPType: Int {
 }
 
 /// Steamworks `EUniverse`
-public enum Universe: Int {
+public enum Universe: UInt32 {
     /// Steamworks `k_EUniverseInvalid`
     case invalid = 0
     /// Steamworks `k_EUniversePublic`
@@ -31,7 +31,7 @@ public enum Universe: Int {
 }
 
 /// Steamworks `EResult`
-public enum Result: Int {
+public enum Result: UInt32 {
     /// Steamworks `k_EResultNone`
     case none = 0
     /// Steamworks `k_EResultOK`
@@ -279,7 +279,7 @@ public enum Result: Int {
 }
 
 /// Steamworks `EVoiceResult`
-public enum VoiceResult: Int {
+public enum VoiceResult: UInt32 {
     /// Steamworks `k_EVoiceResultOK`
     case ok = 0
     /// Steamworks `k_EVoiceResultNotInitialized`
@@ -303,7 +303,7 @@ public enum VoiceResult: Int {
 }
 
 /// Steamworks `EDenyReason`
-public enum DenyReason: Int {
+public enum DenyReason: UInt32 {
     /// Steamworks `k_EDenyInvalid`
     case invalid = 0
     /// Steamworks `k_EDenyInvalidVersion`
@@ -339,7 +339,7 @@ public enum DenyReason: Int {
 }
 
 /// Steamworks `EBeginAuthSessionResult`
-public enum BeginAuthSessionResult: Int {
+public enum BeginAuthSessionResult: UInt32 {
     /// Steamworks `k_EBeginAuthSessionResultOK`
     case ok = 0
     /// Steamworks `k_EBeginAuthSessionResultInvalidTicket`
@@ -355,7 +355,7 @@ public enum BeginAuthSessionResult: Int {
 }
 
 /// Steamworks `EAuthSessionResponse`
-public enum AuthSessionResponse: Int {
+public enum AuthSessionResponse: UInt32 {
     /// Steamworks `k_EAuthSessionResponseOK`
     case ok = 0
     /// Steamworks `k_EAuthSessionResponseUserNotConnectedToSteam`
@@ -379,7 +379,7 @@ public enum AuthSessionResponse: Int {
 }
 
 /// Steamworks `EUserHasLicenseForAppResult`
-public enum UserHasLicenseForAppResult: Int {
+public enum UserHasLicenseForAppResult: UInt32 {
     /// Steamworks `k_EUserHasLicenseResultHasLicense`
     case hasLicense = 0
     /// Steamworks `k_EUserHasLicenseResultDoesNotHaveLicense`
@@ -389,7 +389,7 @@ public enum UserHasLicenseForAppResult: Int {
 }
 
 /// Steamworks `EAccountType`
-public enum AccountType: Int {
+public enum AccountType: UInt32 {
     /// Steamworks `k_EAccountTypeInvalid`
     case invalid = 0
     /// Steamworks `k_EAccountTypeIndividual`
@@ -417,7 +417,7 @@ public enum AccountType: Int {
 }
 
 /// Steamworks `EChatEntryType`
-public enum ChatEntryType: Int {
+public enum ChatEntryType: UInt32 {
     /// Steamworks `k_EChatEntryTypeInvalid`
     case invalid = 0
     /// Steamworks `k_EChatEntryTypeChatMsg`
@@ -445,7 +445,7 @@ public enum ChatEntryType: Int {
 }
 
 /// Steamworks `EChatRoomEnterResponse`
-public enum ChatRoomEnterResponse: Int {
+public enum ChatRoomEnterResponse: UInt32 {
     /// Steamworks `k_EChatRoomEnterResponseSuccess`
     case success = 1
     /// Steamworks `k_EChatRoomEnterResponseDoesntExist`
@@ -475,9 +475,9 @@ public enum ChatRoomEnterResponse: Int {
 /// Steamworks `EChatSteamIDInstanceFlags`
 public struct ChatSteamIDInstanceFlags: OptionSet {
     /// The flags value.
-    public let rawValue: Int
+    public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: Int) { self.rawValue = rawValue }
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_EChatAccountInstanceMask`
     public static let accountInstanceMask = ChatSteamIDInstanceFlags(rawValue: 4095)
     /// Steamworks `k_EChatInstanceFlagClan`
@@ -489,7 +489,7 @@ public struct ChatSteamIDInstanceFlags: OptionSet {
 }
 
 /// Steamworks `ENotificationPosition`
-public enum NotificationPosition: Int {
+public enum NotificationPosition: UInt32 {
     /// Steamworks `k_EPositionTopLeft`
     case topLeft = 0
     /// Steamworks `k_EPositionTopRight`
@@ -501,7 +501,7 @@ public enum NotificationPosition: Int {
 }
 
 /// Steamworks `EBroadcastUploadResult`
-public enum BroadcastUploadResult: Int {
+public enum BroadcastUploadResult: UInt32 {
     /// Steamworks `k_EBroadcastUploadResultNone`
     case none = 0
     /// Steamworks `k_EBroadcastUploadResultOK`
@@ -555,9 +555,9 @@ public enum BroadcastUploadResult: Int {
 /// Steamworks `EMarketNotAllowedReasonFlags`
 public struct MarketNotAllowedReasonFlags: OptionSet {
     /// The flags value.
-    public let rawValue: Int
+    public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: Int) { self.rawValue = rawValue }
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_EMarketNotAllowedReason_None`
     public static let none = MarketNotAllowedReasonFlags([])
     /// Steamworks `k_EMarketNotAllowedReason_TemporaryFailure`
@@ -595,7 +595,7 @@ public struct MarketNotAllowedReasonFlags: OptionSet {
 }
 
 /// Steamworks `EDurationControlProgress`
-public enum DurationControlProgress: Int {
+public enum DurationControlProgress: UInt32 {
     /// Steamworks `k_EDurationControlProgress_Full`
     case full = 0
     /// Steamworks `k_EDurationControlProgress_Half`
@@ -611,7 +611,7 @@ public enum DurationControlProgress: Int {
 }
 
 /// Steamworks `EDurationControlNotification`
-public enum DurationControlNotification: Int {
+public enum DurationControlNotification: UInt32 {
     /// Steamworks `k_EDurationControlNotification_None`
     case none = 0
     /// Steamworks `k_EDurationControlNotification_1Hour`
@@ -631,7 +631,7 @@ public enum DurationControlNotification: Int {
 }
 
 /// Steamworks `EDurationControlOnlineState`
-public enum DurationControlOnlineState: Int {
+public enum DurationControlOnlineState: UInt32 {
     /// Steamworks `k_EDurationControlOnlineState_Invalid`
     case invalid = 0
     /// Steamworks `k_EDurationControlOnlineState_Offline`
@@ -643,7 +643,7 @@ public enum DurationControlOnlineState: Int {
 }
 
 /// Steamworks `EGameSearchErrorCode_t`
-public enum GameSearchErrorCode: Int {
+public enum GameSearchErrorCode: UInt32 {
     /// Steamworks `k_EGameSearchErrorCode_OK`
     case ok = 1
     /// Steamworks `k_EGameSearchErrorCode_Failed_Search_Already_In_Progress`
@@ -665,7 +665,7 @@ public enum GameSearchErrorCode: Int {
 }
 
 /// Steamworks `EPlayerResult_t`
-public enum PlayerResult: Int {
+public enum PlayerResult: UInt32 {
     /// Steamworks `k_EPlayerResultFailedToConnect`
     case failedToConnect = 1
     /// Steamworks `k_EPlayerResultAbandoned`
@@ -679,7 +679,7 @@ public enum PlayerResult: Int {
 }
 
 /// Steamworks `ESteamIPv6ConnectivityProtocol`
-public enum SteamIPv6ConnectivityProtocol: Int {
+public enum SteamIPv6ConnectivityProtocol: UInt32 {
     /// Steamworks `k_ESteamIPv6ConnectivityProtocol_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamIPv6ConnectivityProtocol_HTTP`
@@ -689,7 +689,7 @@ public enum SteamIPv6ConnectivityProtocol: Int {
 }
 
 /// Steamworks `ESteamIPv6ConnectivityState`
-public enum SteamIPv6ConnectivityState: Int {
+public enum SteamIPv6ConnectivityState: UInt32 {
     /// Steamworks `k_ESteamIPv6ConnectivityState_Unknown`
     case unknown = 0
     /// Steamworks `k_ESteamIPv6ConnectivityState_Good`
@@ -699,7 +699,7 @@ public enum SteamIPv6ConnectivityState: Int {
 }
 
 /// Steamworks `EFriendRelationship`
-public enum FriendRelationship: Int {
+public enum FriendRelationship: UInt32 {
     /// Steamworks `k_EFriendRelationshipNone`
     case none = 0
     /// Steamworks `k_EFriendRelationshipBlocked`
@@ -721,7 +721,7 @@ public enum FriendRelationship: Int {
 }
 
 /// Steamworks `EPersonaState`
-public enum PersonaState: Int {
+public enum PersonaState: UInt32 {
     /// Steamworks `k_EPersonaStateOffline`
     case offline = 0
     /// Steamworks `k_EPersonaStateOnline`
@@ -745,9 +745,9 @@ public enum PersonaState: Int {
 /// Steamworks `EFriendFlags`
 public struct FriendFlags: OptionSet {
     /// The flags value.
-    public let rawValue: Int
+    public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: Int) { self.rawValue = rawValue }
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_EFriendFlagNone`
     public static let none = FriendFlags([])
     /// Steamworks `k_EFriendFlagBlocked`
@@ -775,7 +775,7 @@ public struct FriendFlags: OptionSet {
 }
 
 /// Steamworks `EUserRestriction`
-public enum UserRestriction: Int {
+public enum UserRestriction: UInt32 {
     /// Steamworks `k_nUserRestrictionNone`
     case none = 0
     /// Steamworks `k_nUserRestrictionUnknown`
@@ -795,7 +795,7 @@ public enum UserRestriction: Int {
 }
 
 /// Steamworks `EOverlayToStoreFlag`
-public enum OverlayToStoreFlag: Int {
+public enum OverlayToStoreFlag: UInt32 {
     /// Steamworks `k_EOverlayToStoreFlag_None`
     case none = 0
     /// Steamworks `k_EOverlayToStoreFlag_AddToCart`
@@ -805,7 +805,7 @@ public enum OverlayToStoreFlag: Int {
 }
 
 /// Steamworks `EActivateGameOverlayToWebPageMode`
-public enum ActivateGameOverlayToWebPageMode: Int {
+public enum ActivateGameOverlayToWebPageMode: UInt32 {
     /// Steamworks `k_EActivateGameOverlayToWebPageMode_Default`
     case `default` = 0
     /// Steamworks `k_EActivateGameOverlayToWebPageMode_Modal`
@@ -813,7 +813,7 @@ public enum ActivateGameOverlayToWebPageMode: Int {
 }
 
 /// Steamworks `EPersonaChange`
-public enum PersonaChange: Int {
+public enum PersonaChange: UInt32 {
     /// Steamworks `k_EPersonaChangeName`
     case name = 1
     /// Steamworks `k_EPersonaChangeStatus`
@@ -847,7 +847,7 @@ public enum PersonaChange: Int {
 }
 
 /// Steamworks `ESteamAPICallFailure`
-public enum SteamAPICallFailure: Int {
+public enum SteamAPICallFailure: Int32 {
     /// Steamworks `k_ESteamAPICallFailureNone`
     case none = -1
     /// Steamworks `k_ESteamAPICallFailureSteamGone`
@@ -861,7 +861,7 @@ public enum SteamAPICallFailure: Int {
 }
 
 /// Steamworks `EGamepadTextInputMode`
-public enum GamepadTextInputMode: Int {
+public enum GamepadTextInputMode: UInt32 {
     /// Steamworks `k_EGamepadTextInputModeNormal`
     case normal = 0
     /// Steamworks `k_EGamepadTextInputModePassword`
@@ -869,7 +869,7 @@ public enum GamepadTextInputMode: Int {
 }
 
 /// Steamworks `EGamepadTextInputLineMode`
-public enum GamepadTextInputLineMode: Int {
+public enum GamepadTextInputLineMode: UInt32 {
     /// Steamworks `k_EGamepadTextInputLineModeSingleLine`
     case singleLine = 0
     /// Steamworks `k_EGamepadTextInputLineModeMultipleLines`
@@ -877,7 +877,7 @@ public enum GamepadTextInputLineMode: Int {
 }
 
 /// Steamworks `ETextFilteringContext`
-public enum TextFilteringContext: Int {
+public enum TextFilteringContext: UInt32 {
     /// Steamworks `k_ETextFilteringContextUnknown`
     case unknown = 0
     /// Steamworks `k_ETextFilteringContextGameContent`
@@ -889,7 +889,7 @@ public enum TextFilteringContext: Int {
 }
 
 /// Steamworks `ECheckFileSignature`
-public enum CheckFileSignature: Int {
+public enum CheckFileSignature: UInt32 {
     /// Steamworks `k_ECheckFileSignatureInvalidSignature`
     case invalidSignature = 0
     /// Steamworks `k_ECheckFileSignatureValidSignature`
@@ -903,7 +903,7 @@ public enum CheckFileSignature: Int {
 }
 
 /// Steamworks `EMatchMakingServerResponse`
-public enum MatchMakingServerResponse: Int {
+public enum MatchMakingServerResponse: UInt32 {
     /// Steamworks `eServerResponded`
     case eServerResponded = 0
     /// Steamworks `eServerFailedToRespond`
@@ -913,7 +913,7 @@ public enum MatchMakingServerResponse: Int {
 }
 
 /// Steamworks `ELobbyType`
-public enum LobbyType: Int {
+public enum LobbyType: UInt32 {
     /// Steamworks `k_ELobbyTypePrivate`
     case `private` = 0
     /// Steamworks `k_ELobbyTypeFriendsOnly`
@@ -927,7 +927,7 @@ public enum LobbyType: Int {
 }
 
 /// Steamworks `ELobbyComparison`
-public enum LobbyComparison: Int {
+public enum LobbyComparison: Int32 {
     /// Steamworks `k_ELobbyComparisonEqualToOrLessThan`
     case equalToOrLessThan = -2
     /// Steamworks `k_ELobbyComparisonLessThan`
@@ -943,7 +943,7 @@ public enum LobbyComparison: Int {
 }
 
 /// Steamworks `ELobbyDistanceFilter`
-public enum LobbyDistanceFilter: Int {
+public enum LobbyDistanceFilter: UInt32 {
     /// Steamworks `k_ELobbyDistanceFilterClose`
     case close = 0
     /// Steamworks `k_ELobbyDistanceFilterDefault`
@@ -955,7 +955,7 @@ public enum LobbyDistanceFilter: Int {
 }
 
 /// Steamworks `EChatMemberStateChange`
-public enum ChatMemberStateChange: Int {
+public enum ChatMemberStateChange: UInt32 {
     /// Steamworks `k_EChatMemberStateChangeEntered`
     case entered = 1
     /// Steamworks `k_EChatMemberStateChangeLeft`
@@ -969,7 +969,7 @@ public enum ChatMemberStateChange: Int {
 }
 
 /// Steamworks `ESteamPartyBeaconLocationType`
-public enum SteamPartyBeaconLocationType: Int {
+public enum SteamPartyBeaconLocationType: UInt32 {
     /// Steamworks `k_ESteamPartyBeaconLocationType_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamPartyBeaconLocationType_ChatGroup`
@@ -979,7 +979,7 @@ public enum SteamPartyBeaconLocationType: Int {
 }
 
 /// Steamworks `ESteamPartyBeaconLocationData`
-public enum SteamPartyBeaconLocationData: Int {
+public enum SteamPartyBeaconLocationData: UInt32 {
     /// Steamworks `k_ESteamPartyBeaconLocationDataInvalid`
     case invalid = 0
     /// Steamworks `k_ESteamPartyBeaconLocationDataName`
@@ -993,7 +993,7 @@ public enum SteamPartyBeaconLocationData: Int {
 }
 
 /// Steamworks `ERemoteStoragePlatform`
-public enum RemoteStoragePlatform: Int {
+public enum RemoteStoragePlatform: Int32 {
     /// Steamworks `k_ERemoteStoragePlatformNone`
     case none = 0
     /// Steamworks `k_ERemoteStoragePlatformWindows`
@@ -1015,7 +1015,7 @@ public enum RemoteStoragePlatform: Int {
 }
 
 /// Steamworks `ERemoteStoragePublishedFileVisibility`
-public enum RemoteStoragePublishedFileVisibility: Int {
+public enum RemoteStoragePublishedFileVisibility: UInt32 {
     /// Steamworks `k_ERemoteStoragePublishedFileVisibilityPublic`
     case `public` = 0
     /// Steamworks `k_ERemoteStoragePublishedFileVisibilityFriendsOnly`
@@ -1027,7 +1027,7 @@ public enum RemoteStoragePublishedFileVisibility: Int {
 }
 
 /// Steamworks `EWorkshopFileType`
-public enum WorkshopFileType: Int {
+public enum WorkshopFileType: UInt32 {
     /// Steamworks `k_EWorkshopFileTypeFirst`
     public static let first = WorkshopFileType(rawValue: 0)!
     /// Steamworks `k_EWorkshopFileTypeCommunity`
@@ -1067,7 +1067,7 @@ public enum WorkshopFileType: Int {
 }
 
 /// Steamworks `EWorkshopVote`
-public enum WorkshopVote: Int {
+public enum WorkshopVote: UInt32 {
     /// Steamworks `k_EWorkshopVoteUnvoted`
     case unvoted = 0
     /// Steamworks `k_EWorkshopVoteFor`
@@ -1079,7 +1079,7 @@ public enum WorkshopVote: Int {
 }
 
 /// Steamworks `EWorkshopFileAction`
-public enum WorkshopFileAction: Int {
+public enum WorkshopFileAction: UInt32 {
     /// Steamworks `k_EWorkshopFileActionPlayed`
     case played = 0
     /// Steamworks `k_EWorkshopFileActionCompleted`
@@ -1087,7 +1087,7 @@ public enum WorkshopFileAction: Int {
 }
 
 /// Steamworks `EWorkshopEnumerationType`
-public enum WorkshopEnumerationType: Int {
+public enum WorkshopEnumerationType: UInt32 {
     /// Steamworks `k_EWorkshopEnumerationTypeRankedByVote`
     case rankedByVote = 0
     /// Steamworks `k_EWorkshopEnumerationTypeRecent`
@@ -1105,7 +1105,7 @@ public enum WorkshopEnumerationType: Int {
 }
 
 /// Steamworks `EWorkshopVideoProvider`
-public enum WorkshopVideoProvider: Int {
+public enum WorkshopVideoProvider: UInt32 {
     /// Steamworks `k_EWorkshopVideoProviderNone`
     case none = 0
     /// Steamworks `k_EWorkshopVideoProviderYoutube`
@@ -1113,7 +1113,7 @@ public enum WorkshopVideoProvider: Int {
 }
 
 /// Steamworks `EUGCReadAction`
-public enum UGCReadAction: Int {
+public enum UGCReadAction: UInt32 {
     /// Steamworks `k_EUGCRead_ContinueReadingUntilFinished`
     case continueReadingUntilFinished = 0
     /// Steamworks `k_EUGCRead_ContinueReading`
@@ -1123,7 +1123,7 @@ public enum UGCReadAction: Int {
 }
 
 /// Steamworks `ERemoteStorageLocalFileChange`
-public enum RemoteStorageLocalFileChange: Int {
+public enum RemoteStorageLocalFileChange: UInt32 {
     /// Steamworks `k_ERemoteStorageLocalFileChange_Invalid`
     case invalid = 0
     /// Steamworks `k_ERemoteStorageLocalFileChange_FileUpdated`
@@ -1133,7 +1133,7 @@ public enum RemoteStorageLocalFileChange: Int {
 }
 
 /// Steamworks `ERemoteStorageFilePathType`
-public enum RemoteStorageFilePathType: Int {
+public enum RemoteStorageFilePathType: UInt32 {
     /// Steamworks `k_ERemoteStorageFilePathType_Invalid`
     case invalid = 0
     /// Steamworks `k_ERemoteStorageFilePathType_Absolute`
@@ -1143,7 +1143,7 @@ public enum RemoteStorageFilePathType: Int {
 }
 
 /// Steamworks `ELeaderboardDataRequest`
-public enum LeaderboardDataRequest: Int {
+public enum LeaderboardDataRequest: UInt32 {
     /// Steamworks `k_ELeaderboardDataRequestGlobal`
     case global = 0
     /// Steamworks `k_ELeaderboardDataRequestGlobalAroundUser`
@@ -1155,7 +1155,7 @@ public enum LeaderboardDataRequest: Int {
 }
 
 /// Steamworks `ELeaderboardSortMethod`
-public enum LeaderboardSortMethod: Int {
+public enum LeaderboardSortMethod: UInt32 {
     /// Steamworks `k_ELeaderboardSortMethodNone`
     case none = 0
     /// Steamworks `k_ELeaderboardSortMethodAscending`
@@ -1165,7 +1165,7 @@ public enum LeaderboardSortMethod: Int {
 }
 
 /// Steamworks `ELeaderboardDisplayType`
-public enum LeaderboardDisplayType: Int {
+public enum LeaderboardDisplayType: UInt32 {
     /// Steamworks `k_ELeaderboardDisplayTypeNone`
     case none = 0
     /// Steamworks `k_ELeaderboardDisplayTypeNumeric`
@@ -1177,7 +1177,7 @@ public enum LeaderboardDisplayType: Int {
 }
 
 /// Steamworks `ELeaderboardUploadScoreMethod`
-public enum LeaderboardUploadScoreMethod: Int {
+public enum LeaderboardUploadScoreMethod: UInt32 {
     /// Steamworks `k_ELeaderboardUploadScoreMethodNone`
     case none = 0
     /// Steamworks `k_ELeaderboardUploadScoreMethodKeepBest`
@@ -1187,7 +1187,7 @@ public enum LeaderboardUploadScoreMethod: Int {
 }
 
 /// Steamworks `ERegisterActivationCodeResult`
-public enum RegisterActivationCodeResult: Int {
+public enum RegisterActivationCodeResult: UInt32 {
     /// Steamworks `k_ERegisterActivationCodeResultOK`
     case ok = 0
     /// Steamworks `k_ERegisterActivationCodeResultFail`
@@ -1201,7 +1201,7 @@ public enum RegisterActivationCodeResult: Int {
 }
 
 /// Steamworks `EP2PSessionError`
-public enum P2PSessionError: Int {
+public enum P2PSessionError: UInt32 {
     /// Steamworks `k_EP2PSessionErrorNone`
     case none = 0
     /// Steamworks `k_EP2PSessionErrorNoRightsToApp`
@@ -1217,7 +1217,7 @@ public enum P2PSessionError: Int {
 }
 
 /// Steamworks `EP2PSend`
-public enum P2PSend: Int {
+public enum P2PSend: UInt32 {
     /// Steamworks `k_EP2PSendUnreliable`
     case unreliable = 0
     /// Steamworks `k_EP2PSendUnreliableNoDelay`
@@ -1229,7 +1229,7 @@ public enum P2PSend: Int {
 }
 
 /// Steamworks `ESNetSocketState`
-public enum SNetSocketState: Int {
+public enum SNetSocketState: UInt32 {
     /// Steamworks `k_ESNetSocketStateInvalid`
     case invalid = 0
     /// Steamworks `k_ESNetSocketStateConnected`
@@ -1255,7 +1255,7 @@ public enum SNetSocketState: Int {
 }
 
 /// Steamworks `ESNetSocketConnectionType`
-public enum SNetSocketConnectionType: Int {
+public enum SNetSocketConnectionType: UInt32 {
     /// Steamworks `k_ESNetSocketConnectionTypeNotConnected`
     case notConnected = 0
     /// Steamworks `k_ESNetSocketConnectionTypeUDP`
@@ -1265,7 +1265,7 @@ public enum SNetSocketConnectionType: Int {
 }
 
 /// Steamworks `EVRScreenshotType`
-public enum VRScreenshotType: Int {
+public enum VRScreenshotType: UInt32 {
     /// Steamworks `k_EVRScreenshotType_None`
     case none = 0
     /// Steamworks `k_EVRScreenshotType_Mono`
@@ -1281,7 +1281,7 @@ public enum VRScreenshotType: Int {
 }
 
 /// Steamworks `AudioPlayback_Status`
-public enum AudioPlayback_Status: Int {
+public enum AudioPlayback_Status: UInt32 {
     /// Steamworks `AudioPlayback_Undefined`
     case undefined = 0
     /// Steamworks `AudioPlayback_Playing`
@@ -1293,7 +1293,7 @@ public enum AudioPlayback_Status: Int {
 }
 
 /// Steamworks `EHTTPMethod`
-public enum HTTPMethod: Int {
+public enum HTTPMethod: UInt32 {
     /// Steamworks `k_EHTTPMethodInvalid`
     case invalid = 0
     /// Steamworks `k_EHTTPMethodGET`
@@ -1313,7 +1313,7 @@ public enum HTTPMethod: Int {
 }
 
 /// Steamworks `EHTTPStatusCode`
-public enum HTTPStatusCode: Int {
+public enum HTTPStatusCode: UInt32 {
     /// Steamworks `k_EHTTPStatusCodeInvalid`
     case invalid = 0
     /// Steamworks `k_EHTTPStatusCode100Continue`
@@ -1407,7 +1407,7 @@ public enum HTTPStatusCode: Int {
 }
 
 /// Steamworks `EInputSourceMode`
-public enum InputSourceMode: Int {
+public enum InputSourceMode: UInt32 {
     /// Steamworks `k_EInputSourceMode_None`
     case none = 0
     /// Steamworks `k_EInputSourceMode_Dpad`
@@ -1445,7 +1445,7 @@ public enum InputSourceMode: Int {
 }
 
 /// Steamworks `EInputActionOrigin`
-public enum InputActionOrigin: Int {
+public enum InputActionOrigin: UInt32 {
     /// Steamworks `k_EInputActionOrigin_None`
     case none = 0
     /// Steamworks `k_EInputActionOrigin_SteamController_A`
@@ -2119,7 +2119,7 @@ public enum InputActionOrigin: Int {
 }
 
 /// Steamworks `EXboxOrigin`
-public enum XboxOrigin: Int {
+public enum XboxOrigin: UInt32 {
     /// Steamworks `k_EXboxOrigin_A`
     case a = 0
     /// Steamworks `k_EXboxOrigin_B`
@@ -2181,7 +2181,7 @@ public enum XboxOrigin: Int {
 }
 
 /// Steamworks `ESteamControllerPad`
-public enum SteamControllerPad: Int {
+public enum SteamControllerPad: UInt32 {
     /// Steamworks `k_ESteamControllerPad_Left`
     case left = 0
     /// Steamworks `k_ESteamControllerPad_Right`
@@ -2189,7 +2189,7 @@ public enum SteamControllerPad: Int {
 }
 
 /// Steamworks `EControllerHapticLocation`
-public enum ControllerHapticLocation: Int {
+public enum ControllerHapticLocation: UInt32 {
     /// Steamworks `k_EControllerHapticLocation_Left`
     case left = 1
     /// Steamworks `k_EControllerHapticLocation_Right`
@@ -2199,7 +2199,7 @@ public enum ControllerHapticLocation: Int {
 }
 
 /// Steamworks `EControllerHapticType`
-public enum ControllerHapticType: Int {
+public enum ControllerHapticType: UInt32 {
     /// Steamworks `k_EControllerHapticType_Off`
     case off = 0
     /// Steamworks `k_EControllerHapticType_Tick`
@@ -2209,7 +2209,7 @@ public enum ControllerHapticType: Int {
 }
 
 /// Steamworks `ESteamInputType`
-public enum SteamInputType: Int {
+public enum SteamInputType: UInt32 {
     /// Steamworks `k_ESteamInputType_Unknown`
     case unknown = 0
     /// Steamworks `k_ESteamInputType_SteamController`
@@ -2245,7 +2245,7 @@ public enum SteamInputType: Int {
 }
 
 /// Steamworks `ESteamInputConfigurationEnableType`
-public enum SteamInputConfigurationEnableType: Int {
+public enum SteamInputConfigurationEnableType: UInt32 {
     /// Steamworks `k_ESteamInputConfigurationEnableType_None`
     case none = 0
     /// Steamworks `k_ESteamInputConfigurationEnableType_Playstation`
@@ -2259,7 +2259,7 @@ public enum SteamInputConfigurationEnableType: Int {
 }
 
 /// Steamworks `ESteamInputLEDFlag`
-public enum SteamInputLEDFlag: Int {
+public enum SteamInputLEDFlag: UInt32 {
     /// Steamworks `k_ESteamInputLEDFlag_SetColor`
     case setColor = 0
     /// Steamworks `k_ESteamInputLEDFlag_RestoreUserDefault`
@@ -2267,7 +2267,7 @@ public enum SteamInputLEDFlag: Int {
 }
 
 /// Steamworks `ESteamInputGlyphSize`
-public enum SteamInputGlyphSize: Int {
+public enum SteamInputGlyphSize: UInt32 {
     /// Steamworks `k_ESteamInputGlyphSize_Small`
     case small = 0
     /// Steamworks `k_ESteamInputGlyphSize_Medium`
@@ -2277,7 +2277,7 @@ public enum SteamInputGlyphSize: Int {
 }
 
 /// Steamworks `ESteamInputActionEventType`
-public enum SteamInputActionEventType: Int {
+public enum SteamInputActionEventType: UInt32 {
     /// Steamworks `ESteamInputActionEventType_DigitalAction`
     case digitalAction = 0
     /// Steamworks `ESteamInputActionEventType_AnalogAction`
@@ -2285,7 +2285,7 @@ public enum SteamInputActionEventType: Int {
 }
 
 /// Steamworks `EControllerActionOrigin`
-public enum ControllerActionOrigin: Int {
+public enum ControllerActionOrigin: UInt32 {
     /// Steamworks `k_EControllerActionOrigin_None`
     case none = 0
     /// Steamworks `k_EControllerActionOrigin_A`
@@ -2903,7 +2903,7 @@ public enum ControllerActionOrigin: Int {
 }
 
 /// Steamworks `ESteamControllerLEDFlag`
-public enum SteamControllerLEDFlag: Int {
+public enum SteamControllerLEDFlag: UInt32 {
     /// Steamworks `k_ESteamControllerLEDFlag_SetColor`
     case setColor = 0
     /// Steamworks `k_ESteamControllerLEDFlag_RestoreUserDefault`
@@ -2911,7 +2911,7 @@ public enum SteamControllerLEDFlag: Int {
 }
 
 /// Steamworks `EUGCMatchingUGCType`
-public enum UGCMatchingUGCType: Int {
+public enum UGCMatchingUGCType: Int32 {
     /// Steamworks `k_EUGCMatchingUGCType_Items`
     case items = 0
     /// Steamworks `k_EUGCMatchingUGCType_Items_Mtx`
@@ -2943,7 +2943,7 @@ public enum UGCMatchingUGCType: Int {
 }
 
 /// Steamworks `EUserUGCList`
-public enum UserUGCList: Int {
+public enum UserUGCList: UInt32 {
     /// Steamworks `k_EUserUGCList_Published`
     case published = 0
     /// Steamworks `k_EUserUGCList_VotedOn`
@@ -2965,7 +2965,7 @@ public enum UserUGCList: Int {
 }
 
 /// Steamworks `EUserUGCListSortOrder`
-public enum UserUGCListSortOrder: Int {
+public enum UserUGCListSortOrder: UInt32 {
     /// Steamworks `k_EUserUGCListSortOrder_CreationOrderDesc`
     case creationOrderDesc = 0
     /// Steamworks `k_EUserUGCListSortOrder_CreationOrderAsc`
@@ -2983,7 +2983,7 @@ public enum UserUGCListSortOrder: Int {
 }
 
 /// Steamworks `EUGCQuery`
-public enum UGCQuery: Int {
+public enum UGCQuery: UInt32 {
     /// Steamworks `k_EUGCQuery_RankedByVote`
     case rankedByVote = 0
     /// Steamworks `k_EUGCQuery_RankedByPublicationDate`
@@ -3027,7 +3027,7 @@ public enum UGCQuery: Int {
 }
 
 /// Steamworks `EItemUpdateStatus`
-public enum ItemUpdateStatus: Int {
+public enum ItemUpdateStatus: UInt32 {
     /// Steamworks `k_EItemUpdateStatusInvalid`
     case invalid = 0
     /// Steamworks `k_EItemUpdateStatusPreparingConfig`
@@ -3043,7 +3043,7 @@ public enum ItemUpdateStatus: Int {
 }
 
 /// Steamworks `EItemState`
-public enum ItemState: Int {
+public enum ItemState: UInt32 {
     /// Steamworks `k_EItemStateNone`
     case none = 0
     /// Steamworks `k_EItemStateSubscribed`
@@ -3061,7 +3061,7 @@ public enum ItemState: Int {
 }
 
 /// Steamworks `EItemStatistic`
-public enum ItemStatistic: Int {
+public enum ItemStatistic: UInt32 {
     /// Steamworks `k_EItemStatistic_NumSubscriptions`
     case numSubscriptions = 0
     /// Steamworks `k_EItemStatistic_NumFavorites`
@@ -3091,7 +3091,7 @@ public enum ItemStatistic: Int {
 }
 
 /// Steamworks `EItemPreviewType`
-public enum ItemPreviewType: Int {
+public enum ItemPreviewType: UInt32 {
     /// Steamworks `k_EItemPreviewType_Image`
     case image = 0
     /// Steamworks `k_EItemPreviewType_YouTubeVideo`
@@ -3109,9 +3109,9 @@ public enum ItemPreviewType: Int {
 /// Steamworks `ESteamItemFlags`
 public struct SteamItemFlags: OptionSet {
     /// The flags value.
-    public let rawValue: Int
+    public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: Int) { self.rawValue = rawValue }
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamItemNoTrade`
     public static let noTrade = SteamItemFlags(rawValue: 1)
     /// Steamworks `k_ESteamItemRemoved`
@@ -3121,7 +3121,7 @@ public struct SteamItemFlags: OptionSet {
 }
 
 /// Steamworks `EParentalFeature`
-public enum ParentalFeature: Int {
+public enum ParentalFeature: UInt32 {
     /// Steamworks `k_EFeatureInvalid`
     case invalid = 0
     /// Steamworks `k_EFeatureStore`
@@ -3155,7 +3155,7 @@ public enum ParentalFeature: Int {
 }
 
 /// Steamworks `ESteamDeviceFormFactor`
-public enum SteamDeviceFormFactor: Int {
+public enum SteamDeviceFormFactor: UInt32 {
     /// Steamworks `k_ESteamDeviceFormFactorUnknown`
     case unknown = 0
     /// Steamworks `k_ESteamDeviceFormFactorPhone`
@@ -3169,7 +3169,7 @@ public enum SteamDeviceFormFactor: Int {
 }
 
 /// Steamworks `ESteamNetworkingAvailability`
-public enum SteamNetworkingAvailability: Int {
+public enum SteamNetworkingAvailability: Int32 {
     /// Steamworks `k_ESteamNetworkingAvailability_CannotTry`
     case cannotTry = -102
     /// Steamworks `k_ESteamNetworkingAvailability_Failed`
@@ -3193,7 +3193,7 @@ public enum SteamNetworkingAvailability: Int {
 }
 
 /// Steamworks `ESteamNetworkingIdentityType`
-public enum SteamNetworkingIdentityType: Int {
+public enum SteamNetworkingIdentityType: UInt32 {
     /// Steamworks `k_ESteamNetworkingIdentityType_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamNetworkingIdentityType_SteamID`
@@ -3217,7 +3217,7 @@ public enum SteamNetworkingIdentityType: Int {
 }
 
 /// Steamworks `ESteamNetworkingConnectionState`
-public enum SteamNetworkingConnectionState: Int {
+public enum SteamNetworkingConnectionState: Int32 {
     /// Steamworks `k_ESteamNetworkingConnectionState_None`
     case none = 0
     /// Steamworks `k_ESteamNetworkingConnectionState_Connecting`
@@ -3241,7 +3241,7 @@ public enum SteamNetworkingConnectionState: Int {
 }
 
 /// Steamworks `ESteamNetConnectionEnd`
-public enum SteamNetConnectionEnd: Int {
+public enum SteamNetConnectionEnd: UInt32 {
     /// Steamworks `k_ESteamNetConnectionEnd_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamNetConnectionEnd_App_Min`
@@ -3311,7 +3311,7 @@ public enum SteamNetConnectionEnd: Int {
 }
 
 /// Steamworks `ESteamNetworkingConfigScope`
-public enum SteamNetworkingConfigScope: Int {
+public enum SteamNetworkingConfigScope: UInt32 {
     /// Steamworks `k_ESteamNetworkingConfig_Global`
     case global = 1
     /// Steamworks `k_ESteamNetworkingConfig_SocketsInterface`
@@ -3325,7 +3325,7 @@ public enum SteamNetworkingConfigScope: Int {
 }
 
 /// Steamworks `ESteamNetworkingConfigDataType`
-public enum SteamNetworkingConfigDataType: Int {
+public enum SteamNetworkingConfigDataType: UInt32 {
     /// Steamworks `k_ESteamNetworkingConfig_Int32`
     case int32 = 1
     /// Steamworks `k_ESteamNetworkingConfig_Int64`
@@ -3341,7 +3341,7 @@ public enum SteamNetworkingConfigDataType: Int {
 }
 
 /// Steamworks `ESteamNetworkingConfigValue`
-public enum SteamNetworkingConfigValue: Int {
+public enum SteamNetworkingConfigValue: UInt32 {
     /// Steamworks `k_ESteamNetworkingConfig_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamNetworkingConfig_TimeoutInitial`
@@ -3457,7 +3457,7 @@ public enum SteamNetworkingConfigValue: Int {
 }
 
 /// Steamworks `ESteamNetworkingGetConfigValueResult`
-public enum SteamNetworkingGetConfigValueResult: Int {
+public enum SteamNetworkingGetConfigValueResult: Int32 {
     /// Steamworks `k_ESteamNetworkingGetConfigValue_BadValue`
     case badValue = -1
     /// Steamworks `k_ESteamNetworkingGetConfigValue_BadScopeObj`
@@ -3473,7 +3473,7 @@ public enum SteamNetworkingGetConfigValueResult: Int {
 }
 
 /// Steamworks `ESteamNetworkingSocketsDebugOutputType`
-public enum SteamNetworkingSocketsDebugOutputType: Int {
+public enum SteamNetworkingSocketsDebugOutputType: UInt32 {
     /// Steamworks `k_ESteamNetworkingSocketsDebugOutputType_None`
     case none = 0
     /// Steamworks `k_ESteamNetworkingSocketsDebugOutputType_Bug`
@@ -3497,7 +3497,7 @@ public enum SteamNetworkingSocketsDebugOutputType: Int {
 }
 
 /// Steamworks `EServerMode`
-public enum ServerMode: Int {
+public enum ServerMode: UInt32 {
     /// Steamworks `eServerModeInvalid`
     case invalid = 0
     /// Steamworks `eServerModeNoAuthentication`
