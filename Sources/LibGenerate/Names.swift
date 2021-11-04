@@ -15,13 +15,15 @@ extension String {
     }
 
     /// * to lowerCamelCase
+    /// * keep one leading underscore, erase all others
     /// * backticks if accidentally a Swift keyword
     /// * special cases to taste...
     var asSwiftIdentifier: String {
         switch self {
         case "IPv4", "IPv6": return self.lowercased()
         default:
-            return re_sub("^[A-Z]+?(?=$|[^A-Z]|[A-Z][a-z])") { $0.lowercased() }
+            return re_sub("^_?[A-Z]+?(?=$|[^A-Z]|[A-Z][a-z])") { $0.lowercased() }
+                .re_sub("(?<!^)_", with: "")
                 .backtickedIfNecessary
         }
     }
