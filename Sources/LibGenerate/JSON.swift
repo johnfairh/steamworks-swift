@@ -52,6 +52,10 @@ struct SteamAPI: Codable {
                 let array_count: String?
                 let out_string_count: String?
                 let buffer_count: String?
+
+                var type: String {
+                    paramtype_flat ?? paramtype
+                }
             }
             let params: [Param]
             let returntype: String

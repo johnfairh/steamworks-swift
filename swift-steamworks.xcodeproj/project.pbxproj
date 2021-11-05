@@ -132,6 +132,7 @@
 		020860E02734054400725122 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		020860E2273547B100725122 /* Interfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interfaces.swift; sourceTree = "<group>"; };
 		020860E527354C6800725122 /* SteamFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamFriends.swift; sourceTree = "<group>"; };
+		020860E72735562A00725122 /* SteamFriends+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SteamFriends+Methods.swift"; sourceTree = "<group>"; };
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
@@ -235,10 +236,11 @@
 		02D309E6272813B200DE64F0 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				02D309E7272813CF00DE64F0 /* Callbacks.swift */,
 				020860CF2730493300725122 /* SteamBaseAPI+Version.swift */,
-				02D309E92728145E00DE64F0 /* Structs.swift */,
 				020860E02734054400725122 /* Enums.swift */,
+				02D309E92728145E00DE64F0 /* Structs.swift */,
+				020860E72735562A00725122 /* SteamFriends+Methods.swift */,
+				02D309E7272813CF00DE64F0 /* Callbacks.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";

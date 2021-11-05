@@ -20,7 +20,9 @@ class TestNames: XCTestCase {
             ("EType", "Type"), // strip leading E from enums
             ("EType_t", "Type"),
             ("ErrorType", "ErrorType"), // don't strip leading E if it's part of a word...
-            ("ISteamFriends", "SteamFriends")
+            ("ISteamFriends", "SteamFriends"),
+            ("CSteamID", "SteamID"),
+            ("uint64_steamid", "SteamID")
         ]
         cases.forEach { steam, swift in
             XCTAssertEqual(steam.asSwiftTypeName, swift)
