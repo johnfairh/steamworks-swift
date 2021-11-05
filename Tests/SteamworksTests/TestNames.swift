@@ -19,7 +19,8 @@ class TestNames: XCTestCase {
             ("Type_t", "Type"), // strip trailing _t
             ("EType", "Type"), // strip leading E from enums
             ("EType_t", "Type"),
-            ("ErrorType", "ErrorType") // don't strip leading E if it's part of a word...
+            ("ErrorType", "ErrorType"), // don't strip leading E if it's part of a word...
+            ("ISteamFriends", "SteamFriends")
         ]
         cases.forEach { steam, swift in
             XCTAssertEqual(steam.asSwiftTypeName, swift)

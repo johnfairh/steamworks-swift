@@ -11,7 +11,7 @@ extension String {
     /// * Drop leading capital E - used in SDK for enums
     var asSwiftTypeName: String {
         re_sub("_t$", with: "")
-            .re_sub("^E(?=[A-Z])", with: "")
+            .re_sub("^[EI](?=[A-Z])", with: "")
     }
 
     /// * to lowerCamelCase

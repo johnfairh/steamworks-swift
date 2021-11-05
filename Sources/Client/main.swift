@@ -70,7 +70,7 @@ func main() {
     client.api.onPersonaStateChange { [weak client] in
         guard let client = client else { return }
         print("PersonaStateChange: \($0)")
-        SteamFriends.getFollowerCount(steamID: $0.steamID) {
+        client.api.friends.getFollowerCount(steamID: $0.steamID) {
             print("FollowerCount: \($0)")
             client.requestQuit()
         }

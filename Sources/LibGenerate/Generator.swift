@@ -12,12 +12,14 @@ public struct Generator {
     let json: JSON
     let version: Version
     let enums: Enums
+    let interfaces: Interfaces
 
     public init(sdkURL: URL, outputDirURL: URL) throws {
         self.io = try IO(sdkURL: sdkURL, outputDirURL: outputDirURL)
         json = try JSON(io: io)
         version = Version(io: io)
         enums = Enums(io: io, json: json)
+        interfaces = Interfaces(io: io, json: json)
     }
 
     public func generate() throws {
@@ -27,5 +29,6 @@ public struct Generator {
 
         try version.generate()
         try enums.generate()
+        try interfaces.generate()
     }
 }

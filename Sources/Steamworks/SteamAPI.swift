@@ -53,4 +53,9 @@ public final class SteamAPI: SteamBaseAPI {
     deinit {
         SteamAPI_Shutdown()
     }
+
+    // MARK: Interfaces
+
+    /// Access the Steamworks `ISteamFriends` interface
+    public let friends = SteamFriends()
 }

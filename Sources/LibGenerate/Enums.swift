@@ -5,8 +5,6 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
-import Foundation
-
 /// Code gen the steamworks enums
 ///
 /// `Enums`is responsible for the top-level enums.  Some structures have nested enums defined in
