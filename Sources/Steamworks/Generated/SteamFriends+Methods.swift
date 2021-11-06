@@ -12,82 +12,98 @@
 public extension SteamFriends {
     /// Steamworks `ISteamFriends::GetPersonaName()`
     var personaName: String {
-        String(SteamAPI_ISteamFriends_GetPersonaName(interface))
+        let rc = String(SteamAPI_ISteamFriends_GetPersonaName(interface))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::SetPersonaName()`
-    func setPersonaName(pchPersonaName: String) -> SteamAPICall {
-        SteamAPICall(SteamAPI_ISteamFriends_SetPersonaName(interface, pchPersonaName))
+    func setPersonaName(pchPersonaName: String, completion: @escaping (SetPersonaNameResponse) -> Void) {
+        let rc = SteamAPI_ISteamFriends_SetPersonaName(interface, pchPersonaName)
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::GetPersonaState()`
     var personaState: PersonaState {
-        PersonaState(SteamAPI_ISteamFriends_GetPersonaState(interface))
+        let rc = PersonaState(SteamAPI_ISteamFriends_GetPersonaState(interface))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendCount()`
     func getFriendCount(iFriendFlags: Int) -> Int {
-        Int(SteamAPI_ISteamFriends_GetFriendCount(interface, Int32(iFriendFlags)))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendCount(interface, Int32(iFriendFlags)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendByIndex()`
     func getFriendByIndex(iFriend: Int, iFriendFlags: Int) -> SteamID {
-        SteamID(SteamAPI_ISteamFriends_GetFriendByIndex(interface, Int32(iFriend), Int32(iFriendFlags)))
+        let rc = SteamID(SteamAPI_ISteamFriends_GetFriendByIndex(interface, Int32(iFriend), Int32(iFriendFlags)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendRelationship()`
     func getFriendRelationship(steamIDFriend: SteamID) -> FriendRelationship {
-        FriendRelationship(SteamAPI_ISteamFriends_GetFriendRelationship(interface, UInt64(steamIDFriend)))
+        let rc = FriendRelationship(SteamAPI_ISteamFriends_GetFriendRelationship(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendPersonaState()`
     func getFriendPersonaState(steamIDFriend: SteamID) -> PersonaState {
-        PersonaState(SteamAPI_ISteamFriends_GetFriendPersonaState(interface, UInt64(steamIDFriend)))
+        let rc = PersonaState(SteamAPI_ISteamFriends_GetFriendPersonaState(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendPersonaName()`
     func getFriendPersonaName(steamIDFriend: SteamID) -> String {
-        String(SteamAPI_ISteamFriends_GetFriendPersonaName(interface, UInt64(steamIDFriend)))
+        let rc = String(SteamAPI_ISteamFriends_GetFriendPersonaName(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendGamePlayed()`
     func getFriendGamePlayed(steamIDFriend: SteamID, pFriendGameInfo: FriendGameInfot *) -> Bool {
-        SteamAPI_ISteamFriends_GetFriendGamePlayed(interface, UInt64(steamIDFriend), FriendGameInfo_t *(pFriendGameInfo))
+        let rc = SteamAPI_ISteamFriends_GetFriendGamePlayed(interface, UInt64(steamIDFriend), FriendGameInfo_t *(pFriendGameInfo))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendPersonaNameHistory()`
     func getFriendPersonaNameHistory(steamIDFriend: SteamID, iPersonaName: Int) -> String {
-        String(SteamAPI_ISteamFriends_GetFriendPersonaNameHistory(interface, UInt64(steamIDFriend), Int32(iPersonaName)))
+        let rc = String(SteamAPI_ISteamFriends_GetFriendPersonaNameHistory(interface, UInt64(steamIDFriend), Int32(iPersonaName)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendSteamLevel()`
     func getFriendSteamLevel(steamIDFriend: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetFriendSteamLevel(interface, UInt64(steamIDFriend)))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendSteamLevel(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetPlayerNickname()`
     func getPlayerNickname(steamIDPlayer: SteamID) -> String {
-        String(SteamAPI_ISteamFriends_GetPlayerNickname(interface, UInt64(steamIDPlayer)))
+        let rc = String(SteamAPI_ISteamFriends_GetPlayerNickname(interface, UInt64(steamIDPlayer)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupCount()`
     var friendsGroupCount: Int {
-        Int(SteamAPI_ISteamFriends_GetFriendsGroupCount(interface))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendsGroupCount(interface))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupIDByIndex()`
     func getFriendsGroupIDByIndex(iFG: Int) -> FriendsGroupID {
-        FriendsGroupID(SteamAPI_ISteamFriends_GetFriendsGroupIDByIndex(interface, Int32(iFG)))
+        let rc = FriendsGroupID(SteamAPI_ISteamFriends_GetFriendsGroupIDByIndex(interface, Int32(iFG)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupName()`
     func getFriendsGroupName(friendsGroupID: FriendsGroupID) -> String {
-        String(SteamAPI_ISteamFriends_GetFriendsGroupName(interface, FriendsGroupID_t(friendsGroupID)))
+        let rc = String(SteamAPI_ISteamFriends_GetFriendsGroupName(interface, FriendsGroupID_t(friendsGroupID)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupMembersCount()`
     func getFriendsGroupMembersCount(friendsGroupID: FriendsGroupID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetFriendsGroupMembersCount(interface, FriendsGroupID_t(friendsGroupID)))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendsGroupMembersCount(interface, FriendsGroupID_t(friendsGroupID)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupMembersList()`
@@ -97,52 +113,62 @@ public extension SteamFriends {
 
     /// Steamworks `ISteamFriends::HasFriend()`
     func hasFriend(steamIDFriend: SteamID, iFriendFlags: Int) -> Bool {
-        SteamAPI_ISteamFriends_HasFriend(interface, UInt64(steamIDFriend), Int32(iFriendFlags))
+        let rc = SteamAPI_ISteamFriends_HasFriend(interface, UInt64(steamIDFriend), Int32(iFriendFlags))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanCount()`
     var clanCount: Int {
-        Int(SteamAPI_ISteamFriends_GetClanCount(interface))
+        let rc = Int(SteamAPI_ISteamFriends_GetClanCount(interface))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanByIndex()`
     func getClanByIndex(iClan: Int) -> SteamID {
-        SteamID(SteamAPI_ISteamFriends_GetClanByIndex(interface, Int32(iClan)))
+        let rc = SteamID(SteamAPI_ISteamFriends_GetClanByIndex(interface, Int32(iClan)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanName()`
     func getClanName(steamIDClan: SteamID) -> String {
-        String(SteamAPI_ISteamFriends_GetClanName(interface, UInt64(steamIDClan)))
+        let rc = String(SteamAPI_ISteamFriends_GetClanName(interface, UInt64(steamIDClan)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanTag()`
     func getClanTag(steamIDClan: SteamID) -> String {
-        String(SteamAPI_ISteamFriends_GetClanTag(interface, UInt64(steamIDClan)))
+        let rc = String(SteamAPI_ISteamFriends_GetClanTag(interface, UInt64(steamIDClan)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanActivityCounts()`
     func getClanActivityCounts(steamIDClan: SteamID, pnOnline: int *, pnInGame: int *, pnChatting: int *) -> Bool {
-        SteamAPI_ISteamFriends_GetClanActivityCounts(interface, UInt64(steamIDClan), int *(pnOnline), int *(pnInGame), int *(pnChatting))
+        let rc = SteamAPI_ISteamFriends_GetClanActivityCounts(interface, UInt64(steamIDClan), int *(pnOnline), int *(pnInGame), int *(pnChatting))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`
-    func downloadClanActivityCounts(psteamIDClans: SteamID *, cClansToRequest: Int) -> SteamAPICall {
-        SteamAPICall(SteamAPI_ISteamFriends_DownloadClanActivityCounts(interface, CSteamID *(psteamIDClans), Int32(cClansToRequest)))
+    func downloadClanActivityCounts(psteamIDClans: SteamID *, cClansToRequest: Int, completion: @escaping (DownloadClanActivityCountsResult) -> Void) {
+        let rc = SteamAPI_ISteamFriends_DownloadClanActivityCounts(interface, CSteamID *(psteamIDClans), Int32(cClansToRequest))
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::GetFriendCountFromSource()`
     func getFriendCountFromSource(steamIDSource: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetFriendCountFromSource(interface, UInt64(steamIDSource)))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendCountFromSource(interface, UInt64(steamIDSource)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendFromSourceByIndex()`
     func getFriendFromSourceByIndex(steamIDSource: SteamID, iFriend: Int) -> SteamID {
-        SteamID(SteamAPI_ISteamFriends_GetFriendFromSourceByIndex(interface, UInt64(steamIDSource), Int32(iFriend)))
+        let rc = SteamID(SteamAPI_ISteamFriends_GetFriendFromSourceByIndex(interface, UInt64(steamIDSource), Int32(iFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::IsUserInSource()`
     func isUserInSource(steamIDUser: SteamID, steamIDSource: SteamID) -> Bool {
-        SteamAPI_ISteamFriends_IsUserInSource(interface, UInt64(steamIDUser), UInt64(steamIDSource))
+        let rc = SteamAPI_ISteamFriends_IsUserInSource(interface, UInt64(steamIDUser), UInt64(steamIDSource))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::SetInGameVoiceSpeaking()`
@@ -182,52 +208,62 @@ public extension SteamFriends {
 
     /// Steamworks `ISteamFriends::GetSmallFriendAvatar()`
     func getSmallFriendAvatar(steamIDFriend: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetSmallFriendAvatar(interface, UInt64(steamIDFriend)))
+        let rc = Int(SteamAPI_ISteamFriends_GetSmallFriendAvatar(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetMediumFriendAvatar()`
     func getMediumFriendAvatar(steamIDFriend: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetMediumFriendAvatar(interface, UInt64(steamIDFriend)))
+        let rc = Int(SteamAPI_ISteamFriends_GetMediumFriendAvatar(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetLargeFriendAvatar()`
     func getLargeFriendAvatar(steamIDFriend: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetLargeFriendAvatar(interface, UInt64(steamIDFriend)))
+        let rc = Int(SteamAPI_ISteamFriends_GetLargeFriendAvatar(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::RequestUserInformation()`
     func requestUserInformation(steamIDUser: SteamID, bRequireNameOnly: Bool) -> Bool {
-        SteamAPI_ISteamFriends_RequestUserInformation(interface, UInt64(steamIDUser), bRequireNameOnly)
+        let rc = SteamAPI_ISteamFriends_RequestUserInformation(interface, UInt64(steamIDUser), bRequireNameOnly)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::RequestClanOfficerList()`
-    func requestClanOfficerList(steamIDClan: SteamID) -> SteamAPICall {
-        SteamAPICall(SteamAPI_ISteamFriends_RequestClanOfficerList(interface, UInt64(steamIDClan)))
+    func requestClanOfficerList(steamIDClan: SteamID, completion: @escaping (ClanOfficerListResponse) -> Void) {
+        let rc = SteamAPI_ISteamFriends_RequestClanOfficerList(interface, UInt64(steamIDClan))
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::GetClanOwner()`
     func getClanOwner(steamIDClan: SteamID) -> SteamID {
-        SteamID(SteamAPI_ISteamFriends_GetClanOwner(interface, UInt64(steamIDClan)))
+        let rc = SteamID(SteamAPI_ISteamFriends_GetClanOwner(interface, UInt64(steamIDClan)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanOfficerCount()`
     func getClanOfficerCount(steamIDClan: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetClanOfficerCount(interface, UInt64(steamIDClan)))
+        let rc = Int(SteamAPI_ISteamFriends_GetClanOfficerCount(interface, UInt64(steamIDClan)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanOfficerByIndex()`
     func getClanOfficerByIndex(steamIDClan: SteamID, iOfficer: Int) -> SteamID {
-        SteamID(SteamAPI_ISteamFriends_GetClanOfficerByIndex(interface, UInt64(steamIDClan), Int32(iOfficer)))
+        let rc = SteamID(SteamAPI_ISteamFriends_GetClanOfficerByIndex(interface, UInt64(steamIDClan), Int32(iOfficer)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetUserRestrictions()`
     var userRestrictions: uint32 {
-        uint32(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
+        let rc = uint32(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::SetRichPresence()`
     func setRichPresence(pchKey: String, pchValue: String) -> Bool {
-        SteamAPI_ISteamFriends_SetRichPresence(interface, pchKey, pchValue)
+        let rc = SteamAPI_ISteamFriends_SetRichPresence(interface, pchKey, pchValue)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::ClearRichPresence()`
@@ -237,17 +273,20 @@ public extension SteamFriends {
 
     /// Steamworks `ISteamFriends::GetFriendRichPresence()`
     func getFriendRichPresence(steamIDFriend: SteamID, pchKey: String) -> String {
-        String(SteamAPI_ISteamFriends_GetFriendRichPresence(interface, UInt64(steamIDFriend), pchKey))
+        let rc = String(SteamAPI_ISteamFriends_GetFriendRichPresence(interface, UInt64(steamIDFriend), pchKey))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendRichPresenceKeyCount()`
     func getFriendRichPresenceKeyCount(steamIDFriend: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetFriendRichPresenceKeyCount(interface, UInt64(steamIDFriend)))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendRichPresenceKeyCount(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendRichPresenceKeyByIndex()`
     func getFriendRichPresenceKeyByIndex(steamIDFriend: SteamID, iKey: Int) -> String {
-        String(SteamAPI_ISteamFriends_GetFriendRichPresenceKeyByIndex(interface, UInt64(steamIDFriend), Int32(iKey)))
+        let rc = String(SteamAPI_ISteamFriends_GetFriendRichPresenceKeyByIndex(interface, UInt64(steamIDFriend), Int32(iKey)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::RequestFriendRichPresence()`
@@ -257,122 +296,146 @@ public extension SteamFriends {
 
     /// Steamworks `ISteamFriends::InviteUserToGame()`
     func inviteUserToGame(steamIDFriend: SteamID, pchConnectString: String) -> Bool {
-        SteamAPI_ISteamFriends_InviteUserToGame(interface, UInt64(steamIDFriend), pchConnectString)
+        let rc = SteamAPI_ISteamFriends_InviteUserToGame(interface, UInt64(steamIDFriend), pchConnectString)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetCoplayFriendCount()`
     var coplayFriendCount: Int {
-        Int(SteamAPI_ISteamFriends_GetCoplayFriendCount(interface))
+        let rc = Int(SteamAPI_ISteamFriends_GetCoplayFriendCount(interface))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetCoplayFriend()`
     func getCoplayFriend(iCoplayFriend: Int) -> SteamID {
-        SteamID(SteamAPI_ISteamFriends_GetCoplayFriend(interface, Int32(iCoplayFriend)))
+        let rc = SteamID(SteamAPI_ISteamFriends_GetCoplayFriend(interface, Int32(iCoplayFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendCoplayTime()`
     func getFriendCoplayTime(steamIDFriend: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetFriendCoplayTime(interface, UInt64(steamIDFriend)))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendCoplayTime(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendCoplayGame()`
     func getFriendCoplayGame(steamIDFriend: SteamID) -> AppId {
-        AppId(SteamAPI_ISteamFriends_GetFriendCoplayGame(interface, UInt64(steamIDFriend)))
+        let rc = AppId(SteamAPI_ISteamFriends_GetFriendCoplayGame(interface, UInt64(steamIDFriend)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::JoinClanChatRoom()`
-    func joinClanChatRoom(steamIDClan: SteamID) -> SteamAPICall {
-        SteamAPICall(SteamAPI_ISteamFriends_JoinClanChatRoom(interface, UInt64(steamIDClan)))
+    func joinClanChatRoom(steamIDClan: SteamID, completion: @escaping (JoinClanChatRoomCompletionResult) -> Void) {
+        let rc = SteamAPI_ISteamFriends_JoinClanChatRoom(interface, UInt64(steamIDClan))
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::LeaveClanChatRoom()`
     func leaveClanChatRoom(steamIDClan: SteamID) -> Bool {
-        SteamAPI_ISteamFriends_LeaveClanChatRoom(interface, UInt64(steamIDClan))
+        let rc = SteamAPI_ISteamFriends_LeaveClanChatRoom(interface, UInt64(steamIDClan))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanChatMemberCount()`
     func getClanChatMemberCount(steamIDClan: SteamID) -> Int {
-        Int(SteamAPI_ISteamFriends_GetClanChatMemberCount(interface, UInt64(steamIDClan)))
+        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMemberCount(interface, UInt64(steamIDClan)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetChatMemberByIndex()`
     func getChatMemberByIndex(steamIDClan: SteamID, iUser: Int) -> SteamID {
-        SteamID(SteamAPI_ISteamFriends_GetChatMemberByIndex(interface, UInt64(steamIDClan), Int32(iUser)))
+        let rc = SteamID(SteamAPI_ISteamFriends_GetChatMemberByIndex(interface, UInt64(steamIDClan), Int32(iUser)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::SendClanChatMessage()`
     func sendClanChatMessage(steamIDClanChat: SteamID, pchText: String) -> Bool {
-        SteamAPI_ISteamFriends_SendClanChatMessage(interface, UInt64(steamIDClanChat), pchText)
+        let rc = SteamAPI_ISteamFriends_SendClanChatMessage(interface, UInt64(steamIDClanChat), pchText)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
     func getClanChatMessage(steamIDClanChat: SteamID, iMessage: Int, prgchText: void *, cchTextMax: Int, peChatEntryType: ChatEntryType *, psteamidChatter: SteamID *) -> Int {
-        Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(steamIDClanChat), Int32(iMessage), void *(prgchText), Int32(cchTextMax), EChatEntryType *(peChatEntryType), CSteamID *(psteamidChatter)))
+        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(steamIDClanChat), Int32(iMessage), void *(prgchText), Int32(cchTextMax), EChatEntryType *(peChatEntryType), CSteamID *(psteamidChatter)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::IsClanChatAdmin()`
     func isClanChatAdmin(steamIDClanChat: SteamID, steamIDUser: SteamID) -> Bool {
-        SteamAPI_ISteamFriends_IsClanChatAdmin(interface, UInt64(steamIDClanChat), UInt64(steamIDUser))
+        let rc = SteamAPI_ISteamFriends_IsClanChatAdmin(interface, UInt64(steamIDClanChat), UInt64(steamIDUser))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::IsClanChatWindowOpenInSteam()`
     func isClanChatWindowOpenInSteam(steamIDClanChat: SteamID) -> Bool {
-        SteamAPI_ISteamFriends_IsClanChatWindowOpenInSteam(interface, UInt64(steamIDClanChat))
+        let rc = SteamAPI_ISteamFriends_IsClanChatWindowOpenInSteam(interface, UInt64(steamIDClanChat))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::OpenClanChatWindowInSteam()`
     func openClanChatWindowInSteam(steamIDClanChat: SteamID) -> Bool {
-        SteamAPI_ISteamFriends_OpenClanChatWindowInSteam(interface, UInt64(steamIDClanChat))
+        let rc = SteamAPI_ISteamFriends_OpenClanChatWindowInSteam(interface, UInt64(steamIDClanChat))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::CloseClanChatWindowInSteam()`
     func closeClanChatWindowInSteam(steamIDClanChat: SteamID) -> Bool {
-        SteamAPI_ISteamFriends_CloseClanChatWindowInSteam(interface, UInt64(steamIDClanChat))
+        let rc = SteamAPI_ISteamFriends_CloseClanChatWindowInSteam(interface, UInt64(steamIDClanChat))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::SetListenForFriendsMessages()`
     func setListenForFriendsMessages(bInterceptEnabled: Bool) -> Bool {
-        SteamAPI_ISteamFriends_SetListenForFriendsMessages(interface, bInterceptEnabled)
+        let rc = SteamAPI_ISteamFriends_SetListenForFriendsMessages(interface, bInterceptEnabled)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::ReplyToFriendMessage()`
     func replyToFriendMessage(steamIDFriend: SteamID, pchMsgToSend: String) -> Bool {
-        SteamAPI_ISteamFriends_ReplyToFriendMessage(interface, UInt64(steamIDFriend), pchMsgToSend)
+        let rc = SteamAPI_ISteamFriends_ReplyToFriendMessage(interface, UInt64(steamIDFriend), pchMsgToSend)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendMessage()`
     func getFriendMessage(steamIDFriend: SteamID, iMessageID: Int, pvData: void *, cubData: Int, peChatEntryType: ChatEntryType *) -> Int {
-        Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, UInt64(steamIDFriend), Int32(iMessageID), void *(pvData), Int32(cubData), EChatEntryType *(peChatEntryType)))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, UInt64(steamIDFriend), Int32(iMessageID), void *(pvData), Int32(cubData), EChatEntryType *(peChatEntryType)))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFollowerCount()`
-    func getFollowerCount(steamID: SteamID) -> SteamAPICall {
-        SteamAPICall(SteamAPI_ISteamFriends_GetFollowerCount(interface, UInt64(steamID)))
+    func getFollowerCount(steamID: SteamID, completion: @escaping (FriendsGetFollowerCount) -> Void) {
+        let rc = SteamAPI_ISteamFriends_GetFollowerCount(interface, UInt64(steamID))
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::IsFollowing()`
-    func isFollowing(steamID: SteamID) -> SteamAPICall {
-        SteamAPICall(SteamAPI_ISteamFriends_IsFollowing(interface, UInt64(steamID)))
+    func isFollowing(steamID: SteamID, completion: @escaping (FriendsIsFollowing) -> Void) {
+        let rc = SteamAPI_ISteamFriends_IsFollowing(interface, UInt64(steamID))
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::EnumerateFollowingList()`
-    func enumerateFollowingList(unStartIndex: uint32) -> SteamAPICall {
-        SteamAPICall(SteamAPI_ISteamFriends_EnumerateFollowingList(interface, uint32(unStartIndex)))
+    func enumerateFollowingList(unStartIndex: uint32, completion: @escaping (FriendsEnumerateFollowingList) -> Void) {
+        let rc = SteamAPI_ISteamFriends_EnumerateFollowingList(interface, uint32(unStartIndex))
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::IsClanPublic()`
     func isClanPublic(steamIDClan: SteamID) -> Bool {
-        SteamAPI_ISteamFriends_IsClanPublic(interface, UInt64(steamIDClan))
+        let rc = SteamAPI_ISteamFriends_IsClanPublic(interface, UInt64(steamIDClan))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::IsClanOfficialGameGroup()`
     func isClanOfficialGameGroup(steamIDClan: SteamID) -> Bool {
-        SteamAPI_ISteamFriends_IsClanOfficialGameGroup(interface, UInt64(steamIDClan))
+        let rc = SteamAPI_ISteamFriends_IsClanOfficialGameGroup(interface, UInt64(steamIDClan))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetNumChatsWithUnreadPriorityMessages()`
     var numChatsWithUnreadPriorityMessages: Int {
-        Int(SteamAPI_ISteamFriends_GetNumChatsWithUnreadPriorityMessages(interface))
+        let rc = Int(SteamAPI_ISteamFriends_GetNumChatsWithUnreadPriorityMessages(interface))
+        return rc
     }
 
     /// Steamworks `ISteamFriends::ActivateGameOverlayRemotePlayTogetherInviteDialog()`
@@ -382,7 +445,8 @@ public extension SteamFriends {
 
     /// Steamworks `ISteamFriends::RegisterProtocolInOverlayBrowser()`
     func registerProtocolInOverlayBrowser(pchProtocol: String) -> Bool {
-        SteamAPI_ISteamFriends_RegisterProtocolInOverlayBrowser(interface, pchProtocol)
+        let rc = SteamAPI_ISteamFriends_RegisterProtocolInOverlayBrowser(interface, pchProtocol)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::ActivateGameOverlayInviteDialogConnectString()`

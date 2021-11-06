@@ -81,7 +81,8 @@ private let steamTypesPassedInTransparently = Set<String>([
 // directly (without a cast) from a Steamworks function to a
 // Swift value expecting the corresponding Swift type.
 private let steamTypesPassedOutTransparently = Set<String>([
-    "bool", "void"
+    "bool", "void",
+    "SteamAPICall_t" // bit of a hack, maybe, probably better to special-case in interface-gen
 ])
 
 // Steam types whose Swift type version needs a non-standard

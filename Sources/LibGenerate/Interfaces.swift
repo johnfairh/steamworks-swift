@@ -68,12 +68,21 @@ extension SteamAPI.Interface.Method {
         let decl: String
         if isVar {
             decl = "    var \(varName): \(swiftReturnType!) {"
+            precondition(callresult == nil)
         } else {
             let args = params.map { param in
                 "\(param.paramname): \(param.type.asSwiftTypeName)"
             }.joined(separator: ", ")
-            let returnsDecl = swiftReturnType.flatMap { " -> \($0)" } ?? ""
-            decl = "    func \(funcName)(\(args))\(returnsDecl) {"
+            let extraArg: String
+            let returnsDecl: String
+            if let callresult = callresult {
+                returnsDecl = ""
+                extraArg = ", completion: @escaping (\(callresult.asSwiftTypeName)) -> Void"
+            } else {
+                returnsDecl = swiftReturnType.flatMap { " -> \($0)" } ?? ""
+                extraArg = ""
+            }
+            decl = "    func \(funcName)(\(args)\(extraArg))\(returnsDecl) {"
         }
 
         let args = params.map { param in
@@ -81,9 +90,20 @@ extension SteamAPI.Interface.Method {
             return ", \(param.paramname.asCast(to: inboundCast))"
         }.joined()
         let call = "\(methodname_flat)(interface\(args))"
-        let body = call.asCast(to: returntype.asSwiftTypeForPassingOutOfSteamworks)
+        let resultExpr = call.asCast(to: returntype.asSwiftTypeForPassingOutOfSteamworks)
+        var lines = [String]()
+        if swiftReturnType == nil {
+            lines.append("        " + resultExpr)
+        } else {
+            lines.append("        let rc = \(resultExpr)")
+            if callresult != nil {
+                lines.append("        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))")
+            } else {
+                lines.append("        return rc")
+            }
+        }
 
-        return [comment, decl, "        " + body, "    }"].joined(separator: "\n")
+        return ([comment, decl] + lines + ["    }"]).joined(separator: "\n")
     }
 }
 
