@@ -6,6 +6,8 @@
 //
 //  This file is generated code: any edits will be overwritten.
 
+@_implementationOnly import CSteamworks
+
 /// Steamworks `ESteamEnum`
 public enum SteamEnum: Int32 {
     /// Steamworks `k_ESteamEnumIPv6`
@@ -24,6 +26,9 @@ public enum SteamEnum: Int32 {
     case lowerCase = 7
 }
 
+extension ESteamEnum: EnumConvertible { typealias From = SteamEnum }
+extension SteamEnum: EnumConvertible { typealias From = ESteamEnum }
+
 /// Steamworks `ESteamMiscFlags`
 public struct SteamMiscFlags: OptionSet {
     /// The flags value.
@@ -37,3 +42,6 @@ public struct SteamMiscFlags: OptionSet {
     /// Steamworks `k_ESteamMiscFlagsLoads`
     public static let loads = SteamMiscFlags(rawValue: 512)
 }
+
+extension ESteamMiscFlags: EnumConvertible { typealias From = SteamMiscFlags }
+extension SteamMiscFlags: EnumConvertible { typealias From = ESteamMiscFlags }

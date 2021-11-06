@@ -6,6 +6,8 @@
 //
 //  This file is generated code: any edits will be overwritten.
 
+@_implementationOnly import CSteamworks
+
 // MARK: SDK Version
 
 extension SteamBaseAPI {

@@ -54,6 +54,8 @@ final class IO {
         //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
         //
         //  This file is generated code: any edits will be overwritten.
+
+        @_implementationOnly import CSteamworks
         """
     }
 

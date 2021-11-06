@@ -15,6 +15,7 @@ extension String {
         }
         return re_sub("_t$", with: "")
             .re_sub("^[CEI](?=[A-Z])", with: "")
+            .replacingOccurrences(of: "_", with: "")
     }
 
     /// * to lowerCamelCase

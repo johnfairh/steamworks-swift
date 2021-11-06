@@ -147,6 +147,9 @@ extension SteamAPI.Enum {
                \(typeDecl)
                \(elements)
                }
+
+               extension \(enumname): EnumConvertible { typealias From = \(swiftTypeName) }
+               extension \(swiftTypeName): EnumConvertible { typealias From = \(enumname) }
                """
     }
 

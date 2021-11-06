@@ -25,3 +25,17 @@ extension String {
         }
     }
 }
+
+// MARK: Enums
+
+/// For DRYing the conversion code between Steam enums (which are structs) and Swift enums
+/// (which are enums).
+protocol EnumConvertible {
+    associatedtype From: RawRepresentable
+}
+
+extension EnumConvertible where Self: RawRepresentable, From.RawValue == Self.RawValue {
+    init(_ from: From) {
+        self.init(rawValue: from.rawValue)!
+    }
+}

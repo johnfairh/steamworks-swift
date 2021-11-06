@@ -38,8 +38,6 @@ extension SteamAPI.Interface {
         let swiftName = classname.asSwiftTypeName
 
         let declaration = """
-                          @_implementationOnly import CSteamworks
-
                           // MARK: Interface methods
                           public extension \(swiftName) {
 

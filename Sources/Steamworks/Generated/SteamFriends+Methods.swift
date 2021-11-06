@@ -51,7 +51,7 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendGamePlayed()`
-    func getFriendGamePlayed(steamIDFriend: SteamID, pFriendGameInfo: FriendGameInfo_t *) -> Bool {
+    func getFriendGamePlayed(steamIDFriend: SteamID, pFriendGameInfo: FriendGameInfot *) -> Bool {
         SteamAPI_ISteamFriends_GetFriendGamePlayed(interface, UInt64(steamIDFriend), FriendGameInfo_t *(pFriendGameInfo))
     }
 

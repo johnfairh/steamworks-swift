@@ -29,6 +29,6 @@ public struct Generator {
 
         try version.generate()
         try enums.generate()
-        //try interfaces.generate()
+        try interfaces.generate()
     }
 }
