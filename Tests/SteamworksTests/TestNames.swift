@@ -17,6 +17,7 @@ class TestNames: XCTestCase {
             ("Type", "Type"),
             ("TypeCamel", "TypeCamel"),
             ("Type_t", "Type"), // strip trailing _t
+            ("Type_t *", "Type *"),
             ("EType", "Type"), // strip leading E from enums
             ("EType_t", "Type"),
             ("ErrorType", "ErrorType"), // don't strip leading E if it's part of a word...

@@ -34,3 +34,33 @@ public struct FriendsGetFollowerCount: SteamCreatable {
         count = steam.m_nCount
     }
 }
+
+public struct SetPersonaNameResponse: SteamCreatable {
+    init(_ steam: SetPersonaNameResponse_t) {
+    }
+}
+
+public struct DownloadClanActivityCountsResult: SteamCreatable {
+    init(_ steam: DownloadClanActivityCountsResult_t) {
+    }
+}
+
+public struct ClanOfficerListResponse: SteamCreatable {
+    init(_ steam: ClanOfficerListResponse_t) {
+    }
+}
+
+public struct JoinClanChatRoomCompletionResult: SteamCreatable {
+    init(_ steam: JoinClanChatRoomCompletionResult_t) {
+    }
+}
+
+public struct FriendsIsFollowing: SteamCreatable {
+    init(_ steam: FriendsIsFollowing_t) {
+    }
+}
+
+public struct FriendsEnumerateFollowingList: SteamCreatable {
+    init(_ steam: FriendsEnumerateFollowingList_t) {
+    }
+}

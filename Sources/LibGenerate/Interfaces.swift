@@ -63,12 +63,14 @@ extension SteamAPI.Interface.Method {
     }
 
     func generate(context: String) -> String {
-        let comment = "    /// Steamworks `\(context)::\(methodname)()`"
+        var lines = [String]()
+        lines.append("/// Steamworks `\(context)::\(methodname)()`")
+
         let swiftReturnType = returntype == "void" ? nil : returntype.asSwiftTypeName
-        let decl: String
+
         if isVar {
-            decl = "    var \(varName): \(swiftReturnType!) {"
             precondition(callresult == nil)
+            lines.append("var \(varName): \(swiftReturnType!) {")
         } else {
             let args = params.map { param in
                 "\(param.paramname): \(param.type.asSwiftTypeName)"
@@ -82,7 +84,7 @@ extension SteamAPI.Interface.Method {
                 returnsDecl = swiftReturnType.flatMap { " -> \($0)" } ?? ""
                 extraArg = ""
             }
-            decl = "    func \(funcName)(\(args)\(extraArg))\(returnsDecl) {"
+            lines.append("func \(funcName)(\(args)\(extraArg))\(returnsDecl) {")
         }
 
         let args = params.map { param in
@@ -90,20 +92,29 @@ extension SteamAPI.Interface.Method {
             return ", \(param.paramname.asCast(to: inboundCast))"
         }.joined()
         let call = "\(methodname_flat)(interface\(args))"
-        let resultExpr = call.asCast(to: returntype.asSwiftTypeForPassingOutOfSteamworks)
-        var lines = [String]()
-        if swiftReturnType == nil {
-            lines.append("        " + resultExpr)
+        let resultExpr: String
+        if callresult == nil {
+            resultExpr = call.asCast(to: returntype.asSwiftTypeForPassingOutOfSteamworks)
         } else {
-            lines.append("        let rc = \(resultExpr)")
-            if callresult != nil {
-                lines.append("        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))")
-            } else {
-                lines.append("        return rc")
-            }
+            resultExpr = call
         }
 
-        return ([comment, decl] + lines + ["    }"]).joined(separator: "\n")
+        var bodyLines = [String]()
+
+        if (swiftReturnType == nil || callresult == nil) /* && no out params */ {
+            bodyLines.append(resultExpr)
+        } else {
+            bodyLines.append("let rc = \(resultExpr)")
+            if callresult != nil {
+                bodyLines.append("SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))")
+            } else {
+                bodyLines.append("return rc")
+            }
+        }
+        lines.append(contentsOf: bodyLines.indented(1))
+        lines.append("}")
+
+        return lines.indented(1).joined(separator: "\n")
     }
 }
 

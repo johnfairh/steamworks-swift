@@ -13,7 +13,7 @@ extension String {
         if let mapped = steamToSwiftTypes[self] {
             return mapped
         }
-        return re_sub("_t$", with: "")
+        return re_sub("_t\\b", with: "")
             .re_sub("^[CEI](?=[A-Z])", with: "")
             .replacingOccurrences(of: "_", with: "")
     }
@@ -81,8 +81,7 @@ private let steamTypesPassedInTransparently = Set<String>([
 // directly (without a cast) from a Steamworks function to a
 // Swift value expecting the corresponding Swift type.
 private let steamTypesPassedOutTransparently = Set<String>([
-    "bool", "void",
-    "SteamAPICall_t" // bit of a hack, maybe, probably better to special-case in interface-gen
+    "bool", "void"
 ])
 
 // Steam types whose Swift type version needs a non-standard
@@ -91,3 +90,15 @@ private let steamTypesPassedInStrangely: [String : String] = [
     "int" : "Int32",
     "uint64_steamid" : "UInt64"
 ]
+
+extension String {
+    func indented(_ level: Int) -> String {
+        String(repeating: "    ", count: level) + self
+    }
+}
+
+extension Sequence where Element == String {
+    func indented(_ level: Int) -> [String] {
+        map { $0.indented(level) }
+    }
+}

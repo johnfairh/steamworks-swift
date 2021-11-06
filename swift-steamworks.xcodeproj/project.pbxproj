@@ -28,7 +28,7 @@
 		020860E12734054400725122 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E02734054400725122 /* Enums.swift */; };
 		020860E42735487600725122 /* Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E2273547B100725122 /* Interfaces.swift */; };
 		020860E627354C6800725122 /* SteamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E527354C6800725122 /* SteamFriends.swift */; };
-		020860EA2736B66200725122 /* SteamFriends+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E72735562A00725122 /* SteamFriends+Methods.swift */; };
+		020860EB2736F8E700725122 /* SteamFriends+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E72735562A00725122 /* SteamFriends+Methods.swift */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -558,7 +558,7 @@
 			buildActionMask = 0;
 			files = (
 				02D309EA2728145E00DE64F0 /* Structs.swift in Sources */,
-				020860EA2736B66200725122 /* SteamFriends+Methods.swift in Sources */,
+				020860EB2736F8E700725122 /* SteamFriends+Methods.swift in Sources */,
 				02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */,
 				020860E12734054400725122 /* Enums.swift in Sources */,
 				020860D12730493900725122 /* SteamBaseAPI+Version.swift in Sources */,
