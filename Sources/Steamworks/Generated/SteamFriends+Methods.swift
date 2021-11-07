@@ -52,8 +52,11 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendGamePlayed()`
-    func getFriendGamePlayed(steamIDFriend: SteamID, pFriendGameInfo: FriendGameInfo *) -> Bool {
-        SteamAPI_ISteamFriends_GetFriendGamePlayed(interface, UInt64(steamIDFriend), FriendGameInfo_t *(pFriendGameInfo))
+    func getFriendGamePlayed(steamIDFriend: SteamID, pFriendGameInfo: inout FriendGameInfo) -> Bool {
+        var tmp_pFriendGameInfo = FriendGameInfo_t()
+        let rc = SteamAPI_ISteamFriends_GetFriendGamePlayed(interface, UInt64(steamIDFriend), &tmp_pFriendGameInfo)
+        pFriendGameInfo = FriendGameInfo(tmp_pFriendGameInfo)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendPersonaNameHistory()`
@@ -92,8 +95,10 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupMembersList()`
-    func getFriendsGroupMembersList(friendsGroupID: FriendsGroupID, pOutSteamIDMembers: SteamID *, nMembersCount: Int) {
-        SteamAPI_ISteamFriends_GetFriendsGroupMembersList(interface, FriendsGroupID_t(friendsGroupID), CSteamID *(pOutSteamIDMembers), Int32(nMembersCount))
+    func getFriendsGroupMembersList(friendsGroupID: FriendsGroupID, pOutSteamIDMembers: inout SteamID, nMembersCount: Int) {
+        var tmp_pOutSteamIDMembers = CSteamID()
+        SteamAPI_ISteamFriends_GetFriendsGroupMembersList(interface, FriendsGroupID_t(friendsGroupID), &tmp_pOutSteamIDMembers, Int32(nMembersCount))
+        pOutSteamIDMembers = SteamID(tmp_pOutSteamIDMembers)
     }
 
     /// Steamworks `ISteamFriends::HasFriend()`
@@ -122,13 +127,21 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetClanActivityCounts()`
-    func getClanActivityCounts(steamIDClan: SteamID, pnOnline: int *, pnInGame: int *, pnChatting: int *) -> Bool {
-        SteamAPI_ISteamFriends_GetClanActivityCounts(interface, UInt64(steamIDClan), int *(pnOnline), int *(pnInGame), int *(pnChatting))
+    func getClanActivityCounts(steamIDClan: SteamID, pnOnline: inout Int, pnInGame: inout Int, pnChatting: inout Int) -> Bool {
+        var tmp_pnOnline = Int32()
+        var tmp_pnInGame = Int32()
+        var tmp_pnChatting = Int32()
+        let rc = SteamAPI_ISteamFriends_GetClanActivityCounts(interface, UInt64(steamIDClan), &tmp_pnOnline, &tmp_pnInGame, &tmp_pnChatting)
+        pnOnline = Int(tmp_pnOnline)
+        pnInGame = Int(tmp_pnInGame)
+        pnChatting = Int(tmp_pnChatting)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`
-    func downloadClanActivityCounts(psteamIDClans: SteamID *, cClansToRequest: Int, completion: @escaping (DownloadClanActivityCountsResult) -> Void) {
-        let rc = SteamAPI_ISteamFriends_DownloadClanActivityCounts(interface, CSteamID *(psteamIDClans), Int32(cClansToRequest))
+    func downloadClanActivityCounts(psteamIDClans: [SteamID], completion: @escaping (DownloadClanActivityCountsResult) -> Void) {
+        var tmp_psteamIDClans = psteamIDClans.map { CSteamID($0) }
+        let rc = SteamAPI_ISteamFriends_DownloadClanActivityCounts(interface, &tmp_psteamIDClans, Int32(psteamIDClans.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -310,8 +323,15 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
-    func getClanChatMessage(steamIDClanChat: SteamID, iMessage: Int, prgchText: void *, cchTextMax: Int, peChatEntryType: ChatEntryType *, psteamidChatter: SteamID *) -> Int {
-        Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(steamIDClanChat), Int32(iMessage), void *(prgchText), Int32(cchTextMax), EChatEntryType *(peChatEntryType), CSteamID *(psteamidChatter)))
+    func getClanChatMessage(steamIDClanChat: SteamID, iMessage: Int, prgchText: inout void, cchTextMax: Int, peChatEntryType: inout ChatEntryType, psteamidChatter: inout SteamID) -> Int {
+        var tmp_prgchText = void()
+        var tmp_peChatEntryType = EChatEntryType()
+        var tmp_psteamidChatter = CSteamID()
+        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(steamIDClanChat), Int32(iMessage), &tmp_prgchText, Int32(cchTextMax), &tmp_peChatEntryType, &tmp_psteamidChatter))
+        prgchText = void(tmp_prgchText)
+        peChatEntryType = ChatEntryType(tmp_peChatEntryType)
+        psteamidChatter = SteamID(tmp_psteamidChatter)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::IsClanChatAdmin()`
@@ -345,8 +365,13 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendMessage()`
-    func getFriendMessage(steamIDFriend: SteamID, iMessageID: Int, pvData: void *, cubData: Int, peChatEntryType: ChatEntryType *) -> Int {
-        Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, UInt64(steamIDFriend), Int32(iMessageID), void *(pvData), Int32(cubData), EChatEntryType *(peChatEntryType)))
+    func getFriendMessage(steamIDFriend: SteamID, iMessageID: Int, pvData: inout void, cubData: Int, peChatEntryType: inout ChatEntryType) -> Int {
+        var tmp_pvData = void()
+        var tmp_peChatEntryType = EChatEntryType()
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, UInt64(steamIDFriend), Int32(iMessageID), &tmp_pvData, Int32(cubData), &tmp_peChatEntryType))
+        pvData = void(tmp_pvData)
+        peChatEntryType = ChatEntryType(tmp_peChatEntryType)
+        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFollowerCount()`

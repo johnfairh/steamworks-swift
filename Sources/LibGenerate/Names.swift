@@ -46,7 +46,11 @@ extension String {
         if steamTypesPassedInTransparently.contains(self) {
             return nil
         }
-        return steamTypesPassedInStrangely[self] ?? self
+        return asExplicitSwiftTypeForPassingIntoSteamworks
+    }
+
+    var asExplicitSwiftTypeForPassingIntoSteamworks: String {
+        steamTypesPassedInStrangely[self] ?? self
     }
 
     var asSwiftTypeForPassingOutOfSteamworks: String? {
@@ -54,6 +58,11 @@ extension String {
             return nil
         }
         return asSwiftTypeName
+    }
+
+    /// Drop one layer of C pointers from a type
+    var depointered: String {
+        re_sub(" *\\*$", with: "")
     }
 }
 
@@ -88,6 +97,7 @@ private let steamTypesPassedOutTransparently = Set<String>([
 // cast to pass to a Steamworks function expecting the Steam type.
 private let steamTypesPassedInStrangely: [String : String] = [
     "int" : "Int32",
+    "bool" : "Bool",
     "uint64_steamid" : "UInt64"
 ]
 

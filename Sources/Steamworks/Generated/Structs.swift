@@ -64,3 +64,8 @@ public struct FriendsEnumerateFollowingList: SteamCreatable {
     init(_ steam: FriendsEnumerateFollowingList_t) {
     }
 }
+
+public struct FriendGameInfo: SteamCreatable {
+    init(_ steam: FriendGameInfo_t) {
+    }
+}

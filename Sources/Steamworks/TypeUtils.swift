@@ -5,6 +5,8 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
+@_implementationOnly import CSteamworks
+
 /// Protocol added to Swift structs meaning they have a corresponding Steam (C) type
 protocol SteamCreatable {
     associatedtype SteamType
@@ -23,6 +25,13 @@ extension String {
         } else {
             self = ""
         }
+    }
+}
+
+// Extremely terrifying extension to a C++ class ...
+extension CSteamID {
+    init(_ steamID: SteamID) {
+        self.init(steamID.steamID)
     }
 }
 
