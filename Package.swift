@@ -43,7 +43,10 @@ let package = Package(
         dependencies: ["LibGenerate"]),
     .target(
         name: "LibGenerate",
-        dependencies: []),
+        dependencies: [],
+        resources: [
+          .copy("Resources/steam_api_patch.json")
+        ]),
     .testTarget(
         name: "SteamworksTests",
         dependencies: ["Steamworks", "LibGenerate"],

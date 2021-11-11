@@ -237,8 +237,8 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetUserRestrictions()`
-    var userRestrictions: uint32 {
-        uint32(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
+    var userRestrictions: UserRestriction {
+        UserRestriction(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
     }
 
     /// Steamworks `ISteamFriends::SetRichPresence()`

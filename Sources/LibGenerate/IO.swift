@@ -10,10 +10,18 @@ import Foundation
 final class IO {
     let sdkURL: URL
     let outputDirURL: URL
+    let resources: Bundle
 
     init(sdkURL: URL, outputDirURL: URL) throws {
         self.sdkURL = sdkURL
         self.outputDirURL = outputDirURL
+        #if SWIFT_PACKAGE
+        self.resources = Bundle.module
+        #else
+        /* Xcode testing mode */
+        let sourcesURL = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+        self.resources = Bundle(url: sourcesURL.appendingPathComponent("Resources"))!
+        #endif
 
         guard FileManager.default.fileExists(atPath: jsonURL.path) else {
             throw Failed("JSON file missing at \(jsonURL.path)")
@@ -41,8 +49,15 @@ final class IO {
         try String(contentsOf: readmeURL, encoding: .windowsCP1252)
     }
 
-    func loadJson() throws -> Data {
+    func loadSdkJson() throws -> Data {
         try Data(contentsOf: jsonURL)
+    }
+
+    func loadPatchJson() throws -> Data {
+        guard let url = resources.url(forResource: "steam_api_patch", withExtension: "json") else {
+            throw Failed("Missing patch json from resource bundle \(resources)")
+        }
+        return try Data(contentsOf: url)
     }
 
     func fileHeader(fileName: String, moduleName: String = "Steamworks") -> String {

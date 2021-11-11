@@ -82,20 +82,6 @@ struct Enums {
     static func isDuplicate(enumName: String, valueName: String) -> Bool {
         duplicateValues[enumName]?.contains(valueName) ?? false
     }
-
-    /// Enum types that are actually bit-field types
-    private static let flagSetSteamTypes = Set([
-        "EChatSteamIDInstanceFlags",
-        "EFriendFlags",
-        "EMarketNotAllowedReasonFlags",
-        "EPersonaChange",
-        "ESteamItemFlags",
-        "EUserRestriction",
-    ])
-
-    static func isOptionSet(enumName: String) -> Bool {
-        flagSetSteamTypes.contains(enumName)
-    }
 }
 
 extension String {
@@ -117,9 +103,8 @@ extension String {
 // MARK: Structure generation
 
 extension SteamAPI.Enum {
-    /// So far Steam consistently names only bitflag enums as "...Flags"...
     var isEnumNotOptionSet: Bool {
-        !Enums.isOptionSet(enumName: enumname)
+        is_set == nil
     }
 
     var rawType: String {

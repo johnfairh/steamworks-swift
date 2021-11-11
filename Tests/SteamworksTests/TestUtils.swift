@@ -34,7 +34,7 @@ extension FileManager {
 
 extension XCTestCase {
     static var fixturesURL: URL {
-        URL(fileURLWithPath: #file)
+        URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent()
             .appendingPathComponent("Fixtures")
     }

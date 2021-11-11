@@ -1,0 +1,27 @@
+{
+  "enums": {
+    "EChatSteamIDInstanceFlags": {
+      "is_set": true
+    },
+    "EFriendFlags": {
+      "is_set": true
+    },
+    "EMarketNotAllowedReasonFlags": {
+      "is_set": true
+    },
+    "EPersonaChange": {
+      "is_set": true
+    },
+    "ESteamItemFlags": {
+      "is_set": true
+    },
+    "EUserRestriction": {
+      "is_set": true
+    }
+  },
+  "methods": {
+    "SteamAPI_ISteamFriends_GetUserRestrictions": {
+      "returntype": "EUserRestriction"
+    }
+  }
+}
