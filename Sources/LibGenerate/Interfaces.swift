@@ -92,7 +92,7 @@ final class SwiftParam {
     /// We could probably use `defer` to simplify the structure a bit.
     var preCallLine: String? {
         switch style {
-        case .out: return "var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)()"
+        case .out: return "var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks)"
         case .in_array: return "var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"
         case .in, .in_array_count: return nil
         }

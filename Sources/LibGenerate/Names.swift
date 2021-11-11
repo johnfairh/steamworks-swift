@@ -53,6 +53,12 @@ extension String {
         steamTypesPassedInStrangely[self] ?? self
     }
 
+    var asExplicitSwiftInstanceForPassingIntoSteamworks: String {
+        let typename = asExplicitSwiftTypeForPassingIntoSteamworks
+        let suffix = Enums.isEnum(steamType: self) ? "(rawValue: 0)" : "()"
+        return typename + suffix
+    }
+
     var asSwiftTypeForPassingOutOfSteamworks: String? {
         if steamTypesPassedOutTransparently.contains(self) {
             return nil
@@ -75,6 +81,7 @@ private let backtickKeywords = Set<String>([
 private let steamToSwiftTypes: [String : String] = [
     "const char *" : "String",
     "int" : "Int",
+    "uint32" : "Int",
     "bool" : "Bool",
     "uint64_steamid" : "SteamID"
 ]

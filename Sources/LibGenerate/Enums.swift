@@ -24,6 +24,12 @@ struct Enums {
         try io.write(fileName: "Enums.swift", contents: contents)
     }
 
+    /// Used for a weird special case, this is dumb because we have a canonical list of enum names.
+    /// Need to restructure to use smarter data types in memory and have a static lookup to it.
+    static func isEnum(steamType name: String) -> Bool {
+        name.re_isMatch("^E[A-Z]") // also not even correct for the two idiot children
+    }
+
     // MARK: Knowledge about Steamworks naming special cases
 
     /// Exceptions to the normal rules of enum element prefiix, the part to remove.
@@ -111,6 +117,10 @@ extension SteamAPI.Enum {
         values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
     }
 
+    var steamRawType: String {
+        rawType.lowercased()
+    }
+
     /// The Swift declaration for the enum or optionset struct
     var generated: String {
         let swiftTypeName = enumname.asSwiftTypeName
@@ -129,6 +139,8 @@ extension SteamAPI.Enum {
                            public let rawValue: \(rawType)
                            /// Create a new instance with `rawValue` flags set.
                            public init(rawValue: \(rawType)) { self.rawValue = rawValue }
+                           /// Workaround for steam API type bugs
+                           init(_ rawValue: \(steamRawType)) { self.rawValue = rawValue }
                        """
             valueGen = generateOptionSetDecl
         }
