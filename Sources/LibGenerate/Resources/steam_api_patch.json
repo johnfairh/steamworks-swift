@@ -22,6 +22,9 @@
   "methods": {
     "SteamAPI_ISteamFriends_GetUserRestrictions": {
       "returntype": "EUserRestriction"
+    },
+    "SteamAPI_ISteamFriends_GetFriendGamePlayed": {
+        "out_param_iff_rc": ""
     }
   }
 }

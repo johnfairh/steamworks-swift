@@ -55,7 +55,9 @@ public extension SteamFriends {
     func getFriendGamePlayed(steamIDFriend: SteamID, pFriendGameInfo: inout FriendGameInfo) -> Bool {
         var tmp_pFriendGameInfo = FriendGameInfo_t()
         let rc = SteamAPI_ISteamFriends_GetFriendGamePlayed(interface, UInt64(steamIDFriend), &tmp_pFriendGameInfo)
-        pFriendGameInfo = FriendGameInfo(tmp_pFriendGameInfo)
+        if rc {
+            pFriendGameInfo = FriendGameInfo(tmp_pFriendGameInfo)
+        }
         return rc
     }
 

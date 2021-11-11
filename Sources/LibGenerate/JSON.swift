@@ -22,6 +22,7 @@ struct APIPatch: Codable {
 
     struct Method: Codable {
         let returntype: String? // patch returntype
+        let out_param_iff_rc: String? // only copyback out-params if method rc matches
     }
     let methods: [String : Method] // methodname key
 
@@ -110,6 +111,7 @@ struct SteamAPI: Codable {
             let params: [Param]
             let returntype: String // patch can overwrite
             // unused let returntype_flat: String?
+            let out_param_iff_rc: String? // patch
 
             init(base: Method, patch: APIPatch.Method) {
                 callresult = base.callresult
@@ -117,6 +119,7 @@ struct SteamAPI: Codable {
                 methodname_flat = base.methodname_flat
                 params = base.params
                 returntype = patch.returntype ?? base.returntype
+                out_param_iff_rc = patch.out_param_iff_rc
             }
         }
         let methods: [Method]

@@ -191,8 +191,8 @@ extension Array where Element == SwiftParam {
         map { $0.callName }.joined(separator: ", ")
     }
 
-    /// Lines to add after the API call
-    var postCallLines: [String] {
+    /// Lines to add after the API call if it honoured out params
+    var postSuccessCallLines: [String] {
         compactMap { $0.postSuccessCallLine }
     }
 }
@@ -259,7 +259,7 @@ struct SwiftMethod {
         switch style {
         case .callReturn, .void: return .implicit
         case .normal:
-            if params.postCallLines.isEmpty {
+            if params.postSuccessCallLines.isEmpty {
                 if params.preCallLines.isEmpty {
                     return .implicit
                 }
@@ -288,12 +288,29 @@ struct SwiftMethod {
         }
     }
 
+    /// Code to go following the API call.  This does copy-back of out params.
+    ///
+    /// Usually, steamworks says that even if the API call fails the out params are updated to some 'invalid' value,
+    /// meaning we must do the copyback anyway.
+    ///
+    /// But infrequently this does not happen, so we must not try to copy-back for fear of out-of-range typechecks
+    /// and uninitialized data UB.  Our patch json says what test to apply to `rc` - we may be able to generalize
+    /// based on type later on but leave it manual for now.
+    var postCallLines: [String] {
+        let successLines = params.postSuccessCallLines
+        guard !successLines.isEmpty,
+            let test = json.out_param_iff_rc else {
+            return successLines
+        }
+        return ["if rc \(test.count == 0 ? "" : "\(test) "){"] + successLines.indented(1) + ["}"]
+    }
+
     var finalBodyLines: [String] {
         returnSyntax == .intermediate ? ["return rc"] : []
     }
 
     var bodyLines: [String] {
-        params.preCallLines + callLines + params.postCallLines + finalBodyLines
+        params.preCallLines + callLines + postCallLines + finalBodyLines
     }
 
     var decl: [String] {
