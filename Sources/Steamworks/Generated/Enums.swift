@@ -852,23 +852,27 @@ extension EFriendFlags: EnumConvertible { typealias From = FriendFlags }
 extension FriendFlags: EnumConvertible { typealias From = EFriendFlags }
 
 /// Steamworks `EUserRestriction`
-public enum UserRestriction: UInt32 {
+public struct UserRestriction: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_nUserRestrictionNone`
-    case none = 0
+    public static let none = UserRestriction([])
     /// Steamworks `k_nUserRestrictionUnknown`
-    case unknown = 1
+    public static let unknown = UserRestriction(rawValue: 1)
     /// Steamworks `k_nUserRestrictionAnyChat`
-    case anyChat = 2
+    public static let anyChat = UserRestriction(rawValue: 2)
     /// Steamworks `k_nUserRestrictionVoiceChat`
-    case voiceChat = 4
+    public static let voiceChat = UserRestriction(rawValue: 4)
     /// Steamworks `k_nUserRestrictionGroupChat`
-    case groupChat = 8
+    public static let groupChat = UserRestriction(rawValue: 8)
     /// Steamworks `k_nUserRestrictionRating`
-    case rating = 16
+    public static let rating = UserRestriction(rawValue: 16)
     /// Steamworks `k_nUserRestrictionGameInvites`
-    case gameInvites = 32
+    public static let gameInvites = UserRestriction(rawValue: 32)
     /// Steamworks `k_nUserRestrictionTrading`
-    case trading = 64
+    public static let trading = UserRestriction(rawValue: 64)
 }
 
 extension EUserRestriction: EnumConvertible { typealias From = UserRestriction }
@@ -899,37 +903,41 @@ extension EActivateGameOverlayToWebPageMode: EnumConvertible { typealias From = 
 extension ActivateGameOverlayToWebPageMode: EnumConvertible { typealias From = EActivateGameOverlayToWebPageMode }
 
 /// Steamworks `EPersonaChange`
-public enum PersonaChange: UInt32 {
+public struct PersonaChange: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_EPersonaChangeName`
-    case name = 1
+    public static let name = PersonaChange(rawValue: 1)
     /// Steamworks `k_EPersonaChangeStatus`
-    case status = 2
+    public static let status = PersonaChange(rawValue: 2)
     /// Steamworks `k_EPersonaChangeComeOnline`
-    case comeOnline = 4
+    public static let comeOnline = PersonaChange(rawValue: 4)
     /// Steamworks `k_EPersonaChangeGoneOffline`
-    case goneOffline = 8
+    public static let goneOffline = PersonaChange(rawValue: 8)
     /// Steamworks `k_EPersonaChangeGamePlayed`
-    case gamePlayed = 16
+    public static let gamePlayed = PersonaChange(rawValue: 16)
     /// Steamworks `k_EPersonaChangeGameServer`
-    case gameServer = 32
+    public static let gameServer = PersonaChange(rawValue: 32)
     /// Steamworks `k_EPersonaChangeAvatar`
-    case avatar = 64
+    public static let avatar = PersonaChange(rawValue: 64)
     /// Steamworks `k_EPersonaChangeJoinedSource`
-    case joinedSource = 128
+    public static let joinedSource = PersonaChange(rawValue: 128)
     /// Steamworks `k_EPersonaChangeLeftSource`
-    case leftSource = 256
+    public static let leftSource = PersonaChange(rawValue: 256)
     /// Steamworks `k_EPersonaChangeRelationshipChanged`
-    case relationshipChanged = 512
+    public static let relationshipChanged = PersonaChange(rawValue: 512)
     /// Steamworks `k_EPersonaChangeNameFirstSet`
-    case nameFirstSet = 1024
+    public static let nameFirstSet = PersonaChange(rawValue: 1024)
     /// Steamworks `k_EPersonaChangeBroadcast`
-    case broadcast = 2048
+    public static let broadcast = PersonaChange(rawValue: 2048)
     /// Steamworks `k_EPersonaChangeNickname`
-    case nickname = 4096
+    public static let nickname = PersonaChange(rawValue: 4096)
     /// Steamworks `k_EPersonaChangeSteamLevel`
-    case steamLevel = 8192
+    public static let steamLevel = PersonaChange(rawValue: 8192)
     /// Steamworks `k_EPersonaChangeRichPresence`
-    case richPresence = 16384
+    public static let richPresence = PersonaChange(rawValue: 16384)
 }
 
 extension EPersonaChange: EnumConvertible { typealias From = PersonaChange }

@@ -14,6 +14,10 @@ public struct SteamID {
     public init(_ steamID: UInt64) {
         self.steamID = steamID
     }
+    init(_ steamID: CSteamID) {
+        var kludge = steamID
+        self.steamID = kludge.ConvertToUint64()
+    }
 }
 
 extension UInt64 {

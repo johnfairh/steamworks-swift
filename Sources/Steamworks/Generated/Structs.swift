@@ -13,25 +13,24 @@ public struct SteamServersConnected: SteamCreatable {
 }
 
 public struct PersonaStateChange: SteamCreatable {
-    public let steamID: UInt64
-    public let changeFlags: Int32
+    public let steamID: SteamID
+    public let changeFlags: PersonaChange
 
     init(_ steam: PersonaStateChange_t) {
-        steamID = steam.m_ulSteamID
-        changeFlags = steam.m_nChangeFlags
+        steamID = SteamID(steam.m_ulSteamID)
+        changeFlags = PersonaChange(rawValue: UInt32(steam.m_nChangeFlags))
     }
 }
 
 public struct FriendsGetFollowerCount: SteamCreatable {
-    public let result: UInt32
-    public let steamID: UInt64
-    public let count: Int32
+    public let result: Result
+    public let steamID: SteamID
+    public let count: Int
 
     init(_ steam: FriendsGetFollowerCount_t) {
-        result = steam.m_eResult.rawValue
-        var kludge = steam.m_steamID /* y u no const mf */
-        steamID = kludge.ConvertToUint64()
-        count = steam.m_nCount
+        result = Result(steam.m_eResult)
+        steamID = SteamID(steam.m_steamID)
+        count = Int(steam.m_nCount)
     }
 }
 
