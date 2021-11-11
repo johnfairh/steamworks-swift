@@ -55,7 +55,7 @@ final class SwiftParam {
     let json: SteamAPI.Interface.Method.Param
 
     var swiftName: String {
-        json.paramname // TODO
+        json.paramname.asSwiftParameterName
     }
 
     var steamTypeName: String {
@@ -69,6 +69,7 @@ final class SwiftParam {
         case out  // pass inout, use a temporary to cast, copy-back
         case in_array // pass by value but a Swift array, use a temporary to cast, no copy-back
         case in_array_count(SwiftParam) // a C param for the length of an `in_array` param that is absent in Swift
+        case out_array(String) // pass inout, temporary to cast, copy-back, array.  Required size given by another param.
     }
     private let style: Style
 
@@ -79,6 +80,7 @@ final class SwiftParam {
         case .out: return "inout \(swiftTypeBaseName)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
+        case .out_array: return "inout [\(swiftTypeBaseName)]"
         }
     }
 
@@ -89,30 +91,41 @@ final class SwiftParam {
 
     /// What code (if any) is required before calling the Steamworks API
     /// SW isn't a particularly good `const` citizen
-    /// We could probably use `defer` to simplify the structure a bit.
-    var preCallLine: String? {
+    var preCallLines: [String] {
         switch style {
-        case .out: return "var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks)"
-        case .in_array: return "var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"
-        case .in, .in_array_count: return nil
+        case .in, .in_array_count: return []
+        case .in_array: return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
+        case .out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks)"]
+        case .out_array(let sizeParam):
+            let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
+            return [
+                "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asSwiftParameterName))",
+                "defer { \(tempName).deallocate() }"
+            ]
         }
     }
 
     /// How to refer to the param in the Steamworks API call
     var callName: String {
         switch style {
-        case .in: return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
-        case .out: return "&\(tempName)"
-        case .in_array: return "&\(tempName)"
-        case .in_array_count(let ap): return "\(ap.swiftName).count".asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
+        case .in:
+            return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
+        case .out, .in_array:
+            return "&\(tempName)"
+        case .in_array_count(let ap):
+            return "\(ap.swiftName).count".asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
+        case .out_array:
+            return "\(tempName).baseAddress"
         }
     }
 
     /// What code (if any) is required after calling the Steamworks API
-    var postCallLine: String? {
+    var postSuccessCallLine: String? {
         switch style {
         case .out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
         case .in, .in_array, .in_array_count: return nil
+        case .out_array:
+            return "\(swiftName) = \(tempName).map { \(swiftTypeBaseName)($0) }"
         }
     }
 
@@ -124,7 +137,9 @@ final class SwiftParam {
             style = .in_array_count(arrayParam)
         } else if let matches = naiveSwiftTypeName.re_match("^(.*) \\*$") {
             swiftTypeBaseName = matches[1].asSwiftTypeName
-            if json.array_count == nil {
+            if let outLength = json.out_array_length {
+                style = .out_array(outLength)
+            } else if json.array_count == nil {
                 style = .out
             } else {
                 style = .in_array
@@ -168,7 +183,7 @@ extension Array where Element == SwiftParam {
 
     /// Lines to add before the API call
     var preCallLines: [String] {
-        compactMap { $0.preCallLine }
+        flatMap { $0.preCallLines }
     }
 
     /// Steamworks call parameter list
@@ -178,7 +193,7 @@ extension Array where Element == SwiftParam {
 
     /// Lines to add after the API call
     var postCallLines: [String] {
-        compactMap { $0.postCallLine }
+        compactMap { $0.postSuccessCallLine }
     }
 }
 

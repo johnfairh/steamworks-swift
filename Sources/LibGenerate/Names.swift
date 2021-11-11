@@ -32,6 +32,10 @@ extension String {
         }
     }
 
+    var asSwiftParameterName: String {
+        self // TODO
+    }
+
     /// WBN to have a runtime function for this ...
     var backtickedIfNecessary: String {
         backtickKeywords.contains(self) ? "`\(self)`" : self

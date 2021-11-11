@@ -83,14 +83,28 @@ struct SteamAPI: Codable {
                 let paramname: String
                 let paramtype: String
                 let paramtype_flat: String?
-                let out_struct: String?
+                // unused? let out_struct: String?
                 let out_array_call: String?
+                let out_array_count: String?
                 let array_count: String?
                 let out_string_count: String?
                 let buffer_count: String?
 
                 var type: String {
                     paramtype_flat ?? paramtype
+                }
+
+                var out_array_length: String? {
+                    if let arrayCall = out_array_call {
+                        // comma-separated list, first is param name, rest is dynamic recipe on how to calculate.
+                        // used so sparingly (once) ignore the clever part.
+                        return String(arrayCall.split(separator: ",")[0])
+                    }
+                    if let arrayCount = out_array_count {
+                        // const or param with the length
+                        return arrayCount
+                    }
+                    return nil
                 }
             }
             let params: [Param]

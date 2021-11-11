@@ -95,10 +95,11 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupMembersList()`
-    func getFriendsGroupMembersList(friendsGroupID: FriendsGroupID, pOutSteamIDMembers: inout SteamID, nMembersCount: Int) {
-        var tmp_pOutSteamIDMembers = CSteamID()
-        SteamAPI_ISteamFriends_GetFriendsGroupMembersList(interface, FriendsGroupID_t(friendsGroupID), &tmp_pOutSteamIDMembers, Int32(nMembersCount))
-        pOutSteamIDMembers = SteamID(tmp_pOutSteamIDMembers)
+    func getFriendsGroupMembersList(friendsGroupID: FriendsGroupID, pOutSteamIDMembers: inout [SteamID], nMembersCount: Int) {
+        let tmp_pOutSteamIDMembers = UnsafeMutableBufferPointer<CSteamID>.allocate(capacity: nMembersCount)
+        defer { tmp_pOutSteamIDMembers.deallocate() }
+        SteamAPI_ISteamFriends_GetFriendsGroupMembersList(interface, FriendsGroupID_t(friendsGroupID), tmp_pOutSteamIDMembers.baseAddress, Int32(nMembersCount))
+        pOutSteamIDMembers = tmp_pOutSteamIDMembers.map { SteamID($0) }
     }
 
     /// Steamworks `ISteamFriends::HasFriend()`
