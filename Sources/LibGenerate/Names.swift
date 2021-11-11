@@ -83,14 +83,15 @@ private let steamToSwiftTypes: [String : String] = [
     "int" : "Int",
     "uint32" : "Int",
     "bool" : "Bool",
-    "uint64_steamid" : "SteamID"
+    "uint64_steamid" : "SteamID",
+    "void *": "UnsafeMutableRawPointer"
 ]
 
 // Steam types whose Swift type version is typesafe to pass
 // directly (without a cast) to a Steamworks function expecting
 // the Steam type.
 private let steamTypesPassedInTransparently = Set<String>([
-    "bool", "const char *"
+    "bool", "const char *", "void *"
 ])
 
 // Steam types whose Swift type version is typesafe to pass

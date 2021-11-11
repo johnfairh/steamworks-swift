@@ -323,12 +323,10 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
-    func getClanChatMessage(steamIDClanChat: SteamID, iMessage: Int, prgchText: inout void, cchTextMax: Int, peChatEntryType: inout ChatEntryType, psteamidChatter: inout SteamID) -> Int {
-        var tmp_prgchText = void()
+    func getClanChatMessage(steamIDClanChat: SteamID, iMessage: Int, prgchText: UnsafeMutableRawPointer, cchTextMax: Int, peChatEntryType: inout ChatEntryType, psteamidChatter: inout SteamID) -> Int {
         var tmp_peChatEntryType = EChatEntryType(rawValue: 0)
         var tmp_psteamidChatter = CSteamID()
-        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(steamIDClanChat), Int32(iMessage), &tmp_prgchText, Int32(cchTextMax), &tmp_peChatEntryType, &tmp_psteamidChatter))
-        prgchText = void(tmp_prgchText)
+        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(steamIDClanChat), Int32(iMessage), prgchText, Int32(cchTextMax), &tmp_peChatEntryType, &tmp_psteamidChatter))
         peChatEntryType = ChatEntryType(tmp_peChatEntryType)
         psteamidChatter = SteamID(tmp_psteamidChatter)
         return rc
@@ -365,11 +363,9 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendMessage()`
-    func getFriendMessage(steamIDFriend: SteamID, iMessageID: Int, pvData: inout void, cubData: Int, peChatEntryType: inout ChatEntryType) -> Int {
-        var tmp_pvData = void()
+    func getFriendMessage(steamIDFriend: SteamID, iMessageID: Int, pvData: UnsafeMutableRawPointer, cubData: Int, peChatEntryType: inout ChatEntryType) -> Int {
         var tmp_peChatEntryType = EChatEntryType(rawValue: 0)
-        let rc = Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, UInt64(steamIDFriend), Int32(iMessageID), &tmp_pvData, Int32(cubData), &tmp_peChatEntryType))
-        pvData = void(tmp_pvData)
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, UInt64(steamIDFriend), Int32(iMessageID), pvData, Int32(cubData), &tmp_peChatEntryType))
         peChatEntryType = ChatEntryType(tmp_peChatEntryType)
         return rc
     }
