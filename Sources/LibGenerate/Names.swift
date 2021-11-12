@@ -32,8 +32,26 @@ extension String {
         }
     }
 
+    /// For method parameters and (derivedly) structure members
+    ///
+    /// Try to get rid of the hungarian prefix without losing meaning.
     var asSwiftParameterName: String {
-        self // TODO
+        if steamParameterNamesUnchanged.contains(self) {
+            return self
+        }
+        if let exception = steamParameterNamesExceptions[self] {
+            return exception
+        }
+        // 'steamID' is used a single hungarian character with various spellings
+        if let matches = re_match("^p?(?:Out)?steamID(.+)$", options: .i) {
+            return matches[1].asSwiftIdentifier
+        }
+        // 'i' usually means 'index' into some constant - see exceptions though
+        if re_isMatch("^i[A-Z]") {
+            return "\(dropFirst())Index".asSwiftIdentifier
+        }
+        // Ultimate fallback - strip lower-case prefix and convert
+        return re_sub("^[a-z]*", with: "").asSwiftIdentifier
     }
 
     /// WBN to have a runtime function for this ...
@@ -78,7 +96,7 @@ extension String {
 
 /// Just what we've seen necessary
 private let backtickKeywords = Set<String>([
-    "public", "private", "internal", "for", "switch", "case", "default"
+    "case", "default", "for", "internal", "private", "protocol", "public", "switch"
 ])
 
 // How to represent a steam type in the Swift interface, hard-coded mappings
@@ -111,6 +129,18 @@ private let steamTypesPassedInStrangely: [String : String] = [
     "int" : "Int32",
     "bool" : "Bool",
     "uint64_steamid" : "UInt64"
+]
+
+// Parameter/field names to just pass straight through
+private let steamParameterNamesUnchanged = Set<String>([
+    "friendsGroupID", "steamID"
+])
+
+// Parameter/field names where no rules are followed and we
+// have to hard-code
+private let steamParameterNamesExceptions: [String : String] = [
+    "cubData" : "dataSize",
+    "iFriendFlags" : "friendFlags"
 ]
 
 extension String {

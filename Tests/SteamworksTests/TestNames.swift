@@ -48,4 +48,20 @@ class TestNames: XCTestCase {
             XCTAssertEqual(steam.asSwiftIdentifier, swift)
         }
     }
+
+    func testParameters() {
+        let cases = [
+            ("steamID", "steamID"),
+            ("steamidUser", "user"),
+            ("pOutSteamIDUsers", "users"),
+            ("pszInput", "input"),
+            ("aProtocol", "`protocol`"),
+            ("iEntry", "entryIndex"),
+            ("cubData", "dataSize")
+        ]
+
+        cases.forEach { steam, swift in
+            XCTAssertEqual(steam.asSwiftParameterName, swift)
+        }
+    }
 }
