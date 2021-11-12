@@ -97,6 +97,11 @@ struct PatchJSON: Codable {
     struct Method: Codable {
         let returntype: String? // patch returntype
         let out_param_iff_rc: String? // only copyback out-params if method rc matches
+
+        struct Param: Codable {
+            let type: String? // patch paramtype
+        }
+        let params: [String : Param]?
     }
     let methods: [String : Method] // methodname_flat key
 
@@ -166,9 +171,9 @@ struct MetadataDB {
                 // ?? let out_string_count: String?
                 // ?? let buffer_count: String?
 
-                init(base: SteamJSON.Interface.Method.Param) {
+                init(base: SteamJSON.Interface.Method.Param, patch: PatchJSON.Method.Param?) {
                     self.name = base.paramname
-                    self.type = base.paramtype_flat ?? base.paramtype
+                    self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
                     self.array_count = base.array_count
 
                     if let arrayCall = base.out_array_call {
@@ -191,7 +196,7 @@ struct MetadataDB {
                 methodname = base.methodname
                 methodname_flat = base.methodname_flat
                 callresult = base.callresult
-                params = base.params.map { .init(base: $0) }
+                params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
                 returntype = patch?.returntype ?? base.returntype
                 out_param_iff_rc = patch?.out_param_iff_rc
             }
@@ -260,5 +265,9 @@ final class Metadata: CustomStringConvertible {
 
     static func isEnum(steamType name: String) -> Bool {
         shared.db.enums[name] != nil
+    }
+
+    static func isOptionSetEnum(steamType name: String) -> Bool {
+        shared.db.enums[name].flatMap { $0.is_set } ?? false
     }
 }

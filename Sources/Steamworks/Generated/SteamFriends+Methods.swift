@@ -34,12 +34,12 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendCount()`
-    func getFriendCount(friendFlags: Int) -> Int {
+    func getFriendCount(friendFlags: FriendFlags) -> Int {
         Int(SteamAPI_ISteamFriends_GetFriendCount(interface, Int32(friendFlags)))
     }
 
     /// Steamworks `ISteamFriends::GetFriendByIndex()`
-    func getFriendByIndex(friendIndex: Int, friendFlags: Int) -> SteamID {
+    func getFriendByIndex(friendIndex: Int, friendFlags: FriendFlags) -> SteamID {
         SteamID(SteamAPI_ISteamFriends_GetFriendByIndex(interface, Int32(friendIndex), Int32(friendFlags)))
     }
 
@@ -112,7 +112,7 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::HasFriend()`
-    func hasFriend(friend: SteamID, friendFlags: Int) -> Bool {
+    func hasFriend(friend: SteamID, friendFlags: FriendFlags) -> Bool {
         SteamAPI_ISteamFriends_HasFriend(interface, UInt64(friend), Int32(friendFlags))
     }
 

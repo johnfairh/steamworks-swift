@@ -54,8 +54,6 @@ extension MetadataDB.Enum {
                            public let rawValue: \(rawType)
                            /// Create a new instance with `rawValue` flags set.
                            public init(rawValue: \(rawType)) { self.rawValue = rawValue }
-                           /// Workaround for steam API type bugs
-                           init(_ rawValue: \(steamRawType)) { self.rawValue = rawValue }
                        """
             valueGen = generateOptionSetDecl
         }

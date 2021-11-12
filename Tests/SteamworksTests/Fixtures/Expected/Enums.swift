@@ -35,8 +35,6 @@ public struct SteamMiscFlags: OptionSet {
     public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
     public init(rawValue: UInt32) { self.rawValue = rawValue }
-    /// Workaround for steam API type bugs
-    init(_ rawValue: uint32) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamMiscFlagsNone`
     public static let none = SteamMiscFlags([])
     /// Steamworks `k_ESteamMiscFlagsSome`

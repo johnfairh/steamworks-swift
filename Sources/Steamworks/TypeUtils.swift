@@ -38,7 +38,7 @@ extension CSteamID {
 // MARK: Enums
 
 /// For DRYing the conversion code between Steam enums (which are structs) and Swift enums
-/// (which are enums).
+/// (which are enums or OptionSet structs).
 protocol EnumConvertible {
     associatedtype From: RawRepresentable
 }
@@ -46,5 +46,29 @@ protocol EnumConvertible {
 extension EnumConvertible where Self: RawRepresentable, From.RawValue == Self.RawValue {
     init(_ from: From) {
         self.init(rawValue: from.rawValue)!
+    }
+}
+
+/// Steamworks OptionSet Integer mess
+///
+/// Steamworks has a few enums that are bitfield things mapped into Swift as `OptionSet`s.
+/// Clang importer imports the SW version as structs with `RawValue` of `UInt32` or `Int32`
+/// if there are no negative values.
+///
+/// But the actual Steamworks APIs that use these are all over the place with their types - never using
+/// the actual enum type (because would imply one value, I suppose) and instead using a basically
+/// random signed/unsigned half/regular width value.
+///
+/// These dumb casts smooth over the bumps in generated code.  See also
+/// `String.asSwiftTypeForPassingIntoSteamworks`.
+extension EnumConvertible where Self: OptionSet {
+    init(_ rawValue: RawValue) {
+        self.init(rawValue: rawValue)
+    }
+}
+
+extension Int32 {
+    init<T>(_ optionSet: T) where T: OptionSet, T.RawValue: BinaryInteger {
+        self = Int32(optionSet.rawValue)
     }
 }

@@ -513,8 +513,6 @@ public struct ChatSteamIDInstanceFlags: OptionSet {
     public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
     public init(rawValue: UInt32) { self.rawValue = rawValue }
-    /// Workaround for steam API type bugs
-    init(_ rawValue: uint32) { self.rawValue = rawValue }
     /// Steamworks `k_EChatAccountInstanceMask`
     public static let accountInstanceMask = ChatSteamIDInstanceFlags(rawValue: 4095)
     /// Steamworks `k_EChatInstanceFlagClan`
@@ -604,8 +602,6 @@ public struct MarketNotAllowedReasonFlags: OptionSet {
     public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
     public init(rawValue: UInt32) { self.rawValue = rawValue }
-    /// Workaround for steam API type bugs
-    init(_ rawValue: uint32) { self.rawValue = rawValue }
     /// Steamworks `k_EMarketNotAllowedReason_None`
     public static let none = MarketNotAllowedReasonFlags([])
     /// Steamworks `k_EMarketNotAllowedReason_TemporaryFailure`
@@ -826,8 +822,6 @@ public struct FriendFlags: OptionSet {
     public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
     public init(rawValue: UInt32) { self.rawValue = rawValue }
-    /// Workaround for steam API type bugs
-    init(_ rawValue: uint32) { self.rawValue = rawValue }
     /// Steamworks `k_EFriendFlagNone`
     public static let none = FriendFlags([])
     /// Steamworks `k_EFriendFlagBlocked`
@@ -863,8 +857,6 @@ public struct UserRestriction: OptionSet {
     public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
     public init(rawValue: UInt32) { self.rawValue = rawValue }
-    /// Workaround for steam API type bugs
-    init(_ rawValue: uint32) { self.rawValue = rawValue }
     /// Steamworks `k_nUserRestrictionNone`
     public static let none = UserRestriction([])
     /// Steamworks `k_nUserRestrictionUnknown`
@@ -916,8 +908,6 @@ public struct PersonaChange: OptionSet {
     public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
     public init(rawValue: UInt32) { self.rawValue = rawValue }
-    /// Workaround for steam API type bugs
-    init(_ rawValue: uint32) { self.rawValue = rawValue }
     /// Steamworks `k_EPersonaChangeName`
     public static let name = PersonaChange(rawValue: 1)
     /// Steamworks `k_EPersonaChangeStatus`
@@ -3387,8 +3377,6 @@ public struct SteamItemFlags: OptionSet {
     public let rawValue: UInt32
     /// Create a new instance with `rawValue` flags set.
     public init(rawValue: UInt32) { self.rawValue = rawValue }
-    /// Workaround for steam API type bugs
-    init(_ rawValue: uint32) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamItemNoTrade`
     public static let noTrade = SteamItemFlags(rawValue: 1)
     /// Steamworks `k_ESteamItemRemoved`

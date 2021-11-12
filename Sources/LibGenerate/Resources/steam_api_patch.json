@@ -95,6 +95,27 @@
     },
     "SteamAPI_ISteamFriends_GetFriendGamePlayed": {
         "out_param_iff_rc": ""
+    },
+    "SteamAPI_ISteamFriends_GetFriendByIndex": {
+      "params": {
+        "iFriendFlags": {
+          "type": "EFriendFlags"
+        }
+      }
+    },
+    "SteamAPI_ISteamFriends_GetFriendCount": {
+      "params": {
+        "iFriendFlags": {
+          "type": "EFriendFlags"
+        }
+      }
+    },
+    "SteamAPI_ISteamFriends_HasFriend": {
+      "params": {
+        "iFriendFlags": {
+          "type": "EFriendFlags"
+        }
+      }
     }
   }
 }

@@ -48,8 +48,6 @@ extension MetadataDB.Interface {
     }
 }
 
-// TODO - out_array_call
-
 final class SwiftParam {
     let db: MetadataDB.Interface.Method.Param
 

@@ -63,10 +63,14 @@ extension String {
     /// as `asSwiftTypeName`.  What Swift type is required to pass this to the
     /// steamworks interface?   This is normally `self`, the type itself, but there
     /// are special cases thanks to things like the Swift Clang Importer magicking
-    /// strings and our usage of `Int` upstream.
+    /// strings and our usage of `Int` upstream.  `OptionSet` enums are
+    /// confusing again - see `EnumConvertible` discussion.
     var asSwiftTypeForPassingIntoSteamworks: String? {
         if steamTypesPassedInTransparently.contains(self) {
             return nil
+        }
+        if Metadata.isOptionSetEnum(steamType: self) {
+            return "Int32"
         }
         return asExplicitSwiftTypeForPassingIntoSteamworks
     }
