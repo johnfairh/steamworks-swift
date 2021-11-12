@@ -30,14 +30,31 @@ extension ESteamEnum: EnumConvertible { typealias From = SteamEnum }
 extension SteamEnum: EnumConvertible { typealias From = ESteamEnum }
 
 /// Steamworks `ESteamMiscFlags`
-public enum SteamMiscFlags: UInt32 {
+public struct SteamMiscFlags: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    /// Workaround for steam API type bugs
+    init(_ rawValue: uint32) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamMiscFlagsNone`
-    case none = 0
+    public static let none = SteamMiscFlags([])
     /// Steamworks `k_ESteamMiscFlagsSome`
-    case some = 4
+    public static let some = SteamMiscFlags(rawValue: 4)
     /// Steamworks `k_ESteamMiscFlagsLoads`
-    case loads = 512
+    public static let loads = SteamMiscFlags(rawValue: 512)
 }
 
 extension ESteamMiscFlags: EnumConvertible { typealias From = SteamMiscFlags }
 extension SteamMiscFlags: EnumConvertible { typealias From = ESteamMiscFlags }
+
+/// Steamworks `EChatEntryType`
+public enum ChatEntryType: UInt32 {
+    /// Steamworks `k_EChatEntryTypeInvalid`
+    case invalid = 0
+    /// Steamworks `k_EChatEntryTypeChatMsg`
+    case chatMsg = 1
+}
+
+extension EChatEntryType: EnumConvertible { typealias From = ChatEntryType }
+extension ChatEntryType: EnumConvertible { typealias From = EChatEntryType }

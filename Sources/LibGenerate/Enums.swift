@@ -24,12 +24,6 @@ struct Enums {
         try io.write(fileName: "Enums.swift", contents: contents)
     }
 
-    /// Used for a weird special case, this is dumb because we have a canonical list of enum names.
-    /// Need to restructure to use smarter data types in memory and have a static lookup to it.
-    static func isEnum(steamType name: String) -> Bool {
-        name.re_isMatch("^E[A-Z]") // also not even correct for the two idiot children
-    }
-
     // MARK: Knowledge about Steamworks naming special cases
 
     /// Exceptions to the normal rules of enum element prefiix, the part to remove.

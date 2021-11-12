@@ -53,11 +53,22 @@ final class IO {
         try Data(contentsOf: jsonURL)
     }
 
-    func loadPatchJson() throws -> Data {
-        guard let url = resources.url(forResource: "steam_api_patch", withExtension: "json") else {
-            throw Failed("Missing patch json from resource bundle \(resources)")
+    static let PATCH_JSON_PATH_VAR = "PATCH_JSON_PATH"
+
+    private var patchJsonUrl: URL {
+        get throws {
+            if let override = ProcessInfo.processInfo.environment[Self.PATCH_JSON_PATH_VAR] {
+                return URL(fileURLWithPath: override)
+            }
+            guard let url = resources.url(forResource: "steam_api_patch", withExtension: "json") else {
+                throw Failed("Missing patch json from resource bundle \(resources)")
+            }
+            return url
         }
-        return try Data(contentsOf: url)
+    }
+
+    func loadPatchJson() throws -> Data {
+        try Data(contentsOf: patchJsonUrl)
     }
 
     func fileHeader(fileName: String, moduleName: String = "Steamworks") -> String {

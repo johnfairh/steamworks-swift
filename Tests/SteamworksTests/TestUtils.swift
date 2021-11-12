@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-import LibGenerate
+@testable import LibGenerate
 
 extension FileManager {
     /// Create a new empty temporary directory.  Caller must delete.
@@ -43,17 +43,23 @@ extension XCTestCase {
         fixturesURL.appendingPathComponent("sdk")
     }
 
+    static var patchJsonURL: URL {
+        fixturesURL.appendingPathComponent("steam_api_patch.json")
+    }
+
     class Harness {
         let outputDirURL: URL
         let generator: Generator
 
         init() throws {
+            setenv(IO.PATCH_JSON_PATH_VAR, patchJsonURL.path, 1)
             outputDirURL = try! FileManager.default.createTemporaryDirectory()
             generator = try Generator(sdkURL: fixturesSdkURL, outputDirURL: outputDirURL)
         }
 
         deinit {
             try? FileManager.default.removeItem(at: outputDirURL)
+            unsetenv(IO.PATCH_JSON_PATH_VAR)
         }
     }
 }

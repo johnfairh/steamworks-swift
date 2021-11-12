@@ -10,9 +10,14 @@
 
 // MARK: Interface methods
 public extension SteamFriends {
-    /// Steamworks `ISteamFriends::GetPersonaName()`
-    var personaName: String {
-        String(SteamAPI_ISteamFriends_GetPersonaName(interface))
+    /// Steamworks `ISteamFriends::GetUserRestrictions()`
+    var userRestrictions: UserRestriction {
+        UserRestriction(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
+    }
+
+    /// Steamworks `ISteamFriends::ClearRichPresence()`
+    func clearRichPresence() {
+        SteamAPI_ISteamFriends_ClearRichPresence(interface)
     }
 
     /// Steamworks `ISteamFriends::SetPersonaName()`
@@ -26,12 +31,6 @@ public extension SteamFriends {
         PersonaState(SteamAPI_ISteamFriends_GetPersonaState(interface))
     }
 
-    /// Steamworks `ISteamFriends::GetFollowerCount()`
-    func getFollowerCount(steamID: SteamID, completion: @escaping (FriendsGetFollowerCount) -> Void) {
-        let rc = SteamAPI_ISteamFriends_GetFollowerCount(interface, UInt64(steamID))
-        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
-    }
-
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
     func getClanChatMessage(steamIDClanChat: SteamID, iMessage: Int, prgchText: UnsafeMutableRawPointer, cchTextMax: Int, peChatEntryType: inout ChatEntryType, psteamidChatter: inout SteamID) -> Int {
         var tmp_peChatEntryType = EChatEntryType(rawValue: 0)
@@ -40,5 +39,23 @@ public extension SteamFriends {
         peChatEntryType = ChatEntryType(tmp_peChatEntryType)
         psteamidChatter = SteamID(tmp_psteamidChatter)
         return rc
+    }
+
+    /// Steamworks `ISteamFriends::GetFriendsGroupMembersListF()`
+    func getFriendsGroupMembersListF(friendsGroupID: FriendsGroupID, pOutSteamIDMembers: inout [SteamID], nMembersCount: Int, pSomeInts: [Int]) -> Int {
+        let tmp_pOutSteamIDMembers = UnsafeMutableBufferPointer<CSteamID>.allocate(capacity: nMembersCount)
+        defer { tmp_pOutSteamIDMembers.deallocate() }
+        var tmp_pSomeInts = pSomeInts.map { Int32($0) }
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendsGroupMembersListF(interface, FriendsGroupID_t(friendsGroupID), tmp_pOutSteamIDMembers.baseAddress, Int32(nMembersCount), &tmp_pSomeInts, Int32(pSomeInts.count)))
+        if rc == 5 {
+            pOutSteamIDMembers = tmp_pOutSteamIDMembers.map { SteamID($0) }
+        }
+        return rc
+    }
+
+    /// Steamworks `ISteamFriends::GetFriendsGroupMembersListR()`
+    func getFriendsGroupMembersListR(friendsGroupID: FriendsGroupID, pSomeInts: [Int]) -> Bool {
+        var tmp_pSomeInts = pSomeInts.map { Int32($0) }
+        return SteamAPI_ISteamFriends_GetFriendsGroupMembersListR(interface, FriendsGroupID_t(friendsGroupID), &tmp_pSomeInts, Int32(pSomeInts.count))
     }
 }

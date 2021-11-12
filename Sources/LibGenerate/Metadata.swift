@@ -229,4 +229,8 @@ final class Metadata: CustomStringConvertible {
     }
 
     static private(set) var shared: Metadata!
+
+    static func isEnum(steamType name: String) -> Bool {
+        shared.db.enums[name] != nil
+    }
 }

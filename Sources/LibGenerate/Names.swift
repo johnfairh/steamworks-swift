@@ -59,7 +59,7 @@ extension String {
 
     var asExplicitSwiftInstanceForPassingIntoSteamworks: String {
         let typename = asExplicitSwiftTypeForPassingIntoSteamworks
-        let suffix = Enums.isEnum(steamType: self) ? "(rawValue: 0)" : "()"
+        let suffix = Metadata.isEnum(steamType: self) ? "(rawValue: 0)" : "()"
         return typename + suffix
     }
 

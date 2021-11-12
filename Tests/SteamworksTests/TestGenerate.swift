@@ -8,8 +8,8 @@
 import LibGenerate
 import XCTest
 
-//let replaceFixtures = false
-let replaceFixtures = true
+let replaceFixtures = false
+//let replaceFixtures = true
 
 /// End-to-end generation from interesting stub data
 class TestGenerate: XCTestCase {
