@@ -21,6 +21,7 @@ public extension SteamFriends {
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
+    /// Steamworks `ISteamFriends::SetPersonaName()`
     func setPersonaName(personaName: String) async -> SetPersonaNameResponse {
         await withUnsafeContinuation {
             setPersonaName(personaName: personaName, completion: $0.resume)
@@ -154,6 +155,7 @@ public extension SteamFriends {
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
+    /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`
     func downloadClanActivityCounts(clans: [SteamID]) async -> DownloadClanActivityCountsResult {
         await withUnsafeContinuation {
             downloadClanActivityCounts(clans: clans, completion: $0.resume)
@@ -236,6 +238,7 @@ public extension SteamFriends {
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
+    /// Steamworks `ISteamFriends::RequestClanOfficerList()`
     func requestClanOfficerList(clan: SteamID) async -> ClanOfficerListResponse {
         await withUnsafeContinuation {
             requestClanOfficerList(clan: clan, completion: $0.resume)
@@ -323,6 +326,7 @@ public extension SteamFriends {
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
+    /// Steamworks `ISteamFriends::JoinClanChatRoom()`
     func joinClanChatRoom(clan: SteamID) async -> JoinClanChatRoomCompletionResult {
         await withUnsafeContinuation {
             joinClanChatRoom(clan: clan, completion: $0.resume)
@@ -403,6 +407,7 @@ public extension SteamFriends {
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
+    /// Steamworks `ISteamFriends::GetFollowerCount()`
     func getFollowerCount(steamID: SteamID) async -> FriendsGetFollowerCount {
         await withUnsafeContinuation {
             getFollowerCount(steamID: steamID, completion: $0.resume)
@@ -415,6 +420,7 @@ public extension SteamFriends {
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
+    /// Steamworks `ISteamFriends::IsFollowing()`
     func isFollowing(steamID: SteamID) async -> FriendsIsFollowing {
         await withUnsafeContinuation {
             isFollowing(steamID: steamID, completion: $0.resume)
@@ -427,6 +433,7 @@ public extension SteamFriends {
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
+    /// Steamworks `ISteamFriends::EnumerateFollowingList()`
     func enumerateFollowingList(startIndex: Int) async -> FriendsEnumerateFollowingList {
         await withUnsafeContinuation {
             enumerateFollowingList(startIndex: startIndex, completion: $0.resume)

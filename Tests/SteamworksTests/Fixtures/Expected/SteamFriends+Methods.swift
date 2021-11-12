@@ -26,6 +26,7 @@ public extension SteamFriends {
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
+    /// Steamworks `ISteamFriends::SetPersonaName()`
     func setPersonaName(personaName: String) async -> SetPersonaNameResponse {
         await withUnsafeContinuation {
             setPersonaName(personaName: personaName, completion: $0.resume)

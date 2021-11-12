@@ -319,16 +319,17 @@ struct SwiftMethod {
         params.preCallLines + callLines + postCallLines + finalBodyLines
     }
 
-    var syncDecl: [String] {
-        [declLine] + bodyLines.indented(1) + ["}"]
+    func syncDecl(comment: String) -> [String] {
+        [comment, declLine] + bodyLines.indented(1) + ["}"]
     }
 
-    var asyncDecl: [String] {
+    func asyncDecl(comment: String) -> [String] {
         guard case let .callReturn(type) = style else {
             return []
         }
         return [
             "",
+            "\(comment)",
             "func \(db.funcName)(\(params.functionParams)) async -> \(type) {",
             "    await withUnsafeContinuation {",
             "        \(db.funcName)(\(params.asyncForwardingParams), completion: $0.resume)",
@@ -337,8 +338,8 @@ struct SwiftMethod {
         ]
     }
 
-    var decl: [String] {
-        syncDecl + asyncDecl
+    func decl(comment: String) -> [String] {
+        syncDecl(comment: comment) + asyncDecl(comment: comment)
     }
 }
 
@@ -357,8 +358,8 @@ extension MetadataDB.Interface.Method {
 
     func generate(context: String) -> String {
         let swiftMethod = SwiftMethod(self)
-        let lines = ["/// Steamworks `\(context)::\(methodname)()`"] + swiftMethod.decl
-        return lines.indented(1).joined(separator: "\n")
+        let comment = "/// Steamworks `\(context)::\(methodname)()`"
+        return swiftMethod.decl(comment: comment).indented(1).joined(separator: "\n")
     }
 }
 
