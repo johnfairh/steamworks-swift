@@ -5,7 +5,6 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
-
 /// Code gen the API interfaces
 ///
 /// The point of this is to generate reasonable Swift versions of all the methods.
@@ -195,6 +194,13 @@ extension Array where Element == SwiftParam {
     var postSuccessCallLines: [String] {
         compactMap { $0.postSuccessCallLine }
     }
+
+    /// Call params when forwarding from async to callback API version
+    var asyncForwardingParams: String {
+        compactMap { param in
+            param.swiftParamType.flatMap { _ in "\(param.swiftName): \(param.swiftName)" }
+        }.joined(separator: ", ")
+    }
 }
 
 struct SwiftMethod {
@@ -313,8 +319,26 @@ struct SwiftMethod {
         params.preCallLines + callLines + postCallLines + finalBodyLines
     }
 
-    var decl: [String] {
+    var syncDecl: [String] {
         [declLine] + bodyLines.indented(1) + ["}"]
+    }
+
+    var asyncDecl: [String] {
+        guard case let .callReturn(type) = style else {
+            return []
+        }
+        return [
+            "",
+            "func \(db.funcName)(\(params.functionParams)) async -> \(type) {",
+            "    await withUnsafeContinuation {",
+            "        \(db.funcName)(\(params.asyncForwardingParams), completion: $0.resume)",
+            "    }",
+            "}",
+        ]
+    }
+
+    var decl: [String] {
+        syncDecl + asyncDecl
     }
 }
 

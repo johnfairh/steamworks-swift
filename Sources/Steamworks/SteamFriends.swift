@@ -21,12 +21,3 @@ public struct SteamFriends {
     init() {
     }
 }
-
-// tmp bringup
-
-extension SteamFriends {
-    public func getFollowerCount(steamID: UInt64, completion: @escaping (FriendsGetFollowerCount) -> Void) {
-        let rc = SteamAPI_ISteamFriends_GetFollowerCount(interface, steamID)
-        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
-    }
-}

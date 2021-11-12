@@ -115,7 +115,10 @@ private let steamTypesPassedInStrangely: [String : String] = [
 
 extension String {
     func indented(_ level: Int) -> String {
-        String(repeating: "    ", count: level) + self
+        guard !isEmpty else {
+            return self
+        }
+        return String(repeating: "    ", count: level) + self
     }
 }
 
