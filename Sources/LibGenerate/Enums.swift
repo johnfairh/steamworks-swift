@@ -12,15 +12,15 @@
 /// the corresponding Struct definition.
 struct Enums {
     let io: IO
-    let json: JSON
+    let metadata: Metadata
 
-    init(io: IO, json: JSON) {
+    init(io: IO, metadata: Metadata) {
         self.io = io
-        self.json = json
+        self.metadata = metadata
     }
 
     func generate() throws {
-        let contents = json.api.enums.map(\.generated).joined(separator: "\n\n")
+        let contents = metadata.db.enums.values.map(\.generated).joined(separator: "\n\n")
         try io.write(fileName: "Enums.swift", contents: contents)
     }
 
@@ -108,11 +108,7 @@ extension String {
 
 // MARK: Structure generation
 
-extension SteamAPI.Enum {
-    var isEnumNotOptionSet: Bool {
-        is_set == nil
-    }
-
+extension MetadataDB.Enum {
     var rawType: String {
         values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
     }
@@ -129,7 +125,7 @@ extension SteamAPI.Enum {
         let typeDecl: String
         let valueGen: (Value, String) -> String
 
-        if isEnumNotOptionSet {
+        if !is_set {
             typeDecl = "public enum \(swiftTypeName): \(rawType) {"
             valueGen = generateEnumCaseDecl
         } else {
@@ -169,7 +165,7 @@ extension SteamAPI.Enum {
     /// than I learnt in the past five years... who made 0 magical ...
     func generateOptionSetDecl(value: Value, swiftTypeName: String) -> String {
         let initArgs: String
-        if value.value == "0" && !isEnumNotOptionSet {
+        if value.value == "0" && is_set {
             initArgs = "[]"
         } else {
             initArgs = "rawValue: \(value.value)"

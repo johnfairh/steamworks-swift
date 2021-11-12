@@ -9,22 +9,22 @@ import Foundation
 
 public struct Generator {
     let io: IO
-    let json: JSON
+    let metadata: Metadata
     let version: Version
     let enums: Enums
     let interfaces: Interfaces
 
     public init(sdkURL: URL, outputDirURL: URL) throws {
-        self.io = try IO(sdkURL: sdkURL, outputDirURL: outputDirURL)
-        json = try JSON(io: io)
+        io = try IO(sdkURL: sdkURL, outputDirURL: outputDirURL)
+        metadata = try Metadata(io: io)
         version = Version(io: io)
-        enums = Enums(io: io, json: json)
-        interfaces = Interfaces(io: io, json: json)
+        enums = Enums(io: io, metadata: metadata)
+        interfaces = Interfaces(io: io, metadata: metadata)
     }
 
     public func generate() throws {
         print("Input JSON: \(io.jsonURL.path)")
-        print(json.description)
+        print(metadata.description)
         print("Output directory: \(io.outputDirURL.path)")
 
         try version.generate()

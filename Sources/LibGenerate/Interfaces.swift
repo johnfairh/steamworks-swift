@@ -14,15 +14,15 @@
 /// of multiple returned values and buffer allocation.
 struct Interfaces {
     let io: IO
-    let json: JSON
+    let metadata: Metadata
 
-    init(io: IO, json: JSON) {
+    init(io: IO, metadata: Metadata) {
         self.io = io
-        self.json = json
+        self.metadata = metadata
     }
 
     func generate() throws {
-        try json.api.interfaces.forEach { interface in
+        try metadata.db.interfaces.values.forEach { interface in
             guard interface.classname == "ISteamFriends" else {
                 return
             }
@@ -33,7 +33,7 @@ struct Interfaces {
     }
 }
 
-extension SteamAPI.Interface {
+extension MetadataDB.Interface {
     func generate(context: String) -> String {
         let swiftName = classname.asSwiftTypeName
 
@@ -42,7 +42,7 @@ extension SteamAPI.Interface {
                           public extension \(swiftName) {
 
                           """
-        let methods = methods.map {
+        let methods = methods.values.map {
             $0.generate(context: classname)
         }
         return declaration + methods.joined(separator: "\n\n") + "\n}"
@@ -52,14 +52,14 @@ extension SteamAPI.Interface {
 // TODO - out_array_call
 
 final class SwiftParam {
-    let json: SteamAPI.Interface.Method.Param
+    let db: MetadataDB.Interface.Method.Param
 
     var swiftName: String {
-        json.paramname.asSwiftParameterName
+        db.name.asSwiftParameterName
     }
 
     var steamTypeName: String {
-        json.type
+        db.type
     }
 
     private let swiftTypeBaseName: String
@@ -129,17 +129,17 @@ final class SwiftParam {
         }
     }
 
-    init(_ json: SteamAPI.Interface.Method.Param, inArrayParam: SwiftParam? = nil) {
-        self.json = json
-        let naiveSwiftTypeName = json.type.asSwiftTypeName
+    init(_ db: MetadataDB.Interface.Method.Param, inArrayParam: SwiftParam? = nil) {
+        self.db = db
+        let naiveSwiftTypeName = db.type.asSwiftTypeName
         if let arrayParam = inArrayParam {
             swiftTypeBaseName = "ERROR"
             style = .in_array_count(arrayParam)
         } else if let matches = naiveSwiftTypeName.re_match("^(.*) \\*$") {
             swiftTypeBaseName = matches[1].asSwiftTypeName
-            if let outLength = json.out_array_length {
+            if let outLength = db.out_array_length {
                 style = .out_array(outLength)
-            } else if json.array_count == nil {
+            } else if db.array_count == nil {
                 style = .out
             } else {
                 style = .in_array
@@ -151,13 +151,13 @@ final class SwiftParam {
     }
 }
 
-extension Array where Element == SteamAPI.Interface.Method.Param {
+extension Array where Element == MetadataDB.Interface.Method.Param {
     var asSwiftParams: [SwiftParam] {
         var params = [SwiftParam]()
         var lookingForCount = [String : SwiftParam]()
 
         forEach { p in
-            let param = SwiftParam(p, inArrayParam: lookingForCount.removeValue(forKey: p.paramname))
+            let param = SwiftParam(p, inArrayParam: lookingForCount.removeValue(forKey: p.name))
             params.append(param)
             if let countParamName = p.array_count {
                 lookingForCount[countParamName] = param
@@ -198,7 +198,7 @@ extension Array where Element == SwiftParam {
 }
 
 struct SwiftMethod {
-    let json: SteamAPI.Interface.Method
+    let db: MetadataDB.Interface.Method
 
     enum Style {
         case normal(String) // 0+ args, return value
@@ -209,41 +209,41 @@ struct SwiftMethod {
     let style: Style
     let params: [SwiftParam]
 
-    init(_ json: SteamAPI.Interface.Method) {
-        self.json = json
-        if let callResult = json.callresult {
+    init(_ db: MetadataDB.Interface.Method) {
+        self.db = db
+        if let callResult = db.callresult {
             style = .callReturn(callResult.asSwiftTypeName)
-        } else if json.returntype != "void" {
-            style = .normal(json.returntype.asSwiftTypeName)
+        } else if db.returntype != "void" {
+            style = .normal(db.returntype.asSwiftTypeName)
         } else {
             style = .void
         }
-        params = json.params.asSwiftParams
+        params = db.params.asSwiftParams
     }
 
     var declLine: String {
-        switch (style, json.isVar) {
+        switch (style, db.isVar) {
         case (.normal(let type), true):
-            return "var \(json.varName): \(type) {"
+            return "var \(db.varName): \(type) {"
         case (.normal(let type), false):
-            return "func \(json.funcName)(\(params.functionParams)) -> \(type) {"
+            return "func \(db.funcName)(\(params.functionParams)) -> \(type) {"
         case (.void, false):
-            return "func \(json.funcName)(\(params.functionParams)) {"
+            return "func \(db.funcName)(\(params.functionParams)) {"
         case (.callReturn(let type), false):
             let done = "completion: @escaping (\(type)) -> Void"
-            return "func \(json.funcName)(\(params.functionParams), \(done)) {"
+            return "func \(db.funcName)(\(params.functionParams), \(done)) {"
         default:
-            preconditionFailure("Unexpected var-match: \(json)")
+            preconditionFailure("Unexpected var-match: \(db)")
         }
     }
 
     /// Expression returning the Swift type of the API (or, er, not for callReturn)
     var callExpression: String {
         let paramList = params.isEmpty ? "" : ", \(params.callParams)"
-        let steamCall = "\(json.methodname_flat)(interface\(paramList))"
+        let steamCall = "\(db.methodname_flat)(interface\(paramList))"
         switch style {
         case .normal:
-            return steamCall.asCast(to: json.returntype.asSwiftTypeForPassingOutOfSteamworks)
+            return steamCall.asCast(to: db.returntype.asSwiftTypeForPassingOutOfSteamworks)
         case .void, .callReturn:
             return steamCall
         }
@@ -299,7 +299,7 @@ struct SwiftMethod {
     var postCallLines: [String] {
         let successLines = params.postSuccessCallLines
         guard !successLines.isEmpty,
-            let test = json.out_param_iff_rc else {
+            let test = db.out_param_iff_rc else {
             return successLines
         }
         return ["if rc \(test.count == 0 ? "" : "\(test) "){"] + successLines.indented(1) + ["}"]
@@ -318,7 +318,7 @@ struct SwiftMethod {
     }
 }
 
-extension SteamAPI.Interface.Method {
+extension MetadataDB.Interface.Method {
     var isVar: Bool {
         params.count == 0 && methodname.starts(with: "Get")
     }

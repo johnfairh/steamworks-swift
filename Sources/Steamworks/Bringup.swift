@@ -55,8 +55,7 @@ public typealias AppId = SteamTypealias<UInt32>
 //    apiCallbacks[rc] = makeRaw(completion)
 //}
 //
-//@available(macOS 12.0.0, *)
-//func JoinClanChatRoom(steamIDClan: CSteamID) async -> JoinClanChatRoomCompletionResult_t {
+//func JoinClanChatRoom(steamIDClan: SteamID) async -> JoinClanChatRoomCompletionResult {
 //    await withUnsafeContinuation { continuation in
 //        JoinClanChatRoom(steamIDClan: steamIDClan) {
 //            continuation.resume(returning: $0)

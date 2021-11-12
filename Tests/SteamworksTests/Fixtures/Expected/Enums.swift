@@ -30,17 +30,13 @@ extension ESteamEnum: EnumConvertible { typealias From = SteamEnum }
 extension SteamEnum: EnumConvertible { typealias From = ESteamEnum }
 
 /// Steamworks `ESteamMiscFlags`
-public struct SteamMiscFlags: OptionSet {
-    /// The flags value.
-    public let rawValue: UInt32
-    /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+public enum SteamMiscFlags: UInt32 {
     /// Steamworks `k_ESteamMiscFlagsNone`
-    public static let none = SteamMiscFlags([])
+    case none = 0
     /// Steamworks `k_ESteamMiscFlagsSome`
-    public static let some = SteamMiscFlags(rawValue: 4)
+    case some = 4
     /// Steamworks `k_ESteamMiscFlagsLoads`
-    public static let loads = SteamMiscFlags(rawValue: 512)
+    case loads = 512
 }
 
 extension ESteamMiscFlags: EnumConvertible { typealias From = SteamMiscFlags }
