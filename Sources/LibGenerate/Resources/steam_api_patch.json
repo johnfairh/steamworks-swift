@@ -1,22 +1,92 @@
 {
   "enums": {
+    "AudioPlayback_Status": {
+      "prefix": "AudioPlayback"
+    },
     "EChatSteamIDInstanceFlags": {
-      "is_set": true
+      "is_set": true,
+      "prefix": "EChat(?:InstanceFlag)?"
+    },
+    "EDenyReason": {
+      "prefix": "EDeny"
+    },
+    "EDurationControlNotification": {
+      "numeric_prefix": "in"
+    },
+    "EDurationControlProgress": {
+      "prefix": "EDurationControl(?:Progress)?",
     },
     "EFriendFlags": {
-      "is_set": true
+      "is_set": true,
+      "prefix": "EFriendFlag"
+    },
+    "EGameSearchErrorCode_t": {
+      "prefix": "EGameSearchErrorCode"
+    },
+    "EHTTPStatusCode": {
+      "numeric_prefix": "http"
     },
     "EMarketNotAllowedReasonFlags": {
-      "is_set": true
+      "is_set": true,
+      "prefix": "EMarketNotAllowedReason"
+    },
+    "ENotificationPosition": {
+      "prefix": "EPosition"
+    },
+    "EParentalFeature": {
+      "prefix": "EFeature"
     },
     "EPersonaChange": {
       "is_set": true
     },
+    "EPlayerResult_t": {
+      "prefix": "EPlayerResult"
+    },
+    "ERegisterActivationCodeResult": {
+      "prefix": "ERegisterActivationCode(?:Result)?"
+    },
     "ESteamItemFlags": {
-      "is_set": true
+      "is_set": true,
+      "prefix": "ESteamItem"
+    },
+    "ESteamNetConnectionEnd": {
+      "values": {
+        "k_ESteamNetConnectionEnd_App_Generic": {
+          "force_static": true
+        },
+        "k_ESteamNetConnectionEnd_AppException_Generic": {
+          "force_static": true
+        },
+      }
+    },
+    "ESteamNetworkingConfigDataType": {
+      "prefix": "ESteamNetworkingConfig(?:DataType)?"
+    },
+    "ESteamNetworkingConfigScope": {
+      "prefix": "ESteamNetworkingConfig(?:Scope)?"
+    },
+    "ESteamNetworkingConfigValue": {
+      "prefix": "ESteamNetworkingConfig(?:Value)?"
+    },
+    "ESteamNetworkingGetConfigValueResult": {
+      "prefix": "ESteamNetworkingGetConfigValue(?:Result)?"
+    },
+    "EUGCReadAction": {
+      "prefix": "EUGCRead"
+    },
+    "EUserHasLicenseForAppResult": {
+      "prefix": "EUserHasLicenseResult"
     },
     "EUserRestriction": {
-      "is_set": true
+      "is_set": true,
+      "prefix": "UserRestriction"
+    },
+    "EWorkshopFileType": {
+      "values": {
+        "k_EWorkshopFileTypeFirst": {
+          "force_static": true
+        }
+      }
     }
   },
   "methods": {

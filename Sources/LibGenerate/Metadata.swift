@@ -74,12 +74,23 @@ struct SteamJSON: Codable {
 ///
 /// Features:
 /// * Enums: use OptionSet or Enum in Swift
+/// * Enums: value prefix to strip -- Steam has a clear convention for this but breaks it in
+///   various ways that we have to hard-code.
+/// * Enums: token to insert to avoid enum cases starting with numbers
+/// * Enums: hint to generate a static member instead of an enum case
 /// * Methods: correct the return type
 /// * Methods: specify out-param behaviour when API call fails
 ///
 struct PatchJSON: Codable {
     struct Enum: Codable {
         let is_set: Bool? // values are bit-sig, model as OptionSet
+        let prefix: String? // enum values non-default prefix
+        let numeric_prefix: String? // numeric-identifier workaround
+
+        struct Value: Codable {
+            let force_static: Bool? // generate a static member instead of an enum case
+        }
+        let values: [String : Value]? // valuename key
     }
     let enums: [String : Enum] // enumname key
 
@@ -109,15 +120,32 @@ struct MetadataDB {
     let consts: OrderedDictionary<String, Const>
 
     struct Enum {
-        typealias Value = SteamJSON.Enum.Value
         let enumname: String
-        let values: [Value]
         let is_set: Bool
+        let prefix: String
+        let numeric_prefix: String?
+
+        struct Value: Codable {
+            let name: String
+            let value: String
+            let force_static: Bool
+
+            init(base: SteamJSON.Enum.Value, patch: PatchJSON.Enum.Value?) {
+                name = base.name
+                value = base.value
+                force_static = patch?.force_static ?? false
+            }
+        }
+        let values: OrderedDictionary<String, Value>
 
         init(base: SteamJSON.Enum, patch: PatchJSON.Enum?) {
             enumname = base.enumname
-            values = base.values
             is_set = patch?.is_set ?? false
+            prefix = patch?.prefix ?? enumname
+            numeric_prefix = patch?.numeric_prefix
+            values = .init(uniqueKeysWithValues: base.values.map { baseVal in
+                (baseVal.name, Value(base: baseVal, patch: patch?.values?[baseVal.name]))
+            })
         }
     }
     /// Indexed by `enumname`, order from original file

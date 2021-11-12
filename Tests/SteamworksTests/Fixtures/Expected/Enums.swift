@@ -12,10 +12,10 @@
 public enum SteamEnum: Int32 {
     /// Steamworks `k_ESteamEnumIPv6`
     case ipv6 = 1
-    /// Steamworks `k_ESteamEnum_Straight`
-    case straight = 2
+    /// Steamworks `k_ESteamEnum_3Straight`
+    case patch3Straight = 2
     /// Steamworks `k_ESteamEnum_A`
-    case a = 3
+    public static let a = SteamEnum(rawValue: 3)!
     /// Steamworks `k_ESteamEnumPublic`
     case `public` = -4
     /// Steamworks `k_ESteamEnumHTTPFailure`

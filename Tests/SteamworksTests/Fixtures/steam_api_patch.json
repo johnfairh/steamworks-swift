@@ -3,6 +3,14 @@
     "ESteamMiscFlags": {
       "is_set": true
     },
+    "ESteamEnum": {
+      "numeric_prefix": "PATCH",
+      "values": {
+        "k_ESteamEnum_A": {
+          "force_static": true
+        }
+      }
+    }
   },
   "methods": {
     "SteamAPI_ISteamFriends_GetUserRestrictions": {

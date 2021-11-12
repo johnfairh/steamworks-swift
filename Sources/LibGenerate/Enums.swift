@@ -23,88 +23,13 @@ struct Enums {
         let contents = metadata.db.enums.values.map(\.generated).joined(separator: "\n\n")
         try io.write(fileName: "Enums.swift", contents: contents)
     }
-
-    // MARK: Knowledge about Steamworks naming special cases
-
-    /// Exceptions to the normal rules of enum element prefiix, the part to remove.
-    private static let valuePrefixExceptions: [String : String] = [
-        "EDenyReason" : "EDeny",
-        "EUserHasLicenseForAppResult" : "EUserHasLicenseResult",
-        "ENotificationPosition" : "EPosition",
-        "EMarketNotAllowedReasonFlags" : "EMarketNotAllowedReason",
-        "EGameSearchErrorCode_t" : "EGameSearchErrorCode",
-        "EPlayerResult_t" : "EPlayerResult",
-        "EFriendFlags" : "EFriendFlag",
-        "EUserRestriction" : "UserRestriction",
-        "EUGCReadAction" : "EUGCRead",
-        "AudioPlayback_Status" : "AudioPlayback",
-        "ESteamItemFlags" : "ESteamItem",
-        "EParentalFeature" : "EFeature",
-        "ESteamNetworkingConfigScope" : "ESteamNetworkingConfig(?:Scope)?",
-        "ESteamNetworkingConfigDataType" : "ESteamNetworkingConfig(?:DataType)?",
-        "ESteamNetworkingConfigValue" : "ESteamNetworkingConfig(?:Value)?",
-        "ESteamNetworkingGetConfigValueResult" : "ESteamNetworkingGetConfigValue(?:Result)?",
-        "EChatSteamIDInstanceFlags" : "EChat(?:InstanceFlag)?",
-        "EDurationControlProgress" : "EDurationControl(?:Progress)?",
-        "ERegisterActivationCodeResult": "ERegisterActivationCode(?:Result)?"
-    ]
-
-    /// The prefix used by steamworks for values in this enum that we will
-    /// remove because Swift has different namespacing rules.
-    ///
-    /// Steam has a clear convention for this but breaks it in various ways that we
-    /// have to hard-code.
-    static func valuePrefixPattern(enumName: String) -> String {
-        valuePrefixExceptions[enumName, default: enumName]
-    }
-
-    /// Veeery special cases to avoid starting identifiers with digits
-    static func valuePrefixAddition(enumName: String, valueName: String) -> String {
-        switch enumName {
-        case "EHTTPStatusCode":
-            return valueName.contains("Invalid") ? "" : "http"
-        case "EDurationControlNotification":
-            return valueName.contains("Hour") ? "in" : ""
-        default:
-            return ""
-        }
-    }
-
-    /// Exception list of enum elements with duplicate values
-    private static let duplicateValues: [String : Set<String>] = [
-        "EWorkshopFileType" : ["k_EWorkshopFileTypeFirst"],
-        "ESteamNetConnectionEnd" : [
-            "k_ESteamNetConnectionEnd_App_Generic",
-            "k_ESteamNetConnectionEnd_AppException_Generic",
-            ]
-    ]
-
-    static func isDuplicate(enumName: String, valueName: String) -> Bool {
-        duplicateValues[enumName]?.contains(valueName) ?? false
-    }
 }
-
-extension String {
-    /// Convert a steamworks enum member name to Swift.
-    ///
-    /// Stripping the prefix:
-    /// * _Almost_ always begins with `k_`
-    /// * _Rarely_ has an `n`
-    /// * Scope string is usually constant but sometimes regexp and rarely case-incorrect
-    func asSwiftCaseName(in enumName: String) -> String {
-        re_sub("^(?:k_)?n?\(Enums.valuePrefixPattern(enumName: enumName))_?",
-               with: Enums.valuePrefixAddition(enumName: enumName, valueName: self),
-               options: .i)
-            .asSwiftIdentifier
-    }
-}
-
 
 // MARK: Structure generation
 
 extension MetadataDB.Enum {
     var rawType: String {
-        values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
+        values.values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
     }
 
     var steamRawType: String {
@@ -135,7 +60,7 @@ extension MetadataDB.Enum {
             valueGen = generateOptionSetDecl
         }
 
-        let elements = values
+        let elements = values.values
             .map { value in
                 """
                     /// Steamworks `\(value.name)`
@@ -155,6 +80,8 @@ extension MetadataDB.Enum {
                """
     }
 
+    /// The Swift declaration for a OptionSet enum case.
+    ///
     /// I have to admit I learnt more about the finickitiness of option sets getting these working
     /// than I learnt in the past five years... who made 0 magical ...
     func generateOptionSetDecl(value: Value, swiftTypeName: String) -> String {
@@ -164,7 +91,7 @@ extension MetadataDB.Enum {
         } else {
             initArgs = "rawValue: \(value.value)"
         }
-        return "public static let \(value.name.asSwiftCaseName(in: enumname)) = \(swiftTypeName)(\(initArgs))"
+        return "public static let \(swiftCaseName(value.name)) = \(swiftTypeName)(\(initArgs))"
     }
 
     /// The Swift declaration for the enum case.
@@ -172,9 +99,28 @@ extension MetadataDB.Enum {
     /// In the very rare case of duplicate values we treat it like an optionset member and force the
     /// init (it's optional for us, `RawRepresentable`) trusting it to actually be a duplicate.
     func generateEnumCaseDecl(value: Value, swiftTypeName: String) -> String {
-        guard !Enums.isDuplicate(enumName: enumname, valueName: value.name) else {
+        guard !value.force_static else {
             return generateOptionSetDecl(value: value, swiftTypeName: swiftTypeName) + "!"
         }
-        return "case \(value.name.asSwiftCaseName(in: enumname)) = \(value.value)"
+        return "case \(swiftCaseName(value.name)) = \(value.value)"
+    }
+
+    /// Convert a steamworks enum member name to Swift.
+    ///
+    /// Stripping the prefix:
+    /// * _Almost_ always begins with `k_`
+    /// * _Rarely_ has an `n`
+    /// * Scope string is usually constant but sometimes regexp and rarely case-incorrect
+    /// * Sometimes this leaves us with a case name that starts with a number, we add a
+    ///   prefix to fix this from the patch json.
+    func swiftCaseName(_ steamName: String) -> String {
+        var name = steamName.re_sub("^(?:k_)?n?\(prefix)_?", with: "", options: .i)
+        if name.first!.isNumber {
+            guard let numericPrefix = numeric_prefix else {
+                preconditionFailure("Unhandled numeric-starting identifier \(steamName) -> \(name) (\(self))")
+            }
+            name = numericPrefix + name
+        }
+        return name.asSwiftIdentifier
     }
 }
