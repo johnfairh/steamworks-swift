@@ -23,12 +23,12 @@ public struct PersonaStateChange: SteamCreatable {
 }
 
 public struct FriendsGetFollowerCount: SteamCreatable {
-    public let result: Result
+    public let result: SteamResult
     public let steamID: SteamID
     public let count: Int
 
     init(_ steam: FriendsGetFollowerCount_t) {
-        result = Result(steam.m_eResult)
+        result = SteamResult(steam.m_eResult)
         steamID = SteamID(steam.m_steamID)
         count = Int(steam.m_nCount)
     }
@@ -71,12 +71,12 @@ public struct FriendGameInfo: SteamCreatable {
 
 public struct UserStatsReceived: SteamCreatable {
     public let gameID: UInt64
-    public let result: Result
+    public let result: SteamResult
     public let user: SteamID
 
     init(_ steam: UserStatsReceived_t) {
         gameID = UInt64(steam.m_nGameID)
-        result = Result(steam.m_eResult)
+        result = SteamResult(steam.m_eResult)
         user = SteamID(steam.m_steamIDUser)
     }
 }

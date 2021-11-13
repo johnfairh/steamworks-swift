@@ -39,7 +39,7 @@ extension EUniverse: EnumConvertible { typealias From = Universe }
 extension Universe: EnumConvertible { typealias From = EUniverse }
 
 /// Steamworks `EResult`
-public enum Result: UInt32 {
+public enum SteamResult: UInt32 {
     /// Steamworks `k_EResultNone`
     case none = 0
     /// Steamworks `k_EResultOK`
@@ -286,8 +286,8 @@ public enum Result: UInt32 {
     case parseFailure = 122
 }
 
-extension EResult: EnumConvertible { typealias From = Result }
-extension Result: EnumConvertible { typealias From = EResult }
+extension EResult: EnumConvertible { typealias From = SteamResult }
+extension SteamResult: EnumConvertible { typealias From = EResult }
 
 /// Steamworks `EVoiceResult`
 public enum VoiceResult: UInt32 {

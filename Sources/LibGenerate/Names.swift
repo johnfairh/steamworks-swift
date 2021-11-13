@@ -110,7 +110,8 @@ private let steamToSwiftTypes: [String : String] = [
     "uint32" : "Int",
     "bool" : "Bool",
     "uint64_steamid" : "SteamID",
-    "void *": "UnsafeMutableRawPointer"
+    "void *": "UnsafeMutableRawPointer",
+    "EResult": "SteamResult"
 ]
 
 // Steam types whose Swift type version is typesafe to pass
