@@ -234,7 +234,7 @@ struct SwiftMethod {
         case (.void, false):
             return "func \(db.funcName)(\(params.functionParams)) {"
         case (.callReturn(let type), false):
-            let done = "completion: @escaping (\(type)) -> Void"
+            let done = "completion: @escaping (\(type)?) -> Void"
             return "func \(db.funcName)(\(params.functionParams), \(done)) {"
         default:
             preconditionFailure("Unexpected var-match: \(db)")
@@ -328,7 +328,7 @@ struct SwiftMethod {
         return [
             "",
             "\(comment)",
-            "func \(db.funcName)(\(params.functionParams)) async -> \(type) {",
+            "func \(db.funcName)(\(params.functionParams)) async -> \(type)? {",
             "    await withUnsafeContinuation {",
             "        \(db.funcName)(\(params.asyncForwardingParams), completion: $0.resume)",
             "    }",

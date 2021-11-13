@@ -23,7 +23,8 @@ class TestNames: XCTestCase {
             ("ErrorType", "ErrorType"), // don't strip leading E if it's part of a word...
             ("ISteamFriends", "SteamFriends"),
             ("CSteamID", "SteamID"),
-            ("uint64_steamid", "SteamID")
+            ("uint64_steamid", "SteamID"),
+            ("EResult", "SteamResult")
         ]
         cases.forEach { steam, swift in
             XCTAssertEqual(steam.asSwiftTypeName, swift)

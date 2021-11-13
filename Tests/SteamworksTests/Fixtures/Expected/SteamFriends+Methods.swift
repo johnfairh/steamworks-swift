@@ -21,13 +21,13 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::SetPersonaName()`
-    func setPersonaName(personaName: String, completion: @escaping (SetPersonaNameResponse) -> Void) {
+    func setPersonaName(personaName: String, completion: @escaping (SetPersonaNameResponse?) -> Void) {
         let rc = SteamAPI_ISteamFriends_SetPersonaName(interface, personaName)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::SetPersonaName()`
-    func setPersonaName(personaName: String) async -> SetPersonaNameResponse {
+    func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
         await withUnsafeContinuation {
             setPersonaName(personaName: personaName, completion: $0.resume)
         }

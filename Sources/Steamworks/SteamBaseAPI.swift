@@ -28,13 +28,19 @@ import Logging
 /// and before mkaing your first call to `runCallbacks()` then your code is equivalent to the C++
 /// version.
 public class SteamBaseAPI: @unchecked Sendable {
-    /// Type-erased client closure, expose this to other files because of code gen
-    typealias RawClient = (UnsafeMutableRawPointer) -> Void
+    /// Type-erased callresult client closure, expose this to other files because of code gen
+    typealias RawClient = (UnsafeMutableRawPointer?) -> Void
 
-    /// Type-eraser for client closures, again exposed to other files because of code gen
-    static func makeRaw<SteamType, SwiftType>(_ client: @escaping (SwiftType) -> Void) -> RawClient where
-    SwiftType : SteamCreatable, SwiftType.SteamType == SteamType {
-        { client(SwiftType($0.bindMemory(to: SteamType.self, capacity: 1).pointee)) }
+    /// Type-eraser for client callback closures, again exposed to other files because of code gen
+    static func makeRaw<SteamType, SwiftType>(_ client: @escaping (SwiftType) -> Void)
+        -> RawClient where SwiftType : SteamCreatable, SwiftType.SteamType == SteamType {
+        { $0.map { client(SwiftType($0.bindMemory(to: SteamType.self, capacity: 1).pointee)) } }
+    }
+
+    /// Type-eraser for call-return closures, that can actually fail and need to be signalled back as such
+    static func makeRaw<SteamType, SwiftType>(_ client: @escaping (Optional<SwiftType>) -> Void)
+        -> RawClient where SwiftType : SteamCreatable, SwiftType.SteamType == SteamType {
+        { client($0.map { SwiftType($0.bindMemory(to: SteamType.self, capacity: 1).pointee) }) }
     }
 
     // MARK: Callbacks
@@ -75,7 +81,7 @@ public class SteamBaseAPI: @unchecked Sendable {
             }
         }
 
-        func dispatch(callID: SteamAPICall_t, rawData: UnsafeMutableRawPointer) {
+        func dispatch(callID: SteamAPICall_t, rawData: UnsafeMutableRawPointer?) {
             if let client = lock.locked({ pending.removeValue(forKey: callID) }) {
                 client(rawData)
             }
@@ -161,9 +167,12 @@ public class SteamBaseAPI: @unchecked Sendable {
                 &failed)
 
             if !success {
+                // probably doomed, APIs reporting inconsistently - leave client hanging?? Any decision could be wrong...
                 logError("Failure return from SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_cubParam) bytes")
             } else if failed {
-                logError("Failed flag set by SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_cubParam) bytes")
+                // some weird internal transport failure, complete client with `nil`
+                logError("bIOFailed flag set by SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall)")
+                CallResults.shared.dispatch(callID: callCompleted.m_hAsyncCall, rawData: nil)
             } else {
                 CallResults.shared.dispatch(callID: callCompleted.m_hAsyncCall, rawData: callResult)
             }

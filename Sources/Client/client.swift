@@ -100,9 +100,19 @@ final class Client {
         let u = SteamUser()
         let steamID = u.steamID
         print("SteamID = \(steamID)")
-        api.friends.getFollowerCount(steamID: steamID) {
-            print("FollowerCount: \($0)")
-            self.endTest()
+        api.friends.getFollowerCount(steamID: steamID) { res in
+            defer { self.endTest() }
+            guard let res = res else {
+                print("GetFollowerCount transport failure.")
+                return
+            }
+
+            guard res.result == .ok else {
+                print("GetFollowerCount failed: \(res.result)")
+                return
+            }
+
+            print("GetFollowerCount: \(res.count) followers")
         }
     }
 
@@ -127,6 +137,7 @@ struct Main {
     static func main() {
         print("Client testbed, steamworks version \(SteamAPI.steamworksVersion)")
         SteamAPI.logger.logLevel = .trace
+        SteamAPI.logger.trace("Is this thing on?")
         guard let client = Client() else {
             return
         }
