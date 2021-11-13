@@ -34,6 +34,7 @@
 		020860F4273E775200725122 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 020860F3273E775200725122 /* Fixtures */; };
 		020860F6273FE55C00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F5273FE55C00725122 /* Typedefs.swift */; };
 		020860F8273FED5A00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F7273FED5A00725122 /* Typedefs.swift */; };
+		020860FA27403F6E00725122 /* TestTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F927403F6E00725122 /* TestTypes.swift */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -143,6 +144,7 @@
 		020860F3273E775200725122 /* Fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fixtures; sourceTree = "<group>"; };
 		020860F5273FE55C00725122 /* Typedefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typedefs.swift; sourceTree = "<group>"; };
 		020860F7273FED5A00725122 /* Typedefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typedefs.swift; sourceTree = "<group>"; };
+		020860F927403F6E00725122 /* TestTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTypes.swift; sourceTree = "<group>"; };
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				020860D227304C2300725122 /* TestUtils.swift */,
 				020860D42731701700725122 /* TestGenerate.swift */,
 				020860DC273307C700725122 /* TestNames.swift */,
+				020860F927403F6E00725122 /* TestTypes.swift */,
 				020860F3273E775200725122 /* Fixtures */,
 			);
 			name = SteamworksTests;
@@ -600,6 +603,7 @@
 			buildActionMask = 0;
 			files = (
 				020860DD273307C700725122 /* TestNames.swift in Sources */,
+				020860FA27403F6E00725122 /* TestTypes.swift in Sources */,
 				020860D52731701700725122 /* TestGenerate.swift in Sources */,
 				OBJ_47 /* TestCallbacks.swift in Sources */,
 				020860D327304C2300725122 /* TestUtils.swift in Sources */,

@@ -52,13 +52,13 @@ class TestNames: XCTestCase {
 
     func testParameters() {
         let cases = [
-            ("steamID", "steamID"),
-            ("steamidUser", "user"),
-            ("pOutSteamIDUsers", "users"),
-            ("pszInput", "input"),
-            ("aProtocol", "`protocol`"),
-            ("iEntry", "entryIndex"),
-            ("cubData", "dataSize")
+            ("steamID", "steamID"), // preserve lone steamID
+            ("steamidUser", "user"), // but strip if a prefix however spelt ..
+            ("pOutSteamIDUsers", "users"), // ... even wildly
+            ("pszInput", "input"), // strip hungarian
+            ("aProtocol", "`protocol`"), // respect swift keywords
+            ("iEntry", "entryIndex"), // i does not mean integer
+            ("cubData", "dataSize") // "count of unsigned bytes" ??
         ]
 
         cases.forEach { steam, swift in

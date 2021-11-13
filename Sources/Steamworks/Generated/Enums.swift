@@ -14,10 +14,12 @@ public enum SteamIPType: UInt32 {
     case ipv4 = 0
     /// Steamworks `k_ESteamIPTypeIPv6`
     case ipv6 = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension ESteamIPType: EnumConvertible { typealias From = SteamIPType }
-extension SteamIPType: EnumConvertible { typealias From = ESteamIPType }
+extension ESteamIPType: RawConvertible { typealias From = SteamIPType }
+extension SteamIPType: EnumWithUnrepresented { typealias From = ESteamIPType }
 
 /// Steamworks `EUniverse`
 public enum Universe: UInt32 {
@@ -33,10 +35,12 @@ public enum Universe: UInt32 {
     case dev = 4
     /// Steamworks `k_EUniverseMax`
     case max = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension EUniverse: EnumConvertible { typealias From = Universe }
-extension Universe: EnumConvertible { typealias From = EUniverse }
+extension EUniverse: RawConvertible { typealias From = Universe }
+extension Universe: EnumWithUnrepresented { typealias From = EUniverse }
 
 /// Steamworks `EResult`
 public enum SteamResult: UInt32 {
@@ -284,10 +288,12 @@ public enum SteamResult: UInt32 {
     case invalidSignature = 121
     /// Steamworks `k_EResultParseFailure`
     case parseFailure = 122
+    /// Some undocumented value
+    case unrepresentedInSwift = 123
 }
 
-extension EResult: EnumConvertible { typealias From = SteamResult }
-extension SteamResult: EnumConvertible { typealias From = EResult }
+extension EResult: RawConvertible { typealias From = SteamResult }
+extension SteamResult: EnumWithUnrepresented { typealias From = EResult }
 
 /// Steamworks `EVoiceResult`
 public enum VoiceResult: UInt32 {
@@ -311,10 +317,12 @@ public enum VoiceResult: UInt32 {
     case receiverOutOfDate = 8
     /// Steamworks `k_EVoiceResultReceiverDidNotAnswer`
     case receiverDidNotAnswer = 9
+    /// Some undocumented value
+    case unrepresentedInSwift = 10
 }
 
-extension EVoiceResult: EnumConvertible { typealias From = VoiceResult }
-extension VoiceResult: EnumConvertible { typealias From = EVoiceResult }
+extension EVoiceResult: RawConvertible { typealias From = VoiceResult }
+extension VoiceResult: EnumWithUnrepresented { typealias From = EVoiceResult }
 
 /// Steamworks `EDenyReason`
 public enum DenyReason: UInt32 {
@@ -350,10 +358,12 @@ public enum DenyReason: UInt32 {
     case steamValidationStalled = 14
     /// Steamworks `k_EDenySteamOwnerLeftGuestUser`
     case steamOwnerLeftGuestUser = 15
+    /// Some undocumented value
+    case unrepresentedInSwift = 16
 }
 
-extension EDenyReason: EnumConvertible { typealias From = DenyReason }
-extension DenyReason: EnumConvertible { typealias From = EDenyReason }
+extension EDenyReason: RawConvertible { typealias From = DenyReason }
+extension DenyReason: EnumWithUnrepresented { typealias From = EDenyReason }
 
 /// Steamworks `EBeginAuthSessionResult`
 public enum BeginAuthSessionResult: UInt32 {
@@ -369,10 +379,12 @@ public enum BeginAuthSessionResult: UInt32 {
     case gameMismatch = 4
     /// Steamworks `k_EBeginAuthSessionResultExpiredTicket`
     case expiredTicket = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension EBeginAuthSessionResult: EnumConvertible { typealias From = BeginAuthSessionResult }
-extension BeginAuthSessionResult: EnumConvertible { typealias From = EBeginAuthSessionResult }
+extension EBeginAuthSessionResult: RawConvertible { typealias From = BeginAuthSessionResult }
+extension BeginAuthSessionResult: EnumWithUnrepresented { typealias From = EBeginAuthSessionResult }
 
 /// Steamworks `EAuthSessionResponse`
 public enum AuthSessionResponse: UInt32 {
@@ -396,10 +408,12 @@ public enum AuthSessionResponse: UInt32 {
     case authTicketInvalid = 8
     /// Steamworks `k_EAuthSessionResponsePublisherIssuedBan`
     case publisherIssuedBan = 9
+    /// Some undocumented value
+    case unrepresentedInSwift = 10
 }
 
-extension EAuthSessionResponse: EnumConvertible { typealias From = AuthSessionResponse }
-extension AuthSessionResponse: EnumConvertible { typealias From = EAuthSessionResponse }
+extension EAuthSessionResponse: RawConvertible { typealias From = AuthSessionResponse }
+extension AuthSessionResponse: EnumWithUnrepresented { typealias From = EAuthSessionResponse }
 
 /// Steamworks `EUserHasLicenseForAppResult`
 public enum UserHasLicenseForAppResult: UInt32 {
@@ -409,10 +423,12 @@ public enum UserHasLicenseForAppResult: UInt32 {
     case doesNotHaveLicense = 1
     /// Steamworks `k_EUserHasLicenseResultNoAuth`
     case noAuth = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension EUserHasLicenseForAppResult: EnumConvertible { typealias From = UserHasLicenseForAppResult }
-extension UserHasLicenseForAppResult: EnumConvertible { typealias From = EUserHasLicenseForAppResult }
+extension EUserHasLicenseForAppResult: RawConvertible { typealias From = UserHasLicenseForAppResult }
+extension UserHasLicenseForAppResult: EnumWithUnrepresented { typealias From = EUserHasLicenseForAppResult }
 
 /// Steamworks `EAccountType`
 public enum AccountType: UInt32 {
@@ -440,10 +456,12 @@ public enum AccountType: UInt32 {
     case anonUser = 10
     /// Steamworks `k_EAccountTypeMax`
     case max = 11
+    /// Some undocumented value
+    case unrepresentedInSwift = 12
 }
 
-extension EAccountType: EnumConvertible { typealias From = AccountType }
-extension AccountType: EnumConvertible { typealias From = EAccountType }
+extension EAccountType: RawConvertible { typealias From = AccountType }
+extension AccountType: EnumWithUnrepresented { typealias From = EAccountType }
 
 /// Steamworks `EChatEntryType`
 public enum ChatEntryType: UInt32 {
@@ -471,10 +489,12 @@ public enum ChatEntryType: UInt32 {
     case historicalChat = 11
     /// Steamworks `k_EChatEntryTypeLinkBlocked`
     case linkBlocked = 14
+    /// Some undocumented value
+    case unrepresentedInSwift = 15
 }
 
-extension EChatEntryType: EnumConvertible { typealias From = ChatEntryType }
-extension ChatEntryType: EnumConvertible { typealias From = EChatEntryType }
+extension EChatEntryType: RawConvertible { typealias From = ChatEntryType }
+extension ChatEntryType: EnumWithUnrepresented { typealias From = EChatEntryType }
 
 /// Steamworks `EChatRoomEnterResponse`
 public enum ChatRoomEnterResponse: UInt32 {
@@ -502,10 +522,12 @@ public enum ChatRoomEnterResponse: UInt32 {
     case youBlockedMember = 11
     /// Steamworks `k_EChatRoomEnterResponseRatelimitExceeded`
     case ratelimitExceeded = 15
+    /// Some undocumented value
+    case unrepresentedInSwift = 16
 }
 
-extension EChatRoomEnterResponse: EnumConvertible { typealias From = ChatRoomEnterResponse }
-extension ChatRoomEnterResponse: EnumConvertible { typealias From = EChatRoomEnterResponse }
+extension EChatRoomEnterResponse: RawConvertible { typealias From = ChatRoomEnterResponse }
+extension ChatRoomEnterResponse: EnumWithUnrepresented { typealias From = EChatRoomEnterResponse }
 
 /// Steamworks `EChatSteamIDInstanceFlags`
 public struct ChatSteamIDInstanceFlags: OptionSet {
@@ -523,8 +545,8 @@ public struct ChatSteamIDInstanceFlags: OptionSet {
     public static let mmsLobby = ChatSteamIDInstanceFlags(rawValue: 131072)
 }
 
-extension EChatSteamIDInstanceFlags: EnumConvertible { typealias From = ChatSteamIDInstanceFlags }
-extension ChatSteamIDInstanceFlags: EnumConvertible { typealias From = EChatSteamIDInstanceFlags }
+extension EChatSteamIDInstanceFlags: RawConvertible { typealias From = ChatSteamIDInstanceFlags }
+extension ChatSteamIDInstanceFlags: RawConvertible { typealias From = EChatSteamIDInstanceFlags }
 
 /// Steamworks `ENotificationPosition`
 public enum NotificationPosition: UInt32 {
@@ -536,10 +558,12 @@ public enum NotificationPosition: UInt32 {
     case bottomLeft = 2
     /// Steamworks `k_EPositionBottomRight`
     case bottomRight = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension ENotificationPosition: EnumConvertible { typealias From = NotificationPosition }
-extension NotificationPosition: EnumConvertible { typealias From = ENotificationPosition }
+extension ENotificationPosition: RawConvertible { typealias From = NotificationPosition }
+extension NotificationPosition: EnumWithUnrepresented { typealias From = ENotificationPosition }
 
 /// Steamworks `EBroadcastUploadResult`
 public enum BroadcastUploadResult: UInt32 {
@@ -591,10 +615,12 @@ public enum BroadcastUploadResult: UInt32 {
     case videoInitFailed = 22
     /// Steamworks `k_EBroadcastUploadResultAudioInitFailed`
     case audioInitFailed = 23
+    /// Some undocumented value
+    case unrepresentedInSwift = 24
 }
 
-extension EBroadcastUploadResult: EnumConvertible { typealias From = BroadcastUploadResult }
-extension BroadcastUploadResult: EnumConvertible { typealias From = EBroadcastUploadResult }
+extension EBroadcastUploadResult: RawConvertible { typealias From = BroadcastUploadResult }
+extension BroadcastUploadResult: EnumWithUnrepresented { typealias From = EBroadcastUploadResult }
 
 /// Steamworks `EMarketNotAllowedReasonFlags`
 public struct MarketNotAllowedReasonFlags: OptionSet {
@@ -638,8 +664,8 @@ public struct MarketNotAllowedReasonFlags: OptionSet {
     public static let acceptedWalletGift = MarketNotAllowedReasonFlags(rawValue: 32768)
 }
 
-extension EMarketNotAllowedReasonFlags: EnumConvertible { typealias From = MarketNotAllowedReasonFlags }
-extension MarketNotAllowedReasonFlags: EnumConvertible { typealias From = EMarketNotAllowedReasonFlags }
+extension EMarketNotAllowedReasonFlags: RawConvertible { typealias From = MarketNotAllowedReasonFlags }
+extension MarketNotAllowedReasonFlags: RawConvertible { typealias From = EMarketNotAllowedReasonFlags }
 
 /// Steamworks `EDurationControlProgress`
 public enum DurationControlProgress: UInt32 {
@@ -655,10 +681,12 @@ public enum DurationControlProgress: UInt32 {
     case exitSoon5h = 4
     /// Steamworks `k_EDurationControl_ExitSoon_Night`
     case exitSoonNight = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension EDurationControlProgress: EnumConvertible { typealias From = DurationControlProgress }
-extension DurationControlProgress: EnumConvertible { typealias From = EDurationControlProgress }
+extension EDurationControlProgress: RawConvertible { typealias From = DurationControlProgress }
+extension DurationControlProgress: EnumWithUnrepresented { typealias From = EDurationControlProgress }
 
 /// Steamworks `EDurationControlNotification`
 public enum DurationControlNotification: UInt32 {
@@ -678,10 +706,12 @@ public enum DurationControlNotification: UInt32 {
     case exitSoon5h = 6
     /// Steamworks `k_EDurationControlNotification_ExitSoon_Night`
     case exitSoonNight = 7
+    /// Some undocumented value
+    case unrepresentedInSwift = 8
 }
 
-extension EDurationControlNotification: EnumConvertible { typealias From = DurationControlNotification }
-extension DurationControlNotification: EnumConvertible { typealias From = EDurationControlNotification }
+extension EDurationControlNotification: RawConvertible { typealias From = DurationControlNotification }
+extension DurationControlNotification: EnumWithUnrepresented { typealias From = EDurationControlNotification }
 
 /// Steamworks `EDurationControlOnlineState`
 public enum DurationControlOnlineState: UInt32 {
@@ -693,10 +723,12 @@ public enum DurationControlOnlineState: UInt32 {
     case online = 2
     /// Steamworks `k_EDurationControlOnlineState_OnlineHighPri`
     case onlineHighPri = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension EDurationControlOnlineState: EnumConvertible { typealias From = DurationControlOnlineState }
-extension DurationControlOnlineState: EnumConvertible { typealias From = EDurationControlOnlineState }
+extension EDurationControlOnlineState: RawConvertible { typealias From = DurationControlOnlineState }
+extension DurationControlOnlineState: EnumWithUnrepresented { typealias From = EDurationControlOnlineState }
 
 /// Steamworks `EGameSearchErrorCode_t`
 public enum GameSearchErrorCode: UInt32 {
@@ -718,10 +750,12 @@ public enum GameSearchErrorCode: UInt32 {
     case failedNotAuthorized = 8
     /// Steamworks `k_EGameSearchErrorCode_Failed_Unknown_Error`
     case failedUnknownError = 9
+    /// Some undocumented value
+    case unrepresentedInSwift = 10
 }
 
-extension EGameSearchErrorCode_t: EnumConvertible { typealias From = GameSearchErrorCode }
-extension GameSearchErrorCode: EnumConvertible { typealias From = EGameSearchErrorCode_t }
+extension EGameSearchErrorCode_t: RawConvertible { typealias From = GameSearchErrorCode }
+extension GameSearchErrorCode: EnumWithUnrepresented { typealias From = EGameSearchErrorCode_t }
 
 /// Steamworks `EPlayerResult_t`
 public enum PlayerResult: UInt32 {
@@ -735,10 +769,12 @@ public enum PlayerResult: UInt32 {
     case incomplete = 4
     /// Steamworks `k_EPlayerResultCompleted`
     case completed = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension EPlayerResult_t: EnumConvertible { typealias From = PlayerResult }
-extension PlayerResult: EnumConvertible { typealias From = EPlayerResult_t }
+extension EPlayerResult_t: RawConvertible { typealias From = PlayerResult }
+extension PlayerResult: EnumWithUnrepresented { typealias From = EPlayerResult_t }
 
 /// Steamworks `ESteamIPv6ConnectivityProtocol`
 public enum SteamIPv6ConnectivityProtocol: UInt32 {
@@ -748,10 +784,12 @@ public enum SteamIPv6ConnectivityProtocol: UInt32 {
     case http = 1
     /// Steamworks `k_ESteamIPv6ConnectivityProtocol_UDP`
     case udp = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ESteamIPv6ConnectivityProtocol: EnumConvertible { typealias From = SteamIPv6ConnectivityProtocol }
-extension SteamIPv6ConnectivityProtocol: EnumConvertible { typealias From = ESteamIPv6ConnectivityProtocol }
+extension ESteamIPv6ConnectivityProtocol: RawConvertible { typealias From = SteamIPv6ConnectivityProtocol }
+extension SteamIPv6ConnectivityProtocol: EnumWithUnrepresented { typealias From = ESteamIPv6ConnectivityProtocol }
 
 /// Steamworks `ESteamIPv6ConnectivityState`
 public enum SteamIPv6ConnectivityState: UInt32 {
@@ -761,10 +799,12 @@ public enum SteamIPv6ConnectivityState: UInt32 {
     case good = 1
     /// Steamworks `k_ESteamIPv6ConnectivityState_Bad`
     case bad = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ESteamIPv6ConnectivityState: EnumConvertible { typealias From = SteamIPv6ConnectivityState }
-extension SteamIPv6ConnectivityState: EnumConvertible { typealias From = ESteamIPv6ConnectivityState }
+extension ESteamIPv6ConnectivityState: RawConvertible { typealias From = SteamIPv6ConnectivityState }
+extension SteamIPv6ConnectivityState: EnumWithUnrepresented { typealias From = ESteamIPv6ConnectivityState }
 
 /// Steamworks `EFriendRelationship`
 public enum FriendRelationship: UInt32 {
@@ -786,10 +826,12 @@ public enum FriendRelationship: UInt32 {
     case suggestedDEPRECATED = 7
     /// Steamworks `k_EFriendRelationshipMax`
     case max = 8
+    /// Some undocumented value
+    case unrepresentedInSwift = 9
 }
 
-extension EFriendRelationship: EnumConvertible { typealias From = FriendRelationship }
-extension FriendRelationship: EnumConvertible { typealias From = EFriendRelationship }
+extension EFriendRelationship: RawConvertible { typealias From = FriendRelationship }
+extension FriendRelationship: EnumWithUnrepresented { typealias From = EFriendRelationship }
 
 /// Steamworks `EPersonaState`
 public enum PersonaState: UInt32 {
@@ -811,10 +853,12 @@ public enum PersonaState: UInt32 {
     case invisible = 7
     /// Steamworks `k_EPersonaStateMax`
     case max = 8
+    /// Some undocumented value
+    case unrepresentedInSwift = 9
 }
 
-extension EPersonaState: EnumConvertible { typealias From = PersonaState }
-extension PersonaState: EnumConvertible { typealias From = EPersonaState }
+extension EPersonaState: RawConvertible { typealias From = PersonaState }
+extension PersonaState: EnumWithUnrepresented { typealias From = EPersonaState }
 
 /// Steamworks `EFriendFlags`
 public struct FriendFlags: OptionSet {
@@ -848,8 +892,8 @@ public struct FriendFlags: OptionSet {
     public static let all = FriendFlags(rawValue: 65535)
 }
 
-extension EFriendFlags: EnumConvertible { typealias From = FriendFlags }
-extension FriendFlags: EnumConvertible { typealias From = EFriendFlags }
+extension EFriendFlags: RawConvertible { typealias From = FriendFlags }
+extension FriendFlags: RawConvertible { typealias From = EFriendFlags }
 
 /// Steamworks `EUserRestriction`
 public struct UserRestriction: OptionSet {
@@ -875,8 +919,8 @@ public struct UserRestriction: OptionSet {
     public static let trading = UserRestriction(rawValue: 64)
 }
 
-extension EUserRestriction: EnumConvertible { typealias From = UserRestriction }
-extension UserRestriction: EnumConvertible { typealias From = EUserRestriction }
+extension EUserRestriction: RawConvertible { typealias From = UserRestriction }
+extension UserRestriction: RawConvertible { typealias From = EUserRestriction }
 
 /// Steamworks `EOverlayToStoreFlag`
 public enum OverlayToStoreFlag: UInt32 {
@@ -886,10 +930,12 @@ public enum OverlayToStoreFlag: UInt32 {
     case addToCart = 1
     /// Steamworks `k_EOverlayToStoreFlag_AddToCartAndShow`
     case addToCartAndShow = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension EOverlayToStoreFlag: EnumConvertible { typealias From = OverlayToStoreFlag }
-extension OverlayToStoreFlag: EnumConvertible { typealias From = EOverlayToStoreFlag }
+extension EOverlayToStoreFlag: RawConvertible { typealias From = OverlayToStoreFlag }
+extension OverlayToStoreFlag: EnumWithUnrepresented { typealias From = EOverlayToStoreFlag }
 
 /// Steamworks `EActivateGameOverlayToWebPageMode`
 public enum ActivateGameOverlayToWebPageMode: UInt32 {
@@ -897,10 +943,12 @@ public enum ActivateGameOverlayToWebPageMode: UInt32 {
     case `default` = 0
     /// Steamworks `k_EActivateGameOverlayToWebPageMode_Modal`
     case modal = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension EActivateGameOverlayToWebPageMode: EnumConvertible { typealias From = ActivateGameOverlayToWebPageMode }
-extension ActivateGameOverlayToWebPageMode: EnumConvertible { typealias From = EActivateGameOverlayToWebPageMode }
+extension EActivateGameOverlayToWebPageMode: RawConvertible { typealias From = ActivateGameOverlayToWebPageMode }
+extension ActivateGameOverlayToWebPageMode: EnumWithUnrepresented { typealias From = EActivateGameOverlayToWebPageMode }
 
 /// Steamworks `EPersonaChange`
 public struct PersonaChange: OptionSet {
@@ -940,8 +988,8 @@ public struct PersonaChange: OptionSet {
     public static let richPresence = PersonaChange(rawValue: 16384)
 }
 
-extension EPersonaChange: EnumConvertible { typealias From = PersonaChange }
-extension PersonaChange: EnumConvertible { typealias From = EPersonaChange }
+extension EPersonaChange: RawConvertible { typealias From = PersonaChange }
+extension PersonaChange: RawConvertible { typealias From = EPersonaChange }
 
 /// Steamworks `ESteamAPICallFailure`
 public enum SteamAPICallFailure: Int32 {
@@ -955,10 +1003,12 @@ public enum SteamAPICallFailure: Int32 {
     case invalidHandle = 2
     /// Steamworks `k_ESteamAPICallFailureMismatchedCallback`
     case mismatchedCallback = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension ESteamAPICallFailure: EnumConvertible { typealias From = SteamAPICallFailure }
-extension SteamAPICallFailure: EnumConvertible { typealias From = ESteamAPICallFailure }
+extension ESteamAPICallFailure: RawConvertible { typealias From = SteamAPICallFailure }
+extension SteamAPICallFailure: EnumWithUnrepresented { typealias From = ESteamAPICallFailure }
 
 /// Steamworks `EGamepadTextInputMode`
 public enum GamepadTextInputMode: UInt32 {
@@ -966,10 +1016,12 @@ public enum GamepadTextInputMode: UInt32 {
     case normal = 0
     /// Steamworks `k_EGamepadTextInputModePassword`
     case password = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension EGamepadTextInputMode: EnumConvertible { typealias From = GamepadTextInputMode }
-extension GamepadTextInputMode: EnumConvertible { typealias From = EGamepadTextInputMode }
+extension EGamepadTextInputMode: RawConvertible { typealias From = GamepadTextInputMode }
+extension GamepadTextInputMode: EnumWithUnrepresented { typealias From = EGamepadTextInputMode }
 
 /// Steamworks `EGamepadTextInputLineMode`
 public enum GamepadTextInputLineMode: UInt32 {
@@ -977,10 +1029,12 @@ public enum GamepadTextInputLineMode: UInt32 {
     case singleLine = 0
     /// Steamworks `k_EGamepadTextInputLineModeMultipleLines`
     case multipleLines = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension EGamepadTextInputLineMode: EnumConvertible { typealias From = GamepadTextInputLineMode }
-extension GamepadTextInputLineMode: EnumConvertible { typealias From = EGamepadTextInputLineMode }
+extension EGamepadTextInputLineMode: RawConvertible { typealias From = GamepadTextInputLineMode }
+extension GamepadTextInputLineMode: EnumWithUnrepresented { typealias From = EGamepadTextInputLineMode }
 
 /// Steamworks `ETextFilteringContext`
 public enum TextFilteringContext: UInt32 {
@@ -992,10 +1046,12 @@ public enum TextFilteringContext: UInt32 {
     case chat = 2
     /// Steamworks `k_ETextFilteringContextName`
     case name = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension ETextFilteringContext: EnumConvertible { typealias From = TextFilteringContext }
-extension TextFilteringContext: EnumConvertible { typealias From = ETextFilteringContext }
+extension ETextFilteringContext: RawConvertible { typealias From = TextFilteringContext }
+extension TextFilteringContext: EnumWithUnrepresented { typealias From = ETextFilteringContext }
 
 /// Steamworks `ECheckFileSignature`
 public enum CheckFileSignature: UInt32 {
@@ -1009,10 +1065,12 @@ public enum CheckFileSignature: UInt32 {
     case noSignaturesFoundForThisApp = 3
     /// Steamworks `k_ECheckFileSignatureNoSignaturesFoundForThisFile`
     case noSignaturesFoundForThisFile = 4
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
 }
 
-extension ECheckFileSignature: EnumConvertible { typealias From = CheckFileSignature }
-extension CheckFileSignature: EnumConvertible { typealias From = ECheckFileSignature }
+extension ECheckFileSignature: RawConvertible { typealias From = CheckFileSignature }
+extension CheckFileSignature: EnumWithUnrepresented { typealias From = ECheckFileSignature }
 
 /// Steamworks `EMatchMakingServerResponse`
 public enum MatchMakingServerResponse: UInt32 {
@@ -1022,10 +1080,12 @@ public enum MatchMakingServerResponse: UInt32 {
     case eServerFailedToRespond = 1
     /// Steamworks `eNoServersListedOnMasterServer`
     case eNoServersListedOnMasterServer = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension EMatchMakingServerResponse: EnumConvertible { typealias From = MatchMakingServerResponse }
-extension MatchMakingServerResponse: EnumConvertible { typealias From = EMatchMakingServerResponse }
+extension EMatchMakingServerResponse: RawConvertible { typealias From = MatchMakingServerResponse }
+extension MatchMakingServerResponse: EnumWithUnrepresented { typealias From = EMatchMakingServerResponse }
 
 /// Steamworks `ELobbyType`
 public enum LobbyType: UInt32 {
@@ -1039,10 +1099,12 @@ public enum LobbyType: UInt32 {
     case invisible = 3
     /// Steamworks `k_ELobbyTypePrivateUnique`
     case privateUnique = 4
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
 }
 
-extension ELobbyType: EnumConvertible { typealias From = LobbyType }
-extension LobbyType: EnumConvertible { typealias From = ELobbyType }
+extension ELobbyType: RawConvertible { typealias From = LobbyType }
+extension LobbyType: EnumWithUnrepresented { typealias From = ELobbyType }
 
 /// Steamworks `ELobbyComparison`
 public enum LobbyComparison: Int32 {
@@ -1058,10 +1120,12 @@ public enum LobbyComparison: Int32 {
     case equalToOrGreaterThan = 2
     /// Steamworks `k_ELobbyComparisonNotEqual`
     case notEqual = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension ELobbyComparison: EnumConvertible { typealias From = LobbyComparison }
-extension LobbyComparison: EnumConvertible { typealias From = ELobbyComparison }
+extension ELobbyComparison: RawConvertible { typealias From = LobbyComparison }
+extension LobbyComparison: EnumWithUnrepresented { typealias From = ELobbyComparison }
 
 /// Steamworks `ELobbyDistanceFilter`
 public enum LobbyDistanceFilter: UInt32 {
@@ -1073,10 +1137,12 @@ public enum LobbyDistanceFilter: UInt32 {
     case far = 2
     /// Steamworks `k_ELobbyDistanceFilterWorldwide`
     case worldwide = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension ELobbyDistanceFilter: EnumConvertible { typealias From = LobbyDistanceFilter }
-extension LobbyDistanceFilter: EnumConvertible { typealias From = ELobbyDistanceFilter }
+extension ELobbyDistanceFilter: RawConvertible { typealias From = LobbyDistanceFilter }
+extension LobbyDistanceFilter: EnumWithUnrepresented { typealias From = ELobbyDistanceFilter }
 
 /// Steamworks `EChatMemberStateChange`
 public enum ChatMemberStateChange: UInt32 {
@@ -1090,10 +1156,12 @@ public enum ChatMemberStateChange: UInt32 {
     case kicked = 8
     /// Steamworks `k_EChatMemberStateChangeBanned`
     case banned = 16
+    /// Some undocumented value
+    case unrepresentedInSwift = 17
 }
 
-extension EChatMemberStateChange: EnumConvertible { typealias From = ChatMemberStateChange }
-extension ChatMemberStateChange: EnumConvertible { typealias From = EChatMemberStateChange }
+extension EChatMemberStateChange: RawConvertible { typealias From = ChatMemberStateChange }
+extension ChatMemberStateChange: EnumWithUnrepresented { typealias From = EChatMemberStateChange }
 
 /// Steamworks `ESteamPartyBeaconLocationType`
 public enum SteamPartyBeaconLocationType: UInt32 {
@@ -1103,10 +1171,12 @@ public enum SteamPartyBeaconLocationType: UInt32 {
     case chatGroup = 1
     /// Steamworks `k_ESteamPartyBeaconLocationType_Max`
     case max = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ESteamPartyBeaconLocationType: EnumConvertible { typealias From = SteamPartyBeaconLocationType }
-extension SteamPartyBeaconLocationType: EnumConvertible { typealias From = ESteamPartyBeaconLocationType }
+extension ESteamPartyBeaconLocationType: RawConvertible { typealias From = SteamPartyBeaconLocationType }
+extension SteamPartyBeaconLocationType: EnumWithUnrepresented { typealias From = ESteamPartyBeaconLocationType }
 
 /// Steamworks `ESteamPartyBeaconLocationData`
 public enum SteamPartyBeaconLocationData: UInt32 {
@@ -1120,10 +1190,12 @@ public enum SteamPartyBeaconLocationData: UInt32 {
     case iconURLMedium = 3
     /// Steamworks `k_ESteamPartyBeaconLocationDataIconURLLarge`
     case iconURLLarge = 4
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
 }
 
-extension ESteamPartyBeaconLocationData: EnumConvertible { typealias From = SteamPartyBeaconLocationData }
-extension SteamPartyBeaconLocationData: EnumConvertible { typealias From = ESteamPartyBeaconLocationData }
+extension ESteamPartyBeaconLocationData: RawConvertible { typealias From = SteamPartyBeaconLocationData }
+extension SteamPartyBeaconLocationData: EnumWithUnrepresented { typealias From = ESteamPartyBeaconLocationData }
 
 /// Steamworks `ERemoteStoragePlatform`
 public enum RemoteStoragePlatform: Int32 {
@@ -1145,10 +1217,12 @@ public enum RemoteStoragePlatform: Int32 {
     case ios = 64
     /// Steamworks `k_ERemoteStoragePlatformAll`
     case all = -1
+    /// Some undocumented value
+    case unrepresentedInSwift = 65
 }
 
-extension ERemoteStoragePlatform: EnumConvertible { typealias From = RemoteStoragePlatform }
-extension RemoteStoragePlatform: EnumConvertible { typealias From = ERemoteStoragePlatform }
+extension ERemoteStoragePlatform: RawConvertible { typealias From = RemoteStoragePlatform }
+extension RemoteStoragePlatform: EnumWithUnrepresented { typealias From = ERemoteStoragePlatform }
 
 /// Steamworks `ERemoteStoragePublishedFileVisibility`
 public enum RemoteStoragePublishedFileVisibility: UInt32 {
@@ -1160,10 +1234,12 @@ public enum RemoteStoragePublishedFileVisibility: UInt32 {
     case `private` = 2
     /// Steamworks `k_ERemoteStoragePublishedFileVisibilityUnlisted`
     case unlisted = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension ERemoteStoragePublishedFileVisibility: EnumConvertible { typealias From = RemoteStoragePublishedFileVisibility }
-extension RemoteStoragePublishedFileVisibility: EnumConvertible { typealias From = ERemoteStoragePublishedFileVisibility }
+extension ERemoteStoragePublishedFileVisibility: RawConvertible { typealias From = RemoteStoragePublishedFileVisibility }
+extension RemoteStoragePublishedFileVisibility: EnumWithUnrepresented { typealias From = ERemoteStoragePublishedFileVisibility }
 
 /// Steamworks `EWorkshopFileType`
 public enum WorkshopFileType: UInt32 {
@@ -1203,10 +1279,12 @@ public enum WorkshopFileType: UInt32 {
     case gameManagedItem = 15
     /// Steamworks `k_EWorkshopFileTypeMax`
     case max = 16
+    /// Some undocumented value
+    case unrepresentedInSwift = 17
 }
 
-extension EWorkshopFileType: EnumConvertible { typealias From = WorkshopFileType }
-extension WorkshopFileType: EnumConvertible { typealias From = EWorkshopFileType }
+extension EWorkshopFileType: RawConvertible { typealias From = WorkshopFileType }
+extension WorkshopFileType: EnumWithUnrepresented { typealias From = EWorkshopFileType }
 
 /// Steamworks `EWorkshopVote`
 public enum WorkshopVote: UInt32 {
@@ -1218,10 +1296,12 @@ public enum WorkshopVote: UInt32 {
     case against = 2
     /// Steamworks `k_EWorkshopVoteLater`
     case later = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension EWorkshopVote: EnumConvertible { typealias From = WorkshopVote }
-extension WorkshopVote: EnumConvertible { typealias From = EWorkshopVote }
+extension EWorkshopVote: RawConvertible { typealias From = WorkshopVote }
+extension WorkshopVote: EnumWithUnrepresented { typealias From = EWorkshopVote }
 
 /// Steamworks `EWorkshopFileAction`
 public enum WorkshopFileAction: UInt32 {
@@ -1229,10 +1309,12 @@ public enum WorkshopFileAction: UInt32 {
     case played = 0
     /// Steamworks `k_EWorkshopFileActionCompleted`
     case completed = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension EWorkshopFileAction: EnumConvertible { typealias From = WorkshopFileAction }
-extension WorkshopFileAction: EnumConvertible { typealias From = EWorkshopFileAction }
+extension EWorkshopFileAction: RawConvertible { typealias From = WorkshopFileAction }
+extension WorkshopFileAction: EnumWithUnrepresented { typealias From = EWorkshopFileAction }
 
 /// Steamworks `EWorkshopEnumerationType`
 public enum WorkshopEnumerationType: UInt32 {
@@ -1250,10 +1332,12 @@ public enum WorkshopEnumerationType: UInt32 {
     case contentByFriends = 5
     /// Steamworks `k_EWorkshopEnumerationTypeRecentFromFollowedUsers`
     case recentFromFollowedUsers = 6
+    /// Some undocumented value
+    case unrepresentedInSwift = 7
 }
 
-extension EWorkshopEnumerationType: EnumConvertible { typealias From = WorkshopEnumerationType }
-extension WorkshopEnumerationType: EnumConvertible { typealias From = EWorkshopEnumerationType }
+extension EWorkshopEnumerationType: RawConvertible { typealias From = WorkshopEnumerationType }
+extension WorkshopEnumerationType: EnumWithUnrepresented { typealias From = EWorkshopEnumerationType }
 
 /// Steamworks `EWorkshopVideoProvider`
 public enum WorkshopVideoProvider: UInt32 {
@@ -1261,10 +1345,12 @@ public enum WorkshopVideoProvider: UInt32 {
     case none = 0
     /// Steamworks `k_EWorkshopVideoProviderYoutube`
     case youtube = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension EWorkshopVideoProvider: EnumConvertible { typealias From = WorkshopVideoProvider }
-extension WorkshopVideoProvider: EnumConvertible { typealias From = EWorkshopVideoProvider }
+extension EWorkshopVideoProvider: RawConvertible { typealias From = WorkshopVideoProvider }
+extension WorkshopVideoProvider: EnumWithUnrepresented { typealias From = EWorkshopVideoProvider }
 
 /// Steamworks `EUGCReadAction`
 public enum UGCReadAction: UInt32 {
@@ -1274,10 +1360,12 @@ public enum UGCReadAction: UInt32 {
     case continueReading = 1
     /// Steamworks `k_EUGCRead_Close`
     case close = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension EUGCReadAction: EnumConvertible { typealias From = UGCReadAction }
-extension UGCReadAction: EnumConvertible { typealias From = EUGCReadAction }
+extension EUGCReadAction: RawConvertible { typealias From = UGCReadAction }
+extension UGCReadAction: EnumWithUnrepresented { typealias From = EUGCReadAction }
 
 /// Steamworks `ERemoteStorageLocalFileChange`
 public enum RemoteStorageLocalFileChange: UInt32 {
@@ -1287,10 +1375,12 @@ public enum RemoteStorageLocalFileChange: UInt32 {
     case fileUpdated = 1
     /// Steamworks `k_ERemoteStorageLocalFileChange_FileDeleted`
     case fileDeleted = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ERemoteStorageLocalFileChange: EnumConvertible { typealias From = RemoteStorageLocalFileChange }
-extension RemoteStorageLocalFileChange: EnumConvertible { typealias From = ERemoteStorageLocalFileChange }
+extension ERemoteStorageLocalFileChange: RawConvertible { typealias From = RemoteStorageLocalFileChange }
+extension RemoteStorageLocalFileChange: EnumWithUnrepresented { typealias From = ERemoteStorageLocalFileChange }
 
 /// Steamworks `ERemoteStorageFilePathType`
 public enum RemoteStorageFilePathType: UInt32 {
@@ -1300,10 +1390,12 @@ public enum RemoteStorageFilePathType: UInt32 {
     case absolute = 1
     /// Steamworks `k_ERemoteStorageFilePathType_APIFilename`
     case apiFilename = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ERemoteStorageFilePathType: EnumConvertible { typealias From = RemoteStorageFilePathType }
-extension RemoteStorageFilePathType: EnumConvertible { typealias From = ERemoteStorageFilePathType }
+extension ERemoteStorageFilePathType: RawConvertible { typealias From = RemoteStorageFilePathType }
+extension RemoteStorageFilePathType: EnumWithUnrepresented { typealias From = ERemoteStorageFilePathType }
 
 /// Steamworks `ELeaderboardDataRequest`
 public enum LeaderboardDataRequest: UInt32 {
@@ -1315,10 +1407,12 @@ public enum LeaderboardDataRequest: UInt32 {
     case friends = 2
     /// Steamworks `k_ELeaderboardDataRequestUsers`
     case users = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension ELeaderboardDataRequest: EnumConvertible { typealias From = LeaderboardDataRequest }
-extension LeaderboardDataRequest: EnumConvertible { typealias From = ELeaderboardDataRequest }
+extension ELeaderboardDataRequest: RawConvertible { typealias From = LeaderboardDataRequest }
+extension LeaderboardDataRequest: EnumWithUnrepresented { typealias From = ELeaderboardDataRequest }
 
 /// Steamworks `ELeaderboardSortMethod`
 public enum LeaderboardSortMethod: UInt32 {
@@ -1328,10 +1422,12 @@ public enum LeaderboardSortMethod: UInt32 {
     case ascending = 1
     /// Steamworks `k_ELeaderboardSortMethodDescending`
     case descending = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ELeaderboardSortMethod: EnumConvertible { typealias From = LeaderboardSortMethod }
-extension LeaderboardSortMethod: EnumConvertible { typealias From = ELeaderboardSortMethod }
+extension ELeaderboardSortMethod: RawConvertible { typealias From = LeaderboardSortMethod }
+extension LeaderboardSortMethod: EnumWithUnrepresented { typealias From = ELeaderboardSortMethod }
 
 /// Steamworks `ELeaderboardDisplayType`
 public enum LeaderboardDisplayType: UInt32 {
@@ -1343,10 +1439,12 @@ public enum LeaderboardDisplayType: UInt32 {
     case timeSeconds = 2
     /// Steamworks `k_ELeaderboardDisplayTypeTimeMilliSeconds`
     case timeMilliSeconds = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension ELeaderboardDisplayType: EnumConvertible { typealias From = LeaderboardDisplayType }
-extension LeaderboardDisplayType: EnumConvertible { typealias From = ELeaderboardDisplayType }
+extension ELeaderboardDisplayType: RawConvertible { typealias From = LeaderboardDisplayType }
+extension LeaderboardDisplayType: EnumWithUnrepresented { typealias From = ELeaderboardDisplayType }
 
 /// Steamworks `ELeaderboardUploadScoreMethod`
 public enum LeaderboardUploadScoreMethod: UInt32 {
@@ -1356,10 +1454,12 @@ public enum LeaderboardUploadScoreMethod: UInt32 {
     case keepBest = 1
     /// Steamworks `k_ELeaderboardUploadScoreMethodForceUpdate`
     case forceUpdate = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ELeaderboardUploadScoreMethod: EnumConvertible { typealias From = LeaderboardUploadScoreMethod }
-extension LeaderboardUploadScoreMethod: EnumConvertible { typealias From = ELeaderboardUploadScoreMethod }
+extension ELeaderboardUploadScoreMethod: RawConvertible { typealias From = LeaderboardUploadScoreMethod }
+extension LeaderboardUploadScoreMethod: EnumWithUnrepresented { typealias From = ELeaderboardUploadScoreMethod }
 
 /// Steamworks `ERegisterActivationCodeResult`
 public enum RegisterActivationCodeResult: UInt32 {
@@ -1373,10 +1473,12 @@ public enum RegisterActivationCodeResult: UInt32 {
     case timeout = 3
     /// Steamworks `k_ERegisterActivationCodeAlreadyOwned`
     case alreadyOwned = 4
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
 }
 
-extension ERegisterActivationCodeResult: EnumConvertible { typealias From = RegisterActivationCodeResult }
-extension RegisterActivationCodeResult: EnumConvertible { typealias From = ERegisterActivationCodeResult }
+extension ERegisterActivationCodeResult: RawConvertible { typealias From = RegisterActivationCodeResult }
+extension RegisterActivationCodeResult: EnumWithUnrepresented { typealias From = ERegisterActivationCodeResult }
 
 /// Steamworks `EP2PSessionError`
 public enum P2PSessionError: UInt32 {
@@ -1392,10 +1494,12 @@ public enum P2PSessionError: UInt32 {
     case destinationNotLoggedInDELETED = 3
     /// Steamworks `k_EP2PSessionErrorMax`
     case max = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension EP2PSessionError: EnumConvertible { typealias From = P2PSessionError }
-extension P2PSessionError: EnumConvertible { typealias From = EP2PSessionError }
+extension EP2PSessionError: RawConvertible { typealias From = P2PSessionError }
+extension P2PSessionError: EnumWithUnrepresented { typealias From = EP2PSessionError }
 
 /// Steamworks `EP2PSend`
 public enum P2PSend: UInt32 {
@@ -1407,10 +1511,12 @@ public enum P2PSend: UInt32 {
     case reliable = 2
     /// Steamworks `k_EP2PSendReliableWithBuffering`
     case reliableWithBuffering = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension EP2PSend: EnumConvertible { typealias From = P2PSend }
-extension P2PSend: EnumConvertible { typealias From = EP2PSend }
+extension EP2PSend: RawConvertible { typealias From = P2PSend }
+extension P2PSend: EnumWithUnrepresented { typealias From = EP2PSend }
 
 /// Steamworks `ESNetSocketState`
 public enum SNetSocketState: UInt32 {
@@ -1436,10 +1542,12 @@ public enum SNetSocketState: UInt32 {
     case remoteEndDisconnected = 24
     /// Steamworks `k_ESNetSocketStateConnectionBroken`
     case connectionBroken = 25
+    /// Some undocumented value
+    case unrepresentedInSwift = 26
 }
 
-extension ESNetSocketState: EnumConvertible { typealias From = SNetSocketState }
-extension SNetSocketState: EnumConvertible { typealias From = ESNetSocketState }
+extension ESNetSocketState: RawConvertible { typealias From = SNetSocketState }
+extension SNetSocketState: EnumWithUnrepresented { typealias From = ESNetSocketState }
 
 /// Steamworks `ESNetSocketConnectionType`
 public enum SNetSocketConnectionType: UInt32 {
@@ -1449,10 +1557,12 @@ public enum SNetSocketConnectionType: UInt32 {
     case udp = 1
     /// Steamworks `k_ESNetSocketConnectionTypeUDPRelay`
     case udpRelay = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ESNetSocketConnectionType: EnumConvertible { typealias From = SNetSocketConnectionType }
-extension SNetSocketConnectionType: EnumConvertible { typealias From = ESNetSocketConnectionType }
+extension ESNetSocketConnectionType: RawConvertible { typealias From = SNetSocketConnectionType }
+extension SNetSocketConnectionType: EnumWithUnrepresented { typealias From = ESNetSocketConnectionType }
 
 /// Steamworks `EVRScreenshotType`
 public enum VRScreenshotType: UInt32 {
@@ -1468,10 +1578,12 @@ public enum VRScreenshotType: UInt32 {
     case monoPanorama = 4
     /// Steamworks `k_EVRScreenshotType_StereoPanorama`
     case stereoPanorama = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension EVRScreenshotType: EnumConvertible { typealias From = VRScreenshotType }
-extension VRScreenshotType: EnumConvertible { typealias From = EVRScreenshotType }
+extension EVRScreenshotType: RawConvertible { typealias From = VRScreenshotType }
+extension VRScreenshotType: EnumWithUnrepresented { typealias From = EVRScreenshotType }
 
 /// Steamworks `AudioPlayback_Status`
 public enum AudioPlaybackStatus: UInt32 {
@@ -1483,10 +1595,12 @@ public enum AudioPlaybackStatus: UInt32 {
     case paused = 2
     /// Steamworks `AudioPlayback_Idle`
     case idle = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension AudioPlayback_Status: EnumConvertible { typealias From = AudioPlaybackStatus }
-extension AudioPlaybackStatus: EnumConvertible { typealias From = AudioPlayback_Status }
+extension AudioPlayback_Status: RawConvertible { typealias From = AudioPlaybackStatus }
+extension AudioPlaybackStatus: EnumWithUnrepresented { typealias From = AudioPlayback_Status }
 
 /// Steamworks `EHTTPMethod`
 public enum HTTPMethod: UInt32 {
@@ -1506,10 +1620,12 @@ public enum HTTPMethod: UInt32 {
     case options = 6
     /// Steamworks `k_EHTTPMethodPATCH`
     case patch = 7
+    /// Some undocumented value
+    case unrepresentedInSwift = 8
 }
 
-extension EHTTPMethod: EnumConvertible { typealias From = HTTPMethod }
-extension HTTPMethod: EnumConvertible { typealias From = EHTTPMethod }
+extension EHTTPMethod: RawConvertible { typealias From = HTTPMethod }
+extension HTTPMethod: EnumWithUnrepresented { typealias From = EHTTPMethod }
 
 /// Steamworks `EHTTPStatusCode`
 public enum HTTPStatusCode: UInt32 {
@@ -1603,10 +1719,12 @@ public enum HTTPStatusCode: UInt32 {
     case http505HTTPVersionNotSupported = 505
     /// Steamworks `k_EHTTPStatusCode5xxUnknown`
     case http5xxUnknown = 599
+    /// Some undocumented value
+    case unrepresentedInSwift = 600
 }
 
-extension EHTTPStatusCode: EnumConvertible { typealias From = HTTPStatusCode }
-extension HTTPStatusCode: EnumConvertible { typealias From = EHTTPStatusCode }
+extension EHTTPStatusCode: RawConvertible { typealias From = HTTPStatusCode }
+extension HTTPStatusCode: EnumWithUnrepresented { typealias From = EHTTPStatusCode }
 
 /// Steamworks `EInputSourceMode`
 public enum InputSourceMode: UInt32 {
@@ -1644,10 +1762,12 @@ public enum InputSourceMode: UInt32 {
     case singleButton = 15
     /// Steamworks `k_EInputSourceMode_Switches`
     case switches = 16
+    /// Some undocumented value
+    case unrepresentedInSwift = 17
 }
 
-extension EInputSourceMode: EnumConvertible { typealias From = InputSourceMode }
-extension InputSourceMode: EnumConvertible { typealias From = EInputSourceMode }
+extension EInputSourceMode: RawConvertible { typealias From = InputSourceMode }
+extension InputSourceMode: EnumWithUnrepresented { typealias From = EInputSourceMode }
 
 /// Steamworks `EInputActionOrigin`
 public enum InputActionOrigin: UInt32 {
@@ -2321,10 +2441,12 @@ public enum InputActionOrigin: UInt32 {
     case count = 333
     /// Steamworks `k_EInputActionOrigin_MaximumPossibleValue`
     case maximumPossibleValue = 32767
+    /// Some undocumented value
+    case unrepresentedInSwift = 32768
 }
 
-extension EInputActionOrigin: EnumConvertible { typealias From = InputActionOrigin }
-extension InputActionOrigin: EnumConvertible { typealias From = EInputActionOrigin }
+extension EInputActionOrigin: RawConvertible { typealias From = InputActionOrigin }
+extension InputActionOrigin: EnumWithUnrepresented { typealias From = EInputActionOrigin }
 
 /// Steamworks `EXboxOrigin`
 public enum XboxOrigin: UInt32 {
@@ -2386,10 +2508,12 @@ public enum XboxOrigin: UInt32 {
     case dPadEast = 27
     /// Steamworks `k_EXboxOrigin_Count`
     case count = 28
+    /// Some undocumented value
+    case unrepresentedInSwift = 29
 }
 
-extension EXboxOrigin: EnumConvertible { typealias From = XboxOrigin }
-extension XboxOrigin: EnumConvertible { typealias From = EXboxOrigin }
+extension EXboxOrigin: RawConvertible { typealias From = XboxOrigin }
+extension XboxOrigin: EnumWithUnrepresented { typealias From = EXboxOrigin }
 
 /// Steamworks `ESteamControllerPad`
 public enum SteamControllerPad: UInt32 {
@@ -2397,10 +2521,12 @@ public enum SteamControllerPad: UInt32 {
     case left = 0
     /// Steamworks `k_ESteamControllerPad_Right`
     case right = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension ESteamControllerPad: EnumConvertible { typealias From = SteamControllerPad }
-extension SteamControllerPad: EnumConvertible { typealias From = ESteamControllerPad }
+extension ESteamControllerPad: RawConvertible { typealias From = SteamControllerPad }
+extension SteamControllerPad: EnumWithUnrepresented { typealias From = ESteamControllerPad }
 
 /// Steamworks `EControllerHapticLocation`
 public enum ControllerHapticLocation: UInt32 {
@@ -2410,10 +2536,12 @@ public enum ControllerHapticLocation: UInt32 {
     case right = 2
     /// Steamworks `k_EControllerHapticLocation_Both`
     case both = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension EControllerHapticLocation: EnumConvertible { typealias From = ControllerHapticLocation }
-extension ControllerHapticLocation: EnumConvertible { typealias From = EControllerHapticLocation }
+extension EControllerHapticLocation: RawConvertible { typealias From = ControllerHapticLocation }
+extension ControllerHapticLocation: EnumWithUnrepresented { typealias From = EControllerHapticLocation }
 
 /// Steamworks `EControllerHapticType`
 public enum ControllerHapticType: UInt32 {
@@ -2423,10 +2551,12 @@ public enum ControllerHapticType: UInt32 {
     case tick = 1
     /// Steamworks `k_EControllerHapticType_Click`
     case click = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension EControllerHapticType: EnumConvertible { typealias From = ControllerHapticType }
-extension ControllerHapticType: EnumConvertible { typealias From = EControllerHapticType }
+extension EControllerHapticType: RawConvertible { typealias From = ControllerHapticType }
+extension ControllerHapticType: EnumWithUnrepresented { typealias From = EControllerHapticType }
 
 /// Steamworks `ESteamInputType`
 public enum SteamInputType: UInt32 {
@@ -2462,10 +2592,12 @@ public enum SteamInputType: UInt32 {
     case count = 14
     /// Steamworks `k_ESteamInputType_MaximumPossibleValue`
     case maximumPossibleValue = 255
+    /// Some undocumented value
+    case unrepresentedInSwift = 256
 }
 
-extension ESteamInputType: EnumConvertible { typealias From = SteamInputType }
-extension SteamInputType: EnumConvertible { typealias From = ESteamInputType }
+extension ESteamInputType: RawConvertible { typealias From = SteamInputType }
+extension SteamInputType: EnumWithUnrepresented { typealias From = ESteamInputType }
 
 /// Steamworks `ESteamInputConfigurationEnableType`
 public enum SteamInputConfigurationEnableType: UInt32 {
@@ -2479,10 +2611,12 @@ public enum SteamInputConfigurationEnableType: UInt32 {
     case generic = 4
     /// Steamworks `k_ESteamInputConfigurationEnableType_Switch`
     case `switch` = 8
+    /// Some undocumented value
+    case unrepresentedInSwift = 9
 }
 
-extension ESteamInputConfigurationEnableType: EnumConvertible { typealias From = SteamInputConfigurationEnableType }
-extension SteamInputConfigurationEnableType: EnumConvertible { typealias From = ESteamInputConfigurationEnableType }
+extension ESteamInputConfigurationEnableType: RawConvertible { typealias From = SteamInputConfigurationEnableType }
+extension SteamInputConfigurationEnableType: EnumWithUnrepresented { typealias From = ESteamInputConfigurationEnableType }
 
 /// Steamworks `ESteamInputLEDFlag`
 public enum SteamInputLEDFlag: UInt32 {
@@ -2490,10 +2624,12 @@ public enum SteamInputLEDFlag: UInt32 {
     case setColor = 0
     /// Steamworks `k_ESteamInputLEDFlag_RestoreUserDefault`
     case restoreUserDefault = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension ESteamInputLEDFlag: EnumConvertible { typealias From = SteamInputLEDFlag }
-extension SteamInputLEDFlag: EnumConvertible { typealias From = ESteamInputLEDFlag }
+extension ESteamInputLEDFlag: RawConvertible { typealias From = SteamInputLEDFlag }
+extension SteamInputLEDFlag: EnumWithUnrepresented { typealias From = ESteamInputLEDFlag }
 
 /// Steamworks `ESteamInputGlyphSize`
 public enum SteamInputGlyphSize: UInt32 {
@@ -2503,10 +2639,12 @@ public enum SteamInputGlyphSize: UInt32 {
     case medium = 1
     /// Steamworks `k_ESteamInputGlyphSize_Large`
     case large = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ESteamInputGlyphSize: EnumConvertible { typealias From = SteamInputGlyphSize }
-extension SteamInputGlyphSize: EnumConvertible { typealias From = ESteamInputGlyphSize }
+extension ESteamInputGlyphSize: RawConvertible { typealias From = SteamInputGlyphSize }
+extension SteamInputGlyphSize: EnumWithUnrepresented { typealias From = ESteamInputGlyphSize }
 
 /// Steamworks `ESteamInputActionEventType`
 public enum SteamInputActionEventType: UInt32 {
@@ -2514,10 +2652,12 @@ public enum SteamInputActionEventType: UInt32 {
     case digitalAction = 0
     /// Steamworks `ESteamInputActionEventType_AnalogAction`
     case analogAction = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension ESteamInputActionEventType: EnumConvertible { typealias From = SteamInputActionEventType }
-extension SteamInputActionEventType: EnumConvertible { typealias From = ESteamInputActionEventType }
+extension ESteamInputActionEventType: RawConvertible { typealias From = SteamInputActionEventType }
+extension SteamInputActionEventType: EnumWithUnrepresented { typealias From = ESteamInputActionEventType }
 
 /// Steamworks `EControllerActionOrigin`
 public enum ControllerActionOrigin: UInt32 {
@@ -3135,10 +3275,12 @@ public enum ControllerActionOrigin: UInt32 {
     case count = 305
     /// Steamworks `k_EControllerActionOrigin_MaximumPossibleValue`
     case maximumPossibleValue = 32767
+    /// Some undocumented value
+    case unrepresentedInSwift = 32768
 }
 
-extension EControllerActionOrigin: EnumConvertible { typealias From = ControllerActionOrigin }
-extension ControllerActionOrigin: EnumConvertible { typealias From = EControllerActionOrigin }
+extension EControllerActionOrigin: RawConvertible { typealias From = ControllerActionOrigin }
+extension ControllerActionOrigin: EnumWithUnrepresented { typealias From = EControllerActionOrigin }
 
 /// Steamworks `ESteamControllerLEDFlag`
 public enum SteamControllerLEDFlag: UInt32 {
@@ -3146,10 +3288,12 @@ public enum SteamControllerLEDFlag: UInt32 {
     case setColor = 0
     /// Steamworks `k_ESteamControllerLEDFlag_RestoreUserDefault`
     case restoreUserDefault = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension ESteamControllerLEDFlag: EnumConvertible { typealias From = SteamControllerLEDFlag }
-extension SteamControllerLEDFlag: EnumConvertible { typealias From = ESteamControllerLEDFlag }
+extension ESteamControllerLEDFlag: RawConvertible { typealias From = SteamControllerLEDFlag }
+extension SteamControllerLEDFlag: EnumWithUnrepresented { typealias From = ESteamControllerLEDFlag }
 
 /// Steamworks `EUGCMatchingUGCType`
 public enum UGCMatchingUGCType: Int32 {
@@ -3181,10 +3325,12 @@ public enum UGCMatchingUGCType: Int32 {
     case gameManagedItems = 12
     /// Steamworks `k_EUGCMatchingUGCType_All`
     case all = -1
+    /// Some undocumented value
+    case unrepresentedInSwift = 13
 }
 
-extension EUGCMatchingUGCType: EnumConvertible { typealias From = UGCMatchingUGCType }
-extension UGCMatchingUGCType: EnumConvertible { typealias From = EUGCMatchingUGCType }
+extension EUGCMatchingUGCType: RawConvertible { typealias From = UGCMatchingUGCType }
+extension UGCMatchingUGCType: EnumWithUnrepresented { typealias From = EUGCMatchingUGCType }
 
 /// Steamworks `EUserUGCList`
 public enum UserUGCList: UInt32 {
@@ -3206,10 +3352,12 @@ public enum UserUGCList: UInt32 {
     case usedOrPlayed = 7
     /// Steamworks `k_EUserUGCList_Followed`
     case followed = 8
+    /// Some undocumented value
+    case unrepresentedInSwift = 9
 }
 
-extension EUserUGCList: EnumConvertible { typealias From = UserUGCList }
-extension UserUGCList: EnumConvertible { typealias From = EUserUGCList }
+extension EUserUGCList: RawConvertible { typealias From = UserUGCList }
+extension UserUGCList: EnumWithUnrepresented { typealias From = EUserUGCList }
 
 /// Steamworks `EUserUGCListSortOrder`
 public enum UserUGCListSortOrder: UInt32 {
@@ -3227,10 +3375,12 @@ public enum UserUGCListSortOrder: UInt32 {
     case voteScoreDesc = 5
     /// Steamworks `k_EUserUGCListSortOrder_ForModeration`
     case forModeration = 6
+    /// Some undocumented value
+    case unrepresentedInSwift = 7
 }
 
-extension EUserUGCListSortOrder: EnumConvertible { typealias From = UserUGCListSortOrder }
-extension UserUGCListSortOrder: EnumConvertible { typealias From = EUserUGCListSortOrder }
+extension EUserUGCListSortOrder: RawConvertible { typealias From = UserUGCListSortOrder }
+extension UserUGCListSortOrder: EnumWithUnrepresented { typealias From = EUserUGCListSortOrder }
 
 /// Steamworks `EUGCQuery`
 public enum UGCQuery: UInt32 {
@@ -3274,10 +3424,12 @@ public enum UGCQuery: UInt32 {
     case rankedByLifetimePlaytimeSessions = 18
     /// Steamworks `k_EUGCQuery_RankedByLastUpdatedDate`
     case rankedByLastUpdatedDate = 19
+    /// Some undocumented value
+    case unrepresentedInSwift = 20
 }
 
-extension EUGCQuery: EnumConvertible { typealias From = UGCQuery }
-extension UGCQuery: EnumConvertible { typealias From = EUGCQuery }
+extension EUGCQuery: RawConvertible { typealias From = UGCQuery }
+extension UGCQuery: EnumWithUnrepresented { typealias From = EUGCQuery }
 
 /// Steamworks `EItemUpdateStatus`
 public enum ItemUpdateStatus: UInt32 {
@@ -3293,10 +3445,12 @@ public enum ItemUpdateStatus: UInt32 {
     case uploadingPreviewFile = 4
     /// Steamworks `k_EItemUpdateStatusCommittingChanges`
     case committingChanges = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension EItemUpdateStatus: EnumConvertible { typealias From = ItemUpdateStatus }
-extension ItemUpdateStatus: EnumConvertible { typealias From = EItemUpdateStatus }
+extension EItemUpdateStatus: RawConvertible { typealias From = ItemUpdateStatus }
+extension ItemUpdateStatus: EnumWithUnrepresented { typealias From = EItemUpdateStatus }
 
 /// Steamworks `EItemState`
 public enum ItemState: UInt32 {
@@ -3314,10 +3468,12 @@ public enum ItemState: UInt32 {
     case downloading = 16
     /// Steamworks `k_EItemStateDownloadPending`
     case downloadPending = 32
+    /// Some undocumented value
+    case unrepresentedInSwift = 33
 }
 
-extension EItemState: EnumConvertible { typealias From = ItemState }
-extension ItemState: EnumConvertible { typealias From = EItemState }
+extension EItemState: RawConvertible { typealias From = ItemState }
+extension ItemState: EnumWithUnrepresented { typealias From = EItemState }
 
 /// Steamworks `EItemStatistic`
 public enum ItemStatistic: UInt32 {
@@ -3347,10 +3503,12 @@ public enum ItemStatistic: UInt32 {
     case numSecondsPlayedDuringTimePeriod = 11
     /// Steamworks `k_EItemStatistic_NumPlaytimeSessionsDuringTimePeriod`
     case numPlaytimeSessionsDuringTimePeriod = 12
+    /// Some undocumented value
+    case unrepresentedInSwift = 13
 }
 
-extension EItemStatistic: EnumConvertible { typealias From = ItemStatistic }
-extension ItemStatistic: EnumConvertible { typealias From = EItemStatistic }
+extension EItemStatistic: RawConvertible { typealias From = ItemStatistic }
+extension ItemStatistic: EnumWithUnrepresented { typealias From = EItemStatistic }
 
 /// Steamworks `EItemPreviewType`
 public enum ItemPreviewType: UInt32 {
@@ -3366,10 +3524,12 @@ public enum ItemPreviewType: UInt32 {
     case environmentMapLatLong = 4
     /// Steamworks `k_EItemPreviewType_ReservedMax`
     case reservedMax = 255
+    /// Some undocumented value
+    case unrepresentedInSwift = 256
 }
 
-extension EItemPreviewType: EnumConvertible { typealias From = ItemPreviewType }
-extension ItemPreviewType: EnumConvertible { typealias From = EItemPreviewType }
+extension EItemPreviewType: RawConvertible { typealias From = ItemPreviewType }
+extension ItemPreviewType: EnumWithUnrepresented { typealias From = EItemPreviewType }
 
 /// Steamworks `ESteamItemFlags`
 public struct SteamItemFlags: OptionSet {
@@ -3385,8 +3545,8 @@ public struct SteamItemFlags: OptionSet {
     public static let consumed = SteamItemFlags(rawValue: 512)
 }
 
-extension ESteamItemFlags: EnumConvertible { typealias From = SteamItemFlags }
-extension SteamItemFlags: EnumConvertible { typealias From = ESteamItemFlags }
+extension ESteamItemFlags: RawConvertible { typealias From = SteamItemFlags }
+extension SteamItemFlags: RawConvertible { typealias From = ESteamItemFlags }
 
 /// Steamworks `EParentalFeature`
 public enum ParentalFeature: UInt32 {
@@ -3420,10 +3580,12 @@ public enum ParentalFeature: UInt32 {
     case siteLicense = 13
     /// Steamworks `k_EFeatureMax`
     case max = 14
+    /// Some undocumented value
+    case unrepresentedInSwift = 15
 }
 
-extension EParentalFeature: EnumConvertible { typealias From = ParentalFeature }
-extension ParentalFeature: EnumConvertible { typealias From = EParentalFeature }
+extension EParentalFeature: RawConvertible { typealias From = ParentalFeature }
+extension ParentalFeature: EnumWithUnrepresented { typealias From = EParentalFeature }
 
 /// Steamworks `ESteamDeviceFormFactor`
 public enum SteamDeviceFormFactor: UInt32 {
@@ -3437,10 +3599,12 @@ public enum SteamDeviceFormFactor: UInt32 {
     case computer = 3
     /// Steamworks `k_ESteamDeviceFormFactorTV`
     case tv = 4
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
 }
 
-extension ESteamDeviceFormFactor: EnumConvertible { typealias From = SteamDeviceFormFactor }
-extension SteamDeviceFormFactor: EnumConvertible { typealias From = ESteamDeviceFormFactor }
+extension ESteamDeviceFormFactor: RawConvertible { typealias From = SteamDeviceFormFactor }
+extension SteamDeviceFormFactor: EnumWithUnrepresented { typealias From = ESteamDeviceFormFactor }
 
 /// Steamworks `ESteamNetworkingAvailability`
 public enum SteamNetworkingAvailability: Int32 {
@@ -3462,12 +3626,12 @@ public enum SteamNetworkingAvailability: Int32 {
     case current = 100
     /// Steamworks `k_ESteamNetworkingAvailability_Unknown`
     case unknown = 0
-    /// Steamworks `k_ESteamNetworkingAvailability__Force32bit`
-    case _force32bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 101
 }
 
-extension ESteamNetworkingAvailability: EnumConvertible { typealias From = SteamNetworkingAvailability }
-extension SteamNetworkingAvailability: EnumConvertible { typealias From = ESteamNetworkingAvailability }
+extension ESteamNetworkingAvailability: RawConvertible { typealias From = SteamNetworkingAvailability }
+extension SteamNetworkingAvailability: EnumWithUnrepresented { typealias From = ESteamNetworkingAvailability }
 
 /// Steamworks `ESteamNetworkingIdentityType`
 public enum SteamNetworkingIdentityType: UInt32 {
@@ -3489,12 +3653,12 @@ public enum SteamNetworkingIdentityType: UInt32 {
     case genericBytes = 3
     /// Steamworks `k_ESteamNetworkingIdentityType_UnknownType`
     case unknownType = 4
-    /// Steamworks `k_ESteamNetworkingIdentityType__Force32bit`
-    case _force32bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 20
 }
 
-extension ESteamNetworkingIdentityType: EnumConvertible { typealias From = SteamNetworkingIdentityType }
-extension SteamNetworkingIdentityType: EnumConvertible { typealias From = ESteamNetworkingIdentityType }
+extension ESteamNetworkingIdentityType: RawConvertible { typealias From = SteamNetworkingIdentityType }
+extension SteamNetworkingIdentityType: EnumWithUnrepresented { typealias From = ESteamNetworkingIdentityType }
 
 /// Steamworks `ESteamNetworkingConnectionState`
 public enum SteamNetworkingConnectionState: Int32 {
@@ -3516,12 +3680,12 @@ public enum SteamNetworkingConnectionState: Int32 {
     case linger = -2
     /// Steamworks `k_ESteamNetworkingConnectionState_Dead`
     case dead = -3
-    /// Steamworks `k_ESteamNetworkingConnectionState__Force32Bit`
-    case _force32Bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension ESteamNetworkingConnectionState: EnumConvertible { typealias From = SteamNetworkingConnectionState }
-extension SteamNetworkingConnectionState: EnumConvertible { typealias From = ESteamNetworkingConnectionState }
+extension ESteamNetworkingConnectionState: RawConvertible { typealias From = SteamNetworkingConnectionState }
+extension SteamNetworkingConnectionState: EnumWithUnrepresented { typealias From = ESteamNetworkingConnectionState }
 
 /// Steamworks `ESteamNetConnectionEnd`
 public enum SteamNetConnectionEnd: UInt32 {
@@ -3589,12 +3753,12 @@ public enum SteamNetConnectionEnd: UInt32 {
     case miscPeerSentNoConnection = 5010
     /// Steamworks `k_ESteamNetConnectionEnd_Misc_Max`
     case miscMax = 5999
-    /// Steamworks `k_ESteamNetConnectionEnd__Force32Bit`
-    case _force32Bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 6000
 }
 
-extension ESteamNetConnectionEnd: EnumConvertible { typealias From = SteamNetConnectionEnd }
-extension SteamNetConnectionEnd: EnumConvertible { typealias From = ESteamNetConnectionEnd }
+extension ESteamNetConnectionEnd: RawConvertible { typealias From = SteamNetConnectionEnd }
+extension SteamNetConnectionEnd: EnumWithUnrepresented { typealias From = ESteamNetConnectionEnd }
 
 /// Steamworks `ESteamNetworkingConfigScope`
 public enum SteamNetworkingConfigScope: UInt32 {
@@ -3606,12 +3770,12 @@ public enum SteamNetworkingConfigScope: UInt32 {
     case listenSocket = 3
     /// Steamworks `k_ESteamNetworkingConfig_Connection`
     case connection = 4
-    /// Steamworks `k_ESteamNetworkingConfigScope__Force32Bit`
-    case _force32Bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
 }
 
-extension ESteamNetworkingConfigScope: EnumConvertible { typealias From = SteamNetworkingConfigScope }
-extension SteamNetworkingConfigScope: EnumConvertible { typealias From = ESteamNetworkingConfigScope }
+extension ESteamNetworkingConfigScope: RawConvertible { typealias From = SteamNetworkingConfigScope }
+extension SteamNetworkingConfigScope: EnumWithUnrepresented { typealias From = ESteamNetworkingConfigScope }
 
 /// Steamworks `ESteamNetworkingConfigDataType`
 public enum SteamNetworkingConfigDataType: UInt32 {
@@ -3625,12 +3789,12 @@ public enum SteamNetworkingConfigDataType: UInt32 {
     case string = 4
     /// Steamworks `k_ESteamNetworkingConfig_Ptr`
     case ptr = 5
-    /// Steamworks `k_ESteamNetworkingConfigDataType__Force32Bit`
-    case _force32Bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
 }
 
-extension ESteamNetworkingConfigDataType: EnumConvertible { typealias From = SteamNetworkingConfigDataType }
-extension SteamNetworkingConfigDataType: EnumConvertible { typealias From = ESteamNetworkingConfigDataType }
+extension ESteamNetworkingConfigDataType: RawConvertible { typealias From = SteamNetworkingConfigDataType }
+extension SteamNetworkingConfigDataType: EnumWithUnrepresented { typealias From = ESteamNetworkingConfigDataType }
 
 /// Steamworks `ESteamNetworkingConfigValue`
 public enum SteamNetworkingConfigValue: UInt32 {
@@ -3744,12 +3908,12 @@ public enum SteamNetworkingConfigValue: UInt32 {
     case logLevelSDRRelayPings = 18
     /// Steamworks `k_ESteamNetworkingConfig_DELETED_EnumerateDevVars`
     case deletedEnumerateDevVars = 35
-    /// Steamworks `k_ESteamNetworkingConfigValue__Force32Bit`
-    case _force32Bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 207
 }
 
-extension ESteamNetworkingConfigValue: EnumConvertible { typealias From = SteamNetworkingConfigValue }
-extension SteamNetworkingConfigValue: EnumConvertible { typealias From = ESteamNetworkingConfigValue }
+extension ESteamNetworkingConfigValue: RawConvertible { typealias From = SteamNetworkingConfigValue }
+extension SteamNetworkingConfigValue: EnumWithUnrepresented { typealias From = ESteamNetworkingConfigValue }
 
 /// Steamworks `ESteamNetworkingGetConfigValueResult`
 public enum SteamNetworkingGetConfigValueResult: Int32 {
@@ -3763,12 +3927,12 @@ public enum SteamNetworkingGetConfigValueResult: Int32 {
     case ok = 1
     /// Steamworks `k_ESteamNetworkingGetConfigValue_OKInherited`
     case okInherited = 2
-    /// Steamworks `k_ESteamNetworkingGetConfigValueResult__Force32Bit`
-    case _force32Bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
 }
 
-extension ESteamNetworkingGetConfigValueResult: EnumConvertible { typealias From = SteamNetworkingGetConfigValueResult }
-extension SteamNetworkingGetConfigValueResult: EnumConvertible { typealias From = ESteamNetworkingGetConfigValueResult }
+extension ESteamNetworkingGetConfigValueResult: RawConvertible { typealias From = SteamNetworkingGetConfigValueResult }
+extension SteamNetworkingGetConfigValueResult: EnumWithUnrepresented { typealias From = ESteamNetworkingGetConfigValueResult }
 
 /// Steamworks `ESteamNetworkingSocketsDebugOutputType`
 public enum SteamNetworkingSocketsDebugOutputType: UInt32 {
@@ -3790,12 +3954,12 @@ public enum SteamNetworkingSocketsDebugOutputType: UInt32 {
     case debug = 7
     /// Steamworks `k_ESteamNetworkingSocketsDebugOutputType_Everything`
     case everything = 8
-    /// Steamworks `k_ESteamNetworkingSocketsDebugOutputType__Force32Bit`
-    case _force32Bit = 2147483647
+    /// Some undocumented value
+    case unrepresentedInSwift = 9
 }
 
-extension ESteamNetworkingSocketsDebugOutputType: EnumConvertible { typealias From = SteamNetworkingSocketsDebugOutputType }
-extension SteamNetworkingSocketsDebugOutputType: EnumConvertible { typealias From = ESteamNetworkingSocketsDebugOutputType }
+extension ESteamNetworkingSocketsDebugOutputType: RawConvertible { typealias From = SteamNetworkingSocketsDebugOutputType }
+extension SteamNetworkingSocketsDebugOutputType: EnumWithUnrepresented { typealias From = ESteamNetworkingSocketsDebugOutputType }
 
 /// Steamworks `EServerMode`
 public enum ServerMode: UInt32 {
@@ -3807,7 +3971,9 @@ public enum ServerMode: UInt32 {
     case authentication = 2
     /// Steamworks `eServerModeAuthenticationAndSecure`
     case authenticationAndSecure = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
 }
 
-extension EServerMode: EnumConvertible { typealias From = ServerMode }
-extension ServerMode: EnumConvertible { typealias From = EServerMode }
+extension EServerMode: RawConvertible { typealias From = ServerMode }
+extension ServerMode: EnumWithUnrepresented { typealias From = EServerMode }

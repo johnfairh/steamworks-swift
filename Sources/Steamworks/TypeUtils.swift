@@ -45,15 +45,37 @@ extension FixedWidthInteger {
 
 // MARK: Enums
 
-/// For DRYing the conversion code between Steam enums (which are structs) and Swift enums
-/// (which are enums or OptionSet structs).
-protocol EnumConvertible {
+/// Firstly a protocol and extension for converting to raw structs -- covering Steamworks enums (imported as structs)
+/// and Swift OptionSets.  In both cases there is no invalid value, so the "!" on the init will never fire.
+protocol RawConvertible {
     associatedtype From: RawRepresentable
 }
 
-extension EnumConvertible where Self: RawRepresentable, From.RawValue == Self.RawValue {
+extension RawConvertible where Self: RawRepresentable, From.RawValue == Self.RawValue {
     init(_ from: From) {
         self.init(rawValue: from.rawValue)!
+    }
+}
+
+/// Secondly a protocol and extension for converting to Swift enums.  The wrinkle here is that we cannot trust the
+/// C API to give us a valid (ie. documented) enum case, and must not crash the program if it does.
+///
+/// This is a pretty thorny type-checking mismatch - we work around it by extending the C model with an "unrepresented"
+/// value added by our code generator and spot out-of-range values at runtime.
+///
+/// Give huge thanks to SR-0280 which permits protocol members to be witnessed by enum cases!
+protocol EnumWithUnrepresented: RawConvertible {
+    static var unrepresentedInSwift: Self { get }
+}
+
+extension EnumWithUnrepresented where Self: RawRepresentable, From.RawValue == Self.RawValue {
+    init(_ from: From) {
+        if let converted = Self(rawValue: from.rawValue) {
+            self = converted
+        } else {
+            logError("Steam returned an undocumented enum value \(from.rawValue) for \(Self.self)")
+            self = .unrepresentedInSwift
+        }
     }
 }
 
@@ -69,12 +91,13 @@ extension EnumConvertible where Self: RawRepresentable, From.RawValue == Self.Ra
 ///
 /// These dumb casts smooth over the bumps in generated code.  See also
 /// `String.asSwiftTypeForPassingIntoSteamworks`.
-extension EnumConvertible where Self: OptionSet {
+extension RawConvertible where Self: OptionSet {
     init(_ rawValue: RawValue) {
         self.init(rawValue: rawValue)
     }
 }
 
+/// For passing into Steamworks, where it expects int32
 extension Int32 {
     init<T>(_ optionSet: T) where T: OptionSet, T.RawValue: BinaryInteger {
         self = Int32(optionSet.rawValue)

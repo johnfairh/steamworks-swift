@@ -24,10 +24,12 @@ public enum SteamEnum: Int32 {
     case ok = 6
     /// Steamworks `esteamEnumLower_Case`
     case lowerCase = 7
+    /// Some undocumented value
+    case unrepresentedInSwift = 8
 }
 
-extension ESteamEnum: EnumConvertible { typealias From = SteamEnum }
-extension SteamEnum: EnumConvertible { typealias From = ESteamEnum }
+extension ESteamEnum: RawConvertible { typealias From = SteamEnum }
+extension SteamEnum: EnumWithUnrepresented { typealias From = ESteamEnum }
 
 /// Steamworks `ESteamMiscFlags`
 public struct SteamMiscFlags: OptionSet {
@@ -43,8 +45,8 @@ public struct SteamMiscFlags: OptionSet {
     public static let loads = SteamMiscFlags(rawValue: 512)
 }
 
-extension ESteamMiscFlags: EnumConvertible { typealias From = SteamMiscFlags }
-extension SteamMiscFlags: EnumConvertible { typealias From = ESteamMiscFlags }
+extension ESteamMiscFlags: RawConvertible { typealias From = SteamMiscFlags }
+extension SteamMiscFlags: RawConvertible { typealias From = ESteamMiscFlags }
 
 /// Steamworks `EChatEntryType`
 public enum ChatEntryType: UInt32 {
@@ -52,7 +54,9 @@ public enum ChatEntryType: UInt32 {
     case invalid = 0
     /// Steamworks `k_EChatEntryTypeChatMsg`
     case chatMsg = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
 }
 
-extension EChatEntryType: EnumConvertible { typealias From = ChatEntryType }
-extension ChatEntryType: EnumConvertible { typealias From = EChatEntryType }
+extension EChatEntryType: RawConvertible { typealias From = ChatEntryType }
+extension ChatEntryType: EnumWithUnrepresented { typealias From = EChatEntryType }

@@ -27,13 +27,27 @@ struct Enums {
 
 // MARK: Structure generation
 
+extension MetadataDB.Enum.Value {
+    var shouldGenerate: Bool {
+        !name.contains("__")
+    }
+}
+
 extension MetadataDB.Enum {
+    /// This has to match the raw type chosen by the Clang Importer for the imported C enum
     var rawType: String {
         values.values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
     }
 
     var steamRawType: String {
         rawType.lowercased()
+    }
+
+    var unrepresentedValue: Int {
+        (values.values
+            .filter(\.shouldGenerate)
+            .compactMap { Int($0.value) }
+            .max() ?? 0) + 1
     }
 
     /// The Swift declaration for the enum or optionset struct
@@ -58,23 +72,32 @@ extension MetadataDB.Enum {
             valueGen = generateOptionSetDecl
         }
 
-        let elements = values.values
-            .map { value in
-                """
-                    /// Steamworks `\(value.name)`
-                    \(valueGen(value, swiftTypeName))
-                """
+        var elements = values.values
+            .filter(\.shouldGenerate)
+            .flatMap { value in [
+                "/// Steamworks `\(value.name)`",
+                valueGen(value, swiftTypeName)]
             }
-            .joined(separator: "\n")
+
+        let enumProtocol: String
+        if is_set {
+            enumProtocol = "RawConvertible"
+        } else {
+            enumProtocol = "EnumWithUnrepresented"
+            elements += [
+                "/// Some undocumented value",
+                "case unrepresentedInSwift = \(unrepresentedValue)"
+            ]
+        }
 
         return """
                /// Steamworks `\(enumname)`
                \(typeDecl)
-               \(elements)
+               \(elements.indented(1).joined(separator: "\n"))
                }
 
-               extension \(enumname): EnumConvertible { typealias From = \(swiftTypeName) }
-               extension \(swiftTypeName): EnumConvertible { typealias From = \(enumname) }
+               extension \(enumname): RawConvertible { typealias From = \(swiftTypeName) }
+               extension \(swiftTypeName): \(enumProtocol) { typealias From = \(enumname) }
                """
     }
 
