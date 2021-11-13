@@ -68,3 +68,15 @@ public struct FriendGameInfo: SteamCreatable {
     init(_ steam: FriendGameInfo_t) {
     }
 }
+
+public struct UserStatsReceived: SteamCreatable {
+    public let gameID: UInt64
+    public let result: Result
+    public let user: SteamID
+
+    init(_ steam: UserStatsReceived_t) {
+        gameID = UInt64(steam.m_nGameID)
+        result = Result(steam.m_eResult)
+        user = SteamID(steam.m_steamIDUser)
+    }
+}

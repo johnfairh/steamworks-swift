@@ -15,6 +15,10 @@ public extension SteamBaseAPI {
     func onPersonaStateChange(_ client: @escaping (PersonaStateChange) -> Void) {
         callbacks.add(callbackID: CallbackID(304) /* Generated */, rawClient: SteamBaseAPI.makeRaw(client))
     }
+
+    func onUserStatsReceived(_ client: @escaping (UserStatsReceived) -> Void) {
+        callbacks.add(callbackID: CallbackID(1101) /* Generated */, rawClient: SteamBaseAPI.makeRaw(client))
+    }
 }
 
 public extension SteamBaseAPI {

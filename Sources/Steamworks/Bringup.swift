@@ -49,16 +49,30 @@ extension FixedWidthInteger {
 public typealias FriendsGroupID = SteamTypealias<Int16>
 public typealias AppId = SteamTypealias<UInt32>
 
-//func JoinClanChatRoom(steamIDClan: CSteamID,
-//                      completion: @escaping (JoinClanChatRoomCompletionResult_t) -> Void) {
-//    let rc = SteamFriends().pointee.JoinClanChatRoom(steamIDClan)
-//    apiCallbacks[rc] = makeRaw(completion)
-//}
-//
-//func JoinClanChatRoom(steamIDClan: SteamID) async -> JoinClanChatRoomCompletionResult {
-//    await withUnsafeContinuation { continuation in
-//        JoinClanChatRoom(steamIDClan: steamIDClan) {
-//            continuation.resume(returning: $0)
-//        }
-//    }
-//}
+// MARK: Bringup interfaces
+
+public struct SteamUser {
+    var interface: UnsafeMutablePointer<ISteamUser> {
+        SteamAPI_SteamUser_v021()
+    }
+
+    public init() {
+    }
+
+    public var steamID: SteamID {
+        SteamID(SteamAPI_ISteamUser_GetSteamID(interface))
+    }
+}
+
+public struct SteamUserStats {
+    var interface: UnsafeMutablePointer<ISteamUserStats> {
+        SteamAPI_SteamUserStats_v012()
+    }
+
+    public init() {
+    }
+
+    public func requestCurrentStats() -> Bool {
+        SteamAPI_ISteamUserStats_RequestCurrentStats(interface)
+    }
+}

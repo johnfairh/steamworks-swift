@@ -43,7 +43,7 @@
 		02D309EC2728159700DE64F0 /* Bringup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EB2728159700DE64F0 /* Bringup.swift */; };
 		02D309EE272969B900DE64F0 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D309D3272181D900DE64F0 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		02D309F02729730A00DE64F0 /* SteamGameServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EF2729730A00DE64F0 /* SteamGameServerAPI.swift */; };
-		OBJ_33 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* main.swift */; };
+		OBJ_33 /* client.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* client.swift */; };
 		OBJ_47 /* TestCallbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* TestCallbacks.swift */; };
 		OBJ_49 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 /* End PBXBuildFile section */
@@ -149,7 +149,7 @@
 		02D309EB2728159700DE64F0 /* Bringup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bringup.swift; sourceTree = "<group>"; };
 		02D309EF2729730A00DE64F0 /* SteamGameServerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamGameServerAPI.swift; sourceTree = "<group>"; };
 		OBJ_10 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		OBJ_12 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_12 /* client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = client.swift; sourceTree = "<group>"; };
 		OBJ_17 /* TestCallbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCallbacks.swift; sourceTree = "<group>"; };
 		OBJ_24 /* sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sdk; sourceTree = SOURCE_ROOT; };
 		OBJ_25 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		OBJ_11 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_12 /* main.swift */,
+				OBJ_12 /* client.swift */,
 			);
 			name = Client;
 			path = Sources/Client;
@@ -564,7 +564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_33 /* main.swift in Sources */,
+				OBJ_33 /* client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
