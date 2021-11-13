@@ -26,28 +26,12 @@ extension UInt64 {
     }
 }
 
-// MARK: Typedefs
-
-public struct SteamTypealias<SwiftType> {
-    public let value: SwiftType
-    public init(value: SwiftType) {
-        self.value = value
-    }
-    init(_ steamValue: SwiftType) {
-        self.value = steamValue
+// Extremely terrifying extension to a C++ class ...
+extension CSteamID {
+    init(_ steamID: SteamID) {
+        self.init(steamID.steamID)
     }
 }
-
-// Conversion of Swift Types to Steam types, for passing in typedefs
-// to Steamworks
-extension FixedWidthInteger {
-    init(_ value: SteamTypealias<Self>) {
-        self = value.value
-    }
-}
-
-public typealias FriendsGroupID = SteamTypealias<Int16>
-public typealias AppId = SteamTypealias<UInt32>
 
 // MARK: Bringup interfaces
 

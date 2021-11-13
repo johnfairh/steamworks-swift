@@ -11,6 +11,7 @@ public struct Generator {
     let io: IO
     let metadata: Metadata
     let version: Version
+    let typedefs: Typedefs
     let enums: Enums
     let interfaces: Interfaces
 
@@ -18,6 +19,7 @@ public struct Generator {
         io = try IO(sdkURL: sdkURL, outputDirURL: outputDirURL)
         metadata = try Metadata(io: io)
         version = Version(io: io)
+        typedefs = Typedefs(io: io, metadata: metadata)
         enums = Enums(io: io, metadata: metadata)
         interfaces = Interfaces(io: io, metadata: metadata)
     }
@@ -28,6 +30,7 @@ public struct Generator {
         print("Output directory: \(io.outputDirURL.path)")
 
         try version.generate()
+        try typedefs.generate()
         try enums.generate()
         try interfaces.generate()
     }

@@ -6,15 +6,14 @@
 //
 
 @_implementationOnly import CSteamworks
+import LibGenerate
 
-/// Protocol added to Swift structs meaning they have a corresponding Steam (C) type
-protocol SteamCreatable {
-    associatedtype SteamType
-    init(_ steam: SteamType)
-}
+// MARK: Callbacks
 
 /// Type of Steam Callback ID used as interface from Generated/Callbacks -> SteamCallbacks
 typealias CallbackID = Int32
+
+// MARK: Strings
 
 extension String {
     /// For converting strings received from Steamworks.  We promote `nullptr` to empty string for
@@ -28,10 +27,19 @@ extension String {
     }
 }
 
-// Extremely terrifying extension to a C++ class ...
-extension CSteamID {
-    init(_ steamID: SteamID) {
-        self.init(steamID.steamID)
+// MARK: Typedefs
+
+// Conversion of Swift Types to Steam types, for passing in typedefs
+// to Steamworks
+
+protocol SteamTypeAlias {
+    associatedtype SwiftType
+    var value: SwiftType { get }
+}
+
+extension FixedWidthInteger {
+    init<T: SteamTypeAlias>(_ value: T) where T.SwiftType == Self {
+        self = value.value
     }
 }
 
@@ -71,4 +79,12 @@ extension Int32 {
     init<T>(_ optionSet: T) where T: OptionSet, T.RawValue: BinaryInteger {
         self = Int32(optionSet.rawValue)
     }
+}
+
+// MARK: Structs
+
+/// Protocol added to Swift structs meaning they have a corresponding Steam (C) type
+protocol SteamCreatable {
+    associatedtype SteamType
+    init(_ steam: SteamType)
 }

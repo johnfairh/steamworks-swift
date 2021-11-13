@@ -64,6 +64,12 @@ struct SteamJSON: Codable {
     }
     let interfaces: [Interface]
 
+    struct Typedef: Codable {
+        let typedef: String
+        let type: String
+    }
+    let typedefs: [Typedef]
+
     init(data: Data) throws {
         self = try JSONDecoder().decode(SteamJSON.self, from: data)
     }
@@ -214,6 +220,10 @@ struct MetadataDB {
     /// Indexed by `classname`, order from original file
     let interfaces: OrderedDictionary<String, Interface>
 
+    typealias Typedef = SteamJSON.Typedef
+    /// Indexed by `typedef`, order from original file
+    let typedefs: OrderedDictionary<String, Typedef>
+
     init(base: SteamJSON, patch: PatchJSON) {
         callback_structs = .init(uniqueKeysWithValues: base.callback_structs.map {
             ($0.struct, $0)
@@ -229,6 +239,10 @@ struct MetadataDB {
 
         interfaces = .init(uniqueKeysWithValues: base.interfaces.map {
             ($0.classname, Interface(base: $0, patch: patch))
+        })
+
+        typedefs = .init(uniqueKeysWithValues: base.typedefs.map {
+            ($0.typedef, $0)
         })
     }
 }
@@ -258,6 +272,7 @@ final class Metadata: CustomStringConvertible {
           Enums: \(db.enums.count)
           Interfaces: \(db.interfaces.count)
           Interface methods: \(db.interfaces.values.reduce(0) { $0 + $1.methods.count })
+          Typedefs: \(db.typedefs.count)
         """
     }
 
