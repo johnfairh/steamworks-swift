@@ -132,8 +132,8 @@ final class SwiftParam {
         if let arrayParam = inArrayParam {
             swiftTypeBaseName = "ERROR"
             style = .in_array_count(arrayParam)
-        } else if let matches = naiveSwiftTypeName.re_match("^(.*) \\*$") {
-            swiftTypeBaseName = matches[1].asSwiftTypeName
+        } else if let depointered = naiveSwiftTypeName.depointeredType {
+            swiftTypeBaseName = depointered.asSwiftTypeName
             if let outLength = db.out_array_length {
                 style = .out_array(outLength)
             } else if db.array_count == nil {
@@ -145,6 +145,12 @@ final class SwiftParam {
             swiftTypeBaseName = naiveSwiftTypeName
             style = .in
         }
+    }
+}
+
+extension String {
+    var depointeredType: String? {
+        re_match("^(.*) \\*$").flatMap { $0[1] }
     }
 }
 

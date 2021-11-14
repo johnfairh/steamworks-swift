@@ -122,11 +122,11 @@ public class SteamBaseAPI: @unchecked Sendable {
     /// This routine is safe to call on multiple threads but will deadlock if called reentrantly.
     public func runCallbacks() {
         lock.locked {
-            SteamAPI_ManualDispatch_RunFrame(steamPipe)
+            SteamAPI_ManualDispatch_RunFrame(steamPipe.value)
 
             var callback = CallbackMsg_t()
-            while SteamAPI_ManualDispatch_GetNextCallback(steamPipe, &callback) {
-                defer { SteamAPI_ManualDispatch_FreeLastCallback(steamPipe) }
+            while SteamAPI_ManualDispatch_GetNextCallback(steamPipe.value, &callback) {
+                defer { SteamAPI_ManualDispatch_FreeLastCallback(steamPipe.value) }
 
                 if ( callback.m_iCallback == SteamAPICallCompleted_t_k_iCallback ) {
                     onCallCompleted(callback: callback)
@@ -159,7 +159,7 @@ public class SteamBaseAPI: @unchecked Sendable {
 
             var failed = true
             let success = SteamAPI_ManualDispatch_GetAPICallResult(
-                steamPipe,
+                steamPipe.value,
                 callCompleted.m_hAsyncCall,
                 callResult,
                 Int32(callCompleted.m_cubParam),

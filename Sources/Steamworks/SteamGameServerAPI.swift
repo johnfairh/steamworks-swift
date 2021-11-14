@@ -35,7 +35,7 @@ public final class SteamGameServerAPI: SteamBaseAPI {
             return nil
         }
 
-        super.init(steamPipe: SteamGameServer_GetHSteamPipe())
+        super.init(steamPipe: HSteamPipe(SteamGameServer_GetHSteamPipe()))
     }
 
     deinit {

@@ -39,8 +39,11 @@ private extension String {
     static let cToSwiftTypeMap: [String : String] = [
         "unsigned int" : "UInt32",
         "unsigned long long" : "UInt64",
+        "long long": "Int64",
         "int" : "Int32",
         "short": "Int16",
+        "void *": "UnsafeMutableRawPointer", // living on the edge isteammatchmaking
+        "char [1024]": "String", // guess, networking stuff is wild
     ]
 
     var asSwiftBaseType: String {
@@ -56,16 +59,19 @@ private extension String {
 extension MetadataDB.Typedef {
     /// Skip integer typedefs like 'int64', we handle these separately
     var shouldGenerate: Bool {
-        typedef.first!.isUppercase && Self.includeList.contains(typedef)
+        typedef.first!.isUppercase
     }
 
-    /// Bringup - opt-in just things we actually need for now
-    static let includeList: Set<String> = [
-        "FriendsGroupID_t",
-        "AppId_t"
-    ]
+    var isFunctionPointer: Bool {
+        type.contains("(*)")
+    }
 
     var generate: String {
+        isFunctionPointer ? generateFunction: generateBox
+    }
+
+    /// Normal case - integer boxed type
+    var generateBox: String {
         let swiftType = type.asSwiftBaseType
         return """
                /// Steamworks `\(typedef)`
@@ -75,6 +81,22 @@ extension MetadataDB.Typedef {
                }
 
                extension \(typedef.asSwiftTypeName): SteamTypeAlias {}
+               """
+    }
+
+    /// Function pointer types - guess for now, not sure how will actually handle at call site
+    var generateFunction: String {
+        guard let matches = type.re_match(#"\(([^*].*)\)"#) else {
+            preconditionFailure("Can't extract arguments for function typedef \(self)")
+        }
+        let args = matches[1].components(separatedBy: ", ")
+            .map(\.asSwiftTypeName)
+            .map { $0.depointeredType?.asSwiftTypeName ?? $0 }
+            .joined(separator: ", ")
+        // rn these all return void so don't bother converting
+        return """
+               /// Steamworks `\(typedef)`
+               public typealias \(typedef.asSwiftTypeName) = (\(args)) -> Void
                """
     }
 }

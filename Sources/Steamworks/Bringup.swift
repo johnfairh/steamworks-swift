@@ -60,3 +60,13 @@ public struct SteamUserStats {
         SteamAPI_ISteamUserStats_RequestCurrentStats(interface)
     }
 }
+
+// MARK: Bringup typedefs
+
+public struct SteamInputActionEvent {}
+public struct SteamNetConnectionStatusChangedCallback {}
+public struct SteamNetAuthenticationStatus {}
+public struct SteamRelayNetworkStatus {}
+public struct SteamNetworkingMessagesSessionRequest {}
+public struct SteamNetworkingMessagesSessionFailed {}
+

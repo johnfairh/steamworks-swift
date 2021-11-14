@@ -12,7 +12,7 @@ import XCTest
 class TestCallbacks: XCTestCase {
     /// store and dispatch callbacks (broadcast, permanent)
     func testCallbacks() {
-        let api = SteamBaseAPI(steamPipe: -1)
+        let api = SteamBaseAPI(steamPipe: HSteamPipe(-1))
 
         var counter = 0
         let callbackID = CallbackID(100)
@@ -33,7 +33,7 @@ class TestCallbacks: XCTestCase {
 
     /// register callback from callback
     func testReentrantCallbacks() {
-        let api = SteamBaseAPI(steamPipe: -1)
+        let api = SteamBaseAPI(steamPipe: HSteamPipe(-1))
 
         var counter = 0
         let callbackID = CallbackID(100)
