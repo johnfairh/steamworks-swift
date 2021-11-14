@@ -10,16 +10,17 @@ import OrderedCollections
 
 /// Decoded SDK `steam_api.json`.
 struct SteamJSON: Codable {
-    struct CallbackStruct: Codable {
+    struct Struct: Codable {
         struct Field: Codable {
             let fieldname: String
             let fieldtype: String
         }
-        let callback_id: Int
+        let callback_id: Int?
         let fields: [Field]
         let `struct`: String
+        let methods: [Method]?
     }
-    let callback_structs: [CallbackStruct]
+    let callback_structs: [Struct]
 
     struct Const: Codable {
         let constname: String
@@ -38,31 +39,34 @@ struct SteamJSON: Codable {
     }
     let enums: [Enum]
 
+    struct Method: Codable {
+        let callresult: String?
+        let methodname: String
+        let methodname_flat: String
+
+        struct Param: Codable {
+            let paramname: String
+            let paramtype: String
+            let paramtype_flat: String?
+            let array_count: String?
+            let buffer_count: String?
+            let out_struct: String?
+            let out_array_call: String?
+            let out_array_count: String?
+            let out_string_count: String?
+            let out_buffer_count: String?
+        }
+        let params: [Param]
+        let returntype: String
+    }
+
     struct Interface: Codable {
         let classname: String
-        struct Method: Codable {
-            let callresult: String?
-            let methodname: String
-            let methodname_flat: String
-
-            struct Param: Codable {
-                let paramname: String
-                let paramtype: String
-                let paramtype_flat: String?
-                let array_count: String?
-                let buffer_count: String?
-                let out_struct: String?
-                let out_array_call: String?
-                let out_array_count: String?
-                let out_string_count: String?
-                let out_buffer_count: String?
-            }
-            let params: [Param]
-            let returntype: String
-        }
         let methods: [Method]
     }
     let interfaces: [Interface]
+
+    let structs: [Struct]
 
     struct Typedef: Codable {
         let typedef: String
@@ -122,9 +126,33 @@ struct PatchJSON: Codable {
 /// (like 'is this random string an enum?')
 ///
 struct MetadataDB {
-    typealias CallbackStruct = SteamJSON.CallbackStruct
+    /// Shared type between callback-structs and regular structs - regular structs don't have
+    /// a callback ID and may have methods (though these are rarely coherent)
+    /// XXX some of these dumb things have nested enums too...
+    struct Struct {
+        typealias Field = SteamJSON.Struct.Field
+        let name: String // "struct" too annoying
+        let fields: [Field]
+        let callback_id: Int?
+        /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
+        let methods: OrderedDictionary<String, Method>
+
+        init(base: SteamJSON.Struct, patch: PatchJSON) {
+            name = base.struct
+            fields = base.fields
+            callback_id = base.callback_id
+
+            if let baseMethods = base.methods {
+                methods = .init(uniqueKeysWithValues: baseMethods.map { baseMethod in
+                    (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
+                })
+            } else {
+                methods = .init()
+            }
+        }
+    }
     /// Indexed by `struct`, order from original file
-    let callback_structs: OrderedDictionary<String, CallbackStruct>
+    let callback_structs: OrderedDictionary<String, Struct>
 
     typealias Const = SteamJSON.Const
     /// Indexed by `constname`, order from original file
@@ -162,51 +190,52 @@ struct MetadataDB {
     /// Indexed by `enumname`, order from original file
     let enums: OrderedDictionary<String, Enum>
 
-    struct Interface: Codable {
-        let classname: String
-        struct Method: Codable {
-            let methodname: String
-            let methodname_flat: String
-            let callresult: String?
+    struct Method: Codable {
+        let methodname: String
+        let methodname_flat: String
+        let callresult: String?
 
-            struct Param: Codable {
-                let name: String
-                let type: String
-                let array_count: String?
-                let out_array_length: String?
-                // ?? let out_string_count: String?
-                // ?? let buffer_count: String?
+        struct Param: Codable {
+            let name: String
+            let type: String
+            let array_count: String?
+            let out_array_length: String?
+            // ?? let out_string_count: String?
+            // ?? let buffer_count: String?
 
-                init(base: SteamJSON.Interface.Method.Param, patch: PatchJSON.Method.Param?) {
-                    self.name = base.paramname
-                    self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
-                    self.array_count = base.array_count
+            init(base: SteamJSON.Method.Param, patch: PatchJSON.Method.Param?) {
+                self.name = base.paramname
+                self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
+                self.array_count = base.array_count
 
-                    if let arrayCall = base.out_array_call {
-                        // comma-separated list, first is param name, rest is dynamic recipe on how to calculate.
-                        // used so sparingly (once) ignore the clever part.
-                        self.out_array_length = String(arrayCall.split(separator: ",")[0])
-                    } else if let arrayCount = base.out_array_count {
-                        // const or param with the length
-                        self.out_array_length = arrayCount
-                    } else {
-                        self.out_array_length = nil
-                    }
+                if let arrayCall = base.out_array_call {
+                    // comma-separated list, first is param name, rest is dynamic recipe on how to calculate.
+                    // used so sparingly (once) ignore the clever part.
+                    self.out_array_length = String(arrayCall.split(separator: ",")[0])
+                } else if let arrayCount = base.out_array_count {
+                    // const or param with the length
+                    self.out_array_length = arrayCount
+                } else {
+                    self.out_array_length = nil
                 }
             }
-            let params: [Param]
-            let returntype: String
-            let out_param_iff_rc: String?
-
-            init(base: SteamJSON.Interface.Method, patch: PatchJSON.Method?) {
-                methodname = base.methodname
-                methodname_flat = base.methodname_flat
-                callresult = base.callresult
-                params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
-                returntype = patch?.returntype ?? base.returntype
-                out_param_iff_rc = patch?.out_param_iff_rc
-            }
         }
+        let params: [Param]
+        let returntype: String
+        let out_param_iff_rc: String?
+
+        init(base: SteamJSON.Method, patch: PatchJSON.Method?) {
+            methodname = base.methodname
+            methodname_flat = base.methodname_flat
+            callresult = base.callresult
+            params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
+            returntype = patch?.returntype ?? base.returntype
+            out_param_iff_rc = patch?.out_param_iff_rc
+        }
+    }
+
+    struct Interface: Codable {
+        let classname: String
         /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
         let methods: OrderedDictionary<String, Method>
 
@@ -220,13 +249,16 @@ struct MetadataDB {
     /// Indexed by `classname`, order from original file
     let interfaces: OrderedDictionary<String, Interface>
 
+    /// Indexed by `struct`, order from original file
+    let structs: OrderedDictionary<String, Struct>
+
     typealias Typedef = SteamJSON.Typedef
     /// Indexed by `typedef`, order from original file
     let typedefs: OrderedDictionary<String, Typedef>
 
     init(base: SteamJSON, patch: PatchJSON) {
         callback_structs = .init(uniqueKeysWithValues: base.callback_structs.map {
-            ($0.struct, $0)
+            ($0.struct, Struct(base: $0, patch: patch))
         })
 
         consts = .init(uniqueKeysWithValues: base.consts.map {
@@ -239,6 +271,10 @@ struct MetadataDB {
 
         interfaces = .init(uniqueKeysWithValues: base.interfaces.map {
             ($0.classname, Interface(base: $0, patch: patch))
+        })
+
+        structs = .init(uniqueKeysWithValues: base.structs.map {
+            ($0.struct, Struct(base: $0, patch: patch))
         })
 
         typedefs = .init(uniqueKeysWithValues: base.typedefs.map {
@@ -272,6 +308,7 @@ final class Metadata: CustomStringConvertible {
           Enums: \(db.enums.count)
           Interfaces: \(db.interfaces.count)
           Interface methods: \(db.interfaces.values.reduce(0) { $0 + $1.methods.count })
+          Structs: \(db.structs.count)
           Typedefs: \(db.typedefs.count)
         """
     }

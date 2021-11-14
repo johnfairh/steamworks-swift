@@ -49,7 +49,7 @@ extension MetadataDB.Interface {
 }
 
 final class SwiftParam {
-    let db: MetadataDB.Interface.Method.Param
+    let db: MetadataDB.Method.Param
 
     var swiftName: String {
         db.name.asSwiftParameterName
@@ -126,7 +126,7 @@ final class SwiftParam {
         }
     }
 
-    init(_ db: MetadataDB.Interface.Method.Param, inArrayParam: SwiftParam? = nil) {
+    init(_ db: MetadataDB.Method.Param, inArrayParam: SwiftParam? = nil) {
         self.db = db
         let naiveSwiftTypeName = db.type.asSwiftTypeName
         if let arrayParam = inArrayParam {
@@ -154,7 +154,7 @@ extension String {
     }
 }
 
-extension Array where Element == MetadataDB.Interface.Method.Param {
+extension Array where Element == MetadataDB.Method.Param {
     var asSwiftParams: [SwiftParam] {
         var params = [SwiftParam]()
         var lookingForCount = [String : SwiftParam]()
@@ -208,7 +208,7 @@ extension Array where Element == SwiftParam {
 }
 
 struct SwiftMethod {
-    let db: MetadataDB.Interface.Method
+    let db: MetadataDB.Method
 
     enum Style {
         case normal(String) // 0+ args, return value
@@ -219,7 +219,7 @@ struct SwiftMethod {
     let style: Style
     let params: [SwiftParam]
 
-    init(_ db: MetadataDB.Interface.Method) {
+    init(_ db: MetadataDB.Method) {
         self.db = db
         if let callResult = db.callresult {
             style = .callReturn(callResult.asSwiftTypeName)
@@ -347,7 +347,7 @@ struct SwiftMethod {
     }
 }
 
-extension MetadataDB.Interface.Method {
+extension MetadataDB.Method {
     var isVar: Bool {
         params.count == 0 && methodname.starts(with: "Get")
     }
