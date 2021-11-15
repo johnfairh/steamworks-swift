@@ -52,7 +52,7 @@ extension MetadataDB.Enum {
 
     /// The Swift declaration for the enum or optionset struct
     var generated: String {
-        let swiftTypeName = enumname.asSwiftTypeName
+        let swiftTypeName = name.asSwiftTypeName
         let rawType = rawType
 
         let typeDecl: String
@@ -91,13 +91,13 @@ extension MetadataDB.Enum {
         }
 
         return """
-               /// Steamworks `\(enumname)`
+               /// Steamworks `\(name)`
                \(typeDecl)
                \(elements.indented(1).joined(separator: "\n"))
                }
 
-               extension \(enumname): RawConvertible { typealias From = \(swiftTypeName) }
-               extension \(swiftTypeName): \(enumProtocol) { typealias From = \(enumname) }
+               extension \(name): RawConvertible { typealias From = \(swiftTypeName) }
+               extension \(swiftTypeName): \(enumProtocol) { typealias From = \(name) }
                """
     }
 

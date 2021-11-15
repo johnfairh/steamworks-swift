@@ -16,6 +16,7 @@ struct SteamJSON: Codable {
             let fieldtype: String
         }
         let callback_id: Int?
+        let enums: [Enum]?
         let fields: [Field]
         let `struct`: String
         let methods: [Method]?
@@ -35,7 +36,12 @@ struct SteamJSON: Codable {
             let value: String
         }
         let enumname: String
+        let fqname: String?
         let values: [Value]
+
+        var name: String {
+            fqname ?? enumname
+        }
     }
     let enums: [Enum]
 
@@ -102,7 +108,7 @@ struct PatchJSON: Codable {
         }
         let values: [String : Value]? // valuename key
     }
-    let enums: [String : Enum] // enumname key
+    let enums: [String : Enum] // name (== fqname ?? enumname) key
 
     struct Method: Codable {
         let returntype: String? // patch returntype
@@ -126,40 +132,12 @@ struct PatchJSON: Codable {
 /// (like 'is this random string an enum?')
 ///
 struct MetadataDB {
-    /// Shared type between callback-structs and regular structs - regular structs don't have
-    /// a callback ID and may have methods (though these are rarely coherent)
-    /// XXX some of these dumb things have nested enums too...
-    struct Struct {
-        typealias Field = SteamJSON.Struct.Field
-        let name: String // "struct" too annoying
-        let fields: [Field]
-        let callback_id: Int?
-        /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
-        let methods: OrderedDictionary<String, Method>
-
-        init(base: SteamJSON.Struct, patch: PatchJSON) {
-            name = base.struct
-            fields = base.fields
-            callback_id = base.callback_id
-
-            if let baseMethods = base.methods {
-                methods = .init(uniqueKeysWithValues: baseMethods.map { baseMethod in
-                    (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
-                })
-            } else {
-                methods = .init()
-            }
-        }
-    }
-    /// Indexed by `struct`, order from original file
-    let callback_structs: OrderedDictionary<String, Struct>
-
     typealias Const = SteamJSON.Const
     /// Indexed by `constname`, order from original file
     let consts: OrderedDictionary<String, Const>
 
-    struct Enum {
-        let enumname: String
+    final class Enum {
+        let name: String
         let is_set: Bool
         let prefix: String
         let numeric_prefix: String?
@@ -178,12 +156,12 @@ struct MetadataDB {
         let values: OrderedDictionary<String, Value>
 
         init(base: SteamJSON.Enum, patch: PatchJSON.Enum?) {
-            enumname = base.enumname
+            name = base.name
             is_set = patch?.is_set ?? false
-            prefix = patch?.prefix ?? enumname
+            prefix = patch?.prefix ?? name
             numeric_prefix = patch?.numeric_prefix
-            values = .init(uniqueKeysWithValues: base.values.map { baseVal in
-                (baseVal.name, Value(base: baseVal, patch: patch?.values?[baseVal.name]))
+            values = .init(uniqueKeysWithValues: base.values.map {
+                ($0.name, Value(base: $0, patch: patch?.values?[$0.name]))
             })
         }
     }
@@ -249,7 +227,33 @@ struct MetadataDB {
     /// Indexed by `classname`, order from original file
     let interfaces: OrderedDictionary<String, Interface>
 
-    /// Indexed by `struct`, order from original file
+    /// Shared type between callback-structs and regular structs - regular structs don't have
+    /// a callback ID and may have methods (though these are rarely coherent)
+    struct Struct {
+        typealias Field = SteamJSON.Struct.Field
+        let name: String // "struct" too annoying
+        let fields: [Field]
+        let callback_id: Int?
+        /// Indexed by `name`, order from original file ...
+        let enums: OrderedDictionary<String, Enum>
+        /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
+        let methods: OrderedDictionary<String, Method>
+
+        init(base: SteamJSON.Struct, patch: PatchJSON) {
+            name = base.struct
+            fields = base.fields
+            callback_id = base.callback_id
+
+            enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
+                (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
+            })
+
+            methods = .init(uniqueKeysWithValues: (base.methods ?? []).map { baseMethod in
+                (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
+            })
+        }
+    }
+    /// Indexed by `struct`, order from original file -- 'callback structs' first
     let structs: OrderedDictionary<String, Struct>
 
     typealias Typedef = SteamJSON.Typedef
@@ -257,23 +261,19 @@ struct MetadataDB {
     let typedefs: OrderedDictionary<String, Typedef>
 
     init(base: SteamJSON, patch: PatchJSON) {
-        callback_structs = .init(uniqueKeysWithValues: base.callback_structs.map {
-            ($0.struct, Struct(base: $0, patch: patch))
-        })
-
         consts = .init(uniqueKeysWithValues: base.consts.map {
             ($0.constname, $0)
         })
 
-        enums = .init(uniqueKeysWithValues: base.enums.map { baseEnum in
-            (baseEnum.enumname, Enum(base: baseEnum, patch: patch.enums[baseEnum.enumname]))
+        enums = .init(uniqueKeysWithValues: base.enums.map {
+            ($0.name, Enum(base: $0, patch: patch.enums[$0.name]))
         })
 
         interfaces = .init(uniqueKeysWithValues: base.interfaces.map {
             ($0.classname, Interface(base: $0, patch: patch))
         })
 
-        structs = .init(uniqueKeysWithValues: base.structs.map {
+        structs = .init(uniqueKeysWithValues: (base.callback_structs + base.structs).map {
             ($0.struct, Struct(base: $0, patch: patch))
         })
 
@@ -291,6 +291,8 @@ final class Metadata: CustomStringConvertible {
     let io: IO
     let db: MetadataDB
 
+    private let nestedEnums: [String : MetadataDB.Enum]
+
     init(io: IO) throws {
         self.io = io
 
@@ -298,14 +300,20 @@ final class Metadata: CustomStringConvertible {
         let patch = try PatchJSON(data: io.loadPatchJson())
 
         self.db = MetadataDB(base: baseAPI, patch: patch)
+
+        // cache enums that aren't in the normal place
+        self.nestedEnums = .init(uniqueKeysWithValues: db.structs.values.flatMap {
+            $0.enums.values.map { ($0.name, $0) }
+        })
+
         Self.shared = self
     }
 
     var description: String {
         """
-          Callback structs: \(db.callback_structs.count)
           Constants: \(db.consts.count)
           Enums: \(db.enums.count)
+          Nested enums: \(nestedEnums.count)
           Interfaces: \(db.interfaces.count)
           Interface methods: \(db.interfaces.values.reduce(0) { $0 + $1.methods.count })
           Structs: \(db.structs.count)
@@ -315,11 +323,15 @@ final class Metadata: CustomStringConvertible {
 
     static private(set) var shared: Metadata!
 
+    static private func findEnum(name: String) -> MetadataDB.Enum? {
+        shared.db.enums[name] ?? shared.nestedEnums[name]
+    }
+
     static func isEnum(steamType name: String) -> Bool {
-        shared.db.enums[name] != nil
+        findEnum(name: name) != nil
     }
 
     static func isOptionSetEnum(steamType name: String) -> Bool {
-        shared.db.enums[name].flatMap { $0.is_set } ?? false
+        findEnum(name: name)?.is_set ?? false
     }
 }
