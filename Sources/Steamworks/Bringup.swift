@@ -70,3 +70,76 @@ public struct SteamRelayNetworkStatus {}
 public struct SteamNetworkingMessagesSessionRequest {}
 public struct SteamNetworkingMessagesSessionFailed {}
 
+public struct SteamServersConnected: SteamCreatable {
+    init(_ steam: SteamServersConnected_t) {
+    }
+}
+
+public struct PersonaStateChange: SteamCreatable {
+    public let steamID: SteamID
+    public let changeFlags: PersonaChange
+
+    init(_ steam: PersonaStateChange_t) {
+        steamID = SteamID(steam.m_ulSteamID)
+        changeFlags = PersonaChange(rawValue: UInt32(steam.m_nChangeFlags))
+    }
+}
+
+public struct FriendsGetFollowerCount: SteamCreatable {
+    public let result: SteamResult
+    public let steamID: SteamID
+    public let count: Int
+
+    init(_ steam: FriendsGetFollowerCount_t) {
+        result = SteamResult(steam.m_eResult)
+        steamID = SteamID(steam.m_steamID)
+        count = Int(steam.m_nCount)
+    }
+}
+
+public struct SetPersonaNameResponse: SteamCreatable {
+    init(_ steam: SetPersonaNameResponse_t) {
+    }
+}
+
+public struct DownloadClanActivityCountsResult: SteamCreatable {
+    init(_ steam: DownloadClanActivityCountsResult_t) {
+    }
+}
+
+public struct ClanOfficerListResponse: SteamCreatable {
+    init(_ steam: ClanOfficerListResponse_t) {
+    }
+}
+
+public struct JoinClanChatRoomCompletionResult: SteamCreatable {
+    init(_ steam: JoinClanChatRoomCompletionResult_t) {
+    }
+}
+
+public struct FriendsIsFollowing: SteamCreatable {
+    init(_ steam: FriendsIsFollowing_t) {
+    }
+}
+
+public struct FriendsEnumerateFollowingList: SteamCreatable {
+    init(_ steam: FriendsEnumerateFollowingList_t) {
+    }
+}
+
+public struct FriendGameInfo: SteamCreatable {
+    init(_ steam: FriendGameInfo_t) {
+    }
+}
+
+public struct UserStatsReceived: SteamCreatable {
+    public let gameID: UInt64
+    public let result: SteamResult
+    public let user: SteamID
+
+    init(_ steam: UserStatsReceived_t) {
+        gameID = UInt64(steam.m_nGameID)
+        result = SteamResult(steam.m_eResult)
+        user = SteamID(steam.m_steamIDUser)
+    }
+}
