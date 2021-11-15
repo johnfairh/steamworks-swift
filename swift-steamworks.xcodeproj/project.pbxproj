@@ -36,6 +36,7 @@
 		020860F8273FED5A00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F7273FED5A00725122 /* Typedefs.swift */; };
 		020860FA27403F6E00725122 /* TestTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F927403F6E00725122 /* TestTypes.swift */; };
 		020860FC274290DE00725122 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860FB274290DE00725122 /* Structs.swift */; };
+		020860FD2742CCE100725122 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E92728145E00DE64F0 /* Structs.swift */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -43,7 +44,6 @@
 		02D309E32728111A00DE64F0 /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E22728111A00DE64F0 /* Lock.swift */; };
 		02D309E52728122600DE64F0 /* TypeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E42728122600DE64F0 /* TypeUtils.swift */; };
 		02D309E8272813D000DE64F0 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E7272813CF00DE64F0 /* Callbacks.swift */; };
-		02D309EA2728145E00DE64F0 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E92728145E00DE64F0 /* Structs.swift */; };
 		02D309EC2728159700DE64F0 /* Bringup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EB2728159700DE64F0 /* Bringup.swift */; };
 		02D309EE272969B900DE64F0 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D309D3272181D900DE64F0 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		02D309F02729730A00DE64F0 /* SteamGameServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EF2729730A00DE64F0 /* SteamGameServerAPI.swift */; };
@@ -586,9 +586,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				02D309EA2728145E00DE64F0 /* Structs.swift in Sources */,
 				020860EB2736F8E700725122 /* SteamFriends+Methods.swift in Sources */,
 				02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */,
+				020860FD2742CCE100725122 /* Structs.swift in Sources */,
 				020860E12734054400725122 /* Enums.swift in Sources */,
 				020860D12730493900725122 /* SteamBaseAPI+Version.swift in Sources */,
 				02D309E8272813D000DE64F0 /* Callbacks.swift in Sources */,

@@ -58,7 +58,8 @@ class TestNames: XCTestCase {
             ("pszInput", "input"), // strip hungarian
             ("aProtocol", "`protocol`"), // respect swift keywords
             ("iEntry", "entryIndex"), // i does not mean integer
-            ("cubData", "dataSize") // "count of unsigned bytes" ??
+            ("cubData", "dataSize"), // "count of unsigned bytes" ??
+            ("wrong", "wrong"), // there's always one
         ]
 
         cases.forEach { steam, swift in

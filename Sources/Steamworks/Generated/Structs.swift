@@ -16,35 +16,35 @@ public struct SteamServersConnected {
 /// Steamworks `SteamServerConnectFailure_t`
 public struct SteamServerConnectFailure {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_bStillRetrying`
-    public let _bStillRetrying: Bool
+    public let stillRetrying: Bool
 }
 
 /// Steamworks `SteamServersDisconnected_t`
 public struct SteamServersDisconnected {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `ClientGameServerDeny_t`
 public struct ClientGameServerDeny {
     /// Steamworks `m_uAppID`
-    public let _uAppID: Int
+    public let appID: Int
     /// Steamworks `m_unGameServerIP`
-    public let _unGameServerIP: Int
+    public let gameServerIP: Int
     /// Steamworks `m_usGameServerPort`
-    public let _usGameServerPort: uint16
+    public let gameServerPort: uint16
     /// Steamworks `m_bSecure`
-    public let _bSecure: uint16
+    public let secure: uint16
     /// Steamworks `m_uReason`
-    public let _uReason: Int
+    public let reason: Int
 }
 
 /// Steamworks `IPCFailure_t`
 public struct PCFailure {
     /// Steamworks `m_eFailureType`
-    public let _eFailureType: uint8
+    public let failureType: uint8
 }
 
 /// Steamworks `LicensesUpdated_t`
@@ -55,243 +55,243 @@ public struct LicensesUpdated {
 /// Steamworks `ValidateAuthTicketResponse_t`
 public struct ValidateAuthTicketResponse {
     /// Steamworks `m_SteamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
     /// Steamworks `m_eAuthSessionResponse`
-    public let _eAuthSessionResponse: AuthSessionResponse
+    public let authSessionResponse: AuthSessionResponse
     /// Steamworks `m_OwnerSteamID`
-    public let _ownerSteamID: SteamID
+    public let ownerSteamID: SteamID
 }
 
 /// Steamworks `MicroTxnAuthorizationResponse_t`
 public struct MicroTxnAuthorizationResponse {
     /// Steamworks `m_unAppID`
-    public let _unAppID: Int
+    public let appID: Int
     /// Steamworks `m_ulOrderID`
-    public let _ulOrderID: uint64
+    public let orderID: uint64
     /// Steamworks `m_bAuthorized`
-    public let _bAuthorized: uint8
+    public let authorized: uint8
 }
 
 /// Steamworks `EncryptedAppTicketResponse_t`
 public struct EncryptedAppTicketResponse {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `GetAuthSessionTicketResponse_t`
 public struct GetAuthSessionTicketResponse {
     /// Steamworks `m_hAuthTicket`
-    public let _hAuthTicket: HAuthTicket
+    public let authTicket: HAuthTicket
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `GameWebCallback_t`
 public struct GameWebCallback {
     /// Steamworks `m_szURL`
-    public let _szURL: char [256]
+    public let url: char [256]
 }
 
 /// Steamworks `StoreAuthURLResponse_t`
 public struct StoreAuthURLResponse {
     /// Steamworks `m_szURL`
-    public let _szURL: char [512]
+    public let url: char [512]
 }
 
 /// Steamworks `MarketEligibilityResponse_t`
 public struct MarketEligibilityResponse {
     /// Steamworks `m_bAllowed`
-    public let _bAllowed: Bool
+    public let allowed: Bool
     /// Steamworks `m_eNotAllowedReason`
-    public let _eNotAllowedReason: MarketNotAllowedReasonFlags
+    public let notAllowedReason: MarketNotAllowedReasonFlags
     /// Steamworks `m_rtAllowedAtTime`
-    public let _rtAllowedAtTime: RTime32
+    public let allowedAtTime: RTime32
     /// Steamworks `m_cdaySteamGuardRequiredDays`
-    public let _cdaySteamGuardRequiredDays: Int
+    public let steamGuardRequiredDays: Int
     /// Steamworks `m_cdayNewDeviceCooldown`
-    public let _cdayNewDeviceCooldown: Int
+    public let newDeviceCooldown: Int
 }
 
 /// Steamworks `DurationControl_t`
 public struct DurationControl {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_appid`
-    public let _appid: AppId
+    public let appid: AppId
     /// Steamworks `m_bApplicable`
-    public let _bApplicable: Bool
+    public let applicable: Bool
     /// Steamworks `m_csecsLast5h`
-    public let _csecsLast5h: int32
+    public let last5h: int32
     /// Steamworks `m_progress`
-    public let _progress: DurationControlProgress
+    public let progress: DurationControlProgress
     /// Steamworks `m_notification`
-    public let _notification: DurationControlNotification
+    public let notification: DurationControlNotification
     /// Steamworks `m_csecsToday`
-    public let _csecsToday: int32
+    public let today: int32
     /// Steamworks `m_csecsRemaining`
-    public let _csecsRemaining: int32
+    public let remaining: int32
 }
 
 /// Steamworks `PersonaStateChange_t`
 public struct PersonaStateChange {
     /// Steamworks `m_ulSteamID`
-    public let _ulSteamID: uint64
+    public let steamID: uint64
     /// Steamworks `m_nChangeFlags`
-    public let _nChangeFlags: Int
+    public let changeFlags: Int
 }
 
 /// Steamworks `GameOverlayActivated_t`
 public struct GameOverlayActivated {
     /// Steamworks `m_bActive`
-    public let _bActive: uint8
+    public let active: uint8
 }
 
 /// Steamworks `GameServerChangeRequested_t`
 public struct GameServerChangeRequested {
     /// Steamworks `m_rgchServer`
-    public let _rgchServer: char [64]
+    public let server: char [64]
     /// Steamworks `m_rgchPassword`
-    public let _rgchPassword: char [64]
+    public let password: char [64]
 }
 
 /// Steamworks `GameLobbyJoinRequested_t`
 public struct GameLobbyJoinRequested {
     /// Steamworks `m_steamIDLobby`
-    public let _steamIDLobby: SteamID
+    public let lobby: SteamID
     /// Steamworks `m_steamIDFriend`
-    public let _steamIDFriend: SteamID
+    public let friend: SteamID
 }
 
 /// Steamworks `AvatarImageLoaded_t`
 public struct AvatarImageLoaded {
     /// Steamworks `m_steamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
     /// Steamworks `m_iImage`
-    public let _iImage: Int
+    public let imageIndex: Int
     /// Steamworks `m_iWide`
-    public let _iWide: Int
+    public let wideIndex: Int
     /// Steamworks `m_iTall`
-    public let _iTall: Int
+    public let tallIndex: Int
 }
 
 /// Steamworks `ClanOfficerListResponse_t`
 public struct ClanOfficerListResponse {
     /// Steamworks `m_steamIDClan`
-    public let _steamIDClan: SteamID
+    public let clan: SteamID
     /// Steamworks `m_cOfficers`
-    public let _cOfficers: Int
+    public let officers: Int
     /// Steamworks `m_bSuccess`
-    public let _bSuccess: uint8
+    public let success: uint8
 }
 
 /// Steamworks `FriendRichPresenceUpdate_t`
 public struct FriendRichPresenceUpdate {
     /// Steamworks `m_steamIDFriend`
-    public let _steamIDFriend: SteamID
+    public let friend: SteamID
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
 }
 
 /// Steamworks `GameRichPresenceJoinRequested_t`
 public struct GameRichPresenceJoinRequested {
     /// Steamworks `m_steamIDFriend`
-    public let _steamIDFriend: SteamID
+    public let friend: SteamID
     /// Steamworks `m_rgchConnect`
-    public let _rgchConnect: char [256]
+    public let connect: char [256]
 }
 
 /// Steamworks `GameConnectedClanChatMsg_t`
 public struct GameConnectedClanChatMsg {
     /// Steamworks `m_steamIDClanChat`
-    public let _steamIDClanChat: SteamID
+    public let clanChat: SteamID
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
     /// Steamworks `m_iMessageID`
-    public let _iMessageID: Int
+    public let messageIDIndex: Int
 }
 
 /// Steamworks `GameConnectedChatJoin_t`
 public struct GameConnectedChatJoin {
     /// Steamworks `m_steamIDClanChat`
-    public let _steamIDClanChat: SteamID
+    public let clanChat: SteamID
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
 }
 
 /// Steamworks `GameConnectedChatLeave_t`
 public struct GameConnectedChatLeave {
     /// Steamworks `m_steamIDClanChat`
-    public let _steamIDClanChat: SteamID
+    public let clanChat: SteamID
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
     /// Steamworks `m_bKicked`
-    public let _bKicked: Bool
+    public let kicked: Bool
     /// Steamworks `m_bDropped`
-    public let _bDropped: Bool
+    public let dropped: Bool
 }
 
 /// Steamworks `DownloadClanActivityCountsResult_t`
 public struct DownloadClanActivityCountsResult {
     /// Steamworks `m_bSuccess`
-    public let _bSuccess: Bool
+    public let success: Bool
 }
 
 /// Steamworks `JoinClanChatRoomCompletionResult_t`
 public struct JoinClanChatRoomCompletionResult {
     /// Steamworks `m_steamIDClanChat`
-    public let _steamIDClanChat: SteamID
+    public let clanChat: SteamID
     /// Steamworks `m_eChatRoomEnterResponse`
-    public let _eChatRoomEnterResponse: ChatRoomEnterResponse
+    public let chatRoomEnterResponse: ChatRoomEnterResponse
 }
 
 /// Steamworks `GameConnectedFriendChatMsg_t`
 public struct GameConnectedFriendChatMsg {
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
     /// Steamworks `m_iMessageID`
-    public let _iMessageID: Int
+    public let messageIDIndex: Int
 }
 
 /// Steamworks `FriendsGetFollowerCount_t`
 public struct FriendsGetFollowerCount {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_steamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
     /// Steamworks `m_nCount`
-    public let _nCount: Int
+    public let count: Int
 }
 
 /// Steamworks `FriendsIsFollowing_t`
 public struct FriendsIsFollowing {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_steamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
     /// Steamworks `m_bIsFollowing`
-    public let _bIsFollowing: Bool
+    public let isFollowing: Bool
 }
 
 /// Steamworks `FriendsEnumerateFollowingList_t`
 public struct FriendsEnumerateFollowingList {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_rgSteamID`
-    public let _rgSteamID: SteamID [50]
+    public let steamID: SteamID [50]
     /// Steamworks `m_nResultsReturned`
-    public let _nResultsReturned: int32
+    public let resultsReturned: int32
     /// Steamworks `m_nTotalResultCount`
-    public let _nTotalResultCount: int32
+    public let totalResultCount: int32
 }
 
 /// Steamworks `SetPersonaNameResponse_t`
 public struct SetPersonaNameResponse {
     /// Steamworks `m_bSuccess`
-    public let _bSuccess: Bool
+    public let success: Bool
     /// Steamworks `m_bLocalSuccess`
-    public let _bLocalSuccess: Bool
+    public let localSuccess: Bool
     /// Steamworks `m_result`
-    public let _result: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `UnreadChatMessagesChanged_t`
@@ -313,17 +313,17 @@ public struct PCountry {
 /// Steamworks `LowBatteryPower_t`
 public struct LowBatteryPower {
     /// Steamworks `m_nMinutesBatteryLeft`
-    public let _nMinutesBatteryLeft: uint8
+    public let minutesBatteryLeft: uint8
 }
 
 /// Steamworks `SteamAPICallCompleted_t`
 public struct SteamAPICallCompleted {
     /// Steamworks `m_hAsyncCall`
-    public let _hAsyncCall: SteamAPICall
+    public let asyncCall: SteamAPICall
     /// Steamworks `m_iCallback`
-    public let _iCallback: Int
+    public let callbackIndex: Int
     /// Steamworks `m_cubParam`
-    public let _cubParam: Int
+    public let param: Int
 }
 
 /// Steamworks `SteamShutdown_t`
@@ -334,15 +334,15 @@ public struct SteamShutdown {
 /// Steamworks `CheckFileSignature_t`
 public struct CheckFileSignature {
     /// Steamworks `m_eCheckFileSignature`
-    public let _eCheckFileSignature: CheckFileSignature
+    public let checkFileSignature: CheckFileSignature
 }
 
 /// Steamworks `GamepadTextInputDismissed_t`
 public struct GamepadTextInputDismissed {
     /// Steamworks `m_bSubmitted`
-    public let _bSubmitted: Bool
+    public let submitted: Bool
     /// Steamworks `m_unSubmittedText`
-    public let _unSubmittedText: Int
+    public let submittedText: Int
 }
 
 /// Steamworks `AppResumingFromSuspend_t`
@@ -358,205 +358,205 @@ public struct ModalGamepadTextInputDismissed {
 /// Steamworks `FavoritesListChanged_t`
 public struct FavoritesListChanged {
     /// Steamworks `m_nIP`
-    public let _nIP: Int
+    public let ip: Int
     /// Steamworks `m_nQueryPort`
-    public let _nQueryPort: Int
+    public let queryPort: Int
     /// Steamworks `m_nConnPort`
-    public let _nConnPort: Int
+    public let connPort: Int
     /// Steamworks `m_nAppID`
-    public let _nAppID: Int
+    public let appID: Int
     /// Steamworks `m_nFlags`
-    public let _nFlags: Int
+    public let flags: Int
     /// Steamworks `m_bAdd`
-    public let _bAdd: Bool
+    public let add: Bool
     /// Steamworks `m_unAccountId`
-    public let _unAccountId: AccountID
+    public let accountId: AccountID
 }
 
 /// Steamworks `LobbyInvite_t`
 public struct LobbyInvite {
     /// Steamworks `m_ulSteamIDUser`
-    public let _ulSteamIDUser: uint64
+    public let steamIDUser: uint64
     /// Steamworks `m_ulSteamIDLobby`
-    public let _ulSteamIDLobby: uint64
+    public let steamIDLobby: uint64
     /// Steamworks `m_ulGameID`
-    public let _ulGameID: uint64
+    public let gameID: uint64
 }
 
 /// Steamworks `LobbyEnter_t`
 public struct LobbyEnter {
     /// Steamworks `m_ulSteamIDLobby`
-    public let _ulSteamIDLobby: uint64
+    public let steamIDLobby: uint64
     /// Steamworks `m_rgfChatPermissions`
-    public let _rgfChatPermissions: Int
+    public let chatPermissions: Int
     /// Steamworks `m_bLocked`
-    public let _bLocked: Bool
+    public let locked: Bool
     /// Steamworks `m_EChatRoomEnterResponse`
-    public let _eChatRoomEnterResponse: Int
+    public let eChatRoomEnterResponse: Int
 }
 
 /// Steamworks `LobbyDataUpdate_t`
 public struct LobbyDataUpdate {
     /// Steamworks `m_ulSteamIDLobby`
-    public let _ulSteamIDLobby: uint64
+    public let steamIDLobby: uint64
     /// Steamworks `m_ulSteamIDMember`
-    public let _ulSteamIDMember: uint64
+    public let steamIDMember: uint64
     /// Steamworks `m_bSuccess`
-    public let _bSuccess: uint8
+    public let success: uint8
 }
 
 /// Steamworks `LobbyChatUpdate_t`
 public struct LobbyChatUpdate {
     /// Steamworks `m_ulSteamIDLobby`
-    public let _ulSteamIDLobby: uint64
+    public let steamIDLobby: uint64
     /// Steamworks `m_ulSteamIDUserChanged`
-    public let _ulSteamIDUserChanged: uint64
+    public let steamIDUserChanged: uint64
     /// Steamworks `m_ulSteamIDMakingChange`
-    public let _ulSteamIDMakingChange: uint64
+    public let steamIDMakingChange: uint64
     /// Steamworks `m_rgfChatMemberStateChange`
-    public let _rgfChatMemberStateChange: Int
+    public let chatMemberStateChange: Int
 }
 
 /// Steamworks `LobbyChatMsg_t`
 public struct LobbyChatMsg {
     /// Steamworks `m_ulSteamIDLobby`
-    public let _ulSteamIDLobby: uint64
+    public let steamIDLobby: uint64
     /// Steamworks `m_ulSteamIDUser`
-    public let _ulSteamIDUser: uint64
+    public let steamIDUser: uint64
     /// Steamworks `m_eChatEntryType`
-    public let _eChatEntryType: uint8
+    public let chatEntryType: uint8
     /// Steamworks `m_iChatID`
-    public let _iChatID: Int
+    public let chatIDIndex: Int
 }
 
 /// Steamworks `LobbyGameCreated_t`
 public struct LobbyGameCreated {
     /// Steamworks `m_ulSteamIDLobby`
-    public let _ulSteamIDLobby: uint64
+    public let steamIDLobby: uint64
     /// Steamworks `m_ulSteamIDGameServer`
-    public let _ulSteamIDGameServer: uint64
+    public let steamIDGameServer: uint64
     /// Steamworks `m_unIP`
-    public let _unIP: Int
+    public let ip: Int
     /// Steamworks `m_usPort`
-    public let _usPort: uint16
+    public let port: uint16
 }
 
 /// Steamworks `LobbyMatchList_t`
 public struct LobbyMatchList {
     /// Steamworks `m_nLobbiesMatching`
-    public let _nLobbiesMatching: Int
+    public let lobbiesMatching: Int
 }
 
 /// Steamworks `LobbyKicked_t`
 public struct LobbyKicked {
     /// Steamworks `m_ulSteamIDLobby`
-    public let _ulSteamIDLobby: uint64
+    public let steamIDLobby: uint64
     /// Steamworks `m_ulSteamIDAdmin`
-    public let _ulSteamIDAdmin: uint64
+    public let steamIDAdmin: uint64
     /// Steamworks `m_bKickedDueToDisconnect`
-    public let _bKickedDueToDisconnect: uint8
+    public let kickedDueToDisconnect: uint8
 }
 
 /// Steamworks `LobbyCreated_t`
 public struct LobbyCreated {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ulSteamIDLobby`
-    public let _ulSteamIDLobby: uint64
+    public let steamIDLobby: uint64
 }
 
 /// Steamworks `PSNGameBootInviteResult_t`
 public struct PSNGameBootInviteResult {
     /// Steamworks `m_bGameBootInviteExists`
-    public let _bGameBootInviteExists: Bool
+    public let gameBootInviteExists: Bool
     /// Steamworks `m_steamIDLobby`
-    public let _steamIDLobby: SteamID
+    public let lobby: SteamID
 }
 
 /// Steamworks `FavoritesListAccountsUpdated_t`
 public struct FavoritesListAccountsUpdated {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `SearchForGameProgressCallback_t`
 public struct SearchForGameProgressCallback {
     /// Steamworks `m_ullSearchID`
-    public let _ullSearchID: uint64
+    public let searchID: uint64
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_lobbyID`
-    public let _lobbyID: SteamID
+    public let id: SteamID
     /// Steamworks `m_steamIDEndedSearch`
-    public let _steamIDEndedSearch: SteamID
+    public let endedSearch: SteamID
     /// Steamworks `m_nSecondsRemainingEstimate`
-    public let _nSecondsRemainingEstimate: int32
+    public let secondsRemainingEstimate: int32
     /// Steamworks `m_cPlayersSearching`
-    public let _cPlayersSearching: int32
+    public let playersSearching: int32
 }
 
 /// Steamworks `SearchForGameResultCallback_t`
 public struct SearchForGameResultCallback {
     /// Steamworks `m_ullSearchID`
-    public let _ullSearchID: uint64
+    public let searchID: uint64
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nCountPlayersInGame`
-    public let _nCountPlayersInGame: int32
+    public let countPlayersInGame: int32
     /// Steamworks `m_nCountAcceptedGame`
-    public let _nCountAcceptedGame: int32
+    public let countAcceptedGame: int32
     /// Steamworks `m_steamIDHost`
-    public let _steamIDHost: SteamID
+    public let host: SteamID
     /// Steamworks `m_bFinalCallback`
-    public let _bFinalCallback: Bool
+    public let finalCallback: Bool
 }
 
 /// Steamworks `RequestPlayersForGameProgressCallback_t`
 public struct RequestPlayersForGameProgressCallback {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ullSearchID`
-    public let _ullSearchID: uint64
+    public let searchID: uint64
 }
 
 /// Steamworks `RequestPlayersForGameResultCallback_t`
 public struct RequestPlayersForGameResultCallback {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ullSearchID`
-    public let _ullSearchID: uint64
+    public let searchID: uint64
     /// Steamworks `m_SteamIDPlayerFound`
-    public let _steamIDPlayerFound: SteamID
+    public let playerFound: SteamID
     /// Steamworks `m_SteamIDLobby`
-    public let _steamIDLobby: SteamID
+    public let lobby: SteamID
     /// Steamworks `m_ePlayerAcceptState`
-    public let _ePlayerAcceptState: RequestPlayersForGameResultCallback::PlayerAcceptState
+    public let playerAcceptState: RequestPlayersForGameResultCallback::PlayerAcceptState
     /// Steamworks `m_nPlayerIndex`
-    public let _nPlayerIndex: int32
+    public let playerIndex: int32
     /// Steamworks `m_nTotalPlayersFound`
-    public let _nTotalPlayersFound: int32
+    public let totalPlayersFound: int32
     /// Steamworks `m_nTotalPlayersAcceptedGame`
-    public let _nTotalPlayersAcceptedGame: int32
+    public let totalPlayersAcceptedGame: int32
     /// Steamworks `m_nSuggestedTeamIndex`
-    public let _nSuggestedTeamIndex: int32
+    public let suggestedTeamIndex: int32
     /// Steamworks `m_ullUniqueGameID`
-    public let _ullUniqueGameID: uint64
+    public let uniqueGameID: uint64
 }
 
 /// Steamworks `RequestPlayersForGameFinalResultCallback_t`
 public struct RequestPlayersForGameFinalResultCallback {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ullSearchID`
-    public let _ullSearchID: uint64
+    public let searchID: uint64
     /// Steamworks `m_ullUniqueGameID`
-    public let _ullUniqueGameID: uint64
+    public let uniqueGameID: uint64
 }
 
 /// Steamworks `SubmitPlayerResultResultCallback_t`
 public struct SubmitPlayerResultResultCallback {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `ullUniqueGameID`
     public let uniqueGameID: uint64
     /// Steamworks `steamIDPlayer`
@@ -566,7 +566,7 @@ public struct SubmitPlayerResultResultCallback {
 /// Steamworks `EndGameResultCallback_t`
 public struct EndGameResultCallback {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `ullUniqueGameID`
     public let uniqueGameID: uint64
 }
@@ -574,35 +574,35 @@ public struct EndGameResultCallback {
 /// Steamworks `JoinPartyCallback_t`
 public struct JoinPartyCallback {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ulBeaconID`
-    public let _ulBeaconID: PartyBeaconID
+    public let beaconID: PartyBeaconID
     /// Steamworks `m_SteamIDBeaconOwner`
-    public let _steamIDBeaconOwner: SteamID
+    public let beaconOwner: SteamID
     /// Steamworks `m_rgchConnectString`
-    public let _rgchConnectString: char [256]
+    public let connectString: char [256]
 }
 
 /// Steamworks `CreateBeaconCallback_t`
 public struct CreateBeaconCallback {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ulBeaconID`
-    public let _ulBeaconID: PartyBeaconID
+    public let beaconID: PartyBeaconID
 }
 
 /// Steamworks `ReservationNotificationCallback_t`
 public struct ReservationNotificationCallback {
     /// Steamworks `m_ulBeaconID`
-    public let _ulBeaconID: PartyBeaconID
+    public let beaconID: PartyBeaconID
     /// Steamworks `m_steamIDJoiner`
-    public let _steamIDJoiner: SteamID
+    public let joiner: SteamID
 }
 
 /// Steamworks `ChangeNumOpenSlotsCallback_t`
 public struct ChangeNumOpenSlotsCallback {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `AvailableBeaconLocationsUpdated_t`
@@ -618,293 +618,293 @@ public struct ActiveBeaconsUpdated {
 /// Steamworks `RemoteStorageFileShareResult_t`
 public struct RemoteStorageFileShareResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_hFile`
-    public let _hFile: UGCHandle
+    public let file: UGCHandle
     /// Steamworks `m_rgchFilename`
-    public let _rgchFilename: char [260]
+    public let filename: char [260]
 }
 
 /// Steamworks `RemoteStoragePublishFileResult_t`
 public struct RemoteStoragePublishFileResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
-    public let _bUserNeedsToAcceptWorkshopLegalAgreement: Bool
+    public let userNeedsToAcceptWorkshopLegalAgreement: Bool
 }
 
 /// Steamworks `RemoteStorageDeletePublishedFileResult_t`
 public struct RemoteStorageDeletePublishedFileResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
 }
 
 /// Steamworks `RemoteStorageEnumerateUserPublishedFilesResult_t`
 public struct RemoteStorageEnumerateUserPublishedFilesResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nResultsReturned`
-    public let _nResultsReturned: int32
+    public let resultsReturned: int32
     /// Steamworks `m_nTotalResultCount`
-    public let _nTotalResultCount: int32
+    public let totalResultCount: int32
     /// Steamworks `m_rgPublishedFileId`
-    public let _rgPublishedFileId: PublishedFileId [50]
+    public let publishedFileId: PublishedFileId [50]
 }
 
 /// Steamworks `RemoteStorageSubscribePublishedFileResult_t`
 public struct RemoteStorageSubscribePublishedFileResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
 }
 
 /// Steamworks `RemoteStorageEnumerateUserSubscribedFilesResult_t`
 public struct RemoteStorageEnumerateUserSubscribedFilesResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nResultsReturned`
-    public let _nResultsReturned: int32
+    public let resultsReturned: int32
     /// Steamworks `m_nTotalResultCount`
-    public let _nTotalResultCount: int32
+    public let totalResultCount: int32
     /// Steamworks `m_rgPublishedFileId`
-    public let _rgPublishedFileId: PublishedFileId [50]
+    public let publishedFileId: PublishedFileId [50]
     /// Steamworks `m_rgRTimeSubscribed`
-    public let _rgRTimeSubscribed: uint32 [50]
+    public let rTimeSubscribed: uint32 [50]
 }
 
 /// Steamworks `RemoteStorageUnsubscribePublishedFileResult_t`
 public struct RemoteStorageUnsubscribePublishedFileResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
 }
 
 /// Steamworks `RemoteStorageUpdatePublishedFileResult_t`
 public struct RemoteStorageUpdatePublishedFileResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
-    public let _bUserNeedsToAcceptWorkshopLegalAgreement: Bool
+    public let userNeedsToAcceptWorkshopLegalAgreement: Bool
 }
 
 /// Steamworks `RemoteStorageDownloadUGCResult_t`
 public struct RemoteStorageDownloadUGCResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_hFile`
-    public let _hFile: UGCHandle
+    public let file: UGCHandle
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_nSizeInBytes`
-    public let _nSizeInBytes: int32
+    public let sizeInBytes: int32
     /// Steamworks `m_pchFileName`
-    public let _pchFileName: char [260]
+    public let fileName: char [260]
     /// Steamworks `m_ulSteamIDOwner`
-    public let _ulSteamIDOwner: uint64
+    public let steamIDOwner: uint64
 }
 
 /// Steamworks `RemoteStorageGetPublishedFileDetailsResult_t`
 public struct RemoteStorageGetPublishedFileDetailsResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nCreatorAppID`
-    public let _nCreatorAppID: AppId
+    public let creatorAppID: AppId
     /// Steamworks `m_nConsumerAppID`
-    public let _nConsumerAppID: AppId
+    public let consumerAppID: AppId
     /// Steamworks `m_rgchTitle`
-    public let _rgchTitle: char [129]
+    public let title: char [129]
     /// Steamworks `m_rgchDescription`
-    public let _rgchDescription: char [8000]
+    public let description: char [8000]
     /// Steamworks `m_hFile`
-    public let _hFile: UGCHandle
+    public let file: UGCHandle
     /// Steamworks `m_hPreviewFile`
-    public let _hPreviewFile: UGCHandle
+    public let previewFile: UGCHandle
     /// Steamworks `m_ulSteamIDOwner`
-    public let _ulSteamIDOwner: uint64
+    public let steamIDOwner: uint64
     /// Steamworks `m_rtimeCreated`
-    public let _rtimeCreated: Int
+    public let created: Int
     /// Steamworks `m_rtimeUpdated`
-    public let _rtimeUpdated: Int
+    public let updated: Int
     /// Steamworks `m_eVisibility`
-    public let _eVisibility: RemoteStoragePublishedFileVisibility
+    public let visibility: RemoteStoragePublishedFileVisibility
     /// Steamworks `m_bBanned`
-    public let _bBanned: Bool
+    public let banned: Bool
     /// Steamworks `m_rgchTags`
-    public let _rgchTags: char [1025]
+    public let tags: char [1025]
     /// Steamworks `m_bTagsTruncated`
-    public let _bTagsTruncated: Bool
+    public let tagsTruncated: Bool
     /// Steamworks `m_pchFileName`
-    public let _pchFileName: char [260]
+    public let fileName: char [260]
     /// Steamworks `m_nFileSize`
-    public let _nFileSize: int32
+    public let fileSize: int32
     /// Steamworks `m_nPreviewFileSize`
-    public let _nPreviewFileSize: int32
+    public let previewFileSize: int32
     /// Steamworks `m_rgchURL`
-    public let _rgchURL: char [256]
+    public let url: char [256]
     /// Steamworks `m_eFileType`
-    public let _eFileType: WorkshopFileType
+    public let fileType: WorkshopFileType
     /// Steamworks `m_bAcceptedForUse`
-    public let _bAcceptedForUse: Bool
+    public let acceptedForUse: Bool
 }
 
 /// Steamworks `RemoteStorageEnumerateWorkshopFilesResult_t`
 public struct RemoteStorageEnumerateWorkshopFilesResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nResultsReturned`
-    public let _nResultsReturned: int32
+    public let resultsReturned: int32
     /// Steamworks `m_nTotalResultCount`
-    public let _nTotalResultCount: int32
+    public let totalResultCount: int32
     /// Steamworks `m_rgPublishedFileId`
-    public let _rgPublishedFileId: PublishedFileId [50]
+    public let publishedFileId: PublishedFileId [50]
     /// Steamworks `m_rgScore`
-    public let _rgScore: float [50]
+    public let score: float [50]
     /// Steamworks `m_nAppId`
-    public let _nAppId: AppId
+    public let appId: AppId
     /// Steamworks `m_unStartIndex`
-    public let _unStartIndex: Int
+    public let startIndex: Int
 }
 
 /// Steamworks `RemoteStorageGetPublishedItemVoteDetailsResult_t`
 public struct RemoteStorageGetPublishedItemVoteDetailsResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_unPublishedFileId`
-    public let _unPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nVotesFor`
-    public let _nVotesFor: int32
+    public let votesFor: int32
     /// Steamworks `m_nVotesAgainst`
-    public let _nVotesAgainst: int32
+    public let votesAgainst: int32
     /// Steamworks `m_nReports`
-    public let _nReports: int32
+    public let reports: int32
     /// Steamworks `m_fScore`
-    public let _fScore: float
+    public let score: float
 }
 
 /// Steamworks `RemoteStoragePublishedFileSubscribed_t`
 public struct RemoteStoragePublishedFileSubscribed {
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
 }
 
 /// Steamworks `RemoteStoragePublishedFileUnsubscribed_t`
 public struct RemoteStoragePublishedFileUnsubscribed {
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
 }
 
 /// Steamworks `RemoteStoragePublishedFileDeleted_t`
 public struct RemoteStoragePublishedFileDeleted {
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
 }
 
 /// Steamworks `RemoteStorageUpdateUserPublishedItemVoteResult_t`
 public struct RemoteStorageUpdateUserPublishedItemVoteResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
 }
 
 /// Steamworks `RemoteStorageUserVoteDetails_t`
 public struct RemoteStorageUserVoteDetails {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_eVote`
-    public let _eVote: WorkshopVote
+    public let vote: WorkshopVote
 }
 
 /// Steamworks `RemoteStorageEnumerateUserSharedWorkshopFilesResult_t`
 public struct RemoteStorageEnumerateUserSharedWorkshopFilesResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nResultsReturned`
-    public let _nResultsReturned: int32
+    public let resultsReturned: int32
     /// Steamworks `m_nTotalResultCount`
-    public let _nTotalResultCount: int32
+    public let totalResultCount: int32
     /// Steamworks `m_rgPublishedFileId`
-    public let _rgPublishedFileId: PublishedFileId [50]
+    public let publishedFileId: PublishedFileId [50]
 }
 
 /// Steamworks `RemoteStorageSetUserPublishedFileActionResult_t`
 public struct RemoteStorageSetUserPublishedFileActionResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_eAction`
-    public let _eAction: WorkshopFileAction
+    public let action: WorkshopFileAction
 }
 
 /// Steamworks `RemoteStorageEnumeratePublishedFilesByUserActionResult_t`
 public struct RemoteStorageEnumeratePublishedFilesByUserActionResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_eAction`
-    public let _eAction: WorkshopFileAction
+    public let action: WorkshopFileAction
     /// Steamworks `m_nResultsReturned`
-    public let _nResultsReturned: int32
+    public let resultsReturned: int32
     /// Steamworks `m_nTotalResultCount`
-    public let _nTotalResultCount: int32
+    public let totalResultCount: int32
     /// Steamworks `m_rgPublishedFileId`
-    public let _rgPublishedFileId: PublishedFileId [50]
+    public let publishedFileId: PublishedFileId [50]
     /// Steamworks `m_rgRTimeUpdated`
-    public let _rgRTimeUpdated: uint32 [50]
+    public let rTimeUpdated: uint32 [50]
 }
 
 /// Steamworks `RemoteStoragePublishFileProgress_t`
 public struct RemoteStoragePublishFileProgress {
     /// Steamworks `m_dPercentFile`
-    public let _dPercentFile: double
+    public let percentFile: double
     /// Steamworks `m_bPreview`
-    public let _bPreview: Bool
+    public let preview: Bool
 }
 
 /// Steamworks `RemoteStoragePublishedFileUpdated_t`
 public struct RemoteStoragePublishedFileUpdated {
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_ulUnused`
-    public let _ulUnused: uint64
+    public let unused: uint64
 }
 
 /// Steamworks `RemoteStorageFileWriteAsyncComplete_t`
 public struct RemoteStorageFileWriteAsyncComplete {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `RemoteStorageFileReadAsyncComplete_t`
 public struct RemoteStorageFileReadAsyncComplete {
     /// Steamworks `m_hFileReadAsync`
-    public let _hFileReadAsync: SteamAPICall
+    public let fileReadAsync: SteamAPICall
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nOffset`
-    public let _nOffset: Int
+    public let offset: Int
     /// Steamworks `m_cubRead`
-    public let _cubRead: Int
+    public let read: Int
 }
 
 /// Steamworks `RemoteStorageLocalFileChange_t`
@@ -915,141 +915,141 @@ public struct RemoteStorageLocalFileChange {
 /// Steamworks `UserStatsReceived_t`
 public struct UserStatsReceived {
     /// Steamworks `m_nGameID`
-    public let _nGameID: uint64
+    public let gameID: uint64
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
 }
 
 /// Steamworks `UserStatsStored_t`
 public struct UserStatsStored {
     /// Steamworks `m_nGameID`
-    public let _nGameID: uint64
+    public let gameID: uint64
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `UserAchievementStored_t`
 public struct UserAchievementStored {
     /// Steamworks `m_nGameID`
-    public let _nGameID: uint64
+    public let gameID: uint64
     /// Steamworks `m_bGroupAchievement`
-    public let _bGroupAchievement: Bool
+    public let groupAchievement: Bool
     /// Steamworks `m_rgchAchievementName`
-    public let _rgchAchievementName: char [128]
+    public let achievementName: char [128]
     /// Steamworks `m_nCurProgress`
-    public let _nCurProgress: Int
+    public let curProgress: Int
     /// Steamworks `m_nMaxProgress`
-    public let _nMaxProgress: Int
+    public let maxProgress: Int
 }
 
 /// Steamworks `LeaderboardFindResult_t`
 public struct LeaderboardFindResult {
     /// Steamworks `m_hSteamLeaderboard`
-    public let _hSteamLeaderboard: SteamLeaderboard
+    public let steamLeaderboard: SteamLeaderboard
     /// Steamworks `m_bLeaderboardFound`
-    public let _bLeaderboardFound: uint8
+    public let leaderboardFound: uint8
 }
 
 /// Steamworks `LeaderboardScoresDownloaded_t`
 public struct LeaderboardScoresDownloaded {
     /// Steamworks `m_hSteamLeaderboard`
-    public let _hSteamLeaderboard: SteamLeaderboard
+    public let steamLeaderboard: SteamLeaderboard
     /// Steamworks `m_hSteamLeaderboardEntries`
-    public let _hSteamLeaderboardEntries: SteamLeaderboardEntries
+    public let steamLeaderboardEntries: SteamLeaderboardEntries
     /// Steamworks `m_cEntryCount`
-    public let _cEntryCount: Int
+    public let entryCount: Int
 }
 
 /// Steamworks `LeaderboardScoreUploaded_t`
 public struct LeaderboardScoreUploaded {
     /// Steamworks `m_bSuccess`
-    public let _bSuccess: uint8
+    public let success: uint8
     /// Steamworks `m_hSteamLeaderboard`
-    public let _hSteamLeaderboard: SteamLeaderboard
+    public let steamLeaderboard: SteamLeaderboard
     /// Steamworks `m_nScore`
-    public let _nScore: int32
+    public let score: int32
     /// Steamworks `m_bScoreChanged`
-    public let _bScoreChanged: uint8
+    public let scoreChanged: uint8
     /// Steamworks `m_nGlobalRankNew`
-    public let _nGlobalRankNew: Int
+    public let globalRankNew: Int
     /// Steamworks `m_nGlobalRankPrevious`
-    public let _nGlobalRankPrevious: Int
+    public let globalRankPrevious: Int
 }
 
 /// Steamworks `NumberOfCurrentPlayers_t`
 public struct NumberOfCurrentPlayers {
     /// Steamworks `m_bSuccess`
-    public let _bSuccess: uint8
+    public let success: uint8
     /// Steamworks `m_cPlayers`
-    public let _cPlayers: int32
+    public let players: int32
 }
 
 /// Steamworks `UserStatsUnloaded_t`
 public struct UserStatsUnloaded {
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
 }
 
 /// Steamworks `UserAchievementIconFetched_t`
 public struct UserAchievementIconFetched {
     /// Steamworks `m_nGameID`
-    public let _nGameID: GameID
+    public let gameID: GameID
     /// Steamworks `m_rgchAchievementName`
-    public let _rgchAchievementName: char [128]
+    public let achievementName: char [128]
     /// Steamworks `m_bAchieved`
-    public let _bAchieved: Bool
+    public let achieved: Bool
     /// Steamworks `m_nIconHandle`
-    public let _nIconHandle: Int
+    public let iconHandle: Int
 }
 
 /// Steamworks `GlobalAchievementPercentagesReady_t`
 public struct GlobalAchievementPercentagesReady {
     /// Steamworks `m_nGameID`
-    public let _nGameID: uint64
+    public let gameID: uint64
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `LeaderboardUGCSet_t`
 public struct LeaderboardUGCSet {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_hSteamLeaderboard`
-    public let _hSteamLeaderboard: SteamLeaderboard
+    public let steamLeaderboard: SteamLeaderboard
 }
 
 /// Steamworks `PS3TrophiesInstalled_t`
 public struct PS3TrophiesInstalled {
     /// Steamworks `m_nGameID`
-    public let _nGameID: uint64
+    public let gameID: uint64
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ulRequiredDiskSpace`
-    public let _ulRequiredDiskSpace: uint64
+    public let requiredDiskSpace: uint64
 }
 
 /// Steamworks `GlobalStatsReceived_t`
 public struct GlobalStatsReceived {
     /// Steamworks `m_nGameID`
-    public let _nGameID: uint64
+    public let gameID: uint64
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `DlcInstalled_t`
 public struct DlcInstalled {
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
 }
 
 /// Steamworks `RegisterActivationCodeResponse_t`
 public struct RegisterActivationCodeResponse {
     /// Steamworks `m_eResult`
-    public let _eResult: RegisterActivationCodeResult
+    public let result: RegisterActivationCodeResult
     /// Steamworks `m_unPackageRegistered`
-    public let _unPackageRegistered: Int
+    public let packageRegistered: Int
 }
 
 /// Steamworks `NewUrlLaunchParameters_t`
@@ -1060,71 +1060,71 @@ public struct NewUrlLaunchParameters {
 /// Steamworks `AppProofOfPurchaseKeyResponse_t`
 public struct AppProofOfPurchaseKeyResponse {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nAppID`
-    public let _nAppID: Int
+    public let appID: Int
     /// Steamworks `m_cchKeyLength`
-    public let _cchKeyLength: Int
+    public let keyLength: Int
     /// Steamworks `m_rgchKey`
-    public let _rgchKey: char [240]
+    public let key: char [240]
 }
 
 /// Steamworks `FileDetailsResult_t`
 public struct FileDetailsResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ulFileSize`
-    public let _ulFileSize: uint64
+    public let fileSize: uint64
     /// Steamworks `m_FileSHA`
-    public let _fileSHA: uint8 [20]
+    public let fileSHA: uint8 [20]
     /// Steamworks `m_unFlags`
-    public let _unFlags: Int
+    public let flags: Int
 }
 
 /// Steamworks `TimedTrialStatus_t`
 public struct TimedTrialStatus {
     /// Steamworks `m_unAppID`
-    public let _unAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_bIsOffline`
-    public let _bIsOffline: Bool
+    public let isOffline: Bool
     /// Steamworks `m_unSecondsAllowed`
-    public let _unSecondsAllowed: Int
+    public let secondsAllowed: Int
     /// Steamworks `m_unSecondsPlayed`
-    public let _unSecondsPlayed: Int
+    public let secondsPlayed: Int
 }
 
 /// Steamworks `P2PSessionRequest_t`
 public struct P2PSessionRequest {
     /// Steamworks `m_steamIDRemote`
-    public let _steamIDRemote: SteamID
+    public let remote: SteamID
 }
 
 /// Steamworks `P2PSessionConnectFail_t`
 public struct P2PSessionConnectFail {
     /// Steamworks `m_steamIDRemote`
-    public let _steamIDRemote: SteamID
+    public let remote: SteamID
     /// Steamworks `m_eP2PSessionError`
-    public let _eP2PSessionError: uint8
+    public let p2PSessionError: uint8
 }
 
 /// Steamworks `SocketStatusCallback_t`
 public struct SocketStatusCallback {
     /// Steamworks `m_hSocket`
-    public let _hSocket: SNetSocket
+    public let socket: SNetSocket
     /// Steamworks `m_hListenSocket`
-    public let _hListenSocket: SNetListenSocket
+    public let listenSocket: SNetListenSocket
     /// Steamworks `m_steamIDRemote`
-    public let _steamIDRemote: SteamID
+    public let remote: SteamID
     /// Steamworks `m_eSNetSocketState`
-    public let _eSNetSocketState: Int
+    public let sNetSocketState: Int
 }
 
 /// Steamworks `ScreenshotReady_t`
 public struct ScreenshotReady {
     /// Steamworks `m_hLocal`
-    public let _hLocal: ScreenshotHandle
+    public let local: ScreenshotHandle
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `ScreenshotRequested_t`
@@ -1140,7 +1140,7 @@ public struct PlaybackStatusHasChanged {
 /// Steamworks `VolumeHasChanged_t`
 public struct VolumeHasChanged {
     /// Steamworks `m_flNewVolume`
-    public let _flNewVolume: float
+    public let newVolume: float
 }
 
 /// Steamworks `MusicPlayerRemoteWillActivate_t`
@@ -1186,19 +1186,20 @@ public struct MusicPlayerWantsPlayNext {
 /// Steamworks `MusicPlayerWantsShuffled_t`
 public struct MusicPlayerWantsShuffled {
     /// Steamworks `m_bShuffled`
-    public let _bShuffled: Bool
+    public let shuffled: Bool
 }
 
 /// Steamworks `MusicPlayerWantsLooped_t`
 public struct MusicPlayerWantsLooped {
     /// Steamworks `m_bLooped`
-    public let _bLooped: Bool
+    public let looped: Bool
 }
 
 /// Steamworks `MusicPlayerWantsVolume_t`
 public struct MusicPlayerWantsVolume {
     /// Steamworks `m_flNewVolume`
-    public let _flNewVolume: float
+    public let newVolume: float
+    
 }
 
 /// Steamworks `MusicPlayerSelectsQueueEntry_t`
@@ -1216,279 +1217,279 @@ public struct MusicPlayerSelectsPlaylistEntry {
 /// Steamworks `MusicPlayerWantsPlayingRepeatStatus_t`
 public struct MusicPlayerWantsPlayingRepeatStatus {
     /// Steamworks `m_nPlayingRepeatStatus`
-    public let _nPlayingRepeatStatus: Int
+    public let playingRepeatStatus: Int
 }
 
 /// Steamworks `HTTPRequestCompleted_t`
 public struct HTTPRequestCompleted {
     /// Steamworks `m_hRequest`
-    public let _hRequest: HTTPRequestHandle
+    public let request: HTTPRequestHandle
     /// Steamworks `m_ulContextValue`
-    public let _ulContextValue: uint64
+    public let contextValue: uint64
     /// Steamworks `m_bRequestSuccessful`
-    public let _bRequestSuccessful: Bool
+    public let requestSuccessful: Bool
     /// Steamworks `m_eStatusCode`
-    public let _eStatusCode: HTTPStatusCode
+    public let statusCode: HTTPStatusCode
     /// Steamworks `m_unBodySize`
-    public let _unBodySize: Int
+    public let bodySize: Int
 }
 
 /// Steamworks `HTTPRequestHeadersReceived_t`
 public struct HTTPRequestHeadersReceived {
     /// Steamworks `m_hRequest`
-    public let _hRequest: HTTPRequestHandle
+    public let request: HTTPRequestHandle
     /// Steamworks `m_ulContextValue`
-    public let _ulContextValue: uint64
+    public let contextValue: uint64
 }
 
 /// Steamworks `HTTPRequestDataReceived_t`
 public struct HTTPRequestDataReceived {
     /// Steamworks `m_hRequest`
-    public let _hRequest: HTTPRequestHandle
+    public let request: HTTPRequestHandle
     /// Steamworks `m_ulContextValue`
-    public let _ulContextValue: uint64
+    public let contextValue: uint64
     /// Steamworks `m_cOffset`
-    public let _cOffset: Int
+    public let offset: Int
     /// Steamworks `m_cBytesReceived`
-    public let _cBytesReceived: Int
+    public let bytesReceived: Int
 }
 
 /// Steamworks `SteamInputDeviceConnected_t`
 public struct SteamInputDeviceConnected {
     /// Steamworks `m_ulConnectedDeviceHandle`
-    public let _ulConnectedDeviceHandle: InputHandle
+    public let connectedDeviceHandle: InputHandle
 }
 
 /// Steamworks `SteamInputDeviceDisconnected_t`
 public struct SteamInputDeviceDisconnected {
     /// Steamworks `m_ulDisconnectedDeviceHandle`
-    public let _ulDisconnectedDeviceHandle: InputHandle
+    public let disconnectedDeviceHandle: InputHandle
 }
 
 /// Steamworks `SteamInputConfigurationLoaded_t`
 public struct SteamInputConfigurationLoaded {
     /// Steamworks `m_unAppID`
-    public let _unAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_ulDeviceHandle`
-    public let _ulDeviceHandle: InputHandle
+    public let deviceHandle: InputHandle
     /// Steamworks `m_ulMappingCreator`
-    public let _ulMappingCreator: SteamID
+    public let mappingCreator: SteamID
     /// Steamworks `m_unMajorRevision`
-    public let _unMajorRevision: Int
+    public let majorRevision: Int
     /// Steamworks `m_unMinorRevision`
-    public let _unMinorRevision: Int
+    public let minorRevision: Int
     /// Steamworks `m_bUsesSteamInputAPI`
-    public let _bUsesSteamInputAPI: Bool
+    public let usesSteamInputAPI: Bool
     /// Steamworks `m_bUsesGamepadAPI`
-    public let _bUsesGamepadAPI: Bool
+    public let usesGamepadAPI: Bool
 }
 
 /// Steamworks `SteamUGCQueryCompleted_t`
 public struct SteamUGCQueryCompleted {
     /// Steamworks `m_handle`
-    public let _handle: UGCQueryHandle
+    public let handle: UGCQueryHandle
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_unNumResultsReturned`
-    public let _unNumResultsReturned: Int
+    public let numResultsReturned: Int
     /// Steamworks `m_unTotalMatchingResults`
-    public let _unTotalMatchingResults: Int
+    public let totalMatchingResults: Int
     /// Steamworks `m_bCachedData`
-    public let _bCachedData: Bool
+    public let cachedData: Bool
     /// Steamworks `m_rgchNextCursor`
-    public let _rgchNextCursor: char [256]
+    public let nextCursor: char [256]
 }
 
 /// Steamworks `SteamUGCRequestUGCDetailsResult_t`
 public struct SteamUGCRequestUGCDetailsResult {
     /// Steamworks `m_details`
-    public let _details: SteamUGCDetails
+    public let details: SteamUGCDetails
     /// Steamworks `m_bCachedData`
-    public let _bCachedData: Bool
+    public let cachedData: Bool
 }
 
 /// Steamworks `CreateItemResult_t`
 public struct CreateItemResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
-    public let _bUserNeedsToAcceptWorkshopLegalAgreement: Bool
+    public let userNeedsToAcceptWorkshopLegalAgreement: Bool
 }
 
 /// Steamworks `SubmitItemUpdateResult_t`
 public struct SubmitItemUpdateResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
-    public let _bUserNeedsToAcceptWorkshopLegalAgreement: Bool
+    public let userNeedsToAcceptWorkshopLegalAgreement: Bool
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
 }
 
 /// Steamworks `ItemInstalled_t`
 public struct ItemInstalled {
     /// Steamworks `m_unAppID`
-    public let _unAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
 }
 
 /// Steamworks `DownloadItemResult_t`
 public struct DownloadItemResult {
     /// Steamworks `m_unAppID`
-    public let _unAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `UserFavoriteItemsListChanged_t`
 public struct UserFavoriteItemsListChanged {
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_bWasAddRequest`
-    public let _bWasAddRequest: Bool
+    public let wasAddRequest: Bool
 }
 
 /// Steamworks `SetUserItemVoteResult_t`
 public struct SetUserItemVoteResult {
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_bVoteUp`
-    public let _bVoteUp: Bool
+    public let voteUp: Bool
 }
 
 /// Steamworks `GetUserItemVoteResult_t`
 public struct GetUserItemVoteResult {
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_bVotedUp`
-    public let _bVotedUp: Bool
+    public let votedUp: Bool
     /// Steamworks `m_bVotedDown`
-    public let _bVotedDown: Bool
+    public let votedDown: Bool
     /// Steamworks `m_bVoteSkipped`
-    public let _bVoteSkipped: Bool
+    public let voteSkipped: Bool
 }
 
 /// Steamworks `StartPlaytimeTrackingResult_t`
 public struct StartPlaytimeTrackingResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `StopPlaytimeTrackingResult_t`
 public struct StopPlaytimeTrackingResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `AddUGCDependencyResult_t`
 public struct AddUGCDependencyResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nChildPublishedFileId`
-    public let _nChildPublishedFileId: PublishedFileId
+    public let childPublishedFileId: PublishedFileId
 }
 
 /// Steamworks `RemoveUGCDependencyResult_t`
 public struct RemoveUGCDependencyResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nChildPublishedFileId`
-    public let _nChildPublishedFileId: PublishedFileId
+    public let childPublishedFileId: PublishedFileId
 }
 
 /// Steamworks `AddAppDependencyResult_t`
 public struct AddAppDependencyResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
 }
 
 /// Steamworks `RemoveAppDependencyResult_t`
 public struct RemoveAppDependencyResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
 }
 
 /// Steamworks `GetAppDependenciesResult_t`
 public struct GetAppDependenciesResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_rgAppIDs`
-    public let _rgAppIDs: AppId [32]
+    public let appIDs: AppId [32]
     /// Steamworks `m_nNumAppDependencies`
-    public let _nNumAppDependencies: Int
+    public let numAppDependencies: Int
     /// Steamworks `m_nTotalNumAppDependencies`
-    public let _nTotalNumAppDependencies: Int
+    public let totalNumAppDependencies: Int
 }
 
 /// Steamworks `DeleteItemResult_t`
 public struct DeleteItemResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
 }
 
 /// Steamworks `UserSubscribedItemsListChanged_t`
 public struct UserSubscribedItemsListChanged {
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
 }
 
 /// Steamworks `WorkshopEULAStatus_t`
 public struct WorkshopEULAStatus {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_unVersion`
-    public let _unVersion: Int
+    public let version: Int
     /// Steamworks `m_rtAction`
-    public let _rtAction: RTime32
+    public let action: RTime32
     /// Steamworks `m_bAccepted`
-    public let _bAccepted: Bool
+    public let accepted: Bool
     /// Steamworks `m_bNeedsAction`
-    public let _bNeedsAction: Bool
+    public let needsAction: Bool
 }
 
 /// Steamworks `SteamAppInstalled_t`
 public struct SteamAppInstalled {
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_iInstallFolderIndex`
-    public let _iInstallFolderIndex: Int
+    public let installFolderIndexIndex: Int
 }
 
 /// Steamworks `SteamAppUninstalled_t`
 public struct SteamAppUninstalled {
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_iInstallFolderIndex`
-    public let _iInstallFolderIndex: Int
+    public let installFolderIndexIndex: Int
 }
 
 /// Steamworks `HTML_BrowserReady_t`
@@ -1644,9 +1645,9 @@ public struct HTMLLinkAtPosition {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `x`
-    public let : Int
+    public let x: Int
     /// Steamworks `y`
-    public let : Int
+    public let y: Int
     /// Steamworks `pchURL`
     public let url: String
     /// Steamworks `bInput`
@@ -1748,15 +1749,15 @@ public struct HTMLBrowserRestarted {
 /// Steamworks `SteamInventoryResultReady_t`
 public struct SteamInventoryResultReady {
     /// Steamworks `m_handle`
-    public let _handle: SteamInventoryResult
+    public let handle: SteamInventoryResult
     /// Steamworks `m_result`
-    public let _result: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `SteamInventoryFullUpdate_t`
 public struct SteamInventoryFullUpdate {
     /// Steamworks `m_handle`
-    public let _handle: SteamInventoryResult
+    public let handle: SteamInventoryResult
 }
 
 /// Steamworks `SteamInventoryDefinitionUpdate_t`
@@ -1767,49 +1768,49 @@ public struct SteamInventoryDefinitionUpdate {
 /// Steamworks `SteamInventoryEligiblePromoItemDefIDs_t`
 public struct SteamInventoryEligiblePromoItemDefIDs {
     /// Steamworks `m_result`
-    public let _result: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_steamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
     /// Steamworks `m_numEligiblePromoItemDefs`
-    public let _numEligiblePromoItemDefs: Int
+    public let eligiblePromoItemDefs: Int
     /// Steamworks `m_bCachedData`
-    public let _bCachedData: Bool
+    public let cachedData: Bool
 }
 
 /// Steamworks `SteamInventoryStartPurchaseResult_t`
 public struct SteamInventoryStartPurchaseResult {
     /// Steamworks `m_result`
-    public let _result: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_ulOrderID`
-    public let _ulOrderID: uint64
+    public let orderID: uint64
     /// Steamworks `m_ulTransID`
-    public let _ulTransID: uint64
+    public let transID: uint64
 }
 
 /// Steamworks `SteamInventoryRequestPricesResult_t`
 public struct SteamInventoryRequestPricesResult {
     /// Steamworks `m_result`
-    public let _result: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_rgchCurrency`
-    public let _rgchCurrency: char [4]
+    public let currency: char [4]
 }
 
 /// Steamworks `GetVideoURLResult_t`
 public struct GetVideoURLResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_unVideoAppID`
-    public let _unVideoAppID: AppId
+    public let videoAppID: AppId
     /// Steamworks `m_rgchURL`
-    public let _rgchURL: char [256]
+    public let url: char [256]
 }
 
 /// Steamworks `GetOPFSettingsResult_t`
 public struct GetOPFSettingsResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_unVideoAppID`
-    public let _unVideoAppID: AppId
+    public let videoAppID: AppId
 }
 
 /// Steamworks `SteamParentalSettingsChanged_t`
@@ -1820,313 +1821,313 @@ public struct SteamParentalSettingsChanged {
 /// Steamworks `SteamRemotePlaySessionConnected_t`
 public struct SteamRemotePlaySessionConnected {
     /// Steamworks `m_unSessionID`
-    public let _unSessionID: RemotePlaySessionID
+    public let sessionID: RemotePlaySessionID
 }
 
 /// Steamworks `SteamRemotePlaySessionDisconnected_t`
 public struct SteamRemotePlaySessionDisconnected {
     /// Steamworks `m_unSessionID`
-    public let _unSessionID: RemotePlaySessionID
+    public let sessionID: RemotePlaySessionID
 }
 
 /// Steamworks `SteamNetworkingMessagesSessionRequest_t`
 public struct SteamNetworkingMessagesSessionRequest {
     /// Steamworks `m_identityRemote`
-    public let _identityRemote: SteamNetworkingIdentity
+    public let remote: SteamNetworkingIdentity
 }
 
 /// Steamworks `SteamNetworkingMessagesSessionFailed_t`
 public struct SteamNetworkingMessagesSessionFailed {
     /// Steamworks `m_info`
-    public let _info: SteamNetConnectionInfo
+    public let info: SteamNetConnectionInfo
 }
 
 /// Steamworks `SteamNetConnectionStatusChangedCallback_t`
 public struct SteamNetConnectionStatusChangedCallback {
     /// Steamworks `m_hConn`
-    public let _hConn: HSteamNetConnection
+    public let conn: HSteamNetConnection
     /// Steamworks `m_info`
-    public let _info: SteamNetConnectionInfo
+    public let info: SteamNetConnectionInfo
     /// Steamworks `m_eOldState`
-    public let _eOldState: SteamNetworkingConnectionState
+    public let oldState: SteamNetworkingConnectionState
 }
 
 /// Steamworks `SteamNetAuthenticationStatus_t`
 public struct SteamNetAuthenticationStatus {
     /// Steamworks `m_eAvail`
-    public let _eAvail: SteamNetworkingAvailability
+    public let avail: SteamNetworkingAvailability
     /// Steamworks `m_debugMsg`
-    public let _debugMsg: char [256]
+    public let msg: char [256]
 }
 
 /// Steamworks `SteamRelayNetworkStatus_t`
 public struct SteamRelayNetworkStatus {
     /// Steamworks `m_eAvail`
-    public let _eAvail: SteamNetworkingAvailability
+    public let avail: SteamNetworkingAvailability
     /// Steamworks `m_bPingMeasurementInProgress`
-    public let _bPingMeasurementInProgress: Int
+    public let pingMeasurementInProgress: Int
     /// Steamworks `m_eAvailNetworkConfig`
-    public let _eAvailNetworkConfig: SteamNetworkingAvailability
+    public let availNetworkConfig: SteamNetworkingAvailability
     /// Steamworks `m_eAvailAnyRelay`
-    public let _eAvailAnyRelay: SteamNetworkingAvailability
+    public let availAnyRelay: SteamNetworkingAvailability
     /// Steamworks `m_debugMsg`
-    public let _debugMsg: char [256]
+    public let msg: char [256]
 }
 
 /// Steamworks `GSClientApprove_t`
 public struct GSClientApprove {
     /// Steamworks `m_SteamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
     /// Steamworks `m_OwnerSteamID`
-    public let _ownerSteamID: SteamID
+    public let ownerSteamID: SteamID
 }
 
 /// Steamworks `GSClientDeny_t`
 public struct GSClientDeny {
     /// Steamworks `m_SteamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
     /// Steamworks `m_eDenyReason`
-    public let _eDenyReason: DenyReason
+    public let denyReason: DenyReason
     /// Steamworks `m_rgchOptionalText`
-    public let _rgchOptionalText: char [128]
+    public let optionalText: char [128]
 }
 
 /// Steamworks `GSClientKick_t`
 public struct GSClientKick {
     /// Steamworks `m_SteamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
     /// Steamworks `m_eDenyReason`
-    public let _eDenyReason: DenyReason
+    public let denyReason: DenyReason
 }
 
 /// Steamworks `GSClientAchievementStatus_t`
 public struct GSClientAchievementStatus {
     /// Steamworks `m_SteamID`
-    public let _steamID: uint64
+    public let steamID: uint64
     /// Steamworks `m_pchAchievement`
-    public let _pchAchievement: char [128]
+    public let achievement: char [128]
     /// Steamworks `m_bUnlocked`
-    public let _bUnlocked: Bool
+    public let unlocked: Bool
 }
 
 /// Steamworks `GSPolicyResponse_t`
 public struct GSPolicyResponse {
     /// Steamworks `m_bSecure`
-    public let _bSecure: uint8
+    public let secure: uint8
 }
 
 /// Steamworks `GSGameplayStats_t`
 public struct GSGameplayStats {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_nRank`
-    public let _nRank: int32
+    public let rank: int32
     /// Steamworks `m_unTotalConnects`
-    public let _unTotalConnects: Int
+    public let totalConnects: Int
     /// Steamworks `m_unTotalMinutesPlayed`
-    public let _unTotalMinutesPlayed: Int
+    public let totalMinutesPlayed: Int
 }
 
 /// Steamworks `GSClientGroupStatus_t`
 public struct GSClientGroupStatus {
     /// Steamworks `m_SteamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
     /// Steamworks `m_SteamIDGroup`
-    public let _steamIDGroup: SteamID
+    public let group: SteamID
     /// Steamworks `m_bMember`
-    public let _bMember: Bool
+    public let member: Bool
     /// Steamworks `m_bOfficer`
-    public let _bOfficer: Bool
+    public let officer: Bool
 }
 
 /// Steamworks `GSReputation_t`
 public struct GSReputation {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_unReputationScore`
-    public let _unReputationScore: Int
+    public let reputationScore: Int
     /// Steamworks `m_bBanned`
-    public let _bBanned: Bool
+    public let banned: Bool
     /// Steamworks `m_unBannedIP`
-    public let _unBannedIP: Int
+    public let bannedIP: Int
     /// Steamworks `m_usBannedPort`
-    public let _usBannedPort: uint16
+    public let bannedPort: uint16
     /// Steamworks `m_ulBannedGameID`
-    public let _ulBannedGameID: uint64
+    public let bannedGameID: uint64
     /// Steamworks `m_unBanExpires`
-    public let _unBanExpires: Int
+    public let banExpires: Int
 }
 
 /// Steamworks `AssociateWithClanResult_t`
 public struct AssociateWithClanResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
 }
 
 /// Steamworks `ComputeNewPlayerCompatibilityResult_t`
 public struct ComputeNewPlayerCompatibilityResult {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_cPlayersThatDontLikeCandidate`
-    public let _cPlayersThatDontLikeCandidate: Int
+    public let playersThatDontLikeCandidate: Int
     /// Steamworks `m_cPlayersThatCandidateDoesntLike`
-    public let _cPlayersThatCandidateDoesntLike: Int
+    public let playersThatCandidateDoesntLike: Int
     /// Steamworks `m_cClanPlayersThatDontLikeCandidate`
-    public let _cClanPlayersThatDontLikeCandidate: Int
+    public let clanPlayersThatDontLikeCandidate: Int
     /// Steamworks `m_SteamIDCandidate`
-    public let _steamIDCandidate: SteamID
+    public let candidate: SteamID
 }
 
 /// Steamworks `GSStatsReceived_t`
 public struct GSStatsReceived {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
 }
 
 /// Steamworks `GSStatsStored_t`
 public struct GSStatsStored {
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
 }
 
 /// Steamworks `GSStatsUnloaded_t`
 public struct GSStatsUnloaded {
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
 }
 
 /// Steamworks `SteamIPAddress_t`
 public struct SteamIPAddress {
     /// Steamworks `m_rgubIPv6`
-    public let _rgubIPv6: uint8 [16]
+    public let ipv6: uint8 [16]
     /// Steamworks `m_eType`
-    public let _eType: SteamIPType
+    public let type: SteamIPType
 }
 
 /// Steamworks `FriendGameInfo_t`
 public struct FriendGameInfo {
     /// Steamworks `m_gameID`
-    public let _gameID: GameID
+    public let id: GameID
     /// Steamworks `m_unGameIP`
-    public let _unGameIP: Int
+    public let gameIP: Int
     /// Steamworks `m_usGamePort`
-    public let _usGamePort: uint16
+    public let gamePort: uint16
     /// Steamworks `m_usQueryPort`
-    public let _usQueryPort: uint16
+    public let queryPort: uint16
     /// Steamworks `m_steamIDLobby`
-    public let _steamIDLobby: SteamID
+    public let lobby: SteamID
 }
 
 /// Steamworks `MatchMakingKeyValuePair_t`
 public struct MatchMakingKeyValuePair {
     /// Steamworks `m_szKey`
-    public let _szKey: char [256]
+    public let key: char [256]
     /// Steamworks `m_szValue`
-    public let _szValue: char [256]
+    public let value: char [256]
 }
 
 /// Steamworks `servernetadr_t`
 public struct servernetadr {
     /// Steamworks `m_usConnectionPort`
-    public let _usConnectionPort: uint16
+    public let connectionPort: uint16
     /// Steamworks `m_usQueryPort`
-    public let _usQueryPort: uint16
+    public let queryPort: uint16
     /// Steamworks `m_unIP`
-    public let _unIP: Int
+    public let ip: Int
 }
 
 /// Steamworks `gameserveritem_t`
 public struct gameserveritem {
     /// Steamworks `m_NetAdr`
-    public let _netAdr: servernetadr
+    public let netAdr: servernetadr
     /// Steamworks `m_nPing`
-    public let _nPing: Int
+    public let ping: Int
     /// Steamworks `m_bHadSuccessfulResponse`
-    public let _bHadSuccessfulResponse: Bool
+    public let hadSuccessfulResponse: Bool
     /// Steamworks `m_bDoNotRefresh`
-    public let _bDoNotRefresh: Bool
+    public let doNotRefresh: Bool
     /// Steamworks `m_szGameDir`
-    public let _szGameDir: char [32]
+    public let gameDir: char [32]
     /// Steamworks `m_szMap`
-    public let _szMap: char [32]
+    public let map: char [32]
     /// Steamworks `m_szGameDescription`
-    public let _szGameDescription: char [64]
+    public let gameDescription: char [64]
     /// Steamworks `m_nAppID`
-    public let _nAppID: Int
+    public let appID: Int
     /// Steamworks `m_nPlayers`
-    public let _nPlayers: Int
+    public let players: Int
     /// Steamworks `m_nMaxPlayers`
-    public let _nMaxPlayers: Int
+    public let maxPlayers: Int
     /// Steamworks `m_nBotPlayers`
-    public let _nBotPlayers: Int
+    public let botPlayers: Int
     /// Steamworks `m_bPassword`
-    public let _bPassword: Bool
+    public let password: Bool
     /// Steamworks `m_bSecure`
-    public let _bSecure: Bool
+    public let secure: Bool
     /// Steamworks `m_ulTimeLastPlayed`
-    public let _ulTimeLastPlayed: Int
+    public let timeLastPlayed: Int
     /// Steamworks `m_nServerVersion`
-    public let _nServerVersion: Int
+    public let serverVersion: Int
     /// Steamworks `m_szServerName`
-    public let _szServerName: char [64]
+    public let serverName: char [64]
     /// Steamworks `m_szGameTags`
-    public let _szGameTags: char [128]
+    public let gameTags: char [128]
     /// Steamworks `m_steamID`
-    public let _steamID: SteamID
+    public let steamID: SteamID
 }
 
 /// Steamworks `SteamPartyBeaconLocation_t`
 public struct SteamPartyBeaconLocation {
     /// Steamworks `m_eType`
-    public let _eType: SteamPartyBeaconLocationType
+    public let type: SteamPartyBeaconLocationType
     /// Steamworks `m_ulLocationID`
-    public let _ulLocationID: uint64
+    public let locationID: uint64
 }
 
 /// Steamworks `SteamParamStringArray_t`
 public struct SteamParamStringArray {
     /// Steamworks `m_ppStrings`
-    public let _ppStrings: const char **
+    public let strings: const char **
     /// Steamworks `m_nNumStrings`
-    public let _nNumStrings: int32
+    public let numStrings: int32
 }
 
 /// Steamworks `LeaderboardEntry_t`
 public struct LeaderboardEntry {
     /// Steamworks `m_steamIDUser`
-    public let _steamIDUser: SteamID
+    public let user: SteamID
     /// Steamworks `m_nGlobalRank`
-    public let _nGlobalRank: int32
+    public let globalRank: int32
     /// Steamworks `m_nScore`
-    public let _nScore: int32
+    public let score: int32
     /// Steamworks `m_cDetails`
-    public let _cDetails: int32
+    public let details: int32
     /// Steamworks `m_hUGC`
-    public let _hUGC: UGCHandle
+    public let ugc: UGCHandle
 }
 
 /// Steamworks `P2PSessionState_t`
 public struct P2PSessionState {
     /// Steamworks `m_bConnectionActive`
-    public let _bConnectionActive: uint8
+    public let connectionActive: uint8
     /// Steamworks `m_bConnecting`
-    public let _bConnecting: uint8
+    public let connecting: uint8
     /// Steamworks `m_eP2PSessionError`
-    public let _eP2PSessionError: uint8
+    public let p2PSessionError: uint8
     /// Steamworks `m_bUsingRelay`
-    public let _bUsingRelay: uint8
+    public let usingRelay: uint8
     /// Steamworks `m_nBytesQueuedForSend`
-    public let _nBytesQueuedForSend: int32
+    public let bytesQueuedForSend: int32
     /// Steamworks `m_nPacketsQueuedForSend`
-    public let _nPacketsQueuedForSend: int32
+    public let packetsQueuedForSend: int32
     /// Steamworks `m_nRemoteIP`
-    public let _nRemoteIP: Int
+    public let remoteIP: Int
     /// Steamworks `m_nRemotePort`
-    public let _nRemotePort: uint16
+    public let remotePort: uint16
 }
 
 /// Steamworks `InputAnalogActionData_t`
@@ -2134,9 +2135,9 @@ public struct InputAnalogActionData {
     /// Steamworks `eMode`
     public let mode: InputSourceMode
     /// Steamworks `x`
-    public let : float
+    public let x: float
     /// Steamworks `y`
-    public let : float
+    public let y: float
     /// Steamworks `bActive`
     public let active: Bool
 }
@@ -2188,233 +2189,233 @@ public struct SteamInputActionEvent {
 /// Steamworks `SteamUGCDetails_t`
 public struct SteamUGCDetails {
     /// Steamworks `m_nPublishedFileId`
-    public let _nPublishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileId
     /// Steamworks `m_eResult`
-    public let _eResult: SteamResult
+    public let result: SteamResult
     /// Steamworks `m_eFileType`
-    public let _eFileType: WorkshopFileType
+    public let fileType: WorkshopFileType
     /// Steamworks `m_nCreatorAppID`
-    public let _nCreatorAppID: AppId
+    public let creatorAppID: AppId
     /// Steamworks `m_nConsumerAppID`
-    public let _nConsumerAppID: AppId
+    public let consumerAppID: AppId
     /// Steamworks `m_rgchTitle`
-    public let _rgchTitle: char [129]
+    public let title: char [129]
     /// Steamworks `m_rgchDescription`
-    public let _rgchDescription: char [8000]
+    public let description: char [8000]
     /// Steamworks `m_ulSteamIDOwner`
-    public let _ulSteamIDOwner: uint64
+    public let steamIDOwner: uint64
     /// Steamworks `m_rtimeCreated`
-    public let _rtimeCreated: Int
+    public let created: Int
     /// Steamworks `m_rtimeUpdated`
-    public let _rtimeUpdated: Int
+    public let updated: Int
     /// Steamworks `m_rtimeAddedToUserList`
-    public let _rtimeAddedToUserList: Int
+    public let addedToUserList: Int
     /// Steamworks `m_eVisibility`
-    public let _eVisibility: RemoteStoragePublishedFileVisibility
+    public let visibility: RemoteStoragePublishedFileVisibility
     /// Steamworks `m_bBanned`
-    public let _bBanned: Bool
+    public let banned: Bool
     /// Steamworks `m_bAcceptedForUse`
-    public let _bAcceptedForUse: Bool
+    public let acceptedForUse: Bool
     /// Steamworks `m_bTagsTruncated`
-    public let _bTagsTruncated: Bool
+    public let tagsTruncated: Bool
     /// Steamworks `m_rgchTags`
-    public let _rgchTags: char [1025]
+    public let tags: char [1025]
     /// Steamworks `m_hFile`
-    public let _hFile: UGCHandle
+    public let file: UGCHandle
     /// Steamworks `m_hPreviewFile`
-    public let _hPreviewFile: UGCHandle
+    public let previewFile: UGCHandle
     /// Steamworks `m_pchFileName`
-    public let _pchFileName: char [260]
+    public let fileName: char [260]
     /// Steamworks `m_nFileSize`
-    public let _nFileSize: int32
+    public let fileSize: int32
     /// Steamworks `m_nPreviewFileSize`
-    public let _nPreviewFileSize: int32
+    public let previewFileSize: int32
     /// Steamworks `m_rgchURL`
-    public let _rgchURL: char [256]
+    public let url: char [256]
     /// Steamworks `m_unVotesUp`
-    public let _unVotesUp: Int
+    public let votesUp: Int
     /// Steamworks `m_unVotesDown`
-    public let _unVotesDown: Int
+    public let votesDown: Int
     /// Steamworks `m_flScore`
-    public let _flScore: float
+    public let score: float
     /// Steamworks `m_unNumChildren`
-    public let _unNumChildren: Int
+    public let numChildren: Int
 }
 
 /// Steamworks `SteamItemDetails_t`
 public struct SteamItemDetails {
     /// Steamworks `m_itemId`
-    public let _itemId: SteamItemInstanceID
+    public let id: SteamItemInstanceID
     /// Steamworks `m_iDefinition`
-    public let _iDefinition: SteamItemDef
+    public let definitionIndex: SteamItemDef
     /// Steamworks `m_unQuantity`
-    public let _unQuantity: uint16
+    public let quantity: uint16
     /// Steamworks `m_unFlags`
-    public let _unFlags: uint16
+    public let flags: uint16
 }
 
 /// Steamworks `SteamNetworkingIPAddr`
 public struct SteamNetworkingIPAddr {
     /// Steamworks `m_ipv6`
-    public let _ipv6: uint8 [16]
+    public let 6: uint8 [16]
     /// Steamworks `m_port`
-    public let _port: uint16
+    public let port: uint16
 }
 
 /// Steamworks `SteamNetworkingIdentity`
 public struct SteamNetworkingIdentity {
     /// Steamworks `m_eType`
-    public let _eType: SteamNetworkingIdentityType
+    public let type: SteamNetworkingIdentityType
     /// Steamworks `m_cbSize`
-    public let _cbSize: Int
+    public let size: Int
     /// Steamworks `m_szUnknownRawString`
-    public let _szUnknownRawString: char [128]
+    public let unknownRawString: char [128]
 }
 
 /// Steamworks `SteamNetConnectionInfo_t`
 public struct SteamNetConnectionInfo {
     /// Steamworks `m_identityRemote`
-    public let _identityRemote: SteamNetworkingIdentity
+    public let remote: SteamNetworkingIdentity
     /// Steamworks `m_nUserData`
-    public let _nUserData: int64
+    public let userData: int64
     /// Steamworks `m_hListenSocket`
-    public let _hListenSocket: HSteamListenSocket
+    public let listenSocket: HSteamListenSocket
     /// Steamworks `m_addrRemote`
-    public let _addrRemote: SteamNetworkingIPAddr
+    public let remote: SteamNetworkingIPAddr
     /// Steamworks `m__pad1`
     public let _pad1: uint16
     /// Steamworks `m_idPOPRemote`
-    public let _idPOPRemote: SteamNetworkingPOPID
+    public let popRemote: SteamNetworkingPOPID
     /// Steamworks `m_idPOPRelay`
-    public let _idPOPRelay: SteamNetworkingPOPID
+    public let popRelay: SteamNetworkingPOPID
     /// Steamworks `m_eState`
-    public let _eState: SteamNetworkingConnectionState
+    public let state: SteamNetworkingConnectionState
     /// Steamworks `m_eEndReason`
-    public let _eEndReason: Int
+    public let endReason: Int
     /// Steamworks `m_szEndDebug`
-    public let _szEndDebug: char [128]
+    public let endDebug: char [128]
     /// Steamworks `m_szConnectionDescription`
-    public let _szConnectionDescription: char [128]
+    public let connectionDescription: char [128]
     /// Steamworks `m_nFlags`
-    public let _nFlags: Int
+    public let flags: Int
     /// Steamworks `reserved`
-    public let : uint32 [63]
+    public let reserved: uint32 [63]
 }
 
 /// Steamworks `SteamNetworkingQuickConnectionStatus`
 public struct SteamNetworkingQuickConnectionStatus {
     /// Steamworks `m_eState`
-    public let _eState: SteamNetworkingConnectionState
+    public let state: SteamNetworkingConnectionState
     /// Steamworks `m_nPing`
-    public let _nPing: Int
+    public let ping: Int
     /// Steamworks `m_flConnectionQualityLocal`
-    public let _flConnectionQualityLocal: float
+    public let connectionQualityLocal: float
     /// Steamworks `m_flConnectionQualityRemote`
-    public let _flConnectionQualityRemote: float
+    public let connectionQualityRemote: float
     /// Steamworks `m_flOutPacketsPerSec`
-    public let _flOutPacketsPerSec: float
+    public let outPacketsPerSec: float
     /// Steamworks `m_flOutBytesPerSec`
-    public let _flOutBytesPerSec: float
+    public let outBytesPerSec: float
     /// Steamworks `m_flInPacketsPerSec`
-    public let _flInPacketsPerSec: float
+    public let inPacketsPerSec: float
     /// Steamworks `m_flInBytesPerSec`
-    public let _flInBytesPerSec: float
+    public let inBytesPerSec: float
     /// Steamworks `m_nSendRateBytesPerSecond`
-    public let _nSendRateBytesPerSecond: Int
+    public let sendRateBytesPerSecond: Int
     /// Steamworks `m_cbPendingUnreliable`
-    public let _cbPendingUnreliable: Int
+    public let pendingUnreliable: Int
     /// Steamworks `m_cbPendingReliable`
-    public let _cbPendingReliable: Int
+    public let pendingReliable: Int
     /// Steamworks `m_cbSentUnackedReliable`
-    public let _cbSentUnackedReliable: Int
+    public let sentUnackedReliable: Int
     /// Steamworks `m_usecQueueTime`
-    public let _usecQueueTime: SteamNetworkingMicroseconds
+    public let queueTime: SteamNetworkingMicroseconds
     /// Steamworks `reserved`
-    public let : uint32 [16]
+    public let reserved: uint32 [16]
 }
 
 /// Steamworks `SteamNetworkingMessage_t`
 public struct SteamNetworkingMessage {
     /// Steamworks `m_pData`
-    public let _pData: UnsafeMutableRawPointer
+    public let data: UnsafeMutableRawPointer
     /// Steamworks `m_cbSize`
-    public let _cbSize: Int
+    public let size: Int
     /// Steamworks `m_conn`
-    public let _conn: HSteamNetConnection
+    public let conn: HSteamNetConnection
     /// Steamworks `m_identityPeer`
-    public let _identityPeer: SteamNetworkingIdentity
+    public let peer: SteamNetworkingIdentity
     /// Steamworks `m_nConnUserData`
-    public let _nConnUserData: int64
+    public let connUserData: int64
     /// Steamworks `m_usecTimeReceived`
-    public let _usecTimeReceived: SteamNetworkingMicroseconds
+    public let timeReceived: SteamNetworkingMicroseconds
     /// Steamworks `m_nMessageNumber`
-    public let _nMessageNumber: int64
+    public let messageNumber: int64
     /// Steamworks `m_pfnFreeData`
-    public let _pfnFreeData: void (*)(SteamNetworkingMessage *)
+    public let freeData: void (*)(SteamNetworkingMessage *)
     /// Steamworks `m_pfnRelease`
-    public let _pfnRelease: void (*)(SteamNetworkingMessage *)
+    public let release: void (*)(SteamNetworkingMessage *)
     /// Steamworks `m_nChannel`
-    public let _nChannel: Int
+    public let channel: Int
     /// Steamworks `m_nFlags`
-    public let _nFlags: Int
+    public let flags: Int
     /// Steamworks `m_nUserData`
-    public let _nUserData: int64
+    public let userData: int64
 }
 
 /// Steamworks `SteamNetworkPingLocation_t`
 public struct SteamNetworkPingLocation {
     /// Steamworks `m_data`
-    public let _data: uint8 [512]
+    public let data: uint8 [512]
 }
 
 /// Steamworks `SteamNetworkingConfigValue_t`
 public struct SteamNetworkingConfigValue {
     /// Steamworks `m_eValue`
-    public let _eValue: SteamNetworkingConfigValue
+    public let value: SteamNetworkingConfigValue
     /// Steamworks `m_eDataType`
-    public let _eDataType: SteamNetworkingConfigDataType
+    public let dataType: SteamNetworkingConfigDataType
     /// Steamworks `m_int64`
-    public let _int64: int64
+    public let 64: int64
 }
 
 /// Steamworks `SteamNetworkingPOPIDRender`
 public struct SteamNetworkingPOPIDRender {
     /// Steamworks `buf`
-    public let : char [8]
+    public let buf: char [8]
 }
 
 /// Steamworks `SteamNetworkingIdentityRender`
 public struct SteamNetworkingIdentityRender {
     /// Steamworks `buf`
-    public let : char [128]
+    public let buf: char [128]
 }
 
 /// Steamworks `SteamNetworkingIPAddrRender`
 public struct SteamNetworkingIPAddrRender {
     /// Steamworks `buf`
-    public let : char [48]
+    public let buf: char [48]
 }
 
 /// Steamworks `SteamDatagramHostedAddress`
 public struct SteamDatagramHostedAddress {
     /// Steamworks `m_cbSize`
-    public let _cbSize: Int
+    public let size: Int
     /// Steamworks `m_data`
-    public let _data: char [128]
+    public let data: char [128]
 }
 
 /// Steamworks `SteamDatagramGameCoordinatorServerLogin`
 public struct SteamDatagramGameCoordinatorServerLogin {
     /// Steamworks `m_identity`
-    public let _identity: SteamNetworkingIdentity
+    public let identity: SteamNetworkingIdentity
     /// Steamworks `m_routing`
-    public let _routing: SteamDatagramHostedAddress
+    public let routing: SteamDatagramHostedAddress
     /// Steamworks `m_nAppID`
-    public let _nAppID: AppId
+    public let appID: AppId
     /// Steamworks `m_rtime`
-    public let _rtime: RTime32
+    public let rtime: RTime32
     /// Steamworks `m_cbAppData`
-    public let _cbAppData: Int
+    public let appData: Int
     /// Steamworks `m_appData`
-    public let _appData: char [2048]
+    public let data: char [2048]
 }

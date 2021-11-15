@@ -51,7 +51,12 @@ extension String {
             return "\(dropFirst())Index".asSwiftIdentifier
         }
         // Ultimate fallback - strip lower-case prefix and convert
-        return re_sub("^[a-z]*", with: "").asSwiftIdentifier
+        return re_sub("^[a-z]*(?=[^a-z])", with: "").asSwiftIdentifier
+    }
+
+    /// 99+% of them start with "m_" which I vaguely remember is a MSVC++ meme, then the r-hung. stuff
+    var asSwiftStructFieldName: String {
+        re_sub("^m_", with: "").asSwiftParameterName
     }
 
     /// WBN to have a runtime function for this ...

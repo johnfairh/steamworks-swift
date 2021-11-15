@@ -30,7 +30,7 @@ struct Structs {
 extension MetadataDB.Struct.Field {
     var declLine: [String] {[
         "/// Steamworks `\(fieldname)`",
-        "public let \(fieldname.asSwiftParameterName): \(fieldtype.asSwiftTypeName)"
+        "public let \(fieldname.asSwiftStructFieldName): \(fieldtype.asSwiftTypeName)"
     ]}
 }
 
@@ -63,3 +63,13 @@ extension MetadataDB.Struct {
 // conversion generation
 // think about public ctor
 // patch marker for 'requires ->steam conversion'
+// m_bSomething -> Bool systemically?
+// leading I
+// rtime is one word
+// steamID + uint64 -> SteamID, ditto gameid
+// m_iInstallFolderIndex
+// m_rtAction
+// unNewWindow_BrowserHandle_IGNORE / unused / reserved / _pad*
+// m_debugMsg
+// SteamIPAddress_t is a union
+// SteamNetworkingIPAddr too

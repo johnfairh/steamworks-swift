@@ -26,6 +26,16 @@ extension UInt64 {
     }
 }
 
+public struct GameID {
+    public let gameID: UInt64
+    public init(_ gameID: UInt64) {
+        self.gameID = gameID
+    }
+    init(_ gameID: CGameID) {
+        self.gameID = gameID.m_ulGameID
+    }
+}
+
 // Extremely terrifying extension to a C++ class ...
 extension CSteamID {
     init(_ steamID: SteamID) {
@@ -61,35 +71,21 @@ public struct SteamUserStats {
     }
 }
 
-// MARK: Bringup typedefs
+// MARK: Bringup structs
 
-public struct SteamInputActionEvent {}
-public struct SteamNetConnectionStatusChangedCallback {}
-public struct SteamNetAuthenticationStatus {}
-public struct SteamRelayNetworkStatus {}
-public struct SteamNetworkingMessagesSessionRequest {}
-public struct SteamNetworkingMessagesSessionFailed {}
-
-public struct SteamServersConnected: SteamCreatable {
+extension SteamServersConnected: SteamCreatable {
     init(_ steam: SteamServersConnected_t) {
     }
 }
 
-public struct PersonaStateChange: SteamCreatable {
-    public let steamID: SteamID
-    public let changeFlags: PersonaChange
-
+extension PersonaStateChange: SteamCreatable {
     init(_ steam: PersonaStateChange_t) {
         steamID = SteamID(steam.m_ulSteamID)
         changeFlags = PersonaChange(rawValue: UInt32(steam.m_nChangeFlags))
     }
 }
 
-public struct FriendsGetFollowerCount: SteamCreatable {
-    public let result: SteamResult
-    public let steamID: SteamID
-    public let count: Int
-
+extension FriendsGetFollowerCount: SteamCreatable {
     init(_ steam: FriendsGetFollowerCount_t) {
         result = SteamResult(steam.m_eResult)
         steamID = SteamID(steam.m_steamID)
@@ -97,46 +93,42 @@ public struct FriendsGetFollowerCount: SteamCreatable {
     }
 }
 
-public struct SetPersonaNameResponse: SteamCreatable {
+extension SetPersonaNameResponse: SteamCreatable {
     init(_ steam: SetPersonaNameResponse_t) {
     }
 }
 
-public struct DownloadClanActivityCountsResult: SteamCreatable {
+extension DownloadClanActivityCountsResult: SteamCreatable {
     init(_ steam: DownloadClanActivityCountsResult_t) {
     }
 }
 
-public struct ClanOfficerListResponse: SteamCreatable {
+extension ClanOfficerListResponse: SteamCreatable {
     init(_ steam: ClanOfficerListResponse_t) {
     }
 }
 
-public struct JoinClanChatRoomCompletionResult: SteamCreatable {
+extension JoinClanChatRoomCompletionResult: SteamCreatable {
     init(_ steam: JoinClanChatRoomCompletionResult_t) {
     }
 }
 
-public struct FriendsIsFollowing: SteamCreatable {
+extension FriendsIsFollowing: SteamCreatable {
     init(_ steam: FriendsIsFollowing_t) {
     }
 }
 
-public struct FriendsEnumerateFollowingList: SteamCreatable {
+extension FriendsEnumerateFollowingList: SteamCreatable {
     init(_ steam: FriendsEnumerateFollowingList_t) {
     }
 }
 
-public struct FriendGameInfo: SteamCreatable {
+extension FriendGameInfo: SteamCreatable {
     init(_ steam: FriendGameInfo_t) {
     }
 }
 
-public struct UserStatsReceived: SteamCreatable {
-    public let gameID: UInt64
-    public let result: SteamResult
-    public let user: SteamID
-
+extension UserStatsReceived: SteamCreatable {
     init(_ steam: UserStatsReceived_t) {
         gameID = UInt64(steam.m_nGameID)
         result = SteamResult(steam.m_eResult)
