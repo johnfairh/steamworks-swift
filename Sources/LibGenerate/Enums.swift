@@ -50,8 +50,13 @@ extension MetadataDB.Enum {
             .max() ?? 0) + 1
     }
 
-    /// The Swift declaration for the enum or optionset struct
+    /// The Swift declaration for the enum or optionset struct, formatted for top-level code
     var generated: String {
+        declLines.joined(separator: "\n") + "\n\n" + extensionLines().joined(separator: "\n")
+    }
+
+    /// The nominal part of the declaration
+    var declLines: [String] {
         let swiftTypeName = name.asSwiftTypeName
         let rawType = rawType
 
@@ -79,26 +84,32 @@ extension MetadataDB.Enum {
                 valueGen(value, swiftTypeName)]
             }
 
-        let enumProtocol: String
-        if is_set {
-            enumProtocol = "RawConvertible"
-        } else {
-            enumProtocol = "EnumWithUnrepresented"
+        if !is_set {
             elements += [
                 "/// Some undocumented value",
                 "case unrepresentedInSwift = \(unrepresentedValue)"
             ]
         }
 
-        return """
-               /// Steamworks `\(name)`
-               \(typeDecl)
-               \(elements.indented(1).joined(separator: "\n"))
-               }
+        return [
+            "/// Steamworks `\(name)`",
+            typeDecl
+        ] + elements.indented(1) + [
+            "}"
+        ]
+    }
 
-               extension \(name): RawConvertible { typealias From = \(swiftTypeName) }
-               extension \(swiftTypeName): \(enumProtocol) { typealias From = \(name) }
-               """
+    var enumProtocol: String {
+        is_set ? "RawConvertible" : "EnumWithUnrepresented"
+    }
+
+    /// The extension part of the declaration
+    func extensionLines(namespace: String? = nil) -> [String] {
+        let swiftTypeName = (namespace.flatMap { "\($0)." } ?? "") + name.asSwiftTypeName
+        return [
+            "extension \(name.asSwiftNameForSteamType): RawConvertible { typealias From = \(swiftTypeName) }",
+            "extension \(swiftTypeName): \(enumProtocol) { typealias From = \(name.asSwiftNameForSteamType) }"
+        ]
     }
 
     /// The Swift declaration for a OptionSet enum case.

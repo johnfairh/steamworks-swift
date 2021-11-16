@@ -111,15 +111,24 @@ struct PatchJSON: Codable {
     let enums: [String : Enum] // name (== fqname ?? enumname) key
 
     struct Method: Codable {
-        let returntype: String? // patch returntype
+        let returntype: String? // patch returntype (steam type)
         let out_param_iff_rc: String? // only copyback out-params if method rc matches
 
         struct Param: Codable {
-            let type: String? // patch paramtype
+            let type: String? // patch paramtype (steam type)
         }
         let params: [String : Param]?
     }
     let methods: [String : Method] // methodname_flat key
+
+    struct Struct: Codable {
+        struct Field: Codable {
+            let fieldtype: String? // patch fieldtype (steam type)
+            let swift_type: String? // custom swift type
+        }
+        let fields: [String : Field]? // fieldname key
+    }
+    let structs: [String: Struct] // struct.name key
 
     init(data: Data) throws {
         self = try JSONDecoder().decode(PatchJSON.self, from: data)
@@ -230,7 +239,18 @@ struct MetadataDB {
     /// Shared type between callback-structs and regular structs - regular structs don't have
     /// a callback ID and may have methods (though these are rarely coherent)
     struct Struct {
-        typealias Field = SteamJSON.Struct.Field
+        struct Field {
+            let fieldname: String
+            let fieldtype: String
+            let swiftType: String?
+
+            init(base: SteamJSON.Struct.Field, patch: PatchJSON.Struct.Field?) {
+                fieldname = base.fieldname
+                fieldtype = patch?.fieldtype ?? base.fieldtype
+                swiftType = patch?.swift_type
+            }
+        }
+
         let name: String // "struct" too annoying
         let fields: [Field]
         let callback_id: Int?
@@ -241,7 +261,9 @@ struct MetadataDB {
 
         init(base: SteamJSON.Struct, patch: PatchJSON) {
             name = base.struct
-            fields = base.fields
+            fields = base.fields.map {
+                .init(base: $0, patch: patch.structs[base.struct]?.fields?[$0.fieldname])
+            }
             callback_id = base.callback_id
 
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
@@ -333,5 +355,9 @@ final class Metadata: CustomStringConvertible {
 
     static func isOptionSetEnum(steamType name: String) -> Bool {
         findEnum(name: name)?.is_set ?? false
+    }
+
+    static func isStruct(steamType name: String) -> Bool {
+        shared.db.structs[name] != nil
     }
 }

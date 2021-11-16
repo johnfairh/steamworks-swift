@@ -91,9 +91,9 @@ extension EnumWithUnrepresented where Self: RawRepresentable, From.RawValue == S
 ///
 /// These dumb casts smooth over the bumps in generated code.  See also
 /// `String.asSwiftTypeForPassingIntoSteamworks`.
-extension RawConvertible where Self: OptionSet {
-    init(_ rawValue: RawValue) {
-        self.init(rawValue: rawValue)
+extension RawConvertible where Self: OptionSet, RawValue == UInt32 {
+    init<T: BinaryInteger>(_ rawValue: T) {
+        self.init(rawValue: RawValue(rawValue))
     }
 }
 

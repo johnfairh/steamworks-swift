@@ -7,15 +7,29 @@
 
 /// Utilities for converting Steamworks API names to Swift names.
 extension String {
+    /// * Convert arrays
     /// * Drop unwanted suffixes
-    /// * Drop leading capital E/I/C - used in SDK for enums/interfaces/classes
+    /// * Drop leading capital E/I/C - used in SDK for enums/interfaces/classes (but not for structs...)
     var asSwiftTypeName: String {
+        if let match = re_match(#"^(.*) +\[.*\]"#) {
+            if let special = steamArrayElementTypeToSwiftArrayTypes[match[1]] {
+                return special
+            }
+            return "[\(match[1].asSwiftTypeName)]"
+        }
         if let mapped = steamToSwiftTypes[self] {
             return mapped
         }
-        return re_sub("_t\\b", with: "")
-            .re_sub("^[CEI](?=[A-Z])", with: "")
-            .replacingOccurrences(of: "_", with: "")
+        var name = re_sub("_t\\b", with: "").re_sub("^.*::", with: "")
+        if !Metadata.isStruct(steamType: self) {
+            name = name.re_sub("^[CEI](?=[A-Z])", with: "")
+        }
+        return name.replacingOccurrences(of: "_", with: "")
+    }
+
+    /// Given a canonical C++ type name, convert it to how Swift sees it
+    var asSwiftNameForSteamType: String {
+        replacingOccurrences(of: "::", with: ".")
     }
 
     /// * to lowerCamelCase
@@ -36,13 +50,10 @@ extension String {
     ///
     /// Try to get rid of the hungarian prefix without losing meaning.
     var asSwiftParameterName: String {
-        if steamParameterNamesUnchanged.contains(self) {
-            return self
-        }
         if let exception = steamParameterNamesExceptions[self] {
             return exception
         }
-        // 'steamID' is used a single hungarian character with various spellings
+        // 'steamID' is used as a single hungarian character with various spellings
         if let matches = re_match("^p?(?:Out)?steamID(.+)$", options: .i) {
             return matches[1].asSwiftIdentifier
         }
@@ -51,7 +62,9 @@ extension String {
             return "\(dropFirst())Index".asSwiftIdentifier
         }
         // Ultimate fallback - strip lower-case prefix and convert
-        return re_sub("^[a-z]*(?=[^a-z])", with: "").asSwiftIdentifier
+        return re_sub("^[a-z]*(?=[A-Z])") {
+            steamParameterNameGoodPrefixes.contains($0) ? $0 : ""
+        }.asSwiftIdentifier
     }
 
     /// 99+% of them start with "m_" which I vaguely remember is a MSVC++ meme, then the r-hung. stuff
@@ -108,15 +121,38 @@ private let backtickKeywords = Set<String>([
     "case", "default", "for", "internal", "private", "protocol", "public", "switch"
 ])
 
-// How to represent a steam type in the Swift interface, hard-coded mappings
+// How to represent a steam type in the Swift interface, special cases
 private let steamToSwiftTypes: [String : String] = [
+    // Base types
     "const char *" : "String",
     "int" : "Int",
+    "uint8" : "Int",
+    "uint16" : "Int",
     "uint32" : "Int",
+    "int32" : "Int",
+    "int64" : "Int",
+    "int64_t" : "Int", // steamnetworking == disaster
+    "uint64": "UInt64",
     "bool" : "Bool",
+    "float" : "Float",
+    "double" : "Double",
+    "void *" : "UnsafeMutableRawPointer",
     "uint64_steamid" : "SteamID",
-    "void *": "UnsafeMutableRawPointer",
-    "EResult": "SteamResult"
+
+    // Misc
+    "EResult" : "SteamResult", // avoid clashing with Swift.Result -- review??
+    "const char **" : "[String]", // this type probably needs to die, leave it for now
+
+    // Names that end up duplicated after removing their initial letter
+    "ECheckFileSignature": "CheckFileSignatureResult",
+    "ERemoteStorageLocalFileChange" : "RemoteStorageLocalFileChangeType",
+    "ESteamNetworkingConfigValue" : "SteamNetworkingConfigValueSetting"
+]
+
+// How to represent an array of steam types, special cases
+private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
+    "char" : "String",
+    "uint8" : "[UInt8]" // Should be Data but can't use Foundation inside Steamworks because C++!
 ]
 
 // Steam types whose Swift type version is typesafe to pass
@@ -141,17 +177,18 @@ private let steamTypesPassedInStrangely: [String : String] = [
     "uint64_steamid" : "UInt64"
 ]
 
-// Parameter/field names to just pass straight through
-private let steamParameterNamesUnchanged = Set<String>([
-    "friendsGroupID", "steamID"
-])
-
 // Parameter/field names where no rules are followed and we
-// have to hard-code
+// have to hard-code something acceptable
 private let steamParameterNamesExceptions: [String : String] = [
     "cubData" : "dataSize",
     "iFriendFlags" : "friendFlags"
 ]
+
+// Parameter/field hungarian-smelling prefixes that are actually
+// parts of the name...
+private let steamParameterNameGoodPrefixes = Set<String>([
+    "friends", "steam", "csecs", "identity", "addr", "debug"
+])
 
 extension String {
     func indented(_ level: Int) -> String {

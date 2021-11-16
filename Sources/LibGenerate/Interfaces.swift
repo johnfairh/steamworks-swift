@@ -88,6 +88,7 @@ final class SwiftParam {
 
     /// What code (if any) is required before calling the Steamworks API
     /// SW isn't a particularly good `const` citizen
+    /// (Need to review for stack-allocation, new APIs in Swift 5.6 might help)
     var preCallLines: [String] {
         switch style {
         case .in, .in_array_count: return []

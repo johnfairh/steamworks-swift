@@ -1054,7 +1054,7 @@ extension ETextFilteringContext: RawConvertible { typealias From = TextFiltering
 extension TextFilteringContext: EnumWithUnrepresented { typealias From = ETextFilteringContext }
 
 /// Steamworks `ECheckFileSignature`
-public enum CheckFileSignature: UInt32 {
+public enum CheckFileSignatureResult: UInt32 {
     /// Steamworks `k_ECheckFileSignatureInvalidSignature`
     case invalidSignature = 0
     /// Steamworks `k_ECheckFileSignatureValidSignature`
@@ -1069,8 +1069,8 @@ public enum CheckFileSignature: UInt32 {
     case unrepresentedInSwift = 5
 }
 
-extension ECheckFileSignature: RawConvertible { typealias From = CheckFileSignature }
-extension CheckFileSignature: EnumWithUnrepresented { typealias From = ECheckFileSignature }
+extension ECheckFileSignature: RawConvertible { typealias From = CheckFileSignatureResult }
+extension CheckFileSignatureResult: EnumWithUnrepresented { typealias From = ECheckFileSignature }
 
 /// Steamworks `EMatchMakingServerResponse`
 public enum MatchMakingServerResponse: UInt32 {
@@ -1368,7 +1368,7 @@ extension EUGCReadAction: RawConvertible { typealias From = UGCReadAction }
 extension UGCReadAction: EnumWithUnrepresented { typealias From = EUGCReadAction }
 
 /// Steamworks `ERemoteStorageLocalFileChange`
-public enum RemoteStorageLocalFileChange: UInt32 {
+public enum RemoteStorageLocalFileChangeType: UInt32 {
     /// Steamworks `k_ERemoteStorageLocalFileChange_Invalid`
     case invalid = 0
     /// Steamworks `k_ERemoteStorageLocalFileChange_FileUpdated`
@@ -1379,8 +1379,8 @@ public enum RemoteStorageLocalFileChange: UInt32 {
     case unrepresentedInSwift = 3
 }
 
-extension ERemoteStorageLocalFileChange: RawConvertible { typealias From = RemoteStorageLocalFileChange }
-extension RemoteStorageLocalFileChange: EnumWithUnrepresented { typealias From = ERemoteStorageLocalFileChange }
+extension ERemoteStorageLocalFileChange: RawConvertible { typealias From = RemoteStorageLocalFileChangeType }
+extension RemoteStorageLocalFileChangeType: EnumWithUnrepresented { typealias From = ERemoteStorageLocalFileChange }
 
 /// Steamworks `ERemoteStorageFilePathType`
 public enum RemoteStorageFilePathType: UInt32 {
@@ -3797,7 +3797,7 @@ extension ESteamNetworkingConfigDataType: RawConvertible { typealias From = Stea
 extension SteamNetworkingConfigDataType: EnumWithUnrepresented { typealias From = ESteamNetworkingConfigDataType }
 
 /// Steamworks `ESteamNetworkingConfigValue`
-public enum SteamNetworkingConfigValue: UInt32 {
+public enum SteamNetworkingConfigValueSetting: UInt32 {
     /// Steamworks `k_ESteamNetworkingConfig_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamNetworkingConfig_TimeoutInitial`
@@ -3912,8 +3912,8 @@ public enum SteamNetworkingConfigValue: UInt32 {
     case unrepresentedInSwift = 207
 }
 
-extension ESteamNetworkingConfigValue: RawConvertible { typealias From = SteamNetworkingConfigValue }
-extension SteamNetworkingConfigValue: EnumWithUnrepresented { typealias From = ESteamNetworkingConfigValue }
+extension ESteamNetworkingConfigValue: RawConvertible { typealias From = SteamNetworkingConfigValueSetting }
+extension SteamNetworkingConfigValueSetting: EnumWithUnrepresented { typealias From = ESteamNetworkingConfigValue }
 
 /// Steamworks `ESteamNetworkingGetConfigValueResult`
 public enum SteamNetworkingGetConfigValueResult: Int32 {

@@ -81,7 +81,7 @@ extension SteamServersConnected: SteamCreatable {
 extension PersonaStateChange: SteamCreatable {
     init(_ steam: PersonaStateChange_t) {
         steamID = SteamID(steam.m_ulSteamID)
-        changeFlags = PersonaChange(rawValue: UInt32(steam.m_nChangeFlags))
+        changeFlags = PersonaChange(steam.m_nChangeFlags)
     }
 }
 
@@ -95,42 +95,63 @@ extension FriendsGetFollowerCount: SteamCreatable {
 
 extension SetPersonaNameResponse: SteamCreatable {
     init(_ steam: SetPersonaNameResponse_t) {
+        success = steam.m_bSuccess
+        localSuccess = steam.m_bLocalSuccess
+        result = SteamResult(steam.m_result)
     }
 }
 
 extension DownloadClanActivityCountsResult: SteamCreatable {
     init(_ steam: DownloadClanActivityCountsResult_t) {
+        success = steam.m_bSuccess
     }
 }
 
 extension ClanOfficerListResponse: SteamCreatable {
     init(_ steam: ClanOfficerListResponse_t) {
+        clan = SteamID(steam.m_steamIDClan)
+        officers = Int(steam.m_cOfficers)
+        success = steam.m_bSuccess != 0
     }
 }
 
 extension JoinClanChatRoomCompletionResult: SteamCreatable {
     init(_ steam: JoinClanChatRoomCompletionResult_t) {
+        clanChat = SteamID(steam.m_steamIDClanChat)
+        chatRoomEnterResponse = ChatRoomEnterResponse(steam.m_eChatRoomEnterResponse)
     }
 }
 
 extension FriendsIsFollowing: SteamCreatable {
     init(_ steam: FriendsIsFollowing_t) {
+        result = SteamResult(steam.m_eResult)
+        steamID = SteamID(steam.m_steamID)
+        isFollowing = steam.m_bIsFollowing
     }
 }
 
 extension FriendsEnumerateFollowingList: SteamCreatable {
     init(_ steam: FriendsEnumerateFollowingList_t) {
+        result = SteamResult(steam.m_eResult)
+        steamID = []
+        resultsReturned = Int(steam.m_nResultsReturned)
+        totalResultCount = Int(steam.m_nTotalResultCount)
     }
 }
 
 extension FriendGameInfo: SteamCreatable {
     init(_ steam: FriendGameInfo_t) {
+        id = GameID(steam.m_gameID)
+        gameIP = Int(steam.m_unGameIP)
+        gamePort = Int(steam.m_usGamePort)
+        queryPort = Int(steam.m_usQueryPort)
+        lobby = SteamID(steam.m_steamIDLobby)
     }
 }
 
 extension UserStatsReceived: SteamCreatable {
     init(_ steam: UserStatsReceived_t) {
-        gameID = UInt64(steam.m_nGameID)
+        gameID = GameID(steam.m_nGameID)
         result = SteamResult(steam.m_eResult)
         user = SteamID(steam.m_steamIDUser)
     }

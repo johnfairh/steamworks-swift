@@ -117,5 +117,24 @@
         }
       }
     }
+  },
+  "structs": {
+    "PersonaStateChange_t" : {
+      "fields": {
+        "m_nChangeFlags": {
+          "fieldtype": "EPersonaChange"
+        }
+      }
+    },
+    "SteamNetworkingMessage_t": {
+      "fields": {
+        "m_pfnFreeData": {
+          "swift_type": "() -> Void"
+        },
+        "m_pfnRelease": {
+          "swift_type": "() -> Void"
+        }
+      }
+    }
   }
 }
