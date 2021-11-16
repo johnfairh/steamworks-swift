@@ -87,6 +87,12 @@
           "force_static": true
         }
       }
+    },
+    "IPCFailure_t::EFailureType": {
+      "prefix": "k_EFailure"
+    },
+    "RequestPlayersForGameResultCallback_t::PlayerAcceptState_t": {
+      "prefix": "k_EState"
     }
   },
   "methods": {

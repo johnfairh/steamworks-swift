@@ -343,10 +343,10 @@ final class Metadata: CustomStringConvertible {
         """
     }
 
-    static private(set) var shared: Metadata!
+    static private(set) var shared: Metadata?
 
     static private func findEnum(name: String) -> MetadataDB.Enum? {
-        shared.db.enums[name] ?? shared.nestedEnums[name]
+        shared?.db.enums[name] ?? shared?.nestedEnums[name]
     }
 
     static func isEnum(steamType name: String) -> Bool {
@@ -358,6 +358,6 @@ final class Metadata: CustomStringConvertible {
     }
 
     static func isStruct(steamType name: String) -> Bool {
-        shared.db.structs[name] != nil
+        shared.flatMap { $0.db.structs[name] != nil } ?? false
     }
 }

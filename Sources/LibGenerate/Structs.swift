@@ -87,10 +87,7 @@ extension MetadataDB.Struct {
     }
 }
 
+// get tests working, update names tests
 // field conversion lines
 // conversion generation
 // think about public ctor
-// patch marker for 'requires ->steam conversion'
-// rtime is one word
-// m_iInstallFolderIndex
-// m_rtAction

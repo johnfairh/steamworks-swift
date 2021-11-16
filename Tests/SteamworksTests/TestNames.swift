@@ -11,7 +11,6 @@ import XCTest
 // Test (describe) the Steamworks -> Swift naming rules
 // Individual special cases are just in code and observed by generation.
 class TestNames: XCTestCase {
-
     func testTypenames() {
         let cases = [
             ("Type", "Type"),
@@ -24,7 +23,10 @@ class TestNames: XCTestCase {
             ("ISteamFriends", "SteamFriends"),
             ("CSteamID", "SteamID"),
             ("uint64_steamid", "SteamID"),
-            ("EResult", "SteamResult")
+            ("EResult", "SteamResult"),
+            ("Fred [20]", "[Fred]"),
+            ("char [10]", "String"),
+            ("uint8 [5]", "[UInt8]")
         ]
         cases.forEach { steam, swift in
             XCTAssertEqual(steam.asSwiftTypeName, swift)
@@ -42,7 +44,7 @@ class TestNames: XCTestCase {
             ("IPv4", "ipv4"), // awful special case -- in a previous product we always wrote "ip4" and "ip6" in code to avoid this issue!
             ("IPv6", "ipv6"),
             ("Abc_Def", "abcDef"),
-            ("_Weird", "_weird")
+            ("_Weird", "_weird"),
         ]
 
         cases.forEach { steam, swift in
@@ -58,8 +60,10 @@ class TestNames: XCTestCase {
             ("pszInput", "input"), // strip hungarian
             ("aProtocol", "`protocol`"), // respect swift keywords
             ("iEntry", "entryIndex"), // i does not mean integer
+            ("iEntryIndex", "entryIndex"), // people are thoughtless
             ("cubData", "dataSize"), // "count of unsigned bytes" ??
             ("wrong", "wrong"), // there's always one
+            ("csecsStart", "csecsStart"), // special prefix
         ]
 
         cases.forEach { steam, swift in

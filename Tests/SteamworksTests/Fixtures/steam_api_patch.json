@@ -22,5 +22,6 @@
     "SteamAPI_ISteamFriends_GetFriendsGroupMembersListF": {
         "out_param_iff_rc": "== 5"
     }
-  }
+  },
+  "structs": {}
 }

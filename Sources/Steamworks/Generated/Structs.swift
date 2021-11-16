@@ -48,9 +48,9 @@ public struct IPCFailure {
     /// Steamworks `IPCFailure_t::EFailureType`
     public enum FailureType: UInt32 {
         /// Steamworks `k_EFailureFlushedCallbackQueue`
-        case kEFailureFlushedCallbackQueue = 0
+        case flushedCallbackQueue = 0
         /// Steamworks `k_EFailurePipeFail`
-        case kEFailurePipeFail = 1
+        case pipeFail = 1
         /// Some undocumented value
         case unrepresentedInSwift = 2
     }
@@ -551,11 +551,11 @@ public struct RequestPlayersForGameResultCallback {
     /// Steamworks `RequestPlayersForGameResultCallback_t::PlayerAcceptState_t`
     public enum PlayerAcceptState: UInt32 {
         /// Steamworks `k_EStateUnknown`
-        case kEStateUnknown = 0
+        case unknown = 0
         /// Steamworks `k_EStatePlayerAccepted`
-        case kEStatePlayerAccepted = 1
+        case playerAccepted = 1
         /// Steamworks `k_EStatePlayerDeclined`
-        case kEStatePlayerDeclined = 2
+        case playerDeclined = 2
         /// Some undocumented value
         case unrepresentedInSwift = 3
     }
@@ -751,9 +751,9 @@ public struct RemoteStorageGetPublishedFileDetailsResult {
     /// Steamworks `m_ulSteamIDOwner`
     public let steamIDOwner: SteamID
     /// Steamworks `m_rtimeCreated`
-    public let created: Int
+    public let rtimeCreated: Int
     /// Steamworks `m_rtimeUpdated`
-    public let updated: Int
+    public let rtimeUpdated: Int
     /// Steamworks `m_eVisibility`
     public let visibility: RemoteStoragePublishedFileVisibility
     /// Steamworks `m_bBanned`
@@ -1485,7 +1485,7 @@ public struct SteamAppInstalled {
     /// Steamworks `m_nAppID`
     public let appID: AppId
     /// Steamworks `m_iInstallFolderIndex`
-    public let installFolderIndexIndex: Int
+    public let installFolderIndex: Int
 }
 
 /// Steamworks `SteamAppUninstalled_t`
@@ -1493,7 +1493,7 @@ public struct SteamAppUninstalled {
     /// Steamworks `m_nAppID`
     public let appID: AppId
     /// Steamworks `m_iInstallFolderIndex`
-    public let installFolderIndexIndex: Int
+    public let installFolderIndex: Int
 }
 
 /// Steamworks `HTML_BrowserReady_t`
@@ -2207,11 +2207,11 @@ public struct SteamUGCDetails {
     /// Steamworks `m_ulSteamIDOwner`
     public let steamIDOwner: SteamID
     /// Steamworks `m_rtimeCreated`
-    public let created: Int
+    public let rtimeCreated: Int
     /// Steamworks `m_rtimeUpdated`
-    public let updated: Int
+    public let rtimeUpdated: Int
     /// Steamworks `m_rtimeAddedToUserList`
-    public let addedToUserList: Int
+    public let rtimeAddedToUserList: Int
     /// Steamworks `m_eVisibility`
     public let visibility: RemoteStoragePublishedFileVisibility
     /// Steamworks `m_bBanned`

@@ -57,9 +57,9 @@ extension String {
         if let matches = re_match("^p?(?:Out)?steamID(.+)$", options: .i) {
             return matches[1].asSwiftIdentifier
         }
-        // 'i' usually means 'index' into some constant - see exceptions though
-        if re_isMatch("^i[A-Z]") {
-            return "\(dropFirst())Index".asSwiftIdentifier
+        // 'i' usually means 'index' into some constant, bit cargo culty though
+        if let match = re_match("^i([A-Z].*?)(?:Index)?$") {
+            return "\(match[1])Index".asSwiftIdentifier
         }
         // Ultimate fallback - strip lower-case prefix and convert
         return re_sub("^[a-z]*(?=[A-Z])") {
@@ -187,7 +187,7 @@ private let steamParameterNamesExceptions: [String : String] = [
 // Parameter/field hungarian-smelling prefixes that are actually
 // parts of the name...
 private let steamParameterNameGoodPrefixes = Set<String>([
-    "friends", "steam", "csecs", "identity", "addr", "debug"
+    "friends", "steam", "csecs", "identity", "addr", "debug", "rtime"
 ])
 
 extension String {
