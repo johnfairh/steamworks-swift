@@ -21,11 +21,24 @@ struct Constants {
     }
 
     func generate() throws {
+        var flatLines: [String] = []
+        var invalidLines: [String] = []
+
+        metadata.db.consts.values.forEach { c in
+            if c.isTypeDefInvalidValue {
+                invalidLines.append(c.invalidTypedefDeclLines)
+            } else {
+                flatLines.append(c.flatDeclLines)
+            }
+        }
+
         let contents = """
                        /// Namespace for Steamworks top-level constants
                        public enum SteamConstants {
-                       \(metadata.db.consts.values.map(\.flatDeclLine).joined(separator: "\n\n"))
+                       \(flatLines.joined(separator: "\n\n"))
                        }
+
+                       \(invalidLines.joined(separator: "\n\n"))
                        """
 
         try io.write(fileName: "Constants.swift", contents: contents)
@@ -33,7 +46,22 @@ struct Constants {
 }
 
 extension MetadataDB.Const {
-    var flatDeclLine: String {
+    /// Spot constants that are invalid values of some typedef type
+    var isTypeDefInvalidValue: Bool {
+        name.re_isMatch("invalid", options: .i) && Metadata.isTypedef(steamType: type)
+    }
+
+    var invalidTypedefDeclLines: String {
+        """
+        extension \(type.asSwiftTypeName) {
+            /// Steamworks `\(name)`
+            public static let invalid = \(type.asSwiftTypeName)(\(value.asSwiftValue))
+        }
+        """
+    }
+
+    /// Fallback to a regular constant
+    var flatDeclLines: String {
         """
             /// Steamworks `\(name)`
             public static let \(name.asSwiftConstantName) = \(type.asSwiftTypeName)(\(value.asSwiftValue))

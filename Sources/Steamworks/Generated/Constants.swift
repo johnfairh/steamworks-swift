@@ -10,21 +10,6 @@
 
 /// Namespace for Steamworks top-level constants
 public enum SteamConstants {
-    /// Steamworks `k_uAppIdInvalid`
-    public static let appIdInvalid = AppID(0x0)
-
-    /// Steamworks `k_uDepotIdInvalid`
-    public static let depotIdInvalid = DepotID(0x0)
-
-    /// Steamworks `k_uAPICallInvalid`
-    public static let apiCallInvalid = SteamAPICall(0x0)
-
-    /// Steamworks `k_ulPartyBeaconIdInvalid`
-    public static let partyBeaconIdInvalid = PartyBeaconID(0)
-
-    /// Steamworks `k_HAuthTicketInvalid`
-    public static let hAuthTicketInvalid = HAuthTicket(0)
-
     /// Steamworks `k_unSteamAccountIDMask`
     public static let steamAccountIDMask = Int(0xFFFFFFFF)
 
@@ -42,9 +27,6 @@ public enum SteamConstants {
 
     /// Steamworks `k_cFriendsGroupLimit`
     public static let friendsGroupLimit = Int(100)
-
-    /// Steamworks `k_FriendsGroupID_Invalid`
-    public static let friendsGroupIDInvalid = FriendsGroupID(-1)
 
     /// Steamworks `k_cEnumerateFollowersMax`
     public static let enumerateFollowersMax = Int(50)
@@ -70,9 +52,6 @@ public enum SteamConstants {
     /// Steamworks `k_cbMaxGameServerGameData`
     public static let maxGameServerGameData = Int(2048)
 
-    /// Steamworks `HSERVERQUERY_INVALID`
-    public static let HSERVERQUERY_INVALID = Int(0xffffffff)
-
     /// Steamworks `k_unFavoriteFlagNone`
     public static let favoriteFlagNone = Int(0x00)
 
@@ -84,18 +63,6 @@ public enum SteamConstants {
 
     /// Steamworks `k_unMaxCloudFileChunkSize`
     public static let maxCloudFileChunkSize = Int(100 * 1024 * 1024)
-
-    /// Steamworks `k_PublishedFileIdInvalid`
-    public static let publishedFileIdInvalid = PublishedFileID(0)
-
-    /// Steamworks `k_UGCHandleInvalid`
-    public static let ugcHandleInvalid = UGCHandle(0xffffffffffffffff)
-
-    /// Steamworks `k_PublishedFileUpdateHandleInvalid`
-    public static let publishedFileUpdateHandleInvalid = PublishedFileUpdateHandle(0xffffffffffffffff)
-
-    /// Steamworks `k_UGCFileStreamHandleInvalid`
-    public static let ugcFileStreamHandleInvalid = UGCFileWriteStreamHandle(0xffffffffffffffff)
 
     /// Steamworks `k_cchPublishedDocumentTitleMax`
     public static let publishedDocumentTitleMax = Int(128 + 1)
@@ -136,38 +103,11 @@ public enum SteamConstants {
     /// Steamworks `k_ScreenshotThumbWidth`
     public static let screenshotThumbWidth = Int(200)
 
-    /// Steamworks `k_UGCQueryHandleInvalid`
-    public static let ugcQueryHandleInvalid = UGCQueryHandle(0xffffffffffffffff)
-
-    /// Steamworks `k_UGCUpdateHandleInvalid`
-    public static let ugcUpdateHandleInvalid = UGCUpdateHandle(0xffffffffffffffff)
-
     /// Steamworks `kNumUGCResultsPerPage`
     public static let numUGCResultsPerPage = Int(50)
 
     /// Steamworks `k_cchDeveloperMetadataMax`
     public static let developerMetadataMax = Int(5000)
-
-    /// Steamworks `INVALID_HTMLBROWSER`
-    public static let INVALID_HTMLBROWSER = Int(0)
-
-    /// Steamworks `k_SteamItemInstanceIDInvalid`
-    public static let steamItemInstanceIDInvalid = SteamItemInstanceID(~0)
-
-    /// Steamworks `k_SteamInventoryResultInvalid`
-    public static let steamInventoryResultInvalid = SteamInventoryResult(-1)
-
-    /// Steamworks `k_SteamInventoryUpdateHandleInvalid`
-    public static let steamInventoryUpdateHandleInvalid = SteamInventoryUpdateHandle(0xffffffffffffffff)
-
-    /// Steamworks `k_HSteamNetConnection_Invalid`
-    public static let hSteamNetConnectionInvalid = HSteamNetConnection(0)
-
-    /// Steamworks `k_HSteamListenSocket_Invalid`
-    public static let hSteamListenSocketInvalid = HSteamListenSocket(0)
-
-    /// Steamworks `k_HSteamNetPollGroup_Invalid`
-    public static let hSteamNetPollGroupInvalid = HSteamNetPollGroup(0)
 
     /// Steamworks `k_cchMaxSteamNetworkingErrMsg`
     public static let maxSteamNetworkingErrMsg = Int(1024)
@@ -270,4 +210,104 @@ public enum SteamConstants {
 
     /// Steamworks `k_cbMaxSteamDatagramGameCoordinatorServerLoginSerialized`
     public static let maxSteamDatagramGameCoordinatorServerLoginSerialized = Int(4096)
+}
+
+extension AppID {
+    /// Steamworks `k_uAppIdInvalid`
+    public static let invalid = AppID(0x0)
+}
+
+extension DepotID {
+    /// Steamworks `k_uDepotIdInvalid`
+    public static let invalid = DepotID(0x0)
+}
+
+extension SteamAPICall {
+    /// Steamworks `k_uAPICallInvalid`
+    public static let invalid = SteamAPICall(0x0)
+}
+
+extension PartyBeaconID {
+    /// Steamworks `k_ulPartyBeaconIdInvalid`
+    public static let invalid = PartyBeaconID(0)
+}
+
+extension HAuthTicket {
+    /// Steamworks `k_HAuthTicketInvalid`
+    public static let invalid = HAuthTicket(0)
+}
+
+extension FriendsGroupID {
+    /// Steamworks `k_FriendsGroupID_Invalid`
+    public static let invalid = FriendsGroupID(-1)
+}
+
+extension HServerQuery {
+    /// Steamworks `HSERVERQUERY_INVALID`
+    public static let invalid = HServerQuery(-1)
+}
+
+extension PublishedFileID {
+    /// Steamworks `k_PublishedFileIdInvalid`
+    public static let invalid = PublishedFileID(0)
+}
+
+extension UGCHandle {
+    /// Steamworks `k_UGCHandleInvalid`
+    public static let invalid = UGCHandle(0xffffffffffffffff)
+}
+
+extension PublishedFileUpdateHandle {
+    /// Steamworks `k_PublishedFileUpdateHandleInvalid`
+    public static let invalid = PublishedFileUpdateHandle(0xffffffffffffffff)
+}
+
+extension UGCFileWriteStreamHandle {
+    /// Steamworks `k_UGCFileStreamHandleInvalid`
+    public static let invalid = UGCFileWriteStreamHandle(0xffffffffffffffff)
+}
+
+extension UGCQueryHandle {
+    /// Steamworks `k_UGCQueryHandleInvalid`
+    public static let invalid = UGCQueryHandle(0xffffffffffffffff)
+}
+
+extension UGCUpdateHandle {
+    /// Steamworks `k_UGCUpdateHandleInvalid`
+    public static let invalid = UGCUpdateHandle(0xffffffffffffffff)
+}
+
+extension HHTMLBrowser {
+    /// Steamworks `INVALID_HTMLBROWSER`
+    public static let invalid = HHTMLBrowser(0)
+}
+
+extension SteamItemInstanceID {
+    /// Steamworks `k_SteamItemInstanceIDInvalid`
+    public static let invalid = SteamItemInstanceID(~0)
+}
+
+extension SteamInventoryResult {
+    /// Steamworks `k_SteamInventoryResultInvalid`
+    public static let invalid = SteamInventoryResult(-1)
+}
+
+extension SteamInventoryUpdateHandle {
+    /// Steamworks `k_SteamInventoryUpdateHandleInvalid`
+    public static let invalid = SteamInventoryUpdateHandle(0xffffffffffffffff)
+}
+
+extension HSteamNetConnection {
+    /// Steamworks `k_HSteamNetConnection_Invalid`
+    public static let invalid = HSteamNetConnection(0)
+}
+
+extension HSteamListenSocket {
+    /// Steamworks `k_HSteamListenSocket_Invalid`
+    public static let invalid = HSteamListenSocket(0)
+}
+
+extension HSteamNetPollGroup {
+    /// Steamworks `k_HSteamNetPollGroup_Invalid`
+    public static let invalid = HSteamNetPollGroup(0)
 }

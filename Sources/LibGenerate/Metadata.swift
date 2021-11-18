@@ -108,6 +108,7 @@ struct SteamJSON: Codable {
 struct PatchJSON: Codable {
     struct Const: Codable {
         let value: String? // patch C expression for value
+        let type: String? // patch C type
     }
     let consts: [String: Const] // constname key
 
@@ -164,7 +165,7 @@ struct MetadataDB {
 
         init(base: SteamJSON.Const, patch: PatchJSON.Const?) {
             self.name = base.constname
-            self.type = base.consttype
+            self.type = patch?.type ?? base.consttype
             self.value = patch?.value ?? base.constval
         }
     }
@@ -407,5 +408,9 @@ final class Metadata: CustomStringConvertible {
 
     static func isStruct(steamType name: String) -> Bool {
         shared.flatMap { $0.db.structs[name] != nil } ?? false
+    }
+
+    static func isTypedef(steamType name: String) -> Bool {
+        shared.flatMap { $0.db.typedefs[name] != nil } ?? false
     }
 }

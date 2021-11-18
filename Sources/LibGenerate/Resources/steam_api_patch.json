@@ -2,6 +2,13 @@
   "consts": {
     "k_SteamDatagramPOPID_dev": {
       "value": "0x00646576"
+    },
+    "HSERVERQUERY_INVALID": {
+      "type": "HServerQuery",
+      "value": "-1"
+    },
+    "INVALID_HTMLBROWSER": {
+      "type": "HHTMLBrowser"
     }
   },
   "enums": {
