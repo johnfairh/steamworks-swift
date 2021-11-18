@@ -6,7 +6,6 @@
 //
 
 @_implementationOnly import CSteamworks
-import LibGenerate
 
 // MARK: Callbacks
 
@@ -107,7 +106,43 @@ extension Int32 {
 // MARK: Structs
 
 /// Protocol added to Swift structs meaning they have a corresponding Steam (C) type
+/// Used as part of generic callback logic binding steam & Swift types.
 protocol SteamCreatable {
     associatedtype SteamType
     init(_ steam: SteamType)
+}
+
+// MARK: Struct members
+
+/// Dumb C-style booleans, assigning over into actual Bools
+extension Bool {
+    init<T>(_ someInt: T) where T: BinaryInteger {
+        self = someInt != 0
+    }
+}
+
+/// Fixed-size arrays are frequent.  These get imported as tuples which are useless.
+///
+/// We generate C shims to get pointers instead, then stumble around copying the memory over
+/// at runtime and converting the elements.
+extension Array {
+    init<T>(_ ptr: UnsafePointer<T>, _ count: Int, convert: (T) -> Element) {
+        self.init(unsafeUninitializedCapacity: count) { buf, done in
+            let ubp = UnsafeBufferPointer(start: ptr, count: count)
+            for i in 0..<count {
+                buf[i] = convert(ubp[i])
+            }
+            done = count
+        }
+    }
+}
+
+/// Because we can't use `FoundationData` here right now, arrays of bytes go over as-is
+extension Array where Element == UInt8 {
+    init(_ ptr: UnsafePointer<UInt8>, _ count: Int) {
+        self.init(unsafeUninitializedCapacity: count) { buf, done in
+            buf.baseAddress!.initialize(from: ptr, count: count)
+            done = count
+        }
+    }
 }

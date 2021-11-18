@@ -16,8 +16,8 @@ public struct Generator {
     let structs: Structs
     let interfaces: Interfaces
 
-    public init(sdkURL: URL, outputDirURL: URL) throws {
-        io = try IO(sdkURL: sdkURL, outputDirURL: outputDirURL)
+    public init(sdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
+        io = try IO(sdkURL: sdkURL, swiftOutputDirURL: swiftOutputDirURL, cOutputDirURL: cOutputDirURL)
         metadata = try Metadata(io: io)
         version = Version(io: io)
         typedefs = Typedefs(io: io, metadata: metadata)
@@ -29,7 +29,8 @@ public struct Generator {
     public func generate() throws {
         print("Input JSON: \(io.jsonURL.path)")
         print(metadata.description)
-        print("Output directory: \(io.outputDirURL.path)")
+        print("Swift output directory: \(io.swiftOutputDirURL.path)")
+        print("C++ output directory: \(io.cOutputDirURL.path)")
 
         try version.generate()
         try typedefs.generate()

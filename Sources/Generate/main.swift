@@ -11,5 +11,6 @@ import Foundation
 let cwd = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 
 let generator = try Generator(sdkURL: cwd.appendingPathComponent("sdk"),
-                              outputDirURL: cwd.appendingPathComponent("Sources/Steamworks/Generated"))
+                              swiftOutputDirURL: cwd.appendingPathComponent("Sources/Steamworks/Generated"),
+                              cOutputDirURL: cwd.appendingPathComponent("Sources/CSteamworks/Generated"))
 try generator.generate()

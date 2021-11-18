@@ -14,6 +14,7 @@ struct SteamJSON: Codable {
         struct Field: Codable {
             let fieldname: String
             let fieldtype: String
+            let `private`: Bool?
         }
         let callback_id: Int?
         let enums: [Enum]?
@@ -125,8 +126,11 @@ struct PatchJSON: Codable {
         struct Field: Codable {
             let fieldtype: String? // patch fieldtype (steam type)
             let swift_type: String? // custom swift type
+            let ignore: Bool? // filter out broken / too weird fields
         }
         let fields: [String : Field]? // fieldname key
+        let ignore: Bool? // filter out broken / too weird structs
+        let name: String? // the steam json name is wrong...
     }
     let structs: [String: Struct] // struct.name key
 
@@ -242,11 +246,13 @@ struct MetadataDB {
         struct Field {
             let fieldname: String
             let fieldtype: String
+            let ignore: Bool
             let swiftType: String?
 
             init(base: SteamJSON.Struct.Field, patch: PatchJSON.Struct.Field?) {
                 fieldname = base.fieldname
                 fieldtype = patch?.fieldtype ?? base.fieldtype
+                ignore = base.private ?? patch?.ignore ?? false
                 swiftType = patch?.swift_type
             }
         }
@@ -254,17 +260,20 @@ struct MetadataDB {
         let name: String // "struct" too annoying
         let fields: [Field]
         let callback_id: Int?
+        let ignore: Bool
         /// Indexed by `name`, order from original file ...
         let enums: OrderedDictionary<String, Enum>
         /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
         let methods: OrderedDictionary<String, Method>
 
         init(base: SteamJSON.Struct, patch: PatchJSON) {
-            name = base.struct
+            let structPatch = patch.structs[base.struct]
+            name = structPatch?.name ?? base.struct
             fields = base.fields.map {
-                .init(base: $0, patch: patch.structs[base.struct]?.fields?[$0.fieldname])
+                .init(base: $0, patch: structPatch?.fields?[$0.fieldname])
             }
             callback_id = base.callback_id
+            ignore = structPatch?.ignore ?? false
 
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
                 (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
@@ -296,7 +305,8 @@ struct MetadataDB {
         })
 
         structs = .init(uniqueKeysWithValues: (base.callback_structs + base.structs).map {
-            ($0.struct, Struct(base: $0, patch: patch))
+            let s = Struct(base: $0, patch: patch)
+            return (s.name, s) // structs can rename themselves...
         })
 
         typedefs = .init(uniqueKeysWithValues: base.typedefs.map {
@@ -338,7 +348,8 @@ final class Metadata: CustomStringConvertible {
           Nested enums: \(nestedEnums.count)
           Interfaces: \(db.interfaces.count)
           Interface methods: \(db.interfaces.values.reduce(0) { $0 + $1.methods.count })
-          Structs: \(db.structs.count)
+          Structs: \(db.structs.count), \(db.structs.values.filter(\.ignore).count) ignored
+          Fields: \(db.structs.values.reduce(0) { $0 + $1.fields.count })
           Typedefs: \(db.typedefs.count)
         """
     }

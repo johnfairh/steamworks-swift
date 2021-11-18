@@ -141,7 +141,7 @@ private let steamToSwiftTypes: [String : String] = [
 
     // Misc
     "EResult" : "SteamResult", // avoid clashing with Swift.Result -- review??
-    "const char **" : "[String]", // this type probably needs to die, leave it for now
+    "SteamParamStringArray_t" : "[String]", // weirdness, tbd
 
     // Names that end up duplicated after removing their initial letter
     "ECheckFileSignature": "CheckFileSignatureResult",

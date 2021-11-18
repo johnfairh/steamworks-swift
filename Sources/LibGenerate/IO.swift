@@ -9,12 +9,14 @@ import Foundation
 
 final class IO {
     let sdkURL: URL
-    let outputDirURL: URL
+    let swiftOutputDirURL: URL
+    let cOutputDirURL: URL
     let resources: Bundle
 
-    init(sdkURL: URL, outputDirURL: URL) throws {
+    init(sdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
         self.sdkURL = sdkURL
-        self.outputDirURL = outputDirURL
+        self.swiftOutputDirURL = swiftOutputDirURL
+        self.cOutputDirURL = cOutputDirURL
         #if SWIFT_PACKAGE
         self.resources = Bundle.module
         #else
@@ -26,9 +28,11 @@ final class IO {
         guard FileManager.default.fileExists(atPath: jsonURL.path) else {
             throw Failed("JSON file missing at \(jsonURL.path)")
         }
-        var isDir = ObjCBool(false)
-        guard FileManager.default.fileExists(atPath: outputDirURL.path, isDirectory: &isDir), isDir.boolValue else {
-            throw Failed("Output directory missing at \(outputDirURL.path)")
+        try [swiftOutputDirURL, cOutputDirURL].forEach { url in
+            var isDir = ObjCBool(false)
+            guard FileManager.default.fileExists(atPath: url.path, isDirectory: &isDir), isDir.boolValue else {
+                throw Failed("Output directory missing at \(url.path)")
+            }
         }
     }
 
@@ -71,25 +75,52 @@ final class IO {
         try Data(contentsOf: patchJsonUrl)
     }
 
-    func fileHeader(fileName: String, moduleName: String = "Steamworks") -> String {
+    var fileHeaderLicense: String {
         """
-        //
-        //  \(fileName)
-        //  \(moduleName)
-        //
         //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
         //
         //  This file is generated code: any edits will be overwritten.
+        """
+    }
+
+    func swiftFileHeader(fileName: String) -> String {
+        """
+        //
+        //  \(fileName)
+        //  Steamworks
+        //
+        \(fileHeaderLicense)
 
         @_implementationOnly import CSteamworks
         """
     }
 
-    func write(fileName: String, contents: String) throws {
-        precondition(fileName.hasSuffix(".swift"))
+    func cFileHeader(fileName: String) -> String {
+        """
+        //
+        //  \(fileName)
+        //  CSteamworks
+        //
+        \(fileHeaderLicense)
 
-        let url = outputDirURL.appendingPathComponent(fileName)
-        let fullContents = fileHeader(fileName: fileName) + "\n\n" + contents + "\n"
+        """
+    }
+
+    func write(fileName: String, contents: String) throws {
+        let baseURL: URL
+        let header: String
+        if fileName.hasSuffix(".swift") {
+            baseURL = swiftOutputDirURL
+            header = swiftFileHeader(fileName: fileName)
+        } else if fileName.hasSuffix(".h") {
+            baseURL = cOutputDirURL
+            header = cFileHeader(fileName: fileName)
+        } else {
+            preconditionFailure("Bad output filename \(fileName)")
+        }
+
+        let url = baseURL.appendingPathComponent(fileName)
+        let fullContents = header + "\n\n" + contents + "\n"
 
         if let existing = try? String(contentsOf: url) {
             if existing == fullContents {

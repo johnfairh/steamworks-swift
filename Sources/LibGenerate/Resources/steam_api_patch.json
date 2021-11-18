@@ -56,7 +56,7 @@
         },
         "k_ESteamNetConnectionEnd_AppException_Generic": {
           "force_static": true
-        },
+        }
       }
     },
     "ESteamNetworkingConfigDataType": {
@@ -89,10 +89,10 @@
       }
     },
     "IPCFailure_t::EFailureType": {
-      "prefix": "k_EFailure"
+      "prefix": "EFailure"
     },
     "RequestPlayersForGameResultCallback_t::PlayerAcceptState_t": {
-      "prefix": "k_EState"
+      "prefix": "EState"
     }
   },
   "methods": {
@@ -125,14 +125,48 @@
     }
   },
   "structs": {
-    "PersonaStateChange_t" : {
+    "ModalGamepadTextInputDismissed_t": {
+      "name": "FloatingGamepadTextInputDismissed_t"
+    },
+    "PersonaStateChange_t": {
       "fields": {
         "m_nChangeFlags": {
           "fieldtype": "EPersonaChange"
         }
       }
     },
+    "SteamDatagramGameCoordinatorServerLogin": {
+      "ignore": true
+    },
+    "SteamDatagramHostedAddress": {
+      "ignore": true
+    },
+    "SteamInputActionEvent_t": {
+      "fields": {
+        "analogAction_actionHandle": {
+          "ignore": true
+        },
+        "analogAction_analogActionData": {
+          "ignore": true
+        }
+      }
+    },
+    "SteamNetConnectionInfo_t": {
+      "fields": {
+        "m_nFlags": {
+          "ignore": true
+        }
+      }
+    },
+    "SteamNetworkingConfigValue_t": {
+      "fields": {
+        "m_int64": {
+          "ignore": true
+        }
+      }
+    },
     "SteamNetworkingMessage_t": {
+      "ignore": true,
       "fields": {
         "m_pfnFreeData": {
           "swift_type": "() -> Void"
@@ -141,6 +175,9 @@
           "swift_type": "() -> Void"
         }
       }
+    },
+    "SteamParamStringArray_t": {
+        "ignore": true
     }
   }
 }

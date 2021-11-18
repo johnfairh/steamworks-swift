@@ -19,11 +19,17 @@ struct Structs {
     }
 
     func generate() throws {
-        let contents = metadata.db.structs.values
+        let swiftContents = metadata.db.structs.values
             .filter(\.shouldGenerate)
-            .map(\.generate)
+            .map(\.generateSwift)
             .joined(separator: "\n\n")
-        try io.write(fileName: "Structs.swift", contents: contents)
+        try io.write(fileName: "Structs.swift", contents: swiftContents)
+
+        let cContents = metadata.db.structs.values
+            .filter(\.shouldGenerate)
+            .flatMap(\.generateC)
+            .joined(separator: "\n\n")
+        try io.write(fileName: "steam_struct_shims.h", contents: cContents)
     }
 }
 
@@ -44,25 +50,77 @@ extension MetadataDB.Struct.Field {
         "reserved", "m_ulUnused", "m__pad1"
     ])
 
-    var isReal: Bool {
-        !Self.unwantedFieldNames.contains(fieldname)
+    var shouldGenerate: Bool {
+        !ignore && !Self.unwantedFieldNames.contains(fieldname)
     }
 
+    /// Contribution to the C header file to define a method on the C++ structure that returns
+    /// a pointer to an array structure element instead of a tuple.
+    func getArrayGetterLines(structName: String) -> String? {
+        guard let (elemType, _) = fieldtype.parseCArray else {
+            return nil
+        }
+        return """
+               __attribute__((swift_name(\"getter:\(structName).\(fieldname)_ptr(self:)\")))
+               static inline const \(elemType) * _Nonnull \(structName)_\(fieldname)_ptr(const \(structName) * _Nonnull s)
+               {
+                   return s->\(fieldname);
+               }
+               """
+    }
+
+    /// Swift structure declaration field
     var declLine: [String] {[
         "/// Steamworks `\(fieldname)`",
         "public let \(fieldname.asSwiftStructFieldName): \(swiftType ?? type.asSwiftTypeName)"
     ]}
+
+    /// Swift structure initializer lines
+    var initLine: String {
+        let rvalue: String
+
+        if let decomposed = fieldtype.parseCArray {
+            if decomposed.0 == "char" {
+                rvalue = ".init(steam.\(fieldname)_ptr)"
+            } else if decomposed.0 == "uint8" {
+                rvalue = ".init(steam.\(fieldname)_ptr, \(decomposed.1))"
+            } else {
+                rvalue = ".init(steam.\(fieldname)_ptr, \(decomposed.1)) { .init($0) }"
+            }
+        } else {
+            rvalue = ".init(steam.\(fieldname))"
+        }
+        return "\(fieldname.asSwiftStructFieldName) = \(rvalue)"
+    }
+}
+
+extension String {
+    var parseCArray: (String, Int)? {
+        re_match(#"^(.*) \[(.*)\]$"#).flatMap { ($0[1], Int($0[2])!) }
+    }
 }
 
 extension Array where Element == MetadataDB.Struct.Field {
     var declLines: [String] {
-        filter(\.isReal).flatMap(\.declLine)
+        filter(\.shouldGenerate).flatMap(\.declLine)
+    }
+
+    var initLines: [String] {
+        filter(\.shouldGenerate).map(\.initLine)
+    }
+
+    func getArrayGetterLines(structName: String) -> [String] {
+        filter(\.shouldGenerate).compactMap { $0.getArrayGetterLines(structName: structName) }
     }
 }
 
 extension MetadataDB.Struct {
     var shouldGenerate: Bool {
-        true
+        !ignore
+    }
+
+    var generateC: [String] {
+        fields.getArrayGetterLines(structName: name)
     }
 
     var enumDeclLines: [String] {
@@ -74,20 +132,27 @@ extension MetadataDB.Struct {
     }
 
     // Don't bother generating the callback ID -- don't think it's useful?
-    var generate: String {
-        let lines = [
+    var generateSwift: String {
+        let swiftTypeName = name.asSwiftTypeName
+        let lines = [[
             "/// Steamworks `\(name)`",
-            "public struct \(name.asSwiftTypeName) {"
-        ] + fields.declLines.indented(1)
-          + enumDeclLines.indented(1) + [
+            "public struct \(swiftTypeName) {"
+        ],
+        fields.declLines.indented(1),
+        enumDeclLines.indented(1), [
             "}"
-        ] + enumExtensionLines
+        ],
+        enumExtensionLines, [
+            "",
+            "extension \(swiftTypeName): SteamCreatable {",
+            "    init(_ steam: CSteamworks.\(name)) {"
+        ],
+        fields.initLines.indented(2), [
+            "    }",
+            "}"
+        ]
+        ].flatMap { $0 }
 
         return lines.joined(separator: "\n")
     }
 }
-
-// get tests working, update names tests
-// field conversion lines
-// conversion generation
-// think about public ctor
