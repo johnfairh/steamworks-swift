@@ -32,8 +32,8 @@ public final class SteamAPI: SteamBaseAPI {
     /// The Steamworks API is shut down when this object goes out of scope.
     ///
     /// - returns: `nil` if the Steam API connection failed or app restart is necessary.
-    public init?(appID: UInt32? = nil) {
-        if let appID = appID, SteamAPI_RestartAppIfNecessary(appID) {
+    public init?(appID: AppID? = nil) {
+        if let appID = appID, SteamAPI_RestartAppIfNecessary(UInt32(appID)) {
             logError("SteamAPI.init() failed: SteamAPI_RestartAppIfNecessary(\(appID)) returned true")
             return nil
         }
