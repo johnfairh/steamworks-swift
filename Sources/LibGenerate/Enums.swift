@@ -127,7 +127,7 @@ extension MetadataDB.Enum {
     /// In the very rare case of duplicate values we treat it like an optionset member and force the
     /// init (it's optional for us, `RawRepresentable`) trusting it to actually be a duplicate.
     func generateEnumCaseDecl(value: Value, swiftTypeName: String) -> String {
-        guard !value.force_static else {
+        guard !value.forceStatic else {
             return generateOptionSetDecl(value: value, swiftTypeName: swiftTypeName) + "!"
         }
         return "case \(swiftCaseName(value.name)) = \(value.value)"
@@ -144,7 +144,7 @@ extension MetadataDB.Enum {
     func swiftCaseName(_ steamName: String) -> String {
         var name = steamName.re_sub("^(?:k_)?n?\(prefix)_?", with: "", options: .i)
         if name.first!.isNumber {
-            guard let numericPrefix = numeric_prefix else {
+            guard let numericPrefix = numericPrefix else {
                 preconditionFailure("Unhandled numeric-starting identifier \(steamName) -> \(name) (\(self))")
             }
             name = numericPrefix + name

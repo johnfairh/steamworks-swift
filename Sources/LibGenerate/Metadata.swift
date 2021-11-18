@@ -153,17 +153,17 @@ struct MetadataDB {
         let name: String
         let is_set: Bool
         let prefix: String
-        let numeric_prefix: String?
+        let numericPrefix: String?
 
         struct Value: Codable {
             let name: String
             let value: String
-            let force_static: Bool
+            let forceStatic: Bool
 
             init(base: SteamJSON.Enum.Value, patch: PatchJSON.Enum.Value?) {
                 name = base.name
                 value = base.value
-                force_static = patch?.force_static ?? false
+                forceStatic = patch?.force_static ?? false
             }
         }
         let values: OrderedDictionary<String, Value>
@@ -172,7 +172,7 @@ struct MetadataDB {
             name = base.name
             is_set = patch?.is_set ?? false
             prefix = patch?.prefix ?? name
-            numeric_prefix = patch?.numeric_prefix
+            numericPrefix = patch?.numeric_prefix
             values = .init(uniqueKeysWithValues: base.values.map {
                 ($0.name, Value(base: $0, patch: patch?.values?[$0.name]))
             })
@@ -182,56 +182,56 @@ struct MetadataDB {
     let enums: OrderedDictionary<String, Enum>
 
     struct Method: Codable {
-        let methodname: String
-        let methodname_flat: String
-        let callresult: String?
+        let name: String
+        let flatName: String
+        let callResult: String?
 
         struct Param: Codable {
             let name: String
             let type: String
-            let array_count: String?
-            let out_array_length: String?
+            let arrayCount: String?
+            let outArrayLength: String?
             // ?? let out_string_count: String?
             // ?? let buffer_count: String?
 
             init(base: SteamJSON.Method.Param, patch: PatchJSON.Method.Param?) {
                 self.name = base.paramname
                 self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
-                self.array_count = base.array_count
+                self.arrayCount = base.array_count
 
                 if let arrayCall = base.out_array_call {
                     // comma-separated list, first is param name, rest is dynamic recipe on how to calculate.
                     // used so sparingly (once) ignore the clever part.
-                    self.out_array_length = String(arrayCall.split(separator: ",")[0])
+                    self.outArrayLength = String(arrayCall.split(separator: ",")[0])
                 } else if let arrayCount = base.out_array_count {
                     // const or param with the length
-                    self.out_array_length = arrayCount
+                    self.outArrayLength = arrayCount
                 } else {
-                    self.out_array_length = nil
+                    self.outArrayLength = nil
                 }
             }
         }
         let params: [Param]
-        let returntype: String
-        let out_param_iff_rc: String?
+        let returnType: String
+        let outParamIffRc: String?
 
         init(base: SteamJSON.Method, patch: PatchJSON.Method?) {
-            methodname = base.methodname
-            methodname_flat = base.methodname_flat
-            callresult = base.callresult
+            name = base.methodname
+            flatName = base.methodname_flat
+            callResult = base.callresult
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
-            returntype = patch?.returntype ?? base.returntype
-            out_param_iff_rc = patch?.out_param_iff_rc
+            returnType = patch?.returntype ?? base.returntype
+            outParamIffRc = patch?.out_param_iff_rc
         }
     }
 
     struct Interface: Codable {
-        let classname: String
+        let name: String
         /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
         let methods: OrderedDictionary<String, Method>
 
         init(base: SteamJSON.Interface, patch: PatchJSON) {
-            classname = base.classname
+            name = base.classname
             methods = .init(uniqueKeysWithValues: base.methods.map { baseMethod in
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
             })
@@ -244,16 +244,28 @@ struct MetadataDB {
     /// a callback ID and may have methods (though these are rarely coherent)
     struct Struct {
         struct Field {
-            let fieldname: String
-            let fieldtype: String
+            let name: String
+            let type: String
             let ignore: Bool
             let swiftType: String?
 
             init(base: SteamJSON.Struct.Field, patch: PatchJSON.Struct.Field?) {
-                fieldname = base.fieldname
-                fieldtype = patch?.fieldtype ?? base.fieldtype
+                name = base.fieldname
+                type = patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype)
                 ignore = base.private ?? patch?.ignore ?? false
                 swiftType = patch?.swift_type
+            }
+
+            /// Patch up some systemic errors / C-alignment-reasoning in types
+            static func patch(name: String, type: String) -> String {
+                if name.starts(with: "m_b") {
+                    return "bool"
+                }
+                if type == "uint64" {
+                    if name.re_isMatch("steamid", options: .i) { return "CSteamID" }
+                    if name.re_isMatch("gameid", options: .i) { return "CGameID" }
+                }
+                return type
             }
         }
 

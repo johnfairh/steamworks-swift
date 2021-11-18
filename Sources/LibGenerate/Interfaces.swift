@@ -22,10 +22,10 @@ struct Interfaces {
 
     func generate() throws {
         try metadata.db.interfaces.values.forEach { interface in
-            guard interface.classname == "ISteamFriends" else {
+            guard interface.name == "ISteamFriends" else {
                 return
             }
-            let swiftName = interface.classname.asSwiftTypeName
+            let swiftName = interface.name.asSwiftTypeName
             try io.write(fileName: "\(swiftName)+Methods.swift",
                          contents: interface.generate(context: swiftName))
         }
@@ -34,7 +34,7 @@ struct Interfaces {
 
 extension MetadataDB.Interface {
     func generate(context: String) -> String {
-        let swiftName = classname.asSwiftTypeName
+        let swiftName = name.asSwiftTypeName
 
         let declaration = """
                           // MARK: Interface methods
@@ -42,7 +42,7 @@ extension MetadataDB.Interface {
 
                           """
         let methods = methods.values.map {
-            $0.generate(context: classname)
+            $0.generate(context: name)
         }
         return declaration + methods.joined(separator: "\n\n") + "\n}"
     }
@@ -135,9 +135,9 @@ final class SwiftParam {
             style = .in_array_count(arrayParam)
         } else if let depointered = naiveSwiftTypeName.depointeredType {
             swiftTypeBaseName = depointered.asSwiftTypeName
-            if let outLength = db.out_array_length {
+            if let outLength = db.outArrayLength {
                 style = .out_array(outLength)
-            } else if db.array_count == nil {
+            } else if db.arrayCount == nil {
                 style = .out
             } else {
                 style = .in_array
@@ -163,13 +163,13 @@ extension Array where Element == MetadataDB.Method.Param {
         forEach { p in
             let param = SwiftParam(p, inArrayParam: lookingForCount.removeValue(forKey: p.name))
             params.append(param)
-            if let countParamName = p.array_count {
+            if let countParamName = p.arrayCount {
                 lookingForCount[countParamName] = param
             }
         }
 
         if !lookingForCount.isEmpty {
-            print("Couldn't match up 'array_count', leftovers: \(lookingForCount)")
+            print("Couldn't match up 'arrayCount', leftovers: \(lookingForCount)")
             print("Method is \(self)")
             preconditionFailure()
         }
@@ -222,10 +222,10 @@ struct SwiftMethod {
 
     init(_ db: MetadataDB.Method) {
         self.db = db
-        if let callResult = db.callresult {
+        if let callResult = db.callResult {
             style = .callReturn(callResult.asSwiftTypeName)
-        } else if db.returntype != "void" {
-            style = .normal(db.returntype.asSwiftTypeName)
+        } else if db.returnType != "void" {
+            style = .normal(db.returnType.asSwiftTypeName)
         } else {
             style = .void
         }
@@ -251,10 +251,10 @@ struct SwiftMethod {
     /// Expression returning the Swift type of the API (or, er, not for callReturn)
     var callExpression: String {
         let paramList = params.isEmpty ? "" : ", \(params.callParams)"
-        let steamCall = "\(db.methodname_flat)(interface\(paramList))"
+        let steamCall = "\(db.flatName)(interface\(paramList))"
         switch style {
         case .normal:
-            return steamCall.asCast(to: db.returntype.asSwiftTypeForPassingOutOfSteamworks)
+            return steamCall.asCast(to: db.returnType.asSwiftTypeForPassingOutOfSteamworks)
         case .void, .callReturn:
             return steamCall
         }
@@ -310,7 +310,7 @@ struct SwiftMethod {
     var postCallLines: [String] {
         let successLines = params.postSuccessCallLines
         guard !successLines.isEmpty,
-            let test = db.out_param_iff_rc else {
+            let test = db.outParamIffRc else {
             return successLines
         }
         return ["if rc \(test.count == 0 ? "" : "\(test) "){"] + successLines.indented(1) + ["}"]
@@ -350,20 +350,20 @@ struct SwiftMethod {
 
 extension MetadataDB.Method {
     var isVar: Bool {
-        params.count == 0 && methodname.starts(with: "Get")
+        params.count == 0 && name.starts(with: "Get")
     }
 
     var funcName: String {
-        methodname.asSwiftIdentifier
+        name.asSwiftIdentifier
     }
 
     var varName: String {
-        String(methodname.dropFirst(3)).asSwiftIdentifier
+        String(name.dropFirst(3)).asSwiftIdentifier
     }
 
     func generate(context: String) -> String {
         let swiftMethod = SwiftMethod(self)
-        let comment = "/// Steamworks `\(context)::\(methodname)()`"
+        let comment = "/// Steamworks `\(context)::\(name)()`"
         return swiftMethod.decl(comment: comment).indented(1).joined(separator: "\n")
     }
 }

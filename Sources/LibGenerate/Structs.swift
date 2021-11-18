@@ -34,34 +34,22 @@ struct Structs {
 }
 
 extension MetadataDB.Struct.Field {
-    /// Patch up some systemic errors / C-alignment-reasoning in types
-    var type: String {
-        if fieldname.starts(with: "m_b") {
-            return "bool"
-        }
-        if fieldtype == "uint64" {
-            if fieldname.re_isMatch("steamid", options: .i) { return "CSteamID" }
-            if fieldname.re_isMatch("gameid", options: .i) { return "CGameID" }
-        }
-        return fieldtype
-    }
-
     static let unwantedFieldNames = Set<String>([
         "reserved", "m_ulUnused", "m__pad1"
     ])
 
     var shouldGenerate: Bool {
-        !ignore && !Self.unwantedFieldNames.contains(fieldname)
+        !ignore && !Self.unwantedFieldNames.contains(name)
     }
 
     var arrayFieldName: String {
-        "\(fieldname)_ptr"
+        "\(name)_ptr"
     }
 
     /// Contribution to the C header file to define a method on the C++ structure that returns
     /// a pointer to an array structure element instead of a tuple.
     func getArrayGetterLines(structName: String) -> String? {
-        guard let (elemType, arrayLen) = fieldtype.parseCArray else {
+        guard let (elemType, arrayLen) = type.parseCArray else {
             return nil
         }
         // Make sure these strings are actually null-terminated.
@@ -70,7 +58,7 @@ extension MetadataDB.Struct.Field {
         // structs as `inout`.
         let extraLine: String
         if elemType == "char" {
-            extraLine = "const_cast<\(structName) *>(s)->\(fieldname)[\(arrayLen - 1)] = 0;\n    "
+            extraLine = "const_cast<\(structName) *>(s)->\(name)[\(arrayLen - 1)] = 0;\n    "
         } else {
             extraLine = ""
         }
@@ -78,22 +66,22 @@ extension MetadataDB.Struct.Field {
                __attribute__((swift_name(\"getter:\(structName).\(arrayFieldName)(self:)\")))
                static inline const \(elemType) * _Nonnull \(structName)_\(arrayFieldName)(const \(structName) * _Nonnull s)
                {
-                   \(extraLine)return s->\(fieldname);
+                   \(extraLine)return s->\(name);
                }
                """
     }
 
     /// Swift structure declaration field
     var declLine: [String] {[
-        "/// Steamworks `\(fieldname)`",
-        "public let \(fieldname.asSwiftStructFieldName): \(swiftType ?? type.asSwiftTypeName)"
+        "/// Steamworks `\(name)`",
+        "public let \(name.asSwiftStructFieldName): \(swiftType ?? type.asSwiftTypeName)"
     ]}
 
     /// Swift structure initializer lines
     var initLine: String {
         let rvalue: String
 
-        if let decomposed = fieldtype.parseCArray {
+        if let decomposed = type.parseCArray {
             if decomposed.0 == "char" {
                 rvalue = ".init(steam.\(arrayFieldName))"
             } else if decomposed.0 == "uint8" {
@@ -102,9 +90,9 @@ extension MetadataDB.Struct.Field {
                 rvalue = ".init(steam.\(arrayFieldName), \(decomposed.1)) { .init($0) }"
             }
         } else {
-            rvalue = ".init(steam.\(fieldname))"
+            rvalue = ".init(steam.\(name))"
         }
-        return "\(fieldname.asSwiftStructFieldName) = \(rvalue)"
+        return "\(name.asSwiftStructFieldName) = \(rvalue)"
     }
 }
 
