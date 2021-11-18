@@ -13,8 +13,12 @@ let replaceFixtures = false
 
 /// End-to-end generation from interesting stub data
 class TestGenerate: XCTestCase {
-    var fixturesExpectedURL: URL {
-        Self.fixturesURL.appendingPathComponent("Expected")
+    var fixturesExpectedSwiftURL: URL {
+        Self.fixturesURL.appendingPathComponent("ExpectedSwift")
+    }
+
+    var fixturesExpectedCURL: URL {
+        Self.fixturesURL.appendingPathComponent("ExpectedC")
     }
 
     // Run everything against the fixture stub / interesting data
@@ -22,13 +26,18 @@ class TestGenerate: XCTestCase {
         let harness = try Harness()
         try harness.generator.generate()
 
-        let outputFileNames = harness.outputDirURL.fileNames
-        let expectedFileNames = fixturesExpectedURL.fileNames
+        try compare(expectedDirURL: fixturesExpectedSwiftURL, outputDirURL: harness.swiftOutputDirURL)
+        try compare(expectedDirURL: fixturesExpectedCURL, outputDirURL: harness.cOutputDirURL)
+    }
+
+    func compare(expectedDirURL: URL, outputDirURL: URL) throws {
+        let outputFileNames = outputDirURL.fileNames
+        let expectedFileNames = expectedDirURL.fileNames
 
         guard !replaceFixtures else {
             try outputFileNames.forEach { fileName in
-                let fromURL = harness.outputDirURL.appendingPathComponent(fileName)
-                let toURL = fixturesExpectedURL.appendingPathComponent(fileName)
+                let fromURL = outputDirURL.appendingPathComponent(fileName)
+                let toURL = expectedDirURL.appendingPathComponent(fileName)
                 try? FileManager.default.removeItem(at: toURL)
                 try FileManager.default.copyItem(at: fromURL, to: toURL)
             }
@@ -37,8 +46,8 @@ class TestGenerate: XCTestCase {
 
         try expectedFileNames.forEach { fileName in
             if outputFileNames.contains(fileName) {
-                try compare(fixturesExpectedURL.appendingPathComponent(fileName),
-                            harness.outputDirURL.appendingPathComponent(fileName))
+                try compare(expectedDirURL.appendingPathComponent(fileName),
+                            outputDirURL.appendingPathComponent(fileName))
             } else {
                 XCTFail("Missing output file \(fileName)")
             }
@@ -64,7 +73,6 @@ extension URL {
             try! FileManager.default
             .contentsOfDirectory(at: self,includingPropertiesForKeys: nil)
             .map { $0.lastPathComponent }
-            .sorted()
         )
     }
 }

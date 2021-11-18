@@ -94,12 +94,6 @@ extension MetadataDB.Struct.Field {
     }
 }
 
-extension String {
-    var parseCArray: (String, Int)? {
-        re_match(#"^(.*) \[(.*)\]$"#).flatMap { ($0[1], Int($0[2])!) }
-    }
-}
-
 extension Array where Element == MetadataDB.Struct.Field {
     var declLines: [String] {
         filter(\.shouldGenerate).flatMap(\.declLine)

@@ -39,10 +39,6 @@ extension MetadataDB.Enum {
         values.values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
     }
 
-    var steamRawType: String {
-        rawType.lowercased()
-    }
-
     var unrepresentedValue: Int {
         (values.values
             .filter(\.shouldGenerate)

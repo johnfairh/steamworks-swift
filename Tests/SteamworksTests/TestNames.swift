@@ -70,4 +70,13 @@ class TestNames: XCTestCase {
             XCTAssertEqual(steam.asSwiftParameterName, swift)
         }
     }
+
+    /// This is for the nicely-formatted style in the json...
+    func testCArray() throws {
+        XCTAssertNil("int".parseCArray)
+        XCTAssertNil("int []".parseCArray)
+        let unwrapped = try XCTUnwrap("int [10]".parseCArray)
+        XCTAssertEqual("int", unwrapped.0)
+        XCTAssertEqual(10, unwrapped.1)
+    }
 }

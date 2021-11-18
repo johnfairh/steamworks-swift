@@ -48,17 +48,22 @@ extension XCTestCase {
     }
 
     class Harness {
-        let outputDirURL: URL
+        let swiftOutputDirURL: URL
+        let cOutputDirURL: URL
         let generator: Generator
 
         init() throws {
             setenv(IO.PATCH_JSON_PATH_VAR, patchJsonURL.path, 1)
-            outputDirURL = try! FileManager.default.createTemporaryDirectory()
-            generator = try Generator(sdkURL: fixturesSdkURL, outputDirURL: outputDirURL)
+            swiftOutputDirURL = try! FileManager.default.createTemporaryDirectory()
+            cOutputDirURL = try! FileManager.default.createTemporaryDirectory()
+            generator = try Generator(sdkURL: fixturesSdkURL,
+                                      swiftOutputDirURL: swiftOutputDirURL,
+                                      cOutputDirURL: cOutputDirURL)
         }
 
         deinit {
-            try? FileManager.default.removeItem(at: outputDirURL)
+            try? FileManager.default.removeItem(at: swiftOutputDirURL)
+            try? FileManager.default.removeItem(at: cOutputDirURL)
             unsetenv(IO.PATCH_JSON_PATH_VAR)
         }
     }

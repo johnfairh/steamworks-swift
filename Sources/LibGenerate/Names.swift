@@ -32,6 +32,11 @@ extension String {
         replacingOccurrences(of: "::", with: ".")
     }
 
+    /// Decompose a C fixed-size array into its pieces
+    var parseCArray: (String, Int)? {
+        re_match(#"^(.*) \[(.+)\]$"#).flatMap { ($0[1], Int($0[2])!) }
+    }
+
     /// * to lowerCamelCase
     /// * keep one leading underscore, erase all others
     /// * backticks if accidentally a Swift keyword

@@ -11,8 +11,8 @@ Experiment with Steamworks SDK and Swift C++ importer.
 State:
 * Code gen creates Swift versions of Steam types.  Callbacks and call-returns work.
 * Working on polishing `ISteamFriends` before going on.
-* `make` builds and runs a Swift program that directly accesses API from the C++
-  Steam API to initialize & then shut it down.
+* `make` builds and runs a Swift program that accesses the C++
+  Steam API to initialize, do some sync and async queries, then shut it down.
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
   tab completion even if module interface gen is beyond it.
 
@@ -31,12 +31,11 @@ Tech limitations, on 5.5 and also swift/main as of 20/Oct:
 * sourcekit won't give me a module interface for `CSteamworks` to see what else the
   importer is doing.  Need to build the compiler and debug.  It does look like 99%+ of
   the thing is coming in well.
-* Some [Steamworks SDK issues](#json_notes), nothing too serious.
+* Some [Steamworks SDK issues](#json-notes), nothing too serious.
 
 
 Plan then:
-* Offer a pure Swift module covering all of the current Steamworks API that does
-  not dump the entire steamworks namespace into user code.
+* Offer a pure Swift module covering all of the current Steamworks API.
 * Leave out the deprecated and WIN32-only stuff.
 * Do not diverge too far from the 'real' API names to aid docs / searching / porting:
   I think this is a better starting point than doing a complete OO analysis to carve
