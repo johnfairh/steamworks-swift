@@ -23,7 +23,7 @@ class TestNames: XCTestCase {
             ("ISteamFriends", "SteamFriends"),
             ("CSteamID", "SteamID"),
             ("uint64_steamid", "SteamID"),
-            ("EResult", "SteamResult"),
+            ("EResult", "Result"),
             ("Fred [20]", "[Fred]"),
             ("char [10]", "String"),
             ("uint8 [5]", "[UInt8]"),

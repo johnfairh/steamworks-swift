@@ -147,7 +147,6 @@ private let steamToSwiftTypes: [String : String] = [
     "uint64_steamid" : "SteamID",
 
     // Misc
-    "EResult" : "SteamResult", // avoid clashing with Swift.Result -- review??
     "SteamParamStringArray_t" : "[String]", // weirdness, tbd
 
     // Names that end up duplicated after removing their initial letter

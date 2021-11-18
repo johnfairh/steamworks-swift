@@ -43,7 +43,7 @@ extension EUniverse: RawConvertible { typealias From = Universe }
 extension Universe: EnumWithUnrepresented { typealias From = EUniverse }
 
 /// Steamworks `EResult`
-public enum SteamResult: UInt32 {
+public enum Result: UInt32 {
     /// Steamworks `k_EResultNone`
     case none = 0
     /// Steamworks `k_EResultOK`
@@ -292,8 +292,8 @@ public enum SteamResult: UInt32 {
     case unrepresentedInSwift = 123
 }
 
-extension EResult: RawConvertible { typealias From = SteamResult }
-extension SteamResult: EnumWithUnrepresented { typealias From = EResult }
+extension EResult: RawConvertible { typealias From = Result }
+extension Result: EnumWithUnrepresented { typealias From = EResult }
 
 /// Steamworks `EVoiceResult`
 public enum VoiceResult: UInt32 {
