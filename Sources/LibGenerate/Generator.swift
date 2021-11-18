@@ -15,6 +15,7 @@ public struct Generator {
     let enums: Enums
     let structs: Structs
     let interfaces: Interfaces
+    let callbacks: Callbacks
 
     public init(sdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
         io = try IO(sdkURL: sdkURL, swiftOutputDirURL: swiftOutputDirURL, cOutputDirURL: cOutputDirURL)
@@ -24,6 +25,7 @@ public struct Generator {
         enums = Enums(io: io, metadata: metadata)
         structs = Structs(io: io, metadata: metadata)
         interfaces = Interfaces(io: io, metadata: metadata)
+        callbacks = Callbacks(io: io, metadata: metadata)
     }
 
     public func generate() throws {
@@ -37,5 +39,6 @@ public struct Generator {
         try enums.generate()
         try structs.generate()
         try interfaces.generate()
+        try callbacks.generate()
     }
 }

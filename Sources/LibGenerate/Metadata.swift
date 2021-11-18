@@ -48,6 +48,7 @@ struct SteamJSON: Codable {
 
     struct Method: Codable {
         let callresult: String?
+        let callback: String?
         let methodname: String
         let methodname_flat: String
 
@@ -185,6 +186,7 @@ struct MetadataDB {
         let name: String
         let flatName: String
         let callResult: String?
+        let callback: String?
 
         struct Param: Codable {
             let name: String
@@ -219,6 +221,7 @@ struct MetadataDB {
             name = base.methodname
             flatName = base.methodname_flat
             callResult = base.callresult
+            callback = base.callback
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
             returnType = patch?.returntype ?? base.returntype
             outParamIffRc = patch?.out_param_iff_rc
@@ -271,7 +274,7 @@ struct MetadataDB {
 
         let name: String // "struct" too annoying
         let fields: [Field]
-        let callback_id: Int?
+        let callbackID: Int?
         let ignore: Bool
         /// Indexed by `name`, order from original file ...
         let enums: OrderedDictionary<String, Enum>
@@ -284,7 +287,7 @@ struct MetadataDB {
             fields = base.fields.map {
                 .init(base: $0, patch: structPatch?.fields?[$0.fieldname])
             }
-            callback_id = base.callback_id
+            callbackID = base.callback_id
             ignore = structPatch?.ignore ?? false
 
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
