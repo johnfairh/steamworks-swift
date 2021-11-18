@@ -81,8 +81,8 @@ extension EnumWithUnrepresented where Self: RawRepresentable, From.RawValue == S
 /// Steamworks OptionSet Integer mess
 ///
 /// Steamworks has a few enums that are bitfield things mapped into Swift as `OptionSet`s.
-/// Clang importer imports the SW version as structs with `RawValue` of `UInt32` or `Int32`
-/// if there are no negative values.
+/// Clang importer imports the SW version as structs with `RawValue` of `UInt32`( or `Int32`
+/// if there are negative values.)
 ///
 /// But the actual Steamworks APIs that use these are all over the place with their types - never using
 /// the actual enum type (because would imply one value, I suppose) and instead using a basically
@@ -137,7 +137,7 @@ extension Array {
     }
 }
 
-/// Because we can't use `FoundationData` here right now, arrays of bytes go over as-is
+/// Because we can't use `Foundation.Data` here right now, arrays of bytes go over as-is
 extension Array where Element == UInt8 {
     init(_ ptr: UnsafePointer<UInt8>, _ count: Int) {
         self.init(unsafeUninitializedCapacity: count) { buf, done in

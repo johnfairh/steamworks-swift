@@ -54,17 +54,31 @@ extension MetadataDB.Struct.Field {
         !ignore && !Self.unwantedFieldNames.contains(fieldname)
     }
 
+    var arrayFieldName: String {
+        "\(fieldname)_ptr"
+    }
+
     /// Contribution to the C header file to define a method on the C++ structure that returns
     /// a pointer to an array structure element instead of a tuple.
     func getArrayGetterLines(structName: String) -> String? {
-        guard let (elemType, _) = fieldtype.parseCArray else {
+        guard let (elemType, arrayLen) = fieldtype.parseCArray else {
             return nil
         }
+        // Make sure these strings are actually null-terminated.
+        // I'm fairly sure this isn't actually UB because the pointer here has been const-washed
+        // via a Swift param -- could probably work back up the system and pass these conversion
+        // structs as `inout`.
+        let extraLine: String
+        if elemType == "char" {
+            extraLine = "const_cast<\(structName) *>(s)->\(fieldname)[\(arrayLen - 1)] = 0;\n    "
+        } else {
+            extraLine = ""
+        }
         return """
-               __attribute__((swift_name(\"getter:\(structName).\(fieldname)_ptr(self:)\")))
-               static inline const \(elemType) * _Nonnull \(structName)_\(fieldname)_ptr(const \(structName) * _Nonnull s)
+               __attribute__((swift_name(\"getter:\(structName).\(arrayFieldName)(self:)\")))
+               static inline const \(elemType) * _Nonnull \(structName)_\(arrayFieldName)(const \(structName) * _Nonnull s)
                {
-                   return s->\(fieldname);
+                   \(extraLine)return s->\(fieldname);
                }
                """
     }
@@ -81,11 +95,11 @@ extension MetadataDB.Struct.Field {
 
         if let decomposed = fieldtype.parseCArray {
             if decomposed.0 == "char" {
-                rvalue = ".init(steam.\(fieldname)_ptr)"
+                rvalue = ".init(steam.\(arrayFieldName))"
             } else if decomposed.0 == "uint8" {
-                rvalue = ".init(steam.\(fieldname)_ptr, \(decomposed.1))"
+                rvalue = ".init(steam.\(arrayFieldName), \(decomposed.1))"
             } else {
-                rvalue = ".init(steam.\(fieldname)_ptr, \(decomposed.1)) { .init($0) }"
+                rvalue = ".init(steam.\(arrayFieldName), \(decomposed.1)) { .init($0) }"
             }
         } else {
             rvalue = ".init(steam.\(fieldname))"
