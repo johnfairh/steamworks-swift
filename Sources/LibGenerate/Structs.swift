@@ -128,6 +128,8 @@ extension MetadataDB.Struct {
     }
 
     // Don't bother generating the callback ID -- don't think it's useful?
+    // Not going to conform these to any protocols.  Should review as we go,
+    // some will be PODs that make sense to be Equatable/etc, do via patch.
     var generateSwift: String {
         let swiftTypeName = name.asSwiftTypeName
         let lines = [[

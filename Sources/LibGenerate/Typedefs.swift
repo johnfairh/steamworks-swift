@@ -75,7 +75,7 @@ extension MetadataDB.Typedef {
         let swiftType = type.asSwiftBaseType
         return """
                /// Steamworks `\(typedef)`
-               public struct \(typedef.asSwiftTypeName) {
+               public struct \(typedef.asSwiftTypeName): Hashable {
                    public let value: \(swiftType)
                    public init(_ value: \(swiftType)) { self.value = value }
                }
