@@ -198,7 +198,7 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::ActivateGameOverlayToStore()`
-    func activateGameOverlayToStore(appID: AppId, flag: OverlayToStoreFlag) {
+    func activateGameOverlayToStore(appID: AppID, flag: OverlayToStoreFlag) {
         SteamAPI_ISteamFriends_ActivateGameOverlayToStore(interface, AppId_t(appID), EOverlayToStoreFlag(flag))
     }
 
@@ -316,8 +316,8 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendCoplayGame()`
-    func getFriendCoplayGame(friend: SteamID) -> AppId {
-        AppId(SteamAPI_ISteamFriends_GetFriendCoplayGame(interface, UInt64(friend)))
+    func getFriendCoplayGame(friend: SteamID) -> AppID {
+        AppID(SteamAPI_ISteamFriends_GetFriendCoplayGame(interface, UInt64(friend)))
     }
 
     /// Steamworks `ISteamFriends::JoinClanChatRoom()`

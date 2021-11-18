@@ -218,7 +218,7 @@ public struct DurationControl {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_appid`
-    public let appid: AppId
+    public let appid: AppID
     /// Steamworks `m_bApplicable`
     public let applicable: Bool
     /// Steamworks `m_csecsLast5h`
@@ -347,7 +347,7 @@ public struct FriendRichPresenceUpdate {
     /// Steamworks `m_steamIDFriend`
     public let friend: SteamID
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension FriendRichPresenceUpdate: SteamCreatable {
@@ -1157,7 +1157,7 @@ public struct RemoteStoragePublishFileResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
     public let userNeedsToAcceptWorkshopLegalAgreement: Bool
 }
@@ -1175,7 +1175,7 @@ public struct RemoteStorageDeletePublishedFileResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
 }
 
 extension RemoteStorageDeletePublishedFileResult: SteamCreatable {
@@ -1194,7 +1194,7 @@ public struct RemoteStorageEnumerateUserPublishedFilesResult {
     /// Steamworks `m_nTotalResultCount`
     public let totalResultCount: Int
     /// Steamworks `m_rgPublishedFileId`
-    public let publishedFileId: [PublishedFileId]
+    public let publishedFileId: [PublishedFileID]
 }
 
 extension RemoteStorageEnumerateUserPublishedFilesResult: SteamCreatable {
@@ -1211,7 +1211,7 @@ public struct RemoteStorageSubscribePublishedFileResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
 }
 
 extension RemoteStorageSubscribePublishedFileResult: SteamCreatable {
@@ -1230,7 +1230,7 @@ public struct RemoteStorageEnumerateUserSubscribedFilesResult {
     /// Steamworks `m_nTotalResultCount`
     public let totalResultCount: Int
     /// Steamworks `m_rgPublishedFileId`
-    public let publishedFileId: [PublishedFileId]
+    public let publishedFileId: [PublishedFileID]
     /// Steamworks `m_rgRTimeSubscribed`
     public let rTimeSubscribed: [Int]
 }
@@ -1250,7 +1250,7 @@ public struct RemoteStorageUnsubscribePublishedFileResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
 }
 
 extension RemoteStorageUnsubscribePublishedFileResult: SteamCreatable {
@@ -1265,7 +1265,7 @@ public struct RemoteStorageUpdatePublishedFileResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
     public let userNeedsToAcceptWorkshopLegalAgreement: Bool
 }
@@ -1285,7 +1285,7 @@ public struct RemoteStorageDownloadUGCResult {
     /// Steamworks `m_hFile`
     public let file: UGCHandle
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
     /// Steamworks `m_nSizeInBytes`
     public let sizeInBytes: Int
     /// Steamworks `m_pchFileName`
@@ -1310,11 +1310,11 @@ public struct RemoteStorageGetPublishedFileDetailsResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nCreatorAppID`
-    public let creatorAppID: AppId
+    public let creatorAppID: AppID
     /// Steamworks `m_nConsumerAppID`
-    public let consumerAppID: AppId
+    public let consumerAppID: AppID
     /// Steamworks `m_rgchTitle`
     public let title: String
     /// Steamworks `m_rgchDescription`
@@ -1386,11 +1386,11 @@ public struct RemoteStorageEnumerateWorkshopFilesResult {
     /// Steamworks `m_nTotalResultCount`
     public let totalResultCount: Int
     /// Steamworks `m_rgPublishedFileId`
-    public let publishedFileId: [PublishedFileId]
+    public let publishedFileId: [PublishedFileID]
     /// Steamworks `m_rgScore`
     public let score: [Float]
     /// Steamworks `m_nAppId`
-    public let appId: AppId
+    public let appId: AppID
     /// Steamworks `m_unStartIndex`
     public let startIndex: Int
 }
@@ -1412,7 +1412,7 @@ public struct RemoteStorageGetPublishedItemVoteDetailsResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_unPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nVotesFor`
     public let votesFor: Int
     /// Steamworks `m_nVotesAgainst`
@@ -1437,9 +1437,9 @@ extension RemoteStorageGetPublishedItemVoteDetailsResult: SteamCreatable {
 /// Steamworks `RemoteStoragePublishedFileSubscribed_t`
 public struct RemoteStoragePublishedFileSubscribed {
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension RemoteStoragePublishedFileSubscribed: SteamCreatable {
@@ -1452,9 +1452,9 @@ extension RemoteStoragePublishedFileSubscribed: SteamCreatable {
 /// Steamworks `RemoteStoragePublishedFileUnsubscribed_t`
 public struct RemoteStoragePublishedFileUnsubscribed {
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension RemoteStoragePublishedFileUnsubscribed: SteamCreatable {
@@ -1467,9 +1467,9 @@ extension RemoteStoragePublishedFileUnsubscribed: SteamCreatable {
 /// Steamworks `RemoteStoragePublishedFileDeleted_t`
 public struct RemoteStoragePublishedFileDeleted {
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension RemoteStoragePublishedFileDeleted: SteamCreatable {
@@ -1484,7 +1484,7 @@ public struct RemoteStorageUpdateUserPublishedItemVoteResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
 }
 
 extension RemoteStorageUpdateUserPublishedItemVoteResult: SteamCreatable {
@@ -1499,7 +1499,7 @@ public struct RemoteStorageUserVoteDetails {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_eVote`
     public let vote: WorkshopVote
 }
@@ -1521,7 +1521,7 @@ public struct RemoteStorageEnumerateUserSharedWorkshopFilesResult {
     /// Steamworks `m_nTotalResultCount`
     public let totalResultCount: Int
     /// Steamworks `m_rgPublishedFileId`
-    public let publishedFileId: [PublishedFileId]
+    public let publishedFileId: [PublishedFileID]
 }
 
 extension RemoteStorageEnumerateUserSharedWorkshopFilesResult: SteamCreatable {
@@ -1538,7 +1538,7 @@ public struct RemoteStorageSetUserPublishedFileActionResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_eAction`
     public let action: WorkshopFileAction
 }
@@ -1562,7 +1562,7 @@ public struct RemoteStorageEnumeratePublishedFilesByUserActionResult {
     /// Steamworks `m_nTotalResultCount`
     public let totalResultCount: Int
     /// Steamworks `m_rgPublishedFileId`
-    public let publishedFileId: [PublishedFileId]
+    public let publishedFileId: [PublishedFileID]
     /// Steamworks `m_rgRTimeUpdated`
     public let rTimeUpdated: [Int]
 }
@@ -1596,9 +1596,9 @@ extension RemoteStoragePublishFileProgress: SteamCreatable {
 /// Steamworks `RemoteStoragePublishedFileUpdated_t`
 public struct RemoteStoragePublishedFileUpdated {
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension RemoteStoragePublishedFileUpdated: SteamCreatable {
@@ -1881,7 +1881,7 @@ extension GlobalStatsReceived: SteamCreatable {
 /// Steamworks `DlcInstalled_t`
 public struct DlcInstalled {
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension DlcInstalled: SteamCreatable {
@@ -1959,7 +1959,7 @@ extension FileDetailsResult: SteamCreatable {
 /// Steamworks `TimedTrialStatus_t`
 public struct TimedTrialStatus {
     /// Steamworks `m_unAppID`
-    public let appID: AppId
+    public let appID: AppID
     /// Steamworks `m_bIsOffline`
     public let isOffline: Bool
     /// Steamworks `m_unSecondsAllowed`
@@ -2301,7 +2301,7 @@ extension SteamInputDeviceDisconnected: SteamCreatable {
 /// Steamworks `SteamInputConfigurationLoaded_t`
 public struct SteamInputConfigurationLoaded {
     /// Steamworks `m_unAppID`
-    public let appID: AppId
+    public let appID: AppID
     /// Steamworks `m_ulDeviceHandle`
     public let deviceHandle: InputHandle
     /// Steamworks `m_ulMappingCreator`
@@ -2375,7 +2375,7 @@ public struct CreateItemResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
     public let userNeedsToAcceptWorkshopLegalAgreement: Bool
 }
@@ -2395,7 +2395,7 @@ public struct SubmitItemUpdateResult {
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
     public let userNeedsToAcceptWorkshopLegalAgreement: Bool
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
 }
 
 extension SubmitItemUpdateResult: SteamCreatable {
@@ -2409,9 +2409,9 @@ extension SubmitItemUpdateResult: SteamCreatable {
 /// Steamworks `ItemInstalled_t`
 public struct ItemInstalled {
     /// Steamworks `m_unAppID`
-    public let appID: AppId
+    public let appID: AppID
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
 }
 
 extension ItemInstalled: SteamCreatable {
@@ -2424,9 +2424,9 @@ extension ItemInstalled: SteamCreatable {
 /// Steamworks `DownloadItemResult_t`
 public struct DownloadItemResult {
     /// Steamworks `m_unAppID`
-    public let appID: AppId
+    public let appID: AppID
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
     public let result: SteamResult
 }
@@ -2442,7 +2442,7 @@ extension DownloadItemResult: SteamCreatable {
 /// Steamworks `UserFavoriteItemsListChanged_t`
 public struct UserFavoriteItemsListChanged {
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_bWasAddRequest`
@@ -2460,7 +2460,7 @@ extension UserFavoriteItemsListChanged: SteamCreatable {
 /// Steamworks `SetUserItemVoteResult_t`
 public struct SetUserItemVoteResult {
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_bVoteUp`
@@ -2478,7 +2478,7 @@ extension SetUserItemVoteResult: SteamCreatable {
 /// Steamworks `GetUserItemVoteResult_t`
 public struct GetUserItemVoteResult {
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_bVotedUp`
@@ -2528,9 +2528,9 @@ public struct AddUGCDependencyResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nChildPublishedFileId`
-    public let childPublishedFileId: PublishedFileId
+    public let childPublishedFileId: PublishedFileID
 }
 
 extension AddUGCDependencyResult: SteamCreatable {
@@ -2546,9 +2546,9 @@ public struct RemoveUGCDependencyResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nChildPublishedFileId`
-    public let childPublishedFileId: PublishedFileId
+    public let childPublishedFileId: PublishedFileID
 }
 
 extension RemoveUGCDependencyResult: SteamCreatable {
@@ -2564,9 +2564,9 @@ public struct AddAppDependencyResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension AddAppDependencyResult: SteamCreatable {
@@ -2582,9 +2582,9 @@ public struct RemoveAppDependencyResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension RemoveAppDependencyResult: SteamCreatable {
@@ -2600,9 +2600,9 @@ public struct GetAppDependenciesResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_rgAppIDs`
-    public let appIDs: [AppId]
+    public let appIDs: [AppID]
     /// Steamworks `m_nNumAppDependencies`
     public let numAppDependencies: Int
     /// Steamworks `m_nTotalNumAppDependencies`
@@ -2624,7 +2624,7 @@ public struct DeleteItemResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
 }
 
 extension DeleteItemResult: SteamCreatable {
@@ -2637,7 +2637,7 @@ extension DeleteItemResult: SteamCreatable {
 /// Steamworks `UserSubscribedItemsListChanged_t`
 public struct UserSubscribedItemsListChanged {
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
 }
 
 extension UserSubscribedItemsListChanged: SteamCreatable {
@@ -2651,7 +2651,7 @@ public struct WorkshopEULAStatus {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
     /// Steamworks `m_unVersion`
     public let version: Int
     /// Steamworks `m_rtAction`
@@ -2676,7 +2676,7 @@ extension WorkshopEULAStatus: SteamCreatable {
 /// Steamworks `SteamAppInstalled_t`
 public struct SteamAppInstalled {
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
     /// Steamworks `m_iInstallFolderIndex`
     public let installFolderIndex: Int
 }
@@ -2691,7 +2691,7 @@ extension SteamAppInstalled: SteamCreatable {
 /// Steamworks `SteamAppUninstalled_t`
 public struct SteamAppUninstalled {
     /// Steamworks `m_nAppID`
-    public let appID: AppId
+    public let appID: AppID
     /// Steamworks `m_iInstallFolderIndex`
     public let installFolderIndex: Int
 }
@@ -3248,7 +3248,7 @@ public struct GetVideoURLResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_unVideoAppID`
-    public let videoAppID: AppId
+    public let videoAppID: AppID
     /// Steamworks `m_rgchURL`
     public let url: String
 }
@@ -3266,7 +3266,7 @@ public struct GetOPFSettingsResult {
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_unVideoAppID`
-    public let videoAppID: AppId
+    public let videoAppID: AppID
 }
 
 extension GetOPFSettingsResult: SteamCreatable {
@@ -3906,15 +3906,15 @@ extension SteamInputActionEvent: SteamCreatable {
 /// Steamworks `SteamUGCDetails_t`
 public struct SteamUGCDetails {
     /// Steamworks `m_nPublishedFileId`
-    public let publishedFileId: PublishedFileId
+    public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
     public let result: SteamResult
     /// Steamworks `m_eFileType`
     public let fileType: WorkshopFileType
     /// Steamworks `m_nCreatorAppID`
-    public let creatorAppID: AppId
+    public let creatorAppID: AppID
     /// Steamworks `m_nConsumerAppID`
-    public let consumerAppID: AppId
+    public let consumerAppID: AppID
     /// Steamworks `m_rgchTitle`
     public let title: String
     /// Steamworks `m_rgchDescription`

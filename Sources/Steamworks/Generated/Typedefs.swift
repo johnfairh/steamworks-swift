@@ -9,20 +9,20 @@
 @_implementationOnly import CSteamworks
 
 /// Steamworks `AppId_t`
-public struct AppId: Hashable {
+public struct AppID: Hashable {
     public let value: UInt32
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension AppId: SteamTypeAlias {}
+extension AppID: SteamTypeAlias {}
 
 /// Steamworks `DepotId_t`
-public struct DepotId: Hashable {
+public struct DepotID: Hashable {
     public let value: UInt32
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension DepotId: SteamTypeAlias {}
+extension DepotID: SteamTypeAlias {}
 
 /// Steamworks `RTime32`
 public struct RTime32: Hashable {
@@ -124,12 +124,12 @@ public struct PublishedFileUpdateHandle: Hashable {
 extension PublishedFileUpdateHandle: SteamTypeAlias {}
 
 /// Steamworks `PublishedFileId_t`
-public struct PublishedFileId: Hashable {
+public struct PublishedFileID: Hashable {
     public let value: UInt64
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension PublishedFileId: SteamTypeAlias {}
+extension PublishedFileID: SteamTypeAlias {}
 
 /// Steamworks `UGCFileWriteStreamHandle_t`
 public struct UGCFileWriteStreamHandle: Hashable {

@@ -26,7 +26,8 @@ class TestNames: XCTestCase {
             ("EResult", "SteamResult"),
             ("Fred [20]", "[Fred]"),
             ("char [10]", "String"),
-            ("uint8 [5]", "[UInt8]")
+            ("uint8 [5]", "[UInt8]"),
+            ("SomeId", "SomeID")
         ]
         cases.forEach { steam, swift in
             XCTAssertEqual(steam.asSwiftTypeName, swift)
