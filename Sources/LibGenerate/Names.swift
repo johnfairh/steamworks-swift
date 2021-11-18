@@ -79,6 +79,21 @@ extension String {
         re_sub("^m_", with: "").asSwiftParameterName
     }
 
+    /// Mix of SHOUTY_C_DEFINE and k_IsForKonstant names
+    var asSwiftConstantName: String {
+        if !re_isMatch("[a-z]") {
+            return self
+        }
+        return re_sub("^k_", with: "").asSwiftParameterName
+    }
+
+    /// Tuned specifically for the subset used to define constants
+    var asSwiftValue: String {
+        re_sub(#"\(.*?\) *"#, with: "")     // drop weird cast
+            .re_sub("(?<=^-|~) ", with: "") // no spacing for unary operators ...
+            .re_sub("ull$", with: "")       // no int-length suffix
+    }
+
     /// WBN to have a runtime function for this ...
     var backtickedIfNecessary: String {
         backtickKeywords.contains(self) ? "`\(self)`" : self
@@ -148,6 +163,7 @@ private let steamToSwiftTypes: [String : String] = [
 
     // Misc
     "SteamParamStringArray_t" : "[String]", // weirdness, tbd
+    "unsigned int": "Int", // temp workaround for dumb CSteamID constants, to delete
 
     // Names that end up duplicated after removing their initial letter
     "ECheckFileSignature": "CheckFileSignatureResult",

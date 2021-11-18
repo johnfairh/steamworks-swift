@@ -12,6 +12,7 @@ public struct Generator {
     let metadata: Metadata
     let version: Version
     let typedefs: Typedefs
+    let constants: Constants
     let enums: Enums
     let structs: Structs
     let interfaces: Interfaces
@@ -22,6 +23,7 @@ public struct Generator {
         metadata = try Metadata(io: io)
         version = Version(io: io)
         typedefs = Typedefs(io: io, metadata: metadata)
+        constants = Constants(io: io, metadata: metadata)
         enums = Enums(io: io, metadata: metadata)
         structs = Structs(io: io, metadata: metadata)
         interfaces = Interfaces(io: io, metadata: metadata)
@@ -36,6 +38,7 @@ public struct Generator {
 
         try version.generate()
         try typedefs.generate()
+        try constants.generate()
         try enums.generate()
         try structs.generate()
         try interfaces.generate()

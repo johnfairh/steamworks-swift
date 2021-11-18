@@ -1,4 +1,9 @@
 {
+  "consts": {
+    "k_SteamDatagramPOPID_dev": {
+      "value": "0x00646576"
+    }
+  },
   "enums": {
     "AudioPlayback_Status": {
       "prefix": "AudioPlayback"

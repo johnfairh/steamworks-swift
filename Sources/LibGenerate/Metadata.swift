@@ -91,6 +91,7 @@ struct SteamJSON: Codable {
 /// to the SDK json.
 ///
 /// Features:
+/// * Constants: Fix value to something Swift understands
 /// * Enums: use OptionSet or Enum in Swift
 /// * Enums: value prefix to strip -- Steam has a clear convention for this but breaks it in
 ///   various ways that we have to hard-code.
@@ -98,8 +99,18 @@ struct SteamJSON: Codable {
 /// * Enums: hint to generate a static member instead of an enum case
 /// * Methods: correct the return type
 /// * Methods: specify out-param behaviour when API call fails
+/// * Methods: correct a parameter type
+/// * Structs: correct a field type (steam or swift)
+/// * Structs: ignore field or entire struct
+/// * Structs: correct the steam name
+
 ///
 struct PatchJSON: Codable {
+    struct Const: Codable {
+        let value: String? // patch C expression for value
+    }
+    let consts: [String: Const] // constname key
+
     struct Enum: Codable {
         let is_set: Bool? // values are bit-sig, model as OptionSet
         let prefix: String? // enum values non-default prefix
@@ -146,7 +157,18 @@ struct PatchJSON: Codable {
 /// (like 'is this random string an enum?')
 ///
 struct MetadataDB {
-    typealias Const = SteamJSON.Const
+    struct Const {
+        let name: String
+        let type: String
+        let value: String
+
+        init(base: SteamJSON.Const, patch: PatchJSON.Const?) {
+            self.name = base.constname
+            self.type = base.consttype
+            self.value = patch?.value ?? base.constval
+        }
+    }
+
     /// Indexed by `constname`, order from original file
     let consts: OrderedDictionary<String, Const>
 
@@ -308,7 +330,7 @@ struct MetadataDB {
 
     init(base: SteamJSON, patch: PatchJSON) {
         consts = .init(uniqueKeysWithValues: base.consts.map {
-            ($0.constname, $0)
+            ($0.constname, Const(base: $0, patch: patch.consts[$0.constname]))
         })
 
         enums = .init(uniqueKeysWithValues: base.enums.map {

@@ -5,9 +5,6 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
-import Foundation
-import OrderedCollections
-
 /// Code gen the callbacks interfaces -- the broadcast notification things.
 struct Callbacks {
     let io: IO
