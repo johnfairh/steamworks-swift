@@ -103,7 +103,6 @@ struct SteamJSON: Codable {
 /// * Structs: correct a field type (steam or swift)
 /// * Structs: ignore field or entire struct
 /// * Structs: correct the steam name
-
 ///
 struct PatchJSON: Codable {
     struct Const: Codable {

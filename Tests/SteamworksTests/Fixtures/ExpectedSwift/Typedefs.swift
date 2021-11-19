@@ -9,7 +9,7 @@
 @_implementationOnly import CSteamworks
 
 /// Steamworks `FriendID_t`
-public struct FriendID {
+public struct FriendID: Hashable {
     public let value: UInt32
     public init(_ value: UInt32) { self.value = value }
 }
@@ -17,9 +17,12 @@ public struct FriendID {
 extension FriendID: SteamTypeAlias {}
 
 /// Steamworks `AppId_t`
-public struct AppId {
+public struct AppID: Hashable {
     public let value: UInt32
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension AppId: SteamTypeAlias {}
+extension AppID: SteamTypeAlias {}
+
+/// Steamworks `Callback_t`
+public typealias Callback = (SteamType, SteamEnum) -> Void

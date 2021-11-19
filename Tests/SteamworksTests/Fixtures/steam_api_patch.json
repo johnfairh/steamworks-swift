@@ -1,4 +1,6 @@
 {
+  "consts": {
+  },
   "enums": {
     "ESteamMiscFlags": {
       "is_set": true

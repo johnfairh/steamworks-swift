@@ -80,4 +80,28 @@ class TestNames: XCTestCase {
         XCTAssertEqual("int", unwrapped.0)
         XCTAssertEqual(10, unwrapped.1)
     }
+
+    /// For "const" value parsing
+    func testCValue() {
+        let cases = [
+            ("- 2", "-2"),
+            ("~ 23ull", "~23"),
+            ("(Type) 22", "22")
+        ]
+
+        cases.forEach { steam, swift in
+            XCTAssertEqual(steam.asSwiftValue, swift)
+        }
+    }
+
+    func testConstantNames() {
+        let cases = [
+            ("I_AM_CONSTANT", "I_AM_CONSTANT"),
+            ("k_nConstantValue", "constantValue")
+        ]
+
+        cases.forEach { steam, swift in
+            XCTAssertEqual(steam.asSwiftConstantName, swift)
+        }
+    }
 }
