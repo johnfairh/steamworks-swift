@@ -8,6 +8,14 @@
 
 @_implementationOnly import CSteamworks
 
+/// Steamworks `AccountID_t`
+public struct AccountID: Hashable {
+    public let value: UInt32
+    public init(_ value: UInt32) { self.value = value }
+}
+
+extension AccountID: SteamTypeAlias {}
+
 /// Steamworks `AppId_t`
 public struct AppID: Hashable {
     public let value: UInt32
@@ -15,6 +23,38 @@ public struct AppID: Hashable {
 }
 
 extension AppID: SteamTypeAlias {}
+
+/// Steamworks `ControllerActionSetHandle_t`
+public struct ControllerActionSetHandle: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
+}
+
+extension ControllerActionSetHandle: SteamTypeAlias {}
+
+/// Steamworks `ControllerAnalogActionHandle_t`
+public struct ControllerAnalogActionHandle: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
+}
+
+extension ControllerAnalogActionHandle: SteamTypeAlias {}
+
+/// Steamworks `ControllerDigitalActionHandle_t`
+public struct ControllerDigitalActionHandle: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
+}
+
+extension ControllerDigitalActionHandle: SteamTypeAlias {}
+
+/// Steamworks `ControllerHandle_t`
+public struct ControllerHandle: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
+}
+
+extension ControllerHandle: SteamTypeAlias {}
 
 /// Steamworks `DepotId_t`
 public struct DepotID: Hashable {
@@ -24,37 +64,31 @@ public struct DepotID: Hashable {
 
 extension DepotID: SteamTypeAlias {}
 
-/// Steamworks `RTime32`
-public struct RTime32: Hashable {
-    public let value: UInt32
-    public init(_ value: UInt32) { self.value = value }
+/// Steamworks `FSteamNetworkingSocketsDebugOutput`
+public typealias FSteamNetworkingSocketsDebugOutput = (SteamNetworkingSocketsDebugOutputType, String) -> Void
+
+/// Steamworks `FnSteamNetAuthenticationStatusChanged`
+public typealias FnSteamNetAuthenticationStatusChanged = (SteamNetAuthenticationStatus) -> Void
+
+/// Steamworks `FnSteamNetConnectionStatusChanged`
+public typealias FnSteamNetConnectionStatusChanged = (SteamNetConnectionStatusChangedCallback) -> Void
+
+/// Steamworks `FnSteamNetworkingMessagesSessionFailed`
+public typealias FnSteamNetworkingMessagesSessionFailed = (SteamNetworkingMessagesSessionFailed) -> Void
+
+/// Steamworks `FnSteamNetworkingMessagesSessionRequest`
+public typealias FnSteamNetworkingMessagesSessionRequest = (SteamNetworkingMessagesSessionRequest) -> Void
+
+/// Steamworks `FnSteamRelayNetworkStatusChanged`
+public typealias FnSteamRelayNetworkStatusChanged = (SteamRelayNetworkStatus) -> Void
+
+/// Steamworks `FriendsGroupID_t`
+public struct FriendsGroupID: Hashable {
+    public let value: Int16
+    public init(_ value: Int16) { self.value = value }
 }
 
-extension RTime32: SteamTypeAlias {}
-
-/// Steamworks `SteamAPICall_t`
-public struct SteamAPICall: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension SteamAPICall: SteamTypeAlias {}
-
-/// Steamworks `AccountID_t`
-public struct AccountID: Hashable {
-    public let value: UInt32
-    public init(_ value: UInt32) { self.value = value }
-}
-
-extension AccountID: SteamTypeAlias {}
-
-/// Steamworks `PartyBeaconID_t`
-public struct PartyBeaconID: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension PartyBeaconID: SteamTypeAlias {}
+extension FriendsGroupID: SteamTypeAlias {}
 
 /// Steamworks `HAuthTicket`
 public struct HAuthTicket: Hashable {
@@ -64,32 +98,13 @@ public struct HAuthTicket: Hashable {
 
 extension HAuthTicket: SteamTypeAlias {}
 
-/// Steamworks `PFNPreMinidumpCallback`
-public typealias PFNPreMinidumpCallback = (UnsafeMutableRawPointer) -> Void
-
-/// Steamworks `HSteamPipe`
-public struct HSteamPipe: Hashable {
-    public let value: Int32
-    public init(_ value: Int32) { self.value = value }
+/// Steamworks `HHTMLBrowser`
+public struct HHTMLBrowser: Hashable {
+    public let value: UInt32
+    public init(_ value: UInt32) { self.value = value }
 }
 
-extension HSteamPipe: SteamTypeAlias {}
-
-/// Steamworks `HSteamUser`
-public struct HSteamUser: Hashable {
-    public let value: Int32
-    public init(_ value: Int32) { self.value = value }
-}
-
-extension HSteamUser: SteamTypeAlias {}
-
-/// Steamworks `FriendsGroupID_t`
-public struct FriendsGroupID: Hashable {
-    public let value: Int16
-    public init(_ value: Int16) { self.value = value }
-}
-
-extension FriendsGroupID: SteamTypeAlias {}
+extension HHTMLBrowser: SteamTypeAlias {}
 
 /// Steamworks `HServerListRequest`
 public struct HServerListRequest: Hashable {
@@ -107,85 +122,45 @@ public struct HServerQuery: Hashable {
 
 extension HServerQuery: SteamTypeAlias {}
 
-/// Steamworks `UGCHandle_t`
-public struct UGCHandle: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension UGCHandle: SteamTypeAlias {}
-
-/// Steamworks `PublishedFileUpdateHandle_t`
-public struct PublishedFileUpdateHandle: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension PublishedFileUpdateHandle: SteamTypeAlias {}
-
-/// Steamworks `PublishedFileId_t`
-public struct PublishedFileID: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension PublishedFileID: SteamTypeAlias {}
-
-/// Steamworks `UGCFileWriteStreamHandle_t`
-public struct UGCFileWriteStreamHandle: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension UGCFileWriteStreamHandle: SteamTypeAlias {}
-
-/// Steamworks `SteamLeaderboard_t`
-public struct SteamLeaderboard: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension SteamLeaderboard: SteamTypeAlias {}
-
-/// Steamworks `SteamLeaderboardEntries_t`
-public struct SteamLeaderboardEntries: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension SteamLeaderboardEntries: SteamTypeAlias {}
-
-/// Steamworks `SNetSocket_t`
-public struct SNetSocket: Hashable {
+/// Steamworks `HSteamListenSocket`
+public struct HSteamListenSocket: Hashable {
     public let value: UInt32
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension SNetSocket: SteamTypeAlias {}
+extension HSteamListenSocket: SteamTypeAlias {}
 
-/// Steamworks `SNetListenSocket_t`
-public struct SNetListenSocket: Hashable {
+/// Steamworks `HSteamNetConnection`
+public struct HSteamNetConnection: Hashable {
     public let value: UInt32
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension SNetListenSocket: SteamTypeAlias {}
+extension HSteamNetConnection: SteamTypeAlias {}
 
-/// Steamworks `ScreenshotHandle`
-public struct ScreenshotHandle: Hashable {
+/// Steamworks `HSteamNetPollGroup`
+public struct HSteamNetPollGroup: Hashable {
     public let value: UInt32
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension ScreenshotHandle: SteamTypeAlias {}
+extension HSteamNetPollGroup: SteamTypeAlias {}
 
-/// Steamworks `HTTPRequestHandle`
-public struct HTTPRequestHandle: Hashable {
-    public let value: UInt32
-    public init(_ value: UInt32) { self.value = value }
+/// Steamworks `HSteamPipe`
+public struct HSteamPipe: Hashable {
+    public let value: Int32
+    public init(_ value: Int32) { self.value = value }
 }
 
-extension HTTPRequestHandle: SteamTypeAlias {}
+extension HSteamPipe: SteamTypeAlias {}
+
+/// Steamworks `HSteamUser`
+public struct HSteamUser: Hashable {
+    public let value: Int32
+    public init(_ value: Int32) { self.value = value }
+}
+
+extension HSteamUser: SteamTypeAlias {}
 
 /// Steamworks `HTTPCookieContainerHandle`
 public struct HTTPCookieContainerHandle: Hashable {
@@ -195,13 +170,13 @@ public struct HTTPCookieContainerHandle: Hashable {
 
 extension HTTPCookieContainerHandle: SteamTypeAlias {}
 
-/// Steamworks `InputHandle_t`
-public struct InputHandle: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
+/// Steamworks `HTTPRequestHandle`
+public struct HTTPRequestHandle: Hashable {
+    public let value: UInt32
+    public init(_ value: UInt32) { self.value = value }
 }
 
-extension InputHandle: SteamTypeAlias {}
+extension HTTPRequestHandle: SteamTypeAlias {}
 
 /// Steamworks `InputActionSetHandle_t`
 public struct InputActionSetHandle: Hashable {
@@ -211,14 +186,6 @@ public struct InputActionSetHandle: Hashable {
 
 extension InputActionSetHandle: SteamTypeAlias {}
 
-/// Steamworks `InputDigitalActionHandle_t`
-public struct InputDigitalActionHandle: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension InputDigitalActionHandle: SteamTypeAlias {}
-
 /// Steamworks `InputAnalogActionHandle_t`
 public struct InputAnalogActionHandle: Hashable {
     public let value: UInt64
@@ -227,80 +194,99 @@ public struct InputAnalogActionHandle: Hashable {
 
 extension InputAnalogActionHandle: SteamTypeAlias {}
 
-/// Steamworks `SteamInputActionEventCallbackPointer`
-public typealias SteamInputActionEventCallbackPointer = (SteamInputActionEvent) -> Void
-
-/// Steamworks `ControllerHandle_t`
-public struct ControllerHandle: Hashable {
+/// Steamworks `InputDigitalActionHandle_t`
+public struct InputDigitalActionHandle: Hashable {
     public let value: UInt64
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension ControllerHandle: SteamTypeAlias {}
+extension InputDigitalActionHandle: SteamTypeAlias {}
 
-/// Steamworks `ControllerActionSetHandle_t`
-public struct ControllerActionSetHandle: Hashable {
+/// Steamworks `InputHandle_t`
+public struct InputHandle: Hashable {
     public let value: UInt64
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension ControllerActionSetHandle: SteamTypeAlias {}
+extension InputHandle: SteamTypeAlias {}
 
-/// Steamworks `ControllerDigitalActionHandle_t`
-public struct ControllerDigitalActionHandle: Hashable {
+/// Steamworks `PFNPreMinidumpCallback`
+public typealias PFNPreMinidumpCallback = (UnsafeMutableRawPointer) -> Void
+
+/// Steamworks `PartyBeaconID_t`
+public struct PartyBeaconID: Hashable {
     public let value: UInt64
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension ControllerDigitalActionHandle: SteamTypeAlias {}
+extension PartyBeaconID: SteamTypeAlias {}
 
-/// Steamworks `ControllerAnalogActionHandle_t`
-public struct ControllerAnalogActionHandle: Hashable {
+/// Steamworks `PublishedFileId_t`
+public struct PublishedFileID: Hashable {
     public let value: UInt64
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension ControllerAnalogActionHandle: SteamTypeAlias {}
+extension PublishedFileID: SteamTypeAlias {}
 
-/// Steamworks `UGCQueryHandle_t`
-public struct UGCQueryHandle: Hashable {
+/// Steamworks `PublishedFileUpdateHandle_t`
+public struct PublishedFileUpdateHandle: Hashable {
     public let value: UInt64
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension UGCQueryHandle: SteamTypeAlias {}
+extension PublishedFileUpdateHandle: SteamTypeAlias {}
 
-/// Steamworks `UGCUpdateHandle_t`
-public struct UGCUpdateHandle: Hashable {
-    public let value: UInt64
-    public init(_ value: UInt64) { self.value = value }
-}
-
-extension UGCUpdateHandle: SteamTypeAlias {}
-
-/// Steamworks `HHTMLBrowser`
-public struct HHTMLBrowser: Hashable {
+/// Steamworks `RTime32`
+public struct RTime32: Hashable {
     public let value: UInt32
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension HHTMLBrowser: SteamTypeAlias {}
+extension RTime32: SteamTypeAlias {}
 
-/// Steamworks `SteamItemInstanceID_t`
-public struct SteamItemInstanceID: Hashable {
+/// Steamworks `RemotePlaySessionID_t`
+public struct RemotePlaySessionID: Hashable {
+    public let value: UInt32
+    public init(_ value: UInt32) { self.value = value }
+}
+
+extension RemotePlaySessionID: SteamTypeAlias {}
+
+/// Steamworks `SNetListenSocket_t`
+public struct SNetListenSocket: Hashable {
+    public let value: UInt32
+    public init(_ value: UInt32) { self.value = value }
+}
+
+extension SNetListenSocket: SteamTypeAlias {}
+
+/// Steamworks `SNetSocket_t`
+public struct SNetSocket: Hashable {
+    public let value: UInt32
+    public init(_ value: UInt32) { self.value = value }
+}
+
+extension SNetSocket: SteamTypeAlias {}
+
+/// Steamworks `ScreenshotHandle`
+public struct ScreenshotHandle: Hashable {
+    public let value: UInt32
+    public init(_ value: UInt32) { self.value = value }
+}
+
+extension ScreenshotHandle: SteamTypeAlias {}
+
+/// Steamworks `SteamAPICall_t`
+public struct SteamAPICall: Hashable {
     public let value: UInt64
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension SteamItemInstanceID: SteamTypeAlias {}
+extension SteamAPICall: SteamTypeAlias {}
 
-/// Steamworks `SteamItemDef_t`
-public struct SteamItemDef: Hashable {
-    public let value: Int32
-    public init(_ value: Int32) { self.value = value }
-}
-
-extension SteamItemDef: SteamTypeAlias {}
+/// Steamworks `SteamInputActionEventCallbackPointer`
+public typealias SteamInputActionEventCallbackPointer = (SteamInputActionEvent) -> Void
 
 /// Steamworks `SteamInventoryResult_t`
 public struct SteamInventoryResult: Hashable {
@@ -318,52 +304,37 @@ public struct SteamInventoryUpdateHandle: Hashable {
 
 extension SteamInventoryUpdateHandle: SteamTypeAlias {}
 
-/// Steamworks `RemotePlaySessionID_t`
-public struct RemotePlaySessionID: Hashable {
-    public let value: UInt32
-    public init(_ value: UInt32) { self.value = value }
+/// Steamworks `SteamItemDef_t`
+public struct SteamItemDef: Hashable {
+    public let value: Int32
+    public init(_ value: Int32) { self.value = value }
 }
 
-extension RemotePlaySessionID: SteamTypeAlias {}
+extension SteamItemDef: SteamTypeAlias {}
 
-/// Steamworks `FnSteamNetConnectionStatusChanged`
-public typealias FnSteamNetConnectionStatusChanged = (SteamNetConnectionStatusChangedCallback) -> Void
-
-/// Steamworks `FnSteamNetAuthenticationStatusChanged`
-public typealias FnSteamNetAuthenticationStatusChanged = (SteamNetAuthenticationStatus) -> Void
-
-/// Steamworks `FnSteamRelayNetworkStatusChanged`
-public typealias FnSteamRelayNetworkStatusChanged = (SteamRelayNetworkStatus) -> Void
-
-/// Steamworks `FnSteamNetworkingMessagesSessionRequest`
-public typealias FnSteamNetworkingMessagesSessionRequest = (SteamNetworkingMessagesSessionRequest) -> Void
-
-/// Steamworks `FnSteamNetworkingMessagesSessionFailed`
-public typealias FnSteamNetworkingMessagesSessionFailed = (SteamNetworkingMessagesSessionFailed) -> Void
-
-/// Steamworks `HSteamNetConnection`
-public struct HSteamNetConnection: Hashable {
-    public let value: UInt32
-    public init(_ value: UInt32) { self.value = value }
+/// Steamworks `SteamItemInstanceID_t`
+public struct SteamItemInstanceID: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
 }
 
-extension HSteamNetConnection: SteamTypeAlias {}
+extension SteamItemInstanceID: SteamTypeAlias {}
 
-/// Steamworks `HSteamListenSocket`
-public struct HSteamListenSocket: Hashable {
-    public let value: UInt32
-    public init(_ value: UInt32) { self.value = value }
+/// Steamworks `SteamLeaderboardEntries_t`
+public struct SteamLeaderboardEntries: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
 }
 
-extension HSteamListenSocket: SteamTypeAlias {}
+extension SteamLeaderboardEntries: SteamTypeAlias {}
 
-/// Steamworks `HSteamNetPollGroup`
-public struct HSteamNetPollGroup: Hashable {
-    public let value: UInt32
-    public init(_ value: UInt32) { self.value = value }
+/// Steamworks `SteamLeaderboard_t`
+public struct SteamLeaderboard: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
 }
 
-extension HSteamNetPollGroup: SteamTypeAlias {}
+extension SteamLeaderboard: SteamTypeAlias {}
 
 /// Steamworks `SteamNetworkingErrMsg`
 public struct SteamNetworkingErrMsg: Hashable {
@@ -373,14 +344,6 @@ public struct SteamNetworkingErrMsg: Hashable {
 
 extension SteamNetworkingErrMsg: SteamTypeAlias {}
 
-/// Steamworks `SteamNetworkingPOPID`
-public struct SteamNetworkingPOPID: Hashable {
-    public let value: UInt32
-    public init(_ value: UInt32) { self.value = value }
-}
-
-extension SteamNetworkingPOPID: SteamTypeAlias {}
-
 /// Steamworks `SteamNetworkingMicroseconds`
 public struct SteamNetworkingMicroseconds: Hashable {
     public let value: Int64
@@ -389,5 +352,42 @@ public struct SteamNetworkingMicroseconds: Hashable {
 
 extension SteamNetworkingMicroseconds: SteamTypeAlias {}
 
-/// Steamworks `FSteamNetworkingSocketsDebugOutput`
-public typealias FSteamNetworkingSocketsDebugOutput = (SteamNetworkingSocketsDebugOutputType, String) -> Void
+/// Steamworks `SteamNetworkingPOPID`
+public struct SteamNetworkingPOPID: Hashable {
+    public let value: UInt32
+    public init(_ value: UInt32) { self.value = value }
+}
+
+extension SteamNetworkingPOPID: SteamTypeAlias {}
+
+/// Steamworks `UGCFileWriteStreamHandle_t`
+public struct UGCFileWriteStreamHandle: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
+}
+
+extension UGCFileWriteStreamHandle: SteamTypeAlias {}
+
+/// Steamworks `UGCHandle_t`
+public struct UGCHandle: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
+}
+
+extension UGCHandle: SteamTypeAlias {}
+
+/// Steamworks `UGCQueryHandle_t`
+public struct UGCQueryHandle: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
+}
+
+extension UGCQueryHandle: SteamTypeAlias {}
+
+/// Steamworks `UGCUpdateHandle_t`
+public struct UGCUpdateHandle: Hashable {
+    public let value: UInt64
+    public init(_ value: UInt64) { self.value = value }
+}
+
+extension UGCUpdateHandle: SteamTypeAlias {}

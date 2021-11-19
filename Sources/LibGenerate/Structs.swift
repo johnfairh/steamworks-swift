@@ -21,6 +21,7 @@ struct Structs {
     func generate() throws {
         let swiftContents = metadata.db.structs.values
             .filter(\.shouldGenerate)
+            .sorted(by: { $0.name < $1.name })
             .map(\.generateSwift)
             .joined(separator: "\n\n")
         try io.write(fileName: "Structs.swift", contents: swiftContents)

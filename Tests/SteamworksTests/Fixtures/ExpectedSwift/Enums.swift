@@ -8,6 +8,19 @@
 
 @_implementationOnly import CSteamworks
 
+/// Steamworks `EChatEntryType`
+public enum ChatEntryType: UInt32 {
+    /// Steamworks `k_EChatEntryTypeInvalid`
+    case invalid = 0
+    /// Steamworks `k_EChatEntryTypeChatMsg`
+    case chatMsg = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
+}
+
+extension EChatEntryType: RawConvertible { typealias From = ChatEntryType }
+extension ChatEntryType: EnumWithUnrepresented { typealias From = EChatEntryType }
+
 /// Steamworks `ESteamEnum`
 public enum SteamEnum: Int32 {
     /// Steamworks `k_ESteamEnumIPv6`
@@ -47,16 +60,3 @@ public struct SteamMiscFlags: OptionSet {
 
 extension ESteamMiscFlags: RawConvertible { typealias From = SteamMiscFlags }
 extension SteamMiscFlags: RawConvertible { typealias From = ESteamMiscFlags }
-
-/// Steamworks `EChatEntryType`
-public enum ChatEntryType: UInt32 {
-    /// Steamworks `k_EChatEntryTypeInvalid`
-    case invalid = 0
-    /// Steamworks `k_EChatEntryTypeChatMsg`
-    case chatMsg = 1
-    /// Some undocumented value
-    case unrepresentedInSwift = 2
-}
-
-extension EChatEntryType: RawConvertible { typealias From = ChatEntryType }
-extension ChatEntryType: EnumWithUnrepresented { typealias From = EChatEntryType }

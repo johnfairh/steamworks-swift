@@ -20,7 +20,7 @@ struct Version {
         let version = try parseVersion(readme: readme)
 
         let contents = """
-        // MARK: SDK Version
+        // MARK: SDK version
 
         extension SteamBaseAPI {
             /// The version string of the Steamworks SDK that the Steamworks

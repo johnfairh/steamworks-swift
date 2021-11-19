@@ -43,15 +43,17 @@ struct Callbacks {
     }
 
     func generate() throws {
-        let callbacks = callbackStructs
+        let callbacks = callbackStructs.sorted(by: { $0.name < $1.name })
         let contents = """
                        public extension SteamBaseAPI {
-                           // MARK: Callback registration
+                           // MARK: Callbacks
+
                        \(callbacks.map(\.callbackSyncLines).joined(separator: "\n\n"))
                        }
 
                        public extension SteamBaseAPI {
-                           // MARK: AsyncStream callback registration
+                           // MARK: `AsyncStream` callbacks
+
                        \(callbacks.map(\.callbackAsyncLines).joined(separator: "\n\n"))
                        }
                        """

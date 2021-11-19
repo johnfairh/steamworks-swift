@@ -4,16 +4,13 @@ copyright: Distributed under the MIT license.  Maintained by [John Fairhurst](ma
 readme: README.md
 products:
   - docs
-  - docset
-  - unresolved-json
-  - undocumented-json
 code_host: github
 code_host_url: https://github.com/johnfairh/swift-steamworks
 code_host_file_url: https://github.com/johnfairh/swift-steamworks/blob/main
 clean: true
 sdk: macosx
 theme: fw2020
-deployment_url: https://johnfairh.github.io/swift-steamworks/
+  #deployment_url: https://johnfairh.github.io/swift-steamworks/
 build_tool: spm
 modules: Steamworks
 build_tool_arguments:
@@ -23,17 +20,29 @@ title: Steamworks v0.1.0
 module_version: 0.1.0
 topic_style: source-order-defs
 hide_coverage: true
+undocumented_text: ""
 custom_groups:
   - name: API clients
     children:
       - SteamBaseAPI
       - SteamAPI
       - SteamGameServerAPI
-  - name: Steamworks modules
+  - name: Steamworks interfaces
     children:
       - SteamFriends
-  - name: Interface types
+      - SteamUser [SteamUser (stub)]
+      - SteamUserStats [SteamUserStats (stub)]
+  - name: Typealiases
     children:
-      - FriendsGetFollowerCount
-      - PersonaStateChange
-      - SteamServersConnected
+      - filepath /Typedefs.swift/
+  - name: Enumerations
+    children:
+      - filepath /Enums.swift/
+  - name: Structures
+    children:
+      - filepath /Structs.swift/
+      - SteamID
+      - GameID
+  - name: Constants
+    children:
+      - SteamConstants

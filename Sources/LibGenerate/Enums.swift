@@ -20,7 +20,10 @@ struct Enums {
     }
 
     func generate() throws {
-        let contents = metadata.db.enums.values.map(\.generated).joined(separator: "\n\n")
+        let contents = metadata.db.enums.values
+            .sorted(by: { $0.name < $1.name })
+            .map(\.generated)
+            .joined(separator: "\n\n")
         try io.write(fileName: "Enums.swift", contents: contents)
     }
 }

@@ -25,7 +25,7 @@ import Logging
 /// are available from the docs and use the `STEAM_CALLBACK()` macro to connect your method.
 /// In this Swift version you register using a run-time call to one of the [registration methods](#tpc-callback-registration)
 /// such as `onSteamServersConnected(...)`.  If you register after creating your API instance
-/// and before mkaing your first call to `runCallbacks()` then your code is equivalent to the C++
+/// and before making your first call to `runCallbacks()` then your code is equivalent to the C++
 /// version.
 public class SteamBaseAPI: @unchecked Sendable {
     /// Type-erased callresult client closure, expose this to other files because of code gen

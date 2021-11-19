@@ -9,7 +9,8 @@
 @_implementationOnly import CSteamworks
 
 public extension SteamBaseAPI {
-    // MARK: Callback registration
+    // MARK: Callbacks
+
     /// Registration for Steamworks `IPCFailure_t` callback
     func onIPCFailure(_ client: @escaping (IPCFailure) -> Void) {
         callbacks.add(callbackID: CallbackID(117), rawClient: SteamBaseAPI.makeRaw(client))
@@ -17,7 +18,8 @@ public extension SteamBaseAPI {
 }
 
 public extension SteamBaseAPI {
-    // MARK: AsyncStream callback registration
+    // MARK: `AsyncStream` callbacks
+
     /// Async stream of Steamworks `IPCFailure_t` callbacks
     var ipcFailure: AsyncStream<IPCFailure> {
         AsyncStream { onIPCFailure($0.yield0) }

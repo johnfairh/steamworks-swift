@@ -27,6 +27,7 @@ struct Typedefs {
     func generate() throws {
         let contents = metadata.db.typedefs.values
             .filter(\.shouldGenerate)
+            .sorted(by: { $0.typedef < $1.typedef })
             .map(\.generate)
             .joined(separator: "\n\n")
         try io.write(fileName: "Typedefs.swift", contents: contents)
