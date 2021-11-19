@@ -92,6 +92,8 @@ struct SteamJSON: Codable {
 ///
 /// Features:
 /// * Constants: Fix value to something Swift understands
+/// * Constants: Correct the type
+/// * Constants: ignore constants
 /// * Enums: use OptionSet or Enum in Swift
 /// * Enums: value prefix to strip -- Steam has a clear convention for this but breaks it in
 ///   various ways that we have to hard-code.
@@ -111,6 +113,7 @@ struct PatchJSON: Codable {
         let type: String? // patch C type
     }
     let consts: [String: Const] // constname key
+    let consts_to_ignore: [String]
 
     struct Enum: Codable {
         let is_set: Bool? // values are bit-sig, model as OptionSet
@@ -171,7 +174,7 @@ struct MetadataDB {
         }
     }
 
-    /// Indexed by `constname`, order from original file
+    /// Indexed by `constname`, order from original file, filtered by patch exclude-list
     let consts: OrderedDictionary<String, Const>
 
     final class Enum {
@@ -333,8 +336,13 @@ struct MetadataDB {
     let typedefs: OrderedDictionary<String, Typedef>
 
     init(base: SteamJSON, patch: PatchJSON) {
-        consts = .init(uniqueKeysWithValues: base.consts.map {
-            ($0.constname, Const(base: $0, patch: patch.consts[$0.constname]))
+        let ignoredConsts = Set(patch.consts_to_ignore)
+        consts = .init(uniqueKeysWithValues: base.consts.compactMap {
+            let name = $0.constname
+            guard !ignoredConsts.contains(name) else {
+                return nil
+            }
+            return (name, Const(base: $0, patch: patch.consts[name]))
         })
 
         enums = .init(uniqueKeysWithValues: base.enums.map {

@@ -11,6 +11,10 @@
       "type": "HHTMLBrowser"
     }
   },
+  "consts_to_ignore": [
+    "k_cFriendsGroupLimit",
+    "k_cEnumerateFollowersMax",
+  ],
   "enums": {
     "AudioPlayback_Status": {
       "prefix": "AudioPlayback"

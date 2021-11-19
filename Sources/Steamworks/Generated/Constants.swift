@@ -25,12 +25,6 @@ public enum SteamConstants {
     /// Steamworks `k_cchMaxFriendsGroupName`
     public static let maxFriendsGroupName = Int(64)
 
-    /// Steamworks `k_cFriendsGroupLimit`
-    public static let friendsGroupLimit = Int(100)
-
-    /// Steamworks `k_cEnumerateFollowersMax`
-    public static let enumerateFollowersMax = Int(50)
-
     /// Steamworks `k_cubChatMetadataMax`
     public static let chatMetadataMax = Int(8192)
 
