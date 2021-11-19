@@ -325,7 +325,8 @@ struct SwiftMethod {
     }
 
     func syncDecl(comment: String) -> [String] {
-        [comment, declLine] + bodyLines.indented(1) + ["}"]
+        let attrLine = db.discardableResult ? ["@discardableResult"] : []
+        return [comment] + attrLine + [declLine] + bodyLines.indented(1) + ["}"]
     }
 
     func asyncDecl(comment: String) -> [String] {

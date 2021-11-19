@@ -443,6 +443,7 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::SetListenForFriendsMessages()`
+    @discardableResult
     func setListenForFriendsMessages(interceptEnabled: Bool) -> Bool {
         SteamAPI_ISteamFriends_SetListenForFriendsMessages(interface, interceptEnabled)
     }

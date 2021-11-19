@@ -100,6 +100,7 @@ struct SteamJSON: Codable {
 /// * Methods: correct the return type
 /// * Methods: specify out-param behaviour when API call fails
 /// * Methods: correct a parameter type
+/// * Methods: set discardableResult
 /// * Structs: correct a field type (steam or swift)
 /// * Structs: ignore field or entire struct
 /// * Structs: correct the steam name
@@ -126,6 +127,7 @@ struct PatchJSON: Codable {
     struct Method: Codable {
         let returntype: String? // patch returntype (steam type)
         let out_param_iff_rc: String? // only copyback out-params if method rc matches
+        let discardable_result: Bool? // set that attr
 
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
@@ -209,6 +211,7 @@ struct MetadataDB {
         let flatName: String
         let callResult: String?
         let callback: String?
+        let discardableResult: Bool
 
         struct Param: Codable {
             let name: String
@@ -247,6 +250,7 @@ struct MetadataDB {
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
             returnType = patch?.returntype ?? base.returntype
             outParamIffRc = patch?.out_param_iff_rc
+            discardableResult = patch?.discardable_result ?? false
         }
     }
 

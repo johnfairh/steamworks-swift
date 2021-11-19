@@ -140,6 +140,9 @@
           "type": "EFriendFlags"
         }
       }
+    },
+    "SteamAPI_ISteamFriends_SetListenForFriendsMessages": {
+      "discardable_result": true
     }
   },
   "structs": {
