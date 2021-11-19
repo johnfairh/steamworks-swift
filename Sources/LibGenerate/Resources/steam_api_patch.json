@@ -128,6 +128,12 @@
         }
       }
     },
+    "SteamAPI_ISteamFriends_GetFriendsGroupName": {
+      "returntype": "String?"
+    },
+    "SteamAPI_ISteamFriends_GetPlayerNickname": {
+      "returntype": "String?"
+    },
     "SteamAPI_ISteamFriends_HasFriend": {
       "params": {
         "iFriendFlags": {

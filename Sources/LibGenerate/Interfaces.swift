@@ -41,7 +41,7 @@ extension MetadataDB.Interface {
                           public extension \(swiftName) {
 
                           """
-        let methods = methods.values.map {
+        let methods = methods.values.sorted(by: { $0.name < $1.name }).map {
             $0.generate(context: name)
         }
         return declaration + methods.joined(separator: "\n\n") + "\n}"
@@ -365,11 +365,5 @@ extension MetadataDB.Method {
         let swiftMethod = SwiftMethod(self)
         let comment = "/// Steamworks `\(context)::\(name)()`"
         return swiftMethod.decl(comment: comment).indented(1).joined(separator: "\n")
-    }
-}
-
-extension String {
-    func asCast(to: String?) -> String {
-        to.flatMap { "\($0)(\(self))" } ?? self
     }
 }

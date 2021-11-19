@@ -10,32 +10,9 @@
 
 // MARK: Interface methods
 public extension SteamFriends {
-    /// Steamworks `ISteamFriends::GetUserRestrictions()`
-    var userRestrictions: UserRestriction {
-        UserRestriction(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
-    }
-
     /// Steamworks `ISteamFriends::ClearRichPresence()`
     func clearRichPresence() {
         SteamAPI_ISteamFriends_ClearRichPresence(interface)
-    }
-
-    /// Steamworks `ISteamFriends::SetPersonaName()`
-    func setPersonaName(personaName: String, completion: @escaping (SetPersonaNameResponse?) -> Void) {
-        let rc = SteamAPI_ISteamFriends_SetPersonaName(interface, personaName)
-        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
-    }
-
-    /// Steamworks `ISteamFriends::SetPersonaName()`
-    func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
-        await withUnsafeContinuation {
-            setPersonaName(personaName: personaName, completion: $0.resume)
-        }
-    }
-
-    /// Steamworks `ISteamFriends::GetPersonaState()`
-    var personaState: PersonaState {
-        PersonaState(SteamAPI_ISteamFriends_GetPersonaState(interface))
     }
 
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
@@ -64,5 +41,28 @@ public extension SteamFriends {
     func getFriendsGroupMembersListR(friendsGroupID: FriendsGroupID, someInts: [Int]) -> Bool {
         var tmp_someInts = someInts.map { Int32($0) }
         return SteamAPI_ISteamFriends_GetFriendsGroupMembersListR(interface, FriendsGroupID_t(friendsGroupID), &tmp_someInts, Int32(someInts.count))
+    }
+
+    /// Steamworks `ISteamFriends::GetPersonaState()`
+    var personaState: PersonaState {
+        PersonaState(SteamAPI_ISteamFriends_GetPersonaState(interface))
+    }
+
+    /// Steamworks `ISteamFriends::GetUserRestrictions()`
+    var userRestrictions: UserRestriction {
+        UserRestriction(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
+    }
+
+    /// Steamworks `ISteamFriends::SetPersonaName()`
+    func setPersonaName(personaName: String, completion: @escaping (SetPersonaNameResponse?) -> Void) {
+        let rc = SteamAPI_ISteamFriends_SetPersonaName(interface, personaName)
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
+    }
+
+    /// Steamworks `ISteamFriends::SetPersonaName()`
+    func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
+        await withUnsafeContinuation {
+            setPersonaName(personaName: personaName, completion: $0.resume)
+        }
     }
 }

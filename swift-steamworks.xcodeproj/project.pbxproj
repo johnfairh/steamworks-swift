@@ -264,12 +264,12 @@
 			isa = PBXGroup;
 			children = (
 				020860CF2730493300725122 /* SteamBaseAPI+Version.swift */,
+				02D309E7272813CF00DE64F0 /* SteamBaseAPI+Callbacks.swift */,
 				020860F7273FED5A00725122 /* Typedefs.swift */,
 				020861032746D27000725122 /* Constants.swift */,
 				020860E02734054400725122 /* Enums.swift */,
 				02D309E92728145E00DE64F0 /* Structs.swift */,
 				020860E72735562A00725122 /* SteamFriends+Methods.swift */,
-				02D309E7272813CF00DE64F0 /* SteamBaseAPI+Callbacks.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";

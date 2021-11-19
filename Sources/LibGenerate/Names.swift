@@ -34,6 +34,17 @@ extension String {
         replacingOccurrences(of: "::", with: ".")
     }
 
+    /// Swift expression for 'casting' from this string, itself a Swift expression, to the given type
+    func asCast(to: String?) -> String {
+        guard let to = to else {
+            return self
+        }
+        guard to.hasSuffix("?") else {
+            return "\(to)(\(self))"
+        }
+        return "\(self).map { \(to.dropLast())($0) }"
+    }
+
     /// Decompose a C fixed-size array into its pieces
     var parseCArray: (String, Int)? {
         re_match(#"^(.*) \[(.+)\]$"#).flatMap { ($0[1], Int($0[2])!) }

@@ -93,6 +93,8 @@ final class Client {
         print("state = \(state)")
         let friendCount = api.friends.getFriendCount(friendFlags: .all)
         print("friendCount = \(friendCount)")
+        let nickname = api.friends.getPlayerNickname(player: SteamID(22))
+        print("nickname = \(nickname.map { $0 } ?? "nil")")
         endTest()
     }
 

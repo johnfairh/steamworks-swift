@@ -104,4 +104,10 @@ class TestNames: XCTestCase {
             XCTAssertEqual(steam.asSwiftConstantName, swift)
         }
     }
+
+    func testCasts() {
+        XCTAssertEqual("expr", "expr".asCast(to: nil))
+        XCTAssertEqual("T(expr)", "expr".asCast(to: "T"))
+        XCTAssertEqual("expr.map { T($0) }", "expr".asCast(to: "T?"))
+    }
 }
