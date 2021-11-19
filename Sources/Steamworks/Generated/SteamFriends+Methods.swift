@@ -55,27 +55,27 @@ public extension SteamFriends {
         SteamAPI_ISteamFriends_CloseClanChatWindowInSteam(interface, UInt64(clanChat))
     }
 
-    /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`
+    /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`, callback
     func downloadClanActivityCounts(clans: [SteamID], completion: @escaping (DownloadClanActivityCountsResult?) -> Void) {
         var tmp_clans = clans.map { CSteamID($0) }
         let rc = SteamAPI_ISteamFriends_DownloadClanActivityCounts(interface, &tmp_clans, Int32(clans.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
-    /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`
+    /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`, async
     func downloadClanActivityCounts(clans: [SteamID]) async -> DownloadClanActivityCountsResult? {
         await withUnsafeContinuation {
             downloadClanActivityCounts(clans: clans, completion: $0.resume)
         }
     }
 
-    /// Steamworks `ISteamFriends::EnumerateFollowingList()`
+    /// Steamworks `ISteamFriends::EnumerateFollowingList()`, callback
     func enumerateFollowingList(startIndex: Int, completion: @escaping (FriendsEnumerateFollowingList?) -> Void) {
         let rc = SteamAPI_ISteamFriends_EnumerateFollowingList(interface, uint32(startIndex))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
-    /// Steamworks `ISteamFriends::EnumerateFollowingList()`
+    /// Steamworks `ISteamFriends::EnumerateFollowingList()`, async
     func enumerateFollowingList(startIndex: Int) async -> FriendsEnumerateFollowingList? {
         await withUnsafeContinuation {
             enumerateFollowingList(startIndex: startIndex, completion: $0.resume)
@@ -159,13 +159,13 @@ public extension SteamFriends {
         Int(SteamAPI_ISteamFriends_GetCoplayFriendCount(interface))
     }
 
-    /// Steamworks `ISteamFriends::GetFollowerCount()`
+    /// Steamworks `ISteamFriends::GetFollowerCount()`, callback
     func getFollowerCount(steamID: SteamID, completion: @escaping (FriendsGetFollowerCount?) -> Void) {
         let rc = SteamAPI_ISteamFriends_GetFollowerCount(interface, UInt64(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
-    /// Steamworks `ISteamFriends::GetFollowerCount()`
+    /// Steamworks `ISteamFriends::GetFollowerCount()`, async
     func getFollowerCount(steamID: SteamID) async -> FriendsGetFollowerCount? {
         await withUnsafeContinuation {
             getFollowerCount(steamID: steamID, completion: $0.resume)
@@ -358,13 +358,13 @@ public extension SteamFriends {
         SteamAPI_ISteamFriends_IsClanPublic(interface, UInt64(clan))
     }
 
-    /// Steamworks `ISteamFriends::IsFollowing()`
+    /// Steamworks `ISteamFriends::IsFollowing()`, callback
     func isFollowing(steamID: SteamID, completion: @escaping (FriendsIsFollowing?) -> Void) {
         let rc = SteamAPI_ISteamFriends_IsFollowing(interface, UInt64(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
-    /// Steamworks `ISteamFriends::IsFollowing()`
+    /// Steamworks `ISteamFriends::IsFollowing()`, async
     func isFollowing(steamID: SteamID) async -> FriendsIsFollowing? {
         await withUnsafeContinuation {
             isFollowing(steamID: steamID, completion: $0.resume)
@@ -376,13 +376,13 @@ public extension SteamFriends {
         SteamAPI_ISteamFriends_IsUserInSource(interface, UInt64(user), UInt64(source))
     }
 
-    /// Steamworks `ISteamFriends::JoinClanChatRoom()`
+    /// Steamworks `ISteamFriends::JoinClanChatRoom()`, callback
     func joinClanChatRoom(clan: SteamID, completion: @escaping (JoinClanChatRoomCompletionResult?) -> Void) {
         let rc = SteamAPI_ISteamFriends_JoinClanChatRoom(interface, UInt64(clan))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
-    /// Steamworks `ISteamFriends::JoinClanChatRoom()`
+    /// Steamworks `ISteamFriends::JoinClanChatRoom()`, async
     func joinClanChatRoom(clan: SteamID) async -> JoinClanChatRoomCompletionResult? {
         await withUnsafeContinuation {
             joinClanChatRoom(clan: clan, completion: $0.resume)
@@ -409,13 +409,13 @@ public extension SteamFriends {
         SteamAPI_ISteamFriends_ReplyToFriendMessage(interface, UInt64(friend), msgToSend)
     }
 
-    /// Steamworks `ISteamFriends::RequestClanOfficerList()`
+    /// Steamworks `ISteamFriends::RequestClanOfficerList()`, callback
     func requestClanOfficerList(clan: SteamID, completion: @escaping (ClanOfficerListResponse?) -> Void) {
         let rc = SteamAPI_ISteamFriends_RequestClanOfficerList(interface, UInt64(clan))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
-    /// Steamworks `ISteamFriends::RequestClanOfficerList()`
+    /// Steamworks `ISteamFriends::RequestClanOfficerList()`, async
     func requestClanOfficerList(clan: SteamID) async -> ClanOfficerListResponse? {
         await withUnsafeContinuation {
             requestClanOfficerList(clan: clan, completion: $0.resume)
@@ -448,13 +448,13 @@ public extension SteamFriends {
         SteamAPI_ISteamFriends_SetListenForFriendsMessages(interface, interceptEnabled)
     }
 
-    /// Steamworks `ISteamFriends::SetPersonaName()`
+    /// Steamworks `ISteamFriends::SetPersonaName()`, callback
     func setPersonaName(personaName: String, completion: @escaping (SetPersonaNameResponse?) -> Void) {
         let rc = SteamAPI_ISteamFriends_SetPersonaName(interface, personaName)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
-    /// Steamworks `ISteamFriends::SetPersonaName()`
+    /// Steamworks `ISteamFriends::SetPersonaName()`, async
     func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
         await withUnsafeContinuation {
             setPersonaName(personaName: personaName, completion: $0.resume)

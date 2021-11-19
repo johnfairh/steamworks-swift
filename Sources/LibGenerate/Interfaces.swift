@@ -217,6 +217,13 @@ struct SwiftMethod {
         case callReturn(String) // 0+ args, async return value
     }
 
+    var callReturnType: String? {
+        guard case let .callReturn(type) = style else {
+            return nil
+        }
+        return type
+    }
+
     let style: Style
     let params: [SwiftParam]
 
@@ -324,18 +331,19 @@ struct SwiftMethod {
         params.preCallLines + callLines + postCallLines + finalBodyLines
     }
 
-    func syncDecl(comment: String) -> [String] {
+    func syncDecl(comment baseComment: String) -> [String] {
+        let comment = callReturnType.flatMap { _ in "\(baseComment), callback" } ?? baseComment
         let attrLine = db.discardableResult ? ["@discardableResult"] : []
         return [comment] + attrLine + [declLine] + bodyLines.indented(1) + ["}"]
     }
 
     func asyncDecl(comment: String) -> [String] {
-        guard case let .callReturn(type) = style else {
+        guard let type = callReturnType else {
             return []
         }
         return [
             "",
-            "\(comment)",
+            "\(comment), async",
             "func \(db.funcName)(\(params.functionParams)) async -> \(type)? {",
             "    await withUnsafeContinuation {",
             "        \(db.funcName)(\(params.asyncForwardingParams), completion: $0.resume)",

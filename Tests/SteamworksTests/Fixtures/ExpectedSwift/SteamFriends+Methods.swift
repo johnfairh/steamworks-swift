@@ -53,13 +53,13 @@ public extension SteamFriends {
         UserRestriction(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
     }
 
-    /// Steamworks `ISteamFriends::SetPersonaName()`
+    /// Steamworks `ISteamFriends::SetPersonaName()`, callback
     func setPersonaName(personaName: String, completion: @escaping (SetPersonaNameResponse?) -> Void) {
         let rc = SteamAPI_ISteamFriends_SetPersonaName(interface, personaName)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
-    /// Steamworks `ISteamFriends::SetPersonaName()`
+    /// Steamworks `ISteamFriends::SetPersonaName()`, async
     func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
         await withUnsafeContinuation {
             setPersonaName(personaName: personaName, completion: $0.resume)

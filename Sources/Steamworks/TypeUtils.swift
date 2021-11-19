@@ -15,8 +15,8 @@ typealias CallbackID = Int32
 // MARK: Strings
 
 extension String {
-    /// For converting strings received from Steamworks.  We promote `nullptr` to empty string for
-    /// ease, this may be wrong though for some API or other, tbd.
+    /// For converting strings received from Steamworks.  We promote `nullptr` to empty string; where
+    /// Steamworks specifies a string may legitimately be NULL we use a `String?` instead.
     init(_ cString: UnsafePointer<CChar>?) {
         if let cString = cString {
             self.init(cString: cString)
@@ -28,9 +28,8 @@ extension String {
 
 // MARK: Typedefs
 
-// Conversion of Swift Types to Steam types, for passing in typedefs
-// to Steamworks
-
+/// Conversion of Swift Types to Steam types, for passing in typedefs
+/// to Steamworks.
 protocol SteamTypeAlias {
     associatedtype SwiftType
     var value: SwiftType { get }

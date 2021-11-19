@@ -1,6 +1,9 @@
 {
   "consts": {
   },
+  "consts_to_ignore": [
+      "BadConst"
+  ],
   "enums": {
     "ESteamMiscFlags": {
       "is_set": true
