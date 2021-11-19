@@ -55,7 +55,7 @@ struct Callbacks {
                        \(callbacks.map(\.callbackAsyncLines).joined(separator: "\n\n"))
                        }
                        """
-        try io.write(fileName: "Callbacks.swift", contents: contents)
+        try io.write(fileName: "SteamBaseAPI+Callbacks.swift", contents: contents)
     }
 }
 
@@ -75,9 +75,7 @@ extension MetadataDB.Struct {
         return """
                    /// Async stream of Steamworks `\(name)` callbacks
                    var \(swiftTypeName.asSwiftIdentifier): AsyncStream<\(swiftTypeName)> {
-                       AsyncStream { continuation in
-                           on\(swiftTypeName) { continuation.yield($0) }
-                       }
+                       AsyncStream { on\(swiftTypeName)($0.yield0) }
                    }
                """
     }

@@ -1,5 +1,5 @@
 //
-//  Callbacks.swift
+//  SteamBaseAPI+Callbacks.swift
 //  Steamworks
 //
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
@@ -20,8 +20,6 @@ public extension SteamBaseAPI {
     // MARK: AsyncStream callback registration
     /// Async stream of Steamworks `IPCFailure_t` callbacks
     var ipcFailure: AsyncStream<IPCFailure> {
-        AsyncStream { continuation in
-            onIPCFailure { continuation.yield($0) }
-        }
+        AsyncStream { onIPCFailure($0.yield0) }
     }
 }

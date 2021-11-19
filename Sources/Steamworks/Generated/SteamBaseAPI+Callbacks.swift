@@ -1,5 +1,5 @@
 //
-//  Callbacks.swift
+//  SteamBaseAPI+Callbacks.swift
 //  Steamworks
 //
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
@@ -730,1002 +730,716 @@ public extension SteamBaseAPI {
     // MARK: AsyncStream callback registration
     /// Async stream of Steamworks `SteamServersConnected_t` callbacks
     var steamServersConnected: AsyncStream<SteamServersConnected> {
-        AsyncStream { continuation in
-            onSteamServersConnected { continuation.yield($0) }
-        }
+        AsyncStream { onSteamServersConnected($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamServerConnectFailure_t` callbacks
     var steamServerConnectFailure: AsyncStream<SteamServerConnectFailure> {
-        AsyncStream { continuation in
-            onSteamServerConnectFailure { continuation.yield($0) }
-        }
+        AsyncStream { onSteamServerConnectFailure($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamServersDisconnected_t` callbacks
     var steamServersDisconnected: AsyncStream<SteamServersDisconnected> {
-        AsyncStream { continuation in
-            onSteamServersDisconnected { continuation.yield($0) }
-        }
+        AsyncStream { onSteamServersDisconnected($0.yield0) }
     }
 
     /// Async stream of Steamworks `ClientGameServerDeny_t` callbacks
     var clientGameServerDeny: AsyncStream<ClientGameServerDeny> {
-        AsyncStream { continuation in
-            onClientGameServerDeny { continuation.yield($0) }
-        }
+        AsyncStream { onClientGameServerDeny($0.yield0) }
     }
 
     /// Async stream of Steamworks `IPCFailure_t` callbacks
     var ipcFailure: AsyncStream<IPCFailure> {
-        AsyncStream { continuation in
-            onIPCFailure { continuation.yield($0) }
-        }
+        AsyncStream { onIPCFailure($0.yield0) }
     }
 
     /// Async stream of Steamworks `LicensesUpdated_t` callbacks
     var licensesUpdated: AsyncStream<LicensesUpdated> {
-        AsyncStream { continuation in
-            onLicensesUpdated { continuation.yield($0) }
-        }
+        AsyncStream { onLicensesUpdated($0.yield0) }
     }
 
     /// Async stream of Steamworks `ValidateAuthTicketResponse_t` callbacks
     var validateAuthTicketResponse: AsyncStream<ValidateAuthTicketResponse> {
-        AsyncStream { continuation in
-            onValidateAuthTicketResponse { continuation.yield($0) }
-        }
+        AsyncStream { onValidateAuthTicketResponse($0.yield0) }
     }
 
     /// Async stream of Steamworks `MicroTxnAuthorizationResponse_t` callbacks
     var microTxnAuthorizationResponse: AsyncStream<MicroTxnAuthorizationResponse> {
-        AsyncStream { continuation in
-            onMicroTxnAuthorizationResponse { continuation.yield($0) }
-        }
+        AsyncStream { onMicroTxnAuthorizationResponse($0.yield0) }
     }
 
     /// Async stream of Steamworks `GetAuthSessionTicketResponse_t` callbacks
     var getAuthSessionTicketResponse: AsyncStream<GetAuthSessionTicketResponse> {
-        AsyncStream { continuation in
-            onGetAuthSessionTicketResponse { continuation.yield($0) }
-        }
+        AsyncStream { onGetAuthSessionTicketResponse($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameWebCallback_t` callbacks
     var gameWebCallback: AsyncStream<GameWebCallback> {
-        AsyncStream { continuation in
-            onGameWebCallback { continuation.yield($0) }
-        }
+        AsyncStream { onGameWebCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `PersonaStateChange_t` callbacks
     var personaStateChange: AsyncStream<PersonaStateChange> {
-        AsyncStream { continuation in
-            onPersonaStateChange { continuation.yield($0) }
-        }
+        AsyncStream { onPersonaStateChange($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameOverlayActivated_t` callbacks
     var gameOverlayActivated: AsyncStream<GameOverlayActivated> {
-        AsyncStream { continuation in
-            onGameOverlayActivated { continuation.yield($0) }
-        }
+        AsyncStream { onGameOverlayActivated($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameServerChangeRequested_t` callbacks
     var gameServerChangeRequested: AsyncStream<GameServerChangeRequested> {
-        AsyncStream { continuation in
-            onGameServerChangeRequested { continuation.yield($0) }
-        }
+        AsyncStream { onGameServerChangeRequested($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameLobbyJoinRequested_t` callbacks
     var gameLobbyJoinRequested: AsyncStream<GameLobbyJoinRequested> {
-        AsyncStream { continuation in
-            onGameLobbyJoinRequested { continuation.yield($0) }
-        }
+        AsyncStream { onGameLobbyJoinRequested($0.yield0) }
     }
 
     /// Async stream of Steamworks `AvatarImageLoaded_t` callbacks
     var avatarImageLoaded: AsyncStream<AvatarImageLoaded> {
-        AsyncStream { continuation in
-            onAvatarImageLoaded { continuation.yield($0) }
-        }
+        AsyncStream { onAvatarImageLoaded($0.yield0) }
     }
 
     /// Async stream of Steamworks `FriendRichPresenceUpdate_t` callbacks
     var friendRichPresenceUpdate: AsyncStream<FriendRichPresenceUpdate> {
-        AsyncStream { continuation in
-            onFriendRichPresenceUpdate { continuation.yield($0) }
-        }
+        AsyncStream { onFriendRichPresenceUpdate($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameRichPresenceJoinRequested_t` callbacks
     var gameRichPresenceJoinRequested: AsyncStream<GameRichPresenceJoinRequested> {
-        AsyncStream { continuation in
-            onGameRichPresenceJoinRequested { continuation.yield($0) }
-        }
+        AsyncStream { onGameRichPresenceJoinRequested($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameConnectedClanChatMsg_t` callbacks
     var gameConnectedClanChatMsg: AsyncStream<GameConnectedClanChatMsg> {
-        AsyncStream { continuation in
-            onGameConnectedClanChatMsg { continuation.yield($0) }
-        }
+        AsyncStream { onGameConnectedClanChatMsg($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameConnectedChatJoin_t` callbacks
     var gameConnectedChatJoin: AsyncStream<GameConnectedChatJoin> {
-        AsyncStream { continuation in
-            onGameConnectedChatJoin { continuation.yield($0) }
-        }
+        AsyncStream { onGameConnectedChatJoin($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameConnectedChatLeave_t` callbacks
     var gameConnectedChatLeave: AsyncStream<GameConnectedChatLeave> {
-        AsyncStream { continuation in
-            onGameConnectedChatLeave { continuation.yield($0) }
-        }
+        AsyncStream { onGameConnectedChatLeave($0.yield0) }
     }
 
     /// Async stream of Steamworks `GameConnectedFriendChatMsg_t` callbacks
     var gameConnectedFriendChatMsg: AsyncStream<GameConnectedFriendChatMsg> {
-        AsyncStream { continuation in
-            onGameConnectedFriendChatMsg { continuation.yield($0) }
-        }
+        AsyncStream { onGameConnectedFriendChatMsg($0.yield0) }
     }
 
     /// Async stream of Steamworks `UnreadChatMessagesChanged_t` callbacks
     var unreadChatMessagesChanged: AsyncStream<UnreadChatMessagesChanged> {
-        AsyncStream { continuation in
-            onUnreadChatMessagesChanged { continuation.yield($0) }
-        }
+        AsyncStream { onUnreadChatMessagesChanged($0.yield0) }
     }
 
     /// Async stream of Steamworks `OverlayBrowserProtocolNavigation_t` callbacks
     var overlayBrowserProtocolNavigation: AsyncStream<OverlayBrowserProtocolNavigation> {
-        AsyncStream { continuation in
-            onOverlayBrowserProtocolNavigation { continuation.yield($0) }
-        }
+        AsyncStream { onOverlayBrowserProtocolNavigation($0.yield0) }
     }
 
     /// Async stream of Steamworks `IPCountry_t` callbacks
     var ipCountry: AsyncStream<IPCountry> {
-        AsyncStream { continuation in
-            onIPCountry { continuation.yield($0) }
-        }
+        AsyncStream { onIPCountry($0.yield0) }
     }
 
     /// Async stream of Steamworks `LowBatteryPower_t` callbacks
     var lowBatteryPower: AsyncStream<LowBatteryPower> {
-        AsyncStream { continuation in
-            onLowBatteryPower { continuation.yield($0) }
-        }
+        AsyncStream { onLowBatteryPower($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamAPICallCompleted_t` callbacks
     var steamAPICallCompleted: AsyncStream<SteamAPICallCompleted> {
-        AsyncStream { continuation in
-            onSteamAPICallCompleted { continuation.yield($0) }
-        }
+        AsyncStream { onSteamAPICallCompleted($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamShutdown_t` callbacks
     var steamShutdown: AsyncStream<SteamShutdown> {
-        AsyncStream { continuation in
-            onSteamShutdown { continuation.yield($0) }
-        }
+        AsyncStream { onSteamShutdown($0.yield0) }
     }
 
     /// Async stream of Steamworks `GamepadTextInputDismissed_t` callbacks
     var gamepadTextInputDismissed: AsyncStream<GamepadTextInputDismissed> {
-        AsyncStream { continuation in
-            onGamepadTextInputDismissed { continuation.yield($0) }
-        }
+        AsyncStream { onGamepadTextInputDismissed($0.yield0) }
     }
 
     /// Async stream of Steamworks `AppResumingFromSuspend_t` callbacks
     var appResumingFromSuspend: AsyncStream<AppResumingFromSuspend> {
-        AsyncStream { continuation in
-            onAppResumingFromSuspend { continuation.yield($0) }
-        }
+        AsyncStream { onAppResumingFromSuspend($0.yield0) }
     }
 
     /// Async stream of Steamworks `FloatingGamepadTextInputDismissed_t` callbacks
     var floatingGamepadTextInputDismissed: AsyncStream<FloatingGamepadTextInputDismissed> {
-        AsyncStream { continuation in
-            onFloatingGamepadTextInputDismissed { continuation.yield($0) }
-        }
+        AsyncStream { onFloatingGamepadTextInputDismissed($0.yield0) }
     }
 
     /// Async stream of Steamworks `FavoritesListChanged_t` callbacks
     var favoritesListChanged: AsyncStream<FavoritesListChanged> {
-        AsyncStream { continuation in
-            onFavoritesListChanged { continuation.yield($0) }
-        }
+        AsyncStream { onFavoritesListChanged($0.yield0) }
     }
 
     /// Async stream of Steamworks `LobbyInvite_t` callbacks
     var lobbyInvite: AsyncStream<LobbyInvite> {
-        AsyncStream { continuation in
-            onLobbyInvite { continuation.yield($0) }
-        }
+        AsyncStream { onLobbyInvite($0.yield0) }
     }
 
     /// Async stream of Steamworks `LobbyDataUpdate_t` callbacks
     var lobbyDataUpdate: AsyncStream<LobbyDataUpdate> {
-        AsyncStream { continuation in
-            onLobbyDataUpdate { continuation.yield($0) }
-        }
+        AsyncStream { onLobbyDataUpdate($0.yield0) }
     }
 
     /// Async stream of Steamworks `LobbyChatUpdate_t` callbacks
     var lobbyChatUpdate: AsyncStream<LobbyChatUpdate> {
-        AsyncStream { continuation in
-            onLobbyChatUpdate { continuation.yield($0) }
-        }
+        AsyncStream { onLobbyChatUpdate($0.yield0) }
     }
 
     /// Async stream of Steamworks `LobbyChatMsg_t` callbacks
     var lobbyChatMsg: AsyncStream<LobbyChatMsg> {
-        AsyncStream { continuation in
-            onLobbyChatMsg { continuation.yield($0) }
-        }
+        AsyncStream { onLobbyChatMsg($0.yield0) }
     }
 
     /// Async stream of Steamworks `LobbyGameCreated_t` callbacks
     var lobbyGameCreated: AsyncStream<LobbyGameCreated> {
-        AsyncStream { continuation in
-            onLobbyGameCreated { continuation.yield($0) }
-        }
+        AsyncStream { onLobbyGameCreated($0.yield0) }
     }
 
     /// Async stream of Steamworks `LobbyKicked_t` callbacks
     var lobbyKicked: AsyncStream<LobbyKicked> {
-        AsyncStream { continuation in
-            onLobbyKicked { continuation.yield($0) }
-        }
+        AsyncStream { onLobbyKicked($0.yield0) }
     }
 
     /// Async stream of Steamworks `PSNGameBootInviteResult_t` callbacks
     var psnGameBootInviteResult: AsyncStream<PSNGameBootInviteResult> {
-        AsyncStream { continuation in
-            onPSNGameBootInviteResult { continuation.yield($0) }
-        }
+        AsyncStream { onPSNGameBootInviteResult($0.yield0) }
     }
 
     /// Async stream of Steamworks `FavoritesListAccountsUpdated_t` callbacks
     var favoritesListAccountsUpdated: AsyncStream<FavoritesListAccountsUpdated> {
-        AsyncStream { continuation in
-            onFavoritesListAccountsUpdated { continuation.yield($0) }
-        }
+        AsyncStream { onFavoritesListAccountsUpdated($0.yield0) }
     }
 
     /// Async stream of Steamworks `SearchForGameProgressCallback_t` callbacks
     var searchForGameProgressCallback: AsyncStream<SearchForGameProgressCallback> {
-        AsyncStream { continuation in
-            onSearchForGameProgressCallback { continuation.yield($0) }
-        }
+        AsyncStream { onSearchForGameProgressCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `SearchForGameResultCallback_t` callbacks
     var searchForGameResultCallback: AsyncStream<SearchForGameResultCallback> {
-        AsyncStream { continuation in
-            onSearchForGameResultCallback { continuation.yield($0) }
-        }
+        AsyncStream { onSearchForGameResultCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `RequestPlayersForGameProgressCallback_t` callbacks
     var requestPlayersForGameProgressCallback: AsyncStream<RequestPlayersForGameProgressCallback> {
-        AsyncStream { continuation in
-            onRequestPlayersForGameProgressCallback { continuation.yield($0) }
-        }
+        AsyncStream { onRequestPlayersForGameProgressCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `RequestPlayersForGameResultCallback_t` callbacks
     var requestPlayersForGameResultCallback: AsyncStream<RequestPlayersForGameResultCallback> {
-        AsyncStream { continuation in
-            onRequestPlayersForGameResultCallback { continuation.yield($0) }
-        }
+        AsyncStream { onRequestPlayersForGameResultCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `RequestPlayersForGameFinalResultCallback_t` callbacks
     var requestPlayersForGameFinalResultCallback: AsyncStream<RequestPlayersForGameFinalResultCallback> {
-        AsyncStream { continuation in
-            onRequestPlayersForGameFinalResultCallback { continuation.yield($0) }
-        }
+        AsyncStream { onRequestPlayersForGameFinalResultCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `SubmitPlayerResultResultCallback_t` callbacks
     var submitPlayerResultResultCallback: AsyncStream<SubmitPlayerResultResultCallback> {
-        AsyncStream { continuation in
-            onSubmitPlayerResultResultCallback { continuation.yield($0) }
-        }
+        AsyncStream { onSubmitPlayerResultResultCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `EndGameResultCallback_t` callbacks
     var endGameResultCallback: AsyncStream<EndGameResultCallback> {
-        AsyncStream { continuation in
-            onEndGameResultCallback { continuation.yield($0) }
-        }
+        AsyncStream { onEndGameResultCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `ReservationNotificationCallback_t` callbacks
     var reservationNotificationCallback: AsyncStream<ReservationNotificationCallback> {
-        AsyncStream { continuation in
-            onReservationNotificationCallback { continuation.yield($0) }
-        }
+        AsyncStream { onReservationNotificationCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `AvailableBeaconLocationsUpdated_t` callbacks
     var availableBeaconLocationsUpdated: AsyncStream<AvailableBeaconLocationsUpdated> {
-        AsyncStream { continuation in
-            onAvailableBeaconLocationsUpdated { continuation.yield($0) }
-        }
+        AsyncStream { onAvailableBeaconLocationsUpdated($0.yield0) }
     }
 
     /// Async stream of Steamworks `ActiveBeaconsUpdated_t` callbacks
     var activeBeaconsUpdated: AsyncStream<ActiveBeaconsUpdated> {
-        AsyncStream { continuation in
-            onActiveBeaconsUpdated { continuation.yield($0) }
-        }
+        AsyncStream { onActiveBeaconsUpdated($0.yield0) }
     }
 
     /// Async stream of Steamworks `RemoteStoragePublishFileResult_t` callbacks
     var remoteStoragePublishFileResult: AsyncStream<RemoteStoragePublishFileResult> {
-        AsyncStream { continuation in
-            onRemoteStoragePublishFileResult { continuation.yield($0) }
-        }
+        AsyncStream { onRemoteStoragePublishFileResult($0.yield0) }
     }
 
     /// Async stream of Steamworks `RemoteStoragePublishedFileSubscribed_t` callbacks
     var remoteStoragePublishedFileSubscribed: AsyncStream<RemoteStoragePublishedFileSubscribed> {
-        AsyncStream { continuation in
-            onRemoteStoragePublishedFileSubscribed { continuation.yield($0) }
-        }
+        AsyncStream { onRemoteStoragePublishedFileSubscribed($0.yield0) }
     }
 
     /// Async stream of Steamworks `RemoteStoragePublishedFileUnsubscribed_t` callbacks
     var remoteStoragePublishedFileUnsubscribed: AsyncStream<RemoteStoragePublishedFileUnsubscribed> {
-        AsyncStream { continuation in
-            onRemoteStoragePublishedFileUnsubscribed { continuation.yield($0) }
-        }
+        AsyncStream { onRemoteStoragePublishedFileUnsubscribed($0.yield0) }
     }
 
     /// Async stream of Steamworks `RemoteStoragePublishedFileDeleted_t` callbacks
     var remoteStoragePublishedFileDeleted: AsyncStream<RemoteStoragePublishedFileDeleted> {
-        AsyncStream { continuation in
-            onRemoteStoragePublishedFileDeleted { continuation.yield($0) }
-        }
+        AsyncStream { onRemoteStoragePublishedFileDeleted($0.yield0) }
     }
 
     /// Async stream of Steamworks `RemoteStorageUserVoteDetails_t` callbacks
     var remoteStorageUserVoteDetails: AsyncStream<RemoteStorageUserVoteDetails> {
-        AsyncStream { continuation in
-            onRemoteStorageUserVoteDetails { continuation.yield($0) }
-        }
+        AsyncStream { onRemoteStorageUserVoteDetails($0.yield0) }
     }
 
     /// Async stream of Steamworks `RemoteStorageEnumerateUserSharedWorkshopFilesResult_t` callbacks
     var remoteStorageEnumerateUserSharedWorkshopFilesResult: AsyncStream<RemoteStorageEnumerateUserSharedWorkshopFilesResult> {
-        AsyncStream { continuation in
-            onRemoteStorageEnumerateUserSharedWorkshopFilesResult { continuation.yield($0) }
-        }
+        AsyncStream { onRemoteStorageEnumerateUserSharedWorkshopFilesResult($0.yield0) }
     }
 
     /// Async stream of Steamworks `RemoteStoragePublishedFileUpdated_t` callbacks
     var remoteStoragePublishedFileUpdated: AsyncStream<RemoteStoragePublishedFileUpdated> {
-        AsyncStream { continuation in
-            onRemoteStoragePublishedFileUpdated { continuation.yield($0) }
-        }
+        AsyncStream { onRemoteStoragePublishedFileUpdated($0.yield0) }
     }
 
     /// Async stream of Steamworks `RemoteStorageLocalFileChange_t` callbacks
     var remoteStorageLocalFileChange: AsyncStream<RemoteStorageLocalFileChange> {
-        AsyncStream { continuation in
-            onRemoteStorageLocalFileChange { continuation.yield($0) }
-        }
+        AsyncStream { onRemoteStorageLocalFileChange($0.yield0) }
     }
 
     /// Async stream of Steamworks `UserStatsReceived_t` callbacks
     var userStatsReceived: AsyncStream<UserStatsReceived> {
-        AsyncStream { continuation in
-            onUserStatsReceived { continuation.yield($0) }
-        }
+        AsyncStream { onUserStatsReceived($0.yield0) }
     }
 
     /// Async stream of Steamworks `UserStatsStored_t` callbacks
     var userStatsStored: AsyncStream<UserStatsStored> {
-        AsyncStream { continuation in
-            onUserStatsStored { continuation.yield($0) }
-        }
+        AsyncStream { onUserStatsStored($0.yield0) }
     }
 
     /// Async stream of Steamworks `UserAchievementStored_t` callbacks
     var userAchievementStored: AsyncStream<UserAchievementStored> {
-        AsyncStream { continuation in
-            onUserAchievementStored { continuation.yield($0) }
-        }
+        AsyncStream { onUserAchievementStored($0.yield0) }
     }
 
     /// Async stream of Steamworks `UserStatsUnloaded_t` callbacks
     var userStatsUnloaded: AsyncStream<UserStatsUnloaded> {
-        AsyncStream { continuation in
-            onUserStatsUnloaded { continuation.yield($0) }
-        }
+        AsyncStream { onUserStatsUnloaded($0.yield0) }
     }
 
     /// Async stream of Steamworks `UserAchievementIconFetched_t` callbacks
     var userAchievementIconFetched: AsyncStream<UserAchievementIconFetched> {
-        AsyncStream { continuation in
-            onUserAchievementIconFetched { continuation.yield($0) }
-        }
+        AsyncStream { onUserAchievementIconFetched($0.yield0) }
     }
 
     /// Async stream of Steamworks `PS3TrophiesInstalled_t` callbacks
     var ps3TrophiesInstalled: AsyncStream<PS3TrophiesInstalled> {
-        AsyncStream { continuation in
-            onPS3TrophiesInstalled { continuation.yield($0) }
-        }
+        AsyncStream { onPS3TrophiesInstalled($0.yield0) }
     }
 
     /// Async stream of Steamworks `DlcInstalled_t` callbacks
     var dlcInstalled: AsyncStream<DlcInstalled> {
-        AsyncStream { continuation in
-            onDlcInstalled { continuation.yield($0) }
-        }
+        AsyncStream { onDlcInstalled($0.yield0) }
     }
 
     /// Async stream of Steamworks `RegisterActivationCodeResponse_t` callbacks
     var registerActivationCodeResponse: AsyncStream<RegisterActivationCodeResponse> {
-        AsyncStream { continuation in
-            onRegisterActivationCodeResponse { continuation.yield($0) }
-        }
+        AsyncStream { onRegisterActivationCodeResponse($0.yield0) }
     }
 
     /// Async stream of Steamworks `NewUrlLaunchParameters_t` callbacks
     var newUrlLaunchParameters: AsyncStream<NewUrlLaunchParameters> {
-        AsyncStream { continuation in
-            onNewUrlLaunchParameters { continuation.yield($0) }
-        }
+        AsyncStream { onNewUrlLaunchParameters($0.yield0) }
     }
 
     /// Async stream of Steamworks `AppProofOfPurchaseKeyResponse_t` callbacks
     var appProofOfPurchaseKeyResponse: AsyncStream<AppProofOfPurchaseKeyResponse> {
-        AsyncStream { continuation in
-            onAppProofOfPurchaseKeyResponse { continuation.yield($0) }
-        }
+        AsyncStream { onAppProofOfPurchaseKeyResponse($0.yield0) }
     }
 
     /// Async stream of Steamworks `TimedTrialStatus_t` callbacks
     var timedTrialStatus: AsyncStream<TimedTrialStatus> {
-        AsyncStream { continuation in
-            onTimedTrialStatus { continuation.yield($0) }
-        }
+        AsyncStream { onTimedTrialStatus($0.yield0) }
     }
 
     /// Async stream of Steamworks `P2PSessionRequest_t` callbacks
     var p2PSessionRequest: AsyncStream<P2PSessionRequest> {
-        AsyncStream { continuation in
-            onP2PSessionRequest { continuation.yield($0) }
-        }
+        AsyncStream { onP2PSessionRequest($0.yield0) }
     }
 
     /// Async stream of Steamworks `P2PSessionConnectFail_t` callbacks
     var p2PSessionConnectFail: AsyncStream<P2PSessionConnectFail> {
-        AsyncStream { continuation in
-            onP2PSessionConnectFail { continuation.yield($0) }
-        }
+        AsyncStream { onP2PSessionConnectFail($0.yield0) }
     }
 
     /// Async stream of Steamworks `SocketStatusCallback_t` callbacks
     var socketStatusCallback: AsyncStream<SocketStatusCallback> {
-        AsyncStream { continuation in
-            onSocketStatusCallback { continuation.yield($0) }
-        }
+        AsyncStream { onSocketStatusCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `ScreenshotReady_t` callbacks
     var screenshotReady: AsyncStream<ScreenshotReady> {
-        AsyncStream { continuation in
-            onScreenshotReady { continuation.yield($0) }
-        }
+        AsyncStream { onScreenshotReady($0.yield0) }
     }
 
     /// Async stream of Steamworks `ScreenshotRequested_t` callbacks
     var screenshotRequested: AsyncStream<ScreenshotRequested> {
-        AsyncStream { continuation in
-            onScreenshotRequested { continuation.yield($0) }
-        }
+        AsyncStream { onScreenshotRequested($0.yield0) }
     }
 
     /// Async stream of Steamworks `PlaybackStatusHasChanged_t` callbacks
     var playbackStatusHasChanged: AsyncStream<PlaybackStatusHasChanged> {
-        AsyncStream { continuation in
-            onPlaybackStatusHasChanged { continuation.yield($0) }
-        }
+        AsyncStream { onPlaybackStatusHasChanged($0.yield0) }
     }
 
     /// Async stream of Steamworks `VolumeHasChanged_t` callbacks
     var volumeHasChanged: AsyncStream<VolumeHasChanged> {
-        AsyncStream { continuation in
-            onVolumeHasChanged { continuation.yield($0) }
-        }
+        AsyncStream { onVolumeHasChanged($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerRemoteWillActivate_t` callbacks
     var musicPlayerRemoteWillActivate: AsyncStream<MusicPlayerRemoteWillActivate> {
-        AsyncStream { continuation in
-            onMusicPlayerRemoteWillActivate { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerRemoteWillActivate($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerRemoteWillDeactivate_t` callbacks
     var musicPlayerRemoteWillDeactivate: AsyncStream<MusicPlayerRemoteWillDeactivate> {
-        AsyncStream { continuation in
-            onMusicPlayerRemoteWillDeactivate { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerRemoteWillDeactivate($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerRemoteToFront_t` callbacks
     var musicPlayerRemoteToFront: AsyncStream<MusicPlayerRemoteToFront> {
-        AsyncStream { continuation in
-            onMusicPlayerRemoteToFront { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerRemoteToFront($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWillQuit_t` callbacks
     var musicPlayerWillQuit: AsyncStream<MusicPlayerWillQuit> {
-        AsyncStream { continuation in
-            onMusicPlayerWillQuit { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWillQuit($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWantsPlay_t` callbacks
     var musicPlayerWantsPlay: AsyncStream<MusicPlayerWantsPlay> {
-        AsyncStream { continuation in
-            onMusicPlayerWantsPlay { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWantsPlay($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWantsPause_t` callbacks
     var musicPlayerWantsPause: AsyncStream<MusicPlayerWantsPause> {
-        AsyncStream { continuation in
-            onMusicPlayerWantsPause { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWantsPause($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWantsPlayPrevious_t` callbacks
     var musicPlayerWantsPlayPrevious: AsyncStream<MusicPlayerWantsPlayPrevious> {
-        AsyncStream { continuation in
-            onMusicPlayerWantsPlayPrevious { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWantsPlayPrevious($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWantsPlayNext_t` callbacks
     var musicPlayerWantsPlayNext: AsyncStream<MusicPlayerWantsPlayNext> {
-        AsyncStream { continuation in
-            onMusicPlayerWantsPlayNext { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWantsPlayNext($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWantsShuffled_t` callbacks
     var musicPlayerWantsShuffled: AsyncStream<MusicPlayerWantsShuffled> {
-        AsyncStream { continuation in
-            onMusicPlayerWantsShuffled { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWantsShuffled($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWantsLooped_t` callbacks
     var musicPlayerWantsLooped: AsyncStream<MusicPlayerWantsLooped> {
-        AsyncStream { continuation in
-            onMusicPlayerWantsLooped { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWantsLooped($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWantsVolume_t` callbacks
     var musicPlayerWantsVolume: AsyncStream<MusicPlayerWantsVolume> {
-        AsyncStream { continuation in
-            onMusicPlayerWantsVolume { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWantsVolume($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerSelectsQueueEntry_t` callbacks
     var musicPlayerSelectsQueueEntry: AsyncStream<MusicPlayerSelectsQueueEntry> {
-        AsyncStream { continuation in
-            onMusicPlayerSelectsQueueEntry { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerSelectsQueueEntry($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerSelectsPlaylistEntry_t` callbacks
     var musicPlayerSelectsPlaylistEntry: AsyncStream<MusicPlayerSelectsPlaylistEntry> {
-        AsyncStream { continuation in
-            onMusicPlayerSelectsPlaylistEntry { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerSelectsPlaylistEntry($0.yield0) }
     }
 
     /// Async stream of Steamworks `MusicPlayerWantsPlayingRepeatStatus_t` callbacks
     var musicPlayerWantsPlayingRepeatStatus: AsyncStream<MusicPlayerWantsPlayingRepeatStatus> {
-        AsyncStream { continuation in
-            onMusicPlayerWantsPlayingRepeatStatus { continuation.yield($0) }
-        }
+        AsyncStream { onMusicPlayerWantsPlayingRepeatStatus($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTTPRequestCompleted_t` callbacks
     var httpRequestCompleted: AsyncStream<HTTPRequestCompleted> {
-        AsyncStream { continuation in
-            onHTTPRequestCompleted { continuation.yield($0) }
-        }
+        AsyncStream { onHTTPRequestCompleted($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTTPRequestHeadersReceived_t` callbacks
     var httpRequestHeadersReceived: AsyncStream<HTTPRequestHeadersReceived> {
-        AsyncStream { continuation in
-            onHTTPRequestHeadersReceived { continuation.yield($0) }
-        }
+        AsyncStream { onHTTPRequestHeadersReceived($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTTPRequestDataReceived_t` callbacks
     var httpRequestDataReceived: AsyncStream<HTTPRequestDataReceived> {
-        AsyncStream { continuation in
-            onHTTPRequestDataReceived { continuation.yield($0) }
-        }
+        AsyncStream { onHTTPRequestDataReceived($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamInputDeviceConnected_t` callbacks
     var steamInputDeviceConnected: AsyncStream<SteamInputDeviceConnected> {
-        AsyncStream { continuation in
-            onSteamInputDeviceConnected { continuation.yield($0) }
-        }
+        AsyncStream { onSteamInputDeviceConnected($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamInputDeviceDisconnected_t` callbacks
     var steamInputDeviceDisconnected: AsyncStream<SteamInputDeviceDisconnected> {
-        AsyncStream { continuation in
-            onSteamInputDeviceDisconnected { continuation.yield($0) }
-        }
+        AsyncStream { onSteamInputDeviceDisconnected($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamInputConfigurationLoaded_t` callbacks
     var steamInputConfigurationLoaded: AsyncStream<SteamInputConfigurationLoaded> {
-        AsyncStream { continuation in
-            onSteamInputConfigurationLoaded { continuation.yield($0) }
-        }
+        AsyncStream { onSteamInputConfigurationLoaded($0.yield0) }
     }
 
     /// Async stream of Steamworks `ItemInstalled_t` callbacks
     var itemInstalled: AsyncStream<ItemInstalled> {
-        AsyncStream { continuation in
-            onItemInstalled { continuation.yield($0) }
-        }
+        AsyncStream { onItemInstalled($0.yield0) }
     }
 
     /// Async stream of Steamworks `DownloadItemResult_t` callbacks
     var downloadItemResult: AsyncStream<DownloadItemResult> {
-        AsyncStream { continuation in
-            onDownloadItemResult { continuation.yield($0) }
-        }
+        AsyncStream { onDownloadItemResult($0.yield0) }
     }
 
     /// Async stream of Steamworks `UserSubscribedItemsListChanged_t` callbacks
     var userSubscribedItemsListChanged: AsyncStream<UserSubscribedItemsListChanged> {
-        AsyncStream { continuation in
-            onUserSubscribedItemsListChanged { continuation.yield($0) }
-        }
+        AsyncStream { onUserSubscribedItemsListChanged($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamAppInstalled_t` callbacks
     var steamAppInstalled: AsyncStream<SteamAppInstalled> {
-        AsyncStream { continuation in
-            onSteamAppInstalled { continuation.yield($0) }
-        }
+        AsyncStream { onSteamAppInstalled($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamAppUninstalled_t` callbacks
     var steamAppUninstalled: AsyncStream<SteamAppUninstalled> {
-        AsyncStream { continuation in
-            onSteamAppUninstalled { continuation.yield($0) }
-        }
+        AsyncStream { onSteamAppUninstalled($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_NeedsPaint_t` callbacks
     var htmlNeedsPaint: AsyncStream<HTMLNeedsPaint> {
-        AsyncStream { continuation in
-            onHTMLNeedsPaint { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLNeedsPaint($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_StartRequest_t` callbacks
     var htmlStartRequest: AsyncStream<HTMLStartRequest> {
-        AsyncStream { continuation in
-            onHTMLStartRequest { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLStartRequest($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_CloseBrowser_t` callbacks
     var htmlCloseBrowser: AsyncStream<HTMLCloseBrowser> {
-        AsyncStream { continuation in
-            onHTMLCloseBrowser { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLCloseBrowser($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_URLChanged_t` callbacks
     var htmlurlChanged: AsyncStream<HTMLURLChanged> {
-        AsyncStream { continuation in
-            onHTMLURLChanged { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLURLChanged($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_FinishedRequest_t` callbacks
     var htmlFinishedRequest: AsyncStream<HTMLFinishedRequest> {
-        AsyncStream { continuation in
-            onHTMLFinishedRequest { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLFinishedRequest($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_OpenLinkInNewTab_t` callbacks
     var htmlOpenLinkInNewTab: AsyncStream<HTMLOpenLinkInNewTab> {
-        AsyncStream { continuation in
-            onHTMLOpenLinkInNewTab { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLOpenLinkInNewTab($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_ChangedTitle_t` callbacks
     var htmlChangedTitle: AsyncStream<HTMLChangedTitle> {
-        AsyncStream { continuation in
-            onHTMLChangedTitle { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLChangedTitle($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_SearchResults_t` callbacks
     var htmlSearchResults: AsyncStream<HTMLSearchResults> {
-        AsyncStream { continuation in
-            onHTMLSearchResults { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLSearchResults($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_CanGoBackAndForward_t` callbacks
     var htmlCanGoBackAndForward: AsyncStream<HTMLCanGoBackAndForward> {
-        AsyncStream { continuation in
-            onHTMLCanGoBackAndForward { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLCanGoBackAndForward($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_HorizontalScroll_t` callbacks
     var htmlHorizontalScroll: AsyncStream<HTMLHorizontalScroll> {
-        AsyncStream { continuation in
-            onHTMLHorizontalScroll { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLHorizontalScroll($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_VerticalScroll_t` callbacks
     var htmlVerticalScroll: AsyncStream<HTMLVerticalScroll> {
-        AsyncStream { continuation in
-            onHTMLVerticalScroll { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLVerticalScroll($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_LinkAtPosition_t` callbacks
     var htmlLinkAtPosition: AsyncStream<HTMLLinkAtPosition> {
-        AsyncStream { continuation in
-            onHTMLLinkAtPosition { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLLinkAtPosition($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_JSAlert_t` callbacks
     var htmljsAlert: AsyncStream<HTMLJSAlert> {
-        AsyncStream { continuation in
-            onHTMLJSAlert { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLJSAlert($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_JSConfirm_t` callbacks
     var htmljsConfirm: AsyncStream<HTMLJSConfirm> {
-        AsyncStream { continuation in
-            onHTMLJSConfirm { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLJSConfirm($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_FileOpenDialog_t` callbacks
     var htmlFileOpenDialog: AsyncStream<HTMLFileOpenDialog> {
-        AsyncStream { continuation in
-            onHTMLFileOpenDialog { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLFileOpenDialog($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_NewWindow_t` callbacks
     var htmlNewWindow: AsyncStream<HTMLNewWindow> {
-        AsyncStream { continuation in
-            onHTMLNewWindow { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLNewWindow($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_SetCursor_t` callbacks
     var htmlSetCursor: AsyncStream<HTMLSetCursor> {
-        AsyncStream { continuation in
-            onHTMLSetCursor { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLSetCursor($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_StatusText_t` callbacks
     var htmlStatusText: AsyncStream<HTMLStatusText> {
-        AsyncStream { continuation in
-            onHTMLStatusText { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLStatusText($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_ShowToolTip_t` callbacks
     var htmlShowToolTip: AsyncStream<HTMLShowToolTip> {
-        AsyncStream { continuation in
-            onHTMLShowToolTip { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLShowToolTip($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_UpdateToolTip_t` callbacks
     var htmlUpdateToolTip: AsyncStream<HTMLUpdateToolTip> {
-        AsyncStream { continuation in
-            onHTMLUpdateToolTip { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLUpdateToolTip($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_HideToolTip_t` callbacks
     var htmlHideToolTip: AsyncStream<HTMLHideToolTip> {
-        AsyncStream { continuation in
-            onHTMLHideToolTip { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLHideToolTip($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTML_BrowserRestarted_t` callbacks
     var htmlBrowserRestarted: AsyncStream<HTMLBrowserRestarted> {
-        AsyncStream { continuation in
-            onHTMLBrowserRestarted { continuation.yield($0) }
-        }
+        AsyncStream { onHTMLBrowserRestarted($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamInventoryResultReady_t` callbacks
     var steamInventoryResultReady: AsyncStream<SteamInventoryResultReady> {
-        AsyncStream { continuation in
-            onSteamInventoryResultReady { continuation.yield($0) }
-        }
+        AsyncStream { onSteamInventoryResultReady($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamInventoryFullUpdate_t` callbacks
     var steamInventoryFullUpdate: AsyncStream<SteamInventoryFullUpdate> {
-        AsyncStream { continuation in
-            onSteamInventoryFullUpdate { continuation.yield($0) }
-        }
+        AsyncStream { onSteamInventoryFullUpdate($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamInventoryDefinitionUpdate_t` callbacks
     var steamInventoryDefinitionUpdate: AsyncStream<SteamInventoryDefinitionUpdate> {
-        AsyncStream { continuation in
-            onSteamInventoryDefinitionUpdate { continuation.yield($0) }
-        }
+        AsyncStream { onSteamInventoryDefinitionUpdate($0.yield0) }
     }
 
     /// Async stream of Steamworks `GetVideoURLResult_t` callbacks
     var getVideoURLResult: AsyncStream<GetVideoURLResult> {
-        AsyncStream { continuation in
-            onGetVideoURLResult { continuation.yield($0) }
-        }
+        AsyncStream { onGetVideoURLResult($0.yield0) }
     }
 
     /// Async stream of Steamworks `GetOPFSettingsResult_t` callbacks
     var getOPFSettingsResult: AsyncStream<GetOPFSettingsResult> {
-        AsyncStream { continuation in
-            onGetOPFSettingsResult { continuation.yield($0) }
-        }
+        AsyncStream { onGetOPFSettingsResult($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamParentalSettingsChanged_t` callbacks
     var steamParentalSettingsChanged: AsyncStream<SteamParentalSettingsChanged> {
-        AsyncStream { continuation in
-            onSteamParentalSettingsChanged { continuation.yield($0) }
-        }
+        AsyncStream { onSteamParentalSettingsChanged($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamRemotePlaySessionConnected_t` callbacks
     var steamRemotePlaySessionConnected: AsyncStream<SteamRemotePlaySessionConnected> {
-        AsyncStream { continuation in
-            onSteamRemotePlaySessionConnected { continuation.yield($0) }
-        }
+        AsyncStream { onSteamRemotePlaySessionConnected($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamRemotePlaySessionDisconnected_t` callbacks
     var steamRemotePlaySessionDisconnected: AsyncStream<SteamRemotePlaySessionDisconnected> {
-        AsyncStream { continuation in
-            onSteamRemotePlaySessionDisconnected { continuation.yield($0) }
-        }
+        AsyncStream { onSteamRemotePlaySessionDisconnected($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamNetworkingMessagesSessionRequest_t` callbacks
     var steamNetworkingMessagesSessionRequest: AsyncStream<SteamNetworkingMessagesSessionRequest> {
-        AsyncStream { continuation in
-            onSteamNetworkingMessagesSessionRequest { continuation.yield($0) }
-        }
+        AsyncStream { onSteamNetworkingMessagesSessionRequest($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamNetworkingMessagesSessionFailed_t` callbacks
     var steamNetworkingMessagesSessionFailed: AsyncStream<SteamNetworkingMessagesSessionFailed> {
-        AsyncStream { continuation in
-            onSteamNetworkingMessagesSessionFailed { continuation.yield($0) }
-        }
+        AsyncStream { onSteamNetworkingMessagesSessionFailed($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamNetConnectionStatusChangedCallback_t` callbacks
     var steamNetConnectionStatusChangedCallback: AsyncStream<SteamNetConnectionStatusChangedCallback> {
-        AsyncStream { continuation in
-            onSteamNetConnectionStatusChangedCallback { continuation.yield($0) }
-        }
+        AsyncStream { onSteamNetConnectionStatusChangedCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamNetAuthenticationStatus_t` callbacks
     var steamNetAuthenticationStatus: AsyncStream<SteamNetAuthenticationStatus> {
-        AsyncStream { continuation in
-            onSteamNetAuthenticationStatus { continuation.yield($0) }
-        }
+        AsyncStream { onSteamNetAuthenticationStatus($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamRelayNetworkStatus_t` callbacks
     var steamRelayNetworkStatus: AsyncStream<SteamRelayNetworkStatus> {
-        AsyncStream { continuation in
-            onSteamRelayNetworkStatus { continuation.yield($0) }
-        }
+        AsyncStream { onSteamRelayNetworkStatus($0.yield0) }
     }
 
     /// Async stream of Steamworks `GSClientApprove_t` callbacks
     var gsClientApprove: AsyncStream<GSClientApprove> {
-        AsyncStream { continuation in
-            onGSClientApprove { continuation.yield($0) }
-        }
+        AsyncStream { onGSClientApprove($0.yield0) }
     }
 
     /// Async stream of Steamworks `GSClientDeny_t` callbacks
     var gsClientDeny: AsyncStream<GSClientDeny> {
-        AsyncStream { continuation in
-            onGSClientDeny { continuation.yield($0) }
-        }
+        AsyncStream { onGSClientDeny($0.yield0) }
     }
 
     /// Async stream of Steamworks `GSClientKick_t` callbacks
     var gsClientKick: AsyncStream<GSClientKick> {
-        AsyncStream { continuation in
-            onGSClientKick { continuation.yield($0) }
-        }
+        AsyncStream { onGSClientKick($0.yield0) }
     }
 
     /// Async stream of Steamworks `GSClientAchievementStatus_t` callbacks
     var gsClientAchievementStatus: AsyncStream<GSClientAchievementStatus> {
-        AsyncStream { continuation in
-            onGSClientAchievementStatus { continuation.yield($0) }
-        }
+        AsyncStream { onGSClientAchievementStatus($0.yield0) }
     }
 
     /// Async stream of Steamworks `GSPolicyResponse_t` callbacks
     var gsPolicyResponse: AsyncStream<GSPolicyResponse> {
-        AsyncStream { continuation in
-            onGSPolicyResponse { continuation.yield($0) }
-        }
+        AsyncStream { onGSPolicyResponse($0.yield0) }
     }
 
     /// Async stream of Steamworks `GSGameplayStats_t` callbacks
     var gsGameplayStats: AsyncStream<GSGameplayStats> {
-        AsyncStream { continuation in
-            onGSGameplayStats { continuation.yield($0) }
-        }
+        AsyncStream { onGSGameplayStats($0.yield0) }
     }
 
     /// Async stream of Steamworks `GSClientGroupStatus_t` callbacks
     var gsClientGroupStatus: AsyncStream<GSClientGroupStatus> {
-        AsyncStream { continuation in
-            onGSClientGroupStatus { continuation.yield($0) }
-        }
+        AsyncStream { onGSClientGroupStatus($0.yield0) }
     }
 
     /// Async stream of Steamworks `GSStatsUnloaded_t` callbacks
     var gsStatsUnloaded: AsyncStream<GSStatsUnloaded> {
-        AsyncStream { continuation in
-            onGSStatsUnloaded { continuation.yield($0) }
-        }
+        AsyncStream { onGSStatsUnloaded($0.yield0) }
     }
 }

@@ -146,3 +146,12 @@ extension Array where Element == UInt8 {
         }
     }
 }
+
+// MARK: Callbacks
+
+/// A quick helper to reduce generated code size
+extension AsyncStream.Continuation {
+    func yield0(_ thing: Element) {
+        _ = yield(thing)
+    }
+}
