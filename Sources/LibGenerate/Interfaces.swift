@@ -359,7 +359,12 @@ struct SwiftMethod {
 
 extension MetadataDB.Method {
     var isVar: Bool {
-        params.count == 0 && name.starts(with: "Get")
+        false
+        // Originally had this generating `var`s for 0-arg functions.
+        //     params.count == 0 && name.starts(with: "Get")
+        // No longer convinced this is right though - drops the 1:1 with
+        // the SW API name, meaning searches etc. don't work as expected.
+        // There are very few of them anyway.
     }
 
     var funcName: String {

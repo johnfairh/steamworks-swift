@@ -87,9 +87,9 @@ final class Client {
     }
 
     func testSyncQueries() {
-        let name = api.friends.personaName
+        let name = api.friends.getPersonaName()
         print("name = \(name)")
-        let state = api.friends.personaState
+        let state = api.friends.getPersonaState()
         print("state = \(state)")
         let friendCount = api.friends.getFriendCount(friendFlags: .all)
         print("friendCount = \(friendCount)")

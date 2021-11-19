@@ -44,12 +44,12 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetPersonaState()`
-    var personaState: PersonaState {
+    func getPersonaState() -> PersonaState {
         PersonaState(SteamAPI_ISteamFriends_GetPersonaState(interface))
     }
 
     /// Steamworks `ISteamFriends::GetUserRestrictions()`
-    var userRestrictions: UserRestriction {
+    func getUserRestrictions() -> UserRestriction {
         UserRestriction(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
     }
 

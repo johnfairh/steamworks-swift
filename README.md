@@ -41,7 +41,8 @@ Plan then:
   I think this is a better starting point than doing a complete OO analysis to carve
   out function.  Can go to build `SteamworksPatterns` or something if worthwhile.  Name
   etc. changes planned though at least:
-   * Use Swift properties for 0-arg getters
+   * _Don't_ use Swift properties for 0-arg getters: diverges too far from Steamworks
+     naming
    * Drop the intermittent Hungarian notation (argh the 1990s are calling)
    * Use Swift closures for callbacks as well as async-await sugar
    * Map unions onto enums with associated values

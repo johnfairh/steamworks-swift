@@ -120,7 +120,7 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetClanCount()`
-    var clanCount: Int {
+    func getClanCount() -> Int {
         Int(SteamAPI_ISteamFriends_GetClanCount(interface))
     }
 
@@ -155,7 +155,7 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetCoplayFriendCount()`
-    var coplayFriendCount: Int {
+    func getCoplayFriendCount() -> Int {
         Int(SteamAPI_ISteamFriends_GetCoplayFriendCount(interface))
     }
 
@@ -261,7 +261,7 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupCount()`
-    var friendsGroupCount: Int {
+    func getFriendsGroupCount() -> Int {
         Int(SteamAPI_ISteamFriends_GetFriendsGroupCount(interface))
     }
 
@@ -299,17 +299,17 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetNumChatsWithUnreadPriorityMessages()`
-    var numChatsWithUnreadPriorityMessages: Int {
+    func getNumChatsWithUnreadPriorityMessages() -> Int {
         Int(SteamAPI_ISteamFriends_GetNumChatsWithUnreadPriorityMessages(interface))
     }
 
     /// Steamworks `ISteamFriends::GetPersonaName()`
-    var personaName: String {
+    func getPersonaName() -> String {
         String(SteamAPI_ISteamFriends_GetPersonaName(interface))
     }
 
     /// Steamworks `ISteamFriends::GetPersonaState()`
-    var personaState: PersonaState {
+    func getPersonaState() -> PersonaState {
         PersonaState(SteamAPI_ISteamFriends_GetPersonaState(interface))
     }
 
@@ -324,7 +324,7 @@ public extension SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetUserRestrictions()`
-    var userRestrictions: UserRestriction {
+    func getUserRestrictions() -> UserRestriction {
         UserRestriction(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
     }
 
