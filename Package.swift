@@ -54,6 +54,6 @@ let package = Package(
         name: "SteamworksTests",
         dependencies: ["Steamworks", "LibGenerate"],
         exclude: ["Fixtures"])
-    ],
-    cxxLanguageStandard: .cxx11
+  ],
+  cxxLanguageStandard: .cxx11
 )

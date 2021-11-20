@@ -1,20 +1,40 @@
+![macOS](https://shields.io/badge/platform-macOS%20|%20%3F%3F-lightgrey)
+![Steamworks 1.52](https://shields.io/badge/steamworks-1.52-lightgrey)
+![MIT](https://shields.io/badge/license-MIT-black)
+
 # swift-steamworks
 
 Experiment with Steamworks SDK and Swift C++ importer.
 
-* Needs Swift 5.5 (Xcode 13.2 beta)
-* Needs Steam client installed
-* Needs Steamworks SDK downloaded as `sdk` at the top level of the package, or
-  set `STEAM_SDK`
-* Needs macOS 12; should work on macOS 11, Linux; might work on Windows
-
-State:
-* Code gen creates Swift versions of Steam types.  Callbacks and call-returns work.
-* Working on polishing `ISteamFriends` before going on.
-* `make` builds and runs a Swift program that accesses the C++
+Current state:
+* Code gen creates Swift versions of Steam types; callbacks and call-returns work
+* `SteamFriends` complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
+  working on [other interfaces](#interface-plan)
+* `make` builds and runs a demo Swift program that accesses the C++
   Steam API to initialize, do some sync and async queries, then shut it down.
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
   tab completion even if module interface gen is beyond it.
+
+### Concept
+
+* Offer a pure Swift module covering all of the current Steamworks API.
+* Leave out the deprecated and WIN32-only stuff.
+* Do not diverge too far from the 'real' API names to aid docs / searching / porting:
+  I think this is a better starting point than doing a complete OO analysis to carve
+  out function.  Can go to build `SteamworksPatterns` or something if worthwhile.  Name
+  etc. changes planned though at least:
+   * _Don't_ use Swift properties for 0-arg getters: diverges too far from Steamworks
+     naming
+   * Drop the intermittent Hungarian notation (argh the 1990s are calling)
+   * Use Swift closures for callbacks as well as async-await sugar
+   * Map unions onto enums with associated values
+* Provide custom API-lifetime and message dispatch classes.
+* Provide strongly typed handles.
+* Access interfaces via central types.
+* Use code gen to deal with the ~900 APIs and their ~400 types, taking advantage of the
+  handy JSON file.  This code-gen piece is the actual main work in this project.
+
+### Tech reality
 
 Tech limitations, on 5.5 and also swift/main as of 20/Oct:
 * Importing `Foundation` and `-enable-cxx-interop` and a C++ module crashes the
@@ -32,25 +52,50 @@ Tech limitations, on 5.5 and also swift/main as of 20/Oct:
   importer is doing.  Need to build the compiler and debug.  It does look like 99%+ of
   the thing is coming in well.
 * Some [Steamworks SDK issues](#json-notes), nothing too serious.
+* How do I CI this stuff?  SDK license doesn't seem to allow non-local redistribution,
+  with that could build the thing; don't really fancy installing the steam client but
+  maybe that's doable.
 
+### Requirements
 
-Plan then:
-* Offer a pure Swift module covering all of the current Steamworks API.
-* Leave out the deprecated and WIN32-only stuff.
-* Do not diverge too far from the 'real' API names to aid docs / searching / porting:
-  I think this is a better starting point than doing a complete OO analysis to carve
-  out function.  Can go to build `SteamworksPatterns` or something if worthwhile.  Name
-  etc. changes planned though at least:
-   * _Don't_ use Swift properties for 0-arg getters: diverges too far from Steamworks
-     naming
-   * Drop the intermittent Hungarian notation (argh the 1990s are calling)
-   * Use Swift closures for callbacks as well as async-await sugar
-   * Map unions onto enums with associated values
-* Provide custom API-lifetime and message dispatch classes.
-* Provide strongly typed handles.
-* Access interfaces via central types.
-* Use code gen to deal with the ~900 APIs and their ~400 types, taking advantage of the
-  handy JSON file.  This code-gen piece is the actual main work in this project.
+* Needs Swift 5.5 (Xcode 13.2 beta)
+* Needs Steam client installed
+* I'm using macOS 12; should work on macOS 11, Linux; might work on Windows
+
+To run the generator / build:
+* Needs Steamworks SDK downloaded as `sdk` at the top level of the package, or
+  set `STEAM_SDK`
+
+### Interface plan
+
+✅ SteamFriends
+
+Easy:
+* ISteamAppList, ISteamApps, ISteamAppTicket, ISteamGameServer, ISteamGameServerStats,
+  ISteamHTTP, ISteamMatchmaking, ISteamParties, ISteamGameSearch, ISteamMusic,
+  ISteamMusicRemote, ISteamParentalSettings, ISteamRemotePlay, ISteamScreenshots,
+  ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo
+
+Bit more complex:
+* ISteamHTMLSurface - embedded enums??
+* ISteamInput - unions, private event dispatch??
+* ISteamInventory - different array patterns
+* ISteamRemoteStorage - some odd structure patterns
+* ISteamUGC - lots of data passing
+* SteamEncryptedAppTicket - figure out how to model
+
+Complicated:
+* ISteamMatchmakingServers - loads of custom C++ callback interfaces, custom
+  C++ datatypes with weird names...
+* ISteamNetworkingMessages/Sockets/Utils - loads of custom C++ bits, unions,
+  missing types, clang importer failures... do this one last
+
+Skip:
+* ISteamClient - internal stuff, very C++y, looks ignorable
+* ISteamController - deprecated, need to review for stuff that's been generated and
+  can actually be deleted after working through ISteamInput
+* ISteamGameCoordinator - "largely" deprecated
+* ISteamPS3... - will leave Swift-on-PS3 for another day
 
 ### JSON notes
 
