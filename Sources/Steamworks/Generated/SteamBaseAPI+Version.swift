@@ -8,7 +8,7 @@
 
 @_implementationOnly import CSteamworks
 
-// MARK: SDK Version
+// MARK: SDK version
 
 extension SteamBaseAPI {
     /// The version string of the Steamworks SDK that the Steamworks

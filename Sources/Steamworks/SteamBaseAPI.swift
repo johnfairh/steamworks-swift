@@ -73,11 +73,17 @@ public class SteamBaseAPI: @unchecked Sendable {
 
     final class CallResults {
         private var pending = [SteamAPICall_t : RawClient]()
+        private var pendingFailures = [RawClient]()
         private var lock = Lock()
 
-        func add(callID: SteamAPICall_t, rawClient: @escaping RawClient) {
+        func add(callID: SteamAPICall_t, rawClient: @escaping RawClient, caller: String = #function) {
             lock.locked {
-                pending[callID] = rawClient
+                if callID != k_uAPICallInvalid {
+                    pending[callID] = rawClient
+                    return
+                }
+                logError("API \(caller) gave invalid SteamAPICall_t, scheduling `nil` callback")
+                pendingFailures.append(rawClient)
             }
         }
 
@@ -85,6 +91,18 @@ public class SteamBaseAPI: @unchecked Sendable {
             if let client = lock.locked({ pending.removeValue(forKey: callID) }) {
                 client(rawData)
             }
+        }
+
+        /// Check for any pending wotk to pass back calls that never got a chance to start.
+        /// Slightly uncomfortable doing basically nothing here every frame but it's probably
+        /// nothing compared to everything else.  A consequence of the callresult design that hides
+        /// this failure scenario from users, can always revisit.
+        func dispatchFailures() {
+            let failures: [RawClient] = lock.locked {
+                defer { pendingFailures.removeAll() }
+                return pendingFailures
+            }
+            failures.forEach { $0(nil) }
         }
 
         private init() {}
@@ -136,6 +154,7 @@ public class SteamBaseAPI: @unchecked Sendable {
                 }
             }
         }
+        CallResults.shared.dispatchFailures()
     }
 
     /// Call periodically on all threads that are not calling `runCallbacks()`.

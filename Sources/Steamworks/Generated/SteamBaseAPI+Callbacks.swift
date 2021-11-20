@@ -9,7 +9,7 @@
 @_implementationOnly import CSteamworks
 
 public extension SteamBaseAPI {
-    // MARK: Callback registration
+    // MARK: Callbacks
 
     /// Registration for Steamworks `ActiveBeaconsUpdated_t` callback
     func onActiveBeaconsUpdated(_ client: @escaping (ActiveBeaconsUpdated) -> Void) {
@@ -728,7 +728,7 @@ public extension SteamBaseAPI {
 }
 
 public extension SteamBaseAPI {
-    // MARK: AsyncStream callback registration
+    // MARK: `AsyncStream` callbacks
 
     /// Async stream of Steamworks `ActiveBeaconsUpdated_t` callbacks
     var activeBeaconsUpdated: AsyncStream<ActiveBeaconsUpdated> {

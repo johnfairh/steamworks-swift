@@ -93,4 +93,21 @@ class TestCallbacks: XCTestCase {
         system.dispatch(callID: callID + 1, rawData: raw)
         XCTAssertEqual(2, counter)
     }
+
+    /// callresults - immediate failures
+    func testCallResultsFailures() {
+        let system = SteamBaseAPI.CallResults.shared
+
+        var callbackCalled = 0
+
+        system.add(callID: 0) { param in
+            XCTAssertNil(param)
+            callbackCalled += 1
+        }
+        XCTAssertEqual(0, callbackCalled)
+        system.dispatchFailures()
+        XCTAssertEqual(1, callbackCalled)
+        system.dispatchFailures()
+        XCTAssertEqual(1, callbackCalled)
+    }
 }
