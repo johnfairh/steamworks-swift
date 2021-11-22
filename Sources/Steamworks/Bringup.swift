@@ -7,16 +7,6 @@
 
 @_implementationOnly import CSteamworks
 
-public struct GameID {
-    public let gameID: UInt64
-    public init(_ gameID: UInt64) {
-        self.gameID = gameID
-    }
-    init(_ gameID: CGameID) {
-        self.gameID = gameID.m_ulGameID
-    }
-}
-
 // MARK: Bringup interfaces
 
 public struct SteamUser {

@@ -111,6 +111,19 @@ protocol SteamCreatable {
     init(_ steam: SteamType)
 }
 
+/// Helper to deal with bitfields.
+extension UInt64 {
+    typealias BitSpec = (shift: Int, mask: UInt64)
+
+    func shiftOut(_ bs: BitSpec) -> UInt32 {
+        UInt32((self >> bs.shift) & bs.mask)
+    }
+
+    mutating func shiftIn(_ value: UInt32, _ bs: BitSpec) {
+        self = (self & ~(bs.mask << bs.shift)) | (UInt64(value) << bs.shift)
+    }
+}
+
 // MARK: Struct members
 
 /// Dumb C-style booleans, assigning over into actual Bools

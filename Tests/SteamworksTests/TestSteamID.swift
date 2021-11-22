@@ -8,7 +8,7 @@
 import XCTest
 @testable import Steamworks
 
-/// Very basic tests of the SteamID cloned type
+/// Very basic tests of the SteamID & GameID cloned type
 class TestSteamID: XCTestCase {
     func check(_ id: SteamID, _ expected: (UInt32, Int, Universe, AccountType)) {
         XCTAssertEqual(expected.0, id.accountID.value)
@@ -63,5 +63,44 @@ class TestSteamID: XCTestCase {
         XCTAssertEqual(0, staticKeyID.accountInstance)
         goodID.accountInstance = 0
         XCTAssertEqual(staticKeyID, goodID)
+    }
+
+    // CGameID
+
+    func check(_ id: GameID, _ expected: (UInt32, Int, GameID.GameType)) {
+        XCTAssertEqual(expected.0, id.appID.value)
+        XCTAssertEqual(expected.1, id.modID)
+        XCTAssertEqual(expected.2, id.gameType)
+    }
+
+    func testGameBitFields() {
+        var id = GameID()
+        XCTAssertEqual(0, id.asUInt64)
+        XCTAssertFalse(id.isValid)
+        check(id, (0, 0, .app))
+
+        id.appID = AppID(0xffffff)
+        XCTAssertTrue(id.isValid)
+        XCTAssertTrue(id.isSteamApp)
+        check(id, (AppID(0xffffff).value, 0, .app))
+        XCTAssertEqual(id, GameID(AppID(0xffffff)))
+        id.appID = .invalid
+        id.modID = 0xffffffff
+        XCTAssertFalse(id.isValid)
+        check(id, (0, 0xffffffff, .app))
+        id.modID = 0
+        id.gameType = .p2p
+        XCTAssertFalse(id.isValid)
+        check(id, (0, 0, .p2p))
+        id.gameType = .app
+    }
+
+    func testGameInvalidPatterns() {
+        let goodID = GameID(AppID(240), modID: 0x80000002)
+        XCTAssertTrue(goodID.isValid)
+        XCTAssertTrue(goodID.isMod)
+        let badTypID = GameID(goodID.asUInt64 | UInt64(0xff) << 24)
+        XCTAssertEqual(.unrepresentedInSwift, badTypID.gameType)
+        XCTAssertFalse(badTypID.isValid)
     }
 }

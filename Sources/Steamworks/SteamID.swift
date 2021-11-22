@@ -7,19 +7,6 @@
 
 @_implementationOnly import CSteamworks
 
-/// Helper to deal with bitfields.
-private extension UInt64 {
-    typealias BitSpec = (shift: Int, mask: UInt64)
-
-    func shiftOut(_ bs: BitSpec) -> UInt32 {
-        UInt32((self >> bs.shift) & bs.mask)
-    }
-
-    mutating func shiftIn(_ value: UInt32, _ bs: BitSpec) {
-        self = (self & ~(bs.mask << bs.shift)) | (UInt64(value) << bs.shift)
-    }
-}
-
 /// The globally unique identifier for all Steam accounts, Steam groups, lobbies, and chat rooms.
 ///
 /// Steamworks `CSteamID`.  Methods and interface style to follow Steamworks, see docs there.
@@ -31,6 +18,8 @@ public struct SteamID: Sendable {
     private let AIN_SPEC = (shift: 32, mask: UInt64(0xfffff))    // 20 (if ATY==chat then 8 flags+12 instance...)
     private let AID_SPEC = (shift: 0,  mask: UInt64(0xffffffff)) // 32 = 64 total
 
+    // MARK: Properties
+
     /// The universe of the `SteamID`.
     public var universe: Universe {
         get {
@@ -40,8 +29,6 @@ public struct SteamID: Sendable {
             value.shiftIn(newValue.rawValue, UNI_SPEC)
         }
     }
-
-    // MARK: Properties
 
     /// The account type of the `SteamID`.
     public var accountType: AccountType {
