@@ -150,6 +150,23 @@
     },
     "SteamAPI_ISteamFriends_SetListenForFriendsMessages": {
       "discardable_result": true
+    },
+    "SteamAPI_ISteamUtils_FilterText": {
+      "params": {
+        "pchOutFilteredText": {
+          "out_string_count": "nByteSizeOutFilteredText"
+        }
+      }
+    },
+    "SteamAPI_ISteamUtils_GetEnteredGamepadTextInput": {
+      "params": {
+        "pchText": {
+          "out_string_count": "cchText"
+        }
+      }
+    },
+    "SteamAPI_ISteamUtils_SetWarningMessageHook": {
+      "ignore": "(function pointer, use the logger)"
     }
   },
   "structs": {

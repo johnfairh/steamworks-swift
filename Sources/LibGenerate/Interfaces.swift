@@ -21,8 +21,12 @@ struct Interfaces {
     }
 
     func generate() throws {
+        let includes = Set<String>([
+            "ISteamFriends",
+            "ISteamUtils"
+        ])
         try metadata.db.interfaces.values.forEach { interface in
-            guard interface.name == "ISteamFriends" else {
+            guard includes.contains(interface.name) else {
                 return
             }
             let swiftName = interface.name.asSwiftTypeName
@@ -41,9 +45,10 @@ extension MetadataDB.Interface {
                           public extension \(swiftName) {
 
                           """
-        let methods = methods.values.sorted(by: { $0.name < $1.name }).map {
-            $0.generate(context: name)
-        }
+        let methods = methods.values
+            .sorted(by: { $0.name < $1.name })
+            .filter(\.shouldGenerate)
+            .map { $0.generate(context: name) }
         return declaration + methods.joined(separator: "\n\n") + "\n}"
     }
 }
@@ -67,6 +72,7 @@ final class SwiftParam {
         case in_array // pass by value but a Swift array, use a temporary to cast, no copy-back
         case in_array_count(SwiftParam) // a C param for the length of an `in_array` param that is absent in Swift
         case out_array(String) // pass inout, temporary to cast, copy-back, array.  Required size given by another param.
+        case out_string(String) // pass inout, temp buffer of user-set length, convert to string
     }
     private let style: Style
 
@@ -78,6 +84,7 @@ final class SwiftParam {
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
         case .out_array: return "inout [\(swiftTypeBaseName)]"
+        case .out_string: return "inout String"
         }
     }
 
@@ -100,6 +107,11 @@ final class SwiftParam {
                 "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asSwiftParameterName))",
                 "defer { \(tempName).deallocate() }"
             ]
+        case .out_string(let sizeParam):
+            return [
+                "let \(tempName) = UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asSwiftParameterName))",
+                "defer { \(tempName).deallocate() }"
+            ]
         }
     }
 
@@ -112,7 +124,7 @@ final class SwiftParam {
             return "&\(tempName)"
         case .in_array_count(let ap):
             return "\(ap.swiftName).count".asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
-        case .out_array:
+        case .out_array, .out_string:
             return "\(tempName).baseAddress"
         }
     }
@@ -124,6 +136,8 @@ final class SwiftParam {
         case .in, .in_array, .in_array_count: return nil
         case .out_array:
             return "\(swiftName) = \(tempName).map { \(swiftTypeBaseName)($0) }"
+        case .out_string:
+            return "\(swiftName) = String(\(tempName).baseAddress)"
         }
     }
 
@@ -134,13 +148,18 @@ final class SwiftParam {
             swiftTypeBaseName = "ERROR"
             style = .in_array_count(arrayParam)
         } else if let depointered = naiveSwiftTypeName.depointeredType {
-            swiftTypeBaseName = depointered.asSwiftTypeName
-            if let outLength = db.outArrayLength {
-                style = .out_array(outLength)
-            } else if db.arrayCount == nil {
-                style = .out
+            if let outStringLength = db.outStringLength {
+                swiftTypeBaseName = "String"
+                style = .out_string(outStringLength)
             } else {
-                style = .in_array
+                swiftTypeBaseName = depointered.asSwiftTypeName
+                if let outLength = db.outArrayLength {
+                    style = .out_array(outLength)
+                } else if db.arrayCount == nil {
+                    style = .out
+                } else {
+                    style = .in_array
+                }
             }
         } else {
             swiftTypeBaseName = naiveSwiftTypeName
@@ -358,6 +377,10 @@ struct SwiftMethod {
 }
 
 extension MetadataDB.Method {
+    var shouldGenerate: Bool {
+        !ignore
+    }
+
     var isVar: Bool {
         false
         // Originally had this generating `var`s for 0-arg functions.

@@ -103,6 +103,8 @@ struct SteamJSON: Codable {
 /// * Methods: specify out-param behaviour when API call fails
 /// * Methods: correct a parameter type
 /// * Methods: set discardableResult
+/// * Methods: patch in missed `out_string_count`
+/// * Methods: ignore entirely
 /// * Structs: correct a field type (steam or swift)
 /// * Structs: ignore field or entire struct
 /// * Structs: correct the steam name
@@ -131,9 +133,11 @@ struct PatchJSON: Codable {
         let returntype: String? // patch returntype (steam type)
         let out_param_iff_rc: String? // only copyback out-params if method rc matches
         let discardable_result: Bool? // set that attr
+        let ignore: String? // ignore this method
 
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
+            let out_string_count: String? // patch out_string_count
         }
         let params: [String : Param]?
     }
@@ -214,14 +218,13 @@ struct MetadataDB {
         let flatName: String
         let callResult: String?
         let callback: String?
-        let discardableResult: Bool
 
         struct Param: Codable {
             let name: String
             let type: String
             let arrayCount: String?
             let outArrayLength: String?
-            // ?? let out_string_count: String?
+            let outStringLength: String?
             // ?? let buffer_count: String?
 
             init(base: SteamJSON.Method.Param, patch: PatchJSON.Method.Param?) {
@@ -239,11 +242,20 @@ struct MetadataDB {
                 } else {
                     self.outArrayLength = nil
                 }
+
+                if let outStringCount = base.out_string_count ?? patch?.out_string_count {
+                    self.outStringLength = outStringCount
+                } else {
+                    self.outStringLength = nil
+                }
+                precondition(outArrayLength == nil || outStringLength == nil)
             }
         }
         let params: [Param]
         let returnType: String
         let outParamIffRc: String?
+        let discardableResult: Bool
+        let ignore: Bool
 
         init(base: SteamJSON.Method, patch: PatchJSON.Method?) {
             name = base.methodname
@@ -254,6 +266,7 @@ struct MetadataDB {
             returnType = patch?.returntype ?? base.returntype
             outParamIffRc = patch?.out_param_iff_rc
             discardableResult = patch?.discardable_result ?? false
+            ignore = patch.map { $0.ignore != nil } ?? false
         }
     }
 

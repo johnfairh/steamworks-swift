@@ -2502,7 +2502,7 @@ public struct RemoteStorageFileReadAsyncComplete {
     /// Steamworks `m_nOffset`
     public let offset: Int
     /// Steamworks `m_cubRead`
-    public let read: Int
+    public let readCount: Int
 }
 
 extension RemoteStorageFileReadAsyncComplete: SteamCreatable {
@@ -2510,7 +2510,7 @@ extension RemoteStorageFileReadAsyncComplete: SteamCreatable {
         fileReadAsync = .init(steam.m_hFileReadAsync)
         result = .init(steam.m_eResult)
         offset = .init(steam.m_nOffset)
-        read = .init(steam.m_cubRead)
+        readCount = .init(steam.m_cubRead)
     }
 }
 
@@ -3136,14 +3136,14 @@ public struct SteamAPICallCompleted {
     /// Steamworks `m_iCallback`
     public let callbackIndex: Int
     /// Steamworks `m_cubParam`
-    public let param: Int
+    public let paramCount: Int
 }
 
 extension SteamAPICallCompleted: SteamCreatable {
     init(_ steam: CSteamworks.SteamAPICallCompleted_t) {
         asyncCall = .init(steam.m_hAsyncCall)
         callbackIndex = .init(steam.m_iCallback)
-        param = .init(steam.m_cubParam)
+        paramCount = .init(steam.m_cubParam)
     }
 }
 

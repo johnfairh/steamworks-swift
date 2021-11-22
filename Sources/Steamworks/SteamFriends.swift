@@ -21,3 +21,14 @@ public struct SteamFriends {
     init() {
     }
 }
+
+/// Steamworks [`ISteamUtils`](https://partner.steamgames.com/doc/api/ISteamUtils)
+///
+/// Access via `SteamAPI.utils` or `SteamGameServerAPI.utils`
+public struct SteamUtils {
+    let interface: UnsafeMutablePointer<ISteamUtils>
+
+    init(isServer: Bool) {
+        interface = isServer ? SteamAPI_SteamGameServerUtils_v010() : SteamAPI_SteamUtils_v010()
+    }
+}

@@ -42,7 +42,7 @@ public final class SteamAPI: SteamBaseAPI {
             return nil
         }
 
-        super.init(steamPipe: HSteamPipe(SteamAPI_GetHSteamPipe()))
+        super.init(steamPipe: HSteamPipe(SteamAPI_GetHSteamPipe()), isServer: false)
     }
 
     /// Calls `SteamAPI_IsSteamRunning()`.

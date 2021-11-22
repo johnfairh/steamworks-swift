@@ -79,6 +79,10 @@ extension String {
         if let match = re_match("^i([A-Z].*?)(?:Index)?$") {
             return "\(match[1])Index".asSwiftIdentifier
         }
+        // 'cch' special cases, avoid collapsing 'cchFoo' and 'pchFoo' to the same thing
+        if let match = re_match("^c(?:ch|ub)([A-Z][a-z]+)$") {
+            return "\(match[1])Count".asSwiftIdentifier
+        }
         // Ultimate fallback - strip lower-case prefix and convert
         return re_sub("^[a-z]*(?=[A-Z])") {
             steamParameterNameGoodPrefixes.contains($0) ? $0 : ""

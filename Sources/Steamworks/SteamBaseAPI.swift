@@ -119,11 +119,13 @@ public class SteamBaseAPI: @unchecked Sendable {
         SteamAPI_ManualDispatch_Init()
     }()
 
-    init(steamPipe: HSteamPipe) {
+    init(steamPipe: HSteamPipe, isServer: Bool) {
         self.steamPipe = steamPipe
         self.lock = Lock()
 
         _ = SteamBaseAPI.initOnce
+
+        self.utils = SteamUtils(isServer: isServer)
     }
 
     // MARK: Notifications
@@ -212,6 +214,11 @@ public class SteamBaseAPI: @unchecked Sendable {
     public func useLoggerForSteamworksWarnings() {
         SteamAPI_ISteamUtils_SetWarningMessageHook(SteamAPI_SteamUtils_v010(), steamApiWarningMessageHook)
     }
+
+    // MARK: Interfaces
+
+    /// Access the Steamworks `ISteamUtils` interface
+    public let utils: SteamUtils
 }
 
 func logError(_ message: @autoclosure () -> String) {
