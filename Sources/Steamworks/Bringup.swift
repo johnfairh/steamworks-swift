@@ -7,25 +7,6 @@
 
 @_implementationOnly import CSteamworks
 
-// MARK: SteamID
-
-public struct SteamID {
-    public let steamID: UInt64
-    public init(_ steamID: UInt64) {
-        self.steamID = steamID
-    }
-    init(_ steamID: CSteamID) {
-        var kludge = steamID
-        self.steamID = kludge.ConvertToUint64()
-    }
-}
-
-extension UInt64 {
-    init(_ steamID: SteamID) {
-        self = steamID.steamID
-    }
-}
-
 public struct GameID {
     public let gameID: UInt64
     public init(_ gameID: UInt64) {
@@ -33,13 +14,6 @@ public struct GameID {
     }
     init(_ gameID: CGameID) {
         self.gameID = gameID.m_ulGameID
-    }
-}
-
-// Extremely terrifying extension to a C++ class ...
-extension CSteamID {
-    init(_ steamID: SteamID) {
-        self.init(steamID.steamID)
     }
 }
 

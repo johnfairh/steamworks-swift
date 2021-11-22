@@ -65,6 +65,13 @@
             BlueprintName = "LibGenerate"
             ReferencedContainer = "container:swift-steamworks.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "swift-steamworks::Steamworks"
+            BuildableName = "Steamworks.framework"
+            BlueprintName = "Steamworks"
+            ReferencedContainer = "container:swift-steamworks.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference

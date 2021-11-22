@@ -14,6 +14,9 @@
   "consts_to_ignore": [
     "k_cFriendsGroupLimit",
     "k_cEnumerateFollowersMax",
+    "k_unSteamAccountIDMask",
+    "k_unSteamAccountInstanceMask",
+    "k_unSteamUserDefaultInstance"
   ],
   "enums": {
     "AudioPlayback_Status": {

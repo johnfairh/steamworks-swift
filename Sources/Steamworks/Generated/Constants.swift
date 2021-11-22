@@ -10,15 +10,6 @@
 
 /// Namespace for Steamworks top-level constants
 public enum SteamConstants {
-    /// Steamworks `k_unSteamAccountIDMask`
-    public static let steamAccountIDMask = Int(0xFFFFFFFF)
-
-    /// Steamworks `k_unSteamAccountInstanceMask`
-    public static let steamAccountInstanceMask = Int(0x000FFFFF)
-
-    /// Steamworks `k_unSteamUserDefaultInstance`
-    public static let steamUserDefaultInstance = Int(1)
-
     /// Steamworks `k_cchGameExtraInfoMax`
     public static let gameExtraInfoMax = Int(64)
 
