@@ -50,6 +50,7 @@ extension String {
         re_match(#"^(.*) \[(.+)\]$"#).flatMap { ($0[1], Int($0[2])!) }
     }
 
+    /// * get rid of 'BIsBShortForBool'
     /// * to lowerCamelCase
     /// * keep one leading underscore, erase all others
     /// * backticks if accidentally a Swift keyword
@@ -58,7 +59,8 @@ extension String {
         switch self {
         case "IPv4", "IPv6": return self.lowercased()
         default:
-            return re_sub("^_?[A-Z]+?(?=$|[^A-Z]|[A-Z][a-z])") { $0.lowercased() }
+            return re_sub("^B(?=[A-Z].*[a-z])", with: "")
+                .re_sub("^[A-Z]+?(?=$|[^A-Z]|[A-Z][a-z])") { $0.lowercased() }
                 .re_sub("(?<!^)_", with: "")
                 .backtickedIfNecessary
         }
@@ -130,14 +132,23 @@ extension String {
         return asExplicitSwiftTypeForPassingIntoSteamworks
     }
 
+    /// As above but with explicit types, not used calling a C function with clang importer magic
     var asExplicitSwiftTypeForPassingIntoSteamworks: String {
         steamTypesPassedInStrangely[self] ?? self
     }
 
+    /// For constructing a temporary instance, in Swift, to pass by ref to Steamworks
+    /// and then to be copied back out to the Swift type.
     var asExplicitSwiftInstanceForPassingIntoSteamworks: String {
         let typename = asExplicitSwiftTypeForPassingIntoSteamworks
         let suffix = Metadata.isEnum(steamType: self) ? "(rawValue: 0)" : "()"
         return typename + suffix
+    }
+
+    /// Can a steam type be used transparently as an out param in Swift.
+    /// Probably never be anything more than Bool!
+    var isTransparentOutType: Bool {
+        self == "bool"
     }
 
     var asSwiftTypeForPassingOutOfSteamworks: String? {
@@ -174,6 +185,7 @@ private let steamToSwiftTypes: [String : String] = [
     "float" : "Float",
     "double" : "Double",
     "void *" : "UnsafeMutableRawPointer",
+    "uint8 *" : "UnsafeMutablePointer<UInt8>",
     "uint64_steamid" : "SteamID",
 
     // Misc
@@ -196,7 +208,7 @@ private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
 // directly (without a cast) to a Steamworks function expecting
 // the Steam type.
 private let steamTypesPassedInTransparently = Set<String>([
-    "bool", "const char *", "void *"
+    "bool", "const char *", "void *", "uint8 *"
 ])
 
 // Steam types whose Swift type version is typesafe to pass

@@ -119,7 +119,7 @@
       "returntype": "EUserRestriction"
     },
     "SteamAPI_ISteamFriends_GetFriendGamePlayed": {
-        "out_param_iff_rc": ""
+      "out_param_iff_rc": ""
     },
     "SteamAPI_ISteamFriends_GetFriendByIndex": {
       "params": {
@@ -158,12 +158,21 @@
         }
       }
     },
+    "SteamAPI_ISteamUtils_GetAppID": {
+      "returntype": "AppId_t"
+    },
     "SteamAPI_ISteamUtils_GetEnteredGamepadTextInput": {
       "params": {
         "pchText": {
           "out_string_count": "cchText"
         }
       }
+    },
+    "SteamAPI_ISteamUtils_GetImageSize": {
+      "out_param_iff_rc": ""
+    },
+    "SteamAPI_ISteamUtils_GetServerRealTime": {
+      "returntype": "RTime32_t"
     },
     "SteamAPI_ISteamUtils_SetWarningMessageHook": {
       "ignore": "(function pointer, use the logger)"

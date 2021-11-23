@@ -12,8 +12,9 @@
 /// Access via `SteamAPI.friends`.
 public struct SteamFriends {
     /// So.... if we actually have storage of type `ISteamWhatever` then the link fails because
-    /// someone (debug info?) is generating refs to the class vtable which Swift forgets to link.
-    /// Workaround so far is to never store anything of that type!
+    /// nobody links libc++.  We add that lib and the link works, but then runtime goes horribly
+    /// wrong somehow and the pointer gets corrupted.
+    /// Only safe way rn is to not cache it but query it each time.
     var interface: UnsafeMutablePointer<ISteamFriends> {
         SteamAPI_SteamFriends_v017()
     }
@@ -26,9 +27,13 @@ public struct SteamFriends {
 ///
 /// Access via `SteamAPI.utils` or `SteamGameServerAPI.utils`
 public struct SteamUtils {
-    let interface: UnsafeMutablePointer<ISteamUtils>
+    private let isServer: Bool
+
+    var interface: UnsafeMutablePointer<ISteamUtils> {
+        isServer ? SteamAPI_SteamGameServerUtils_v010() : SteamAPI_SteamUtils_v010()
+    }
 
     init(isServer: Bool) {
-        interface = isServer ? SteamAPI_SteamGameServerUtils_v010() : SteamAPI_SteamUtils_v010()
+        self.isServer = isServer
     }
 }

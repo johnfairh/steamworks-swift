@@ -69,10 +69,12 @@ final class SwiftParam {
     private enum Style {
         case `in` // pass by value, flat, cast at time of use
         case out  // pass inout, use a temporary to cast, copy-back
+        case out_transparent // pass inout, no temporary
         case in_array // pass by value but a Swift array, use a temporary to cast, no copy-back
         case in_array_count(SwiftParam) // a C param for the length of an `in_array` param that is absent in Swift
         case out_array(String) // pass inout, temporary to cast, copy-back, array.  Required size given by another param.
         case out_string(String) // pass inout, temp buffer of user-set length, convert to string
+                                // eventually review and switch to String(unsafeUninit... to avoid the copy)
     }
     private let style: Style
 
@@ -80,7 +82,7 @@ final class SwiftParam {
     var swiftParamType: String? {
         switch style {
         case .in: return swiftTypeBaseName
-        case .out: return "inout \(swiftTypeBaseName)"
+        case .out, .out_transparent: return "inout \(swiftTypeBaseName)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
         case .out_array: return "inout [\(swiftTypeBaseName)]"
@@ -98,7 +100,7 @@ final class SwiftParam {
     /// (Need to review for stack-allocation, new APIs in Swift 5.6 might help)
     var preCallLines: [String] {
         switch style {
-        case .in, .in_array_count: return []
+        case .in, .in_array_count, .out_transparent: return []
         case .in_array: return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
         case .out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks)"]
         case .out_array(let sizeParam):
@@ -122,6 +124,8 @@ final class SwiftParam {
             return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
         case .out, .in_array:
             return "&\(tempName)"
+        case .out_transparent:
+            return "&\(swiftName)"
         case .in_array_count(let ap):
             return "\(ap.swiftName).count".asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
         case .out_array, .out_string:
@@ -133,11 +137,11 @@ final class SwiftParam {
     var postSuccessCallLine: String? {
         switch style {
         case .out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
-        case .in, .in_array, .in_array_count: return nil
+        case .in, .in_array, .in_array_count, .out_transparent: return nil
         case .out_array:
             return "\(swiftName) = \(tempName).map { \(swiftTypeBaseName)($0) }"
         case .out_string:
-            return "\(swiftName) = String(\(tempName).baseAddress)"
+            return "\(swiftName) = String(\(tempName))" // null-termination done inside, see TypeUtils.swift
         }
     }
 
@@ -155,6 +159,8 @@ final class SwiftParam {
                 swiftTypeBaseName = depointered.asSwiftTypeName
                 if let outLength = db.outArrayLength {
                     style = .out_array(outLength)
+                } else if depointered.isTransparentOutType {
+                    style = .out_transparent
                 } else if db.arrayCount == nil {
                     style = .out
                 } else {

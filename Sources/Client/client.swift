@@ -74,6 +74,8 @@ final class Client {
             testCallReturn()
         case 2:
             testCallback()
+        case 3:
+            testStringFilter()
         default:
             print("<<<< Actually, that's the end")
             testState = .done
@@ -131,6 +133,18 @@ final class Client {
             print("...that's bad, abandoning test")
             endTest()
         }
+    }
+
+    func testStringFilter() {
+        let steamID = SteamUser().steamID
+        let str = "Hello world"
+        var filteredStr = String()
+
+        let rc = api.utils.initFilterText(filterOptions: 0)
+        print("InitFilterText: \(rc)")
+        let count = api.utils.filterText(context: .chat, steamID: steamID, inputMessage: str, outFilteredText: &filteredStr, byteSizeOutFilteredText: 12)
+        print("Filtered, count=\(count) out=\(filteredStr)")
+        endTest()
     }
 }
 

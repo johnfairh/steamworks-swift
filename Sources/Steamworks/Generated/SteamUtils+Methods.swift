@@ -11,7 +11,7 @@
 // MARK: Interface methods
 public extension SteamUtils {
     /// Steamworks `ISteamUtils::BOverlayNeedsPresent()`
-    func bOverlayNeedsPresent() -> Bool {
+    func overlayNeedsPresent() -> Bool {
         SteamAPI_ISteamUtils_BOverlayNeedsPresent(interface)
     }
 
@@ -33,7 +33,7 @@ public extension SteamUtils {
         let tmp_outFilteredText = UnsafeMutableBufferPointer<CChar>.allocate(capacity: byteSizeOutFilteredText)
         defer { tmp_outFilteredText.deallocate() }
         let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), UInt64(steamID), inputMessage, tmp_outFilteredText.baseAddress, uint32(byteSizeOutFilteredText)))
-        outFilteredText = String(tmp_outFilteredText.baseAddress)
+        outFilteredText = String(tmp_outFilteredText)
         return rc
     }
 
@@ -44,15 +44,12 @@ public extension SteamUtils {
 
     /// Steamworks `ISteamUtils::GetAPICallResult()`
     func getAPICallResult(steamAPICall: SteamAPICall, callback: UnsafeMutableRawPointer, callbackCount: Int, callbackExpectedIndex: Int, failed: inout Bool) -> Bool {
-        var tmp_failed = Bool()
-        let rc = SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, Int32(callbackCount), Int32(callbackExpectedIndex), &tmp_failed)
-        failed = Bool(tmp_failed)
-        return rc
+        SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, Int32(callbackCount), Int32(callbackExpectedIndex), &failed)
     }
 
     /// Steamworks `ISteamUtils::GetAppID()`
-    func getAppID() -> Int {
-        Int(SteamAPI_ISteamUtils_GetAppID(interface))
+    func getAppID() -> AppID {
+        AppID(SteamAPI_ISteamUtils_GetAppID(interface))
     }
 
     /// Steamworks `ISteamUtils::GetConnectedUniverse()`
@@ -70,7 +67,7 @@ public extension SteamUtils {
         let tmp_text = UnsafeMutableBufferPointer<CChar>.allocate(capacity: textCount)
         defer { tmp_text.deallocate() }
         let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmp_text.baseAddress, uint32(textCount))
-        text = String(tmp_text.baseAddress)
+        text = String(tmp_text)
         return rc
     }
 
@@ -95,11 +92,8 @@ public extension SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetImageRGBA()`
-    func getImageRGBA(imageIndex: Int, dest: inout Int, destBufferSize: Int) -> Bool {
-        var tmp_dest = uint8()
-        let rc = SteamAPI_ISteamUtils_GetImageRGBA(interface, Int32(imageIndex), &tmp_dest, Int32(destBufferSize))
-        dest = Int(tmp_dest)
-        return rc
+    func getImageRGBA(imageIndex: Int, dest: UnsafeMutablePointer<UInt8>, destBufferSize: Int) -> Bool {
+        SteamAPI_ISteamUtils_GetImageRGBA(interface, Int32(imageIndex), dest, Int32(destBufferSize))
     }
 
     /// Steamworks `ISteamUtils::GetImageSize()`
@@ -107,8 +101,10 @@ public extension SteamUtils {
         var tmp_width = uint32()
         var tmp_height = uint32()
         let rc = SteamAPI_ISteamUtils_GetImageSize(interface, Int32(imageIndex), &tmp_width, &tmp_height)
-        width = Int(tmp_width)
-        height = Int(tmp_height)
+        if rc {
+            width = Int(tmp_width)
+            height = Int(tmp_height)
+        }
         return rc
     }
 
@@ -123,8 +119,8 @@ public extension SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetServerRealTime()`
-    func getServerRealTime() -> Int {
-        Int(SteamAPI_ISteamUtils_GetServerRealTime(interface))
+    func getServerRealTime() -> RTime32 {
+        RTime32(SteamAPI_ISteamUtils_GetServerRealTime(interface))
     }
 
     /// Steamworks `ISteamUtils::GetSteamUILanguage()`
@@ -139,10 +135,7 @@ public extension SteamUtils {
 
     /// Steamworks `ISteamUtils::IsAPICallCompleted()`
     func isAPICallCompleted(steamAPICall: SteamAPICall, failed: inout Bool) -> Bool {
-        var tmp_failed = Bool()
-        let rc = SteamAPI_ISteamUtils_IsAPICallCompleted(interface, SteamAPICall_t(steamAPICall), &tmp_failed)
-        failed = Bool(tmp_failed)
-        return rc
+        SteamAPI_ISteamUtils_IsAPICallCompleted(interface, SteamAPICall_t(steamAPICall), &failed)
     }
 
     /// Steamworks `ISteamUtils::IsOverlayEnabled()`

@@ -68,13 +68,13 @@ To run the generator / build:
 
 ### Interface plan
 
-✅ SteamFriends
+✅ SteamFriends, ISteamUtils
 
 Easy:
 * ISteamAppList, ISteamApps, ISteamAppTicket, ISteamGameServer, ISteamGameServerStats,
   ISteamHTTP, ISteamMatchmaking, ISteamParties, ISteamGameSearch, ISteamMusic,
   ISteamMusicRemote, ISteamParentalSettings, ISteamRemotePlay, ISteamScreenshots,
-  ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo
+  ISteamUser, ISteamUserStats, ISteamVideo
 
 Bit more complex:
 * ISteamHTMLSurface - embedded enums??

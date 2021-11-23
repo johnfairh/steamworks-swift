@@ -15,10 +15,21 @@ typealias CallbackID = Int32
 // MARK: Strings
 
 extension String {
-    /// For converting strings received from Steamworks.  We promote `nullptr` to empty string; where
-    /// Steamworks specifies a string may legitimately be NULL we use a `String?` instead.
+    /// For converting const strings received from Steamworks.  We promote `nullptr` to empty string;
+    /// where Steamworks specifies a string may legitimately be NULL we use a `String?` instead.
     init(_ cString: UnsafePointer<CChar>?) {
         if let cString = cString {
+            self.init(cString: cString)
+        } else {
+            self = ""
+        }
+    }
+
+    /// For converting C strings filled in by steamworks into Strings.
+    /// Make sure the thing is null-terminated.
+    init(_ bufptr: UnsafeMutableBufferPointer<CChar>) {
+        if let cString = bufptr.baseAddress {
+            cString[bufptr.count - 1] = 0
             self.init(cString: cString)
         } else {
             self = ""

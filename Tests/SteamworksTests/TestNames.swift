@@ -45,7 +45,7 @@ class TestNames: XCTestCase {
             ("IPv4", "ipv4"), // awful special case -- in a previous product we always wrote "ip4" and "ip6" in code to avoid this issue!
             ("IPv6", "ipv6"),
             ("Abc_Def", "abcDef"),
-            ("_Weird", "_weird"),
+            ("BIsReady", "isReady")
         ]
 
         cases.forEach { steam, swift in
