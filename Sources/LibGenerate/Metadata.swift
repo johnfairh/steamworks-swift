@@ -68,9 +68,15 @@ struct SteamJSON: Codable {
         let returntype: String
     }
 
+    struct Accessor: Codable {
+        let kind: String
+        let name_flat: String
+    }
+
     struct Interface: Codable {
         let classname: String
         let methods: [Method]
+        let accessors: [Accessor]?
     }
     let interfaces: [Interface]
 
@@ -213,13 +219,13 @@ struct MetadataDB {
     /// Indexed by `enumname`, order from original file
     let enums: OrderedDictionary<String, Enum>
 
-    struct Method: Codable {
+    struct Method {
         let name: String
         let flatName: String
         let callResult: String?
         let callback: String?
 
-        struct Param: Codable {
+        struct Param {
             let name: String
             let type: String
             let arrayCount: String?
@@ -270,16 +276,46 @@ struct MetadataDB {
         }
     }
 
-    struct Interface: Codable {
+    struct Interface {
         let name: String
         /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
         let methods: OrderedDictionary<String, Method>
 
-        init(base: SteamJSON.Interface, patch: PatchJSON) {
+        enum Access {
+            case global(String)
+            case user(String)
+            case gameserver(String)
+            case userAndServer(String, String)
+        }
+        let access: Access
+
+        init?(base: SteamJSON.Interface, patch: PatchJSON) {
             name = base.classname
             methods = .init(uniqueKeysWithValues: base.methods.map { baseMethod in
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
             })
+            // Filter out things in 'interfaces' that are not actually steamworks API interfaces
+            guard let accessors = base.accessors else {
+                return nil
+            }
+            let accessorMap = Dictionary(uniqueKeysWithValues: accessors.map { ($0.kind, $0.name_flat) })
+            if let g = accessorMap["global"] {
+                access = .global(g)
+            } else {
+                let u = accessorMap["user"]
+                let g = accessorMap["gameserver"]
+                if let u = u {
+                    if let g = g {
+                        access = .userAndServer(u, g)
+                    } else {
+                        access = .user(u)
+                    }
+                } else if let g = g {
+                    access = .gameserver(g)
+                } else {
+                    preconditionFailure("Confused by accessors for \(base.classname)")
+                }
+            }
         }
     }
     /// Indexed by `classname`, order from original file
@@ -362,8 +398,8 @@ struct MetadataDB {
             ($0.name, Enum(base: $0, patch: patch.enums[$0.name]))
         })
 
-        interfaces = .init(uniqueKeysWithValues: base.interfaces.map {
-            ($0.classname, Interface(base: $0, patch: patch))
+        interfaces = .init(uniqueKeysWithValues: base.interfaces.compactMap {
+            Interface(base: $0, patch: patch).map { ($0.name, $0) }
         })
 
         structs = .init(uniqueKeysWithValues: (base.callback_structs + base.structs).map {

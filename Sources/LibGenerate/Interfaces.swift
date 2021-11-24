@@ -30,28 +30,99 @@ struct Interfaces {
                 return
             }
             let swiftName = interface.name.asSwiftTypeName
-            try io.write(fileName: "\(swiftName)+Methods.swift",
+            try io.write(fileName: "\(swiftName).swift",
                          contents: interface.generate(context: swiftName))
         }
     }
 }
 
+// MARK: Struct declaration and plumbing
+
+// Accessor generation
+//
+// Instinct is to cache the `ISteamWhatever` pointer in the member rather than
+// figure it out each time.  But this falls foul of Swift C++ interop issues:
+//
+// 1. Generates link errors, missing refs to `__cxa_pure_virtual` etc.
+//    So manually add `-lc++` and this goes away.
+//
+// 2. But now the cached value gets clobbered somehow at runtime: it's correct
+//    when called but then later referencing it, has changed to very bad value
+//    that is mostly zeroes with the top (63rd) bit set.
+//    So, erm, this must be a limitation to do with storing refs to base
+//    classes or something?
+//
+// Hence current approach of figuring out each time, never storing a ref to
+// the thing.
+//
+// Last checked Xcode 13.2 beta 2, Nov 24 2021.
+
+extension MetadataDB.Interface.Access {
+    /// Generate a doc comment snippet
+    func accessVia(getter: String) -> String {
+        switch self {
+        case .user: return "`SteamAPI.\(getter)`"
+        case .gameserver: return "`SteamGameServerAPI.\(getter)`"
+        case .global, .userAndServer:
+            return "`SteamBaseAPI.\(getter)` through a `SteamAPI` or `SteamGameServerAPI` instance"
+        }
+    }
+
+    /// Generate the Swift declaration for the interface.
+    ///
+    /// Complicated by some of them being user/server dual
+    func declaration(name: String) -> String {
+        let shortName = name.re_sub("^ISteam", with: "").asSwiftTypeName  // "ISteamFriends" -> "friends"
+
+        let docComment =
+            """
+            /// Steamworks [`\(name)`](https://partner.steamgames.com/doc/api/\(name))
+            ///
+            /// Access via \(accessVia(getter: shortName)).
+            public struct \(name.asSwiftTypeName) {
+            """
+
+        let decl: String
+
+        switch self {
+        case .user(let accessor), .gameserver(let accessor), .global(let accessor):
+            decl = """
+                       var interface: UnsafeMutablePointer<\(name)> {
+                           \(accessor)()
+                       }
+
+                       init() {
+                       }
+                   """
+        case .userAndServer(let userAccess, let serverAccess):
+            decl = """
+                       private let isServer: Bool
+                       var interface: UnsafeMutablePointer<\(name)> {
+                           isServer ? \(serverAccess)() : \(userAccess)()
+                       }
+
+                       init(isServer: Bool) {
+                           self.isServer = isServer
+                       }
+                   """
+        }
+
+        return "\(docComment)\n\(decl)\n"
+    }
+}
+
 extension MetadataDB.Interface {
     func generate(context: String) -> String {
-        let swiftName = name.asSwiftTypeName
-
-        let declaration = """
-                          // MARK: Interface methods
-                          public extension \(swiftName) {
-
-                          """
+        let declaration = access.declaration(name: name)
         let methods = methods.values
             .sorted(by: { $0.name < $1.name })
             .filter(\.shouldGenerate)
             .map { $0.generate(context: name) }
-        return declaration + methods.joined(separator: "\n\n") + "\n}"
+        return declaration + "\n" + methods.joined(separator: "\n\n") + "\n}"
     }
 }
+
+// MARK: Method Parameters
 
 final class SwiftParam {
     let db: MetadataDB.Method.Param
@@ -233,6 +304,8 @@ extension Array where Element == SwiftParam {
     }
 }
 
+// MARK: Methods
+
 struct SwiftMethod {
     let db: MetadataDB.Method
 
@@ -267,14 +340,14 @@ struct SwiftMethod {
     var declLine: String {
         switch (style, db.isVar) {
         case (.normal(let type), true):
-            return "var \(db.varName): \(type) {"
+            return "public var \(db.varName): \(type) {"
         case (.normal(let type), false):
-            return "func \(db.funcName)(\(params.functionParams)) -> \(type) {"
+            return "public func \(db.funcName)(\(params.functionParams)) -> \(type) {"
         case (.void, false):
-            return "func \(db.funcName)(\(params.functionParams)) {"
+            return "public func \(db.funcName)(\(params.functionParams)) {"
         case (.callReturn(let type), false):
             let done = "completion: @escaping (\(type)?) -> Void"
-            return "func \(db.funcName)(\(params.functionParams), \(done)) {"
+            return "public func \(db.funcName)(\(params.functionParams), \(done)) {"
         default:
             preconditionFailure("Unexpected var-match: \(db)")
         }

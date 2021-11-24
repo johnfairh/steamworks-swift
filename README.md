@@ -43,6 +43,8 @@ Tech limitations, on 5.5 and also swift/main as of 20/Oct:
 * Importing `Dispatch` and `-enable-cxx-interop` makes `DispatchSemaphore` disappear
   but not the rest of the module?? Work around.
 * Have to manually tell Swift to link with `libc++`?? Workaround.
+* Even with `-lc++` something goes wrong storing pointers to base classes and they
+  get nobbled by something.  Lucky to be able to work around.
 * Calls to (?pure) virtual functions aren't generated properly: Swift generates a ref
   to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
   usable in practice.  Will use the flat API.
@@ -68,7 +70,7 @@ To run the generator / build:
 
 ### Interface plan
 
-✅ SteamFriends, ISteamUtils
+✅ ISteamFriends, ISteamUtils
 
 Easy:
 * ISteamAppList, ISteamApps, ISteamAppTicket, ISteamGameServer, ISteamGameServerStats,

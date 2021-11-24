@@ -198,7 +198,7 @@ private let steamToSwiftTypes: [String : String] = [
     "ESteamNetworkingConfigValue" : "SteamNetworkingConfigValueSetting"
 ]
 
-// How to represent an array of steam types, special cases
+// How to represent an array of steam types (in a struct field,) special cases
 private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
     "char" : "String",
     "uint8" : "[UInt8]" // Should be Data but can't use Foundation inside Steamworks because C++!
