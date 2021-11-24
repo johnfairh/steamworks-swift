@@ -170,7 +170,7 @@ extension ClanOfficerListResponse: SteamCreatable {
 /// Steamworks `ClientGameServerDeny_t`
 public struct ClientGameServerDeny {
     /// Steamworks `m_uAppID`
-    public let appID: Int
+    public let appID: AppID
     /// Steamworks `m_unGameServerIP`
     public let gameServerIP: Int
     /// Steamworks `m_usGameServerPort`
@@ -1517,7 +1517,7 @@ extension HTTPRequestHeadersReceived: SteamCreatable {
 /// Steamworks `IPCFailure_t`
 public struct IPCFailure {
     /// Steamworks `m_eFailureType`
-    public let failureType: Int
+    public let failureType: FailureType
 
     /// Steamworks `IPCFailure_t::EFailureType`
     public enum FailureType: UInt32 {
@@ -2001,7 +2001,7 @@ extension MatchMakingKeyValuePair: SteamCreatable {
 /// Steamworks `MicroTxnAuthorizationResponse_t`
 public struct MicroTxnAuthorizationResponse {
     /// Steamworks `m_unAppID`
-    public let appID: Int
+    public let appID: AppID
     /// Steamworks `m_ulOrderID`
     public let orderID: UInt64
     /// Steamworks `m_bAuthorized`

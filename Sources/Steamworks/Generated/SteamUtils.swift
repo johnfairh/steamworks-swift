@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamUtils`](https://partner.steamgames.com/doc/api/ISteamUtils)
 ///
-/// Access via `SteamBaseAPI.Utils` through a `SteamAPI` or `SteamGameServerAPI` instance.
+/// Access via `SteamBaseAPI.utils` through a `SteamAPI` or `SteamGameServerAPI` instance.
 public struct SteamUtils {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamUtils> {

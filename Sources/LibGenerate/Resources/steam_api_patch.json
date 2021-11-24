@@ -156,7 +156,8 @@
         "pchBuffer": {
           "out_string_count": "cubBuffer"
         }
-      }
+      },
+      "out_param_iff_rc": ""
     },
     "SteamAPI_ISteamUtils_FilterText": {
       "params": {
@@ -186,6 +187,27 @@
     }
   },
   "structs": {
+    "ClientGameServerDeny_t": {
+      "fields": {
+        "m_uAppID": {
+          "fieldtype": "AppId_t"
+        }
+      }
+    },
+    "IPCFailure_t": {
+      "fields": {
+        "m_eFailureType": {
+          "fieldtype": "IPCFailure_t::EFailureType"
+        }
+      }
+    },
+    "MicroTxnAuthorizationResponse_t": {
+      "fields": {
+        "m_unAppID": {
+          "fieldtype": "AppId_t"
+        }
+      }
+    },
     "ModalGamepadTextInputDismissed_t": {
       "name": "FloatingGamepadTextInputDismissed_t"
     },

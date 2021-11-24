@@ -88,6 +88,13 @@ extension EnumWithUnrepresented where Self: RawRepresentable, From.RawValue == S
     }
 }
 
+// Not sure yet whether this dumb thing needs generalizing
+extension IPCFailure.FailureType {
+    init(_ from: UInt8) {
+        self.init(From(rawValue: UInt32(from)))
+    }
+}
+
 /// Steamworks OptionSet Integer mess
 ///
 /// Steamworks has a few enums that are bitfield things mapped into Swift as `OptionSet`s.

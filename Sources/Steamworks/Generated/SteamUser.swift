@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamUser`](https://partner.steamgames.com/doc/api/ISteamUser)
 ///
-/// Access via `SteamAPI.User`.
+/// Access via `SteamAPI.user`.
 public struct SteamUser {
     var interface: UnsafeMutablePointer<ISteamUser> {
         SteamAPI_SteamUser_v021()
@@ -159,7 +159,9 @@ public struct SteamUser {
         let tmp_buffer = UnsafeMutableBufferPointer<CChar>.allocate(capacity: bufferSize)
         defer { tmp_buffer.deallocate() }
         let rc = SteamAPI_ISteamUser_GetUserDataFolder(interface, tmp_buffer.baseAddress, Int32(bufferSize))
-        buffer = String(tmp_buffer)
+        if rc {
+            buffer = String(tmp_buffer)
+        }
         return rc
     }
 
