@@ -109,7 +109,7 @@ struct SteamJSON: Codable {
 /// * Methods: specify out-param behaviour when API call fails
 /// * Methods: correct a parameter type
 /// * Methods: set discardableResult
-/// * Methods: patch in missed `out_string_count`
+/// * Methods: patch in missed `out_string_count` etc.
 /// * Methods: ignore entirely
 /// * Structs: correct a field type (steam or swift)
 /// * Structs: ignore field or entire struct
@@ -144,6 +144,8 @@ struct PatchJSON: Codable {
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
             let out_string_count: String? // patch out_string_count
+            let out_array_count: String? // patch out_array_count
+            let array_count: String? // patch array_count
         }
         let params: [String : Param]?
     }
@@ -236,24 +238,30 @@ struct MetadataDB {
             init(base: SteamJSON.Method.Param, patch: PatchJSON.Method.Param?) {
                 self.name = base.paramname
                 self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
-                self.arrayCount = base.array_count
+                if let patchedArrayCount = patch?.array_count, patchedArrayCount.isEmpty {
+                    self.arrayCount = nil // fix a mistake
+                } else {
+                    self.arrayCount = patch?.array_count ?? base.array_count
+                }
 
                 if let arrayCall = base.out_array_call {
                     // comma-separated list, first is param name, rest is dynamic recipe on how to calculate.
                     // used so sparingly (once) ignore the clever part.
                     self.outArrayLength = String(arrayCall.split(separator: ",")[0])
-                } else if let arrayCount = base.out_array_count {
+                } else if let arrayCount = patch?.out_array_count ?? base.out_array_count {
                     // const or param with the length
                     self.outArrayLength = arrayCount
                 } else {
                     self.outArrayLength = nil
                 }
 
-                if let outStringCount = base.out_string_count ?? patch?.out_string_count {
+                if let outStringCount = patch?.out_string_count ?? base.out_string_count {
                     self.outStringLength = outStringCount
                 } else {
                     self.outStringLength = nil
                 }
+//              precondition(arrayCount == nil || outArrayLength == nil, "base=\(base), patch=\(patch)")
+                // something weird in inventory...
                 precondition(outArrayLength == nil || outStringLength == nil)
             }
         }

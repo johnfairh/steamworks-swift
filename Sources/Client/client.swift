@@ -125,8 +125,7 @@ final class Client {
             self?.endTest()
         }
 
-        let us = SteamUserStats()
-        let rc = us.requestCurrentStats()
+        let rc = api.userStats.requestCurrentStats()
         print("RequestCurrentStats: \(rc)")
         if rc != true {
             print("...that's bad, abandoning test")

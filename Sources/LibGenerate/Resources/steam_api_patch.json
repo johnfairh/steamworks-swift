@@ -159,6 +159,43 @@
       },
       "out_param_iff_rc": ""
     },
+    "SteamAPI_ISteamUserStats_GetGlobalStatHistoryDouble": {
+      "params": {
+        "pData": {
+          "out_array_count": "cubData / 8",
+          "array_count": ""
+        }
+      }
+    },
+    "SteamAPI_ISteamUserStats_GetGlobalStatHistoryInt64": {
+      "params": {
+        "pData": {
+          "out_array_count": "cubData / 8",
+          "array_count": ""
+        }
+      }
+    },
+    "SteamAPI_ISteamUserStats_GetMostAchievedAchievementInfo": {
+      "params": {
+        "pchName": {
+          "out_string_count": "unNameBufLen"
+        }
+      }
+    },
+    "SteamAPI_ISteamUserStats_GetNextMostAchievedAchievementInfo": {
+      "params": {
+        "pchName": {
+          "out_string_count": "unNameBufLen"
+        }
+      }
+    },
+    "SteamAPI_ISteamUserStats_UploadLeaderboardScore": {
+      "params": {
+        "pScoreDetails": {
+          "array_count": "cScoreDetailsCount"
+        }
+      }
+    },
     "SteamAPI_ISteamUtils_FilterText": {
       "params": {
         "pchOutFilteredText": {

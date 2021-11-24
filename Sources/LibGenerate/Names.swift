@@ -104,6 +104,13 @@ extension String {
         return re_sub("^k_", with: "").asSwiftParameterName
     }
 
+    /// Some kind of sizing arithmetic expression involving parameter names
+    var asSwiftParameterExpression: String {
+        self.split(separator: " ")
+            .map { String($0).asSwiftParameterName }
+            .joined(separator: " ")
+    }
+
     /// Tuned specifically for the subset used to define constants
     var asSwiftValue: String {
         re_sub(#"\(.*?\) *"#, with: "")     // drop weird cast
@@ -140,7 +147,7 @@ extension String {
         if self == asSwiftTypeName {
             return "CSteamworks.\(self)"
         }
-        return self
+        return self.re_sub("^const ", with: "")
     }
 
     /// For constructing a temporary instance, in Swift, to pass by ref to Steamworks
@@ -152,9 +159,8 @@ extension String {
     }
 
     /// Can a steam type be used transparently as an out param in Swift.
-    /// Probably never be anything more than Bool!
     var isTransparentOutType: Bool {
-        self == "bool"
+        steamTypesPassedInTransparently.contains(self)
     }
 
     var asSwiftTypeForPassingOutOfSteamworks: String? {
@@ -184,6 +190,7 @@ private let steamToSwiftTypes: [String : String] = [
     "uint16" : "Int",
     "uint32" : "Int",
     "int32" : "Int",
+    "const int32" : "Int", // hmm
     "int64" : "Int",
     "int64_t" : "Int", // steamnetworking == disaster
     "uint64": "UInt64",
@@ -216,7 +223,7 @@ private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
 // directly (without a cast) to a Steamworks function expecting
 // the Steam type.
 private let steamTypesPassedInTransparently = Set<String>([
-    "bool", "const char *", "void *", "uint8 *", "const void *"
+    "bool", "const char *", "void *", "uint8 *", "const void *", "float", "double"
 ])
 
 // Steam types whose Swift type version is typesafe to pass

@@ -24,7 +24,8 @@ struct Interfaces {
         let includes = Set<String>([
             "ISteamFriends",
             "ISteamUtils",
-            "ISteamUser"
+            "ISteamUser",
+            "ISteamUserStats"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -142,6 +143,7 @@ final class SwiftParam {
         case `in` // pass by value, flat, cast at time of use
         case out  // pass inout, use a temporary to cast, copy-back
         case out_transparent // pass inout, no temporary
+        case out_transparent_array // pass inout, array, no temporary
         case in_array // pass by value but a Swift array, use a temporary to cast, no copy-back
         case in_array_count(SwiftParam) // a C param for the length of an `in_array` param that is absent in Swift
         case out_array(String) // pass inout, temporary to cast, copy-back, array.  Required size given by another param.
@@ -157,7 +159,7 @@ final class SwiftParam {
         case .out, .out_transparent: return "inout \(swiftTypeBaseName)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
-        case .out_array: return "inout [\(swiftTypeBaseName)]"
+        case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]"
         case .out_string: return "inout String"
         }
     }
@@ -172,18 +174,18 @@ final class SwiftParam {
     /// (Need to review for stack-allocation, new APIs in Swift 5.6 might help)
     var preCallLines: [String] {
         switch style {
-        case .in, .in_array_count, .out_transparent: return []
+        case .in, .in_array_count, .out_transparent, .out_transparent_array: return []
         case .in_array: return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
         case .out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks)"]
         case .out_array(let sizeParam):
             let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
             return [
-                "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asSwiftParameterName))",
+                "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asSwiftParameterExpression))",
                 "defer { \(tempName).deallocate() }"
             ]
         case .out_string(let sizeParam):
             return [
-                "let \(tempName) = UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asSwiftParameterName))",
+                "let \(tempName) = UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asSwiftParameterExpression))",
                 "defer { \(tempName).deallocate() }"
             ]
         }
@@ -196,7 +198,7 @@ final class SwiftParam {
             return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
         case .out, .in_array:
             return "&\(tempName)"
-        case .out_transparent:
+        case .out_transparent, .out_transparent_array:
             return "&\(swiftName)"
         case .in_array_count(let ap):
             return "\(ap.swiftName).count".asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
@@ -208,8 +210,8 @@ final class SwiftParam {
     /// What code (if any) is required after calling the Steamworks API
     var postSuccessCallLine: String? {
         switch style {
+        case .in, .in_array, .in_array_count, .out_transparent, .out_transparent_array: return nil
         case .out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
-        case .in, .in_array, .in_array_count, .out_transparent: return nil
         case .out_array:
             return "\(swiftName) = \(tempName).map { \(swiftTypeBaseName)($0) }"
         case .out_string:
@@ -230,7 +232,11 @@ final class SwiftParam {
             } else {
                 swiftTypeBaseName = depointered.asSwiftTypeName
                 if let outLength = db.outArrayLength {
-                    style = .out_array(outLength)
+                    if depointered.isTransparentOutType {
+                        style = .out_transparent_array
+                    } else {
+                        style = .out_array(outLength)
+                    }
                 } else if depointered.isTransparentOutType {
                     style = .out_transparent
                 } else if db.arrayCount == nil {
