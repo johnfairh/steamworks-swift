@@ -159,6 +159,20 @@
       },
       "out_param_iff_rc": ""
     },
+    "SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime": {
+      "params": {
+        "punUnlockTime": {
+          "type": "RTime32 *"
+        }
+      }
+    },
+    "SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry": {
+      "params": {
+        "pDetails": {
+          "out_array_count": "cDetailsMax"
+        }
+      }
+    },
     "SteamAPI_ISteamUserStats_GetGlobalStatHistoryDouble": {
       "params": {
         "pData": {
@@ -186,6 +200,13 @@
       "params": {
         "pchName": {
           "out_string_count": "unNameBufLen"
+        }
+      }
+    },
+    "SteamAPI_ISteamUserStats_GetUserAchievementAndUnlockTime": {
+      "params": {
+        "punUnlockTime": {
+          "type": "RTime32 *"
         }
       }
     },
