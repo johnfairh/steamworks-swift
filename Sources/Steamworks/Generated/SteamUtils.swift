@@ -54,8 +54,8 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetAPICallResult()`
-    public func getAPICallResult(steamAPICall: SteamAPICall, callback: UnsafeMutableRawPointer, callbackCount: Int, callbackExpectedIndex: Int, failed: inout Bool) -> Bool {
-        SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, Int32(callbackCount), Int32(callbackExpectedIndex), &failed)
+    public func getAPICallResult(steamAPICall: SteamAPICall, callback: UnsafeMutableRawPointer, callbackSize: Int, callbackExpectedIndex: Int, failed: inout Bool) -> Bool {
+        SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, Int32(callbackSize), Int32(callbackExpectedIndex), &failed)
     }
 
     /// Steamworks `ISteamUtils::GetAppID()`
@@ -74,10 +74,10 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetEnteredGamepadTextInput()`
-    public func getEnteredGamepadTextInput(text: inout String, textCount: Int) -> Bool {
-        let tmp_text = UnsafeMutableBufferPointer<CChar>.allocate(capacity: textCount)
+    public func getEnteredGamepadTextInput(text: inout String, textSize: Int) -> Bool {
+        let tmp_text = UnsafeMutableBufferPointer<CChar>.allocate(capacity: textSize)
         defer { tmp_text.deallocate() }
-        let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmp_text.baseAddress, uint32(textCount))
+        let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmp_text.baseAddress, uint32(textSize))
         text = String(tmp_text)
         return rc
     }

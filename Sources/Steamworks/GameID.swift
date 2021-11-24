@@ -182,3 +182,9 @@ extension GameID: Hashable, Comparable, CustomStringConvertible {
         "[\(appID.value) t=\(gameType) m=\(modID)]"
     }
 }
+
+extension UInt64 {
+    init(_ gameID: GameID) {
+        self = gameID.asUInt64
+    }
+}

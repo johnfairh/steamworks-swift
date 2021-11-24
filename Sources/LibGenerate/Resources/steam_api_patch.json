@@ -151,6 +151,13 @@
     "SteamAPI_ISteamFriends_SetListenForFriendsMessages": {
       "discardable_result": true
     },
+    "SteamAPI_ISteamUser_GetUserDataFolder": {
+      "params": {
+        "pchBuffer": {
+          "out_string_count": "cubBuffer"
+        }
+      }
+    },
     "SteamAPI_ISteamUtils_FilterText": {
       "params": {
         "pchOutFilteredText": {

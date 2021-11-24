@@ -58,4 +58,6 @@ public final class SteamAPI: SteamBaseAPI {
 
     /// Access the Steamworks `ISteamFriends` interface
     public let friends = SteamFriends()
+    /// Access the Steamworks `ISteamUser` interface
+    public let user = SteamUser()
 }

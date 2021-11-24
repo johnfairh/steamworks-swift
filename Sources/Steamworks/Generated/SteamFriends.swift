@@ -119,10 +119,10 @@ public struct SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
-    public func getClanChatMessage(clanChat: SteamID, messageIndex: Int, text: UnsafeMutableRawPointer, textMax: Int, chatEntryType: inout ChatEntryType, chatter: inout SteamID) -> Int {
+    public func getClanChatMessage(clanChat: SteamID, messageIndex: Int, text: UnsafeMutableRawPointer, textMaxSize: Int, chatEntryType: inout ChatEntryType, chatter: inout SteamID) -> Int {
         var tmp_chatEntryType = EChatEntryType(rawValue: 0)
         var tmp_chatter = CSteamID()
-        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(clanChat), Int32(messageIndex), text, Int32(textMax), &tmp_chatEntryType, &tmp_chatter))
+        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(clanChat), Int32(messageIndex), text, Int32(textMaxSize), &tmp_chatEntryType, &tmp_chatter))
         chatEntryType = ChatEntryType(tmp_chatEntryType)
         chatter = SteamID(tmp_chatter)
         return rc

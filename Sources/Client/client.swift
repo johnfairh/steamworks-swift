@@ -101,8 +101,7 @@ final class Client {
     }
 
     func testCallReturn() {
-        let u = SteamUser()
-        let steamID = u.steamID
+        let steamID = api.user.getSteamID()
         print("SteamID = \(steamID)")
         api.friends.getFollowerCount(steamID: steamID) { res in
             defer { self.endTest() }
@@ -136,7 +135,7 @@ final class Client {
     }
 
     func testStringFilter() {
-        let steamID = SteamUser().steamID
+        let steamID = api.user.getSteamID()
         let str = "Hello world"
         var filteredStr = String()
 

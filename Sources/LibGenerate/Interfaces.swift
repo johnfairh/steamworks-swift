@@ -23,7 +23,8 @@ struct Interfaces {
     func generate() throws {
         let includes = Set<String>([
             "ISteamFriends",
-            "ISteamUtils"
+            "ISteamUtils",
+            "ISteamUser"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -72,7 +73,7 @@ extension MetadataDB.Interface.Access {
     ///
     /// Complicated by some of them being user/server dual
     func declaration(name: String) -> String {
-        let shortName = name.re_sub("^ISteam", with: "").asSwiftTypeName  // "ISteamFriends" -> "friends"
+        let shortName = name.re_sub("^ISteam", with: "").asSwiftIdentifier  // "ISteamFriends" -> "friends"
 
         let docComment =
             """
@@ -347,7 +348,7 @@ struct SwiftMethod {
             return "public func \(db.funcName)(\(params.functionParams)) {"
         case (.callReturn(let type), false):
             let done = "completion: @escaping (\(type)?) -> Void"
-            return "public func \(db.funcName)(\(params.functionParams), \(done)) {"
+            return "public func \(db.funcName)(\(params.functionParams.commaJoin(done))) {"
         default:
             preconditionFailure("Unexpected var-match: \(db)")
         }
@@ -444,7 +445,7 @@ struct SwiftMethod {
             "\(comment), async",
             "func \(db.funcName)(\(params.functionParams)) async -> \(type)? {",
             "    await withUnsafeContinuation {",
-            "        \(db.funcName)(\(params.asyncForwardingParams), completion: $0.resume)",
+            "        \(db.funcName)(\(params.asyncForwardingParams.commaJoin("completion: $0.resume")))",
             "    }",
             "}",
         ]
@@ -452,6 +453,12 @@ struct SwiftMethod {
 
     func decl(comment: String) -> [String] {
         syncDecl(comment: comment) + asyncDecl(comment: comment)
+    }
+}
+
+private extension String {
+    func commaJoin(_ with: String) -> String {
+        isEmpty ? with : "\(self), \(with)"
     }
 }
 

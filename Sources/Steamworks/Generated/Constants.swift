@@ -11,31 +11,31 @@
 /// Namespace for Steamworks top-level constants
 public enum SteamConstants {
     /// Steamworks `k_cchGameExtraInfoMax`
-    public static let gameExtraInfoMax = Int(64)
+    public static let gameExtraInfoMaxSize = Int(64)
 
     /// Steamworks `k_cchMaxFriendsGroupName`
-    public static let maxFriendsGroupName = Int(64)
+    public static let maxFriendsGroupNameSize = Int(64)
 
     /// Steamworks `k_cubChatMetadataMax`
-    public static let chatMetadataMax = Int(8192)
+    public static let chatMetadataMaxSize = Int(8192)
 
     /// Steamworks `k_cbMaxGameServerGameDir`
-    public static let maxGameServerGameDir = Int(32)
+    public static let maxGameServerGameDirSize = Int(32)
 
     /// Steamworks `k_cbMaxGameServerMapName`
-    public static let maxGameServerMapName = Int(32)
+    public static let maxGameServerMapNameSize = Int(32)
 
     /// Steamworks `k_cbMaxGameServerGameDescription`
-    public static let maxGameServerGameDescription = Int(64)
+    public static let maxGameServerGameDescriptionSize = Int(64)
 
     /// Steamworks `k_cbMaxGameServerName`
-    public static let maxGameServerName = Int(64)
+    public static let maxGameServerNameSize = Int(64)
 
     /// Steamworks `k_cbMaxGameServerTags`
-    public static let maxGameServerTags = Int(128)
+    public static let maxGameServerTagsSize = Int(128)
 
     /// Steamworks `k_cbMaxGameServerGameData`
-    public static let maxGameServerGameData = Int(2048)
+    public static let maxGameServerGameDataSize = Int(2048)
 
     /// Steamworks `k_unFavoriteFlagNone`
     public static let favoriteFlagNone = Int(0x00)
@@ -50,28 +50,28 @@ public enum SteamConstants {
     public static let maxCloudFileChunkSize = Int(100 * 1024 * 1024)
 
     /// Steamworks `k_cchPublishedDocumentTitleMax`
-    public static let publishedDocumentTitleMax = Int(128 + 1)
+    public static let publishedDocumentTitleMaxSize = Int(128 + 1)
 
     /// Steamworks `k_cchPublishedDocumentDescriptionMax`
-    public static let publishedDocumentDescriptionMax = Int(8000)
+    public static let publishedDocumentDescriptionMaxSize = Int(8000)
 
     /// Steamworks `k_cchPublishedDocumentChangeDescriptionMax`
-    public static let publishedDocumentChangeDescriptionMax = Int(8000)
+    public static let publishedDocumentChangeDescriptionMaxSize = Int(8000)
 
     /// Steamworks `k_unEnumeratePublishedFilesMaxResults`
     public static let enumeratePublishedFilesMaxResults = Int(50)
 
     /// Steamworks `k_cchTagListMax`
-    public static let tagListMax = Int(1024 + 1)
+    public static let tagListMaxSize = Int(1024 + 1)
 
     /// Steamworks `k_cchFilenameMax`
-    public static let filenameMax = Int(260)
+    public static let filenameMaxSize = Int(260)
 
     /// Steamworks `k_cchPublishedFileURLMax`
-    public static let publishedFileURLMax = Int(256)
+    public static let publishedFileURLMaxSize = Int(256)
 
     /// Steamworks `k_cubAppProofOfPurchaseKeyMax`
-    public static let appProofOfPurchaseKeyMax = Int(240)
+    public static let appProofOfPurchaseKeyMaxSize = Int(240)
 
     /// Steamworks `k_nScreenshotMaxTaggedUsers`
     public static let screenshotMaxTaggedUsers = Int(32)
@@ -92,16 +92,16 @@ public enum SteamConstants {
     public static let numUGCResultsPerPage = Int(50)
 
     /// Steamworks `k_cchDeveloperMetadataMax`
-    public static let developerMetadataMax = Int(5000)
+    public static let developerMetadataMaxSize = Int(5000)
 
     /// Steamworks `k_cchMaxSteamNetworkingErrMsg`
-    public static let maxSteamNetworkingErrMsg = Int(1024)
+    public static let maxSteamNetworkingErrMsgSize = Int(1024)
 
     /// Steamworks `k_cchSteamNetworkingMaxConnectionCloseReason`
-    public static let steamNetworkingMaxConnectionCloseReason = Int(128)
+    public static let steamNetworkingMaxConnectionCloseReasonSize = Int(128)
 
     /// Steamworks `k_cchSteamNetworkingMaxConnectionDescription`
-    public static let steamNetworkingMaxConnectionDescription = Int(128)
+    public static let steamNetworkingMaxConnectionDescriptionSize = Int(128)
 
     /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Unauthenticated`
     public static let steamNetworkConnectionInfoFlagsUnauthenticated = Int(1)
@@ -122,7 +122,7 @@ public enum SteamConstants {
     public static let steamNetworkConnectionInfoFlagsDualWifi = Int(32)
 
     /// Steamworks `k_cbMaxSteamNetworkingSocketsMessageSizeSend`
-    public static let maxSteamNetworkingSocketsMessageSizeSend = Int(512 * 1024)
+    public static let maxSteamNetworkingSocketsMessageSizeSendSize = Int(512 * 1024)
 
     /// Steamworks `k_nSteamNetworkingSend_Unreliable`
     public static let steamNetworkingSendUnreliable = Int(0)
@@ -152,7 +152,7 @@ public enum SteamConstants {
     public static let steamNetworkingSendAutoRestartBrokenSession = Int(32)
 
     /// Steamworks `k_cchMaxSteamNetworkingPingLocationString`
-    public static let maxSteamNetworkingPingLocationString = Int(1024)
+    public static let maxSteamNetworkingPingLocationStringSize = Int(1024)
 
     /// Steamworks `k_nSteamNetworkingPing_Failed`
     public static let steamNetworkingPingFailed = Int(-1)
@@ -188,13 +188,13 @@ public enum SteamConstants {
     public static let MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE = Int(STEAMGAMESERVER_QUERY_PORT_SHARED)
 
     /// Steamworks `k_cbSteamDatagramMaxSerializedTicket`
-    public static let steamDatagramMaxSerializedTicket = Int(512)
+    public static let steamDatagramMaxSerializedTicketSize = Int(512)
 
     /// Steamworks `k_cbMaxSteamDatagramGameCoordinatorServerLoginAppData`
-    public static let maxSteamDatagramGameCoordinatorServerLoginAppData = Int(2048)
+    public static let maxSteamDatagramGameCoordinatorServerLoginAppDataSize = Int(2048)
 
     /// Steamworks `k_cbMaxSteamDatagramGameCoordinatorServerLoginSerialized`
-    public static let maxSteamDatagramGameCoordinatorServerLoginSerialized = Int(4096)
+    public static let maxSteamDatagramGameCoordinatorServerLoginSerializedSize = Int(4096)
 }
 
 extension AppID {

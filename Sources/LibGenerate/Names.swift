@@ -82,8 +82,8 @@ extension String {
             return "\(match[1])Index".asSwiftIdentifier
         }
         // 'cch' special cases, avoid collapsing 'cchFoo' and 'pchFoo' to the same thing
-        if let match = re_match("^c(?:ch|ub)([A-Z][a-z]+)$") {
-            return "\(match[1])Count".asSwiftIdentifier
+        if let match = re_match("^p?c(?:ch|u?b)([A-Z][a-z]+.*?)(?:Length|Size)?$") {
+            return "\(match[1])Size".asSwiftIdentifier
         }
         // Ultimate fallback - strip lower-case prefix and convert
         return re_sub("^[a-z]*(?=[A-Z])") {
@@ -134,7 +134,13 @@ extension String {
 
     /// As above but with explicit types, not used calling a C function with clang importer magic
     var asExplicitSwiftTypeForPassingIntoSteamworks: String {
-        steamTypesPassedInStrangely[self] ?? self
+        if let special = steamTypesPassedInStrangely[self] {
+            return special
+        }
+        if self == asSwiftTypeName {
+            return "CSteamworks.\(self)"
+        }
+        return self
     }
 
     /// For constructing a temporary instance, in Swift, to pass by ref to Steamworks
@@ -185,8 +191,10 @@ private let steamToSwiftTypes: [String : String] = [
     "float" : "Float",
     "double" : "Double",
     "void *" : "UnsafeMutableRawPointer",
+    "const void *": "UnsafeRawPointer",
     "uint8 *" : "UnsafeMutablePointer<UInt8>",
     "uint64_steamid" : "SteamID",
+    "uint64_gameid" : "GameID",
 
     // Misc
     "SteamParamStringArray_t" : "[String]", // weirdness, tbd
@@ -208,7 +216,7 @@ private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
 // directly (without a cast) to a Steamworks function expecting
 // the Steam type.
 private let steamTypesPassedInTransparently = Set<String>([
-    "bool", "const char *", "void *", "uint8 *"
+    "bool", "const char *", "void *", "uint8 *", "const void *"
 ])
 
 // Steam types whose Swift type version is typesafe to pass
@@ -223,7 +231,8 @@ private let steamTypesPassedOutTransparently = Set<String>([
 private let steamTypesPassedInStrangely: [String : String] = [
     "int" : "Int32",
     "bool" : "Bool",
-    "uint64_steamid" : "UInt64"
+    "uint64_steamid" : "UInt64",
+    "uint64_gameid" : "UInt64"
 ]
 
 // Parameter/field names where no rules are followed and we

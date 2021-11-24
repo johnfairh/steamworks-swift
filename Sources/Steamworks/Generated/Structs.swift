@@ -60,7 +60,7 @@ public struct AppProofOfPurchaseKeyResponse {
     /// Steamworks `m_nAppID`
     public let appID: Int
     /// Steamworks `m_cchKeyLength`
-    public let keyLength: Int
+    public let keySize: Int
     /// Steamworks `m_rgchKey`
     public let key: String
 }
@@ -69,7 +69,7 @@ extension AppProofOfPurchaseKeyResponse: SteamCreatable {
     init(_ steam: CSteamworks.AppProofOfPurchaseKeyResponse_t) {
         result = .init(steam.m_eResult)
         appID = .init(steam.m_nAppID)
-        keyLength = .init(steam.m_cchKeyLength)
+        keySize = .init(steam.m_cchKeyLength)
         key = .init(steam.m_rgchKey_ptr)
     }
 }
@@ -2502,7 +2502,7 @@ public struct RemoteStorageFileReadAsyncComplete {
     /// Steamworks `m_nOffset`
     public let offset: Int
     /// Steamworks `m_cubRead`
-    public let readCount: Int
+    public let readSize: Int
 }
 
 extension RemoteStorageFileReadAsyncComplete: SteamCreatable {
@@ -2510,7 +2510,7 @@ extension RemoteStorageFileReadAsyncComplete: SteamCreatable {
         fileReadAsync = .init(steam.m_hFileReadAsync)
         result = .init(steam.m_eResult)
         offset = .init(steam.m_nOffset)
-        readCount = .init(steam.m_cubRead)
+        readSize = .init(steam.m_cubRead)
     }
 }
 
@@ -3136,14 +3136,14 @@ public struct SteamAPICallCompleted {
     /// Steamworks `m_iCallback`
     public let callbackIndex: Int
     /// Steamworks `m_cubParam`
-    public let paramCount: Int
+    public let paramSize: Int
 }
 
 extension SteamAPICallCompleted: SteamCreatable {
     init(_ steam: CSteamworks.SteamAPICallCompleted_t) {
         asyncCall = .init(steam.m_hAsyncCall)
         callbackIndex = .init(steam.m_iCallback)
-        paramCount = .init(steam.m_cubParam)
+        paramSize = .init(steam.m_cubParam)
     }
 }
 
@@ -3500,7 +3500,7 @@ public struct SteamNetworkingIdentity {
     /// Steamworks `m_eType`
     public let type: SteamNetworkingIdentityType
     /// Steamworks `m_cbSize`
-    public let size: Int
+    public let sizeSize: Int
     /// Steamworks `m_szUnknownRawString`
     public let unknownRawString: String
 }
@@ -3508,7 +3508,7 @@ public struct SteamNetworkingIdentity {
 extension SteamNetworkingIdentity: SteamCreatable {
     init(_ steam: CSteamworks.SteamNetworkingIdentity) {
         type = .init(steam.m_eType)
-        size = .init(steam.m_cbSize)
+        sizeSize = .init(steam.m_cbSize)
         unknownRawString = .init(steam.m_szUnknownRawString_ptr)
     }
 }
@@ -3576,11 +3576,11 @@ public struct SteamNetworkingQuickConnectionStatus {
     /// Steamworks `m_nSendRateBytesPerSecond`
     public let sendRateBytesPerSecond: Int
     /// Steamworks `m_cbPendingUnreliable`
-    public let pendingUnreliable: Int
+    public let pendingUnreliableSize: Int
     /// Steamworks `m_cbPendingReliable`
-    public let pendingReliable: Int
+    public let pendingReliableSize: Int
     /// Steamworks `m_cbSentUnackedReliable`
-    public let sentUnackedReliable: Int
+    public let sentUnackedReliableSize: Int
     /// Steamworks `m_usecQueueTime`
     public let queueTime: SteamNetworkingMicroseconds
 }
@@ -3596,9 +3596,9 @@ extension SteamNetworkingQuickConnectionStatus: SteamCreatable {
         inPacketsPerSec = .init(steam.m_flInPacketsPerSec)
         inBytesPerSec = .init(steam.m_flInBytesPerSec)
         sendRateBytesPerSecond = .init(steam.m_nSendRateBytesPerSecond)
-        pendingUnreliable = .init(steam.m_cbPendingUnreliable)
-        pendingReliable = .init(steam.m_cbPendingReliable)
-        sentUnackedReliable = .init(steam.m_cbSentUnackedReliable)
+        pendingUnreliableSize = .init(steam.m_cbPendingUnreliable)
+        pendingReliableSize = .init(steam.m_cbPendingReliable)
+        sentUnackedReliableSize = .init(steam.m_cbSentUnackedReliable)
         queueTime = .init(steam.m_usecQueueTime)
     }
 }
