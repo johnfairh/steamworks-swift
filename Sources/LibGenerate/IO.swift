@@ -53,26 +53,49 @@ final class IO {
         try String(contentsOf: readmeURL, encoding: .windowsCP1252)
     }
 
-    func loadSdkJson() throws -> Data {
+    func loadSDKJSON() throws -> Data {
         try Data(contentsOf: jsonURL)
     }
 
+    // "Patch" is our format, contains additional annotations to actual SDK
+    // definitions to make them generatable.
+
     static let PATCH_JSON_PATH_VAR = "PATCH_JSON_PATH"
 
-    private var patchJsonUrl: URL {
+    private var patchJSONURL: URL {
         get throws {
-            if let override = ProcessInfo.processInfo.environment[Self.PATCH_JSON_PATH_VAR] {
-                return URL(fileURLWithPath: override)
-            }
-            guard let url = resources.url(forResource: "steam_api_patch", withExtension: "json") else {
-                throw Failed("Missing patch json from resource bundle \(resources)")
-            }
-            return url
+            try resolve(resource: "steam_api_patch", extnsion: "json", env: Self.PATCH_JSON_PATH_VAR)
         }
     }
 
-    func loadPatchJson() throws -> Data {
-        try Data(contentsOf: patchJsonUrl)
+    func loadPatchJSON() throws -> Data {
+        try Data(contentsOf: patchJSONURL)
+    }
+
+    // "Extra" is the same format as the SDK JSON, describing stuff that is
+    // omitted from the SDK JSON - the things here get added to the SDK JSON
+    // before the Patch is applied.
+
+    static let SDK_EXTRA_JSON_PATH_VAR = "SDK_EXTRA_JSON_PATH"
+
+    private var sdkExtraJSONPatchURL: URL {
+        get throws {
+            try resolve(resource: "steam_api_extra", extnsion: "json", env: Self.SDK_EXTRA_JSON_PATH_VAR)
+        }
+    }
+
+    func loadSDKExtraJSON() throws -> Data {
+        try Data(contentsOf: sdkExtraJSONPatchURL)
+    }
+
+    private func resolve(resource: String, extnsion: String, env: String) throws -> URL {
+        if let override = ProcessInfo.processInfo.environment[env] {
+            return URL(fileURLWithPath: override)
+        }
+        guard let url = resources.url(forResource: resource, withExtension: extnsion) else {
+            throw Failed("Missing file '\(resource).\(extnsion)' from resource bundle \(resources)")
+        }
+        return url
     }
 
     var fileHeaderLicense: String {

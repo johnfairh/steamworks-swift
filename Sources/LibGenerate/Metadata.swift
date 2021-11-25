@@ -91,6 +91,15 @@ struct SteamJSON: Codable {
     init(data: Data) throws {
         self = try JSONDecoder().decode(SteamJSON.self, from: data)
     }
+
+    init(_ parts: [SteamJSON]) {
+        self.callback_structs = parts.flatMap(\.callback_structs)
+        self.consts = parts.flatMap(\.consts)
+        self.enums = parts.flatMap(\.enums)
+        self.interfaces = parts.flatMap(\.interfaces)
+        self.structs = parts.flatMap(\.structs)
+        self.typedefs = parts.flatMap(\.typedefs)
+    }
 }
 
 /// Description of the `steam_api_patch.json` file that holds additions and corrections
@@ -434,10 +443,11 @@ final class Metadata: CustomStringConvertible {
     init(io: IO) throws {
         self.io = io
 
-        let baseAPI = try SteamJSON(data: io.loadSdkJson())
-        let patch = try PatchJSON(data: io.loadPatchJson())
+        let baseAPI = try SteamJSON(data: io.loadSDKJSON())
+        let extraAPI = try SteamJSON(data: io.loadSDKExtraJSON())
+        let patch = try PatchJSON(data: io.loadPatchJSON())
 
-        self.db = MetadataDB(base: baseAPI, patch: patch)
+        self.db = MetadataDB(base: SteamJSON([baseAPI, extraAPI]), patch: patch)
 
         // cache enums that aren't in the normal place
         self.nestedEnums = .init(uniqueKeysWithValues: db.structs.values.flatMap {

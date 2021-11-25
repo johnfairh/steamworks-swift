@@ -195,6 +195,15 @@ public enum SteamConstants {
 
     /// Steamworks `k_cbMaxSteamDatagramGameCoordinatorServerLoginSerialized`
     public static let maxSteamDatagramGameCoordinatorServerLoginSerializedSize = Int(4096)
+
+    /// Steamworks `k_cchStatNameMax`
+    public static let statNameMaxSize = Int(128)
+
+    /// Steamworks `k_cchLeaderboardNameMax`
+    public static let leaderboardNameMaxSize = Int(128)
+
+    /// Steamworks `k_cLeaderboardDetailsMax`
+    public static let leaderboardDetailsMax = Int(64)
 }
 
 extension AppID {

@@ -48,7 +48,8 @@ let package = Package(
           .product(name: "OrderedCollections", package: "swift-collections")
         ],
         resources: [
-          .copy("Resources/steam_api_patch.json")
+          .copy("Resources/steam_api_patch.json"),
+          .copy("Resources/steam_api_extra.json")
         ]),
     .testTarget(
         name: "SteamworksTests",
