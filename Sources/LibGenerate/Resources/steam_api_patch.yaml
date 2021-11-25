@@ -10,6 +10,7 @@ consts:
 consts_to_ignore:
 - k_cFriendsGroupLimit
 - k_cEnumerateFollowersMax
+- k_cubAppProofOfPurchaseKeyMax
 - k_unSteamAccountIDMask
 - k_unSteamAccountInstanceMask
 - k_unSteamUserDefaultInstance
@@ -92,6 +93,30 @@ methods:
     params:
       pvecAppID:
         out_array_count: unMaxAppIDs
+  SteamAPI_ISteamApps_BGetDLCDataByIndex:
+    params:
+      pchName:
+        out_string_count: cchNameBufferSize
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamApps_GetAppInstallDir:
+    params:
+      pchFolder:
+        out_string_count: cchFolderBufferSize
+  SteamAPI_ISteamApps_GetCurrentBetaName:
+    params:
+      pchName:
+        out_string_count: cchNameBufferSize
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime:
+    returntype: RTime32_t
+  SteamAPI_ISteamApps_GetInstalledDepots:
+    params:
+      pvecDepots:
+        out_array_count: cMaxDepots
+  SteamAPI_ISteamApps_GetLaunchCommandLine:
+    params:
+      pszCommandLine:
+        out_string_count: cubCommandLine
   SteamAPI_ISteamFriends_GetUserRestrictions:
     returntype: EUserRestriction
   SteamAPI_ISteamFriends_GetFriendGamePlayed:
@@ -168,6 +193,10 @@ methods:
   SteamAPI_ISteamUtils_GetServerRealTime:
     returntype: RTime32_t
 structs:
+  AppProofOfPurchaseKeyResponse_t:
+    fields:
+      m_nAppID:
+        fieldtype: AppId_t
   ClientGameServerDeny_t:
     fields:
       m_uAppID:

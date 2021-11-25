@@ -223,7 +223,7 @@ private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
 // the Steam type.
 private let steamTypesPassedInTransparently = Set<String>([
     "bool", "const char *", "void *", "uint8 *",
-    "const void *", "float", "double",
+    "const void *", "float", "double", "uint64",
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])

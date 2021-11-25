@@ -58,7 +58,7 @@ public struct AppProofOfPurchaseKeyResponse {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nAppID`
-    public let appID: Int
+    public let appID: AppID
     /// Steamworks `m_cchKeyLength`
     public let keySize: Int
     /// Steamworks `m_rgchKey`

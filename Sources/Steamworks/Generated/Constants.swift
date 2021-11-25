@@ -16,9 +16,6 @@ public enum SteamConstants {
     /// Steamworks `STEAMGAMESERVER_QUERY_PORT_SHARED`
     public static let STEAMGAMESERVER_QUERY_PORT_SHARED = Int(0xffff)
 
-    /// Steamworks `k_cubAppProofOfPurchaseKeyMax`
-    public static let appProofOfPurchaseKeyMaxSize = Int(240)
-
     /// Steamworks `k_cubChatMetadataMax`
     public static let chatMetadataMaxSize = Int(8192)
 
