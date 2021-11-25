@@ -210,9 +210,11 @@ public class SteamBaseAPI: @unchecked Sendable {
     /// operations that are actually implemented by the `Steamworks` Swift module.
     public static var logger = Logger(label: "steamworks")
 
-    /// XXX push into Utils in some way
+    /// Hook the Steamworks warning messages up to `logger`
+    ///
+    /// This calls the appropriate version of `ISteamUtils::SetWarningMessageHook()`.
     public func useLoggerForSteamworksWarnings() {
-        SteamAPI_ISteamUtils_SetWarningMessageHook(SteamAPI_SteamUtils_v010(), steamApiWarningMessageHook)
+        utils.setWarningMessageHook(function: steamApiWarningMessageHook)
     }
 
     // MARK: Interfaces

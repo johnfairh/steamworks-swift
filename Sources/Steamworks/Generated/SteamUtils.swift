@@ -199,6 +199,11 @@ public struct SteamUtils {
         SteamAPI_ISteamUtils_SetVRHeadsetStreamingEnabled(interface, enabled)
     }
 
+    /// Steamworks `ISteamUtils::SetWarningMessageHook()`
+    public func setWarningMessageHook(function: SteamAPIWarningMessageHook) {
+        SteamAPI_ISteamUtils_SetWarningMessageHook(interface, function)
+    }
+
     /// Steamworks `ISteamUtils::ShowGamepadTextInput()`
     public func showGamepadTextInput(inputMode: GamepadTextInputMode, lineInputMode: GamepadTextInputLineMode, description: String, charMax: Int, existingText: String) -> Bool {
         SteamAPI_ISteamUtils_ShowGamepadTextInput(interface, EGamepadTextInputMode(inputMode), EGamepadTextInputLineMode(lineInputMode), description, uint32(charMax), existingText)

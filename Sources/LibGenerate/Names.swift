@@ -223,7 +223,10 @@ private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
 // directly (without a cast) to a Steamworks function expecting
 // the Steam type.
 private let steamTypesPassedInTransparently = Set<String>([
-    "bool", "const char *", "void *", "uint8 *", "const void *", "float", "double"
+    "bool", "const char *", "void *", "uint8 *",
+    "const void *", "float", "double",
+
+    "SteamAPIWarningMessageHook_t" // function pointer special case
 ])
 
 // Steam types whose Swift type version is typesafe to pass

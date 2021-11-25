@@ -185,3 +185,12 @@ extension AsyncStream.Continuation {
         _ = yield(thing)
     }
 }
+
+// MARK: Function pointers
+
+// Not sure how to / whether to generalize this yet.
+// If there are more that are missing then can add to the extra_api and
+// figure out how to translate the C typedefs.
+// See kludge in Names.swift too to make it transparent.
+
+public typealias SteamAPIWarningMessageHook = Optional<@convention(c) (Int32, UnsafePointer<CChar>?) -> Void>
