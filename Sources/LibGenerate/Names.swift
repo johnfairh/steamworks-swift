@@ -205,7 +205,6 @@ private let steamToSwiftTypes: [String : String] = [
 
     // Misc
     "SteamParamStringArray_t" : "[String]", // weirdness, tbd
-    "unsigned int": "Int", // temp workaround for dumb CSteamID constants, to delete
 
     // Names that end up duplicated after removing their initial letter
     "ECheckFileSignature": "CheckFileSignatureResult",
