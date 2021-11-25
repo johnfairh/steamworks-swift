@@ -43,6 +43,8 @@
 		027F837B274C0B0500963383 /* SteamUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F837A274C0B0500963383 /* SteamUtils.swift */; };
 		02AD454E274E4AA000BD93ED /* SteamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD454D274E4AA000BD93ED /* SteamUser.swift */; };
 		02AD4550274E644D00BD93ED /* SteamUserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD454F274E644D00BD93ED /* SteamUserStats.swift */; };
+		02AD4553274FA54B00BD93ED /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 02AD4552274FA54B00BD93ED /* Yams */; };
+		02AD4555274FA55600BD93ED /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 02AD4554274FA55600BD93ED /* Yams */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -187,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02AD4555274FA55600BD93ED /* Yams in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				02AD4553274FA54B00BD93ED /* Yams in Frameworks */,
 				02086095272C194A00725122 /* Logging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +412,7 @@
 			);
 			name = LibGenerate;
 			packageProductDependencies = (
+				02AD4554274FA55600BD93ED /* Yams */,
 			);
 			productName = Generate;
 			productReference = 020860AE273047D100725122 /* LibGenerate.framework */;
@@ -466,6 +471,7 @@
 			name = Steamworks;
 			packageProductDependencies = (
 				02086094272C194A00725122 /* Logging */,
+				02AD4552274FA54B00BD93ED /* Yams */,
 			);
 			productName = Steamworks;
 			productReference = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */;
@@ -516,6 +522,7 @@
 			mainGroup = OBJ_5;
 			packageReferences = (
 				02086093272C194A00725122 /* XCRemoteSwiftPackageReference "swift-log" */,
+				02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */,
 			);
 			productRefGroup = OBJ_18 /* Products */;
 			projectDirPath = "";
@@ -1241,6 +1248,14 @@
 				minimumVersion = 1.4.2;
 			};
 		};
+		02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jpsim/Yams.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1248,6 +1263,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02086093272C194A00725122 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
+		};
+		02AD4552274FA54B00BD93ED /* Yams */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */;
+			productName = Yams;
+		};
+		02AD4554274FA55600BD93ED /* Yams */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */;
+			productName = Yams;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

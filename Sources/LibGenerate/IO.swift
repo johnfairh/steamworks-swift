@@ -60,16 +60,16 @@ final class IO {
     // "Patch" is our format, contains additional annotations to actual SDK
     // definitions to make them generatable.
 
-    static let PATCH_JSON_PATH_VAR = "PATCH_JSON_PATH"
+    static let PATCH_YAML_PATH_VAR = "PATCH_YAML_PATH"
 
-    private var patchJSONURL: URL {
+    private var patchYAMLURL: URL {
         get throws {
-            try resolve(resource: "steam_api_patch", extnsion: "json", env: Self.PATCH_JSON_PATH_VAR)
+            try resolve(resource: "steam_api_patch", extnsion: "yaml", env: Self.PATCH_YAML_PATH_VAR)
         }
     }
 
-    func loadPatchJSON() throws -> Data {
-        try Data(contentsOf: patchJSONURL)
+    func loadPatchYAML() throws -> Data {
+        try Data(contentsOf: patchYAMLURL)
     }
 
     // "Extra" is the same format as the SDK JSON, describing stuff that is

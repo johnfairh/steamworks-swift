@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Yams
 
 /// Decoded SDK `steam_api.json`.
 struct SteamJSON: Codable {
@@ -101,8 +102,8 @@ struct SteamJSON: Codable {
     }
 }
 
-/// Description of the `steam_api_patch.json` file that holds additions and corrections
-/// to the SDK json.
+/// Description of the `steam_api_patch.yaml` file that holds additions and corrections
+/// to the SDK json.  Yaml rather easier to write and read by humans.
 ///
 /// Features:
 /// * Constants: Fix value to something Swift understands
@@ -123,7 +124,7 @@ struct SteamJSON: Codable {
 /// * Structs: ignore field or entire struct
 /// * Structs: correct the steam name
 ///
-struct PatchJSON: Codable {
+struct Patch: Codable {
     struct Const: Codable {
         let value: String? // patch C expression for value
         let type: String? // patch C type
@@ -175,7 +176,7 @@ struct PatchJSON: Codable {
     let structs: [String: Struct] // struct.name key
 
     init(data: Data) throws {
-        self = try JSONDecoder().decode(PatchJSON.self, from: data)
+        self = try YAMLDecoder().decode(from: data)
     }
 }
 
@@ -190,7 +191,7 @@ struct MetadataDB {
         let type: String
         let value: String
 
-        init(base: SteamJSON.Const, patch: PatchJSON.Const?) {
+        init(base: SteamJSON.Const, patch: Patch.Const?) {
             self.name = base.constname
             self.type = patch?.type ?? base.consttype
             self.value = patch?.value ?? base.constval
@@ -211,7 +212,7 @@ struct MetadataDB {
             let value: String
             let forceStatic: Bool
 
-            init(base: SteamJSON.Enum.Value, patch: PatchJSON.Enum.Value?) {
+            init(base: SteamJSON.Enum.Value, patch: Patch.Enum.Value?) {
                 name = base.name
                 value = base.value
                 forceStatic = patch?.force_static ?? false
@@ -219,7 +220,7 @@ struct MetadataDB {
         }
         let values: [Value]
 
-        init(base: SteamJSON.Enum, patch: PatchJSON.Enum?) {
+        init(base: SteamJSON.Enum, patch: Patch.Enum?) {
             name = base.name
             is_set = patch?.is_set ?? false
             prefix = patch?.prefix ?? name
@@ -246,10 +247,10 @@ struct MetadataDB {
             let outStringLength: String?
             // ?? let buffer_count: String?
 
-            init(base: SteamJSON.Method.Param, patch: PatchJSON.Method.Param?) {
+            init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
                 self.name = base.paramname
                 self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
-                if let patchedArrayCount = patch?.array_count, patchedArrayCount.isEmpty {
+                if let patchedArrayCount = patch?.array_count, patchedArrayCount == "DELETE" {
                     self.arrayCount = nil // fix a mistake
                 } else {
                     self.arrayCount = patch?.array_count ?? base.array_count
@@ -282,14 +283,14 @@ struct MetadataDB {
         let discardableResult: Bool
         let ignore: Bool
 
-        init(base: SteamJSON.Method, patch: PatchJSON.Method?) {
+        init(base: SteamJSON.Method, patch: Patch.Method?) {
             name = base.methodname
             flatName = base.methodname_flat
             callResult = base.callresult
             callback = base.callback
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
             returnType = patch?.returntype ?? base.returntype
-            outParamIffRc = patch?.out_param_iff_rc
+            outParamIffRc = patch?.out_param_iff_rc.map { $0 == " " ? "" : $0}
             discardableResult = patch?.discardable_result ?? false
             ignore = patch?.bIgnore ?? false
         }
@@ -308,7 +309,7 @@ struct MetadataDB {
         }
         let access: Access
 
-        init?(base: SteamJSON.Interface, patch: PatchJSON) {
+        init?(base: SteamJSON.Interface, patch: Patch) {
             name = base.classname
             methods = .init(uniqueKeysWithValues: base.methods.map { baseMethod in
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
@@ -349,7 +350,7 @@ struct MetadataDB {
             let ignore: Bool
             let swiftType: String?
 
-            init(base: SteamJSON.Struct.Field, patch: PatchJSON.Struct.Field?) {
+            init(base: SteamJSON.Struct.Field, patch: Patch.Struct.Field?) {
                 name = base.fieldname
                 type = patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype)
                 ignore = base.private ?? patch?.bIgnore ?? false
@@ -378,7 +379,7 @@ struct MetadataDB {
         /// Indexed by `methodname_flat` ... `methodname` is not unique...
         let methods: [String : Method]
 
-        init(base: SteamJSON.Struct, patch: PatchJSON) {
+        init(base: SteamJSON.Struct, patch: Patch) {
             let structPatch = patch.structs[base.struct]
             name = structPatch?.name ?? base.struct
             fields = base.fields.map {
@@ -403,7 +404,7 @@ struct MetadataDB {
     /// Indexed by `typedef`, order from original file
     let typedefs: [String : Typedef]
 
-    init(base: SteamJSON, patch: PatchJSON) {
+    init(base: SteamJSON, patch: Patch) {
         let ignoredConsts = Set(patch.consts_to_ignore)
         consts = .init(uniqueKeysWithValues: base.consts.compactMap {
             let name = $0.constname
@@ -447,7 +448,7 @@ final class Metadata: CustomStringConvertible {
 
         let baseAPI = try SteamJSON(data: io.loadSDKJSON())
         let extraAPI = try SteamJSON(data: io.loadSDKExtraJSON())
-        let patch = try PatchJSON(data: io.loadPatchJSON())
+        let patch = try Patch(data: io.loadPatchYAML())
 
         self.db = MetadataDB(base: SteamJSON([baseAPI, extraAPI]), patch: patch)
 

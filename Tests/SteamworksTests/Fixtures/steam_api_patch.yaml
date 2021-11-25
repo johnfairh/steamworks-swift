@@ -1,0 +1,20 @@
+---
+consts: {}
+consts_to_ignore:
+- BadConst
+enums:
+  ESteamMiscFlags:
+    is_set: true
+  ESteamEnum:
+    numeric_prefix: PATCH
+    values:
+      k_ESteamEnum_A:
+        force_static: true
+methods:
+  SteamAPI_ISteamFriends_GetUserRestrictions:
+    returntype: EUserRestriction
+  SteamAPI_ISteamFriends_GetFriendGamePlayed:
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamFriends_GetFriendsGroupMembersListF:
+    out_param_iff_rc: "== 5"
+structs: {}

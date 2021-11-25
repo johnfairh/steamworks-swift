@@ -43,8 +43,8 @@ extension XCTestCase {
         fixturesURL.appendingPathComponent("sdk")
     }
 
-    static var patchJsonURL: URL {
-        fixturesURL.appendingPathComponent("steam_api_patch.json")
+    static var patchYAMLURL: URL {
+        fixturesURL.appendingPathComponent("steam_api_patch.yaml")
     }
 
     static var sdkExtraJSONURL: URL {
@@ -57,7 +57,7 @@ extension XCTestCase {
         let generator: Generator
 
         init() throws {
-            setenv(IO.PATCH_JSON_PATH_VAR, patchJsonURL.path, 1)
+            setenv(IO.PATCH_YAML_PATH_VAR, patchYAMLURL.path, 1)
             setenv(IO.SDK_EXTRA_JSON_PATH_VAR, sdkExtraJSONURL.path, 1)
             swiftOutputDirURL = try! FileManager.default.createTemporaryDirectory()
             cOutputDirURL = try! FileManager.default.createTemporaryDirectory()
@@ -69,7 +69,7 @@ extension XCTestCase {
         deinit {
             try? FileManager.default.removeItem(at: swiftOutputDirURL)
             try? FileManager.default.removeItem(at: cOutputDirURL)
-            unsetenv(IO.PATCH_JSON_PATH_VAR)
+            unsetenv(IO.PATCH_YAML_PATH_VAR)
             unsetenv(IO.SDK_EXTRA_JSON_PATH_VAR)
         }
     }

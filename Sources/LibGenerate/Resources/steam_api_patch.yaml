@@ -1,0 +1,201 @@
+---
+consts:
+  k_SteamDatagramPOPID_dev:
+    value: '0x00646576'
+  HSERVERQUERY_INVALID:
+    type: HServerQuery
+    value: "-1"
+  INVALID_HTMLBROWSER:
+    type: HHTMLBrowser
+consts_to_ignore:
+- k_cFriendsGroupLimit
+- k_cEnumerateFollowersMax
+- k_unSteamAccountIDMask
+- k_unSteamAccountInstanceMask
+- k_unSteamUserDefaultInstance
+enums:
+  AudioPlayback_Status:
+    prefix: AudioPlayback
+  EChatSteamIDInstanceFlags:
+    is_set: true
+    prefix: EChat(?:InstanceFlag)?
+  EDenyReason:
+    prefix: EDeny
+  EDurationControlNotification:
+    numeric_prefix: in
+  EDurationControlProgress:
+    prefix: k_EDurationControl(?:Progress)?
+  EFriendFlags:
+    is_set: true
+    prefix: EFriendFlag
+  EGameSearchErrorCode_t:
+    prefix: EGameSearchErrorCode
+  EHTTPStatusCode:
+    numeric_prefix: http
+  EMarketNotAllowedReasonFlags:
+    is_set: true
+    prefix: EMarketNotAllowedReason
+  ENotificationPosition:
+    prefix: EPosition
+  EParentalFeature:
+    prefix: EFeature
+  EPersonaChange:
+    is_set: true
+  EPlayerResult_t:
+    prefix: EPlayerResult
+  ERegisterActivationCodeResult:
+    prefix: ERegisterActivationCode(?:Result)?
+  ESteamItemFlags:
+    is_set: true
+    prefix: ESteamItem
+  ESteamNetConnectionEnd:
+    values:
+      k_ESteamNetConnectionEnd_App_Generic:
+        force_static: true
+      k_ESteamNetConnectionEnd_AppException_Generic:
+        force_static: true
+  ESteamNetworkingConfigDataType:
+    prefix: ESteamNetworkingConfig(?:DataType)?
+  ESteamNetworkingConfigScope:
+    prefix: ESteamNetworkingConfig(?:Scope)?
+  ESteamNetworkingConfigValue:
+    prefix: ESteamNetworkingConfig(?:Value)?
+  ESteamNetworkingGetConfigValueResult:
+    prefix: ESteamNetworkingGetConfigValue(?:Result)?
+  EUGCReadAction:
+    prefix: EUGCRead
+  EUserHasLicenseForAppResult:
+    prefix: EUserHasLicenseResult
+  EUserRestriction:
+    is_set: true
+    prefix: UserRestriction
+  EWorkshopFileType:
+    values:
+      k_EWorkshopFileTypeFirst:
+        force_static: true
+  IPCFailure_t::EFailureType:
+    prefix: EFailure
+  RequestPlayersForGameResultCallback_t::PlayerAcceptState_t:
+    prefix: EState
+methods:
+  SteamAPI_ISteamFriends_GetUserRestrictions:
+    returntype: EUserRestriction
+  SteamAPI_ISteamFriends_GetFriendGamePlayed:
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamFriends_GetFriendByIndex:
+    params:
+      iFriendFlags:
+        type: EFriendFlags
+  SteamAPI_ISteamFriends_GetFriendCount:
+    params:
+      iFriendFlags:
+        type: EFriendFlags
+  SteamAPI_ISteamFriends_GetFriendsGroupName:
+    returntype: String?
+  SteamAPI_ISteamFriends_GetPlayerNickname:
+    returntype: String?
+  SteamAPI_ISteamFriends_HasFriend:
+    params:
+      iFriendFlags:
+        type: EFriendFlags
+  SteamAPI_ISteamFriends_SetListenForFriendsMessages:
+    discardable_result: true
+  SteamAPI_ISteamUser_GetUserDataFolder:
+    params:
+      pchBuffer:
+        out_string_count: cubBuffer
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime:
+    params:
+      punUnlockTime:
+        type: RTime32 *
+  SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry:
+    params:
+      pDetails:
+        out_array_count: cDetailsMax
+  SteamAPI_ISteamUserStats_GetGlobalStatHistoryDouble:
+    params:
+      pData:
+        out_array_count: cubData / 8
+        array_count: DELETE
+  SteamAPI_ISteamUserStats_GetGlobalStatHistoryInt64:
+    params:
+      pData:
+        out_array_count: cubData / 8
+        array_count: DELETE
+  SteamAPI_ISteamUserStats_GetMostAchievedAchievementInfo:
+    params:
+      pchName:
+        out_string_count: unNameBufLen
+  SteamAPI_ISteamUserStats_GetNextMostAchievedAchievementInfo:
+    params:
+      pchName:
+        out_string_count: unNameBufLen
+  SteamAPI_ISteamUserStats_GetUserAchievementAndUnlockTime:
+    params:
+      punUnlockTime:
+        type: RTime32 *
+  SteamAPI_ISteamUserStats_UploadLeaderboardScore:
+    params:
+      pScoreDetails:
+        array_count: cScoreDetailsCount
+  SteamAPI_ISteamUtils_FilterText:
+    params:
+      pchOutFilteredText:
+        out_string_count: nByteSizeOutFilteredText
+  SteamAPI_ISteamUtils_GetAppID:
+    returntype: AppId_t
+  SteamAPI_ISteamUtils_GetEnteredGamepadTextInput:
+    params:
+      pchText:
+        out_string_count: cchText
+  SteamAPI_ISteamUtils_GetImageSize:
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamUtils_GetServerRealTime:
+    returntype: RTime32_t
+structs:
+  ClientGameServerDeny_t:
+    fields:
+      m_uAppID:
+        fieldtype: AppId_t
+  IPCFailure_t:
+    fields:
+      m_eFailureType:
+        fieldtype: IPCFailure_t::EFailureType
+  MicroTxnAuthorizationResponse_t:
+    fields:
+      m_unAppID:
+        fieldtype: AppId_t
+  ModalGamepadTextInputDismissed_t:
+    name: FloatingGamepadTextInputDismissed_t
+  PersonaStateChange_t:
+    fields:
+      m_nChangeFlags:
+        fieldtype: EPersonaChange
+  SteamDatagramGameCoordinatorServerLogin:
+    ignore: C declaration is missing
+  SteamDatagramHostedAddress:
+    ignore: C declaration is missing
+  SteamInputActionEvent_t:
+    fields:
+      analogAction_actionHandle:
+        ignore: Broken union field
+      analogAction_analogActionData:
+        ignore: Broken union field
+  SteamNetConnectionInfo_t:
+    fields:
+      m_nFlags:
+        ignore: Doesn't exist in the C struct
+  SteamNetworkingConfigValue_t:
+    fields:
+      m_int64:
+        ignore: Broken union field
+  SteamNetworkingMessage_t:
+    ignore: C declaration is not imported?
+    fields:
+      m_pfnFreeData:
+        swift_type: "() -> Void"
+      m_pfnRelease:
+        swift_type: "() -> Void"
+  SteamParamStringArray_t:
+    ignore: Better expressed directly as [String]
