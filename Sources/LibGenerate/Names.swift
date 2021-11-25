@@ -254,7 +254,8 @@ private let steamParameterNamesExceptions: [String : String] = [
 // Parameter/field hungarian-smelling prefixes that are actually
 // parts of the name...
 private let steamParameterNameGoodPrefixes = Set<String>([
-    "friends", "steam", "csecs", "identity", "addr", "debug", "rtime"
+    "friends", "steam", "csecs", "identity", "addr", "debug",
+    "rtime", "src"
 ])
 
 extension String {

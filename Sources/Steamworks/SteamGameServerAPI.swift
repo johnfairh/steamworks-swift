@@ -42,4 +42,9 @@ public final class SteamGameServerAPI: SteamBaseAPI {
     deinit {
         SteamGameServer_Shutdown()
     }
+
+    // MARK: Interfaces
+
+    /// Access the Steamworks `ISteamGameServer` interface
+    public let gameServer = SteamGameServer()
 }

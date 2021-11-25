@@ -70,10 +70,11 @@ To run the generator / build:
 
 ### Interface plan
 
-✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamUser, ISteamUserStats, ISteamUtils
+✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameServer, ISteamUser,
+ ISteamUserStats, ISteamUtils
 
 Easy:
-* ISteamAppTicket, ISteamGameServer, ISteamGameServerStats,
+* ISteamGameServerStats,
   ISteamHTTP, ISteamMatchmaking, ISteamParties, ISteamGameSearch, ISteamMusic,
   ISteamMusicRemote, ISteamParentalSettings, ISteamRemotePlay, ISteamScreenshots,
   ISteamVideo
@@ -93,6 +94,7 @@ Complicated:
   missing types, clang importer failures... do this one last
 
 Skip:
+* ISteamAppTicket - er not actually a thing?
 * ISteamClient - internal stuff, very C++y, looks ignorable
 * ISteamController - deprecated, need to review for stuff that's been generated and
   can actually be deleted after working through ISteamInput
@@ -124,3 +126,5 @@ Capture some notes on troubles reflecting the json into the module.
 * Json (and all non-C languages) struggles with unions.  Thankfully rare:
   `SteamIPAddress_t`, `SteamInputAction_t`, `SteamNetworkingConfigValue_t`.
   `SteamNetworkingConfigValue_t`.  Rare enough to deal with manually.
+
+* Loads of missing `out_string_count` etc. annotations and a few wrong, see patchfile.

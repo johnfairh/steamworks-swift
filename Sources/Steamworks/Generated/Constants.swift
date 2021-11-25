@@ -10,12 +10,6 @@
 
 /// Namespace for Steamworks top-level constants
 public enum SteamConstants {
-    /// Steamworks `MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE`
-    public static let MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE = Int(STEAMGAMESERVER_QUERY_PORT_SHARED)
-
-    /// Steamworks `STEAMGAMESERVER_QUERY_PORT_SHARED`
-    public static let STEAMGAMESERVER_QUERY_PORT_SHARED = Int(0xffff)
-
     /// Steamworks `k_cubChatMetadataMax`
     public static let chatMetadataMaxSize = Int(8192)
 

@@ -14,6 +14,8 @@ consts_to_ignore:
 - k_unSteamAccountIDMask
 - k_unSteamAccountInstanceMask
 - k_unSteamUserDefaultInstance
+- MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE
+- STEAMGAMESERVER_QUERY_PORT_SHARED
 enums:
   AudioPlayback_Status:
     prefix: AudioPlayback
