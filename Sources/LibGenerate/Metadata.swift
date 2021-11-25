@@ -149,6 +149,7 @@ struct PatchJSON: Codable {
         let out_param_iff_rc: String? // only copyback out-params if method rc matches
         let discardable_result: Bool? // set that attr
         let ignore: String? // ignore this method
+        var bIgnore: Bool { ignore != nil }
 
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
@@ -164,10 +165,12 @@ struct PatchJSON: Codable {
         struct Field: Codable {
             let fieldtype: String? // patch fieldtype (steam type)
             let swift_type: String? // custom swift type
-            let ignore: Bool? // filter out broken / too weird fields
+            let ignore: String? // filter out broken / too weird fields
+            var bIgnore: Bool { ignore != nil }
         }
         let fields: [String : Field]? // fieldname key
-        let ignore: Bool? // filter out broken / too weird structs
+        let ignore: String? // filter out broken / too weird structs
+        var bIgnore: Bool { ignore != nil }
         let name: String? // the steam json name is wrong...
     }
     let structs: [String: Struct] // struct.name key
@@ -289,7 +292,7 @@ struct MetadataDB {
             returnType = patch?.returntype ?? base.returntype
             outParamIffRc = patch?.out_param_iff_rc
             discardableResult = patch?.discardable_result ?? false
-            ignore = patch.map { $0.ignore != nil } ?? false
+            ignore = patch?.bIgnore ?? false
         }
     }
 
@@ -350,7 +353,7 @@ struct MetadataDB {
             init(base: SteamJSON.Struct.Field, patch: PatchJSON.Struct.Field?) {
                 name = base.fieldname
                 type = patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype)
-                ignore = base.private ?? patch?.ignore ?? false
+                ignore = base.private ?? patch?.bIgnore ?? false
                 swiftType = patch?.swift_type
             }
 
@@ -383,7 +386,7 @@ struct MetadataDB {
                 .init(base: $0, patch: structPatch?.fields?[$0.fieldname])
             }
             callbackID = base.callback_id
-            ignore = structPatch?.ignore ?? false
+            ignore = structPatch?.bIgnore ?? false
 
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
                 (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))

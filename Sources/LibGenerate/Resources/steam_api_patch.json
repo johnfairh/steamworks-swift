@@ -241,7 +241,7 @@
       "returntype": "RTime32_t"
     },
     "SteamAPI_ISteamUtils_SetWarningMessageHook": {
-      "ignore": "(function pointer, use the logger)"
+      "ignore": "function pointer, use the logger"
     }
   },
   "structs": {
@@ -277,37 +277,37 @@
       }
     },
     "SteamDatagramGameCoordinatorServerLogin": {
-      "ignore": true
+      "ignore": "C declaration is missing"
     },
     "SteamDatagramHostedAddress": {
-      "ignore": true
+      "ignore": "C declaration is missing"
     },
     "SteamInputActionEvent_t": {
       "fields": {
         "analogAction_actionHandle": {
-          "ignore": true
+          "ignore": "Broken union field"
         },
         "analogAction_analogActionData": {
-          "ignore": true
+          "ignore": "Broken union field"
         }
       }
     },
     "SteamNetConnectionInfo_t": {
       "fields": {
         "m_nFlags": {
-          "ignore": true
+          "ignore": "Doesn't exist in the C struct"
         }
       }
     },
     "SteamNetworkingConfigValue_t": {
       "fields": {
         "m_int64": {
-          "ignore": true
+          "ignore": "Broken union field"
         }
       }
     },
     "SteamNetworkingMessage_t": {
-      "ignore": true,
+      "ignore": "C declaration is not imported?",
       "fields": {
         "m_pfnFreeData": {
           "swift_type": "() -> Void"
@@ -318,7 +318,7 @@
       }
     },
     "SteamParamStringArray_t": {
-        "ignore": true
+        "ignore": "Better expressed directly as [String]"
     }
   }
 }
