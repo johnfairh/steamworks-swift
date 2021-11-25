@@ -25,7 +25,8 @@ struct Interfaces {
             "ISteamFriends",
             "ISteamUtils",
             "ISteamUser",
-            "ISteamUserStats"
+            "ISteamUserStats",
+            "ISteamAppList"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {

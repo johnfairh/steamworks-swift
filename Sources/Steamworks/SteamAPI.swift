@@ -56,6 +56,8 @@ public final class SteamAPI: SteamBaseAPI {
 
     // MARK: Interfaces
 
+    /// Access the Steamworks `ISteamAppList` interface
+    public let appList = SteamAppList()
     /// Access the Steamworks `ISteamFriends` interface
     public let friends = SteamFriends()
     /// Access the Steamworks `ISteamUser` interface

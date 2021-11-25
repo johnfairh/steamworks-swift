@@ -48,7 +48,7 @@ let package = Package(
         "Yams"
         ],
         resources: [
-          .copy("Resources/steam_api_patch.json"),
+          .copy("Resources/steam_api_patch.yaml"),
           .copy("Resources/steam_api_extra.json")
         ]),
     .testTarget(
