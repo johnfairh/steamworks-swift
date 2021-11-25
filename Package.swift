@@ -22,8 +22,7 @@ let package = Package(
       targets: ["Client"])
   ],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-log.git", from: "1.4.2"),
-    .package(url: "https://github.com/apple/swift-collections.git", from: "1.0.1")
+    .package(url: "https://github.com/apple/swift-log.git", from: "1.4.2")
   ],
   targets: [
     .systemLibrary(name: "CSteamworks"),
@@ -45,7 +44,6 @@ let package = Package(
     .target(
         name: "LibGenerate",
         dependencies: [
-          .product(name: "OrderedCollections", package: "swift-collections")
         ],
         resources: [
           .copy("Resources/steam_api_patch.json"),

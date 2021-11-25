@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import OrderedCollections
 
 /// Decoded SDK `steam_api.json`.
 struct SteamJSON: Codable {
@@ -198,8 +197,8 @@ struct MetadataDB {
         }
     }
 
-    /// Indexed by `constname`, order from original file, filtered by patch exclude-list
-    let consts: OrderedDictionary<String, Const>
+    /// Indexed by `constname`, filtered by patch exclude-list
+    let consts: [String : Const]
 
     final class Enum {
         let name: String
@@ -218,20 +217,20 @@ struct MetadataDB {
                 forceStatic = patch?.force_static ?? false
             }
         }
-        let values: OrderedDictionary<String, Value>
+        let values: [Value]
 
         init(base: SteamJSON.Enum, patch: PatchJSON.Enum?) {
             name = base.name
             is_set = patch?.is_set ?? false
             prefix = patch?.prefix ?? name
             numericPrefix = patch?.numeric_prefix
-            values = .init(uniqueKeysWithValues: base.values.map {
-                ($0.name, Value(base: $0, patch: patch?.values?[$0.name]))
-            })
+            values = base.values.map {
+                Value(base: $0, patch: patch?.values?[$0.name])
+            }
         }
     }
-    /// Indexed by `enumname`, order from original file
-    let enums: OrderedDictionary<String, Enum>
+    /// Indexed by `enumname`
+    let enums: [String : Enum]
 
     struct Method {
         let name: String
@@ -298,8 +297,8 @@ struct MetadataDB {
 
     struct Interface {
         let name: String
-        /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
-        let methods: OrderedDictionary<String, Method>
+        /// Indexed by `methodname_flat` ... `methodname` is not unique...
+        let methods: [String : Method]
 
         enum Access {
             case global(String)
@@ -338,8 +337,8 @@ struct MetadataDB {
             }
         }
     }
-    /// Indexed by `classname`, order from original file
-    let interfaces: OrderedDictionary<String, Interface>
+    /// Indexed by `classname`
+    let interfaces: [String : Interface]
 
     /// Shared type between callback-structs and regular structs - regular structs don't have
     /// a callback ID and may have methods (though these are rarely coherent)
@@ -374,10 +373,10 @@ struct MetadataDB {
         let fields: [Field]
         let callbackID: Int?
         let ignore: Bool
-        /// Indexed by `name`, order from original file ...
-        let enums: OrderedDictionary<String, Enum>
-        /// Indexed by `methodname_flat`, order from original file ... `methodname` is not unique...
-        let methods: OrderedDictionary<String, Method>
+        /// Indexed by `name`
+        let enums: [String : Enum]
+        /// Indexed by `methodname_flat` ... `methodname` is not unique...
+        let methods: [String : Method]
 
         init(base: SteamJSON.Struct, patch: PatchJSON) {
             let structPatch = patch.structs[base.struct]
@@ -397,12 +396,12 @@ struct MetadataDB {
             })
         }
     }
-    /// Indexed by `struct`, order from original file -- 'callback structs' first
-    let structs: OrderedDictionary<String, Struct>
+    /// Indexed by `struct` -- 'callback structs' first
+    let structs: [String : Struct]
 
     typealias Typedef = SteamJSON.Typedef
     /// Indexed by `typedef`, order from original file
-    let typedefs: OrderedDictionary<String, Typedef>
+    let typedefs: [String : Typedef]
 
     init(base: SteamJSON, patch: PatchJSON) {
         let ignoredConsts = Set(patch.consts_to_ignore)

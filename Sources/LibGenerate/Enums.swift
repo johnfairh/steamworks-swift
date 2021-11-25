@@ -39,11 +39,11 @@ extension MetadataDB.Enum.Value {
 extension MetadataDB.Enum {
     /// This has to match the raw type chosen by the Clang Importer for the imported C enum
     var rawType: String {
-        values.values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
+        values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
     }
 
     var unrepresentedValue: Int {
-        (values.values
+        (values
             .filter(\.shouldGenerate)
             .compactMap { Int($0.value) }
             .max() ?? 0) + 1
@@ -76,7 +76,7 @@ extension MetadataDB.Enum {
             valueGen = generateOptionSetDecl
         }
 
-        var elements = values.values
+        var elements = values
             .filter(\.shouldGenerate)
             .flatMap { value in [
                 "/// Steamworks `\(value.name)`",

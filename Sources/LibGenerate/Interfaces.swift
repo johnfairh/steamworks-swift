@@ -117,7 +117,7 @@ extension MetadataDB.Interface {
     func generate(context: String) -> String {
         let declaration = access.declaration(name: name)
         let methods = methods.values
-            .sorted(by: { $0.name < $1.name })
+            .sorted(by: { $0.flatName < $1.flatName })
             .filter(\.shouldGenerate)
             .map { $0.generate(context: name) }
         return declaration + "\n" + methods.joined(separator: "\n\n") + "\n}"

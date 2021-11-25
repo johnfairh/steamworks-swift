@@ -124,6 +124,11 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetAchievementProgressLimits()`
+    public func getAchievementProgressLimits(name: String, minProgress: inout Float, maxProgress: inout Float) -> Bool {
+        SteamAPI_ISteamUserStats_GetAchievementProgressLimitsFloat(interface, name, &minProgress, &maxProgress)
+    }
+
+    /// Steamworks `ISteamUserStats::GetAchievementProgressLimits()`
     public func getAchievementProgressLimits(name: String, minProgress: inout Int, maxProgress: inout Int) -> Bool {
         var tmp_minProgress = int32()
         var tmp_maxProgress = int32()
@@ -131,11 +136,6 @@ public struct SteamUserStats {
         minProgress = Int(tmp_minProgress)
         maxProgress = Int(tmp_maxProgress)
         return rc
-    }
-
-    /// Steamworks `ISteamUserStats::GetAchievementProgressLimits()`
-    public func getAchievementProgressLimits(name: String, minProgress: inout Float, maxProgress: inout Float) -> Bool {
-        SteamAPI_ISteamUserStats_GetAchievementProgressLimitsFloat(interface, name, &minProgress, &maxProgress)
     }
 
     /// Steamworks `ISteamUserStats::GetDownloadedLeaderboardEntry()`
@@ -150,16 +150,13 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStat()`
-    public func getGlobalStat(statName: String, data: inout Int) -> Bool {
-        var tmp_data = int64()
-        let rc = SteamAPI_ISteamUserStats_GetGlobalStatInt64(interface, statName, &tmp_data)
-        data = Int(tmp_data)
-        return rc
-    }
-
-    /// Steamworks `ISteamUserStats::GetGlobalStat()`
     public func getGlobalStat(statName: String, data: inout Double) -> Bool {
         SteamAPI_ISteamUserStats_GetGlobalStatDouble(interface, statName, &data)
+    }
+
+    /// Steamworks `ISteamUserStats::GetGlobalStatHistory()`
+    public func getGlobalStatHistory(statName: String, data: inout [Double], dataSize: Int) -> Int {
+        Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryDouble(interface, statName, &data, uint32(dataSize)))
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStatHistory()`
@@ -171,9 +168,12 @@ public struct SteamUserStats {
         return rc
     }
 
-    /// Steamworks `ISteamUserStats::GetGlobalStatHistory()`
-    public func getGlobalStatHistory(statName: String, data: inout [Double], dataSize: Int) -> Int {
-        Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryDouble(interface, statName, &data, uint32(dataSize)))
+    /// Steamworks `ISteamUserStats::GetGlobalStat()`
+    public func getGlobalStat(statName: String, data: inout Int) -> Bool {
+        var tmp_data = int64()
+        let rc = SteamAPI_ISteamUserStats_GetGlobalStatInt64(interface, statName, &tmp_data)
+        data = Int(tmp_data)
+        return rc
     }
 
     /// Steamworks `ISteamUserStats::GetLeaderboardDisplayType()`
@@ -233,16 +233,16 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetStat()`
+    public func getStat(name: String, data: inout Float) -> Bool {
+        SteamAPI_ISteamUserStats_GetStatFloat(interface, name, &data)
+    }
+
+    /// Steamworks `ISteamUserStats::GetStat()`
     public func getStat(name: String, data: inout Int) -> Bool {
         var tmp_data = int32()
         let rc = SteamAPI_ISteamUserStats_GetStatInt32(interface, name, &tmp_data)
         data = Int(tmp_data)
         return rc
-    }
-
-    /// Steamworks `ISteamUserStats::GetStat()`
-    public func getStat(name: String, data: inout Float) -> Bool {
-        SteamAPI_ISteamUserStats_GetStatFloat(interface, name, &data)
     }
 
     /// Steamworks `ISteamUserStats::GetUserAchievement()`
@@ -259,16 +259,16 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetUserStat()`
+    public func getUserStat(user: SteamID, name: String, data: inout Float) -> Bool {
+        SteamAPI_ISteamUserStats_GetUserStatFloat(interface, UInt64(user), name, &data)
+    }
+
+    /// Steamworks `ISteamUserStats::GetUserStat()`
     public func getUserStat(user: SteamID, name: String, data: inout Int) -> Bool {
         var tmp_data = int32()
         let rc = SteamAPI_ISteamUserStats_GetUserStatInt32(interface, UInt64(user), name, &tmp_data)
         data = Int(tmp_data)
         return rc
-    }
-
-    /// Steamworks `ISteamUserStats::GetUserStat()`
-    public func getUserStat(user: SteamID, name: String, data: inout Float) -> Bool {
-        SteamAPI_ISteamUserStats_GetUserStatFloat(interface, UInt64(user), name, &data)
     }
 
     /// Steamworks `ISteamUserStats::IndicateAchievementProgress()`
@@ -331,13 +331,13 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::SetStat()`
-    public func setStat(name: String, data: Int) -> Bool {
-        SteamAPI_ISteamUserStats_SetStatInt32(interface, name, int32(data))
+    public func setStat(name: String, data: Float) -> Bool {
+        SteamAPI_ISteamUserStats_SetStatFloat(interface, name, data)
     }
 
     /// Steamworks `ISteamUserStats::SetStat()`
-    public func setStat(name: String, data: Float) -> Bool {
-        SteamAPI_ISteamUserStats_SetStatFloat(interface, name, data)
+    public func setStat(name: String, data: Int) -> Bool {
+        SteamAPI_ISteamUserStats_SetStatInt32(interface, name, int32(data))
     }
 
     /// Steamworks `ISteamUserStats::StoreStats()`

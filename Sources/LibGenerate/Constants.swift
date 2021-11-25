@@ -24,13 +24,15 @@ struct Constants {
         var flatLines: [String] = []
         var invalidLines: [String] = []
 
-        metadata.db.consts.values.forEach { c in
-            if c.isTypeDefInvalidValue {
-                invalidLines.append(c.invalidTypedefDeclLines)
-            } else {
-                flatLines.append(c.flatDeclLines)
+        metadata.db.consts.values
+            .sorted(by: { $0.name.asSwiftConstantName < $1.name.asSwiftConstantName })
+            .forEach { c in
+                if c.isTypeDefInvalidValue {
+                    invalidLines.append(c.invalidTypedefDeclLines)
+                } else {
+                    flatLines.append(c.flatDeclLines)
+                }
             }
-        }
 
         let contents = """
                        /// Namespace for Steamworks top-level constants

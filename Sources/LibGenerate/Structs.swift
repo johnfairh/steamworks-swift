@@ -28,6 +28,7 @@ struct Structs {
 
         let cContents = metadata.db.structs.values
             .filter(\.shouldGenerate)
+            .sorted(by: { $0.name < $1.name })
             .flatMap(\.generateC)
             .joined(separator: "\n\n")
         try io.write(fileName: "steam_struct_shims.h", contents: cContents)

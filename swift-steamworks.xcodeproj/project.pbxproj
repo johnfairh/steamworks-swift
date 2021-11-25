@@ -28,8 +28,6 @@
 		020860E12734054400725122 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E02734054400725122 /* Enums.swift */; };
 		020860E42735487600725122 /* Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E2273547B100725122 /* Interfaces.swift */; };
 		020860EB2736F8E700725122 /* SteamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E72735562A00725122 /* SteamFriends.swift */; };
-		020860F0273E68E300725122 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 020860EF273E68E300725122 /* OrderedCollections */; };
-		020860F2273E764100725122 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 020860F1273E764100725122 /* OrderedCollections */; };
 		020860F4273E775200725122 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 020860F3273E775200725122 /* Fixtures */; };
 		020860F6273FE55C00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F5273FE55C00725122 /* Typedefs.swift */; };
 		020860F8273FED5A00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F7273FED5A00725122 /* Typedefs.swift */; };
@@ -189,7 +187,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				020860F2273E764100725122 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +210,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				020860F0273E68E300725122 /* OrderedCollections in Frameworks */,
 				02086095272C194A00725122 /* Logging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,7 +408,6 @@
 			);
 			name = LibGenerate;
 			packageProductDependencies = (
-				020860F1273E764100725122 /* OrderedCollections */,
 			);
 			productName = Generate;
 			productReference = 020860AE273047D100725122 /* LibGenerate.framework */;
@@ -471,7 +466,6 @@
 			name = Steamworks;
 			packageProductDependencies = (
 				02086094272C194A00725122 /* Logging */,
-				020860EF273E68E300725122 /* OrderedCollections */,
 			);
 			productName = Steamworks;
 			productReference = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */;
@@ -522,7 +516,6 @@
 			mainGroup = OBJ_5;
 			packageReferences = (
 				02086093272C194A00725122 /* XCRemoteSwiftPackageReference "swift-log" */,
-				020860EE273E68E300725122 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = OBJ_18 /* Products */;
 			projectDirPath = "";
@@ -1248,14 +1241,6 @@
 				minimumVersion = 1.4.2;
 			};
 		};
-		020860EE273E68E300725122 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-collections.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1263,16 +1248,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02086093272C194A00725122 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
-		};
-		020860EF273E68E300725122 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 020860EE273E68E300725122 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
-		};
-		020860F1273E764100725122 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 020860EE273E68E300725122 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
