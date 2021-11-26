@@ -3177,21 +3177,6 @@ extension SteamAppUninstalled: SteamCreatable {
     }
 }
 
-/// Steamworks `SteamIPAddress_t`
-public struct SteamIPAddress {
-    /// Steamworks `m_rgubIPv6`
-    public let ipv6: [UInt8]
-    /// Steamworks `m_eType`
-    public let type: SteamIPType
-}
-
-extension SteamIPAddress: SteamCreatable {
-    init(_ steam: CSteamworks.SteamIPAddress_t) {
-        ipv6 = .init(steam.m_rgubIPv6_ptr, 16)
-        type = .init(steam.m_eType)
-    }
-}
-
 /// Steamworks `SteamInputActionEvent_t`
 public struct SteamInputActionEvent {
     /// Steamworks `controllerHandle`

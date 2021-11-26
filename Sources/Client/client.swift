@@ -76,6 +76,8 @@ final class Client {
             testCallback()
         case 3:
             testStringFilter()
+        case 4:
+            testServerIP()
         default:
             print("<<<< Actually, that's the end")
             testState = .done
@@ -142,6 +144,13 @@ final class Client {
         print("InitFilterText: \(rc)")
         let count = api.utils.filterText(context: .chat, steamID: steamID, inputMessage: str, outFilteredText: &filteredStr, byteSizeOutFilteredText: 12)
         print("Filtered, count=\(count) out=\(filteredStr)")
+        endTest()
+    }
+
+    func testServerIP() {
+        let loggedOn = server.gameServer.loggedOn()
+        let ip = server.gameServer.getPublicIP()
+        print("Server logged on: \(loggedOn); IP type: \(ip.type); IPv4 addr: 0x\(String(ip.ipv4Address, radix: 16))")
         endTest()
     }
 }

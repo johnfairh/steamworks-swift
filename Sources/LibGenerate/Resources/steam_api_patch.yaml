@@ -227,10 +227,12 @@ structs:
         ignore: Broken union field
       analogAction_analogActionData:
         ignore: Broken union field
+  SteamIPAddress_t:
+    ignore: "Union type, covered in manual"
   SteamNetConnectionInfo_t:
     fields:
       m_nFlags:
-        ignore: Doesn't exist in the C struct
+        ignore: "Doesn't exist in the C struct"
   SteamNetworkingConfigValue_t:
     fields:
       m_int64:

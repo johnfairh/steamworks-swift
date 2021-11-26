@@ -206,12 +206,6 @@ static inline const char * _Nonnull RemoteStorageGetPublishedFileDetailsResult_t
     return s->m_rgchURL;
 }
 
-__attribute__((swift_name("getter:SteamIPAddress_t.m_rgubIPv6_ptr(self:)")))
-static inline const uint8 * _Nonnull SteamIPAddress_t_m_rgubIPv6_ptr(const SteamIPAddress_t * _Nonnull s)
-{
-    return s->m_rgubIPv6;
-}
-
 __attribute__((swift_name("getter:SteamInventoryRequestPricesResult_t.m_rgchCurrency_ptr(self:)")))
 static inline const char * _Nonnull SteamInventoryRequestPricesResult_t_m_rgchCurrency_ptr(const SteamInventoryRequestPricesResult_t * _Nonnull s)
 {
