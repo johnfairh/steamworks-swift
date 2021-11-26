@@ -668,7 +668,7 @@ public struct GSReputation {
     /// Steamworks `m_ulBannedGameID`
     public let bannedGameID: GameID
     /// Steamworks `m_unBanExpires`
-    public let banExpires: Int
+    public let banExpires: RTime32
 }
 
 extension GSReputation: SteamCreatable {

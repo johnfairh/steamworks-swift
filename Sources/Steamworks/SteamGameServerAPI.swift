@@ -47,4 +47,6 @@ public final class SteamGameServerAPI: SteamBaseAPI {
 
     /// Access the Steamworks `ISteamGameServer` interface
     public let gameServer = SteamGameServer()
+    /// Access the Steamworks `ISteamGameServerStats` interface
+    public let gameServerStats = SteamGameServerStats()
 }

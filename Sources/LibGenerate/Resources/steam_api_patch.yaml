@@ -203,6 +203,10 @@ structs:
     fields:
       m_uAppID:
         fieldtype: AppId_t
+  GSReputation_t:
+    fields:
+      m_unBanExpires:
+        fieldtype: RTime32_t
   IPCFailure_t:
     fields:
       m_eFailureType:
