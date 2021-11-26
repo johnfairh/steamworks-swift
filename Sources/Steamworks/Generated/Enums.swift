@@ -1058,6 +1058,21 @@ public enum DurationControlProgress: UInt32 {
 extension EDurationControlProgress: RawConvertible { typealias From = DurationControlProgress }
 extension DurationControlProgress: EnumWithUnrepresented { typealias From = EDurationControlProgress }
 
+/// Steamworks `EFavoriteFlags`
+public enum FavoriteFlags: UInt32 {
+    /// Steamworks `k_unFavoriteFlagNone`
+    case none = 0
+    /// Steamworks `k_unFavoriteFlagFavorite`
+    case favorite = 1
+    /// Steamworks `k_unFavoriteFlagHistory`
+    case history = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
+}
+
+extension EFavoriteFlags: RawConvertible { typealias From = FavoriteFlags }
+extension FavoriteFlags: EnumWithUnrepresented { typealias From = EFavoriteFlags }
+
 /// Steamworks `EFriendFlags`
 public struct FriendFlags: OptionSet {
     /// The flags value.

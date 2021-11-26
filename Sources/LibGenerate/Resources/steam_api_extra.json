@@ -1,11 +1,20 @@
 {
   "callback_structs": [],
   "consts": [
-    { "constname":"k_cchStatNameMax", "consttype":"uint32", "constval":"128" },
-    { "constname":"k_cchLeaderboardNameMax", "consttype":"uint32", "constval":"128" },
-    { "constname":"k_cLeaderboardDetailsMax", "consttype":"uint32", "constval":"64" },
+  { "constname":"k_cchStatNameMax", "consttype":"uint32", "constval":"128" },
+  { "constname":"k_cchLeaderboardNameMax", "consttype":"uint32", "constval":"128" },
+  { "constname":"k_cLeaderboardDetailsMax", "consttype":"uint32", "constval":"64" },
   ],
-  "enums": [],
+  "enums": [
+  {
+    "enumname": "EFavoriteFlags",
+    "values": [
+      { "name":"k_unFavoriteFlagNone", "value":"0" },
+      { "name":"k_unFavoriteFlagFavorite", "value":"1" },
+      { "name":"k_unFavoriteFlagHistory", "value":"2" }
+    ]
+  }
+  ],
   "interfaces": [],
   "structs": [],
   "typedefs": []

@@ -19,15 +19,6 @@ public enum SteamConstants {
     /// Steamworks `k_unEnumeratePublishedFilesMaxResults`
     public static let enumeratePublishedFilesMaxResults = Int(50)
 
-    /// Steamworks `k_unFavoriteFlagFavorite`
-    public static let favoriteFlagFavorite = Int(0x01)
-
-    /// Steamworks `k_unFavoriteFlagHistory`
-    public static let favoriteFlagHistory = Int(0x02)
-
-    /// Steamworks `k_unFavoriteFlagNone`
-    public static let favoriteFlagNone = Int(0x00)
-
     /// Steamworks `k_cchFilenameMax`
     public static let filenameMaxSize = Int(260)
 

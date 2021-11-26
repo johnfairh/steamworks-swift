@@ -62,6 +62,8 @@ public final class SteamAPI: SteamBaseAPI {
     public let apps = SteamApps()
     /// Access the Steamworks `ISteamFriends` interface
     public let friends = SteamFriends()
+    /// Access the Steamworks `ISteamMatchmaking` interface
+    public let matchmaking = SteamMatchmaking()
     /// Access the Steamworks `ISteamUser` interface
     public let user = SteamUser()
     /// Access the Steamworks `ISteamUserStats` interface

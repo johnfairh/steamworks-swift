@@ -11,6 +11,9 @@ consts_to_ignore:
 - k_cFriendsGroupLimit
 - k_cEnumerateFollowersMax
 - k_cubAppProofOfPurchaseKeyMax
+- k_unFavoriteFlagFavorite
+- k_unFavoriteFlagHistory
+- k_unFavoriteFlagNone
 - k_unSteamAccountIDMask
 - k_unSteamAccountInstanceMask
 - k_unSteamUserDefaultInstance
@@ -28,6 +31,8 @@ enums:
     numeric_prefix: in
   EDurationControlProgress:
     prefix: k_EDurationControl(?:Progress)?
+  EFavoriteFlags:
+    prefix: k_unFavoriteFlag
   EFriendFlags:
     is_set: true
     prefix: EFriendFlag
@@ -158,6 +163,50 @@ methods:
   SteamAPI_ISteamHTTP_SetHTTPRequestCookieContainer:
     discardable_result: true
   SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo:
+    discardable_result: true
+  SteamAPI_ISteamMatchmaking_AddFavoriteGame:
+    flat_name: CSteamAPI_ISteamMatchmaking_AddFavoriteGame
+    params:
+      rTime32LastPlayedOnServer:
+        type: RTime32
+      unFlags:
+        type: EFavoriteFlags
+  SteamAPI_ISteamMatchmaking_DeleteLobbyData:
+    discardable_result: true
+  SteamAPI_ISteamMatchmaking_GetFavoriteGame:
+    flat_name: CSteamAPI_ISteamMatchmaking_GetFavoriteGame
+    params:
+      pRTime32LastPlayedOnServer:
+        type: RTime32 *
+      punFlags:
+        type: EFavoriteFlags *
+  SteamAPI_ISteamMatchmaking_GetLobbyDataByIndex:
+    params:
+      pchKey:
+        out_string_count: cchKeyBufferSize
+      pchValue:
+        out_string_count: cchValueBufferSize
+  SteamAPI_ISteamMatchmaking_GetLobbyMemberData:
+    returntype: String?
+  SteamAPI_ISteamMatchmaking_InviteUserToLobby:
+    discardable_result: true
+  SteamAPI_ISteamMatchmaking_RemoveFavoriteGame:
+    flat_name: CSteamAPI_ISteamMatchmaking_RemoveFavoriteGame
+    discardable_result: true
+    params:
+      unFlags:
+        type: EFavoriteFlags
+  SteamAPI_ISteamMatchmaking_RequestLobbyData:
+    discardable_result: true
+  SteamAPI_ISteamMatchmaking_SendLobbyChatMsg:
+    discardable_result: true
+  SteamAPI_ISteamMatchmaking_SetLinkLobby:
+    discardable_result: true
+  SteamAPI_ISteamMatchmaking_SetLobbyJoinable:
+    discardable_result: true
+  SteamAPI_ISteamMatchmaking_SetLobbyMemberLimit:
+    discardable_result: true
+  SteamAPI_ISteamMatchmaking_SetLobbyType:
     discardable_result: true
   SteamAPI_ISteamUser_GetUserDataFolder:
     params:

@@ -120,6 +120,7 @@ struct SteamJSON: Codable {
 /// * Methods: set discardableResult
 /// * Methods: patch in missed `out_string_count` etc.
 /// * Methods: ignore entirely
+/// * Methods: modify flatname
 /// * Structs: correct a field type (steam or swift)
 /// * Structs: ignore field or entire struct
 /// * Structs: correct the steam name
@@ -151,6 +152,7 @@ struct Patch: Codable {
         let ignore: String? // ignore this method for interface-gen
         var bIgnore: Bool { ignore != nil }
         let callresult: String? // missing callresult
+        let flat_name: String? // change called method
 
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
@@ -286,7 +288,7 @@ struct MetadataDB {
 
         init(base: SteamJSON.Method, patch: Patch.Method?) {
             name = base.methodname
-            flatName = base.methodname_flat
+            flatName = patch?.flat_name ?? base.methodname_flat
             callResult = patch?.callresult ?? base.callresult
             callback = base.callback
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
