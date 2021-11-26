@@ -148,8 +148,9 @@ struct Patch: Codable {
         let returntype: String? // patch returntype (steam type)
         let out_param_iff_rc: String? // only copyback out-params if method rc matches
         let discardable_result: Bool? // set that attr
-        let ignore: String? // ignore this method
+        let ignore: String? // ignore this method for interface-gen
         var bIgnore: Bool { ignore != nil }
+        let callresult: String? // missing callresult
 
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
@@ -286,7 +287,7 @@ struct MetadataDB {
         init(base: SteamJSON.Method, patch: Patch.Method?) {
             name = base.methodname
             flatName = base.methodname_flat
-            callResult = base.callresult
+            callResult = patch?.callresult ?? base.callresult
             callback = base.callback
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
             returnType = patch?.returntype ?? base.returntype

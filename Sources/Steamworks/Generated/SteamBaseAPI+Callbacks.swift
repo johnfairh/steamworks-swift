@@ -291,11 +291,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(4512), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `HTTPRequestCompleted_t` callback
-    func onHTTPRequestCompleted(_ client: @escaping (HTTPRequestCompleted) -> Void) {
-        callbacks.add(callbackID: CallbackID(2101), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `HTTPRequestDataReceived_t` callback
     func onHTTPRequestDataReceived(_ client: @escaping (HTTPRequestDataReceived) -> Void) {
         callbacks.add(callbackID: CallbackID(2103), rawClient: SteamBaseAPI.makeRaw(client))
@@ -1008,11 +1003,6 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `HTML_VerticalScroll_t` callbacks
     var htmlVerticalScroll: AsyncStream<HTMLVerticalScroll> {
         AsyncStream { onHTMLVerticalScroll($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `HTTPRequestCompleted_t` callbacks
-    var httpRequestCompleted: AsyncStream<HTTPRequestCompleted> {
-        AsyncStream { onHTTPRequestCompleted($0.yield0) }
     }
 
     /// Async stream of Steamworks `HTTPRequestDataReceived_t` callbacks

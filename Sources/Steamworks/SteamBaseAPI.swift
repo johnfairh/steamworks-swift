@@ -126,6 +126,7 @@ public class SteamBaseAPI: @unchecked Sendable {
         _ = SteamBaseAPI.initOnce
 
         self.utils = SteamUtils(isServer: isServer)
+        self.http = SteamHTTP(isServer: isServer)
     }
 
     // MARK: Notifications
@@ -221,6 +222,8 @@ public class SteamBaseAPI: @unchecked Sendable {
 
     /// Access the Steamworks `ISteamUtils` interface
     public let utils: SteamUtils
+    /// Access the Steamworks `ISteamHTTP` interface
+    public let http: SteamHTTP
 }
 
 func logError(_ message: @autoclosure () -> String) {

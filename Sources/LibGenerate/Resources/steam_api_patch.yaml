@@ -141,6 +141,24 @@ methods:
         type: EFriendFlags
   SteamAPI_ISteamFriends_SetListenForFriendsMessages:
     discardable_result: true
+  SteamAPI_ISteamHTTP_DeferHTTPRequest:
+    discardable_result: true
+  SteamAPI_ISteamHTTP_PrioritizeHTTPRequest:
+    discardable_result: true
+  SteamAPI_ISteamHTTP_ReleaseCookieContainer:
+    discardable_result: true
+  SteamAPI_ISteamHTTP_ReleaseHTTPRequest:
+    discardable_result: true
+  SteamAPI_ISteamHTTP_SendHTTPRequest:
+    ignore: "weird callresult form"
+    callresult: HTTPRequestCompleted_t
+  SteamAPI_ISteamHTTP_SendHTTPRequestAndStreamResponse:
+    ignore: "weird callresult form"
+    callresult: HTTPRequestCompleted_t
+  SteamAPI_ISteamHTTP_SetHTTPRequestCookieContainer:
+    discardable_result: true
+  SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo:
+    discardable_result: true
   SteamAPI_ISteamUser_GetUserDataFolder:
     params:
       pchBuffer:

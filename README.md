@@ -70,12 +70,11 @@ To run the generator / build:
 
 ### Interface plan
 
-✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameServer, ISteamUser,
- ISteamUserStats, ISteamUtils
+✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameServer, ISteamGameServerStats,
+ISteamHTTP, ISteamUser, ISteamUserStats, ISteamUtils
 
 Easy:
-* ISteamGameServerStats,
-  ISteamHTTP, ISteamMatchmaking, ISteamParties, ISteamGameSearch, ISteamMusic,
+* ISteamMatchmaking, ISteamParties, ISteamGameSearch, ISteamMusic,
   ISteamMusicRemote, ISteamParentalSettings, ISteamRemotePlay, ISteamScreenshots,
   ISteamVideo
 

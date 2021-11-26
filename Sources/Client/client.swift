@@ -78,6 +78,8 @@ final class Client {
             testStringFilter()
         case 4:
             testServerIP()
+        case 5:
+            testHTTP()
         default:
             print("<<<< Actually, that's the end")
             testState = .done
@@ -152,6 +154,19 @@ final class Client {
         let ip = server.gameServer.getPublicIP()
         print("Server logged on: \(loggedOn); IP type: \(ip.type); IPv4 addr: 0x\(String(ip.ipv4Address, radix: 16))")
         endTest()
+    }
+
+    func testHTTP() {
+        let req = api.http.createHTTPRequest(httpRequestMethod: .get, absoluteURL: "http://bbc.co.uk/")
+        api.http.sendHTTPRequest(request: req) { done in
+            if let done = done {
+                print("HTTP response, got steam done: \(done)")
+            } else {
+                print("HTTP response, steam IO faillure")
+            }
+            self.api.http.releaseHTTPRequest(request: req)
+            self.endTest()
+        }
     }
 }
 
