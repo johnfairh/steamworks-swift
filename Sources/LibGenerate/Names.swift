@@ -82,7 +82,7 @@ extension String {
             return "\(match[1])Index".asSwiftIdentifier
         }
         // 'cch' special cases, avoid collapsing 'cchFoo' and 'pchFoo' to the same thing
-        if let match = re_match("^p?c(?:ch|u?b)([A-Z][a-z]+.*?)(?:Length|Size)?$") {
+        if let match = re_match("^p?c(?:ch|u?b)([A-Z][a-z]*.*?)(?:Length|Size)?$") {
             return "\(match[1])Size".asSwiftIdentifier
         }
         // Ultimate fallback - strip lower-case prefix and convert
@@ -185,6 +185,7 @@ private let backtickKeywords = Set<String>([
 private let steamToSwiftTypes: [String : String] = [
     // Base types
     "const char *" : "String",
+    "nullable const char *" : "String?",
     "int" : "Int",
     "uint8" : "Int",
     "uint16" : "Int",
@@ -224,6 +225,7 @@ private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
 private let steamTypesPassedInTransparently = Set<String>([
     "bool", "const char *", "void *", "uint8 *",
     "const void *", "float", "double", "uint64",
+    "nullable const char *",
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])

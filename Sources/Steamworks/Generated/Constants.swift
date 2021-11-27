@@ -187,11 +187,8 @@ public enum SteamConstants {
     /// Steamworks `k_cchTagListMax`
     public static let tagListMaxSize = Int(1024 + 1)
 
-    /// Steamworks `k_cubUFSTagTypeMax`
-    public static let ufsTagTypeMax = Int(255)
-
     /// Steamworks `k_cubUFSTagValueMax`
-    public static let ufsTagValueMax = Int(255)
+    public static let ufsTagValueMaxSize = Int(255)
 }
 
 extension HServerQuery {
@@ -202,6 +199,11 @@ extension HServerQuery {
 extension HHTMLBrowser {
     /// Steamworks `INVALID_HTMLBROWSER`
     public static let invalid = HHTMLBrowser(0)
+}
+
+extension ScreenshotHandle {
+    /// Steamworks `INVALID_SCREENSHOT_HANDLE`
+    public static let invalid = ScreenshotHandle(0)
 }
 
 extension SteamAPICall {

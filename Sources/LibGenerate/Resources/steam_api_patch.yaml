@@ -11,6 +11,7 @@ consts_to_ignore:
 - k_cFriendsGroupLimit
 - k_cEnumerateFollowersMax
 - k_cubAppProofOfPurchaseKeyMax
+- k_cubUFSTagTypeMax
 - k_unFavoriteFlagFavorite
 - k_unFavoriteFlagHistory
 - k_unFavoriteFlagNone
@@ -308,6 +309,13 @@ methods:
 #
   SteamAPI_ISteamRemotePlay_GetSessionClientName:
     returntype: String?
+#
+# ISteamScreenshots
+#
+  SteamAPI_ISteamScreenshots_AddScreenshotToLibrary:
+    params:
+      pchThumbnailFilename:
+        type: nullable const char *
 #
 # ISteamUser
 #
