@@ -39,7 +39,8 @@ struct Interfaces {
             "ISteamParentalSettings",
             "ISteamRemotePlay",
             "ISteamScreenshots",
-            "ISteamVideo"
+            "ISteamVideo",
+            "ISteamHTMLSurface"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -128,13 +129,38 @@ extension MetadataDB.Interface.Access {
 }
 
 extension MetadataDB.Interface {
+    var enumDeclLines: String {
+        guard !enums.values.isEmpty else {
+            return ""
+        }
+        return "\n" + enums.values
+            .sorted(by: { $0.name < $1.name })
+            .flatMap { [""] + $0.declLines }
+            .indented(1)
+            .joined(separator: "\n")
+    }
+
+    var enumExtensionLines: String {
+        guard !enums.values.isEmpty else {
+            return ""
+        }
+        let swiftTypeName = name.asSwiftTypeName
+        return "\n" + enums.values
+            .sorted(by: { $0.name < $1.name })
+            .flatMap { [""] + $0.extensionLines(namespace: swiftTypeName) }
+            .joined(separator: "\n")
+    }
+
     func generate(context: String) -> String {
         let declaration = access.declaration(name: name)
         let methods = methods.values
             .sorted(by: { $0.flatName < $1.flatName })
             .filter(\.shouldGenerate)
             .map { $0.generate(context: name) }
-        return declaration + "\n" + methods.joined(separator: "\n\n") + "\n}"
+            .joined(separator: "\n\n")
+        let interface = declaration + "\n" + methods + enumDeclLines + "\n}"
+
+        return interface + enumExtensionLines
     }
 }
 

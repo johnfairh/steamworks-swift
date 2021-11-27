@@ -37,6 +37,46 @@ extension String {
     }
 }
 
+// MARK: Arrays of Strings
+
+/// Far too much work to translate badly-thought-out C code.
+///
+/// C API is written "const char **" but is a mistake, actually
+/// means "const char * const *"; we work around.  It's maddening
+/// to see the same 'const' mistakes now as I did in the early 90s.
+///
+/// Needs to allow NULL.
+///
+/// If non-empty, must have a NULL entry to signify end-of-list.
+/// (not in the docs, check SpaceWar sample...)
+final class SteamStringArray {
+    // Storage -- the auto-trick with arrays doesn't work through all the
+    // optional nonsense we have going on
+    private let buf: UnsafeMutableBufferPointer<UnsafePointer<CChar>?>?
+
+    // The "_Nullable const char **"
+    var cStrings: UnsafeMutablePointer<UnsafePointer<CChar>?>? {
+        buf?.baseAddress
+    }
+
+    init(_ strings: [String]) {
+        guard !strings.isEmpty else {
+            buf = nil
+            return
+        }
+        buf = .allocate(capacity: strings.count + 1)
+        strings.enumerated().forEach { i, str in
+            buf?[i] = UnsafePointer(strdup(str))
+        }
+        buf?[strings.count] = nil
+    }
+
+    deinit {
+        buf?.forEach { $0.map { free(UnsafeMutablePointer(mutating: $0)) } }
+        buf?.deallocate()
+    }
+}
+
 // MARK: Typedefs
 
 /// Conversion of Swift Types to Steam types, for passing in typedefs

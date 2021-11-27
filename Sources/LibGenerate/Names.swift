@@ -39,6 +39,9 @@ extension String {
         guard let to = to else {
             return self
         }
+        if to == "char **" {
+            return "SteamStringArray(\(self)).cStrings"
+        }
         guard to.hasSuffix("?") else {
             return "\(to)(\(self))"
         }
@@ -147,7 +150,7 @@ extension String {
         if self == asSwiftTypeName {
             return "CSteamworks.\(self)"
         }
-        return self.re_sub("^const ", with: "")
+        return asSwiftNameForSteamType.re_sub("^const ", with: "")
     }
 
     /// For constructing a temporary instance, in Swift, to pass by ref to Steamworks
@@ -178,7 +181,8 @@ extension String {
 
 /// Just what we've seen necessary
 private let backtickKeywords = Set<String>([
-    "case", "default", "for", "internal", "private", "protocol", "public", "switch"
+    "case", "default", "for", "internal", "private", "protocol", "public",
+    "switch", "init"
 ])
 
 // How to represent a steam type in the Swift interface, special cases
@@ -203,6 +207,7 @@ private let steamToSwiftTypes: [String : String] = [
     "uint8 *" : "UnsafeMutablePointer<UInt8>",
     "uint64_steamid" : "SteamID",
     "uint64_gameid" : "GameID",
+    "const char **": "[String]",
 
     // Misc
     "SteamParamStringArray_t" : "[String]", // weirdness, tbd

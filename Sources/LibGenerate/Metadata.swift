@@ -75,6 +75,7 @@ struct SteamJSON: Codable {
 
     struct Interface: Codable {
         let classname: String
+        let enums: [Enum]?
         let methods: [Method]
         let accessors: [Accessor]?
     }
@@ -306,6 +307,8 @@ struct MetadataDB {
 
     struct Interface {
         let name: String
+        /// Indexed by `name`
+        let enums: [String : Enum]
         /// Indexed by `methodname_flat` ... `methodname` is not unique...
         let methods: [String : Method]
 
@@ -326,6 +329,9 @@ struct MetadataDB {
             guard let accessors = base.accessors else {
                 return nil
             }
+            enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
+                (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
+            })
             let accessorMap = Dictionary(uniqueKeysWithValues: accessors.map { ($0.kind, $0.name_flat) })
             if let g = accessorMap["global"] {
                 access = .global(g)
@@ -463,9 +469,14 @@ final class Metadata: CustomStringConvertible {
         self.db = MetadataDB(base: SteamJSON([baseAPI, extraAPI]), patch: patch)
 
         // cache enums that aren't in the normal place
-        self.nestedEnums = .init(uniqueKeysWithValues: db.structs.values.flatMap {
+        let nestedStructEnums = db.structs.values.flatMap {
             $0.enums.values.map { ($0.name, $0) }
-        })
+        }
+        let nestedInterfaceEnums = db.interfaces.values.flatMap {
+            $0.enums.values.map { ($0.name, $0) }
+        }
+
+        self.nestedEnums = .init(uniqueKeysWithValues: nestedStructEnums + nestedInterfaceEnums)
 
         Self.shared = self
     }

@@ -60,4 +60,20 @@ class TestTypes: XCTestCase {
         let mask: SteamFlags = [.noTrade, .consumed]
         XCTAssertEqual(Int32(mask), Int32(SteamFlags.noTrade.rawValue | SteamFlags.consumed.rawValue))
     }
+
+    /// SteamStringArray horrors
+    func testStringArray() throws {
+        XCTAssertNil(SteamStringArray([]).cStrings)
+
+        let strings = ["one", "two", "three"]
+        let ssa = SteamStringArray(strings)
+        var base = try XCTUnwrap(ssa.cStrings)
+        var oStrings: [String] = []
+        for _ in 0..<strings.count {
+            oStrings.append(String(cString: base.pointee!))
+            base += 1
+        }
+        XCTAssertNil(base.pointee)
+        XCTAssertEqual(strings, oStrings)
+    }
 }

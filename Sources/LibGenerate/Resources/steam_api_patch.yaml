@@ -89,6 +89,12 @@ enums:
     prefix: EFailure
   RequestPlayersForGameResultCallback_t::PlayerAcceptState_t:
     prefix: EState
+  ISteamHTMLSurface::EMouseCursor:
+    prefix: dc
+  ISteamHTMLSurface::EHTMLMouseButton:
+    prefix: eHTMLMouseButton
+  ISteamHTMLSurface::EHTMLKeyModifiers:
+    prefix: k_eHTMLKeyModifier
 methods:
 #
 # ISteamAppList
@@ -166,6 +172,9 @@ methods:
     params:
       pchConnectionDetails:
         out_string_count: cubConnectionDetails
+#
+# ISteamHTMLSurface
+#
 #
 # ISteamHTTP
 #
