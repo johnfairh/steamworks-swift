@@ -80,4 +80,7 @@ public final class SteamAPI: SteamBaseAPI {
     public let user = SteamUser()
     /// Access the Steamworks `ISteamUserStats` interface
     public let userStats = SteamUserStats()
+    /// Access the Steamworks `ISteamVideo` interface
+    public let video = SteamVideo()
+
 }

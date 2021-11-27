@@ -38,7 +38,8 @@ struct Interfaces {
             "ISteamMusicRemote",
             "ISteamParentalSettings",
             "ISteamRemotePlay",
-            "ISteamScreenshots"
+            "ISteamScreenshots",
+            "ISteamVideo"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -157,6 +158,7 @@ final class SwiftParam {
         case out  // pass inout, use a temporary to cast, copy-back
         case out_transparent // pass inout, no temporary
         case out_transparent_array // pass inout, array, no temporary
+        case in_out // pass inout, pass current val to API, copy-back
         case in_array // pass by value but a Swift array, use a temporary to cast, no copy-back
         case in_array_count(SwiftParam) // a C param for the length of an `in_array` param that is absent in Swift
         case out_array(String) // pass inout, temporary to cast, copy-back, array.  Required size given by another param.
@@ -169,7 +171,7 @@ final class SwiftParam {
     var swiftParamType: String? {
         switch style {
         case .in: return swiftTypeBaseName
-        case .out, .out_transparent: return "inout \(swiftTypeBaseName)"
+        case .out, .out_transparent, .in_out: return "inout \(swiftTypeBaseName)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
         case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]"
@@ -189,7 +191,8 @@ final class SwiftParam {
         switch style {
         case .in, .in_array_count, .out_transparent, .out_transparent_array: return []
         case .in_array: return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
-        case .out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks)"]
+        case .out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
+        case .in_out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
         case .out_array(let sizeParam):
             let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
             return [
@@ -209,7 +212,7 @@ final class SwiftParam {
         switch style {
         case .in:
             return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
-        case .out, .in_array:
+        case .out, .in_out, .in_array:
             return "&\(tempName)"
         case .out_transparent, .out_transparent_array:
             return "&\(swiftName)"
@@ -224,7 +227,7 @@ final class SwiftParam {
     var postSuccessCallLine: String? {
         switch style {
         case .in, .in_array, .in_array_count, .out_transparent, .out_transparent_array: return nil
-        case .out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
+        case .out, .in_out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
         case .out_array:
             return "\(swiftName) = \(tempName).map { \(swiftTypeBaseName)($0) }"
         case .out_string:
@@ -252,10 +255,12 @@ final class SwiftParam {
                     }
                 } else if depointered.isTransparentOutType {
                     style = .out_transparent
-                } else if db.arrayCount == nil {
-                    style = .out
-                } else {
+                } else if db.inOut {
+                    style = .in_out
+                } else if db.arrayCount != nil {
                     style = .in_array
+                } else {
+                    style = .out
                 }
             }
         } else {

@@ -152,9 +152,9 @@ extension String {
 
     /// For constructing a temporary instance, in Swift, to pass by ref to Steamworks
     /// and then to be copied back out to the Swift type.
-    var asExplicitSwiftInstanceForPassingIntoSteamworks: String {
+    func asExplicitSwiftInstanceForPassingIntoSteamworks(_ initWith: String = "") -> String {
         let typename = asExplicitSwiftTypeForPassingIntoSteamworks
-        let suffix = Metadata.isEnum(steamType: self) ? "(rawValue: 0)" : "()"
+        let suffix = Metadata.isEnum(steamType: self) ? "(rawValue: 0)" : "(\(initWith))"
         return typename + suffix
     }
 

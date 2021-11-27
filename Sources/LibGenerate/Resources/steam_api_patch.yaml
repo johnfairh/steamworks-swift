@@ -379,6 +379,16 @@ methods:
   SteamAPI_ISteamUtils_GetServerRealTime:
     returntype: RTime32_t
 #
+# ISteamVideo
+#
+  SteamAPI_ISteamVideo_GetOPFStringForApp:
+    params:
+      pchBuffer:
+        out_string_count: pnBufferSize
+      pnBufferSize:
+        in_out: true
+    out_param_iff_rc: ' '
+#
 # Structs
 #
 structs:
