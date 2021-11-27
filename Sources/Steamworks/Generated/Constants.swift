@@ -259,6 +259,11 @@ extension PublishedFileUpdateHandle {
     public static let invalid = PublishedFileUpdateHandle(0xffffffffffffffff)
 }
 
+extension RemotePlaySessionID {
+    /// Steamworks `k_RemotePlaySessionIDInvalid`
+    public static let invalid = RemotePlaySessionID(0)
+}
+
 extension SteamInventoryResult {
     /// Steamworks `k_SteamInventoryResultInvalid`
     public static let invalid = SteamInventoryResult(-1)

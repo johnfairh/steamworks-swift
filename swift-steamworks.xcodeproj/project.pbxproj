@@ -59,6 +59,7 @@
 		02AD4577275247C400BD93ED /* SteamMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD4576275247C400BD93ED /* SteamMusic.swift */; };
 		02AD45792752487C00BD93ED /* SteamMusicRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD45782752487C00BD93ED /* SteamMusicRemote.swift */; };
 		02AD457B27524CE700BD93ED /* SteamParentalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD457A27524CE700BD93ED /* SteamParentalSettings.swift */; };
+		02AD457D27524E6500BD93ED /* SteamRemotePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD457C27524E6400BD93ED /* SteamRemotePlay.swift */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -191,6 +192,7 @@
 		02AD4576275247C400BD93ED /* SteamMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamMusic.swift; sourceTree = "<group>"; };
 		02AD45782752487C00BD93ED /* SteamMusicRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamMusicRemote.swift; sourceTree = "<group>"; };
 		02AD457A27524CE700BD93ED /* SteamParentalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamParentalSettings.swift; sourceTree = "<group>"; };
+		02AD457C27524E6400BD93ED /* SteamRemotePlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamRemotePlay.swift; sourceTree = "<group>"; };
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				02AD45782752487C00BD93ED /* SteamMusicRemote.swift */,
 				02AD457A27524CE700BD93ED /* SteamParentalSettings.swift */,
 				02AD457227515CC400BD93ED /* SteamParties.swift */,
+				02AD457C27524E6400BD93ED /* SteamRemotePlay.swift */,
 				027F837A274C0B0500963383 /* SteamUtils.swift */,
 				02AD454D274E4AA000BD93ED /* SteamUser.swift */,
 				02AD454F274E644D00BD93ED /* SteamUserStats.swift */,
@@ -658,6 +661,7 @@
 				02AD456A2750F67500BD93ED /* SteamHTTP.swift in Sources */,
 				02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */,
 				020860FE27451F9B00725122 /* Structs.swift in Sources */,
+				02AD457D27524E6500BD93ED /* SteamRemotePlay.swift in Sources */,
 				020860E12734054400725122 /* Enums.swift in Sources */,
 				020860D12730493900725122 /* SteamBaseAPI+Version.swift in Sources */,
 				02D309E8272813D000DE64F0 /* SteamBaseAPI+Callbacks.swift in Sources */,

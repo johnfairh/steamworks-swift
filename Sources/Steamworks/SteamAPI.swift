@@ -74,6 +74,8 @@ public final class SteamAPI: SteamBaseAPI {
     public let parentalSettings = SteamParentalSettings()
     /// Access the Steamworks `ISteamParties` interface
     public let parties = SteamParties()
+    /// Access the Steamworks `ISteamRemotePlay` interface
+    public let remotePlay = SteamRemotePlay()
     /// Access the Steamworks `ISteamUser` interface
     public let user = SteamUser()
     /// Access the Steamworks `ISteamUserStats` interface

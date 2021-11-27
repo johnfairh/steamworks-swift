@@ -304,6 +304,11 @@ methods:
       pLocationList:
         out_array_count: uMaxNumLocations
 #
+# ISteamRemotePlay
+#
+  SteamAPI_ISteamRemotePlay_GetSessionClientName:
+    returntype: String?
+#
 # ISteamUser
 #
   SteamAPI_ISteamUser_GetUserDataFolder:
