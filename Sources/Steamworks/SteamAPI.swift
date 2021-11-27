@@ -66,6 +66,8 @@ public final class SteamAPI: SteamBaseAPI {
     public let gameSearch = SteamGameSearch()
     /// Access the Steamworks `ISteamMatchmaking` interface
     public let matchmaking = SteamMatchmaking()
+    /// Access the Steamworks `ISteamMusic` interface
+    public let music = SteamMusic()
     /// Access the Steamworks `ISteamParties` interface
     public let parties = SteamParties()
     /// Access the Steamworks `ISteamUser` interface
