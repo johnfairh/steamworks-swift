@@ -26,3 +26,11 @@ static inline int CSteamAPI_ISteamMatchmaking_AddFavoriteGame( ISteamMatchmaking
 static inline bool CSteamAPI_ISteamMatchmaking_RemoveFavoriteGame( ISteamMatchmaking* self, AppId_t nAppID, uint32 nIP, uint16 nConnPort, uint16 nQueryPort, EFavoriteFlags unFlags ) {
   return CSteamAPI_ISteamMatchmaking_RemoveFavoriteGame(self, nAppID, nIP, nConnPort, nQueryPort, unFlags);
 }
+
+
+// SteamPartyBeaconLocation_t - this thing is an 'in' parameter and not marked const here,
+// and is passed by value in other APIs.  So for ease we provide a similar version.  Again
+// if we see more params of this nature (pass by ref in C, actually const) then generate.
+static inline SteamAPICall_t CSteamAPI_ISteamParties_CreateBeacon( ISteamParties* self, uint32 unOpenSlots, SteamPartyBeaconLocation_t beaconLocation, const char * pchConnectString, const char * pchMetadata ) {
+  return SteamAPI_ISteamParties_CreateBeacon(self, unOpenSlots, &beaconLocation, pchConnectString, pchMetadata);
+}

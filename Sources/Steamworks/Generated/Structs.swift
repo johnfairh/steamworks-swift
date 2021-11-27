@@ -3612,6 +3612,14 @@ extension SteamPartyBeaconLocation: SteamCreatable {
     }
 }
 
+extension CSteamworks.SteamPartyBeaconLocation_t {
+    init(_ swift: SteamPartyBeaconLocation) {
+        self.init()
+        m_eType = .init(swift.type)
+        m_ulLocationID = .init(swift.locationID)
+    }
+}
+
 /// Steamworks `SteamRelayNetworkStatus_t`
 public struct SteamRelayNetworkStatus {
     /// Steamworks `m_eAvail`

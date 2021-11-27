@@ -147,13 +147,13 @@ final class IO {
 
         if let existing = try? String(contentsOf: url) {
             if existing == fullContents {
-                print("\(fileName): \(Colors.green)unchanged\(Colors.reset)")
+                print("\(Colors.green)\(fileName): unchanged\(Colors.reset)")
                 return
             }
         }
 
         try fullContents.write(to: url, atomically: false, encoding: .utf8)
-        print("\(fileName): \(Colors.blue)updated\(Colors.reset)")
+        print("\(Colors.blue)\(fileName): updated\(Colors.reset)")
     }
 }
 

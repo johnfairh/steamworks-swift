@@ -124,6 +124,7 @@ struct SteamJSON: Codable {
 /// * Structs: correct a field type (steam or swift)
 /// * Structs: ignore field or entire struct
 /// * Structs: correct the steam name
+/// * Structs: generate a swift->steam converter
 ///
 struct Patch: Codable {
     struct Const: Codable {
@@ -175,6 +176,7 @@ struct Patch: Codable {
         let ignore: String? // filter out broken / too weird structs
         var bIgnore: Bool { ignore != nil }
         let name: String? // the steam json name is wrong...
+        let swift_to_steam: Bool? // generate swift->steam converter
     }
     let structs: [String: Struct] // struct.name key
 
@@ -377,6 +379,7 @@ struct MetadataDB {
         let fields: [Field]
         let callbackID: Int?
         let ignore: Bool
+        let swiftToSteam: Bool
         /// Indexed by `name`
         let enums: [String : Enum]
         /// Indexed by `methodname_flat` ... `methodname` is not unique...
@@ -390,6 +393,7 @@ struct MetadataDB {
             }
             callbackID = base.callback_id
             ignore = structPatch?.bIgnore ?? false
+            swiftToSteam = structPatch?.swift_to_steam ?? false
 
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
                 (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))

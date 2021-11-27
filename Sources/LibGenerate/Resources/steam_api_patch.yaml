@@ -208,6 +208,24 @@ methods:
     discardable_result: true
   SteamAPI_ISteamMatchmaking_SetLobbyType:
     discardable_result: true
+  SteamAPI_ISteamParties_CreateBeacon:
+    flat_name: CSteamAPI_ISteamParties_CreateBeacon
+    params:
+      pBeaconLocation:
+        type: SteamPartyBeaconLocation_t
+  SteamAPI_ISteamParties_DestroyBeacon:
+    discardable_result: true
+  SteamAPI_ISteamParties_GetBeaconDetails:
+    discardable_result: true
+  SteamAPI_ISteamParties_GetBeaconLocationData:
+    discardable_result: true
+  SteamAPI_ISteamParties_GetNumAvailableBeaconLocations:
+    discardable_result: true
+  SteamAPI_ISteamParties_GetAvailableBeaconLocations:
+    discardable_result: true
+    params:
+      pLocationList:
+        out_array_count: uMaxNumLocations
   SteamAPI_ISteamUser_GetUserDataFolder:
     params:
       pchBuffer:
@@ -317,3 +335,5 @@ structs:
         swift_type: "() -> Void"
   SteamParamStringArray_t:
     ignore: Better expressed directly as [String]
+  SteamPartyBeaconLocation_t:
+    swift_to_steam: true

@@ -96,6 +96,11 @@ extension MetadataDB.Struct.Field {
         }
         return "\(name.asSwiftStructFieldName) = \(rvalue)"
     }
+
+    /// Steam structure initializer lines - only for a few types, opt-in
+    var steamInitLine: String {
+        "\(name) = .init(swift.\(name.asSwiftStructFieldName))"
+    }
 }
 
 extension Array where Element == MetadataDB.Struct.Field {
@@ -105,6 +110,10 @@ extension Array where Element == MetadataDB.Struct.Field {
 
     var initLines: [String] {
         filter(\.shouldGenerate).map(\.initLine)
+    }
+
+    var steamInitLines: [String] {
+        filter(\.shouldGenerate).map(\.steamInitLine)
     }
 
     func getArrayGetterLines(structName: String) -> [String] {
@@ -129,6 +138,21 @@ extension MetadataDB.Struct {
         enums.values.flatMap { [""] + $0.extensionLines(namespace: name.asSwiftTypeName) }
     }
 
+    var swiftToSteamExtensionLines: [String] {
+        guard swiftToSteam else {
+            return []
+        }
+        return [
+            "",
+            "extension CSteamworks.\(name) {",
+            "    init(_ swift: \(name.asSwiftTypeName)) {",
+            "        self.init()"
+        ] + fields.steamInitLines.indented(2) + [
+            "    }",
+            "}"
+        ]
+    }
+
     // Don't bother generating the callback ID -- don't think it's useful?
     // Not going to conform these to any protocols.  Should review as we go,
     // some will be PODs that make sense to be Equatable/etc, do via patch.
@@ -150,7 +174,8 @@ extension MetadataDB.Struct {
         fields.initLines.indented(2), [
             "    }",
             "}"
-        ]
+        ],
+        swiftToSteamExtensionLines
         ].flatMap { $0 }
 
         return lines.joined(separator: "\n")
