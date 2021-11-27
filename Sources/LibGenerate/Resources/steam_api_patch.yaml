@@ -146,6 +146,10 @@ methods:
         type: EFriendFlags
   SteamAPI_ISteamFriends_SetListenForFriendsMessages:
     discardable_result: true
+  SteamAPI_ISteamGameSearch_RetrieveConnectionDetails:
+    params:
+      pchConnectionDetails:
+        out_string_count: cubConnectionDetails
   SteamAPI_ISteamHTTP_DeferHTTPRequest:
     discardable_result: true
   SteamAPI_ISteamHTTP_PrioritizeHTTPRequest:
