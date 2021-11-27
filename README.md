@@ -8,7 +8,7 @@ Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* 14/27 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
+* 15/27 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
   working on [other interfaces](#interface-plan)
 * `make` builds and runs a demo Swift program that accesses the C++
   Steam API to initialize, do some sync and async queries, then shut it down.
@@ -71,12 +71,11 @@ To run the generator / build:
 ### Interface plan
 
 ✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameSearch, ISteamGameServer,
-ISteamGameServerStats, ISteamHTTP, ISteamMatchMaking, ISteamMusic, ISteamParties,
-ISteamUser, ISteamUserStats, ISteamUtils
+ISteamGameServerStats, ISteamHTTP, ISteamMatchMaking, ISteamMusic, ISteamMusicRemote,
+ISteamParties, ISteamUser, ISteamUserStats, ISteamUtils
 
 Easy:
-* ISteamMusicRemote, ISteamParentalSettings, ISteamRemotePlay, ISteamScreenshots,
-  ISteamVideo
+* ISteamParentalSettings, ISteamRemotePlay, ISteamScreenshots, ISteamVideo
 
 Bit more complex:
 * ISteamHTMLSurface - embedded enums??

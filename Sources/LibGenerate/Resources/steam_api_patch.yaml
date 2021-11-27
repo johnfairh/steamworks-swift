@@ -19,6 +19,9 @@ consts_to_ignore:
 - k_unSteamUserDefaultInstance
 - MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE
 - STEAMGAMESERVER_QUERY_PORT_SHARED
+#
+# Enums
+#
 enums:
   AudioPlayback_Status:
     prefix: AudioPlayback
@@ -86,6 +89,9 @@ enums:
   RequestPlayersForGameResultCallback_t::PlayerAcceptState_t:
     prefix: EState
 methods:
+#
+# ISteamAppList
+#
   SteamAPI_ISteamAppList_GetAppInstallDir:
     params:
       pchDirectory:
@@ -100,6 +106,9 @@ methods:
     params:
       pvecAppID:
         out_array_count: unMaxAppIDs
+#
+# ISteamApps
+#
   SteamAPI_ISteamApps_BGetDLCDataByIndex:
     params:
       pchName:
@@ -124,6 +133,9 @@ methods:
     params:
       pszCommandLine:
         out_string_count: cubCommandLine
+#
+# ISteamFriends
+#
   SteamAPI_ISteamFriends_GetUserRestrictions:
     returntype: EUserRestriction
   SteamAPI_ISteamFriends_GetFriendGamePlayed:
@@ -146,10 +158,16 @@ methods:
         type: EFriendFlags
   SteamAPI_ISteamFriends_SetListenForFriendsMessages:
     discardable_result: true
+#
+# ISteamGameSearch
+#
   SteamAPI_ISteamGameSearch_RetrieveConnectionDetails:
     params:
       pchConnectionDetails:
         out_string_count: cubConnectionDetails
+#
+# ISteamHTTP
+#
   SteamAPI_ISteamHTTP_DeferHTTPRequest:
     discardable_result: true
   SteamAPI_ISteamHTTP_PrioritizeHTTPRequest:
@@ -168,6 +186,9 @@ methods:
     discardable_result: true
   SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo:
     discardable_result: true
+#
+# ISteamMatchmaking
+#
   SteamAPI_ISteamMatchmaking_AddFavoriteGame:
     flat_name: CSteamAPI_ISteamMatchmaking_AddFavoriteGame
     params:
@@ -212,6 +233,58 @@ methods:
     discardable_result: true
   SteamAPI_ISteamMatchmaking_SetLobbyType:
     discardable_result: true
+#
+# ISteamMusicRemote
+#
+  SteamAPI_ISteamMusicRemote_BActivationSuccess:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_CurrentEntryDidChange:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_CurrentEntryIsAvailable:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_CurrentEntryWillChange:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_DeregisterSteamMusicRemote:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_EnableLooped:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_EnablePlayNext:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_EnablePlayPrevious:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_EnablePlaylists:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_EnableQueue:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_EnableShuffled:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_PlaylistDidChange:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_PlaylistWillChange:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_QueueDidChange:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_QueueWillChange:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_ResetPlaylistEntries:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_ResetQueueEntries:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_UpdateCurrentEntryCoverArt:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_UpdateCurrentEntryElapsedSeconds:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_UpdateLooped:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_UpdatePlaybackStatus:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_UpdateShuffled:
+    discardable_result: true
+  SteamAPI_ISteamMusicRemote_UpdateVolume:
+    discardable_result: true
+#
+# ISteamParties
+#
   SteamAPI_ISteamParties_CreateBeacon:
     flat_name: CSteamAPI_ISteamParties_CreateBeacon
     params:
@@ -230,11 +303,17 @@ methods:
     params:
       pLocationList:
         out_array_count: uMaxNumLocations
+#
+# ISteamUser
+#
   SteamAPI_ISteamUser_GetUserDataFolder:
     params:
       pchBuffer:
         out_string_count: cubBuffer
     out_param_iff_rc: ' '
+#
+# ISteamUserStats
+#
   SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime:
     params:
       punUnlockTime:
@@ -269,6 +348,9 @@ methods:
     params:
       pScoreDetails:
         array_count: cScoreDetailsCount
+#
+# ISteamUtils
+#
   SteamAPI_ISteamUtils_FilterText:
     params:
       pchOutFilteredText:
@@ -283,6 +365,9 @@ methods:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUtils_GetServerRealTime:
     returntype: RTime32_t
+#
+# Structs
+#
 structs:
   AppProofOfPurchaseKeyResponse_t:
     fields:
