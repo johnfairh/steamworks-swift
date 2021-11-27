@@ -103,6 +103,12 @@ public enum SteamConstants {
     /// Steamworks `k_SteamDatagramPOPID_dev`
     public static let steamDatagramPOPIDdev = SteamNetworkingPOPID(0x00646576)
 
+    /// Steamworks `k_SteamMusicNameMaxLength`
+    public static let steamMusicNameMaxLength = Int(255)
+
+    /// Steamworks `k_SteamMusicPNGMaxLength`
+    public static let steamMusicPNGMaxLength = Int(65535)
+
     /// Steamworks `k_nSteamNetworkConnectionInfoFlags_DualWifi`
     public static let steamNetworkConnectionInfoFlagsDualWifi = Int(32)
 

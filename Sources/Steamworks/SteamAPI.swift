@@ -70,6 +70,8 @@ public final class SteamAPI: SteamBaseAPI {
     public let music = SteamMusic()
     /// Access the Steamworks `ISteamMusicRemote` interface
     public let musicRemote = SteamMusicRemote()
+    /// Access the Steamworks `ISteamParentalSettings` interface
+    public let parentalSettings = SteamParentalSettings()
     /// Access the Steamworks `ISteamParties` interface
     public let parties = SteamParties()
     /// Access the Steamworks `ISteamUser` interface

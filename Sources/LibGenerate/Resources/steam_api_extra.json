@@ -4,6 +4,8 @@
   { "constname":"k_cchStatNameMax", "consttype":"uint32", "constval":"128" },
   { "constname":"k_cchLeaderboardNameMax", "consttype":"uint32", "constval":"128" },
   { "constname":"k_cLeaderboardDetailsMax", "consttype":"uint32", "constval":"64" },
+  { "constname":"k_SteamMusicNameMaxLength", "consttype":"uint32", "constval":"255"},
+  { "constname":"k_SteamMusicPNGMaxLength", "consttype":"uint32", "constval":"65535"},
   ],
   "enums": [
   {
