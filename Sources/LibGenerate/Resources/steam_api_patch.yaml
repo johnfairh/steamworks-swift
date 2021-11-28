@@ -95,6 +95,7 @@ enums:
     prefix: eHTMLMouseButton
   ISteamHTMLSurface::EHTMLKeyModifiers:
     prefix: k_eHTMLKeyModifier
+    is_set: true
 methods:
 #
 # ISteamAppList
@@ -172,9 +173,6 @@ methods:
     params:
       pchConnectionDetails:
         out_string_count: cubConnectionDetails
-#
-# ISteamHTMLSurface
-#
 #
 # ISteamHTTP
 #
@@ -413,6 +411,14 @@ structs:
     fields:
       m_unBanExpires:
         fieldtype: RTime32_t
+  HTML_NeedsPaint_t:
+    fields:
+      pBGRA:
+        fieldtype: const void *
+  HTML_SetCursor_t:
+    fields:
+      eMouseCursor:
+        fieldtype: ISteamHTMLSurface::EMouseCursor
   IPCFailure_t:
     fields:
       m_eFailureType:

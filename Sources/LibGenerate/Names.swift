@@ -21,7 +21,7 @@ extension String {
             return mapped
         }
         var name = re_sub("_t\\b", with: "")
-            .re_sub("^.*::", with: "")
+            .asSwiftNameForSteamType//re_sub("^.*::", with: "")
             .re_sub("Id\\b", with: "ID")
         if !Metadata.isStruct(steamType: self) {
             name = name.re_sub("^[CEI](?=[A-Z])", with: "")

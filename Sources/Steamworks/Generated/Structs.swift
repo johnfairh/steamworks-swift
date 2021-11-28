@@ -1213,7 +1213,7 @@ public struct HTMLNeedsPaint {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pBGRA`
-    public let bgra: String
+    public let bgra: UnsafeRawPointer
     /// Steamworks `unWide`
     public let wide: Int
     /// Steamworks `unTall`
@@ -1321,7 +1321,7 @@ public struct HTMLSetCursor {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `eMouseCursor`
-    public let mouseCursor: Int
+    public let mouseCursor: SteamHTMLSurface.EMouseCursor
 }
 
 extension HTMLSetCursor: SteamCreatable {
@@ -1517,10 +1517,10 @@ extension HTTPRequestHeadersReceived: SteamCreatable {
 /// Steamworks `IPCFailure_t`
 public struct IPCFailure {
     /// Steamworks `m_eFailureType`
-    public let failureType: FailureType
+    public let failureType: PCFailure.EFailureType
 
     /// Steamworks `IPCFailure_t::EFailureType`
-    public enum FailureType: UInt32 {
+    public enum PCFailure.EFailureType: UInt32 {
         /// Steamworks `k_EFailureFlushedCallbackQueue`
         case flushedCallbackQueue = 0
         /// Steamworks `k_EFailurePipeFail`
@@ -1530,8 +1530,8 @@ public struct IPCFailure {
     }
 }
 
-extension IPCFailure_t.EFailureType: RawConvertible { typealias From = IPCFailure.FailureType }
-extension IPCFailure.FailureType: EnumWithUnrepresented { typealias From = IPCFailure_t.EFailureType }
+extension IPCFailure_t.EFailureType: RawConvertible { typealias From = IPCFailure.PCFailure.EFailureType }
+extension IPCFailure.PCFailure.EFailureType: EnumWithUnrepresented { typealias From = IPCFailure_t.EFailureType }
 
 extension IPCFailure: SteamCreatable {
     init(_ steam: CSteamworks.IPCFailure_t) {
@@ -2924,7 +2924,7 @@ public struct RequestPlayersForGameResultCallback {
     /// Steamworks `m_SteamIDLobby`
     public let lobby: SteamID
     /// Steamworks `m_ePlayerAcceptState`
-    public let playerAcceptState: PlayerAcceptState
+    public let playerAcceptState: RequestPlayersForGameResultCallback.PlayerAcceptState
     /// Steamworks `m_nPlayerIndex`
     public let playerIndex: Int
     /// Steamworks `m_nTotalPlayersFound`
@@ -2937,7 +2937,7 @@ public struct RequestPlayersForGameResultCallback {
     public let uniqueGameID: GameID
 
     /// Steamworks `RequestPlayersForGameResultCallback_t::PlayerAcceptState_t`
-    public enum PlayerAcceptState: UInt32 {
+    public enum RequestPlayersForGameResultCallback.PlayerAcceptState: UInt32 {
         /// Steamworks `k_EStateUnknown`
         case unknown = 0
         /// Steamworks `k_EStatePlayerAccepted`
@@ -2949,8 +2949,8 @@ public struct RequestPlayersForGameResultCallback {
     }
 }
 
-extension RequestPlayersForGameResultCallback_t.PlayerAcceptState_t: RawConvertible { typealias From = RequestPlayersForGameResultCallback.PlayerAcceptState }
-extension RequestPlayersForGameResultCallback.PlayerAcceptState: EnumWithUnrepresented { typealias From = RequestPlayersForGameResultCallback_t.PlayerAcceptState_t }
+extension RequestPlayersForGameResultCallback_t.PlayerAcceptState_t: RawConvertible { typealias From = RequestPlayersForGameResultCallback.RequestPlayersForGameResultCallback.PlayerAcceptState }
+extension RequestPlayersForGameResultCallback.RequestPlayersForGameResultCallback.PlayerAcceptState: EnumWithUnrepresented { typealias From = RequestPlayersForGameResultCallback_t.PlayerAcceptState_t }
 
 extension RequestPlayersForGameResultCallback: SteamCreatable {
     init(_ steam: CSteamworks.RequestPlayersForGameResultCallback_t) {
