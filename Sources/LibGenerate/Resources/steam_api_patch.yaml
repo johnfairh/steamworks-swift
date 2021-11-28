@@ -219,6 +219,20 @@ methods:
       nFlags:
         type: ESteamControllerLEDFlag
 #
+# ISteamInventory
+#
+  SteamAPI_ISteamInventory_GetItemsWithPrices: # the most drunk api definition of all
+    params:
+      pArrayItemDefs:
+        array_count: DELETE
+        out_array_count: unArrayLength
+      pCurrentPrices:
+        array_count: DELETE
+        out_array_count: unArrayLength
+      pBasePrices:
+        array_count: DELETE
+        out_array_count: unArrayLength
+#
 # ISteamMatchmaking
 #
   SteamAPI_ISteamMatchmaking_AddFavoriteGame:
