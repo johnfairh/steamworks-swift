@@ -130,14 +130,6 @@ extension MetadataDB.Struct {
         fields.getArrayGetterLines(structName: name)
     }
 
-    var enumDeclLines: [String] {
-        enums.values.flatMap { [""] + $0.declLines }
-    }
-
-    var enumExtensionLines: [String] {
-        enums.values.flatMap { [""] + $0.extensionLines(namespace: name.asSwiftTypeName) }
-    }
-
     var swiftToSteamExtensionLines: [String] {
         guard swiftToSteam else {
             return []
@@ -162,11 +154,8 @@ extension MetadataDB.Struct {
             "/// Steamworks `\(name)`",
             "public struct \(swiftTypeName) {"
         ],
-        fields.declLines.indented(1),
-        enumDeclLines.indented(1), [
-            "}"
-        ],
-        enumExtensionLines, [
+        fields.declLines.indented(1), [
+            "}",
             "",
             "extension \(swiftTypeName): SteamCreatable {",
             "    init(_ steam: CSteamworks.\(name)) {"

@@ -29,6 +29,8 @@ enums:
   EChatSteamIDInstanceFlags:
     is_set: true
     prefix: EChat(?:InstanceFlag)?
+  ECheckFileSignature:
+    manual_swift_name: CheckFileSignatureResult # name clash
   EDenyReason:
     prefix: EDeny
   EDurationControlNotification:
@@ -57,6 +59,8 @@ enums:
     prefix: EPlayerResult
   ERegisterActivationCodeResult:
     prefix: ERegisterActivationCode(?:Result)?
+  ERemoteStorageLocalFileChange:
+    manual_swift_name: RemoteStorageLocalFileChangeType # name clash
   ESteamItemFlags:
     is_set: true
     prefix: ESteamItem
@@ -72,6 +76,7 @@ enums:
     prefix: ESteamNetworkingConfig(?:Scope)?
   ESteamNetworkingConfigValue:
     prefix: ESteamNetworkingConfig(?:Value)?
+    manual_swift_name: SteamNetworkingConfigValueSetting # name clash
   ESteamNetworkingGetConfigValueResult:
     prefix: ESteamNetworkingGetConfigValue(?:Result)?
   EUGCReadAction:
@@ -87,15 +92,19 @@ enums:
         force_static: true
   IPCFailure_t::EFailureType:
     prefix: EFailure
+    manual_swift_name: IPCFailureType
+    intx_to_self: UInt8
   RequestPlayersForGameResultCallback_t::PlayerAcceptState_t:
     prefix: EState
   ISteamHTMLSurface::EMouseCursor:
     prefix: dc
+    manual_swift_name: HTMLMouseCursor
+    intx_to_self: UInt32
   ISteamHTMLSurface::EHTMLMouseButton:
     prefix: eHTMLMouseButton
   ISteamHTMLSurface::EHTMLKeyModifiers:
     prefix: k_eHTMLKeyModifier
-    is_set: true
+    is_set_passed_natively: true
 methods:
 #
 # ISteamAppList

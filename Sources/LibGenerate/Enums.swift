@@ -20,7 +20,7 @@ struct Enums {
     }
 
     func generate() throws {
-        let contents = metadata.db.enums.values
+        let contents = metadata.allEnums
             .sorted(by: { $0.name < $1.name })
             .map(\.generated)
             .joined(separator: "\n\n")
@@ -51,7 +51,23 @@ extension MetadataDB.Enum {
 
     /// The Swift declaration for the enum or optionset struct, formatted for top-level code
     var generated: String {
-        declLines.joined(separator: "\n") + "\n\n" + extensionLines().joined(separator: "\n")
+        declLines.joined(separator: "\n") + "\n\n" + extensionLines().joined(separator: "\n") + intCoerceLines.joined(separator: "\n")
+    }
+
+    /// Very few straight enums are baffingly presented in structs as some int-type and need aspecial conversion.
+    var intCoerceLines: [String] {
+        guard let intType = intXToSelf else {
+            return []
+        }
+        return [
+            "",
+            "",
+            "extension \(name.asSwiftTypeName) {",
+            "    init(_ from: \(intType)) {",
+            "        self.init(From(rawValue: UInt32(from)))",
+            "    }",
+            "}"
+        ]
     }
 
     /// The nominal part of the declaration
@@ -62,7 +78,7 @@ extension MetadataDB.Enum {
         let typeDecl: String
         let valueGen: (Value, String) -> String
 
-        if !is_set {
+        if !isSet {
             typeDecl = "public enum \(swiftTypeName): \(rawType) {"
             valueGen = generateEnumCaseDecl
         } else {
@@ -83,7 +99,7 @@ extension MetadataDB.Enum {
                 valueGen(value, swiftTypeName)]
             }
 
-        if !is_set {
+        if !isSet {
             elements += [
                 "/// Some undocumented value",
                 "case unrepresentedInSwift = \(unrepresentedValue)"
@@ -99,7 +115,7 @@ extension MetadataDB.Enum {
     }
 
     var enumProtocol: String {
-        is_set ? "RawConvertible" : "EnumWithUnrepresented"
+        isSet ? "RawConvertible" : "EnumWithUnrepresented"
     }
 
     /// The extension part of the declaration
@@ -117,7 +133,7 @@ extension MetadataDB.Enum {
     /// than I learnt in the past five years... who made 0 magical ...
     func generateOptionSetDecl(value: Value, swiftTypeName: String) -> String {
         let initArgs: String
-        if value.value == "0" && is_set {
+        if value.value == "0" && isSet {
             initArgs = "[]"
         } else {
             initArgs = "rawValue: \(value.value)"

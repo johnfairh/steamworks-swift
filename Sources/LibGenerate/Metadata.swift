@@ -115,6 +115,8 @@ struct SteamJSON: Codable {
 ///   various ways that we have to hard-code.
 /// * Enums: token to insert to avoid enum cases starting with numbers
 /// * Enums: hint to generate a static member instead of an enum case
+/// * Enums: generate from-IntX
+/// * Enums: special-case the type name
 /// * Methods: correct the return type
 /// * Methods: specify out-param behaviour when API call fails
 /// * Methods: correct a parameter type
@@ -137,8 +139,11 @@ struct Patch: Codable {
 
     struct Enum: Codable {
         let is_set: Bool? // values are bit-sig, model as OptionSet
+        let is_set_passed_natively: Bool? // is_set BUT C API wants the enum type
         let prefix: String? // enum values non-default prefix
         let numeric_prefix: String? // numeric-identifier workaround
+        let manual_swift_name: String? // hard-code swift name
+        let intx_to_self: String? // require converter from some int-type
 
         struct Value: Codable {
             let force_static: Bool? // generate a static member instead of an enum case
@@ -210,9 +215,16 @@ struct MetadataDB {
 
     final class Enum {
         let name: String
-        let is_set: Bool
+        let isSet: Bool
+        let isSetPassedNatively: Bool
         let prefix: String
         let numericPrefix: String?
+        let manualSwiftName: String?
+        let intXToSelf: String?
+
+        var isSetPassedAsInt32: Bool {
+            isSet && !isSetPassedNatively
+        }
 
         struct Value: Codable {
             let name: String
@@ -229,9 +241,12 @@ struct MetadataDB {
 
         init(base: SteamJSON.Enum, patch: Patch.Enum?) {
             name = base.name
-            is_set = patch?.is_set ?? false
+            isSet = patch.map { $0.is_set != nil || $0.is_set_passed_natively != nil } ?? false
+            isSetPassedNatively = patch?.is_set_passed_natively ?? false
             prefix = patch?.prefix ?? name
             numericPrefix = patch?.numeric_prefix
+            manualSwiftName = patch?.manual_swift_name
+            intXToSelf = patch?.intx_to_self
             values = base.values.map {
                 Value(base: $0, patch: patch?.values?[$0.name])
             }
@@ -458,6 +473,7 @@ final class Metadata: CustomStringConvertible {
     let db: MetadataDB
 
     private let nestedEnums: [String : MetadataDB.Enum]
+    private let manualSwiftNames: [String : String]
 
     init(io: IO) throws {
         self.io = io
@@ -477,6 +493,12 @@ final class Metadata: CustomStringConvertible {
         }
 
         self.nestedEnums = .init(uniqueKeysWithValues: nestedStructEnums + nestedInterfaceEnums)
+        let clo: (MetadataDB.Enum) -> (String, String)? = { enu in
+            enu.manualSwiftName.map { (enu.name, $0) }
+        }
+        self.manualSwiftNames = .init(uniqueKeysWithValues:
+          db.enums.values.compactMap(clo) + nestedEnums.values.compactMap(clo)
+        )
 
         Self.shared = self
     }
@@ -496,6 +518,10 @@ final class Metadata: CustomStringConvertible {
 
     static private(set) var shared: Metadata?
 
+    var allEnums: [MetadataDB.Enum] {
+        Array(db.enums.values) + Array(nestedEnums.values)
+    }
+
     static private func findEnum(name: String) -> MetadataDB.Enum? {
         shared?.db.enums[name] ?? shared?.nestedEnums[name]
     }
@@ -504,8 +530,8 @@ final class Metadata: CustomStringConvertible {
         findEnum(name: name) != nil
     }
 
-    static func isOptionSetEnum(steamType name: String) -> Bool {
-        findEnum(name: name)?.is_set ?? false
+    static func isOptionSetEnumPassedAsInt32(steamType name: String) -> Bool {
+        findEnum(name: name)?.isSetPassedAsInt32 ?? false
     }
 
     static func isStruct(steamType name: String) -> Bool {
@@ -514,5 +540,10 @@ final class Metadata: CustomStringConvertible {
 
     static func isTypedef(steamType name: String) -> Bool {
         shared.flatMap { $0.db.typedefs[name] != nil } ?? false
+    }
+
+    /// Look up any overridden type names from the DB
+    static func steamToSwiftTypeName(_ steam: String) -> String? {
+        shared.flatMap { $0.manualSwiftNames[steam] }
     }
 }

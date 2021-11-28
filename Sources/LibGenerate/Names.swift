@@ -9,6 +9,7 @@
 extension String {
     /// * Convert arrays
     /// * Drop unwanted suffixes
+    /// * Get rid of C++ nesting - everything top-level in Swift
     /// * Drop leading capital E/I/C - used in SDK for enums/interfaces/classes (but not for structs...)
     var asSwiftTypeName: String {
         if let match = re_match(#"^(.*) +\[.*\]"#) {
@@ -17,11 +18,11 @@ extension String {
             }
             return "[\(match[1].asSwiftTypeName)]"
         }
-        if let mapped = steamToSwiftTypes[self] {
+        if let mapped = steamToSwiftTypes[self] ?? Metadata.steamToSwiftTypeName(self) {
             return mapped
         }
         var name = re_sub("_t\\b", with: "")
-            .asSwiftNameForSteamType//re_sub("^.*::", with: "")
+            .re_sub("^.*::", with: "")
             .re_sub("Id\\b", with: "ID")
         if !Metadata.isStruct(steamType: self) {
             name = name.re_sub("^[CEI](?=[A-Z])", with: "")
@@ -40,7 +41,7 @@ extension String {
             return self
         }
         if to == "char **" {
-            return "SteamStringArray(\(self)).cStrings"
+            return "SteamStringArray(\(self)).cStrings" // no no this is broken, have to use with... pattern
         }
         guard to.hasSuffix("?") else {
             return "\(to)(\(self))"
@@ -136,9 +137,6 @@ extension String {
         if steamTypesPassedInTransparently.contains(self) {
             return nil
         }
-        if Metadata.isOptionSetEnum(steamType: self) {
-            return "Int32"
-        }
         return asExplicitSwiftTypeForPassingIntoSteamworks
     }
 
@@ -146,6 +144,9 @@ extension String {
     var asExplicitSwiftTypeForPassingIntoSteamworks: String {
         if let special = steamTypesPassedInStrangely[self] {
             return special
+        }
+        if Metadata.isOptionSetEnumPassedAsInt32(steamType: self) {
+            return "Int32"
         }
         if self == asSwiftTypeName {
             return "CSteamworks.\(self)"
@@ -210,12 +211,7 @@ private let steamToSwiftTypes: [String : String] = [
     "const char **": "[String]",
 
     // Misc
-    "SteamParamStringArray_t" : "[String]", // weirdness, tbd
-
-    // Names that end up duplicated after removing their initial letter
-    "ECheckFileSignature": "CheckFileSignatureResult",
-    "ERemoteStorageLocalFileChange" : "RemoteStorageLocalFileChangeType",
-    "ESteamNetworkingConfigValue" : "SteamNetworkingConfigValueSetting"
+    "SteamParamStringArray_t" : "[String]" // weirdness, tbd
 ]
 
 // How to represent an array of steam types (in a struct field,) special cases

@@ -1321,7 +1321,7 @@ public struct HTMLSetCursor {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `eMouseCursor`
-    public let mouseCursor: SteamHTMLSurface.EMouseCursor
+    public let mouseCursor: HTMLMouseCursor
 }
 
 extension HTMLSetCursor: SteamCreatable {
@@ -1517,21 +1517,8 @@ extension HTTPRequestHeadersReceived: SteamCreatable {
 /// Steamworks `IPCFailure_t`
 public struct IPCFailure {
     /// Steamworks `m_eFailureType`
-    public let failureType: PCFailure.EFailureType
-
-    /// Steamworks `IPCFailure_t::EFailureType`
-    public enum PCFailure.EFailureType: UInt32 {
-        /// Steamworks `k_EFailureFlushedCallbackQueue`
-        case flushedCallbackQueue = 0
-        /// Steamworks `k_EFailurePipeFail`
-        case pipeFail = 1
-        /// Some undocumented value
-        case unrepresentedInSwift = 2
-    }
+    public let failureType: IPCFailureType
 }
-
-extension IPCFailure_t.EFailureType: RawConvertible { typealias From = IPCFailure.PCFailure.EFailureType }
-extension IPCFailure.PCFailure.EFailureType: EnumWithUnrepresented { typealias From = IPCFailure_t.EFailureType }
 
 extension IPCFailure: SteamCreatable {
     init(_ steam: CSteamworks.IPCFailure_t) {
@@ -2924,7 +2911,7 @@ public struct RequestPlayersForGameResultCallback {
     /// Steamworks `m_SteamIDLobby`
     public let lobby: SteamID
     /// Steamworks `m_ePlayerAcceptState`
-    public let playerAcceptState: RequestPlayersForGameResultCallback.PlayerAcceptState
+    public let playerAcceptState: PlayerAcceptState
     /// Steamworks `m_nPlayerIndex`
     public let playerIndex: Int
     /// Steamworks `m_nTotalPlayersFound`
@@ -2935,22 +2922,7 @@ public struct RequestPlayersForGameResultCallback {
     public let suggestedTeamIndex: Int
     /// Steamworks `m_ullUniqueGameID`
     public let uniqueGameID: GameID
-
-    /// Steamworks `RequestPlayersForGameResultCallback_t::PlayerAcceptState_t`
-    public enum RequestPlayersForGameResultCallback.PlayerAcceptState: UInt32 {
-        /// Steamworks `k_EStateUnknown`
-        case unknown = 0
-        /// Steamworks `k_EStatePlayerAccepted`
-        case playerAccepted = 1
-        /// Steamworks `k_EStatePlayerDeclined`
-        case playerDeclined = 2
-        /// Some undocumented value
-        case unrepresentedInSwift = 3
-    }
 }
-
-extension RequestPlayersForGameResultCallback_t.PlayerAcceptState_t: RawConvertible { typealias From = RequestPlayersForGameResultCallback.RequestPlayersForGameResultCallback.PlayerAcceptState }
-extension RequestPlayersForGameResultCallback.RequestPlayersForGameResultCallback.PlayerAcceptState: EnumWithUnrepresented { typealias From = RequestPlayersForGameResultCallback_t.PlayerAcceptState_t }
 
 extension RequestPlayersForGameResultCallback: SteamCreatable {
     init(_ steam: CSteamworks.RequestPlayersForGameResultCallback_t) {

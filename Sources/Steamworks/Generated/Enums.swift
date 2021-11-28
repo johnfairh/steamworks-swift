@@ -3992,3 +3992,170 @@ public enum XboxOrigin: UInt32 {
 
 extension EXboxOrigin: RawConvertible { typealias From = XboxOrigin }
 extension XboxOrigin: EnumWithUnrepresented { typealias From = EXboxOrigin }
+
+/// Steamworks `IPCFailure_t::EFailureType`
+public enum IPCFailureType: UInt32 {
+    /// Steamworks `k_EFailureFlushedCallbackQueue`
+    case flushedCallbackQueue = 0
+    /// Steamworks `k_EFailurePipeFail`
+    case pipeFail = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
+}
+
+extension IPCFailure_t.EFailureType: RawConvertible { typealias From = IPCFailureType }
+extension IPCFailureType: EnumWithUnrepresented { typealias From = IPCFailure_t.EFailureType }
+
+extension IPCFailureType {
+    init(_ from: UInt8) {
+        self.init(From(rawValue: UInt32(from)))
+    }
+}
+
+/// Steamworks `ISteamHTMLSurface::EHTMLKeyModifiers`
+public struct HTMLKeyModifiers: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    /// Steamworks `k_eHTMLKeyModifier_None`
+    public static let none = HTMLKeyModifiers([])
+    /// Steamworks `k_eHTMLKeyModifier_AltDown`
+    public static let altDown = HTMLKeyModifiers(rawValue: 1)
+    /// Steamworks `k_eHTMLKeyModifier_CtrlDown`
+    public static let ctrlDown = HTMLKeyModifiers(rawValue: 2)
+    /// Steamworks `k_eHTMLKeyModifier_ShiftDown`
+    public static let shiftDown = HTMLKeyModifiers(rawValue: 4)
+}
+
+extension ISteamHTMLSurface.EHTMLKeyModifiers: RawConvertible { typealias From = HTMLKeyModifiers }
+extension HTMLKeyModifiers: RawConvertible { typealias From = ISteamHTMLSurface.EHTMLKeyModifiers }
+
+/// Steamworks `ISteamHTMLSurface::EHTMLMouseButton`
+public enum HTMLMouseButton: UInt32 {
+    /// Steamworks `eHTMLMouseButton_Left`
+    case left = 0
+    /// Steamworks `eHTMLMouseButton_Right`
+    case right = 1
+    /// Steamworks `eHTMLMouseButton_Middle`
+    case middle = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
+}
+
+extension ISteamHTMLSurface.EHTMLMouseButton: RawConvertible { typealias From = HTMLMouseButton }
+extension HTMLMouseButton: EnumWithUnrepresented { typealias From = ISteamHTMLSurface.EHTMLMouseButton }
+
+/// Steamworks `ISteamHTMLSurface::EMouseCursor`
+public enum HTMLMouseCursor: UInt32 {
+    /// Steamworks `dc_user`
+    case user = 0
+    /// Steamworks `dc_none`
+    case none = 1
+    /// Steamworks `dc_arrow`
+    case arrow = 2
+    /// Steamworks `dc_ibeam`
+    case ibeam = 3
+    /// Steamworks `dc_hourglass`
+    case hourglass = 4
+    /// Steamworks `dc_waitarrow`
+    case waitarrow = 5
+    /// Steamworks `dc_crosshair`
+    case crosshair = 6
+    /// Steamworks `dc_up`
+    case up = 7
+    /// Steamworks `dc_sizenw`
+    case sizenw = 8
+    /// Steamworks `dc_sizese`
+    case sizese = 9
+    /// Steamworks `dc_sizene`
+    case sizene = 10
+    /// Steamworks `dc_sizesw`
+    case sizesw = 11
+    /// Steamworks `dc_sizew`
+    case sizew = 12
+    /// Steamworks `dc_sizee`
+    case sizee = 13
+    /// Steamworks `dc_sizen`
+    case sizen = 14
+    /// Steamworks `dc_sizes`
+    case sizes = 15
+    /// Steamworks `dc_sizewe`
+    case sizewe = 16
+    /// Steamworks `dc_sizens`
+    case sizens = 17
+    /// Steamworks `dc_sizeall`
+    case sizeall = 18
+    /// Steamworks `dc_no`
+    case no = 19
+    /// Steamworks `dc_hand`
+    case hand = 20
+    /// Steamworks `dc_blank`
+    case blank = 21
+    /// Steamworks `dc_middle_pan`
+    case middlepan = 22
+    /// Steamworks `dc_north_pan`
+    case northpan = 23
+    /// Steamworks `dc_north_east_pan`
+    case northeastpan = 24
+    /// Steamworks `dc_east_pan`
+    case eastpan = 25
+    /// Steamworks `dc_south_east_pan`
+    case southeastpan = 26
+    /// Steamworks `dc_south_pan`
+    case southpan = 27
+    /// Steamworks `dc_south_west_pan`
+    case southwestpan = 28
+    /// Steamworks `dc_west_pan`
+    case westpan = 29
+    /// Steamworks `dc_north_west_pan`
+    case northwestpan = 30
+    /// Steamworks `dc_alias`
+    case alias = 31
+    /// Steamworks `dc_cell`
+    case cell = 32
+    /// Steamworks `dc_colresize`
+    case colresize = 33
+    /// Steamworks `dc_copycur`
+    case copycur = 34
+    /// Steamworks `dc_verticaltext`
+    case verticaltext = 35
+    /// Steamworks `dc_rowresize`
+    case rowresize = 36
+    /// Steamworks `dc_zoomin`
+    case zoomin = 37
+    /// Steamworks `dc_zoomout`
+    case zoomout = 38
+    /// Steamworks `dc_help`
+    case help = 39
+    /// Steamworks `dc_custom`
+    case custom = 40
+    /// Steamworks `dc_last`
+    case last = 41
+    /// Some undocumented value
+    case unrepresentedInSwift = 42
+}
+
+extension ISteamHTMLSurface.EMouseCursor: RawConvertible { typealias From = HTMLMouseCursor }
+extension HTMLMouseCursor: EnumWithUnrepresented { typealias From = ISteamHTMLSurface.EMouseCursor }
+
+extension HTMLMouseCursor {
+    init(_ from: UInt32) {
+        self.init(From(rawValue: UInt32(from)))
+    }
+}
+
+/// Steamworks `RequestPlayersForGameResultCallback_t::PlayerAcceptState_t`
+public enum PlayerAcceptState: UInt32 {
+    /// Steamworks `k_EStateUnknown`
+    case unknown = 0
+    /// Steamworks `k_EStatePlayerAccepted`
+    case playerAccepted = 1
+    /// Steamworks `k_EStatePlayerDeclined`
+    case playerDeclined = 2
+    /// Some undocumented value
+    case unrepresentedInSwift = 3
+}
+
+extension RequestPlayersForGameResultCallback_t.PlayerAcceptState_t: RawConvertible { typealias From = PlayerAcceptState }
+extension PlayerAcceptState: EnumWithUnrepresented { typealias From = RequestPlayersForGameResultCallback_t.PlayerAcceptState_t }

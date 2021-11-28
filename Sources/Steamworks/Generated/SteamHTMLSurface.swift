@@ -88,18 +88,18 @@ public struct SteamHTMLSurface {
     }
 
     /// Steamworks `ISteamHTMLSurface::KeyChar()`
-    public func keyChar(browserHandle: HHTMLBrowser, unicodeChar: Int, htmlKeyModifiers: SteamHTMLSurface.EHTMLKeyModifiers) {
-        SteamAPI_ISteamHTMLSurface_KeyChar(interface, CSteamworks.HHTMLBrowser(browserHandle), uint32(unicodeChar), Int32(htmlKeyModifiers))
+    public func keyChar(browserHandle: HHTMLBrowser, unicodeChar: Int, htmlKeyModifiers: HTMLKeyModifiers) {
+        SteamAPI_ISteamHTMLSurface_KeyChar(interface, CSteamworks.HHTMLBrowser(browserHandle), uint32(unicodeChar), ISteamHTMLSurface.EHTMLKeyModifiers(htmlKeyModifiers))
     }
 
     /// Steamworks `ISteamHTMLSurface::KeyDown()`
-    public func keyDown(browserHandle: HHTMLBrowser, nativeKeyCode: Int, htmlKeyModifiers: SteamHTMLSurface.EHTMLKeyModifiers, isSystemKey: Bool) {
-        SteamAPI_ISteamHTMLSurface_KeyDown(interface, CSteamworks.HHTMLBrowser(browserHandle), uint32(nativeKeyCode), Int32(htmlKeyModifiers), isSystemKey)
+    public func keyDown(browserHandle: HHTMLBrowser, nativeKeyCode: Int, htmlKeyModifiers: HTMLKeyModifiers, isSystemKey: Bool) {
+        SteamAPI_ISteamHTMLSurface_KeyDown(interface, CSteamworks.HHTMLBrowser(browserHandle), uint32(nativeKeyCode), ISteamHTMLSurface.EHTMLKeyModifiers(htmlKeyModifiers), isSystemKey)
     }
 
     /// Steamworks `ISteamHTMLSurface::KeyUp()`
-    public func keyUp(browserHandle: HHTMLBrowser, nativeKeyCode: Int, htmlKeyModifiers: SteamHTMLSurface.EHTMLKeyModifiers) {
-        SteamAPI_ISteamHTMLSurface_KeyUp(interface, CSteamworks.HHTMLBrowser(browserHandle), uint32(nativeKeyCode), Int32(htmlKeyModifiers))
+    public func keyUp(browserHandle: HHTMLBrowser, nativeKeyCode: Int, htmlKeyModifiers: HTMLKeyModifiers) {
+        SteamAPI_ISteamHTMLSurface_KeyUp(interface, CSteamworks.HHTMLBrowser(browserHandle), uint32(nativeKeyCode), ISteamHTMLSurface.EHTMLKeyModifiers(htmlKeyModifiers))
     }
 
     /// Steamworks `ISteamHTMLSurface::LoadURL()`
@@ -108,12 +108,12 @@ public struct SteamHTMLSurface {
     }
 
     /// Steamworks `ISteamHTMLSurface::MouseDoubleClick()`
-    public func mouseDoubleClick(browserHandle: HHTMLBrowser, mouseButton: SteamHTMLSurface.EHTMLMouseButton) {
+    public func mouseDoubleClick(browserHandle: HHTMLBrowser, mouseButton: HTMLMouseButton) {
         SteamAPI_ISteamHTMLSurface_MouseDoubleClick(interface, CSteamworks.HHTMLBrowser(browserHandle), ISteamHTMLSurface.EHTMLMouseButton(mouseButton))
     }
 
     /// Steamworks `ISteamHTMLSurface::MouseDown()`
-    public func mouseDown(browserHandle: HHTMLBrowser, mouseButton: SteamHTMLSurface.EHTMLMouseButton) {
+    public func mouseDown(browserHandle: HHTMLBrowser, mouseButton: HTMLMouseButton) {
         SteamAPI_ISteamHTMLSurface_MouseDown(interface, CSteamworks.HHTMLBrowser(browserHandle), ISteamHTMLSurface.EHTMLMouseButton(mouseButton))
     }
 
@@ -123,7 +123,7 @@ public struct SteamHTMLSurface {
     }
 
     /// Steamworks `ISteamHTMLSurface::MouseUp()`
-    public func mouseUp(browserHandle: HHTMLBrowser, mouseButton: SteamHTMLSurface.EHTMLMouseButton) {
+    public func mouseUp(browserHandle: HHTMLBrowser, mouseButton: HTMLMouseButton) {
         SteamAPI_ISteamHTMLSurface_MouseUp(interface, CSteamworks.HHTMLBrowser(browserHandle), ISteamHTMLSurface.EHTMLMouseButton(mouseButton))
     }
 
@@ -211,131 +211,4 @@ public struct SteamHTMLSurface {
     public func viewSource(browserHandle: HHTMLBrowser) {
         SteamAPI_ISteamHTMLSurface_ViewSource(interface, CSteamworks.HHTMLBrowser(browserHandle))
     }
-
-    /// Steamworks `ISteamHTMLSurface::EHTMLKeyModifiers`
-    public struct SteamHTMLSurface.EHTMLKeyModifiers: OptionSet {
-    /// The flags value.
-    public let rawValue: UInt32
-    /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
-        /// Steamworks `k_eHTMLKeyModifier_None`
-        public static let none = SteamHTMLSurface.EHTMLKeyModifiers([])
-        /// Steamworks `k_eHTMLKeyModifier_AltDown`
-        public static let altDown = SteamHTMLSurface.EHTMLKeyModifiers(rawValue: 1)
-        /// Steamworks `k_eHTMLKeyModifier_CtrlDown`
-        public static let ctrlDown = SteamHTMLSurface.EHTMLKeyModifiers(rawValue: 2)
-        /// Steamworks `k_eHTMLKeyModifier_ShiftDown`
-        public static let shiftDown = SteamHTMLSurface.EHTMLKeyModifiers(rawValue: 4)
-    }
-
-    /// Steamworks `ISteamHTMLSurface::EHTMLMouseButton`
-    public enum SteamHTMLSurface.EHTMLMouseButton: UInt32 {
-        /// Steamworks `eHTMLMouseButton_Left`
-        case left = 0
-        /// Steamworks `eHTMLMouseButton_Right`
-        case right = 1
-        /// Steamworks `eHTMLMouseButton_Middle`
-        case middle = 2
-        /// Some undocumented value
-        case unrepresentedInSwift = 3
-    }
-
-    /// Steamworks `ISteamHTMLSurface::EMouseCursor`
-    public enum SteamHTMLSurface.EMouseCursor: UInt32 {
-        /// Steamworks `dc_user`
-        case user = 0
-        /// Steamworks `dc_none`
-        case none = 1
-        /// Steamworks `dc_arrow`
-        case arrow = 2
-        /// Steamworks `dc_ibeam`
-        case ibeam = 3
-        /// Steamworks `dc_hourglass`
-        case hourglass = 4
-        /// Steamworks `dc_waitarrow`
-        case waitarrow = 5
-        /// Steamworks `dc_crosshair`
-        case crosshair = 6
-        /// Steamworks `dc_up`
-        case up = 7
-        /// Steamworks `dc_sizenw`
-        case sizenw = 8
-        /// Steamworks `dc_sizese`
-        case sizese = 9
-        /// Steamworks `dc_sizene`
-        case sizene = 10
-        /// Steamworks `dc_sizesw`
-        case sizesw = 11
-        /// Steamworks `dc_sizew`
-        case sizew = 12
-        /// Steamworks `dc_sizee`
-        case sizee = 13
-        /// Steamworks `dc_sizen`
-        case sizen = 14
-        /// Steamworks `dc_sizes`
-        case sizes = 15
-        /// Steamworks `dc_sizewe`
-        case sizewe = 16
-        /// Steamworks `dc_sizens`
-        case sizens = 17
-        /// Steamworks `dc_sizeall`
-        case sizeall = 18
-        /// Steamworks `dc_no`
-        case no = 19
-        /// Steamworks `dc_hand`
-        case hand = 20
-        /// Steamworks `dc_blank`
-        case blank = 21
-        /// Steamworks `dc_middle_pan`
-        case middlepan = 22
-        /// Steamworks `dc_north_pan`
-        case northpan = 23
-        /// Steamworks `dc_north_east_pan`
-        case northeastpan = 24
-        /// Steamworks `dc_east_pan`
-        case eastpan = 25
-        /// Steamworks `dc_south_east_pan`
-        case southeastpan = 26
-        /// Steamworks `dc_south_pan`
-        case southpan = 27
-        /// Steamworks `dc_south_west_pan`
-        case southwestpan = 28
-        /// Steamworks `dc_west_pan`
-        case westpan = 29
-        /// Steamworks `dc_north_west_pan`
-        case northwestpan = 30
-        /// Steamworks `dc_alias`
-        case alias = 31
-        /// Steamworks `dc_cell`
-        case cell = 32
-        /// Steamworks `dc_colresize`
-        case colresize = 33
-        /// Steamworks `dc_copycur`
-        case copycur = 34
-        /// Steamworks `dc_verticaltext`
-        case verticaltext = 35
-        /// Steamworks `dc_rowresize`
-        case rowresize = 36
-        /// Steamworks `dc_zoomin`
-        case zoomin = 37
-        /// Steamworks `dc_zoomout`
-        case zoomout = 38
-        /// Steamworks `dc_help`
-        case help = 39
-        /// Steamworks `dc_custom`
-        case custom = 40
-        /// Steamworks `dc_last`
-        case last = 41
-        /// Some undocumented value
-        case unrepresentedInSwift = 42
-    }
 }
-
-extension ISteamHTMLSurface.EHTMLKeyModifiers: RawConvertible { typealias From = SteamHTMLSurface.SteamHTMLSurface.EHTMLKeyModifiers }
-extension SteamHTMLSurface.SteamHTMLSurface.EHTMLKeyModifiers: RawConvertible { typealias From = ISteamHTMLSurface.EHTMLKeyModifiers }
-
-extension ISteamHTMLSurface.EHTMLMouseButton: RawConvertible { typealias From = SteamHTMLSurface.SteamHTMLSurface.EHTMLMouseButton }
-extension SteamHTMLSurface.SteamHTMLSurface.EHTMLMouseButton: EnumWithUnrepresented { typealias From = ISteamHTMLSurface.EHTMLMouseButton }
-
-extension ISteamHTMLSurface.EMouseCursor: RawConvertible { typealias From = SteamHTMLSurface.SteamHTMLSurface.EMouseCursor }
-extension SteamHTMLSurface.SteamHTMLSurface.EMouseCursor: EnumWithUnrepresented { typealias From = ISteamHTMLSurface.EMouseCursor }
