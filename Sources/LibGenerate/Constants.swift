@@ -27,8 +27,8 @@ struct Constants {
         metadata.db.consts.values
             .sorted(by: { $0.name.asSwiftConstantName < $1.name.asSwiftConstantName })
             .forEach { c in
-                if c.isTypeDefInvalidValue {
-                    invalidLines.append(c.invalidTypedefDeclLines)
+                if c.isNestedTypeDefValue {
+                    invalidLines.append(c.nestedTypeDefDeclLines)
                 } else {
                     flatLines.append(c.flatDeclLines)
                 }
@@ -49,15 +49,20 @@ struct Constants {
 
 extension MetadataDB.Const {
     /// Spot constants that are invalid values of some typedef type
-    var isTypeDefInvalidValue: Bool {
-        name.re_isMatch("invalid", options: .i) && Metadata.isTypedef(steamType: type)
+    var isNestedTypeDefValue: Bool {
+        Metadata.isTypedef(steamType: type) &&
+          (name.re_isMatch("invalid", options: .i) || nestedName != nil)
     }
 
-    var invalidTypedefDeclLines: String {
+    var nestedTypeDefDeclLines: String {
+        nestedTypeDefDeclLines(fieldName: nestedName ?? "invalid")
+    }
+
+    private func nestedTypeDefDeclLines(fieldName: String) -> String {
         """
         extension \(type.asSwiftTypeName) {
             /// Steamworks `\(name)`
-            public static let invalid = \(type.asSwiftTypeName)(\(value.asSwiftValue))
+            public static let \(fieldName) = \(type.asSwiftTypeName)(\(value.asSwiftValue))
         }
         """
     }

@@ -66,6 +66,8 @@ public final class SteamAPI: SteamBaseAPI {
     public let gameSearch = SteamGameSearch()
     /// Access the Steamworks `ISteamHTMLSurface` interface
     public let htmlSurface = SteamHTMLSurface()
+    /// Access the Steamworks `ISteamInput` interface
+    public let input = SteamInput()
     /// Access the Steamworks `ISteamMatchmaking` interface
     public let matchmaking = SteamMatchmaking()
     /// Access the Steamworks `ISteamMusic` interface

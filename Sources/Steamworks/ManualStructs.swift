@@ -43,7 +43,9 @@ public final class SteamIPAddress {
         switch type {
         case .ipv4: return ipv4Address != 0
         case .ipv6: return ip.m_ipv6Qword.0 != 0 || ip.m_ipv6Qword.1 != 0
-        case .unrepresentedInSwift: return false
+        case .unrepresentedInSwift:
+            logError("Steam returned an undocumented enum value \(type) for SteamIPAddress")
+            return false
         }
     }
 
@@ -86,6 +88,7 @@ public final class SteamIPAddress {
 }
 
 // MARK: Conformances
+
 extension SteamIPAddress: Sendable, Hashable {
     /// Simple equality, no thinking about IPv4 expressed in IPv6...
     public static func == (lhs: SteamIPAddress, rhs: SteamIPAddress) -> Bool {
@@ -119,3 +122,39 @@ extension SteamIPAddress: Sendable, Hashable {
 }
 
 extension SteamIPAddress: SteamCreatable {}
+
+// MARK: SteamInputActionEvent
+
+// Too enum-y for the json to understand.
+/// Steamworks `SteamInputActionEvent_t`
+public struct SteamInputActionEvent {
+    /// Steamworks `controllerHandle`
+    public let controllerHandle: InputHandle
+
+    public enum Event {
+        case digital(InputDigitalActionHandle, InputDigitalActionData)
+        case analog(InputAnalogActionHandle, InputAnalogActionData)
+        case unrepresentedInSwift
+    }
+    /// Steamworks `eEventType` and event union
+    public let event: Event
+
+    init(_ steam: SteamInputActionEvent_t) {
+        controllerHandle = .init(steam.controllerHandle)
+        switch steam.eEventType {
+        case ESteamInputActionEventType_DigitalAction:
+            event = .digital(.init(steam.digitalAction.actionHandle),
+                             .init(steam.digitalAction.digitalActionData))
+
+        case ESteamInputActionEventType_AnalogAction:
+            event = .analog(.init(steam.analogAction.actionHandle),
+                             .init(steam.analogAction.analogActionData))
+
+        default:
+            event = .unrepresentedInSwift
+            logError("Steam returned an undocumented enum value \(steam.eEventType) for SteamInputActionEvent")
+        }
+    }
+}
+
+extension SteamInputActionEvent: SteamCreatable {}

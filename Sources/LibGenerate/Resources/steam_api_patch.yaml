@@ -7,6 +7,8 @@ consts:
     value: "-1"
   INVALID_HTMLBROWSER:
     type: HHTMLBrowser
+  STEAM_INPUT_HANDLE_ALL_CONTROLLERS:
+    nested_name: allControllers
 consts_to_ignore:
 - k_cFriendsGroupLimit
 - k_cEnumerateFollowersMax
@@ -27,7 +29,7 @@ enums:
   AudioPlayback_Status:
     prefix: AudioPlayback
   EChatSteamIDInstanceFlags:
-    is_set: true
+    is_set: Int32
     prefix: EChat(?:InstanceFlag)?
   ECheckFileSignature:
     manual_swift_name: CheckFileSignatureResult # name clash
@@ -40,29 +42,31 @@ enums:
   EFavoriteFlags:
     prefix: k_unFavoriteFlag
   EFriendFlags:
-    is_set: true
+    is_set: Int32
     prefix: EFriendFlag
   EGameSearchErrorCode_t:
     prefix: EGameSearchErrorCode
   EHTTPStatusCode:
     numeric_prefix: http
   EMarketNotAllowedReasonFlags:
-    is_set: true
+    is_set: Int32
     prefix: EMarketNotAllowedReason
   ENotificationPosition:
     prefix: EPosition
   EParentalFeature:
     prefix: EFeature
   EPersonaChange:
-    is_set: true
+    is_set: Int32
   EPlayerResult_t:
     prefix: EPlayerResult
   ERegisterActivationCodeResult:
     prefix: ERegisterActivationCode(?:Result)?
   ERemoteStorageLocalFileChange:
     manual_swift_name: RemoteStorageLocalFileChangeType # name clash
+  ESteamControllerLEDFlag:
+    is_set: UInt32
   ESteamItemFlags:
-    is_set: true
+    is_set: Int32
     prefix: ESteamItem
   ESteamNetConnectionEnd:
     values:
@@ -84,7 +88,7 @@ enums:
   EUserHasLicenseForAppResult:
     prefix: EUserHasLicenseResult
   EUserRestriction:
-    is_set: true
+    is_set: Int32
     prefix: UserRestriction
   EWorkshopFileType:
     values:
@@ -104,7 +108,7 @@ enums:
     prefix: eHTMLMouseButton
   ISteamHTMLSurface::EHTMLKeyModifiers:
     prefix: k_eHTMLKeyModifier
-    is_set_passed_natively: true
+    is_set: ISteamHTMLSurface.EHTMLKeyModifiers
 methods:
 #
 # ISteamAppList
@@ -203,6 +207,17 @@ methods:
     discardable_result: true
   SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo:
     discardable_result: true
+#
+# ISteamInput
+#
+  SteamAPI_ISteamInput_EnableActionEventCallbacks:
+    ignore: "function pointer, see ManualInterfaces"
+  SteamAPI_ISteamInput_GetRemotePlaySessionID:
+    returntype: RemotePlaySessionID_t
+  SteamAPI_ISteamInput_SetLEDColor:
+    params:
+      nFlags:
+        type: ESteamControllerLEDFlag
 #
 # ISteamMatchmaking
 #
@@ -447,11 +462,7 @@ structs:
   SteamDatagramHostedAddress:
     ignore: C declaration is missing
   SteamInputActionEvent_t:
-    fields:
-      analogAction_actionHandle:
-        ignore: Broken union field
-      analogAction_analogActionData:
-        ignore: Broken union field
+    ignore: Union, see ManualStructs
   SteamIPAddress_t:
     ignore: "Union type, covered in manual"
   SteamNetConnectionInfo_t:

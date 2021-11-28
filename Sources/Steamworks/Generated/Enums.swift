@@ -2940,17 +2940,19 @@ extension ESteamAPICallFailure: RawConvertible { typealias From = SteamAPICallFa
 extension SteamAPICallFailure: EnumWithUnrepresented { typealias From = ESteamAPICallFailure }
 
 /// Steamworks `ESteamControllerLEDFlag`
-public enum SteamControllerLEDFlag: UInt32 {
+public struct SteamControllerLEDFlag: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamControllerLEDFlag_SetColor`
-    case setColor = 0
+    public static let setColor = SteamControllerLEDFlag([])
     /// Steamworks `k_ESteamControllerLEDFlag_RestoreUserDefault`
-    case restoreUserDefault = 1
-    /// Some undocumented value
-    case unrepresentedInSwift = 2
+    public static let restoreUserDefault = SteamControllerLEDFlag(rawValue: 1)
 }
 
 extension ESteamControllerLEDFlag: RawConvertible { typealias From = SteamControllerLEDFlag }
-extension SteamControllerLEDFlag: EnumWithUnrepresented { typealias From = ESteamControllerLEDFlag }
+extension SteamControllerLEDFlag: RawConvertible { typealias From = ESteamControllerLEDFlag }
 
 /// Steamworks `ESteamControllerPad`
 public enum SteamControllerPad: UInt32 {

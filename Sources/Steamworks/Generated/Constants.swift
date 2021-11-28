@@ -206,6 +206,11 @@ extension ScreenshotHandle {
     public static let invalid = ScreenshotHandle(0)
 }
 
+extension InputHandle {
+    /// Steamworks `STEAM_INPUT_HANDLE_ALL_CONTROLLERS`
+    public static let allControllers = InputHandle(UInt64.max)
+}
+
 extension SteamAPICall {
     /// Steamworks `k_uAPICallInvalid`
     public static let invalid = SteamAPICall(0x0)

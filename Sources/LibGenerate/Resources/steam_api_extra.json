@@ -7,7 +7,8 @@
   { "constname":"k_SteamMusicNameMaxLength", "consttype":"uint32", "constval":"255"},
   { "constname":"k_SteamMusicPNGMaxLength", "consttype":"uint32", "constval":"65535"},
   { "constname":"k_RemotePlaySessionIDInvalid", "consttype":"RemotePlaySessionID_t", "constval":"0"},
-  { "constname":"INVALID_SCREENSHOT_HANDLE", "consttype":"ScreenshotHandle", "constval":"0"}
+  { "constname":"INVALID_SCREENSHOT_HANDLE", "consttype":"ScreenshotHandle", "constval":"0"},
+  { "constname":"STEAM_INPUT_HANDLE_ALL_CONTROLLERS", "consttype":"InputHandle_t", "constval":"UInt64.max"}
   ],
   "enums": [
   {

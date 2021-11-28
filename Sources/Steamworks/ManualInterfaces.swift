@@ -30,3 +30,21 @@ extension SteamHTTP {
         SteamBaseAPI.CallResults.shared.add(callID: callHandle, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 }
+
+// Not sure how to systemically deal with function pointers yet
+
+extension SteamInput {
+    /// Steamworks `ISteamInput::EnableActionEventCallbacks()`
+    public func enableActionEventCallbacks(callback: SteamInputActionEventCallbackPointer?) {
+        Self.actionEventCallback = callback
+        if callback != nil {
+            SteamAPI_ISteamInput_EnableActionEventCallbacks(interface) { evt in
+                evt.map { Self.actionEventCallback?(.init($0.pointee)) }
+            }
+        } else {
+            SteamAPI_ISteamInput_EnableActionEventCallbacks(interface, nil)
+        }
+    }
+
+    static var actionEventCallback: SteamInputActionEventCallbackPointer?
+}

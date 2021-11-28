@@ -40,7 +40,8 @@ struct Interfaces {
             "ISteamRemotePlay",
             "ISteamScreenshots",
             "ISteamVideo",
-            "ISteamHTMLSurface"
+            "ISteamHTMLSurface",
+            "ISteamInput"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -140,6 +141,19 @@ extension MetadataDB.Interface {
     }
 }
 
+private extension String {
+    /// Interpret a json term for the size of an 'out' array - might have to get a lot cleverer but seems
+    /// easy for now.
+    var asArraySizeExpression: String {
+        // check for ref to a constant, so far all upper-case
+        if self.uppercased() == self {
+            return "Int(\(self))"
+        }
+        // must be a parameter, convert
+        return asSwiftParameterExpression
+    }
+}
+
 // MARK: Method Parameters
 
 final class SwiftParam {
@@ -198,12 +212,12 @@ final class SwiftParam {
         case .out_array(let sizeParam):
             let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
             return [
-                "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asSwiftParameterExpression))",
+                "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asArraySizeExpression))",
                 "defer { \(tempName).deallocate() }"
             ]
         case .out_string(let sizeParam):
             return [
-                "let \(tempName) = UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asSwiftParameterExpression))",
+                "let \(tempName) = UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asArraySizeExpression))",
                 "defer { \(tempName).deallocate() }"
             ]
         }

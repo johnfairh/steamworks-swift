@@ -153,6 +153,13 @@ extension Int32 {
     }
 }
 
+/// Same again for uint32 ... ffs SteamInput ... obviously nobody wearing the 'architectural integrity' hat...
+extension UInt32 {
+    init<T>(_ optionSet: T) where T: OptionSet, T.RawValue: BinaryInteger {
+        self = UInt32(optionSet.rawValue)
+    }
+}
+
 // MARK: Structs
 
 /// Protocol added to Swift structs meaning they have a corresponding Steam (C) type

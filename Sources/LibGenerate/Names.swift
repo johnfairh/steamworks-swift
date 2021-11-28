@@ -145,8 +145,8 @@ extension String {
         if let special = steamTypesPassedInStrangely[self] {
             return special
         }
-        if Metadata.isOptionSetEnumPassedAsInt32(steamType: self) {
-            return "Int32"
+        if let optionSetType = Metadata.isOptionSetEnumPassedUnpredictably(steamType: self) {
+            return optionSetType
         }
         if self == asSwiftTypeName {
             return "CSteamworks.\(self)"
@@ -183,7 +183,7 @@ extension String {
 /// Just what we've seen necessary
 private let backtickKeywords = Set<String>([
     "case", "default", "for", "internal", "private", "protocol", "public",
-    "switch", "init"
+    "switch", "init", "repeat"
 ])
 
 // How to represent a steam type in the Swift interface, special cases
@@ -209,6 +209,9 @@ private let steamToSwiftTypes: [String : String] = [
     "uint64_steamid" : "SteamID",
     "uint64_gameid" : "GameID",
     "const char **": "[String]",
+    "char": "Int", // SteamInput going its own way...
+    "unsigned short": "Int", // ""
+    "unsigned int": "Int", // ""
 
     // Misc
     "SteamParamStringArray_t" : "[String]" // weirdness, tbd
@@ -244,7 +247,10 @@ private let steamTypesPassedInStrangely: [String : String] = [
     "int" : "Int32",
     "bool" : "Bool",
     "uint64_steamid" : "UInt64",
-    "uint64_gameid" : "UInt64"
+    "uint64_gameid" : "UInt64",
+    "unsigned short" : "UInt16",
+    "unsigned int" : "UInt32",
+    "char" : "Int8"
 ]
 
 // Parameter/field names where no rules are followed and we

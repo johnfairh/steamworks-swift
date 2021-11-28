@@ -110,6 +110,7 @@ struct SteamJSON: Codable {
 /// * Constants: Fix value to something Swift understands
 /// * Constants: Correct the type
 /// * Constants: ignore constants
+/// * Constants: nesting control
 /// * Enums: use OptionSet or Enum in Swift
 /// * Enums: value prefix to strip -- Steam has a clear convention for this but breaks it in
 ///   various ways that we have to hard-code.
@@ -133,13 +134,13 @@ struct Patch: Codable {
     struct Const: Codable {
         let value: String? // patch C expression for value
         let type: String? // patch C type
+        let nested_name: String? // patch name for nesting under typedef
     }
     let consts: [String: Const] // constname key
     let consts_to_ignore: [String]
 
     struct Enum: Codable {
-        let is_set: Bool? // values are bit-sig, model as OptionSet
-        let is_set_passed_natively: Bool? // is_set BUT C API wants the enum type
+        let is_set: String? // values are bit-sig, model as OptionSet, pass to steamworks as given type
         let prefix: String? // enum values non-default prefix
         let numeric_prefix: String? // numeric-identifier workaround
         let manual_swift_name: String? // hard-code swift name
@@ -202,11 +203,13 @@ struct MetadataDB {
         let name: String
         let type: String
         let value: String
+        let nestedName: String?
 
         init(base: SteamJSON.Const, patch: Patch.Const?) {
             self.name = base.constname
             self.type = patch?.type ?? base.consttype
             self.value = patch?.value ?? base.constval
+            self.nestedName = patch?.nested_name
         }
     }
 
@@ -215,16 +218,12 @@ struct MetadataDB {
 
     final class Enum {
         let name: String
-        let isSet: Bool
-        let isSetPassedNatively: Bool
+        let setPassedInTypeName: String?
+        var isSet: Bool { setPassedInTypeName != nil }
         let prefix: String
         let numericPrefix: String?
         let manualSwiftName: String?
         let intXToSelf: String?
-
-        var isSetPassedAsInt32: Bool {
-            isSet && !isSetPassedNatively
-        }
 
         struct Value: Codable {
             let name: String
@@ -241,8 +240,7 @@ struct MetadataDB {
 
         init(base: SteamJSON.Enum, patch: Patch.Enum?) {
             name = base.name
-            isSet = patch.map { $0.is_set != nil || $0.is_set_passed_natively != nil } ?? false
-            isSetPassedNatively = patch?.is_set_passed_natively ?? false
+            setPassedInTypeName = patch?.is_set
             prefix = patch?.prefix ?? name
             numericPrefix = patch?.numeric_prefix
             manualSwiftName = patch?.manual_swift_name
@@ -530,8 +528,8 @@ final class Metadata: CustomStringConvertible {
         findEnum(name: name) != nil
     }
 
-    static func isOptionSetEnumPassedAsInt32(steamType name: String) -> Bool {
-        findEnum(name: name)?.isSetPassedAsInt32 ?? false
+    static func isOptionSetEnumPassedUnpredictably(steamType name: String) -> String? {
+        findEnum(name: name)?.setPassedInTypeName
     }
 
     static func isStruct(steamType name: String) -> Bool {

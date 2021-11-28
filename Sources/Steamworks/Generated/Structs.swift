@@ -3149,21 +3149,6 @@ extension SteamAppUninstalled: SteamCreatable {
     }
 }
 
-/// Steamworks `SteamInputActionEvent_t`
-public struct SteamInputActionEvent {
-    /// Steamworks `controllerHandle`
-    public let handle: InputHandle
-    /// Steamworks `eEventType`
-    public let eventType: SteamInputActionEventType
-}
-
-extension SteamInputActionEvent: SteamCreatable {
-    init(_ steam: CSteamworks.SteamInputActionEvent_t) {
-        handle = .init(steam.controllerHandle)
-        eventType = .init(steam.eEventType)
-    }
-}
-
 /// Steamworks `SteamInputConfigurationLoaded_t`
 public struct SteamInputConfigurationLoaded {
     /// Steamworks `m_unAppID`
