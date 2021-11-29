@@ -190,7 +190,6 @@ private let backtickKeywords = Set<String>([
 private let steamToSwiftTypes: [String : String] = [
     // Base types
     "const char *" : "String",
-    "nullable const char *" : "String?",
     "int" : "Int",
     "uint8" : "Int",
     "uint16" : "Int",
@@ -204,7 +203,6 @@ private let steamToSwiftTypes: [String : String] = [
     "float" : "Float",
     "double" : "Double",
     "void *" : "UnsafeMutableRawPointer",
-    "nullable void *" : "UnsafeMutableRawPointer?",
     "const void *": "UnsafeRawPointer",
     "uint8 *" : "UnsafeMutablePointer<UInt8>",
     "uint64_steamid" : "SteamID",
@@ -230,8 +228,6 @@ private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
 private let steamTypesPassedInTransparently = Set<String>([
     "bool", "const char *", "void *", "uint8 *",
     "const void *", "float", "double", "uint64",
-    "nullable const char *",
-    "nullable void *",
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])
@@ -258,7 +254,6 @@ private let steamTypesPassedInStrangely: [String : String] = [
 // Parameter/field names where no rules are followed and we
 // have to hard-code something acceptable
 private let steamParameterNamesExceptions: [String : String] = [
-    "cubData" : "dataSize",
     "iFriendFlags" : "friendFlags"
 ]
 

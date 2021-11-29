@@ -189,13 +189,14 @@ final class SwiftParam {
 
     /// How should the param appear (or not) in the Swift version of the function
     var swiftParamType: String? {
+        let optional = db.nullable ? "?" : ""
         switch style {
-        case .in: return swiftTypeBaseName
+        case .in: return swiftTypeBaseName + optional
         case .out, .out_transparent, .in_out: return "inout \(swiftTypeBaseName)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
-        case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]\(db.nullable ? "?" : "")"
-        case .out_string: return "inout String\(db.nullable ? "?" : "")"
+        case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]\(optional)"
+        case .out_string: return "inout String\(optional)"
         }
     }
 

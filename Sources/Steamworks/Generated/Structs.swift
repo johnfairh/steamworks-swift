@@ -3302,7 +3302,7 @@ public struct SteamItemDetails {
     /// Steamworks `m_unQuantity`
     public let quantity: Int
     /// Steamworks `m_unFlags`
-    public let flags: Int
+    public let flags: SteamItemFlags
 }
 
 extension SteamItemDetails: SteamCreatable {

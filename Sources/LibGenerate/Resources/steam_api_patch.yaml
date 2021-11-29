@@ -248,7 +248,7 @@ methods:
   SteamAPI_ISteamInventory_GetItemDefinitionProperty:
     params:
       pchPropertyName:
-        type: nullable const char *
+        nullable: true
       pchValueBuffer:
         nullable: true
       punValueBufferSizeOut:
@@ -270,7 +270,7 @@ methods:
   SteamAPI_ISteamInventory_GetResultItemProperty:
     params:
       pchPropertyName:
-        type: nullable const char *
+        nullable: true
       punValueBufferSizeOut:
         in_out: true
   SteamAPI_ISteamInventory_GetResultItems:
@@ -288,7 +288,7 @@ methods:
   SteamAPI_ISteamInventory_SerializeResult:
     params:
       pOutBuffer:
-        type: nullable void *
+        nullable: true
       punOutBufferSize:
         in_out: true
   SteamAPI_ISteamInventory_TradeItems:
@@ -425,7 +425,7 @@ methods:
   SteamAPI_ISteamScreenshots_AddScreenshotToLibrary:
     params:
       pchThumbnailFilename:
-        type: nullable const char *
+        nullable: true
 #
 # ISteamUser
 #
@@ -544,6 +544,10 @@ structs:
     ignore: Union, see ManualStructs
   SteamIPAddress_t:
     ignore: "Union type, covered in manual"
+  SteamItemDetails_t:
+    fields:
+      m_unFlags:
+        fieldtype: ESteamItemFlags
   SteamNetConnectionInfo_t:
     fields:
       m_nFlags:
