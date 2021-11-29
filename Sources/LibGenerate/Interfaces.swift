@@ -179,8 +179,11 @@ final class SwiftParam {
         case in_array // pass by value but a Swift array, use a temporary to cast, no copy-back
         case in_array_count(SwiftParam) // a C param for the length of an `in_array` param that is absent in Swift
         case out_array(String) // pass inout, temporary to cast, copy-back, array.  Required size given by another param.
+                               // 'nullable' pattern here is super-ugly, review all uses when done and maybe make different case.
+                               // also check how to use, `nil` inout is tricky - better to gen a separate function?
         case out_string(String) // pass inout, temp buffer of user-set length, convert to string
                                 // eventually review and switch to String(unsafeUninit... to avoid the copy)
+                                // see 'nullable' qualms also
     }
     private let style: Style
 
@@ -191,8 +194,8 @@ final class SwiftParam {
         case .out, .out_transparent, .in_out: return "inout \(swiftTypeBaseName)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
-        case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]"
-        case .out_string: return "inout String"
+        case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]\(db.nullable ? "?" : "")"
+        case .out_string: return "inout String\(db.nullable ? "?" : "")"
         }
     }
 
@@ -212,15 +215,34 @@ final class SwiftParam {
         case .in_out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
         case .out_array(let sizeParam):
             let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
-            return [
-                "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asArraySizeExpression))",
-                "defer { \(tempName).deallocate() }"
-            ]
+            let lines: [String]
+            if !db.nullable {
+                lines = [
+                    "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asArraySizeExpression))",
+                    "defer { \(tempName).deallocate() }"
+                ]
+            } else {
+                lines = [
+                    "let \(tempName) = \(swiftName).map { _ in UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asArraySizeExpression)) }",
+                    "defer { \(tempName)?.deallocate() }"
+                ]
+            }
+            return lines
         case .out_string(let sizeParam):
-            return [
-                "let \(tempName) = UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asArraySizeExpression))",
-                "defer { \(tempName).deallocate() }"
-            ]
+            let lines: [String]
+            if !db.nullable {
+                lines = [
+                    "let \(tempName) = UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asArraySizeExpression))",
+                    "defer { \(tempName).deallocate() }"
+                ]
+            } else {
+                lines = [
+                    "let \(tempName) = \(swiftName).map { _ in UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asArraySizeExpression)) }",
+                    "defer { \(tempName)?.deallocate() }"
+                ]
+            }
+
+            return lines
         }
     }
 
@@ -236,7 +258,11 @@ final class SwiftParam {
         case .in_array_count(let ap):
             return "\(ap.swiftName).count".asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
         case .out_array, .out_string:
-            return "\(tempName).baseAddress"
+            if !db.nullable {
+                return "\(tempName).baseAddress"
+            } else {
+                return "\(tempName).flatMap { $0.baseAddress }"
+            }
         }
     }
 
@@ -246,9 +272,17 @@ final class SwiftParam {
         case .in, .in_array, .in_array_count, .out_transparent, .out_transparent_array: return nil
         case .out, .in_out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
         case .out_array:
-            return "\(swiftName) = \(tempName).map { \(swiftTypeBaseName)($0) }"
+            if !db.nullable {
+                return "\(swiftName) = \(tempName).map { \(swiftTypeBaseName)($0) }"
+            } else {
+                return "\(tempName).map { \(swiftName) = $0.map { \(swiftTypeBaseName)($0) } }"
+            }
         case .out_string:
-            return "\(swiftName) = String(\(tempName))" // null-termination done inside, see TypeUtils.swift
+            if !db.nullable {
+                return "\(swiftName) = String(\(tempName))" // null-termination done inside, see TypeUtils.swift
+            } else {
+                return "\(tempName).map { \(swiftName) = String($0) }"
+            }
         }
     }
 

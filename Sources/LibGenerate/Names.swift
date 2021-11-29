@@ -204,6 +204,7 @@ private let steamToSwiftTypes: [String : String] = [
     "float" : "Float",
     "double" : "Double",
     "void *" : "UnsafeMutableRawPointer",
+    "nullable void *" : "UnsafeMutableRawPointer?",
     "const void *": "UnsafeRawPointer",
     "uint8 *" : "UnsafeMutablePointer<UInt8>",
     "uint64_steamid" : "SteamID",
@@ -230,6 +231,7 @@ private let steamTypesPassedInTransparently = Set<String>([
     "bool", "const char *", "void *", "uint8 *",
     "const void *", "float", "double", "uint64",
     "nullable const char *",
+    "nullable void *",
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])

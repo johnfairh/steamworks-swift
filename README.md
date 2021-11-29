@@ -8,8 +8,9 @@ Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* 21/27 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
+* 22/27 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
   working on [other interfaces](#interface-plan)
+* Discovering patterns during progress, refactor stuff at the end
 * `make` builds and runs a demo Swift program that accesses the C++
   Steam API to initialize, do some sync and async queries, then shut it down.
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
@@ -71,12 +72,12 @@ To run the generator / build:
 ### Interface plan
 
 ✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameSearch, ISteamGameServer,
-ISteamGameServerStats, ISteamHTMLSruface, ISteamHTTP, ISteamInput, ISteamMatchMaking,
-ISteamMusic, ISteamMusicRemote, ISteamParentalSettings, ISteamParties, ISteamRemotePlay,
-ISteamScreenshots, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo
+ISteamGameServerStats, ISteamHTMLSruface, ISteamHTTP, ISteamInput, ISteamInventory,
+ISteamMatchMaking, ISteamMusic, ISteamMusicRemote, ISteamParentalSettings,
+ISteamParties, ISteamRemotePlay, ISteamScreenshots, ISteamUser, ISteamUserStats,
+ISteamUtils, ISteamVideo
 
 Bit more complex:
-* ISteamInventory - different array patterns
 * ISteamRemoteStorage - some odd structure patterns
 * ISteamUGC - lots of data passing
 * SteamEncryptedAppTicket - figure out how to model

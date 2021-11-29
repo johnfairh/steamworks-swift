@@ -221,6 +221,40 @@ methods:
 #
 # ISteamInventory
 #
+  SteamAPI_ISteamInventory_AddPromoItem:
+    discardable_result: true
+  SteamAPI_ISteamInventory_AddPromoItems:
+    discardable_result: true
+  SteamAPI_ISteamInventory_ConsumeItem:
+    discardable_result: true
+  SteamAPI_ISteamInventory_DeserializeResult:
+    discardable_result: true
+  SteamAPI_ISteamInventory_GenerateItems:
+    discardable_result: true
+  SteamAPI_ISteamInventory_GenerateItems:
+    discardable_result: true
+  SteamAPI_ISteamInventory_GetAllItems:
+    discardable_result: true
+  SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs:
+    params:
+      punItemDefIDsArraySize:
+        in_out: true
+  SteamAPI_ISteamInventory_GetItemDefinitionIDs:
+    params:
+      pItemDefIDs:
+        nullable: true
+      punItemDefIDsArraySize:
+        in_out: true
+  SteamAPI_ISteamInventory_GetItemDefinitionProperty:
+    params:
+      pchPropertyName:
+        type: nullable const char *
+      pchValueBuffer:
+        nullable: true
+      punValueBufferSizeOut:
+        in_out: true
+  SteamAPI_ISteamInventory_GetItemsByID:
+    discardable_result: true
   SteamAPI_ISteamInventory_GetItemsWithPrices: # the most drunk api definition of all
     params:
       pArrayItemDefs:
@@ -232,6 +266,37 @@ methods:
       pBasePrices:
         array_count: DELETE
         out_array_count: unArrayLength
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamInventory_GetResultItemProperty:
+    params:
+      pchPropertyName:
+        type: nullable const char *
+      punValueBufferSizeOut:
+        in_out: true
+  SteamAPI_ISteamInventory_GetResultItems:
+    params:
+      pOutItemsArray:
+        nullable: true
+      punOutItemsArraySize:
+        in_out: true
+  SteamAPI_ISteamInventory_GetResultTimestamp:
+    returntype: RTime32
+  SteamAPI_ISteamInventory_GrantPromoItems:
+    discardable_result: true
+  SteamAPI_ISteamInventory_LoadItemDefinitions:
+    discardable_result: true
+  SteamAPI_ISteamInventory_SerializeResult:
+    params:
+      pOutBuffer:
+        type: nullable void *
+      punOutBufferSize:
+        in_out: true
+  SteamAPI_ISteamInventory_TradeItems:
+    ignore: "marked deprecated"
+  SteamAPI_ISteamInventory_TransferItemQuantity:
+    discardable_result: true
+  SteamAPI_ISteamInventory_TriggerItemDrop:
+    discardable_result: true
 #
 # ISteamMatchmaking
 #

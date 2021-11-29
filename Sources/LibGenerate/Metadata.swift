@@ -168,6 +168,7 @@ struct Patch: Codable {
             let out_array_count: String? // patch out_array_count
             let array_count: String? // patch array_count
             let in_out: Bool? // mark up actual inout params
+            let nullable: Bool? // out/array param can be null (nil)
         }
         let params: [String : Param]?
     }
@@ -266,12 +267,14 @@ struct MetadataDB {
             let outArrayLength: String?
             let outStringLength: String?
             let inOut: Bool
+            let nullable: Bool
             // ?? let buffer_count: String?
 
             init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
                 self.name = base.paramname
                 self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
                 self.inOut = patch?.in_out ?? false
+                self.nullable = patch?.nullable ?? false
                 if let patchedArrayCount = patch?.array_count, patchedArrayCount == "DELETE" {
                     self.arrayCount = nil // fix a mistake
                 } else {
