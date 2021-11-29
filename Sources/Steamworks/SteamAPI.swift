@@ -80,6 +80,8 @@ public final class SteamAPI: SteamBaseAPI {
     public let parties = SteamParties()
     /// Access the Steamworks `ISteamRemotePlay` interface
     public let remotePlay = SteamRemotePlay()
+    /// Access the Steamworks `ISteamRemoteStorage` interface
+    public let remoteStorage = SteamRemoteStorage()
     /// Access the Steamworks `ISteamUser` interface
     public let user = SteamUser()
     /// Access the Steamworks `ISteamUserStats` interface

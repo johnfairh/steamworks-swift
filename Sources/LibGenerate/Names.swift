@@ -213,7 +213,7 @@ private let steamToSwiftTypes: [String : String] = [
     "unsigned int": "Int", // ""
 
     // Misc
-    "SteamParamStringArray_t" : "[String]" // weirdness, tbd
+    "SteamParamStringArray_t *" : "[String]" // weirdness, tbd
 ]
 
 // How to represent an array of steam types (in a struct field,) special cases
