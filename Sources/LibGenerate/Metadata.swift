@@ -118,6 +118,7 @@ struct SteamJSON: Codable {
 /// * Enums: hint to generate a static member instead of an enum case
 /// * Enums: generate from-IntX
 /// * Enums: special-case the type name
+/// * Enums: override the value
 /// * Methods: correct the return type
 /// * Methods: specify out-param behaviour when API call fails
 /// * Methods: correct a parameter type
@@ -148,6 +149,7 @@ struct Patch: Codable {
 
         struct Value: Codable {
             let force_static: Bool? // generate a static member instead of an enum case
+            let value: String? // patch value
         }
         let values: [String : Value]? // valuename key
     }
@@ -233,7 +235,7 @@ struct MetadataDB {
 
             init(base: SteamJSON.Enum.Value, patch: Patch.Enum.Value?) {
                 name = base.name
-                value = base.value
+                value = patch?.value ?? base.value
                 forceStatic = patch?.force_static ?? false
             }
         }

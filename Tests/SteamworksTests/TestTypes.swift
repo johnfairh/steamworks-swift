@@ -63,10 +63,10 @@ class TestTypes: XCTestCase {
 
     /// SteamStringArray horrors
     func testStringArray() throws {
-        XCTAssertNil(SteamStringArray([]).cStrings)
+        XCTAssertNil(StringArray([]).cStrings)
 
         let strings = ["one", "two", "three"]
-        let ssa = SteamStringArray(strings)
+        let ssa = StringArray(strings)
         var base = try XCTUnwrap(ssa.cStrings)
         var oStrings: [String] = []
         for _ in 0..<strings.count {

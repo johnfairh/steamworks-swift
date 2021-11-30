@@ -63,6 +63,11 @@ enums:
     prefix: ERegisterActivationCode(?:Result)?
   ERemoteStorageLocalFileChange:
     manual_swift_name: RemoteStorageLocalFileChangeType # name clash
+  ERemoteStoragePlatform:
+    is_set: ERemoteStoragePlatform
+    values:
+      k_ERemoteStoragePlatformAll:
+        value: 0xffffffff
   ESteamControllerLEDFlag:
     is_set: UInt32
   ESteamItemFlags:
@@ -419,6 +424,11 @@ methods:
 #
   SteamAPI_ISteamRemotePlay_GetSessionClientName:
     returntype: String?
+#
+# ISteamRemoteStorage
+#
+  SteamAPI_ISteamRemoteStorage_GetUGCDetails:
+    ignore: "Too weird, handled manually"
 #
 # ISteamScreenshots
 #

@@ -12,17 +12,20 @@ extension String {
     /// * Get rid of C++ nesting - everything top-level in Swift
     /// * Drop leading capital E/I/C - used in SDK for enums/interfaces/classes (but not for structs...)
     var asSwiftTypeName: String {
-        if let match = re_match(#"^(.*) +\[.*\]"#) {
-            if let special = steamArrayElementTypeToSwiftArrayTypes[match[1]] {
+        if let arrayMatch = re_match(#"^(.*) +\[.*\]"#) {
+            if let special = steamArrayElementTypeToSwiftArrayTypes[arrayMatch[1]] {
                 return special
             }
-            return "[\(match[1].asSwiftTypeName)]"
+            return "[\(arrayMatch[1].asSwiftTypeName)]"
         }
         if let mapped = steamToSwiftTypes[self] ?? Metadata.steamToSwiftTypeName(self) {
             return mapped
         }
+        if let constMatch = re_match("^const (.*)$") {
+            return constMatch[1].asSwiftTypeName
+        }
         var name = re_sub("_t\\b", with: "")
-            .re_sub("^(const |.*::)", with: "")
+            .re_sub("^.*::", with: "")
             .re_sub("Id\\b", with: "ID")
         if !Metadata.isStruct(steamType: self) {
             name = name.re_sub("^[CEI](?=[A-Z])", with: "")

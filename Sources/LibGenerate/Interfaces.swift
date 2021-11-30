@@ -173,6 +173,7 @@ final class SwiftParam {
 
     private enum Style {
         case `in` // pass by value, flat, cast at time of use
+        case in_string_array // pass by value, array of strings
         case out  // pass inout, use a temporary to cast, copy-back
         case out_transparent // pass inout, no temporary
         case out_transparent_array // pass inout, array, no temporary
@@ -193,6 +194,7 @@ final class SwiftParam {
         let optional = db.nullable ? "?" : ""
         switch style {
         case .in: return swiftTypeBaseName + optional
+        case .in_string_array: return swiftTypeBaseName
         case .out, .out_transparent, .in_out: return "inout \(swiftTypeBaseName)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
@@ -212,6 +214,11 @@ final class SwiftParam {
     var preCallLines: [String] {
         switch style {
         case .in, .in_array_count, .out_transparent, .out_transparent_array: return []
+        case .in_string_array:
+            return [
+                "let \(tempName) = StringArray(\(swiftName))",
+                "defer { \(tempName).deallocate() }"
+            ]
         case .in_array: return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
         case .out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
         case .in_out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
@@ -253,6 +260,8 @@ final class SwiftParam {
         switch style {
         case .in:
             return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
+        case .in_string_array:
+            return ".init(\(tempName))"
         case .out, .in_out, .in_array:
             return "&\(tempName)"
         case .out_transparent, .out_transparent_array:
@@ -271,7 +280,7 @@ final class SwiftParam {
     /// What code (if any) is required after calling the Steamworks API
     var postSuccessCallLine: String? {
         switch style {
-        case .in, .in_array, .in_array_count, .out_transparent, .out_transparent_array: return nil
+        case .in, .in_string_array, .in_array, .in_array_count, .out_transparent, .out_transparent_array: return nil
         case .out, .in_out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
         case .out_array:
             if !db.nullable {
@@ -294,7 +303,7 @@ final class SwiftParam {
         if let arrayParam = inArrayParam {
             swiftTypeBaseName = "ERROR"
             style = .in_array_count(arrayParam)
-        } else if let depointered = naiveSwiftTypeName.depointeredType {
+        } else if naiveSwiftTypeName.hasSuffix("*"), let depointered = db.type.depointeredType {
             if let outStringLength = db.outStringLength {
                 swiftTypeBaseName = "String"
                 style = .out_string(outStringLength)
@@ -318,7 +327,11 @@ final class SwiftParam {
             }
         } else {
             swiftTypeBaseName = naiveSwiftTypeName
-            style = .in
+            if swiftTypeBaseName == "[String]" {
+                style = .in_string_array
+            } else {
+                style = .in
+            }
         }
     }
 }

@@ -49,31 +49,57 @@ extension String {
 ///
 /// If non-empty, must have a NULL entry to signify end-of-list.
 /// (not in the docs, check SpaceWar sample...)
-final class SteamStringArray {
+///
+/// Also supports SteamRemoteStorage's custom array-of-strings type that
+/// is only marginally better thought out.
+struct StringArray {
     // Storage -- the auto-trick with arrays doesn't work through all the
     // optional nonsense we have going on
     private let buf: UnsafeMutableBufferPointer<UnsafePointer<CChar>?>?
 
-    // The "_Nullable const char **"
+    /// The `_Nullable const char **`
     var cStrings: UnsafeMutablePointer<UnsafePointer<CChar>?>? {
         buf?.baseAddress
     }
 
+    /// The `_Nullable SteamParamStringArray_t *`
+    let steamParamStringArray: UnsafeMutablePointer<SteamParamStringArray_t>?
+
     init(_ strings: [String]) {
         guard !strings.isEmpty else {
             buf = nil
+            steamParamStringArray = nil
             return
         }
         buf = .allocate(capacity: strings.count + 1)
+        steamParamStringArray = .allocate(capacity: 1)
+        steamParamStringArray?.pointee.m_nNumStrings = Int32(strings.count)
+        steamParamStringArray?.pointee.m_ppStrings = buf?.baseAddress
         strings.enumerated().forEach { i, str in
             buf?[i] = UnsafePointer(strdup(str))
         }
         buf?[strings.count] = nil
     }
 
-    deinit {
+    func deallocate() {
         buf?.forEach { $0.map { free(UnsafeMutablePointer(mutating: $0)) } }
         buf?.deallocate()
+        steamParamStringArray?.deallocate()
+    }
+}
+
+// Now add extensions to turn the type around to vend multiple types, gives
+// polymorphism via `.init()` at point of use.
+
+extension Optional where Wrapped == UnsafeMutablePointer<SteamParamStringArray_t> {
+    init(_ stringArray: StringArray) {
+        self = stringArray.steamParamStringArray
+    }
+}
+
+extension Optional where Wrapped == UnsafeMutablePointer<UnsafePointer<CChar>?> {
+    init(_ stringArray: StringArray) {
+        self = stringArray.cStrings
     }
 }
 

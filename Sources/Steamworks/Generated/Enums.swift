@@ -2561,31 +2561,33 @@ extension ERemoteStorageLocalFileChange: RawConvertible { typealias From = Remot
 extension RemoteStorageLocalFileChangeType: EnumWithUnrepresented { typealias From = ERemoteStorageLocalFileChange }
 
 /// Steamworks `ERemoteStoragePlatform`
-public enum RemoteStoragePlatform: Int32 {
+public struct RemoteStoragePlatform: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_ERemoteStoragePlatformNone`
-    case none = 0
+    public static let none = RemoteStoragePlatform([])
     /// Steamworks `k_ERemoteStoragePlatformWindows`
-    case windows = 1
+    public static let windows = RemoteStoragePlatform(rawValue: 1)
     /// Steamworks `k_ERemoteStoragePlatformOSX`
-    case osx = 2
+    public static let osx = RemoteStoragePlatform(rawValue: 2)
     /// Steamworks `k_ERemoteStoragePlatformPS3`
-    case ps3 = 4
+    public static let ps3 = RemoteStoragePlatform(rawValue: 4)
     /// Steamworks `k_ERemoteStoragePlatformLinux`
-    case linux = 8
+    public static let linux = RemoteStoragePlatform(rawValue: 8)
     /// Steamworks `k_ERemoteStoragePlatformSwitch`
-    case `switch` = 16
+    public static let `switch` = RemoteStoragePlatform(rawValue: 16)
     /// Steamworks `k_ERemoteStoragePlatformAndroid`
-    case android = 32
+    public static let android = RemoteStoragePlatform(rawValue: 32)
     /// Steamworks `k_ERemoteStoragePlatformIOS`
-    case ios = 64
+    public static let ios = RemoteStoragePlatform(rawValue: 64)
     /// Steamworks `k_ERemoteStoragePlatformAll`
-    case all = -1
-    /// Some undocumented value
-    case unrepresentedInSwift = 65
+    public static let all = RemoteStoragePlatform(rawValue: 0xffffffff)
 }
 
 extension ERemoteStoragePlatform: RawConvertible { typealias From = RemoteStoragePlatform }
-extension RemoteStoragePlatform: EnumWithUnrepresented { typealias From = ERemoteStoragePlatform }
+extension RemoteStoragePlatform: RawConvertible { typealias From = ERemoteStoragePlatform }
 
 /// Steamworks `ERemoteStoragePublishedFileVisibility`
 public enum RemoteStoragePublishedFileVisibility: UInt32 {
