@@ -2370,7 +2370,7 @@ public struct RemoteStorageEnumeratePublishedFilesByUserActionResult {
     /// Steamworks `m_rgPublishedFileId`
     public let publishedFileId: [PublishedFileID]
     /// Steamworks `m_rgRTimeUpdated`
-    public let rTimeUpdated: [Int]
+    public let rTimeUpdated: [RTime32]
 }
 
 extension RemoteStorageEnumeratePublishedFilesByUserActionResult: SteamCreatable {
@@ -2437,7 +2437,7 @@ public struct RemoteStorageEnumerateUserSubscribedFilesResult {
     /// Steamworks `m_rgPublishedFileId`
     public let publishedFileId: [PublishedFileID]
     /// Steamworks `m_rgRTimeSubscribed`
-    public let rTimeSubscribed: [Int]
+    public let rTimeSubscribed: [RTime32]
 }
 
 extension RemoteStorageEnumerateUserSubscribedFilesResult: SteamCreatable {
@@ -2552,9 +2552,9 @@ public struct RemoteStorageGetPublishedFileDetailsResult {
     /// Steamworks `m_ulSteamIDOwner`
     public let steamIDOwner: SteamID
     /// Steamworks `m_rtimeCreated`
-    public let rtimeCreated: Int
+    public let rtimeCreated: RTime32
     /// Steamworks `m_rtimeUpdated`
-    public let rtimeUpdated: Int
+    public let rtimeUpdated: RTime32
     /// Steamworks `m_eVisibility`
     public let visibility: RemoteStoragePublishedFileVisibility
     /// Steamworks `m_bBanned`

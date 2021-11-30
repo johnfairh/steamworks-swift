@@ -123,7 +123,7 @@ static inline const PublishedFileId_t * _Nonnull RemoteStorageEnumeratePublished
 }
 
 __attribute__((swift_name("getter:RemoteStorageEnumeratePublishedFilesByUserActionResult_t.m_rgRTimeUpdated_ptr(self:)")))
-static inline const uint32 * _Nonnull RemoteStorageEnumeratePublishedFilesByUserActionResult_t_m_rgRTimeUpdated_ptr(const RemoteStorageEnumeratePublishedFilesByUserActionResult_t * _Nonnull s)
+static inline const RTime32 * _Nonnull RemoteStorageEnumeratePublishedFilesByUserActionResult_t_m_rgRTimeUpdated_ptr(const RemoteStorageEnumeratePublishedFilesByUserActionResult_t * _Nonnull s)
 {
     return s->m_rgRTimeUpdated;
 }
@@ -147,7 +147,7 @@ static inline const PublishedFileId_t * _Nonnull RemoteStorageEnumerateUserSubsc
 }
 
 __attribute__((swift_name("getter:RemoteStorageEnumerateUserSubscribedFilesResult_t.m_rgRTimeSubscribed_ptr(self:)")))
-static inline const uint32 * _Nonnull RemoteStorageEnumerateUserSubscribedFilesResult_t_m_rgRTimeSubscribed_ptr(const RemoteStorageEnumerateUserSubscribedFilesResult_t * _Nonnull s)
+static inline const RTime32 * _Nonnull RemoteStorageEnumerateUserSubscribedFilesResult_t_m_rgRTimeSubscribed_ptr(const RemoteStorageEnumerateUserSubscribedFilesResult_t * _Nonnull s)
 {
     return s->m_rgRTimeSubscribed;
 }

@@ -73,9 +73,6 @@ public enum SteamConstants {
     /// Steamworks `kNumUGCResultsPerPage`
     public static let numUGCResultsPerPage = Int(50)
 
-    /// Steamworks `k_cchPublishedDocumentChangeDescriptionMax`
-    public static let publishedDocumentChangeDescriptionMaxSize = Int(8000)
-
     /// Steamworks `k_cchPublishedDocumentDescriptionMax`
     public static let publishedDocumentDescriptionMaxSize = Int(8000)
 

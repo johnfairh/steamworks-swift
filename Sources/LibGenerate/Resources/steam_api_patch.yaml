@@ -10,6 +10,7 @@ consts:
   STEAM_INPUT_HANDLE_ALL_CONTROLLERS:
     nested_name: allControllers
 consts_to_ignore:
+- k_cchPublishedDocumentChangeDescriptionMax
 - k_cFriendsGroupLimit
 - k_cEnumerateFollowersMax
 - k_cubAppProofOfPurchaseKeyMax
@@ -429,6 +430,14 @@ methods:
 #
   SteamAPI_ISteamRemoteStorage_GetUGCDetails:
     ignore: "Too weird, handled manually"
+  SteamAPI_ISteamRemoteStorage_FileDelete:
+    discardable_result: true
+  SteamAPI_ISteamRemoteStorage_FileForget:
+    discardable_result: true
+  SteamAPI_ISteamRemoteStorage_FileWriteStreamClose:
+    discardable_result: true
+  SteamAPI_ISteamRemoteStorage_GetQuota:
+    discardable_result: true
 #
 # ISteamScreenshots
 #
@@ -546,6 +555,20 @@ structs:
     fields:
       m_nChangeFlags:
         fieldtype: EPersonaChange
+  RemoteStorageEnumeratePublishedFilesByUserActionResult_t:
+    fields:
+      m_rgRTimeUpdated:
+        fieldtype: 'RTime32 [50]'
+  RemoteStorageEnumerateUserSubscribedFilesResult_t:
+    fields:
+      m_rgRTimeSubscribed:
+        fieldtype: 'RTime32 [50]'
+  RemoteStorageGetPublishedFileDetailsResult_t:
+    fields:
+      m_rtimeCreated:
+        fieldtype: RTime32
+      m_rtimeUpdated:
+        fieldtype: RTime32
   SteamDatagramGameCoordinatorServerLogin:
     ignore: C declaration is missing
   SteamDatagramHostedAddress:

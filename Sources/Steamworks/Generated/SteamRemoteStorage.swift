@@ -134,6 +134,7 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::FileDelete()`
+    @discardableResult
     public func fileDelete(file: String) -> Bool {
         SteamAPI_ISteamRemoteStorage_FileDelete(interface, file)
     }
@@ -144,6 +145,7 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::FileForget()`
+    @discardableResult
     public func fileForget(file: String) -> Bool {
         SteamAPI_ISteamRemoteStorage_FileForget(interface, file)
     }
@@ -213,6 +215,7 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::FileWriteStreamClose()`
+    @discardableResult
     public func fileWriteStreamClose(handle: UGCFileWriteStreamHandle) -> Bool {
         SteamAPI_ISteamRemoteStorage_FileWriteStreamClose(interface, UGCFileWriteStreamHandle_t(handle))
     }
@@ -302,6 +305,7 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::GetQuota()`
+    @discardableResult
     public func getQuota(totalBytes: inout UInt64, availableBytes: inout UInt64) -> Bool {
         SteamAPI_ISteamRemoteStorage_GetQuota(interface, &totalBytes, &availableBytes)
     }
