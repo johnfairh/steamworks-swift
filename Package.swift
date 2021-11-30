@@ -17,9 +17,15 @@ let package = Package(
     .library(
       name: "Steamworks",
       targets: ["Steamworks"]),
+    .library(
+      name: "SteamworksEncryptedAppTicket",
+      targets: ["SteamworksEncryptedAppTicket"]),
     .executable(
       name: "Client",
-      targets: ["Client"])
+      targets: ["Client"]),
+    .executable(
+      name: "TicketClient",
+      targets: ["TicketClient"]),  
   ],
   dependencies: [
     .package(url: "https://github.com/apple/swift-log.git", from: "1.4.2"),
@@ -28,17 +34,33 @@ let package = Package(
   targets: [
     .systemLibrary(name: "CSteamworks"),
     .target(
-        name: "Steamworks",
-        dependencies: [
-          "CSteamworks",
-          .product(name: "Logging", package: "swift-log")
-        ],
-        swiftSettings: [
-          .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
-        ]),
+      name: "Steamworks",
+      dependencies: [
+        "CSteamworks",
+        .product(name: "Logging", package: "swift-log")
+      ],
+      swiftSettings: [
+        .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
+      ]
+    ),
+    .target(
+      name: "SteamworksEncryptedAppTicket",
+      dependencies: [
+        "Steamworks"
+      ],  
+      swiftSettings: [
+        .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
+      ],
+      linkerSettings: [
+        .linkedLibrary("sdkencryptedappticket")
+      ]
+    ),
     .executableTarget(
         name: "Client",
         dependencies: ["Steamworks"]),
+    .executableTarget(
+        name: "TicketClient",
+        dependencies: ["SteamworksEncryptedAppTicket"]),
     .executableTarget(
         name: "Generate",
         dependencies: ["LibGenerate"]),

@@ -6,6 +6,7 @@
 //
 
 @_implementationOnly import CSteamworks
+import Steamworks
 
 extension SteamUser {
     /// Swift-friendly wrapper to call `getEncryptedAppTicket(...)`.  You still have to know
@@ -63,19 +64,19 @@ public final class SteamEncryptedAppTicket {
 
     /// Steamworks `SteamEncryptedAppTicket_BIsTicketForApp()`
     public func isFor(appID: AppID) -> Bool {
-        SteamEncryptedAppTicket_BIsTicketForApp(&decrypted, UInt32(decrypted.count), AppId_t(appID));
+        SteamEncryptedAppTicket_BIsTicketForApp(&decrypted, UInt32(decrypted.count), appID.value);
     }
 
     /// Steamworks `SteamEncryptedAppTicket_GetTicketIssueTime()`
-    public var issueTime: RTime32 {
-        RTime32(SteamEncryptedAppTicket_GetTicketIssueTime(&decrypted, UInt32(decrypted.count)))
+    public var issueTime: Steamworks.RTime32 {
+        .init(SteamEncryptedAppTicket_GetTicketIssueTime(&decrypted, UInt32(decrypted.count)))
     }
 
     /// Steamworks `SteamEncryptedAppTicket_GetTicketSteamID()`
     public var steamID: SteamID {
         var cSteamID = CSteamID()
         SteamEncryptedAppTicket_GetTicketSteamID(&decrypted, UInt32(decrypted.count), &cSteamID)
-        return SteamID(cSteamID)
+        return SteamID(cSteamID.ConvertToUint64())
     }
 
     /// Steamworks `SteamEncryptedAppTicket_GetTicketAppID()`
@@ -85,19 +86,12 @@ public final class SteamEncryptedAppTicket {
 
     /// Steamworks `SteamEncryptedAppTicket_BUserOwnsAppInTicket()`
     public func userOwns(app: AppID) -> Bool {
-        SteamEncryptedAppTicket_BUserOwnsAppInTicket(&decrypted, UInt32(decrypted.count), AppId_t(app))
+        SteamEncryptedAppTicket_BUserOwnsAppInTicket(&decrypted, UInt32(decrypted.count), app.value)
     }
 
     /// Steamworks `SteamEncryptedAppTicket_BUserIsVacBanned()`
     public var userIsVacBanned: Bool {
         SteamEncryptedAppTicket_BUserIsVacBanned(&decrypted, UInt32(decrypted.count))
-    }
-
-    /// Steamworks `SteamEncryptedAppTicket_BGetAppDefinedValue()`
-    public var appDefinedValue: Int? {
-        var val = UInt32(0)
-        let rc = SteamEncryptedAppTicket_BGetAppDefinedValue(&decrypted, UInt32(decrypted.count), &val)
-        return rc ? Int(val) : nil
     }
 
     /// Steamworks `SteamEncryptedAppTicket_GetUserVariableData()`
@@ -111,6 +105,19 @@ public final class SteamEncryptedAppTicket {
             buf.baseAddress!.initialize(from: userDataPtr, count: Int(userDataSize))
             done = Int(userDataSize)
         }
+    }
+}
+
+#if os(Windows)
+
+/// APIs in the header file that are not in the macOS dylib but
+/// are in the Windows DLL.
+extension SteamEncryptedAppTicket {
+    /// Steamworks `SteamEncryptedAppTicket_BGetAppDefinedValue()`
+    public var appDefinedValue: Int? {
+        var val = UInt32(0)
+        let rc = SteamEncryptedAppTicket_BGetAppDefinedValue(&decrypted, UInt32(decrypted.count), &val)
+        return rc ? Int(val) : nil
     }
 
     /// Steamworks `SteamEncryptedAppTicket_BIsTicketSigned()`
@@ -128,3 +135,5 @@ public final class SteamEncryptedAppTicket {
         SteamEncryptedAppTicket_BIsLicenseTemporary(&decrypted, UInt32(decrypted.count))
     }
 }
+
+#endif // Windows
