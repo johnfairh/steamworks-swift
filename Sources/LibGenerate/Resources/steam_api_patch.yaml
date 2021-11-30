@@ -49,6 +49,8 @@ enums:
     prefix: EGameSearchErrorCode
   EHTTPStatusCode:
     numeric_prefix: http
+  EItemState:
+    is_set: UInt32
   EMarketNotAllowedReasonFlags:
     is_set: Int32
     prefix: EMarketNotAllowedReason
@@ -446,6 +448,122 @@ methods:
       pchThumbnailFilename:
         nullable: true
 #
+# ISteamUGC
+#
+  SteamAPI_ISteamUGC_GetItemInstallInfo:
+    out_param_iff_rc: ' '
+    params:
+      punTimeStamp:
+        type: 'RTime32 *'
+  SteamAPI_ISteamUGC_GetItemState:
+    returntype: EItemState
+  SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview:
+    params:
+      pchOriginalFileName:
+        nullable: true
+  SteamAPI_ISteamUGC_GetSubscribedItems:
+    params:
+      pvecPublishedFileID:
+        out_array_count: cMaxEntries
+  SteamAPI_ISteamUGC_ReleaseQueryUGCRequest:
+    discardable_result: true
+  SteamAPI_ISteamUGC_StartPlaytimeTracking:
+    params:
+      pvecPublishedFileID:
+        array_count: unNumPublishedFileIDs
+  SteamAPI_ISteamUGC_StopPlaytimeTracking:
+    params:
+      pvecPublishedFileID:
+        array_count: unNumPublishedFileIDs
+  SteamAPI_ISteamUGC_SubmitItemUpdate:
+    params:
+      pchChangeNote:
+        nullable: true
+  SteamAPI_ISteamUGC_AddExcludedTag:
+    discardable_result: true
+  SteamAPI_ISteamUGC_AddItemKeyValueTag:
+    discardable_result: true
+  SteamAPI_ISteamUGC_AddItemPreviewFile:
+    discardable_result: true
+  SteamAPI_ISteamUGC_AddItemPreviewVideo:
+    discardable_result: true
+  SteamAPI_ISteamUGC_AddRequiredKeyValueTag:
+    discardable_result: true
+  SteamAPI_ISteamUGC_AddRequiredTag:
+    discardable_result: true
+  SteamAPI_ISteamUGC_AddRequiredTagGroup:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCChildren:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCTag:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCTagDisplayName:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCKeyValueTag:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCMetadata:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCPreviewURL:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCResult:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCStatistic:
+    discardable_result: true
+  SteamAPI_ISteamUGC_RemoveItemKeyValueTags:
+    discardable_result: true
+  SteamAPI_ISteamUGC_RemoveItemPreview:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetAllowCachedResponse:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetCloudFileNameFilter:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetItemContent:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetItemDescription:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetItemMetadata:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetItemPreview:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetItemTags:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetItemTitle:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetItemUpdateLanguage:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetItemVisibility:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetLanguage:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetMatchAnyTag:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetRankedByTrendDays:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetReturnAdditionalPreviews:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetReturnChildren:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetReturnKeyValueTags:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetReturnLongDescription:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetReturnMetadata:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetReturnOnlyIDs:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetReturnPlaytimeStats:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetReturnTotalOnly:
+    discardable_result: true
+  SteamAPI_ISteamUGC_SetSearchText:
+    discardable_result: true
+  SteamAPI_ISteamUGC_UpdateItemPreviewFile:
+    discardable_result: true
+  SteamAPI_ISteamUGC_UpdateItemPreviewVideo:
+    discardable_result: true
+#
 # ISteamUser
 #
   SteamAPI_ISteamUser_GetUserDataFolder:
@@ -600,3 +718,11 @@ structs:
     ignore: Better expressed directly as [String]
   SteamPartyBeaconLocation_t:
     swift_to_steam: true
+  SteamUGCDetails_t:
+    fields:
+      m_rtimeCreated:
+        type: RTime32
+      m_rtimeUpdated:
+        type: RTime32
+      m_rtimeAddedToUserList:
+        type: RTime32

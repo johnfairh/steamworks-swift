@@ -66,6 +66,7 @@
 		02AD45852753F74300BD93ED /* SteamInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD45842753F74300BD93ED /* SteamInput.swift */; };
 		02AD458727540ED700BD93ED /* SteamInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD458627540ED700BD93ED /* SteamInventory.swift */; };
 		02AD45892754EFF800BD93ED /* SteamRemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD45882754EFF800BD93ED /* SteamRemoteStorage.swift */; };
+		02AD458B275636A200BD93ED /* SteamUGC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD458A275636A200BD93ED /* SteamUGC.swift */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -205,6 +206,7 @@
 		02AD45842753F74300BD93ED /* SteamInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamInput.swift; sourceTree = "<group>"; };
 		02AD458627540ED700BD93ED /* SteamInventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamInventory.swift; sourceTree = "<group>"; };
 		02AD45882754EFF800BD93ED /* SteamRemoteStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamRemoteStorage.swift; sourceTree = "<group>"; };
+		02AD458A275636A200BD93ED /* SteamUGC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamUGC.swift; sourceTree = "<group>"; };
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				02AD457C27524E6400BD93ED /* SteamRemotePlay.swift */,
 				02AD45882754EFF800BD93ED /* SteamRemoteStorage.swift */,
 				02AD457E275251E700BD93ED /* SteamScreenshots.swift */,
+				02AD458A275636A200BD93ED /* SteamUGC.swift */,
 				027F837A274C0B0500963383 /* SteamUtils.swift */,
 				02AD454D274E4AA000BD93ED /* SteamUser.swift */,
 				02AD454F274E644D00BD93ED /* SteamUserStats.swift */,
@@ -708,6 +711,7 @@
 				020861042746D27000725122 /* Constants.swift in Sources */,
 				02AD457F275251E700BD93ED /* SteamScreenshots.swift in Sources */,
 				02D309E32728111A00DE64F0 /* Lock.swift in Sources */,
+				02AD458B275636A200BD93ED /* SteamUGC.swift in Sources */,
 				027F8379274BC05F00963383 /* GameID.swift in Sources */,
 				02D309DE2722D81E00DE64F0 /* SteamBaseAPI.swift in Sources */,
 				02AD458727540ED700BD93ED /* SteamInventory.swift in Sources */,

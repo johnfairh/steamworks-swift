@@ -264,7 +264,7 @@ private let steamParameterNamesExceptions: [String : String] = [
 // parts of the name...
 private let steamParameterNameGoodPrefixes = Set<String>([
     "friends", "steam", "csecs", "identity", "addr", "debug",
-    "rtime", "src"
+    "rtime", "src", "preview"
 ])
 
 extension String {

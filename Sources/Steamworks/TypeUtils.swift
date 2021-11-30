@@ -97,6 +97,13 @@ extension Optional where Wrapped == UnsafeMutablePointer<SteamParamStringArray_t
     }
 }
 
+// sometime's it's 'const'...
+extension Optional where Wrapped == UnsafePointer<SteamParamStringArray_t> {
+    init(_ stringArray: StringArray) {
+        self = .init(stringArray.steamParamStringArray)
+    }
+}
+
 extension Optional where Wrapped == UnsafeMutablePointer<UnsafePointer<CChar>?> {
     init(_ stringArray: StringArray) {
         self = stringArray.cStrings

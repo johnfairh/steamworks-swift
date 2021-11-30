@@ -2056,27 +2056,29 @@ extension EItemPreviewType: RawConvertible { typealias From = ItemPreviewType }
 extension ItemPreviewType: EnumWithUnrepresented { typealias From = EItemPreviewType }
 
 /// Steamworks `EItemState`
-public enum ItemState: UInt32 {
+public struct ItemState: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
     /// Steamworks `k_EItemStateNone`
-    case none = 0
+    public static let none = ItemState([])
     /// Steamworks `k_EItemStateSubscribed`
-    case subscribed = 1
+    public static let subscribed = ItemState(rawValue: 1)
     /// Steamworks `k_EItemStateLegacyItem`
-    case legacyItem = 2
+    public static let legacyItem = ItemState(rawValue: 2)
     /// Steamworks `k_EItemStateInstalled`
-    case installed = 4
+    public static let installed = ItemState(rawValue: 4)
     /// Steamworks `k_EItemStateNeedsUpdate`
-    case needsUpdate = 8
+    public static let needsUpdate = ItemState(rawValue: 8)
     /// Steamworks `k_EItemStateDownloading`
-    case downloading = 16
+    public static let downloading = ItemState(rawValue: 16)
     /// Steamworks `k_EItemStateDownloadPending`
-    case downloadPending = 32
-    /// Some undocumented value
-    case unrepresentedInSwift = 33
+    public static let downloadPending = ItemState(rawValue: 32)
 }
 
 extension EItemState: RawConvertible { typealias From = ItemState }
-extension ItemState: EnumWithUnrepresented { typealias From = EItemState }
+extension ItemState: RawConvertible { typealias From = EItemState }
 
 /// Steamworks `EItemStatistic`
 public enum ItemStatistic: UInt32 {
