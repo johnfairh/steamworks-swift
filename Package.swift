@@ -33,6 +33,7 @@ let package = Package(
   ],
   targets: [
     .systemLibrary(name: "CSteamworks"),
+    .systemLibrary(name: "CSteamworksEncryptedAppTicket"),
     .target(
       name: "Steamworks",
       dependencies: [
@@ -46,13 +47,11 @@ let package = Package(
     .target(
       name: "SteamworksEncryptedAppTicket",
       dependencies: [
-        "Steamworks"
+        "Steamworks",
+        "CSteamworksEncryptedAppTicket"
       ],  
       swiftSettings: [
         .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
-      ],
-      linkerSettings: [
-        .linkedLibrary("sdkencryptedappticket")
       ]
     ),
     .executableTarget(

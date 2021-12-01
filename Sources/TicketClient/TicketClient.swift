@@ -14,5 +14,9 @@ struct Main {
     static func main() {
         print("TicketClient testbed, steamworks version \(SteamAPI.steamworksVersion)")
         SteamAPI.logger.logLevel = .trace
+        guard let steam = SteamAPI() else {
+            print("Steam API not starting.")
+            return
+        }
     }
 }

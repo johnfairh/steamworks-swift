@@ -6,6 +6,7 @@
 //
 
 @_implementationOnly import CSteamworks
+@_implementationOnly import CSteamworksEncryptedAppTicket
 import Steamworks
 
 extension SteamUser {
@@ -110,8 +111,7 @@ public final class SteamEncryptedAppTicket {
 
 #if os(Windows)
 
-/// APIs in the header file that are not in the macOS dylib but
-/// are in the Windows DLL.
+/// APIs in the header file that are not in the macOS dylib (1.52) but are in the Windows DLL.
 extension SteamEncryptedAppTicket {
     /// Steamworks `SteamEncryptedAppTicket_BGetAppDefinedValue()`
     public var appDefinedValue: Int? {

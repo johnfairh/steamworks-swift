@@ -1,0 +1,6 @@
+module CSteamworksEncryptedAppTicket [system] {
+  header "steamworksencryptedappticket_headers.h"
+  link "sdkencryptedappticket"
+  requires cplusplus
+  export *
+}

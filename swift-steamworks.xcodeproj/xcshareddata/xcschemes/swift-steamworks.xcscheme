@@ -48,6 +48,48 @@
                ReferencedContainer = "container:swift-steamworks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "02AD458E2757892B00BD93ED"
+               BuildableName = "SteamworksEncryptedAppTicket.framework"
+               BlueprintName = "SteamworksEncryptedAppTicket"
+               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "020860BC2730485000725122"
+               BuildableName = "Generate"
+               BlueprintName = "Generate"
+               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "02AD45D727578D3C00BD93ED"
+               BuildableName = "TicketClient"
+               BlueprintName = "TicketClient"
+               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
