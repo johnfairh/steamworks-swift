@@ -60,3 +60,16 @@ public struct SteamMiscFlags: OptionSet {
 
 extension ESteamMiscFlags: RawConvertible { typealias From = SteamMiscFlags }
 extension SteamMiscFlags: RawConvertible { typealias From = ESteamMiscFlags }
+
+/// Steamworks `IPCFailure_t::EFailureType`
+public enum FailureType: UInt32 {
+    /// Steamworks `k_EFailureFlushedCallbackQueue`
+    case kEFailureFlushedCallbackQueue = 0
+    /// Steamworks `k_EFailurePipeFail`
+    case kEFailurePipeFail = 1
+    /// Some undocumented value
+    case unrepresentedInSwift = 2
+}
+
+extension IPCFailure_t.EFailureType: RawConvertible { typealias From = FailureType }
+extension FailureType: EnumWithUnrepresented { typealias From = IPCFailure_t.EFailureType }

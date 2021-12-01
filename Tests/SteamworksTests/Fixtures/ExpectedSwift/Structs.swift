@@ -22,20 +22,7 @@ public struct IPCFailure {
     public let data: [UInt8]
     /// Steamworks `m_aStruct`
     public let struct: [Something]
-
-    /// Steamworks `IPCFailure_t::EFailureType`
-    public enum FailureType: UInt32 {
-        /// Steamworks `k_EFailureFlushedCallbackQueue`
-        case kEFailureFlushedCallbackQueue = 0
-        /// Steamworks `k_EFailurePipeFail`
-        case kEFailurePipeFail = 1
-        /// Some undocumented value
-        case unrepresentedInSwift = 2
-    }
 }
-
-extension IPCFailure_t.EFailureType: RawConvertible { typealias From = IPCFailure.FailureType }
-extension IPCFailure.FailureType: EnumWithUnrepresented { typealias From = IPCFailure_t.EFailureType }
 
 extension IPCFailure: SteamCreatable {
     init(_ steam: CSteamworks.IPCFailure_t) {
