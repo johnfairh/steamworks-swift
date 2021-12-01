@@ -11,7 +11,7 @@ import Steamworks
 
 extension SteamUser {
     /// Swift-friendly wrapper to call `getEncryptedAppTicket(...)`.  You still have to know
-    /// the max size of the encrypted ticket.
+    /// the max size of the encrypted ticket
     public func getEncryptedAppTicket(maxSize: Int) -> [UInt8]? {
         var rc = false
         let array: [UInt8] = .init(unsafeUninitializedCapacity: maxSize) { buf, count in
@@ -41,17 +41,17 @@ public final class SteamEncryptedAppTicket {
     /// Returns `nil` if the Steam API fails or the key isn't long enough.
     ///
     /// Steamworks `SteamEncryptedAppTicket_BDecryptTicket()`.
-    public init?(ticketEncrypted: [UInt8], key: [UInt8]) {
+    public init?(encryptedBytes: [UInt8], key: [UInt8]) {
         guard key.count >= Self.symmetricKeyLen else {
             return nil
         }
 
         var rc = false
-        decrypted = .init(unsafeUninitializedCapacity: ticketEncrypted.count) { buf, size in
-            var decryptedSize = UInt32(0)
+        decrypted = .init(unsafeUninitializedCapacity: encryptedBytes.count) { buf, size in
+            var decryptedSize = UInt32(encryptedBytes.count)
             rc = SteamEncryptedAppTicket_BDecryptTicket(
-                ticketEncrypted,
-                UInt32(ticketEncrypted.count),
+                encryptedBytes,
+                UInt32(encryptedBytes.count),
                 buf.baseAddress,
                 &decryptedSize,
                 key,
