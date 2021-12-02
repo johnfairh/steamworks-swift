@@ -31,7 +31,7 @@ STEAM_SWIFT_FLAGS := \
 	-Xlinker -L${TICKET_LIB} \
 	-Xlinker -lc++
 
-all: build run run_ticket
+all: build run
 
 build: generate
 	swift build ${STEAM_SWIFT_FLAGS}

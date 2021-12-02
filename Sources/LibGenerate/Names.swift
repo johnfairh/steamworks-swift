@@ -43,9 +43,6 @@ extension String {
         guard let to = to else {
             return self
         }
-        if to == "char **" {
-            return "SteamStringArray(\(self)).cStrings" // no no this is broken, have to use with... pattern
-        }
         guard to.hasSuffix("?") else {
             return "\(to)(\(self))"
         }
@@ -170,11 +167,21 @@ extension String {
         steamTypesPassedInTransparently.contains(self)
     }
 
+    /// Cast needed from a value to meet the type
     var asSwiftTypeForPassingOutOfSteamworks: String? {
         if steamTypesPassedOutTransparently.contains(self) {
             return nil
         }
-        return asSwiftTypeName
+        return asSwiftReturnTypeName
+    }
+
+    /// Name of the type in return position - pass values instead of pointers to structs
+    var asSwiftReturnTypeName: String {
+        let naive = asSwiftTypeName
+        guard naive.hasSuffix("*") else {
+            return naive
+        }
+        return depointered.asSwiftTypeName
     }
 
     /// Drop one layer of C pointers from a type

@@ -187,6 +187,7 @@ struct Patch: Codable {
         let ignore: String? // filter out broken / too weird structs
         var bIgnore: Bool { ignore != nil }
         let name: String? // the steam json name is wrong...
+        let manual_swift_name: String?
         let swift_to_steam: Bool? // generate swift->steam converter
     }
     let structs: [String: Struct] // struct.name key
@@ -403,6 +404,7 @@ struct MetadataDB {
         }
 
         let name: String // "struct" too annoying
+        let manualSwiftName: String?
         let fields: [Field]
         let callbackID: Int?
         let ignore: Bool
@@ -415,6 +417,7 @@ struct MetadataDB {
         init(base: SteamJSON.Struct, patch: Patch) {
             let structPatch = patch.structs[base.struct]
             name = structPatch?.name ?? base.struct
+            manualSwiftName = structPatch?.manual_swift_name
             fields = base.fields.map {
                 .init(base: $0, patch: structPatch?.fields?[$0.fieldname])
             }
@@ -496,11 +499,17 @@ final class Metadata: CustomStringConvertible {
         }
 
         self.nestedEnums = .init(uniqueKeysWithValues: nestedStructEnums + nestedInterfaceEnums)
-        let clo: (MetadataDB.Enum) -> (String, String)? = { enu in
+        let eClo: (MetadataDB.Enum) -> (String, String)? = { enu in
             enu.manualSwiftName.map { (enu.name, $0) }
         }
-        self.manualSwiftNames = .init(uniqueKeysWithValues:
-          db.enums.values.compactMap(clo) + nestedEnums.values.compactMap(clo)
+        let sClo: (MetadataDB.Struct) -> (String, String)? = { str in
+            str.manualSwiftName.map { (str.name, $0) }
+        }
+        self.manualSwiftNames =
+            .init(uniqueKeysWithValues:
+                db.enums.values.compactMap(eClo) +
+                nestedEnums.values.compactMap(eClo) +
+                db.structs.values.compactMap(sClo)
         )
 
         Self.shared = self

@@ -110,6 +110,48 @@ extension Optional where Wrapped == UnsafeMutablePointer<UnsafePointer<CChar>?> 
     }
 }
 
+// MARK: Arrays of pairs of strings ...
+
+public typealias MatchMakingKeyValuePairs = KeyValuePairs<String, String>
+
+/// This dumb thing is for isteammatchmaking, which requires an array of pointers
+/// to C++ classes that contain two (inline) strings.  We model the input data in Swift as
+/// a String:String dictionary and build the data structure here.
+struct MatchMakingKeyValuePairArray {
+    /// Flat buffer of `MMKVP_t` structs
+    private let pairBuffer: UnsafeMutableBufferPointer<MatchMakingKeyValuePair_t>?
+    /// Buffer of pointers into the above buffer
+    private let pairPointerBuffer: UnsafeMutableBufferPointer<UnsafeMutablePointer<MatchMakingKeyValuePair_t>?>?
+
+    /// Pointer to the pointer array
+    var pairPointerArray: UnsafeMutablePointer<UnsafeMutablePointer<MatchMakingKeyValuePair_t>?>? {
+        pairPointerBuffer?.baseAddress
+    }
+
+    init(_ pairs: MatchMakingKeyValuePairs?) {
+        guard let pairs = pairs, pairs.count > 0 else {
+            pairBuffer = nil
+            pairPointerBuffer = nil
+            return
+        }
+        pairBuffer = .allocate(capacity: pairs.count)
+        _ = pairBuffer?.initialize(from: pairs.map { MatchMakingKeyValuePair_t($0.key, $0.value) } )
+        pairPointerBuffer = .allocate(capacity: pairs.count)
+        _ = pairPointerBuffer?.initialize(from: (0..<pairs.count).map { pairBuffer!.baseAddress! + $0 })
+    }
+
+    func deallocate() {
+        pairPointerBuffer?.deallocate()
+        pairBuffer?.deallocate()
+    }
+}
+
+extension Optional where Wrapped == UnsafeMutablePointer<UnsafeMutablePointer<MatchMakingKeyValuePair_t>?> {
+    init(_ mmkvpa: MatchMakingKeyValuePairArray) {
+        self = mmkvpa.pairPointerArray
+    }
+}
+
 // MARK: Typedefs
 
 /// Conversion of Swift Types to Steam types, for passing in typedefs
@@ -121,6 +163,12 @@ protocol SteamTypeAlias {
 
 extension FixedWidthInteger {
     init<T: SteamTypeAlias>(_ value: T) where T.SwiftType == Self {
+        self = value.value
+    }
+}
+
+extension UnsafeMutableRawPointer {
+    init(_ value: HServerListRequest) {
         self = value.value
     }
 }
@@ -212,6 +260,13 @@ extension UInt64 {
 
     mutating func shiftIn(_ value: UInt32, _ bs: BitSpec) {
         self = (self & ~(bs.mask << bs.shift)) | (UInt64(value) << bs.shift)
+    }
+}
+
+/// Always that one dumb outlier, and of course it's in mms
+extension GameServerItem {
+    init(_ ptr: UnsafeMutablePointer<gameserveritem_t>) {
+        self.init(ptr.pointee)
     }
 }
 

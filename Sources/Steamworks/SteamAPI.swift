@@ -70,6 +70,8 @@ public final class SteamAPI: SteamBaseAPI {
     public let input = SteamInput()
     /// Access the Steamworks `ISteamMatchmaking` interface
     public let matchmaking = SteamMatchmaking()
+    /// Access the Steamworks `ISteamMatchmakingServers` interface
+    public let matchmakingServers = SteamMatchmakingServers()
     /// Access the Steamworks `ISteamMusic` interface
     public let music = SteamMusic()
     /// Access the Steamworks `ISteamMusicRemote` interface

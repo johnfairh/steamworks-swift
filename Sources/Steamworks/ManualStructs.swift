@@ -158,3 +158,46 @@ public struct SteamInputActionEvent {
 }
 
 extension SteamInputActionEvent: SteamCreatable {}
+
+// MARK: servernetadr
+
+// Some more bizarreness from MMS.  What even is `SteamIPAddress`...
+// Again we have to be `final class` to avoid the weird corruption of the embedded C++ thing.
+//
+// This is read-only type afaics so just port the getters.
+// None of them are const-correct...
+//
+// `netadr_t` is something from another valve sdk.
+//
+// Can't implement comparable because Swift C++ import doesn't understand C++ operator overloads.
+
+/// Steamworks `servernetadr`
+public final class ServerNetAdr {
+    private var adr: servernetadr_t
+
+    init(_ steam: servernetadr_t) {
+        self.adr = steam
+    }
+
+    public var queryPort: Int {
+        Int(adr.GetQueryPort())
+    }
+
+    public var connectionPort: Int {
+        Int(adr.GetConnectionPort())
+    }
+
+    public var ip: Int {
+        Int(adr.GetIP())
+    }
+
+    public var connectionAddressString: String {
+        String(adr.GetConnectionAddressString())
+    }
+
+    public var queryAddressString: String {
+        String(adr.GetQueryAddressString())
+    }
+}
+
+extension ServerNetAdr: SteamCreatable {}

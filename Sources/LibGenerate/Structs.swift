@@ -158,6 +158,7 @@ extension MetadataDB.Struct {
             "}",
             "",
             "extension \(swiftTypeName): SteamCreatable {",
+            "    typealias SteamType = CSteamworks.\(name)",
             "    init(_ steam: CSteamworks.\(name)) {"
         ],
         fields.initLines.indented(2), [

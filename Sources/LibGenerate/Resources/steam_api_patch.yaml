@@ -353,6 +353,31 @@ methods:
   SteamAPI_ISteamMatchmaking_SetLobbyType:
     discardable_result: true
 #
+# ISteamMatchmakingServers
+#
+  SteamAPI_ISteamMatchmakingServers_CancelServerQuery:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_PingServer:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_PlayerDetails:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_ReleaseRequest:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_RequestInternetServerList:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_RequestLANServerList:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList:
+    ignore: "Too much C++, handled manually"
+  SteamAPI_ISteamMatchmakingServers_ServerRules:
+    ignore: "Too much C++, handled manually"
+#
 # ISteamMusicRemote
 #
   SteamAPI_ISteamMusicRemote_BActivationSuccess:
@@ -647,6 +672,8 @@ structs:
     fields:
       m_uAppID:
         fieldtype: AppId_t
+  gameserveritem_t:
+    manual_swift_name: GameServerItem
   GSReputation_t:
     fields:
       m_unBanExpires:
@@ -687,6 +714,9 @@ structs:
         fieldtype: RTime32
       m_rtimeUpdated:
         fieldtype: RTime32
+  servernetadr_t:
+    ignore: "Too weird, done manually"
+    manual_swift_name: ServerNetAdr
   SteamDatagramGameCoordinatorServerLogin:
     ignore: C declaration is missing
   SteamDatagramHostedAddress:

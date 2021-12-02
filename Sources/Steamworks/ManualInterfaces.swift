@@ -56,7 +56,8 @@ extension SteamRemoteStorage {
     /// Steamworks `ISteamRemoteStorage::GetUGCDetails()`
     public func getUGCDetails(content: UGCHandle, appID: inout AppID, name: inout String, fileSizeInBytes: inout Int, owner: inout SteamID) -> Bool {
         var tmp_appID = AppId_t()
-        let name_ptr = UnsafeMutablePointer<UnsafeMutablePointer<CChar>?>.allocate(capacity: 1)
+        let name_ptr = UnsafeMutablePointer<UnsafeMutablePointer<CChar>?>.allocate(capacity: 1) // as in, space for one pointer-to-char
+        defer { name_ptr.deallocate() }
         var tmp_fileSizeInBytes = int32()
         var tmp_owner = CSteamID()
         let rc = SteamAPI_ISteamRemoteStorage_GetUGCDetails(interface, UGCHandle_t(content), &tmp_appID, name_ptr, &tmp_fileSizeInBytes, &tmp_owner)

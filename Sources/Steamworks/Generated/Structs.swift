@@ -13,6 +13,7 @@ public struct ActiveBeaconsUpdated {
 }
 
 extension ActiveBeaconsUpdated: SteamCreatable {
+    typealias SteamType = CSteamworks.ActiveBeaconsUpdated_t
     init(_ steam: CSteamworks.ActiveBeaconsUpdated_t) {
     }
 }
@@ -28,6 +29,7 @@ public struct AddAppDependencyResult {
 }
 
 extension AddAppDependencyResult: SteamCreatable {
+    typealias SteamType = CSteamworks.AddAppDependencyResult_t
     init(_ steam: CSteamworks.AddAppDependencyResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -46,6 +48,7 @@ public struct AddUGCDependencyResult {
 }
 
 extension AddUGCDependencyResult: SteamCreatable {
+    typealias SteamType = CSteamworks.AddUGCDependencyResult_t
     init(_ steam: CSteamworks.AddUGCDependencyResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -66,6 +69,7 @@ public struct AppProofOfPurchaseKeyResponse {
 }
 
 extension AppProofOfPurchaseKeyResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.AppProofOfPurchaseKeyResponse_t
     init(_ steam: CSteamworks.AppProofOfPurchaseKeyResponse_t) {
         result = .init(steam.m_eResult)
         appID = .init(steam.m_nAppID)
@@ -79,6 +83,7 @@ public struct AppResumingFromSuspend {
 }
 
 extension AppResumingFromSuspend: SteamCreatable {
+    typealias SteamType = CSteamworks.AppResumingFromSuspend_t
     init(_ steam: CSteamworks.AppResumingFromSuspend_t) {
     }
 }
@@ -90,6 +95,7 @@ public struct AssociateWithClanResult {
 }
 
 extension AssociateWithClanResult: SteamCreatable {
+    typealias SteamType = CSteamworks.AssociateWithClanResult_t
     init(_ steam: CSteamworks.AssociateWithClanResult_t) {
         result = .init(steam.m_eResult)
     }
@@ -100,6 +106,7 @@ public struct AvailableBeaconLocationsUpdated {
 }
 
 extension AvailableBeaconLocationsUpdated: SteamCreatable {
+    typealias SteamType = CSteamworks.AvailableBeaconLocationsUpdated_t
     init(_ steam: CSteamworks.AvailableBeaconLocationsUpdated_t) {
     }
 }
@@ -117,6 +124,7 @@ public struct AvatarImageLoaded {
 }
 
 extension AvatarImageLoaded: SteamCreatable {
+    typealias SteamType = CSteamworks.AvatarImageLoaded_t
     init(_ steam: CSteamworks.AvatarImageLoaded_t) {
         steamID = .init(steam.m_steamID)
         imageIndex = .init(steam.m_iImage)
@@ -132,6 +140,7 @@ public struct ChangeNumOpenSlotsCallback {
 }
 
 extension ChangeNumOpenSlotsCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.ChangeNumOpenSlotsCallback_t
     init(_ steam: CSteamworks.ChangeNumOpenSlotsCallback_t) {
         result = .init(steam.m_eResult)
     }
@@ -144,6 +153,7 @@ public struct CheckFileSignature {
 }
 
 extension CheckFileSignature: SteamCreatable {
+    typealias SteamType = CSteamworks.CheckFileSignature_t
     init(_ steam: CSteamworks.CheckFileSignature_t) {
         checkFileSignature = .init(steam.m_eCheckFileSignature)
     }
@@ -160,6 +170,7 @@ public struct ClanOfficerListResponse {
 }
 
 extension ClanOfficerListResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.ClanOfficerListResponse_t
     init(_ steam: CSteamworks.ClanOfficerListResponse_t) {
         clan = .init(steam.m_steamIDClan)
         officers = .init(steam.m_cOfficers)
@@ -182,6 +193,7 @@ public struct ClientGameServerDeny {
 }
 
 extension ClientGameServerDeny: SteamCreatable {
+    typealias SteamType = CSteamworks.ClientGameServerDeny_t
     init(_ steam: CSteamworks.ClientGameServerDeny_t) {
         appID = .init(steam.m_uAppID)
         gameServerIP = .init(steam.m_unGameServerIP)
@@ -206,6 +218,7 @@ public struct ComputeNewPlayerCompatibilityResult {
 }
 
 extension ComputeNewPlayerCompatibilityResult: SteamCreatable {
+    typealias SteamType = CSteamworks.ComputeNewPlayerCompatibilityResult_t
     init(_ steam: CSteamworks.ComputeNewPlayerCompatibilityResult_t) {
         result = .init(steam.m_eResult)
         playersThatDontLikeCandidate = .init(steam.m_cPlayersThatDontLikeCandidate)
@@ -224,6 +237,7 @@ public struct CreateBeaconCallback {
 }
 
 extension CreateBeaconCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.CreateBeaconCallback_t
     init(_ steam: CSteamworks.CreateBeaconCallback_t) {
         result = .init(steam.m_eResult)
         beaconID = .init(steam.m_ulBeaconID)
@@ -241,6 +255,7 @@ public struct CreateItemResult {
 }
 
 extension CreateItemResult: SteamCreatable {
+    typealias SteamType = CSteamworks.CreateItemResult_t
     init(_ steam: CSteamworks.CreateItemResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -257,6 +272,7 @@ public struct DeleteItemResult {
 }
 
 extension DeleteItemResult: SteamCreatable {
+    typealias SteamType = CSteamworks.DeleteItemResult_t
     init(_ steam: CSteamworks.DeleteItemResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -270,6 +286,7 @@ public struct DlcInstalled {
 }
 
 extension DlcInstalled: SteamCreatable {
+    typealias SteamType = CSteamworks.DlcInstalled_t
     init(_ steam: CSteamworks.DlcInstalled_t) {
         appID = .init(steam.m_nAppID)
     }
@@ -282,6 +299,7 @@ public struct DownloadClanActivityCountsResult {
 }
 
 extension DownloadClanActivityCountsResult: SteamCreatable {
+    typealias SteamType = CSteamworks.DownloadClanActivityCountsResult_t
     init(_ steam: CSteamworks.DownloadClanActivityCountsResult_t) {
         success = .init(steam.m_bSuccess)
     }
@@ -298,6 +316,7 @@ public struct DownloadItemResult {
 }
 
 extension DownloadItemResult: SteamCreatable {
+    typealias SteamType = CSteamworks.DownloadItemResult_t
     init(_ steam: CSteamworks.DownloadItemResult_t) {
         appID = .init(steam.m_unAppID)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -326,6 +345,7 @@ public struct DurationControl {
 }
 
 extension DurationControl: SteamCreatable {
+    typealias SteamType = CSteamworks.DurationControl_t
     init(_ steam: CSteamworks.DurationControl_t) {
         result = .init(steam.m_eResult)
         appid = .init(steam.m_appid)
@@ -345,6 +365,7 @@ public struct EncryptedAppTicketResponse {
 }
 
 extension EncryptedAppTicketResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.EncryptedAppTicketResponse_t
     init(_ steam: CSteamworks.EncryptedAppTicketResponse_t) {
         result = .init(steam.m_eResult)
     }
@@ -359,6 +380,7 @@ public struct EndGameResultCallback {
 }
 
 extension EndGameResultCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.EndGameResultCallback_t
     init(_ steam: CSteamworks.EndGameResultCallback_t) {
         result = .init(steam.m_eResult)
         uniqueGameID = .init(steam.ullUniqueGameID)
@@ -372,6 +394,7 @@ public struct FavoritesListAccountsUpdated {
 }
 
 extension FavoritesListAccountsUpdated: SteamCreatable {
+    typealias SteamType = CSteamworks.FavoritesListAccountsUpdated_t
     init(_ steam: CSteamworks.FavoritesListAccountsUpdated_t) {
         result = .init(steam.m_eResult)
     }
@@ -396,6 +419,7 @@ public struct FavoritesListChanged {
 }
 
 extension FavoritesListChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.FavoritesListChanged_t
     init(_ steam: CSteamworks.FavoritesListChanged_t) {
         ip = .init(steam.m_nIP)
         queryPort = .init(steam.m_nQueryPort)
@@ -420,6 +444,7 @@ public struct FileDetailsResult {
 }
 
 extension FileDetailsResult: SteamCreatable {
+    typealias SteamType = CSteamworks.FileDetailsResult_t
     init(_ steam: CSteamworks.FileDetailsResult_t) {
         result = .init(steam.m_eResult)
         fileSize = .init(steam.m_ulFileSize)
@@ -433,6 +458,7 @@ public struct FloatingGamepadTextInputDismissed {
 }
 
 extension FloatingGamepadTextInputDismissed: SteamCreatable {
+    typealias SteamType = CSteamworks.FloatingGamepadTextInputDismissed_t
     init(_ steam: CSteamworks.FloatingGamepadTextInputDismissed_t) {
     }
 }
@@ -452,6 +478,7 @@ public struct FriendGameInfo {
 }
 
 extension FriendGameInfo: SteamCreatable {
+    typealias SteamType = CSteamworks.FriendGameInfo_t
     init(_ steam: CSteamworks.FriendGameInfo_t) {
         id = .init(steam.m_gameID)
         gameIP = .init(steam.m_unGameIP)
@@ -470,6 +497,7 @@ public struct FriendRichPresenceUpdate {
 }
 
 extension FriendRichPresenceUpdate: SteamCreatable {
+    typealias SteamType = CSteamworks.FriendRichPresenceUpdate_t
     init(_ steam: CSteamworks.FriendRichPresenceUpdate_t) {
         friend = .init(steam.m_steamIDFriend)
         appID = .init(steam.m_nAppID)
@@ -489,6 +517,7 @@ public struct FriendsEnumerateFollowingList {
 }
 
 extension FriendsEnumerateFollowingList: SteamCreatable {
+    typealias SteamType = CSteamworks.FriendsEnumerateFollowingList_t
     init(_ steam: CSteamworks.FriendsEnumerateFollowingList_t) {
         result = .init(steam.m_eResult)
         steamID = .init(steam.m_rgSteamID_ptr, 50) { .init($0) }
@@ -508,6 +537,7 @@ public struct FriendsGetFollowerCount {
 }
 
 extension FriendsGetFollowerCount: SteamCreatable {
+    typealias SteamType = CSteamworks.FriendsGetFollowerCount_t
     init(_ steam: CSteamworks.FriendsGetFollowerCount_t) {
         result = .init(steam.m_eResult)
         steamID = .init(steam.m_steamID)
@@ -526,6 +556,7 @@ public struct FriendsIsFollowing {
 }
 
 extension FriendsIsFollowing: SteamCreatable {
+    typealias SteamType = CSteamworks.FriendsIsFollowing_t
     init(_ steam: CSteamworks.FriendsIsFollowing_t) {
         result = .init(steam.m_eResult)
         steamID = .init(steam.m_steamID)
@@ -544,6 +575,7 @@ public struct GSClientAchievementStatus {
 }
 
 extension GSClientAchievementStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.GSClientAchievementStatus_t
     init(_ steam: CSteamworks.GSClientAchievementStatus_t) {
         steamID = .init(steam.m_SteamID)
         achievement = .init(steam.m_pchAchievement_ptr)
@@ -560,6 +592,7 @@ public struct GSClientApprove {
 }
 
 extension GSClientApprove: SteamCreatable {
+    typealias SteamType = CSteamworks.GSClientApprove_t
     init(_ steam: CSteamworks.GSClientApprove_t) {
         steamID = .init(steam.m_SteamID)
         ownerSteamID = .init(steam.m_OwnerSteamID)
@@ -577,6 +610,7 @@ public struct GSClientDeny {
 }
 
 extension GSClientDeny: SteamCreatable {
+    typealias SteamType = CSteamworks.GSClientDeny_t
     init(_ steam: CSteamworks.GSClientDeny_t) {
         steamID = .init(steam.m_SteamID)
         denyReason = .init(steam.m_eDenyReason)
@@ -597,6 +631,7 @@ public struct GSClientGroupStatus {
 }
 
 extension GSClientGroupStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.GSClientGroupStatus_t
     init(_ steam: CSteamworks.GSClientGroupStatus_t) {
         user = .init(steam.m_SteamIDUser)
         group = .init(steam.m_SteamIDGroup)
@@ -614,6 +649,7 @@ public struct GSClientKick {
 }
 
 extension GSClientKick: SteamCreatable {
+    typealias SteamType = CSteamworks.GSClientKick_t
     init(_ steam: CSteamworks.GSClientKick_t) {
         steamID = .init(steam.m_SteamID)
         denyReason = .init(steam.m_eDenyReason)
@@ -633,6 +669,7 @@ public struct GSGameplayStats {
 }
 
 extension GSGameplayStats: SteamCreatable {
+    typealias SteamType = CSteamworks.GSGameplayStats_t
     init(_ steam: CSteamworks.GSGameplayStats_t) {
         result = .init(steam.m_eResult)
         rank = .init(steam.m_nRank)
@@ -648,6 +685,7 @@ public struct GSPolicyResponse {
 }
 
 extension GSPolicyResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.GSPolicyResponse_t
     init(_ steam: CSteamworks.GSPolicyResponse_t) {
         secure = .init(steam.m_bSecure)
     }
@@ -672,6 +710,7 @@ public struct GSReputation {
 }
 
 extension GSReputation: SteamCreatable {
+    typealias SteamType = CSteamworks.GSReputation_t
     init(_ steam: CSteamworks.GSReputation_t) {
         result = .init(steam.m_eResult)
         reputationScore = .init(steam.m_unReputationScore)
@@ -692,6 +731,7 @@ public struct GSStatsReceived {
 }
 
 extension GSStatsReceived: SteamCreatable {
+    typealias SteamType = CSteamworks.GSStatsReceived_t
     init(_ steam: CSteamworks.GSStatsReceived_t) {
         result = .init(steam.m_eResult)
         user = .init(steam.m_steamIDUser)
@@ -707,6 +747,7 @@ public struct GSStatsStored {
 }
 
 extension GSStatsStored: SteamCreatable {
+    typealias SteamType = CSteamworks.GSStatsStored_t
     init(_ steam: CSteamworks.GSStatsStored_t) {
         result = .init(steam.m_eResult)
         user = .init(steam.m_steamIDUser)
@@ -720,6 +761,7 @@ public struct GSStatsUnloaded {
 }
 
 extension GSStatsUnloaded: SteamCreatable {
+    typealias SteamType = CSteamworks.GSStatsUnloaded_t
     init(_ steam: CSteamworks.GSStatsUnloaded_t) {
         user = .init(steam.m_steamIDUser)
     }
@@ -734,6 +776,7 @@ public struct GameConnectedChatJoin {
 }
 
 extension GameConnectedChatJoin: SteamCreatable {
+    typealias SteamType = CSteamworks.GameConnectedChatJoin_t
     init(_ steam: CSteamworks.GameConnectedChatJoin_t) {
         clanChat = .init(steam.m_steamIDClanChat)
         user = .init(steam.m_steamIDUser)
@@ -753,6 +796,7 @@ public struct GameConnectedChatLeave {
 }
 
 extension GameConnectedChatLeave: SteamCreatable {
+    typealias SteamType = CSteamworks.GameConnectedChatLeave_t
     init(_ steam: CSteamworks.GameConnectedChatLeave_t) {
         clanChat = .init(steam.m_steamIDClanChat)
         user = .init(steam.m_steamIDUser)
@@ -772,6 +816,7 @@ public struct GameConnectedClanChatMsg {
 }
 
 extension GameConnectedClanChatMsg: SteamCreatable {
+    typealias SteamType = CSteamworks.GameConnectedClanChatMsg_t
     init(_ steam: CSteamworks.GameConnectedClanChatMsg_t) {
         clanChat = .init(steam.m_steamIDClanChat)
         user = .init(steam.m_steamIDUser)
@@ -788,6 +833,7 @@ public struct GameConnectedFriendChatMsg {
 }
 
 extension GameConnectedFriendChatMsg: SteamCreatable {
+    typealias SteamType = CSteamworks.GameConnectedFriendChatMsg_t
     init(_ steam: CSteamworks.GameConnectedFriendChatMsg_t) {
         user = .init(steam.m_steamIDUser)
         messageIDIndex = .init(steam.m_iMessageID)
@@ -803,6 +849,7 @@ public struct GameLobbyJoinRequested {
 }
 
 extension GameLobbyJoinRequested: SteamCreatable {
+    typealias SteamType = CSteamworks.GameLobbyJoinRequested_t
     init(_ steam: CSteamworks.GameLobbyJoinRequested_t) {
         lobby = .init(steam.m_steamIDLobby)
         friend = .init(steam.m_steamIDFriend)
@@ -816,6 +863,7 @@ public struct GameOverlayActivated {
 }
 
 extension GameOverlayActivated: SteamCreatable {
+    typealias SteamType = CSteamworks.GameOverlayActivated_t
     init(_ steam: CSteamworks.GameOverlayActivated_t) {
         active = .init(steam.m_bActive)
     }
@@ -830,6 +878,7 @@ public struct GameRichPresenceJoinRequested {
 }
 
 extension GameRichPresenceJoinRequested: SteamCreatable {
+    typealias SteamType = CSteamworks.GameRichPresenceJoinRequested_t
     init(_ steam: CSteamworks.GameRichPresenceJoinRequested_t) {
         friend = .init(steam.m_steamIDFriend)
         connect = .init(steam.m_rgchConnect_ptr)
@@ -845,6 +894,7 @@ public struct GameServerChangeRequested {
 }
 
 extension GameServerChangeRequested: SteamCreatable {
+    typealias SteamType = CSteamworks.GameServerChangeRequested_t
     init(_ steam: CSteamworks.GameServerChangeRequested_t) {
         server = .init(steam.m_rgchServer_ptr)
         password = .init(steam.m_rgchPassword_ptr)
@@ -858,6 +908,7 @@ public struct GameWebCallback {
 }
 
 extension GameWebCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.GameWebCallback_t
     init(_ steam: CSteamworks.GameWebCallback_t) {
         url = .init(steam.m_szURL_ptr)
     }
@@ -872,6 +923,7 @@ public struct GamepadTextInputDismissed {
 }
 
 extension GamepadTextInputDismissed: SteamCreatable {
+    typealias SteamType = CSteamworks.GamepadTextInputDismissed_t
     init(_ steam: CSteamworks.GamepadTextInputDismissed_t) {
         submitted = .init(steam.m_bSubmitted)
         submittedText = .init(steam.m_unSubmittedText)
@@ -893,6 +945,7 @@ public struct GetAppDependenciesResult {
 }
 
 extension GetAppDependenciesResult: SteamCreatable {
+    typealias SteamType = CSteamworks.GetAppDependenciesResult_t
     init(_ steam: CSteamworks.GetAppDependenciesResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -911,6 +964,7 @@ public struct GetAuthSessionTicketResponse {
 }
 
 extension GetAuthSessionTicketResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.GetAuthSessionTicketResponse_t
     init(_ steam: CSteamworks.GetAuthSessionTicketResponse_t) {
         authTicket = .init(steam.m_hAuthTicket)
         result = .init(steam.m_eResult)
@@ -926,6 +980,7 @@ public struct GetOPFSettingsResult {
 }
 
 extension GetOPFSettingsResult: SteamCreatable {
+    typealias SteamType = CSteamworks.GetOPFSettingsResult_t
     init(_ steam: CSteamworks.GetOPFSettingsResult_t) {
         result = .init(steam.m_eResult)
         videoAppID = .init(steam.m_unVideoAppID)
@@ -947,6 +1002,7 @@ public struct GetUserItemVoteResult {
 }
 
 extension GetUserItemVoteResult: SteamCreatable {
+    typealias SteamType = CSteamworks.GetUserItemVoteResult_t
     init(_ steam: CSteamworks.GetUserItemVoteResult_t) {
         publishedFileId = .init(steam.m_nPublishedFileId)
         result = .init(steam.m_eResult)
@@ -967,6 +1023,7 @@ public struct GetVideoURLResult {
 }
 
 extension GetVideoURLResult: SteamCreatable {
+    typealias SteamType = CSteamworks.GetVideoURLResult_t
     init(_ steam: CSteamworks.GetVideoURLResult_t) {
         result = .init(steam.m_eResult)
         videoAppID = .init(steam.m_unVideoAppID)
@@ -983,6 +1040,7 @@ public struct GlobalAchievementPercentagesReady {
 }
 
 extension GlobalAchievementPercentagesReady: SteamCreatable {
+    typealias SteamType = CSteamworks.GlobalAchievementPercentagesReady_t
     init(_ steam: CSteamworks.GlobalAchievementPercentagesReady_t) {
         gameID = .init(steam.m_nGameID)
         result = .init(steam.m_eResult)
@@ -998,6 +1056,7 @@ public struct GlobalStatsReceived {
 }
 
 extension GlobalStatsReceived: SteamCreatable {
+    typealias SteamType = CSteamworks.GlobalStatsReceived_t
     init(_ steam: CSteamworks.GlobalStatsReceived_t) {
         gameID = .init(steam.m_nGameID)
         result = .init(steam.m_eResult)
@@ -1011,6 +1070,7 @@ public struct HTMLBrowserReady {
 }
 
 extension HTMLBrowserReady: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_BrowserReady_t
     init(_ steam: CSteamworks.HTML_BrowserReady_t) {
         browserHandle = .init(steam.unBrowserHandle)
     }
@@ -1025,6 +1085,7 @@ public struct HTMLBrowserRestarted {
 }
 
 extension HTMLBrowserRestarted: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_BrowserRestarted_t
     init(_ steam: CSteamworks.HTML_BrowserRestarted_t) {
         browserHandle = .init(steam.unBrowserHandle)
         oldBrowserHandle = .init(steam.unOldBrowserHandle)
@@ -1042,6 +1103,7 @@ public struct HTMLCanGoBackAndForward {
 }
 
 extension HTMLCanGoBackAndForward: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_CanGoBackAndForward_t
     init(_ steam: CSteamworks.HTML_CanGoBackAndForward_t) {
         browserHandle = .init(steam.unBrowserHandle)
         canGoBack = .init(steam.bCanGoBack)
@@ -1058,6 +1120,7 @@ public struct HTMLChangedTitle {
 }
 
 extension HTMLChangedTitle: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_ChangedTitle_t
     init(_ steam: CSteamworks.HTML_ChangedTitle_t) {
         browserHandle = .init(steam.unBrowserHandle)
         title = .init(steam.pchTitle)
@@ -1071,6 +1134,7 @@ public struct HTMLCloseBrowser {
 }
 
 extension HTMLCloseBrowser: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_CloseBrowser_t
     init(_ steam: CSteamworks.HTML_CloseBrowser_t) {
         browserHandle = .init(steam.unBrowserHandle)
     }
@@ -1087,6 +1151,7 @@ public struct HTMLFileOpenDialog {
 }
 
 extension HTMLFileOpenDialog: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_FileOpenDialog_t
     init(_ steam: CSteamworks.HTML_FileOpenDialog_t) {
         browserHandle = .init(steam.unBrowserHandle)
         title = .init(steam.pchTitle)
@@ -1105,6 +1170,7 @@ public struct HTMLFinishedRequest {
 }
 
 extension HTMLFinishedRequest: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_FinishedRequest_t
     init(_ steam: CSteamworks.HTML_FinishedRequest_t) {
         browserHandle = .init(steam.unBrowserHandle)
         url = .init(steam.pchURL)
@@ -1119,6 +1185,7 @@ public struct HTMLHideToolTip {
 }
 
 extension HTMLHideToolTip: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_HideToolTip_t
     init(_ steam: CSteamworks.HTML_HideToolTip_t) {
         browserHandle = .init(steam.unBrowserHandle)
     }
@@ -1141,6 +1208,7 @@ public struct HTMLHorizontalScroll {
 }
 
 extension HTMLHorizontalScroll: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_HorizontalScroll_t
     init(_ steam: CSteamworks.HTML_HorizontalScroll_t) {
         browserHandle = .init(steam.unBrowserHandle)
         scrollMax = .init(steam.unScrollMax)
@@ -1160,6 +1228,7 @@ public struct HTMLJSAlert {
 }
 
 extension HTMLJSAlert: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_JSAlert_t
     init(_ steam: CSteamworks.HTML_JSAlert_t) {
         browserHandle = .init(steam.unBrowserHandle)
         message = .init(steam.pchMessage)
@@ -1175,6 +1244,7 @@ public struct HTMLJSConfirm {
 }
 
 extension HTMLJSConfirm: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_JSConfirm_t
     init(_ steam: CSteamworks.HTML_JSConfirm_t) {
         browserHandle = .init(steam.unBrowserHandle)
         message = .init(steam.pchMessage)
@@ -1198,6 +1268,7 @@ public struct HTMLLinkAtPosition {
 }
 
 extension HTMLLinkAtPosition: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_LinkAtPosition_t
     init(_ steam: CSteamworks.HTML_LinkAtPosition_t) {
         browserHandle = .init(steam.unBrowserHandle)
         x = .init(steam.x)
@@ -1237,6 +1308,7 @@ public struct HTMLNeedsPaint {
 }
 
 extension HTMLNeedsPaint: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_NeedsPaint_t
     init(_ steam: CSteamworks.HTML_NeedsPaint_t) {
         browserHandle = .init(steam.unBrowserHandle)
         bgra = .init(steam.pBGRA)
@@ -1272,6 +1344,7 @@ public struct HTMLNewWindow {
 }
 
 extension HTMLNewWindow: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_NewWindow_t
     init(_ steam: CSteamworks.HTML_NewWindow_t) {
         browserHandle = .init(steam.unBrowserHandle)
         url = .init(steam.pchURL)
@@ -1292,6 +1365,7 @@ public struct HTMLOpenLinkInNewTab {
 }
 
 extension HTMLOpenLinkInNewTab: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_OpenLinkInNewTab_t
     init(_ steam: CSteamworks.HTML_OpenLinkInNewTab_t) {
         browserHandle = .init(steam.unBrowserHandle)
         url = .init(steam.pchURL)
@@ -1309,6 +1383,7 @@ public struct HTMLSearchResults {
 }
 
 extension HTMLSearchResults: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_SearchResults_t
     init(_ steam: CSteamworks.HTML_SearchResults_t) {
         browserHandle = .init(steam.unBrowserHandle)
         results = .init(steam.unResults)
@@ -1325,6 +1400,7 @@ public struct HTMLSetCursor {
 }
 
 extension HTMLSetCursor: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_SetCursor_t
     init(_ steam: CSteamworks.HTML_SetCursor_t) {
         browserHandle = .init(steam.unBrowserHandle)
         mouseCursor = .init(steam.eMouseCursor)
@@ -1340,6 +1416,7 @@ public struct HTMLShowToolTip {
 }
 
 extension HTMLShowToolTip: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_ShowToolTip_t
     init(_ steam: CSteamworks.HTML_ShowToolTip_t) {
         browserHandle = .init(steam.unBrowserHandle)
         msg = .init(steam.pchMsg)
@@ -1361,6 +1438,7 @@ public struct HTMLStartRequest {
 }
 
 extension HTMLStartRequest: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_StartRequest_t
     init(_ steam: CSteamworks.HTML_StartRequest_t) {
         browserHandle = .init(steam.unBrowserHandle)
         url = .init(steam.pchURL)
@@ -1379,6 +1457,7 @@ public struct HTMLStatusText {
 }
 
 extension HTMLStatusText: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_StatusText_t
     init(_ steam: CSteamworks.HTML_StatusText_t) {
         browserHandle = .init(steam.unBrowserHandle)
         msg = .init(steam.pchMsg)
@@ -1402,6 +1481,7 @@ public struct HTMLURLChanged {
 }
 
 extension HTMLURLChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_URLChanged_t
     init(_ steam: CSteamworks.HTML_URLChanged_t) {
         browserHandle = .init(steam.unBrowserHandle)
         url = .init(steam.pchURL)
@@ -1421,6 +1501,7 @@ public struct HTMLUpdateToolTip {
 }
 
 extension HTMLUpdateToolTip: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_UpdateToolTip_t
     init(_ steam: CSteamworks.HTML_UpdateToolTip_t) {
         browserHandle = .init(steam.unBrowserHandle)
         msg = .init(steam.pchMsg)
@@ -1444,6 +1525,7 @@ public struct HTMLVerticalScroll {
 }
 
 extension HTMLVerticalScroll: SteamCreatable {
+    typealias SteamType = CSteamworks.HTML_VerticalScroll_t
     init(_ steam: CSteamworks.HTML_VerticalScroll_t) {
         browserHandle = .init(steam.unBrowserHandle)
         scrollMax = .init(steam.unScrollMax)
@@ -1469,6 +1551,7 @@ public struct HTTPRequestCompleted {
 }
 
 extension HTTPRequestCompleted: SteamCreatable {
+    typealias SteamType = CSteamworks.HTTPRequestCompleted_t
     init(_ steam: CSteamworks.HTTPRequestCompleted_t) {
         request = .init(steam.m_hRequest)
         contextValue = .init(steam.m_ulContextValue)
@@ -1491,6 +1574,7 @@ public struct HTTPRequestDataReceived {
 }
 
 extension HTTPRequestDataReceived: SteamCreatable {
+    typealias SteamType = CSteamworks.HTTPRequestDataReceived_t
     init(_ steam: CSteamworks.HTTPRequestDataReceived_t) {
         request = .init(steam.m_hRequest)
         contextValue = .init(steam.m_ulContextValue)
@@ -1508,6 +1592,7 @@ public struct HTTPRequestHeadersReceived {
 }
 
 extension HTTPRequestHeadersReceived: SteamCreatable {
+    typealias SteamType = CSteamworks.HTTPRequestHeadersReceived_t
     init(_ steam: CSteamworks.HTTPRequestHeadersReceived_t) {
         request = .init(steam.m_hRequest)
         contextValue = .init(steam.m_ulContextValue)
@@ -1521,6 +1606,7 @@ public struct IPCFailure {
 }
 
 extension IPCFailure: SteamCreatable {
+    typealias SteamType = CSteamworks.IPCFailure_t
     init(_ steam: CSteamworks.IPCFailure_t) {
         failureType = .init(steam.m_eFailureType)
     }
@@ -1531,6 +1617,7 @@ public struct IPCountry {
 }
 
 extension IPCountry: SteamCreatable {
+    typealias SteamType = CSteamworks.IPCountry_t
     init(_ steam: CSteamworks.IPCountry_t) {
     }
 }
@@ -1548,6 +1635,7 @@ public struct InputAnalogActionData {
 }
 
 extension InputAnalogActionData: SteamCreatable {
+    typealias SteamType = CSteamworks.InputAnalogActionData_t
     init(_ steam: CSteamworks.InputAnalogActionData_t) {
         mode = .init(steam.eMode)
         x = .init(steam.x)
@@ -1565,6 +1653,7 @@ public struct InputDigitalActionData {
 }
 
 extension InputDigitalActionData: SteamCreatable {
+    typealias SteamType = CSteamworks.InputDigitalActionData_t
     init(_ steam: CSteamworks.InputDigitalActionData_t) {
         state = .init(steam.bState)
         active = .init(steam.bActive)
@@ -1596,6 +1685,7 @@ public struct InputMotionData {
 }
 
 extension InputMotionData: SteamCreatable {
+    typealias SteamType = CSteamworks.InputMotionData_t
     init(_ steam: CSteamworks.InputMotionData_t) {
         quatX = .init(steam.rotQuatX)
         quatY = .init(steam.rotQuatY)
@@ -1619,6 +1709,7 @@ public struct ItemInstalled {
 }
 
 extension ItemInstalled: SteamCreatable {
+    typealias SteamType = CSteamworks.ItemInstalled_t
     init(_ steam: CSteamworks.ItemInstalled_t) {
         appID = .init(steam.m_unAppID)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -1634,6 +1725,7 @@ public struct JoinClanChatRoomCompletionResult {
 }
 
 extension JoinClanChatRoomCompletionResult: SteamCreatable {
+    typealias SteamType = CSteamworks.JoinClanChatRoomCompletionResult_t
     init(_ steam: CSteamworks.JoinClanChatRoomCompletionResult_t) {
         clanChat = .init(steam.m_steamIDClanChat)
         chatRoomEnterResponse = .init(steam.m_eChatRoomEnterResponse)
@@ -1653,6 +1745,7 @@ public struct JoinPartyCallback {
 }
 
 extension JoinPartyCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.JoinPartyCallback_t
     init(_ steam: CSteamworks.JoinPartyCallback_t) {
         result = .init(steam.m_eResult)
         beaconID = .init(steam.m_ulBeaconID)
@@ -1676,6 +1769,7 @@ public struct LeaderboardEntry {
 }
 
 extension LeaderboardEntry: SteamCreatable {
+    typealias SteamType = CSteamworks.LeaderboardEntry_t
     init(_ steam: CSteamworks.LeaderboardEntry_t) {
         user = .init(steam.m_steamIDUser)
         globalRank = .init(steam.m_nGlobalRank)
@@ -1694,6 +1788,7 @@ public struct LeaderboardFindResult {
 }
 
 extension LeaderboardFindResult: SteamCreatable {
+    typealias SteamType = CSteamworks.LeaderboardFindResult_t
     init(_ steam: CSteamworks.LeaderboardFindResult_t) {
         steamLeaderboard = .init(steam.m_hSteamLeaderboard)
         leaderboardFound = .init(steam.m_bLeaderboardFound)
@@ -1717,6 +1812,7 @@ public struct LeaderboardScoreUploaded {
 }
 
 extension LeaderboardScoreUploaded: SteamCreatable {
+    typealias SteamType = CSteamworks.LeaderboardScoreUploaded_t
     init(_ steam: CSteamworks.LeaderboardScoreUploaded_t) {
         success = .init(steam.m_bSuccess)
         steamLeaderboard = .init(steam.m_hSteamLeaderboard)
@@ -1738,6 +1834,7 @@ public struct LeaderboardScoresDownloaded {
 }
 
 extension LeaderboardScoresDownloaded: SteamCreatable {
+    typealias SteamType = CSteamworks.LeaderboardScoresDownloaded_t
     init(_ steam: CSteamworks.LeaderboardScoresDownloaded_t) {
         steamLeaderboard = .init(steam.m_hSteamLeaderboard)
         steamLeaderboardEntries = .init(steam.m_hSteamLeaderboardEntries)
@@ -1754,6 +1851,7 @@ public struct LeaderboardUGCSet {
 }
 
 extension LeaderboardUGCSet: SteamCreatable {
+    typealias SteamType = CSteamworks.LeaderboardUGCSet_t
     init(_ steam: CSteamworks.LeaderboardUGCSet_t) {
         result = .init(steam.m_eResult)
         steamLeaderboard = .init(steam.m_hSteamLeaderboard)
@@ -1765,6 +1863,7 @@ public struct LicensesUpdated {
 }
 
 extension LicensesUpdated: SteamCreatable {
+    typealias SteamType = CSteamworks.LicensesUpdated_t
     init(_ steam: CSteamworks.LicensesUpdated_t) {
     }
 }
@@ -1782,6 +1881,7 @@ public struct LobbyChatMsg {
 }
 
 extension LobbyChatMsg: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyChatMsg_t
     init(_ steam: CSteamworks.LobbyChatMsg_t) {
         steamIDLobby = .init(steam.m_ulSteamIDLobby)
         steamIDUser = .init(steam.m_ulSteamIDUser)
@@ -1803,6 +1903,7 @@ public struct LobbyChatUpdate {
 }
 
 extension LobbyChatUpdate: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyChatUpdate_t
     init(_ steam: CSteamworks.LobbyChatUpdate_t) {
         steamIDLobby = .init(steam.m_ulSteamIDLobby)
         steamIDUserChanged = .init(steam.m_ulSteamIDUserChanged)
@@ -1820,6 +1921,7 @@ public struct LobbyCreated {
 }
 
 extension LobbyCreated: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyCreated_t
     init(_ steam: CSteamworks.LobbyCreated_t) {
         result = .init(steam.m_eResult)
         steamIDLobby = .init(steam.m_ulSteamIDLobby)
@@ -1837,6 +1939,7 @@ public struct LobbyDataUpdate {
 }
 
 extension LobbyDataUpdate: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyDataUpdate_t
     init(_ steam: CSteamworks.LobbyDataUpdate_t) {
         steamIDLobby = .init(steam.m_ulSteamIDLobby)
         steamIDMember = .init(steam.m_ulSteamIDMember)
@@ -1857,6 +1960,7 @@ public struct LobbyEnter {
 }
 
 extension LobbyEnter: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyEnter_t
     init(_ steam: CSteamworks.LobbyEnter_t) {
         steamIDLobby = .init(steam.m_ulSteamIDLobby)
         chatPermissions = .init(steam.m_rgfChatPermissions)
@@ -1878,6 +1982,7 @@ public struct LobbyGameCreated {
 }
 
 extension LobbyGameCreated: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyGameCreated_t
     init(_ steam: CSteamworks.LobbyGameCreated_t) {
         steamIDLobby = .init(steam.m_ulSteamIDLobby)
         steamIDGameServer = .init(steam.m_ulSteamIDGameServer)
@@ -1897,6 +2002,7 @@ public struct LobbyInvite {
 }
 
 extension LobbyInvite: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyInvite_t
     init(_ steam: CSteamworks.LobbyInvite_t) {
         steamIDUser = .init(steam.m_ulSteamIDUser)
         steamIDLobby = .init(steam.m_ulSteamIDLobby)
@@ -1915,6 +2021,7 @@ public struct LobbyKicked {
 }
 
 extension LobbyKicked: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyKicked_t
     init(_ steam: CSteamworks.LobbyKicked_t) {
         steamIDLobby = .init(steam.m_ulSteamIDLobby)
         steamIDAdmin = .init(steam.m_ulSteamIDAdmin)
@@ -1929,6 +2036,7 @@ public struct LobbyMatchList {
 }
 
 extension LobbyMatchList: SteamCreatable {
+    typealias SteamType = CSteamworks.LobbyMatchList_t
     init(_ steam: CSteamworks.LobbyMatchList_t) {
         lobbiesMatching = .init(steam.m_nLobbiesMatching)
     }
@@ -1941,6 +2049,7 @@ public struct LowBatteryPower {
 }
 
 extension LowBatteryPower: SteamCreatable {
+    typealias SteamType = CSteamworks.LowBatteryPower_t
     init(_ steam: CSteamworks.LowBatteryPower_t) {
         minutesBatteryLeft = .init(steam.m_nMinutesBatteryLeft)
     }
@@ -1961,6 +2070,7 @@ public struct MarketEligibilityResponse {
 }
 
 extension MarketEligibilityResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.MarketEligibilityResponse_t
     init(_ steam: CSteamworks.MarketEligibilityResponse_t) {
         allowed = .init(steam.m_bAllowed)
         notAllowedReason = .init(steam.m_eNotAllowedReason)
@@ -1979,6 +2089,7 @@ public struct MatchMakingKeyValuePair {
 }
 
 extension MatchMakingKeyValuePair: SteamCreatable {
+    typealias SteamType = CSteamworks.MatchMakingKeyValuePair_t
     init(_ steam: CSteamworks.MatchMakingKeyValuePair_t) {
         key = .init(steam.m_szKey_ptr)
         value = .init(steam.m_szValue_ptr)
@@ -1996,6 +2107,7 @@ public struct MicroTxnAuthorizationResponse {
 }
 
 extension MicroTxnAuthorizationResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.MicroTxnAuthorizationResponse_t
     init(_ steam: CSteamworks.MicroTxnAuthorizationResponse_t) {
         appID = .init(steam.m_unAppID)
         orderID = .init(steam.m_ulOrderID)
@@ -2008,6 +2120,7 @@ public struct MusicPlayerRemoteToFront {
 }
 
 extension MusicPlayerRemoteToFront: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerRemoteToFront_t
     init(_ steam: CSteamworks.MusicPlayerRemoteToFront_t) {
     }
 }
@@ -2017,6 +2130,7 @@ public struct MusicPlayerRemoteWillActivate {
 }
 
 extension MusicPlayerRemoteWillActivate: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerRemoteWillActivate_t
     init(_ steam: CSteamworks.MusicPlayerRemoteWillActivate_t) {
     }
 }
@@ -2026,6 +2140,7 @@ public struct MusicPlayerRemoteWillDeactivate {
 }
 
 extension MusicPlayerRemoteWillDeactivate: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerRemoteWillDeactivate_t
     init(_ steam: CSteamworks.MusicPlayerRemoteWillDeactivate_t) {
     }
 }
@@ -2037,6 +2152,7 @@ public struct MusicPlayerSelectsPlaylistEntry {
 }
 
 extension MusicPlayerSelectsPlaylistEntry: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerSelectsPlaylistEntry_t
     init(_ steam: CSteamworks.MusicPlayerSelectsPlaylistEntry_t) {
         id = .init(steam.nID)
     }
@@ -2049,6 +2165,7 @@ public struct MusicPlayerSelectsQueueEntry {
 }
 
 extension MusicPlayerSelectsQueueEntry: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerSelectsQueueEntry_t
     init(_ steam: CSteamworks.MusicPlayerSelectsQueueEntry_t) {
         id = .init(steam.nID)
     }
@@ -2061,6 +2178,7 @@ public struct MusicPlayerWantsLooped {
 }
 
 extension MusicPlayerWantsLooped: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWantsLooped_t
     init(_ steam: CSteamworks.MusicPlayerWantsLooped_t) {
         looped = .init(steam.m_bLooped)
     }
@@ -2071,6 +2189,7 @@ public struct MusicPlayerWantsPause {
 }
 
 extension MusicPlayerWantsPause: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWantsPause_t
     init(_ steam: CSteamworks.MusicPlayerWantsPause_t) {
     }
 }
@@ -2080,6 +2199,7 @@ public struct MusicPlayerWantsPlayNext {
 }
 
 extension MusicPlayerWantsPlayNext: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWantsPlayNext_t
     init(_ steam: CSteamworks.MusicPlayerWantsPlayNext_t) {
     }
 }
@@ -2089,6 +2209,7 @@ public struct MusicPlayerWantsPlayPrevious {
 }
 
 extension MusicPlayerWantsPlayPrevious: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWantsPlayPrevious_t
     init(_ steam: CSteamworks.MusicPlayerWantsPlayPrevious_t) {
     }
 }
@@ -2098,6 +2219,7 @@ public struct MusicPlayerWantsPlay {
 }
 
 extension MusicPlayerWantsPlay: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWantsPlay_t
     init(_ steam: CSteamworks.MusicPlayerWantsPlay_t) {
     }
 }
@@ -2109,6 +2231,7 @@ public struct MusicPlayerWantsPlayingRepeatStatus {
 }
 
 extension MusicPlayerWantsPlayingRepeatStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWantsPlayingRepeatStatus_t
     init(_ steam: CSteamworks.MusicPlayerWantsPlayingRepeatStatus_t) {
         playingRepeatStatus = .init(steam.m_nPlayingRepeatStatus)
     }
@@ -2121,6 +2244,7 @@ public struct MusicPlayerWantsShuffled {
 }
 
 extension MusicPlayerWantsShuffled: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWantsShuffled_t
     init(_ steam: CSteamworks.MusicPlayerWantsShuffled_t) {
         shuffled = .init(steam.m_bShuffled)
     }
@@ -2133,6 +2257,7 @@ public struct MusicPlayerWantsVolume {
 }
 
 extension MusicPlayerWantsVolume: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWantsVolume_t
     init(_ steam: CSteamworks.MusicPlayerWantsVolume_t) {
         newVolume = .init(steam.m_flNewVolume)
     }
@@ -2143,6 +2268,7 @@ public struct MusicPlayerWillQuit {
 }
 
 extension MusicPlayerWillQuit: SteamCreatable {
+    typealias SteamType = CSteamworks.MusicPlayerWillQuit_t
     init(_ steam: CSteamworks.MusicPlayerWillQuit_t) {
     }
 }
@@ -2152,6 +2278,7 @@ public struct NewUrlLaunchParameters {
 }
 
 extension NewUrlLaunchParameters: SteamCreatable {
+    typealias SteamType = CSteamworks.NewUrlLaunchParameters_t
     init(_ steam: CSteamworks.NewUrlLaunchParameters_t) {
     }
 }
@@ -2165,6 +2292,7 @@ public struct NumberOfCurrentPlayers {
 }
 
 extension NumberOfCurrentPlayers: SteamCreatable {
+    typealias SteamType = CSteamworks.NumberOfCurrentPlayers_t
     init(_ steam: CSteamworks.NumberOfCurrentPlayers_t) {
         success = .init(steam.m_bSuccess)
         players = .init(steam.m_cPlayers)
@@ -2178,6 +2306,7 @@ public struct OverlayBrowserProtocolNavigation {
 }
 
 extension OverlayBrowserProtocolNavigation: SteamCreatable {
+    typealias SteamType = CSteamworks.OverlayBrowserProtocolNavigation_t
     init(_ steam: CSteamworks.OverlayBrowserProtocolNavigation_t) {
         uri = .init(steam.rgchURI_ptr)
     }
@@ -2192,6 +2321,7 @@ public struct P2PSessionConnectFail {
 }
 
 extension P2PSessionConnectFail: SteamCreatable {
+    typealias SteamType = CSteamworks.P2PSessionConnectFail_t
     init(_ steam: CSteamworks.P2PSessionConnectFail_t) {
         remote = .init(steam.m_steamIDRemote)
         p2PSessionError = .init(steam.m_eP2PSessionError)
@@ -2205,6 +2335,7 @@ public struct P2PSessionRequest {
 }
 
 extension P2PSessionRequest: SteamCreatable {
+    typealias SteamType = CSteamworks.P2PSessionRequest_t
     init(_ steam: CSteamworks.P2PSessionRequest_t) {
         remote = .init(steam.m_steamIDRemote)
     }
@@ -2231,6 +2362,7 @@ public struct P2PSessionState {
 }
 
 extension P2PSessionState: SteamCreatable {
+    typealias SteamType = CSteamworks.P2PSessionState_t
     init(_ steam: CSteamworks.P2PSessionState_t) {
         connectionActive = .init(steam.m_bConnectionActive)
         connecting = .init(steam.m_bConnecting)
@@ -2254,6 +2386,7 @@ public struct PS3TrophiesInstalled {
 }
 
 extension PS3TrophiesInstalled: SteamCreatable {
+    typealias SteamType = CSteamworks.PS3TrophiesInstalled_t
     init(_ steam: CSteamworks.PS3TrophiesInstalled_t) {
         gameID = .init(steam.m_nGameID)
         result = .init(steam.m_eResult)
@@ -2270,6 +2403,7 @@ public struct PSNGameBootInviteResult {
 }
 
 extension PSNGameBootInviteResult: SteamCreatable {
+    typealias SteamType = CSteamworks.PSNGameBootInviteResult_t
     init(_ steam: CSteamworks.PSNGameBootInviteResult_t) {
         gameBootInviteExists = .init(steam.m_bGameBootInviteExists)
         lobby = .init(steam.m_steamIDLobby)
@@ -2285,6 +2419,7 @@ public struct PersonaStateChange {
 }
 
 extension PersonaStateChange: SteamCreatable {
+    typealias SteamType = CSteamworks.PersonaStateChange_t
     init(_ steam: CSteamworks.PersonaStateChange_t) {
         steamID = .init(steam.m_ulSteamID)
         changeFlags = .init(steam.m_nChangeFlags)
@@ -2296,6 +2431,7 @@ public struct PlaybackStatusHasChanged {
 }
 
 extension PlaybackStatusHasChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.PlaybackStatusHasChanged_t
     init(_ steam: CSteamworks.PlaybackStatusHasChanged_t) {
     }
 }
@@ -2309,6 +2445,7 @@ public struct RegisterActivationCodeResponse {
 }
 
 extension RegisterActivationCodeResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.RegisterActivationCodeResponse_t
     init(_ steam: CSteamworks.RegisterActivationCodeResponse_t) {
         result = .init(steam.m_eResult)
         packageRegistered = .init(steam.m_unPackageRegistered)
@@ -2324,6 +2461,7 @@ public struct RemoteStorageDeletePublishedFileResult {
 }
 
 extension RemoteStorageDeletePublishedFileResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageDeletePublishedFileResult_t
     init(_ steam: CSteamworks.RemoteStorageDeletePublishedFileResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2347,6 +2485,7 @@ public struct RemoteStorageDownloadUGCResult {
 }
 
 extension RemoteStorageDownloadUGCResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageDownloadUGCResult_t
     init(_ steam: CSteamworks.RemoteStorageDownloadUGCResult_t) {
         result = .init(steam.m_eResult)
         file = .init(steam.m_hFile)
@@ -2374,6 +2513,7 @@ public struct RemoteStorageEnumeratePublishedFilesByUserActionResult {
 }
 
 extension RemoteStorageEnumeratePublishedFilesByUserActionResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageEnumeratePublishedFilesByUserActionResult_t
     init(_ steam: CSteamworks.RemoteStorageEnumeratePublishedFilesByUserActionResult_t) {
         result = .init(steam.m_eResult)
         action = .init(steam.m_eAction)
@@ -2397,6 +2537,7 @@ public struct RemoteStorageEnumerateUserPublishedFilesResult {
 }
 
 extension RemoteStorageEnumerateUserPublishedFilesResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageEnumerateUserPublishedFilesResult_t
     init(_ steam: CSteamworks.RemoteStorageEnumerateUserPublishedFilesResult_t) {
         result = .init(steam.m_eResult)
         resultsReturned = .init(steam.m_nResultsReturned)
@@ -2418,6 +2559,7 @@ public struct RemoteStorageEnumerateUserSharedWorkshopFilesResult {
 }
 
 extension RemoteStorageEnumerateUserSharedWorkshopFilesResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageEnumerateUserSharedWorkshopFilesResult_t
     init(_ steam: CSteamworks.RemoteStorageEnumerateUserSharedWorkshopFilesResult_t) {
         result = .init(steam.m_eResult)
         resultsReturned = .init(steam.m_nResultsReturned)
@@ -2441,6 +2583,7 @@ public struct RemoteStorageEnumerateUserSubscribedFilesResult {
 }
 
 extension RemoteStorageEnumerateUserSubscribedFilesResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageEnumerateUserSubscribedFilesResult_t
     init(_ steam: CSteamworks.RemoteStorageEnumerateUserSubscribedFilesResult_t) {
         result = .init(steam.m_eResult)
         resultsReturned = .init(steam.m_nResultsReturned)
@@ -2469,6 +2612,7 @@ public struct RemoteStorageEnumerateWorkshopFilesResult {
 }
 
 extension RemoteStorageEnumerateWorkshopFilesResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageEnumerateWorkshopFilesResult_t
     init(_ steam: CSteamworks.RemoteStorageEnumerateWorkshopFilesResult_t) {
         result = .init(steam.m_eResult)
         resultsReturned = .init(steam.m_nResultsReturned)
@@ -2493,6 +2637,7 @@ public struct RemoteStorageFileReadAsyncComplete {
 }
 
 extension RemoteStorageFileReadAsyncComplete: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageFileReadAsyncComplete_t
     init(_ steam: CSteamworks.RemoteStorageFileReadAsyncComplete_t) {
         fileReadAsync = .init(steam.m_hFileReadAsync)
         result = .init(steam.m_eResult)
@@ -2512,6 +2657,7 @@ public struct RemoteStorageFileShareResult {
 }
 
 extension RemoteStorageFileShareResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageFileShareResult_t
     init(_ steam: CSteamworks.RemoteStorageFileShareResult_t) {
         result = .init(steam.m_eResult)
         file = .init(steam.m_hFile)
@@ -2526,6 +2672,7 @@ public struct RemoteStorageFileWriteAsyncComplete {
 }
 
 extension RemoteStorageFileWriteAsyncComplete: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageFileWriteAsyncComplete_t
     init(_ steam: CSteamworks.RemoteStorageFileWriteAsyncComplete_t) {
         result = .init(steam.m_eResult)
     }
@@ -2578,6 +2725,7 @@ public struct RemoteStorageGetPublishedFileDetailsResult {
 }
 
 extension RemoteStorageGetPublishedFileDetailsResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageGetPublishedFileDetailsResult_t
     init(_ steam: CSteamworks.RemoteStorageGetPublishedFileDetailsResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2620,6 +2768,7 @@ public struct RemoteStorageGetPublishedItemVoteDetailsResult {
 }
 
 extension RemoteStorageGetPublishedItemVoteDetailsResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageGetPublishedItemVoteDetailsResult_t
     init(_ steam: CSteamworks.RemoteStorageGetPublishedItemVoteDetailsResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_unPublishedFileId)
@@ -2635,6 +2784,7 @@ public struct RemoteStorageLocalFileChange {
 }
 
 extension RemoteStorageLocalFileChange: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageLocalFileChange_t
     init(_ steam: CSteamworks.RemoteStorageLocalFileChange_t) {
     }
 }
@@ -2648,6 +2798,7 @@ public struct RemoteStoragePublishFileProgress {
 }
 
 extension RemoteStoragePublishFileProgress: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStoragePublishFileProgress_t
     init(_ steam: CSteamworks.RemoteStoragePublishFileProgress_t) {
         percentFile = .init(steam.m_dPercentFile)
         preview = .init(steam.m_bPreview)
@@ -2665,6 +2816,7 @@ public struct RemoteStoragePublishFileResult {
 }
 
 extension RemoteStoragePublishFileResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStoragePublishFileResult_t
     init(_ steam: CSteamworks.RemoteStoragePublishFileResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2681,6 +2833,7 @@ public struct RemoteStoragePublishedFileDeleted {
 }
 
 extension RemoteStoragePublishedFileDeleted: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStoragePublishedFileDeleted_t
     init(_ steam: CSteamworks.RemoteStoragePublishedFileDeleted_t) {
         publishedFileId = .init(steam.m_nPublishedFileId)
         appID = .init(steam.m_nAppID)
@@ -2696,6 +2849,7 @@ public struct RemoteStoragePublishedFileSubscribed {
 }
 
 extension RemoteStoragePublishedFileSubscribed: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStoragePublishedFileSubscribed_t
     init(_ steam: CSteamworks.RemoteStoragePublishedFileSubscribed_t) {
         publishedFileId = .init(steam.m_nPublishedFileId)
         appID = .init(steam.m_nAppID)
@@ -2711,6 +2865,7 @@ public struct RemoteStoragePublishedFileUnsubscribed {
 }
 
 extension RemoteStoragePublishedFileUnsubscribed: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStoragePublishedFileUnsubscribed_t
     init(_ steam: CSteamworks.RemoteStoragePublishedFileUnsubscribed_t) {
         publishedFileId = .init(steam.m_nPublishedFileId)
         appID = .init(steam.m_nAppID)
@@ -2726,6 +2881,7 @@ public struct RemoteStoragePublishedFileUpdated {
 }
 
 extension RemoteStoragePublishedFileUpdated: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStoragePublishedFileUpdated_t
     init(_ steam: CSteamworks.RemoteStoragePublishedFileUpdated_t) {
         publishedFileId = .init(steam.m_nPublishedFileId)
         appID = .init(steam.m_nAppID)
@@ -2743,6 +2899,7 @@ public struct RemoteStorageSetUserPublishedFileActionResult {
 }
 
 extension RemoteStorageSetUserPublishedFileActionResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageSetUserPublishedFileActionResult_t
     init(_ steam: CSteamworks.RemoteStorageSetUserPublishedFileActionResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2759,6 +2916,7 @@ public struct RemoteStorageSubscribePublishedFileResult {
 }
 
 extension RemoteStorageSubscribePublishedFileResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageSubscribePublishedFileResult_t
     init(_ steam: CSteamworks.RemoteStorageSubscribePublishedFileResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2774,6 +2932,7 @@ public struct RemoteStorageUnsubscribePublishedFileResult {
 }
 
 extension RemoteStorageUnsubscribePublishedFileResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageUnsubscribePublishedFileResult_t
     init(_ steam: CSteamworks.RemoteStorageUnsubscribePublishedFileResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2791,6 +2950,7 @@ public struct RemoteStorageUpdatePublishedFileResult {
 }
 
 extension RemoteStorageUpdatePublishedFileResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageUpdatePublishedFileResult_t
     init(_ steam: CSteamworks.RemoteStorageUpdatePublishedFileResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2807,6 +2967,7 @@ public struct RemoteStorageUpdateUserPublishedItemVoteResult {
 }
 
 extension RemoteStorageUpdateUserPublishedItemVoteResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageUpdateUserPublishedItemVoteResult_t
     init(_ steam: CSteamworks.RemoteStorageUpdateUserPublishedItemVoteResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2824,6 +2985,7 @@ public struct RemoteStorageUserVoteDetails {
 }
 
 extension RemoteStorageUserVoteDetails: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoteStorageUserVoteDetails_t
     init(_ steam: CSteamworks.RemoteStorageUserVoteDetails_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2842,6 +3004,7 @@ public struct RemoveAppDependencyResult {
 }
 
 extension RemoveAppDependencyResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoveAppDependencyResult_t
     init(_ steam: CSteamworks.RemoveAppDependencyResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2860,6 +3023,7 @@ public struct RemoveUGCDependencyResult {
 }
 
 extension RemoveUGCDependencyResult: SteamCreatable {
+    typealias SteamType = CSteamworks.RemoveUGCDependencyResult_t
     init(_ steam: CSteamworks.RemoveUGCDependencyResult_t) {
         result = .init(steam.m_eResult)
         publishedFileId = .init(steam.m_nPublishedFileId)
@@ -2878,6 +3042,7 @@ public struct RequestPlayersForGameFinalResultCallback {
 }
 
 extension RequestPlayersForGameFinalResultCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.RequestPlayersForGameFinalResultCallback_t
     init(_ steam: CSteamworks.RequestPlayersForGameFinalResultCallback_t) {
         result = .init(steam.m_eResult)
         searchID = .init(steam.m_ullSearchID)
@@ -2894,6 +3059,7 @@ public struct RequestPlayersForGameProgressCallback {
 }
 
 extension RequestPlayersForGameProgressCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.RequestPlayersForGameProgressCallback_t
     init(_ steam: CSteamworks.RequestPlayersForGameProgressCallback_t) {
         result = .init(steam.m_eResult)
         searchID = .init(steam.m_ullSearchID)
@@ -2925,6 +3091,7 @@ public struct RequestPlayersForGameResultCallback {
 }
 
 extension RequestPlayersForGameResultCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.RequestPlayersForGameResultCallback_t
     init(_ steam: CSteamworks.RequestPlayersForGameResultCallback_t) {
         result = .init(steam.m_eResult)
         searchID = .init(steam.m_ullSearchID)
@@ -2948,6 +3115,7 @@ public struct ReservationNotificationCallback {
 }
 
 extension ReservationNotificationCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.ReservationNotificationCallback_t
     init(_ steam: CSteamworks.ReservationNotificationCallback_t) {
         beaconID = .init(steam.m_ulBeaconID)
         joiner = .init(steam.m_steamIDJoiner)
@@ -2963,6 +3131,7 @@ public struct ScreenshotReady {
 }
 
 extension ScreenshotReady: SteamCreatable {
+    typealias SteamType = CSteamworks.ScreenshotReady_t
     init(_ steam: CSteamworks.ScreenshotReady_t) {
         local = .init(steam.m_hLocal)
         result = .init(steam.m_eResult)
@@ -2974,6 +3143,7 @@ public struct ScreenshotRequested {
 }
 
 extension ScreenshotRequested: SteamCreatable {
+    typealias SteamType = CSteamworks.ScreenshotRequested_t
     init(_ steam: CSteamworks.ScreenshotRequested_t) {
     }
 }
@@ -2995,6 +3165,7 @@ public struct SearchForGameProgressCallback {
 }
 
 extension SearchForGameProgressCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.SearchForGameProgressCallback_t
     init(_ steam: CSteamworks.SearchForGameProgressCallback_t) {
         searchID = .init(steam.m_ullSearchID)
         result = .init(steam.m_eResult)
@@ -3022,6 +3193,7 @@ public struct SearchForGameResultCallback {
 }
 
 extension SearchForGameResultCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.SearchForGameResultCallback_t
     init(_ steam: CSteamworks.SearchForGameResultCallback_t) {
         searchID = .init(steam.m_ullSearchID)
         result = .init(steam.m_eResult)
@@ -3043,6 +3215,7 @@ public struct SetPersonaNameResponse {
 }
 
 extension SetPersonaNameResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.SetPersonaNameResponse_t
     init(_ steam: CSteamworks.SetPersonaNameResponse_t) {
         success = .init(steam.m_bSuccess)
         localSuccess = .init(steam.m_bLocalSuccess)
@@ -3061,6 +3234,7 @@ public struct SetUserItemVoteResult {
 }
 
 extension SetUserItemVoteResult: SteamCreatable {
+    typealias SteamType = CSteamworks.SetUserItemVoteResult_t
     init(_ steam: CSteamworks.SetUserItemVoteResult_t) {
         publishedFileId = .init(steam.m_nPublishedFileId)
         result = .init(steam.m_eResult)
@@ -3081,6 +3255,7 @@ public struct SocketStatusCallback {
 }
 
 extension SocketStatusCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.SocketStatusCallback_t
     init(_ steam: CSteamworks.SocketStatusCallback_t) {
         socket = .init(steam.m_hSocket)
         listenSocket = .init(steam.m_hListenSocket)
@@ -3096,6 +3271,7 @@ public struct StartPlaytimeTrackingResult {
 }
 
 extension StartPlaytimeTrackingResult: SteamCreatable {
+    typealias SteamType = CSteamworks.StartPlaytimeTrackingResult_t
     init(_ steam: CSteamworks.StartPlaytimeTrackingResult_t) {
         result = .init(steam.m_eResult)
     }
@@ -3112,6 +3288,7 @@ public struct SteamAPICallCompleted {
 }
 
 extension SteamAPICallCompleted: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamAPICallCompleted_t
     init(_ steam: CSteamworks.SteamAPICallCompleted_t) {
         asyncCall = .init(steam.m_hAsyncCall)
         callbackIndex = .init(steam.m_iCallback)
@@ -3128,6 +3305,7 @@ public struct SteamAppInstalled {
 }
 
 extension SteamAppInstalled: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamAppInstalled_t
     init(_ steam: CSteamworks.SteamAppInstalled_t) {
         appID = .init(steam.m_nAppID)
         installFolderIndex = .init(steam.m_iInstallFolderIndex)
@@ -3143,6 +3321,7 @@ public struct SteamAppUninstalled {
 }
 
 extension SteamAppUninstalled: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamAppUninstalled_t
     init(_ steam: CSteamworks.SteamAppUninstalled_t) {
         appID = .init(steam.m_nAppID)
         installFolderIndex = .init(steam.m_iInstallFolderIndex)
@@ -3168,6 +3347,7 @@ public struct SteamInputConfigurationLoaded {
 }
 
 extension SteamInputConfigurationLoaded: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInputConfigurationLoaded_t
     init(_ steam: CSteamworks.SteamInputConfigurationLoaded_t) {
         appID = .init(steam.m_unAppID)
         deviceHandle = .init(steam.m_ulDeviceHandle)
@@ -3186,6 +3366,7 @@ public struct SteamInputDeviceConnected {
 }
 
 extension SteamInputDeviceConnected: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInputDeviceConnected_t
     init(_ steam: CSteamworks.SteamInputDeviceConnected_t) {
         connectedDeviceHandle = .init(steam.m_ulConnectedDeviceHandle)
     }
@@ -3198,6 +3379,7 @@ public struct SteamInputDeviceDisconnected {
 }
 
 extension SteamInputDeviceDisconnected: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInputDeviceDisconnected_t
     init(_ steam: CSteamworks.SteamInputDeviceDisconnected_t) {
         disconnectedDeviceHandle = .init(steam.m_ulDisconnectedDeviceHandle)
     }
@@ -3208,6 +3390,7 @@ public struct SteamInventoryDefinitionUpdate {
 }
 
 extension SteamInventoryDefinitionUpdate: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInventoryDefinitionUpdate_t
     init(_ steam: CSteamworks.SteamInventoryDefinitionUpdate_t) {
     }
 }
@@ -3225,6 +3408,7 @@ public struct SteamInventoryEligiblePromoItemDefIDs {
 }
 
 extension SteamInventoryEligiblePromoItemDefIDs: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInventoryEligiblePromoItemDefIDs_t
     init(_ steam: CSteamworks.SteamInventoryEligiblePromoItemDefIDs_t) {
         result = .init(steam.m_result)
         steamID = .init(steam.m_steamID)
@@ -3240,6 +3424,7 @@ public struct SteamInventoryFullUpdate {
 }
 
 extension SteamInventoryFullUpdate: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInventoryFullUpdate_t
     init(_ steam: CSteamworks.SteamInventoryFullUpdate_t) {
         handle = .init(steam.m_handle)
     }
@@ -3254,6 +3439,7 @@ public struct SteamInventoryRequestPricesResult {
 }
 
 extension SteamInventoryRequestPricesResult: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInventoryRequestPricesResult_t
     init(_ steam: CSteamworks.SteamInventoryRequestPricesResult_t) {
         result = .init(steam.m_result)
         currency = .init(steam.m_rgchCurrency_ptr)
@@ -3269,6 +3455,7 @@ public struct SteamInventoryResultReady {
 }
 
 extension SteamInventoryResultReady: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInventoryResultReady_t
     init(_ steam: CSteamworks.SteamInventoryResultReady_t) {
         handle = .init(steam.m_handle)
         result = .init(steam.m_result)
@@ -3286,6 +3473,7 @@ public struct SteamInventoryStartPurchaseResult {
 }
 
 extension SteamInventoryStartPurchaseResult: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInventoryStartPurchaseResult_t
     init(_ steam: CSteamworks.SteamInventoryStartPurchaseResult_t) {
         result = .init(steam.m_result)
         orderID = .init(steam.m_ulOrderID)
@@ -3306,6 +3494,7 @@ public struct SteamItemDetails {
 }
 
 extension SteamItemDetails: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamItemDetails_t
     init(_ steam: CSteamworks.SteamItemDetails_t) {
         id = .init(steam.m_itemId)
         definitionIndex = .init(steam.m_iDefinition)
@@ -3323,6 +3512,7 @@ public struct SteamNetAuthenticationStatus {
 }
 
 extension SteamNetAuthenticationStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetAuthenticationStatus_t
     init(_ steam: CSteamworks.SteamNetAuthenticationStatus_t) {
         avail = .init(steam.m_eAvail)
         debugMsg = .init(steam.m_debugMsg_ptr)
@@ -3354,6 +3544,7 @@ public struct SteamNetConnectionInfo {
 }
 
 extension SteamNetConnectionInfo: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetConnectionInfo_t
     init(_ steam: CSteamworks.SteamNetConnectionInfo_t) {
         identityRemote = .init(steam.m_identityRemote)
         userData = .init(steam.m_nUserData)
@@ -3379,6 +3570,7 @@ public struct SteamNetConnectionStatusChangedCallback {
 }
 
 extension SteamNetConnectionStatusChangedCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetConnectionStatusChangedCallback_t
     init(_ steam: CSteamworks.SteamNetConnectionStatusChangedCallback_t) {
         conn = .init(steam.m_hConn)
         info = .init(steam.m_info)
@@ -3393,6 +3585,7 @@ public struct SteamNetworkPingLocation {
 }
 
 extension SteamNetworkPingLocation: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkPingLocation_t
     init(_ steam: CSteamworks.SteamNetworkPingLocation_t) {
         data = .init(steam.m_data_ptr, 512)
     }
@@ -3407,6 +3600,7 @@ public struct SteamNetworkingConfigValue {
 }
 
 extension SteamNetworkingConfigValue: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingConfigValue_t
     init(_ steam: CSteamworks.SteamNetworkingConfigValue_t) {
         value = .init(steam.m_eValue)
         dataType = .init(steam.m_eDataType)
@@ -3422,6 +3616,7 @@ public struct SteamNetworkingIPAddr {
 }
 
 extension SteamNetworkingIPAddr: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingIPAddr
     init(_ steam: CSteamworks.SteamNetworkingIPAddr) {
         ipv6 = .init(steam.m_ipv6_ptr, 16)
         port = .init(steam.m_port)
@@ -3433,6 +3628,7 @@ public struct SteamNetworkingIPAddrRender {
 }
 
 extension SteamNetworkingIPAddrRender: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingIPAddrRender
     init(_ steam: CSteamworks.SteamNetworkingIPAddrRender) {
     }
 }
@@ -3448,6 +3644,7 @@ public struct SteamNetworkingIdentity {
 }
 
 extension SteamNetworkingIdentity: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingIdentity
     init(_ steam: CSteamworks.SteamNetworkingIdentity) {
         type = .init(steam.m_eType)
         sizeSize = .init(steam.m_cbSize)
@@ -3460,6 +3657,7 @@ public struct SteamNetworkingIdentityRender {
 }
 
 extension SteamNetworkingIdentityRender: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingIdentityRender
     init(_ steam: CSteamworks.SteamNetworkingIdentityRender) {
     }
 }
@@ -3471,6 +3669,7 @@ public struct SteamNetworkingMessagesSessionFailed {
 }
 
 extension SteamNetworkingMessagesSessionFailed: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingMessagesSessionFailed_t
     init(_ steam: CSteamworks.SteamNetworkingMessagesSessionFailed_t) {
         info = .init(steam.m_info)
     }
@@ -3483,6 +3682,7 @@ public struct SteamNetworkingMessagesSessionRequest {
 }
 
 extension SteamNetworkingMessagesSessionRequest: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingMessagesSessionRequest_t
     init(_ steam: CSteamworks.SteamNetworkingMessagesSessionRequest_t) {
         identityRemote = .init(steam.m_identityRemote)
     }
@@ -3493,6 +3693,7 @@ public struct SteamNetworkingPOPIDRender {
 }
 
 extension SteamNetworkingPOPIDRender: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingPOPIDRender
     init(_ steam: CSteamworks.SteamNetworkingPOPIDRender) {
     }
 }
@@ -3528,6 +3729,7 @@ public struct SteamNetworkingQuickConnectionStatus {
 }
 
 extension SteamNetworkingQuickConnectionStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingQuickConnectionStatus
     init(_ steam: CSteamworks.SteamNetworkingQuickConnectionStatus) {
         state = .init(steam.m_eState)
         ping = .init(steam.m_nPing)
@@ -3550,6 +3752,7 @@ public struct SteamParentalSettingsChanged {
 }
 
 extension SteamParentalSettingsChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamParentalSettingsChanged_t
     init(_ steam: CSteamworks.SteamParentalSettingsChanged_t) {
     }
 }
@@ -3563,6 +3766,7 @@ public struct SteamPartyBeaconLocation {
 }
 
 extension SteamPartyBeaconLocation: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamPartyBeaconLocation_t
     init(_ steam: CSteamworks.SteamPartyBeaconLocation_t) {
         type = .init(steam.m_eType)
         locationID = .init(steam.m_ulLocationID)
@@ -3592,6 +3796,7 @@ public struct SteamRelayNetworkStatus {
 }
 
 extension SteamRelayNetworkStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamRelayNetworkStatus_t
     init(_ steam: CSteamworks.SteamRelayNetworkStatus_t) {
         avail = .init(steam.m_eAvail)
         pingMeasurementInProgress = .init(steam.m_bPingMeasurementInProgress)
@@ -3608,6 +3813,7 @@ public struct SteamRemotePlaySessionConnected {
 }
 
 extension SteamRemotePlaySessionConnected: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamRemotePlaySessionConnected_t
     init(_ steam: CSteamworks.SteamRemotePlaySessionConnected_t) {
         sessionID = .init(steam.m_unSessionID)
     }
@@ -3620,6 +3826,7 @@ public struct SteamRemotePlaySessionDisconnected {
 }
 
 extension SteamRemotePlaySessionDisconnected: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamRemotePlaySessionDisconnected_t
     init(_ steam: CSteamworks.SteamRemotePlaySessionDisconnected_t) {
         sessionID = .init(steam.m_unSessionID)
     }
@@ -3634,6 +3841,7 @@ public struct SteamServerConnectFailure {
 }
 
 extension SteamServerConnectFailure: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamServerConnectFailure_t
     init(_ steam: CSteamworks.SteamServerConnectFailure_t) {
         result = .init(steam.m_eResult)
         stillRetrying = .init(steam.m_bStillRetrying)
@@ -3645,6 +3853,7 @@ public struct SteamServersConnected {
 }
 
 extension SteamServersConnected: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamServersConnected_t
     init(_ steam: CSteamworks.SteamServersConnected_t) {
     }
 }
@@ -3656,6 +3865,7 @@ public struct SteamServersDisconnected {
 }
 
 extension SteamServersDisconnected: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamServersDisconnected_t
     init(_ steam: CSteamworks.SteamServersDisconnected_t) {
         result = .init(steam.m_eResult)
     }
@@ -3666,6 +3876,7 @@ public struct SteamShutdown {
 }
 
 extension SteamShutdown: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamShutdown_t
     init(_ steam: CSteamworks.SteamShutdown_t) {
     }
 }
@@ -3727,6 +3938,7 @@ public struct SteamUGCDetails {
 }
 
 extension SteamUGCDetails: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamUGCDetails_t
     init(_ steam: CSteamworks.SteamUGCDetails_t) {
         publishedFileId = .init(steam.m_nPublishedFileId)
         result = .init(steam.m_eResult)
@@ -3774,6 +3986,7 @@ public struct SteamUGCQueryCompleted {
 }
 
 extension SteamUGCQueryCompleted: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamUGCQueryCompleted_t
     init(_ steam: CSteamworks.SteamUGCQueryCompleted_t) {
         handle = .init(steam.m_handle)
         result = .init(steam.m_eResult)
@@ -3793,6 +4006,7 @@ public struct SteamUGCRequestUGCDetailsResult {
 }
 
 extension SteamUGCRequestUGCDetailsResult: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamUGCRequestUGCDetailsResult_t
     init(_ steam: CSteamworks.SteamUGCRequestUGCDetailsResult_t) {
         details = .init(steam.m_details)
         cachedData = .init(steam.m_bCachedData)
@@ -3806,6 +4020,7 @@ public struct StopPlaytimeTrackingResult {
 }
 
 extension StopPlaytimeTrackingResult: SteamCreatable {
+    typealias SteamType = CSteamworks.StopPlaytimeTrackingResult_t
     init(_ steam: CSteamworks.StopPlaytimeTrackingResult_t) {
         result = .init(steam.m_eResult)
     }
@@ -3818,6 +4033,7 @@ public struct StoreAuthURLResponse {
 }
 
 extension StoreAuthURLResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.StoreAuthURLResponse_t
     init(_ steam: CSteamworks.StoreAuthURLResponse_t) {
         url = .init(steam.m_szURL_ptr)
     }
@@ -3834,6 +4050,7 @@ public struct SubmitItemUpdateResult {
 }
 
 extension SubmitItemUpdateResult: SteamCreatable {
+    typealias SteamType = CSteamworks.SubmitItemUpdateResult_t
     init(_ steam: CSteamworks.SubmitItemUpdateResult_t) {
         result = .init(steam.m_eResult)
         userNeedsToAcceptWorkshopLegalAgreement = .init(steam.m_bUserNeedsToAcceptWorkshopLegalAgreement)
@@ -3852,6 +4069,7 @@ public struct SubmitPlayerResultResultCallback {
 }
 
 extension SubmitPlayerResultResultCallback: SteamCreatable {
+    typealias SteamType = CSteamworks.SubmitPlayerResultResultCallback_t
     init(_ steam: CSteamworks.SubmitPlayerResultResultCallback_t) {
         result = .init(steam.m_eResult)
         uniqueGameID = .init(steam.ullUniqueGameID)
@@ -3872,6 +4090,7 @@ public struct TimedTrialStatus {
 }
 
 extension TimedTrialStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.TimedTrialStatus_t
     init(_ steam: CSteamworks.TimedTrialStatus_t) {
         appID = .init(steam.m_unAppID)
         isOffline = .init(steam.m_bIsOffline)
@@ -3885,6 +4104,7 @@ public struct UnreadChatMessagesChanged {
 }
 
 extension UnreadChatMessagesChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.UnreadChatMessagesChanged_t
     init(_ steam: CSteamworks.UnreadChatMessagesChanged_t) {
     }
 }
@@ -3902,6 +4122,7 @@ public struct UserAchievementIconFetched {
 }
 
 extension UserAchievementIconFetched: SteamCreatable {
+    typealias SteamType = CSteamworks.UserAchievementIconFetched_t
     init(_ steam: CSteamworks.UserAchievementIconFetched_t) {
         gameID = .init(steam.m_nGameID)
         achievementName = .init(steam.m_rgchAchievementName_ptr)
@@ -3925,6 +4146,7 @@ public struct UserAchievementStored {
 }
 
 extension UserAchievementStored: SteamCreatable {
+    typealias SteamType = CSteamworks.UserAchievementStored_t
     init(_ steam: CSteamworks.UserAchievementStored_t) {
         gameID = .init(steam.m_nGameID)
         groupAchievement = .init(steam.m_bGroupAchievement)
@@ -3945,6 +4167,7 @@ public struct UserFavoriteItemsListChanged {
 }
 
 extension UserFavoriteItemsListChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.UserFavoriteItemsListChanged_t
     init(_ steam: CSteamworks.UserFavoriteItemsListChanged_t) {
         publishedFileId = .init(steam.m_nPublishedFileId)
         result = .init(steam.m_eResult)
@@ -3963,6 +4186,7 @@ public struct UserStatsReceived {
 }
 
 extension UserStatsReceived: SteamCreatable {
+    typealias SteamType = CSteamworks.UserStatsReceived_t
     init(_ steam: CSteamworks.UserStatsReceived_t) {
         gameID = .init(steam.m_nGameID)
         result = .init(steam.m_eResult)
@@ -3979,6 +4203,7 @@ public struct UserStatsStored {
 }
 
 extension UserStatsStored: SteamCreatable {
+    typealias SteamType = CSteamworks.UserStatsStored_t
     init(_ steam: CSteamworks.UserStatsStored_t) {
         gameID = .init(steam.m_nGameID)
         result = .init(steam.m_eResult)
@@ -3992,6 +4217,7 @@ public struct UserStatsUnloaded {
 }
 
 extension UserStatsUnloaded: SteamCreatable {
+    typealias SteamType = CSteamworks.UserStatsUnloaded_t
     init(_ steam: CSteamworks.UserStatsUnloaded_t) {
         user = .init(steam.m_steamIDUser)
     }
@@ -4004,6 +4230,7 @@ public struct UserSubscribedItemsListChanged {
 }
 
 extension UserSubscribedItemsListChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.UserSubscribedItemsListChanged_t
     init(_ steam: CSteamworks.UserSubscribedItemsListChanged_t) {
         appID = .init(steam.m_nAppID)
     }
@@ -4020,6 +4247,7 @@ public struct ValidateAuthTicketResponse {
 }
 
 extension ValidateAuthTicketResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.ValidateAuthTicketResponse_t
     init(_ steam: CSteamworks.ValidateAuthTicketResponse_t) {
         steamID = .init(steam.m_SteamID)
         authSessionResponse = .init(steam.m_eAuthSessionResponse)
@@ -4034,6 +4262,7 @@ public struct VolumeHasChanged {
 }
 
 extension VolumeHasChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.VolumeHasChanged_t
     init(_ steam: CSteamworks.VolumeHasChanged_t) {
         newVolume = .init(steam.m_flNewVolume)
     }
@@ -4056,6 +4285,7 @@ public struct WorkshopEULAStatus {
 }
 
 extension WorkshopEULAStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.WorkshopEULAStatus_t
     init(_ steam: CSteamworks.WorkshopEULAStatus_t) {
         result = .init(steam.m_eResult)
         appID = .init(steam.m_nAppID)
@@ -4067,9 +4297,9 @@ extension WorkshopEULAStatus: SteamCreatable {
 }
 
 /// Steamworks `gameserveritem_t`
-public struct gameserveritem {
+public struct GameServerItem {
     /// Steamworks `m_NetAdr`
-    public let netAdr: servernetadr
+    public let netAdr: ServerNetAdr
     /// Steamworks `m_nPing`
     public let ping: Int
     /// Steamworks `m_bHadSuccessfulResponse`
@@ -4104,7 +4334,8 @@ public struct gameserveritem {
     public let steamID: SteamID
 }
 
-extension gameserveritem: SteamCreatable {
+extension GameServerItem: SteamCreatable {
+    typealias SteamType = CSteamworks.gameserveritem_t
     init(_ steam: CSteamworks.gameserveritem_t) {
         netAdr = .init(steam.m_NetAdr)
         ping = .init(steam.m_nPing)
@@ -4123,14 +4354,5 @@ extension gameserveritem: SteamCreatable {
         serverVersion = .init(steam.m_nServerVersion)
         gameTags = .init(steam.m_szGameTags_ptr)
         steamID = .init(steam.m_steamID)
-    }
-}
-
-/// Steamworks `servernetadr_t`
-public struct servernetadr {
-}
-
-extension servernetadr: SteamCreatable {
-    init(_ steam: CSteamworks.servernetadr_t) {
     }
 }

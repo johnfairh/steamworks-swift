@@ -44,7 +44,8 @@ struct Interfaces {
             "ISteamInput",
             "ISteamInventory",
             "ISteamRemoteStorage",
-            "ISteamUGC"
+            "ISteamUGC",
+            "ISteamMatchmakingServers"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -422,7 +423,7 @@ struct SwiftMethod {
         if let callResult = db.callResult {
             style = .callReturn(callResult.asSwiftTypeName)
         } else if db.returnType != "void" {
-            style = .normal(db.returnType.asSwiftTypeName)
+            style = .normal(db.returnType.asSwiftReturnTypeName)
         } else {
             style = .void
         }
