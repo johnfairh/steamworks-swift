@@ -173,6 +173,18 @@ extension UnsafeMutableRawPointer {
     }
 }
 
+extension HServerListRequest {
+    public static let invalid = Self(UnsafeMutableRawPointer(bitPattern: UInt(1)))
+
+    init(_ steam: CSteamworks.HServerListRequest?) {
+        if let steam = steam {
+            self.init(steam)
+        } else {
+            self = .invalid
+        }
+    }
+}
+
 // MARK: Enums
 
 /// Firstly a protocol and extension for converting to raw structs -- covering Steamworks enums (imported as structs)

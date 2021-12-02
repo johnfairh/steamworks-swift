@@ -80,6 +80,8 @@ final class Client {
             testServerIP()
         case 5:
             testHTTP()
+        case 6:
+            testGameServers()
         default:
             print("<<<< Actually, that's the end")
             testState = .done
@@ -167,6 +169,41 @@ final class Client {
             self.api.http.releaseHTTPRequest(request: req)
             self.endTest()
         }
+    }
+
+    func testGameServers() {
+        class ServerCallbacks: SteamMatchmakingServerListResponse {
+            let api: SteamAPI
+            let done: () -> Void
+            init(api: SteamAPI, done: @escaping () -> Void) {
+                self.api = api
+                self.done = done
+            }
+            func serverResponded(request: HServerListRequest, iServer: Int) {
+                let g = api.matchmakingServers.getServerDetails(request: request, serverIndex: iServer)
+                print("Got server: \(g.gameDescription)")
+            }
+
+            func serverFailedToRespond(request: HServerListRequest, iServer: Int) {
+                print("ServerFailedToRespond: \(iServer)")
+            }
+
+            func refreshComplete(request: HServerListRequest, response: MatchMakingServerResponse) {
+                print("RefreshComplete: \(response)")
+                done()
+            }
+        }
+
+        var handle: HServerListRequest?
+
+        let callbacks = ServerCallbacks(api: api) {
+            self.api.matchmakingServers.releaseRequest(serverListRequest: handle!)
+            self.endTest()
+        }
+
+        handle = api.matchmakingServers.requestInternetServerList(appIndex: api.utils.getAppID(),
+                                                                  filters: ["gamedir" : "spacewar", "secure" : "1"],
+                                                                  requestServersResponse: callbacks)
     }
 }
 

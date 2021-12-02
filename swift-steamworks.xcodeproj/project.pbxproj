@@ -269,6 +269,7 @@
 		02AD45DA27578D3C00BD93ED /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		02AD45EB2757A9BC00BD93ED /* SteamMatchmakingServers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamMatchmakingServers.swift; sourceTree = "<group>"; };
 		02AD45ED2758026700BD93ED /* SteamMatchmakingServers+Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamMatchmakingServers+Manual.swift"; sourceTree = "<group>"; };
+		02AD45EF2758F01100BD93ED /* steam_matchmaking_shims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = steam_matchmaking_shims.h; sourceTree = "<group>"; };
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
@@ -571,6 +572,7 @@
 			children = (
 				OBJ_9 /* steamapi_headers.h */,
 				02AD45712751565E00BD93ED /* steam_missing.h */,
+				02AD45EF2758F01100BD93ED /* steam_matchmaking_shims.h */,
 				OBJ_10 /* module.modulemap */,
 			);
 			name = CSteamworks;

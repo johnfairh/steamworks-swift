@@ -3,3 +3,4 @@
 #include <steam/steam_api_flat.h>
 #include "Generated/steam_struct_shims.h"
 #include "steam_missing.h"
+#include "steam_matchmaking_shims.h"

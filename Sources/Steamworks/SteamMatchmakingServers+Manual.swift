@@ -39,6 +39,8 @@
 // (This is rather abusing existentials here but not having to type-erase all these
 // dumb callback things is pleasant.)
 
+// MARK: Client Protocols
+
 public protocol SteamMatchmakingServerListResponse {
     /// Server has responded ok with updated data
     func serverResponded(request: HServerListRequest, iServer: Int)
@@ -48,21 +50,26 @@ public protocol SteamMatchmakingServerListResponse {
     func refreshComplete(request: HServerListRequest, response: MatchMakingServerResponse)
 }
 
+// MARK: Query lifetime interfaces
+
 extension SteamMatchmakingServers {
-    /// Steamworks `ISteamMatchmakingServers::RequestFavoritesServerList()`
-    public func requestFavoritesServerList(appIndex: AppID, filters: MatchMakingKeyValuePairs, requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
+    /// Steamworks `ISteamMatchmakingServers::RequestInternetServerList()`
+    public func requestInternetServerList(appIndex: AppID,
+                                          filters: MatchMakingKeyValuePairs,
+                                          requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
         let tmp_filters = MatchMakingKeyValuePairArray(filters)
         defer { tmp_filters.deallocate() }
-        var shim = ShimMatchmakingServerListResponse()
-        let rc = HServerListRequest(
-            SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList(
-                interface,
-                AppId_t(appIndex),
-                .init(tmp_filters),
-                uint32(filters.count),
-                nil/*&shim*/)
-        )
-        shim.listRequest = rc
+        let shim = CShimServerListResponse.Allocate(MatchmakingServersControl.vtable)
+        let rc = HServerListRequest(SteamAPI_ISteamMatchmakingServers_RequestInternetServerList(
+                                        interface,
+                                        AppId_t(appIndex),
+                                        .init(tmp_filters),
+                                        uint32(filters.count),
+                                        shim.pointee.getInterface()))
+        guard rc != .invalid else {
+            shim.pointee.Deallocate()
+            return .invalid
+        }
         MatchmakingServersControl.bind(handle: rc, swift: requestServersResponse, cpp: shim)
         return rc
     }
@@ -70,42 +77,48 @@ extension SteamMatchmakingServers {
     /// Steamworks `ISteamMatchmakingServers::ReleaseRequest()`
     public func releaseRequest(serverListRequest: HServerListRequest) {
         MatchmakingServersControl.unbind(handle: serverListRequest)
-        SteamAPI_ISteamMatchmakingServers_ReleaseRequest(interface, serverListRequest.value)
+        SteamAPI_ISteamMatchmakingServers_ReleaseRequest(interface, .init(serverListRequest))
     }
 }
 
-struct ShimMatchmakingServerListResponse {
-    var listRequest: HServerListRequest!
-    init() {
-        listRequest = nil
-    }
-    func deallocate() {
-        // delete this;
-    }
-}
-
-var shims_server_responded_callback: (HServerListRequest, Int) -> Void = { _, _ in }
+// MARK: C++ -> Swift callback plumbing
 
 enum MatchmakingServersControl {
-    struct Client {
-        let swift: SteamMatchmakingServerListResponse
-        let cpp: ShimMatchmakingServerListResponse
-    }
-    static var lock = Lock()
-    static var serverQueries: [HServerListRequest : Client] = [:]
+    typealias CShimServerListResponsePtr = UnsafeMutablePointer<CShimServerListResponse>
 
-    /// Can't do this because requires static storage on the C side, but we just have a header.
-    /// Have to store them in the shim instance.  Oh, or provide a pointer to a static table here on
-    /// the swift side?  That would be OK.
-    private static var initOnce: Void = {
-        shims_server_responded_callback = { hsl, server in
-            find(handle: hsl)?.serverResponded(request: hsl, iServer: server)
-        }
+    // MARK: Database
+
+    private struct Client {
+        let swift: SteamMatchmakingServerListResponse
+        let cpp: CShimServerListResponsePtr
+    }
+    private static var lock = Lock()
+    private static var serverQueries: [HServerListRequest : Client] = [:]
+
+    // MARK: The list of glue callbacks exposed to C++ shim
+
+    static let vtable: UnsafePointer<ShimMatchmakingVTable_t> = {
+        let ptr = UnsafeMutablePointer<ShimMatchmakingVTable_t>.allocate(capacity: 1)
+        ptr.initialize(to: .init(
+            serverResponded: { chsl, server in
+                let hsl = HServerListRequest(chsl)
+                find(handle: hsl)?.serverResponded(request: hsl, iServer: Int(server))
+            },
+            serverFailedToRespond: { chsl, server in
+                let hsl = HServerListRequest(chsl)
+                find(handle: hsl)?.serverFailedToRespond(request: hsl, iServer: Int(server))
+            },
+            refreshComplete: { chsl, rsp in
+                let hsl = HServerListRequest(chsl)
+                find(handle: hsl)?.refreshComplete(request: hsl, response: .init(rsp))
+            }
+        ))
+        return UnsafePointer(ptr)
     }()
 
-    static func bind(handle: HServerListRequest, swift: SteamMatchmakingServerListResponse, cpp: ShimMatchmakingServerListResponse) {
-        _ = initOnce
+    // MARK: APIs
 
+    static func bind(handle: HServerListRequest, swift: SteamMatchmakingServerListResponse, cpp: CShimServerListResponsePtr) {
         lock.locked {
             serverQueries[handle] = Client(swift: swift, cpp: cpp)
         }
@@ -114,14 +127,18 @@ enum MatchmakingServersControl {
     static func unbind(handle: HServerListRequest) {
         lock.locked {
             if let client = serverQueries.removeValue(forKey: handle) {
-                client.cpp.deallocate()
+                client.cpp.pointee.Deallocate()
             }
         }
     }
 
-    static func find(handle: HServerListRequest) -> SteamMatchmakingServerListResponse? {
+    private static func find(handle: HServerListRequest) -> SteamMatchmakingServerListResponse? {
         lock.locked {
-            serverQueries[handle]?.swift
+            if let rsp = serverQueries[handle]?.swift {
+                return rsp
+            }
+            logError("Got SteamMatchmakingServerListResponse callback for unknown handle: \(handle)")
+            return nil
         }
     }
 }
