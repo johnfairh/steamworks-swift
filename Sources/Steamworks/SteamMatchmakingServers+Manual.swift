@@ -53,25 +53,98 @@ public protocol SteamMatchmakingServerListResponse {
 // MARK: Query lifetime interfaces
 
 extension SteamMatchmakingServers {
-    /// Steamworks `ISteamMatchmakingServers::RequestInternetServerList()`
-    public func requestInternetServerList(appIndex: AppID,
-                                          filters: MatchMakingKeyValuePairs,
-                                          requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
+    /// Abstract all of the separate 'server request' methods.
+    /// Goodness knows why this isn't a single call with an enum for server-type.
+    private typealias ServerRequestMethod = (UnsafeMutablePointer<ISteamMatchmakingServers>?,
+                                             AppId_t,
+                                             UnsafeMutablePointer<UnsafeMutablePointer<MatchMakingKeyValuePair_t>?>?,
+                                             uint32,
+                                             UnsafeMutablePointer<ISteamMatchmakingServerListResponse>?) -> CSteamworks.HServerListRequest?
+
+    /// Call the given API with the same shape
+    private func doRequestServerList(_ call: ServerRequestMethod,
+                                     appIndex: AppID,
+                                     filters: MatchMakingKeyValuePairs,
+                                     requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
         let tmp_filters = MatchMakingKeyValuePairArray(filters)
         defer { tmp_filters.deallocate() }
         let shim = CShimServerListResponse.Allocate(MatchmakingServersControl.vtable)
-        let rc = HServerListRequest(SteamAPI_ISteamMatchmakingServers_RequestInternetServerList(
-                                        interface,
-                                        AppId_t(appIndex),
-                                        .init(tmp_filters),
-                                        uint32(filters.count),
-                                        shim.pointee.getInterface()))
+        let rc = HServerListRequest(call(interface,
+                                         AppId_t(appIndex),
+                                         .init(tmp_filters),
+                                         uint32(filters.count),
+                                         shim.pointee.getInterface()))
         guard rc != .invalid else {
             shim.pointee.Deallocate()
             return .invalid
         }
         MatchmakingServersControl.bind(handle: rc, swift: requestServersResponse, cpp: shim)
         return rc
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::RequestInternetServerList()`
+    public func requestInternetServerList(appIndex: AppID,
+                                          filters: MatchMakingKeyValuePairs,
+                                          requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
+        doRequestServerList(SteamAPI_ISteamMatchmakingServers_RequestInternetServerList,
+                            appIndex: appIndex,
+                            filters: filters,
+                            requestServersResponse: requestServersResponse)
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::RequestLANServerList()`
+    public func requestLANServerList(appIndex: AppID,
+                                     requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
+        // This one doesn't have the filters so we fudge them in and out again.
+
+        let api: ServerRequestMethod = { i, a, _, _, r in
+            SteamAPI_ISteamMatchmakingServers_RequestLANServerList(i, a, r)
+        }
+
+        return doRequestServerList(api,
+                                   appIndex: appIndex,
+                                   filters: [:],
+                                   requestServersResponse: requestServersResponse)
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::RequestFriendsServerList()`
+    public func requestFriendsServerList(appIndex: AppID,
+                                         filters: MatchMakingKeyValuePairs,
+                                         requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
+        doRequestServerList(SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList,
+                            appIndex: appIndex,
+                            filters: filters,
+                            requestServersResponse: requestServersResponse)
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::RequestFavoritesServerList()`
+    public func requestFavoritesServerList(appIndex: AppID,
+                                           filters: MatchMakingKeyValuePairs,
+                                           requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
+        doRequestServerList(SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList,
+                            appIndex: appIndex,
+                            filters: filters,
+                            requestServersResponse: requestServersResponse)
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::RequestHistoryServerList()`
+    public func requestHistoryServerList(appIndex: AppID,
+                                         filters: MatchMakingKeyValuePairs,
+                                         requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
+        doRequestServerList(SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList,
+                            appIndex: appIndex,
+                            filters: filters,
+                            requestServersResponse: requestServersResponse)
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::RequestSpectatorServerList()`
+    public func requestSpectatorServerList(appIndex: AppID,
+                                           filters: MatchMakingKeyValuePairs,
+                                           requestServersResponse: SteamMatchmakingServerListResponse) -> HServerListRequest {
+        doRequestServerList(SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList,
+                            appIndex: appIndex,
+                            filters: filters,
+                            requestServersResponse: requestServersResponse)
     }
 
     /// Steamworks `ISteamMatchmakingServers::ReleaseRequest()`
