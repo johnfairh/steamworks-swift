@@ -8,7 +8,7 @@ Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* 26/27 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
+* 26/29 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
   working on [other interfaces](#interface-plan)
 * Discovering patterns during progress, refactor stuff at the end
 * `make` builds and runs a demo Swift program that accesses the C++
@@ -78,9 +78,10 @@ ISteamParentalSettings, ISteamParties, ISteamRemotePlay, ISteamRemoteStorage,
 ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo,
 SteamEncryptedAppTicket
 
-Complicated:
-* ISteamNetworkingMessages/Sockets/Utils - loads of custom C++ bits, unions,
-  missing types, clang importer failures... do this one last
+Left to do:
+* Networking stuff: all the weird basic types, ISteamNetworkingMessages,
+  ISteamNetworkingUtils, those parts of ISteamNetworkingSockets that aren't
+  impossible.
 
 Skip:
 * ISteamAppTicket - er not actually a thing?
@@ -88,6 +89,7 @@ Skip:
 * ISteamController - deprecated, need to review for stuff that's been generated and
   can actually be deleted after working through ISteamInput
 * ISteamGameCoordinator - "largely" deprecated
+* ISteamNetworking - this is the pre-modern interface
 * ISteamPS3... - will leave Swift-on-PS3 for another day
 
 ### JSON notes
