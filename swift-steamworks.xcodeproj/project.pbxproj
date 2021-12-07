@@ -266,7 +266,6 @@
 		02AD45D127578C2700BD93ED /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		02AD45D327578CB000BD93ED /* TicketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketClient.swift; sourceTree = "<group>"; };
 		02AD45D827578D3C00BD93ED /* TicketClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TicketClient; sourceTree = BUILT_PRODUCTS_DIR; };
-		02AD45DA27578D3C00BD93ED /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		02AD45EB2757A9BC00BD93ED /* SteamMatchmakingServers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamMatchmakingServers.swift; sourceTree = "<group>"; };
 		02AD45ED2758026700BD93ED /* SteamMatchmakingServers+Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamMatchmakingServers+Manual.swift"; sourceTree = "<group>"; };
 		02AD45EF2758F01100BD93ED /* steam_matchmaking_shims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = steam_matchmaking_shims.h; sourceTree = "<group>"; };
@@ -422,14 +421,6 @@
 			path = Sources/TicketClient;
 			sourceTree = SOURCE_ROOT;
 		};
-		02AD45D927578D3C00BD93ED /* TicketClient */ = {
-			isa = PBXGroup;
-			children = (
-				02AD45DA27578D3C00BD93ED /* main.swift */,
-			);
-			path = TicketClient;
-			sourceTree = "<group>";
-		};
 		02D309E6272813B200DE64F0 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,7 +531,6 @@
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_15 /* Tests */,
-				02AD45D927578D3C00BD93ED /* TicketClient */,
 				OBJ_18 /* Products */,
 				OBJ_24 /* sdk */,
 				OBJ_25 /* LICENSE */,

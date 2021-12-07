@@ -172,16 +172,43 @@ final class Client {
     }
 
     func testGameServers() {
+        class ServerPing: SteamMatchmakingPingResponse {
+            let done: () -> Void
+            init(done: @escaping () -> Void) {
+                self.done = done
+            }
+
+            func serverResponded(server: GameServerItem) {
+                print("Responded to ping OK: \(server.gameDescription)")
+                done()
+            }
+
+            func serverFailedToRespond() {
+                print("Failed to respond to ping.")
+                done()
+            }
+        }
+
         class ServerCallbacks: SteamMatchmakingServerListResponse {
             let api: SteamAPI
             let done: () -> Void
+            var serverIDs: Set<Int> = []
+            let serverPingRsp: ServerPing
+            var request: HServerListRequest?
+            var queryHandle: HServerQuery
+
             init(api: SteamAPI, done: @escaping () -> Void) {
                 self.api = api
                 self.done = done
+                self.serverPingRsp = ServerPing(done: done)
+                self.queryHandle = .invalid
             }
+
             func serverResponded(request: HServerListRequest, iServer: Int) {
+                serverIDs.insert(iServer)
                 let g = api.matchmakingServers.getServerDetails(request: request, serverIndex: iServer)
-                print("Got server: \(g.gameDescription)")
+                print("Got server \(iServer): \(g.gameDescription)")
+                self.request = request
             }
 
             func serverFailedToRespond(request: HServerListRequest, iServer: Int) {
@@ -190,14 +217,21 @@ final class Client {
 
             func refreshComplete(request: HServerListRequest, response: MatchMakingServerResponse) {
                 print("RefreshComplete: \(response)")
-                done()
+                guard let id = serverIDs.first else {
+                    print("No servers, not pinging anything")
+                    done()
+                    return
+                }
+                let g = api.matchmakingServers.getServerDetails(request: request, serverIndex: id)
+                print("Pinging server \(g.gameDescription) on 0x\(String(g.netAdr.ip, radix: 16)):\(g.netAdr.queryPort)")
+                queryHandle = api.matchmakingServers.pingServer(ip: g.netAdr.ip, port: g.netAdr.queryPort, response: serverPingRsp)
             }
         }
 
         var handle: HServerListRequest?
 
         let callbacks = ServerCallbacks(api: api) {
-            self.api.matchmakingServers.releaseRequest(serverListRequest: handle!)
+            self.api.matchmakingServers.releaseRequest(handle!)
             self.endTest()
         }
 

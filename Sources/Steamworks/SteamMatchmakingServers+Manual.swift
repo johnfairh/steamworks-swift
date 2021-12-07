@@ -41,6 +41,7 @@
 
 // MARK: Client Protocols
 
+/// Steamworks `ISteamMatchmakingServerListResponse`
 public protocol SteamMatchmakingServerListResponse {
     /// Server has responded ok with updated data
     func serverResponded(request: HServerListRequest, iServer: Int)
@@ -48,6 +49,34 @@ public protocol SteamMatchmakingServerListResponse {
     func serverFailedToRespond(request: HServerListRequest, iServer: Int)
     /// A list refresh you had initiated is now 100% completed
     func refreshComplete(request: HServerListRequest, response: MatchMakingServerResponse)
+}
+
+/// Steamworks `ISteamMatchmakingPingResponse`
+public protocol SteamMatchmakingPingResponse {
+    /// Server has responded successfully and has updated data
+    func serverResponded(server: GameServerItem)
+    /// Server failed to respond to the ping request
+    func serverFailedToRespond()
+}
+
+/// Steamworks `ISteamMatchmakingRulesResponse`
+public protocol SteamMatchmakingRulesResponse {
+    /// One of these per rule defined on the server you are querying
+    func rulesResponded(rule: String, value: String)
+    /// The server failed to respond to the request for rule details
+    func rulesFailedToRespond()
+    /// The server has finished responding to the rule details request
+    func rulesRefreshComplete()
+}
+
+/// Steamworks `ISteamMatchmakingPlayersResponse`
+public protocol ISteamMatchmakingPlayersResponse {
+    /// Got data on a new player on the server
+    func addPlayerToList(name: String, score: Int, timePlayed: Float)
+    /// The server failed to respond to the request for player details
+    func playersFailedToRespond()
+    /// The server has finished responding to the player details request
+    func playersRefreshComplete()
 }
 
 // MARK: Query lifetime interfaces
@@ -148,9 +177,33 @@ extension SteamMatchmakingServers {
     }
 
     /// Steamworks `ISteamMatchmakingServers::ReleaseRequest()`
-    public func releaseRequest(serverListRequest: HServerListRequest) {
+    public func releaseRequest(_ serverListRequest: HServerListRequest) {
         MatchmakingServersControl.unbind(handle: serverListRequest)
         SteamAPI_ISteamMatchmakingServers_ReleaseRequest(interface, .init(serverListRequest))
+    }
+
+    // MARK: Queries
+
+    /// Steamworks `ISteamMatchmakingServers::PingServer`
+    public func pingServer(ip: Int, port: Int, response: SteamMatchmakingPingResponse) -> HServerQuery {
+        let shim = CShimPingResponse.Allocate(MatchmakingServersControl.vtable)
+        let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_PingServer(interface,
+                                                                           UInt32(ip),
+                                                                           UInt16(port),
+                                                                           shim.pointee.getInterface()))
+        guard rc != .invalid else {
+            shim.pointee.Deallocate()
+            return .invalid
+        }
+        shim.pointee.handle = rc.value
+        MatchmakingServersControl.bind(handle: rc, ping: response) { shim.pointee.Deallocate() }
+        return rc
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::CancelServerQuery()`
+    public func cancelServerQuery(_ serverQuery: HServerQuery) {
+        MatchmakingServersControl.unbind(handle: serverQuery)
+        SteamAPI_ISteamMatchmakingServers_CancelServerQuery(interface, .init(serverQuery))
     }
 }
 
@@ -159,14 +212,20 @@ extension SteamMatchmakingServers {
 enum MatchmakingServersControl {
     typealias CShimServerListResponsePtr = UnsafeMutablePointer<CShimServerListResponse>
 
-    // MARK: Database
+    // MARK: Databases
 
-    private struct Client {
+    private struct ServerListClient {
         let swift: SteamMatchmakingServerListResponse
         let cpp: CShimServerListResponsePtr
     }
     private static var lock = Lock()
-    private static var serverQueries: [HServerListRequest : Client] = [:]
+    private static var serverQueries: [HServerListRequest : ServerListClient] = [:]
+
+    private struct QueryClient {
+        let ping: SteamMatchmakingPingResponse?
+        let cppDeallocate: () -> Void
+    }
+    private static var queryQueries: [HServerQuery : QueryClient] = [:]
 
     // MARK: The list of glue callbacks exposed to C++ shim
 
@@ -184,6 +243,16 @@ enum MatchmakingServersControl {
             refreshComplete: { chsl, rsp in
                 let hsl = HServerListRequest(chsl)
                 find(handle: hsl)?.refreshComplete(request: hsl, response: .init(rsp))
+            },
+            pingResponded: { chsq, rsp in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.ping?.serverResponded(server: GameServerItem(rsp))
+                unbind(handle: hsq) // unclear whether this is right...
+            },
+            pingFailedToRespond: { chsq in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.ping?.serverFailedToRespond()
+                unbind(handle: hsq) // unclear whether this is right...
             }
         ))
         return UnsafePointer(ptr)
@@ -193,7 +262,7 @@ enum MatchmakingServersControl {
 
     static func bind(handle: HServerListRequest, swift: SteamMatchmakingServerListResponse, cpp: CShimServerListResponsePtr) {
         lock.locked {
-            serverQueries[handle] = Client(swift: swift, cpp: cpp)
+            serverQueries[handle] = ServerListClient(swift: swift, cpp: cpp)
         }
     }
 
@@ -211,6 +280,30 @@ enum MatchmakingServersControl {
                 return rsp
             }
             logError("Got SteamMatchmakingServerListResponse callback for unknown handle: \(handle)")
+            return nil
+        }
+    }
+
+    static func bind(handle: HServerQuery, ping: SteamMatchmakingPingResponse? = nil, cppDeallocate: @escaping () -> Void) {
+        lock.locked {
+            queryQueries[handle] = QueryClient(ping: ping, cppDeallocate: cppDeallocate)
+        }
+    }
+
+    static func unbind(handle: HServerQuery) {
+        lock.locked {
+            if let client = queryQueries.removeValue(forKey: handle) {
+                client.cppDeallocate()
+            }
+        }
+    }
+
+    private static func find(handle: HServerQuery) -> QueryClient? {
+        lock.locked {
+            if let rsp = queryQueries[handle] {
+                return rsp
+            }
+            logError("Got SteamMatchmaking ServerQuery callback for unknown handle: \(handle)")
             return nil
         }
     }
