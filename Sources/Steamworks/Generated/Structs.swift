@@ -4313,7 +4313,7 @@ public struct GameServerItem {
     /// Steamworks `m_szGameDescription`
     public let gameDescription: String
     /// Steamworks `m_nAppID`
-    public let appID: Int
+    public let appID: AppID
     /// Steamworks `m_nPlayers`
     public let players: Int
     /// Steamworks `m_nMaxPlayers`
@@ -4325,7 +4325,7 @@ public struct GameServerItem {
     /// Steamworks `m_bSecure`
     public let secure: Bool
     /// Steamworks `m_ulTimeLastPlayed`
-    public let timeLastPlayed: Int
+    public let timeLastPlayed: RTime32
     /// Steamworks `m_nServerVersion`
     public let serverVersion: Int
     /// Steamworks `m_szGameTags`

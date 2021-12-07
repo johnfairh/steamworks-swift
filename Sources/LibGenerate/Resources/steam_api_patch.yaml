@@ -674,10 +674,15 @@ structs:
         fieldtype: AppId_t
   gameserveritem_t:
     manual_swift_name: GameServerItem
+    fields:
+      m_nAppID:
+        fieldtype: AppId_t
+      m_ulTimeLastPlayed:
+        fieldtype: RTime32
   GSReputation_t:
     fields:
       m_unBanExpires:
-        fieldtype: RTime32_t
+        fieldtype: RTime32
   HTML_NeedsPaint_t:
     fields:
       pBGRA:
