@@ -21,25 +21,27 @@
 #endif
 
 final class Lock {
-    private var mutex = pthread_mutex_t()
+    private let mutex: UnsafeMutablePointer<pthread_mutex_t>
 
     init() {
-        let rc = pthread_mutex_init(&mutex, nil)
+        mutex = .allocate(capacity: 1)
+        mutex.initialize(to: pthread_mutex_t())
+        let rc = pthread_mutex_init(&mutex.pointee, nil)
         precondition(rc == 0)
     }
 
     func lock() {
-        let rc = pthread_mutex_lock(&mutex)
+        let rc = pthread_mutex_lock(&mutex.pointee)
         precondition(rc == 0)
     }
 
     func unlock() {
-        let rc = pthread_mutex_unlock(&mutex)
+        let rc = pthread_mutex_unlock(&mutex.pointee)
         precondition(rc == 0)
     }
 
     var isLocked: Bool {
-        pthread_mutex_trylock(&mutex) != 0
+        pthread_mutex_trylock(&mutex.pointee) != 0
     }
 
     @discardableResult
