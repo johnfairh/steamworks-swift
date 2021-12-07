@@ -38,6 +38,12 @@
 //
 // (This is rather abusing existentials here but not having to type-erase all these
 // dumb callback things is pleasant.)
+//
+// ----
+// Q: How did that plan work out?
+// A: Very verbose but works OK, I think.  I can't quite raise the enthusiasm to
+// go back to the generator side and generate all the C++/Swift code here -- seems too
+// special-case.
 
 // MARK: Client Protocols
 
@@ -59,6 +65,16 @@ public protocol SteamMatchmakingPingResponse {
     func serverFailedToRespond()
 }
 
+/// Steamworks `ISteamMatchmakingPlayersResponse`
+public protocol SteamMatchmakingPlayersResponse {
+    /// Got data on a new player on the server
+    func addPlayerToList(name: String, score: Int, timePlayed: Float)
+    /// The server failed to respond to the request for player details
+    func playersFailedToRespond()
+    /// The server has finished responding to the player details request
+    func playersRefreshComplete()
+}
+
 /// Steamworks `ISteamMatchmakingRulesResponse`
 public protocol SteamMatchmakingRulesResponse {
     /// One of these per rule defined on the server you are querying
@@ -67,16 +83,6 @@ public protocol SteamMatchmakingRulesResponse {
     func rulesFailedToRespond()
     /// The server has finished responding to the rule details request
     func rulesRefreshComplete()
-}
-
-/// Steamworks `ISteamMatchmakingPlayersResponse`
-public protocol ISteamMatchmakingPlayersResponse {
-    /// Got data on a new player on the server
-    func addPlayerToList(name: String, score: Int, timePlayed: Float)
-    /// The server failed to respond to the request for player details
-    func playersFailedToRespond()
-    /// The server has finished responding to the player details request
-    func playersRefreshComplete()
 }
 
 // MARK: Query lifetime interfaces
@@ -184,7 +190,7 @@ extension SteamMatchmakingServers {
 
     // MARK: Queries
 
-    /// Steamworks `ISteamMatchmakingServers::PingServer`
+    /// Steamworks `ISteamMatchmakingServers::PingServer()`
     public func pingServer(ip: Int, port: Int, response: SteamMatchmakingPingResponse) -> HServerQuery {
         let shim = CShimPingResponse.Allocate(MatchmakingServersControl.vtable)
         let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_PingServer(interface,
@@ -197,6 +203,38 @@ extension SteamMatchmakingServers {
         }
         shim.pointee.handle = rc.value
         MatchmakingServersControl.bind(handle: rc, ping: response) { shim.pointee.Deallocate() }
+        return rc
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::PlayerDetails()`
+    public func playerDetails(ip: Int, port: Int, response: SteamMatchmakingPlayersResponse) -> HServerQuery {
+        let shim = CShimPlayersResponse.Allocate(MatchmakingServersControl.vtable)
+        let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_PlayerDetails(interface,
+                                                                              UInt32(ip),
+                                                                              UInt16(port),
+                                                                              shim.pointee.getInterface()))
+        guard rc != .invalid else {
+            shim.pointee.Deallocate()
+            return .invalid
+        }
+        shim.pointee.handle = rc.value
+        MatchmakingServersControl.bind(handle: rc, players: response) { shim.pointee.Deallocate() }
+        return rc
+    }
+
+    /// Steamworks `ISteamMatchmakingServers::ServerRules()`
+    public func serverRules(ip: Int, port: Int, response: SteamMatchmakingRulesResponse) -> HServerQuery {
+        let shim = CShimRulesResponse.Allocate(MatchmakingServersControl.vtable)
+        let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_ServerRules(interface,
+                                                                            UInt32(ip),
+                                                                            UInt16(port),
+                                                                            shim.pointee.getInterface()))
+        guard rc != .invalid else {
+            shim.pointee.Deallocate()
+            return .invalid
+        }
+        shim.pointee.handle = rc.value
+        MatchmakingServersControl.bind(handle: rc, rules: response) { shim.pointee.Deallocate() }
         return rc
     }
 
@@ -223,6 +261,8 @@ enum MatchmakingServersControl {
 
     private struct QueryClient {
         let ping: SteamMatchmakingPingResponse?
+        let players: SteamMatchmakingPlayersResponse?
+        let rules: SteamMatchmakingRulesResponse?
         let cppDeallocate: () -> Void
     }
     private static var queryQueries: [HServerQuery : QueryClient] = [:]
@@ -247,12 +287,40 @@ enum MatchmakingServersControl {
             pingResponded: { chsq, rsp in
                 let hsq = HServerQuery(chsq)
                 find(handle: hsq)?.ping?.serverResponded(server: GameServerItem(rsp))
-                unbind(handle: hsq) // unclear whether this is right...
+                unbind(handle: hsq) // seems to be right, dispose of objects
             },
             pingFailedToRespond: { chsq in
                 let hsq = HServerQuery(chsq)
                 find(handle: hsq)?.ping?.serverFailedToRespond()
-                unbind(handle: hsq) // unclear whether this is right...
+                unbind(handle: hsq) // as above
+            },
+            addPlayerToList: { chsq, n, s, t in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.players?.addPlayerToList(name: String(n), score: Int(s), timePlayed: t)
+            },
+            playersFailedToRespond: { chsq in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.players?.playersFailedToRespond()
+                unbind(handle: hsq) // as above
+            },
+            playersRefreshComplete: { chsq in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.players?.playersRefreshComplete()
+                unbind(handle: hsq) // as above
+            },
+            rulesResponded: { chsq, k, v in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.rules?.rulesResponded(rule: String(k), value: String(v))
+            },
+            rulesFailedToRespond: { chsq in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.rules?.rulesFailedToRespond()
+                unbind(handle: hsq) // as above
+            },
+            rulesRefreshComplete: { chsq in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.rules?.rulesRefreshComplete()
+                unbind(handle: hsq) // as above
             }
         ))
         return UnsafePointer(ptr)
@@ -284,9 +352,16 @@ enum MatchmakingServersControl {
         }
     }
 
-    static func bind(handle: HServerQuery, ping: SteamMatchmakingPingResponse? = nil, cppDeallocate: @escaping () -> Void) {
+    static func bind(handle: HServerQuery,
+                     ping: SteamMatchmakingPingResponse? = nil,
+                     players: SteamMatchmakingPlayersResponse? = nil,
+                     rules: SteamMatchmakingRulesResponse? = nil,
+                     cppDeallocate: @escaping () -> Void) {
         lock.locked {
-            queryQueries[handle] = QueryClient(ping: ping, cppDeallocate: cppDeallocate)
+            queryQueries[handle] = QueryClient(ping: ping,
+                                               players: players,
+                                               rules: rules,
+                                               cppDeallocate: cppDeallocate)
         }
     }
 

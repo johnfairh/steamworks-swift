@@ -14,14 +14,22 @@ typedef void (__cdecl *ShimServerResponded_t)(HServerListRequest, int);
 typedef void (__cdecl *ShimServerFailedToRespond_t)(HServerListRequest, int);
 typedef void (__cdecl *ShimRefreshComplete_t)(HServerListRequest, EMatchMakingServerResponse);
 typedef void (__cdecl *ShimPingResponded_t)(HServerQuery, _Nonnull gameserveritem_t *);
-typedef void (__cdecl *ShimPingFailedToRespond_t)(HServerQuery);
+typedef void (__cdecl *ShimServerQuery_t)(HServerQuery);
+typedef void (__cdecl *ShimAddPlayerToList_t)(HServerQuery, const char *, int, float);
+typedef void (__cdecl *ShimRulesResponded_t)(HServerQuery, const char *, const char *);
 
 struct ShimMatchmakingVTable_t {
     ShimServerResponded_t serverResponded;
     ShimServerFailedToRespond_t serverFailedToRespond;
     ShimRefreshComplete_t refreshComplete;
     ShimPingResponded_t pingResponded;
-    ShimPingFailedToRespond_t pingFailedToRespond;
+    ShimServerQuery_t pingFailedToRespond;
+    ShimAddPlayerToList_t addPlayerToList;
+    ShimServerQuery_t playersFailedToRespond;
+    ShimServerQuery_t playersRefreshComplete;
+    ShimRulesResponded_t rulesResponded;
+    ShimServerQuery_t rulesFailedToRespond;
+    ShimServerQuery_t rulesRefreshComplete;
 };
 
 } // extern "C"
@@ -99,6 +107,82 @@ class CShimPingResponse: ISteamMatchmakingPingResponse {
     // Server failed to respond to the ping request
     void ServerFailedToRespond() {
         vtable->pingFailedToRespond(handle);
+    }
+};
+
+class CShimPlayersResponse: ISteamMatchmakingPlayersResponse {
+    const ShimMatchmakingVTable_t *vtable;
+
+    CShimPlayersResponse(const ShimMatchmakingVTable_t *vtable): vtable(vtable) {
+    }
+  public:
+    static _Nonnull CShimPlayersResponse *Allocate(const ShimMatchmakingVTable_t *vtable) {
+        return new CShimPlayersResponse(vtable);
+    }
+
+    void Deallocate() {
+        delete this;
+    }
+
+    HServerQuery handle;
+
+    _Nonnull ISteamMatchmakingPlayersResponse *getInterface() {
+        return this;
+    }
+
+    // Overrides
+
+    // Got data on a new player on the server
+    void AddPlayerToList( const char *pchName, int nScore, float flTimePlayed) {
+        vtable->addPlayerToList(handle, pchName, nScore, flTimePlayed);
+    }
+
+    // The server failed to respond to the request for player details
+    void PlayersFailedToRespond() {
+        vtable->playersFailedToRespond(handle);
+    }
+
+    // The server has finished responding to the player details request
+    void PlayersRefreshComplete() {
+        vtable->playersRefreshComplete(handle);
+    }
+};
+
+class CShimRulesResponse: ISteamMatchmakingRulesResponse {
+    const ShimMatchmakingVTable_t *vtable;
+
+    CShimRulesResponse(const ShimMatchmakingVTable_t *vtable): vtable(vtable) {
+    }
+  public:
+    static _Nonnull CShimRulesResponse *Allocate(const ShimMatchmakingVTable_t *vtable) {
+        return new CShimRulesResponse(vtable);
+    }
+
+    void Deallocate() {
+        delete this;
+    }
+
+    HServerQuery handle;
+
+    _Nonnull ISteamMatchmakingRulesResponse *getInterface() {
+        return this;
+    }
+
+    // Overrides
+
+    // Got data on a rule on the server
+    void RulesResponded(const char *pchRule, const char *pchValue) {
+        vtable->rulesResponded(handle, pchRule, pchValue);
+    }
+
+    // The server failed to respond to the request for rule details
+    void RulesFailedToRespond() {
+        vtable->rulesFailedToRespond(handle);
+    }
+
+    // The server has finished responding to the rule details request
+    void RulesRefreshComplete() {
+        vtable->rulesRefreshComplete(handle);
     }
 };
 
