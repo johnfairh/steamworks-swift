@@ -8,7 +8,7 @@ Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* 25/27 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
+* 26/27 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
   working on [other interfaces](#interface-plan)
 * Discovering patterns during progress, refactor stuff at the end
 * `make` builds and runs a demo Swift program that accesses the C++
@@ -73,13 +73,12 @@ To run the generator / build:
 
 ✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameSearch, ISteamGameServer,
 ISteamGameServerStats, ISteamHTMLSruface, ISteamHTTP, ISteamInput, ISteamInventory,
-ISteamMatchMaking, ISteamMusic, ISteamMusicRemote, ISteamParentalSettings,
-ISteamParties, ISteamRemotePlay, ISteamRemoteStorage, ISteamScreenshots, ISteamUGC,
-ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo, SteamEncryptedAppTicket
+ISteamMatchMaking, ISteamMatchmakingServers, ISteamMusic, ISteamMusicRemote,
+ISteamParentalSettings, ISteamParties, ISteamRemotePlay, ISteamRemoteStorage,
+ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo,
+SteamEncryptedAppTicket
 
 Complicated:
-* ISteamMatchmakingServers - loads of custom C++ callback interfaces, custom
-  C++ datatypes with weird names...
 * ISteamNetworkingMessages/Sockets/Utils - loads of custom C++ bits, unions,
   missing types, clang importer failures... do this one last
 
