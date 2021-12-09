@@ -34,3 +34,12 @@ static inline bool CSteamAPI_ISteamMatchmaking_RemoveFavoriteGame( ISteamMatchma
 static inline SteamAPICall_t CSteamAPI_ISteamParties_CreateBeacon( ISteamParties* self, uint32 unOpenSlots, SteamPartyBeaconLocation_t beaconLocation, const char * pchConnectString, const char * pchMetadata ) {
   return SteamAPI_ISteamParties_CreateBeacon(self, unOpenSlots, &beaconLocation, pchConnectString, pchMetadata);
 }
+
+
+// Shim for a struct that we don't generate because unions and C++
+
+__attribute__((swift_name("getter:SteamNetworkingIPAddr.m_ipv6_ptr(self:)")))
+static inline const uint8 * _Nonnull SteamNetworkingIPAddr_m_ipv6_ptr(const SteamNetworkingIPAddr * _Nonnull s)
+{
+    return s->m_ipv6;
+}

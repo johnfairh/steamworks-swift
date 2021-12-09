@@ -3607,22 +3607,6 @@ extension SteamNetworkingConfigValue: SteamCreatable {
     }
 }
 
-/// Steamworks `SteamNetworkingIPAddr`
-public struct SteamNetworkingIPAddr {
-    /// Steamworks `m_ipv6`
-    public let ipv6: [UInt8]
-    /// Steamworks `m_port`
-    public let port: Int
-}
-
-extension SteamNetworkingIPAddr: SteamCreatable {
-    typealias SteamType = CSteamworks.SteamNetworkingIPAddr
-    init(_ steam: CSteamworks.SteamNetworkingIPAddr) {
-        ipv6 = .init(steam.m_ipv6_ptr, 16)
-        port = .init(steam.m_port)
-    }
-}
-
 /// Steamworks `SteamNetworkingIPAddrRender`
 public struct SteamNetworkingIPAddrRender {
 }

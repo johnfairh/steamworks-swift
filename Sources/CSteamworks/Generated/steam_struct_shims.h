@@ -240,12 +240,6 @@ static inline const uint8 * _Nonnull SteamNetworkPingLocation_t_m_data_ptr(const
     return s->m_data;
 }
 
-__attribute__((swift_name("getter:SteamNetworkingIPAddr.m_ipv6_ptr(self:)")))
-static inline const uint8 * _Nonnull SteamNetworkingIPAddr_m_ipv6_ptr(const SteamNetworkingIPAddr * _Nonnull s)
-{
-    return s->m_ipv6;
-}
-
 __attribute__((swift_name("getter:SteamNetworkingIdentity.m_szUnknownRawString_ptr(self:)")))
 static inline const char * _Nonnull SteamNetworkingIdentity_m_szUnknownRawString_ptr(const SteamNetworkingIdentity * _Nonnull s)
 {

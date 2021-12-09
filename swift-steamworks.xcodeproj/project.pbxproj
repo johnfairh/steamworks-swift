@@ -202,6 +202,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02071237276146B1000D5B4A /* Generated */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Generated; sourceTree = "<group>"; };
 		020860A1272EBEC500725122 /* IO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IO.swift; sourceTree = "<group>"; };
 		020860A3272EBEE800725122 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		020860A527300E5F00725122 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
@@ -563,6 +564,7 @@
 				OBJ_9 /* steamapi_headers.h */,
 				02AD45712751565E00BD93ED /* steam_missing.h */,
 				02AD45EF2758F01100BD93ED /* steam_matchmaking_shims.h */,
+				02071237276146B1000D5B4A /* Generated */,
 				OBJ_10 /* module.modulemap */,
 			);
 			name = CSteamworks;

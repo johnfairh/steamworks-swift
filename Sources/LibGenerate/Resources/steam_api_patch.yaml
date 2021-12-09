@@ -742,6 +742,8 @@ structs:
     fields:
       m_int64:
         ignore: Broken union field
+  SteamNetworkingIPAddr:
+    ignore: "Union and methods"
   SteamNetworkingMessage_t:
     ignore: C declaration is not imported?
     fields:

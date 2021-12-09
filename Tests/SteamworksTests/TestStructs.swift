@@ -40,4 +40,7 @@ class TestStructs: XCTestCase {
         XCTAssertEqual(0, any4.ipv4Address)
         XCTAssertEqual(Array<UInt8>(repeating: 0, count: 16), any6.ipv6Address)
     }
+
+    // Can't test SteamNetworkingIPAddr -- it segfaults unless SteamAPI_Init() !
+    // Added a test to clienttest instead.
 }

@@ -201,3 +201,81 @@ public final class ServerNetAdr {
 }
 
 extension ServerNetAdr: SteamCreatable {}
+
+// MARK: SteamNetworkingIPAddr
+
+// This is another union/method-tastic struct.  We model it as an immutable thing
+// that users can instantiate.
+
+/// Steamworks `SteamNetworkingIPAddr`
+public final class SteamNetworkingIPAddr {
+    private var adr: CSteamworks.SteamNetworkingIPAddr
+
+    // MARK: Fields
+
+    public var isIPv6AllZeros: Bool {
+        adr.IsIPv6AllZeros()
+    }
+
+    public var isIPv4: Bool {
+        adr.IsIPv4()
+    }
+
+    public var isLocalHost: Bool {
+        adr.IsLocalHost()
+    }
+
+    /// Returns IP in host byte order (e.g. aa.bb.cc.dd as 0xaabbccdd).  Returns 0 if IP is not mapped IPv4.
+    public var ipv4: Int {
+        Int(adr.GetIPv4())
+    }
+
+    public var ipv6: [UInt8] {
+        let buf = UnsafeBufferPointer(start: adr.m_ipv6_ptr, count: 16)
+        return Array(buf)
+    }
+
+    public var port: Int {
+        Int(adr.m_port)
+    }
+
+    public func toString(withPort: Bool = true) -> String {
+        String(unsafeUninitializedCapacity: 48) { ubuf in
+            ubuf.withMemoryRebound(to: CChar.self) { sbuf in
+                adr.ToString(sbuf.baseAddress, 48, withPort)
+                return strlen(sbuf.baseAddress!)
+            }
+        }
+    }
+
+    // MARK: Initializers
+
+    init(_ adr: CSteamworks.SteamNetworkingIPAddr) {
+        self.adr = adr
+    }
+
+    /// Sets to IPv4 mapped address.  IP and port are in host byte order.
+    public init(ipv4: Int, port: Int) {
+        adr = .init()
+        adr.SetIPv4(UInt32(ipv4), UInt16(port))
+    }
+
+    /// IP is interpreted as bytes, so there are no endian issues.  (Same as `inaddr_in6`.)
+    /// The IP can be a mapped IPv4 address.
+    public init(ipv6: [UInt8], port: Int) {
+        adr = .init()
+        adr.SetIPv6(ipv6, UInt16(port))
+    }
+
+    /// Parse an IP address and optional port.  If a port is not present, it is set to 0.
+    public init?(addressAndPort: String) {
+        adr = .init()
+        adr.Clear()
+        guard adr.ParseString(addressAndPort) else {
+            return nil
+        }
+    }
+}
+
+extension SteamNetworkingIPAddr: SteamCreatable {
+}

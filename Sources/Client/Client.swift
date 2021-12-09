@@ -65,26 +65,25 @@ final class Client {
         guard testState == .idle else {
             return
         }
-        testState = .testing
-        print(">>>> Starting clienttest \(testNext)")
-        switch testNext {
-        case 0:
-            testSyncQueries()
-        case 1:
-            testCallReturn()
-        case 2:
-            testCallback()
-        case 3:
-            testStringFilter()
-        case 4:
-            testServerIP()
-        case 5:
-            testHTTP()
-        case 6:
-            testGameServers()
-        default:
-            print("<<<< Actually, that's the end")
+
+        let testMethods: [() -> Void] = [
+            testSyncQueries,
+            testCallReturn,
+            testCallback,
+            testStringFilter,
+            testServerIP,
+            testHTTP,
+            testGameServers,
+            testNetworkingStructs,
+        ]
+
+        if testNext == testMethods.count {
+            print(">>>> No more tests")
             testState = .done
+        } else {
+            print(">>>> Starting clienttest \(testNext)")
+            testState = .testing
+            testMethods[testNext]()
         }
     }
 
@@ -238,6 +237,19 @@ final class Client {
         handle = api.matchmakingServers.requestInternetServerList(appIndex: api.utils.getAppID(),
                                                                   filters: ["gamedir" : "spacewar", "secure" : "1"],
                                                                   requestServersResponse: callbacks)
+    }
+
+    func testNetworkingStructs() {
+        defer { endTest() }
+
+        guard let addr4 = SteamNetworkingIPAddr(addressAndPort: "1.2.3.4:55") else {
+            print("Can't parse IPv4 address")
+            return
+        }
+        print("IP4: 0x\(String(addr4.ipv4, radix: 16)), str: \(addr4.toString())")
+
+        let addr6 = SteamNetworkingIPAddr(ipv6: [0,0,0,0,0xff,0xff,0xff,0xff,0x24,0x23,0x22,0x21,0x00,0xda,0xb6,0x8e], port: 5000)
+        print("IP6: \(addr6.ipv6), str: \(addr6.toString())")
     }
 }
 
