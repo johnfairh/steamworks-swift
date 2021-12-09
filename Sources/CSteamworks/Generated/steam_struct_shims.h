@@ -240,13 +240,6 @@ static inline const uint8 * _Nonnull SteamNetworkPingLocation_t_m_data_ptr(const
     return s->m_data;
 }
 
-__attribute__((swift_name("getter:SteamNetworkingIdentity.m_szUnknownRawString_ptr(self:)")))
-static inline const char * _Nonnull SteamNetworkingIdentity_m_szUnknownRawString_ptr(const SteamNetworkingIdentity * _Nonnull s)
-{
-    const_cast<SteamNetworkingIdentity *>(s)->m_szUnknownRawString[127] = 0;
-    return s->m_szUnknownRawString;
-}
-
 __attribute__((swift_name("getter:SteamRelayNetworkStatus_t.m_debugMsg_ptr(self:)")))
 static inline const char * _Nonnull SteamRelayNetworkStatus_t_m_debugMsg_ptr(const SteamRelayNetworkStatus_t * _Nonnull s)
 {

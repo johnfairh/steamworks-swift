@@ -36,10 +36,16 @@ static inline SteamAPICall_t CSteamAPI_ISteamParties_CreateBeacon( ISteamParties
 }
 
 
-// Shim for a struct that we don't generate because unions and C++
+// Shim for structs that we don't generate because unions and C++
 
 __attribute__((swift_name("getter:SteamNetworkingIPAddr.m_ipv6_ptr(self:)")))
 static inline const uint8 * _Nonnull SteamNetworkingIPAddr_m_ipv6_ptr(const SteamNetworkingIPAddr * _Nonnull s)
 {
     return s->m_ipv6;
+}
+
+__attribute__((swift_name("getter:SteamNetworkingIdentity.m_genericBytes_ptr(self:)")))
+static inline const uint8 * _Nonnull SteamNetworkingIdentity_m_genericBytes_ptr(const SteamNetworkingIdentity * _Nonnull s)
+{
+    return s->m_genericBytes;
 }

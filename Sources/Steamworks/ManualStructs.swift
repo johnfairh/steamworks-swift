@@ -209,7 +209,7 @@ extension ServerNetAdr: SteamCreatable {}
 
 /// Steamworks `SteamNetworkingIPAddr`
 public final class SteamNetworkingIPAddr {
-    private var adr: CSteamworks.SteamNetworkingIPAddr
+    private(set) var adr: CSteamworks.SteamNetworkingIPAddr
 
     // MARK: Fields
 
@@ -275,7 +275,147 @@ public final class SteamNetworkingIPAddr {
             return nil
         }
     }
+
+    /// Can't call the operator== from Swift yet
+    public static func == (lhs: SteamNetworkingIPAddr, rhs: SteamNetworkingIPAddr) -> Bool {
+        lhs.port == rhs.port && lhs.ipv6 == rhs.ipv6
+    }
 }
 
-extension SteamNetworkingIPAddr: SteamCreatable {
+extension SteamNetworkingIPAddr: SteamCreatable, Equatable {
+}
+
+// MARK: SteamNetworkingIdentity
+
+// Again model as immutable thing that can be created.
+// ** Actually *mostly* immutable because I don't understand 'type'
+// Can't quite `enum`-ify this because:
+// 1) The random non-class-corruption issue;
+// 2) The 'types' enum is large and weird.
+
+/// Steamworks `SteamNetworkingIPAddr`
+public final class SteamNetworkingIdentity {
+    private(set) var identity: CSteamworks.SteamNetworkingIdentity
+
+    // MARK: Fields
+
+    /// Type of identity
+    public var type: SteamNetworkingIdentityType {
+        get {
+            .init(identity.m_eType)
+        }
+        set {
+            identity.m_eType = .init(newValue)
+        }
+    }
+
+    /// Returns true if we are the invalid type.  Does not make any other validity checks (e.g. is SteamID actually valid)
+    public var isValid: Bool {
+        !identity.IsInvalid()
+    }
+
+    /// Returns CSteamID (!IsValid() if identity is not a SteamID)
+    public var steamID: SteamID {
+        .init(identity.GetSteamID())
+    }
+
+    /// Returns `nil` if we are not an IP address.
+    public var ipAddr: SteamNetworkingIPAddr? {
+        identity.GetIPAddr().map { .init($0.pointee) }
+    }
+
+    /// Returns true if this identity is localhost.
+    public var isLocalhost: Bool {
+        identity.IsLocalHost()
+    }
+
+    /// Returns `nil` if not generic string type
+    public var genericString: String? {
+        .init(identity.GetGenericString())
+    }
+
+    /// Returns `nil` if not generic bytes type
+    public var genericBytes: [UInt8]? {
+        var count = Int32(0)
+        guard let bytes = identity.GetGenericBytes(&count) else {
+            return nil
+        }
+        return Array(UnsafeBufferPointer(start: bytes, count: Int(count)))
+    }
+
+    /// String format, should round-trip
+    public var description: String {
+        String(unsafeUninitializedCapacity: 128) { ubuf in
+            ubuf.withMemoryRebound(to: CChar.self) { sbuf in
+                identity.ToString(sbuf.baseAddress, 128)
+                return strlen(sbuf.baseAddress!)
+            }
+        }
+    }
+
+    // MARK: Initializers
+
+    init(_ identity: CSteamworks.SteamNetworkingIdentity) {
+        self.identity = identity
+    }
+
+    /// Init from a Steam ID
+    public init(_ steamID: SteamID) {
+        identity = .init()
+        identity.SetSteamID64(steamID.asUInt64) // also sets type
+    }
+
+    /// Init from an IP address
+    public init(_ ipaddr: SteamNetworkingIPAddr) {
+        identity = .init()
+        var adr = ipaddr.adr
+        identity.SetIPAddr(&adr) // also sets type
+    }
+
+    /// Identify as localhost, ~anonymous
+    public static var localhost: SteamNetworkingIdentity {
+        var id = CSteamworks.SteamNetworkingIdentity()
+        id.SetLocalHost()
+        return SteamNetworkingIdentity(id)
+    }
+
+    /// Init generic string or some other type.  Max length 31 bytes.
+    public init?(genericString: String, type: SteamNetworkingIdentityType = .genericString) {
+        identity = .init()
+        guard identity.SetGenericString(genericString) else {
+            return nil
+        }
+        self.type = type
+    }
+
+    /// Init from a `description` string.
+    public init?(description: String) {
+        identity = .init()
+        guard identity.ParseString(description) else {
+            return nil
+        }
+    }
+
+    /// Init generic bytes or some other type.  Max 32 bytes.
+    public init?(_ bytes: [UInt8], type: SteamNetworkingIdentityType = .genericBytes) {
+        identity = .init()
+        guard identity.SetGenericBytes(bytes, bytes.count) else {
+            return nil
+        }
+        self.type = type
+    }
+
+    // MARK: Equatable
+
+    public static func == (lhs: SteamNetworkingIdentity, rhs: SteamNetworkingIdentity) -> Bool {
+        lhs.type == rhs.type &&
+            lhs.identity.m_cbSize == rhs.identity.m_cbSize &&
+            memcmp(lhs.identity.m_genericBytes_ptr,
+                   rhs.identity.m_genericBytes_ptr,
+                   Int(rhs.identity.m_cbSize)) == 0
+    }
+}
+
+extension SteamNetworkingIdentity: SteamCreatable, CustomStringConvertible, Equatable {
+    typealias SteamType = CSteamworks.SteamNetworkingIdentity
 }

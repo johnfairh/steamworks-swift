@@ -3617,25 +3617,6 @@ extension SteamNetworkingIPAddrRender: SteamCreatable {
     }
 }
 
-/// Steamworks `SteamNetworkingIdentity`
-public struct SteamNetworkingIdentity {
-    /// Steamworks `m_eType`
-    public let type: SteamNetworkingIdentityType
-    /// Steamworks `m_cbSize`
-    public let sizeSize: Int
-    /// Steamworks `m_szUnknownRawString`
-    public let unknownRawString: String
-}
-
-extension SteamNetworkingIdentity: SteamCreatable {
-    typealias SteamType = CSteamworks.SteamNetworkingIdentity
-    init(_ steam: CSteamworks.SteamNetworkingIdentity) {
-        type = .init(steam.m_eType)
-        sizeSize = .init(steam.m_cbSize)
-        unknownRawString = .init(steam.m_szUnknownRawString_ptr)
-    }
-}
-
 /// Steamworks `SteamNetworkingIdentityRender`
 public struct SteamNetworkingIdentityRender {
 }

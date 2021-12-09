@@ -250,6 +250,22 @@ final class Client {
 
         let addr6 = SteamNetworkingIPAddr(ipv6: [0,0,0,0,0xff,0xff,0xff,0xff,0x24,0x23,0x22,0x21,0x00,0xda,0xb6,0x8e], port: 5000)
         print("IP6: \(addr6.ipv6), str: \(addr6.toString())")
+
+        let ident = SteamNetworkingIdentity(addr6)
+        print("ident: \(ident)")
+        let ident2 = SteamNetworkingIdentity(description: ident.description)
+        if ident2 == nil {
+            print("Roundtrip failure")
+        } else {
+            print("Round-trip OK")
+        }
+
+        if let psnIdent = SteamNetworkingIdentity(genericString: "Catten", type: .sonyPSN) {
+            print(psnIdent)
+        } else {
+            print("psnIdent no good")
+        }
+        print("Local ident: \(SteamNetworkingIdentity.localhost)")
     }
 }
 

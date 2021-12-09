@@ -742,6 +742,8 @@ structs:
     fields:
       m_int64:
         ignore: Broken union field
+  SteamNetworkingIdentity:
+    ignore: "Union and methods"
   SteamNetworkingIPAddr:
     ignore: "Union and methods"
   SteamNetworkingMessage_t:
