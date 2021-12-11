@@ -154,33 +154,6 @@ public enum SteamConstants {
     /// Steamworks `k_nSteamNetworkingPing_Unknown`
     public static let steamNetworkingPingUnknown = Int(-2)
 
-    /// Steamworks `k_nSteamNetworkingSend_AutoRestartBrokenSession`
-    public static let steamNetworkingSendAutoRestartBrokenSession = Int(32)
-
-    /// Steamworks `k_nSteamNetworkingSend_NoDelay`
-    public static let steamNetworkingSendNoDelay = Int(4)
-
-    /// Steamworks `k_nSteamNetworkingSend_NoNagle`
-    public static let steamNetworkingSendNoNagle = Int(1)
-
-    /// Steamworks `k_nSteamNetworkingSend_Reliable`
-    public static let steamNetworkingSendReliable = Int(8)
-
-    /// Steamworks `k_nSteamNetworkingSend_ReliableNoNagle`
-    public static let steamNetworkingSendReliableNoNagle = Int(k_nSteamNetworkingSend_Reliable | k_nSteamNetworkingSend_NoNagle)
-
-    /// Steamworks `k_nSteamNetworkingSend_Unreliable`
-    public static let steamNetworkingSendUnreliable = Int(0)
-
-    /// Steamworks `k_nSteamNetworkingSend_UnreliableNoDelay`
-    public static let steamNetworkingSendUnreliableNoDelay = Int(k_nSteamNetworkingSend_Unreliable | k_nSteamNetworkingSend_NoDelay | k_nSteamNetworkingSend_NoNagle)
-
-    /// Steamworks `k_nSteamNetworkingSend_UnreliableNoNagle`
-    public static let steamNetworkingSendUnreliableNoNagle = Int(k_nSteamNetworkingSend_Unreliable | k_nSteamNetworkingSend_NoNagle)
-
-    /// Steamworks `k_nSteamNetworkingSend_UseCurrentThread`
-    public static let steamNetworkingSendUseCurrentThread = Int(16)
-
     /// Steamworks `k_cchTagListMax`
     public static let tagListMaxSize = Int(1024 + 1)
 

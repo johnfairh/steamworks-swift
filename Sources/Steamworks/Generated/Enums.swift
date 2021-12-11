@@ -3479,6 +3479,35 @@ public enum SteamNetworkingIdentityType: UInt32 {
 extension ESteamNetworkingIdentityType: RawConvertible { typealias From = SteamNetworkingIdentityType }
 extension SteamNetworkingIdentityType: EnumWithUnrepresented { typealias From = ESteamNetworkingIdentityType }
 
+/// Steamworks `ESteamNetworkingSendFlags`
+public struct SteamNetworkingSendFlags: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    /// Steamworks `k_nSteamNetworkingSend_Unreliable`
+    public static let unreliable = SteamNetworkingSendFlags([])
+    /// Steamworks `k_nSteamNetworkingSend_NoNagle`
+    public static let noNagle = SteamNetworkingSendFlags(rawValue: 1)
+    /// Steamworks `k_nSteamNetworkingSend_NoDelay`
+    public static let noDelay = SteamNetworkingSendFlags(rawValue: 4)
+    /// Steamworks `k_nSteamNetworkingSend_Reliable`
+    public static let reliable = SteamNetworkingSendFlags(rawValue: 8)
+    /// Steamworks `k_nSteamNetworkingSend_UseCurrentThread`
+    public static let useCurrentThread = SteamNetworkingSendFlags(rawValue: 16)
+    /// Steamworks `k_nSteamNetworkingSend_AutoRestartBrokenSession`
+    public static let autoRestartBrokenSession = SteamNetworkingSendFlags(rawValue: 32)
+    /// Steamworks `k_nSteamNetworkingSend_ReliableNoNagle`
+    public static let reliableNoNagle = SteamNetworkingSendFlags(rawValue: 8 | 1)
+    /// Steamworks `k_nSteamNetworkingSend_UnreliableNoDelay`
+    public static let unreliableNoDelay = SteamNetworkingSendFlags(rawValue: 0 | 4 | 1)
+    /// Steamworks `k_nSteamNetworkingSend_UnreliableNoNagle`
+    public static let unreliableNoNagle = SteamNetworkingSendFlags(rawValue: 0 | 1)
+}
+
+extension ESteamNetworkingSendFlags: RawConvertible { typealias From = SteamNetworkingSendFlags }
+extension SteamNetworkingSendFlags: RawConvertible { typealias From = ESteamNetworkingSendFlags }
+
 /// Steamworks `ESteamNetworkingSocketsDebugOutputType`
 public enum SteamNetworkingSocketsDebugOutputType: UInt32 {
     /// Steamworks `k_ESteamNetworkingSocketsDebugOutputType_None`

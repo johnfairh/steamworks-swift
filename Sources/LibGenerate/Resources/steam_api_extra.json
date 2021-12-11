@@ -18,6 +18,20 @@
       { "name":"k_unFavoriteFlagFavorite", "value":"1" },
       { "name":"k_unFavoriteFlagHistory", "value":"2" }
     ]
+  },
+  {
+    "enumname": "ESteamNetworkingSendFlags",
+    "values": [
+      {"name":"k_nSteamNetworkingSend_Unreliable", "value":"0" },
+      {"name":"k_nSteamNetworkingSend_NoNagle", "value":"1" },
+      {"name":"k_nSteamNetworkingSend_NoDelay", "value":"4" },
+      {"name":"k_nSteamNetworkingSend_Reliable", "value":"8" },
+      {"name":"k_nSteamNetworkingSend_UseCurrentThread", "value":"16" },
+      {"name":"k_nSteamNetworkingSend_AutoRestartBrokenSession", "value":"32" },
+      {"name":"k_nSteamNetworkingSend_ReliableNoNagle", "value":"8 | 1" },
+      {"name":"k_nSteamNetworkingSend_UnreliableNoDelay", "value":"0 | 4 | 1" },
+      {"name":"k_nSteamNetworkingSend_UnreliableNoNagle", "value":"0 | 1" }
+    ]
   }
   ],
   "interfaces": [],

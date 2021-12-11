@@ -531,12 +531,11 @@ public struct SteamNetworkingMessage {
         Int(CSteamNetworkingMessage_GetChannel(cmsg))
     }
 
-    /// Bitmask of `k_nSteamNetworkingSend_xxx` flags.
-    /// For received messages, only the `k_nSteamNetworkingSend_Reliable` bit is valid.
+    /// For received messages, only the `reliable` bit is valid.
     /// For outbound messages, all bits are relevant
-    public var sendFlags: Int {
+    public var sendFlags: SteamNetworkingSendFlags {
         get {
-            Int(CSteamNetworkingMessage_GetSendFlags(cmsg))
+            .init(CSteamNetworkingMessage_GetSendFlags(cmsg))
         }
         set {
             CSteamNetworkingMessage_SetSendFlags(cmsg, Int32(newValue))

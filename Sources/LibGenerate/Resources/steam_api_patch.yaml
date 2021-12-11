@@ -15,6 +15,15 @@ consts_to_ignore:
 - k_cEnumerateFollowersMax
 - k_cubAppProofOfPurchaseKeyMax
 - k_cubUFSTagTypeMax
+- k_nSteamNetworkingSend_AutoRestartBrokenSession
+- k_nSteamNetworkingSend_NoNagle
+- k_nSteamNetworkingSend_NoDelay
+- k_nSteamNetworkingSend_Reliable
+- k_nSteamNetworkingSend_ReliableNoNagle
+- k_nSteamNetworkingSend_UseCurrentThread
+- k_nSteamNetworkingSend_Unreliable
+- k_nSteamNetworkingSend_UnreliableNoDelay
+- k_nSteamNetworkingSend_UnreliableNoNagle
 - k_unFavoriteFlagFavorite
 - k_unFavoriteFlagHistory
 - k_unFavoriteFlagNone
@@ -91,6 +100,9 @@ enums:
     manual_swift_name: SteamNetworkingConfigValueSetting # name clash
   ESteamNetworkingGetConfigValueResult:
     prefix: ESteamNetworkingGetConfigValue(?:Result)?
+  ESteamNetworkingSendFlags:
+    is_set: Int32
+    prefix: nSteamNetworkingSend
   EUGCReadAction:
     prefix: EUGCRead
   EUserHasLicenseForAppResult:

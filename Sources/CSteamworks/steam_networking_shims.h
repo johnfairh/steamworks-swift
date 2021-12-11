@@ -69,4 +69,11 @@ static inline void CSteamNetworkingMessage_SetUserData(CMsgPtr m, int64 userData
 
 } // "C"
 
+/// This is a bitflag enum for which steam just does a smash of #defines.
+/// We generate a Swift bitset enum from `steam_api_extra` and need this placeholder to make
+/// everything come out OK.
+enum ESteamNetworkingSendFlags {
+    dummy
+};
+
 #endif /* steam_networking_shims_h */
