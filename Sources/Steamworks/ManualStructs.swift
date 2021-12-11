@@ -254,22 +254,34 @@ public final class SteamNetworkingIPAddr {
         self.adr = adr
     }
 
+    /// So, Swift has suddenly started (Xcode 13.2 RC) to be unable to link properly to the default constructor.
+    /// So this nonsense here is coming up with an empty instance that should be just a `SteamNetworkingIPAddr()`
+    /// call...
+    private init() {
+        let byteSize = MemoryLayout<CSteamworks.SteamNetworkingIPAddr>.size
+        let raw = UnsafeMutableRawPointer.allocate(byteCount: byteSize, alignment: MemoryLayout<CSteamworks.SteamNetworkingIPAddr>.alignment)
+        defer { raw.deallocate() }
+        raw.initializeMemory(as: UInt8.self, repeating: 0, count: byteSize)
+        let typed = raw.bindMemory(to: CSteamworks.SteamNetworkingIPAddr.self, capacity: 1)
+        adr = typed.pointee
+    }
+
     /// Sets to IPv4 mapped address.  IP and port are in host byte order.
-    public init(ipv4: Int, port: Int) {
-        adr = .init()
+    public convenience init(ipv4: Int, port: Int) {
+        self.init()
         adr.SetIPv4(UInt32(ipv4), UInt16(port))
     }
 
     /// IP is interpreted as bytes, so there are no endian issues.  (Same as `inaddr_in6`.)
     /// The IP can be a mapped IPv4 address.
-    public init(ipv6: [UInt8], port: Int) {
-        adr = .init()
+    public convenience init(ipv6: [UInt8], port: Int) {
+        self.init()
         adr.SetIPv6(ipv6, UInt16(port))
     }
 
     /// Parse an IP address and optional port.  If a port is not present, it is set to 0.
-    public init?(addressAndPort: String) {
-        adr = .init()
+    public convenience init?(addressAndPort: String) {
+        self.init()
         adr.Clear()
         guard adr.ParseString(addressAndPort) else {
             return nil
@@ -359,29 +371,41 @@ public final class SteamNetworkingIdentity {
         self.identity = identity
     }
 
+    /// So, Swift has suddenly started (Xcode 13.2 RC) to be unable to link properly to the default constructor.
+    /// So this nonsense here is coming up with an empty instance that should be just a `SteamNetworkingIdentity()`
+    /// call...
+    private init() {
+        let byteSize = MemoryLayout<CSteamworks.SteamNetworkingIdentity>.size
+        let raw = UnsafeMutableRawPointer.allocate(byteCount: byteSize, alignment: MemoryLayout<CSteamworks.SteamNetworkingIdentity>.alignment)
+        defer { raw.deallocate() }
+        raw.initializeMemory(as: UInt8.self, repeating: 0, count: byteSize)
+        let typed = raw.bindMemory(to: CSteamworks.SteamNetworkingIdentity.self, capacity: 1)
+        identity = typed.pointee
+    }
+
     /// Init from a Steam ID
-    public init(_ steamID: SteamID) {
-        identity = .init()
+    public convenience init(_ steamID: SteamID) {
+        self.init()
         identity.SetSteamID64(steamID.asUInt64) // also sets type
     }
 
     /// Init from an IP address
-    public init(_ ipaddr: SteamNetworkingIPAddr) {
-        identity = .init()
+    public convenience init(_ ipaddr: SteamNetworkingIPAddr) {
+        self.init()
         var adr = ipaddr.adr
         identity.SetIPAddr(&adr) // also sets type
     }
 
     /// Identify as localhost, ~anonymous
     public static var localhost: SteamNetworkingIdentity {
-        var id = CSteamworks.SteamNetworkingIdentity()
-        id.SetLocalHost()
-        return SteamNetworkingIdentity(id)
+        let id = SteamNetworkingIdentity()
+        id.identity.SetLocalHost()
+        return id
     }
 
     /// Init generic string or some other type.  Max length 31 bytes.
-    public init?(genericString: String, type: SteamNetworkingIdentityType = .genericString) {
-        identity = .init()
+    public convenience init?(genericString: String, type: SteamNetworkingIdentityType = .genericString) {
+        self.init()
         guard identity.SetGenericString(genericString) else {
             return nil
         }
@@ -389,16 +413,16 @@ public final class SteamNetworkingIdentity {
     }
 
     /// Init from a `description` string.
-    public init?(description: String) {
-        identity = .init()
+    public convenience init?(description: String) {
+        self.init()
         guard identity.ParseString(description) else {
             return nil
         }
     }
 
     /// Init generic bytes or some other type.  Max 32 bytes.
-    public init?(_ bytes: [UInt8], type: SteamNetworkingIdentityType = .genericBytes) {
-        identity = .init()
+    public convenience init?(_ bytes: [UInt8], type: SteamNetworkingIdentityType = .genericBytes) {
+        self.init()
         guard identity.SetGenericBytes(bytes, bytes.count) else {
             return nil
         }
@@ -418,4 +442,110 @@ public final class SteamNetworkingIdentity {
 
 extension SteamNetworkingIdentity: SteamCreatable, CustomStringConvertible, Equatable {
     typealias SteamType = CSteamworks.SteamNetworkingIdentity
+}
+
+// MARK: SteamNetworkingMessage
+
+// This is very doomed because we can't see this C++ type from the Swift side.  So
+// we provide a C-style flat API of our own to deal with it.
+
+public struct SteamNetworkingMessage {
+    private var cmsg: CMsgPtr
+
+    init(_ steam: CMsgPtr) {
+        cmsg = steam
+    }
+
+    /// Set payload
+    public func set(data: UnsafeMutableRawPointer, size: Int) {
+        CSteamNetworkingMessage_SetData(cmsg, data, Int32(size))
+    }
+
+    /// Message payload
+    public var data: UnsafeMutableRawPointer {
+        CSteamNetworkingMessage_GetData(cmsg)
+    }
+
+    /// Size of the payload.
+    public var size: Int {
+        Int(CSteamNetworkingMessage_GetDataSize(cmsg))
+    }
+
+    /// For messages received on connections: what connection did this come from?
+    /// For outgoing messages: what connection to send it to?
+    /// Not used when using the ISteamNetworkingMessages interface
+    public var conn: HSteamNetConnection {
+        get {
+            .init(CSteamNetworkingMessage_GetConn(cmsg))
+        }
+        set {
+            CSteamNetworkingMessage_SetConn(cmsg, .init(newValue))
+        }
+    }
+
+    /// For inbound messages: Who sent this to us?
+    /// For outbound messages on connections: not used.
+    /// For outbound messages on the ad-hoc ISteamNetworkingMessages interface: who should we send this to?
+    public var peerIdentity: SteamNetworkingIdentity {
+        get {
+            .init(CSteamNetworkingMessaage_GetPeerIdentity(cmsg))
+        }
+        set {
+            CSteamNetworkingMessage_SetPeerIdentity(cmsg, newValue.identity)
+        }
+    }
+
+    /// For messages received on connections, this is the user data associated with the connection.
+    public var connUserData: Int {
+        Int(CSteamNetworkingMessage_GetConnUserData(cmsg))
+    }
+
+    /// Local timestamp when the message was received
+    public var usecTimeReceived: SteamNetworkingMicroseconds {
+        .init(CSteamNetworkingMessage_GetUsecTimeReceived(cmsg))
+    }
+
+    /// Message number assigned by the sender.
+    public var messageNumber: Int {
+        Int(CSteamNetworkingMessage_GetMessageNumber(cmsg))
+    }
+
+    /// Function used to free up the data buffer when not supplied by Steam.
+    /// The token passed to this callback should then be converted into a `SteamNetworkingMessage`
+    /// using `SteamNetworkingMessage.fromFreeDataToken()`.
+    public func setFreeData(_ f: @escaping @convention(c) (UnsafeMutableRawPointer) -> Void) {
+        CSteamNetworkingMessage_SetFreeData(cmsg, f)
+    }
+
+    public static func fromFreeDataToken(_ token: UnsafeMutableRawPointer) -> SteamNetworkingMessage {
+        .init(token)
+    }
+
+    /// Call when done with the object to decrement refcount and eventually call the free-data callback.
+    public func release() {
+        CSteamNetworkingMessage_Release(cmsg)
+    }
+
+    /// When using ISteamNetworkingMessages, the channel number the message was received on
+    public var channel: Int {
+        Int(CSteamNetworkingMessage_GetChannel(cmsg))
+    }
+
+    /// Bitmask of `k_nSteamNetworkingSend_xxx` flags.
+    /// For received messages, only the `k_nSteamNetworkingSend_Reliable` bit is valid.
+    /// For outbound messages, all bits are relevant
+    public var sendFlags: Int {
+        get {
+            Int(CSteamNetworkingMessage_GetSendFlags(cmsg))
+        }
+        set {
+            CSteamNetworkingMessage_SetSendFlags(cmsg, Int32(newValue))
+        }
+    }
+
+    /// Arbitrary user data that you can use when sending messages using
+    /// `ISteamNetworkingUtils::AllocateMessage` and `ISteamNetworkingSockets::SendMessage`.
+    public func set(userData: Int) {
+        CSteamNetworkingMessage_SetUserData(cmsg, Int64(userData))
+    }
 }

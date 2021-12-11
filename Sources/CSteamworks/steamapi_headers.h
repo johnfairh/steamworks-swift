@@ -4,3 +4,4 @@
 #include "Generated/steam_struct_shims.h"
 #include "steam_missing.h"
 #include "steam_matchmaking_shims.h"
+#include "steam_networking_shims.h"
