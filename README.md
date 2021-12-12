@@ -51,6 +51,9 @@ Tech limitations, on 5.5 and also swift/main as of 20/Oct:
   usable in practice.  Will use the flat API.
 * Anonymous enums are not imported at all.  Affects callback etc. ID constants.
   Will work around.
+* One (so far) structure is not imported.
+* (New in Xcode 13.2 RC) Swift can't link/generate the default constructor for some
+  C++ structs.  Problematic.  Work around with some probably-UB hackery.
 * sourcekit won't give me a module interface for `CSteamworks` to see what else the
   importer is doing.  Need to build the compiler and debug.  It does look like 99%+ of
   the thing is coming in well.
@@ -61,7 +64,7 @@ Tech limitations, on 5.5 and also swift/main as of 20/Oct:
 
 ### Requirements
 
-* Needs Swift 5.5 (Xcode 13.2 beta)
+* Needs Swift 5.5 (Xcode 13.2)
 * Needs Steam client installed
 * I'm using macOS 12; should work on macOS 11, Linux; might work on Windows
 

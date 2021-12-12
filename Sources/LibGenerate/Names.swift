@@ -148,10 +148,11 @@ extension String {
         if let optionSetType = Metadata.isOptionSetEnumPassedUnpredictably(steamType: self) {
             return optionSetType
         }
-        if self == asSwiftTypeName {
-            return "CSteamworks.\(self)"
+        let result = asSwiftNameForSteamType.re_sub("^const ", with: "")
+        if result == asSwiftTypeName {
+            return "CSteamworks.\(result)"
         }
-        return asSwiftNameForSteamType.re_sub("^const ", with: "")
+        return result
     }
 
     /// For constructing a temporary instance, in Swift, to pass by ref to Steamworks
@@ -188,6 +189,11 @@ extension String {
     var depointered: String {
         re_sub(" *\\*$", with: "")
     }
+
+    /// Drop one layer of C pointer/reference from a type
+    var desuffixed: String {
+        re_sub(" *(\\*|&)$", with: "")
+    }
 }
 
 /// Just what we've seen necessary
@@ -223,7 +229,8 @@ private let steamToSwiftTypes: [String : String] = [
     "unsigned int": "Int", // ""
 
     // Misc
-    "SteamParamStringArray_t *" : "[String]" // weirdness, tbd
+    "SteamParamStringArray_t *" : "[String]", // weirdness, tbd
+    "SteamNetworkingMessage_t *" : "SteamNetworkingMessage"
 ]
 
 // How to represent an array of steam types (in a struct field,) special cases
@@ -258,7 +265,9 @@ private let steamTypesPassedInStrangely: [String : String] = [
     "uint64_gameid" : "UInt64",
     "unsigned short" : "UInt16",
     "unsigned int" : "UInt32",
-    "char" : "Int8"
+    "char" : "Int8",
+
+    "SteamNetworkingMessage_t *": "OpaquePointer?" // struct not imported plus weird pointer semantics
 ]
 
 // Parameter/field names where no rules are followed and we

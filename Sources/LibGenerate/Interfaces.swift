@@ -45,7 +45,8 @@ struct Interfaces {
             "ISteamInventory",
             "ISteamRemoteStorage",
             "ISteamUGC",
-            "ISteamMatchmakingServers"
+            "ISteamMatchmakingServers",
+            "ISteamNetworkingMessages"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -175,6 +176,7 @@ final class SwiftParam {
 
     private enum Style {
         case `in` // pass by value, flat, cast at time of use
+        case in_ref // pass by value but convert and take address to pass [xlation of C++ '&' reference]
         case in_string_array // pass by value, array of strings
         case out  // pass inout, use a temporary to cast, copy-back
         case out_transparent // pass inout, no temporary
@@ -196,7 +198,7 @@ final class SwiftParam {
         let optional = db.nullable ? "?" : ""
         switch style {
         case .in: return swiftTypeBaseName + optional
-        case .in_string_array: return swiftTypeBaseName
+        case .in_string_array, .in_ref: return swiftTypeBaseName
         case .out, .out_transparent, .in_out: return "inout \(swiftTypeBaseName)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
@@ -215,15 +217,19 @@ final class SwiftParam {
     /// (Need to review for stack-allocation, new APIs in Swift 5.6 might help)
     var preCallLines: [String] {
         switch style {
-        case .in, .in_array_count, .out_transparent, .out_transparent_array: return []
+        case .in, .in_array_count, .out_transparent, .out_transparent_array:
+            return []
         case .in_string_array:
             return [
                 "let \(tempName) = StringArray(\(swiftName))",
                 "defer { \(tempName).deallocate() }"
             ]
-        case .in_array: return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
-        case .out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
-        case .in_out: return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
+        case .in_array:
+            return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
+        case .out:
+            return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
+        case .in_out, .in_ref:
+            return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
         case .out_array(let sizeParam):
             let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
             let lines: [String]
@@ -264,7 +270,7 @@ final class SwiftParam {
             return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
         case .in_string_array:
             return ".init(\(tempName))"
-        case .out, .in_out, .in_array:
+        case .out, .in_out, .in_array, .in_ref:
             return "&\(tempName)"
         case .out_transparent, .out_transparent_array:
             return "&\(swiftName)"
@@ -282,7 +288,7 @@ final class SwiftParam {
     /// What code (if any) is required after calling the Steamworks API
     var postSuccessCallLine: String? {
         switch style {
-        case .in, .in_string_array, .in_array, .in_array_count, .out_transparent, .out_transparent_array: return nil
+        case .in, .in_string_array, .in_array, .in_array_count, .out_transparent, .out_transparent_array, .in_ref: return nil
         case .out, .in_out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
         case .out_array:
             if !db.nullable {
@@ -327,6 +333,9 @@ final class SwiftParam {
                     style = .out
                 }
             }
+        } else if let dereferenced = db.type.dereferencedType {
+            swiftTypeBaseName = dereferenced.asSwiftTypeName
+            style = .in_ref
         } else {
             swiftTypeBaseName = naiveSwiftTypeName
             if swiftTypeBaseName == "[String]" {
@@ -340,7 +349,11 @@ final class SwiftParam {
 
 extension String {
     var depointeredType: String? {
-        re_match("^(.*) \\*$").flatMap { $0[1] }
+        re_match("^(.*?) ?\\*$").flatMap { $0[1] }
+    }
+
+    var dereferencedType: String? {
+        re_match("^(.*) &$").flatMap { $0[1] }
     }
 }
 

@@ -439,6 +439,13 @@ methods:
   SteamAPI_ISteamMusicRemote_UpdateVolume:
     discardable_result: true
 #
+# ISteamNetworkingMessages
+#
+  SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel:
+    params:
+      ppOutMessages:
+        out_array_count: nMaxMessages
+#
 # ISteamParties
 #
   SteamAPI_ISteamParties_CreateBeacon:

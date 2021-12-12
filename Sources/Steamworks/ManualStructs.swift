@@ -444,6 +444,12 @@ extension SteamNetworkingIdentity: SteamCreatable, CustomStringConvertible, Equa
     typealias SteamType = CSteamworks.SteamNetworkingIdentity
 }
 
+extension CSteamworks.SteamNetworkingIdentity {
+    init(_ swift: SteamNetworkingIdentity) {
+        self = swift.identity
+    }
+}
+
 // MARK: SteamNetworkingMessage
 
 // This is very doomed because we can't see this C++ type from the Swift side.  So
@@ -454,6 +460,10 @@ public struct SteamNetworkingMessage {
 
     init(_ steam: CMsgPtr) {
         cmsg = steam
+    }
+
+    init(_ steam: OpaquePointer?) {
+        cmsg = .init(steam!)
     }
 
     /// Set payload
