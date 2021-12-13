@@ -75,6 +75,7 @@ final class Client {
             testHTTP,
             testGameServers,
             testNetworkingStructs,
+            testNetworkingMessage
         ]
 
         if testNext == testMethods.count {
@@ -266,6 +267,36 @@ final class Client {
             print("psnIdent no good")
         }
         print("Local ident: \(SteamNetworkingIdentity.localhost)")
+    }
+
+    func testNetworkingMessage() {
+        let steamID = api.user.getSteamID()
+        let message: [UInt8] = [1,2,3,4]
+
+        api.onSteamNetworkingMessagesSessionRequest { [weak self] req in
+            guard let self = self else { return }
+            print("Session Request from \(req.identityRemote)")
+
+            var msgs = [SteamNetworkingMessage]()
+            let count = self.api.networkingMessages.receiveMessagesOnChannel(localChannel: 0, outMessages: &msgs, maxMessages: 1)
+            print("Received \(count) messages")
+            if count > 0 {
+                let msg = msgs[0]
+                print("Msg size = \(msg.size)")
+                let bytePtr = msg.data.bindMemory(to: UInt8.self, capacity: msg.size)
+                var bytes: [UInt8] = []
+                for i in 0..<msg.size {
+                    bytes.append(bytePtr[i])
+                }
+                print("Msg body = \(bytes)")
+                msg.release()
+            }
+
+            self.endTest()
+        }
+
+        let rc = api.networkingMessages.sendMessageToUser(identityRemote: .init(steamID), data: message, dataSize: message.count, sendFlags: .reliable, remoteChannel: 0)
+        print("SendMessage rc=\(rc)")
     }
 }
 

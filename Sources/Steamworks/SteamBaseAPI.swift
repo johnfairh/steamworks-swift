@@ -193,7 +193,7 @@ public class SteamBaseAPI: @unchecked Sendable {
 
             if !success {
                 // probably doomed, APIs reporting inconsistently - leave client hanging?? Any decision could be wrong...
-                logError("Failure return from SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_cubParam) bytes")
+                logError("Failure return from SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_iCallback), \(callCompleted.m_cubParam) bytes")
             } else if failed {
                 // some weird internal transport failure, complete client with `nil`
                 logError("bIOFailed flag set by SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall)")
