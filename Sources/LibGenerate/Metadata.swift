@@ -121,6 +121,7 @@ struct SteamJSON: Codable {
 /// * Enums: override the value
 /// * Methods: correct the return type
 /// * Methods: specify out-param behaviour when API call fails
+/// * Methods: specify partially-completed out-arrays
 /// * Methods: correct a parameter type
 /// * Methods: set discardableResult
 /// * Methods: patch in missed `out_string_count` etc.
@@ -168,6 +169,7 @@ struct Patch: Codable {
             let type: String? // patch paramtype (steam type)
             let out_string_count: String? // patch out_string_count
             let out_array_count: String? // patch out_array_count
+            let out_array_valid_count: String? // expr for actual valid prefix of out_array
             let array_count: String? // patch array_count
             let in_out: Bool? // mark up actual inout params
             let nullable: Bool? // out/array param can be null (nil)
@@ -268,6 +270,7 @@ struct MetadataDB {
             let type: String
             let arrayCount: String?
             let outArrayLength: String?
+            let outArrayValidLength: String?
             let outStringLength: String?
             let inOut: Bool
             let nullable: Bool
@@ -294,6 +297,7 @@ struct MetadataDB {
                 } else {
                     self.outArrayLength = nil
                 }
+                self.outArrayValidLength = patch?.out_array_valid_count
 
                 if let outStringCount = patch?.out_string_count ?? base.out_string_count {
                     self.outStringLength = outStringCount

@@ -22,18 +22,21 @@ public struct SteamNetworkingMessages {
     }
 
     /// Steamworks `ISteamNetworkingMessages::AcceptSessionWithUser()`
+    @discardableResult
     public func acceptSessionWithUser(identityRemote: SteamNetworkingIdentity) -> Bool {
         var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
         return SteamAPI_ISteamNetworkingMessages_AcceptSessionWithUser(interface, &tmp_identityRemote)
     }
 
     /// Steamworks `ISteamNetworkingMessages::CloseChannelWithUser()`
+    @discardableResult
     public func closeChannelWithUser(identityRemote: SteamNetworkingIdentity, localChannel: Int) -> Bool {
         var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
         return SteamAPI_ISteamNetworkingMessages_CloseChannelWithUser(interface, &tmp_identityRemote, Int32(localChannel))
     }
 
     /// Steamworks `ISteamNetworkingMessages::CloseSessionWithUser()`
+    @discardableResult
     public func closeSessionWithUser(identityRemote: SteamNetworkingIdentity) -> Bool {
         var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
         return SteamAPI_ISteamNetworkingMessages_CloseSessionWithUser(interface, &tmp_identityRemote)
@@ -45,22 +48,25 @@ public struct SteamNetworkingMessages {
         var tmp_connectionInfo = SteamNetConnectionInfo_t()
         var tmp_quickStatus = CSteamworks.SteamNetworkingQuickConnectionStatus()
         let rc = SteamNetworkingConnectionState(SteamAPI_ISteamNetworkingMessages_GetSessionConnectionInfo(interface, &tmp_identityRemote, &tmp_connectionInfo, &tmp_quickStatus))
-        connectionInfo = SteamNetConnectionInfo(tmp_connectionInfo)
-        quickStatus = SteamNetworkingQuickConnectionStatus(tmp_quickStatus)
+        if rc != .none {
+            connectionInfo = SteamNetConnectionInfo(tmp_connectionInfo)
+            quickStatus = SteamNetworkingQuickConnectionStatus(tmp_quickStatus)
+        }
         return rc
     }
 
     /// Steamworks `ISteamNetworkingMessages::ReceiveMessagesOnChannel()`
+    @discardableResult
     public func receiveMessagesOnChannel(localChannel: Int, outMessages: inout [SteamNetworkingMessage], maxMessages: Int) -> Int {
         let tmp_outMessages = UnsafeMutableBufferPointer<OpaquePointer?>.allocate(capacity: maxMessages)
         defer { tmp_outMessages.deallocate() }
         let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, Int32(localChannel), tmp_outMessages.baseAddress, Int32(maxMessages)))
-        outMessages = tmp_outMessages.map { SteamNetworkingMessage($0) }
+        outMessages = tmp_outMessages[0..<rc].map { SteamNetworkingMessage($0) }
         return rc
     }
 
     /// Steamworks `ISteamNetworkingMessages::SendMessageToUser()`
-    public func sendMessageToUser(identityRemote: SteamNetworkingIdentity, data: UnsafeRawPointer, dataSize: Int, sendFlags: Int, remoteChannel: Int) -> Result {
+    public func sendMessageToUser(identityRemote: SteamNetworkingIdentity, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags, remoteChannel: Int) -> Result {
         var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
         return Result(SteamAPI_ISteamNetworkingMessages_SendMessageToUser(interface, &tmp_identityRemote, data, uint32(dataSize), Int32(sendFlags), Int32(remoteChannel)))
     }

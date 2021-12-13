@@ -441,10 +441,24 @@ methods:
 #
 # ISteamNetworkingMessages
 #
+  SteamAPI_ISteamNetworkingMessages_AcceptSessionWithUser:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingMessages_CloseChannelWithUser:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingMessages_CloseSessionWithUser:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingMessages_GetSessionConnectionInfo:
+    out_param_iff_rc: '!= .none'
   SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel:
+    discardable_result: true
     params:
       ppOutMessages:
         out_array_count: nMaxMessages
+        out_array_valid_count: rc
+  SteamAPI_ISteamNetworkingMessages_SendMessageToUser:
+    params:
+      nSendFlags:
+        type: ESteamNetworkingSendFlags
 #
 # ISteamParties
 #

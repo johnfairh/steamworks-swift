@@ -291,10 +291,11 @@ final class SwiftParam {
         case .in, .in_string_array, .in_array, .in_array_count, .out_transparent, .out_transparent_array, .in_ref: return nil
         case .out, .in_out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
         case .out_array:
+            let subscr = db.outArrayValidLength.map { "[0..<\($0)]" } ?? ""
             if !db.nullable {
-                return "\(swiftName) = \(tempName).map { \(swiftTypeBaseName)($0) }"
+                return "\(swiftName) = \(tempName)\(subscr).map { \(swiftTypeBaseName)($0) }"
             } else {
-                return "\(tempName).map { \(swiftName) = $0.map { \(swiftTypeBaseName)($0) } }"
+                return "\(tempName).map { \(swiftName) = $0\(subscr).map { \(swiftTypeBaseName)($0) } }"
             }
         case .out_string:
             if !db.nullable {

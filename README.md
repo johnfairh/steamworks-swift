@@ -8,7 +8,7 @@ Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* 26/29 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
+* 27/29 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
   working on [other interfaces](#interface-plan)
 * Discovering patterns during progress, refactor stuff at the end
 * `make` builds and runs a demo Swift program that accesses the C++
@@ -77,14 +77,13 @@ To run the generator / build:
 ✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameSearch, ISteamGameServer,
 ISteamGameServerStats, ISteamHTMLSruface, ISteamHTTP, ISteamInput, ISteamInventory,
 ISteamMatchMaking, ISteamMatchmakingServers, ISteamMusic, ISteamMusicRemote,
-ISteamParentalSettings, ISteamParties, ISteamRemotePlay, ISteamRemoteStorage,
-ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo,
-SteamEncryptedAppTicket
+ISteamNetworkingMessages, ISteamParentalSettings, ISteamParties, ISteamRemotePlay,
+ISteamRemoteStorage, ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats,
+ISteamUtils, ISteamVideo, SteamEncryptedAppTicket
 
 Left to do:
-* Networking stuff: all the weird basic types, ISteamNetworkingMessages,
-  ISteamNetworkingUtils, those parts of ISteamNetworkingSockets that aren't
-  impossible.
+* Networking stuff: ISteamNetworkingUtils, those parts of ISteamNetworkingSockets
+  that aren't impossible.
 
 Skip:
 * ISteamAppTicket - er not actually a thing?
