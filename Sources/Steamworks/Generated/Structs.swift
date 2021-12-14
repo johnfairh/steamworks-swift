@@ -3591,6 +3591,13 @@ extension SteamNetworkPingLocation: SteamCreatable {
     }
 }
 
+extension CSteamworks.SteamNetworkPingLocation_t {
+    init(_ swift: SteamNetworkPingLocation) {
+        self.init()
+        self.copy_m_data(from: swift.data)
+    }
+}
+
 /// Steamworks `SteamNetworkingConfigValue_t`
 public struct SteamNetworkingConfigValue {
     /// Steamworks `m_eValue`

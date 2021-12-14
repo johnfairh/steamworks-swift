@@ -31,7 +31,8 @@ struct Structs {
             .sorted(by: { $0.name < $1.name })
             .flatMap(\.generateC)
             .joined(separator: "\n\n")
-        try io.write(fileName: "steam_struct_shims.h", contents: cContents)
+        let cHeader = "#include <cstring>\n\n"
+        try io.write(fileName: "steam_struct_shims.h", contents: cHeader + cContents)
     }
 }
 
@@ -46,6 +47,10 @@ extension MetadataDB.Struct.Field {
 
     var arrayFieldName: String {
         "\(name)_ptr"
+    }
+
+    var arraySetterName: String {
+        "copy_\(name)"
     }
 
     /// Contribution to the C header file to define a method on the C++ structure that returns
@@ -69,6 +74,19 @@ extension MetadataDB.Struct.Field {
                static inline const \(elemType) * _Nonnull \(structName)_\(arrayFieldName)(const \(structName) * _Nonnull s)
                {
                    \(extraLine)return s->\(name);
+               }
+               """
+    }
+
+    func getArraySetterLines(structName: String) -> String? {
+        guard let (elemType, arrayLen) = type.parseCArray else {
+            return nil
+        }
+        return """
+               __attribute__((swift_name(\"\(structName).\(arraySetterName)(self:from:)\")))
+               static inline const void \(structName)_\(arraySetterName)(\(structName) * _Nonnull s, const \(elemType) * _Nonnull from)
+               {
+                   std::memcpy(&s->\(name), from, \(arrayLen));
                }
                """
     }
@@ -99,7 +117,11 @@ extension MetadataDB.Struct.Field {
 
     /// Steam structure initializer lines - only for a few types, opt-in
     var steamInitLine: String {
-        "\(name) = .init(swift.\(name.asSwiftStructFieldName))"
+        let rvalue = "swift.\(name.asSwiftStructFieldName)"
+        if type.parseCArray != nil {
+            return "self.\(arraySetterName)(from: \(rvalue))"
+        }
+        return "\(name) = .init(\(rvalue))"
     }
 }
 
@@ -119,6 +141,10 @@ extension Array where Element == MetadataDB.Struct.Field {
     func getArrayGetterLines(structName: String) -> [String] {
         filter(\.shouldGenerate).compactMap { $0.getArrayGetterLines(structName: structName) }
     }
+
+    func getArraySetterLines(structName: String) -> [String] {
+        filter(\.shouldGenerate).compactMap { $0.getArraySetterLines(structName: structName) }
+    }
 }
 
 extension MetadataDB.Struct {
@@ -127,7 +153,11 @@ extension MetadataDB.Struct {
     }
 
     var generateC: [String] {
-        fields.getArrayGetterLines(structName: name)
+        var lines = fields.getArrayGetterLines(structName: name)
+        if swiftToSteam {
+            lines += fields.getArraySetterLines(structName: name)
+        }
+        return lines
     }
 
     var swiftToSteamExtensionLines: [String] {

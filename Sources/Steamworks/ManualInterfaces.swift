@@ -6,6 +6,7 @@
 //
 
 @_implementationOnly import CSteamworks
+import Logging
 
 // Interfaces that are so unusually formed and rare that there's no point
 // teaching the generator how to deal with them.
@@ -69,4 +70,45 @@ extension SteamRemoteStorage {
         }
         return rc
     }
+}
+
+/// Some SteamNetworkingUtils additions to cope with the complicated config API
+extension SteamNetworkingUtils {
+    /// Steamworks `ISteamNetworkingUtils::SetListenSocketConfigValueFloat()`
+    public func setListenSocketConfigValueFloat(sock: HSteamListenSocket, value: SteamNetworkingConfigValueSetting, val: Float) -> Bool {
+        var val = val
+        return setConfigValue(value: value, scopeType: .listenSocket, obj: .init(sock.value), dataType: .float, arg: &val)
+    }
+
+    /// Steamworks `ISteamNetworkingUtils::SetListenSocketConfigValueInt32()`
+    public func setListenSocketConfigValueInt32(sock: HSteamListenSocket, value: SteamNetworkingConfigValueSetting, val: Int) -> Bool {
+        var val = Int32(val)
+        return setConfigValue(value: value, scopeType: .listenSocket, obj: .init(sock.value), dataType: .int32, arg: &val)
+    }
+
+    /// Steamworks `ISteamNetworkingUtils::SetListenSocketConfigValueString()`
+    public func setListenSocketConfigValueString(sock: HSteamListenSocket, value: SteamNetworkingConfigValueSetting, val: String) -> Bool {
+        val.withCString { ptr in
+            setConfigValue(value: value, scopeType: .listenSocket, obj: .init(sock.value), dataType: .string, arg: ptr)
+        }
+    }
+}
+
+/// SteamNetworkingUtils custom message-logging
+extension SteamNetworkingUtils {
+    /// Use `ISteamNetworkingUtils::SetDebugOutputFunction()` to send networking debug tracing
+    /// through the `SteamBaseAPI.logger` logger.
+    public func useLoggerForDebug(detailLevel: SteamNetworkingSocketsDebugOutputType) {
+        SteamAPI_ISteamNetworkingUtils_SetDebugOutputFunction(interface,
+                                                              ESteamNetworkingSocketsDebugOutputType(detailLevel),
+                                                              networkingUtilsDebugCallback)
+    }
+}
+
+private func networkingUtilsDebugCallback(type: ESteamNetworkingSocketsDebugOutputType, msg: UnsafePointer<Int8>?) {
+    let metadata: Logger.Metadata = [
+        "layer" : "SteamworksNetworking API",
+        "type" : "\(SteamNetworkingSocketsDebugOutputType(type))"
+    ]
+    SteamBaseAPI.logger.debug(.init(stringLiteral: String(msg)), metadata: metadata)
 }

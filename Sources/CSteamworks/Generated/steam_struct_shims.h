@@ -7,6 +7,8 @@
 //  This file is generated code: any edits will be overwritten.
 
 
+#include <cstring>
+
 __attribute__((swift_name("getter:AppProofOfPurchaseKeyResponse_t.m_rgchKey_ptr(self:)")))
 static inline const char * _Nonnull AppProofOfPurchaseKeyResponse_t_m_rgchKey_ptr(const AppProofOfPurchaseKeyResponse_t * _Nonnull s)
 {
@@ -238,6 +240,12 @@ __attribute__((swift_name("getter:SteamNetworkPingLocation_t.m_data_ptr(self:)")
 static inline const uint8 * _Nonnull SteamNetworkPingLocation_t_m_data_ptr(const SteamNetworkPingLocation_t * _Nonnull s)
 {
     return s->m_data;
+}
+
+__attribute__((swift_name("SteamNetworkPingLocation_t.copy_m_data(self:from:)")))
+static inline const void SteamNetworkPingLocation_t_copy_m_data(SteamNetworkPingLocation_t * _Nonnull s, const uint8 * _Nonnull from)
+{
+    std::memcpy(&s->m_data, from, 512);
 }
 
 __attribute__((swift_name("getter:SteamRelayNetworkStatus_t.m_debugMsg_ptr(self:)")))

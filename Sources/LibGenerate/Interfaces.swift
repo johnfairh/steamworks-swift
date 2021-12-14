@@ -46,7 +46,8 @@ struct Interfaces {
             "ISteamRemoteStorage",
             "ISteamUGC",
             "ISteamMatchmakingServers",
-            "ISteamNetworkingMessages"
+            "ISteamNetworkingMessages",
+            "ISteamNetworkingUtils"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -94,23 +95,25 @@ extension MetadataDB.Interface.Access {
     /// Generate the Swift declaration for the interface.
     ///
     /// Complicated by some of them being user/server dual
-    func declaration(name: String) -> String {
-        let shortName = name.re_sub("^ISteam", with: "").asSwiftIdentifier  // "ISteamFriends" -> "friends"
+    func declaration(db: MetadataDB.Interface) -> String {
+        let shortName = db.name.re_sub("^ISteam", with: "").asSwiftIdentifier  // "ISteamFriends" -> "friends"
 
         let docComment =
             """
-            /// Steamworks [`\(name)`](https://partner.steamgames.com/doc/api/\(name))
+            /// Steamworks [`\(db.name)`](https://partner.steamgames.com/doc/api/\(db.name))
             ///
             /// Access via \(accessVia(getter: shortName)).
-            public struct \(name.asSwiftTypeName) {
+            public struct \(db.name.asSwiftTypeName) {
             """
 
         let decl: String
 
+        let swiftType = db.realClassName ?? "UnsafeMutablePointer<\(db.name)>"
+
         switch self {
         case .user(let accessor), .gameserver(let accessor), .global(let accessor):
             decl = """
-                       var interface: UnsafeMutablePointer<\(name)> {
+                       var interface: \(swiftType) {
                            \(accessor)()
                        }
 
@@ -120,7 +123,7 @@ extension MetadataDB.Interface.Access {
         case .userAndServer(let userAccess, let serverAccess):
             decl = """
                        private let isServer: Bool
-                       var interface: UnsafeMutablePointer<\(name)> {
+                       var interface: \(swiftType) {
                            isServer ? \(serverAccess)() : \(userAccess)()
                        }
 
@@ -136,7 +139,7 @@ extension MetadataDB.Interface.Access {
 
 extension MetadataDB.Interface {
     func generate(context: String) -> String {
-        let declaration = access.declaration(name: name)
+        let declaration = access.declaration(db: self)
         let methods = methods.values
             .sorted(by: { $0.flatName < $1.flatName })
             .filter(\.shouldGenerate)

@@ -460,6 +460,43 @@ methods:
       nSendFlags:
         type: ESteamNetworkingSendFlags
 #
+# ISteamNetworkingUtils
+#
+  SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString:
+    params:
+      pszBuf:
+        out_string_count: cchBufSize
+  SteamAPI_ISteamNetworkingUtils_GetConfigValue:
+    ignore: "intptrs and union types - use the helper functions"
+  SteamAPI_ISteamNetworkingUtils_GetPOPList:
+    params:
+      list:
+        out_array_count: nListSz
+        out_array_valid_count: rc
+  SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct:
+    ignore: "intptrs and union types - use the helper functions"
+  SteamAPI_ISteamNetworkingUtils_SetDebugOutputFunction:
+    ignore: "Use the logger"
+  SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_MessagesSessionFailed:
+    ignore: "Use the callbacks interface"
+  SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_MessagesSessionRequest:
+    ignore: "Use the callbacks interface"
+  SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_SteamNetAuthenticationStatusChanged:
+    ignore: "Use the callbacks interface"
+  SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_SteamNetConnectionStatusChanged:
+    ignore: "Use the callbacks interface"
+  SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_SteamRelayNetworkStatusChanged:
+    ignore: "Use the callbacks interface"
+  SteamAPI_ISteamNetworkingUtils_SteamNetworkingIdentity_ParseString:
+    ignore: "Use the type methods"
+  SteamAPI_ISteamNetworkingUtils_SteamNetworkingIdentity_ToString:
+    ignore: "Use the type methods"
+  SteamAPI_ISteamNetworkingUtils_SteamNetworkingIPAddr_ParseString:
+    ignore: "Use the type methods"
+  SteamAPI_ISteamNetworkingUtils_SteamNetworkingIPAddr_ToString:
+    ignore: "Use the type methods"
+
+#
 # ISteamParties
 #
   SteamAPI_ISteamParties_CreateBeacon:
@@ -774,18 +811,15 @@ structs:
   SteamNetworkingConfigValue_t:
     fields:
       m_int64:
-        ignore: Broken union field
+        ignore: "Broken union field"
   SteamNetworkingIdentity:
     ignore: "Union and methods"
   SteamNetworkingIPAddr:
     ignore: "Union and methods"
   SteamNetworkingMessage_t:
     ignore: C declaration is not imported?
-    fields:
-      m_pfnFreeData:
-        swift_type: "() -> Void"
-      m_pfnRelease:
-        swift_type: "() -> Void"
+  SteamNetworkPingLocation_t:
+    swift_to_steam: true
   SteamParamStringArray_t:
     ignore: Better expressed directly as [String]
   SteamPartyBeaconLocation_t:
@@ -798,3 +832,6 @@ structs:
         type: RTime32
       m_rtimeAddedToUserList:
         type: RTime32
+interfaces:
+  ISteamNetworkingUtils:
+    real_classname: OpaquePointer

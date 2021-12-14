@@ -131,6 +131,7 @@ struct SteamJSON: Codable {
 /// * Structs: ignore field or entire struct
 /// * Structs: correct the steam name
 /// * Structs: generate a swift->steam converter
+/// * Interfaces: Patch the C++ type name...
 ///
 struct Patch: Codable {
     struct Const: Codable {
@@ -193,6 +194,11 @@ struct Patch: Codable {
         let swift_to_steam: Bool? // generate swift->steam converter
     }
     let structs: [String: Struct] // struct.name key
+
+    struct Interface: Codable {
+        var real_classname: String? // override C++ class name
+    }
+    let interfaces: [String: Interface] // interface.classname key
 
     init(data: Data) throws {
         self = try YAMLDecoder().decode(from: data)
@@ -330,6 +336,7 @@ struct MetadataDB {
 
     struct Interface {
         let name: String
+        let realClassName: String?
         /// Indexed by `name`
         let enums: [String : Enum]
         /// Indexed by `methodname_flat` ... `methodname` is not unique...
@@ -344,7 +351,9 @@ struct MetadataDB {
         let access: Access
 
         init?(base: SteamJSON.Interface, patch: Patch) {
+            let ipatch = patch.interfaces[base.classname]
             name = base.classname
+            realClassName = ipatch?.real_classname
             methods = .init(uniqueKeysWithValues: base.methods.map { baseMethod in
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
             })
