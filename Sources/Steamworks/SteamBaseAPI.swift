@@ -93,6 +93,10 @@ public class SteamBaseAPI: @unchecked Sendable {
             }
         }
 
+        func has(callID: SteamAPICall_t) -> Bool {
+            lock.locked { pending[callID] != nil }
+        }
+
         /// Check for any pending wotk to pass back calls that never got a chance to start.
         /// Slightly uncomfortable doing basically nothing here every frame but it's probably
         /// nothing compared to everything else.  A consequence of the callresult design that hides
@@ -177,6 +181,11 @@ public class SteamBaseAPI: @unchecked Sendable {
         callback.m_pubParam.withMemoryRebound(to: SteamAPICallCompleted_t.self, capacity: 1) {
             let callCompleted = $0.pointee
 
+            guard CallResults.shared.has(callID: callCompleted.m_hAsyncCall) else {
+                logError("Got unexpected SteamAPICallCompleted.  AsyncCall (not known) is 0x\(String(callCompleted.m_hAsyncCall, radix: 16)), callback ID is \(callCompleted.m_iCallback)")
+                return
+            }
+
             // Temp buffer for the actual results
             let callResult = UnsafeMutableRawPointer
                 .allocate(byteCount: Int(callCompleted.m_cubParam), alignment: MemoryLayout<Int>.size)
@@ -192,11 +201,13 @@ public class SteamBaseAPI: @unchecked Sendable {
                 &failed)
 
             if !success {
-                // probably doomed, APIs reporting inconsistently - leave client hanging?? Any decision could be wrong...
+                // probably doomed, APIs reporting inconsistently - fail the client out to give best chance
+                // of not hanging the client.
                 logError("Failure return from SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_iCallback), \(callCompleted.m_cubParam) bytes")
+                CallResults.shared.dispatch(callID: callCompleted.m_hAsyncCall, rawData: nil)
             } else if failed {
                 // some weird internal transport failure, complete client with `nil`
-                logError("bIOFailed flag set by SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall)")
+                logError("bIOFailed flag set by SteamAPI_ManualDispatch_GetAPICallResult() for \(callCompleted.m_hAsyncCall), \(callCompleted.m_iCallback)")
                 CallResults.shared.dispatch(callID: callCompleted.m_hAsyncCall, rawData: nil)
             } else {
                 CallResults.shared.dispatch(callID: callCompleted.m_hAsyncCall, rawData: callResult)
