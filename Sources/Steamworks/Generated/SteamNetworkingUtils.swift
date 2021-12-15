@@ -77,9 +77,11 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetLocalPingLocation()`
-    public func getLocalPingLocation(result: SteamNetworkPingLocation) -> Float {
-        var tmp_result = SteamNetworkPingLocation_t(result)
-        return Float(SteamAPI_ISteamNetworkingUtils_GetLocalPingLocation(interface, &tmp_result))
+    public func getLocalPingLocation(result: inout SteamNetworkPingLocation) -> Float {
+        var tmp_result = SteamNetworkPingLocation_t()
+        let rc = Float(SteamAPI_ISteamNetworkingUtils_GetLocalPingLocation(interface, &tmp_result))
+        result = SteamNetworkPingLocation(tmp_result)
+        return rc
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetLocalTimestamp()`
@@ -93,6 +95,7 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetPOPList()`
+    @discardableResult
     public func getPOPList(list: inout [SteamNetworkingPOPID], listSz: Int) -> Int {
         let tmp_list = UnsafeMutableBufferPointer<CSteamworks.SteamNetworkingPOPID>.allocate(capacity: listSz)
         defer { tmp_list.deallocate() }
@@ -110,6 +113,7 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetRelayNetworkStatus()`
+    @discardableResult
     public func getRelayNetworkStatus(details: inout SteamRelayNetworkStatus) -> SteamNetworkingAvailability {
         var tmp_details = SteamRelayNetworkStatus_t()
         let rc = SteamNetworkingAvailability(SteamAPI_ISteamNetworkingUtils_GetRelayNetworkStatus(interface, &tmp_details))
@@ -134,47 +138,56 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConfigValue()`
+    @discardableResult
     public func setConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, dataType: SteamNetworkingConfigDataType, arg: UnsafeRawPointer) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetConfigValue(interface, ESteamNetworkingConfigValue(value), ESteamNetworkingConfigScope(scopeType), intptr_t(obj), ESteamNetworkingConfigDataType(dataType), arg)
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConfigValueStruct()`
+    @discardableResult
     public func setConfigValueStruct(opt: SteamNetworkingConfigValue, scopeType: SteamNetworkingConfigScope, obj: Int) -> Bool {
         var tmp_opt = SteamNetworkingConfigValue_t(opt)
         return SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct(interface, &tmp_opt, ESteamNetworkingConfigScope(scopeType), intptr_t(obj))
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConnectionConfigValueFloat()`
+    @discardableResult
     public func setConnectionConfigValueFloat(conn: HSteamNetConnection, value: SteamNetworkingConfigValueSetting, val: Float) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetConnectionConfigValueFloat(interface, CSteamworks.HSteamNetConnection(conn), ESteamNetworkingConfigValue(value), val)
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConnectionConfigValueInt32()`
+    @discardableResult
     public func setConnectionConfigValueInt32(conn: HSteamNetConnection, value: SteamNetworkingConfigValueSetting, val: Int) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetConnectionConfigValueInt32(interface, CSteamworks.HSteamNetConnection(conn), ESteamNetworkingConfigValue(value), int32(val))
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConnectionConfigValueString()`
+    @discardableResult
     public func setConnectionConfigValueString(conn: HSteamNetConnection, value: SteamNetworkingConfigValueSetting, val: String) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetConnectionConfigValueString(interface, CSteamworks.HSteamNetConnection(conn), ESteamNetworkingConfigValue(value), val)
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetGlobalConfigValueFloat()`
+    @discardableResult
     public func setGlobalConfigValueFloat(value: SteamNetworkingConfigValueSetting, val: Float) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValueFloat(interface, ESteamNetworkingConfigValue(value), val)
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetGlobalConfigValueInt32()`
+    @discardableResult
     public func setGlobalConfigValueInt32(value: SteamNetworkingConfigValueSetting, val: Int) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValueInt32(interface, ESteamNetworkingConfigValue(value), int32(val))
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetGlobalConfigValuePtr()`
+    @discardableResult
     public func setGlobalConfigValuePtr(value: SteamNetworkingConfigValueSetting, val: UnsafeMutableRawPointer) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValuePtr(interface, ESteamNetworkingConfigValue(value), val)
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetGlobalConfigValueString()`
+    @discardableResult
     public func setGlobalConfigValueString(value: SteamNetworkingConfigValueSetting, val: String) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValueString(interface, ESteamNetworkingConfigValue(value), val)
     }

@@ -313,6 +313,16 @@ final class Client {
         let rc3 = api.networkingUtils.getConfigValue(.p2PSTUNServerList, scopeType: .global, obj: 0, outValue: &stunList)
         print("p2PSTUNServerList: rc \(rc3), stunlist \(stunList)")
 
+        api.networkingUtils.initRelayNetworkAccess()
+
+//        var status = SteamRelayNetworkStatus()
+//        let av = api.networkingUtils.getRelayNetworkStatus(details: &status)
+//        print(status)
+
+        var pops = [SteamNetworkingPOPID]()
+        api.networkingUtils.getPOPList(list: &pops, listSz: api.networkingUtils.getPOPCount())
+        print("Got \(pops.count) POPs: \(pops)")
+
         endTest()
     }
 }

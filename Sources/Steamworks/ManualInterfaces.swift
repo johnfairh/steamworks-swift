@@ -75,18 +75,21 @@ extension SteamRemoteStorage {
 /// Some SteamNetworkingUtils additions to cope with the complicated config API
 extension SteamNetworkingUtils {
     /// Steamworks `ISteamNetworkingUtils::SetListenSocketConfigValueFloat()`
+    @discardableResult
     public func setListenSocketConfigValueFloat(sock: HSteamListenSocket, value: SteamNetworkingConfigValueSetting, val: Float) -> Bool {
         var val = val
         return setConfigValue(value: value, scopeType: .listenSocket, obj: .init(sock.value), dataType: .float, arg: &val)
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetListenSocketConfigValueInt32()`
+    @discardableResult
     public func setListenSocketConfigValueInt32(sock: HSteamListenSocket, value: SteamNetworkingConfigValueSetting, val: Int) -> Bool {
         var val = Int32(val)
         return setConfigValue(value: value, scopeType: .listenSocket, obj: .init(sock.value), dataType: .int32, arg: &val)
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetListenSocketConfigValueString()`
+    @discardableResult
     public func setListenSocketConfigValueString(sock: HSteamListenSocket, value: SteamNetworkingConfigValueSetting, val: String) -> Bool {
         val.withCString { ptr in
             setConfigValue(value: value, scopeType: .listenSocket, obj: .init(sock.value), dataType: .string, arg: ptr)

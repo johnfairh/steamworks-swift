@@ -472,11 +472,36 @@ methods:
         nullable: true
       cbResult:
         in_out: true
+  SteamAPI_ISteamNetworkingUtils_GetLocalPingLocation:
+    params:
+      result:
+        type: 'SteamNetworkPingLocation_t *'
   SteamAPI_ISteamNetworkingUtils_GetPOPList:
+    discardable_result: true
     params:
       list:
         out_array_count: nListSz
         out_array_valid_count: rc
+  SteamAPI_ISteamNetworkingUtils_GetRelayNetworkStatus:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetConfigValue:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetConnectionConfigValueFloat:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetConnectionConfigValueInt32:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetConnectionConfigValueString:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValueFloat:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValueInt32:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValuePtr:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValueString:
+    discardable_result: true
   SteamAPI_ISteamNetworkingUtils_SetDebugOutputFunction:
     ignore: "Use the logger"
   SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_MessagesSessionFailed:
