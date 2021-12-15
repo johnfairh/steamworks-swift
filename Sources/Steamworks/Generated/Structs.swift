@@ -3598,22 +3598,6 @@ extension CSteamworks.SteamNetworkPingLocation_t {
     }
 }
 
-/// Steamworks `SteamNetworkingConfigValue_t`
-public struct SteamNetworkingConfigValue {
-    /// Steamworks `m_eValue`
-    public let value: SteamNetworkingConfigValueSetting
-    /// Steamworks `m_eDataType`
-    public let dataType: SteamNetworkingConfigDataType
-}
-
-extension SteamNetworkingConfigValue: SteamCreatable {
-    typealias SteamType = CSteamworks.SteamNetworkingConfigValue_t
-    init(_ steam: CSteamworks.SteamNetworkingConfigValue_t) {
-        value = .init(steam.m_eValue)
-        dataType = .init(steam.m_eDataType)
-    }
-}
-
 /// Steamworks `SteamNetworkingIPAddrRender`
 public struct SteamNetworkingIPAddrRender {
 }

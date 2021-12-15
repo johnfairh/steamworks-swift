@@ -75,7 +75,8 @@ final class Client {
             testHTTP,
             testGameServers,
             testNetworkingStructs,
-            testNetworkingMessage
+            testNetworkingMessage,
+            testNetworkSettings
         ]
 
         if testNext == testMethods.count {
@@ -297,6 +298,22 @@ final class Client {
 
         let rc = api.networkingMessages.sendMessageToUser(identityRemote: .init(steamID), data: message, dataSize: message.count, sendFlags: .reliable, remoteChannel: 0)
         print("SendMessage rc=\(rc)")
+    }
+
+    func testNetworkSettings() {
+        var timeout = Int(0)
+        let rc1 = api.networkingUtils.getConfigValue(.timeoutInitial, scopeType: .global, obj: 0, outValue: &timeout)
+        print("timeoutInitial: rc \(rc1), timeout \(timeout)")
+
+        var dupSend = Float(-1)
+        let rc2 = api.networkingUtils.getConfigValue(.fakePacketDupSend, scopeType: .global, obj: 0, outValue: &dupSend)
+        print("fakePacketDupSend: rc \(rc2), dupSendRatio \(dupSend)")
+
+        var stunList = String()
+        let rc3 = api.networkingUtils.getConfigValue(.p2PSTUNServerList, scopeType: .global, obj: 0, outValue: &stunList)
+        print("p2PSTUNServerList: rc \(rc3), stunlist \(stunList)")
+
+        endTest()
     }
 }
 

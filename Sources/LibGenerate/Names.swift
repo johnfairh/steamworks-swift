@@ -228,6 +228,7 @@ private let steamToSwiftTypes: [String : String] = [
     "unsigned short": "Int", // ""
     "unsigned int": "Int", // ""
     "intptr_t": "Int",
+    "size_t": "Int",
 
     // Misc
     "SteamParamStringArray_t *" : "[String]", // weirdness, tbd

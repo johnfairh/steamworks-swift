@@ -467,14 +467,16 @@ methods:
       pszBuf:
         out_string_count: cchBufSize
   SteamAPI_ISteamNetworkingUtils_GetConfigValue:
-    ignore: "intptrs and union types - use the helper functions"
+    params:
+      pResult:
+        nullable: true
+      cbResult:
+        in_out: true
   SteamAPI_ISteamNetworkingUtils_GetPOPList:
     params:
       list:
         out_array_count: nListSz
         out_array_valid_count: rc
-  SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct:
-    ignore: "intptrs and union types - use the helper functions"
   SteamAPI_ISteamNetworkingUtils_SetDebugOutputFunction:
     ignore: "Use the logger"
   SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_MessagesSessionFailed:
@@ -809,9 +811,7 @@ structs:
       m_nFlags:
         ignore: "Doesn't exist in the C struct"
   SteamNetworkingConfigValue_t:
-    fields:
-      m_int64:
-        ignore: "Broken union field"
+    ignore: "Union, do manually"
   SteamNetworkingIdentity:
     ignore: "Union and methods"
   SteamNetworkingIPAddr:

@@ -51,6 +51,16 @@ public struct SteamNetworkingUtils {
         return Int(SteamAPI_ISteamNetworkingUtils_EstimatePingTimeFromLocalHost(interface, &tmp_location))
     }
 
+    /// Steamworks `ISteamNetworkingUtils::GetConfigValue()`
+    public func getConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, outDataType: inout SteamNetworkingConfigDataType, result: UnsafeMutableRawPointer?, resultSize: inout Int) -> SteamNetworkingGetConfigValueResult {
+        var tmp_outDataType = ESteamNetworkingConfigDataType(rawValue: 0)
+        var tmp_resultSize = size_t(resultSize)
+        let rc = SteamNetworkingGetConfigValueResult(SteamAPI_ISteamNetworkingUtils_GetConfigValue(interface, ESteamNetworkingConfigValue(value), ESteamNetworkingConfigScope(scopeType), intptr_t(obj), &tmp_outDataType, result, &tmp_resultSize))
+        outDataType = SteamNetworkingConfigDataType(tmp_outDataType)
+        resultSize = Int(tmp_resultSize)
+        return rc
+    }
+
     /// Steamworks `ISteamNetworkingUtils::GetConfigValueInfo()`
     public func getConfigValueInfo(value: SteamNetworkingConfigValueSetting, outDataType: inout SteamNetworkingConfigDataType, outScope: inout SteamNetworkingConfigScope) -> String {
         var tmp_outDataType = ESteamNetworkingConfigDataType(rawValue: 0)
@@ -126,6 +136,12 @@ public struct SteamNetworkingUtils {
     /// Steamworks `ISteamNetworkingUtils::SetConfigValue()`
     public func setConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, dataType: SteamNetworkingConfigDataType, arg: UnsafeRawPointer) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetConfigValue(interface, ESteamNetworkingConfigValue(value), ESteamNetworkingConfigScope(scopeType), intptr_t(obj), ESteamNetworkingConfigDataType(dataType), arg)
+    }
+
+    /// Steamworks `ISteamNetworkingUtils::SetConfigValueStruct()`
+    public func setConfigValueStruct(opt: SteamNetworkingConfigValue, scopeType: SteamNetworkingConfigScope, obj: Int) -> Bool {
+        var tmp_opt = SteamNetworkingConfigValue_t(opt)
+        return SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct(interface, &tmp_opt, ESteamNetworkingConfigScope(scopeType), intptr_t(obj))
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConnectionConfigValueFloat()`

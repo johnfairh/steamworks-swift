@@ -558,3 +558,45 @@ public struct SteamNetworkingMessage {
         CSteamNetworkingMessage_SetUserData(cmsg, Int64(userData))
     }
 }
+
+// MARK: SteamNetworkingConfigValue
+
+// Another enum-y union thing, used for writing to SteamNetworking
+
+/// Steamworks `SteamNetworkingConfigValue_t`
+public final class SteamNetworkingConfigValue {
+    private(set) var val: SteamNetworkingConfigValue_t
+    private var owned: UnsafeMutablePointer<CChar>! = nil
+
+    deinit {
+        owned.map { free($0) }
+    }
+
+    init(_ steam: SteamNetworkingConfigValue_t) {
+        val = steam
+    }
+
+    public init(_ s: SteamNetworkingConfigValueSetting, value: Int) {
+        val = SteamNetworkingConfigValue_t()
+        val.SetInt32(.init(s), Int32(value))
+    }
+
+    public init(_ s: SteamNetworkingConfigValueSetting, value: Float) {
+        val = SteamNetworkingConfigValue_t()
+        val.SetFloat(.init(s), value)
+    }
+
+    public init(_ s: SteamNetworkingConfigValueSetting, value: String) {
+        owned = strdup(value)
+        val = SteamNetworkingConfigValue_t()
+        val.SetString(.init(s), owned)
+    }
+}
+
+extension SteamNetworkingConfigValue: SteamCreatable {}
+
+extension SteamNetworkingConfigValue_t {
+    init(_ swift: SteamNetworkingConfigValue) {
+        self = swift.val
+    }
+}

@@ -8,7 +8,7 @@ Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* 27/29 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
+* 28/29 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
   working on [other interfaces](#interface-plan)
 * Discovering patterns during progress, refactor stuff at the end
 * `make` builds and runs a demo Swift program that accesses the C++
@@ -51,7 +51,8 @@ Tech limitations, on 5.5 and also swift/main as of 20/Oct:
   usable in practice.  Will use the flat API.
 * Anonymous enums are not imported at all.  Affects callback etc. ID constants.
   Will work around.
-* One (so far) structure is not imported.
+* Some structures/classes aren't imported -- the common factor seems to be a `protected`
+  destructor.
 * (New in Xcode 13.2 RC) Swift can't link/generate the default constructor for some
   C++ structs.  Problematic.  Work around with some probably-UB hackery.
 * sourcekit won't give me a module interface for `CSteamworks` to see what else the
@@ -77,12 +78,12 @@ To run the generator / build:
 ✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameSearch, ISteamGameServer,
 ISteamGameServerStats, ISteamHTMLSruface, ISteamHTTP, ISteamInput, ISteamInventory,
 ISteamMatchMaking, ISteamMatchmakingServers, ISteamMusic, ISteamMusicRemote,
-ISteamNetworkingMessages, ISteamParentalSettings, ISteamParties, ISteamRemotePlay,
-ISteamRemoteStorage, ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats,
-ISteamUtils, ISteamVideo, SteamEncryptedAppTicket
+ISteamNetworkingMessages, ISteamNetworkingUtils, ISteamParentalSettings, ISteamParties,
+ISteamRemotePlay, ISteamRemoteStorage, ISteamScreenshots, ISteamUGC, ISteamUser,
+ISteamUserStats, ISteamUtils, ISteamVideo, SteamEncryptedAppTicket
 
 Left to do:
-* Networking stuff: ISteamNetworkingUtils, those parts of ISteamNetworkingSockets
+* Networking stuff: those parts of ISteamNetworkingSockets
   that aren't impossible.
 
 Skip:

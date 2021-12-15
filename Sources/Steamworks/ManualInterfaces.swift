@@ -92,6 +92,52 @@ extension SteamNetworkingUtils {
             setConfigValue(value: value, scopeType: .listenSocket, obj: .init(sock.value), dataType: .string, arg: ptr)
         }
     }
+
+    /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `Float`
+    public func getConfigValue(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, outValue: inout Float) -> SteamNetworkingGetConfigValueResult {
+        var size = MemoryLayout<Float>.size
+        var dummy = SteamNetworkingConfigDataType.unrepresentedInSwift
+        return getConfigValue(value: value,
+                              scopeType: scopeType, obj: obj,
+                              outDataType: &dummy,
+                              result: &outValue, resultSize: &size)
+    }
+
+    /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `Int`
+    public func getConfigValue(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, outValue: inout Int) -> SteamNetworkingGetConfigValueResult {
+        var int32Val = Int32(0)
+        var size = MemoryLayout<Int32>.size
+        var dummy = SteamNetworkingConfigDataType.unrepresentedInSwift
+        let rc = getConfigValue(value: value,
+                                scopeType: scopeType, obj: obj,
+                                outDataType: &dummy,
+                                result: &int32Val, resultSize: &size)
+        outValue = Int(int32Val)
+        return rc
+    }
+
+    /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `String`
+    public func getConfigValue(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, outValue: inout String) -> SteamNetworkingGetConfigValueResult {
+        var bufSize = Int(0)
+        var dummy = SteamNetworkingConfigDataType.unrepresentedInSwift
+        let rc1 = getConfigValue(value: value,
+                                 scopeType: scopeType, obj: obj,
+                                 outDataType: &dummy,
+                                 result: nil, resultSize: &bufSize)
+        if rc1 != .bufferTooSmall {
+            return rc1 // hmm
+        }
+
+        var rc2 = SteamNetworkingGetConfigValueResult.badValue
+        outValue = String(unsafeUninitializedCapacity: bufSize) { buf in
+            rc2 = getConfigValue(value: value,
+                                 scopeType: scopeType, obj: obj,
+                                 outDataType: &dummy,
+                                 result: buf.baseAddress!, resultSize: &bufSize)
+            return bufSize - 1 // don't tell Swift about the null?
+        }
+        return rc2
+    }
 }
 
 /// SteamNetworkingUtils custom message-logging
