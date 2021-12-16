@@ -8,11 +8,12 @@ Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* 28/29 interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html),
-  working on [other interfaces](#interface-plan)
-* Discovering patterns during progress, refactor stuff at the end
+* First pass all interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html)
+* Missing some utility type properties for clients
+* Interface types and patterns need reviewing and refactoring
 * `make` builds and runs a demo Swift program that accesses the C++
-  Steam API to initialize, do some sync and async queries, then shut it down.
+  Steam API to initialize, do various sync and async queries, then shut it down.
+* Separate demo showing encrypted app-ticket stuff.
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
   tab completion even if module interface gen is beyond it.
 
@@ -78,13 +79,16 @@ To run the generator / build:
 ✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameSearch, ISteamGameServer,
 ISteamGameServerStats, ISteamHTMLSruface, ISteamHTTP, ISteamInput, ISteamInventory,
 ISteamMatchMaking, ISteamMatchmakingServers, ISteamMusic, ISteamMusicRemote,
-ISteamNetworkingMessages, ISteamNetworkingUtils, ISteamParentalSettings, ISteamParties,
-ISteamRemotePlay, ISteamRemoteStorage, ISteamScreenshots, ISteamUGC, ISteamUser,
-ISteamUserStats, ISteamUtils, ISteamVideo, SteamEncryptedAppTicket
+ISteamNetworkingMessages, ISteamNetworkingSockets, ISteamNetworkingUtils,
+ISteamParentalSettings, ISteamParties, ISteamRemotePlay, ISteamRemoteStorage,
+ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo,
+SteamEncryptedAppTicket
 
 Left to do:
-* Networking stuff: those parts of ISteamNetworkingSockets
-  that aren't impossible.
+* Public initializers for types
+* Pondering of int types etc.
+* Array and String management improvements
+* Review all the random customizations
 
 Skip:
 * ISteamAppTicket - er not actually a thing?

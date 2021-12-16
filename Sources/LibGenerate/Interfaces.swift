@@ -138,11 +138,17 @@ extension MetadataDB.Interface.Access {
     }
 }
 
+private extension String {
+    var cless: String {
+        re_sub("^C", with: "")
+    }
+}
+
 extension MetadataDB.Interface {
     func generate(context: String) -> String {
         let declaration = access.declaration(db: self)
         let methods = methods.values
-            .sorted(by: { $0.flatName < $1.flatName })
+            .sorted(by: { $0.flatName.cless < $1.flatName.cless })
             .filter(\.shouldGenerate)
             .map { $0.generate(context: name) }
             .joined(separator: "\n\n")

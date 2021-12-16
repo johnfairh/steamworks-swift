@@ -19,19 +19,6 @@ public struct SteamParties {
     init() {
     }
 
-    /// Steamworks `ISteamParties::CreateBeacon()`, callback
-    public func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String, completion: @escaping (CreateBeaconCallback?) -> Void) {
-        let rc = CSteamAPI_ISteamParties_CreateBeacon(interface, uint32(openSlots), SteamPartyBeaconLocation_t(beaconLocation), connectString, metadata)
-        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
-    }
-
-    /// Steamworks `ISteamParties::CreateBeacon()`, async
-    func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String) async -> CreateBeaconCallback? {
-        await withUnsafeContinuation {
-            createBeacon(openSlots: openSlots, beaconLocation: beaconLocation, connectString: connectString, metadata: metadata, completion: $0.resume)
-        }
-    }
-
     /// Steamworks `ISteamParties::CancelReservation()`
     public func cancelReservation(beacon: PartyBeaconID, user: SteamID) {
         SteamAPI_ISteamParties_CancelReservation(interface, PartyBeaconID_t(beacon), UInt64(user))
@@ -47,6 +34,19 @@ public struct SteamParties {
     func changeNumOpenSlots(beacon: PartyBeaconID, openSlots: Int) async -> ChangeNumOpenSlotsCallback? {
         await withUnsafeContinuation {
             changeNumOpenSlots(beacon: beacon, openSlots: openSlots, completion: $0.resume)
+        }
+    }
+
+    /// Steamworks `ISteamParties::CreateBeacon()`, callback
+    public func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String, completion: @escaping (CreateBeaconCallback?) -> Void) {
+        let rc = CSteamAPI_ISteamParties_CreateBeacon(interface, uint32(openSlots), SteamPartyBeaconLocation_t(beaconLocation), connectString, metadata)
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
+    }
+
+    /// Steamworks `ISteamParties::CreateBeacon()`, async
+    func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String) async -> CreateBeaconCallback? {
+        await withUnsafeContinuation {
+            createBeacon(openSlots: openSlots, beaconLocation: beaconLocation, connectString: connectString, metadata: metadata, completion: $0.resume)
         }
     }
 

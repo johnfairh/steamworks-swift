@@ -266,6 +266,13 @@ public final class SteamNetworkingIPAddr {
         adr = typed.pointee
     }
 
+    /// `INADDR_ANY` with some port
+    public convenience init(inaddrAnyPort port: Int) {
+        self.init()
+        adr.Clear()
+        adr.m_port = UInt16(port)
+    }
+
     /// Sets to IPv4 mapped address.  IP and port are in host byte order.
     public convenience init(ipv4: Int, port: Int) {
         self.init()

@@ -462,6 +462,10 @@ methods:
 #
 # ISteamNetworkingSockets
 #
+  SteamAPI_ISteamNetworkingSockets_CloseConnection:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_CloseListenSocket:
+    discardable_result: true
   SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress:
     params:
       pOptions:
@@ -486,6 +490,39 @@ methods:
     params:
       pOptions:
         array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_CreateSocketPair:
+    params:
+      pIdentity1:
+        type: 'SteamNetworkingIdentity &'
+      pIdentity2:
+        type: 'SteamNetworkingIdentity &'
+  SteamAPI_ISteamNetworkingSockets_DestroyPollGroup:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_FlushMessagesOnConnection:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_GetAuthenticationStatus:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_GetCertificateRequest:
+    flat_name: CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest
+    params:
+      pcbBlob:
+        in_out: true
+      errMsg:
+        type: 'char *'         # This is a very shaky hack but the fixed-size
+        out_string_count: 1024 # array/tuple stuff is so unhelpful...
+  SteamAPI_ISteamNetworkingSockets_GetConnectionInfo:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus:
+    params:
+      pszBuf:
+        out_string_count: cbBuf
+    out_param_iff_rc: '== 0'
+  SteamAPI_ISteamNetworkingSockets_GetListenSocketAddress:
+   discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_GetQuickConnectionStatus:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_InitAuthentication:
+    discardable_result: true
   SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection:
     discardable_result: true
     params:
@@ -509,6 +546,16 @@ methods:
         array_count: nMessages
       pOutMessageNumberOrResult:
         out_array_count: messages.count
+  SteamAPI_ISteamNetworkingSockets_SetCertificate:
+    flat_name: CSteamAPI_ISteamNetworkingSockets_SetCertificate
+    params:
+      errMsg:
+        type: 'char *'
+        out_string_count: 1024 # See GetCertificate
+  SteamAPI_ISteamNetworkingSockets_SetConnectionPollGroup:
+    discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_SetConnectionUserData:
+    discardable_result: true
   SteamAPI_ISteamNetworkingSockets_ConnectP2PCustomSignaling:
     ignore: "wtf is SteamNetworkingConnectionSignaling"
   SteamAPI_ISteamNetworkingSockets_FindRelayAuthTicketForServer:

@@ -24,30 +24,6 @@ public struct SteamMatchmaking {
         Int(CSteamAPI_ISteamMatchmaking_AddFavoriteGame(interface, AppId_t(appID), uint32(ip), uint16(connPort), uint16(queryPort), EFavoriteFlags(flags), CSteamworks.RTime32(time32LastPlayedOnServer)))
     }
 
-    /// Steamworks `ISteamMatchmaking::GetFavoriteGame()`
-    public func getFavoriteGame(gameIndex: Int, appID: inout AppID, ip: inout Int, connPort: inout Int, queryPort: inout Int, flags: inout FavoriteFlags, rTime32LastPlayedOnServer: inout RTime32) -> Bool {
-        var tmp_appID = AppId_t()
-        var tmp_ip = uint32()
-        var tmp_connPort = uint16()
-        var tmp_queryPort = uint16()
-        var tmp_flags = EFavoriteFlags(rawValue: 0)
-        var tmp_rTime32LastPlayedOnServer = CSteamworks.RTime32()
-        let rc = CSteamAPI_ISteamMatchmaking_GetFavoriteGame(interface, Int32(gameIndex), &tmp_appID, &tmp_ip, &tmp_connPort, &tmp_queryPort, &tmp_flags, &tmp_rTime32LastPlayedOnServer)
-        appID = AppID(tmp_appID)
-        ip = Int(tmp_ip)
-        connPort = Int(tmp_connPort)
-        queryPort = Int(tmp_queryPort)
-        flags = FavoriteFlags(tmp_flags)
-        rTime32LastPlayedOnServer = RTime32(tmp_rTime32LastPlayedOnServer)
-        return rc
-    }
-
-    /// Steamworks `ISteamMatchmaking::RemoveFavoriteGame()`
-    @discardableResult
-    public func removeFavoriteGame(appID: AppID, ip: Int, connPort: Int, queryPort: Int, flags: FavoriteFlags) -> Bool {
-        CSteamAPI_ISteamMatchmaking_RemoveFavoriteGame(interface, AppId_t(appID), uint32(ip), uint16(connPort), uint16(queryPort), EFavoriteFlags(flags))
-    }
-
     /// Steamworks `ISteamMatchmaking::AddRequestLobbyListCompatibleMembersFilter()`
     public func addRequestLobbyListCompatibleMembersFilter(lobby: SteamID) {
         SteamAPI_ISteamMatchmaking_AddRequestLobbyListCompatibleMembersFilter(interface, UInt64(lobby))
@@ -100,6 +76,24 @@ public struct SteamMatchmaking {
     @discardableResult
     public func deleteLobbyData(lobby: SteamID, key: String) -> Bool {
         SteamAPI_ISteamMatchmaking_DeleteLobbyData(interface, UInt64(lobby), key)
+    }
+
+    /// Steamworks `ISteamMatchmaking::GetFavoriteGame()`
+    public func getFavoriteGame(gameIndex: Int, appID: inout AppID, ip: inout Int, connPort: inout Int, queryPort: inout Int, flags: inout FavoriteFlags, rTime32LastPlayedOnServer: inout RTime32) -> Bool {
+        var tmp_appID = AppId_t()
+        var tmp_ip = uint32()
+        var tmp_connPort = uint16()
+        var tmp_queryPort = uint16()
+        var tmp_flags = EFavoriteFlags(rawValue: 0)
+        var tmp_rTime32LastPlayedOnServer = CSteamworks.RTime32()
+        let rc = CSteamAPI_ISteamMatchmaking_GetFavoriteGame(interface, Int32(gameIndex), &tmp_appID, &tmp_ip, &tmp_connPort, &tmp_queryPort, &tmp_flags, &tmp_rTime32LastPlayedOnServer)
+        appID = AppID(tmp_appID)
+        ip = Int(tmp_ip)
+        connPort = Int(tmp_connPort)
+        queryPort = Int(tmp_queryPort)
+        flags = FavoriteFlags(tmp_flags)
+        rTime32LastPlayedOnServer = RTime32(tmp_rTime32LastPlayedOnServer)
+        return rc
     }
 
     /// Steamworks `ISteamMatchmaking::GetFavoriteGameCount()`
@@ -203,6 +197,12 @@ public struct SteamMatchmaking {
     /// Steamworks `ISteamMatchmaking::LeaveLobby()`
     public func leaveLobby(lobby: SteamID) {
         SteamAPI_ISteamMatchmaking_LeaveLobby(interface, UInt64(lobby))
+    }
+
+    /// Steamworks `ISteamMatchmaking::RemoveFavoriteGame()`
+    @discardableResult
+    public func removeFavoriteGame(appID: AppID, ip: Int, connPort: Int, queryPort: Int, flags: FavoriteFlags) -> Bool {
+        CSteamAPI_ISteamMatchmaking_RemoveFavoriteGame(interface, AppId_t(appID), uint32(ip), uint16(connPort), uint16(queryPort), EFavoriteFlags(flags))
     }
 
     /// Steamworks `ISteamMatchmaking::RequestLobbyData()`

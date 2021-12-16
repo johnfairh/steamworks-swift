@@ -49,3 +49,15 @@ static inline const uint8 * _Nonnull SteamNetworkingIdentity_m_genericBytes_ptr(
 {
     return s->m_genericBytes;
 }
+
+// Shim a couple of APIs to get rid of refs to fixed-size arrays of char that import as unwieldy tuples
+
+static inline bool CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest( ISteamNetworkingSockets* self, int * pcbBlob, void * pBlob, char * errMsg ) {
+    auto msgp = reinterpret_cast<SteamNetworkingErrMsg *>(errMsg);
+    return SteamAPI_ISteamNetworkingSockets_GetCertificateRequest(self, pcbBlob, pBlob, *msgp);
+}
+
+static inline bool CSteamAPI_ISteamNetworkingSockets_SetCertificate( ISteamNetworkingSockets* self, const void * pCertificate, int cbCertificate, char *errMsg ) {
+    auto msgp = reinterpret_cast<SteamNetworkingErrMsg *>(errMsg);
+    return SteamAPI_ISteamNetworkingSockets_SetCertificate(self, pCertificate, cbCertificate, *msgp);
+}

@@ -27,11 +27,13 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::CloseConnection()`
+    @discardableResult
     public func closeConnection(peer: HSteamNetConnection, reason: Int, debug: String, enableLinger: Bool) -> Bool {
         SteamAPI_ISteamNetworkingSockets_CloseConnection(interface, CSteamworks.HSteamNetConnection(peer), Int32(reason), debug, enableLinger)
     }
 
     /// Steamworks `ISteamNetworkingSockets::CloseListenSocket()`
+    @discardableResult
     public func closeListenSocket(socket: HSteamListenSocket) -> Bool {
         SteamAPI_ISteamNetworkingSockets_CloseListenSocket(interface, CSteamworks.HSteamListenSocket(socket))
     }
@@ -82,25 +84,25 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateSocketPair()`
-    public func createSocketPair(outConnection1: inout HSteamNetConnection, outConnection2: inout HSteamNetConnection, useNetworkLoopback: Bool, identity1: inout SteamNetworkingIdentity, identity2: inout SteamNetworkingIdentity) -> Bool {
+    public func createSocketPair(outConnection1: inout HSteamNetConnection, outConnection2: inout HSteamNetConnection, useNetworkLoopback: Bool, identity1: SteamNetworkingIdentity, identity2: SteamNetworkingIdentity) -> Bool {
         var tmp_outConnection1 = CSteamworks.HSteamNetConnection()
         var tmp_outConnection2 = CSteamworks.HSteamNetConnection()
-        var tmp_identity1 = CSteamworks.SteamNetworkingIdentity()
-        var tmp_identity2 = CSteamworks.SteamNetworkingIdentity()
+        var tmp_identity1 = CSteamworks.SteamNetworkingIdentity(identity1)
+        var tmp_identity2 = CSteamworks.SteamNetworkingIdentity(identity2)
         let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmp_outConnection1, &tmp_outConnection2, useNetworkLoopback, &tmp_identity1, &tmp_identity2)
         outConnection1 = HSteamNetConnection(tmp_outConnection1)
         outConnection2 = HSteamNetConnection(tmp_outConnection2)
-        identity1 = SteamNetworkingIdentity(tmp_identity1)
-        identity2 = SteamNetworkingIdentity(tmp_identity2)
         return rc
     }
 
     /// Steamworks `ISteamNetworkingSockets::DestroyPollGroup()`
+    @discardableResult
     public func destroyPollGroup(pollGroup: HSteamNetPollGroup) -> Bool {
         SteamAPI_ISteamNetworkingSockets_DestroyPollGroup(interface, CSteamworks.HSteamNetPollGroup(pollGroup))
     }
 
     /// Steamworks `ISteamNetworkingSockets::FlushMessagesOnConnection()`
+    @discardableResult
     public func flushMessagesOnConnection(conn: HSteamNetConnection) -> Result {
         Result(SteamAPI_ISteamNetworkingSockets_FlushMessagesOnConnection(interface, CSteamworks.HSteamNetConnection(conn)))
     }
@@ -114,15 +116,18 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
-    public func getCertificateRequest(blobSize: inout Int, blob: UnsafeMutableRawPointer, msg: SteamNetworkingErrMsg) -> Bool {
-        var tmp_blobSize = Int32()
-        var tmp_msg = CSteamworks.SteamNetworkingErrMsg(msg)
-        let rc = SteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmp_blobSize, blob, &tmp_msg)
+    public func getCertificateRequest(blobSize: inout Int, blob: UnsafeMutableRawPointer, msg: inout String) -> Bool {
+        var tmp_blobSize = Int32(blobSize)
+        let tmp_msg = UnsafeMutableBufferPointer<CChar>.allocate(capacity: Int(1024))
+        defer { tmp_msg.deallocate() }
+        let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmp_blobSize, blob, tmp_msg.baseAddress)
         blobSize = Int(tmp_blobSize)
+        msg = String(tmp_msg)
         return rc
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionInfo()`
+    @discardableResult
     public func getConnectionInfo(conn: HSteamNetConnection, info: inout SteamNetConnectionInfo) -> Bool {
         var tmp_info = SteamNetConnectionInfo_t()
         let rc = SteamAPI_ISteamNetworkingSockets_GetConnectionInfo(interface, CSteamworks.HSteamNetConnection(conn), &tmp_info)
@@ -144,10 +149,13 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetDetailedConnectionStatus()`
-    public func getDetailedConnectionStatus(conn: HSteamNetConnection, buf: inout Int, bufSize: Int) -> Int {
-        var tmp_buf = Int8()
-        let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), &tmp_buf, Int32(bufSize)))
-        buf = Int(tmp_buf)
+    public func getDetailedConnectionStatus(conn: HSteamNetConnection, buf: inout String, bufSize: Int) -> Int {
+        let tmp_buf = UnsafeMutableBufferPointer<CChar>.allocate(capacity: bufSize)
+        defer { tmp_buf.deallocate() }
+        let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmp_buf.baseAddress, Int32(bufSize)))
+        if rc == 0 {
+            buf = String(tmp_buf)
+        }
         return rc
     }
 
@@ -178,6 +186,7 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetQuickConnectionStatus()`
+    @discardableResult
     public func getQuickConnectionStatus(conn: HSteamNetConnection, stats: inout SteamNetworkingQuickConnectionStatus) -> Bool {
         var tmp_stats = CSteamworks.SteamNetworkingQuickConnectionStatus()
         let rc = SteamAPI_ISteamNetworkingSockets_GetQuickConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), &tmp_stats)
@@ -240,9 +249,12 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`
-    public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int, msg: SteamNetworkingErrMsg) -> Bool {
-        var tmp_msg = CSteamworks.SteamNetworkingErrMsg(msg)
-        return SteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, Int32(certificateSize), &tmp_msg)
+    public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int, msg: inout String) -> Bool {
+        let tmp_msg = UnsafeMutableBufferPointer<CChar>.allocate(capacity: Int(1024))
+        defer { tmp_msg.deallocate() }
+        let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, Int32(certificateSize), tmp_msg.baseAddress)
+        msg = String(tmp_msg)
+        return rc
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetConnectionName()`
@@ -251,6 +263,7 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetConnectionPollGroup()`
+    @discardableResult
     public func setConnectionPollGroup(conn: HSteamNetConnection, pollGroup: HSteamNetPollGroup) -> Bool {
         SteamAPI_ISteamNetworkingSockets_SetConnectionPollGroup(interface, CSteamworks.HSteamNetConnection(conn), CSteamworks.HSteamNetPollGroup(pollGroup))
     }

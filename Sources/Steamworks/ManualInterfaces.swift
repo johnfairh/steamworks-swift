@@ -161,3 +161,16 @@ private func networkingUtilsDebugCallback(type: ESteamNetworkingSocketsDebugOutp
     ]
     SteamBaseAPI.logger.debug(.init(stringLiteral: String(msg)), metadata: metadata)
 }
+
+/// SteamNetworkingSockets irritating nullability
+extension SteamNetworkingSockets {
+    /// Steamworks `ISteamNetworkingSockets::CreateSocketPair()` - without identity specified
+    public func createSocketPair(outConnection1: inout HSteamNetConnection, outConnection2: inout HSteamNetConnection, useNetworkLoopback: Bool) -> Bool {
+        var tmp_outConnection1 = CSteamworks.HSteamNetConnection()
+        var tmp_outConnection2 = CSteamworks.HSteamNetConnection()
+        let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmp_outConnection1, &tmp_outConnection2, useNetworkLoopback, nil, nil)
+        outConnection1 = HSteamNetConnection(tmp_outConnection1)
+        outConnection2 = HSteamNetConnection(tmp_outConnection2)
+        return rc
+    }
+}
