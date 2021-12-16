@@ -16,6 +16,8 @@ modules: Steamworks
 build_tool_arguments:
   - "-Xswiftc"
   - "-I${PWD}/sdk/public"
+  - "-Xlinker"
+  - "-lc++"
 title: Steamworks v0.1.0
 module_version: 0.1.0
 topic_style: source-order-defs
@@ -29,12 +31,12 @@ custom_groups:
       - SteamGameServerAPI
   - name: Steamworks interfaces
     children:
-      - SteamFriends
-      - SteamUser [SteamUser (stub)]
-      - SteamUserStats [SteamUserStats (stub)]
+      - filepath /Generated\/Steam.*swift/
   - name: Typealiases
     children:
       - filepath /Typedefs.swift/
+      - SteamAPIWarningMessageHook
+      - MatchMakingKeyValuePairs
   - name: Enumerations
     children:
       - filepath /Enums.swift/
@@ -43,6 +45,9 @@ custom_groups:
       - filepath /Structs.swift/
       - SteamID
       - GameID
+  - name: Protocols
+    children:
+      - /Matchmaking.*Response/
   - name: Constants
     children:
       - SteamConstants

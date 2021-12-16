@@ -108,6 +108,7 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetAuthenticationStatus()`
+    @discardableResult
     public func getAuthenticationStatus(details: inout SteamNetAuthenticationStatus) -> SteamNetworkingAvailability {
         var tmp_details = SteamNetAuthenticationStatus_t()
         let rc = SteamNetworkingAvailability(SteamAPI_ISteamNetworkingSockets_GetAuthenticationStatus(interface, &tmp_details))
@@ -178,6 +179,7 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetListenSocketAddress()`
+    @discardableResult
     public func getListenSocketAddress(socket: HSteamListenSocket, address: inout SteamNetworkingIPAddr) -> Bool {
         var tmp_address = CSteamworks.SteamNetworkingIPAddr()
         let rc = SteamAPI_ISteamNetworkingSockets_GetListenSocketAddress(interface, CSteamworks.HSteamListenSocket(socket), &tmp_address)
@@ -195,6 +197,7 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::InitAuthentication()`
+    @discardableResult
     public func initAuthentication() -> SteamNetworkingAvailability {
         SteamNetworkingAvailability(SteamAPI_ISteamNetworkingSockets_InitAuthentication(interface))
     }
@@ -269,6 +272,7 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetConnectionUserData()`
+    @discardableResult
     public func setConnectionUserData(peer: HSteamNetConnection, userData: Int) -> Bool {
         SteamAPI_ISteamNetworkingSockets_SetConnectionUserData(interface, CSteamworks.HSteamNetConnection(peer), int64(userData))
     }

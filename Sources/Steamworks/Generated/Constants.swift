@@ -106,42 +106,6 @@ public enum SteamConstants {
     /// Steamworks `k_SteamMusicPNGMaxLength`
     public static let steamMusicPNGMaxLength = Int(65535)
 
-    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_DualWifi`
-    public static let steamNetworkConnectionInfoFlagsDualWifi = Int(32)
-
-    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Fast`
-    public static let steamNetworkConnectionInfoFlagsFast = Int(8)
-
-    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_LoopbackBuffers`
-    public static let steamNetworkConnectionInfoFlagsLoopbackBuffers = Int(4)
-
-    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Relayed`
-    public static let steamNetworkConnectionInfoFlagsRelayed = Int(16)
-
-    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Unauthenticated`
-    public static let steamNetworkConnectionInfoFlagsUnauthenticated = Int(1)
-
-    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Unencrypted`
-    public static let steamNetworkConnectionInfoFlagsUnencrypted = Int(2)
-
-    /// Steamworks `k_nSteamNetworkingConfig_P2P_Transport_ICE_Enable_All`
-    public static let steamNetworkingConfigP2PTransportICEEnableAll = Int(0x7fffffff)
-
-    /// Steamworks `k_nSteamNetworkingConfig_P2P_Transport_ICE_Enable_Default`
-    public static let steamNetworkingConfigP2PTransportICEEnableDefault = Int(-1)
-
-    /// Steamworks `k_nSteamNetworkingConfig_P2P_Transport_ICE_Enable_Disable`
-    public static let steamNetworkingConfigP2PTransportICEEnableDisable = Int(0)
-
-    /// Steamworks `k_nSteamNetworkingConfig_P2P_Transport_ICE_Enable_Private`
-    public static let steamNetworkingConfigP2PTransportICEEnablePrivate = Int(2)
-
-    /// Steamworks `k_nSteamNetworkingConfig_P2P_Transport_ICE_Enable_Public`
-    public static let steamNetworkingConfigP2PTransportICEEnablePublic = Int(4)
-
-    /// Steamworks `k_nSteamNetworkingConfig_P2P_Transport_ICE_Enable_Relay`
-    public static let steamNetworkingConfigP2PTransportICEEnableRelay = Int(1)
-
     /// Steamworks `k_cchSteamNetworkingMaxConnectionCloseReason`
     public static let steamNetworkingMaxConnectionCloseReasonSize = Int(128)
 
