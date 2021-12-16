@@ -297,6 +297,12 @@ public final class SteamNetworkingIPAddr {
 extension SteamNetworkingIPAddr: SteamCreatable, Equatable {
 }
 
+extension CSteamworks.SteamNetworkingIPAddr {
+    init(_ swift: SteamNetworkingIPAddr) {
+        self = swift.adr
+    }
+}
+
 // MARK: SteamNetworkingIdentity
 
 // Again model as immutable thing that can be created.
@@ -456,7 +462,7 @@ extension CSteamworks.SteamNetworkingIdentity {
 // we provide a C-style flat API of our own to deal with it.
 
 public struct SteamNetworkingMessage {
-    private var cmsg: CMsgPtr
+    private(set) var cmsg: CMsgPtr
 
     init(_ steam: CMsgPtr) {
         cmsg = steam
@@ -556,6 +562,12 @@ public struct SteamNetworkingMessage {
     /// `ISteamNetworkingUtils::AllocateMessage` and `ISteamNetworkingSockets::SendMessage`.
     public func set(userData: Int) {
         CSteamNetworkingMessage_SetUserData(cmsg, Int64(userData))
+    }
+}
+
+extension Optional where Wrapped == OpaquePointer {
+    init(_ swift: SteamNetworkingMessage) {
+        self = OpaquePointer(swift.cmsg)
     }
 }
 

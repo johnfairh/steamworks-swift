@@ -460,6 +460,68 @@ methods:
       nSendFlags:
         type: ESteamNetworkingSendFlags
 #
+# ISteamNetworkingSockets
+#
+  SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress:
+    params:
+      pOptions:
+        array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_ConnectP2P:
+    params:
+      pOptions:
+        array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_ConnectToHostedDedicatedServer:
+    params:
+      pOptions:
+        array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_CreateHostedDedicatedServerListenSocket:
+    params:
+      pOptions:
+        array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_CreateListenSocketIP:
+    params:
+      pOptions:
+        array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2P:
+    params:
+      pOptions:
+        array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection:
+    discardable_result: true
+    params:
+      ppOutMessages:
+        out_array_count: nMaxMessages
+        out_array_valid_count: rc
+  SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup:
+    discardable_result: true
+    params:
+      ppOutMessages:
+        out_array_count: nMaxMessages
+        out_array_valid_count: rc
+  SteamAPI_ISteamNetworkingSockets_SendMessageToConnection:
+    params:
+      nSendFlags:
+        type: ESteamNetworkingSendFlags
+  SteamAPI_ISteamNetworkingSockets_SendMessages:
+    params:
+      pMessages:
+        type: 'SteamNetworkingMessage_t **'
+        array_count: nMessages
+      pOutMessageNumberOrResult:
+        out_array_count: messages.count
+  SteamAPI_ISteamNetworkingSockets_ConnectP2PCustomSignaling:
+    ignore: "wtf is SteamNetworkingConnectionSignaling"
+  SteamAPI_ISteamNetworkingSockets_FindRelayAuthTicketForServer:
+    ignore: "wtf is SteamDatagramRelayAuthTicket"
+  SteamAPI_ISteamNetworkingSockets_GetGameCoordinatorServerLogin:
+    ignore: "wtf is SteamDatagramGameCoordinatorServerLogin"
+  SteamAPI_ISteamNetworkingSockets_GetHostedDedicatedServerAddress:
+    ignore: "wtf is SteamDatagramHostedAddress"
+  SteamAPI_ISteamNetworkingSockets_ReceivedP2PCustomSignal:
+    ignore: "wtf is ISteamNetworkingSignalingRecvContext"
+  SteamAPI_ISteamNetworkingSockets_ReceivedRelayAuthTicket:
+    ignore: "wtf is SteamDatagramRelayAuthTicket"
+#
 # ISteamNetworkingUtils
 #
   SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString:
@@ -522,7 +584,6 @@ methods:
     ignore: "Use the type methods"
   SteamAPI_ISteamNetworkingUtils_SteamNetworkingIPAddr_ToString:
     ignore: "Use the type methods"
-
 #
 # ISteamParties
 #
@@ -858,5 +919,7 @@ structs:
       m_rtimeAddedToUserList:
         type: RTime32
 interfaces:
+  ISteamNetworkingSockets:
+    real_classname: OpaquePointer
   ISteamNetworkingUtils:
     real_classname: OpaquePointer

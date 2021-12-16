@@ -132,6 +132,7 @@ public class SteamBaseAPI: @unchecked Sendable {
         self.http = SteamHTTP(isServer: isServer)
         self.inventory = SteamInventory(isServer: isServer)
         self.networkingMessages = SteamNetworkingMessages(isServer: isServer)
+        self.networkingSockets = SteamNetworkingSockets(isServer: isServer)
         self.networkingUtils = SteamNetworkingUtils()
         self.ugc = SteamUGC(isServer: isServer)
         self.utils = SteamUtils(isServer: isServer)
@@ -241,6 +242,8 @@ public class SteamBaseAPI: @unchecked Sendable {
     public let inventory: SteamInventory
     /// Access the Steamworks `ISteamNetworkingMessages` interface
     public let networkingMessages: SteamNetworkingMessages
+    /// Access the Steamworks `ISteamNetworkingSockets` interface
+    public let networkingSockets: SteamNetworkingSockets
     /// Access the Steamworks `ISteamNetworkingUtils` interface
     public let networkingUtils: SteamNetworkingUtils
     /// Access the Steamworks `ISteamUGC` interface

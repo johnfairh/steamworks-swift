@@ -47,7 +47,8 @@ struct Interfaces {
             "ISteamUGC",
             "ISteamMatchmakingServers",
             "ISteamNetworkingMessages",
-            "ISteamNetworkingUtils"
+            "ISteamNetworkingUtils",
+            "ISteamNetworkingSockets"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -364,19 +365,30 @@ extension String {
 extension Array where Element == MetadataDB.Method.Param {
     var asSwiftParams: [SwiftParam] {
         var params = [SwiftParam]()
-        var lookingForCount = [String : SwiftParam]()
+        var lookingForCount = [String : SwiftParam]() // count name : array param
+        var arrayParams = [String : SwiftParam]() // array name : array param
 
         forEach { p in
-            let param = SwiftParam(p, inArrayParam: lookingForCount.removeValue(forKey: p.name))
-            params.append(param)
             if let countParamName = p.arrayCount {
+                let param = SwiftParam(p, inArrayParam: nil)
                 lookingForCount[countParamName] = param
+                arrayParams[p.name] = param
             }
+        }
+
+        forEach { p in
+            let param = arrayParams.removeValue(forKey: p.name) ??
+                        SwiftParam(p, inArrayParam: lookingForCount.removeValue(forKey: p.name))
+            params.append(param)
         }
 
         if !lookingForCount.isEmpty {
             print("Couldn't match up 'arrayCount', leftovers: \(lookingForCount)")
             print("Method is \(self)")
+            preconditionFailure()
+        }
+        if !arrayParams.isEmpty {
+            print("Utterly confused by everything: \(arrayParams)")
             preconditionFailure()
         }
         return params
