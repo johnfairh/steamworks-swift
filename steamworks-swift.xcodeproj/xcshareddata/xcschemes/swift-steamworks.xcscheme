@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "swift-steamworks::Demo"
-               BuildableName = "Client"
-               BlueprintName = "Client"
-               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+               BlueprintIdentifier = "020860AD273047D100725122"
+               BuildableName = "LibGenerate.framework"
+               BlueprintName = "LibGenerate"
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,21 +31,7 @@
                BlueprintIdentifier = "swift-steamworks::Steamworks"
                BuildableName = "Steamworks.framework"
                BlueprintName = "Steamworks"
-               ReferencedContainer = "container:swift-steamworks.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "020860AD273047D100725122"
-               BuildableName = "LibGenerate.framework"
-               BlueprintName = "LibGenerate"
-               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -59,7 +45,7 @@
                BlueprintIdentifier = "02AD458E2757892B00BD93ED"
                BuildableName = "SteamworksEncryptedAppTicket.framework"
                BlueprintName = "SteamworksEncryptedAppTicket"
-               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -70,10 +56,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "020860BC2730485000725122"
-               BuildableName = "Generate"
-               BlueprintName = "Generate"
-               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+               BlueprintIdentifier = "swift-steamworks::SteamworksTests"
+               BuildableName = "SteamworksTests.xctest"
+               BlueprintName = "SteamworksTests"
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "swift-steamworks::Demo"
+               BuildableName = "Client"
+               BlueprintName = "Client"
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -87,7 +87,21 @@
                BlueprintIdentifier = "02AD45D727578D3C00BD93ED"
                BuildableName = "TicketClient"
                BlueprintName = "TicketClient"
-               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "020860BC2730485000725122"
+               BuildableName = "Generate"
+               BlueprintName = "Generate"
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -123,7 +137,7 @@
                BlueprintIdentifier = "swift-steamworks::SteamworksTests"
                BuildableName = "SteamworksTests.xctest"
                BlueprintName = "SteamworksTests"
-               ReferencedContainer = "container:swift-steamworks.xcodeproj">
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -138,16 +152,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "swift-steamworks::Demo"
-            BuildableName = "Client"
-            BlueprintName = "Client"
-            ReferencedContainer = "container:swift-steamworks.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-debug_steamapi "
@@ -161,15 +165,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "swift-steamworks::Demo"
-            BuildableName = "Client"
-            BlueprintName = "Client"
-            ReferencedContainer = "container:swift-steamworks.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

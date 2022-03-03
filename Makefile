@@ -37,7 +37,7 @@ build: generate
 	swift build ${STEAM_SWIFT_FLAGS}
 
 BINPATH := $(shell swift build --show-bin-path)
-TESTBINPATH := ${BINPATH}/swift-steamworksPackageTests.xctest/Contents/${XCTESTOS}
+TESTBINPATH := ${BINPATH}/steamworks-swiftPackageTests.xctest/Contents/${XCTESTOS}
 
 bin_setup:
 	mkdir -p ${TESTBINPATH}

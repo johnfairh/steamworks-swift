@@ -2,7 +2,7 @@
 ![Steamworks 1.52](https://shields.io/badge/steamworks-1.52-lightgrey)
 ![MIT](https://shields.io/badge/license-MIT-black)
 
-# swift-steamworks
+# steamworks-swift
 
 Experiment with Steamworks SDK and Swift C++ importer.
 
@@ -38,7 +38,7 @@ Current state:
 
 ### Tech reality
 
-Tech limitations, on 5.5 and also swift/main as of 20/Oct:
+Tech limitations, on 5.6 and also swift/main as of 20/Oct -- needs rechecking in 2022:
 * Importing `Foundation` and `-enable-cxx-interop` and a C++ module crashes the
   compiler.  Various bugs for this on swift.org, will have to work around through
   module structure.
@@ -66,7 +66,7 @@ Tech limitations, on 5.5 and also swift/main as of 20/Oct:
 
 ### Requirements
 
-* Needs Swift 5.5 (Xcode 13.2)
+* Needs Swift 5.6 (Xcode 13.3)
 * Needs Steam client installed
 * I'm using macOS 12; should work on macOS 11, Linux; might work on Windows
 

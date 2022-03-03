@@ -752,7 +752,7 @@
 					};
 				};
 			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "swift-steamworks" */;
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "steamworks-swift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1237,7 +1237,7 @@
 					"$(SRCROOT)/Sources/CSteamworks",
 					"$(SRCROOT)/Sources/CSteamworksEncryptedAppTicket",
 				);
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Steamworks_Info.plist";
+				INFOPLIST_FILE = "steamworks-swift.xcodeproj/Steamworks_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1281,7 +1281,7 @@
 					"$(SRCROOT)/Sources/CSteamworks",
 					"$(SRCROOT)/Sources/CSteamworksEncryptedAppTicket",
 				);
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Steamworks_Info.plist";
+				INFOPLIST_FILE = "steamworks-swift.xcodeproj/Steamworks_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1459,7 +1459,7 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Client_Info.plist";
+				INFOPLIST_FILE = "steamworks-swift.xcodeproj/Client_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1488,7 +1488,7 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Client_Info.plist";
+				INFOPLIST_FILE = "steamworks-swift.xcodeproj/Client_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1522,7 +1522,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Sources/CSteamworks",
 				);
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Steamworks_Info.plist";
+				INFOPLIST_FILE = "steamworks-swift.xcodeproj/Steamworks_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1561,7 +1561,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Sources/CSteamworks",
 				);
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/Steamworks_Info.plist";
+				INFOPLIST_FILE = "steamworks-swift.xcodeproj/Steamworks_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1627,7 +1627,7 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/SteamworksTests_Info.plist";
+				INFOPLIST_FILE = "steamworks-swift.xcodeproj/SteamworksTests_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1658,7 +1658,7 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "swift-steamworks.xcodeproj/SteamworksTests_Info.plist";
+				INFOPLIST_FILE = "steamworks-swift.xcodeproj/SteamworksTests_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1716,7 +1716,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_2 /* Build configuration list for PBXProject "swift-steamworks" */ = {
+		OBJ_2 /* Build configuration list for PBXProject "steamworks-swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_3 /* Debug */,

@@ -9,7 +9,7 @@ import PackageDescription
 // Foundation.
 
 let package = Package(
-  name: "swift-steamworks",
+  name: "steamworks-swift",
   platforms: [
     .macOS("11.0"),
   ],
