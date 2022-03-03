@@ -7,6 +7,8 @@
 //  This file is generated code: any edits will be overwritten.
 
 
+#include <cstring>
+
 __attribute__((swift_name("getter:IPCFailure_t.m_achName_ptr(self:)")))
 static inline const char * _Nonnull IPCFailure_t_m_achName_ptr(const IPCFailure_t * _Nonnull s)
 {

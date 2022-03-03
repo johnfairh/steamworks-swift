@@ -316,7 +316,7 @@ final class Client {
         api.networkingUtils.initRelayNetworkAccess()
 
 //        var status = SteamRelayNetworkStatus()
-//        let av = api.networkingUtils.getRelayNetworkStatus(details: &status)
+//        api.networkingUtils.getRelayNetworkStatus(details: &status)
 //        print(status)
 
         var pops = [SteamNetworkingPOPID]()

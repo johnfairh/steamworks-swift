@@ -201,8 +201,7 @@ public struct SteamID: Sendable {
 
     /// Initialize from a C++ CSteamID
     init(_ steamID: CSteamID) {
-        var kludge = steamID
-        value = kludge.ConvertToUint64() // sad lack of const-correctness...
+        value = steamID.ConvertToUint64()
     }
 
     // MARK: Compound Setters

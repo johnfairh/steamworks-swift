@@ -51,9 +51,3 @@ final class Lock {
         return try call()
     }
 }
-
-
-func f(a: [Int]) -> [Int] {
-    let b = a[0..<a.count].map { $0 + 1 }
-    return b
-}

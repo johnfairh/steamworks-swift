@@ -50,10 +50,12 @@ test: bin_setup
 	swift test ${STEAM_SWIFT_FLAGS}
 
 run: bin_setup
-	swift run Client ${STEAM_SWIFT_FLAGS}
+	swift build --product Client ${STEAM_SWIFT_FLAGS}
+	swift run --skip-build Client
 
 run_ticket: bin_setup
-	swift run TicketClient ${STEAM_SWIFT_FLAGS}
+	swift build --product TicketClient ${STEAM_SWIFT_FLAGS}
+	swift run --skip-build TicketClient
 
 docs: generate
 	bebop

@@ -25,6 +25,7 @@ public struct IPCFailure {
 }
 
 extension IPCFailure: SteamCreatable {
+    typealias SteamType = CSteamworks.IPCFailure_t
     init(_ steam: CSteamworks.IPCFailure_t) {
         failureType = .init(steam.m_eFailureType)
         success = .init(steam.m_bSuccess)

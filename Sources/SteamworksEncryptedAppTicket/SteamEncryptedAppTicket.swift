@@ -30,7 +30,7 @@ extension SteamUser {
 /// See [Encrypted Application Tickets](https://partner.steamgames.com/doc/features/auth#encryptedapptickets)
 public final class SteamEncryptedAppTicket {
     /// Expected length in bytes of the encryption key
-    public static var symmetricKeyLen = Int(k_nSteamEncryptedAppTicketSymmetricKeyLen)
+    public static let symmetricKeyLen = Int(k_nSteamEncryptedAppTicketSymmetricKeyLen)
 
     /// The decrypted ticket
     private var decrypted: [UInt8]

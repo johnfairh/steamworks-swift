@@ -12,7 +12,9 @@ sdk: macosx
 theme: fw2020
   #deployment_url: https://johnfairh.github.io/swift-steamworks/
 build_tool: spm
-modules: Steamworks
+modules:
+  - Steamworks
+  - SteamworksEncryptedAppTicket
 build_tool_arguments:
   - "-Xswiftc"
   - "-I${PWD}/sdk/public"
@@ -29,6 +31,7 @@ custom_groups:
       - SteamBaseAPI
       - SteamAPI
       - SteamGameServerAPI
+      - SteamEncryptedAppTicket
   - name: Steamworks interfaces
     children:
       - filepath /Generated\/Steam.*swift/
