@@ -73,6 +73,9 @@ public typealias FnSteamNetAuthenticationStatusChanged = (SteamNetAuthentication
 /// Steamworks `FnSteamNetConnectionStatusChanged`
 public typealias FnSteamNetConnectionStatusChanged = (SteamNetConnectionStatusChangedCallback) -> Void
 
+/// Steamworks `FnSteamNetworkingFakeIPResult`
+public typealias FnSteamNetworkingFakeIPResult = (SteamNetworkingFakeIPResult) -> Void
+
 /// Steamworks `FnSteamNetworkingMessagesSessionFailed`
 public typealias FnSteamNetworkingMessagesSessionFailed = (SteamNetworkingMessagesSessionFailed) -> Void
 

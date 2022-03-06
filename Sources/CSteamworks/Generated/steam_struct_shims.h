@@ -248,6 +248,12 @@ static inline const void SteamNetworkPingLocation_t_copy_m_data(SteamNetworkPing
     std::memcpy(&s->m_data, from, 512);
 }
 
+__attribute__((swift_name("getter:SteamNetworkingFakeIPResult_t.m_unPorts_ptr(self:)")))
+static inline const uint16 * _Nonnull SteamNetworkingFakeIPResult_t_m_unPorts_ptr(const SteamNetworkingFakeIPResult_t * _Nonnull s)
+{
+    return s->m_unPorts;
+}
+
 __attribute__((swift_name("getter:SteamRelayNetworkStatus_t.m_debugMsg_ptr(self:)")))
 static inline const char * _Nonnull SteamRelayNetworkStatus_t_m_debugMsg_ptr(const SteamRelayNetworkStatus_t * _Nonnull s)
 {

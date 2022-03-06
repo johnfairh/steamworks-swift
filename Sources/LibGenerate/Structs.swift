@@ -38,7 +38,7 @@ struct Structs {
 
 extension MetadataDB.Struct.Field {
     static let unwantedFieldNames = Set<String>([
-        "reserved", "m_ulUnused", "m__pad1"
+        "reserved", "m_ulUnused", "m__pad1", "_reservePad1"
     ])
 
     var shouldGenerate: Bool {

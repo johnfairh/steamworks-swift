@@ -142,13 +142,16 @@ extension String {
 
     /// As above but with explicit types, not used calling a C function with clang importer magic
     var asExplicitSwiftTypeForPassingIntoSteamworks: String {
+        if let unConsted = re_match("^const (.*)$") {
+            return unConsted[1].asExplicitSwiftTypeForPassingIntoSteamworks
+        }
         if let special = steamTypesPassedInStrangely[self] {
             return special
         }
         if let optionSetType = Metadata.isOptionSetEnumPassedUnpredictably(steamType: self) {
             return optionSetType
         }
-        let result = asSwiftNameForSteamType.re_sub("^const ", with: "")
+        let result = asSwiftNameForSteamType
         if result == asSwiftTypeName {
             return "CSteamworks.\(result)"
         }

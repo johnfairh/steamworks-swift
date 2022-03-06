@@ -209,7 +209,7 @@ final class SwiftParam {
         switch style {
         case .in: return swiftTypeBaseName + optional
         case .in_string_array, .in_ref: return swiftTypeBaseName
-        case .out, .out_transparent, .in_out: return "inout \(swiftTypeBaseName)"
+        case .out, .out_transparent, .in_out: return "inout \(swiftTypeBaseName)\(optional)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
         case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]\(optional)"
@@ -237,7 +237,15 @@ final class SwiftParam {
         case .in_array:
             return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
         case .out:
-            return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
+            if !db.nullable {
+                return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
+            } else {
+                let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
+                return [
+                    "let \(tempName) = \(swiftName).map { _ in UnsafeMutablePointer<\(typeName)>.allocate(capacity: 1) }",
+                    "defer { \(tempName)?.deallocate() }"
+                ]
+            }
         case .in_out, .in_ref:
             return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
         case .out_array(let sizeParam):
@@ -281,7 +289,11 @@ final class SwiftParam {
         case .in_string_array:
             return ".init(\(tempName))"
         case .out, .in_out, .in_array, .in_ref:
-            return "&\(tempName)"
+            if !db.nullable {
+                return "&\(tempName)"
+            } else {
+                return "\(tempName)"
+            }
         case .out_transparent, .out_transparent_array:
             return "&\(swiftName)"
         case .in_array_count(let ap):
@@ -299,7 +311,12 @@ final class SwiftParam {
     var postSuccessCallLine: String? {
         switch style {
         case .in, .in_string_array, .in_array, .in_array_count, .out_transparent, .out_transparent_array, .in_ref: return nil
-        case .out, .in_out: return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
+        case .out, .in_out:
+            if !db.nullable {
+                return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
+            } else {
+                return "\(tempName).map { \(swiftName) = \(swiftTypeBaseName)($0.pointee) }"
+            }
         case .out_array:
             let subscr = db.outArrayValidLength.map { "[0..<\($0)]" } ?? ""
             if !db.nullable {

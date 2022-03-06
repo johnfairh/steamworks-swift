@@ -616,6 +616,11 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(1221), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
+    /// Registration for Steamworks `SteamNetworkingFakeIPResult_t` callback
+    func onSteamNetworkingFakeIPResult(_ client: @escaping (SteamNetworkingFakeIPResult) -> Void) {
+        callbacks.add(callbackID: CallbackID(1223), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
     /// Registration for Steamworks `SteamNetworkingMessagesSessionFailed_t` callback
     func onSteamNetworkingMessagesSessionFailed(_ client: @escaping (SteamNetworkingMessagesSessionFailed) -> Void) {
         callbacks.add(callbackID: CallbackID(1252), rawClient: SteamBaseAPI.makeRaw(client))
@@ -1328,6 +1333,11 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `SteamNetConnectionStatusChangedCallback_t` callbacks
     var steamNetConnectionStatusChangedCallback: AsyncStream<SteamNetConnectionStatusChangedCallback> {
         AsyncStream { onSteamNetConnectionStatusChangedCallback($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `SteamNetworkingFakeIPResult_t` callbacks
+    var steamNetworkingFakeIPResult: AsyncStream<SteamNetworkingFakeIPResult> {
+        AsyncStream { onSteamNetworkingFakeIPResult($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamNetworkingMessagesSessionFailed_t` callbacks

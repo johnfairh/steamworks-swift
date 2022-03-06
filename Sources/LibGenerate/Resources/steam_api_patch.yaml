@@ -63,6 +63,8 @@ enums:
     prefix: k_EDurationControl(?:Progress)?
   EFavoriteFlags:
     prefix: k_unFavoriteFlag
+  EFloatingGamepadTextInputMode:
+    prefix: k_EFloatingGamepadTextInputModeMode
   EFriendFlags:
     is_set: Int32
     prefix: EFriendFlag
@@ -94,6 +96,8 @@ enums:
         value: 0xffffffff
   ESteamControllerLEDFlag:
     is_set: UInt32
+  ESteamInputGlyphStyle:
+    is_set: UInt32 # guess, not used anywhere yet?
   ESteamItemFlags:
     is_set: Int32
     prefix: ESteamItem
@@ -110,6 +114,9 @@ enums:
   ESteamNetworkingConfigValue:
     prefix: ESteamNetworkingConfig(?:Value)?
     manual_swift_name: SteamNetworkingConfigValueSetting # name clash
+  ESteamNetworkConnectionInfoFlags:
+    is_set: Int32
+    prefix: nSteamNetworkConnectionInfoFlags
   ESteamNetworkingGetConfigValueResult:
     prefix: ESteamNetworkingGetConfigValue(?:Result)?
   ESteamNetworkingSendFlags:
@@ -478,6 +485,12 @@ methods:
     discardable_result: true
   SteamAPI_ISteamNetworkingSockets_CloseListenSocket:
     discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_ConfigureConnectionLanes:
+    params:
+      pLanePriorities:
+        array_count: nNumLanes
+      pLaneWeights:
+        array_count: nNumLanes
   SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress:
     params:
       pOptions:
@@ -490,6 +503,8 @@ methods:
     params:
       pOptions:
         array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_CreateFakeUDPPort:
+    ignore: "Later"
   SteamAPI_ISteamNetworkingSockets_CreateHostedDedicatedServerListenSocket:
     params:
       pOptions:
@@ -499,6 +514,10 @@ methods:
       pOptions:
         array_count: nOptions
   SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2P:
+    params:
+      pOptions:
+        array_count: nOptions
+  SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2PFakeIP:
     params:
       pOptions:
         array_count: nOptions
@@ -524,15 +543,26 @@ methods:
         out_string_count: 1024 # array/tuple stuff is so unhelpful...
   SteamAPI_ISteamNetworkingSockets_GetConnectionInfo:
     discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_GetConnectionRealTimeStatus:
+    params:
+      pStatus:
+        nullable: true
+      nLanes:
+        name: nLaneCount
+      pLanes:
+        name: pLaneStatus
+        nullable: true
+        out_array_count: nLaneCount
+    out_param_iff_rc: "== .ok"
   SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus:
     params:
       pszBuf:
         out_string_count: cbBuf
     out_param_iff_rc: '== 0'
   SteamAPI_ISteamNetworkingSockets_GetListenSocketAddress:
-   discardable_result: true
-  SteamAPI_ISteamNetworkingSockets_GetQuickConnectionStatus:
     discardable_result: true
+  SteamAPI_ISteamNetworkingSockets_GetRemoteFakeIPForConnection:
+    out_param_iff_rc: '== .ok'
   SteamAPI_ISteamNetworkingSockets_InitAuthentication:
     discardable_result: true
   SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection:
@@ -603,6 +633,8 @@ methods:
       list:
         out_array_count: nListSz
         out_array_valid_count: rc
+  SteamAPI_ISteamNetworkingUtils_GetRealIdentityForFakeIP:
+    out_param_iff_rc: '== .ok'
   SteamAPI_ISteamNetworkingUtils_GetRelayNetworkStatus:
     discardable_result: true
   SteamAPI_ISteamNetworkingUtils_SetConfigValue:
@@ -625,6 +657,8 @@ methods:
     discardable_result: true
   SteamAPI_ISteamNetworkingUtils_SetDebugOutputFunction:
     ignore: "Use the logger"
+  SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_FakeIPResult:
+    ignore: "Use the callbacks interface"
   SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_MessagesSessionFailed:
     ignore: "Use the callbacks interface"
   SteamAPI_ISteamNetworkingUtils_SetGlobalCallback_MessagesSessionRequest:
@@ -954,7 +988,7 @@ structs:
   SteamNetConnectionInfo_t:
     fields:
       m_nFlags:
-        ignore: "Doesn't exist in the C struct"
+        fieldtype: ESteamNetworkConnectionInfoFlags
   SteamNetworkingConfigValue_t:
     ignore: "Union, do manually"
   SteamNetworkingIdentity:

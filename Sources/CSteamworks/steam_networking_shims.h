@@ -73,7 +73,11 @@ static inline void CSteamNetworkingMessage_SetUserData(CMsgPtr m, int64 userData
 /// We generate a Swift bitset enum from `steam_api_extra` and need this placeholder to make
 /// everything come out OK.
 enum ESteamNetworkingSendFlags {
-    dummy
+    k_ESteamNetworkingSendFlags_dummy
+};
+
+enum ESteamNetworkConnectionInfoFlags {
+    k_ESteamNetworkConnectionInfoFlags_dummy
 };
 
 #endif /* steam_networking_shims_h */

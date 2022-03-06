@@ -123,6 +123,7 @@ struct SteamJSON: Codable {
 /// * Methods: specify out-param behaviour when API call fails
 /// * Methods: specify partially-completed out-arrays
 /// * Methods: correct a parameter type
+/// * Methods: correct a parameter name
 /// * Methods: set discardableResult
 /// * Methods: patch in missed `out_string_count` etc.
 /// * Methods: ignore entirely
@@ -168,6 +169,7 @@ struct Patch: Codable {
 
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
+            let name: String? // patch param name
             let out_string_count: String? // patch out_string_count
             let out_array_count: String? // patch out_array_count
             let out_array_valid_count: String? // expr for actual valid prefix of out_array
@@ -283,7 +285,7 @@ struct MetadataDB {
             // ?? let buffer_count: String?
 
             init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
-                self.name = base.paramname
+                self.name = patch?.name ?? base.paramname
                 self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
                 self.inOut = patch?.in_out ?? false
                 self.nullable = patch?.nullable ?? false

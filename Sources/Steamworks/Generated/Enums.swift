@@ -913,8 +913,154 @@ public enum ControllerActionOrigin: UInt32 {
     case xBoxOneRightGripUpper = 303
     /// Steamworks `k_EControllerActionOrigin_XBoxOne_Share`
     case xBoxOneShare = 304
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_A`
+    case steamDeckA = 305
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_B`
+    case steamDeckB = 306
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_X`
+    case steamDeckX = 307
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Y`
+    case steamDeckY = 308
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_L1`
+    case steamDeckL1 = 309
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_R1`
+    case steamDeckR1 = 310
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Menu`
+    case steamDeckMenu = 311
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_View`
+    case steamDeckView = 312
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftPad_Touch`
+    case steamDeckLeftPadTouch = 313
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftPad_Swipe`
+    case steamDeckLeftPadSwipe = 314
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftPad_Click`
+    case steamDeckLeftPadClick = 315
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftPad_DPadNorth`
+    case steamDeckLeftPadDPadNorth = 316
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftPad_DPadSouth`
+    case steamDeckLeftPadDPadSouth = 317
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftPad_DPadWest`
+    case steamDeckLeftPadDPadWest = 318
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftPad_DPadEast`
+    case steamDeckLeftPadDPadEast = 319
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightPad_Touch`
+    case steamDeckRightPadTouch = 320
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightPad_Swipe`
+    case steamDeckRightPadSwipe = 321
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightPad_Click`
+    case steamDeckRightPadClick = 322
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightPad_DPadNorth`
+    case steamDeckRightPadDPadNorth = 323
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightPad_DPadSouth`
+    case steamDeckRightPadDPadSouth = 324
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightPad_DPadWest`
+    case steamDeckRightPadDPadWest = 325
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightPad_DPadEast`
+    case steamDeckRightPadDPadEast = 326
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_L2_SoftPull`
+    case steamDeckL2SoftPull = 327
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_L2`
+    case steamDeckL2 = 328
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_R2_SoftPull`
+    case steamDeckR2SoftPull = 329
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_R2`
+    case steamDeckR2 = 330
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftStick_Move`
+    case steamDeckLeftStickMove = 331
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_L3`
+    case steamDeckL3 = 332
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftStick_DPadNorth`
+    case steamDeckLeftStickDPadNorth = 333
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftStick_DPadSouth`
+    case steamDeckLeftStickDPadSouth = 334
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftStick_DPadWest`
+    case steamDeckLeftStickDPadWest = 335
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftStick_DPadEast`
+    case steamDeckLeftStickDPadEast = 336
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_LeftStick_Touch`
+    case steamDeckLeftStickTouch = 337
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightStick_Move`
+    case steamDeckRightStickMove = 338
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_R3`
+    case steamDeckR3 = 339
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightStick_DPadNorth`
+    case steamDeckRightStickDPadNorth = 340
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightStick_DPadSouth`
+    case steamDeckRightStickDPadSouth = 341
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightStick_DPadWest`
+    case steamDeckRightStickDPadWest = 342
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightStick_DPadEast`
+    case steamDeckRightStickDPadEast = 343
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_RightStick_Touch`
+    case steamDeckRightStickTouch = 344
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_L4`
+    case steamDeckL4 = 345
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_R4`
+    case steamDeckR4 = 346
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_L5`
+    case steamDeckL5 = 347
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_R5`
+    case steamDeckR5 = 348
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_DPad_Move`
+    case steamDeckDPadMove = 349
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_DPad_North`
+    case steamDeckDPadNorth = 350
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_DPad_South`
+    case steamDeckDPadSouth = 351
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_DPad_West`
+    case steamDeckDPadWest = 352
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_DPad_East`
+    case steamDeckDPadEast = 353
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Gyro_Move`
+    case steamDeckGyroMove = 354
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Gyro_Pitch`
+    case steamDeckGyroPitch = 355
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Gyro_Yaw`
+    case steamDeckGyroYaw = 356
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Gyro_Roll`
+    case steamDeckGyroRoll = 357
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved1`
+    case steamDeckReserved1 = 358
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved2`
+    case steamDeckReserved2 = 359
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved3`
+    case steamDeckReserved3 = 360
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved4`
+    case steamDeckReserved4 = 361
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved5`
+    case steamDeckReserved5 = 362
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved6`
+    case steamDeckReserved6 = 363
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved7`
+    case steamDeckReserved7 = 364
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved8`
+    case steamDeckReserved8 = 365
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved9`
+    case steamDeckReserved9 = 366
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved10`
+    case steamDeckReserved10 = 367
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved11`
+    case steamDeckReserved11 = 368
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved12`
+    case steamDeckReserved12 = 369
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved13`
+    case steamDeckReserved13 = 370
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved14`
+    case steamDeckReserved14 = 371
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved15`
+    case steamDeckReserved15 = 372
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved16`
+    case steamDeckReserved16 = 373
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved17`
+    case steamDeckReserved17 = 374
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved18`
+    case steamDeckReserved18 = 375
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved19`
+    case steamDeckReserved19 = 376
+    /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved20`
+    case steamDeckReserved20 = 377
     /// Steamworks `k_EControllerActionOrigin_Count`
-    case count = 305
+    case count = 378
     /// Steamworks `k_EControllerActionOrigin_MaximumPossibleValue`
     case maximumPossibleValue = 32767
     /// Some undocumented value
@@ -1072,6 +1218,23 @@ public enum FavoriteFlags: UInt32 {
 
 extension EFavoriteFlags: RawConvertible { typealias From = FavoriteFlags }
 extension FavoriteFlags: EnumWithUnrepresented { typealias From = EFavoriteFlags }
+
+/// Steamworks `EFloatingGamepadTextInputMode`
+public enum FloatingGamepadTextInputMode: UInt32 {
+    /// Steamworks `k_EFloatingGamepadTextInputModeModeSingleLine`
+    case singleLine = 0
+    /// Steamworks `k_EFloatingGamepadTextInputModeModeMultipleLines`
+    case multipleLines = 1
+    /// Steamworks `k_EFloatingGamepadTextInputModeModeEmail`
+    case email = 2
+    /// Steamworks `k_EFloatingGamepadTextInputModeModeNumeric`
+    case numeric = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
+}
+
+extension EFloatingGamepadTextInputMode: RawConvertible { typealias From = FloatingGamepadTextInputMode }
+extension FloatingGamepadTextInputMode: EnumWithUnrepresented { typealias From = EFloatingGamepadTextInputMode }
 
 /// Steamworks `EFriendFlags`
 public struct FriendFlags: OptionSet {
@@ -1980,8 +2143,154 @@ public enum InputActionOrigin: UInt32 {
     case ps5Reserved19 = 331
     /// Steamworks `k_EInputActionOrigin_PS5_Reserved20`
     case ps5Reserved20 = 332
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_A`
+    case steamDeckA = 333
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_B`
+    case steamDeckB = 334
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_X`
+    case steamDeckX = 335
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Y`
+    case steamDeckY = 336
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_L1`
+    case steamDeckL1 = 337
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_R1`
+    case steamDeckR1 = 338
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Menu`
+    case steamDeckMenu = 339
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_View`
+    case steamDeckView = 340
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftPad_Touch`
+    case steamDeckLeftPadTouch = 341
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftPad_Swipe`
+    case steamDeckLeftPadSwipe = 342
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftPad_Click`
+    case steamDeckLeftPadClick = 343
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftPad_DPadNorth`
+    case steamDeckLeftPadDPadNorth = 344
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftPad_DPadSouth`
+    case steamDeckLeftPadDPadSouth = 345
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftPad_DPadWest`
+    case steamDeckLeftPadDPadWest = 346
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftPad_DPadEast`
+    case steamDeckLeftPadDPadEast = 347
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightPad_Touch`
+    case steamDeckRightPadTouch = 348
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightPad_Swipe`
+    case steamDeckRightPadSwipe = 349
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightPad_Click`
+    case steamDeckRightPadClick = 350
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightPad_DPadNorth`
+    case steamDeckRightPadDPadNorth = 351
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightPad_DPadSouth`
+    case steamDeckRightPadDPadSouth = 352
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightPad_DPadWest`
+    case steamDeckRightPadDPadWest = 353
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightPad_DPadEast`
+    case steamDeckRightPadDPadEast = 354
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_L2_SoftPull`
+    case steamDeckL2SoftPull = 355
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_L2`
+    case steamDeckL2 = 356
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_R2_SoftPull`
+    case steamDeckR2SoftPull = 357
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_R2`
+    case steamDeckR2 = 358
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftStick_Move`
+    case steamDeckLeftStickMove = 359
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_L3`
+    case steamDeckL3 = 360
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftStick_DPadNorth`
+    case steamDeckLeftStickDPadNorth = 361
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftStick_DPadSouth`
+    case steamDeckLeftStickDPadSouth = 362
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftStick_DPadWest`
+    case steamDeckLeftStickDPadWest = 363
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftStick_DPadEast`
+    case steamDeckLeftStickDPadEast = 364
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_LeftStick_Touch`
+    case steamDeckLeftStickTouch = 365
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightStick_Move`
+    case steamDeckRightStickMove = 366
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_R3`
+    case steamDeckR3 = 367
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightStick_DPadNorth`
+    case steamDeckRightStickDPadNorth = 368
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightStick_DPadSouth`
+    case steamDeckRightStickDPadSouth = 369
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightStick_DPadWest`
+    case steamDeckRightStickDPadWest = 370
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightStick_DPadEast`
+    case steamDeckRightStickDPadEast = 371
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_RightStick_Touch`
+    case steamDeckRightStickTouch = 372
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_L4`
+    case steamDeckL4 = 373
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_R4`
+    case steamDeckR4 = 374
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_L5`
+    case steamDeckL5 = 375
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_R5`
+    case steamDeckR5 = 376
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_DPad_Move`
+    case steamDeckDPadMove = 377
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_DPad_North`
+    case steamDeckDPadNorth = 378
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_DPad_South`
+    case steamDeckDPadSouth = 379
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_DPad_West`
+    case steamDeckDPadWest = 380
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_DPad_East`
+    case steamDeckDPadEast = 381
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Gyro_Move`
+    case steamDeckGyroMove = 382
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Gyro_Pitch`
+    case steamDeckGyroPitch = 383
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Gyro_Yaw`
+    case steamDeckGyroYaw = 384
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Gyro_Roll`
+    case steamDeckGyroRoll = 385
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved1`
+    case steamDeckReserved1 = 386
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved2`
+    case steamDeckReserved2 = 387
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved3`
+    case steamDeckReserved3 = 388
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved4`
+    case steamDeckReserved4 = 389
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved5`
+    case steamDeckReserved5 = 390
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved6`
+    case steamDeckReserved6 = 391
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved7`
+    case steamDeckReserved7 = 392
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved8`
+    case steamDeckReserved8 = 393
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved9`
+    case steamDeckReserved9 = 394
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved10`
+    case steamDeckReserved10 = 395
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved11`
+    case steamDeckReserved11 = 396
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved12`
+    case steamDeckReserved12 = 397
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved13`
+    case steamDeckReserved13 = 398
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved14`
+    case steamDeckReserved14 = 399
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved15`
+    case steamDeckReserved15 = 400
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved16`
+    case steamDeckReserved16 = 401
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved17`
+    case steamDeckReserved17 = 402
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved18`
+    case steamDeckReserved18 = 403
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved19`
+    case steamDeckReserved19 = 404
+    /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved20`
+    case steamDeckReserved20 = 405
     /// Steamworks `k_EInputActionOrigin_Count`
-    case count = 333
+    case count = 406
     /// Steamworks `k_EInputActionOrigin_MaximumPossibleValue`
     case maximumPossibleValue = 32767
     /// Some undocumented value
@@ -2854,8 +3163,10 @@ public enum Result: UInt32 {
     case invalidSignature = 121
     /// Steamworks `k_EResultParseFailure`
     case parseFailure = 122
+    /// Steamworks `k_EResultNoVerifiedPhone`
+    case noVerifiedPhone = 123
     /// Some undocumented value
-    case unrepresentedInSwift = 123
+    case unrepresentedInSwift = 124
 }
 
 extension EResult: RawConvertible { typealias From = Result }
@@ -3073,12 +3384,35 @@ public enum SteamInputGlyphSize: UInt32 {
     case medium = 1
     /// Steamworks `k_ESteamInputGlyphSize_Large`
     case large = 2
+    /// Steamworks `k_ESteamInputGlyphSize_Count`
+    case count = 3
     /// Some undocumented value
-    case unrepresentedInSwift = 3
+    case unrepresentedInSwift = 4
 }
 
 extension ESteamInputGlyphSize: RawConvertible { typealias From = SteamInputGlyphSize }
 extension SteamInputGlyphSize: EnumWithUnrepresented { typealias From = ESteamInputGlyphSize }
+
+/// Steamworks `ESteamInputGlyphStyle`
+public struct SteamInputGlyphStyle: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    /// Steamworks `ESteamInputGlyphStyle_Knockout`
+    public static let knockout = SteamInputGlyphStyle([])
+    /// Steamworks `ESteamInputGlyphStyle_Light`
+    public static let light = SteamInputGlyphStyle(rawValue: 1)
+    /// Steamworks `ESteamInputGlyphStyle_Dark`
+    public static let dark = SteamInputGlyphStyle(rawValue: 2)
+    /// Steamworks `ESteamInputGlyphStyle_NeutralColorABXY`
+    public static let neutralColorABXY = SteamInputGlyphStyle(rawValue: 16)
+    /// Steamworks `ESteamInputGlyphStyle_SolidABXY`
+    public static let solidABXY = SteamInputGlyphStyle(rawValue: 32)
+}
+
+extension ESteamInputGlyphStyle: RawConvertible { typealias From = SteamInputGlyphStyle }
+extension SteamInputGlyphStyle: RawConvertible { typealias From = ESteamInputGlyphStyle }
 
 /// Steamworks `ESteamInputLEDFlag`
 public enum SteamInputLEDFlag: UInt32 {
@@ -3123,8 +3457,10 @@ public enum SteamInputType: UInt32 {
     case ps3Controller = 12
     /// Steamworks `k_ESteamInputType_PS5Controller`
     case ps5Controller = 13
+    /// Steamworks `k_ESteamInputType_SteamDeckController`
+    case steamDeckController = 14
     /// Steamworks `k_ESteamInputType_Count`
-    case count = 14
+    case count = 15
     /// Steamworks `k_ESteamInputType_MaximumPossibleValue`
     case maximumPossibleValue = 255
     /// Some undocumented value
@@ -3224,6 +3560,29 @@ public enum SteamNetConnectionEnd: UInt32 {
 extension ESteamNetConnectionEnd: RawConvertible { typealias From = SteamNetConnectionEnd }
 extension SteamNetConnectionEnd: EnumWithUnrepresented { typealias From = ESteamNetConnectionEnd }
 
+/// Steamworks `ESteamNetworkConnectionInfoFlags`
+public struct SteamNetworkConnectionInfoFlags: OptionSet {
+    /// The flags value.
+    public let rawValue: UInt32
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Unauthenticated`
+    public static let unauthenticated = SteamNetworkConnectionInfoFlags(rawValue: 1)
+    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Unencrypted`
+    public static let unencrypted = SteamNetworkConnectionInfoFlags(rawValue: 2)
+    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_LoopbackBuffers`
+    public static let loopbackBuffers = SteamNetworkConnectionInfoFlags(rawValue: 4)
+    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Fast`
+    public static let fast = SteamNetworkConnectionInfoFlags(rawValue: 8)
+    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Relayed`
+    public static let relayed = SteamNetworkConnectionInfoFlags(rawValue: 16)
+    /// Steamworks `k_nSteamNetworkConnectionInfoFlags_DualWifi`
+    public static let dualWifi = SteamNetworkConnectionInfoFlags(rawValue: 32)
+}
+
+extension ESteamNetworkConnectionInfoFlags: RawConvertible { typealias From = SteamNetworkConnectionInfoFlags }
+extension SteamNetworkConnectionInfoFlags: RawConvertible { typealias From = ESteamNetworkConnectionInfoFlags }
+
 /// Steamworks `ESteamNetworkingAvailability`
 public enum SteamNetworkingAvailability: Int32 {
     /// Steamworks `k_ESteamNetworkingAvailability_CannotTry`
@@ -3319,6 +3678,8 @@ public enum SteamNetworkingConfigValueSetting: UInt32 {
     case localVirtualPort = 38
     /// Steamworks `k_ESteamNetworkingConfig_DualWifi_Enable`
     case dualWifiEnable = 39
+    /// Steamworks `k_ESteamNetworkingConfig_EnableDiagnosticsUI`
+    case enableDiagnosticsUI = 46
     /// Steamworks `k_ESteamNetworkingConfig_FakePacketLoss_Send`
     case fakePacketLossSend = 2
     /// Steamworks `k_ESteamNetworkingConfig_FakePacketLoss_Recv`
@@ -3361,6 +3722,8 @@ public enum SteamNetworkingConfigValueSetting: UInt32 {
     case callbackMessagesSessionFailed = 205
     /// Steamworks `k_ESteamNetworkingConfig_Callback_CreateConnectionSignaling`
     case callbackCreateConnectionSignaling = 206
+    /// Steamworks `k_ESteamNetworkingConfig_Callback_FakeIPResult`
+    case callbackFakeIPResult = 207
     /// Steamworks `k_ESteamNetworkingConfig_P2P_STUN_ServerList`
     case p2PSTUNServerList = 103
     /// Steamworks `k_ESteamNetworkingConfig_P2P_Transport_ICE_Enable`
@@ -3400,7 +3763,7 @@ public enum SteamNetworkingConfigValueSetting: UInt32 {
     /// Steamworks `k_ESteamNetworkingConfig_DELETED_EnumerateDevVars`
     case deletedEnumerateDevVars = 35
     /// Some undocumented value
-    case unrepresentedInSwift = 207
+    case unrepresentedInSwift = 208
 }
 
 extension ESteamNetworkingConfigValue: RawConvertible { typealias From = SteamNetworkingConfigValueSetting }
@@ -3432,6 +3795,23 @@ public enum SteamNetworkingConnectionState: Int32 {
 
 extension ESteamNetworkingConnectionState: RawConvertible { typealias From = SteamNetworkingConnectionState }
 extension SteamNetworkingConnectionState: EnumWithUnrepresented { typealias From = ESteamNetworkingConnectionState }
+
+/// Steamworks `ESteamNetworkingFakeIPType`
+public enum SteamNetworkingFakeIPType: UInt32 {
+    /// Steamworks `k_ESteamNetworkingFakeIPType_Invalid`
+    case invalid = 0
+    /// Steamworks `k_ESteamNetworkingFakeIPType_NotFake`
+    case notFake = 1
+    /// Steamworks `k_ESteamNetworkingFakeIPType_GlobalIPv4`
+    case globalIPv4 = 2
+    /// Steamworks `k_ESteamNetworkingFakeIPType_LocalIPv4`
+    case localIPv4 = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
+}
+
+extension ESteamNetworkingFakeIPType: RawConvertible { typealias From = SteamNetworkingFakeIPType }
+extension SteamNetworkingFakeIPType: EnumWithUnrepresented { typealias From = ESteamNetworkingFakeIPType }
 
 /// Steamworks `ESteamNetworkingGetConfigValueResult`
 public enum SteamNetworkingGetConfigValueResult: Int32 {

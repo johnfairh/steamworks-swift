@@ -14,6 +14,6 @@ extension SteamBaseAPI {
     /// The version string of the Steamworks SDK that the Steamworks
     /// module was generated from, for example. "1.52".
     public static var steamworksVersion: String {
-        "1.52"
+        "1.53a"
     }
 }

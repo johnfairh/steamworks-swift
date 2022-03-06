@@ -106,6 +106,9 @@ public enum SteamConstants {
     /// Steamworks `k_SteamMusicPNGMaxLength`
     public static let steamMusicPNGMaxLength = Int(65535)
 
+    /// Steamworks `k_cchSteamNetworkingMaxConnectionAppName`
+    public static let steamNetworkingMaxConnectionAppNameSize = Int(32)
+
     /// Steamworks `k_cchSteamNetworkingMaxConnectionCloseReason`
     public static let steamNetworkingMaxConnectionCloseReasonSize = Int(128)
 
@@ -117,6 +120,12 @@ public enum SteamConstants {
 
     /// Steamworks `k_nSteamNetworkingPing_Unknown`
     public static let steamNetworkingPingUnknown = Int(-2)
+
+    /// Steamworks `k_cbSteamNetworkingSocketsFakeUDPPortMaxMessageSize`
+    public static let steamNetworkingSocketsFakeUDPPortMaxMessageSize = Int(4096)
+
+    /// Steamworks `k_cbSteamNetworkingSocketsFakeUDPPortRecommendedMTU`
+    public static let steamNetworkingSocketsFakeUDPPortRecommendedMTUSize = Int(1200)
 
     /// Steamworks `k_cchTagListMax`
     public static let tagListMaxSize = Int(1024 + 1)

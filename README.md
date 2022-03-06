@@ -103,19 +103,10 @@ Skip:
 
 Capture some notes on troubles reflecting the json into the module.
 
-* Json has `ModalGamepadTextInputDismissed_t` as callback 738.  But `isteamutils` has
-  `FloatingGamepadTextInputDismissed_t` as 738 along with a
-  `ShowFloatingGamepadTextInput()` API where both Json and `flat_api` have
-  `ShowModalGamepadTextInput()` with different parameters.  `Readme.txt` mentions the
-  _floating_ version -- so Json/flat generated from wrong/old branch?  Will go with
-  the _floating_ versions.
-
 * The 'modern' `isteamnetworking` stuff is incomplete somehow - Json describes
   `SteamDatagramGameCoordinatorServerLogin`, `SteamDatagramHostedAddress` are missing
   from the header files.  The online API docs are hilariously broken here, scads of
   broken links.  Have to wait for Valve to fix this.
-
-* Json thinks `SteamNetConnectionInfo_t` has `m_nFlags`.  Nobody else does.
 
 * `SteamNetworkingMessage_t` doesn't import into Swift.  Probably stumbling into a hole
   of C++ struct with function pointer fields.  Trust Apple will get to this eventually,

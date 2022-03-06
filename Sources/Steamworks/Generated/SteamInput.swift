@@ -13,7 +13,7 @@
 /// Access via `SteamAPI.input`.
 public struct SteamInput {
     var interface: UnsafeMutablePointer<ISteamInput> {
-        SteamAPI_SteamInput_v005()
+        SteamAPI_SteamInput_v006()
     }
 
     init() {

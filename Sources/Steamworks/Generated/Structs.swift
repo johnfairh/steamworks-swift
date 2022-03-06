@@ -3541,6 +3541,8 @@ public struct SteamNetConnectionInfo {
     public let endDebug: String
     /// Steamworks `m_szConnectionDescription`
     public let connectionDescription: String
+    /// Steamworks `m_nFlags`
+    public let flags: SteamNetworkConnectionInfoFlags
 }
 
 extension SteamNetConnectionInfo: SteamCreatable {
@@ -3556,6 +3558,78 @@ extension SteamNetConnectionInfo: SteamCreatable {
         endReason = .init(steam.m_eEndReason)
         endDebug = .init(steam.m_szEndDebug_ptr)
         connectionDescription = .init(steam.m_szConnectionDescription_ptr)
+        flags = .init(steam.m_nFlags)
+    }
+}
+
+/// Steamworks `SteamNetConnectionRealTimeLaneStatus_t`
+public struct SteamNetConnectionRealTimeLaneStatus {
+    /// Steamworks `m_cbPendingUnreliable`
+    public let pendingUnreliableSize: Int
+    /// Steamworks `m_cbPendingReliable`
+    public let pendingReliableSize: Int
+    /// Steamworks `m_cbSentUnackedReliable`
+    public let sentUnackedReliableSize: Int
+    /// Steamworks `m_usecQueueTime`
+    public let queueTime: SteamNetworkingMicroseconds
+}
+
+extension SteamNetConnectionRealTimeLaneStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetConnectionRealTimeLaneStatus_t
+    init(_ steam: CSteamworks.SteamNetConnectionRealTimeLaneStatus_t) {
+        pendingUnreliableSize = .init(steam.m_cbPendingUnreliable)
+        pendingReliableSize = .init(steam.m_cbPendingReliable)
+        sentUnackedReliableSize = .init(steam.m_cbSentUnackedReliable)
+        queueTime = .init(steam.m_usecQueueTime)
+    }
+}
+
+/// Steamworks `SteamNetConnectionRealTimeStatus_t`
+public struct SteamNetConnectionRealTimeStatus {
+    /// Steamworks `m_eState`
+    public let state: SteamNetworkingConnectionState
+    /// Steamworks `m_nPing`
+    public let ping: Int
+    /// Steamworks `m_flConnectionQualityLocal`
+    public let connectionQualityLocal: Float
+    /// Steamworks `m_flConnectionQualityRemote`
+    public let connectionQualityRemote: Float
+    /// Steamworks `m_flOutPacketsPerSec`
+    public let outPacketsPerSec: Float
+    /// Steamworks `m_flOutBytesPerSec`
+    public let outBytesPerSec: Float
+    /// Steamworks `m_flInPacketsPerSec`
+    public let inPacketsPerSec: Float
+    /// Steamworks `m_flInBytesPerSec`
+    public let inBytesPerSec: Float
+    /// Steamworks `m_nSendRateBytesPerSecond`
+    public let sendRateBytesPerSecond: Int
+    /// Steamworks `m_cbPendingUnreliable`
+    public let pendingUnreliableSize: Int
+    /// Steamworks `m_cbPendingReliable`
+    public let pendingReliableSize: Int
+    /// Steamworks `m_cbSentUnackedReliable`
+    public let sentUnackedReliableSize: Int
+    /// Steamworks `m_usecQueueTime`
+    public let queueTime: SteamNetworkingMicroseconds
+}
+
+extension SteamNetConnectionRealTimeStatus: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetConnectionRealTimeStatus_t
+    init(_ steam: CSteamworks.SteamNetConnectionRealTimeStatus_t) {
+        state = .init(steam.m_eState)
+        ping = .init(steam.m_nPing)
+        connectionQualityLocal = .init(steam.m_flConnectionQualityLocal)
+        connectionQualityRemote = .init(steam.m_flConnectionQualityRemote)
+        outPacketsPerSec = .init(steam.m_flOutPacketsPerSec)
+        outBytesPerSec = .init(steam.m_flOutBytesPerSec)
+        inPacketsPerSec = .init(steam.m_flInPacketsPerSec)
+        inBytesPerSec = .init(steam.m_flInBytesPerSec)
+        sendRateBytesPerSecond = .init(steam.m_nSendRateBytesPerSecond)
+        pendingUnreliableSize = .init(steam.m_cbPendingUnreliable)
+        pendingReliableSize = .init(steam.m_cbPendingReliable)
+        sentUnackedReliableSize = .init(steam.m_cbSentUnackedReliable)
+        queueTime = .init(steam.m_usecQueueTime)
     }
 }
 
@@ -3598,23 +3672,25 @@ extension CSteamworks.SteamNetworkPingLocation_t {
     }
 }
 
-/// Steamworks `SteamNetworkingIPAddrRender`
-public struct SteamNetworkingIPAddrRender {
+/// Steamworks `SteamNetworkingFakeIPResult_t`
+public struct SteamNetworkingFakeIPResult {
+    /// Steamworks `m_eResult`
+    public let result: Result
+    /// Steamworks `m_identity`
+    public let identity: SteamNetworkingIdentity
+    /// Steamworks `m_unIP`
+    public let ip: Int
+    /// Steamworks `m_unPorts`
+    public let ports: [Int]
 }
 
-extension SteamNetworkingIPAddrRender: SteamCreatable {
-    typealias SteamType = CSteamworks.SteamNetworkingIPAddrRender
-    init(_ steam: CSteamworks.SteamNetworkingIPAddrRender) {
-    }
-}
-
-/// Steamworks `SteamNetworkingIdentityRender`
-public struct SteamNetworkingIdentityRender {
-}
-
-extension SteamNetworkingIdentityRender: SteamCreatable {
-    typealias SteamType = CSteamworks.SteamNetworkingIdentityRender
-    init(_ steam: CSteamworks.SteamNetworkingIdentityRender) {
+extension SteamNetworkingFakeIPResult: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamNetworkingFakeIPResult_t
+    init(_ steam: CSteamworks.SteamNetworkingFakeIPResult_t) {
+        result = .init(steam.m_eResult)
+        identity = .init(steam.m_identity)
+        ip = .init(steam.m_unIP)
+        ports = .init(steam.m_unPorts_ptr, 8) { .init($0) }
     }
 }
 
@@ -3641,65 +3717,6 @@ extension SteamNetworkingMessagesSessionRequest: SteamCreatable {
     typealias SteamType = CSteamworks.SteamNetworkingMessagesSessionRequest_t
     init(_ steam: CSteamworks.SteamNetworkingMessagesSessionRequest_t) {
         identityRemote = .init(steam.m_identityRemote)
-    }
-}
-
-/// Steamworks `SteamNetworkingPOPIDRender`
-public struct SteamNetworkingPOPIDRender {
-}
-
-extension SteamNetworkingPOPIDRender: SteamCreatable {
-    typealias SteamType = CSteamworks.SteamNetworkingPOPIDRender
-    init(_ steam: CSteamworks.SteamNetworkingPOPIDRender) {
-    }
-}
-
-/// Steamworks `SteamNetworkingQuickConnectionStatus`
-public struct SteamNetworkingQuickConnectionStatus {
-    /// Steamworks `m_eState`
-    public let state: SteamNetworkingConnectionState
-    /// Steamworks `m_nPing`
-    public let ping: Int
-    /// Steamworks `m_flConnectionQualityLocal`
-    public let connectionQualityLocal: Float
-    /// Steamworks `m_flConnectionQualityRemote`
-    public let connectionQualityRemote: Float
-    /// Steamworks `m_flOutPacketsPerSec`
-    public let outPacketsPerSec: Float
-    /// Steamworks `m_flOutBytesPerSec`
-    public let outBytesPerSec: Float
-    /// Steamworks `m_flInPacketsPerSec`
-    public let inPacketsPerSec: Float
-    /// Steamworks `m_flInBytesPerSec`
-    public let inBytesPerSec: Float
-    /// Steamworks `m_nSendRateBytesPerSecond`
-    public let sendRateBytesPerSecond: Int
-    /// Steamworks `m_cbPendingUnreliable`
-    public let pendingUnreliableSize: Int
-    /// Steamworks `m_cbPendingReliable`
-    public let pendingReliableSize: Int
-    /// Steamworks `m_cbSentUnackedReliable`
-    public let sentUnackedReliableSize: Int
-    /// Steamworks `m_usecQueueTime`
-    public let queueTime: SteamNetworkingMicroseconds
-}
-
-extension SteamNetworkingQuickConnectionStatus: SteamCreatable {
-    typealias SteamType = CSteamworks.SteamNetworkingQuickConnectionStatus
-    init(_ steam: CSteamworks.SteamNetworkingQuickConnectionStatus) {
-        state = .init(steam.m_eState)
-        ping = .init(steam.m_nPing)
-        connectionQualityLocal = .init(steam.m_flConnectionQualityLocal)
-        connectionQualityRemote = .init(steam.m_flConnectionQualityRemote)
-        outPacketsPerSec = .init(steam.m_flOutPacketsPerSec)
-        outBytesPerSec = .init(steam.m_flOutBytesPerSec)
-        inPacketsPerSec = .init(steam.m_flInPacketsPerSec)
-        inBytesPerSec = .init(steam.m_flInBytesPerSec)
-        sendRateBytesPerSecond = .init(steam.m_nSendRateBytesPerSecond)
-        pendingUnreliableSize = .init(steam.m_cbPendingUnreliable)
-        pendingReliableSize = .init(steam.m_cbPendingReliable)
-        sentUnackedReliableSize = .init(steam.m_cbSentUnackedReliable)
-        queueTime = .init(steam.m_usecQueueTime)
     }
 }
 

@@ -32,6 +32,17 @@
       {"name":"k_nSteamNetworkingSend_UnreliableNoDelay", "value":"0 | 4 | 1" },
       {"name":"k_nSteamNetworkingSend_UnreliableNoNagle", "value":"0 | 1" }
     ]
+  },
+  {
+    "enumname": "ESteamNetworkConnectionInfoFlags",
+    "values": [
+      {"name":"k_nSteamNetworkConnectionInfoFlags_Unauthenticated", "value":"1" },
+      {"name":"k_nSteamNetworkConnectionInfoFlags_Unencrypted", "value":"2" },
+      {"name":"k_nSteamNetworkConnectionInfoFlags_LoopbackBuffers", "value":"4" },
+      {"name":"k_nSteamNetworkConnectionInfoFlags_Fast", "value":"8" },
+      {"name":"k_nSteamNetworkConnectionInfoFlags_Relayed", "value":"16" },
+      {"name":"k_nSteamNetworkConnectionInfoFlags_DualWifi", "value":"32" }
+    ]
   }
   ],
   "interfaces": [],

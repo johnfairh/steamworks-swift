@@ -39,6 +39,11 @@ public struct SteamUtils {
         }
     }
 
+    /// Steamworks `ISteamUtils::DismissFloatingGamepadTextInput()`
+    public func dismissFloatingGamepadTextInput() -> Bool {
+        SteamAPI_ISteamUtils_DismissFloatingGamepadTextInput(interface)
+    }
+
     /// Steamworks `ISteamUtils::FilterText()`
     public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, outFilteredText: inout String, byteSizeOutFilteredText: Int) -> Int {
         let tmp_outFilteredText = UnsafeMutableBufferPointer<CChar>.allocate(capacity: byteSizeOutFilteredText)
@@ -204,14 +209,14 @@ public struct SteamUtils {
         SteamAPI_ISteamUtils_SetWarningMessageHook(interface, function)
     }
 
+    /// Steamworks `ISteamUtils::ShowFloatingGamepadTextInput()`
+    public func showFloatingGamepadTextInput(keyboardMode: FloatingGamepadTextInputMode, textFieldXPosition: Int, textFieldYPosition: Int, textFieldWidth: Int, textFieldHeight: Int) -> Bool {
+        SteamAPI_ISteamUtils_ShowFloatingGamepadTextInput(interface, EFloatingGamepadTextInputMode(keyboardMode), Int32(textFieldXPosition), Int32(textFieldYPosition), Int32(textFieldWidth), Int32(textFieldHeight))
+    }
+
     /// Steamworks `ISteamUtils::ShowGamepadTextInput()`
     public func showGamepadTextInput(inputMode: GamepadTextInputMode, lineInputMode: GamepadTextInputLineMode, description: String, charMax: Int, existingText: String) -> Bool {
         SteamAPI_ISteamUtils_ShowGamepadTextInput(interface, EGamepadTextInputMode(inputMode), EGamepadTextInputLineMode(lineInputMode), description, uint32(charMax), existingText)
-    }
-
-    /// Steamworks `ISteamUtils::ShowModalGamepadTextInput()`
-    public func showModalGamepadTextInput(lineInputMode: GamepadTextInputLineMode) -> Bool {
-        SteamAPI_ISteamUtils_ShowModalGamepadTextInput(interface, EGamepadTextInputLineMode(lineInputMode))
     }
 
     /// Steamworks `ISteamUtils::StartVRDashboard()`

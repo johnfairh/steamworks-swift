@@ -14,7 +14,7 @@
 public struct SteamUGC {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamUGC> {
-        isServer ? SteamAPI_SteamGameServerUGC_v015() : SteamAPI_SteamUGC_v015()
+        isServer ? SteamAPI_SteamGameServerUGC_v016() : SteamAPI_SteamUGC_v016()
     }
 
     init(isServer: Bool) {
@@ -585,6 +585,16 @@ public struct SteamUGC {
     @discardableResult
     public func setSearchText(handle: UGCQueryHandle, searchText: String) -> Bool {
         SteamAPI_ISteamUGC_SetSearchText(interface, UGCQueryHandle_t(handle), searchText)
+    }
+
+    /// Steamworks `ISteamUGC::SetTimeCreatedDateRange()`
+    public func setTimeCreatedDateRange(handle: UGCQueryHandle, start: RTime32, end: RTime32) -> Bool {
+        SteamAPI_ISteamUGC_SetTimeCreatedDateRange(interface, UGCQueryHandle_t(handle), CSteamworks.RTime32(start), CSteamworks.RTime32(end))
+    }
+
+    /// Steamworks `ISteamUGC::SetTimeUpdatedDateRange()`
+    public func setTimeUpdatedDateRange(handle: UGCQueryHandle, start: RTime32, end: RTime32) -> Bool {
+        SteamAPI_ISteamUGC_SetTimeUpdatedDateRange(interface, UGCQueryHandle_t(handle), CSteamworks.RTime32(start), CSteamworks.RTime32(end))
     }
 
     /// Steamworks `ISteamUGC::SetUserItemVote()`, callback
