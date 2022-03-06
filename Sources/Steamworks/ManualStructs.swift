@@ -39,14 +39,7 @@ public final class SteamIPAddress {
 
     /// Is the IP address possibly valid?
     public var isSet: Bool {
-        // The C++ method isn't marked `const` so we can't call it ...
-        switch type {
-        case .ipv4: return ipv4Address != 0
-        case .ipv6: return ip.m_ipv6Qword.0 != 0 || ip.m_ipv6Qword.1 != 0
-        case .unrepresentedInSwift:
-            logError("Steam returned an undocumented enum value \(type) for SteamIPAddress")
-            return false
-        }
+        return ip.IsSet()
     }
 
     // MARK: Initializers
@@ -54,10 +47,7 @@ public final class SteamIPAddress {
     /// Initialize with an IPv4 address.
     public init(ipv4Address: Int) {
         precondition(ipv4Address >= 0 && ipv4Address <= UInt32.max)
-        var ip = SteamIPAddress_t()
-        ip.m_eType = k_ESteamIPTypeIPv4
-        ip.m_unIPv4 = UInt32(ipv4Address)
-        self.ip = ip
+        self.ip = SteamIPAddress_t(.init(m_unIPv4: UInt32(ipv4Address)), m_eType: k_ESteamIPTypeIPv4)
     }
 
     /// Initialize with an  IPv6 address
@@ -254,16 +244,8 @@ public final class SteamNetworkingIPAddr {
         self.adr = adr
     }
 
-    /// So, Swift has suddenly started (Xcode 13.2 RC) to be unable to link properly to the default constructor.
-    /// So this nonsense here is coming up with an empty instance that should be just a `SteamNetworkingIPAddr()`
-    /// call...
     private init() {
-        let byteSize = MemoryLayout<CSteamworks.SteamNetworkingIPAddr>.size
-        let raw = UnsafeMutableRawPointer.allocate(byteCount: byteSize, alignment: MemoryLayout<CSteamworks.SteamNetworkingIPAddr>.alignment)
-        defer { raw.deallocate() }
-        raw.initializeMemory(as: UInt8.self, repeating: 0, count: byteSize)
-        let typed = raw.bindMemory(to: CSteamworks.SteamNetworkingIPAddr.self, capacity: 1)
-        adr = typed.pointee
+        adr = .init()
     }
 
     /// `INADDR_ANY` with some port
@@ -294,14 +276,12 @@ public final class SteamNetworkingIPAddr {
             return nil
         }
     }
-
-    /// Can't call the operator== from Swift yet
-    public static func == (lhs: SteamNetworkingIPAddr, rhs: SteamNetworkingIPAddr) -> Bool {
-        lhs.port == rhs.port && lhs.ipv6 == rhs.ipv6
-    }
 }
 
 extension SteamNetworkingIPAddr: SteamCreatable, Equatable {
+    public static func == (lhs: SteamNetworkingIPAddr, rhs: SteamNetworkingIPAddr) -> Bool {
+        lhs.adr == rhs.adr
+    }
 }
 
 extension CSteamworks.SteamNetworkingIPAddr {
@@ -384,16 +364,8 @@ public final class SteamNetworkingIdentity {
         self.identity = identity
     }
 
-    /// So, Swift has suddenly started (Xcode 13.2 RC) to be unable to link properly to the default constructor.
-    /// So this nonsense here is coming up with an empty instance that should be just a `SteamNetworkingIdentity()`
-    /// call...
     private init() {
-        let byteSize = MemoryLayout<CSteamworks.SteamNetworkingIdentity>.size
-        let raw = UnsafeMutableRawPointer.allocate(byteCount: byteSize, alignment: MemoryLayout<CSteamworks.SteamNetworkingIdentity>.alignment)
-        defer { raw.deallocate() }
-        raw.initializeMemory(as: UInt8.self, repeating: 0, count: byteSize)
-        let typed = raw.bindMemory(to: CSteamworks.SteamNetworkingIdentity.self, capacity: 1)
-        identity = typed.pointee
+        identity = .init()
     }
 
     /// Init from a Steam ID
@@ -441,20 +413,14 @@ public final class SteamNetworkingIdentity {
         }
         self.type = type
     }
-
-    // MARK: Equatable
-
-    public static func == (lhs: SteamNetworkingIdentity, rhs: SteamNetworkingIdentity) -> Bool {
-        lhs.type == rhs.type &&
-            lhs.identity.m_cbSize == rhs.identity.m_cbSize &&
-            memcmp(lhs.identity.m_genericBytes_ptr,
-                   rhs.identity.m_genericBytes_ptr,
-                   Int(rhs.identity.m_cbSize)) == 0
-    }
 }
 
 extension SteamNetworkingIdentity: SteamCreatable, CustomStringConvertible, Equatable {
     typealias SteamType = CSteamworks.SteamNetworkingIdentity
+
+    public static func == (lhs: SteamNetworkingIdentity, rhs: SteamNetworkingIdentity) -> Bool {
+        lhs.identity == rhs.identity
+    }
 }
 
 extension CSteamworks.SteamNetworkingIdentity {

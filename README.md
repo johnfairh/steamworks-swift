@@ -1,5 +1,5 @@
 ![macOS](https://shields.io/badge/platform-macOS%20|%20%3F%3F-lightgrey)
-![Steamworks 1.52](https://shields.io/badge/steamworks-1.52-lightgrey)
+![Steamworks 1.53a](https://shields.io/badge/steamworks-1.53a-lightgrey)
 ![MIT](https://shields.io/badge/license-MIT-black)
 
 # steamworks-swift
@@ -36,29 +36,36 @@ Current state:
 * Use code gen to deal with the ~900 APIs and their ~400 types, taking advantage of the
   handy JSON file.  This code-gen piece is the actual main work in this project.
 
-### Tech reality
+### Swift C++ Bugs
 
-Tech limitations, on 5.6 and also swift/main as of 20/Oct -- needs rechecking in 2022:
-* Importing `Foundation` and `-enable-cxx-interop` and a C++ module crashes the
-  compiler.  Various bugs for this on swift.org, will have to work around through
-  module structure.
+Tech limitations, on 5.6:
+* Have to manually tell Swift to link with `libc++`.  Verify by commenting from
+  Makefile.  When resolved tidy Makefile.
 * Importing `Dispatch` and `-enable-cxx-interop` makes `DispatchSemaphore` disappear
-  but not the rest of the module?? Work around.
-* Have to manually tell Swift to link with `libc++`?? Workaround.
-* Even with `-lc++` something goes wrong storing pointers to base classes and they
-  get nobbled by something.  Lucky to be able to work around.
+  but not the rest of the module?? Work around.  When resolved rewrite mutex.
+* Some structures/classes aren't imported -- the common factor seems to be a `protected`
+  destructor.  Verify by trying to use `SteamNetworkingMessage_t`.
+* Something goes wrong storing pointers to base classes and they get nobbled by
+  something.  Verify by making `SteamIPAddress` a struct, changing interfaces to cache
+  the interface pointers.
+* C++ types with `operator ==` don't have `Equatable` generated.  Verify with
+  `SteamNetworkingIPAddr`.
+* Importing `Foundation` and `-enable-cxx-interop` and a C++ module goes wrong.  Swift
+  5.6 doesn't crash; worse the compiler goes slow, spits out warnings, then the binary
+  runs like treacle.  Will aim to not depend on Foundation, see how that goes.
+
+To review, spring 2022:
 * Calls to (?pure) virtual functions aren't generated properly: Swift generates a ref
   to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
   usable in practice.  Will use the flat API.
 * Anonymous enums are not imported at all.  Affects callback etc. ID constants.
   Will work around.
-* Some structures/classes aren't imported -- the common factor seems to be a `protected`
-  destructor.
-* (New in Xcode 13.2 RC) Swift can't link/generate the default constructor for some
-  C++ structs.  Problematic.  Work around with some probably-UB hackery.
 * sourcekit won't give me a module interface for `CSteamworks` to see what else the
-  importer is doing.  Need to build the compiler and debug.  It does look like 99%+ of
-  the thing is coming in well.
+  importer is doing.  Probably Xcode's fault, still not passing the user's flags to
+  sourcekit and still doing insultingly bad error-reporting.
+
+### Non-Swift Problems
+
 * Some [Steamworks SDK issues](#json-notes), nothing too serious.
 * How do I CI this stuff?  SDK license doesn't seem to allow non-local redistribution,
   with that could build the thing; don't really fancy installing the steam client but

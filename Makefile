@@ -29,7 +29,7 @@ STEAM_SWIFT_FLAGS := \
 	-Xswiftc -I${STEAM_INCLUDE} \
  	-Xlinker -L${STEAM_LIB} \
 	-Xlinker -L${TICKET_LIB} \
-	-Xlinker -lc++
+ 	-Xlinker -lc++
 
 all: build run
 
