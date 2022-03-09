@@ -229,6 +229,16 @@ public final class SteamNetworkingIPAddr {
         Int(adr.m_port)
     }
 
+    /// Classify address as FakeIP.  Never returns `k_ESteamNetworkingFakeIPType_Invalid`.
+    public var fakeIPType: SteamNetworkingFakeIPType {
+        .init(adr.GetFakeIPType())
+    }
+
+    /// Return `true` if we are a FakeIP
+    public var isFakeIP: Bool {
+        fakeIPType != .notFake
+    }
+
     public func toString(withPort: Bool = true) -> String {
         String(unsafeUninitializedCapacity: 48) { ubuf in
             ubuf.withMemoryRebound(to: CChar.self) { sbuf in
@@ -332,6 +342,19 @@ public final class SteamNetworkingIdentity {
     /// Returns true if this identity is localhost.
     public var isLocalhost: Bool {
         identity.IsLocalHost()
+    }
+
+    public var fakeIPType: SteamNetworkingFakeIPType {
+        .init(identity.GetFakeIPType())
+    }
+
+    public var isFakeIP: Bool {
+        switch fakeIPType {
+        case .invalid, .notFake, .unrepresentedInSwift:
+            return false
+        case .globalIPv4, .localIPv4:
+            return true
+        }
     }
 
     /// Returns `nil` if not generic string type

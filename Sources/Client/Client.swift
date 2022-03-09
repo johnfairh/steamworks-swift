@@ -248,10 +248,10 @@ final class Client {
             print("Can't parse IPv4 address")
             return
         }
-        print("IP4: 0x\(String(addr4.ipv4, radix: 16)), str: \(addr4.toString())")
+        print("IP4: 0x\(String(addr4.ipv4, radix: 16)), str: \(addr4.toString()), fake: \(addr4.isFakeIP)")
 
         let addr6 = SteamNetworkingIPAddr(ipv6: [0,0,0,0,0xff,0xff,0xff,0xff,0x24,0x23,0x22,0x21,0x00,0xda,0xb6,0x8e], port: 5000)
-        print("IP6: \(addr6.ipv6), str: \(addr6.toString())")
+        print("IP6: \(addr6.ipv6), str: \(addr6.toString()), fake: \(addr6.isFakeIP)")
 
         let ident = SteamNetworkingIdentity(addr6)
         print("ident: \(ident)")
