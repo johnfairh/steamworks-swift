@@ -503,8 +503,6 @@ methods:
     params:
       pOptions:
         array_count: nOptions
-  SteamAPI_ISteamNetworkingSockets_CreateFakeUDPPort:
-    ignore: "Later"
   SteamAPI_ISteamNetworkingSockets_CreateHostedDedicatedServerListenSocket:
     params:
       pOptions:

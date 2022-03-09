@@ -71,6 +71,11 @@ public struct SteamNetworkingSockets {
         return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectToHostedDedicatedServer(interface, &tmp_identityTarget, Int32(remoteVirtualPort), Int32(options.count), &tmp_options))
     }
 
+    /// Steamworks `ISteamNetworkingSockets::CreateFakeUDPPort()`
+    public func createFakeUDPPort(fakeServerPort: Int) -> SteamNetworkingFakeUDPPort {
+        SteamNetworkingFakeUDPPort(SteamAPI_ISteamNetworkingSockets_CreateFakeUDPPort(interface, Int32(fakeServerPort)))
+    }
+
     /// Steamworks `ISteamNetworkingSockets::CreateHostedDedicatedServerListenSocket()`
     public func createHostedDedicatedServerListenSocket(localVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
         var tmp_options = options.map { SteamNetworkingConfigValue_t($0) }
