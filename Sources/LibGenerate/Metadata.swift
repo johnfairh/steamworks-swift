@@ -198,7 +198,10 @@ struct Patch: Codable {
     let structs: [String: Struct] // struct.name key
 
     struct Interface: Codable {
-        var real_classname: String? // override C++ class name
+        let real_classname: String? // override C++ class name
+        let ignore: String? // filter out weird things
+        var bIgnore: Bool { ignore != nil }
+        var getter: String? // non-default name of API to create this
     }
     let interfaces: [String: Interface] // interface.classname key
 
@@ -345,6 +348,7 @@ struct MetadataDB {
         let methods: [String : Method]
 
         enum Access {
+            case instance(String)
             case global(String)
             case user(String)
             case gameserver(String)
@@ -354,18 +358,21 @@ struct MetadataDB {
 
         init?(base: SteamJSON.Interface, patch: Patch) {
             let ipatch = patch.interfaces[base.classname]
+            if let ipatch = ipatch, ipatch.bIgnore {
+                return nil
+            }
             name = base.classname
             realClassName = ipatch?.real_classname
             methods = .init(uniqueKeysWithValues: base.methods.map { baseMethod in
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
             })
-            // Filter out things in 'interfaces' that are not actually steamworks API interfaces
-            guard let accessors = base.accessors else {
-                return nil
-            }
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
                 (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
             })
+            guard let accessors = base.accessors else {
+                access = .instance(ipatch?.getter ?? "")
+                return
+            }
             let accessorMap = Dictionary(uniqueKeysWithValues: accessors.map { ($0.kind, $0.name_flat) })
             if let g = accessorMap["global"] {
                 access = .global(g)

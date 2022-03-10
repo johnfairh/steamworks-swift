@@ -48,7 +48,8 @@ struct Interfaces {
             "ISteamMatchmakingServers",
             "ISteamNetworkingMessages",
             "ISteamNetworkingUtils",
-            "ISteamNetworkingSockets"
+            "ISteamNetworkingSockets",
+            "ISteamNetworkingFakeUDPPort"
         ])
         try metadata.db.interfaces.values.forEach { interface in
             guard includes.contains(interface.name) else {
@@ -86,10 +87,18 @@ extension MetadataDB.Interface.Access {
     /// Generate a doc comment snippet
     func accessVia(getter: String) -> String {
         switch self {
+        case .instance(let actualGetter): return "`\(actualGetter)`"
         case .user: return "`SteamAPI.\(getter)`"
         case .gameserver: return "`SteamGameServerAPI.\(getter)`"
         case .global, .userAndServer:
             return "`SteamBaseAPI.\(getter)` through a `SteamAPI` or `SteamGameServerAPI` instance"
+        }
+    }
+
+    var swiftTypeKind: String {
+        switch self {
+        case .instance: return "final class"
+        case .user, .gameserver, .global, .userAndServer: return "struct"
         }
     }
 
@@ -104,7 +113,7 @@ extension MetadataDB.Interface.Access {
             /// Steamworks [`\(db.name)`](https://partner.steamgames.com/doc/api/\(db.name))
             ///
             /// Access via \(accessVia(getter: shortName)).
-            public struct \(db.name.asSwiftTypeName) {
+            public \(swiftTypeKind) \(db.name.asSwiftTypeName) {
             """
 
         let decl: String
@@ -112,6 +121,13 @@ extension MetadataDB.Interface.Access {
         let swiftType = db.realClassName ?? "UnsafeMutablePointer<\(db.name)>"
 
         switch self {
+        case .instance:
+            decl = """
+                       private let interface: \(swiftType)
+                       init(_ interface: \(swiftType)) {
+                           self.interface = interface
+                       }
+                   """
         case .user(let accessor), .gameserver(let accessor), .global(let accessor):
             decl = """
                        var interface: \(swiftType) {

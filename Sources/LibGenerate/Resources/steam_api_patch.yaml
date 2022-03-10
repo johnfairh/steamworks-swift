@@ -458,6 +458,19 @@ methods:
   SteamAPI_ISteamMusicRemote_UpdateVolume:
     discardable_result: true
 #
+# ISteamNetworkingFakeUDPPort
+#
+  SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages:
+    discardable_result: true
+    params:
+      ppOutMessages:
+        out_array_count: nMaxMessages
+        out_array_valid_count: rc
+  SteamAPI_ISteamNetworkingFakeUDPPort_SendMessageToFakeIP:
+    params:
+      nSendFlags:
+        type: ESteamNetworkingSendFlags
+#
 # ISteamNetworkingMessages
 #
   SteamAPI_ISteamNetworkingMessages_AcceptSessionWithUser:
@@ -1010,6 +1023,18 @@ structs:
       m_rtimeAddedToUserList:
         type: RTime32
 interfaces:
+  ISteamClient:
+    ignore: "Private / weird"
+  ISteamMatchmakingServerListResponse:
+    ignore: "Callbacks"
+  ISteamMatchmakingPingResponse:
+    ignore: "Callbacks"
+  ISteamMatchmakingPlayersResponse:
+    ignore: "Callbacks"
+  ISteamMatchmakingRulesResponse:
+    ignore: "Callbacks"
+  ISteamNetworkingFakeUDPPort:
+    getter: "ISteamNetworkingSockets.CreateFakeUDPPort(...)"
   ISteamNetworkingSockets:
     real_classname: OpaquePointer
   ISteamNetworkingUtils:
