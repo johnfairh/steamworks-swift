@@ -354,6 +354,10 @@ final class Client {
                 let rc = self.api.networkingSockets.sendMessageToConnection(conn: req.conn, data: message, dataSize: message.count, sendFlags: [], outMessageNumber: &messageNumber)
                 print("SendMsg rc=\(rc) messageNumber=\(messageNumber)")
 
+// More out-structure borkage
+//                var status = SteamNetConnectionRealTimeStatus()
+//                let rc2 = self.api.networkingSockets.getConnectionRealTimeStatus(conn: req.conn, status: &status, laneCount: 0, laneStatus: nil)
+
             case .closedByPeer:
                 // Close client and end test when server closes
                 print("Server says: \(req.info.endDebug)")

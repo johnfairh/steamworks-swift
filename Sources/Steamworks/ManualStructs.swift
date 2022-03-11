@@ -567,6 +567,17 @@ public struct SteamNetworkingMessage {
     public func set(userData: Int) {
         CSteamNetworkingMessage_SetUserData(cmsg, Int64(userData))
     }
+
+    /// For outbound messages, which lane to use?  See `ISteamNetworkingSockets::ConfigureConnectionLanes`.
+    /// For inbound messages, what lane was the message received on?
+    public var lane: Int {
+        get {
+            Int(CSteamNetworkingMessage_GetLane(cmsg))
+        }
+        set {
+            CSteamNetworkingMessage_SetLane(cmsg, Int16(newValue))
+        }
+    }
 }
 
 extension Optional where Wrapped == OpaquePointer {

@@ -67,6 +67,11 @@ static inline void CSteamNetworkingMessage_SetUserData(CMsgPtr m, int64 userData
     SM(m)->m_nUserData = userData;
 }
 
+static inline int CSteamNetworkingMessage_GetLane(CMsgPtr m) { return SM(m)->m_idxLane; }
+static inline void CSteamNetworkingMessage_SetLane(CMsgPtr m, int16 lane) {
+    SM(m)->m_idxLane = lane;
+}
+
 } // "C"
 
 /// This is a bitflag enum for which steam just does a smash of #defines.
