@@ -187,6 +187,7 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetDetailedConnectionStatus()`
+    @discardableResult
     public func getDetailedConnectionStatus(conn: HSteamNetConnection, buf: inout String, bufSize: Int) -> Int {
         let tmp_buf = UnsafeMutableBufferPointer<CChar>.allocate(capacity: bufSize)
         defer { tmp_buf.deallocate() }
@@ -253,7 +254,9 @@ public struct SteamNetworkingSockets {
         let tmp_outMessages = UnsafeMutableBufferPointer<OpaquePointer?>.allocate(capacity: maxMessages)
         defer { tmp_outMessages.deallocate() }
         let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection(interface, CSteamworks.HSteamNetConnection(conn), tmp_outMessages.baseAddress, Int32(maxMessages)))
-        outMessages = tmp_outMessages[0..<rc].map { SteamNetworkingMessage($0) }
+        if rc >= 0 {
+            outMessages = tmp_outMessages[0..<rc].map { SteamNetworkingMessage($0) }
+        }
         return rc
     }
 
@@ -263,7 +266,9 @@ public struct SteamNetworkingSockets {
         let tmp_outMessages = UnsafeMutableBufferPointer<OpaquePointer?>.allocate(capacity: maxMessages)
         defer { tmp_outMessages.deallocate() }
         let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup(interface, CSteamworks.HSteamNetPollGroup(pollGroup), tmp_outMessages.baseAddress, Int32(maxMessages)))
-        outMessages = tmp_outMessages[0..<rc].map { SteamNetworkingMessage($0) }
+        if rc >= 0 {
+            outMessages = tmp_outMessages[0..<rc].map { SteamNetworkingMessage($0) }
+        }
         return rc
     }
 

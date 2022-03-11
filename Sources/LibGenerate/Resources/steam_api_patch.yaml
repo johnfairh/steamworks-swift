@@ -566,6 +566,7 @@ methods:
         out_array_count: nLaneCount
     out_param_iff_rc: "== .ok"
   SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus:
+    discardable_result: true
     params:
       pszBuf:
         out_string_count: cbBuf
@@ -582,12 +583,14 @@ methods:
       ppOutMessages:
         out_array_count: nMaxMessages
         out_array_valid_count: rc
+    out_param_iff_rc: '>= 0'
   SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup:
     discardable_result: true
     params:
       ppOutMessages:
         out_array_count: nMaxMessages
         out_array_valid_count: rc
+    out_param_iff_rc: '>= 0'
   SteamAPI_ISteamNetworkingSockets_SendMessageToConnection:
     params:
       nSendFlags:

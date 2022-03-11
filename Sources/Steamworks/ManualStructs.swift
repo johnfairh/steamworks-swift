@@ -288,9 +288,15 @@ public final class SteamNetworkingIPAddr {
     }
 }
 
-extension SteamNetworkingIPAddr: SteamCreatable, Equatable {
+extension SteamNetworkingIPAddr: SteamCreatable {}
+
+extension SteamNetworkingIPAddr: Equatable, CustomStringConvertible {
     public static func == (lhs: SteamNetworkingIPAddr, rhs: SteamNetworkingIPAddr) -> Bool {
         lhs.adr == rhs.adr
+    }
+
+    public var description: String {
+        toString()
     }
 }
 

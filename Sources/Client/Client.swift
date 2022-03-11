@@ -12,6 +12,9 @@ import Foundation
 // to demo the rest of the API.  Porting SpaceWar over to Swift might be an interesting
 // exercise in the future.
 
+// Couldn't get XCTest working with steam, threading plus C++ plus foundation, huge
+// crashy hanging nightmare.
+
 final class Client {
     let api: SteamAPI
     let server: SteamGameServerAPI
@@ -26,6 +29,8 @@ final class Client {
     }
     private var testState: State
     private var testNext: Int
+
+    private var testFrameCallback: (() -> Void)?
 
     init?() {
         guard let api = SteamAPI() else {
@@ -59,6 +64,7 @@ final class Client {
         server.runCallbacks()
         frameCounter += 1
         nudgeTests()
+        testFrameCallback?()
     }
 
     func nudgeTests() {
@@ -76,7 +82,8 @@ final class Client {
             testGameServers,
             testNetworkingStructs,
             testNetworkingMessage,
-            testNetworkSettings
+            testNetworkSettings,
+            testNetworkingSocket,
         ]
 
         if testNext == testMethods.count {
@@ -91,6 +98,7 @@ final class Client {
 
     func endTest() {
         print("<<<< Ended clienttest \(testNext)")
+        testFrameCallback = nil
         testNext += 1
         testState = .idle
     }
@@ -285,10 +293,7 @@ final class Client {
                 let msg = msgs[0]
                 print("Msg size = \(msg.size)")
                 let bytePtr = msg.data.bindMemory(to: UInt8.self, capacity: msg.size)
-                var bytes: [UInt8] = []
-                for i in 0..<msg.size {
-                    bytes.append(bytePtr[i])
-                }
+                let bytes = [UInt8](UnsafeBufferPointer(start: bytePtr, count: msg.size))
                 print("Msg body = \(bytes)")
                 msg.release()
             }
@@ -298,6 +303,80 @@ final class Client {
 
         let rc = api.networkingMessages.sendMessageToUser(identityRemote: .init(steamID), data: message, dataSize: message.count, sendFlags: .reliable, remoteChannel: 0)
         print("SendMessage rc=\(rc)")
+    }
+
+    func testNetworkingSocket() {
+        var listenSocket: HSteamListenSocket?
+        var clientConnection = HSteamNetConnection(0)
+        var serverConnection = HSteamNetConnection(0)
+
+        // apparently we have to poll for messages, no callback on 'readable'
+        testFrameCallback = { [weak self] in
+            guard let self = self else { return }
+            var msgs = [SteamNetworkingMessage]()
+            self.api.networkingSockets.receiveMessagesOnConnection(conn: serverConnection, outMessages: &msgs, maxMessages: 1)
+            if !msgs.isEmpty {
+                let msg = msgs.first!
+                let bytePtr = msg.data.bindMemory(to: UInt8.self, capacity: msg.size)
+                let bytes = Array((UnsafeBufferPointer(start: bytePtr, count: msg.size)))
+                print("Server received message, len=\(msg.size) body=\(bytes)")
+                msg.release()
+                let rc1 = self.api.networkingSockets.closeConnection(peer: serverConnection, reason: 0, debug: "Bye", enableLinger: false)
+                let rc2 = self.api.networkingSockets.closeListenSocket(socket: listenSocket!)
+                print("Server close conn=\(rc1) sock=\(rc2)")
+            }
+        }
+
+        api.onSteamNetConnectionStatusChangedCallback { [weak self] req in
+            guard let self = self else { return }
+            let isClient = req.conn == clientConnection
+            let connName = isClient ? "Client" : "Server"
+            print("\(connName) Connection Status: \(req.oldState)->\(req.info.state)")
+
+            switch req.info.state {
+            case .problemDetectedLocally:
+                let rc = self.api.networkingSockets.closeListenSocket(socket: listenSocket!)
+                print("Abandoning test, close rc=\(rc)")
+                self.endTest()
+
+            case .connecting:
+                // Accept connection on server
+                guard !isClient else { break }
+                let rc = self.api.networkingSockets.acceptConnection(conn: req.conn)
+                serverConnection = req.conn
+                print("Accept rc=\(rc)")
+
+            case .connected:
+                // Send message from client on connect
+                guard isClient else { break }
+                let message: [UInt8] = [1,2,3,4]
+                var messageNumber = 0
+                let rc = self.api.networkingSockets.sendMessageToConnection(conn: req.conn, data: message, dataSize: message.count, sendFlags: [], outMessageNumber: &messageNumber)
+                print("SendMsg rc=\(rc) messageNumber=\(messageNumber)")
+
+            case .closedByPeer:
+                // Close client and end test when server closes
+                print("Server says: \(req.info.endDebug)")
+                let rc = self.api.networkingSockets.closeConnection(peer: req.conn, reason: 0, debug: "", enableLinger: false)
+                print("Close rc=\(rc)")
+                self.endTest()
+
+            default:
+                print("waiting...")
+            }
+        }
+
+        listenSocket = api.networkingSockets.createListenSocketIP(address: .init(inaddrAnyPort: 27100), options: [])
+        print("CreateListenSocketIP rc=\(listenSocket!)")
+        var adr = SteamNetworkingIPAddr.init(inaddrAnyPort: 0)
+        let adrRc = api.networkingSockets.getListenSocketAddress(socket: listenSocket!, address: &adr)
+        print("GetListenSocketAddress rc=\(adrRc) adr=\(adr)")
+
+        clientConnection = api.networkingSockets.connectByIPAddress(address: .init(ipv4: 0x7f000001, port: 27100), options: [])
+        print("ConnectByIP rc=\(clientConnection)")
+        var status = String()
+        api.networkingSockets.getDetailedConnectionStatus(conn: clientConnection, buf: &status, bufSize: 4096)
+        print("ConnectionStatus: \(status)")
     }
 
     func testNetworkSettings() {
@@ -315,6 +394,7 @@ final class Client {
 
         api.networkingUtils.initRelayNetworkAccess()
 
+// yeah so 'out' parameters need to be actually returned...
 //        var status = SteamRelayNetworkStatus()
 //        api.networkingUtils.getRelayNetworkStatus(details: &status)
 //        print(status)
