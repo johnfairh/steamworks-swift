@@ -1028,6 +1028,8 @@ structs:
 interfaces:
   ISteamClient:
     ignore: "Private / weird"
+  ISteamController:
+    ignore: "Deprecated"
   ISteamMatchmakingServerListResponse:
     ignore: "Callbacks"
   ISteamMatchmakingPingResponse:
@@ -1038,6 +1040,8 @@ interfaces:
     ignore: "Callbacks"
   ISteamNetworkingFakeUDPPort:
     getter: "ISteamNetworkingSockets.CreateFakeUDPPort(...)"
+  ISteamNetworking:
+    ignore: "Deprecated"
   ISteamNetworkingSockets:
     real_classname: OpaquePointer
   ISteamNetworkingUtils:

@@ -21,40 +21,7 @@ struct Interfaces {
     }
 
     func generate() throws {
-        let includes = Set<String>([
-            "ISteamFriends",
-            "ISteamUtils",
-            "ISteamUser",
-            "ISteamUserStats",
-            "ISteamAppList",
-            "ISteamApps",
-            "ISteamGameServer",
-            "ISteamGameServerStats",
-            "ISteamHTTP",
-            "ISteamMatchmaking",
-            "ISteamParties",
-            "ISteamGameSearch",
-            "ISteamMusic",
-            "ISteamMusicRemote",
-            "ISteamParentalSettings",
-            "ISteamRemotePlay",
-            "ISteamScreenshots",
-            "ISteamVideo",
-            "ISteamHTMLSurface",
-            "ISteamInput",
-            "ISteamInventory",
-            "ISteamRemoteStorage",
-            "ISteamUGC",
-            "ISteamMatchmakingServers",
-            "ISteamNetworkingMessages",
-            "ISteamNetworkingUtils",
-            "ISteamNetworkingSockets",
-            "ISteamNetworkingFakeUDPPort"
-        ])
         try metadata.db.interfaces.values.forEach { interface in
-            guard includes.contains(interface.name) else {
-                return
-            }
             let swiftName = interface.name.asSwiftTypeName
             try io.write(fileName: "\(swiftName).swift",
                          contents: interface.generate(context: swiftName))
