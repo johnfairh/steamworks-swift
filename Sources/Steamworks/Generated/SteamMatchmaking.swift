@@ -66,7 +66,7 @@ public struct SteamMatchmaking {
     }
 
     /// Steamworks `ISteamMatchmaking::CreateLobby()`, async
-    func createLobby(lobbyType: LobbyType, maxMembers: Int) async -> LobbyCreated? {
+    public func createLobby(lobbyType: LobbyType, maxMembers: Int) async -> LobbyCreated? {
         await withUnsafeContinuation {
             createLobby(lobbyType: lobbyType, maxMembers: maxMembers, completion: $0.resume)
         }
@@ -188,7 +188,7 @@ public struct SteamMatchmaking {
     }
 
     /// Steamworks `ISteamMatchmaking::JoinLobby()`, async
-    func joinLobby(lobby: SteamID) async -> LobbyEnter? {
+    public func joinLobby(lobby: SteamID) async -> LobbyEnter? {
         await withUnsafeContinuation {
             joinLobby(lobby: lobby, completion: $0.resume)
         }
@@ -218,7 +218,7 @@ public struct SteamMatchmaking {
     }
 
     /// Steamworks `ISteamMatchmaking::RequestLobbyList()`, async
-    func requestLobbyList() async -> LobbyMatchList? {
+    public func requestLobbyList() async -> LobbyMatchList? {
         await withUnsafeContinuation {
             requestLobbyList(completion: $0.resume)
         }

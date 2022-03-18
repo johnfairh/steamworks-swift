@@ -31,7 +31,7 @@ public struct SteamParties {
     }
 
     /// Steamworks `ISteamParties::ChangeNumOpenSlots()`, async
-    func changeNumOpenSlots(beacon: PartyBeaconID, openSlots: Int) async -> ChangeNumOpenSlotsCallback? {
+    public func changeNumOpenSlots(beacon: PartyBeaconID, openSlots: Int) async -> ChangeNumOpenSlotsCallback? {
         await withUnsafeContinuation {
             changeNumOpenSlots(beacon: beacon, openSlots: openSlots, completion: $0.resume)
         }
@@ -44,7 +44,7 @@ public struct SteamParties {
     }
 
     /// Steamworks `ISteamParties::CreateBeacon()`, async
-    func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String) async -> CreateBeaconCallback? {
+    public func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String) async -> CreateBeaconCallback? {
         await withUnsafeContinuation {
             createBeacon(openSlots: openSlots, beaconLocation: beaconLocation, connectString: connectString, metadata: metadata, completion: $0.resume)
         }
@@ -116,7 +116,7 @@ public struct SteamParties {
     }
 
     /// Steamworks `ISteamParties::JoinParty()`, async
-    func joinParty(beaconID: PartyBeaconID) async -> JoinPartyCallback? {
+    public func joinParty(beaconID: PartyBeaconID) async -> JoinPartyCallback? {
         await withUnsafeContinuation {
             joinParty(beaconID: beaconID, completion: $0.resume)
         }

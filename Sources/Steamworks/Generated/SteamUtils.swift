@@ -33,7 +33,7 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::CheckFileSignature()`, async
-    func checkFileSignature(fileName: String) async -> CheckFileSignature? {
+    public func checkFileSignature(fileName: String) async -> CheckFileSignature? {
         await withUnsafeContinuation {
             checkFileSignature(fileName: fileName, completion: $0.resume)
         }

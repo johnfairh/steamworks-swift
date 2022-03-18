@@ -149,7 +149,7 @@ public struct SteamApps {
     }
 
     /// Steamworks `ISteamApps::GetFileDetails()`, async
-    func getFileDetails(fileName: String) async -> FileDetailsResult? {
+    public func getFileDetails(fileName: String) async -> FileDetailsResult? {
         await withUnsafeContinuation {
             getFileDetails(fileName: fileName, completion: $0.resume)
         }

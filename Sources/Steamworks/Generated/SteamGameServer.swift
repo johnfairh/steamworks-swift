@@ -26,7 +26,7 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::AssociateWithClan()`, async
-    func associateWithClan(clan: SteamID) async -> AssociateWithClanResult? {
+    public func associateWithClan(clan: SteamID) async -> AssociateWithClanResult? {
         await withUnsafeContinuation {
             associateWithClan(clan: clan, completion: $0.resume)
         }
@@ -69,7 +69,7 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::ComputeNewPlayerCompatibility()`, async
-    func computeNewPlayerCompatibility(newPlayer: SteamID) async -> ComputeNewPlayerCompatibilityResult? {
+    public func computeNewPlayerCompatibility(newPlayer: SteamID) async -> ComputeNewPlayerCompatibilityResult? {
         await withUnsafeContinuation {
             computeNewPlayerCompatibility(newPlayer: newPlayer, completion: $0.resume)
         }
@@ -120,7 +120,7 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::GetServerReputation()`, async
-    func getServerReputation() async -> GSReputation? {
+    public func getServerReputation() async -> GSReputation? {
         await withUnsafeContinuation {
             getServerReputation(completion: $0.resume)
         }

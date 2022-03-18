@@ -231,7 +231,7 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::RequestEligiblePromoItemDefinitionsIDs()`, async
-    func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID) async -> SteamInventoryEligiblePromoItemDefIDs? {
+    public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID) async -> SteamInventoryEligiblePromoItemDefIDs? {
         await withUnsafeContinuation {
             requestEligiblePromoItemDefinitionsIDs(steamID: steamID, completion: $0.resume)
         }
@@ -244,7 +244,7 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::RequestPrices()`, async
-    func requestPrices() async -> SteamInventoryRequestPricesResult? {
+    public func requestPrices() async -> SteamInventoryRequestPricesResult? {
         await withUnsafeContinuation {
             requestPrices(completion: $0.resume)
         }
@@ -292,7 +292,7 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::StartPurchase()`, async
-    func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int]) async -> SteamInventoryStartPurchaseResult? {
+    public func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int]) async -> SteamInventoryStartPurchaseResult? {
         await withUnsafeContinuation {
             startPurchase(arrayItemDefs: arrayItemDefs, arrayQuantity: arrayQuantity, completion: $0.resume)
         }

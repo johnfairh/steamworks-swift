@@ -41,7 +41,7 @@ public struct SteamHTMLSurface {
     }
 
     /// Steamworks `ISteamHTMLSurface::CreateBrowser()`, async
-    func createBrowser(userAgent: String, userCSS: String) async -> HTMLBrowserReady? {
+    public func createBrowser(userAgent: String, userCSS: String) async -> HTMLBrowserReady? {
         await withUnsafeContinuation {
             createBrowser(userAgent: userAgent, userCSS: userCSS, completion: $0.resume)
         }

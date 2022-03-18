@@ -107,7 +107,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::GetDurationControl()`, async
-    func getDurationControl() async -> DurationControl? {
+    public func getDurationControl() async -> DurationControl? {
         await withUnsafeContinuation {
             getDurationControl(completion: $0.resume)
         }
@@ -138,7 +138,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::GetMarketEligibility()`, async
-    func getMarketEligibility() async -> MarketEligibilityResponse? {
+    public func getMarketEligibility() async -> MarketEligibilityResponse? {
         await withUnsafeContinuation {
             getMarketEligibility(completion: $0.resume)
         }
@@ -192,7 +192,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, async
-    func requestEncryptedAppTicket(dataToInclude: UnsafeMutableRawPointer, dataToIncludeSize: Int) async -> EncryptedAppTicketResponse? {
+    public func requestEncryptedAppTicket(dataToInclude: UnsafeMutableRawPointer, dataToIncludeSize: Int) async -> EncryptedAppTicketResponse? {
         await withUnsafeContinuation {
             requestEncryptedAppTicket(dataToInclude: dataToInclude, dataToIncludeSize: dataToIncludeSize, completion: $0.resume)
         }
@@ -205,7 +205,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::RequestStoreAuthURL()`, async
-    func requestStoreAuthURL(redirectURL: String) async -> StoreAuthURLResponse? {
+    public func requestStoreAuthURL(redirectURL: String) async -> StoreAuthURLResponse? {
         await withUnsafeContinuation {
             requestStoreAuthURL(redirectURL: redirectURL, completion: $0.resume)
         }

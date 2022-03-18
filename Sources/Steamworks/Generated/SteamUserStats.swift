@@ -26,7 +26,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::AttachLeaderboardUGC()`, async
-    func attachLeaderboardUGC(steamLeaderboard: SteamLeaderboard, ugc: UGCHandle) async -> LeaderboardUGCSet? {
+    public func attachLeaderboardUGC(steamLeaderboard: SteamLeaderboard, ugc: UGCHandle) async -> LeaderboardUGCSet? {
         await withUnsafeContinuation {
             attachLeaderboardUGC(steamLeaderboard: steamLeaderboard, ugc: ugc, completion: $0.resume)
         }
@@ -44,7 +44,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::DownloadLeaderboardEntries()`, async
-    func downloadLeaderboardEntries(steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int) async -> LeaderboardScoresDownloaded? {
+    public func downloadLeaderboardEntries(steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int) async -> LeaderboardScoresDownloaded? {
         await withUnsafeContinuation {
             downloadLeaderboardEntries(steamLeaderboard: steamLeaderboard, leaderboardDataRequest: leaderboardDataRequest, rangeStart: rangeStart, rangeEnd: rangeEnd, completion: $0.resume)
         }
@@ -58,7 +58,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::DownloadLeaderboardEntriesForUsers()`, async
-    func downloadLeaderboardEntriesForUsers(steamLeaderboard: SteamLeaderboard, users: [SteamID]) async -> LeaderboardScoresDownloaded? {
+    public func downloadLeaderboardEntriesForUsers(steamLeaderboard: SteamLeaderboard, users: [SteamID]) async -> LeaderboardScoresDownloaded? {
         await withUnsafeContinuation {
             downloadLeaderboardEntriesForUsers(steamLeaderboard: steamLeaderboard, users: users, completion: $0.resume)
         }
@@ -71,7 +71,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::FindLeaderboard()`, async
-    func findLeaderboard(leaderboardName: String) async -> LeaderboardFindResult? {
+    public func findLeaderboard(leaderboardName: String) async -> LeaderboardFindResult? {
         await withUnsafeContinuation {
             findLeaderboard(leaderboardName: leaderboardName, completion: $0.resume)
         }
@@ -84,7 +84,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::FindOrCreateLeaderboard()`, async
-    func findOrCreateLeaderboard(leaderboardName: String, leaderboardSortMethod: LeaderboardSortMethod, leaderboardDisplayType: LeaderboardDisplayType) async -> LeaderboardFindResult? {
+    public func findOrCreateLeaderboard(leaderboardName: String, leaderboardSortMethod: LeaderboardSortMethod, leaderboardDisplayType: LeaderboardDisplayType) async -> LeaderboardFindResult? {
         await withUnsafeContinuation {
             findOrCreateLeaderboard(leaderboardName: leaderboardName, leaderboardSortMethod: leaderboardSortMethod, leaderboardDisplayType: leaderboardDisplayType, completion: $0.resume)
         }
@@ -226,7 +226,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetNumberOfCurrentPlayers()`, async
-    func getNumberOfCurrentPlayers() async -> NumberOfCurrentPlayers? {
+    public func getNumberOfCurrentPlayers() async -> NumberOfCurrentPlayers? {
         await withUnsafeContinuation {
             getNumberOfCurrentPlayers(completion: $0.resume)
         }
@@ -288,7 +288,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::RequestGlobalAchievementPercentages()`, async
-    func requestGlobalAchievementPercentages() async -> GlobalAchievementPercentagesReady? {
+    public func requestGlobalAchievementPercentages() async -> GlobalAchievementPercentagesReady? {
         await withUnsafeContinuation {
             requestGlobalAchievementPercentages(completion: $0.resume)
         }
@@ -301,7 +301,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::RequestGlobalStats()`, async
-    func requestGlobalStats(historyDays: Int) async -> GlobalStatsReceived? {
+    public func requestGlobalStats(historyDays: Int) async -> GlobalStatsReceived? {
         await withUnsafeContinuation {
             requestGlobalStats(historyDays: historyDays, completion: $0.resume)
         }
@@ -314,7 +314,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::RequestUserStats()`, async
-    func requestUserStats(user: SteamID) async -> UserStatsReceived? {
+    public func requestUserStats(user: SteamID) async -> UserStatsReceived? {
         await withUnsafeContinuation {
             requestUserStats(user: user, completion: $0.resume)
         }
@@ -358,7 +358,7 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::UploadLeaderboardScore()`, async
-    func uploadLeaderboardScore(steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int]) async -> LeaderboardScoreUploaded? {
+    public func uploadLeaderboardScore(steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int]) async -> LeaderboardScoreUploaded? {
         await withUnsafeContinuation {
             uploadLeaderboardScore(steamLeaderboard: steamLeaderboard, leaderboardUploadScoreMethod: leaderboardUploadScoreMethod, score: score, scoreDetails: scoreDetails, completion: $0.resume)
         }

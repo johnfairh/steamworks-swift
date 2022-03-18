@@ -603,7 +603,7 @@ struct SwiftMethod {
         return [
             "",
             "\(comment), async",
-            "func \(db.funcName)(\(params.functionParams)) async -> \(type)? {",
+            "public func \(db.funcName)(\(params.functionParams)) async -> \(type)? {",
             "    await withUnsafeContinuation {",
             "        \(db.funcName)(\(params.asyncForwardingParams.commaJoin("completion: $0.resume")))",
             "    }",

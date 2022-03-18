@@ -28,7 +28,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::AddAppDependency()`, async
-    func addAppDependency(publishedFileID: PublishedFileID, appID: AppID) async -> AddAppDependencyResult? {
+    public func addAppDependency(publishedFileID: PublishedFileID, appID: AppID) async -> AddAppDependencyResult? {
         await withUnsafeContinuation {
             addAppDependency(publishedFileID: publishedFileID, appID: appID, completion: $0.resume)
         }
@@ -41,7 +41,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::AddDependency()`, async
-    func addDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -> AddUGCDependencyResult? {
+    public func addDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -> AddUGCDependencyResult? {
         await withUnsafeContinuation {
             addDependency(parentPublishedFileID: parentPublishedFileID, childPublishedFileID: childPublishedFileID, completion: $0.resume)
         }
@@ -78,7 +78,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::AddItemToFavorites()`, async
-    func addItemToFavorites(appId: AppID, publishedFileID: PublishedFileID) async -> UserFavoriteItemsListChanged? {
+    public func addItemToFavorites(appId: AppID, publishedFileID: PublishedFileID) async -> UserFavoriteItemsListChanged? {
         await withUnsafeContinuation {
             addItemToFavorites(appId: appId, publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -116,7 +116,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::CreateItem()`, async
-    func createItem(consumerAppId: AppID, fileType: WorkshopFileType) async -> CreateItemResult? {
+    public func createItem(consumerAppId: AppID, fileType: WorkshopFileType) async -> CreateItemResult? {
         await withUnsafeContinuation {
             createItem(consumerAppId: consumerAppId, fileType: fileType, completion: $0.resume)
         }
@@ -152,7 +152,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::DeleteItem()`, async
-    func deleteItem(publishedFileID: PublishedFileID) async -> DeleteItemResult? {
+    public func deleteItem(publishedFileID: PublishedFileID) async -> DeleteItemResult? {
         await withUnsafeContinuation {
             deleteItem(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -170,7 +170,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetAppDependencies()`, async
-    func getAppDependencies(publishedFileID: PublishedFileID) async -> GetAppDependenciesResult? {
+    public func getAppDependencies(publishedFileID: PublishedFileID) async -> GetAppDependenciesResult? {
         await withUnsafeContinuation {
             getAppDependencies(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -341,7 +341,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetUserItemVote()`, async
-    func getUserItemVote(publishedFileID: PublishedFileID) async -> GetUserItemVoteResult? {
+    public func getUserItemVote(publishedFileID: PublishedFileID) async -> GetUserItemVoteResult? {
         await withUnsafeContinuation {
             getUserItemVote(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -354,7 +354,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetWorkshopEULAStatus()`, async
-    func getWorkshopEULAStatus() async -> WorkshopEULAStatus? {
+    public func getWorkshopEULAStatus() async -> WorkshopEULAStatus? {
         await withUnsafeContinuation {
             getWorkshopEULAStatus(completion: $0.resume)
         }
@@ -378,7 +378,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::RemoveAppDependency()`, async
-    func removeAppDependency(publishedFileID: PublishedFileID, appID: AppID) async -> RemoveAppDependencyResult? {
+    public func removeAppDependency(publishedFileID: PublishedFileID, appID: AppID) async -> RemoveAppDependencyResult? {
         await withUnsafeContinuation {
             removeAppDependency(publishedFileID: publishedFileID, appID: appID, completion: $0.resume)
         }
@@ -391,7 +391,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::RemoveDependency()`, async
-    func removeDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -> RemoveUGCDependencyResult? {
+    public func removeDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -> RemoveUGCDependencyResult? {
         await withUnsafeContinuation {
             removeDependency(parentPublishedFileID: parentPublishedFileID, childPublishedFileID: childPublishedFileID, completion: $0.resume)
         }
@@ -404,7 +404,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::RemoveItemFromFavorites()`, async
-    func removeItemFromFavorites(appId: AppID, publishedFileID: PublishedFileID) async -> UserFavoriteItemsListChanged? {
+    public func removeItemFromFavorites(appId: AppID, publishedFileID: PublishedFileID) async -> UserFavoriteItemsListChanged? {
         await withUnsafeContinuation {
             removeItemFromFavorites(appId: appId, publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -429,7 +429,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::RequestUGCDetails()`, async
-    func requestUGCDetails(publishedFileID: PublishedFileID, maxAgeSeconds: Int) async -> SteamUGCRequestUGCDetailsResult? {
+    public func requestUGCDetails(publishedFileID: PublishedFileID, maxAgeSeconds: Int) async -> SteamUGCRequestUGCDetailsResult? {
         await withUnsafeContinuation {
             requestUGCDetails(publishedFileID: publishedFileID, maxAgeSeconds: maxAgeSeconds, completion: $0.resume)
         }
@@ -442,7 +442,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::SendQueryUGCRequest()`, async
-    func sendQueryUGCRequest(handle: UGCQueryHandle) async -> SteamUGCQueryCompleted? {
+    public func sendQueryUGCRequest(handle: UGCQueryHandle) async -> SteamUGCQueryCompleted? {
         await withUnsafeContinuation {
             sendQueryUGCRequest(handle: handle, completion: $0.resume)
         }
@@ -604,7 +604,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::SetUserItemVote()`, async
-    func setUserItemVote(publishedFileID: PublishedFileID, voteUp: Bool) async -> SetUserItemVoteResult? {
+    public func setUserItemVote(publishedFileID: PublishedFileID, voteUp: Bool) async -> SetUserItemVoteResult? {
         await withUnsafeContinuation {
             setUserItemVote(publishedFileID: publishedFileID, voteUp: voteUp, completion: $0.resume)
         }
@@ -628,7 +628,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::StartPlaytimeTracking()`, async
-    func startPlaytimeTracking(publishedFileID: [PublishedFileID]) async -> StartPlaytimeTrackingResult? {
+    public func startPlaytimeTracking(publishedFileID: [PublishedFileID]) async -> StartPlaytimeTrackingResult? {
         await withUnsafeContinuation {
             startPlaytimeTracking(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -642,7 +642,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::StopPlaytimeTracking()`, async
-    func stopPlaytimeTracking(publishedFileID: [PublishedFileID]) async -> StopPlaytimeTrackingResult? {
+    public func stopPlaytimeTracking(publishedFileID: [PublishedFileID]) async -> StopPlaytimeTrackingResult? {
         await withUnsafeContinuation {
             stopPlaytimeTracking(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -655,7 +655,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::StopPlaytimeTrackingForAllItems()`, async
-    func stopPlaytimeTrackingForAllItems() async -> StopPlaytimeTrackingResult? {
+    public func stopPlaytimeTrackingForAllItems() async -> StopPlaytimeTrackingResult? {
         await withUnsafeContinuation {
             stopPlaytimeTrackingForAllItems(completion: $0.resume)
         }
@@ -668,7 +668,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::SubmitItemUpdate()`, async
-    func submitItemUpdate(handle: UGCUpdateHandle, changeNote: String?) async -> SubmitItemUpdateResult? {
+    public func submitItemUpdate(handle: UGCUpdateHandle, changeNote: String?) async -> SubmitItemUpdateResult? {
         await withUnsafeContinuation {
             submitItemUpdate(handle: handle, changeNote: changeNote, completion: $0.resume)
         }
@@ -681,7 +681,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::SubscribeItem()`, async
-    func subscribeItem(publishedFileID: PublishedFileID) async -> RemoteStorageSubscribePublishedFileResult? {
+    public func subscribeItem(publishedFileID: PublishedFileID) async -> RemoteStorageSubscribePublishedFileResult? {
         await withUnsafeContinuation {
             subscribeItem(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -699,7 +699,7 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::UnsubscribeItem()`, async
-    func unsubscribeItem(publishedFileID: PublishedFileID) async -> RemoteStorageUnsubscribePublishedFileResult? {
+    public func unsubscribeItem(publishedFileID: PublishedFileID) async -> RemoteStorageUnsubscribePublishedFileResult? {
         await withUnsafeContinuation {
             unsubscribeItem(publishedFileID: publishedFileID, completion: $0.resume)
         }
