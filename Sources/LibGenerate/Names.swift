@@ -74,9 +74,6 @@ extension String {
     ///
     /// Try to get rid of the hungarian prefix without losing meaning.
     var asSwiftParameterName: String {
-        if let exception = steamParameterNamesExceptions[self] {
-            return exception
-        }
         // 'steamID' is used as a single hungarian character with various spellings
         if let matches = re_match("^p?(?:Out)?steamID(.+)$", options: .i) {
             return matches[1].asSwiftIdentifier
@@ -273,12 +270,6 @@ private let steamTypesPassedInStrangely: [String : String] = [
     "char" : "Int8",
 
     "SteamNetworkingMessage_t *": "OpaquePointer?" // struct not imported plus weird pointer semantics
-]
-
-// Parameter/field names where no rules are followed and we
-// have to hard-code something acceptable
-private let steamParameterNamesExceptions: [String : String] = [
-    "iFriendFlags" : "friendFlags"
 ]
 
 // Parameter/field hungarian-smelling prefixes that are actually

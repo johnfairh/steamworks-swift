@@ -203,10 +203,12 @@ methods:
   SteamAPI_ISteamFriends_GetFriendByIndex:
     params:
       iFriendFlags:
+        name: eFriendFlags
         type: EFriendFlags
   SteamAPI_ISteamFriends_GetFriendCount:
     params:
       iFriendFlags:
+        name: eFriendFlags
         type: EFriendFlags
   SteamAPI_ISteamFriends_GetFriendsGroupName:
     returntype: String?
@@ -215,6 +217,7 @@ methods:
   SteamAPI_ISteamFriends_HasFriend:
     params:
       iFriendFlags:
+        name: eFriendFlags
         type: EFriendFlags
   SteamAPI_ISteamFriends_SetListenForFriendsMessages:
     discardable_result: true
