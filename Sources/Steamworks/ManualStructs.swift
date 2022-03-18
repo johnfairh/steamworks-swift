@@ -33,8 +33,7 @@ public final class SteamIPAddress {
 
     /// SIxteen bytes, network order
     public var ipv6Address: [UInt8] {
-        // this is such a fucking mess
-        Mirror(reflecting: ip.m_rgubIPv6).children.map { $0.value as! UInt8 }
+        Array(ip.m_rgubIPv6_ptr, 16)
     }
 
     /// Is the IP address possibly valid?

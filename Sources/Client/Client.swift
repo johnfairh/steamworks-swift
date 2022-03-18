@@ -376,7 +376,7 @@ final class Client {
         let adrRc = api.networkingSockets.getListenSocketAddress(socket: listenSocket!, address: &adr)
         print("GetListenSocketAddress rc=\(adrRc) adr=\(adr)")
 
-        clientConnection = api.networkingSockets.connectByIPAddress(address: .init(ipv4: 0x7f000001, port: 27100), options: [])
+        clientConnection = api.networkingSockets.connectByIPAddress(address: .init(ipv4: .ipv4(127, 0, 0, 1), port: 27100), options: [])
         print("ConnectByIP rc=\(clientConnection)")
         var status = String()
         api.networkingSockets.getDetailedConnectionStatus(conn: clientConnection, buf: &status, bufSize: 4096)

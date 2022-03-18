@@ -326,6 +326,15 @@ extension AsyncStream.Continuation {
     }
 }
 
+// MARK: IP addresses
+
+extension Int {
+    /// Helper for providing IPv4 addresses by byte
+    public static func ipv4(_ hi1: UInt8, _ hi2: UInt8, _ lo2: UInt8, _ lo: UInt8) -> Int {
+        Int(hi1) << 24 | Int(hi2) << 16 | Int(lo2) << 8 | Int(lo)
+    }
+}
+
 // MARK: Function pointers
 
 // Not sure how to / whether to generalize this yet.

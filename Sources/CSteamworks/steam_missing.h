@@ -50,6 +50,12 @@ static inline const uint8 * _Nonnull SteamNetworkingIdentity_m_genericBytes_ptr(
     return s->m_genericBytes;
 }
 
+__attribute__((swift_name("getter:SteamIPAddress_t.m_rgubIPv6_ptr(self:)")))
+static inline const uint8 * _Nonnull SteamIPAddress_t_m_rgubIPv6_ptr(const SteamIPAddress_t * _Nonnull s)
+{
+    return s->m_rgubIPv6;
+}
+
 // Shim a couple of APIs to get rid of refs to fixed-size arrays of char that import as unwieldy tuples
 
 static inline bool CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest( ISteamNetworkingSockets* self, int * pcbBlob, void * pBlob, char * errMsg ) {
