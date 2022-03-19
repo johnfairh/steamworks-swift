@@ -184,7 +184,6 @@ struct Patch: Codable {
     struct Struct: Codable {
         struct Field: Codable {
             let fieldtype: String? // patch fieldtype (steam type)
-            let swift_type: String? // custom swift type
             let ignore: String? // filter out broken / too weird fields
             var bIgnore: Bool { ignore != nil }
         }
@@ -403,13 +402,11 @@ struct MetadataDB {
             let name: String
             let type: String
             let ignore: Bool
-            let swiftType: String?
 
             init(base: SteamJSON.Struct.Field, patch: Patch.Struct.Field?) {
                 name = base.fieldname
                 type = patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype)
                 ignore = base.private ?? patch?.bIgnore ?? false
-                swiftType = patch?.swift_type
             }
 
             /// Patch up some systemic errors / C-alignment-reasoning in types
@@ -566,6 +563,10 @@ final class Metadata: CustomStringConvertible {
 
     static func isOptionSetEnumPassedUnpredictably(steamType name: String) -> String? {
         findEnum(name: name)?.setPassedInTypeName
+    }
+
+    static func findEnumDefaultInstance(steamType name: String) -> String? {
+        findEnum(name: name)?.defaultInstance
     }
 
     static func isStruct(steamType name: String) -> Bool {

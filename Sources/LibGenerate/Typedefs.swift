@@ -68,21 +68,32 @@ extension MetadataDB.Typedef {
     }
 
     var generate: String {
-        isFunctionPointer ? generateFunction: generateBox
+        isFunctionPointer ? generateFunction : generateBox
     }
 
-    /// Normal case - integer boxed type
+    /// Normal case - integer/string boxed type
     var generateBox: String {
-        let swiftType = type.asSwiftBaseType
-        return """
-               /// Steamworks `\(typedef)`
-               public struct \(typedef.asSwiftTypeName): Hashable {
-                   public let value: \(swiftType)
-                   public init(_ value: \(swiftType)) { self.value = value }
-               }
+        let swiftRawType = type.asSwiftBaseType
+        let swiftTypeName = typedef.asSwiftTypeName
+        var decl = """
+                   /// Steamworks `\(typedef)`
+                   public struct \(swiftTypeName): Hashable {
+                       public let value: \(swiftRawType)
+                       public init(_ value: \(swiftRawType)) { self.value = value }
+                   }
 
-               extension \(typedef.asSwiftTypeName): SteamTypeAlias {}
-               """
+                   extension \(swiftTypeName): SteamTypeAlias {}
+                   """
+        if swiftRawType.isSwiftIntegerType {
+            decl += """
+
+                    extension \(swiftTypeName): ExpressibleByIntegerLiteral {
+                        public init(integerLiteral value: \(swiftRawType)) { self.init(value) }
+                    }
+                    """
+        }
+
+        return decl
     }
 
     /// Function pointer types - guess for now, not sure how will actually handle at call site

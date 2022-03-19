@@ -15,6 +15,9 @@ public struct AccountID: Hashable {
 }
 
 extension AccountID: SteamTypeAlias {}
+extension AccountID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `AppId_t`
 public struct AppID: Hashable {
@@ -23,6 +26,9 @@ public struct AppID: Hashable {
 }
 
 extension AppID: SteamTypeAlias {}
+extension AppID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `ControllerActionSetHandle_t`
 public struct ControllerActionSetHandle: Hashable {
@@ -31,6 +37,9 @@ public struct ControllerActionSetHandle: Hashable {
 }
 
 extension ControllerActionSetHandle: SteamTypeAlias {}
+extension ControllerActionSetHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `ControllerAnalogActionHandle_t`
 public struct ControllerAnalogActionHandle: Hashable {
@@ -39,6 +48,9 @@ public struct ControllerAnalogActionHandle: Hashable {
 }
 
 extension ControllerAnalogActionHandle: SteamTypeAlias {}
+extension ControllerAnalogActionHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `ControllerDigitalActionHandle_t`
 public struct ControllerDigitalActionHandle: Hashable {
@@ -47,6 +59,9 @@ public struct ControllerDigitalActionHandle: Hashable {
 }
 
 extension ControllerDigitalActionHandle: SteamTypeAlias {}
+extension ControllerDigitalActionHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `ControllerHandle_t`
 public struct ControllerHandle: Hashable {
@@ -55,6 +70,9 @@ public struct ControllerHandle: Hashable {
 }
 
 extension ControllerHandle: SteamTypeAlias {}
+extension ControllerHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `DepotId_t`
 public struct DepotID: Hashable {
@@ -63,6 +81,9 @@ public struct DepotID: Hashable {
 }
 
 extension DepotID: SteamTypeAlias {}
+extension DepotID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `FSteamNetworkingSocketsDebugOutput`
 public typealias FSteamNetworkingSocketsDebugOutput = (SteamNetworkingSocketsDebugOutputType, String) -> Void
@@ -92,6 +113,9 @@ public struct FriendsGroupID: Hashable {
 }
 
 extension FriendsGroupID: SteamTypeAlias {}
+extension FriendsGroupID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int16) { self.init(value) }
+}
 
 /// Steamworks `HAuthTicket`
 public struct HAuthTicket: Hashable {
@@ -100,6 +124,9 @@ public struct HAuthTicket: Hashable {
 }
 
 extension HAuthTicket: SteamTypeAlias {}
+extension HAuthTicket: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `HHTMLBrowser`
 public struct HHTMLBrowser: Hashable {
@@ -108,6 +135,9 @@ public struct HHTMLBrowser: Hashable {
 }
 
 extension HHTMLBrowser: SteamTypeAlias {}
+extension HHTMLBrowser: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `HServerListRequest`
 public struct HServerListRequest: Hashable {
@@ -124,6 +154,9 @@ public struct HServerQuery: Hashable {
 }
 
 extension HServerQuery: SteamTypeAlias {}
+extension HServerQuery: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int32) { self.init(value) }
+}
 
 /// Steamworks `HSteamListenSocket`
 public struct HSteamListenSocket: Hashable {
@@ -132,6 +165,9 @@ public struct HSteamListenSocket: Hashable {
 }
 
 extension HSteamListenSocket: SteamTypeAlias {}
+extension HSteamListenSocket: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `HSteamNetConnection`
 public struct HSteamNetConnection: Hashable {
@@ -140,6 +176,9 @@ public struct HSteamNetConnection: Hashable {
 }
 
 extension HSteamNetConnection: SteamTypeAlias {}
+extension HSteamNetConnection: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `HSteamNetPollGroup`
 public struct HSteamNetPollGroup: Hashable {
@@ -148,6 +187,9 @@ public struct HSteamNetPollGroup: Hashable {
 }
 
 extension HSteamNetPollGroup: SteamTypeAlias {}
+extension HSteamNetPollGroup: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `HSteamPipe`
 public struct HSteamPipe: Hashable {
@@ -156,6 +198,9 @@ public struct HSteamPipe: Hashable {
 }
 
 extension HSteamPipe: SteamTypeAlias {}
+extension HSteamPipe: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int32) { self.init(value) }
+}
 
 /// Steamworks `HSteamUser`
 public struct HSteamUser: Hashable {
@@ -164,6 +209,9 @@ public struct HSteamUser: Hashable {
 }
 
 extension HSteamUser: SteamTypeAlias {}
+extension HSteamUser: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int32) { self.init(value) }
+}
 
 /// Steamworks `HTTPCookieContainerHandle`
 public struct HTTPCookieContainerHandle: Hashable {
@@ -172,6 +220,9 @@ public struct HTTPCookieContainerHandle: Hashable {
 }
 
 extension HTTPCookieContainerHandle: SteamTypeAlias {}
+extension HTTPCookieContainerHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `HTTPRequestHandle`
 public struct HTTPRequestHandle: Hashable {
@@ -180,6 +231,9 @@ public struct HTTPRequestHandle: Hashable {
 }
 
 extension HTTPRequestHandle: SteamTypeAlias {}
+extension HTTPRequestHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `InputActionSetHandle_t`
 public struct InputActionSetHandle: Hashable {
@@ -188,6 +242,9 @@ public struct InputActionSetHandle: Hashable {
 }
 
 extension InputActionSetHandle: SteamTypeAlias {}
+extension InputActionSetHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `InputAnalogActionHandle_t`
 public struct InputAnalogActionHandle: Hashable {
@@ -196,6 +253,9 @@ public struct InputAnalogActionHandle: Hashable {
 }
 
 extension InputAnalogActionHandle: SteamTypeAlias {}
+extension InputAnalogActionHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `InputDigitalActionHandle_t`
 public struct InputDigitalActionHandle: Hashable {
@@ -204,6 +264,9 @@ public struct InputDigitalActionHandle: Hashable {
 }
 
 extension InputDigitalActionHandle: SteamTypeAlias {}
+extension InputDigitalActionHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `InputHandle_t`
 public struct InputHandle: Hashable {
@@ -212,6 +275,9 @@ public struct InputHandle: Hashable {
 }
 
 extension InputHandle: SteamTypeAlias {}
+extension InputHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `PFNPreMinidumpCallback`
 public typealias PFNPreMinidumpCallback = (UnsafeMutableRawPointer) -> Void
@@ -223,6 +289,9 @@ public struct PartyBeaconID: Hashable {
 }
 
 extension PartyBeaconID: SteamTypeAlias {}
+extension PartyBeaconID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `PublishedFileId_t`
 public struct PublishedFileID: Hashable {
@@ -231,6 +300,9 @@ public struct PublishedFileID: Hashable {
 }
 
 extension PublishedFileID: SteamTypeAlias {}
+extension PublishedFileID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `PublishedFileUpdateHandle_t`
 public struct PublishedFileUpdateHandle: Hashable {
@@ -239,6 +311,9 @@ public struct PublishedFileUpdateHandle: Hashable {
 }
 
 extension PublishedFileUpdateHandle: SteamTypeAlias {}
+extension PublishedFileUpdateHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `RTime32`
 public struct RTime32: Hashable {
@@ -247,6 +322,9 @@ public struct RTime32: Hashable {
 }
 
 extension RTime32: SteamTypeAlias {}
+extension RTime32: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `RemotePlaySessionID_t`
 public struct RemotePlaySessionID: Hashable {
@@ -255,6 +333,9 @@ public struct RemotePlaySessionID: Hashable {
 }
 
 extension RemotePlaySessionID: SteamTypeAlias {}
+extension RemotePlaySessionID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `SNetListenSocket_t`
 public struct SNetListenSocket: Hashable {
@@ -263,6 +344,9 @@ public struct SNetListenSocket: Hashable {
 }
 
 extension SNetListenSocket: SteamTypeAlias {}
+extension SNetListenSocket: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `SNetSocket_t`
 public struct SNetSocket: Hashable {
@@ -271,6 +355,9 @@ public struct SNetSocket: Hashable {
 }
 
 extension SNetSocket: SteamTypeAlias {}
+extension SNetSocket: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `ScreenshotHandle`
 public struct ScreenshotHandle: Hashable {
@@ -279,6 +366,9 @@ public struct ScreenshotHandle: Hashable {
 }
 
 extension ScreenshotHandle: SteamTypeAlias {}
+extension ScreenshotHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `SteamAPICall_t`
 public struct SteamAPICall: Hashable {
@@ -287,6 +377,9 @@ public struct SteamAPICall: Hashable {
 }
 
 extension SteamAPICall: SteamTypeAlias {}
+extension SteamAPICall: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `SteamInputActionEventCallbackPointer`
 public typealias SteamInputActionEventCallbackPointer = (SteamInputActionEvent) -> Void
@@ -298,6 +391,9 @@ public struct SteamInventoryResult: Hashable {
 }
 
 extension SteamInventoryResult: SteamTypeAlias {}
+extension SteamInventoryResult: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int32) { self.init(value) }
+}
 
 /// Steamworks `SteamInventoryUpdateHandle_t`
 public struct SteamInventoryUpdateHandle: Hashable {
@@ -306,6 +402,9 @@ public struct SteamInventoryUpdateHandle: Hashable {
 }
 
 extension SteamInventoryUpdateHandle: SteamTypeAlias {}
+extension SteamInventoryUpdateHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `SteamItemDef_t`
 public struct SteamItemDef: Hashable {
@@ -314,6 +413,9 @@ public struct SteamItemDef: Hashable {
 }
 
 extension SteamItemDef: SteamTypeAlias {}
+extension SteamItemDef: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int32) { self.init(value) }
+}
 
 /// Steamworks `SteamItemInstanceID_t`
 public struct SteamItemInstanceID: Hashable {
@@ -322,6 +424,9 @@ public struct SteamItemInstanceID: Hashable {
 }
 
 extension SteamItemInstanceID: SteamTypeAlias {}
+extension SteamItemInstanceID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `SteamLeaderboardEntries_t`
 public struct SteamLeaderboardEntries: Hashable {
@@ -330,6 +435,9 @@ public struct SteamLeaderboardEntries: Hashable {
 }
 
 extension SteamLeaderboardEntries: SteamTypeAlias {}
+extension SteamLeaderboardEntries: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `SteamLeaderboard_t`
 public struct SteamLeaderboard: Hashable {
@@ -338,6 +446,9 @@ public struct SteamLeaderboard: Hashable {
 }
 
 extension SteamLeaderboard: SteamTypeAlias {}
+extension SteamLeaderboard: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `SteamNetworkingErrMsg`
 public struct SteamNetworkingErrMsg: Hashable {
@@ -354,6 +465,9 @@ public struct SteamNetworkingMicroseconds: Hashable {
 }
 
 extension SteamNetworkingMicroseconds: SteamTypeAlias {}
+extension SteamNetworkingMicroseconds: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int64) { self.init(value) }
+}
 
 /// Steamworks `SteamNetworkingPOPID`
 public struct SteamNetworkingPOPID: Hashable {
@@ -362,6 +476,9 @@ public struct SteamNetworkingPOPID: Hashable {
 }
 
 extension SteamNetworkingPOPID: SteamTypeAlias {}
+extension SteamNetworkingPOPID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `UGCFileWriteStreamHandle_t`
 public struct UGCFileWriteStreamHandle: Hashable {
@@ -370,6 +487,9 @@ public struct UGCFileWriteStreamHandle: Hashable {
 }
 
 extension UGCFileWriteStreamHandle: SteamTypeAlias {}
+extension UGCFileWriteStreamHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `UGCHandle_t`
 public struct UGCHandle: Hashable {
@@ -378,6 +498,9 @@ public struct UGCHandle: Hashable {
 }
 
 extension UGCHandle: SteamTypeAlias {}
+extension UGCHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `UGCQueryHandle_t`
 public struct UGCQueryHandle: Hashable {
@@ -386,6 +509,9 @@ public struct UGCQueryHandle: Hashable {
 }
 
 extension UGCQueryHandle: SteamTypeAlias {}
+extension UGCQueryHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}
 
 /// Steamworks `UGCUpdateHandle_t`
 public struct UGCUpdateHandle: Hashable {
@@ -394,3 +520,6 @@ public struct UGCUpdateHandle: Hashable {
 }
 
 extension UGCUpdateHandle: SteamTypeAlias {}
+extension UGCUpdateHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt64) { self.init(value) }
+}

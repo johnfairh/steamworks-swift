@@ -170,4 +170,12 @@ extension MetadataDB.Enum {
         }
         return name.asSwiftIdentifier
     }
+
+    /// An expression to safely initialize an enum instance, for struct default initializers
+    var defaultInstance: String {
+        if isSet {
+            return "[]"
+        }
+        return ".\(swiftCaseName(values.filter(\.shouldGenerate).first!.name))"
+    }
 }

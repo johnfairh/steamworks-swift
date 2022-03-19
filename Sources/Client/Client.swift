@@ -354,9 +354,11 @@ final class Client {
                 let rc = self.api.networkingSockets.sendMessageToConnection(conn: req.conn, data: message, dataSize: message.count, sendFlags: [], outMessageNumber: &messageNumber)
                 print("SendMsg rc=\(rc) messageNumber=\(messageNumber)")
 
-// More out-structure borkage
-//                var status = SteamNetConnectionRealTimeStatus()
-//                let rc2 = self.api.networkingSockets.getConnectionRealTimeStatus(conn: req.conn, status: &status, laneCount: 0, laneStatus: nil)
+                // oh my word this api shape is all wrong
+                var status: SteamNetConnectionRealTimeStatus? = SteamNetConnectionRealTimeStatus()
+                var laneStatus: [SteamNetConnectionRealTimeLaneStatus]? = nil
+                let rc2 = self.api.networkingSockets.getConnectionRealTimeStatus(conn: req.conn, status: &status, laneCount: 0, laneStatus: &laneStatus)
+                print("RTStatus rc2=\(rc2) status=\(status!)")
 
             case .closedByPeer:
                 // Close client and end test when server closes
@@ -398,10 +400,9 @@ final class Client {
 
         api.networkingUtils.initRelayNetworkAccess()
 
-// yeah so 'out' parameters need to be actually returned...
-//        var status = SteamRelayNetworkStatus()
-//        api.networkingUtils.getRelayNetworkStatus(details: &status)
-//        print(status)
+        var status = SteamRelayNetworkStatus()
+        api.networkingUtils.getRelayNetworkStatus(details: &status)
+        print(status)
 
         var pops = [SteamNetworkingPOPID]()
         api.networkingUtils.getPOPList(list: &pops, listSz: api.networkingUtils.getPOPCount())
@@ -423,5 +424,8 @@ struct Main {
 
         client.runFrameLoop()
         print("Ran \(client.frameCounter) frames")
+
+        let a = ActiveBeaconsUpdated()
+        print(a)
     }
 }

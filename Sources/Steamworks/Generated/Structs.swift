@@ -10,6 +10,9 @@
 
 /// Steamworks `ActiveBeaconsUpdated_t`
 public struct ActiveBeaconsUpdated {
+    /// Create a customized `ActiveBeaconsUpdated`
+    public init() {
+    }
 }
 
 extension ActiveBeaconsUpdated: SteamCreatable {
@@ -26,6 +29,13 @@ public struct AddAppDependencyResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `AddAppDependencyResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, appID: AppID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.appID = appID
+    }
 }
 
 extension AddAppDependencyResult: SteamCreatable {
@@ -45,6 +55,13 @@ public struct AddUGCDependencyResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nChildPublishedFileId`
     public let childPublishedFileId: PublishedFileID
+
+    /// Create a customized `AddUGCDependencyResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, childPublishedFileId: PublishedFileID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.childPublishedFileId = childPublishedFileId
+    }
 }
 
 extension AddUGCDependencyResult: SteamCreatable {
@@ -66,6 +83,14 @@ public struct AppProofOfPurchaseKeyResponse {
     public let keySize: Int
     /// Steamworks `m_rgchKey`
     public let key: String
+
+    /// Create a customized `AppProofOfPurchaseKeyResponse`
+    public init(result: Result = .none, appID: AppID = 0, keySize: Int = 0, key: String = "") {
+        self.result = result
+        self.appID = appID
+        self.keySize = keySize
+        self.key = key
+    }
 }
 
 extension AppProofOfPurchaseKeyResponse: SteamCreatable {
@@ -80,6 +105,9 @@ extension AppProofOfPurchaseKeyResponse: SteamCreatable {
 
 /// Steamworks `AppResumingFromSuspend_t`
 public struct AppResumingFromSuspend {
+    /// Create a customized `AppResumingFromSuspend`
+    public init() {
+    }
 }
 
 extension AppResumingFromSuspend: SteamCreatable {
@@ -92,6 +120,11 @@ extension AppResumingFromSuspend: SteamCreatable {
 public struct AssociateWithClanResult {
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `AssociateWithClanResult`
+    public init(result: Result = .none) {
+        self.result = result
+    }
 }
 
 extension AssociateWithClanResult: SteamCreatable {
@@ -103,6 +136,9 @@ extension AssociateWithClanResult: SteamCreatable {
 
 /// Steamworks `AvailableBeaconLocationsUpdated_t`
 public struct AvailableBeaconLocationsUpdated {
+    /// Create a customized `AvailableBeaconLocationsUpdated`
+    public init() {
+    }
 }
 
 extension AvailableBeaconLocationsUpdated: SteamCreatable {
@@ -121,6 +157,14 @@ public struct AvatarImageLoaded {
     public let wideIndex: Int
     /// Steamworks `m_iTall`
     public let tallIndex: Int
+
+    /// Create a customized `AvatarImageLoaded`
+    public init(steamID: SteamID = SteamID(), imageIndex: Int = 0, wideIndex: Int = 0, tallIndex: Int = 0) {
+        self.steamID = steamID
+        self.imageIndex = imageIndex
+        self.wideIndex = wideIndex
+        self.tallIndex = tallIndex
+    }
 }
 
 extension AvatarImageLoaded: SteamCreatable {
@@ -137,6 +181,11 @@ extension AvatarImageLoaded: SteamCreatable {
 public struct ChangeNumOpenSlotsCallback {
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `ChangeNumOpenSlotsCallback`
+    public init(result: Result = .none) {
+        self.result = result
+    }
 }
 
 extension ChangeNumOpenSlotsCallback: SteamCreatable {
@@ -150,6 +199,11 @@ extension ChangeNumOpenSlotsCallback: SteamCreatable {
 public struct CheckFileSignature {
     /// Steamworks `m_eCheckFileSignature`
     public let checkFileSignature: CheckFileSignatureResult
+
+    /// Create a customized `CheckFileSignature`
+    public init(checkFileSignature: CheckFileSignatureResult = .invalidSignature) {
+        self.checkFileSignature = checkFileSignature
+    }
 }
 
 extension CheckFileSignature: SteamCreatable {
@@ -167,6 +221,13 @@ public struct ClanOfficerListResponse {
     public let officers: Int
     /// Steamworks `m_bSuccess`
     public let success: Bool
+
+    /// Create a customized `ClanOfficerListResponse`
+    public init(clan: SteamID = SteamID(), officers: Int = 0, success: Bool = false) {
+        self.clan = clan
+        self.officers = officers
+        self.success = success
+    }
 }
 
 extension ClanOfficerListResponse: SteamCreatable {
@@ -190,6 +251,15 @@ public struct ClientGameServerDeny {
     public let secure: Bool
     /// Steamworks `m_uReason`
     public let reason: Int
+
+    /// Create a customized `ClientGameServerDeny`
+    public init(appID: AppID = 0, gameServerIP: Int = 0, gameServerPort: Int = 0, secure: Bool = false, reason: Int = 0) {
+        self.appID = appID
+        self.gameServerIP = gameServerIP
+        self.gameServerPort = gameServerPort
+        self.secure = secure
+        self.reason = reason
+    }
 }
 
 extension ClientGameServerDeny: SteamCreatable {
@@ -215,6 +285,15 @@ public struct ComputeNewPlayerCompatibilityResult {
     public let clanPlayersThatDontLikeCandidate: Int
     /// Steamworks `m_SteamIDCandidate`
     public let candidate: SteamID
+
+    /// Create a customized `ComputeNewPlayerCompatibilityResult`
+    public init(result: Result = .none, playersThatDontLikeCandidate: Int = 0, playersThatCandidateDoesntLike: Int = 0, clanPlayersThatDontLikeCandidate: Int = 0, candidate: SteamID = SteamID()) {
+        self.result = result
+        self.playersThatDontLikeCandidate = playersThatDontLikeCandidate
+        self.playersThatCandidateDoesntLike = playersThatCandidateDoesntLike
+        self.clanPlayersThatDontLikeCandidate = clanPlayersThatDontLikeCandidate
+        self.candidate = candidate
+    }
 }
 
 extension ComputeNewPlayerCompatibilityResult: SteamCreatable {
@@ -234,6 +313,12 @@ public struct CreateBeaconCallback {
     public let result: Result
     /// Steamworks `m_ulBeaconID`
     public let beaconID: PartyBeaconID
+
+    /// Create a customized `CreateBeaconCallback`
+    public init(result: Result = .none, beaconID: PartyBeaconID = 0) {
+        self.result = result
+        self.beaconID = beaconID
+    }
 }
 
 extension CreateBeaconCallback: SteamCreatable {
@@ -252,6 +337,13 @@ public struct CreateItemResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
     public let userNeedsToAcceptWorkshopLegalAgreement: Bool
+
+    /// Create a customized `CreateItemResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, userNeedsToAcceptWorkshopLegalAgreement: Bool = false) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.userNeedsToAcceptWorkshopLegalAgreement = userNeedsToAcceptWorkshopLegalAgreement
+    }
 }
 
 extension CreateItemResult: SteamCreatable {
@@ -269,6 +361,12 @@ public struct DeleteItemResult {
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
+
+    /// Create a customized `DeleteItemResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension DeleteItemResult: SteamCreatable {
@@ -283,6 +381,11 @@ extension DeleteItemResult: SteamCreatable {
 public struct DlcInstalled {
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `DlcInstalled`
+    public init(appID: AppID = 0) {
+        self.appID = appID
+    }
 }
 
 extension DlcInstalled: SteamCreatable {
@@ -296,6 +399,11 @@ extension DlcInstalled: SteamCreatable {
 public struct DownloadClanActivityCountsResult {
     /// Steamworks `m_bSuccess`
     public let success: Bool
+
+    /// Create a customized `DownloadClanActivityCountsResult`
+    public init(success: Bool = false) {
+        self.success = success
+    }
 }
 
 extension DownloadClanActivityCountsResult: SteamCreatable {
@@ -313,6 +421,13 @@ public struct DownloadItemResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `DownloadItemResult`
+    public init(appID: AppID = 0, publishedFileId: PublishedFileID = 0, result: Result = .none) {
+        self.appID = appID
+        self.publishedFileId = publishedFileId
+        self.result = result
+    }
 }
 
 extension DownloadItemResult: SteamCreatable {
@@ -342,6 +457,18 @@ public struct DurationControl {
     public let csecsToday: Int
     /// Steamworks `m_csecsRemaining`
     public let csecsRemaining: Int
+
+    /// Create a customized `DurationControl`
+    public init(result: Result = .none, appid: AppID = 0, applicable: Bool = false, csecsLast5h: Int = 0, progress: DurationControlProgress = .full, notification: DurationControlNotification = .none, csecsToday: Int = 0, csecsRemaining: Int = 0) {
+        self.result = result
+        self.appid = appid
+        self.applicable = applicable
+        self.csecsLast5h = csecsLast5h
+        self.progress = progress
+        self.notification = notification
+        self.csecsToday = csecsToday
+        self.csecsRemaining = csecsRemaining
+    }
 }
 
 extension DurationControl: SteamCreatable {
@@ -362,6 +489,11 @@ extension DurationControl: SteamCreatable {
 public struct EncryptedAppTicketResponse {
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `EncryptedAppTicketResponse`
+    public init(result: Result = .none) {
+        self.result = result
+    }
 }
 
 extension EncryptedAppTicketResponse: SteamCreatable {
@@ -377,6 +509,12 @@ public struct EndGameResultCallback {
     public let result: Result
     /// Steamworks `ullUniqueGameID`
     public let uniqueGameID: GameID
+
+    /// Create a customized `EndGameResultCallback`
+    public init(result: Result = .none, uniqueGameID: GameID = GameID()) {
+        self.result = result
+        self.uniqueGameID = uniqueGameID
+    }
 }
 
 extension EndGameResultCallback: SteamCreatable {
@@ -391,6 +529,11 @@ extension EndGameResultCallback: SteamCreatable {
 public struct FavoritesListAccountsUpdated {
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `FavoritesListAccountsUpdated`
+    public init(result: Result = .none) {
+        self.result = result
+    }
 }
 
 extension FavoritesListAccountsUpdated: SteamCreatable {
@@ -416,6 +559,17 @@ public struct FavoritesListChanged {
     public let add: Bool
     /// Steamworks `m_unAccountId`
     public let accountId: AccountID
+
+    /// Create a customized `FavoritesListChanged`
+    public init(ip: Int = 0, queryPort: Int = 0, connPort: Int = 0, appID: Int = 0, flags: Int = 0, add: Bool = false, accountId: AccountID = 0) {
+        self.ip = ip
+        self.queryPort = queryPort
+        self.connPort = connPort
+        self.appID = appID
+        self.flags = flags
+        self.add = add
+        self.accountId = accountId
+    }
 }
 
 extension FavoritesListChanged: SteamCreatable {
@@ -441,6 +595,14 @@ public struct FileDetailsResult {
     public let fileSHA: [UInt8]
     /// Steamworks `m_unFlags`
     public let flags: Int
+
+    /// Create a customized `FileDetailsResult`
+    public init(result: Result = .none, fileSize: UInt64 = 0, fileSHA: [UInt8] = [], flags: Int = 0) {
+        self.result = result
+        self.fileSize = fileSize
+        self.fileSHA = fileSHA
+        self.flags = flags
+    }
 }
 
 extension FileDetailsResult: SteamCreatable {
@@ -455,6 +617,9 @@ extension FileDetailsResult: SteamCreatable {
 
 /// Steamworks `FloatingGamepadTextInputDismissed_t`
 public struct FloatingGamepadTextInputDismissed {
+    /// Create a customized `FloatingGamepadTextInputDismissed`
+    public init() {
+    }
 }
 
 extension FloatingGamepadTextInputDismissed: SteamCreatable {
@@ -475,6 +640,15 @@ public struct FriendGameInfo {
     public let queryPort: Int
     /// Steamworks `m_steamIDLobby`
     public let lobby: SteamID
+
+    /// Create a customized `FriendGameInfo`
+    public init(id: GameID = GameID(), gameIP: Int = 0, gamePort: Int = 0, queryPort: Int = 0, lobby: SteamID = SteamID()) {
+        self.id = id
+        self.gameIP = gameIP
+        self.gamePort = gamePort
+        self.queryPort = queryPort
+        self.lobby = lobby
+    }
 }
 
 extension FriendGameInfo: SteamCreatable {
@@ -494,6 +668,12 @@ public struct FriendRichPresenceUpdate {
     public let friend: SteamID
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `FriendRichPresenceUpdate`
+    public init(friend: SteamID = SteamID(), appID: AppID = 0) {
+        self.friend = friend
+        self.appID = appID
+    }
 }
 
 extension FriendRichPresenceUpdate: SteamCreatable {
@@ -514,6 +694,14 @@ public struct FriendsEnumerateFollowingList {
     public let resultsReturned: Int
     /// Steamworks `m_nTotalResultCount`
     public let totalResultCount: Int
+
+    /// Create a customized `FriendsEnumerateFollowingList`
+    public init(result: Result = .none, steamID: [SteamID] = [], resultsReturned: Int = 0, totalResultCount: Int = 0) {
+        self.result = result
+        self.steamID = steamID
+        self.resultsReturned = resultsReturned
+        self.totalResultCount = totalResultCount
+    }
 }
 
 extension FriendsEnumerateFollowingList: SteamCreatable {
@@ -534,6 +722,13 @@ public struct FriendsGetFollowerCount {
     public let steamID: SteamID
     /// Steamworks `m_nCount`
     public let count: Int
+
+    /// Create a customized `FriendsGetFollowerCount`
+    public init(result: Result = .none, steamID: SteamID = SteamID(), count: Int = 0) {
+        self.result = result
+        self.steamID = steamID
+        self.count = count
+    }
 }
 
 extension FriendsGetFollowerCount: SteamCreatable {
@@ -553,6 +748,13 @@ public struct FriendsIsFollowing {
     public let steamID: SteamID
     /// Steamworks `m_bIsFollowing`
     public let isFollowing: Bool
+
+    /// Create a customized `FriendsIsFollowing`
+    public init(result: Result = .none, steamID: SteamID = SteamID(), isFollowing: Bool = false) {
+        self.result = result
+        self.steamID = steamID
+        self.isFollowing = isFollowing
+    }
 }
 
 extension FriendsIsFollowing: SteamCreatable {
@@ -572,6 +774,13 @@ public struct GSClientAchievementStatus {
     public let achievement: String
     /// Steamworks `m_bUnlocked`
     public let unlocked: Bool
+
+    /// Create a customized `GSClientAchievementStatus`
+    public init(steamID: SteamID = SteamID(), achievement: String = "", unlocked: Bool = false) {
+        self.steamID = steamID
+        self.achievement = achievement
+        self.unlocked = unlocked
+    }
 }
 
 extension GSClientAchievementStatus: SteamCreatable {
@@ -589,6 +798,12 @@ public struct GSClientApprove {
     public let steamID: SteamID
     /// Steamworks `m_OwnerSteamID`
     public let ownerSteamID: SteamID
+
+    /// Create a customized `GSClientApprove`
+    public init(steamID: SteamID = SteamID(), ownerSteamID: SteamID = SteamID()) {
+        self.steamID = steamID
+        self.ownerSteamID = ownerSteamID
+    }
 }
 
 extension GSClientApprove: SteamCreatable {
@@ -607,6 +822,13 @@ public struct GSClientDeny {
     public let denyReason: DenyReason
     /// Steamworks `m_rgchOptionalText`
     public let optionalText: String
+
+    /// Create a customized `GSClientDeny`
+    public init(steamID: SteamID = SteamID(), denyReason: DenyReason = .invalid, optionalText: String = "") {
+        self.steamID = steamID
+        self.denyReason = denyReason
+        self.optionalText = optionalText
+    }
 }
 
 extension GSClientDeny: SteamCreatable {
@@ -628,6 +850,14 @@ public struct GSClientGroupStatus {
     public let member: Bool
     /// Steamworks `m_bOfficer`
     public let officer: Bool
+
+    /// Create a customized `GSClientGroupStatus`
+    public init(user: SteamID = SteamID(), group: SteamID = SteamID(), member: Bool = false, officer: Bool = false) {
+        self.user = user
+        self.group = group
+        self.member = member
+        self.officer = officer
+    }
 }
 
 extension GSClientGroupStatus: SteamCreatable {
@@ -646,6 +876,12 @@ public struct GSClientKick {
     public let steamID: SteamID
     /// Steamworks `m_eDenyReason`
     public let denyReason: DenyReason
+
+    /// Create a customized `GSClientKick`
+    public init(steamID: SteamID = SteamID(), denyReason: DenyReason = .invalid) {
+        self.steamID = steamID
+        self.denyReason = denyReason
+    }
 }
 
 extension GSClientKick: SteamCreatable {
@@ -666,6 +902,14 @@ public struct GSGameplayStats {
     public let totalConnects: Int
     /// Steamworks `m_unTotalMinutesPlayed`
     public let totalMinutesPlayed: Int
+
+    /// Create a customized `GSGameplayStats`
+    public init(result: Result = .none, rank: Int = 0, totalConnects: Int = 0, totalMinutesPlayed: Int = 0) {
+        self.result = result
+        self.rank = rank
+        self.totalConnects = totalConnects
+        self.totalMinutesPlayed = totalMinutesPlayed
+    }
 }
 
 extension GSGameplayStats: SteamCreatable {
@@ -682,6 +926,11 @@ extension GSGameplayStats: SteamCreatable {
 public struct GSPolicyResponse {
     /// Steamworks `m_bSecure`
     public let secure: Bool
+
+    /// Create a customized `GSPolicyResponse`
+    public init(secure: Bool = false) {
+        self.secure = secure
+    }
 }
 
 extension GSPolicyResponse: SteamCreatable {
@@ -707,6 +956,17 @@ public struct GSReputation {
     public let bannedGameID: GameID
     /// Steamworks `m_unBanExpires`
     public let banExpires: RTime32
+
+    /// Create a customized `GSReputation`
+    public init(result: Result = .none, reputationScore: Int = 0, banned: Bool = false, bannedIP: Int = 0, bannedPort: Int = 0, bannedGameID: GameID = GameID(), banExpires: RTime32 = 0) {
+        self.result = result
+        self.reputationScore = reputationScore
+        self.banned = banned
+        self.bannedIP = bannedIP
+        self.bannedPort = bannedPort
+        self.bannedGameID = bannedGameID
+        self.banExpires = banExpires
+    }
 }
 
 extension GSReputation: SteamCreatable {
@@ -728,6 +988,12 @@ public struct GSStatsReceived {
     public let result: Result
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
+
+    /// Create a customized `GSStatsReceived`
+    public init(result: Result = .none, user: SteamID = SteamID()) {
+        self.result = result
+        self.user = user
+    }
 }
 
 extension GSStatsReceived: SteamCreatable {
@@ -744,6 +1010,12 @@ public struct GSStatsStored {
     public let result: Result
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
+
+    /// Create a customized `GSStatsStored`
+    public init(result: Result = .none, user: SteamID = SteamID()) {
+        self.result = result
+        self.user = user
+    }
 }
 
 extension GSStatsStored: SteamCreatable {
@@ -758,6 +1030,11 @@ extension GSStatsStored: SteamCreatable {
 public struct GSStatsUnloaded {
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
+
+    /// Create a customized `GSStatsUnloaded`
+    public init(user: SteamID = SteamID()) {
+        self.user = user
+    }
 }
 
 extension GSStatsUnloaded: SteamCreatable {
@@ -773,6 +1050,12 @@ public struct GameConnectedChatJoin {
     public let clanChat: SteamID
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
+
+    /// Create a customized `GameConnectedChatJoin`
+    public init(clanChat: SteamID = SteamID(), user: SteamID = SteamID()) {
+        self.clanChat = clanChat
+        self.user = user
+    }
 }
 
 extension GameConnectedChatJoin: SteamCreatable {
@@ -793,6 +1076,14 @@ public struct GameConnectedChatLeave {
     public let kicked: Bool
     /// Steamworks `m_bDropped`
     public let dropped: Bool
+
+    /// Create a customized `GameConnectedChatLeave`
+    public init(clanChat: SteamID = SteamID(), user: SteamID = SteamID(), kicked: Bool = false, dropped: Bool = false) {
+        self.clanChat = clanChat
+        self.user = user
+        self.kicked = kicked
+        self.dropped = dropped
+    }
 }
 
 extension GameConnectedChatLeave: SteamCreatable {
@@ -813,6 +1104,13 @@ public struct GameConnectedClanChatMsg {
     public let user: SteamID
     /// Steamworks `m_iMessageID`
     public let messageIDIndex: Int
+
+    /// Create a customized `GameConnectedClanChatMsg`
+    public init(clanChat: SteamID = SteamID(), user: SteamID = SteamID(), messageIDIndex: Int = 0) {
+        self.clanChat = clanChat
+        self.user = user
+        self.messageIDIndex = messageIDIndex
+    }
 }
 
 extension GameConnectedClanChatMsg: SteamCreatable {
@@ -830,6 +1128,12 @@ public struct GameConnectedFriendChatMsg {
     public let user: SteamID
     /// Steamworks `m_iMessageID`
     public let messageIDIndex: Int
+
+    /// Create a customized `GameConnectedFriendChatMsg`
+    public init(user: SteamID = SteamID(), messageIDIndex: Int = 0) {
+        self.user = user
+        self.messageIDIndex = messageIDIndex
+    }
 }
 
 extension GameConnectedFriendChatMsg: SteamCreatable {
@@ -846,6 +1150,12 @@ public struct GameLobbyJoinRequested {
     public let lobby: SteamID
     /// Steamworks `m_steamIDFriend`
     public let friend: SteamID
+
+    /// Create a customized `GameLobbyJoinRequested`
+    public init(lobby: SteamID = SteamID(), friend: SteamID = SteamID()) {
+        self.lobby = lobby
+        self.friend = friend
+    }
 }
 
 extension GameLobbyJoinRequested: SteamCreatable {
@@ -860,6 +1170,11 @@ extension GameLobbyJoinRequested: SteamCreatable {
 public struct GameOverlayActivated {
     /// Steamworks `m_bActive`
     public let active: Bool
+
+    /// Create a customized `GameOverlayActivated`
+    public init(active: Bool = false) {
+        self.active = active
+    }
 }
 
 extension GameOverlayActivated: SteamCreatable {
@@ -875,6 +1190,12 @@ public struct GameRichPresenceJoinRequested {
     public let friend: SteamID
     /// Steamworks `m_rgchConnect`
     public let connect: String
+
+    /// Create a customized `GameRichPresenceJoinRequested`
+    public init(friend: SteamID = SteamID(), connect: String = "") {
+        self.friend = friend
+        self.connect = connect
+    }
 }
 
 extension GameRichPresenceJoinRequested: SteamCreatable {
@@ -891,6 +1212,12 @@ public struct GameServerChangeRequested {
     public let server: String
     /// Steamworks `m_rgchPassword`
     public let password: String
+
+    /// Create a customized `GameServerChangeRequested`
+    public init(server: String = "", password: String = "") {
+        self.server = server
+        self.password = password
+    }
 }
 
 extension GameServerChangeRequested: SteamCreatable {
@@ -905,6 +1232,11 @@ extension GameServerChangeRequested: SteamCreatable {
 public struct GameWebCallback {
     /// Steamworks `m_szURL`
     public let url: String
+
+    /// Create a customized `GameWebCallback`
+    public init(url: String = "") {
+        self.url = url
+    }
 }
 
 extension GameWebCallback: SteamCreatable {
@@ -920,6 +1252,12 @@ public struct GamepadTextInputDismissed {
     public let submitted: Bool
     /// Steamworks `m_unSubmittedText`
     public let submittedText: Int
+
+    /// Create a customized `GamepadTextInputDismissed`
+    public init(submitted: Bool = false, submittedText: Int = 0) {
+        self.submitted = submitted
+        self.submittedText = submittedText
+    }
 }
 
 extension GamepadTextInputDismissed: SteamCreatable {
@@ -942,6 +1280,15 @@ public struct GetAppDependenciesResult {
     public let numAppDependencies: Int
     /// Steamworks `m_nTotalNumAppDependencies`
     public let totalNumAppDependencies: Int
+
+    /// Create a customized `GetAppDependenciesResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, appIDs: [AppID] = [], numAppDependencies: Int = 0, totalNumAppDependencies: Int = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.appIDs = appIDs
+        self.numAppDependencies = numAppDependencies
+        self.totalNumAppDependencies = totalNumAppDependencies
+    }
 }
 
 extension GetAppDependenciesResult: SteamCreatable {
@@ -961,6 +1308,12 @@ public struct GetAuthSessionTicketResponse {
     public let authTicket: HAuthTicket
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `GetAuthSessionTicketResponse`
+    public init(authTicket: HAuthTicket = 0, result: Result = .none) {
+        self.authTicket = authTicket
+        self.result = result
+    }
 }
 
 extension GetAuthSessionTicketResponse: SteamCreatable {
@@ -977,6 +1330,12 @@ public struct GetOPFSettingsResult {
     public let result: Result
     /// Steamworks `m_unVideoAppID`
     public let videoAppID: AppID
+
+    /// Create a customized `GetOPFSettingsResult`
+    public init(result: Result = .none, videoAppID: AppID = 0) {
+        self.result = result
+        self.videoAppID = videoAppID
+    }
 }
 
 extension GetOPFSettingsResult: SteamCreatable {
@@ -999,6 +1358,15 @@ public struct GetUserItemVoteResult {
     public let votedDown: Bool
     /// Steamworks `m_bVoteSkipped`
     public let voteSkipped: Bool
+
+    /// Create a customized `GetUserItemVoteResult`
+    public init(publishedFileId: PublishedFileID = 0, result: Result = .none, votedUp: Bool = false, votedDown: Bool = false, voteSkipped: Bool = false) {
+        self.publishedFileId = publishedFileId
+        self.result = result
+        self.votedUp = votedUp
+        self.votedDown = votedDown
+        self.voteSkipped = voteSkipped
+    }
 }
 
 extension GetUserItemVoteResult: SteamCreatable {
@@ -1020,6 +1388,13 @@ public struct GetVideoURLResult {
     public let videoAppID: AppID
     /// Steamworks `m_rgchURL`
     public let url: String
+
+    /// Create a customized `GetVideoURLResult`
+    public init(result: Result = .none, videoAppID: AppID = 0, url: String = "") {
+        self.result = result
+        self.videoAppID = videoAppID
+        self.url = url
+    }
 }
 
 extension GetVideoURLResult: SteamCreatable {
@@ -1037,6 +1412,12 @@ public struct GlobalAchievementPercentagesReady {
     public let gameID: GameID
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `GlobalAchievementPercentagesReady`
+    public init(gameID: GameID = GameID(), result: Result = .none) {
+        self.gameID = gameID
+        self.result = result
+    }
 }
 
 extension GlobalAchievementPercentagesReady: SteamCreatable {
@@ -1053,6 +1434,12 @@ public struct GlobalStatsReceived {
     public let gameID: GameID
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `GlobalStatsReceived`
+    public init(gameID: GameID = GameID(), result: Result = .none) {
+        self.gameID = gameID
+        self.result = result
+    }
 }
 
 extension GlobalStatsReceived: SteamCreatable {
@@ -1067,6 +1454,11 @@ extension GlobalStatsReceived: SteamCreatable {
 public struct HTMLBrowserReady {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
+
+    /// Create a customized `HTMLBrowserReady`
+    public init(browserHandle: HHTMLBrowser = 0) {
+        self.browserHandle = browserHandle
+    }
 }
 
 extension HTMLBrowserReady: SteamCreatable {
@@ -1082,6 +1474,12 @@ public struct HTMLBrowserRestarted {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `unOldBrowserHandle`
     public let oldBrowserHandle: HHTMLBrowser
+
+    /// Create a customized `HTMLBrowserRestarted`
+    public init(browserHandle: HHTMLBrowser = 0, oldBrowserHandle: HHTMLBrowser = 0) {
+        self.browserHandle = browserHandle
+        self.oldBrowserHandle = oldBrowserHandle
+    }
 }
 
 extension HTMLBrowserRestarted: SteamCreatable {
@@ -1100,6 +1498,13 @@ public struct HTMLCanGoBackAndForward {
     public let canGoBack: Bool
     /// Steamworks `bCanGoForward`
     public let canGoForward: Bool
+
+    /// Create a customized `HTMLCanGoBackAndForward`
+    public init(browserHandle: HHTMLBrowser = 0, canGoBack: Bool = false, canGoForward: Bool = false) {
+        self.browserHandle = browserHandle
+        self.canGoBack = canGoBack
+        self.canGoForward = canGoForward
+    }
 }
 
 extension HTMLCanGoBackAndForward: SteamCreatable {
@@ -1117,6 +1522,12 @@ public struct HTMLChangedTitle {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchTitle`
     public let title: String
+
+    /// Create a customized `HTMLChangedTitle`
+    public init(browserHandle: HHTMLBrowser = 0, title: String = "") {
+        self.browserHandle = browserHandle
+        self.title = title
+    }
 }
 
 extension HTMLChangedTitle: SteamCreatable {
@@ -1131,6 +1542,11 @@ extension HTMLChangedTitle: SteamCreatable {
 public struct HTMLCloseBrowser {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
+
+    /// Create a customized `HTMLCloseBrowser`
+    public init(browserHandle: HHTMLBrowser = 0) {
+        self.browserHandle = browserHandle
+    }
 }
 
 extension HTMLCloseBrowser: SteamCreatable {
@@ -1148,6 +1564,13 @@ public struct HTMLFileOpenDialog {
     public let title: String
     /// Steamworks `pchInitialFile`
     public let initialFile: String
+
+    /// Create a customized `HTMLFileOpenDialog`
+    public init(browserHandle: HHTMLBrowser = 0, title: String = "", initialFile: String = "") {
+        self.browserHandle = browserHandle
+        self.title = title
+        self.initialFile = initialFile
+    }
 }
 
 extension HTMLFileOpenDialog: SteamCreatable {
@@ -1167,6 +1590,13 @@ public struct HTMLFinishedRequest {
     public let url: String
     /// Steamworks `pchPageTitle`
     public let pageTitle: String
+
+    /// Create a customized `HTMLFinishedRequest`
+    public init(browserHandle: HHTMLBrowser = 0, url: String = "", pageTitle: String = "") {
+        self.browserHandle = browserHandle
+        self.url = url
+        self.pageTitle = pageTitle
+    }
 }
 
 extension HTMLFinishedRequest: SteamCreatable {
@@ -1182,6 +1612,11 @@ extension HTMLFinishedRequest: SteamCreatable {
 public struct HTMLHideToolTip {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
+
+    /// Create a customized `HTMLHideToolTip`
+    public init(browserHandle: HHTMLBrowser = 0) {
+        self.browserHandle = browserHandle
+    }
 }
 
 extension HTMLHideToolTip: SteamCreatable {
@@ -1205,6 +1640,16 @@ public struct HTMLHorizontalScroll {
     public let visible: Bool
     /// Steamworks `unPageSize`
     public let pageSize: Int
+
+    /// Create a customized `HTMLHorizontalScroll`
+    public init(browserHandle: HHTMLBrowser = 0, scrollMax: Int = 0, scrollCurrent: Int = 0, pageScale: Float = 0, visible: Bool = false, pageSize: Int = 0) {
+        self.browserHandle = browserHandle
+        self.scrollMax = scrollMax
+        self.scrollCurrent = scrollCurrent
+        self.pageScale = pageScale
+        self.visible = visible
+        self.pageSize = pageSize
+    }
 }
 
 extension HTMLHorizontalScroll: SteamCreatable {
@@ -1225,6 +1670,12 @@ public struct HTMLJSAlert {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMessage`
     public let message: String
+
+    /// Create a customized `HTMLJSAlert`
+    public init(browserHandle: HHTMLBrowser = 0, message: String = "") {
+        self.browserHandle = browserHandle
+        self.message = message
+    }
 }
 
 extension HTMLJSAlert: SteamCreatable {
@@ -1241,6 +1692,12 @@ public struct HTMLJSConfirm {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMessage`
     public let message: String
+
+    /// Create a customized `HTMLJSConfirm`
+    public init(browserHandle: HHTMLBrowser = 0, message: String = "") {
+        self.browserHandle = browserHandle
+        self.message = message
+    }
 }
 
 extension HTMLJSConfirm: SteamCreatable {
@@ -1265,6 +1722,16 @@ public struct HTMLLinkAtPosition {
     public let input: Bool
     /// Steamworks `bLiveLink`
     public let liveLink: Bool
+
+    /// Create a customized `HTMLLinkAtPosition`
+    public init(browserHandle: HHTMLBrowser = 0, x: Int = 0, y: Int = 0, url: String = "", input: Bool = false, liveLink: Bool = false) {
+        self.browserHandle = browserHandle
+        self.x = x
+        self.y = y
+        self.url = url
+        self.input = input
+        self.liveLink = liveLink
+    }
 }
 
 extension HTMLLinkAtPosition: SteamCreatable {
@@ -1305,6 +1772,22 @@ public struct HTMLNeedsPaint {
     public let pageScale: Float
     /// Steamworks `unPageSerial`
     public let pageSerial: Int
+
+    /// Create a customized `HTMLNeedsPaint`
+    public init(browserHandle: HHTMLBrowser = 0, bgra: UnsafeRawPointer, wide: Int = 0, tall: Int = 0, updateX: Int = 0, updateY: Int = 0, updateWide: Int = 0, updateTall: Int = 0, scrollX: Int = 0, scrollY: Int = 0, pageScale: Float = 0, pageSerial: Int = 0) {
+        self.browserHandle = browserHandle
+        self.bgra = bgra
+        self.wide = wide
+        self.tall = tall
+        self.updateX = updateX
+        self.updateY = updateY
+        self.updateWide = updateWide
+        self.updateTall = updateTall
+        self.scrollX = scrollX
+        self.scrollY = scrollY
+        self.pageScale = pageScale
+        self.pageSerial = pageSerial
+    }
 }
 
 extension HTMLNeedsPaint: SteamCreatable {
@@ -1341,6 +1824,17 @@ public struct HTMLNewWindow {
     public let tall: Int
     /// Steamworks `unNewWindow_BrowserHandle_IGNORE`
     public let newWindowBrowserHandleIGNORE: HHTMLBrowser
+
+    /// Create a customized `HTMLNewWindow`
+    public init(browserHandle: HHTMLBrowser = 0, url: String = "", x: Int = 0, y: Int = 0, wide: Int = 0, tall: Int = 0, newWindowBrowserHandleIGNORE: HHTMLBrowser = 0) {
+        self.browserHandle = browserHandle
+        self.url = url
+        self.x = x
+        self.y = y
+        self.wide = wide
+        self.tall = tall
+        self.newWindowBrowserHandleIGNORE = newWindowBrowserHandleIGNORE
+    }
 }
 
 extension HTMLNewWindow: SteamCreatable {
@@ -1362,6 +1856,12 @@ public struct HTMLOpenLinkInNewTab {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchURL`
     public let url: String
+
+    /// Create a customized `HTMLOpenLinkInNewTab`
+    public init(browserHandle: HHTMLBrowser = 0, url: String = "") {
+        self.browserHandle = browserHandle
+        self.url = url
+    }
 }
 
 extension HTMLOpenLinkInNewTab: SteamCreatable {
@@ -1380,6 +1880,13 @@ public struct HTMLSearchResults {
     public let results: Int
     /// Steamworks `unCurrentMatch`
     public let currentMatch: Int
+
+    /// Create a customized `HTMLSearchResults`
+    public init(browserHandle: HHTMLBrowser = 0, results: Int = 0, currentMatch: Int = 0) {
+        self.browserHandle = browserHandle
+        self.results = results
+        self.currentMatch = currentMatch
+    }
 }
 
 extension HTMLSearchResults: SteamCreatable {
@@ -1397,6 +1904,12 @@ public struct HTMLSetCursor {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `eMouseCursor`
     public let mouseCursor: HTMLMouseCursor
+
+    /// Create a customized `HTMLSetCursor`
+    public init(browserHandle: HHTMLBrowser = 0, mouseCursor: HTMLMouseCursor = .user) {
+        self.browserHandle = browserHandle
+        self.mouseCursor = mouseCursor
+    }
 }
 
 extension HTMLSetCursor: SteamCreatable {
@@ -1413,6 +1926,12 @@ public struct HTMLShowToolTip {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMsg`
     public let msg: String
+
+    /// Create a customized `HTMLShowToolTip`
+    public init(browserHandle: HHTMLBrowser = 0, msg: String = "") {
+        self.browserHandle = browserHandle
+        self.msg = msg
+    }
 }
 
 extension HTMLShowToolTip: SteamCreatable {
@@ -1435,6 +1954,15 @@ public struct HTMLStartRequest {
     public let postData: String
     /// Steamworks `bIsRedirect`
     public let isRedirect: Bool
+
+    /// Create a customized `HTMLStartRequest`
+    public init(browserHandle: HHTMLBrowser = 0, url: String = "", target: String = "", postData: String = "", isRedirect: Bool = false) {
+        self.browserHandle = browserHandle
+        self.url = url
+        self.target = target
+        self.postData = postData
+        self.isRedirect = isRedirect
+    }
 }
 
 extension HTMLStartRequest: SteamCreatable {
@@ -1454,6 +1982,12 @@ public struct HTMLStatusText {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMsg`
     public let msg: String
+
+    /// Create a customized `HTMLStatusText`
+    public init(browserHandle: HHTMLBrowser = 0, msg: String = "") {
+        self.browserHandle = browserHandle
+        self.msg = msg
+    }
 }
 
 extension HTMLStatusText: SteamCreatable {
@@ -1478,6 +2012,16 @@ public struct HTMLURLChanged {
     public let pageTitle: String
     /// Steamworks `bNewNavigation`
     public let newNavigation: Bool
+
+    /// Create a customized `HTMLURLChanged`
+    public init(browserHandle: HHTMLBrowser = 0, url: String = "", postData: String = "", isRedirect: Bool = false, pageTitle: String = "", newNavigation: Bool = false) {
+        self.browserHandle = browserHandle
+        self.url = url
+        self.postData = postData
+        self.isRedirect = isRedirect
+        self.pageTitle = pageTitle
+        self.newNavigation = newNavigation
+    }
 }
 
 extension HTMLURLChanged: SteamCreatable {
@@ -1498,6 +2042,12 @@ public struct HTMLUpdateToolTip {
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMsg`
     public let msg: String
+
+    /// Create a customized `HTMLUpdateToolTip`
+    public init(browserHandle: HHTMLBrowser = 0, msg: String = "") {
+        self.browserHandle = browserHandle
+        self.msg = msg
+    }
 }
 
 extension HTMLUpdateToolTip: SteamCreatable {
@@ -1522,6 +2072,16 @@ public struct HTMLVerticalScroll {
     public let visible: Bool
     /// Steamworks `unPageSize`
     public let pageSize: Int
+
+    /// Create a customized `HTMLVerticalScroll`
+    public init(browserHandle: HHTMLBrowser = 0, scrollMax: Int = 0, scrollCurrent: Int = 0, pageScale: Float = 0, visible: Bool = false, pageSize: Int = 0) {
+        self.browserHandle = browserHandle
+        self.scrollMax = scrollMax
+        self.scrollCurrent = scrollCurrent
+        self.pageScale = pageScale
+        self.visible = visible
+        self.pageSize = pageSize
+    }
 }
 
 extension HTMLVerticalScroll: SteamCreatable {
@@ -1548,6 +2108,15 @@ public struct HTTPRequestCompleted {
     public let statusCode: HTTPStatusCode
     /// Steamworks `m_unBodySize`
     public let bodySize: Int
+
+    /// Create a customized `HTTPRequestCompleted`
+    public init(request: HTTPRequestHandle = 0, contextValue: UInt64 = 0, requestSuccessful: Bool = false, statusCode: HTTPStatusCode = .invalid, bodySize: Int = 0) {
+        self.request = request
+        self.contextValue = contextValue
+        self.requestSuccessful = requestSuccessful
+        self.statusCode = statusCode
+        self.bodySize = bodySize
+    }
 }
 
 extension HTTPRequestCompleted: SteamCreatable {
@@ -1571,6 +2140,14 @@ public struct HTTPRequestDataReceived {
     public let offset: Int
     /// Steamworks `m_cBytesReceived`
     public let bytesReceived: Int
+
+    /// Create a customized `HTTPRequestDataReceived`
+    public init(request: HTTPRequestHandle = 0, contextValue: UInt64 = 0, offset: Int = 0, bytesReceived: Int = 0) {
+        self.request = request
+        self.contextValue = contextValue
+        self.offset = offset
+        self.bytesReceived = bytesReceived
+    }
 }
 
 extension HTTPRequestDataReceived: SteamCreatable {
@@ -1589,6 +2166,12 @@ public struct HTTPRequestHeadersReceived {
     public let request: HTTPRequestHandle
     /// Steamworks `m_ulContextValue`
     public let contextValue: UInt64
+
+    /// Create a customized `HTTPRequestHeadersReceived`
+    public init(request: HTTPRequestHandle = 0, contextValue: UInt64 = 0) {
+        self.request = request
+        self.contextValue = contextValue
+    }
 }
 
 extension HTTPRequestHeadersReceived: SteamCreatable {
@@ -1603,6 +2186,11 @@ extension HTTPRequestHeadersReceived: SteamCreatable {
 public struct IPCFailure {
     /// Steamworks `m_eFailureType`
     public let failureType: IPCFailureType
+
+    /// Create a customized `IPCFailure`
+    public init(failureType: IPCFailureType = .flushedCallbackQueue) {
+        self.failureType = failureType
+    }
 }
 
 extension IPCFailure: SteamCreatable {
@@ -1614,6 +2202,9 @@ extension IPCFailure: SteamCreatable {
 
 /// Steamworks `IPCountry_t`
 public struct IPCountry {
+    /// Create a customized `IPCountry`
+    public init() {
+    }
 }
 
 extension IPCountry: SteamCreatable {
@@ -1632,6 +2223,14 @@ public struct InputAnalogActionData {
     public let y: Float
     /// Steamworks `bActive`
     public let active: Bool
+
+    /// Create a customized `InputAnalogActionData`
+    public init(mode: InputSourceMode = .none, x: Float = 0, y: Float = 0, active: Bool = false) {
+        self.mode = mode
+        self.x = x
+        self.y = y
+        self.active = active
+    }
 }
 
 extension InputAnalogActionData: SteamCreatable {
@@ -1650,6 +2249,12 @@ public struct InputDigitalActionData {
     public let state: Bool
     /// Steamworks `bActive`
     public let active: Bool
+
+    /// Create a customized `InputDigitalActionData`
+    public init(state: Bool = false, active: Bool = false) {
+        self.state = state
+        self.active = active
+    }
 }
 
 extension InputDigitalActionData: SteamCreatable {
@@ -1682,6 +2287,20 @@ public struct InputMotionData {
     public let velY: Float
     /// Steamworks `rotVelZ`
     public let velZ: Float
+
+    /// Create a customized `InputMotionData`
+    public init(quatX: Float = 0, quatY: Float = 0, quatZ: Float = 0, quatW: Float = 0, accelX: Float = 0, accelY: Float = 0, accelZ: Float = 0, velX: Float = 0, velY: Float = 0, velZ: Float = 0) {
+        self.quatX = quatX
+        self.quatY = quatY
+        self.quatZ = quatZ
+        self.quatW = quatW
+        self.accelX = accelX
+        self.accelY = accelY
+        self.accelZ = accelZ
+        self.velX = velX
+        self.velY = velY
+        self.velZ = velZ
+    }
 }
 
 extension InputMotionData: SteamCreatable {
@@ -1706,6 +2325,12 @@ public struct ItemInstalled {
     public let appID: AppID
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
+
+    /// Create a customized `ItemInstalled`
+    public init(appID: AppID = 0, publishedFileId: PublishedFileID = 0) {
+        self.appID = appID
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension ItemInstalled: SteamCreatable {
@@ -1722,6 +2347,12 @@ public struct JoinClanChatRoomCompletionResult {
     public let clanChat: SteamID
     /// Steamworks `m_eChatRoomEnterResponse`
     public let chatRoomEnterResponse: ChatRoomEnterResponse
+
+    /// Create a customized `JoinClanChatRoomCompletionResult`
+    public init(clanChat: SteamID = SteamID(), chatRoomEnterResponse: ChatRoomEnterResponse = .success) {
+        self.clanChat = clanChat
+        self.chatRoomEnterResponse = chatRoomEnterResponse
+    }
 }
 
 extension JoinClanChatRoomCompletionResult: SteamCreatable {
@@ -1742,6 +2373,14 @@ public struct JoinPartyCallback {
     public let beaconOwner: SteamID
     /// Steamworks `m_rgchConnectString`
     public let connectString: String
+
+    /// Create a customized `JoinPartyCallback`
+    public init(result: Result = .none, beaconID: PartyBeaconID = 0, beaconOwner: SteamID = SteamID(), connectString: String = "") {
+        self.result = result
+        self.beaconID = beaconID
+        self.beaconOwner = beaconOwner
+        self.connectString = connectString
+    }
 }
 
 extension JoinPartyCallback: SteamCreatable {
@@ -1766,6 +2405,15 @@ public struct LeaderboardEntry {
     public let details: Int
     /// Steamworks `m_hUGC`
     public let ugc: UGCHandle
+
+    /// Create a customized `LeaderboardEntry`
+    public init(user: SteamID = SteamID(), globalRank: Int = 0, score: Int = 0, details: Int = 0, ugc: UGCHandle = 0) {
+        self.user = user
+        self.globalRank = globalRank
+        self.score = score
+        self.details = details
+        self.ugc = ugc
+    }
 }
 
 extension LeaderboardEntry: SteamCreatable {
@@ -1785,6 +2433,12 @@ public struct LeaderboardFindResult {
     public let steamLeaderboard: SteamLeaderboard
     /// Steamworks `m_bLeaderboardFound`
     public let leaderboardFound: Bool
+
+    /// Create a customized `LeaderboardFindResult`
+    public init(steamLeaderboard: SteamLeaderboard = 0, leaderboardFound: Bool = false) {
+        self.steamLeaderboard = steamLeaderboard
+        self.leaderboardFound = leaderboardFound
+    }
 }
 
 extension LeaderboardFindResult: SteamCreatable {
@@ -1809,6 +2463,16 @@ public struct LeaderboardScoreUploaded {
     public let globalRankNew: Int
     /// Steamworks `m_nGlobalRankPrevious`
     public let globalRankPrevious: Int
+
+    /// Create a customized `LeaderboardScoreUploaded`
+    public init(success: Bool = false, steamLeaderboard: SteamLeaderboard = 0, score: Int = 0, scoreChanged: Bool = false, globalRankNew: Int = 0, globalRankPrevious: Int = 0) {
+        self.success = success
+        self.steamLeaderboard = steamLeaderboard
+        self.score = score
+        self.scoreChanged = scoreChanged
+        self.globalRankNew = globalRankNew
+        self.globalRankPrevious = globalRankPrevious
+    }
 }
 
 extension LeaderboardScoreUploaded: SteamCreatable {
@@ -1831,6 +2495,13 @@ public struct LeaderboardScoresDownloaded {
     public let steamLeaderboardEntries: SteamLeaderboardEntries
     /// Steamworks `m_cEntryCount`
     public let entryCount: Int
+
+    /// Create a customized `LeaderboardScoresDownloaded`
+    public init(steamLeaderboard: SteamLeaderboard = 0, steamLeaderboardEntries: SteamLeaderboardEntries = 0, entryCount: Int = 0) {
+        self.steamLeaderboard = steamLeaderboard
+        self.steamLeaderboardEntries = steamLeaderboardEntries
+        self.entryCount = entryCount
+    }
 }
 
 extension LeaderboardScoresDownloaded: SteamCreatable {
@@ -1848,6 +2519,12 @@ public struct LeaderboardUGCSet {
     public let result: Result
     /// Steamworks `m_hSteamLeaderboard`
     public let steamLeaderboard: SteamLeaderboard
+
+    /// Create a customized `LeaderboardUGCSet`
+    public init(result: Result = .none, steamLeaderboard: SteamLeaderboard = 0) {
+        self.result = result
+        self.steamLeaderboard = steamLeaderboard
+    }
 }
 
 extension LeaderboardUGCSet: SteamCreatable {
@@ -1860,6 +2537,9 @@ extension LeaderboardUGCSet: SteamCreatable {
 
 /// Steamworks `LicensesUpdated_t`
 public struct LicensesUpdated {
+    /// Create a customized `LicensesUpdated`
+    public init() {
+    }
 }
 
 extension LicensesUpdated: SteamCreatable {
@@ -1878,6 +2558,14 @@ public struct LobbyChatMsg {
     public let chatEntryType: Int
     /// Steamworks `m_iChatID`
     public let chatIDIndex: Int
+
+    /// Create a customized `LobbyChatMsg`
+    public init(steamIDLobby: SteamID = SteamID(), steamIDUser: SteamID = SteamID(), chatEntryType: Int = 0, chatIDIndex: Int = 0) {
+        self.steamIDLobby = steamIDLobby
+        self.steamIDUser = steamIDUser
+        self.chatEntryType = chatEntryType
+        self.chatIDIndex = chatIDIndex
+    }
 }
 
 extension LobbyChatMsg: SteamCreatable {
@@ -1900,6 +2588,14 @@ public struct LobbyChatUpdate {
     public let steamIDMakingChange: SteamID
     /// Steamworks `m_rgfChatMemberStateChange`
     public let chatMemberStateChange: Int
+
+    /// Create a customized `LobbyChatUpdate`
+    public init(steamIDLobby: SteamID = SteamID(), steamIDUserChanged: SteamID = SteamID(), steamIDMakingChange: SteamID = SteamID(), chatMemberStateChange: Int = 0) {
+        self.steamIDLobby = steamIDLobby
+        self.steamIDUserChanged = steamIDUserChanged
+        self.steamIDMakingChange = steamIDMakingChange
+        self.chatMemberStateChange = chatMemberStateChange
+    }
 }
 
 extension LobbyChatUpdate: SteamCreatable {
@@ -1918,6 +2614,12 @@ public struct LobbyCreated {
     public let result: Result
     /// Steamworks `m_ulSteamIDLobby`
     public let steamIDLobby: SteamID
+
+    /// Create a customized `LobbyCreated`
+    public init(result: Result = .none, steamIDLobby: SteamID = SteamID()) {
+        self.result = result
+        self.steamIDLobby = steamIDLobby
+    }
 }
 
 extension LobbyCreated: SteamCreatable {
@@ -1936,6 +2638,13 @@ public struct LobbyDataUpdate {
     public let steamIDMember: SteamID
     /// Steamworks `m_bSuccess`
     public let success: Bool
+
+    /// Create a customized `LobbyDataUpdate`
+    public init(steamIDLobby: SteamID = SteamID(), steamIDMember: SteamID = SteamID(), success: Bool = false) {
+        self.steamIDLobby = steamIDLobby
+        self.steamIDMember = steamIDMember
+        self.success = success
+    }
 }
 
 extension LobbyDataUpdate: SteamCreatable {
@@ -1957,6 +2666,14 @@ public struct LobbyEnter {
     public let locked: Bool
     /// Steamworks `m_EChatRoomEnterResponse`
     public let eChatRoomEnterResponse: Int
+
+    /// Create a customized `LobbyEnter`
+    public init(steamIDLobby: SteamID = SteamID(), chatPermissions: Int = 0, locked: Bool = false, eChatRoomEnterResponse: Int = 0) {
+        self.steamIDLobby = steamIDLobby
+        self.chatPermissions = chatPermissions
+        self.locked = locked
+        self.eChatRoomEnterResponse = eChatRoomEnterResponse
+    }
 }
 
 extension LobbyEnter: SteamCreatable {
@@ -1979,6 +2696,14 @@ public struct LobbyGameCreated {
     public let ip: Int
     /// Steamworks `m_usPort`
     public let port: Int
+
+    /// Create a customized `LobbyGameCreated`
+    public init(steamIDLobby: SteamID = SteamID(), steamIDGameServer: SteamID = SteamID(), ip: Int = 0, port: Int = 0) {
+        self.steamIDLobby = steamIDLobby
+        self.steamIDGameServer = steamIDGameServer
+        self.ip = ip
+        self.port = port
+    }
 }
 
 extension LobbyGameCreated: SteamCreatable {
@@ -1999,6 +2724,13 @@ public struct LobbyInvite {
     public let steamIDLobby: SteamID
     /// Steamworks `m_ulGameID`
     public let gameID: GameID
+
+    /// Create a customized `LobbyInvite`
+    public init(steamIDUser: SteamID = SteamID(), steamIDLobby: SteamID = SteamID(), gameID: GameID = GameID()) {
+        self.steamIDUser = steamIDUser
+        self.steamIDLobby = steamIDLobby
+        self.gameID = gameID
+    }
 }
 
 extension LobbyInvite: SteamCreatable {
@@ -2018,6 +2750,13 @@ public struct LobbyKicked {
     public let steamIDAdmin: SteamID
     /// Steamworks `m_bKickedDueToDisconnect`
     public let kickedDueToDisconnect: Bool
+
+    /// Create a customized `LobbyKicked`
+    public init(steamIDLobby: SteamID = SteamID(), steamIDAdmin: SteamID = SteamID(), kickedDueToDisconnect: Bool = false) {
+        self.steamIDLobby = steamIDLobby
+        self.steamIDAdmin = steamIDAdmin
+        self.kickedDueToDisconnect = kickedDueToDisconnect
+    }
 }
 
 extension LobbyKicked: SteamCreatable {
@@ -2033,6 +2772,11 @@ extension LobbyKicked: SteamCreatable {
 public struct LobbyMatchList {
     /// Steamworks `m_nLobbiesMatching`
     public let lobbiesMatching: Int
+
+    /// Create a customized `LobbyMatchList`
+    public init(lobbiesMatching: Int = 0) {
+        self.lobbiesMatching = lobbiesMatching
+    }
 }
 
 extension LobbyMatchList: SteamCreatable {
@@ -2046,6 +2790,11 @@ extension LobbyMatchList: SteamCreatable {
 public struct LowBatteryPower {
     /// Steamworks `m_nMinutesBatteryLeft`
     public let minutesBatteryLeft: Int
+
+    /// Create a customized `LowBatteryPower`
+    public init(minutesBatteryLeft: Int = 0) {
+        self.minutesBatteryLeft = minutesBatteryLeft
+    }
 }
 
 extension LowBatteryPower: SteamCreatable {
@@ -2067,6 +2816,15 @@ public struct MarketEligibilityResponse {
     public let steamGuardRequiredDays: Int
     /// Steamworks `m_cdayNewDeviceCooldown`
     public let newDeviceCooldown: Int
+
+    /// Create a customized `MarketEligibilityResponse`
+    public init(allowed: Bool = false, notAllowedReason: MarketNotAllowedReasonFlags = [], allowedAtTime: RTime32 = 0, steamGuardRequiredDays: Int = 0, newDeviceCooldown: Int = 0) {
+        self.allowed = allowed
+        self.notAllowedReason = notAllowedReason
+        self.allowedAtTime = allowedAtTime
+        self.steamGuardRequiredDays = steamGuardRequiredDays
+        self.newDeviceCooldown = newDeviceCooldown
+    }
 }
 
 extension MarketEligibilityResponse: SteamCreatable {
@@ -2086,6 +2844,12 @@ public struct MatchMakingKeyValuePair {
     public let key: String
     /// Steamworks `m_szValue`
     public let value: String
+
+    /// Create a customized `MatchMakingKeyValuePair`
+    public init(key: String = "", value: String = "") {
+        self.key = key
+        self.value = value
+    }
 }
 
 extension MatchMakingKeyValuePair: SteamCreatable {
@@ -2104,6 +2868,13 @@ public struct MicroTxnAuthorizationResponse {
     public let orderID: UInt64
     /// Steamworks `m_bAuthorized`
     public let authorized: Bool
+
+    /// Create a customized `MicroTxnAuthorizationResponse`
+    public init(appID: AppID = 0, orderID: UInt64 = 0, authorized: Bool = false) {
+        self.appID = appID
+        self.orderID = orderID
+        self.authorized = authorized
+    }
 }
 
 extension MicroTxnAuthorizationResponse: SteamCreatable {
@@ -2117,6 +2888,9 @@ extension MicroTxnAuthorizationResponse: SteamCreatable {
 
 /// Steamworks `MusicPlayerRemoteToFront_t`
 public struct MusicPlayerRemoteToFront {
+    /// Create a customized `MusicPlayerRemoteToFront`
+    public init() {
+    }
 }
 
 extension MusicPlayerRemoteToFront: SteamCreatable {
@@ -2127,6 +2901,9 @@ extension MusicPlayerRemoteToFront: SteamCreatable {
 
 /// Steamworks `MusicPlayerRemoteWillActivate_t`
 public struct MusicPlayerRemoteWillActivate {
+    /// Create a customized `MusicPlayerRemoteWillActivate`
+    public init() {
+    }
 }
 
 extension MusicPlayerRemoteWillActivate: SteamCreatable {
@@ -2137,6 +2914,9 @@ extension MusicPlayerRemoteWillActivate: SteamCreatable {
 
 /// Steamworks `MusicPlayerRemoteWillDeactivate_t`
 public struct MusicPlayerRemoteWillDeactivate {
+    /// Create a customized `MusicPlayerRemoteWillDeactivate`
+    public init() {
+    }
 }
 
 extension MusicPlayerRemoteWillDeactivate: SteamCreatable {
@@ -2149,6 +2929,11 @@ extension MusicPlayerRemoteWillDeactivate: SteamCreatable {
 public struct MusicPlayerSelectsPlaylistEntry {
     /// Steamworks `nID`
     public let id: Int
+
+    /// Create a customized `MusicPlayerSelectsPlaylistEntry`
+    public init(id: Int = 0) {
+        self.id = id
+    }
 }
 
 extension MusicPlayerSelectsPlaylistEntry: SteamCreatable {
@@ -2162,6 +2947,11 @@ extension MusicPlayerSelectsPlaylistEntry: SteamCreatable {
 public struct MusicPlayerSelectsQueueEntry {
     /// Steamworks `nID`
     public let id: Int
+
+    /// Create a customized `MusicPlayerSelectsQueueEntry`
+    public init(id: Int = 0) {
+        self.id = id
+    }
 }
 
 extension MusicPlayerSelectsQueueEntry: SteamCreatable {
@@ -2175,6 +2965,11 @@ extension MusicPlayerSelectsQueueEntry: SteamCreatable {
 public struct MusicPlayerWantsLooped {
     /// Steamworks `m_bLooped`
     public let looped: Bool
+
+    /// Create a customized `MusicPlayerWantsLooped`
+    public init(looped: Bool = false) {
+        self.looped = looped
+    }
 }
 
 extension MusicPlayerWantsLooped: SteamCreatable {
@@ -2186,6 +2981,9 @@ extension MusicPlayerWantsLooped: SteamCreatable {
 
 /// Steamworks `MusicPlayerWantsPause_t`
 public struct MusicPlayerWantsPause {
+    /// Create a customized `MusicPlayerWantsPause`
+    public init() {
+    }
 }
 
 extension MusicPlayerWantsPause: SteamCreatable {
@@ -2196,6 +2994,9 @@ extension MusicPlayerWantsPause: SteamCreatable {
 
 /// Steamworks `MusicPlayerWantsPlayNext_t`
 public struct MusicPlayerWantsPlayNext {
+    /// Create a customized `MusicPlayerWantsPlayNext`
+    public init() {
+    }
 }
 
 extension MusicPlayerWantsPlayNext: SteamCreatable {
@@ -2206,6 +3007,9 @@ extension MusicPlayerWantsPlayNext: SteamCreatable {
 
 /// Steamworks `MusicPlayerWantsPlayPrevious_t`
 public struct MusicPlayerWantsPlayPrevious {
+    /// Create a customized `MusicPlayerWantsPlayPrevious`
+    public init() {
+    }
 }
 
 extension MusicPlayerWantsPlayPrevious: SteamCreatable {
@@ -2216,6 +3020,9 @@ extension MusicPlayerWantsPlayPrevious: SteamCreatable {
 
 /// Steamworks `MusicPlayerWantsPlay_t`
 public struct MusicPlayerWantsPlay {
+    /// Create a customized `MusicPlayerWantsPlay`
+    public init() {
+    }
 }
 
 extension MusicPlayerWantsPlay: SteamCreatable {
@@ -2228,6 +3035,11 @@ extension MusicPlayerWantsPlay: SteamCreatable {
 public struct MusicPlayerWantsPlayingRepeatStatus {
     /// Steamworks `m_nPlayingRepeatStatus`
     public let playingRepeatStatus: Int
+
+    /// Create a customized `MusicPlayerWantsPlayingRepeatStatus`
+    public init(playingRepeatStatus: Int = 0) {
+        self.playingRepeatStatus = playingRepeatStatus
+    }
 }
 
 extension MusicPlayerWantsPlayingRepeatStatus: SteamCreatable {
@@ -2241,6 +3053,11 @@ extension MusicPlayerWantsPlayingRepeatStatus: SteamCreatable {
 public struct MusicPlayerWantsShuffled {
     /// Steamworks `m_bShuffled`
     public let shuffled: Bool
+
+    /// Create a customized `MusicPlayerWantsShuffled`
+    public init(shuffled: Bool = false) {
+        self.shuffled = shuffled
+    }
 }
 
 extension MusicPlayerWantsShuffled: SteamCreatable {
@@ -2254,6 +3071,11 @@ extension MusicPlayerWantsShuffled: SteamCreatable {
 public struct MusicPlayerWantsVolume {
     /// Steamworks `m_flNewVolume`
     public let newVolume: Float
+
+    /// Create a customized `MusicPlayerWantsVolume`
+    public init(newVolume: Float = 0) {
+        self.newVolume = newVolume
+    }
 }
 
 extension MusicPlayerWantsVolume: SteamCreatable {
@@ -2265,6 +3087,9 @@ extension MusicPlayerWantsVolume: SteamCreatable {
 
 /// Steamworks `MusicPlayerWillQuit_t`
 public struct MusicPlayerWillQuit {
+    /// Create a customized `MusicPlayerWillQuit`
+    public init() {
+    }
 }
 
 extension MusicPlayerWillQuit: SteamCreatable {
@@ -2275,6 +3100,9 @@ extension MusicPlayerWillQuit: SteamCreatable {
 
 /// Steamworks `NewUrlLaunchParameters_t`
 public struct NewUrlLaunchParameters {
+    /// Create a customized `NewUrlLaunchParameters`
+    public init() {
+    }
 }
 
 extension NewUrlLaunchParameters: SteamCreatable {
@@ -2289,6 +3117,12 @@ public struct NumberOfCurrentPlayers {
     public let success: Bool
     /// Steamworks `m_cPlayers`
     public let players: Int
+
+    /// Create a customized `NumberOfCurrentPlayers`
+    public init(success: Bool = false, players: Int = 0) {
+        self.success = success
+        self.players = players
+    }
 }
 
 extension NumberOfCurrentPlayers: SteamCreatable {
@@ -2303,6 +3137,11 @@ extension NumberOfCurrentPlayers: SteamCreatable {
 public struct OverlayBrowserProtocolNavigation {
     /// Steamworks `rgchURI`
     public let uri: String
+
+    /// Create a customized `OverlayBrowserProtocolNavigation`
+    public init(uri: String = "") {
+        self.uri = uri
+    }
 }
 
 extension OverlayBrowserProtocolNavigation: SteamCreatable {
@@ -2318,6 +3157,12 @@ public struct P2PSessionConnectFail {
     public let remote: SteamID
     /// Steamworks `m_eP2PSessionError`
     public let p2PSessionError: Int
+
+    /// Create a customized `P2PSessionConnectFail`
+    public init(remote: SteamID = SteamID(), p2PSessionError: Int = 0) {
+        self.remote = remote
+        self.p2PSessionError = p2PSessionError
+    }
 }
 
 extension P2PSessionConnectFail: SteamCreatable {
@@ -2332,6 +3177,11 @@ extension P2PSessionConnectFail: SteamCreatable {
 public struct P2PSessionRequest {
     /// Steamworks `m_steamIDRemote`
     public let remote: SteamID
+
+    /// Create a customized `P2PSessionRequest`
+    public init(remote: SteamID = SteamID()) {
+        self.remote = remote
+    }
 }
 
 extension P2PSessionRequest: SteamCreatable {
@@ -2359,6 +3209,18 @@ public struct P2PSessionState {
     public let remoteIP: Int
     /// Steamworks `m_nRemotePort`
     public let remotePort: Int
+
+    /// Create a customized `P2PSessionState`
+    public init(connectionActive: Bool = false, connecting: Bool = false, p2PSessionError: Int = 0, usingRelay: Bool = false, bytesQueuedForSend: Int = 0, packetsQueuedForSend: Int = 0, remoteIP: Int = 0, remotePort: Int = 0) {
+        self.connectionActive = connectionActive
+        self.connecting = connecting
+        self.p2PSessionError = p2PSessionError
+        self.usingRelay = usingRelay
+        self.bytesQueuedForSend = bytesQueuedForSend
+        self.packetsQueuedForSend = packetsQueuedForSend
+        self.remoteIP = remoteIP
+        self.remotePort = remotePort
+    }
 }
 
 extension P2PSessionState: SteamCreatable {
@@ -2383,6 +3245,13 @@ public struct PS3TrophiesInstalled {
     public let result: Result
     /// Steamworks `m_ulRequiredDiskSpace`
     public let requiredDiskSpace: UInt64
+
+    /// Create a customized `PS3TrophiesInstalled`
+    public init(gameID: GameID = GameID(), result: Result = .none, requiredDiskSpace: UInt64 = 0) {
+        self.gameID = gameID
+        self.result = result
+        self.requiredDiskSpace = requiredDiskSpace
+    }
 }
 
 extension PS3TrophiesInstalled: SteamCreatable {
@@ -2400,6 +3269,12 @@ public struct PSNGameBootInviteResult {
     public let gameBootInviteExists: Bool
     /// Steamworks `m_steamIDLobby`
     public let lobby: SteamID
+
+    /// Create a customized `PSNGameBootInviteResult`
+    public init(gameBootInviteExists: Bool = false, lobby: SteamID = SteamID()) {
+        self.gameBootInviteExists = gameBootInviteExists
+        self.lobby = lobby
+    }
 }
 
 extension PSNGameBootInviteResult: SteamCreatable {
@@ -2416,6 +3291,12 @@ public struct PersonaStateChange {
     public let steamID: SteamID
     /// Steamworks `m_nChangeFlags`
     public let changeFlags: PersonaChange
+
+    /// Create a customized `PersonaStateChange`
+    public init(steamID: SteamID = SteamID(), changeFlags: PersonaChange = []) {
+        self.steamID = steamID
+        self.changeFlags = changeFlags
+    }
 }
 
 extension PersonaStateChange: SteamCreatable {
@@ -2428,6 +3309,9 @@ extension PersonaStateChange: SteamCreatable {
 
 /// Steamworks `PlaybackStatusHasChanged_t`
 public struct PlaybackStatusHasChanged {
+    /// Create a customized `PlaybackStatusHasChanged`
+    public init() {
+    }
 }
 
 extension PlaybackStatusHasChanged: SteamCreatable {
@@ -2442,6 +3326,12 @@ public struct RegisterActivationCodeResponse {
     public let result: RegisterActivationCodeResult
     /// Steamworks `m_unPackageRegistered`
     public let packageRegistered: Int
+
+    /// Create a customized `RegisterActivationCodeResponse`
+    public init(result: RegisterActivationCodeResult = .ok, packageRegistered: Int = 0) {
+        self.result = result
+        self.packageRegistered = packageRegistered
+    }
 }
 
 extension RegisterActivationCodeResponse: SteamCreatable {
@@ -2458,6 +3348,12 @@ public struct RemoteStorageDeletePublishedFileResult {
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
+
+    /// Create a customized `RemoteStorageDeletePublishedFileResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension RemoteStorageDeletePublishedFileResult: SteamCreatable {
@@ -2482,6 +3378,16 @@ public struct RemoteStorageDownloadUGCResult {
     public let fileName: String
     /// Steamworks `m_ulSteamIDOwner`
     public let steamIDOwner: SteamID
+
+    /// Create a customized `RemoteStorageDownloadUGCResult`
+    public init(result: Result = .none, file: UGCHandle = 0, appID: AppID = 0, sizeInBytes: Int = 0, fileName: String = "", steamIDOwner: SteamID = SteamID()) {
+        self.result = result
+        self.file = file
+        self.appID = appID
+        self.sizeInBytes = sizeInBytes
+        self.fileName = fileName
+        self.steamIDOwner = steamIDOwner
+    }
 }
 
 extension RemoteStorageDownloadUGCResult: SteamCreatable {
@@ -2510,6 +3416,16 @@ public struct RemoteStorageEnumeratePublishedFilesByUserActionResult {
     public let publishedFileId: [PublishedFileID]
     /// Steamworks `m_rgRTimeUpdated`
     public let rTimeUpdated: [RTime32]
+
+    /// Create a customized `RemoteStorageEnumeratePublishedFilesByUserActionResult`
+    public init(result: Result = .none, action: WorkshopFileAction = .played, resultsReturned: Int = 0, totalResultCount: Int = 0, publishedFileId: [PublishedFileID] = [], rTimeUpdated: [RTime32] = []) {
+        self.result = result
+        self.action = action
+        self.resultsReturned = resultsReturned
+        self.totalResultCount = totalResultCount
+        self.publishedFileId = publishedFileId
+        self.rTimeUpdated = rTimeUpdated
+    }
 }
 
 extension RemoteStorageEnumeratePublishedFilesByUserActionResult: SteamCreatable {
@@ -2534,6 +3450,14 @@ public struct RemoteStorageEnumerateUserPublishedFilesResult {
     public let totalResultCount: Int
     /// Steamworks `m_rgPublishedFileId`
     public let publishedFileId: [PublishedFileID]
+
+    /// Create a customized `RemoteStorageEnumerateUserPublishedFilesResult`
+    public init(result: Result = .none, resultsReturned: Int = 0, totalResultCount: Int = 0, publishedFileId: [PublishedFileID] = []) {
+        self.result = result
+        self.resultsReturned = resultsReturned
+        self.totalResultCount = totalResultCount
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension RemoteStorageEnumerateUserPublishedFilesResult: SteamCreatable {
@@ -2556,6 +3480,14 @@ public struct RemoteStorageEnumerateUserSharedWorkshopFilesResult {
     public let totalResultCount: Int
     /// Steamworks `m_rgPublishedFileId`
     public let publishedFileId: [PublishedFileID]
+
+    /// Create a customized `RemoteStorageEnumerateUserSharedWorkshopFilesResult`
+    public init(result: Result = .none, resultsReturned: Int = 0, totalResultCount: Int = 0, publishedFileId: [PublishedFileID] = []) {
+        self.result = result
+        self.resultsReturned = resultsReturned
+        self.totalResultCount = totalResultCount
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension RemoteStorageEnumerateUserSharedWorkshopFilesResult: SteamCreatable {
@@ -2580,6 +3512,15 @@ public struct RemoteStorageEnumerateUserSubscribedFilesResult {
     public let publishedFileId: [PublishedFileID]
     /// Steamworks `m_rgRTimeSubscribed`
     public let rTimeSubscribed: [RTime32]
+
+    /// Create a customized `RemoteStorageEnumerateUserSubscribedFilesResult`
+    public init(result: Result = .none, resultsReturned: Int = 0, totalResultCount: Int = 0, publishedFileId: [PublishedFileID] = [], rTimeSubscribed: [RTime32] = []) {
+        self.result = result
+        self.resultsReturned = resultsReturned
+        self.totalResultCount = totalResultCount
+        self.publishedFileId = publishedFileId
+        self.rTimeSubscribed = rTimeSubscribed
+    }
 }
 
 extension RemoteStorageEnumerateUserSubscribedFilesResult: SteamCreatable {
@@ -2609,6 +3550,17 @@ public struct RemoteStorageEnumerateWorkshopFilesResult {
     public let appId: AppID
     /// Steamworks `m_unStartIndex`
     public let startIndex: Int
+
+    /// Create a customized `RemoteStorageEnumerateWorkshopFilesResult`
+    public init(result: Result = .none, resultsReturned: Int = 0, totalResultCount: Int = 0, publishedFileId: [PublishedFileID] = [], score: [Float] = [], appId: AppID = 0, startIndex: Int = 0) {
+        self.result = result
+        self.resultsReturned = resultsReturned
+        self.totalResultCount = totalResultCount
+        self.publishedFileId = publishedFileId
+        self.score = score
+        self.appId = appId
+        self.startIndex = startIndex
+    }
 }
 
 extension RemoteStorageEnumerateWorkshopFilesResult: SteamCreatable {
@@ -2634,6 +3586,14 @@ public struct RemoteStorageFileReadAsyncComplete {
     public let offset: Int
     /// Steamworks `m_cubRead`
     public let readSize: Int
+
+    /// Create a customized `RemoteStorageFileReadAsyncComplete`
+    public init(fileReadAsync: SteamAPICall = 0, result: Result = .none, offset: Int = 0, readSize: Int = 0) {
+        self.fileReadAsync = fileReadAsync
+        self.result = result
+        self.offset = offset
+        self.readSize = readSize
+    }
 }
 
 extension RemoteStorageFileReadAsyncComplete: SteamCreatable {
@@ -2654,6 +3614,13 @@ public struct RemoteStorageFileShareResult {
     public let file: UGCHandle
     /// Steamworks `m_rgchFilename`
     public let filename: String
+
+    /// Create a customized `RemoteStorageFileShareResult`
+    public init(result: Result = .none, file: UGCHandle = 0, filename: String = "") {
+        self.result = result
+        self.file = file
+        self.filename = filename
+    }
 }
 
 extension RemoteStorageFileShareResult: SteamCreatable {
@@ -2669,6 +3636,11 @@ extension RemoteStorageFileShareResult: SteamCreatable {
 public struct RemoteStorageFileWriteAsyncComplete {
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `RemoteStorageFileWriteAsyncComplete`
+    public init(result: Result = .none) {
+        self.result = result
+    }
 }
 
 extension RemoteStorageFileWriteAsyncComplete: SteamCreatable {
@@ -2722,6 +3694,31 @@ public struct RemoteStorageGetPublishedFileDetailsResult {
     public let fileType: WorkshopFileType
     /// Steamworks `m_bAcceptedForUse`
     public let acceptedForUse: Bool
+
+    /// Create a customized `RemoteStorageGetPublishedFileDetailsResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, creatorAppID: AppID = 0, consumerAppID: AppID = 0, title: String = "", description: String = "", file: UGCHandle = 0, previewFile: UGCHandle = 0, steamIDOwner: SteamID = SteamID(), rtimeCreated: RTime32 = 0, rtimeUpdated: RTime32 = 0, visibility: RemoteStoragePublishedFileVisibility = .`public`, banned: Bool = false, tags: String = "", tagsTruncated: Bool = false, fileName: String = "", fileSize: Int = 0, previewFileSize: Int = 0, url: String = "", fileType: WorkshopFileType = .first, acceptedForUse: Bool = false) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.creatorAppID = creatorAppID
+        self.consumerAppID = consumerAppID
+        self.title = title
+        self.description = description
+        self.file = file
+        self.previewFile = previewFile
+        self.steamIDOwner = steamIDOwner
+        self.rtimeCreated = rtimeCreated
+        self.rtimeUpdated = rtimeUpdated
+        self.visibility = visibility
+        self.banned = banned
+        self.tags = tags
+        self.tagsTruncated = tagsTruncated
+        self.fileName = fileName
+        self.fileSize = fileSize
+        self.previewFileSize = previewFileSize
+        self.url = url
+        self.fileType = fileType
+        self.acceptedForUse = acceptedForUse
+    }
 }
 
 extension RemoteStorageGetPublishedFileDetailsResult: SteamCreatable {
@@ -2765,6 +3762,16 @@ public struct RemoteStorageGetPublishedItemVoteDetailsResult {
     public let reports: Int
     /// Steamworks `m_fScore`
     public let score: Float
+
+    /// Create a customized `RemoteStorageGetPublishedItemVoteDetailsResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, votesFor: Int = 0, votesAgainst: Int = 0, reports: Int = 0, score: Float = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.votesFor = votesFor
+        self.votesAgainst = votesAgainst
+        self.reports = reports
+        self.score = score
+    }
 }
 
 extension RemoteStorageGetPublishedItemVoteDetailsResult: SteamCreatable {
@@ -2781,6 +3788,9 @@ extension RemoteStorageGetPublishedItemVoteDetailsResult: SteamCreatable {
 
 /// Steamworks `RemoteStorageLocalFileChange_t`
 public struct RemoteStorageLocalFileChange {
+    /// Create a customized `RemoteStorageLocalFileChange`
+    public init() {
+    }
 }
 
 extension RemoteStorageLocalFileChange: SteamCreatable {
@@ -2795,6 +3805,12 @@ public struct RemoteStoragePublishFileProgress {
     public let percentFile: Double
     /// Steamworks `m_bPreview`
     public let preview: Bool
+
+    /// Create a customized `RemoteStoragePublishFileProgress`
+    public init(percentFile: Double = 0, preview: Bool = false) {
+        self.percentFile = percentFile
+        self.preview = preview
+    }
 }
 
 extension RemoteStoragePublishFileProgress: SteamCreatable {
@@ -2813,6 +3829,13 @@ public struct RemoteStoragePublishFileResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
     public let userNeedsToAcceptWorkshopLegalAgreement: Bool
+
+    /// Create a customized `RemoteStoragePublishFileResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, userNeedsToAcceptWorkshopLegalAgreement: Bool = false) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.userNeedsToAcceptWorkshopLegalAgreement = userNeedsToAcceptWorkshopLegalAgreement
+    }
 }
 
 extension RemoteStoragePublishFileResult: SteamCreatable {
@@ -2830,6 +3853,12 @@ public struct RemoteStoragePublishedFileDeleted {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `RemoteStoragePublishedFileDeleted`
+    public init(publishedFileId: PublishedFileID = 0, appID: AppID = 0) {
+        self.publishedFileId = publishedFileId
+        self.appID = appID
+    }
 }
 
 extension RemoteStoragePublishedFileDeleted: SteamCreatable {
@@ -2846,6 +3875,12 @@ public struct RemoteStoragePublishedFileSubscribed {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `RemoteStoragePublishedFileSubscribed`
+    public init(publishedFileId: PublishedFileID = 0, appID: AppID = 0) {
+        self.publishedFileId = publishedFileId
+        self.appID = appID
+    }
 }
 
 extension RemoteStoragePublishedFileSubscribed: SteamCreatable {
@@ -2862,6 +3897,12 @@ public struct RemoteStoragePublishedFileUnsubscribed {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `RemoteStoragePublishedFileUnsubscribed`
+    public init(publishedFileId: PublishedFileID = 0, appID: AppID = 0) {
+        self.publishedFileId = publishedFileId
+        self.appID = appID
+    }
 }
 
 extension RemoteStoragePublishedFileUnsubscribed: SteamCreatable {
@@ -2878,6 +3919,12 @@ public struct RemoteStoragePublishedFileUpdated {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `RemoteStoragePublishedFileUpdated`
+    public init(publishedFileId: PublishedFileID = 0, appID: AppID = 0) {
+        self.publishedFileId = publishedFileId
+        self.appID = appID
+    }
 }
 
 extension RemoteStoragePublishedFileUpdated: SteamCreatable {
@@ -2896,6 +3943,13 @@ public struct RemoteStorageSetUserPublishedFileActionResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_eAction`
     public let action: WorkshopFileAction
+
+    /// Create a customized `RemoteStorageSetUserPublishedFileActionResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, action: WorkshopFileAction = .played) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.action = action
+    }
 }
 
 extension RemoteStorageSetUserPublishedFileActionResult: SteamCreatable {
@@ -2913,6 +3967,12 @@ public struct RemoteStorageSubscribePublishedFileResult {
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
+
+    /// Create a customized `RemoteStorageSubscribePublishedFileResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension RemoteStorageSubscribePublishedFileResult: SteamCreatable {
@@ -2929,6 +3989,12 @@ public struct RemoteStorageUnsubscribePublishedFileResult {
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
+
+    /// Create a customized `RemoteStorageUnsubscribePublishedFileResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension RemoteStorageUnsubscribePublishedFileResult: SteamCreatable {
@@ -2947,6 +4013,13 @@ public struct RemoteStorageUpdatePublishedFileResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
     public let userNeedsToAcceptWorkshopLegalAgreement: Bool
+
+    /// Create a customized `RemoteStorageUpdatePublishedFileResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, userNeedsToAcceptWorkshopLegalAgreement: Bool = false) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.userNeedsToAcceptWorkshopLegalAgreement = userNeedsToAcceptWorkshopLegalAgreement
+    }
 }
 
 extension RemoteStorageUpdatePublishedFileResult: SteamCreatable {
@@ -2964,6 +4037,12 @@ public struct RemoteStorageUpdateUserPublishedItemVoteResult {
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
+
+    /// Create a customized `RemoteStorageUpdateUserPublishedItemVoteResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension RemoteStorageUpdateUserPublishedItemVoteResult: SteamCreatable {
@@ -2982,6 +4061,13 @@ public struct RemoteStorageUserVoteDetails {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_eVote`
     public let vote: WorkshopVote
+
+    /// Create a customized `RemoteStorageUserVoteDetails`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, vote: WorkshopVote = .unvoted) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.vote = vote
+    }
 }
 
 extension RemoteStorageUserVoteDetails: SteamCreatable {
@@ -3001,6 +4087,13 @@ public struct RemoveAppDependencyResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `RemoveAppDependencyResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, appID: AppID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.appID = appID
+    }
 }
 
 extension RemoveAppDependencyResult: SteamCreatable {
@@ -3020,6 +4113,13 @@ public struct RemoveUGCDependencyResult {
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nChildPublishedFileId`
     public let childPublishedFileId: PublishedFileID
+
+    /// Create a customized `RemoveUGCDependencyResult`
+    public init(result: Result = .none, publishedFileId: PublishedFileID = 0, childPublishedFileId: PublishedFileID = 0) {
+        self.result = result
+        self.publishedFileId = publishedFileId
+        self.childPublishedFileId = childPublishedFileId
+    }
 }
 
 extension RemoveUGCDependencyResult: SteamCreatable {
@@ -3039,6 +4139,13 @@ public struct RequestPlayersForGameFinalResultCallback {
     public let searchID: UInt64
     /// Steamworks `m_ullUniqueGameID`
     public let uniqueGameID: GameID
+
+    /// Create a customized `RequestPlayersForGameFinalResultCallback`
+    public init(result: Result = .none, searchID: UInt64 = 0, uniqueGameID: GameID = GameID()) {
+        self.result = result
+        self.searchID = searchID
+        self.uniqueGameID = uniqueGameID
+    }
 }
 
 extension RequestPlayersForGameFinalResultCallback: SteamCreatable {
@@ -3056,6 +4163,12 @@ public struct RequestPlayersForGameProgressCallback {
     public let result: Result
     /// Steamworks `m_ullSearchID`
     public let searchID: UInt64
+
+    /// Create a customized `RequestPlayersForGameProgressCallback`
+    public init(result: Result = .none, searchID: UInt64 = 0) {
+        self.result = result
+        self.searchID = searchID
+    }
 }
 
 extension RequestPlayersForGameProgressCallback: SteamCreatable {
@@ -3088,6 +4201,20 @@ public struct RequestPlayersForGameResultCallback {
     public let suggestedTeamIndex: Int
     /// Steamworks `m_ullUniqueGameID`
     public let uniqueGameID: GameID
+
+    /// Create a customized `RequestPlayersForGameResultCallback`
+    public init(result: Result = .none, searchID: UInt64 = 0, playerFound: SteamID = SteamID(), lobby: SteamID = SteamID(), playerAcceptState: PlayerAcceptState = .unknown, playerIndex: Int = 0, totalPlayersFound: Int = 0, totalPlayersAcceptedGame: Int = 0, suggestedTeamIndex: Int = 0, uniqueGameID: GameID = GameID()) {
+        self.result = result
+        self.searchID = searchID
+        self.playerFound = playerFound
+        self.lobby = lobby
+        self.playerAcceptState = playerAcceptState
+        self.playerIndex = playerIndex
+        self.totalPlayersFound = totalPlayersFound
+        self.totalPlayersAcceptedGame = totalPlayersAcceptedGame
+        self.suggestedTeamIndex = suggestedTeamIndex
+        self.uniqueGameID = uniqueGameID
+    }
 }
 
 extension RequestPlayersForGameResultCallback: SteamCreatable {
@@ -3112,6 +4239,12 @@ public struct ReservationNotificationCallback {
     public let beaconID: PartyBeaconID
     /// Steamworks `m_steamIDJoiner`
     public let joiner: SteamID
+
+    /// Create a customized `ReservationNotificationCallback`
+    public init(beaconID: PartyBeaconID = 0, joiner: SteamID = SteamID()) {
+        self.beaconID = beaconID
+        self.joiner = joiner
+    }
 }
 
 extension ReservationNotificationCallback: SteamCreatable {
@@ -3128,6 +4261,12 @@ public struct ScreenshotReady {
     public let local: ScreenshotHandle
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `ScreenshotReady`
+    public init(local: ScreenshotHandle = 0, result: Result = .none) {
+        self.local = local
+        self.result = result
+    }
 }
 
 extension ScreenshotReady: SteamCreatable {
@@ -3140,6 +4279,9 @@ extension ScreenshotReady: SteamCreatable {
 
 /// Steamworks `ScreenshotRequested_t`
 public struct ScreenshotRequested {
+    /// Create a customized `ScreenshotRequested`
+    public init() {
+    }
 }
 
 extension ScreenshotRequested: SteamCreatable {
@@ -3162,6 +4304,16 @@ public struct SearchForGameProgressCallback {
     public let secondsRemainingEstimate: Int
     /// Steamworks `m_cPlayersSearching`
     public let playersSearching: Int
+
+    /// Create a customized `SearchForGameProgressCallback`
+    public init(searchID: UInt64 = 0, result: Result = .none, id: SteamID = SteamID(), endedSearch: SteamID = SteamID(), secondsRemainingEstimate: Int = 0, playersSearching: Int = 0) {
+        self.searchID = searchID
+        self.result = result
+        self.id = id
+        self.endedSearch = endedSearch
+        self.secondsRemainingEstimate = secondsRemainingEstimate
+        self.playersSearching = playersSearching
+    }
 }
 
 extension SearchForGameProgressCallback: SteamCreatable {
@@ -3190,6 +4342,16 @@ public struct SearchForGameResultCallback {
     public let host: SteamID
     /// Steamworks `m_bFinalCallback`
     public let finalCallback: Bool
+
+    /// Create a customized `SearchForGameResultCallback`
+    public init(searchID: UInt64 = 0, result: Result = .none, countPlayersInGame: Int = 0, countAcceptedGame: Int = 0, host: SteamID = SteamID(), finalCallback: Bool = false) {
+        self.searchID = searchID
+        self.result = result
+        self.countPlayersInGame = countPlayersInGame
+        self.countAcceptedGame = countAcceptedGame
+        self.host = host
+        self.finalCallback = finalCallback
+    }
 }
 
 extension SearchForGameResultCallback: SteamCreatable {
@@ -3212,6 +4374,13 @@ public struct SetPersonaNameResponse {
     public let localSuccess: Bool
     /// Steamworks `m_result`
     public let result: Result
+
+    /// Create a customized `SetPersonaNameResponse`
+    public init(success: Bool = false, localSuccess: Bool = false, result: Result = .none) {
+        self.success = success
+        self.localSuccess = localSuccess
+        self.result = result
+    }
 }
 
 extension SetPersonaNameResponse: SteamCreatable {
@@ -3231,6 +4400,13 @@ public struct SetUserItemVoteResult {
     public let result: Result
     /// Steamworks `m_bVoteUp`
     public let voteUp: Bool
+
+    /// Create a customized `SetUserItemVoteResult`
+    public init(publishedFileId: PublishedFileID = 0, result: Result = .none, voteUp: Bool = false) {
+        self.publishedFileId = publishedFileId
+        self.result = result
+        self.voteUp = voteUp
+    }
 }
 
 extension SetUserItemVoteResult: SteamCreatable {
@@ -3252,6 +4428,14 @@ public struct SocketStatusCallback {
     public let remote: SteamID
     /// Steamworks `m_eSNetSocketState`
     public let sNetSocketState: Int
+
+    /// Create a customized `SocketStatusCallback`
+    public init(socket: SNetSocket = 0, listenSocket: SNetListenSocket = 0, remote: SteamID = SteamID(), sNetSocketState: Int = 0) {
+        self.socket = socket
+        self.listenSocket = listenSocket
+        self.remote = remote
+        self.sNetSocketState = sNetSocketState
+    }
 }
 
 extension SocketStatusCallback: SteamCreatable {
@@ -3268,6 +4452,11 @@ extension SocketStatusCallback: SteamCreatable {
 public struct StartPlaytimeTrackingResult {
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `StartPlaytimeTrackingResult`
+    public init(result: Result = .none) {
+        self.result = result
+    }
 }
 
 extension StartPlaytimeTrackingResult: SteamCreatable {
@@ -3285,6 +4474,13 @@ public struct SteamAPICallCompleted {
     public let callbackIndex: Int
     /// Steamworks `m_cubParam`
     public let paramSize: Int
+
+    /// Create a customized `SteamAPICallCompleted`
+    public init(asyncCall: SteamAPICall = 0, callbackIndex: Int = 0, paramSize: Int = 0) {
+        self.asyncCall = asyncCall
+        self.callbackIndex = callbackIndex
+        self.paramSize = paramSize
+    }
 }
 
 extension SteamAPICallCompleted: SteamCreatable {
@@ -3302,6 +4498,12 @@ public struct SteamAppInstalled {
     public let appID: AppID
     /// Steamworks `m_iInstallFolderIndex`
     public let installFolderIndex: Int
+
+    /// Create a customized `SteamAppInstalled`
+    public init(appID: AppID = 0, installFolderIndex: Int = 0) {
+        self.appID = appID
+        self.installFolderIndex = installFolderIndex
+    }
 }
 
 extension SteamAppInstalled: SteamCreatable {
@@ -3318,6 +4520,12 @@ public struct SteamAppUninstalled {
     public let appID: AppID
     /// Steamworks `m_iInstallFolderIndex`
     public let installFolderIndex: Int
+
+    /// Create a customized `SteamAppUninstalled`
+    public init(appID: AppID = 0, installFolderIndex: Int = 0) {
+        self.appID = appID
+        self.installFolderIndex = installFolderIndex
+    }
 }
 
 extension SteamAppUninstalled: SteamCreatable {
@@ -3344,6 +4552,17 @@ public struct SteamInputConfigurationLoaded {
     public let usesSteamInputAPI: Bool
     /// Steamworks `m_bUsesGamepadAPI`
     public let usesGamepadAPI: Bool
+
+    /// Create a customized `SteamInputConfigurationLoaded`
+    public init(appID: AppID = 0, deviceHandle: InputHandle = 0, mappingCreator: SteamID = SteamID(), majorRevision: Int = 0, minorRevision: Int = 0, usesSteamInputAPI: Bool = false, usesGamepadAPI: Bool = false) {
+        self.appID = appID
+        self.deviceHandle = deviceHandle
+        self.mappingCreator = mappingCreator
+        self.majorRevision = majorRevision
+        self.minorRevision = minorRevision
+        self.usesSteamInputAPI = usesSteamInputAPI
+        self.usesGamepadAPI = usesGamepadAPI
+    }
 }
 
 extension SteamInputConfigurationLoaded: SteamCreatable {
@@ -3363,6 +4582,11 @@ extension SteamInputConfigurationLoaded: SteamCreatable {
 public struct SteamInputDeviceConnected {
     /// Steamworks `m_ulConnectedDeviceHandle`
     public let connectedDeviceHandle: InputHandle
+
+    /// Create a customized `SteamInputDeviceConnected`
+    public init(connectedDeviceHandle: InputHandle = 0) {
+        self.connectedDeviceHandle = connectedDeviceHandle
+    }
 }
 
 extension SteamInputDeviceConnected: SteamCreatable {
@@ -3376,6 +4600,11 @@ extension SteamInputDeviceConnected: SteamCreatable {
 public struct SteamInputDeviceDisconnected {
     /// Steamworks `m_ulDisconnectedDeviceHandle`
     public let disconnectedDeviceHandle: InputHandle
+
+    /// Create a customized `SteamInputDeviceDisconnected`
+    public init(disconnectedDeviceHandle: InputHandle = 0) {
+        self.disconnectedDeviceHandle = disconnectedDeviceHandle
+    }
 }
 
 extension SteamInputDeviceDisconnected: SteamCreatable {
@@ -3387,6 +4616,9 @@ extension SteamInputDeviceDisconnected: SteamCreatable {
 
 /// Steamworks `SteamInventoryDefinitionUpdate_t`
 public struct SteamInventoryDefinitionUpdate {
+    /// Create a customized `SteamInventoryDefinitionUpdate`
+    public init() {
+    }
 }
 
 extension SteamInventoryDefinitionUpdate: SteamCreatable {
@@ -3405,6 +4637,14 @@ public struct SteamInventoryEligiblePromoItemDefIDs {
     public let eligiblePromoItemDefs: Int
     /// Steamworks `m_bCachedData`
     public let cachedData: Bool
+
+    /// Create a customized `SteamInventoryEligiblePromoItemDefIDs`
+    public init(result: Result = .none, steamID: SteamID = SteamID(), eligiblePromoItemDefs: Int = 0, cachedData: Bool = false) {
+        self.result = result
+        self.steamID = steamID
+        self.eligiblePromoItemDefs = eligiblePromoItemDefs
+        self.cachedData = cachedData
+    }
 }
 
 extension SteamInventoryEligiblePromoItemDefIDs: SteamCreatable {
@@ -3421,6 +4661,11 @@ extension SteamInventoryEligiblePromoItemDefIDs: SteamCreatable {
 public struct SteamInventoryFullUpdate {
     /// Steamworks `m_handle`
     public let handle: SteamInventoryResult
+
+    /// Create a customized `SteamInventoryFullUpdate`
+    public init(handle: SteamInventoryResult = 0) {
+        self.handle = handle
+    }
 }
 
 extension SteamInventoryFullUpdate: SteamCreatable {
@@ -3436,6 +4681,12 @@ public struct SteamInventoryRequestPricesResult {
     public let result: Result
     /// Steamworks `m_rgchCurrency`
     public let currency: String
+
+    /// Create a customized `SteamInventoryRequestPricesResult`
+    public init(result: Result = .none, currency: String = "") {
+        self.result = result
+        self.currency = currency
+    }
 }
 
 extension SteamInventoryRequestPricesResult: SteamCreatable {
@@ -3452,6 +4703,12 @@ public struct SteamInventoryResultReady {
     public let handle: SteamInventoryResult
     /// Steamworks `m_result`
     public let result: Result
+
+    /// Create a customized `SteamInventoryResultReady`
+    public init(handle: SteamInventoryResult = 0, result: Result = .none) {
+        self.handle = handle
+        self.result = result
+    }
 }
 
 extension SteamInventoryResultReady: SteamCreatable {
@@ -3470,6 +4727,13 @@ public struct SteamInventoryStartPurchaseResult {
     public let orderID: UInt64
     /// Steamworks `m_ulTransID`
     public let transID: UInt64
+
+    /// Create a customized `SteamInventoryStartPurchaseResult`
+    public init(result: Result = .none, orderID: UInt64 = 0, transID: UInt64 = 0) {
+        self.result = result
+        self.orderID = orderID
+        self.transID = transID
+    }
 }
 
 extension SteamInventoryStartPurchaseResult: SteamCreatable {
@@ -3491,6 +4755,14 @@ public struct SteamItemDetails {
     public let quantity: Int
     /// Steamworks `m_unFlags`
     public let flags: SteamItemFlags
+
+    /// Create a customized `SteamItemDetails`
+    public init(id: SteamItemInstanceID = 0, definitionIndex: SteamItemDef = 0, quantity: Int = 0, flags: SteamItemFlags = []) {
+        self.id = id
+        self.definitionIndex = definitionIndex
+        self.quantity = quantity
+        self.flags = flags
+    }
 }
 
 extension SteamItemDetails: SteamCreatable {
@@ -3509,6 +4781,12 @@ public struct SteamNetAuthenticationStatus {
     public let avail: SteamNetworkingAvailability
     /// Steamworks `m_debugMsg`
     public let debugMsg: String
+
+    /// Create a customized `SteamNetAuthenticationStatus`
+    public init(avail: SteamNetworkingAvailability = .cannotTry, debugMsg: String = "") {
+        self.avail = avail
+        self.debugMsg = debugMsg
+    }
 }
 
 extension SteamNetAuthenticationStatus: SteamCreatable {
@@ -3543,6 +4821,21 @@ public struct SteamNetConnectionInfo {
     public let connectionDescription: String
     /// Steamworks `m_nFlags`
     public let flags: SteamNetworkConnectionInfoFlags
+
+    /// Create a customized `SteamNetConnectionInfo`
+    public init(identityRemote: SteamNetworkingIdentity = SteamNetworkingIdentity(), userData: Int = 0, listenSocket: HSteamListenSocket = 0, addrRemote: SteamNetworkingIPAddr = SteamNetworkingIPAddr(), popRemote: SteamNetworkingPOPID = 0, popRelay: SteamNetworkingPOPID = 0, state: SteamNetworkingConnectionState = .none, endReason: Int = 0, endDebug: String = "", connectionDescription: String = "", flags: SteamNetworkConnectionInfoFlags = []) {
+        self.identityRemote = identityRemote
+        self.userData = userData
+        self.listenSocket = listenSocket
+        self.addrRemote = addrRemote
+        self.popRemote = popRemote
+        self.popRelay = popRelay
+        self.state = state
+        self.endReason = endReason
+        self.endDebug = endDebug
+        self.connectionDescription = connectionDescription
+        self.flags = flags
+    }
 }
 
 extension SteamNetConnectionInfo: SteamCreatable {
@@ -3572,6 +4865,14 @@ public struct SteamNetConnectionRealTimeLaneStatus {
     public let sentUnackedReliableSize: Int
     /// Steamworks `m_usecQueueTime`
     public let queueTime: SteamNetworkingMicroseconds
+
+    /// Create a customized `SteamNetConnectionRealTimeLaneStatus`
+    public init(pendingUnreliableSize: Int = 0, pendingReliableSize: Int = 0, sentUnackedReliableSize: Int = 0, queueTime: SteamNetworkingMicroseconds = 0) {
+        self.pendingUnreliableSize = pendingUnreliableSize
+        self.pendingReliableSize = pendingReliableSize
+        self.sentUnackedReliableSize = sentUnackedReliableSize
+        self.queueTime = queueTime
+    }
 }
 
 extension SteamNetConnectionRealTimeLaneStatus: SteamCreatable {
@@ -3612,6 +4913,23 @@ public struct SteamNetConnectionRealTimeStatus {
     public let sentUnackedReliableSize: Int
     /// Steamworks `m_usecQueueTime`
     public let queueTime: SteamNetworkingMicroseconds
+
+    /// Create a customized `SteamNetConnectionRealTimeStatus`
+    public init(state: SteamNetworkingConnectionState = .none, ping: Int = 0, connectionQualityLocal: Float = 0, connectionQualityRemote: Float = 0, outPacketsPerSec: Float = 0, outBytesPerSec: Float = 0, inPacketsPerSec: Float = 0, inBytesPerSec: Float = 0, sendRateBytesPerSecond: Int = 0, pendingUnreliableSize: Int = 0, pendingReliableSize: Int = 0, sentUnackedReliableSize: Int = 0, queueTime: SteamNetworkingMicroseconds = 0) {
+        self.state = state
+        self.ping = ping
+        self.connectionQualityLocal = connectionQualityLocal
+        self.connectionQualityRemote = connectionQualityRemote
+        self.outPacketsPerSec = outPacketsPerSec
+        self.outBytesPerSec = outBytesPerSec
+        self.inPacketsPerSec = inPacketsPerSec
+        self.inBytesPerSec = inBytesPerSec
+        self.sendRateBytesPerSecond = sendRateBytesPerSecond
+        self.pendingUnreliableSize = pendingUnreliableSize
+        self.pendingReliableSize = pendingReliableSize
+        self.sentUnackedReliableSize = sentUnackedReliableSize
+        self.queueTime = queueTime
+    }
 }
 
 extension SteamNetConnectionRealTimeStatus: SteamCreatable {
@@ -3641,6 +4959,13 @@ public struct SteamNetConnectionStatusChangedCallback {
     public let info: SteamNetConnectionInfo
     /// Steamworks `m_eOldState`
     public let oldState: SteamNetworkingConnectionState
+
+    /// Create a customized `SteamNetConnectionStatusChangedCallback`
+    public init(conn: HSteamNetConnection = 0, info: SteamNetConnectionInfo = SteamNetConnectionInfo(), oldState: SteamNetworkingConnectionState = .none) {
+        self.conn = conn
+        self.info = info
+        self.oldState = oldState
+    }
 }
 
 extension SteamNetConnectionStatusChangedCallback: SteamCreatable {
@@ -3656,6 +4981,11 @@ extension SteamNetConnectionStatusChangedCallback: SteamCreatable {
 public struct SteamNetworkPingLocation {
     /// Steamworks `m_data`
     public let data: [UInt8]
+
+    /// Create a customized `SteamNetworkPingLocation`
+    public init(data: [UInt8] = []) {
+        self.data = data
+    }
 }
 
 extension SteamNetworkPingLocation: SteamCreatable {
@@ -3682,6 +5012,14 @@ public struct SteamNetworkingFakeIPResult {
     public let ip: Int
     /// Steamworks `m_unPorts`
     public let ports: [Int]
+
+    /// Create a customized `SteamNetworkingFakeIPResult`
+    public init(result: Result = .none, identity: SteamNetworkingIdentity = SteamNetworkingIdentity(), ip: Int = 0, ports: [Int] = []) {
+        self.result = result
+        self.identity = identity
+        self.ip = ip
+        self.ports = ports
+    }
 }
 
 extension SteamNetworkingFakeIPResult: SteamCreatable {
@@ -3698,6 +5036,11 @@ extension SteamNetworkingFakeIPResult: SteamCreatable {
 public struct SteamNetworkingMessagesSessionFailed {
     /// Steamworks `m_info`
     public let info: SteamNetConnectionInfo
+
+    /// Create a customized `SteamNetworkingMessagesSessionFailed`
+    public init(info: SteamNetConnectionInfo = SteamNetConnectionInfo()) {
+        self.info = info
+    }
 }
 
 extension SteamNetworkingMessagesSessionFailed: SteamCreatable {
@@ -3711,6 +5054,11 @@ extension SteamNetworkingMessagesSessionFailed: SteamCreatable {
 public struct SteamNetworkingMessagesSessionRequest {
     /// Steamworks `m_identityRemote`
     public let identityRemote: SteamNetworkingIdentity
+
+    /// Create a customized `SteamNetworkingMessagesSessionRequest`
+    public init(identityRemote: SteamNetworkingIdentity = SteamNetworkingIdentity()) {
+        self.identityRemote = identityRemote
+    }
 }
 
 extension SteamNetworkingMessagesSessionRequest: SteamCreatable {
@@ -3722,6 +5070,9 @@ extension SteamNetworkingMessagesSessionRequest: SteamCreatable {
 
 /// Steamworks `SteamParentalSettingsChanged_t`
 public struct SteamParentalSettingsChanged {
+    /// Create a customized `SteamParentalSettingsChanged`
+    public init() {
+    }
 }
 
 extension SteamParentalSettingsChanged: SteamCreatable {
@@ -3736,6 +5087,12 @@ public struct SteamPartyBeaconLocation {
     public let type: SteamPartyBeaconLocationType
     /// Steamworks `m_ulLocationID`
     public let locationID: UInt64
+
+    /// Create a customized `SteamPartyBeaconLocation`
+    public init(type: SteamPartyBeaconLocationType = .invalid, locationID: UInt64 = 0) {
+        self.type = type
+        self.locationID = locationID
+    }
 }
 
 extension SteamPartyBeaconLocation: SteamCreatable {
@@ -3766,6 +5123,15 @@ public struct SteamRelayNetworkStatus {
     public let availAnyRelay: SteamNetworkingAvailability
     /// Steamworks `m_debugMsg`
     public let debugMsg: String
+
+    /// Create a customized `SteamRelayNetworkStatus`
+    public init(avail: SteamNetworkingAvailability = .cannotTry, pingMeasurementInProgress: Bool = false, availNetworkConfig: SteamNetworkingAvailability = .cannotTry, availAnyRelay: SteamNetworkingAvailability = .cannotTry, debugMsg: String = "") {
+        self.avail = avail
+        self.pingMeasurementInProgress = pingMeasurementInProgress
+        self.availNetworkConfig = availNetworkConfig
+        self.availAnyRelay = availAnyRelay
+        self.debugMsg = debugMsg
+    }
 }
 
 extension SteamRelayNetworkStatus: SteamCreatable {
@@ -3783,6 +5149,11 @@ extension SteamRelayNetworkStatus: SteamCreatable {
 public struct SteamRemotePlaySessionConnected {
     /// Steamworks `m_unSessionID`
     public let sessionID: RemotePlaySessionID
+
+    /// Create a customized `SteamRemotePlaySessionConnected`
+    public init(sessionID: RemotePlaySessionID = 0) {
+        self.sessionID = sessionID
+    }
 }
 
 extension SteamRemotePlaySessionConnected: SteamCreatable {
@@ -3796,6 +5167,11 @@ extension SteamRemotePlaySessionConnected: SteamCreatable {
 public struct SteamRemotePlaySessionDisconnected {
     /// Steamworks `m_unSessionID`
     public let sessionID: RemotePlaySessionID
+
+    /// Create a customized `SteamRemotePlaySessionDisconnected`
+    public init(sessionID: RemotePlaySessionID = 0) {
+        self.sessionID = sessionID
+    }
 }
 
 extension SteamRemotePlaySessionDisconnected: SteamCreatable {
@@ -3811,6 +5187,12 @@ public struct SteamServerConnectFailure {
     public let result: Result
     /// Steamworks `m_bStillRetrying`
     public let stillRetrying: Bool
+
+    /// Create a customized `SteamServerConnectFailure`
+    public init(result: Result = .none, stillRetrying: Bool = false) {
+        self.result = result
+        self.stillRetrying = stillRetrying
+    }
 }
 
 extension SteamServerConnectFailure: SteamCreatable {
@@ -3823,6 +5205,9 @@ extension SteamServerConnectFailure: SteamCreatable {
 
 /// Steamworks `SteamServersConnected_t`
 public struct SteamServersConnected {
+    /// Create a customized `SteamServersConnected`
+    public init() {
+    }
 }
 
 extension SteamServersConnected: SteamCreatable {
@@ -3835,6 +5220,11 @@ extension SteamServersConnected: SteamCreatable {
 public struct SteamServersDisconnected {
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `SteamServersDisconnected`
+    public init(result: Result = .none) {
+        self.result = result
+    }
 }
 
 extension SteamServersDisconnected: SteamCreatable {
@@ -3846,6 +5236,9 @@ extension SteamServersDisconnected: SteamCreatable {
 
 /// Steamworks `SteamShutdown_t`
 public struct SteamShutdown {
+    /// Create a customized `SteamShutdown`
+    public init() {
+    }
 }
 
 extension SteamShutdown: SteamCreatable {
@@ -3908,6 +5301,36 @@ public struct SteamUGCDetails {
     public let score: Float
     /// Steamworks `m_unNumChildren`
     public let numChildren: Int
+
+    /// Create a customized `SteamUGCDetails`
+    public init(publishedFileId: PublishedFileID = 0, result: Result = .none, fileType: WorkshopFileType = .first, creatorAppID: AppID = 0, consumerAppID: AppID = 0, title: String = "", description: String = "", steamIDOwner: SteamID = SteamID(), rtimeCreated: Int = 0, rtimeUpdated: Int = 0, rtimeAddedToUserList: Int = 0, visibility: RemoteStoragePublishedFileVisibility = .`public`, banned: Bool = false, acceptedForUse: Bool = false, tagsTruncated: Bool = false, tags: String = "", file: UGCHandle = 0, previewFile: UGCHandle = 0, fileName: String = "", fileSize: Int = 0, previewFileSize: Int = 0, url: String = "", votesUp: Int = 0, votesDown: Int = 0, score: Float = 0, numChildren: Int = 0) {
+        self.publishedFileId = publishedFileId
+        self.result = result
+        self.fileType = fileType
+        self.creatorAppID = creatorAppID
+        self.consumerAppID = consumerAppID
+        self.title = title
+        self.description = description
+        self.steamIDOwner = steamIDOwner
+        self.rtimeCreated = rtimeCreated
+        self.rtimeUpdated = rtimeUpdated
+        self.rtimeAddedToUserList = rtimeAddedToUserList
+        self.visibility = visibility
+        self.banned = banned
+        self.acceptedForUse = acceptedForUse
+        self.tagsTruncated = tagsTruncated
+        self.tags = tags
+        self.file = file
+        self.previewFile = previewFile
+        self.fileName = fileName
+        self.fileSize = fileSize
+        self.previewFileSize = previewFileSize
+        self.url = url
+        self.votesUp = votesUp
+        self.votesDown = votesDown
+        self.score = score
+        self.numChildren = numChildren
+    }
 }
 
 extension SteamUGCDetails: SteamCreatable {
@@ -3956,6 +5379,16 @@ public struct SteamUGCQueryCompleted {
     public let cachedData: Bool
     /// Steamworks `m_rgchNextCursor`
     public let nextCursor: String
+
+    /// Create a customized `SteamUGCQueryCompleted`
+    public init(handle: UGCQueryHandle = 0, result: Result = .none, numResultsReturned: Int = 0, totalMatchingResults: Int = 0, cachedData: Bool = false, nextCursor: String = "") {
+        self.handle = handle
+        self.result = result
+        self.numResultsReturned = numResultsReturned
+        self.totalMatchingResults = totalMatchingResults
+        self.cachedData = cachedData
+        self.nextCursor = nextCursor
+    }
 }
 
 extension SteamUGCQueryCompleted: SteamCreatable {
@@ -3976,6 +5409,12 @@ public struct SteamUGCRequestUGCDetailsResult {
     public let details: SteamUGCDetails
     /// Steamworks `m_bCachedData`
     public let cachedData: Bool
+
+    /// Create a customized `SteamUGCRequestUGCDetailsResult`
+    public init(details: SteamUGCDetails = SteamUGCDetails(), cachedData: Bool = false) {
+        self.details = details
+        self.cachedData = cachedData
+    }
 }
 
 extension SteamUGCRequestUGCDetailsResult: SteamCreatable {
@@ -3990,6 +5429,11 @@ extension SteamUGCRequestUGCDetailsResult: SteamCreatable {
 public struct StopPlaytimeTrackingResult {
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `StopPlaytimeTrackingResult`
+    public init(result: Result = .none) {
+        self.result = result
+    }
 }
 
 extension StopPlaytimeTrackingResult: SteamCreatable {
@@ -4003,6 +5447,11 @@ extension StopPlaytimeTrackingResult: SteamCreatable {
 public struct StoreAuthURLResponse {
     /// Steamworks `m_szURL`
     public let url: String
+
+    /// Create a customized `StoreAuthURLResponse`
+    public init(url: String = "") {
+        self.url = url
+    }
 }
 
 extension StoreAuthURLResponse: SteamCreatable {
@@ -4020,6 +5469,13 @@ public struct SubmitItemUpdateResult {
     public let userNeedsToAcceptWorkshopLegalAgreement: Bool
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
+
+    /// Create a customized `SubmitItemUpdateResult`
+    public init(result: Result = .none, userNeedsToAcceptWorkshopLegalAgreement: Bool = false, publishedFileId: PublishedFileID = 0) {
+        self.result = result
+        self.userNeedsToAcceptWorkshopLegalAgreement = userNeedsToAcceptWorkshopLegalAgreement
+        self.publishedFileId = publishedFileId
+    }
 }
 
 extension SubmitItemUpdateResult: SteamCreatable {
@@ -4039,6 +5495,13 @@ public struct SubmitPlayerResultResultCallback {
     public let uniqueGameID: GameID
     /// Steamworks `steamIDPlayer`
     public let player: SteamID
+
+    /// Create a customized `SubmitPlayerResultResultCallback`
+    public init(result: Result = .none, uniqueGameID: GameID = GameID(), player: SteamID = SteamID()) {
+        self.result = result
+        self.uniqueGameID = uniqueGameID
+        self.player = player
+    }
 }
 
 extension SubmitPlayerResultResultCallback: SteamCreatable {
@@ -4060,6 +5523,14 @@ public struct TimedTrialStatus {
     public let secondsAllowed: Int
     /// Steamworks `m_unSecondsPlayed`
     public let secondsPlayed: Int
+
+    /// Create a customized `TimedTrialStatus`
+    public init(appID: AppID = 0, isOffline: Bool = false, secondsAllowed: Int = 0, secondsPlayed: Int = 0) {
+        self.appID = appID
+        self.isOffline = isOffline
+        self.secondsAllowed = secondsAllowed
+        self.secondsPlayed = secondsPlayed
+    }
 }
 
 extension TimedTrialStatus: SteamCreatable {
@@ -4074,6 +5545,9 @@ extension TimedTrialStatus: SteamCreatable {
 
 /// Steamworks `UnreadChatMessagesChanged_t`
 public struct UnreadChatMessagesChanged {
+    /// Create a customized `UnreadChatMessagesChanged`
+    public init() {
+    }
 }
 
 extension UnreadChatMessagesChanged: SteamCreatable {
@@ -4092,6 +5566,14 @@ public struct UserAchievementIconFetched {
     public let achieved: Bool
     /// Steamworks `m_nIconHandle`
     public let iconHandle: Int
+
+    /// Create a customized `UserAchievementIconFetched`
+    public init(gameID: GameID = GameID(), achievementName: String = "", achieved: Bool = false, iconHandle: Int = 0) {
+        self.gameID = gameID
+        self.achievementName = achievementName
+        self.achieved = achieved
+        self.iconHandle = iconHandle
+    }
 }
 
 extension UserAchievementIconFetched: SteamCreatable {
@@ -4116,6 +5598,15 @@ public struct UserAchievementStored {
     public let curProgress: Int
     /// Steamworks `m_nMaxProgress`
     public let maxProgress: Int
+
+    /// Create a customized `UserAchievementStored`
+    public init(gameID: GameID = GameID(), groupAchievement: Bool = false, achievementName: String = "", curProgress: Int = 0, maxProgress: Int = 0) {
+        self.gameID = gameID
+        self.groupAchievement = groupAchievement
+        self.achievementName = achievementName
+        self.curProgress = curProgress
+        self.maxProgress = maxProgress
+    }
 }
 
 extension UserAchievementStored: SteamCreatable {
@@ -4137,6 +5628,13 @@ public struct UserFavoriteItemsListChanged {
     public let result: Result
     /// Steamworks `m_bWasAddRequest`
     public let wasAddRequest: Bool
+
+    /// Create a customized `UserFavoriteItemsListChanged`
+    public init(publishedFileId: PublishedFileID = 0, result: Result = .none, wasAddRequest: Bool = false) {
+        self.publishedFileId = publishedFileId
+        self.result = result
+        self.wasAddRequest = wasAddRequest
+    }
 }
 
 extension UserFavoriteItemsListChanged: SteamCreatable {
@@ -4156,6 +5654,13 @@ public struct UserStatsReceived {
     public let result: Result
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
+
+    /// Create a customized `UserStatsReceived`
+    public init(gameID: GameID = GameID(), result: Result = .none, user: SteamID = SteamID()) {
+        self.gameID = gameID
+        self.result = result
+        self.user = user
+    }
 }
 
 extension UserStatsReceived: SteamCreatable {
@@ -4173,6 +5678,12 @@ public struct UserStatsStored {
     public let gameID: GameID
     /// Steamworks `m_eResult`
     public let result: Result
+
+    /// Create a customized `UserStatsStored`
+    public init(gameID: GameID = GameID(), result: Result = .none) {
+        self.gameID = gameID
+        self.result = result
+    }
 }
 
 extension UserStatsStored: SteamCreatable {
@@ -4187,6 +5698,11 @@ extension UserStatsStored: SteamCreatable {
 public struct UserStatsUnloaded {
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
+
+    /// Create a customized `UserStatsUnloaded`
+    public init(user: SteamID = SteamID()) {
+        self.user = user
+    }
 }
 
 extension UserStatsUnloaded: SteamCreatable {
@@ -4200,6 +5716,11 @@ extension UserStatsUnloaded: SteamCreatable {
 public struct UserSubscribedItemsListChanged {
     /// Steamworks `m_nAppID`
     public let appID: AppID
+
+    /// Create a customized `UserSubscribedItemsListChanged`
+    public init(appID: AppID = 0) {
+        self.appID = appID
+    }
 }
 
 extension UserSubscribedItemsListChanged: SteamCreatable {
@@ -4217,6 +5738,13 @@ public struct ValidateAuthTicketResponse {
     public let authSessionResponse: AuthSessionResponse
     /// Steamworks `m_OwnerSteamID`
     public let ownerSteamID: SteamID
+
+    /// Create a customized `ValidateAuthTicketResponse`
+    public init(steamID: SteamID = SteamID(), authSessionResponse: AuthSessionResponse = .ok, ownerSteamID: SteamID = SteamID()) {
+        self.steamID = steamID
+        self.authSessionResponse = authSessionResponse
+        self.ownerSteamID = ownerSteamID
+    }
 }
 
 extension ValidateAuthTicketResponse: SteamCreatable {
@@ -4232,6 +5760,11 @@ extension ValidateAuthTicketResponse: SteamCreatable {
 public struct VolumeHasChanged {
     /// Steamworks `m_flNewVolume`
     public let newVolume: Float
+
+    /// Create a customized `VolumeHasChanged`
+    public init(newVolume: Float = 0) {
+        self.newVolume = newVolume
+    }
 }
 
 extension VolumeHasChanged: SteamCreatable {
@@ -4255,6 +5788,16 @@ public struct WorkshopEULAStatus {
     public let accepted: Bool
     /// Steamworks `m_bNeedsAction`
     public let needsAction: Bool
+
+    /// Create a customized `WorkshopEULAStatus`
+    public init(result: Result = .none, appID: AppID = 0, version: Int = 0, action: RTime32 = 0, accepted: Bool = false, needsAction: Bool = false) {
+        self.result = result
+        self.appID = appID
+        self.version = version
+        self.action = action
+        self.accepted = accepted
+        self.needsAction = needsAction
+    }
 }
 
 extension WorkshopEULAStatus: SteamCreatable {
@@ -4305,6 +5848,27 @@ public struct GameServerItem {
     public let gameTags: String
     /// Steamworks `m_steamID`
     public let steamID: SteamID
+
+    /// Create a customized `GameServerItem`
+    public init(netAdr: ServerNetAdr = ServerNetAdr(), ping: Int = 0, hadSuccessfulResponse: Bool = false, doNotRefresh: Bool = false, gameDir: String = "", map: String = "", gameDescription: String = "", appID: AppID = 0, players: Int = 0, maxPlayers: Int = 0, botPlayers: Int = 0, password: Bool = false, secure: Bool = false, timeLastPlayed: RTime32 = 0, serverVersion: Int = 0, gameTags: String = "", steamID: SteamID = SteamID()) {
+        self.netAdr = netAdr
+        self.ping = ping
+        self.hadSuccessfulResponse = hadSuccessfulResponse
+        self.doNotRefresh = doNotRefresh
+        self.gameDir = gameDir
+        self.map = map
+        self.gameDescription = gameDescription
+        self.appID = appID
+        self.players = players
+        self.maxPlayers = maxPlayers
+        self.botPlayers = botPlayers
+        self.password = password
+        self.secure = secure
+        self.timeLastPlayed = timeLastPlayed
+        self.serverVersion = serverVersion
+        self.gameTags = gameTags
+        self.steamID = steamID
+    }
 }
 
 extension GameServerItem: SteamCreatable {

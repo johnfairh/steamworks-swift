@@ -168,6 +168,10 @@ public final class ServerNetAdr {
         self.adr = steam
     }
 
+    public init() {
+        self.adr = servernetadr_t()
+    }
+
     public var queryPort: Int {
         Int(adr.GetQueryPort())
     }
@@ -253,7 +257,8 @@ public final class SteamNetworkingIPAddr {
         self.adr = adr
     }
 
-    private init() {
+    /// An invalid address
+    public init() {
         adr = .init()
     }
 
@@ -394,7 +399,8 @@ public final class SteamNetworkingIdentity {
         self.identity = identity
     }
 
-    private init() {
+    /// Create an invalid identity
+    public init() {
         identity = .init()
     }
 

@@ -194,6 +194,14 @@ extension String {
     var desuffixed: String {
         re_sub(" *(\\*|&)$", with: "")
     }
+
+    var isSwiftIntegerType: Bool {
+        re_isMatch(#"^U?Int\d*$"#)
+    }
+
+    var isSwiftArrayType: Bool {
+        re_isMatch(#"^\[.*\]$"#)
+    }
 }
 
 /// Just what we've seen necessary
