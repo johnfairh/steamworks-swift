@@ -2,6 +2,7 @@
 consts: {}
 consts_to_ignore:
 - BadConst
+typedefs_to_ignore: []
 enums:
   ESteamMiscFlags:
     is_set: true

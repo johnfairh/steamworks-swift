@@ -45,6 +45,18 @@ consts_to_ignore:
 - MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE
 - STEAMGAMESERVER_QUERY_PORT_SHARED
 #
+# Typedefs
+#
+typedefs_to_ignore:
+- FSteamNetworkingSocketsDebugOutput
+- FnSteamNetAuthenticationStatusChanged
+- FnSteamNetConnectionStatusChanged
+- FnSteamNetworkingFakeIPResult
+- FnSteamNetworkingMessagesSessionFailed
+- FnSteamNetworkingMessagesSessionRequest
+- FnSteamRelayNetworkStatusChanged
+- PFNPreMinidumpCallback
+#
 # Enums
 #
 enums:

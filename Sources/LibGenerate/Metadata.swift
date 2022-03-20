@@ -143,6 +143,8 @@ struct Patch: Codable {
     let consts: [String: Const] // constname key
     let consts_to_ignore: [String]
 
+    let typedefs_to_ignore: [String]
+
     struct Enum: Codable {
         let is_set: String? // values are bit-sig, model as OptionSet, pass to steamworks as given type
         let prefix: String? // enum values non-default prefix
@@ -483,8 +485,13 @@ struct MetadataDB {
             return (s.name, s) // structs can rename themselves...
         })
 
-        typedefs = .init(uniqueKeysWithValues: base.typedefs.map {
-            ($0.typedef, $0)
+        let ignoredTypedefs = Set(patch.typedefs_to_ignore)
+        typedefs = .init(uniqueKeysWithValues: base.typedefs.compactMap {
+            let name = $0.typedef
+            guard !ignoredTypedefs.contains(name) else {
+                return nil
+            }
+            return (name, $0)
         })
     }
 }

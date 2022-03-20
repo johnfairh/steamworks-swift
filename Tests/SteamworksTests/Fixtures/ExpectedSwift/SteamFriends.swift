@@ -69,7 +69,7 @@ public struct SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::SetPersonaName()`, async
-    func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
+    public func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
         await withUnsafeContinuation {
             setPersonaName(personaName: personaName, completion: $0.resume)
         }

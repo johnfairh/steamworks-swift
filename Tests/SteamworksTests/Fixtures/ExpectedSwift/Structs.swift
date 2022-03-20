@@ -22,6 +22,16 @@ public struct IPCFailure {
     public let data: [UInt8]
     /// Steamworks `m_aStruct`
     public let struct: [Something]
+
+    /// Create a customized `IPCFailure`
+    public init(failureType: Int = 0, success: Bool = false, user: SteamID = SteamID(), name: String = "", data: [UInt8] = [], struct: [Something] = []) {
+        self.failureType = failureType
+        self.success = success
+        self.user = user
+        self.name = name
+        self.data = data
+        self.struct = struct
+    }
 }
 
 extension IPCFailure: SteamCreatable {

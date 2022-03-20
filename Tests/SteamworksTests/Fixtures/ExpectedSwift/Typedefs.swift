@@ -15,6 +15,9 @@ public struct AppID: Hashable {
 }
 
 extension AppID: SteamTypeAlias {}
+extension AppID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}
 
 /// Steamworks `Callback_t`
 public typealias Callback = (SteamType, SteamEnum) -> Void
@@ -26,3 +29,6 @@ public struct FriendID: Hashable {
 }
 
 extension FriendID: SteamTypeAlias {}
+extension FriendID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: UInt32) { self.init(value) }
+}

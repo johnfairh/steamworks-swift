@@ -85,27 +85,6 @@ extension DepotID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
 
-/// Steamworks `FSteamNetworkingSocketsDebugOutput`
-public typealias FSteamNetworkingSocketsDebugOutput = (SteamNetworkingSocketsDebugOutputType, String) -> Void
-
-/// Steamworks `FnSteamNetAuthenticationStatusChanged`
-public typealias FnSteamNetAuthenticationStatusChanged = (SteamNetAuthenticationStatus) -> Void
-
-/// Steamworks `FnSteamNetConnectionStatusChanged`
-public typealias FnSteamNetConnectionStatusChanged = (SteamNetConnectionStatusChangedCallback) -> Void
-
-/// Steamworks `FnSteamNetworkingFakeIPResult`
-public typealias FnSteamNetworkingFakeIPResult = (SteamNetworkingFakeIPResult) -> Void
-
-/// Steamworks `FnSteamNetworkingMessagesSessionFailed`
-public typealias FnSteamNetworkingMessagesSessionFailed = (SteamNetworkingMessagesSessionFailed) -> Void
-
-/// Steamworks `FnSteamNetworkingMessagesSessionRequest`
-public typealias FnSteamNetworkingMessagesSessionRequest = (SteamNetworkingMessagesSessionRequest) -> Void
-
-/// Steamworks `FnSteamRelayNetworkStatusChanged`
-public typealias FnSteamRelayNetworkStatusChanged = (SteamRelayNetworkStatus) -> Void
-
 /// Steamworks `FriendsGroupID_t`
 public struct FriendsGroupID: Hashable {
     public let value: Int16
@@ -278,9 +257,6 @@ extension InputHandle: SteamTypeAlias {}
 extension InputHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
-
-/// Steamworks `PFNPreMinidumpCallback`
-public typealias PFNPreMinidumpCallback = (UnsafeMutableRawPointer) -> Void
 
 /// Steamworks `PartyBeaconID_t`
 public struct PartyBeaconID: Hashable {
