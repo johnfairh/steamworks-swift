@@ -20,13 +20,11 @@ public struct SteamRemotePlay {
     }
 
     /// Steamworks `ISteamRemotePlay::BGetSessionClientResolution()`
-    public func getSessionClientResolution(sessionID: RemotePlaySessionID, resolutionX: inout Int, resolutionY: inout Int) -> Bool {
+    public func getSessionClientResolution(sessionID: RemotePlaySessionID) -> (rc: Bool, resolutionX: Int, resolutionY: Int) {
         var tmp_resolutionX = Int32()
         var tmp_resolutionY = Int32()
         let rc = SteamAPI_ISteamRemotePlay_BGetSessionClientResolution(interface, RemotePlaySessionID_t(sessionID), &tmp_resolutionX, &tmp_resolutionY)
-        resolutionX = Int(tmp_resolutionX)
-        resolutionY = Int(tmp_resolutionY)
-        return rc
+        return (rc: rc, resolutionX: Int(tmp_resolutionX), resolutionY: Int(tmp_resolutionY))
     }
 
     /// Steamworks `ISteamRemotePlay::BSendRemotePlayTogetherInvite()`

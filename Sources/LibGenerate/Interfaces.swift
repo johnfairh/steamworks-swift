@@ -171,7 +171,7 @@ final class SwiftParam {
         case `in` // pass by value, flat, cast at time of use
         case in_ref // pass by value but convert and take address to pass [xlation of C++ '&' reference]
         case in_string_array // pass by value, array of strings
-        case out  // pass inout, use a temporary to cast, copy-back
+        case out  // return in a tuple
         case out_transparent // pass inout, no temporary
         case out_transparent_array // pass inout, array, no temporary
         case in_out // pass inout, pass current val to API, copy-back
@@ -186,13 +186,21 @@ final class SwiftParam {
     }
     private let style: Style
 
-    /// How should the param appear (or not) in the Swift version of the function
-    var swiftParamType: String? {
+    var includeInReturnTuple: Bool {
+        switch style {
+        case .out: return true
+        default: return false
+        }
+    }
+
+    /// What is the type of the param in the Swift version of the function - nil if omitted
+    private var swiftParamType: String? {
         let optional = db.nullable ? "?" : ""
         switch style {
         case .in: return swiftTypeBaseName + optional
         case .in_string_array, .in_ref: return swiftTypeBaseName
-        case .out, .out_transparent, .in_out: return "inout \(swiftTypeBaseName)\(optional)"
+        case .out: return nil
+        case .out_transparent, .in_out: return "inout \(swiftTypeBaseName)\(optional)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
         case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]\(optional)"
@@ -200,9 +208,56 @@ final class SwiftParam {
         }
     }
 
+    /// What actually appears in the formal param list - complicated by nullable out params
+    /// xxx can merge with above now?
+    var swiftParamClause: String? {
+        switch (style, db.nullable) {
+        case (.out, true):
+            return "\(returnParamName): Bool = true"
+        default:
+            guard let swiftType = swiftParamType else {
+                return nil
+            }
+            return "\(swiftName): \(swiftType)"
+        }
+    }
+
+    /// Clause to forward a value to a similarly shaped function
+    /// xxx obviously stuff to refactor...
+    var swiftParamForwardingClause: String? {
+        let paramName: String
+        switch (style, db.nullable) {
+        case (.out, true):
+            paramName = returnParamName
+        case (.in_array_count, _):
+            return nil
+        default:
+            paramName = swiftName
+        }
+        return "\(paramName): \(paramName)"
+    }
+
+    /// How should the param appear in the Swift return tuple
+    var swiftReturnType: String {
+        swiftTypeBaseName
+    }
+
+    /// A default instance for the Swift return tuple
+    var swiftReturnDummyInstance: String {
+        // big yikes here
+        // exclam is about non-optional bufferpointers that we can't just fabricate
+        steamTypeName.depointered.asSwiftTypeInstance!
+    }
+
     /// The name of the local variable to store the Steam version of the type for an out param
     private var tempName: String {
-        "tmp_\(swiftName)"
+        "tmp_\(swiftName)" // xxx refactor with uppered below, into Names
+    }
+
+    /// The name of the parameter controlling a nullable out param
+    private var returnParamName: String {
+        let uppered = swiftName.prefix(1).uppercased() + swiftName.dropFirst()
+        return "return\(uppered)"
     }
 
     /// What code (if any) is required before calling the Steamworks API
@@ -210,7 +265,15 @@ final class SwiftParam {
     /// (Need to review for stack-allocation, new APIs in Swift 5.6 might help)
     var preCallLines: [String] {
         switch style {
-        case .in, .in_array_count, .out_transparent, .out_transparent_array:
+        case .in:
+            guard db.nullable && !steamTypeName.isSteamTypePassedInTransparently else {
+                return []
+            }
+            return [
+                "let \(tempName) = UnsafeMutablePointer<\(steamTypeName)>.initAllocate(\(swiftName))",
+                "defer { \(tempName)?.deallocate() }"
+                ]
+        case .in_array_count, .out_transparent, .out_transparent_array:
             return []
         case .in_string_array:
             return [
@@ -222,13 +285,12 @@ final class SwiftParam {
         case .out:
             if !db.nullable {
                 return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
-            } else {
-                let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
-                return [
-                    "let \(tempName) = \(swiftName).map { _ in UnsafeMutablePointer<\(typeName)>.allocate(capacity: 1) }",
-                    "defer { \(tempName)?.deallocate() }"
-                ]
             }
+            let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
+            return [
+                "let \(tempName) = \(returnParamName) ? UnsafeMutablePointer<\(typeName)>.allocate(capacity: 1) : nil",
+                "defer { \(tempName)?.deallocate() }"
+            ]
         case .in_out, .in_ref:
             return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
         case .out_array(let sizeParam):
@@ -268,10 +330,16 @@ final class SwiftParam {
     var callName: String {
         switch style {
         case .in:
-            return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
+            if db.nullable && !steamTypeName.isSteamTypePassedInTransparently {
+                return tempName
+            } else {
+                return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
+            }
         case .in_string_array:
             return ".init(\(tempName))"
-        case .out, .in_out, .in_array, .in_ref:
+        case .out:
+            return db.nullable ? tempName : "&\(tempName)"
+        case .in_out, .in_array, .in_ref:
             if !db.nullable {
                 return "&\(tempName)"
             } else {
@@ -294,7 +362,9 @@ final class SwiftParam {
     var postSuccessCallLine: String? {
         switch style {
         case .in, .in_string_array, .in_array, .in_array_count, .out_transparent, .out_transparent_array, .in_ref: return nil
-        case .out, .in_out:
+        case .out:
+            return nil
+        case .in_out:
             if !db.nullable {
                 return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
             } else {
@@ -314,6 +384,14 @@ final class SwiftParam {
                 return "\(tempName).map { \(swiftName) = String($0) }"
             }
         }
+    }
+
+    /// Return-type tuple-builder
+    var outParamReturnExpression: String {
+        guard db.nullable else {
+            return "\(swiftTypeBaseName)(\(tempName))"
+        }
+        return "\(tempName).map { \(swiftTypeBaseName)($0.pointee) } ?? \(swiftReturnDummyInstance)"
     }
 
     init(_ db: MetadataDB.Method.Param, inArrayParam: SwiftParam? = nil) {
@@ -402,11 +480,51 @@ extension Array where Element == MetadataDB.Method.Param {
 }
 
 extension Array where Element == SwiftParam {
+
+    func namedParamList(filter: KeyPath<SwiftParam, String?>) -> String {
+        compactMap { param in
+            param[keyPath: filter].flatMap { "\(param.swiftName): \($0)" }
+        }.joined(separator: ", ")
+    }
+
+    func namedParamList(filter: KeyPath<SwiftParam, String>) -> String {
+        map { param in
+            "\(param.swiftName): \(param[keyPath: filter])"
+        }.joined(separator: ", ")
+    }
+
     /// Formal parameter list
     var functionParams: String {
-        compactMap { param in
-            param.swiftParamType.flatMap { "\(param.swiftName): \($0)" }
-        }.joined(separator: ", ")
+        compactMap { $0.swiftParamClause }.joined(separator: ", ")
+    }
+
+    /// If the routine naturally returns X, what does it return taking out params into account?
+    func returnTypeWithOutParams(rcType: String?) -> String? {
+        entupleWithApiRc(rcText: rcType, paramField: \.swiftReturnType)
+    }
+
+    /// Actually make the tuple including out params
+    func returnValueWithOutParams(apiIsVoid: Bool) -> String? {
+        entupleWithApiRc(rcText: apiIsVoid ? nil : "rc", paramField: \.outParamReturnExpression)
+    }
+
+    /// Make the tuple with dummy values, for a failed API call
+    func returnValueWithDummyOutParams(apiIsVoid: Bool) -> String? {
+        entupleWithApiRc(rcText: apiIsVoid ? nil : "rc", paramField: \.swiftReturnDummyInstance)
+    }
+
+    /// Figure out how to express a 0/1 RC with the N (0+) out-params in a single type or a tuple.
+    /// 1-element tuples are not allowed!
+    private func entupleWithApiRc(rcText: String?, paramField: KeyPath<SwiftParam,String>) -> String? {
+        if isEmpty {
+            return rcText
+        } else if rcText == nil && count == 1 {
+            return self[0][keyPath: paramField].re_sub("^.*: ", with: "")
+        } else {
+            let rcTuple = rcText.flatMap { "rc: \($0), "} ?? ""
+            let outTuple = namedParamList(filter: paramField)
+            return "(\(rcTuple)\(outTuple))"
+        }
     }
 
     /// Lines to add before the API call
@@ -426,9 +544,13 @@ extension Array where Element == SwiftParam {
 
     /// Call params when forwarding from async to callback API version
     var asyncForwardingParams: String {
-        compactMap { param in
-            param.swiftParamType.flatMap { _ in "\(param.swiftName): \(param.swiftName)" }
-        }.joined(separator: ", ")
+        compactMap(\.swiftParamForwardingClause).joined(separator: ", ")
+    }
+}
+
+extension MetadataDB.Method {
+    var swiftReturnType: String? {
+        returnType == "void" ? nil : returnType.asSwiftReturnTypeName
     }
 }
 
@@ -438,9 +560,8 @@ struct SwiftMethod {
     let db: MetadataDB.Method
 
     enum Style {
-        case normal(String) // 0+ args, return value
-        case void // 0+ args, no return value
-        case callReturn(String) // 0+ args, async return value
+        case normal(apiIsVoid: Bool, returnType: String?) // 0+ args, return value that may be a tuple of out-params
+        case callReturn(String) // 0+ args, async return value with given Swift struct type
     }
 
     var callReturnType: String? {
@@ -451,27 +572,29 @@ struct SwiftMethod {
     }
 
     let style: Style
-    let params: [SwiftParam]
+    let params: [SwiftParam] // all params
+    let outParams: [SwiftParam] // subset of params that are out-params
 
     init(_ db: MetadataDB.Method) {
         self.db = db
+        params = db.params.asSwiftParams
+        outParams = params.filter(\.includeInReturnTuple)
         if let callResult = db.callResult {
             style = .callReturn(callResult.asSwiftTypeName)
-        } else if db.returnType != "void" {
-            style = .normal(db.returnType.asSwiftReturnTypeName)
         } else {
-            style = .void
+            let apiReturnType = db.swiftReturnType
+            style = .normal(apiIsVoid: apiReturnType == nil,
+                            returnType: outParams.returnTypeWithOutParams(rcType: apiReturnType))
         }
-        params = db.params.asSwiftParams
     }
 
     var declLine: String {
         switch (style, db.isVar) {
-        case (.normal(let type), true):
+        case (.normal(false, .some(let type)), true):
             return "public var \(db.varName): \(type) {"
-        case (.normal(let type), false):
+        case (.normal(_, .some(let type)), false):
             return "public func \(db.funcName)(\(params.functionParams)) -> \(type) {"
-        case (.void, false):
+        case (.normal(_, .none), false):
             return "public func \(db.funcName)(\(params.functionParams)) {"
         case (.callReturn(let type), false):
             let done = "completion: @escaping (\(type)?) -> Void"
@@ -486,24 +609,24 @@ struct SwiftMethod {
         let paramList = params.isEmpty ? "" : ", \(params.callParams)"
         let steamCall = "\(db.flatName)(interface\(paramList))"
         switch style {
-        case .normal:
+        case .normal(false, _):
             return steamCall.asCast(to: db.returnType.asSwiftTypeForPassingOutOfSteamworks)
-        case .void, .callReturn:
+        case .normal(true, _), .callReturn:
             return steamCall
         }
     }
 
     enum ReturnSyntax {
-        case implicit
-        case explicit
-        case intermediate
+        case implicit // <steam API call> } (end of function)
+        case explicit // return <steam API call>
+        case intermediate // rc = <steam API call> then more stuff
     }
 
     var returnSyntax: ReturnSyntax {
         switch style {
-        case .callReturn, .void: return .implicit
+        case .callReturn, .normal(_, nil): return .implicit
         case .normal:
-            if params.postSuccessCallLines.isEmpty {
+            if outParams.isEmpty && params.postSuccessCallLines.isEmpty { // XXX ?? postCallLines ?? include iff stuff?
                 if params.preCallLines.isEmpty {
                     return .implicit
                 }
@@ -520,13 +643,14 @@ struct SwiftMethod {
                 "let rc = \(callExpression)",
                 "SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))"
             ]
-        case .normal, .void:
-            switch returnSyntax {
-            case .implicit:
+        case .normal(let apiIsVoid, _):
+            switch (returnSyntax, apiIsVoid) {
+            case (.implicit, _),
+                 (.intermediate, true):
                 return [callExpression]
-            case .explicit:
+            case (.explicit, _):
                 return ["return \(callExpression)"]
-            case .intermediate:
+            case (.intermediate, false):
                 return ["let rc = \(callExpression)"]
             }
         }
@@ -541,16 +665,29 @@ struct SwiftMethod {
     /// and uninitialized data UB.  Our patch json says what test to apply to `rc` - we may be able to generalize
     /// based on type later on but leave it manual for now.
     var postCallLines: [String] {
-        let successLines = params.postSuccessCallLines
-        guard !successLines.isEmpty,
-            let test = db.outParamIffRc else {
-            return successLines
+        linesConditionalOnRc(params.postSuccessCallLines)
+    }
+
+    private func linesConditionalOnRc(_ lines: [String], elseLines: [String] = []) -> [String] {
+        guard !(lines.isEmpty && elseLines.isEmpty),
+              let testExpr = db.outParamIffRc else {
+            return lines
         }
-        return ["if rc \(test.count == 0 ? "" : "\(test) "){"] + successLines.indented(1) + ["}"]
+        let test = "if rc \(testExpr.isEmpty ? "" : "\(testExpr) "){"
+        let elseLines = elseLines.isEmpty ? [] : (["} else {"] + elseLines.indented(1))
+        return [test] + lines.indented(1) + elseLines + ["}"]
     }
 
     var finalBodyLines: [String] {
-        returnSyntax == .intermediate ? ["return rc"] : []
+        guard returnSyntax == .intermediate,
+              case let .normal(apiIsVoid, _) = style,
+              let expr = outParams.returnValueWithOutParams(apiIsVoid: apiIsVoid) else {
+            return []
+        }
+        guard let elseExpr = outParams.returnValueWithDummyOutParams(apiIsVoid: apiIsVoid) else {
+            preconditionFailure("Can't be no dummy-params if there are no-dummy params")
+        }
+        return linesConditionalOnRc(["return \(expr)"], elseLines: ["return \(elseExpr)"])
     }
 
     var bodyLines: [String] {

@@ -350,15 +350,13 @@ final class Client {
                 // Send message from client on connect
                 guard isClient else { break }
                 let message: [UInt8] = [1,2,3,4]
-                var messageNumber = 0
-                let rc = self.api.networkingSockets.sendMessageToConnection(conn: req.conn, data: message, dataSize: message.count, sendFlags: [], outMessageNumber: &messageNumber)
+                let (rc, messageNumber) = self.api.networkingSockets.sendMessageToConnection(conn: req.conn, data: message, dataSize: message.count, sendFlags: [])
                 print("SendMsg rc=\(rc) messageNumber=\(messageNumber)")
 
-                // oh my word this api shape is all wrong
-                var status: SteamNetConnectionRealTimeStatus? = SteamNetConnectionRealTimeStatus()
+                // oh my word this api shape is still wrong
                 var laneStatus: [SteamNetConnectionRealTimeLaneStatus]? = nil
-                let rc2 = self.api.networkingSockets.getConnectionRealTimeStatus(conn: req.conn, status: &status, laneCount: 0, laneStatus: &laneStatus)
-                print("RTStatus rc2=\(rc2) status=\(status!)")
+                let (rc2, status) = self.api.networkingSockets.getConnectionRealTimeStatus(conn: req.conn, laneCount: 0, laneStatus: &laneStatus)
+                print("RTStatus rc2=\(rc2) status=\(status)")
 
             case .closedByPeer:
                 // Close client and end test when server closes
@@ -374,8 +372,7 @@ final class Client {
 
         listenSocket = api.networkingSockets.createListenSocketIP(address: .init(inaddrAnyPort: 27100), options: [])
         print("CreateListenSocketIP rc=\(listenSocket!)")
-        var adr = SteamNetworkingIPAddr.init(inaddrAnyPort: 0)
-        let adrRc = api.networkingSockets.getListenSocketAddress(socket: listenSocket!, address: &adr)
+        let (adrRc, adr) = api.networkingSockets.getListenSocketAddress(socket: listenSocket!)
         print("GetListenSocketAddress rc=\(adrRc) adr=\(adr)")
 
         clientConnection = api.networkingSockets.connectByIPAddress(address: .init(ipv4: .ipv4(127, 0, 0, 1), port: 27100), options: [])
@@ -386,23 +383,19 @@ final class Client {
     }
 
     func testNetworkSettings() {
-        var timeout = Int(0)
-        let rc1 = api.networkingUtils.getConfigValue(.timeoutInitial, scopeType: .global, obj: 0, outValue: &timeout)
+        let (rc1, timeout) = api.networkingUtils.getConfigValueInt(.timeoutInitial, scopeType: .global, obj: 0)
         print("timeoutInitial: rc \(rc1), timeout \(timeout)")
 
-        var dupSend = Float(-1)
-        let rc2 = api.networkingUtils.getConfigValue(.fakePacketDupSend, scopeType: .global, obj: 0, outValue: &dupSend)
+        let (rc2, dupSend) = api.networkingUtils.getConfigValueFloat(.fakePacketDupSend, scopeType: .global, obj: 0)
         print("fakePacketDupSend: rc \(rc2), dupSendRatio \(dupSend)")
 
-        var stunList = String()
-        let rc3 = api.networkingUtils.getConfigValue(.p2PSTUNServerList, scopeType: .global, obj: 0, outValue: &stunList)
+        let (rc3, stunList) = api.networkingUtils.getConfigValueString(.p2PSTUNServerList, scopeType: .global, obj: 0)
         print("p2PSTUNServerList: rc \(rc3), stunlist \(stunList)")
 
         api.networkingUtils.initRelayNetworkAccess()
 
-        var status = SteamRelayNetworkStatus()
-        api.networkingUtils.getRelayNetworkStatus(details: &status)
-        print(status)
+        let status = api.networkingUtils.getRelayNetworkStatus()
+        print("Relay Network Status: \(status)")
 
         var pops = [SteamNetworkingPOPID]()
         api.networkingUtils.getPOPList(list: &pops, listSz: api.networkingUtils.getPOPCount())

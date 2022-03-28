@@ -101,11 +101,14 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetAchievementAndUnlockTime()`
-    public func getAchievementAndUnlockTime(name: String, achieved: inout Bool, unlockTime: inout RTime32) -> Bool {
+    public func getAchievementAndUnlockTime(name: String, achieved: inout Bool) -> (rc: Bool, unlockTime: RTime32) {
         var tmp_unlockTime = CSteamworks.RTime32()
         let rc = SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime(interface, name, &achieved, &tmp_unlockTime)
-        unlockTime = RTime32(tmp_unlockTime)
-        return rc
+        if rc {
+            return (rc: rc, unlockTime: RTime32(tmp_unlockTime))
+        } else {
+            return (rc: rc, unlockTime: 0)
+        }
     }
 
     /// Steamworks `ISteamUserStats::GetAchievementDisplayAttribute()`
@@ -129,24 +132,31 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetAchievementProgressLimits()`
-    public func getAchievementProgressLimits(name: String, minProgress: inout Int, maxProgress: inout Int) -> Bool {
+    public func getAchievementProgressLimits(name: String) -> (rc: Bool, minProgress: Int, maxProgress: Int) {
         var tmp_minProgress = int32()
         var tmp_maxProgress = int32()
         let rc = SteamAPI_ISteamUserStats_GetAchievementProgressLimitsInt32(interface, name, &tmp_minProgress, &tmp_maxProgress)
-        minProgress = Int(tmp_minProgress)
-        maxProgress = Int(tmp_maxProgress)
-        return rc
+        if rc {
+            return (rc: rc, minProgress: Int(tmp_minProgress), maxProgress: Int(tmp_maxProgress))
+        } else {
+            return (rc: rc, minProgress: 0, maxProgress: 0)
+        }
     }
 
     /// Steamworks `ISteamUserStats::GetDownloadedLeaderboardEntry()`
-    public func getDownloadedLeaderboardEntry(steamLeaderboardEntries: SteamLeaderboardEntries, index: Int, leaderboardEntry: inout LeaderboardEntry, details: inout [Int], detailsMax: Int) -> Bool {
+    public func getDownloadedLeaderboardEntry(steamLeaderboardEntries: SteamLeaderboardEntries, index: Int, details: inout [Int], detailsMax: Int) -> (rc: Bool, leaderboardEntry: LeaderboardEntry) {
         var tmp_leaderboardEntry = LeaderboardEntry_t()
         let tmp_details = UnsafeMutableBufferPointer<int32>.allocate(capacity: detailsMax)
         defer { tmp_details.deallocate() }
         let rc = SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry(interface, SteamLeaderboardEntries_t(steamLeaderboardEntries), Int32(index), &tmp_leaderboardEntry, tmp_details.baseAddress, Int32(detailsMax))
-        leaderboardEntry = LeaderboardEntry(tmp_leaderboardEntry)
-        details = tmp_details.map { Int($0) }
-        return rc
+        if rc {
+            details = tmp_details.map { Int($0) }
+        }
+        if rc {
+            return (rc: rc, leaderboardEntry: LeaderboardEntry(tmp_leaderboardEntry))
+        } else {
+            return (rc: rc, leaderboardEntry: LeaderboardEntry())
+        }
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStat()`
@@ -169,11 +179,14 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStat()`
-    public func getGlobalStat(statName: String, data: inout Int) -> Bool {
+    public func getGlobalStat(statName: String) -> (rc: Bool, data: Int) {
         var tmp_data = int64()
         let rc = SteamAPI_ISteamUserStats_GetGlobalStatInt64(interface, statName, &tmp_data)
-        data = Int(tmp_data)
-        return rc
+        if rc {
+            return (rc: rc, data: Int(tmp_data))
+        } else {
+            return (rc: rc, data: 0)
+        }
     }
 
     /// Steamworks `ISteamUserStats::GetLeaderboardDisplayType()`
@@ -238,11 +251,14 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetStat()`
-    public func getStat(name: String, data: inout Int) -> Bool {
+    public func getStat(name: String) -> (rc: Bool, data: Int) {
         var tmp_data = int32()
         let rc = SteamAPI_ISteamUserStats_GetStatInt32(interface, name, &tmp_data)
-        data = Int(tmp_data)
-        return rc
+        if rc {
+            return (rc: rc, data: Int(tmp_data))
+        } else {
+            return (rc: rc, data: 0)
+        }
     }
 
     /// Steamworks `ISteamUserStats::GetUserAchievement()`
@@ -251,11 +267,14 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetUserAchievementAndUnlockTime()`
-    public func getUserAchievementAndUnlockTime(user: SteamID, name: String, achieved: inout Bool, unlockTime: inout RTime32) -> Bool {
+    public func getUserAchievementAndUnlockTime(user: SteamID, name: String, achieved: inout Bool) -> (rc: Bool, unlockTime: RTime32) {
         var tmp_unlockTime = CSteamworks.RTime32()
         let rc = SteamAPI_ISteamUserStats_GetUserAchievementAndUnlockTime(interface, UInt64(user), name, &achieved, &tmp_unlockTime)
-        unlockTime = RTime32(tmp_unlockTime)
-        return rc
+        if rc {
+            return (rc: rc, unlockTime: RTime32(tmp_unlockTime))
+        } else {
+            return (rc: rc, unlockTime: 0)
+        }
     }
 
     /// Steamworks `ISteamUserStats::GetUserStat()`
@@ -264,11 +283,14 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetUserStat()`
-    public func getUserStat(user: SteamID, name: String, data: inout Int) -> Bool {
+    public func getUserStat(user: SteamID, name: String) -> (rc: Bool, data: Int) {
         var tmp_data = int32()
         let rc = SteamAPI_ISteamUserStats_GetUserStatInt32(interface, UInt64(user), name, &tmp_data)
-        data = Int(tmp_data)
-        return rc
+        if rc {
+            return (rc: rc, data: Int(tmp_data))
+        } else {
+            return (rc: rc, data: 0)
+        }
     }
 
     /// Steamworks `ISteamUserStats::IndicateAchievementProgress()`

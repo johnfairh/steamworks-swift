@@ -86,11 +86,10 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::GetAuthSessionTicket()`
-    public func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int, ticketSize: inout Int) -> HAuthTicket {
+    public func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: HAuthTicket, ticketSize: Int) {
         var tmp_ticketSize = uint32()
         let rc = HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, ticket, Int32(maxTicketSize), &tmp_ticketSize))
-        ticketSize = Int(tmp_ticketSize)
-        return rc
+        return (rc: rc, ticketSize: Int(tmp_ticketSize))
     }
 
     /// Steamworks `ISteamGameServer::GetGameplayStats()`
@@ -99,13 +98,11 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::GetNextOutgoingPacket()`
-    public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int, netAdr: inout Int, port: inout Int) -> Int {
+    public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: Int) {
         var tmp_netAdr = uint32()
         var tmp_port = uint16()
         let rc = Int(SteamAPI_ISteamGameServer_GetNextOutgoingPacket(interface, out, Int32(maxOutSize), &tmp_netAdr, &tmp_port))
-        netAdr = Int(tmp_netAdr)
-        port = Int(tmp_port)
-        return rc
+        return (rc: rc, netAdr: Int(tmp_netAdr), port: Int(tmp_port))
     }
 
     /// Steamworks `ISteamGameServer::GetPublicIP()`
@@ -157,11 +154,10 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::SendUserConnectAndAuthenticate_DEPRECATED()`
-    public func sendUserConnectAndAuthenticateDEPRECATED(ipClient: Int, authBlob: UnsafeRawPointer, authBlobSize: Int, user: inout SteamID) -> Bool {
+    public func sendUserConnectAndAuthenticateDEPRECATED(ipClient: Int, authBlob: UnsafeRawPointer, authBlobSize: Int) -> (rc: Bool, user: SteamID) {
         var tmp_user = CSteamID()
         let rc = SteamAPI_ISteamGameServer_SendUserConnectAndAuthenticate_DEPRECATED(interface, uint32(ipClient), authBlob, uint32(authBlobSize), &tmp_user)
-        user = SteamID(tmp_user)
-        return rc
+        return (rc: rc, user: SteamID(tmp_user))
     }
 
     /// Steamworks `ISteamGameServer::SendUserDisconnect_DEPRECATED()`

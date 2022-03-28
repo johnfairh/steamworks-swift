@@ -275,20 +275,6 @@ methods:
 #
 # ISteamInventory
 #
-  SteamAPI_ISteamInventory_AddPromoItem:
-    discardable_result: true
-  SteamAPI_ISteamInventory_AddPromoItems:
-    discardable_result: true
-  SteamAPI_ISteamInventory_ConsumeItem:
-    discardable_result: true
-  SteamAPI_ISteamInventory_DeserializeResult:
-    discardable_result: true
-  SteamAPI_ISteamInventory_GenerateItems:
-    discardable_result: true
-  SteamAPI_ISteamInventory_GenerateItems:
-    discardable_result: true
-  SteamAPI_ISteamInventory_GetAllItems:
-    discardable_result: true
   SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs:
     params:
       punItemDefIDsArraySize:
@@ -307,8 +293,6 @@ methods:
         nullable: true
       punValueBufferSizeOut:
         in_out: true
-  SteamAPI_ISteamInventory_GetItemsByID:
-    discardable_result: true
   SteamAPI_ISteamInventory_GetItemsWithPrices: # the most drunk api definition of all
     params:
       pArrayItemDefs:
@@ -335,8 +319,6 @@ methods:
         in_out: true
   SteamAPI_ISteamInventory_GetResultTimestamp:
     returntype: RTime32
-  SteamAPI_ISteamInventory_GrantPromoItems:
-    discardable_result: true
   SteamAPI_ISteamInventory_LoadItemDefinitions:
     discardable_result: true
   SteamAPI_ISteamInventory_SerializeResult:
@@ -347,10 +329,6 @@ methods:
         in_out: true
   SteamAPI_ISteamInventory_TradeItems:
     ignore: "marked deprecated"
-  SteamAPI_ISteamInventory_TransferItemQuantity:
-    discardable_result: true
-  SteamAPI_ISteamInventory_TriggerItemDrop:
-    discardable_result: true
 #
 # ISteamMatchmaking
 #
@@ -365,6 +343,7 @@ methods:
     discardable_result: true
   SteamAPI_ISteamMatchmaking_GetFavoriteGame:
     flat_name: CSteamAPI_ISteamMatchmaking_GetFavoriteGame
+    out_param_iff_rc: ' '
     params:
       pRTime32LastPlayedOnServer:
         type: RTime32 *
@@ -376,6 +355,8 @@ methods:
         out_string_count: cchKeyBufferSize
       pchValue:
         out_string_count: cchValueBufferSize
+  SteamAPI_ISteamMatchmaking_GetLobbyGameServer:
+    out_param_iff_rc: ' '
   SteamAPI_ISteamMatchmaking_GetLobbyMemberData:
     returntype: String?
   SteamAPI_ISteamMatchmaking_InviteUserToLobby:
@@ -550,25 +531,36 @@ methods:
   SteamAPI_ISteamNetworkingSockets_CreateSocketPair:
     params:
       pIdentity1:
-        type: 'SteamNetworkingIdentity &'
+        type: 'SteamNetworkingIdentity'
+        nullable: true
       pIdentity2:
-        type: 'SteamNetworkingIdentity &'
+        type: 'SteamNetworkingIdentity'
+        nullable: true
   SteamAPI_ISteamNetworkingSockets_DestroyPollGroup:
     discardable_result: true
   SteamAPI_ISteamNetworkingSockets_FlushMessagesOnConnection:
     discardable_result: true
   SteamAPI_ISteamNetworkingSockets_GetAuthenticationStatus:
-    discardable_result: true
+    params:
+      pDetails:
+        nullable: true
   SteamAPI_ISteamNetworkingSockets_GetCertificateRequest:
     flat_name: CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest
     params:
+      pBlob:
+        nullable: true
       pcbBlob:
         in_out: true
       errMsg:
         type: 'char *'         # This is a very shaky hack but the fixed-size
         out_string_count: 1024 # array/tuple stuff is so unhelpful...
   SteamAPI_ISteamNetworkingSockets_GetConnectionInfo:
-    discardable_result: true
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamNetworkingSockets_GetConnectionName:
+    out_param_iff_rc: ' '
+    params:
+      pszName:
+        out_string_count: nMaxLen
   SteamAPI_ISteamNetworkingSockets_GetConnectionRealTimeStatus:
     params:
       pStatus:
@@ -586,8 +578,10 @@ methods:
       pszBuf:
         out_string_count: cbBuf
     out_param_iff_rc: '== 0'
+  SteamAPI_ISteamNetworkingSockets_GetIdentity:
+    out_param_iff_rc: ' '
   SteamAPI_ISteamNetworkingSockets_GetListenSocketAddress:
-    discardable_result: true
+    out_param_iff_rc: ' '
   SteamAPI_ISteamNetworkingSockets_GetRemoteFakeIPForConnection:
     out_param_iff_rc: '== .ok'
   SteamAPI_ISteamNetworkingSockets_InitAuthentication:
@@ -665,7 +659,9 @@ methods:
   SteamAPI_ISteamNetworkingUtils_GetRealIdentityForFakeIP:
     out_param_iff_rc: '== .ok'
   SteamAPI_ISteamNetworkingUtils_GetRelayNetworkStatus:
-    discardable_result: true
+    params:
+      pDetails:
+        nullable: true
   SteamAPI_ISteamNetworkingUtils_SetConfigValue:
     discardable_result: true
   SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct:
@@ -716,11 +712,7 @@ methods:
         type: SteamPartyBeaconLocation_t
   SteamAPI_ISteamParties_DestroyBeacon:
     discardable_result: true
-  SteamAPI_ISteamParties_GetBeaconDetails:
-    discardable_result: true
   SteamAPI_ISteamParties_GetBeaconLocationData:
-    discardable_result: true
-  SteamAPI_ISteamParties_GetNumAvailableBeaconLocations:
     discardable_result: true
   SteamAPI_ISteamParties_GetAvailableBeaconLocations:
     discardable_result: true
@@ -755,35 +747,6 @@ methods:
 #
 # ISteamUGC
 #
-  SteamAPI_ISteamUGC_GetItemInstallInfo:
-    out_param_iff_rc: ' '
-    params:
-      punTimeStamp:
-        type: 'RTime32 *'
-  SteamAPI_ISteamUGC_GetItemState:
-    returntype: EItemState
-  SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview:
-    params:
-      pchOriginalFileName:
-        nullable: true
-  SteamAPI_ISteamUGC_GetSubscribedItems:
-    params:
-      pvecPublishedFileID:
-        out_array_count: cMaxEntries
-  SteamAPI_ISteamUGC_ReleaseQueryUGCRequest:
-    discardable_result: true
-  SteamAPI_ISteamUGC_StartPlaytimeTracking:
-    params:
-      pvecPublishedFileID:
-        array_count: unNumPublishedFileIDs
-  SteamAPI_ISteamUGC_StopPlaytimeTracking:
-    params:
-      pvecPublishedFileID:
-        array_count: unNumPublishedFileIDs
-  SteamAPI_ISteamUGC_SubmitItemUpdate:
-    params:
-      pchChangeNote:
-        nullable: true
   SteamAPI_ISteamUGC_AddExcludedTag:
     discardable_result: true
   SteamAPI_ISteamUGC_AddItemKeyValueTag:
@@ -798,23 +761,47 @@ methods:
     discardable_result: true
   SteamAPI_ISteamUGC_AddRequiredTagGroup:
     discardable_result: true
+  SteamAPI_ISteamUGC_CreateQueryUGCDetailsRequest:
+    params:
+      pvecPublishedFileID:
+        array_count: unNumPublishedFileIDs
+  SteamAPI_ISteamUGC_GetItemInstallInfo:
+    out_param_iff_rc: ' '
+    params:
+      punTimeStamp:
+        type: 'RTime32 *'
+  SteamAPI_ISteamUGC_GetItemState:
+    returntype: EItemState
   SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview:
-    discardable_result: true
+    out_param_iff_rc: ' '
+    params:
+      pchOriginalFileName:
+        nullable: true
   SteamAPI_ISteamUGC_GetQueryUGCChildren:
-    discardable_result: true
-  SteamAPI_ISteamUGC_GetQueryUGCTag:
-    discardable_result: true
-  SteamAPI_ISteamUGC_GetQueryUGCTagDisplayName:
-    discardable_result: true
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCKeyValueTag:
     discardable_result: true
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCMetadata:
     discardable_result: true
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCPreviewURL:
     discardable_result: true
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCResult:
-    discardable_result: true
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCStatistic:
+    discardable_result: true
+  SteamAPI_ISteamUGC_GetQueryUGCTag:
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamUGC_GetQueryUGCTagDisplayName:
+    discardable_result: true
+    out_param_iff_rc: ' '
+  SteamAPI_ISteamUGC_GetSubscribedItems:
+    params:
+      pvecPublishedFileID:
+        out_array_count: cMaxEntries
+  SteamAPI_ISteamUGC_ReleaseQueryUGCRequest:
     discardable_result: true
   SteamAPI_ISteamUGC_RemoveItemKeyValueTags:
     discardable_result: true
@@ -864,6 +851,18 @@ methods:
     discardable_result: true
   SteamAPI_ISteamUGC_SetSearchText:
     discardable_result: true
+  SteamAPI_ISteamUGC_StartPlaytimeTracking:
+    params:
+      pvecPublishedFileID:
+        array_count: unNumPublishedFileIDs
+  SteamAPI_ISteamUGC_StopPlaytimeTracking:
+    params:
+      pvecPublishedFileID:
+        array_count: unNumPublishedFileIDs
+  SteamAPI_ISteamUGC_SubmitItemUpdate:
+    params:
+      pchChangeNote:
+        nullable: true
   SteamAPI_ISteamUGC_UpdateItemPreviewFile:
     discardable_result: true
   SteamAPI_ISteamUGC_UpdateItemPreviewVideo:
@@ -880,10 +879,14 @@ methods:
 # ISteamUserStats
 #
   SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime:
+    out_param_iff_rc: ' '
     params:
       punUnlockTime:
         type: RTime32 *
+  SteamAPI_ISteamUserStats_GetAchievementProgressLimitsInt32:
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry:
+    out_param_iff_rc: ' '
     params:
       pDetails:
         out_array_count: cDetailsMax
@@ -897,6 +900,8 @@ methods:
       pData:
         out_array_count: cubData / 8
         array_count: DELETE
+  SteamAPI_ISteamUserStats_GetGlobalStatInt64:
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUserStats_GetMostAchievedAchievementInfo:
     params:
       pchName:
@@ -905,10 +910,15 @@ methods:
     params:
       pchName:
         out_string_count: unNameBufLen
+  SteamAPI_ISteamUserStats_GetStatInt32:
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUserStats_GetUserAchievementAndUnlockTime:
+    out_param_iff_rc: ' '
     params:
       punUnlockTime:
         type: RTime32 *
+  SteamAPI_ISteamUserStats_GetUserStatInt32:
+    out_param_iff_rc: ' '
   SteamAPI_ISteamUserStats_UploadLeaderboardScore:
     params:
       pScoreDetails:

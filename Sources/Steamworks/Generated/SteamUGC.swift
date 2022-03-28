@@ -133,11 +133,9 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::CreateQueryUGCDetailsRequest()`
-    public func createQueryUGCDetailsRequest(publishedFileID: inout PublishedFileID, numPublishedFileIDs: Int) -> UGCQueryHandle {
-        var tmp_publishedFileID = PublishedFileId_t()
-        let rc = UGCQueryHandle(SteamAPI_ISteamUGC_CreateQueryUGCDetailsRequest(interface, &tmp_publishedFileID, uint32(numPublishedFileIDs)))
-        publishedFileID = PublishedFileID(tmp_publishedFileID)
-        return rc
+    public func createQueryUGCDetailsRequest(publishedFileID: [PublishedFileID]) -> UGCQueryHandle {
+        var tmp_publishedFileID = publishedFileID.map { PublishedFileId_t($0) }
+        return UGCQueryHandle(SteamAPI_ISteamUGC_CreateQueryUGCDetailsRequest(interface, &tmp_publishedFileID, uint32(publishedFileID.count)))
     }
 
     /// Steamworks `ISteamUGC::CreateQueryUserUGCRequest()`
@@ -182,16 +180,19 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetItemInstallInfo()`
-    public func getItemInstallInfo(publishedFileID: PublishedFileID, sizeOnDisk: inout UInt64, folder: inout String, folderSize: Int, timeStamp: inout RTime32) -> Bool {
+    public func getItemInstallInfo(publishedFileID: PublishedFileID, sizeOnDisk: inout UInt64, folder: inout String, folderSize: Int) -> (rc: Bool, timeStamp: RTime32) {
         let tmp_folder = UnsafeMutableBufferPointer<CChar>.allocate(capacity: folderSize)
         defer { tmp_folder.deallocate() }
         var tmp_timeStamp = CSteamworks.RTime32()
         let rc = SteamAPI_ISteamUGC_GetItemInstallInfo(interface, PublishedFileId_t(publishedFileID), &sizeOnDisk, tmp_folder.baseAddress, uint32(folderSize), &tmp_timeStamp)
         if rc {
             folder = String(tmp_folder)
-            timeStamp = RTime32(tmp_timeStamp)
         }
-        return rc
+        if rc {
+            return (rc: rc, timeStamp: RTime32(tmp_timeStamp))
+        } else {
+            return (rc: rc, timeStamp: 0)
+        }
     }
 
     /// Steamworks `ISteamUGC::GetItemState()`
@@ -219,27 +220,33 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCAdditionalPreview()`
-    @discardableResult
-    public func getQueryUGCAdditionalPreview(handle: UGCQueryHandle, index: Int, previewIndex: Int, urlOrVideoID: inout String, urlSize: Int, originalFileName: inout String, originalFileNameSize: Int, previewType: inout ItemPreviewType) -> Bool {
+    public func getQueryUGCAdditionalPreview(handle: UGCQueryHandle, index: Int, previewIndex: Int, urlOrVideoID: inout String, urlSize: Int, originalFileName: inout String?, originalFileNameSize: Int) -> (rc: Bool, previewType: ItemPreviewType) {
         let tmp_urlOrVideoID = UnsafeMutableBufferPointer<CChar>.allocate(capacity: urlSize)
         defer { tmp_urlOrVideoID.deallocate() }
-        let tmp_originalFileName = UnsafeMutableBufferPointer<CChar>.allocate(capacity: urlSize)
-        defer { tmp_originalFileName.deallocate() }
+        let tmp_originalFileName = originalFileName.map { _ in UnsafeMutableBufferPointer<CChar>.allocate(capacity: urlSize) }
+        defer { tmp_originalFileName?.deallocate() }
         var tmp_previewType = EItemPreviewType(rawValue: 0)
-        let rc = SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview(interface, UGCQueryHandle_t(handle), uint32(index), uint32(previewIndex), tmp_urlOrVideoID.baseAddress, uint32(urlSize), tmp_originalFileName.baseAddress, uint32(originalFileNameSize), &tmp_previewType)
-        urlOrVideoID = String(tmp_urlOrVideoID)
-        originalFileName = String(tmp_originalFileName)
-        previewType = ItemPreviewType(tmp_previewType)
-        return rc
+        let rc = SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview(interface, UGCQueryHandle_t(handle), uint32(index), uint32(previewIndex), tmp_urlOrVideoID.baseAddress, uint32(urlSize), tmp_originalFileName.flatMap { $0.baseAddress }, uint32(originalFileNameSize), &tmp_previewType)
+        if rc {
+            urlOrVideoID = String(tmp_urlOrVideoID)
+            tmp_originalFileName.map { originalFileName = String($0) }
+        }
+        if rc {
+            return (rc: rc, previewType: ItemPreviewType(tmp_previewType))
+        } else {
+            return (rc: rc, previewType: .image)
+        }
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCChildren()`
-    @discardableResult
-    public func getQueryUGCChildren(handle: UGCQueryHandle, index: Int, publishedFileID: inout PublishedFileID, maxEntries: Int) -> Bool {
+    public func getQueryUGCChildren(handle: UGCQueryHandle, index: Int, maxEntries: Int) -> (rc: Bool, publishedFileID: PublishedFileID) {
         var tmp_publishedFileID = PublishedFileId_t()
         let rc = SteamAPI_ISteamUGC_GetQueryUGCChildren(interface, UGCQueryHandle_t(handle), uint32(index), &tmp_publishedFileID, uint32(maxEntries))
-        publishedFileID = PublishedFileID(tmp_publishedFileID)
-        return rc
+        if rc {
+            return (rc: rc, publishedFileID: PublishedFileID(tmp_publishedFileID))
+        } else {
+            return (rc: rc, publishedFileID: 0)
+        }
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCKeyValueTag()`
@@ -250,9 +257,15 @@ public struct SteamUGC {
         let tmp_value = UnsafeMutableBufferPointer<CChar>.allocate(capacity: valueSize)
         defer { tmp_value.deallocate() }
         let rc = SteamAPI_ISteamUGC_GetQueryUGCKeyValueTag(interface, UGCQueryHandle_t(handle), uint32(index), uint32(valueTagIndex), tmp_key.baseAddress, uint32(keySize), tmp_value.baseAddress, uint32(valueSize))
-        key = String(tmp_key)
-        value = String(tmp_value)
-        return rc
+        if rc {
+            key = String(tmp_key)
+            value = String(tmp_value)
+        }
+        if rc {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCMetadata()`
@@ -261,8 +274,14 @@ public struct SteamUGC {
         let tmp_metadata = UnsafeMutableBufferPointer<CChar>.allocate(capacity: metadatasizeSize)
         defer { tmp_metadata.deallocate() }
         let rc = SteamAPI_ISteamUGC_GetQueryUGCMetadata(interface, UGCQueryHandle_t(handle), uint32(index), tmp_metadata.baseAddress, uint32(metadatasizeSize))
-        metadata = String(tmp_metadata)
-        return rc
+        if rc {
+            metadata = String(tmp_metadata)
+        }
+        if rc {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCNumAdditionalPreviews()`
@@ -286,17 +305,25 @@ public struct SteamUGC {
         let tmp_url = UnsafeMutableBufferPointer<CChar>.allocate(capacity: urlSize)
         defer { tmp_url.deallocate() }
         let rc = SteamAPI_ISteamUGC_GetQueryUGCPreviewURL(interface, UGCQueryHandle_t(handle), uint32(index), tmp_url.baseAddress, uint32(urlSize))
-        url = String(tmp_url)
-        return rc
+        if rc {
+            url = String(tmp_url)
+        }
+        if rc {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCResult()`
-    @discardableResult
-    public func getQueryUGCResult(handle: UGCQueryHandle, index: Int, details: inout SteamUGCDetails) -> Bool {
+    public func getQueryUGCResult(handle: UGCQueryHandle, index: Int) -> (rc: Bool, details: SteamUGCDetails) {
         var tmp_details = SteamUGCDetails_t()
         let rc = SteamAPI_ISteamUGC_GetQueryUGCResult(interface, UGCQueryHandle_t(handle), uint32(index), &tmp_details)
-        details = SteamUGCDetails(tmp_details)
-        return rc
+        if rc {
+            return (rc: rc, details: SteamUGCDetails(tmp_details))
+        } else {
+            return (rc: rc, details: SteamUGCDetails())
+        }
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCStatistic()`
@@ -306,13 +333,18 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCTag()`
-    @discardableResult
     public func getQueryUGCTag(handle: UGCQueryHandle, index: Int, tag: Int, value: inout String, valueSize: Int) -> Bool {
         let tmp_value = UnsafeMutableBufferPointer<CChar>.allocate(capacity: valueSize)
         defer { tmp_value.deallocate() }
         let rc = SteamAPI_ISteamUGC_GetQueryUGCTag(interface, UGCQueryHandle_t(handle), uint32(index), uint32(tag), tmp_value.baseAddress, uint32(valueSize))
-        value = String(tmp_value)
-        return rc
+        if rc {
+            value = String(tmp_value)
+        }
+        if rc {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCTagDisplayName()`
@@ -321,8 +353,14 @@ public struct SteamUGC {
         let tmp_value = UnsafeMutableBufferPointer<CChar>.allocate(capacity: valueSize)
         defer { tmp_value.deallocate() }
         let rc = SteamAPI_ISteamUGC_GetQueryUGCTagDisplayName(interface, UGCQueryHandle_t(handle), uint32(index), uint32(tag), tmp_value.baseAddress, uint32(valueSize))
-        value = String(tmp_value)
-        return rc
+        if rc {
+            value = String(tmp_value)
+        }
+        if rc {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamUGC::GetSubscribedItems()`

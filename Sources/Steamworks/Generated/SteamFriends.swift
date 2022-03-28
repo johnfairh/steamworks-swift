@@ -97,15 +97,12 @@ public struct SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetClanActivityCounts()`
-    public func getClanActivityCounts(clan: SteamID, online: inout Int, inGame: inout Int, chatting: inout Int) -> Bool {
+    public func getClanActivityCounts(clan: SteamID) -> (rc: Bool, online: Int, inGame: Int, chatting: Int) {
         var tmp_online = Int32()
         var tmp_inGame = Int32()
         var tmp_chatting = Int32()
         let rc = SteamAPI_ISteamFriends_GetClanActivityCounts(interface, UInt64(clan), &tmp_online, &tmp_inGame, &tmp_chatting)
-        online = Int(tmp_online)
-        inGame = Int(tmp_inGame)
-        chatting = Int(tmp_chatting)
-        return rc
+        return (rc: rc, online: Int(tmp_online), inGame: Int(tmp_inGame), chatting: Int(tmp_chatting))
     }
 
     /// Steamworks `ISteamFriends::GetClanByIndex()`
@@ -119,13 +116,11 @@ public struct SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
-    public func getClanChatMessage(clanChat: SteamID, messageIndex: Int, text: UnsafeMutableRawPointer, textMaxSize: Int, chatEntryType: inout ChatEntryType, chatter: inout SteamID) -> Int {
+    public func getClanChatMessage(clanChat: SteamID, messageIndex: Int, text: UnsafeMutableRawPointer, textMaxSize: Int) -> (rc: Int, chatEntryType: ChatEntryType, chatter: SteamID) {
         var tmp_chatEntryType = EChatEntryType(rawValue: 0)
         var tmp_chatter = CSteamID()
         let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, UInt64(clanChat), Int32(messageIndex), text, Int32(textMaxSize), &tmp_chatEntryType, &tmp_chatter))
-        chatEntryType = ChatEntryType(tmp_chatEntryType)
-        chatter = SteamID(tmp_chatter)
-        return rc
+        return (rc: rc, chatEntryType: ChatEntryType(tmp_chatEntryType), chatter: SteamID(tmp_chatter))
     }
 
     /// Steamworks `ISteamFriends::GetClanCount()`
@@ -212,21 +207,21 @@ public struct SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendGamePlayed()`
-    public func getFriendGamePlayed(friend: SteamID, friendGameInfo: inout FriendGameInfo) -> Bool {
+    public func getFriendGamePlayed(friend: SteamID) -> (rc: Bool, friendGameInfo: FriendGameInfo) {
         var tmp_friendGameInfo = FriendGameInfo_t()
         let rc = SteamAPI_ISteamFriends_GetFriendGamePlayed(interface, UInt64(friend), &tmp_friendGameInfo)
         if rc {
-            friendGameInfo = FriendGameInfo(tmp_friendGameInfo)
+            return (rc: rc, friendGameInfo: FriendGameInfo(tmp_friendGameInfo))
+        } else {
+            return (rc: rc, friendGameInfo: FriendGameInfo())
         }
-        return rc
     }
 
     /// Steamworks `ISteamFriends::GetFriendMessage()`
-    public func getFriendMessage(friend: SteamID, messageIDIndex: Int, data: UnsafeMutableRawPointer, dataSize: Int, chatEntryType: inout ChatEntryType) -> Int {
+    public func getFriendMessage(friend: SteamID, messageIDIndex: Int, data: UnsafeMutableRawPointer, dataSize: Int) -> (rc: Int, chatEntryType: ChatEntryType) {
         var tmp_chatEntryType = EChatEntryType(rawValue: 0)
         let rc = Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, UInt64(friend), Int32(messageIDIndex), data, Int32(dataSize), &tmp_chatEntryType))
-        chatEntryType = ChatEntryType(tmp_chatEntryType)
-        return rc
+        return (rc: rc, chatEntryType: ChatEntryType(tmp_chatEntryType))
     }
 
     /// Steamworks `ISteamFriends::GetFriendPersonaName()`

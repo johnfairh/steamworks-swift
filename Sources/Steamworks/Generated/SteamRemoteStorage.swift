@@ -246,11 +246,10 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::GetFileNameAndSize()`
-    public func getFileNameAndSize(fileIndex: Int, fileSizeInBytes: inout Int) -> String {
+    public func getFileNameAndSize(fileIndex: Int) -> (rc: String, fileSizeInBytes: Int) {
         var tmp_fileSizeInBytes = int32()
         let rc = String(SteamAPI_ISteamRemoteStorage_GetFileNameAndSize(interface, Int32(fileIndex), &tmp_fileSizeInBytes))
-        fileSizeInBytes = Int(tmp_fileSizeInBytes)
-        return rc
+        return (rc: rc, fileSizeInBytes: Int(tmp_fileSizeInBytes))
     }
 
     /// Steamworks `ISteamRemoteStorage::GetFileSize()`
@@ -264,13 +263,11 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::GetLocalFileChange()`
-    public func getLocalFileChange(fileIndex: Int, eChangeType: inout RemoteStorageLocalFileChangeType, eFilePathType: inout RemoteStorageFilePathType) -> String {
+    public func getLocalFileChange(fileIndex: Int) -> (rc: String, eChangeType: RemoteStorageLocalFileChangeType, eFilePathType: RemoteStorageFilePathType) {
         var tmp_eChangeType = ERemoteStorageLocalFileChange(rawValue: 0)
         var tmp_eFilePathType = ERemoteStorageFilePathType(rawValue: 0)
         let rc = String(SteamAPI_ISteamRemoteStorage_GetLocalFileChange(interface, Int32(fileIndex), &tmp_eChangeType, &tmp_eFilePathType))
-        eChangeType = RemoteStorageLocalFileChangeType(tmp_eChangeType)
-        eFilePathType = RemoteStorageFilePathType(tmp_eFilePathType)
-        return rc
+        return (rc: rc, eChangeType: RemoteStorageLocalFileChangeType(tmp_eChangeType), eFilePathType: RemoteStorageFilePathType(tmp_eFilePathType))
     }
 
     /// Steamworks `ISteamRemoteStorage::GetLocalFileChangeCount()`
@@ -316,13 +313,11 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::GetUGCDownloadProgress()`
-    public func getUGCDownloadProgress(content: UGCHandle, bytesDownloaded: inout Int, bytesExpected: inout Int) -> Bool {
+    public func getUGCDownloadProgress(content: UGCHandle) -> (rc: Bool, bytesDownloaded: Int, bytesExpected: Int) {
         var tmp_bytesDownloaded = int32()
         var tmp_bytesExpected = int32()
         let rc = SteamAPI_ISteamRemoteStorage_GetUGCDownloadProgress(interface, UGCHandle_t(content), &tmp_bytesDownloaded, &tmp_bytesExpected)
-        bytesDownloaded = Int(tmp_bytesDownloaded)
-        bytesExpected = Int(tmp_bytesExpected)
-        return rc
+        return (rc: rc, bytesDownloaded: Int(tmp_bytesDownloaded), bytesExpected: Int(tmp_bytesExpected))
     }
 
     /// Steamworks `ISteamRemoteStorage::GetUserPublishedItemVoteDetails()`, callback

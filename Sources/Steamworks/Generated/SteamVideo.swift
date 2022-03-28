@@ -34,7 +34,11 @@ public struct SteamVideo {
             buffer = String(tmp_buffer)
             bufferSize = Int(tmp_bufferSize)
         }
-        return rc
+        if rc {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamVideo::GetVideoURL()`
@@ -43,10 +47,9 @@ public struct SteamVideo {
     }
 
     /// Steamworks `ISteamVideo::IsBroadcasting()`
-    public func isBroadcasting(numViewers: inout Int) -> Bool {
+    public func isBroadcasting() -> (rc: Bool, numViewers: Int) {
         var tmp_numViewers = Int32()
         let rc = SteamAPI_ISteamVideo_IsBroadcasting(interface, &tmp_numViewers)
-        numViewers = Int(tmp_numViewers)
-        return rc
+        return (rc: rc, numViewers: Int(tmp_numViewers))
     }
 }

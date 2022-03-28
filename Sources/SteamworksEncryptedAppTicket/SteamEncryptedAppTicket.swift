@@ -17,7 +17,7 @@ extension SteamUser {
         let array: [UInt8] = .init(unsafeUninitializedCapacity: maxSize) { buf, count in
             var actualSize = 0
             if let baseAddress = buf.baseAddress {
-                rc = getEncryptedAppTicket(ticket: baseAddress, maxTicketSize: maxSize, ticketSize: &actualSize)
+                (rc, actualSize) = getEncryptedAppTicket(ticket: baseAddress, maxTicketSize: maxSize)
             }
             count = actualSize
         }

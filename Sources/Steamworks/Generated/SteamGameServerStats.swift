@@ -35,11 +35,10 @@ public struct SteamGameServerStats {
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`
-    public func getUserStat(user: SteamID, name: String, data: inout Int) -> Bool {
+    public func getUserStat(user: SteamID, name: String) -> (rc: Bool, data: Int) {
         var tmp_data = int32()
         let rc = SteamAPI_ISteamGameServerStats_GetUserStatInt32(interface, UInt64(user), name, &tmp_data)
-        data = Int(tmp_data)
-        return rc
+        return (rc: rc, data: Int(tmp_data))
     }
 
     /// Steamworks `ISteamGameServerStats::RequestUserStats()`, callback

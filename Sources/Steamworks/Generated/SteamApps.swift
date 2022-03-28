@@ -20,16 +20,19 @@ public struct SteamApps {
     }
 
     /// Steamworks `ISteamApps::BGetDLCDataByIndex()`
-    public func getDLCDataByIndex(dlcIndex: Int, appID: inout AppID, available: inout Bool, name: inout String, nameBufferSize: Int) -> Bool {
+    public func getDLCDataByIndex(dlcIndex: Int, available: inout Bool, name: inout String, nameBufferSize: Int) -> (rc: Bool, appID: AppID) {
         var tmp_appID = AppId_t()
         let tmp_name = UnsafeMutableBufferPointer<CChar>.allocate(capacity: nameBufferSize)
         defer { tmp_name.deallocate() }
         let rc = SteamAPI_ISteamApps_BGetDLCDataByIndex(interface, Int32(dlcIndex), &tmp_appID, &available, tmp_name.baseAddress, Int32(nameBufferSize))
         if rc {
-            appID = AppID(tmp_appID)
             name = String(tmp_name)
         }
-        return rc
+        if rc {
+            return (rc: rc, appID: AppID(tmp_appID))
+        } else {
+            return (rc: rc, appID: 0)
+        }
     }
 
     /// Steamworks `ISteamApps::BIsAppInstalled()`
@@ -73,13 +76,11 @@ public struct SteamApps {
     }
 
     /// Steamworks `ISteamApps::BIsTimedTrial()`
-    public func isTimedTrial(secondsAllowed: inout Int, secondsPlayed: inout Int) -> Bool {
+    public func isTimedTrial() -> (rc: Bool, secondsAllowed: Int, secondsPlayed: Int) {
         var tmp_secondsAllowed = uint32()
         var tmp_secondsPlayed = uint32()
         let rc = SteamAPI_ISteamApps_BIsTimedTrial(interface, &tmp_secondsAllowed, &tmp_secondsPlayed)
-        secondsAllowed = Int(tmp_secondsAllowed)
-        secondsPlayed = Int(tmp_secondsPlayed)
-        return rc
+        return (rc: rc, secondsAllowed: Int(tmp_secondsAllowed), secondsPlayed: Int(tmp_secondsPlayed))
     }
 
     /// Steamworks `ISteamApps::BIsVACBanned()`
@@ -119,7 +120,11 @@ public struct SteamApps {
         if rc {
             name = String(tmp_name)
         }
-        return rc
+        if rc {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamApps::GetCurrentGameLanguage()`

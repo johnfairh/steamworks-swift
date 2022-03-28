@@ -97,49 +97,43 @@ extension SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `Float`
-    public func getConfigValue(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, outValue: inout Float) -> SteamNetworkingGetConfigValueResult {
+    public func getConfigValueFloat(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int) -> (rc: SteamNetworkingGetConfigValueResult, outValue: Float) {
         var size = MemoryLayout<Float>.size
-        var dummy = SteamNetworkingConfigDataType.unrepresentedInSwift
-        return getConfigValue(value: value,
-                              scopeType: scopeType, obj: obj,
-                              outDataType: &dummy,
-                              result: &outValue, resultSize: &size)
+        var result = Float(0)
+        let rc = getConfigValue(value: value,
+                                scopeType: scopeType, obj: obj,
+                                result: &result, resultSize: &size).rc
+        return (rc: rc, outValue: result)
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `Int`
-    public func getConfigValue(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, outValue: inout Int) -> SteamNetworkingGetConfigValueResult {
+    public func getConfigValueInt(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int) -> (rc: SteamNetworkingGetConfigValueResult, outValue: Int) {
         var int32Val = Int32(0)
         var size = MemoryLayout<Int32>.size
-        var dummy = SteamNetworkingConfigDataType.unrepresentedInSwift
         let rc = getConfigValue(value: value,
                                 scopeType: scopeType, obj: obj,
-                                outDataType: &dummy,
-                                result: &int32Val, resultSize: &size)
-        outValue = Int(int32Val)
-        return rc
+                                result: &int32Val, resultSize: &size).rc
+        return (rc: rc, outValue: Int(int32Val))
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `String`
-    public func getConfigValue(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, outValue: inout String) -> SteamNetworkingGetConfigValueResult {
+    public func getConfigValueString(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int) -> (rc: SteamNetworkingGetConfigValueResult, outValue: String) {
         var bufSize = Int(0)
-        var dummy = SteamNetworkingConfigDataType.unrepresentedInSwift
         let rc1 = getConfigValue(value: value,
                                  scopeType: scopeType, obj: obj,
-                                 outDataType: &dummy,
-                                 result: nil, resultSize: &bufSize)
+                                 result: nil, resultSize: &bufSize).rc
         if rc1 != .bufferTooSmall {
-            return rc1 // hmm
+            return (rc: rc1, outValue: "") // hmm
         }
 
         var rc2 = SteamNetworkingGetConfigValueResult.badValue
-        outValue = String(unsafeUninitializedCapacity: bufSize) { buf in
+        let outValue = String(unsafeUninitializedCapacity: bufSize) { buf in
             rc2 = getConfigValue(value: value,
                                  scopeType: scopeType, obj: obj,
-                                 outDataType: &dummy,
-                                 result: buf.baseAddress!, resultSize: &bufSize)
+                                 result: buf.baseAddress!, resultSize: &bufSize).rc
             return bufSize - 1 // don't tell Swift about the null?
         }
-        return rc2
+        return (rc: rc2, outValue: outValue)
     }
 }
 
@@ -160,17 +154,4 @@ private func networkingUtilsDebugCallback(type: ESteamNetworkingSocketsDebugOutp
         "type" : "\(SteamNetworkingSocketsDebugOutputType(type))"
     ]
     SteamBaseAPI.logger.debug(.init(stringLiteral: String(msg)), metadata: metadata)
-}
-
-/// SteamNetworkingSockets irritating nullability
-extension SteamNetworkingSockets {
-    /// Steamworks `ISteamNetworkingSockets::CreateSocketPair()` - without identity specified
-    public func createSocketPair(outConnection1: inout HSteamNetConnection, outConnection2: inout HSteamNetConnection, useNetworkLoopback: Bool) -> Bool {
-        var tmp_outConnection1 = CSteamworks.HSteamNetConnection()
-        var tmp_outConnection2 = CSteamworks.HSteamNetConnection()
-        let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmp_outConnection1, &tmp_outConnection2, useNetworkLoopback, nil, nil)
-        outConnection1 = HSteamNetConnection(tmp_outConnection1)
-        outConnection2 = HSteamNetConnection(tmp_outConnection2)
-        return rc
-    }
 }

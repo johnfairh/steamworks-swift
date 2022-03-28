@@ -72,17 +72,14 @@ public struct SteamParties {
     }
 
     /// Steamworks `ISteamParties::GetBeaconDetails()`
-    @discardableResult
-    public func getBeaconDetails(beaconID: PartyBeaconID, beaconOwner: inout SteamID, location: inout SteamPartyBeaconLocation, metadata: inout String, metadataSize: Int) -> Bool {
+    public func getBeaconDetails(beaconID: PartyBeaconID, metadata: inout String, metadataSize: Int) -> (rc: Bool, beaconOwner: SteamID, location: SteamPartyBeaconLocation) {
         var tmp_beaconOwner = CSteamID()
         var tmp_location = SteamPartyBeaconLocation_t()
         let tmp_metadata = UnsafeMutableBufferPointer<CChar>.allocate(capacity: metadataSize)
         defer { tmp_metadata.deallocate() }
         let rc = SteamAPI_ISteamParties_GetBeaconDetails(interface, PartyBeaconID_t(beaconID), &tmp_beaconOwner, &tmp_location, tmp_metadata.baseAddress, Int32(metadataSize))
-        beaconOwner = SteamID(tmp_beaconOwner)
-        location = SteamPartyBeaconLocation(tmp_location)
         metadata = String(tmp_metadata)
-        return rc
+        return (rc: rc, beaconOwner: SteamID(tmp_beaconOwner), location: SteamPartyBeaconLocation(tmp_location))
     }
 
     /// Steamworks `ISteamParties::GetBeaconLocationData()`
@@ -101,12 +98,10 @@ public struct SteamParties {
     }
 
     /// Steamworks `ISteamParties::GetNumAvailableBeaconLocations()`
-    @discardableResult
-    public func getNumAvailableBeaconLocations(numLocations: inout Int) -> Bool {
+    public func getNumAvailableBeaconLocations() -> (rc: Bool, numLocations: Int) {
         var tmp_numLocations = uint32()
         let rc = SteamAPI_ISteamParties_GetNumAvailableBeaconLocations(interface, &tmp_numLocations)
-        numLocations = Int(tmp_numLocations)
-        return rc
+        return (rc: rc, numLocations: Int(tmp_numLocations))
     }
 
     /// Steamworks `ISteamParties::JoinParty()`, callback

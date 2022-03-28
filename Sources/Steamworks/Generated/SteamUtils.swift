@@ -113,15 +113,15 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetImageSize()`
-    public func getImageSize(imageIndex: Int, width: inout Int, height: inout Int) -> Bool {
+    public func getImageSize(imageIndex: Int) -> (rc: Bool, width: Int, height: Int) {
         var tmp_width = uint32()
         var tmp_height = uint32()
         let rc = SteamAPI_ISteamUtils_GetImageSize(interface, Int32(imageIndex), &tmp_width, &tmp_height)
         if rc {
-            width = Int(tmp_width)
-            height = Int(tmp_height)
+            return (rc: rc, width: Int(tmp_width), height: Int(tmp_height))
+        } else {
+            return (rc: rc, width: 0, height: 0)
         }
-        return rc
     }
 
     /// Steamworks `ISteamUtils::GetSecondsSinceAppActive()`

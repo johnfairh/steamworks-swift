@@ -53,19 +53,17 @@ public struct SteamHTTP {
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPResponseBodySize()`
-    public func getHTTPResponseBodySize(request: HTTPRequestHandle, bodySize: inout Int) -> Bool {
+    public func getHTTPResponseBodySize(request: HTTPRequestHandle) -> (rc: Bool, bodySize: Int) {
         var tmp_bodySize = uint32()
         let rc = SteamAPI_ISteamHTTP_GetHTTPResponseBodySize(interface, CSteamworks.HTTPRequestHandle(request), &tmp_bodySize)
-        bodySize = Int(tmp_bodySize)
-        return rc
+        return (rc: rc, bodySize: Int(tmp_bodySize))
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPResponseHeaderSize()`
-    public func getHTTPResponseHeaderSize(request: HTTPRequestHandle, headerName: String, responseHeaderSize: inout Int) -> Bool {
+    public func getHTTPResponseHeaderSize(request: HTTPRequestHandle, headerName: String) -> (rc: Bool, responseHeaderSize: Int) {
         var tmp_responseHeaderSize = uint32()
         let rc = SteamAPI_ISteamHTTP_GetHTTPResponseHeaderSize(interface, CSteamworks.HTTPRequestHandle(request), headerName, &tmp_responseHeaderSize)
-        responseHeaderSize = Int(tmp_responseHeaderSize)
-        return rc
+        return (rc: rc, responseHeaderSize: Int(tmp_responseHeaderSize))
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPResponseHeaderValue()`

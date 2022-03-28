@@ -137,6 +137,10 @@ extension String {
         return asExplicitSwiftTypeForPassingIntoSteamworks
     }
 
+    var isSteamTypePassedInTransparently: Bool {
+        steamTypesPassedInTransparently.contains(self)
+    }
+
     /// As above but with explicit types, not used calling a C function with clang importer magic
     var asExplicitSwiftTypeForPassingIntoSteamworks: String {
         if let unConsted = re_match("^const (.*)$") {

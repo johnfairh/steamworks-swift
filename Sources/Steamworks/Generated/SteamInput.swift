@@ -112,13 +112,11 @@ public struct SteamInput {
     }
 
     /// Steamworks `ISteamInput::GetDeviceBindingRevision()`
-    public func getDeviceBindingRevision(handle: InputHandle, major: inout Int, minor: inout Int) -> Bool {
+    public func getDeviceBindingRevision(handle: InputHandle) -> (rc: Bool, major: Int, minor: Int) {
         var tmp_major = Int32()
         var tmp_minor = Int32()
         let rc = SteamAPI_ISteamInput_GetDeviceBindingRevision(interface, InputHandle_t(handle), &tmp_major, &tmp_minor)
-        major = Int(tmp_major)
-        minor = Int(tmp_minor)
-        return rc
+        return (rc: rc, major: Int(tmp_major), minor: Int(tmp_minor))
     }
 
     /// Steamworks `ISteamInput::GetDigitalActionData()`

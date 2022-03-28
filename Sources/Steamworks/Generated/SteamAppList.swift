@@ -32,7 +32,11 @@ public struct SteamAppList {
         if rc != -1 {
             directory = String(tmp_directory)
         }
-        return rc
+        if rc != -1 {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamAppList::GetAppName()`
@@ -43,7 +47,11 @@ public struct SteamAppList {
         if rc != -1 {
             name = String(tmp_name)
         }
-        return rc
+        if rc != -1 {
+            return rc
+        } else {
+            return rc
+        }
     }
 
     /// Steamworks `ISteamAppList::GetInstalledApps()`

@@ -43,16 +43,16 @@ public struct SteamNetworkingMessages {
     }
 
     /// Steamworks `ISteamNetworkingMessages::GetSessionConnectionInfo()`
-    public func getSessionConnectionInfo(identityRemote: SteamNetworkingIdentity, connectionInfo: inout SteamNetConnectionInfo, quickStatus: inout SteamNetConnectionRealTimeStatus) -> SteamNetworkingConnectionState {
+    public func getSessionConnectionInfo(identityRemote: SteamNetworkingIdentity) -> (rc: SteamNetworkingConnectionState, connectionInfo: SteamNetConnectionInfo, quickStatus: SteamNetConnectionRealTimeStatus) {
         var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
         var tmp_connectionInfo = SteamNetConnectionInfo_t()
         var tmp_quickStatus = SteamNetConnectionRealTimeStatus_t()
         let rc = SteamNetworkingConnectionState(SteamAPI_ISteamNetworkingMessages_GetSessionConnectionInfo(interface, &tmp_identityRemote, &tmp_connectionInfo, &tmp_quickStatus))
         if rc != .none {
-            connectionInfo = SteamNetConnectionInfo(tmp_connectionInfo)
-            quickStatus = SteamNetConnectionRealTimeStatus(tmp_quickStatus)
+            return (rc: rc, connectionInfo: SteamNetConnectionInfo(tmp_connectionInfo), quickStatus: SteamNetConnectionRealTimeStatus(tmp_quickStatus))
+        } else {
+            return (rc: rc, connectionInfo: SteamNetConnectionInfo(), quickStatus: SteamNetConnectionRealTimeStatus())
         }
-        return rc
     }
 
     /// Steamworks `ISteamNetworkingMessages::ReceiveMessagesOnChannel()`

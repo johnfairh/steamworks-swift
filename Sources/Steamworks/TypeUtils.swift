@@ -343,3 +343,25 @@ extension Int {
 // See kludge in Names.swift too to make it transparent.
 
 public typealias SteamAPIWarningMessageHook = Optional<@convention(c) (Int32, UnsafePointer<CChar>?) -> Void>
+
+// MARK: Weird pointers
+
+extension UnsafeMutablePointer {
+//    static func initAllocate<SwiftType>(_ from: SwiftType?) -> Self? where Pointee: SwiftCreatable, Pointee.SwiftType == SwiftType {
+//        guard let from = from else {
+//            return nil
+//        }
+//        let ptr = allocate(capacity: 1)
+//        ptr.initialize(to: Pointee(from))
+//        return ptr
+//    }
+
+    static func initAllocate(_ from: SteamNetworkingIdentity?) -> UnsafeMutablePointer<CSteamworks.SteamNetworkingIdentity>? {
+        guard let from = from else {
+            return nil
+        }
+        let ptr = UnsafeMutablePointer<CSteamworks.SteamNetworkingIdentity>.allocate(capacity: 1)
+        ptr.initialize(to: .init(from))
+        return ptr
+    }
+}
