@@ -25,13 +25,17 @@ public struct SteamGameServerStats {
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserAchievement()`
-    public func getUserAchievement(user: SteamID, name: String, achieved: inout Bool) -> Bool {
-        SteamAPI_ISteamGameServerStats_GetUserAchievement(interface, UInt64(user), name, &achieved)
+    public func getUserAchievement(user: SteamID, name: String) -> (rc: Bool, achieved: Bool) {
+        var tmp_achieved = Bool()
+        let rc = SteamAPI_ISteamGameServerStats_GetUserAchievement(interface, UInt64(user), name, &tmp_achieved)
+        return (rc: rc, achieved: tmp_achieved)
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`
-    public func getUserStat(user: SteamID, name: String, data: inout Float) -> Bool {
-        SteamAPI_ISteamGameServerStats_GetUserStatFloat(interface, UInt64(user), name, &data)
+    public func getUserStat(user: SteamID, name: String) -> (rc: Bool, data: Float) {
+        var tmp_data = Float()
+        let rc = SteamAPI_ISteamGameServerStats_GetUserStatFloat(interface, UInt64(user), name, &tmp_data)
+        return (rc: rc, data: tmp_data)
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`

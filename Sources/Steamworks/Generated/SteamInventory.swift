@@ -121,8 +121,11 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetItemPrice()`
-    public func getItemPrice(definitionIndex: SteamItemDef, currentPrice: inout UInt64, basePrice: inout UInt64) -> Bool {
-        SteamAPI_ISteamInventory_GetItemPrice(interface, SteamItemDef_t(definitionIndex), &currentPrice, &basePrice)
+    public func getItemPrice(definitionIndex: SteamItemDef) -> (rc: Bool, currentPrice: UInt64, basePrice: UInt64) {
+        var tmp_currentPrice = uint64()
+        var tmp_basePrice = uint64()
+        let rc = SteamAPI_ISteamInventory_GetItemPrice(interface, SteamItemDef_t(definitionIndex), &tmp_currentPrice, &tmp_basePrice)
+        return (rc: rc, currentPrice: tmp_currentPrice, basePrice: tmp_basePrice)
     }
 
     /// Steamworks `ISteamInventory::GetItemsByID()`

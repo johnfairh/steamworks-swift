@@ -59,8 +59,10 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetAPICallResult()`
-    public func getAPICallResult(steamAPICall: SteamAPICall, callback: UnsafeMutableRawPointer, callbackSize: Int, callbackExpectedIndex: Int, failed: inout Bool) -> Bool {
-        SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, Int32(callbackSize), Int32(callbackExpectedIndex), &failed)
+    public func getAPICallResult(steamAPICall: SteamAPICall, callback: UnsafeMutableRawPointer, callbackSize: Int, callbackExpectedIndex: Int) -> (rc: Bool, failed: Bool) {
+        var tmp_failed = Bool()
+        let rc = SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, Int32(callbackSize), Int32(callbackExpectedIndex), &tmp_failed)
+        return (rc: rc, failed: tmp_failed)
     }
 
     /// Steamworks `ISteamUtils::GetAppID()`
@@ -150,8 +152,10 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::IsAPICallCompleted()`
-    public func isAPICallCompleted(steamAPICall: SteamAPICall, failed: inout Bool) -> Bool {
-        SteamAPI_ISteamUtils_IsAPICallCompleted(interface, SteamAPICall_t(steamAPICall), &failed)
+    public func isAPICallCompleted(steamAPICall: SteamAPICall) -> (rc: Bool, failed: Bool) {
+        var tmp_failed = Bool()
+        let rc = SteamAPI_ISteamUtils_IsAPICallCompleted(interface, SteamAPICall_t(steamAPICall), &tmp_failed)
+        return (rc: rc, failed: tmp_failed)
     }
 
     /// Steamworks `ISteamUtils::IsOverlayEnabled()`

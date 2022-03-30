@@ -280,6 +280,8 @@ private let steamTypesPassedInStrangely: [String : String] = [
     "unsigned short" : "UInt16",
     "unsigned int" : "UInt32",
     "char" : "Int8",
+    "float": "Float",
+    "double": "Double",
 
     "SteamNetworkingMessage_t *": "OpaquePointer?" // struct not imported plus weird pointer semantics
 ]

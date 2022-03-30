@@ -735,8 +735,6 @@ methods:
     discardable_result: true
   SteamAPI_ISteamRemoteStorage_FileWriteStreamClose:
     discardable_result: true
-  SteamAPI_ISteamRemoteStorage_GetQuota:
-    discardable_result: true
 #
 # ISteamScreenshots
 #
@@ -790,8 +788,6 @@ methods:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCResult:
     out_param_iff_rc: ' '
-  SteamAPI_ISteamUGC_GetQueryUGCStatistic:
-    discardable_result: true
   SteamAPI_ISteamUGC_GetQueryUGCTag:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCTagDisplayName:

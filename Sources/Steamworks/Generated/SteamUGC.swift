@@ -175,23 +175,27 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetItemDownloadInfo()`
-    public func getItemDownloadInfo(publishedFileID: PublishedFileID, bytesDownloaded: inout UInt64, bytesTotal: inout UInt64) -> Bool {
-        SteamAPI_ISteamUGC_GetItemDownloadInfo(interface, PublishedFileId_t(publishedFileID), &bytesDownloaded, &bytesTotal)
+    public func getItemDownloadInfo(publishedFileID: PublishedFileID) -> (rc: Bool, bytesDownloaded: UInt64, bytesTotal: UInt64) {
+        var tmp_bytesDownloaded = uint64()
+        var tmp_bytesTotal = uint64()
+        let rc = SteamAPI_ISteamUGC_GetItemDownloadInfo(interface, PublishedFileId_t(publishedFileID), &tmp_bytesDownloaded, &tmp_bytesTotal)
+        return (rc: rc, bytesDownloaded: tmp_bytesDownloaded, bytesTotal: tmp_bytesTotal)
     }
 
     /// Steamworks `ISteamUGC::GetItemInstallInfo()`
-    public func getItemInstallInfo(publishedFileID: PublishedFileID, sizeOnDisk: inout UInt64, folder: inout String, folderSize: Int) -> (rc: Bool, timeStamp: RTime32) {
+    public func getItemInstallInfo(publishedFileID: PublishedFileID, folder: inout String, folderSize: Int) -> (rc: Bool, sizeOnDisk: UInt64, timeStamp: RTime32) {
+        var tmp_sizeOnDisk = uint64()
         let tmp_folder = UnsafeMutableBufferPointer<CChar>.allocate(capacity: folderSize)
         defer { tmp_folder.deallocate() }
         var tmp_timeStamp = CSteamworks.RTime32()
-        let rc = SteamAPI_ISteamUGC_GetItemInstallInfo(interface, PublishedFileId_t(publishedFileID), &sizeOnDisk, tmp_folder.baseAddress, uint32(folderSize), &tmp_timeStamp)
+        let rc = SteamAPI_ISteamUGC_GetItemInstallInfo(interface, PublishedFileId_t(publishedFileID), &tmp_sizeOnDisk, tmp_folder.baseAddress, uint32(folderSize), &tmp_timeStamp)
         if rc {
             folder = String(tmp_folder)
         }
         if rc {
-            return (rc: rc, timeStamp: RTime32(tmp_timeStamp))
+            return (rc: rc, sizeOnDisk: tmp_sizeOnDisk, timeStamp: RTime32(tmp_timeStamp))
         } else {
-            return (rc: rc, timeStamp: 0)
+            return (rc: rc, sizeOnDisk: 0, timeStamp: 0)
         }
     }
 
@@ -201,8 +205,11 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetItemUpdateProgress()`
-    public func getItemUpdateProgress(handle: UGCUpdateHandle, bytesProcessed: inout UInt64, bytesTotal: inout UInt64) -> ItemUpdateStatus {
-        ItemUpdateStatus(SteamAPI_ISteamUGC_GetItemUpdateProgress(interface, UGCUpdateHandle_t(handle), &bytesProcessed, &bytesTotal))
+    public func getItemUpdateProgress(handle: UGCUpdateHandle) -> (rc: ItemUpdateStatus, bytesProcessed: UInt64, bytesTotal: UInt64) {
+        var tmp_bytesProcessed = uint64()
+        var tmp_bytesTotal = uint64()
+        let rc = ItemUpdateStatus(SteamAPI_ISteamUGC_GetItemUpdateProgress(interface, UGCUpdateHandle_t(handle), &tmp_bytesProcessed, &tmp_bytesTotal))
+        return (rc: rc, bytesProcessed: tmp_bytesProcessed, bytesTotal: tmp_bytesTotal)
     }
 
     /// Steamworks `ISteamUGC::GetNumSubscribedItems()`
@@ -327,9 +334,10 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCStatistic()`
-    @discardableResult
-    public func getQueryUGCStatistic(handle: UGCQueryHandle, index: Int, statType: ItemStatistic, statValue: inout UInt64) -> Bool {
-        SteamAPI_ISteamUGC_GetQueryUGCStatistic(interface, UGCQueryHandle_t(handle), uint32(index), EItemStatistic(statType), &statValue)
+    public func getQueryUGCStatistic(handle: UGCQueryHandle, index: Int, statType: ItemStatistic) -> (rc: Bool, statValue: UInt64) {
+        var tmp_statValue = uint64()
+        let rc = SteamAPI_ISteamUGC_GetQueryUGCStatistic(interface, UGCQueryHandle_t(handle), uint32(index), EItemStatistic(statType), &tmp_statValue)
+        return (rc: rc, statValue: tmp_statValue)
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCTag()`

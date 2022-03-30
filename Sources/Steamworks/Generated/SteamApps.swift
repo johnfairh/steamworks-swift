@@ -20,18 +20,19 @@ public struct SteamApps {
     }
 
     /// Steamworks `ISteamApps::BGetDLCDataByIndex()`
-    public func getDLCDataByIndex(dlcIndex: Int, available: inout Bool, name: inout String, nameBufferSize: Int) -> (rc: Bool, appID: AppID) {
+    public func getDLCDataByIndex(dlcIndex: Int, name: inout String, nameBufferSize: Int) -> (rc: Bool, appID: AppID, available: Bool) {
         var tmp_appID = AppId_t()
+        var tmp_available = Bool()
         let tmp_name = UnsafeMutableBufferPointer<CChar>.allocate(capacity: nameBufferSize)
         defer { tmp_name.deallocate() }
-        let rc = SteamAPI_ISteamApps_BGetDLCDataByIndex(interface, Int32(dlcIndex), &tmp_appID, &available, tmp_name.baseAddress, Int32(nameBufferSize))
+        let rc = SteamAPI_ISteamApps_BGetDLCDataByIndex(interface, Int32(dlcIndex), &tmp_appID, &tmp_available, tmp_name.baseAddress, Int32(nameBufferSize))
         if rc {
             name = String(tmp_name)
         }
         if rc {
-            return (rc: rc, appID: AppID(tmp_appID))
+            return (rc: rc, appID: AppID(tmp_appID), available: tmp_available)
         } else {
-            return (rc: rc, appID: 0)
+            return (rc: rc, appID: 0, available: false)
         }
     }
 
@@ -138,8 +139,11 @@ public struct SteamApps {
     }
 
     /// Steamworks `ISteamApps::GetDlcDownloadProgress()`
-    public func getDlcDownloadProgress(appID: AppID, bytesDownloaded: inout UInt64, bytesTotal: inout UInt64) -> Bool {
-        SteamAPI_ISteamApps_GetDlcDownloadProgress(interface, AppId_t(appID), &bytesDownloaded, &bytesTotal)
+    public func getDlcDownloadProgress(appID: AppID) -> (rc: Bool, bytesDownloaded: UInt64, bytesTotal: UInt64) {
+        var tmp_bytesDownloaded = uint64()
+        var tmp_bytesTotal = uint64()
+        let rc = SteamAPI_ISteamApps_GetDlcDownloadProgress(interface, AppId_t(appID), &tmp_bytesDownloaded, &tmp_bytesTotal)
+        return (rc: rc, bytesDownloaded: tmp_bytesDownloaded, bytesTotal: tmp_bytesTotal)
     }
 
     /// Steamworks `ISteamApps::GetEarliestPurchaseUnixTime()`

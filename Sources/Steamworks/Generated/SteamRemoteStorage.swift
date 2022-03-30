@@ -302,9 +302,11 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::GetQuota()`
-    @discardableResult
-    public func getQuota(totalBytes: inout UInt64, availableBytes: inout UInt64) -> Bool {
-        SteamAPI_ISteamRemoteStorage_GetQuota(interface, &totalBytes, &availableBytes)
+    public func getQuota() -> (rc: Bool, totalBytes: UInt64, availableBytes: UInt64) {
+        var tmp_totalBytes = uint64()
+        var tmp_availableBytes = uint64()
+        let rc = SteamAPI_ISteamRemoteStorage_GetQuota(interface, &tmp_totalBytes, &tmp_availableBytes)
+        return (rc: rc, totalBytes: tmp_totalBytes, availableBytes: tmp_availableBytes)
     }
 
     /// Steamworks `ISteamRemoteStorage::GetSyncPlatforms()`
