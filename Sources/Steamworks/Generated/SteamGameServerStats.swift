@@ -32,14 +32,14 @@ public struct SteamGameServerStats {
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`
-    public func getUserStat(user: SteamID, name: String) -> (rc: Bool, data: Float) {
+    public func getUserStatFloat(user: SteamID, name: String) -> (rc: Bool, data: Float) {
         var tmp_data = Float()
         let rc = SteamAPI_ISteamGameServerStats_GetUserStatFloat(interface, UInt64(user), name, &tmp_data)
         return (rc: rc, data: tmp_data)
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`
-    public func getUserStat(user: SteamID, name: String) -> (rc: Bool, data: Int) {
+    public func getUserStatInt(user: SteamID, name: String) -> (rc: Bool, data: Int) {
         var tmp_data = int32()
         let rc = SteamAPI_ISteamGameServerStats_GetUserStatInt32(interface, UInt64(user), name, &tmp_data)
         return (rc: rc, data: Int(tmp_data))

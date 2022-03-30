@@ -746,11 +746,19 @@ extension MetadataDB.Method {
         //     params.count == 0 && name.starts(with: "Get")
         // No longer convinced this is right though - drops the 1:1 with
         // the SW API name, meaning searches etc. don't work as expected.
-        // There are very few of them anyway.
+        // Plus API guidelines about 'low cost'.
     }
 
+    /// Normally take the C++ version of the function name.
+    /// Because 'out' params are in the return tuple, add back the type cookie to the name to avoid
+    /// forcing users to make return types explicit, eg: `GetUserStatInt(..) -> Int` instead
+    /// of `GetUserStat(...) -> Int`, `GetUserStat(...) -> Float`.
     var funcName: String {
-        name.asSwiftIdentifier
+        let base = name.asSwiftIdentifier
+        guard let overloaded = flatName.re_match(#"Get.*(Float|Double|Int)(?:\d\d)?$"#) else {
+            return base
+        }
+        return "\(base)\(overloaded[1])"
     }
 
     var varName: String {
