@@ -52,20 +52,20 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()`
-    public func getConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, result: UnsafeMutableRawPointer?, resultSize: inout Int) -> (rc: SteamNetworkingGetConfigValueResult, outDataType: SteamNetworkingConfigDataType) {
-        var tmp_outDataType = ESteamNetworkingConfigDataType(rawValue: 0)
+    public func getConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, result: UnsafeMutableRawPointer?, resultSize: inout Int) -> (rc: SteamNetworkingGetConfigValueResult, dataType: SteamNetworkingConfigDataType) {
+        var tmp_dataType = ESteamNetworkingConfigDataType(rawValue: 0)
         var tmp_resultSize = size_t(resultSize)
-        let rc = SteamNetworkingGetConfigValueResult(SteamAPI_ISteamNetworkingUtils_GetConfigValue(interface, ESteamNetworkingConfigValue(value), ESteamNetworkingConfigScope(scopeType), intptr_t(obj), &tmp_outDataType, result, &tmp_resultSize))
+        let rc = SteamNetworkingGetConfigValueResult(SteamAPI_ISteamNetworkingUtils_GetConfigValue(interface, ESteamNetworkingConfigValue(value), ESteamNetworkingConfigScope(scopeType), intptr_t(obj), &tmp_dataType, result, &tmp_resultSize))
         resultSize = Int(tmp_resultSize)
-        return (rc: rc, outDataType: SteamNetworkingConfigDataType(tmp_outDataType))
+        return (rc: rc, dataType: SteamNetworkingConfigDataType(tmp_dataType))
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValueInfo()`
-    public func getConfigValueInfo(value: SteamNetworkingConfigValueSetting) -> (rc: String, outDataType: SteamNetworkingConfigDataType, outScope: SteamNetworkingConfigScope) {
-        var tmp_outDataType = ESteamNetworkingConfigDataType(rawValue: 0)
-        var tmp_outScope = ESteamNetworkingConfigScope(rawValue: 0)
-        let rc = String(SteamAPI_ISteamNetworkingUtils_GetConfigValueInfo(interface, ESteamNetworkingConfigValue(value), &tmp_outDataType, &tmp_outScope))
-        return (rc: rc, outDataType: SteamNetworkingConfigDataType(tmp_outDataType), outScope: SteamNetworkingConfigScope(tmp_outScope))
+    public func getConfigValueInfo(value: SteamNetworkingConfigValueSetting) -> (rc: String, dataType: SteamNetworkingConfigDataType, scope: SteamNetworkingConfigScope) {
+        var tmp_dataType = ESteamNetworkingConfigDataType(rawValue: 0)
+        var tmp_scope = ESteamNetworkingConfigScope(rawValue: 0)
+        let rc = String(SteamAPI_ISteamNetworkingUtils_GetConfigValueInfo(interface, ESteamNetworkingConfigValue(value), &tmp_dataType, &tmp_scope))
+        return (rc: rc, dataType: SteamNetworkingConfigDataType(tmp_dataType), scope: SteamNetworkingConfigScope(tmp_scope))
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetDirectPingToPOP()`
@@ -110,14 +110,14 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetRealIdentityForFakeIP()`
-    public func getRealIdentityForFakeIP(ip: SteamNetworkingIPAddr) -> (rc: Result, outRealIdentity: SteamNetworkingIdentity) {
+    public func getRealIdentityForFakeIP(ip: SteamNetworkingIPAddr) -> (rc: Result, realIdentity: SteamNetworkingIdentity) {
         var tmp_ip = CSteamworks.SteamNetworkingIPAddr(ip)
-        var tmp_outRealIdentity = CSteamworks.SteamNetworkingIdentity()
-        let rc = Result(SteamAPI_ISteamNetworkingUtils_GetRealIdentityForFakeIP(interface, &tmp_ip, &tmp_outRealIdentity))
+        var tmp_realIdentity = CSteamworks.SteamNetworkingIdentity()
+        let rc = Result(SteamAPI_ISteamNetworkingUtils_GetRealIdentityForFakeIP(interface, &tmp_ip, &tmp_realIdentity))
         if rc == .ok {
-            return (rc: rc, outRealIdentity: SteamNetworkingIdentity(tmp_outRealIdentity))
+            return (rc: rc, realIdentity: SteamNetworkingIdentity(tmp_realIdentity))
         } else {
-            return (rc: rc, outRealIdentity: SteamNetworkingIdentity())
+            return (rc: rc, realIdentity: SteamNetworkingIdentity())
         }
     }
 

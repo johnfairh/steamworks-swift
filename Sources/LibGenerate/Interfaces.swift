@@ -484,7 +484,6 @@ extension Array where Element == MetadataDB.Method.Param {
 }
 
 extension Array where Element == SwiftParam {
-
     func namedParamList(filter: KeyPath<SwiftParam, String?>) -> String {
         compactMap { param in
             param[keyPath: filter].flatMap { "\(param.swiftName): \($0)" }

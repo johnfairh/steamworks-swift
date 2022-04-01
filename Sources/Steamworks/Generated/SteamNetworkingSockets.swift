@@ -107,15 +107,15 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateSocketPair()`
-    public func createSocketPair(useNetworkLoopback: Bool, identity1: SteamNetworkingIdentity?, identity2: SteamNetworkingIdentity?) -> (rc: Bool, outConnection1: HSteamNetConnection, outConnection2: HSteamNetConnection) {
-        var tmp_outConnection1 = CSteamworks.HSteamNetConnection()
-        var tmp_outConnection2 = CSteamworks.HSteamNetConnection()
+    public func createSocketPair(useNetworkLoopback: Bool, identity1: SteamNetworkingIdentity?, identity2: SteamNetworkingIdentity?) -> (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection) {
+        var tmp_connection1 = CSteamworks.HSteamNetConnection()
+        var tmp_connection2 = CSteamworks.HSteamNetConnection()
         let tmp_identity1 = UnsafeMutablePointer<SteamNetworkingIdentity>.initAllocate(identity1)
         defer { tmp_identity1?.deallocate() }
         let tmp_identity2 = UnsafeMutablePointer<SteamNetworkingIdentity>.initAllocate(identity2)
         defer { tmp_identity2?.deallocate() }
-        let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmp_outConnection1, &tmp_outConnection2, useNetworkLoopback, tmp_identity1, tmp_identity2)
-        return (rc: rc, outConnection1: HSteamNetConnection(tmp_outConnection1), outConnection2: HSteamNetConnection(tmp_outConnection2))
+        let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmp_connection1, &tmp_connection2, useNetworkLoopback, tmp_identity1, tmp_identity2)
+        return (rc: rc, connection1: HSteamNetConnection(tmp_connection1), connection2: HSteamNetConnection(tmp_connection2))
     }
 
     /// Steamworks `ISteamNetworkingSockets::DestroyPollGroup()`
@@ -249,13 +249,13 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetRemoteFakeIPForConnection()`
-    public func getRemoteFakeIPForConnection(conn: HSteamNetConnection) -> (rc: Result, outAddr: SteamNetworkingIPAddr) {
-        var tmp_outAddr = CSteamworks.SteamNetworkingIPAddr()
-        let rc = Result(SteamAPI_ISteamNetworkingSockets_GetRemoteFakeIPForConnection(interface, CSteamworks.HSteamNetConnection(conn), &tmp_outAddr))
+    public func getRemoteFakeIPForConnection(conn: HSteamNetConnection) -> (rc: Result, addr: SteamNetworkingIPAddr) {
+        var tmp_addr = CSteamworks.SteamNetworkingIPAddr()
+        let rc = Result(SteamAPI_ISteamNetworkingSockets_GetRemoteFakeIPForConnection(interface, CSteamworks.HSteamNetConnection(conn), &tmp_addr))
         if rc == .ok {
-            return (rc: rc, outAddr: SteamNetworkingIPAddr(tmp_outAddr))
+            return (rc: rc, addr: SteamNetworkingIPAddr(tmp_addr))
         } else {
-            return (rc: rc, outAddr: SteamNetworkingIPAddr())
+            return (rc: rc, addr: SteamNetworkingIPAddr())
         }
     }
 
@@ -266,24 +266,24 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::ReceiveMessagesOnConnection()`
-    public func receiveMessagesOnConnection(conn: HSteamNetConnection, maxMessages: Int) -> (rc: Int, outMessages: [SteamNetworkingMessage]) {
-        let tmp_outMessages = SteamOutArray<OpaquePointer?>(maxMessages)
-        let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection(interface, CSteamworks.HSteamNetConnection(conn), tmp_outMessages.steamArray, Int32(maxMessages)))
+    public func receiveMessagesOnConnection(conn: HSteamNetConnection, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
+        let tmp_messages = SteamOutArray<OpaquePointer?>(maxMessages)
+        let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection(interface, CSteamworks.HSteamNetConnection(conn), tmp_messages.steamArray, Int32(maxMessages)))
         if rc >= 0 {
-            return (rc: rc, outMessages: tmp_outMessages.swiftArray(rc))
+            return (rc: rc, messages: tmp_messages.swiftArray(rc))
         } else {
-            return (rc: rc, outMessages: [])
+            return (rc: rc, messages: [])
         }
     }
 
     /// Steamworks `ISteamNetworkingSockets::ReceiveMessagesOnPollGroup()`
-    public func receiveMessagesOnPollGroup(pollGroup: HSteamNetPollGroup, maxMessages: Int) -> (rc: Int, outMessages: [SteamNetworkingMessage]) {
-        let tmp_outMessages = SteamOutArray<OpaquePointer?>(maxMessages)
-        let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup(interface, CSteamworks.HSteamNetPollGroup(pollGroup), tmp_outMessages.steamArray, Int32(maxMessages)))
+    public func receiveMessagesOnPollGroup(pollGroup: HSteamNetPollGroup, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
+        let tmp_messages = SteamOutArray<OpaquePointer?>(maxMessages)
+        let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup(interface, CSteamworks.HSteamNetPollGroup(pollGroup), tmp_messages.steamArray, Int32(maxMessages)))
         if rc >= 0 {
-            return (rc: rc, outMessages: tmp_outMessages.swiftArray(rc))
+            return (rc: rc, messages: tmp_messages.swiftArray(rc))
         } else {
-            return (rc: rc, outMessages: [])
+            return (rc: rc, messages: [])
         }
     }
 
@@ -300,18 +300,18 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::SendMessageToConnection()`
-    public func sendMessageToConnection(conn: HSteamNetConnection, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags) -> (rc: Result, outMessageNumber: Int) {
-        var tmp_outMessageNumber = int64()
-        let rc = Result(SteamAPI_ISteamNetworkingSockets_SendMessageToConnection(interface, CSteamworks.HSteamNetConnection(conn), data, uint32(dataSize), Int32(sendFlags), &tmp_outMessageNumber))
-        return (rc: rc, outMessageNumber: Int(tmp_outMessageNumber))
+    public func sendMessageToConnection(conn: HSteamNetConnection, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags) -> (rc: Result, messageNumber: Int) {
+        var tmp_messageNumber = int64()
+        let rc = Result(SteamAPI_ISteamNetworkingSockets_SendMessageToConnection(interface, CSteamworks.HSteamNetConnection(conn), data, uint32(dataSize), Int32(sendFlags), &tmp_messageNumber))
+        return (rc: rc, messageNumber: Int(tmp_messageNumber))
     }
 
     /// Steamworks `ISteamNetworkingSockets::SendMessages()`
     public func sendMessages(messages: [SteamNetworkingMessage]) -> [Int] {
         var tmp_messages = messages.map { OpaquePointer?($0) }
-        let tmp_outMessageNumberOrResult = SteamOutArray<int64>(messages.count)
-        SteamAPI_ISteamNetworkingSockets_SendMessages(interface, Int32(messages.count), &tmp_messages, tmp_outMessageNumberOrResult.steamArray)
-        return tmp_outMessageNumberOrResult.swiftArray()
+        let tmp_messageNumberOrResult = SteamOutArray<int64>(messages.count)
+        SteamAPI_ISteamNetworkingSockets_SendMessages(interface, Int32(messages.count), &tmp_messages, tmp_messageNumberOrResult.steamArray)
+        return tmp_messageNumberOrResult.swiftArray()
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`

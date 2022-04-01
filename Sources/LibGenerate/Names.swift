@@ -70,10 +70,10 @@ extension String {
         }
     }
 
-    /// For method parameters and (derivedly) structure members
+    /// For method parameters and structure members
     ///
     /// Try to get rid of the hungarian prefix without losing meaning.
-    var asSwiftParameterName: String {
+    private var asSwiftHungarianName: String {
         // 'steamID' is used as a single hungarian character with various spellings
         if let matches = re_match("^p?(?:Out)?steamID(.+)$", options: .i) {
             return matches[1].asSwiftIdentifier
@@ -86,15 +86,28 @@ extension String {
         if let match = re_match("^p?c(?:ch|u?b)([A-Z][a-z]*.*?)(?:Length|Size)?$") {
             return "\(match[1])Size".asSwiftIdentifier
         }
-        // Ultimate fallback - strip lower-case prefix and convert
-        return re_sub("^[a-z]*(?=[A-Z])") {
+        // Normal - strip lower-case prefix and convert
+        let name = re_sub("^[a-z]*(?=[A-Z])") {
             steamParameterNameGoodPrefixes.contains($0) ? $0 : ""
         }.asSwiftIdentifier
+        return name
+    }
+
+    /// Parameters - special behaviour for 'out' ness that we don't want
+    var asSwiftParameterName: String {
+        let name = asSwiftHungarianName
+        if name.re_isMatch("^out[A-Z]") {
+            return name.asSwiftHungarianName
+        }
+        if name.hasSuffix("TimedOut") {
+            return name
+        }
+        return name.re_sub("(?<=[a-z])Out$", with: "")
     }
 
     /// 99+% of them start with "m_" which I vaguely remember is a MSVC++ meme, then the r-hung. stuff
     var asSwiftStructFieldName: String {
-        re_sub("^m_", with: "").asSwiftParameterName
+        re_sub("^m_", with: "").asSwiftHungarianName
     }
 
     /// Mix of SHOUTY_C_DEFINE and k_IsForKonstant names

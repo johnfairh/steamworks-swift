@@ -81,11 +81,11 @@ public struct SteamParties {
 
     /// Steamworks `ISteamParties::GetBeaconLocationData()`
     @discardableResult
-    public func getBeaconLocationData(beaconLocation: SteamPartyBeaconLocation, data: SteamPartyBeaconLocationData, dataStringOut: inout String, dataStringOutSize: Int) -> Bool {
-        let tmp_dataStringOut = UnsafeMutableBufferPointer<CChar>.allocate(capacity: dataStringOutSize)
-        defer { tmp_dataStringOut.deallocate() }
-        let rc = SteamAPI_ISteamParties_GetBeaconLocationData(interface, SteamPartyBeaconLocation_t(beaconLocation), ESteamPartyBeaconLocationData(data), tmp_dataStringOut.baseAddress, Int32(dataStringOutSize))
-        dataStringOut = String(tmp_dataStringOut)
+    public func getBeaconLocationData(beaconLocation: SteamPartyBeaconLocation, data: SteamPartyBeaconLocationData, dataString: inout String, dataStringOutSize: Int) -> Bool {
+        let tmp_dataString = UnsafeMutableBufferPointer<CChar>.allocate(capacity: dataStringOutSize)
+        defer { tmp_dataString.deallocate() }
+        let rc = SteamAPI_ISteamParties_GetBeaconLocationData(interface, SteamPartyBeaconLocation_t(beaconLocation), ESteamPartyBeaconLocationData(data), tmp_dataString.baseAddress, Int32(dataStringOutSize))
+        dataString = String(tmp_dataString)
         return rc
     }
 

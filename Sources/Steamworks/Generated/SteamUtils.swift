@@ -45,11 +45,11 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::FilterText()`
-    public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, outFilteredText: inout String, byteSizeOutFilteredText: Int) -> Int {
-        let tmp_outFilteredText = UnsafeMutableBufferPointer<CChar>.allocate(capacity: byteSizeOutFilteredText)
-        defer { tmp_outFilteredText.deallocate() }
-        let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), UInt64(steamID), inputMessage, tmp_outFilteredText.baseAddress, uint32(byteSizeOutFilteredText)))
-        outFilteredText = String(tmp_outFilteredText)
+    public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, filteredText: inout String, byteSizeOutFilteredText: Int) -> Int {
+        let tmp_filteredText = UnsafeMutableBufferPointer<CChar>.allocate(capacity: byteSizeOutFilteredText)
+        defer { tmp_filteredText.deallocate() }
+        let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), UInt64(steamID), inputMessage, tmp_filteredText.baseAddress, uint32(byteSizeOutFilteredText)))
+        filteredText = String(tmp_filteredText)
         return rc
     }
 

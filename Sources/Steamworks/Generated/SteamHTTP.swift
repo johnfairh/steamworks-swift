@@ -38,10 +38,10 @@ public struct SteamHTTP {
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPDownloadProgressPct()`
-    public func getHTTPDownloadProgressPct(request: HTTPRequestHandle) -> (rc: Bool, percentOut: Float) {
-        var tmp_percentOut = Float()
-        let rc = SteamAPI_ISteamHTTP_GetHTTPDownloadProgressPct(interface, CSteamworks.HTTPRequestHandle(request), &tmp_percentOut)
-        return (rc: rc, percentOut: tmp_percentOut)
+    public func getHTTPDownloadProgressPct(request: HTTPRequestHandle) -> (rc: Bool, percent: Float) {
+        var tmp_percent = Float()
+        let rc = SteamAPI_ISteamHTTP_GetHTTPDownloadProgressPct(interface, CSteamworks.HTTPRequestHandle(request), &tmp_percent)
+        return (rc: rc, percent: tmp_percent)
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPRequestWasTimedOut()`

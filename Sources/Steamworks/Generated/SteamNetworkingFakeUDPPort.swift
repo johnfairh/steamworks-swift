@@ -23,10 +23,10 @@ public final class SteamNetworkingFakeUDPPort {
     }
 
     /// Steamworks `ISteamNetworkingFakeUDPPort::ReceiveMessages()`
-    public func receiveMessages(maxMessages: Int) -> (rc: Int, outMessages: [SteamNetworkingMessage]) {
-        let tmp_outMessages = SteamOutArray<OpaquePointer?>(maxMessages)
-        let rc = Int(SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages(interface, tmp_outMessages.steamArray, Int32(maxMessages)))
-        return (rc: rc, outMessages: tmp_outMessages.swiftArray(rc))
+    public func receiveMessages(maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
+        let tmp_messages = SteamOutArray<OpaquePointer?>(maxMessages)
+        let rc = Int(SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages(interface, tmp_messages.steamArray, Int32(maxMessages)))
+        return (rc: rc, messages: tmp_messages.swiftArray(rc))
     }
 
     /// Steamworks `ISteamNetworkingFakeUDPPort::ScheduleCleanup()`
