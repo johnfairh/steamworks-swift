@@ -14,7 +14,7 @@ public struct AccountID: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension AccountID: SteamTypeAlias {}
+extension AccountID: SteamTypeAlias, SteamCreatable {}
 extension AccountID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -25,7 +25,7 @@ public struct AppID: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension AppID: SteamTypeAlias {}
+extension AppID: SteamTypeAlias, SteamCreatable {}
 extension AppID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -36,7 +36,7 @@ public struct ControllerActionSetHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension ControllerActionSetHandle: SteamTypeAlias {}
+extension ControllerActionSetHandle: SteamTypeAlias, SteamCreatable {}
 extension ControllerActionSetHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -47,7 +47,7 @@ public struct ControllerAnalogActionHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension ControllerAnalogActionHandle: SteamTypeAlias {}
+extension ControllerAnalogActionHandle: SteamTypeAlias, SteamCreatable {}
 extension ControllerAnalogActionHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -58,7 +58,7 @@ public struct ControllerDigitalActionHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension ControllerDigitalActionHandle: SteamTypeAlias {}
+extension ControllerDigitalActionHandle: SteamTypeAlias, SteamCreatable {}
 extension ControllerDigitalActionHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -69,7 +69,7 @@ public struct ControllerHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension ControllerHandle: SteamTypeAlias {}
+extension ControllerHandle: SteamTypeAlias, SteamCreatable {}
 extension ControllerHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -80,7 +80,7 @@ public struct DepotID: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension DepotID: SteamTypeAlias {}
+extension DepotID: SteamTypeAlias, SteamCreatable {}
 extension DepotID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -91,7 +91,7 @@ public struct FriendsGroupID: Hashable {
     public init(_ value: Int16) { self.value = value }
 }
 
-extension FriendsGroupID: SteamTypeAlias {}
+extension FriendsGroupID: SteamTypeAlias, SteamCreatable {}
 extension FriendsGroupID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int16) { self.init(value) }
 }
@@ -102,7 +102,7 @@ public struct HAuthTicket: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension HAuthTicket: SteamTypeAlias {}
+extension HAuthTicket: SteamTypeAlias, SteamCreatable {}
 extension HAuthTicket: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -113,7 +113,7 @@ public struct HHTMLBrowser: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension HHTMLBrowser: SteamTypeAlias {}
+extension HHTMLBrowser: SteamTypeAlias, SteamCreatable {}
 extension HHTMLBrowser: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -124,7 +124,7 @@ public struct HServerListRequest: Hashable {
     public init(_ value: UnsafeMutableRawPointer) { self.value = value }
 }
 
-extension HServerListRequest: SteamTypeAlias {}
+extension HServerListRequest: SteamTypeAlias, SteamCreatable {}
 
 /// Steamworks `HServerQuery`
 public struct HServerQuery: Hashable {
@@ -132,7 +132,7 @@ public struct HServerQuery: Hashable {
     public init(_ value: Int32) { self.value = value }
 }
 
-extension HServerQuery: SteamTypeAlias {}
+extension HServerQuery: SteamTypeAlias, SteamCreatable {}
 extension HServerQuery: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int32) { self.init(value) }
 }
@@ -143,7 +143,7 @@ public struct HSteamListenSocket: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension HSteamListenSocket: SteamTypeAlias {}
+extension HSteamListenSocket: SteamTypeAlias, SteamCreatable {}
 extension HSteamListenSocket: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -154,7 +154,7 @@ public struct HSteamNetConnection: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension HSteamNetConnection: SteamTypeAlias {}
+extension HSteamNetConnection: SteamTypeAlias, SteamCreatable {}
 extension HSteamNetConnection: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -165,7 +165,7 @@ public struct HSteamNetPollGroup: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension HSteamNetPollGroup: SteamTypeAlias {}
+extension HSteamNetPollGroup: SteamTypeAlias, SteamCreatable {}
 extension HSteamNetPollGroup: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -176,7 +176,7 @@ public struct HSteamPipe: Hashable {
     public init(_ value: Int32) { self.value = value }
 }
 
-extension HSteamPipe: SteamTypeAlias {}
+extension HSteamPipe: SteamTypeAlias, SteamCreatable {}
 extension HSteamPipe: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int32) { self.init(value) }
 }
@@ -187,7 +187,7 @@ public struct HSteamUser: Hashable {
     public init(_ value: Int32) { self.value = value }
 }
 
-extension HSteamUser: SteamTypeAlias {}
+extension HSteamUser: SteamTypeAlias, SteamCreatable {}
 extension HSteamUser: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int32) { self.init(value) }
 }
@@ -198,7 +198,7 @@ public struct HTTPCookieContainerHandle: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension HTTPCookieContainerHandle: SteamTypeAlias {}
+extension HTTPCookieContainerHandle: SteamTypeAlias, SteamCreatable {}
 extension HTTPCookieContainerHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -209,7 +209,7 @@ public struct HTTPRequestHandle: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension HTTPRequestHandle: SteamTypeAlias {}
+extension HTTPRequestHandle: SteamTypeAlias, SteamCreatable {}
 extension HTTPRequestHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -220,7 +220,7 @@ public struct InputActionSetHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension InputActionSetHandle: SteamTypeAlias {}
+extension InputActionSetHandle: SteamTypeAlias, SteamCreatable {}
 extension InputActionSetHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -231,7 +231,7 @@ public struct InputAnalogActionHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension InputAnalogActionHandle: SteamTypeAlias {}
+extension InputAnalogActionHandle: SteamTypeAlias, SteamCreatable {}
 extension InputAnalogActionHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -242,7 +242,7 @@ public struct InputDigitalActionHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension InputDigitalActionHandle: SteamTypeAlias {}
+extension InputDigitalActionHandle: SteamTypeAlias, SteamCreatable {}
 extension InputDigitalActionHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -253,7 +253,7 @@ public struct InputHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension InputHandle: SteamTypeAlias {}
+extension InputHandle: SteamTypeAlias, SteamCreatable {}
 extension InputHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -264,7 +264,7 @@ public struct PartyBeaconID: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension PartyBeaconID: SteamTypeAlias {}
+extension PartyBeaconID: SteamTypeAlias, SteamCreatable {}
 extension PartyBeaconID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -275,7 +275,7 @@ public struct PublishedFileID: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension PublishedFileID: SteamTypeAlias {}
+extension PublishedFileID: SteamTypeAlias, SteamCreatable {}
 extension PublishedFileID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -286,7 +286,7 @@ public struct PublishedFileUpdateHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension PublishedFileUpdateHandle: SteamTypeAlias {}
+extension PublishedFileUpdateHandle: SteamTypeAlias, SteamCreatable {}
 extension PublishedFileUpdateHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -297,7 +297,7 @@ public struct RTime32: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension RTime32: SteamTypeAlias {}
+extension RTime32: SteamTypeAlias, SteamCreatable {}
 extension RTime32: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -308,7 +308,7 @@ public struct RemotePlaySessionID: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension RemotePlaySessionID: SteamTypeAlias {}
+extension RemotePlaySessionID: SteamTypeAlias, SteamCreatable {}
 extension RemotePlaySessionID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -319,7 +319,7 @@ public struct SNetListenSocket: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension SNetListenSocket: SteamTypeAlias {}
+extension SNetListenSocket: SteamTypeAlias, SteamCreatable {}
 extension SNetListenSocket: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -330,7 +330,7 @@ public struct SNetSocket: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension SNetSocket: SteamTypeAlias {}
+extension SNetSocket: SteamTypeAlias, SteamCreatable {}
 extension SNetSocket: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -341,7 +341,7 @@ public struct ScreenshotHandle: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension ScreenshotHandle: SteamTypeAlias {}
+extension ScreenshotHandle: SteamTypeAlias, SteamCreatable {}
 extension ScreenshotHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -352,7 +352,7 @@ public struct SteamAPICall: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension SteamAPICall: SteamTypeAlias {}
+extension SteamAPICall: SteamTypeAlias, SteamCreatable {}
 extension SteamAPICall: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -366,7 +366,7 @@ public struct SteamInventoryResult: Hashable {
     public init(_ value: Int32) { self.value = value }
 }
 
-extension SteamInventoryResult: SteamTypeAlias {}
+extension SteamInventoryResult: SteamTypeAlias, SteamCreatable {}
 extension SteamInventoryResult: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int32) { self.init(value) }
 }
@@ -377,7 +377,7 @@ public struct SteamInventoryUpdateHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension SteamInventoryUpdateHandle: SteamTypeAlias {}
+extension SteamInventoryUpdateHandle: SteamTypeAlias, SteamCreatable {}
 extension SteamInventoryUpdateHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -388,7 +388,7 @@ public struct SteamItemDef: Hashable {
     public init(_ value: Int32) { self.value = value }
 }
 
-extension SteamItemDef: SteamTypeAlias {}
+extension SteamItemDef: SteamTypeAlias, SteamCreatable {}
 extension SteamItemDef: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int32) { self.init(value) }
 }
@@ -399,7 +399,7 @@ public struct SteamItemInstanceID: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension SteamItemInstanceID: SteamTypeAlias {}
+extension SteamItemInstanceID: SteamTypeAlias, SteamCreatable {}
 extension SteamItemInstanceID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -410,7 +410,7 @@ public struct SteamLeaderboardEntries: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension SteamLeaderboardEntries: SteamTypeAlias {}
+extension SteamLeaderboardEntries: SteamTypeAlias, SteamCreatable {}
 extension SteamLeaderboardEntries: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -421,7 +421,7 @@ public struct SteamLeaderboard: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension SteamLeaderboard: SteamTypeAlias {}
+extension SteamLeaderboard: SteamTypeAlias, SteamCreatable {}
 extension SteamLeaderboard: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -432,7 +432,7 @@ public struct SteamNetworkingErrMsg: Hashable {
     public init(_ value: String) { self.value = value }
 }
 
-extension SteamNetworkingErrMsg: SteamTypeAlias {}
+extension SteamNetworkingErrMsg: SteamTypeAlias, SteamCreatable {}
 
 /// Steamworks `SteamNetworkingMicroseconds`
 public struct SteamNetworkingMicroseconds: Hashable {
@@ -440,7 +440,7 @@ public struct SteamNetworkingMicroseconds: Hashable {
     public init(_ value: Int64) { self.value = value }
 }
 
-extension SteamNetworkingMicroseconds: SteamTypeAlias {}
+extension SteamNetworkingMicroseconds: SteamTypeAlias, SteamCreatable {}
 extension SteamNetworkingMicroseconds: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int64) { self.init(value) }
 }
@@ -451,7 +451,7 @@ public struct SteamNetworkingPOPID: Hashable {
     public init(_ value: UInt32) { self.value = value }
 }
 
-extension SteamNetworkingPOPID: SteamTypeAlias {}
+extension SteamNetworkingPOPID: SteamTypeAlias, SteamCreatable {}
 extension SteamNetworkingPOPID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt32) { self.init(value) }
 }
@@ -462,7 +462,7 @@ public struct UGCFileWriteStreamHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension UGCFileWriteStreamHandle: SteamTypeAlias {}
+extension UGCFileWriteStreamHandle: SteamTypeAlias, SteamCreatable {}
 extension UGCFileWriteStreamHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -473,7 +473,7 @@ public struct UGCHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension UGCHandle: SteamTypeAlias {}
+extension UGCHandle: SteamTypeAlias, SteamCreatable {}
 extension UGCHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -484,7 +484,7 @@ public struct UGCQueryHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension UGCQueryHandle: SteamTypeAlias {}
+extension UGCQueryHandle: SteamTypeAlias, SteamCreatable {}
 extension UGCQueryHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }
@@ -495,7 +495,7 @@ public struct UGCUpdateHandle: Hashable {
     public init(_ value: UInt64) { self.value = value }
 }
 
-extension UGCUpdateHandle: SteamTypeAlias {}
+extension UGCUpdateHandle: SteamTypeAlias, SteamCreatable {}
 extension UGCUpdateHandle: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: UInt64) { self.init(value) }
 }

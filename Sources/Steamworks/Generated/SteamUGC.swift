@@ -372,12 +372,10 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetSubscribedItems()`
-    public func getSubscribedItems(publishedFileID: inout [PublishedFileID], maxEntries: Int) -> Int {
-        let tmp_publishedFileID = UnsafeMutableBufferPointer<PublishedFileId_t>.allocate(capacity: maxEntries)
-        defer { tmp_publishedFileID.deallocate() }
-        let rc = Int(SteamAPI_ISteamUGC_GetSubscribedItems(interface, tmp_publishedFileID.baseAddress, uint32(maxEntries)))
-        publishedFileID = tmp_publishedFileID.map { PublishedFileID($0) }
-        return rc
+    public func getSubscribedItems(maxEntries: Int) -> (rc: Int, publishedFileID: [PublishedFileID]) {
+        let tmp_publishedFileID = SteamOutArray<PublishedFileId_t>(maxEntries)
+        let rc = Int(SteamAPI_ISteamUGC_GetSubscribedItems(interface, tmp_publishedFileID.steamArray, uint32(maxEntries)))
+        return (rc: rc, publishedFileID: tmp_publishedFileID.swiftArray(rc))
     }
 
     /// Steamworks `ISteamUGC::GetUserItemVote()`, callback

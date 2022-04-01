@@ -55,12 +55,10 @@ public struct SteamAppList {
     }
 
     /// Steamworks `ISteamAppList::GetInstalledApps()`
-    public func getInstalledApps(appID: inout [AppID], maxAppIDs: Int) -> Int {
-        let tmp_appID = UnsafeMutableBufferPointer<AppId_t>.allocate(capacity: maxAppIDs)
-        defer { tmp_appID.deallocate() }
-        let rc = Int(SteamAPI_ISteamAppList_GetInstalledApps(interface, tmp_appID.baseAddress, uint32(maxAppIDs)))
-        appID = tmp_appID.map { AppID($0) }
-        return rc
+    public func getInstalledApps(maxAppIDs: Int) -> (rc: Int, appID: [AppID]) {
+        let tmp_appID = SteamOutArray<AppId_t>(maxAppIDs)
+        let rc = Int(SteamAPI_ISteamAppList_GetInstalledApps(interface, tmp_appID.steamArray, uint32(maxAppIDs)))
+        return (rc: rc, appID: tmp_appID.swiftArray(rc))
     }
 
     /// Steamworks `ISteamAppList::GetNumInstalledApps()`

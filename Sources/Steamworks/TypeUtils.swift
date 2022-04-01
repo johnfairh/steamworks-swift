@@ -176,6 +176,8 @@ extension UnsafeMutableRawPointer {
 extension HServerListRequest {
     public static let invalid = Self(UnsafeMutableRawPointer(bitPattern: UInt(1)))
 
+    typealias SteamType = UnsafeMutableRawPointer
+
     init(_ steam: CSteamworks.HServerListRequest?) {
         if let steam = steam {
             self.init(steam)
@@ -365,3 +367,57 @@ extension UnsafeMutablePointer {
         return ptr
     }
 }
+
+// MARK: Arrays of things coming out of Steam
+
+/// This pulls out all the gross management of arrays of stuff into code that gets compiled once
+/// rather than being assembled by the generator.  We also pull the 'nullable' use case into here
+/// to simplify the generator.
+final class SteamOutArray<SteamType> {
+    private let steamBuffer: UnsafeMutableBufferPointer<SteamType>?
+
+    var steamArray: UnsafeMutablePointer<SteamType>? {
+        steamBuffer.map { $0.baseAddress! }
+    }
+
+    init(_ count: Int, _ isReal: Bool = true) {
+        steamBuffer = isReal ? .allocate(capacity: count) : nil
+    }
+
+    deinit {
+        steamBuffer?.deallocate()
+    }
+
+    func swiftArray<SwiftType>(_ count: Int = -1) -> [SwiftType] where SwiftType: SteamCreatable, SwiftType.SteamType == SteamType {
+        guard let steamBuffer = steamBuffer else { return [] }
+        return count < 0 ? steamBuffer.map { .init($0) } : steamBuffer[0..<count].map { .init($0) }
+    }
+
+    /// Specialization for Int because we have many steam types mapping to there... another sign this is a bad choice?
+    func swiftArray(_ count: Int = -1) -> [Int] where SteamType: BinaryInteger {
+        guard let steamBuffer = steamBuffer else { return [] }
+        return count < 0 ? steamBuffer.map { .init($0) } : steamBuffer[0..<count].map { .init($0) }
+    }
+}
+
+//final class SteamOut<SteamType> {
+//    let steamValue: UnsafeMutablePointer<SteamType>?
+//
+//    init(_ isReal: Bool = true) {
+//        steamValue = isReal ? .allocate(capacity: 1) : nil
+//    }
+//
+//    init<SwiftType>(_ swiftType: SwiftType) where SteamType: SwiftCreatable, SteamType.SwiftType == SwiftType {
+//        steamValue = .allocate(capacity: 1)
+//        steamValue?.initialize(to: SteamType(swiftType))
+//    }
+//
+//    deinit {
+//        steamValue?.deallocate()
+//    }
+//
+//    func swiftValue<SwiftType>(dummy: @autoclosure () -> SwiftType) -> SwiftType where SwiftType: SteamCreatable, SwiftType.SteamType == SteamType {
+//        guard let steamValue = steamValue else { return dummy() }
+//        return SwiftType(steamValue.pointee)
+//    }
+//}

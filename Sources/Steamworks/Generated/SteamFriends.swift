@@ -280,11 +280,10 @@ public struct SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupMembersList()`
-    public func getFriendsGroupMembersList(friendsGroupID: FriendsGroupID, members: inout [SteamID], membersCount: Int) {
-        let tmp_members = UnsafeMutableBufferPointer<CSteamID>.allocate(capacity: membersCount)
-        defer { tmp_members.deallocate() }
-        SteamAPI_ISteamFriends_GetFriendsGroupMembersList(interface, FriendsGroupID_t(friendsGroupID), tmp_members.baseAddress, Int32(membersCount))
-        members = tmp_members.map { SteamID($0) }
+    public func getFriendsGroupMembersList(friendsGroupID: FriendsGroupID, membersCount: Int) -> [SteamID] {
+        let tmp_members = SteamOutArray<CSteamID>(membersCount)
+        SteamAPI_ISteamFriends_GetFriendsGroupMembersList(interface, FriendsGroupID_t(friendsGroupID), tmp_members.steamArray, Int32(membersCount))
+        return tmp_members.swiftArray()
     }
 
     /// Steamworks `ISteamFriends::GetFriendsGroupName()`

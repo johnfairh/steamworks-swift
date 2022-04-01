@@ -165,12 +165,10 @@ public struct SteamApps {
     }
 
     /// Steamworks `ISteamApps::GetInstalledDepots()`
-    public func getInstalledDepots(id: AppID, depots: inout [DepotID], maxDepots: Int) -> Int {
-        let tmp_depots = UnsafeMutableBufferPointer<DepotId_t>.allocate(capacity: maxDepots)
-        defer { tmp_depots.deallocate() }
-        let rc = Int(SteamAPI_ISteamApps_GetInstalledDepots(interface, AppId_t(id), tmp_depots.baseAddress, uint32(maxDepots)))
-        depots = tmp_depots.map { DepotID($0) }
-        return rc
+    public func getInstalledDepots(id: AppID, maxDepots: Int) -> (rc: Int, depots: [DepotID]) {
+        let tmp_depots = SteamOutArray<DepotId_t>(maxDepots)
+        let rc = Int(SteamAPI_ISteamApps_GetInstalledDepots(interface, AppId_t(id), tmp_depots.steamArray, uint32(maxDepots)))
+        return (rc: rc, depots: tmp_depots.swiftArray(rc))
     }
 
     /// Steamworks `ISteamApps::GetLaunchCommandLine()`

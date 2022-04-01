@@ -286,8 +286,7 @@ final class Client {
             guard let self = self else { return }
             print("Session Request from \(req.identityRemote)")
 
-            var msgs = [SteamNetworkingMessage]()
-            let count = self.api.networkingMessages.receiveMessagesOnChannel(localChannel: 0, outMessages: &msgs, maxMessages: 1)
+            let (count, msgs) = self.api.networkingMessages.receiveMessagesOnChannel(localChannel: 0, maxMessages: 1)
             print("Received \(count) messages")
             if count > 0 {
                 let msg = msgs[0]
@@ -313,8 +312,7 @@ final class Client {
         // apparently we have to poll for messages, no callback on 'readable'
         testFrameCallback = { [weak self] in
             guard let self = self else { return }
-            var msgs = [SteamNetworkingMessage]()
-            self.api.networkingSockets.receiveMessagesOnConnection(conn: serverConnection, outMessages: &msgs, maxMessages: 1)
+            let (_, msgs) = self.api.networkingSockets.receiveMessagesOnConnection(conn: serverConnection, maxMessages: 1)
             if !msgs.isEmpty {
                 let msg = msgs.first!
                 let bytePtr = msg.data.bindMemory(to: UInt8.self, capacity: msg.size)
@@ -353,9 +351,7 @@ final class Client {
                 let (rc, messageNumber) = self.api.networkingSockets.sendMessageToConnection(conn: req.conn, data: message, dataSize: message.count, sendFlags: [])
                 print("SendMsg rc=\(rc) messageNumber=\(messageNumber)")
 
-                // oh my word this api shape is still wrong
-                var laneStatus: [SteamNetConnectionRealTimeLaneStatus]? = nil
-                let (rc2, status) = self.api.networkingSockets.getConnectionRealTimeStatus(conn: req.conn, laneCount: 0, laneStatus: &laneStatus)
+                let (rc2, status, _) = self.api.networkingSockets.getConnectionRealTimeStatus(conn: req.conn, laneCount: 0, returnLaneStatus: false)
                 print("RTStatus rc2=\(rc2) status=\(status)")
 
             case .closedByPeer:
@@ -397,8 +393,7 @@ final class Client {
         let status = api.networkingUtils.getRelayNetworkStatus()
         print("Relay Network Status: \(status)")
 
-        var pops = [SteamNetworkingPOPID]()
-        api.networkingUtils.getPOPList(list: &pops, listSz: api.networkingUtils.getPOPCount())
+        let (_, pops) = api.networkingUtils.getPOPList(listSz: api.networkingUtils.getPOPCount())
         print("Got \(pops.count) POPs: \(pops)")
 
         endTest()
@@ -417,8 +412,5 @@ struct Main {
 
         client.runFrameLoop()
         print("Ran \(client.frameCounter) frames")
-
-        let a = ActiveBeaconsUpdated()
-        print(a)
     }
 }

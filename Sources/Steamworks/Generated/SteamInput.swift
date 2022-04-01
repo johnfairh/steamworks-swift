@@ -65,12 +65,10 @@ public struct SteamInput {
     }
 
     /// Steamworks `ISteamInput::GetActiveActionSetLayers()`
-    public func getActiveActionSetLayers(handle: InputHandle, out: inout [InputActionSetHandle]) -> Int {
-        let tmp_out = UnsafeMutableBufferPointer<InputActionSetHandle_t>.allocate(capacity: Int(STEAM_INPUT_MAX_ACTIVE_LAYERS))
-        defer { tmp_out.deallocate() }
-        let rc = Int(SteamAPI_ISteamInput_GetActiveActionSetLayers(interface, InputHandle_t(handle), tmp_out.baseAddress))
-        out = tmp_out.map { InputActionSetHandle($0) }
-        return rc
+    public func getActiveActionSetLayers(handle: InputHandle) -> (rc: Int, handlesOut: [InputActionSetHandle]) {
+        let tmp_handlesOut = SteamOutArray<InputActionSetHandle_t>(Int(STEAM_INPUT_MAX_ACTIVE_LAYERS))
+        let rc = Int(SteamAPI_ISteamInput_GetActiveActionSetLayers(interface, InputHandle_t(handle), tmp_handlesOut.steamArray))
+        return (rc: rc, handlesOut: tmp_handlesOut.swiftArray(rc))
     }
 
     /// Steamworks `ISteamInput::GetAnalogActionData()`
@@ -84,21 +82,17 @@ public struct SteamInput {
     }
 
     /// Steamworks `ISteamInput::GetAnalogActionOrigins()`
-    public func getAnalogActionOrigins(handle: InputHandle, setHandle: InputActionSetHandle, actionHandle: InputAnalogActionHandle, out: inout [InputActionOrigin]) -> Int {
-        let tmp_out = UnsafeMutableBufferPointer<EInputActionOrigin>.allocate(capacity: Int(STEAM_INPUT_MAX_ORIGINS))
-        defer { tmp_out.deallocate() }
-        let rc = Int(SteamAPI_ISteamInput_GetAnalogActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputAnalogActionHandle_t(actionHandle), tmp_out.baseAddress))
-        out = tmp_out.map { InputActionOrigin($0) }
-        return rc
+    public func getAnalogActionOrigins(handle: InputHandle, setHandle: InputActionSetHandle, actionHandle: InputAnalogActionHandle) -> (rc: Int, originsOut: [InputActionOrigin]) {
+        let tmp_originsOut = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS))
+        let rc = Int(SteamAPI_ISteamInput_GetAnalogActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputAnalogActionHandle_t(actionHandle), tmp_originsOut.steamArray))
+        return (rc: rc, originsOut: tmp_originsOut.swiftArray(rc))
     }
 
     /// Steamworks `ISteamInput::GetConnectedControllers()`
-    public func getConnectedControllers(out: inout [InputHandle]) -> Int {
-        let tmp_out = UnsafeMutableBufferPointer<InputHandle_t>.allocate(capacity: Int(STEAM_INPUT_MAX_COUNT))
-        defer { tmp_out.deallocate() }
-        let rc = Int(SteamAPI_ISteamInput_GetConnectedControllers(interface, tmp_out.baseAddress))
-        out = tmp_out.map { InputHandle($0) }
-        return rc
+    public func getConnectedControllers() -> (rc: Int, handlesOut: [InputHandle]) {
+        let tmp_handlesOut = SteamOutArray<InputHandle_t>(Int(STEAM_INPUT_MAX_COUNT))
+        let rc = Int(SteamAPI_ISteamInput_GetConnectedControllers(interface, tmp_handlesOut.steamArray))
+        return (rc: rc, handlesOut: tmp_handlesOut.swiftArray(rc))
     }
 
     /// Steamworks `ISteamInput::GetControllerForGamepadIndex()`
@@ -130,12 +124,10 @@ public struct SteamInput {
     }
 
     /// Steamworks `ISteamInput::GetDigitalActionOrigins()`
-    public func getDigitalActionOrigins(handle: InputHandle, setHandle: InputActionSetHandle, actionHandle: InputDigitalActionHandle, out: inout [InputActionOrigin]) -> Int {
-        let tmp_out = UnsafeMutableBufferPointer<EInputActionOrigin>.allocate(capacity: Int(STEAM_INPUT_MAX_ORIGINS))
-        defer { tmp_out.deallocate() }
-        let rc = Int(SteamAPI_ISteamInput_GetDigitalActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputDigitalActionHandle_t(actionHandle), tmp_out.baseAddress))
-        out = tmp_out.map { InputActionOrigin($0) }
-        return rc
+    public func getDigitalActionOrigins(handle: InputHandle, setHandle: InputActionSetHandle, actionHandle: InputDigitalActionHandle) -> (rc: Int, originsOut: [InputActionOrigin]) {
+        let tmp_originsOut = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS))
+        let rc = Int(SteamAPI_ISteamInput_GetDigitalActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputDigitalActionHandle_t(actionHandle), tmp_originsOut.steamArray))
+        return (rc: rc, originsOut: tmp_originsOut.swiftArray(rc))
     }
 
     /// Steamworks `ISteamInput::GetGamepadIndexForController()`

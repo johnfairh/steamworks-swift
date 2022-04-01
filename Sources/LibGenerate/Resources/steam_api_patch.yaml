@@ -178,6 +178,7 @@ methods:
     params:
       pvecAppID:
         out_array_count: unMaxAppIDs
+        out_array_valid_count: rc
 #
 # ISteamApps
 #
@@ -201,6 +202,7 @@ methods:
     params:
       pvecDepots:
         out_array_count: cMaxDepots
+        out_array_valid_count: rc
   SteamAPI_ISteamApps_GetLaunchCommandLine:
     params:
       pszCommandLine:
@@ -266,6 +268,22 @@ methods:
 #
   SteamAPI_ISteamInput_EnableActionEventCallbacks:
     ignore: "function pointer, see ManualInterfaces"
+  SteamAPI_ISteamInput_GetActiveActionSetLayers:
+    params:
+      handlesOut:
+        out_array_valid_count: rc
+  SteamAPI_ISteamInput_GetAnalogActionOrigins:
+    params:
+      originsOut:
+        out_array_valid_count: rc
+  SteamAPI_ISteamInput_GetConnectedControllers:
+    params:
+      handlesOut:
+        out_array_valid_count: rc
+  SteamAPI_ISteamInput_GetDigitalActionOrigins:
+    params:
+      originsOut:
+        out_array_valid_count: rc
   SteamAPI_ISteamInput_GetRemotePlaySessionID:
     returntype: RemotePlaySessionID_t
   SteamAPI_ISteamInput_SetLEDColor:
@@ -276,13 +294,18 @@ methods:
 # ISteamInventory
 #
   SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs:
+    out_param_iff_rc: ' '
     params:
       punItemDefIDsArraySize:
         in_out: true
+      pItemDefIDs:
+        out_array_valid_count: punItemDefIDsArraySize
   SteamAPI_ISteamInventory_GetItemDefinitionIDs:
+    out_param_iff_rc: ' '
     params:
       pItemDefIDs:
         nullable: true
+        out_array_valid_count: punItemDefIDsArraySize
       punItemDefIDsArraySize:
         in_out: true
   SteamAPI_ISteamInventory_GetItemDefinitionProperty:
@@ -312,9 +335,11 @@ methods:
       punValueBufferSizeOut:
         in_out: true
   SteamAPI_ISteamInventory_GetResultItems:
+    out_param_iff_rc: ' '
     params:
       pOutItemsArray:
         nullable: true
+        out_array_valid_count: punOutItemsArraySize
       punOutItemsArraySize:
         in_out: true
   SteamAPI_ISteamInventory_GetResultTimestamp:
@@ -457,7 +482,6 @@ methods:
 # ISteamNetworkingFakeUDPPort
 #
   SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages:
-    discardable_result: true
     params:
       ppOutMessages:
         out_array_count: nMaxMessages
@@ -478,7 +502,6 @@ methods:
   SteamAPI_ISteamNetworkingMessages_GetSessionConnectionInfo:
     out_param_iff_rc: '!= .none'
   SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel:
-    discardable_result: true
     params:
       ppOutMessages:
         out_array_count: nMaxMessages
@@ -587,14 +610,12 @@ methods:
   SteamAPI_ISteamNetworkingSockets_InitAuthentication:
     discardable_result: true
   SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection:
-    discardable_result: true
     params:
       ppOutMessages:
         out_array_count: nMaxMessages
         out_array_valid_count: rc
     out_param_iff_rc: '>= 0'
   SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup:
-    discardable_result: true
     params:
       ppOutMessages:
         out_array_count: nMaxMessages
@@ -651,7 +672,6 @@ methods:
       result:
         type: 'SteamNetworkPingLocation_t *'
   SteamAPI_ISteamNetworkingUtils_GetPOPList:
-    discardable_result: true
     params:
       list:
         out_array_count: nListSz
@@ -715,7 +735,6 @@ methods:
   SteamAPI_ISteamParties_GetBeaconLocationData:
     discardable_result: true
   SteamAPI_ISteamParties_GetAvailableBeaconLocations:
-    discardable_result: true
     params:
       pLocationList:
         out_array_count: uMaxNumLocations
@@ -797,6 +816,7 @@ methods:
     params:
       pvecPublishedFileID:
         out_array_count: cMaxEntries
+        out_array_valid_count: 'rc'
   SteamAPI_ISteamUGC_ReleaseQueryUGCRequest:
     discardable_result: true
   SteamAPI_ISteamUGC_RemoveItemKeyValueTags:
@@ -890,11 +910,13 @@ methods:
     params:
       pData:
         out_array_count: cubData / 8
+        out_array_valid_count: 'rc'
         array_count: DELETE
   SteamAPI_ISteamUserStats_GetGlobalStatHistoryInt64:
     params:
       pData:
         out_array_count: cubData / 8
+        out_array_valid_count: 'rc'
         array_count: DELETE
   SteamAPI_ISteamUserStats_GetGlobalStatInt64:
     out_param_iff_rc: ' '

@@ -56,13 +56,10 @@ public struct SteamNetworkingMessages {
     }
 
     /// Steamworks `ISteamNetworkingMessages::ReceiveMessagesOnChannel()`
-    @discardableResult
-    public func receiveMessagesOnChannel(localChannel: Int, outMessages: inout [SteamNetworkingMessage], maxMessages: Int) -> Int {
-        let tmp_outMessages = UnsafeMutableBufferPointer<OpaquePointer?>.allocate(capacity: maxMessages)
-        defer { tmp_outMessages.deallocate() }
-        let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, Int32(localChannel), tmp_outMessages.baseAddress, Int32(maxMessages)))
-        outMessages = tmp_outMessages[0..<rc].map { SteamNetworkingMessage($0) }
-        return rc
+    public func receiveMessagesOnChannel(localChannel: Int, maxMessages: Int) -> (rc: Int, outMessages: [SteamNetworkingMessage]) {
+        let tmp_outMessages = SteamOutArray<OpaquePointer?>(maxMessages)
+        let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, Int32(localChannel), tmp_outMessages.steamArray, Int32(maxMessages)))
+        return (rc: rc, outMessages: tmp_outMessages.swiftArray(rc))
     }
 
     /// Steamworks `ISteamNetworkingMessages::SendMessageToUser()`

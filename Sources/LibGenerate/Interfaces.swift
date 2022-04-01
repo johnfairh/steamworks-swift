@@ -188,7 +188,7 @@ final class SwiftParam {
 
     var includeInReturnTuple: Bool {
         switch style {
-        case .out, .out_transparent: return true
+        case .out, .out_transparent, .out_array: return true
         default: return false
         }
     }
@@ -199,11 +199,11 @@ final class SwiftParam {
         switch style {
         case .in: return swiftTypeBaseName + optional
         case .in_string_array, .in_ref: return swiftTypeBaseName
-        case .out, .out_transparent: return nil
+        case .out, .out_transparent, .out_array: return nil
         case .in_out: return "inout \(swiftTypeBaseName)\(optional)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
-        case .out_array, .out_transparent_array: return "inout [\(swiftTypeBaseName)]\(optional)"
+        case .out_transparent_array: return "inout [\(swiftTypeBaseName)]\(optional)"
         case .out_string: return "inout String\(optional)"
         }
     }
@@ -212,7 +212,7 @@ final class SwiftParam {
     /// xxx can merge with above now?
     var swiftParamClause: String? {
         switch (style, db.nullable) {
-        case (.out, true), (.out_transparent, true):
+        case (.out, true), (.out_transparent, true), (.out_array, true):
             return "\(returnParamName): Bool = true"
         default:
             guard let swiftType = swiftParamType else {
@@ -227,7 +227,7 @@ final class SwiftParam {
     var swiftParamForwardingClause: String? {
         let paramName: String
         switch (style, db.nullable) {
-        case (.out, true), (.out_transparent, true):
+        case (.out, true), (.out_transparent, true), (.out_array, true):
             paramName = returnParamName
         case (.in_array_count, _):
             return nil
@@ -239,14 +239,21 @@ final class SwiftParam {
 
     /// How should the param appear in the Swift return tuple
     var swiftReturnType: String {
-        swiftTypeBaseName
+        switch style {
+        case .out_array: return "[\(swiftTypeBaseName)]"
+        default: return swiftTypeBaseName
+        }
     }
 
     /// A default instance for the Swift return tuple
     var swiftReturnDummyInstance: String {
-        // big yikes here
-        // exclam is about non-optional bufferpointers that we can't just fabricate
-        steamTypeName.depointered.asSwiftTypeInstance!
+        // big yikes here, figure out properly
+        switch style {
+        case .out_array: return "[]"
+        default:
+            // exclam is about non-optional bufferpointers that we can't just fabricate
+            return steamTypeName.depointered.asSwiftTypeInstance!
+        }
     }
 
     /// The name of the local variable to store the Steam version of the type for an out param
@@ -295,19 +302,8 @@ final class SwiftParam {
             return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
         case .out_array(let sizeParam):
             let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
-            let lines: [String]
-            if !db.nullable {
-                lines = [
-                    "let \(tempName) = UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asArraySizeExpression))",
-                    "defer { \(tempName).deallocate() }"
-                ]
-            } else {
-                lines = [
-                    "let \(tempName) = \(swiftName).map { _ in UnsafeMutableBufferPointer<\(typeName)>.allocate(capacity: \(sizeParam.asArraySizeExpression)) }",
-                    "defer { \(tempName)?.deallocate() }"
-                ]
-            }
-            return lines
+            let nullability = db.nullable ? ", \(returnParamName)" : ""
+            return [ "let \(tempName) = SteamOutArray<\(typeName)>(\(sizeParam.asArraySizeExpression)\(nullability))" ]
         case .out_string(let sizeParam):
             let lines: [String]
             if !db.nullable {
@@ -349,7 +345,9 @@ final class SwiftParam {
             return "&\(swiftName)"
         case .in_array_count(let ap):
             return "\(ap.swiftName).count".asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
-        case .out_array, .out_string:
+        case .out_array:
+            return "\(tempName).steamArray"
+        case .out_string:
             if !db.nullable {
                 return "\(tempName).baseAddress"
             } else {
@@ -362,20 +360,13 @@ final class SwiftParam {
     var postSuccessCallLine: String? {
         switch style {
         case .in, .in_string_array, .in_array, .in_array_count, .out_transparent_array, .in_ref: return nil
-        case .out, .out_transparent:
+        case .out, .out_transparent, .out_array:
             return nil
         case .in_out:
             if !db.nullable {
                 return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
             } else {
                 return "\(tempName).map { \(swiftName) = \(swiftTypeBaseName)($0.pointee) }"
-            }
-        case .out_array:
-            let subscr = db.outArrayValidLength.map { "[0..<\($0)]" } ?? ""
-            if !db.nullable {
-                return "\(swiftName) = \(tempName)\(subscr).map { \(swiftTypeBaseName)($0) }"
-            } else {
-                return "\(tempName).map { \(swiftName) = $0\(subscr).map { \(swiftTypeBaseName)($0) } }"
             }
         case .out_string:
             if !db.nullable {
@@ -397,6 +388,10 @@ final class SwiftParam {
 
         case .out_transparent:
             return tempName
+
+        case .out_array:
+            let subscrpt = db.outArrayValidLength.map { $0.asSwiftParameterName } ?? ""
+            return "\(tempName).swiftArray(\(subscrpt))"
 
         default:
             preconditionFailure("Not out param: \(self)")

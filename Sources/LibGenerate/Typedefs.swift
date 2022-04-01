@@ -82,7 +82,7 @@ extension MetadataDB.Typedef {
                        public init(_ value: \(swiftRawType)) { self.value = value }
                    }
 
-                   extension \(swiftTypeName): SteamTypeAlias {}
+                   extension \(swiftTypeName): SteamTypeAlias, SteamCreatable {}
                    """
         if swiftRawType.isSwiftIntegerType {
             decl += """

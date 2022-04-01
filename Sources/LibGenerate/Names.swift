@@ -290,7 +290,7 @@ private let steamTypesPassedInStrangely: [String : String] = [
 // parts of the name...
 private let steamParameterNameGoodPrefixes = Set<String>([
     "friends", "steam", "csecs", "identity", "addr", "debug",
-    "rtime", "src", "preview"
+    "rtime", "src", "preview", "origins", "handles"
 ])
 
 extension String {

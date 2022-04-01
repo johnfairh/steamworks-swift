@@ -57,13 +57,10 @@ public struct SteamParties {
     }
 
     /// Steamworks `ISteamParties::GetAvailableBeaconLocations()`
-    @discardableResult
-    public func getAvailableBeaconLocations(locationList: inout [SteamPartyBeaconLocation], maxNumLocations: Int) -> Bool {
-        let tmp_locationList = UnsafeMutableBufferPointer<SteamPartyBeaconLocation_t>.allocate(capacity: maxNumLocations)
-        defer { tmp_locationList.deallocate() }
-        let rc = SteamAPI_ISteamParties_GetAvailableBeaconLocations(interface, tmp_locationList.baseAddress, uint32(maxNumLocations))
-        locationList = tmp_locationList.map { SteamPartyBeaconLocation($0) }
-        return rc
+    public func getAvailableBeaconLocations(maxNumLocations: Int) -> (rc: Bool, locationList: [SteamPartyBeaconLocation]) {
+        let tmp_locationList = SteamOutArray<SteamPartyBeaconLocation_t>(maxNumLocations)
+        let rc = SteamAPI_ISteamParties_GetAvailableBeaconLocations(interface, tmp_locationList.steamArray, uint32(maxNumLocations))
+        return (rc: rc, locationList: tmp_locationList.swiftArray())
     }
 
     /// Steamworks `ISteamParties::GetBeaconByIndex()`

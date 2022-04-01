@@ -152,18 +152,14 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetDownloadedLeaderboardEntry()`
-    public func getDownloadedLeaderboardEntry(steamLeaderboardEntries: SteamLeaderboardEntries, index: Int, details: inout [Int], detailsMax: Int) -> (rc: Bool, leaderboardEntry: LeaderboardEntry) {
+    public func getDownloadedLeaderboardEntry(steamLeaderboardEntries: SteamLeaderboardEntries, index: Int, detailsMax: Int) -> (rc: Bool, leaderboardEntry: LeaderboardEntry, details: [Int]) {
         var tmp_leaderboardEntry = LeaderboardEntry_t()
-        let tmp_details = UnsafeMutableBufferPointer<int32>.allocate(capacity: detailsMax)
-        defer { tmp_details.deallocate() }
-        let rc = SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry(interface, SteamLeaderboardEntries_t(steamLeaderboardEntries), Int32(index), &tmp_leaderboardEntry, tmp_details.baseAddress, Int32(detailsMax))
+        let tmp_details = SteamOutArray<int32>(detailsMax)
+        let rc = SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry(interface, SteamLeaderboardEntries_t(steamLeaderboardEntries), Int32(index), &tmp_leaderboardEntry, tmp_details.steamArray, Int32(detailsMax))
         if rc {
-            details = tmp_details.map { Int($0) }
-        }
-        if rc {
-            return (rc: rc, leaderboardEntry: LeaderboardEntry(tmp_leaderboardEntry))
+            return (rc: rc, leaderboardEntry: LeaderboardEntry(tmp_leaderboardEntry), details: tmp_details.swiftArray())
         } else {
-            return (rc: rc, leaderboardEntry: LeaderboardEntry())
+            return (rc: rc, leaderboardEntry: LeaderboardEntry(), details: [])
         }
     }
 
@@ -180,12 +176,10 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStatHistory()`
-    public func getGlobalStatHistoryInt(statName: String, data: inout [Int], dataSize: Int) -> Int {
-        let tmp_data = UnsafeMutableBufferPointer<int64>.allocate(capacity: dataSize / 8)
-        defer { tmp_data.deallocate() }
-        let rc = Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryInt64(interface, statName, tmp_data.baseAddress, uint32(dataSize)))
-        data = tmp_data.map { Int($0) }
-        return rc
+    public func getGlobalStatHistoryInt(statName: String, dataSize: Int) -> (rc: Int, data: [Int]) {
+        let tmp_data = SteamOutArray<int64>(dataSize / 8)
+        let rc = Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryInt64(interface, statName, tmp_data.steamArray, uint32(dataSize)))
+        return (rc: rc, data: tmp_data.swiftArray(rc))
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStat()`

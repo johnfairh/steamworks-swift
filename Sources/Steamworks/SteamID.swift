@@ -303,6 +303,10 @@ extension UInt64 {
     }
 }
 
+extension SteamID: SteamCreatable {
+    typealias SteamType = CSteamID
+}
+
 // What a day to be alive, a Swift extension to a C++ class ...
 extension CSteamID {
     init(_ steamID: SteamID) {

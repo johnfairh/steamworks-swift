@@ -88,25 +88,33 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetEligiblePromoItemDefinitionIDs()`
-    public func getEligiblePromoItemDefinitionIDs(steamID: SteamID, itemDefIDs: inout [SteamItemDef], itemDefIDsArraySize: inout Int) -> Bool {
-        let tmp_itemDefIDs = UnsafeMutableBufferPointer<SteamItemDef_t>.allocate(capacity: itemDefIDsArraySize)
-        defer { tmp_itemDefIDs.deallocate() }
+    public func getEligiblePromoItemDefinitionIDs(steamID: SteamID, itemDefIDsArraySize: inout Int) -> (rc: Bool, itemDefIDs: [SteamItemDef]) {
+        let tmp_itemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize)
         var tmp_itemDefIDsArraySize = uint32(itemDefIDsArraySize)
-        let rc = SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs(interface, UInt64(steamID), tmp_itemDefIDs.baseAddress, &tmp_itemDefIDsArraySize)
-        itemDefIDs = tmp_itemDefIDs.map { SteamItemDef($0) }
-        itemDefIDsArraySize = Int(tmp_itemDefIDsArraySize)
-        return rc
+        let rc = SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs(interface, UInt64(steamID), tmp_itemDefIDs.steamArray, &tmp_itemDefIDsArraySize)
+        if rc {
+            itemDefIDsArraySize = Int(tmp_itemDefIDsArraySize)
+        }
+        if rc {
+            return (rc: rc, itemDefIDs: tmp_itemDefIDs.swiftArray(itemDefIDsArraySize))
+        } else {
+            return (rc: rc, itemDefIDs: [])
+        }
     }
 
     /// Steamworks `ISteamInventory::GetItemDefinitionIDs()`
-    public func getItemDefinitionIDs(itemDefIDs: inout [SteamItemDef]?, itemDefIDsArraySize: inout Int) -> Bool {
-        let tmp_itemDefIDs = itemDefIDs.map { _ in UnsafeMutableBufferPointer<SteamItemDef_t>.allocate(capacity: itemDefIDsArraySize) }
-        defer { tmp_itemDefIDs?.deallocate() }
+    public func getItemDefinitionIDs(returnItemDefIDs: Bool = true, itemDefIDsArraySize: inout Int) -> (rc: Bool, itemDefIDs: [SteamItemDef]) {
+        let tmp_itemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize, returnItemDefIDs)
         var tmp_itemDefIDsArraySize = uint32(itemDefIDsArraySize)
-        let rc = SteamAPI_ISteamInventory_GetItemDefinitionIDs(interface, tmp_itemDefIDs.flatMap { $0.baseAddress }, &tmp_itemDefIDsArraySize)
-        tmp_itemDefIDs.map { itemDefIDs = $0.map { SteamItemDef($0) } }
-        itemDefIDsArraySize = Int(tmp_itemDefIDsArraySize)
-        return rc
+        let rc = SteamAPI_ISteamInventory_GetItemDefinitionIDs(interface, tmp_itemDefIDs.steamArray, &tmp_itemDefIDsArraySize)
+        if rc {
+            itemDefIDsArraySize = Int(tmp_itemDefIDsArraySize)
+        }
+        if rc {
+            return (rc: rc, itemDefIDs: tmp_itemDefIDs.swiftArray(itemDefIDsArraySize))
+        } else {
+            return (rc: rc, itemDefIDs: [])
+        }
     }
 
     /// Steamworks `ISteamInventory::GetItemDefinitionProperty()`
@@ -137,17 +145,13 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetItemsWithPrices()`
-    public func getItemsWithPrices(arrayItemDefs: inout [SteamItemDef], currentPrices: inout [UInt64], basePrices: inout [UInt64], arrayLength: Int) -> Bool {
-        let tmp_arrayItemDefs = UnsafeMutableBufferPointer<SteamItemDef_t>.allocate(capacity: arrayLength)
-        defer { tmp_arrayItemDefs.deallocate() }
-        let rc = SteamAPI_ISteamInventory_GetItemsWithPrices(interface, tmp_arrayItemDefs.baseAddress, &currentPrices, &basePrices, uint32(arrayLength))
+    public func getItemsWithPrices(currentPrices: inout [UInt64], basePrices: inout [UInt64], arrayLength: Int) -> (rc: Bool, arrayItemDefs: [SteamItemDef]) {
+        let tmp_arrayItemDefs = SteamOutArray<SteamItemDef_t>(arrayLength)
+        let rc = SteamAPI_ISteamInventory_GetItemsWithPrices(interface, tmp_arrayItemDefs.steamArray, &currentPrices, &basePrices, uint32(arrayLength))
         if rc {
-            arrayItemDefs = tmp_arrayItemDefs.map { SteamItemDef($0) }
-        }
-        if rc {
-            return rc
+            return (rc: rc, arrayItemDefs: tmp_arrayItemDefs.swiftArray())
         } else {
-            return rc
+            return (rc: rc, arrayItemDefs: [])
         }
     }
 
@@ -168,14 +172,18 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetResultItems()`
-    public func getResultItems(handle: SteamInventoryResult, outItemsArray: inout [SteamItemDetails]?, outItemsArraySize: inout Int) -> Bool {
-        let tmp_outItemsArray = outItemsArray.map { _ in UnsafeMutableBufferPointer<SteamItemDetails_t>.allocate(capacity: outItemsArraySize) }
-        defer { tmp_outItemsArray?.deallocate() }
+    public func getResultItems(handle: SteamInventoryResult, returnOutItemsArray: Bool = true, outItemsArraySize: inout Int) -> (rc: Bool, outItemsArray: [SteamItemDetails]) {
+        let tmp_outItemsArray = SteamOutArray<SteamItemDetails_t>(outItemsArraySize, returnOutItemsArray)
         var tmp_outItemsArraySize = uint32(outItemsArraySize)
-        let rc = SteamAPI_ISteamInventory_GetResultItems(interface, SteamInventoryResult_t(handle), tmp_outItemsArray.flatMap { $0.baseAddress }, &tmp_outItemsArraySize)
-        tmp_outItemsArray.map { outItemsArray = $0.map { SteamItemDetails($0) } }
-        outItemsArraySize = Int(tmp_outItemsArraySize)
-        return rc
+        let rc = SteamAPI_ISteamInventory_GetResultItems(interface, SteamInventoryResult_t(handle), tmp_outItemsArray.steamArray, &tmp_outItemsArraySize)
+        if rc {
+            outItemsArraySize = Int(tmp_outItemsArraySize)
+        }
+        if rc {
+            return (rc: rc, outItemsArray: tmp_outItemsArray.swiftArray(outItemsArraySize))
+        } else {
+            return (rc: rc, outItemsArray: [])
+        }
     }
 
     /// Steamworks `ISteamInventory::GetResultStatus()`

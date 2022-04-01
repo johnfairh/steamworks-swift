@@ -96,13 +96,10 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetPOPList()`
-    @discardableResult
-    public func getPOPList(list: inout [SteamNetworkingPOPID], listSz: Int) -> Int {
-        let tmp_list = UnsafeMutableBufferPointer<CSteamworks.SteamNetworkingPOPID>.allocate(capacity: listSz)
-        defer { tmp_list.deallocate() }
-        let rc = Int(SteamAPI_ISteamNetworkingUtils_GetPOPList(interface, tmp_list.baseAddress, Int32(listSz)))
-        list = tmp_list[0..<rc].map { SteamNetworkingPOPID($0) }
-        return rc
+    public func getPOPList(listSz: Int) -> (rc: Int, list: [SteamNetworkingPOPID]) {
+        let tmp_list = SteamOutArray<CSteamworks.SteamNetworkingPOPID>(listSz)
+        let rc = Int(SteamAPI_ISteamNetworkingUtils_GetPOPList(interface, tmp_list.steamArray, Int32(listSz)))
+        return (rc: rc, list: tmp_list.swiftArray(rc))
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetPingToDataCenter()`

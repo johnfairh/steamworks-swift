@@ -123,7 +123,8 @@ extension MetadataDB.Enum {
         let swiftTypeName = (namespace.flatMap { "\($0)." } ?? "") + name.asSwiftTypeName
         return [
             "extension \(name.asSwiftNameForSteamType): RawConvertible { typealias From = \(swiftTypeName) }",
-            "extension \(swiftTypeName): \(enumProtocol) { typealias From = \(name.asSwiftNameForSteamType) }"
+            "extension \(swiftTypeName): \(enumProtocol) { typealias From = \(name.asSwiftNameForSteamType) }",
+            "extension \(swiftTypeName): SteamCreatable {}"
         ]
     }
 

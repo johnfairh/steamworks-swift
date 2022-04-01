@@ -591,6 +591,10 @@ extension Optional where Wrapped == OpaquePointer {
     }
 }
 
+extension SteamNetworkingMessage: SteamCreatable {
+    typealias SteamType = Optional<OpaquePointer>
+}
+
 // MARK: SteamNetworkingConfigValue
 
 // Another enum-y union thing, used for writing to SteamNetworking
