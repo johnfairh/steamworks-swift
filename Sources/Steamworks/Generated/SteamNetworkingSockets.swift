@@ -110,9 +110,9 @@ public struct SteamNetworkingSockets {
     public func createSocketPair(useNetworkLoopback: Bool, identity1: SteamNetworkingIdentity?, identity2: SteamNetworkingIdentity?) -> (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection) {
         var tmp_connection1 = CSteamworks.HSteamNetConnection()
         var tmp_connection2 = CSteamworks.HSteamNetConnection()
-        let tmp_identity1 = UnsafeMutablePointer<SteamNetworkingIdentity>.initAllocate(identity1)
+        let tmp_identity1 = UnsafeMutablePointer<CSteamworks.SteamNetworkingIdentity>.initAllocate(identity1)
         defer { tmp_identity1?.deallocate() }
-        let tmp_identity2 = UnsafeMutablePointer<SteamNetworkingIdentity>.initAllocate(identity2)
+        let tmp_identity2 = UnsafeMutablePointer<CSteamworks.SteamNetworkingIdentity>.initAllocate(identity2)
         defer { tmp_identity2?.deallocate() }
         let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmp_connection1, &tmp_connection2, useNetworkLoopback, tmp_identity1, tmp_identity2)
         return (rc: rc, connection1: HSteamNetConnection(tmp_connection1), connection2: HSteamNetConnection(tmp_connection2))
@@ -132,10 +132,10 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetAuthenticationStatus()`
     public func getAuthenticationStatus(returnDetails: Bool = true) -> (rc: SteamNetworkingAvailability, details: SteamNetAuthenticationStatus) {
-        let tmp_details = returnDetails ? UnsafeMutablePointer<SteamNetAuthenticationStatus_t>.allocate(capacity: 1) : nil
-        defer { tmp_details?.deallocate() }
-        let rc = SteamNetworkingAvailability(SteamAPI_ISteamNetworkingSockets_GetAuthenticationStatus(interface, tmp_details))
-        return (rc: rc, details: tmp_details.map { SteamNetAuthenticationStatus($0.pointee) } ?? SteamNetAuthenticationStatus())
+        let tmp_details = SteamNullable<SteamNetAuthenticationStatus_t>(isReal: returnDetails)
+        defer { tmp_details.deallocate() }
+        let rc = SteamNetworkingAvailability(SteamAPI_ISteamNetworkingSockets_GetAuthenticationStatus(interface, tmp_details.steamValue))
+        return (rc: rc, details: tmp_details.swiftValue(dummy: SteamNetAuthenticationStatus()))
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
@@ -177,12 +177,12 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionRealTimeStatus()`
     public func getConnectionRealTimeStatus(conn: HSteamNetConnection, returnStatus: Bool = true, laneCount: Int, returnLaneStatus: Bool = true) -> (rc: Result, status: SteamNetConnectionRealTimeStatus, laneStatus: [SteamNetConnectionRealTimeLaneStatus]) {
-        let tmp_status = returnStatus ? UnsafeMutablePointer<SteamNetConnectionRealTimeStatus_t>.allocate(capacity: 1) : nil
-        defer { tmp_status?.deallocate() }
+        let tmp_status = SteamNullable<SteamNetConnectionRealTimeStatus_t>(isReal: returnStatus)
+        defer { tmp_status.deallocate() }
         let tmp_laneStatus = SteamOutArray<SteamNetConnectionRealTimeLaneStatus_t>(laneCount, returnLaneStatus)
-        let rc = Result(SteamAPI_ISteamNetworkingSockets_GetConnectionRealTimeStatus(interface, CSteamworks.HSteamNetConnection(conn), tmp_status, Int32(laneCount), tmp_laneStatus.steamArray))
+        let rc = Result(SteamAPI_ISteamNetworkingSockets_GetConnectionRealTimeStatus(interface, CSteamworks.HSteamNetConnection(conn), tmp_status.steamValue, Int32(laneCount), tmp_laneStatus.steamArray))
         if rc == .ok {
-            return (rc: rc, status: tmp_status.map { SteamNetConnectionRealTimeStatus($0.pointee) } ?? SteamNetConnectionRealTimeStatus(), laneStatus: tmp_laneStatus.swiftArray())
+            return (rc: rc, status: tmp_status.swiftValue(dummy: SteamNetConnectionRealTimeStatus()), laneStatus: tmp_laneStatus.swiftArray())
         } else {
             return (rc: rc, status: SteamNetConnectionRealTimeStatus(), laneStatus: [])
         }

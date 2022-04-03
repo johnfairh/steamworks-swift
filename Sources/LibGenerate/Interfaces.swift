@@ -276,7 +276,7 @@ final class SwiftParam {
                 return []
             }
             return [
-                "let \(tempName) = UnsafeMutablePointer<\(steamTypeName)>.initAllocate(\(swiftName))",
+                "let \(tempName) = UnsafeMutablePointer<\(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)>.initAllocate(\(swiftName))",
                 "defer { \(tempName)?.deallocate() }"
                 ]
         case .in_array_count:
@@ -294,8 +294,8 @@ final class SwiftParam {
             }
             let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
             return [
-                "let \(tempName) = \(returnParamName) ? UnsafeMutablePointer<\(typeName)>.allocate(capacity: 1) : nil",
-                "defer { \(tempName)?.deallocate() }"
+                "let \(tempName) = SteamNullable<\(typeName)>(isReal: \(returnParamName))",
+                "defer { \(tempName).deallocate() }"
             ]
         case .in_out, .in_ref:
             return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
@@ -336,7 +336,7 @@ final class SwiftParam {
         case .in_string_array:
             return ".init(\(tempName))"
         case .out, .out_transparent:
-            return db.nullable ? tempName : "&\(tempName)"
+            return db.nullable ? "\(tempName).steamValue" : "&\(tempName)"
         case .in_out, .in_array, .in_ref:
             if !db.nullable {
                 return "&\(tempName)"
@@ -386,10 +386,13 @@ final class SwiftParam {
             guard db.nullable else {
                 return "\(swiftTypeBaseName)(\(tempName))"
             }
-            return "\(tempName).map { \(swiftTypeBaseName)($0.pointee) } ?? \(swiftReturnDummyInstance)"
+            return "\(tempName).swiftValue(dummy: \(swiftReturnDummyInstance))"
 
         case .out_transparent:
-            return tempName
+            guard db.nullable else {
+                return tempName
+            }
+            return "\(tempName).swiftValue(dummy: \(swiftReturnDummyInstance))"
 
         case .out_array:
             let subscrpt = db.outArrayValidLength.map { $0.asSwiftParameterName } ?? ""

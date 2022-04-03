@@ -123,10 +123,10 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::GetRelayNetworkStatus()`
     public func getRelayNetworkStatus(returnDetails: Bool = true) -> (rc: SteamNetworkingAvailability, details: SteamRelayNetworkStatus) {
-        let tmp_details = returnDetails ? UnsafeMutablePointer<SteamRelayNetworkStatus_t>.allocate(capacity: 1) : nil
-        defer { tmp_details?.deallocate() }
-        let rc = SteamNetworkingAvailability(SteamAPI_ISteamNetworkingUtils_GetRelayNetworkStatus(interface, tmp_details))
-        return (rc: rc, details: tmp_details.map { SteamRelayNetworkStatus($0.pointee) } ?? SteamRelayNetworkStatus())
+        let tmp_details = SteamNullable<SteamRelayNetworkStatus_t>(isReal: returnDetails)
+        defer { tmp_details.deallocate() }
+        let rc = SteamNetworkingAvailability(SteamAPI_ISteamNetworkingUtils_GetRelayNetworkStatus(interface, tmp_details.steamValue))
+        return (rc: rc, details: tmp_details.swiftValue(dummy: SteamRelayNetworkStatus()))
     }
 
     /// Steamworks `ISteamNetworkingUtils::InitRelayNetworkAccess()`

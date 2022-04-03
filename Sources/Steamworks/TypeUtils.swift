@@ -52,6 +52,15 @@ extension String {
 ///
 /// Also supports SteamRemoteStorage's custom array-of-strings type that
 /// is only marginally better thought out.
+///
+/// This is intentionally a struct with an explicit deallocate.  Flipping to a class with `deinit` fails
+/// because the compiler will not understand the lifetime requirements of the `cStrings` field, ie:
+/// ```swift
+/// let s = StringArrayClass(p)
+/// SomeAPI(s.cStrings)
+/// ```
+///  ...has UB/crashiness because Swift will deinit `s` after evalulating `s.cStrings` but before
+///  actually calling `SomeAPI()`.  And yes, C++ explicitly doesn't work like this...
 struct StringArray {
     // Storage -- the auto-trick with arrays doesn't work through all the
     // optional nonsense we have going on
@@ -407,24 +416,32 @@ final class SteamOutArray<SteamType> {
     }
 }
 
-//final class SteamOut<SteamType> {
-//    let steamValue: UnsafeMutablePointer<SteamType>?
-//
-//    init(_ isReal: Bool = true) {
-//        steamValue = isReal ? .allocate(capacity: 1) : nil
-//    }
-//
-//    init<SwiftType>(_ swiftType: SwiftType) where SteamType: SwiftCreatable, SteamType.SwiftType == SwiftType {
+/// Wrapper for values passed by reference to the steam API that can be nil - so importer magic doesn't work.
+///
+/// Intentionally a struct with explicit deallocate for lifetime reasons.
+struct SteamNullable<SteamType> {
+    let steamValue: UnsafeMutablePointer<SteamType>?
+
+    /// Init for out params, no initial value
+    init(isReal: Bool = true) {
+        steamValue = isReal ? .allocate(capacity: 1) : nil
+    }
+
+//    /// Init for in param, optional initial value
+//    init<SwiftType>(_ swiftValue: SwiftType?) where SteamType: SwiftCreatable, SteamType.SwiftType == SwiftType {
+//        guard let swiftValue = swiftValue else {
+//            steamValue = nil
+//        }
 //        steamValue = .allocate(capacity: 1)
-//        steamValue?.initialize(to: SteamType(swiftType))
+//        steamValue?.initialize(to: SteamType(swiftValue))
 //    }
-//
-//    deinit {
-//        steamValue?.deallocate()
-//    }
-//
-//    func swiftValue<SwiftType>(dummy: @autoclosure () -> SwiftType) -> SwiftType where SwiftType: SteamCreatable, SwiftType.SteamType == SteamType {
-//        guard let steamValue = steamValue else { return dummy() }
-//        return SwiftType(steamValue.pointee)
-//    }
-//}
+
+    func deallocate() {
+        steamValue?.deallocate()
+    }
+
+    func swiftValue<SwiftType>(dummy: @autoclosure () -> SwiftType) -> SwiftType where SwiftType: SteamCreatable, SwiftType.SteamType == SteamType {
+        guard let steamValue = steamValue else { return dummy() }
+        return SwiftType(steamValue.pointee)
+    }
+}
