@@ -370,6 +370,13 @@ extension UnsafeMutablePointer {
 
 // MARK: Arrays of things coming out of Steam
 
+extension Array {
+    func safePrefix(_ count: Int) -> Self {
+        guard count > 0 else { return [] }
+        return Self(self[0..<count])
+    }
+}
+
 /// This pulls out all the gross management of arrays of stuff into code that gets compiled once
 /// rather than being assembled by the generator.  We also pull the 'nullable' use case into here
 /// to simplify the generator.

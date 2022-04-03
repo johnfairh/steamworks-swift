@@ -171,8 +171,10 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStatHistory()`
-    public func getGlobalStatHistoryDouble(statName: String, data: inout [Double], dataSize: Int) -> Int {
-        Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryDouble(interface, statName, &data, uint32(dataSize)))
+    public func getGlobalStatHistoryDouble(statName: String, dataSize: Int) -> (rc: Int, data: [Double]) {
+        var data = Array<Double>(repeating: .init(), count: dataSize / 8)
+        let rc = Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryDouble(interface, statName, &data, uint32(dataSize)))
+        return (rc: rc, data: data.safePrefix(rc))
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStatHistory()`

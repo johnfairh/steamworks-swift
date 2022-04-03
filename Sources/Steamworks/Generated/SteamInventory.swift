@@ -145,13 +145,15 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetItemsWithPrices()`
-    public func getItemsWithPrices(currentPrices: inout [UInt64], basePrices: inout [UInt64], arrayLength: Int) -> (rc: Bool, arrayItemDefs: [SteamItemDef]) {
+    public func getItemsWithPrices(arrayLength: Int) -> (rc: Bool, arrayItemDefs: [SteamItemDef], currentPrices: [UInt64], basePrices: [UInt64]) {
         let tmp_arrayItemDefs = SteamOutArray<SteamItemDef_t>(arrayLength)
+        var currentPrices = Array<UInt64>(repeating: .init(), count: arrayLength)
+        var basePrices = Array<UInt64>(repeating: .init(), count: arrayLength)
         let rc = SteamAPI_ISteamInventory_GetItemsWithPrices(interface, tmp_arrayItemDefs.steamArray, &currentPrices, &basePrices, uint32(arrayLength))
         if rc {
-            return (rc: rc, arrayItemDefs: tmp_arrayItemDefs.swiftArray())
+            return (rc: rc, arrayItemDefs: tmp_arrayItemDefs.swiftArray(), currentPrices: currentPrices, basePrices: basePrices)
         } else {
-            return (rc: rc, arrayItemDefs: [])
+            return (rc: rc, arrayItemDefs: [], currentPrices: [], basePrices: [])
         }
     }
 
