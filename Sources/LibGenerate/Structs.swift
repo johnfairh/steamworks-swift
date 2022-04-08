@@ -186,7 +186,7 @@ extension MetadataDB.Struct {
         }
         return [
             "",
-            "extension CSteamworks.\(name) {",
+            "extension CSteamworks.\(name) : SwiftCreatable {",
             "    init(_ swift: \(name.asSwiftTypeName)) {",
             "        self.init()"
         ] + fields.initSteamFromSwiftLines.indented(2) + [

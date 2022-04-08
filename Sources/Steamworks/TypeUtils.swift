@@ -273,6 +273,13 @@ protocol SteamCreatable {
     init(_ steam: SteamType)
 }
 
+/// Protocol added to some imported Steam (C) types indicating they can be created
+/// from a Swift type - used for some forms of in-parameters.
+protocol SwiftCreatable {
+    associatedtype SwiftType
+    init(_ swift: SwiftType)
+}
+
 /// Helper to deal with bitfields.
 extension UInt64 {
     typealias BitSpec = (shift: Int, mask: UInt64)
@@ -355,28 +362,6 @@ extension Int {
 
 public typealias SteamAPIWarningMessageHook = Optional<@convention(c) (Int32, UnsafePointer<CChar>?) -> Void>
 
-// MARK: Weird pointers
-
-extension UnsafeMutablePointer {
-//    static func initAllocate<SwiftType>(_ from: SwiftType?) -> Self? where Pointee: SwiftCreatable, Pointee.SwiftType == SwiftType {
-//        guard let from = from else {
-//            return nil
-//        }
-//        let ptr = allocate(capacity: 1)
-//        ptr.initialize(to: Pointee(from))
-//        return ptr
-//    }
-
-    static func initAllocate(_ from: SteamNetworkingIdentity?) -> UnsafeMutablePointer<CSteamworks.SteamNetworkingIdentity>? {
-        guard let from = from else {
-            return nil
-        }
-        let ptr = UnsafeMutablePointer<CSteamworks.SteamNetworkingIdentity>.allocate(capacity: 1)
-        ptr.initialize(to: .init(from))
-        return ptr
-    }
-}
-
 // MARK: Arrays of things coming out of Steam
 
 extension Array {
@@ -427,14 +412,15 @@ struct SteamNullable<SteamType> {
         steamValue = isReal ? .allocate(capacity: 1) : nil
     }
 
-//    /// Init for in param, optional initial value
-//    init<SwiftType>(_ swiftValue: SwiftType?) where SteamType: SwiftCreatable, SteamType.SwiftType == SwiftType {
-//        guard let swiftValue = swiftValue else {
-//            steamValue = nil
-//        }
-//        steamValue = .allocate(capacity: 1)
-//        steamValue?.initialize(to: SteamType(swiftValue))
-//    }
+    /// Init for in param, optional initial value
+    init<SwiftType>(_ swiftValue: SwiftType?) where SteamType: SwiftCreatable, SteamType.SwiftType == SwiftType {
+        guard let swiftValue = swiftValue else {
+            steamValue = nil
+            return
+        }
+        steamValue = .allocate(capacity: 1)
+        steamValue?.initialize(to: SteamType(swiftValue))
+    }
 
     func deallocate() {
         steamValue?.deallocate()

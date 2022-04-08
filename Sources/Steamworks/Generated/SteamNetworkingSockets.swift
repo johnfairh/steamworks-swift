@@ -110,11 +110,11 @@ public struct SteamNetworkingSockets {
     public func createSocketPair(useNetworkLoopback: Bool, identity1: SteamNetworkingIdentity?, identity2: SteamNetworkingIdentity?) -> (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection) {
         var tmp_connection1 = CSteamworks.HSteamNetConnection()
         var tmp_connection2 = CSteamworks.HSteamNetConnection()
-        let tmp_identity1 = UnsafeMutablePointer<CSteamworks.SteamNetworkingIdentity>.initAllocate(identity1)
-        defer { tmp_identity1?.deallocate() }
-        let tmp_identity2 = UnsafeMutablePointer<CSteamworks.SteamNetworkingIdentity>.initAllocate(identity2)
-        defer { tmp_identity2?.deallocate() }
-        let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmp_connection1, &tmp_connection2, useNetworkLoopback, tmp_identity1, tmp_identity2)
+        let tmp_identity1 = SteamNullable<CSteamworks.SteamNetworkingIdentity>(identity1)
+        defer { tmp_identity1.deallocate() }
+        let tmp_identity2 = SteamNullable<CSteamworks.SteamNetworkingIdentity>(identity2)
+        defer { tmp_identity2.deallocate() }
+        let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmp_connection1, &tmp_connection2, useNetworkLoopback, tmp_identity1.steamValue, tmp_identity2.steamValue)
         return (rc: rc, connection1: HSteamNetConnection(tmp_connection1), connection2: HSteamNetConnection(tmp_connection2))
     }
 

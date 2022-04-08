@@ -459,7 +459,7 @@ extension SteamNetworkingIdentity: SteamCreatable, CustomStringConvertible, Equa
     }
 }
 
-extension CSteamworks.SteamNetworkingIdentity {
+extension CSteamworks.SteamNetworkingIdentity: SwiftCreatable {
     init(_ swift: SteamNetworkingIdentity) {
         self = swift.identity
     }

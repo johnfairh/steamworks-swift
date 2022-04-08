@@ -4995,7 +4995,7 @@ extension SteamNetworkPingLocation: SteamCreatable {
     }
 }
 
-extension CSteamworks.SteamNetworkPingLocation_t {
+extension CSteamworks.SteamNetworkPingLocation_t : SwiftCreatable {
     init(_ swift: SteamNetworkPingLocation) {
         self.init()
         self.copy_m_data(from: swift.data)
@@ -5103,7 +5103,7 @@ extension SteamPartyBeaconLocation: SteamCreatable {
     }
 }
 
-extension CSteamworks.SteamPartyBeaconLocation_t {
+extension CSteamworks.SteamPartyBeaconLocation_t : SwiftCreatable {
     init(_ swift: SteamPartyBeaconLocation) {
         self.init()
         m_eType = .init(swift.type)

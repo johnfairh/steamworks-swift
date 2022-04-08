@@ -275,9 +275,10 @@ final class SwiftParam {
             guard db.nullable && !steamTypeName.isSteamTypePassedInTransparently else {
                 return []
             }
+            let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
             return [
-                "let \(tempName) = UnsafeMutablePointer<\(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)>.initAllocate(\(swiftName))",
-                "defer { \(tempName)?.deallocate() }"
+                "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))",
+                "defer { \(tempName).deallocate() }"
                 ]
         case .in_array_count:
             return []
@@ -329,7 +330,7 @@ final class SwiftParam {
         switch style {
         case .in:
             if db.nullable && !steamTypeName.isSteamTypePassedInTransparently {
-                return tempName
+                return "\(tempName).steamValue"
             } else {
                 return swiftName.asCast(to: steamTypeName.asSwiftTypeForPassingIntoSteamworks)
             }
