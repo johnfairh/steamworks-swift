@@ -84,6 +84,7 @@ final class Client {
             testNetworkingMessage,
             testNetworkSettings,
             testNetworkingSocket,
+            testInventory
         ]
 
         if testNext == testMethods.count {
@@ -397,6 +398,30 @@ final class Client {
         print("Got \(pops.count) POPs: \(pops)")
 
         endTest()
+    }
+
+    func testInventory() {
+
+        api.onSteamInventoryResultReady { [unowned self] r in
+            print("InventoryResultReady: \(r.result)")
+            guard r.result == .ok else {
+                return // we wait
+            }
+            // this still needs fixing, inout is just rough -- add to return tuple as well?
+            var count = 0
+            let rc = self.api.inventory.getResultItems(handle: r.handle, returnItemsArray: false, itemsArraySize: &count)
+            print("GetResultItems rc=\(rc) itemCount=\(count)")
+
+            self.api.inventory.destroyResult(handle: r.handle)
+            self.endTest()
+        }
+
+        let (rc, _) = api.inventory.getAllItems()
+        guard rc else {
+            print("Inventory.GetAllItems failed")
+            endTest()
+            return
+        }
     }
 }
 
