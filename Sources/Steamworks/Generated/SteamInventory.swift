@@ -118,14 +118,12 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetItemDefinitionProperty()`
-    public func getItemDefinitionProperty(definitionIndex: SteamItemDef, propertyName: String?, valueBuffer: inout String?, valueBufferSize: inout Int) -> Bool {
-        let tmp_valueBuffer = valueBuffer.map { _ in UnsafeMutableBufferPointer<CChar>.allocate(capacity: valueBufferSize) }
-        defer { tmp_valueBuffer?.deallocate() }
+    public func getItemDefinitionProperty(definitionIndex: SteamItemDef, propertyName: String?, returnValueBuffer: Bool = true, valueBufferSize: inout Int) -> (rc: Bool, valueBuffer: String) {
+        let tmp_valueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer)
         var tmp_valueBufferSize = uint32(valueBufferSize)
-        let rc = SteamAPI_ISteamInventory_GetItemDefinitionProperty(interface, SteamItemDef_t(definitionIndex), propertyName, tmp_valueBuffer.flatMap { $0.baseAddress }, &tmp_valueBufferSize)
-        tmp_valueBuffer.map { valueBuffer = String($0) }
+        let rc = SteamAPI_ISteamInventory_GetItemDefinitionProperty(interface, SteamItemDef_t(definitionIndex), propertyName, tmp_valueBuffer.charBuffer, &tmp_valueBufferSize)
         valueBufferSize = Int(tmp_valueBufferSize)
-        return rc
+        return (rc: rc, valueBuffer: tmp_valueBuffer.swiftString)
     }
 
     /// Steamworks `ISteamInventory::GetItemPrice()`
@@ -163,14 +161,12 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetResultItemProperty()`
-    public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, valueBuffer: inout String, valueBufferSize: inout Int) -> Bool {
-        let tmp_valueBuffer = UnsafeMutableBufferPointer<CChar>.allocate(capacity: valueBufferSize)
-        defer { tmp_valueBuffer.deallocate() }
+    public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, valueBufferSize: inout Int) -> (rc: Bool, valueBuffer: String) {
+        let tmp_valueBuffer = SteamString(length: valueBufferSize)
         var tmp_valueBufferSize = uint32(valueBufferSize)
-        let rc = SteamAPI_ISteamInventory_GetResultItemProperty(interface, SteamInventoryResult_t(handle), uint32(itemIndex), propertyName, tmp_valueBuffer.baseAddress, &tmp_valueBufferSize)
-        valueBuffer = String(tmp_valueBuffer)
+        let rc = SteamAPI_ISteamInventory_GetResultItemProperty(interface, SteamInventoryResult_t(handle), uint32(itemIndex), propertyName, tmp_valueBuffer.charBuffer, &tmp_valueBufferSize)
         valueBufferSize = Int(tmp_valueBufferSize)
-        return rc
+        return (rc: rc, valueBuffer: tmp_valueBuffer.swiftString)
     }
 
     /// Steamworks `ISteamInventory::GetResultItems()`

@@ -596,7 +596,6 @@ methods:
         out_array_count: nLaneCount
     out_param_iff_rc: "== .ok"
   SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus:
-    discardable_result: true
     params:
       pszBuf:
         out_string_count: cbBuf
@@ -732,8 +731,6 @@ methods:
         type: SteamPartyBeaconLocation_t
   SteamAPI_ISteamParties_DestroyBeacon:
     discardable_result: true
-  SteamAPI_ISteamParties_GetBeaconLocationData:
-    discardable_result: true
   SteamAPI_ISteamParties_GetAvailableBeaconLocations:
     params:
       pLocationList:
@@ -797,20 +794,16 @@ methods:
   SteamAPI_ISteamUGC_GetQueryUGCChildren:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCKeyValueTag:
-    discardable_result: true
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCMetadata:
-    discardable_result: true
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCPreviewURL:
-    discardable_result: true
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCResult:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCTag:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCTagDisplayName:
-    discardable_result: true
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetSubscribedItems:
     params:

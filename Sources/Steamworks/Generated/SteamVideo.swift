@@ -25,19 +25,17 @@ public struct SteamVideo {
     }
 
     /// Steamworks `ISteamVideo::GetOPFStringForApp()`
-    public func getOPFStringForApp(videoAppID: AppID, buffer: inout String, bufferSize: inout Int) -> Bool {
-        let tmp_buffer = UnsafeMutableBufferPointer<CChar>.allocate(capacity: bufferSize)
-        defer { tmp_buffer.deallocate() }
+    public func getOPFStringForApp(videoAppID: AppID, bufferSize: inout Int) -> (rc: Bool, buffer: String) {
+        let tmp_buffer = SteamString(length: bufferSize)
         var tmp_bufferSize = int32(bufferSize)
-        let rc = SteamAPI_ISteamVideo_GetOPFStringForApp(interface, AppId_t(videoAppID), tmp_buffer.baseAddress, &tmp_bufferSize)
+        let rc = SteamAPI_ISteamVideo_GetOPFStringForApp(interface, AppId_t(videoAppID), tmp_buffer.charBuffer, &tmp_bufferSize)
         if rc {
-            buffer = String(tmp_buffer)
             bufferSize = Int(tmp_bufferSize)
         }
         if rc {
-            return rc
+            return (rc: rc, buffer: tmp_buffer.swiftString)
         } else {
-            return rc
+            return (rc: rc, buffer: "")
         }
     }
 

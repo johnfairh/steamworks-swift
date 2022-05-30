@@ -25,32 +25,24 @@ public struct SteamAppList {
     }
 
     /// Steamworks `ISteamAppList::GetAppInstallDir()`
-    public func getAppInstallDir(appID: AppID, directory: inout String, nameMaxSize: Int) -> Int {
-        let tmp_directory = UnsafeMutableBufferPointer<CChar>.allocate(capacity: nameMaxSize)
-        defer { tmp_directory.deallocate() }
-        let rc = Int(SteamAPI_ISteamAppList_GetAppInstallDir(interface, AppId_t(appID), tmp_directory.baseAddress, Int32(nameMaxSize)))
+    public func getAppInstallDir(appID: AppID, nameMaxSize: Int) -> (rc: Int, directory: String) {
+        let tmp_directory = SteamString(length: nameMaxSize)
+        let rc = Int(SteamAPI_ISteamAppList_GetAppInstallDir(interface, AppId_t(appID), tmp_directory.charBuffer, Int32(nameMaxSize)))
         if rc != -1 {
-            directory = String(tmp_directory)
-        }
-        if rc != -1 {
-            return rc
+            return (rc: rc, directory: tmp_directory.swiftString)
         } else {
-            return rc
+            return (rc: rc, directory: "")
         }
     }
 
     /// Steamworks `ISteamAppList::GetAppName()`
-    public func getAppName(appID: AppID, name: inout String, nameMaxSize: Int) -> Int {
-        let tmp_name = UnsafeMutableBufferPointer<CChar>.allocate(capacity: nameMaxSize)
-        defer { tmp_name.deallocate() }
-        let rc = Int(SteamAPI_ISteamAppList_GetAppName(interface, AppId_t(appID), tmp_name.baseAddress, Int32(nameMaxSize)))
+    public func getAppName(appID: AppID, nameMaxSize: Int) -> (rc: Int, name: String) {
+        let tmp_name = SteamString(length: nameMaxSize)
+        let rc = Int(SteamAPI_ISteamAppList_GetAppName(interface, AppId_t(appID), tmp_name.charBuffer, Int32(nameMaxSize)))
         if rc != -1 {
-            name = String(tmp_name)
-        }
-        if rc != -1 {
-            return rc
+            return (rc: rc, name: tmp_name.swiftString)
         } else {
-            return rc
+            return (rc: rc, name: "")
         }
     }
 

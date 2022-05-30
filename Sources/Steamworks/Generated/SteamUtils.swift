@@ -45,12 +45,10 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::FilterText()`
-    public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, filteredText: inout String, byteSizeOutFilteredText: Int) -> Int {
-        let tmp_filteredText = UnsafeMutableBufferPointer<CChar>.allocate(capacity: byteSizeOutFilteredText)
-        defer { tmp_filteredText.deallocate() }
-        let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), UInt64(steamID), inputMessage, tmp_filteredText.baseAddress, uint32(byteSizeOutFilteredText)))
-        filteredText = String(tmp_filteredText)
-        return rc
+    public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, byteSizeOutFilteredText: Int) -> (rc: Int, filteredText: String) {
+        let tmp_filteredText = SteamString(length: byteSizeOutFilteredText)
+        let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), UInt64(steamID), inputMessage, tmp_filteredText.charBuffer, uint32(byteSizeOutFilteredText)))
+        return (rc: rc, filteredText: tmp_filteredText.swiftString)
     }
 
     /// Steamworks `ISteamUtils::GetAPICallFailureReason()`
@@ -81,12 +79,10 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetEnteredGamepadTextInput()`
-    public func getEnteredGamepadTextInput(text: inout String, textSize: Int) -> Bool {
-        let tmp_text = UnsafeMutableBufferPointer<CChar>.allocate(capacity: textSize)
-        defer { tmp_text.deallocate() }
-        let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmp_text.baseAddress, uint32(textSize))
-        text = String(tmp_text)
-        return rc
+    public func getEnteredGamepadTextInput(textSize: Int) -> (rc: Bool, text: String) {
+        let tmp_text = SteamString(length: textSize)
+        let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmp_text.charBuffer, uint32(textSize))
+        return (rc: rc, text: tmp_text.swiftString)
     }
 
     /// Steamworks `ISteamUtils::GetEnteredGamepadTextLength()`

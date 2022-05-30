@@ -118,15 +118,11 @@ public struct SteamMatchmaking {
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyDataByIndex()`
-    public func getLobbyDataByIndex(lobby: SteamID, lobbyDataIndex: Int, key: inout String, keyBufferSize: Int, value: inout String, valueBufferSize: Int) -> Bool {
-        let tmp_key = UnsafeMutableBufferPointer<CChar>.allocate(capacity: keyBufferSize)
-        defer { tmp_key.deallocate() }
-        let tmp_value = UnsafeMutableBufferPointer<CChar>.allocate(capacity: valueBufferSize)
-        defer { tmp_value.deallocate() }
-        let rc = SteamAPI_ISteamMatchmaking_GetLobbyDataByIndex(interface, UInt64(lobby), Int32(lobbyDataIndex), tmp_key.baseAddress, Int32(keyBufferSize), tmp_value.baseAddress, Int32(valueBufferSize))
-        key = String(tmp_key)
-        value = String(tmp_value)
-        return rc
+    public func getLobbyDataByIndex(lobby: SteamID, lobbyDataIndex: Int, keyBufferSize: Int, valueBufferSize: Int) -> (rc: Bool, key: String, value: String) {
+        let tmp_key = SteamString(length: keyBufferSize)
+        let tmp_value = SteamString(length: valueBufferSize)
+        let rc = SteamAPI_ISteamMatchmaking_GetLobbyDataByIndex(interface, UInt64(lobby), Int32(lobbyDataIndex), tmp_key.charBuffer, Int32(keyBufferSize), tmp_value.charBuffer, Int32(valueBufferSize))
+        return (rc: rc, key: tmp_key.swiftString, value: tmp_value.swiftString)
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyDataCount()`

@@ -150,17 +150,13 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::GetUserDataFolder()`
-    public func getUserDataFolder(buffer: inout String, bufferSize: Int) -> Bool {
-        let tmp_buffer = UnsafeMutableBufferPointer<CChar>.allocate(capacity: bufferSize)
-        defer { tmp_buffer.deallocate() }
-        let rc = SteamAPI_ISteamUser_GetUserDataFolder(interface, tmp_buffer.baseAddress, Int32(bufferSize))
+    public func getUserDataFolder(bufferSize: Int) -> (rc: Bool, buffer: String) {
+        let tmp_buffer = SteamString(length: bufferSize)
+        let rc = SteamAPI_ISteamUser_GetUserDataFolder(interface, tmp_buffer.charBuffer, Int32(bufferSize))
         if rc {
-            buffer = String(tmp_buffer)
-        }
-        if rc {
-            return rc
+            return (rc: rc, buffer: tmp_buffer.swiftString)
         } else {
-            return rc
+            return (rc: rc, buffer: "")
         }
     }
 

@@ -431,3 +431,28 @@ struct SteamNullable<SteamType> {
         return SwiftType(steamValue.pointee)
     }
 }
+
+/// Wrap up strings produced by the steam API.
+///
+/// Length allocation includes space for nul terminator.
+/// Output is forced to be nul-terminated.
+/// Handles 'nil means don't want this' case.
+final class SteamString {
+    private let buf: UnsafeMutableBufferPointer<CChar>?
+
+    init(length: Int, isReal: Bool = true) {
+        buf = isReal ? .allocate(capacity: length) : nil
+    }
+
+    var charBuffer: UnsafeMutablePointer<CChar>? {
+        buf?.baseAddress
+    }
+
+    deinit {
+        buf?.deallocate()
+    }
+
+    var swiftString: String {
+        buf.map { String($0) } ?? ""
+    }
+}

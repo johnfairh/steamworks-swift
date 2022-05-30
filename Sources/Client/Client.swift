@@ -152,11 +152,10 @@ final class Client {
     func testStringFilter() {
         let steamID = api.user.getSteamID()
         let str = "Hello world"
-        var filteredStr = String()
 
         let rc = api.utils.initFilterText(filterOptions: 0)
         print("InitFilterText: \(rc)")
-        let count = api.utils.filterText(context: .chat, steamID: steamID, inputMessage: str, filteredText: &filteredStr, byteSizeOutFilteredText: 12)
+        let (count, filteredStr) = api.utils.filterText(context: .chat, steamID: steamID, inputMessage: str, byteSizeOutFilteredText: 12)
         print("Filtered, count=\(count) out=\(filteredStr)")
         endTest()
     }
@@ -374,8 +373,7 @@ final class Client {
 
         clientConnection = api.networkingSockets.connectByIPAddress(address: .init(ipv4: .ipv4(127, 0, 0, 1), port: 27100), options: [])
         print("ConnectByIP rc=\(clientConnection)")
-        var status = String()
-        api.networkingSockets.getDetailedConnectionStatus(conn: clientConnection, buf: &status, bufSize: 4096)
+        let status = api.networkingSockets.getDetailedConnectionStatus(conn: clientConnection, bufSize: 4096)
         print("ConnectionStatus: \(status)")
     }
 

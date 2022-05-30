@@ -139,14 +139,12 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
-    public func getCertificateRequest(blobSize: inout Int, blob: UnsafeMutableRawPointer?, msg: inout String) -> Bool {
+    public func getCertificateRequest(blobSize: inout Int, blob: UnsafeMutableRawPointer?) -> (rc: Bool, msg: String) {
         var tmp_blobSize = Int32(blobSize)
-        let tmp_msg = UnsafeMutableBufferPointer<CChar>.allocate(capacity: Int(1024))
-        defer { tmp_msg.deallocate() }
-        let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmp_blobSize, blob, tmp_msg.baseAddress)
+        let tmp_msg = SteamString(length: Int(1024))
+        let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmp_blobSize, blob, tmp_msg.charBuffer)
         blobSize = Int(tmp_blobSize)
-        msg = String(tmp_msg)
-        return rc
+        return (rc: rc, msg: tmp_msg.swiftString)
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionInfo()`
@@ -161,17 +159,13 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionName()`
-    public func getConnectionName(peer: HSteamNetConnection, name: inout String, maxLen: Int) -> Bool {
-        let tmp_name = UnsafeMutableBufferPointer<CChar>.allocate(capacity: maxLen)
-        defer { tmp_name.deallocate() }
-        let rc = SteamAPI_ISteamNetworkingSockets_GetConnectionName(interface, CSteamworks.HSteamNetConnection(peer), tmp_name.baseAddress, Int32(maxLen))
+    public func getConnectionName(peer: HSteamNetConnection, maxLen: Int) -> (rc: Bool, name: String) {
+        let tmp_name = SteamString(length: maxLen)
+        let rc = SteamAPI_ISteamNetworkingSockets_GetConnectionName(interface, CSteamworks.HSteamNetConnection(peer), tmp_name.charBuffer, Int32(maxLen))
         if rc {
-            name = String(tmp_name)
-        }
-        if rc {
-            return rc
+            return (rc: rc, name: tmp_name.swiftString)
         } else {
-            return rc
+            return (rc: rc, name: "")
         }
     }
 
@@ -194,18 +188,13 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetDetailedConnectionStatus()`
-    @discardableResult
-    public func getDetailedConnectionStatus(conn: HSteamNetConnection, buf: inout String, bufSize: Int) -> Int {
-        let tmp_buf = UnsafeMutableBufferPointer<CChar>.allocate(capacity: bufSize)
-        defer { tmp_buf.deallocate() }
-        let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmp_buf.baseAddress, Int32(bufSize)))
+    public func getDetailedConnectionStatus(conn: HSteamNetConnection, bufSize: Int) -> (rc: Int, buf: String) {
+        let tmp_buf = SteamString(length: bufSize)
+        let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmp_buf.charBuffer, Int32(bufSize)))
         if rc == 0 {
-            buf = String(tmp_buf)
-        }
-        if rc == 0 {
-            return rc
+            return (rc: rc, buf: tmp_buf.swiftString)
         } else {
-            return rc
+            return (rc: rc, buf: "")
         }
     }
 
@@ -315,12 +304,10 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`
-    public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int, msg: inout String) -> Bool {
-        let tmp_msg = UnsafeMutableBufferPointer<CChar>.allocate(capacity: Int(1024))
-        defer { tmp_msg.deallocate() }
-        let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, Int32(certificateSize), tmp_msg.baseAddress)
-        msg = String(tmp_msg)
-        return rc
+    public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int) -> (rc: Bool, msg: String) {
+        let tmp_msg = SteamString(length: Int(1024))
+        let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, Int32(certificateSize), tmp_msg.charBuffer)
+        return (rc: rc, msg: tmp_msg.swiftString)
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetConnectionName()`

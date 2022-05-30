@@ -180,15 +180,14 @@ final class SwiftParam {
         case out_array(String) // pass inout, temporary to cast, copy-back, array.  Required size given by another param.
                                // 'nullable' pattern here is super-ugly, review all uses when done and maybe make different case.
                                // also check how to use, `nil` inout is tricky - better to gen a separate function?
-        case out_string(String) // pass inout, temp buffer of user-set length, convert to string
-                                // eventually review and switch to String(unsafeUninit... to avoid the copy)
-                                // see 'nullable' qualms also
+        case out_string(String) // return in a tuple, length comes from somewhere else
+                                // if nullable than can request to not produce, comes back empty
     }
     private let style: Style
 
     var includeInReturnTuple: Bool {
         switch style {
-        case .out, .out_transparent, .out_array, .out_transparent_array: return true
+        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string: return true
         default: return false
         }
     }
@@ -199,11 +198,10 @@ final class SwiftParam {
         switch style {
         case .in: return swiftTypeBaseName + optional
         case .in_string_array, .in_ref: return swiftTypeBaseName
-        case .out, .out_transparent, .out_array, .out_transparent_array: return nil
+        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string: return nil
         case .in_out: return "inout \(swiftTypeBaseName)\(optional)"
         case .in_array: return "[\(swiftTypeBaseName)]"
         case .in_array_count: return nil
-        case .out_string: return "inout String\(optional)"
         }
     }
 
@@ -211,7 +209,7 @@ final class SwiftParam {
     /// xxx can merge with above now?
     var swiftParamClause: String? {
         switch (style, db.nullable) {
-        case (.out, true), (.out_transparent, true), (.out_array, true), (.out_transparent_array, true):
+        case (.out, true), (.out_transparent, true), (.out_array, true), (.out_transparent_array, true), (.out_string, true):
             return "\(returnParamName): Bool = true"
         default:
             guard let swiftType = swiftParamType else {
@@ -226,7 +224,7 @@ final class SwiftParam {
     var swiftParamForwardingClause: String? {
         let paramName: String
         switch (style, db.nullable) {
-        case (.out, true), (.out_transparent, true), (.out_array, true), (.out_transparent_array, true):
+        case (.out, true), (.out_transparent, true), (.out_array, true), (.out_transparent_array, true), (.out_string, true):
             paramName = returnParamName
         case (.in_array_count, _):
             return nil
@@ -249,6 +247,7 @@ final class SwiftParam {
         // big yikes here, figure out properly
         switch style {
         case .out_array, .out_transparent_array: return "[]"
+        case .out_string: return #""""#
         default:
             // exclam is about non-optional bufferpointers that we can't just fabricate
             return steamTypeName.depointered.asSwiftTypeInstance!
@@ -308,20 +307,10 @@ final class SwiftParam {
             precondition(!db.nullable, "Can't do transparent-out-array-nullable")
             return ["var \(swiftName) = Array<\(swiftTypeBaseName)>(repeating: .init(), count: \(sizeParam.asArraySizeExpression))"]
         case .out_string(let sizeParam):
-            let lines: [String]
-            if !db.nullable {
-                lines = [
-                    "let \(tempName) = UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asArraySizeExpression))",
-                    "defer { \(tempName).deallocate() }"
-                ]
-            } else {
-                lines = [
-                    "let \(tempName) = \(swiftName).map { _ in UnsafeMutableBufferPointer<CChar>.allocate(capacity: \(sizeParam.asArraySizeExpression)) }",
-                    "defer { \(tempName)?.deallocate() }"
-                ]
-            }
-
-            return lines
+            let nullability = db.nullable ? ", isReal: \(returnParamName)" : ""
+            return [
+                "let \(tempName) = SteamString(length: \(sizeParam.asArraySizeExpression)\(nullability))"
+            ]
         }
     }
 
@@ -351,11 +340,7 @@ final class SwiftParam {
         case .out_array:
             return "\(tempName).steamArray"
         case .out_string:
-            if !db.nullable {
-                return "\(tempName).baseAddress"
-            } else {
-                return "\(tempName).flatMap { $0.baseAddress }"
-            }
+            return "\(tempName).charBuffer"
         }
     }
 
@@ -363,19 +348,13 @@ final class SwiftParam {
     var postSuccessCallLine: String? {
         switch style {
         case .in, .in_string_array, .in_array, .in_array_count, .in_ref: return nil
-        case .out, .out_transparent, .out_array, .out_transparent_array:
+        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string:
             return nil
         case .in_out:
             if !db.nullable {
                 return "\(swiftName) = \(swiftTypeBaseName)(\(tempName))"
             } else {
                 return "\(tempName).map { \(swiftName) = \(swiftTypeBaseName)($0.pointee) }"
-            }
-        case .out_string:
-            if !db.nullable {
-                return "\(swiftName) = String(\(tempName))" // null-termination done inside, see TypeUtils.swift
-            } else {
-                return "\(tempName).map { \(swiftName) = String($0) }"
             }
         }
     }
@@ -401,6 +380,9 @@ final class SwiftParam {
 
         case .out_transparent_array:
             return db.outArrayValidLength.map { "\(swiftName).safePrefix(\($0))" } ?? swiftName
+
+        case .out_string:
+            return "\(tempName).swiftString"
 
         default:
             preconditionFailure("Not out param: \(self)")

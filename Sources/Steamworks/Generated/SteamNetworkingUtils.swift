@@ -30,12 +30,11 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::ConvertPingLocationToString()`
-    public func convertPingLocationToString(location: SteamNetworkPingLocation, buf: inout String, bufSize: Int) {
+    public func convertPingLocationToString(location: SteamNetworkPingLocation, bufSize: Int) -> String {
         var tmp_location = SteamNetworkPingLocation_t(location)
-        let tmp_buf = UnsafeMutableBufferPointer<CChar>.allocate(capacity: bufSize)
-        defer { tmp_buf.deallocate() }
-        SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString(interface, &tmp_location, tmp_buf.baseAddress, Int32(bufSize))
-        buf = String(tmp_buf)
+        let tmp_buf = SteamString(length: bufSize)
+        SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString(interface, &tmp_location, tmp_buf.charBuffer, Int32(bufSize))
+        return tmp_buf.swiftString
     }
 
     /// Steamworks `ISteamNetworkingUtils::EstimatePingTimeBetweenTwoLocations()`

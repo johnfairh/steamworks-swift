@@ -216,25 +216,21 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetMostAchievedAchievementInfo()`
-    public func getMostAchievedAchievementInfo(name: inout String, nameBufLen: Int) -> (rc: Int, percent: Float, achieved: Bool) {
-        let tmp_name = UnsafeMutableBufferPointer<CChar>.allocate(capacity: nameBufLen)
-        defer { tmp_name.deallocate() }
+    public func getMostAchievedAchievementInfo(nameBufLen: Int) -> (rc: Int, name: String, percent: Float, achieved: Bool) {
+        let tmp_name = SteamString(length: nameBufLen)
         var tmp_percent = Float()
         var tmp_achieved = Bool()
-        let rc = Int(SteamAPI_ISteamUserStats_GetMostAchievedAchievementInfo(interface, tmp_name.baseAddress, uint32(nameBufLen), &tmp_percent, &tmp_achieved))
-        name = String(tmp_name)
-        return (rc: rc, percent: tmp_percent, achieved: tmp_achieved)
+        let rc = Int(SteamAPI_ISteamUserStats_GetMostAchievedAchievementInfo(interface, tmp_name.charBuffer, uint32(nameBufLen), &tmp_percent, &tmp_achieved))
+        return (rc: rc, name: tmp_name.swiftString, percent: tmp_percent, achieved: tmp_achieved)
     }
 
     /// Steamworks `ISteamUserStats::GetNextMostAchievedAchievementInfo()`
-    public func getNextMostAchievedAchievementInfo(iteratorPreviousIndex: Int, name: inout String, nameBufLen: Int) -> (rc: Int, percent: Float, achieved: Bool) {
-        let tmp_name = UnsafeMutableBufferPointer<CChar>.allocate(capacity: nameBufLen)
-        defer { tmp_name.deallocate() }
+    public func getNextMostAchievedAchievementInfo(iteratorPreviousIndex: Int, nameBufLen: Int) -> (rc: Int, name: String, percent: Float, achieved: Bool) {
+        let tmp_name = SteamString(length: nameBufLen)
         var tmp_percent = Float()
         var tmp_achieved = Bool()
-        let rc = Int(SteamAPI_ISteamUserStats_GetNextMostAchievedAchievementInfo(interface, Int32(iteratorPreviousIndex), tmp_name.baseAddress, uint32(nameBufLen), &tmp_percent, &tmp_achieved))
-        name = String(tmp_name)
-        return (rc: rc, percent: tmp_percent, achieved: tmp_achieved)
+        let rc = Int(SteamAPI_ISteamUserStats_GetNextMostAchievedAchievementInfo(interface, Int32(iteratorPreviousIndex), tmp_name.charBuffer, uint32(nameBufLen), &tmp_percent, &tmp_achieved))
+        return (rc: rc, name: tmp_name.swiftString, percent: tmp_percent, achieved: tmp_achieved)
     }
 
     /// Steamworks `ISteamUserStats::GetNumAchievements()`
