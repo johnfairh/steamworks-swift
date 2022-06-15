@@ -52,23 +52,20 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::ConnectByIPAddress()`
     public func connectByIPAddress(address: SteamNetworkingIPAddr, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
-        var tmp_address = CSteamworks.SteamNetworkingIPAddr(address)
         var tmp_options = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress(interface, &tmp_address, Int32(options.count), &tmp_options))
+        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress(interface, CSteamworks.SteamNetworkingIPAddr(address), Int32(options.count), &tmp_options))
     }
 
     /// Steamworks `ISteamNetworkingSockets::ConnectP2P()`
     public func connectP2P(identityRemote: SteamNetworkingIdentity, remoteVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
-        var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
         var tmp_options = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectP2P(interface, &tmp_identityRemote, Int32(remoteVirtualPort), Int32(options.count), &tmp_options))
+        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectP2P(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), Int32(remoteVirtualPort), Int32(options.count), &tmp_options))
     }
 
     /// Steamworks `ISteamNetworkingSockets::ConnectToHostedDedicatedServer()`
     public func connectToHostedDedicatedServer(identityTarget: SteamNetworkingIdentity, remoteVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
-        var tmp_identityTarget = CSteamworks.SteamNetworkingIdentity(identityTarget)
         var tmp_options = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectToHostedDedicatedServer(interface, &tmp_identityTarget, Int32(remoteVirtualPort), Int32(options.count), &tmp_options))
+        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectToHostedDedicatedServer(interface, CSteamworks.SteamNetworkingIdentity(identityTarget), Int32(remoteVirtualPort), Int32(options.count), &tmp_options))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateFakeUDPPort()`
@@ -84,9 +81,8 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::CreateListenSocketIP()`
     public func createListenSocketIP(address: SteamNetworkingIPAddr, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
-        var tmp_address = CSteamworks.SteamNetworkingIPAddr(address)
         var tmp_options = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketIP(interface, &tmp_address, Int32(options.count), &tmp_options))
+        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketIP(interface, CSteamworks.SteamNetworkingIPAddr(address), Int32(options.count), &tmp_options))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateListenSocketP2P()`
@@ -277,10 +273,10 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::ResetIdentity()`
-    public func resetIdentity() -> SteamNetworkingIdentity {
-        var tmp_identity = CSteamworks.SteamNetworkingIdentity()
-        SteamAPI_ISteamNetworkingSockets_ResetIdentity(interface, &tmp_identity)
-        return SteamNetworkingIdentity(tmp_identity)
+    public func resetIdentity(identity: SteamNetworkingIdentity?) {
+        let tmp_identity = SteamNullable<CSteamworks.SteamNetworkingIdentity>(identity)
+        defer { tmp_identity.deallocate() }
+        SteamAPI_ISteamNetworkingSockets_ResetIdentity(interface, tmp_identity.steamValue)
     }
 
     /// Steamworks `ISteamNetworkingSockets::RunCallbacks()`

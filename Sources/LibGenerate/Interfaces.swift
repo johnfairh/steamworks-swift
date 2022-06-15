@@ -154,6 +154,40 @@ private extension String {
 
 // MARK: Method Parameters
 
+private extension String {
+    /// This is a native steam (C) type
+    ///
+    /// If this is a type that should be out or in-out (!const `Foo *` or `Foo &`) then return it.
+    var asOutSteamTypeBaseType: String? {
+        if hasPrefix("const") {
+            return nil
+        }
+        if re_isMatch("(?:&|\\*)$") {
+            // Filter out stuff like 'uint8 *' which we model as 'in' params
+            // (because buffer allocation)
+            if !isSteamPointerTypePassedByValue {
+                // `Foo *` -> `Foo`, `Foo **` -> `Foo *`
+                return desuffixed
+            }
+        }
+        return nil
+    }
+
+    /// This is a native steam (C) type
+    ///
+    /// If it's a `const Foo &` return the `Foo` else return the whole thing.
+    /// Same semantics for Swift.
+    var asInSteamTypeBaseType: String {
+        if isSteamPointerTypePassedByValue {
+            return self
+        }
+        if let match = re_match("const +(.*?) +(\\*|&)") {
+            return match[1]
+        }
+        return self
+    }
+}
+
 final class SwiftParam {
     let db: MetadataDB.Method.Param
 
@@ -168,8 +202,7 @@ final class SwiftParam {
     private let swiftTypeBaseName: String
 
     private enum Style {
-        case `in` // pass by value, flat, cast at time of use
-        case in_ref // pass by value but convert and take address to pass [xlation of C++ '&' reference]
+        case `in` // pass by value or const ref, flat, cast at time of use
         case in_string_array // pass by value, array of strings
         case out  // return in a tuple
         case out_transparent // return in a tuple, no temporary
@@ -196,8 +229,7 @@ final class SwiftParam {
     private var swiftParamType: String? {
         let optional = db.nullable ? "?" : ""
         switch style {
-        case .in: return swiftTypeBaseName + optional
-        case .in_string_array, .in_ref: return swiftTypeBaseName
+        case .in, .in_string_array: return swiftTypeBaseName + optional
         case .out, .out_transparent, .out_array, .out_transparent_array, .out_string: return nil
         case .in_out: return "inout \(swiftTypeBaseName)\(optional)"
         case .in_array: return "[\(swiftTypeBaseName)]"
@@ -250,7 +282,7 @@ final class SwiftParam {
         case .out_string: return #""""#
         default:
             // exclam is about non-optional bufferpointers that we can't just fabricate
-            return steamTypeName.depointered.asSwiftTypeInstance!
+            return steamTypeName.desuffixed.asSwiftTypeInstance!
         }
     }
 
@@ -266,7 +298,6 @@ final class SwiftParam {
     }
 
     /// What code (if any) is required before calling the Steamworks API
-    /// SW isn't a particularly good `const` citizen
     /// (Need to review for stack-allocation, new APIs in Swift 5.6 might help)
     var preCallLines: [String] {
         switch style {
@@ -274,7 +305,7 @@ final class SwiftParam {
             guard db.nullable && !steamTypeName.isSteamTypePassedInTransparently else {
                 return []
             }
-            let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
+            let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
             return [
                 "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))",
                 "defer { \(tempName).deallocate() }"
@@ -287,20 +318,20 @@ final class SwiftParam {
                 "defer { \(tempName).deallocate() }"
             ]
         case .in_array:
-            return ["var \(tempName) = \(swiftName).map { \(steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
+            return ["var \(tempName) = \(swiftName).map { \(steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
         case .out, .out_transparent:
             if !db.nullable {
-                return ["var \(tempName) = \(steamTypeName.depointered.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
+                return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
             }
-            let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
+            let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
             return [
                 "let \(tempName) = SteamNullable<\(typeName)>(isReal: \(returnParamName))",
                 "defer { \(tempName).deallocate() }"
             ]
-        case .in_out, .in_ref:
+        case .in_out:
             return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
         case .out_array(let sizeParam):
-            let typeName = steamTypeName.depointered.asExplicitSwiftTypeForPassingIntoSteamworks
+            let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
             let nullability = db.nullable ? ", \(returnParamName)" : ""
             return [ "let \(tempName) = SteamOutArray<\(typeName)>(\(sizeParam.asArraySizeExpression)\(nullability))" ]
         case .out_transparent_array(let sizeParam):
@@ -327,7 +358,7 @@ final class SwiftParam {
             return ".init(\(tempName))"
         case .out, .out_transparent:
             return db.nullable ? "\(tempName).steamValue" : "&\(tempName)"
-        case .in_out, .in_array, .in_ref:
+        case .in_out, .in_array:
             if !db.nullable {
                 return "&\(tempName)"
             } else {
@@ -347,7 +378,7 @@ final class SwiftParam {
     /// What code (if any) is required after calling the Steamworks API
     var postSuccessCallLine: String? {
         switch style {
-        case .in, .in_string_array, .in_array, .in_array_count, .in_ref: return nil
+        case .in, .in_string_array, .in_array, .in_array_count: return nil
         case .out, .out_transparent, .out_array, .out_transparent_array, .out_string:
             return nil
         case .in_out:
@@ -391,53 +422,43 @@ final class SwiftParam {
 
     init(_ db: MetadataDB.Method.Param, inArrayParam: SwiftParam? = nil) {
         self.db = db
-        let naiveSwiftTypeName = db.type.asSwiftTypeName
         if let arrayParam = inArrayParam {
             swiftTypeBaseName = "ERROR"
             style = .in_array_count(arrayParam)
-        } else if naiveSwiftTypeName.hasSuffix("*"), let depointered = db.type.depointeredType {
+        } else if let outSteamType = db.type.asOutSteamTypeBaseType {
             if let outStringLength = db.outStringLength {
                 swiftTypeBaseName = "String"
                 style = .out_string(outStringLength)
             } else {
-                swiftTypeBaseName = depointered.asSwiftTypeName
+                swiftTypeBaseName = outSteamType.asSwiftTypeName
                 if let outLength = db.outArrayLength {
-                    if !db.nullable && depointered.isTransparentOutType {
+                    if !db.nullable && outSteamType.isTransparentOutType {
                         style = .out_transparent_array(outLength)
                     } else {
                         style = .out_array(outLength)
                     }
-                } else if depointered.isTransparentOutType {
+                } else if outSteamType.isTransparentOutType {
                     style = .out_transparent
+                } else if db.arrayCount != nil {
+                    // steam APIs aren't very const-correct so some out-looking
+                    // params are actually in-only
+                    style = .in_array
                 } else if db.inOut {
                     style = .in_out
-                } else if db.arrayCount != nil {
-                    style = .in_array
                 } else {
                     style = .out
                 }
             }
-        } else if let dereferenced = db.type.dereferencedType {
-            swiftTypeBaseName = dereferenced.asSwiftTypeName
-            style = .in_ref
         } else {
-            swiftTypeBaseName = naiveSwiftTypeName
+            swiftTypeBaseName = db.type.asInSteamTypeBaseType.asSwiftTypeName
             if swiftTypeBaseName == "[String]" {
                 style = .in_string_array
+            } else if db.arrayCount != nil {
+                style = .in_array
             } else {
                 style = .in
             }
         }
-    }
-}
-
-extension String {
-    var depointeredType: String? {
-        re_match("^(.*?) ?\\*$").flatMap { $0[1] }
-    }
-
-    var dereferencedType: String? {
-        re_match("^(.*) &$").flatMap { $0[1] }
     }
 }
 

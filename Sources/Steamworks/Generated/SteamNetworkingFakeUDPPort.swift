@@ -31,13 +31,11 @@ public final class SteamNetworkingFakeUDPPort {
 
     /// Steamworks `ISteamNetworkingFakeUDPPort::ScheduleCleanup()`
     public func scheduleCleanup(address: SteamNetworkingIPAddr) {
-        var tmp_address = CSteamworks.SteamNetworkingIPAddr(address)
-        SteamAPI_ISteamNetworkingFakeUDPPort_ScheduleCleanup(interface, &tmp_address)
+        SteamAPI_ISteamNetworkingFakeUDPPort_ScheduleCleanup(interface, CSteamworks.SteamNetworkingIPAddr(address))
     }
 
     /// Steamworks `ISteamNetworkingFakeUDPPort::SendMessageToFakeIP()`
     public func sendMessageToFakeIP(address: SteamNetworkingIPAddr, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags) -> Result {
-        var tmp_address = CSteamworks.SteamNetworkingIPAddr(address)
-        return Result(SteamAPI_ISteamNetworkingFakeUDPPort_SendMessageToFakeIP(interface, &tmp_address, data, uint32(dataSize), Int32(sendFlags)))
+        Result(SteamAPI_ISteamNetworkingFakeUDPPort_SendMessageToFakeIP(interface, CSteamworks.SteamNetworkingIPAddr(address), data, uint32(dataSize), Int32(sendFlags)))
     }
 }

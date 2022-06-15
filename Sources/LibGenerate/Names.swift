@@ -33,6 +33,12 @@ extension String {
         return name.replacingOccurrences(of: "_", with: "")
     }
 
+    /// Is this a Steam type that looks like a pointer but is actually something else
+    /// Mostly for `const char *` -> `String`
+    var isSteamPointerTypePassedByValue: Bool {
+        hasSuffix("*") && steamToSwiftTypes[self] != nil
+    }
+
     /// Given a canonical C++ type name, convert it to how Swift sees it
     var asSwiftNameForSteamType: String {
         replacingOccurrences(of: "::", with: ".")
@@ -156,7 +162,7 @@ extension String {
 
     /// As above but with explicit types, not used calling a C function with clang importer magic
     var asExplicitSwiftTypeForPassingIntoSteamworks: String {
-        if let unConsted = re_match("^const (.*)$") {
+        if let unConsted = re_match("^const (.*?)( &)?$") {
             return unConsted[1].asExplicitSwiftTypeForPassingIntoSteamworks
         }
         if let special = steamTypesPassedInStrangely[self] {
@@ -199,12 +205,7 @@ extension String {
         guard naive.hasSuffix("*") else {
             return naive
         }
-        return depointered.asSwiftTypeName
-    }
-
-    /// Drop one layer of C pointers from a type
-    var depointered: String {
-        re_sub(" *\\*$", with: "")
+        return desuffixed.asSwiftTypeName
     }
 
     /// Drop one layer of C pointer/reference from a type
@@ -231,6 +232,7 @@ private let backtickKeywords = Set<String>([
 private let steamToSwiftTypes: [String : String] = [
     // Base types
     "const char *" : "String",
+    "const SteamParamStringArray_t *" : "[String]",
     "int" : "Int",
     "uint8" : "Int",
     "uint16" : "Int",
@@ -255,8 +257,9 @@ private let steamToSwiftTypes: [String : String] = [
     "intptr_t": "Int",
     "size_t": "Int",
 
-    // Misc
-    "SteamParamStringArray_t *" : "[String]", // weirdness, tbd
+    // - because these are used all over the place non-const-correctly
+    "SteamParamStringArray_t *" : "[String]",
+    // - because these occur in arrays
     "SteamNetworkingMessage_t *" : "SteamNetworkingMessage"
 ]
 

@@ -103,7 +103,7 @@ extension MetadataDB.Typedef {
         }
         let args = matches[1].components(separatedBy: ", ")
             .map(\.asSwiftTypeName)
-            .map { $0.depointeredType?.asSwiftTypeName ?? $0 }
+            .map { $0.hasSuffix("*") ? $0.re_sub(" +\\*$", with: "").asSwiftTypeName : $0 }
             .joined(separator: ", ")
         // rn these all return void so don't bother converting
         return """

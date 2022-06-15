@@ -31,23 +31,19 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::ConvertPingLocationToString()`
     public func convertPingLocationToString(location: SteamNetworkPingLocation, bufSize: Int) -> String {
-        var tmp_location = SteamNetworkPingLocation_t(location)
         let tmp_buf = SteamString(length: bufSize)
-        SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString(interface, &tmp_location, tmp_buf.charBuffer, Int32(bufSize))
+        SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString(interface, SteamNetworkPingLocation_t(location), tmp_buf.charBuffer, Int32(bufSize))
         return tmp_buf.swiftString
     }
 
     /// Steamworks `ISteamNetworkingUtils::EstimatePingTimeBetweenTwoLocations()`
     public func estimatePingTimeBetweenTwoLocations(location1: SteamNetworkPingLocation, location2: SteamNetworkPingLocation) -> Int {
-        var tmp_location1 = SteamNetworkPingLocation_t(location1)
-        var tmp_location2 = SteamNetworkPingLocation_t(location2)
-        return Int(SteamAPI_ISteamNetworkingUtils_EstimatePingTimeBetweenTwoLocations(interface, &tmp_location1, &tmp_location2))
+        Int(SteamAPI_ISteamNetworkingUtils_EstimatePingTimeBetweenTwoLocations(interface, SteamNetworkPingLocation_t(location1), SteamNetworkPingLocation_t(location2)))
     }
 
     /// Steamworks `ISteamNetworkingUtils::EstimatePingTimeFromLocalHost()`
     public func estimatePingTimeFromLocalHost(location: SteamNetworkPingLocation) -> Int {
-        var tmp_location = SteamNetworkPingLocation_t(location)
-        return Int(SteamAPI_ISteamNetworkingUtils_EstimatePingTimeFromLocalHost(interface, &tmp_location))
+        Int(SteamAPI_ISteamNetworkingUtils_EstimatePingTimeFromLocalHost(interface, SteamNetworkPingLocation_t(location)))
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()`
@@ -110,9 +106,8 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::GetRealIdentityForFakeIP()`
     public func getRealIdentityForFakeIP(ip: SteamNetworkingIPAddr) -> (rc: Result, realIdentity: SteamNetworkingIdentity) {
-        var tmp_ip = CSteamworks.SteamNetworkingIPAddr(ip)
         var tmp_realIdentity = CSteamworks.SteamNetworkingIdentity()
-        let rc = Result(SteamAPI_ISteamNetworkingUtils_GetRealIdentityForFakeIP(interface, &tmp_ip, &tmp_realIdentity))
+        let rc = Result(SteamAPI_ISteamNetworkingUtils_GetRealIdentityForFakeIP(interface, CSteamworks.SteamNetworkingIPAddr(ip), &tmp_realIdentity))
         if rc == .ok {
             return (rc: rc, realIdentity: SteamNetworkingIdentity(tmp_realIdentity))
         } else {
@@ -144,9 +139,14 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::ParsePingLocationString()`
-    public func parsePingLocationString(string: String, result: SteamNetworkPingLocation) -> Bool {
-        var tmp_result = SteamNetworkPingLocation_t(result)
-        return SteamAPI_ISteamNetworkingUtils_ParsePingLocationString(interface, string, &tmp_result)
+    public func parsePingLocationString(string: String) -> (rc: Bool, result: SteamNetworkPingLocation) {
+        var tmp_result = SteamNetworkPingLocation_t()
+        let rc = SteamAPI_ISteamNetworkingUtils_ParsePingLocationString(interface, string, &tmp_result)
+        if rc {
+            return (rc: rc, result: SteamNetworkPingLocation(tmp_result))
+        } else {
+            return (rc: rc, result: SteamNetworkPingLocation())
+        }
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConfigValue()`
@@ -158,8 +158,7 @@ public struct SteamNetworkingUtils {
     /// Steamworks `ISteamNetworkingUtils::SetConfigValueStruct()`
     @discardableResult
     public func setConfigValueStruct(opt: SteamNetworkingConfigValue, scopeType: SteamNetworkingConfigScope, obj: Int) -> Bool {
-        var tmp_opt = SteamNetworkingConfigValue_t(opt)
-        return SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct(interface, &tmp_opt, ESteamNetworkingConfigScope(scopeType), intptr_t(obj))
+        SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct(interface, SteamNetworkingConfigValue_t(opt), ESteamNetworkingConfigScope(scopeType), intptr_t(obj))
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConnectionConfigValueFloat()`
@@ -206,7 +205,6 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::SteamNetworkingIPAddr_GetFakeIPType()`
     public func steamNetworkingIPAddrGetFakeIPType(addr: SteamNetworkingIPAddr) -> SteamNetworkingFakeIPType {
-        var tmp_addr = CSteamworks.SteamNetworkingIPAddr(addr)
-        return SteamNetworkingFakeIPType(SteamAPI_ISteamNetworkingUtils_SteamNetworkingIPAddr_GetFakeIPType(interface, &tmp_addr))
+        SteamNetworkingFakeIPType(SteamAPI_ISteamNetworkingUtils_SteamNetworkingIPAddr_GetFakeIPType(interface, CSteamworks.SteamNetworkingIPAddr(addr)))
     }
 }
