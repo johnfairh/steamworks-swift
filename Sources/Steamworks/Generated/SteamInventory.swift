@@ -88,42 +88,35 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetEligiblePromoItemDefinitionIDs()`
-    public func getEligiblePromoItemDefinitionIDs(steamID: SteamID, itemDefIDsArraySize: inout Int) -> (rc: Bool, itemDefIDs: [SteamItemDef]) {
+    public func getEligiblePromoItemDefinitionIDs(steamID: SteamID, itemDefIDsArraySize: Int) -> (rc: Bool, itemDefIDs: [SteamItemDef], itemDefIDsArraySize: Int) {
         let tmp_itemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize)
         var tmp_itemDefIDsArraySize = uint32(itemDefIDsArraySize)
         let rc = SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs(interface, UInt64(steamID), tmp_itemDefIDs.steamArray, &tmp_itemDefIDsArraySize)
         if rc {
-            itemDefIDsArraySize = Int(tmp_itemDefIDsArraySize)
-        }
-        if rc {
-            return (rc: rc, itemDefIDs: tmp_itemDefIDs.swiftArray(itemDefIDsArraySize))
+            return (rc: rc, itemDefIDs: tmp_itemDefIDs.swiftArray(Int(tmp_itemDefIDsArraySize)), itemDefIDsArraySize: Int(tmp_itemDefIDsArraySize))
         } else {
-            return (rc: rc, itemDefIDs: [])
+            return (rc: rc, itemDefIDs: [], itemDefIDsArraySize: 0)
         }
     }
 
     /// Steamworks `ISteamInventory::GetItemDefinitionIDs()`
-    public func getItemDefinitionIDs(returnItemDefIDs: Bool = true, itemDefIDsArraySize: inout Int) -> (rc: Bool, itemDefIDs: [SteamItemDef]) {
+    public func getItemDefinitionIDs(returnItemDefIDs: Bool = true, itemDefIDsArraySize: Int) -> (rc: Bool, itemDefIDs: [SteamItemDef], itemDefIDsArraySize: Int) {
         let tmp_itemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize, returnItemDefIDs)
         var tmp_itemDefIDsArraySize = uint32(itemDefIDsArraySize)
         let rc = SteamAPI_ISteamInventory_GetItemDefinitionIDs(interface, tmp_itemDefIDs.steamArray, &tmp_itemDefIDsArraySize)
         if rc {
-            itemDefIDsArraySize = Int(tmp_itemDefIDsArraySize)
-        }
-        if rc {
-            return (rc: rc, itemDefIDs: tmp_itemDefIDs.swiftArray(itemDefIDsArraySize))
+            return (rc: rc, itemDefIDs: tmp_itemDefIDs.swiftArray(Int(tmp_itemDefIDsArraySize)), itemDefIDsArraySize: Int(tmp_itemDefIDsArraySize))
         } else {
-            return (rc: rc, itemDefIDs: [])
+            return (rc: rc, itemDefIDs: [], itemDefIDsArraySize: 0)
         }
     }
 
     /// Steamworks `ISteamInventory::GetItemDefinitionProperty()`
-    public func getItemDefinitionProperty(definitionIndex: SteamItemDef, propertyName: String?, returnValueBuffer: Bool = true, valueBufferSize: inout Int) -> (rc: Bool, valueBuffer: String) {
+    public func getItemDefinitionProperty(definitionIndex: SteamItemDef, propertyName: String?, returnValueBuffer: Bool = true, valueBufferSize: Int) -> (rc: Bool, valueBuffer: String, valueBufferSize: Int) {
         let tmp_valueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer)
         var tmp_valueBufferSize = uint32(valueBufferSize)
         let rc = SteamAPI_ISteamInventory_GetItemDefinitionProperty(interface, SteamItemDef_t(definitionIndex), propertyName, tmp_valueBuffer.charBuffer, &tmp_valueBufferSize)
-        valueBufferSize = Int(tmp_valueBufferSize)
-        return (rc: rc, valueBuffer: tmp_valueBuffer.swiftString)
+        return (rc: rc, valueBuffer: tmp_valueBuffer.swiftString, valueBufferSize: Int(tmp_valueBufferSize))
     }
 
     /// Steamworks `ISteamInventory::GetItemPrice()`
@@ -161,26 +154,22 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetResultItemProperty()`
-    public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, valueBufferSize: inout Int) -> (rc: Bool, valueBuffer: String) {
+    public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, valueBufferSize: Int) -> (rc: Bool, valueBuffer: String, valueBufferSize: Int) {
         let tmp_valueBuffer = SteamString(length: valueBufferSize)
         var tmp_valueBufferSize = uint32(valueBufferSize)
         let rc = SteamAPI_ISteamInventory_GetResultItemProperty(interface, SteamInventoryResult_t(handle), uint32(itemIndex), propertyName, tmp_valueBuffer.charBuffer, &tmp_valueBufferSize)
-        valueBufferSize = Int(tmp_valueBufferSize)
-        return (rc: rc, valueBuffer: tmp_valueBuffer.swiftString)
+        return (rc: rc, valueBuffer: tmp_valueBuffer.swiftString, valueBufferSize: Int(tmp_valueBufferSize))
     }
 
     /// Steamworks `ISteamInventory::GetResultItems()`
-    public func getResultItems(handle: SteamInventoryResult, returnItemsArray: Bool = true, itemsArraySize: inout Int) -> (rc: Bool, itemsArray: [SteamItemDetails]) {
+    public func getResultItems(handle: SteamInventoryResult, returnItemsArray: Bool = true, itemsArraySize: Int) -> (rc: Bool, itemsArray: [SteamItemDetails], itemsArraySize: Int) {
         let tmp_itemsArray = SteamOutArray<SteamItemDetails_t>(itemsArraySize, returnItemsArray)
         var tmp_itemsArraySize = uint32(itemsArraySize)
         let rc = SteamAPI_ISteamInventory_GetResultItems(interface, SteamInventoryResult_t(handle), tmp_itemsArray.steamArray, &tmp_itemsArraySize)
         if rc {
-            itemsArraySize = Int(tmp_itemsArraySize)
-        }
-        if rc {
-            return (rc: rc, itemsArray: tmp_itemsArray.swiftArray(itemsArraySize))
+            return (rc: rc, itemsArray: tmp_itemsArray.swiftArray(Int(tmp_itemsArraySize)), itemsArraySize: Int(tmp_itemsArraySize))
         } else {
-            return (rc: rc, itemsArray: [])
+            return (rc: rc, itemsArray: [], itemsArraySize: 0)
         }
     }
 
@@ -251,11 +240,10 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::SerializeResult()`
-    public func serializeResult(handle: SteamInventoryResult, buffer: UnsafeMutableRawPointer?, bufferSize: inout Int) -> Bool {
+    public func serializeResult(handle: SteamInventoryResult, buffer: UnsafeMutableRawPointer?, bufferSize: Int) -> (rc: Bool, bufferSize: Int) {
         var tmp_bufferSize = uint32(bufferSize)
         let rc = SteamAPI_ISteamInventory_SerializeResult(interface, SteamInventoryResult_t(handle), buffer, &tmp_bufferSize)
-        bufferSize = Int(tmp_bufferSize)
-        return rc
+        return (rc: rc, bufferSize: Int(tmp_bufferSize))
     }
 
     /// Steamworks `ISteamInventory::SetProperty()`

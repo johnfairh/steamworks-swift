@@ -47,12 +47,11 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()`
-    public func getConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, result: UnsafeMutableRawPointer?, resultSize: inout Int) -> (rc: SteamNetworkingGetConfigValueResult, dataType: SteamNetworkingConfigDataType) {
+    public func getConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, result: UnsafeMutableRawPointer?, resultSize: Int) -> (rc: SteamNetworkingGetConfigValueResult, dataType: SteamNetworkingConfigDataType, resultSize: Int) {
         var tmp_dataType = ESteamNetworkingConfigDataType(rawValue: 0)
         var tmp_resultSize = size_t(resultSize)
         let rc = SteamNetworkingGetConfigValueResult(SteamAPI_ISteamNetworkingUtils_GetConfigValue(interface, ESteamNetworkingConfigValue(value), ESteamNetworkingConfigScope(scopeType), intptr_t(obj), &tmp_dataType, result, &tmp_resultSize))
-        resultSize = Int(tmp_resultSize)
-        return (rc: rc, dataType: SteamNetworkingConfigDataType(tmp_dataType))
+        return (rc: rc, dataType: SteamNetworkingConfigDataType(tmp_dataType), resultSize: Int(tmp_resultSize))
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValueInfo()`
@@ -94,7 +93,7 @@ public struct SteamNetworkingUtils {
     public func getPOPList(listSz: Int) -> (rc: Int, list: [SteamNetworkingPOPID]) {
         let tmp_list = SteamOutArray<CSteamworks.SteamNetworkingPOPID>(listSz)
         let rc = Int(SteamAPI_ISteamNetworkingUtils_GetPOPList(interface, tmp_list.steamArray, Int32(listSz)))
-        return (rc: rc, list: tmp_list.swiftArray(rc))
+        return (rc: rc, list: tmp_list.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetPingToDataCenter()`

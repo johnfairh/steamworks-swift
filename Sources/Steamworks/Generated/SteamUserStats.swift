@@ -181,7 +181,7 @@ public struct SteamUserStats {
     public func getGlobalStatHistoryInt(statName: String, dataSize: Int) -> (rc: Int, data: [Int]) {
         let tmp_data = SteamOutArray<int64>(dataSize / 8)
         let rc = Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryInt64(interface, statName, tmp_data.steamArray, uint32(dataSize)))
-        return (rc: rc, data: tmp_data.swiftArray(rc))
+        return (rc: rc, data: tmp_data.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStat()`

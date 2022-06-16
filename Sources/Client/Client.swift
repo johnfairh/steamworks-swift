@@ -358,8 +358,13 @@ final class Client {
                 // Close client and end test when server closes
                 print("Server says: \(req.info.endDebug)")
                 let rc = self.api.networkingSockets.closeConnection(peer: req.conn, reason: 0, debug: "", enableLinger: false)
-                print("Close rc=\(rc)")
-                self.endTest()
+                print("Close rc=\(rc), waiting for closed->none ack")
+
+            case .none:
+                if isClient {
+                    // Ack to closeConnection()
+                    self.endTest()
+                }
 
             default:
                 print("waiting...")
@@ -405,9 +410,7 @@ final class Client {
             guard r.result == .ok else {
                 return // we wait
             }
-            // this still needs fixing, inout is just rough -- add to return tuple as well?
-            var count = 0
-            let rc = self.api.inventory.getResultItems(handle: r.handle, returnItemsArray: false, itemsArraySize: &count)
+            let (rc, _, count) = self.api.inventory.getResultItems(handle: r.handle, returnItemsArray: false, itemsArraySize: 0)
             print("GetResultItems rc=\(rc) itemCount=\(count)")
 
             self.api.inventory.destroyResult(handle: r.handle)
