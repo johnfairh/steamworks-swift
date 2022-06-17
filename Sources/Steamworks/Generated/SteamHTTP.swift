@@ -39,16 +39,16 @@ public struct SteamHTTP {
 
     /// Steamworks `ISteamHTTP::GetHTTPDownloadProgressPct()`
     public func getHTTPDownloadProgressPct(request: HTTPRequestHandle) -> (rc: Bool, percent: Float) {
-        var tmp_percent = Float()
-        let rc = SteamAPI_ISteamHTTP_GetHTTPDownloadProgressPct(interface, CSteamworks.HTTPRequestHandle(request), &tmp_percent)
-        return (rc: rc, percent: tmp_percent)
+        var tmpPercent = Float()
+        let rc = SteamAPI_ISteamHTTP_GetHTTPDownloadProgressPct(interface, CSteamworks.HTTPRequestHandle(request), &tmpPercent)
+        return (rc: rc, percent: tmpPercent)
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPRequestWasTimedOut()`
     public func getHTTPRequestWasTimedOut(request: HTTPRequestHandle) -> (rc: Bool, wasTimedOut: Bool) {
-        var tmp_wasTimedOut = Bool()
-        let rc = SteamAPI_ISteamHTTP_GetHTTPRequestWasTimedOut(interface, CSteamworks.HTTPRequestHandle(request), &tmp_wasTimedOut)
-        return (rc: rc, wasTimedOut: tmp_wasTimedOut)
+        var tmpWasTimedOut = Bool()
+        let rc = SteamAPI_ISteamHTTP_GetHTTPRequestWasTimedOut(interface, CSteamworks.HTTPRequestHandle(request), &tmpWasTimedOut)
+        return (rc: rc, wasTimedOut: tmpWasTimedOut)
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPResponseBodyData()`
@@ -58,16 +58,16 @@ public struct SteamHTTP {
 
     /// Steamworks `ISteamHTTP::GetHTTPResponseBodySize()`
     public func getHTTPResponseBodySize(request: HTTPRequestHandle) -> (rc: Bool, bodySize: Int) {
-        var tmp_bodySize = uint32()
-        let rc = SteamAPI_ISteamHTTP_GetHTTPResponseBodySize(interface, CSteamworks.HTTPRequestHandle(request), &tmp_bodySize)
-        return (rc: rc, bodySize: Int(tmp_bodySize))
+        var tmpBodySize = uint32()
+        let rc = SteamAPI_ISteamHTTP_GetHTTPResponseBodySize(interface, CSteamworks.HTTPRequestHandle(request), &tmpBodySize)
+        return (rc: rc, bodySize: Int(tmpBodySize))
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPResponseHeaderSize()`
     public func getHTTPResponseHeaderSize(request: HTTPRequestHandle, headerName: String) -> (rc: Bool, responseHeaderSize: Int) {
-        var tmp_responseHeaderSize = uint32()
-        let rc = SteamAPI_ISteamHTTP_GetHTTPResponseHeaderSize(interface, CSteamworks.HTTPRequestHandle(request), headerName, &tmp_responseHeaderSize)
-        return (rc: rc, responseHeaderSize: Int(tmp_responseHeaderSize))
+        var tmpResponseHeaderSize = uint32()
+        let rc = SteamAPI_ISteamHTTP_GetHTTPResponseHeaderSize(interface, CSteamworks.HTTPRequestHandle(request), headerName, &tmpResponseHeaderSize)
+        return (rc: rc, responseHeaderSize: Int(tmpResponseHeaderSize))
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPResponseHeaderValue()`

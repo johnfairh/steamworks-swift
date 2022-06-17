@@ -80,15 +80,15 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::GetFavoriteGame()`
     public func getFavoriteGame(gameIndex: Int) -> (rc: Bool, appID: AppID, ip: Int, connPort: Int, queryPort: Int, flags: FavoriteFlags, rTime32LastPlayedOnServer: RTime32) {
-        var tmp_appID = AppId_t()
-        var tmp_ip = uint32()
-        var tmp_connPort = uint16()
-        var tmp_queryPort = uint16()
-        var tmp_flags = EFavoriteFlags(rawValue: 0)
-        var tmp_rTime32LastPlayedOnServer = CSteamworks.RTime32()
-        let rc = CSteamAPI_ISteamMatchmaking_GetFavoriteGame(interface, Int32(gameIndex), &tmp_appID, &tmp_ip, &tmp_connPort, &tmp_queryPort, &tmp_flags, &tmp_rTime32LastPlayedOnServer)
+        var tmpAppID = AppId_t()
+        var tmpIp = uint32()
+        var tmpConnPort = uint16()
+        var tmpQueryPort = uint16()
+        var tmpFlags = EFavoriteFlags(rawValue: 0)
+        var tmpRTime32LastPlayedOnServer = CSteamworks.RTime32()
+        let rc = CSteamAPI_ISteamMatchmaking_GetFavoriteGame(interface, Int32(gameIndex), &tmpAppID, &tmpIp, &tmpConnPort, &tmpQueryPort, &tmpFlags, &tmpRTime32LastPlayedOnServer)
         if rc {
-            return (rc: rc, appID: AppID(tmp_appID), ip: Int(tmp_ip), connPort: Int(tmp_connPort), queryPort: Int(tmp_queryPort), flags: FavoriteFlags(tmp_flags), rTime32LastPlayedOnServer: RTime32(tmp_rTime32LastPlayedOnServer))
+            return (rc: rc, appID: AppID(tmpAppID), ip: Int(tmpIp), connPort: Int(tmpConnPort), queryPort: Int(tmpQueryPort), flags: FavoriteFlags(tmpFlags), rTime32LastPlayedOnServer: RTime32(tmpRTime32LastPlayedOnServer))
         } else {
             return (rc: rc, appID: 0, ip: 0, connPort: 0, queryPort: 0, flags: .none, rTime32LastPlayedOnServer: 0)
         }
@@ -106,10 +106,10 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::GetLobbyChatEntry()`
     public func getLobbyChatEntry(lobby: SteamID, chatIDIndex: Int, data: UnsafeMutableRawPointer, dataSize: Int) -> (rc: Int, user: SteamID, chatEntryType: ChatEntryType) {
-        var tmp_user = CSteamID()
-        var tmp_chatEntryType = EChatEntryType(rawValue: 0)
-        let rc = Int(SteamAPI_ISteamMatchmaking_GetLobbyChatEntry(interface, UInt64(lobby), Int32(chatIDIndex), &tmp_user, data, Int32(dataSize), &tmp_chatEntryType))
-        return (rc: rc, user: SteamID(tmp_user), chatEntryType: ChatEntryType(tmp_chatEntryType))
+        var tmpUser = CSteamID()
+        var tmpChatEntryType = EChatEntryType(rawValue: 0)
+        let rc = Int(SteamAPI_ISteamMatchmaking_GetLobbyChatEntry(interface, UInt64(lobby), Int32(chatIDIndex), &tmpUser, data, Int32(dataSize), &tmpChatEntryType))
+        return (rc: rc, user: SteamID(tmpUser), chatEntryType: ChatEntryType(tmpChatEntryType))
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyData()`
@@ -119,10 +119,10 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::GetLobbyDataByIndex()`
     public func getLobbyDataByIndex(lobby: SteamID, lobbyDataIndex: Int, keyBufferSize: Int, valueBufferSize: Int) -> (rc: Bool, key: String, value: String) {
-        let tmp_key = SteamString(length: keyBufferSize)
-        let tmp_value = SteamString(length: valueBufferSize)
-        let rc = SteamAPI_ISteamMatchmaking_GetLobbyDataByIndex(interface, UInt64(lobby), Int32(lobbyDataIndex), tmp_key.charBuffer, Int32(keyBufferSize), tmp_value.charBuffer, Int32(valueBufferSize))
-        return (rc: rc, key: tmp_key.swiftString, value: tmp_value.swiftString)
+        let tmpKey = SteamString(length: keyBufferSize)
+        let tmpValue = SteamString(length: valueBufferSize)
+        let rc = SteamAPI_ISteamMatchmaking_GetLobbyDataByIndex(interface, UInt64(lobby), Int32(lobbyDataIndex), tmpKey.charBuffer, Int32(keyBufferSize), tmpValue.charBuffer, Int32(valueBufferSize))
+        return (rc: rc, key: tmpKey.swiftString, value: tmpValue.swiftString)
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyDataCount()`
@@ -132,12 +132,12 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::GetLobbyGameServer()`
     public func getLobbyGameServer(lobby: SteamID) -> (rc: Bool, gameServerIP: Int, gameServerPort: Int, gameServer: SteamID) {
-        var tmp_gameServerIP = uint32()
-        var tmp_gameServerPort = uint16()
-        var tmp_gameServer = CSteamID()
-        let rc = SteamAPI_ISteamMatchmaking_GetLobbyGameServer(interface, UInt64(lobby), &tmp_gameServerIP, &tmp_gameServerPort, &tmp_gameServer)
+        var tmpGameServerIP = uint32()
+        var tmpGameServerPort = uint16()
+        var tmpGameServer = CSteamID()
+        let rc = SteamAPI_ISteamMatchmaking_GetLobbyGameServer(interface, UInt64(lobby), &tmpGameServerIP, &tmpGameServerPort, &tmpGameServer)
         if rc {
-            return (rc: rc, gameServerIP: Int(tmp_gameServerIP), gameServerPort: Int(tmp_gameServerPort), gameServer: SteamID(tmp_gameServer))
+            return (rc: rc, gameServerIP: Int(tmpGameServerIP), gameServerPort: Int(tmpGameServerPort), gameServer: SteamID(tmpGameServer))
         } else {
             return (rc: rc, gameServerIP: 0, gameServerPort: 0, gameServer: SteamID())
         }

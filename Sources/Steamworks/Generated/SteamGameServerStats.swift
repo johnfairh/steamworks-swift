@@ -26,23 +26,23 @@ public struct SteamGameServerStats {
 
     /// Steamworks `ISteamGameServerStats::GetUserAchievement()`
     public func getUserAchievement(user: SteamID, name: String) -> (rc: Bool, achieved: Bool) {
-        var tmp_achieved = Bool()
-        let rc = SteamAPI_ISteamGameServerStats_GetUserAchievement(interface, UInt64(user), name, &tmp_achieved)
-        return (rc: rc, achieved: tmp_achieved)
+        var tmpAchieved = Bool()
+        let rc = SteamAPI_ISteamGameServerStats_GetUserAchievement(interface, UInt64(user), name, &tmpAchieved)
+        return (rc: rc, achieved: tmpAchieved)
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`
     public func getUserStatFloat(user: SteamID, name: String) -> (rc: Bool, data: Float) {
-        var tmp_data = Float()
-        let rc = SteamAPI_ISteamGameServerStats_GetUserStatFloat(interface, UInt64(user), name, &tmp_data)
-        return (rc: rc, data: tmp_data)
+        var tmpData = Float()
+        let rc = SteamAPI_ISteamGameServerStats_GetUserStatFloat(interface, UInt64(user), name, &tmpData)
+        return (rc: rc, data: tmpData)
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`
     public func getUserStatInt(user: SteamID, name: String) -> (rc: Bool, data: Int) {
-        var tmp_data = int32()
-        let rc = SteamAPI_ISteamGameServerStats_GetUserStatInt32(interface, UInt64(user), name, &tmp_data)
-        return (rc: rc, data: Int(tmp_data))
+        var tmpData = int32()
+        let rc = SteamAPI_ISteamGameServerStats_GetUserStatInt32(interface, UInt64(user), name, &tmpData)
+        return (rc: rc, data: Int(tmpData))
     }
 
     /// Steamworks `ISteamGameServerStats::RequestUserStats()`, callback

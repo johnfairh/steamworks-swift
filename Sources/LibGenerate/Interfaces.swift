@@ -287,13 +287,16 @@ final class SwiftParam {
 
     /// The name of the local variable to store the Steam version of the type for an out param
     private var tempName: String {
-        "tmp_\(swiftName)" // xxx refactor with uppered below, into Names
+        modifiedName("tmp")
     }
 
     /// The name of the parameter controlling a nullable out param
     private var returnParamName: String {
-        let uppered = swiftName.prefix(1).uppercased() + swiftName.dropFirst()
-        return "return\(uppered)"
+        modifiedName("return")
+    }
+
+    private func modifiedName(_ modifier: String) -> String {
+        modifier + swiftName.prefix(1).uppercased() + String(swiftName.dropFirst())
     }
 
     /// What code (if any) is required before calling the Steamworks API

@@ -54,9 +54,9 @@ public struct SteamHTMLSurface {
 
     /// Steamworks `ISteamHTMLSurface::FileLoadDialogResponse()`
     public func fileLoadDialogResponse(browserHandle: HHTMLBrowser, selectedFiles: [String]) {
-        let tmp_selectedFiles = StringArray(selectedFiles)
-        defer { tmp_selectedFiles.deallocate() }
-        SteamAPI_ISteamHTMLSurface_FileLoadDialogResponse(interface, CSteamworks.HHTMLBrowser(browserHandle), .init(tmp_selectedFiles))
+        let tmpSelectedFiles = StringArray(selectedFiles)
+        defer { tmpSelectedFiles.deallocate() }
+        SteamAPI_ISteamHTMLSurface_FileLoadDialogResponse(interface, CSteamworks.HHTMLBrowser(browserHandle), .init(tmpSelectedFiles))
     }
 
     /// Steamworks `ISteamHTMLSurface::Find()`

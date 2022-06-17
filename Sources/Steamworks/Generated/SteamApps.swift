@@ -21,12 +21,12 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::BGetDLCDataByIndex()`
     public func getDLCDataByIndex(dlcIndex: Int, nameBufferSize: Int) -> (rc: Bool, appID: AppID, available: Bool, name: String) {
-        var tmp_appID = AppId_t()
-        var tmp_available = Bool()
-        let tmp_name = SteamString(length: nameBufferSize)
-        let rc = SteamAPI_ISteamApps_BGetDLCDataByIndex(interface, Int32(dlcIndex), &tmp_appID, &tmp_available, tmp_name.charBuffer, Int32(nameBufferSize))
+        var tmpAppID = AppId_t()
+        var tmpAvailable = Bool()
+        let tmpName = SteamString(length: nameBufferSize)
+        let rc = SteamAPI_ISteamApps_BGetDLCDataByIndex(interface, Int32(dlcIndex), &tmpAppID, &tmpAvailable, tmpName.charBuffer, Int32(nameBufferSize))
         if rc {
-            return (rc: rc, appID: AppID(tmp_appID), available: tmp_available, name: tmp_name.swiftString)
+            return (rc: rc, appID: AppID(tmpAppID), available: tmpAvailable, name: tmpName.swiftString)
         } else {
             return (rc: rc, appID: 0, available: false, name: "")
         }
@@ -74,10 +74,10 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::BIsTimedTrial()`
     public func isTimedTrial() -> (rc: Bool, secondsAllowed: Int, secondsPlayed: Int) {
-        var tmp_secondsAllowed = uint32()
-        var tmp_secondsPlayed = uint32()
-        let rc = SteamAPI_ISteamApps_BIsTimedTrial(interface, &tmp_secondsAllowed, &tmp_secondsPlayed)
-        return (rc: rc, secondsAllowed: Int(tmp_secondsAllowed), secondsPlayed: Int(tmp_secondsPlayed))
+        var tmpSecondsAllowed = uint32()
+        var tmpSecondsPlayed = uint32()
+        let rc = SteamAPI_ISteamApps_BIsTimedTrial(interface, &tmpSecondsAllowed, &tmpSecondsPlayed)
+        return (rc: rc, secondsAllowed: Int(tmpSecondsAllowed), secondsPlayed: Int(tmpSecondsPlayed))
     }
 
     /// Steamworks `ISteamApps::BIsVACBanned()`
@@ -92,9 +92,9 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::GetAppInstallDir()`
     public func getAppInstallDir(id: AppID, folderBufferSize: Int) -> (rc: Int, folder: String) {
-        let tmp_folder = SteamString(length: folderBufferSize)
-        let rc = Int(SteamAPI_ISteamApps_GetAppInstallDir(interface, AppId_t(id), tmp_folder.charBuffer, uint32(folderBufferSize)))
-        return (rc: rc, folder: tmp_folder.swiftString)
+        let tmpFolder = SteamString(length: folderBufferSize)
+        let rc = Int(SteamAPI_ISteamApps_GetAppInstallDir(interface, AppId_t(id), tmpFolder.charBuffer, uint32(folderBufferSize)))
+        return (rc: rc, folder: tmpFolder.swiftString)
     }
 
     /// Steamworks `ISteamApps::GetAppOwner()`
@@ -109,10 +109,10 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::GetCurrentBetaName()`
     public func getCurrentBetaName(nameBufferSize: Int) -> (rc: Bool, name: String) {
-        let tmp_name = SteamString(length: nameBufferSize)
-        let rc = SteamAPI_ISteamApps_GetCurrentBetaName(interface, tmp_name.charBuffer, Int32(nameBufferSize))
+        let tmpName = SteamString(length: nameBufferSize)
+        let rc = SteamAPI_ISteamApps_GetCurrentBetaName(interface, tmpName.charBuffer, Int32(nameBufferSize))
         if rc {
-            return (rc: rc, name: tmp_name.swiftString)
+            return (rc: rc, name: tmpName.swiftString)
         } else {
             return (rc: rc, name: "")
         }
@@ -130,10 +130,10 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::GetDlcDownloadProgress()`
     public func getDlcDownloadProgress(appID: AppID) -> (rc: Bool, bytesDownloaded: UInt64, bytesTotal: UInt64) {
-        var tmp_bytesDownloaded = uint64()
-        var tmp_bytesTotal = uint64()
-        let rc = SteamAPI_ISteamApps_GetDlcDownloadProgress(interface, AppId_t(appID), &tmp_bytesDownloaded, &tmp_bytesTotal)
-        return (rc: rc, bytesDownloaded: tmp_bytesDownloaded, bytesTotal: tmp_bytesTotal)
+        var tmpBytesDownloaded = uint64()
+        var tmpBytesTotal = uint64()
+        let rc = SteamAPI_ISteamApps_GetDlcDownloadProgress(interface, AppId_t(appID), &tmpBytesDownloaded, &tmpBytesTotal)
+        return (rc: rc, bytesDownloaded: tmpBytesDownloaded, bytesTotal: tmpBytesTotal)
     }
 
     /// Steamworks `ISteamApps::GetEarliestPurchaseUnixTime()`
@@ -156,16 +156,16 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::GetInstalledDepots()`
     public func getInstalledDepots(id: AppID, maxDepots: Int) -> (rc: Int, depots: [DepotID]) {
-        let tmp_depots = SteamOutArray<DepotId_t>(maxDepots)
-        let rc = Int(SteamAPI_ISteamApps_GetInstalledDepots(interface, AppId_t(id), tmp_depots.steamArray, uint32(maxDepots)))
-        return (rc: rc, depots: tmp_depots.swiftArray(Int(rc)))
+        let tmpDepots = SteamOutArray<DepotId_t>(maxDepots)
+        let rc = Int(SteamAPI_ISteamApps_GetInstalledDepots(interface, AppId_t(id), tmpDepots.steamArray, uint32(maxDepots)))
+        return (rc: rc, depots: tmpDepots.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamApps::GetLaunchCommandLine()`
     public func getLaunchCommandLine(commandLineSize: Int) -> (rc: Int, commandLine: String) {
-        let tmp_commandLine = SteamString(length: commandLineSize)
-        let rc = Int(SteamAPI_ISteamApps_GetLaunchCommandLine(interface, tmp_commandLine.charBuffer, Int32(commandLineSize)))
-        return (rc: rc, commandLine: tmp_commandLine.swiftString)
+        let tmpCommandLine = SteamString(length: commandLineSize)
+        let rc = Int(SteamAPI_ISteamApps_GetLaunchCommandLine(interface, tmpCommandLine.charBuffer, Int32(commandLineSize)))
+        return (rc: rc, commandLine: tmpCommandLine.swiftString)
     }
 
     /// Steamworks `ISteamApps::GetLaunchQueryParam()`

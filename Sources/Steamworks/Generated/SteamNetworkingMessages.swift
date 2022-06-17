@@ -41,11 +41,11 @@ public struct SteamNetworkingMessages {
 
     /// Steamworks `ISteamNetworkingMessages::GetSessionConnectionInfo()`
     public func getSessionConnectionInfo(identityRemote: SteamNetworkingIdentity) -> (rc: SteamNetworkingConnectionState, connectionInfo: SteamNetConnectionInfo, quickStatus: SteamNetConnectionRealTimeStatus) {
-        var tmp_connectionInfo = SteamNetConnectionInfo_t()
-        var tmp_quickStatus = SteamNetConnectionRealTimeStatus_t()
-        let rc = SteamNetworkingConnectionState(SteamAPI_ISteamNetworkingMessages_GetSessionConnectionInfo(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), &tmp_connectionInfo, &tmp_quickStatus))
+        var tmpConnectionInfo = SteamNetConnectionInfo_t()
+        var tmpQuickStatus = SteamNetConnectionRealTimeStatus_t()
+        let rc = SteamNetworkingConnectionState(SteamAPI_ISteamNetworkingMessages_GetSessionConnectionInfo(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), &tmpConnectionInfo, &tmpQuickStatus))
         if rc != .none {
-            return (rc: rc, connectionInfo: SteamNetConnectionInfo(tmp_connectionInfo), quickStatus: SteamNetConnectionRealTimeStatus(tmp_quickStatus))
+            return (rc: rc, connectionInfo: SteamNetConnectionInfo(tmpConnectionInfo), quickStatus: SteamNetConnectionRealTimeStatus(tmpQuickStatus))
         } else {
             return (rc: rc, connectionInfo: SteamNetConnectionInfo(), quickStatus: SteamNetConnectionRealTimeStatus())
         }
@@ -53,9 +53,9 @@ public struct SteamNetworkingMessages {
 
     /// Steamworks `ISteamNetworkingMessages::ReceiveMessagesOnChannel()`
     public func receiveMessagesOnChannel(localChannel: Int, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
-        let tmp_messages = SteamOutArray<OpaquePointer?>(maxMessages)
-        let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, Int32(localChannel), tmp_messages.steamArray, Int32(maxMessages)))
-        return (rc: rc, messages: tmp_messages.swiftArray(Int(rc)))
+        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
+        let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, Int32(localChannel), tmpMessages.steamArray, Int32(maxMessages)))
+        return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamNetworkingMessages::SendMessageToUser()`

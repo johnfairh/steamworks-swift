@@ -58,9 +58,9 @@ public struct SteamParties {
 
     /// Steamworks `ISteamParties::GetAvailableBeaconLocations()`
     public func getAvailableBeaconLocations(maxNumLocations: Int) -> (rc: Bool, locationList: [SteamPartyBeaconLocation]) {
-        let tmp_locationList = SteamOutArray<SteamPartyBeaconLocation_t>(maxNumLocations)
-        let rc = SteamAPI_ISteamParties_GetAvailableBeaconLocations(interface, tmp_locationList.steamArray, uint32(maxNumLocations))
-        return (rc: rc, locationList: tmp_locationList.swiftArray())
+        let tmpLocationList = SteamOutArray<SteamPartyBeaconLocation_t>(maxNumLocations)
+        let rc = SteamAPI_ISteamParties_GetAvailableBeaconLocations(interface, tmpLocationList.steamArray, uint32(maxNumLocations))
+        return (rc: rc, locationList: tmpLocationList.swiftArray())
     }
 
     /// Steamworks `ISteamParties::GetBeaconByIndex()`
@@ -70,18 +70,18 @@ public struct SteamParties {
 
     /// Steamworks `ISteamParties::GetBeaconDetails()`
     public func getBeaconDetails(beaconID: PartyBeaconID, metadataSize: Int) -> (rc: Bool, beaconOwner: SteamID, location: SteamPartyBeaconLocation, metadata: String) {
-        var tmp_beaconOwner = CSteamID()
-        var tmp_location = SteamPartyBeaconLocation_t()
-        let tmp_metadata = SteamString(length: metadataSize)
-        let rc = SteamAPI_ISteamParties_GetBeaconDetails(interface, PartyBeaconID_t(beaconID), &tmp_beaconOwner, &tmp_location, tmp_metadata.charBuffer, Int32(metadataSize))
-        return (rc: rc, beaconOwner: SteamID(tmp_beaconOwner), location: SteamPartyBeaconLocation(tmp_location), metadata: tmp_metadata.swiftString)
+        var tmpBeaconOwner = CSteamID()
+        var tmpLocation = SteamPartyBeaconLocation_t()
+        let tmpMetadata = SteamString(length: metadataSize)
+        let rc = SteamAPI_ISteamParties_GetBeaconDetails(interface, PartyBeaconID_t(beaconID), &tmpBeaconOwner, &tmpLocation, tmpMetadata.charBuffer, Int32(metadataSize))
+        return (rc: rc, beaconOwner: SteamID(tmpBeaconOwner), location: SteamPartyBeaconLocation(tmpLocation), metadata: tmpMetadata.swiftString)
     }
 
     /// Steamworks `ISteamParties::GetBeaconLocationData()`
     public func getBeaconLocationData(beaconLocation: SteamPartyBeaconLocation, data: SteamPartyBeaconLocationData, dataStringOutSize: Int) -> (rc: Bool, dataString: String) {
-        let tmp_dataString = SteamString(length: dataStringOutSize)
-        let rc = SteamAPI_ISteamParties_GetBeaconLocationData(interface, SteamPartyBeaconLocation_t(beaconLocation), ESteamPartyBeaconLocationData(data), tmp_dataString.charBuffer, Int32(dataStringOutSize))
-        return (rc: rc, dataString: tmp_dataString.swiftString)
+        let tmpDataString = SteamString(length: dataStringOutSize)
+        let rc = SteamAPI_ISteamParties_GetBeaconLocationData(interface, SteamPartyBeaconLocation_t(beaconLocation), ESteamPartyBeaconLocationData(data), tmpDataString.charBuffer, Int32(dataStringOutSize))
+        return (rc: rc, dataString: tmpDataString.swiftString)
     }
 
     /// Steamworks `ISteamParties::GetNumActiveBeacons()`
@@ -91,9 +91,9 @@ public struct SteamParties {
 
     /// Steamworks `ISteamParties::GetNumAvailableBeaconLocations()`
     public func getNumAvailableBeaconLocations() -> (rc: Bool, numLocations: Int) {
-        var tmp_numLocations = uint32()
-        let rc = SteamAPI_ISteamParties_GetNumAvailableBeaconLocations(interface, &tmp_numLocations)
-        return (rc: rc, numLocations: Int(tmp_numLocations))
+        var tmpNumLocations = uint32()
+        let rc = SteamAPI_ISteamParties_GetNumAvailableBeaconLocations(interface, &tmpNumLocations)
+        return (rc: rc, numLocations: Int(tmpNumLocations))
     }
 
     /// Steamworks `ISteamParties::JoinParty()`, callback

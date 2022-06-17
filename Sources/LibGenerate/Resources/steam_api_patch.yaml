@@ -299,13 +299,13 @@ methods:
       punItemDefIDsArraySize:
         in_out: true
       pItemDefIDs:
-        out_array_valid_count: tmp_itemDefIDsArraySize
+        out_array_valid_count: tmpItemDefIDsArraySize
   SteamAPI_ISteamInventory_GetItemDefinitionIDs:
     out_param_iff_rc: ' '
     params:
       pItemDefIDs:
         nullable: true
-        out_array_valid_count: tmp_itemDefIDsArraySize
+        out_array_valid_count: tmpItemDefIDsArraySize
       punItemDefIDsArraySize:
         in_out: true
   SteamAPI_ISteamInventory_GetItemDefinitionProperty:
@@ -339,7 +339,7 @@ methods:
     params:
       pOutItemsArray:
         nullable: true
-        out_array_valid_count: tmp_itemsArraySize
+        out_array_valid_count: tmpItemsArraySize
       punOutItemsArraySize:
         in_out: true
   SteamAPI_ISteamInventory_GetResultTimestamp:

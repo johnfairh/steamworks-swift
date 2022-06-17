@@ -71,9 +71,9 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::DecompressVoice()`
     public func decompressVoice(compressed: UnsafeRawPointer, compressedSize: Int, destBuffer: UnsafeMutableRawPointer, destBufferSize: Int, desiredSampleRate: Int) -> (rc: VoiceResult, bytesWritten: Int) {
-        var tmp_bytesWritten = uint32()
-        let rc = VoiceResult(SteamAPI_ISteamUser_DecompressVoice(interface, compressed, uint32(compressedSize), destBuffer, uint32(destBufferSize), &tmp_bytesWritten, uint32(desiredSampleRate)))
-        return (rc: rc, bytesWritten: Int(tmp_bytesWritten))
+        var tmpBytesWritten = uint32()
+        let rc = VoiceResult(SteamAPI_ISteamUser_DecompressVoice(interface, compressed, uint32(compressedSize), destBuffer, uint32(destBufferSize), &tmpBytesWritten, uint32(desiredSampleRate)))
+        return (rc: rc, bytesWritten: Int(tmpBytesWritten))
     }
 
     /// Steamworks `ISteamUser::EndAuthSession()`
@@ -83,17 +83,17 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::GetAuthSessionTicket()`
     public func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: HAuthTicket, ticketSize: Int) {
-        var tmp_ticketSize = uint32()
-        let rc = HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, ticket, Int32(maxTicketSize), &tmp_ticketSize))
-        return (rc: rc, ticketSize: Int(tmp_ticketSize))
+        var tmpTicketSize = uint32()
+        let rc = HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, ticket, Int32(maxTicketSize), &tmpTicketSize))
+        return (rc: rc, ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamUser::GetAvailableVoice()`
     public func getAvailableVoice(uncompressedVoiceDesiredSampleRateDeprecated: Int) -> (rc: VoiceResult, compressedSize: Int, uncompressedDeprecatedSize: Int) {
-        var tmp_compressedSize = uint32()
-        var tmp_uncompressedDeprecatedSize = uint32()
-        let rc = VoiceResult(SteamAPI_ISteamUser_GetAvailableVoice(interface, &tmp_compressedSize, &tmp_uncompressedDeprecatedSize, uint32(uncompressedVoiceDesiredSampleRateDeprecated)))
-        return (rc: rc, compressedSize: Int(tmp_compressedSize), uncompressedDeprecatedSize: Int(tmp_uncompressedDeprecatedSize))
+        var tmpCompressedSize = uint32()
+        var tmpUncompressedDeprecatedSize = uint32()
+        let rc = VoiceResult(SteamAPI_ISteamUser_GetAvailableVoice(interface, &tmpCompressedSize, &tmpUncompressedDeprecatedSize, uint32(uncompressedVoiceDesiredSampleRateDeprecated)))
+        return (rc: rc, compressedSize: Int(tmpCompressedSize), uncompressedDeprecatedSize: Int(tmpUncompressedDeprecatedSize))
     }
 
     /// Steamworks `ISteamUser::GetDurationControl()`, callback
@@ -111,9 +111,9 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::GetEncryptedAppTicket()`
     public func getEncryptedAppTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: Bool, ticketSize: Int) {
-        var tmp_ticketSize = uint32()
-        let rc = SteamAPI_ISteamUser_GetEncryptedAppTicket(interface, ticket, Int32(maxTicketSize), &tmp_ticketSize)
-        return (rc: rc, ticketSize: Int(tmp_ticketSize))
+        var tmpTicketSize = uint32()
+        let rc = SteamAPI_ISteamUser_GetEncryptedAppTicket(interface, ticket, Int32(maxTicketSize), &tmpTicketSize)
+        return (rc: rc, ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamUser::GetGameBadgeLevel()`
@@ -151,10 +151,10 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::GetUserDataFolder()`
     public func getUserDataFolder(bufferSize: Int) -> (rc: Bool, buffer: String) {
-        let tmp_buffer = SteamString(length: bufferSize)
-        let rc = SteamAPI_ISteamUser_GetUserDataFolder(interface, tmp_buffer.charBuffer, Int32(bufferSize))
+        let tmpBuffer = SteamString(length: bufferSize)
+        let rc = SteamAPI_ISteamUser_GetUserDataFolder(interface, tmpBuffer.charBuffer, Int32(bufferSize))
         if rc {
-            return (rc: rc, buffer: tmp_buffer.swiftString)
+            return (rc: rc, buffer: tmpBuffer.swiftString)
         } else {
             return (rc: rc, buffer: "")
         }
@@ -162,10 +162,10 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::GetVoice()`
     public func getVoice(wantCompressed: Bool, destBuffer: UnsafeMutableRawPointer, destBufferSize: Int, wantUncompressedDeprecated: Bool, uncompressedDestBufferDeprecated: UnsafeMutableRawPointer, uncompressedDestBufferSizeDeprecatedSize: Int, uncompressedVoiceDesiredSampleRateDeprecated: Int) -> (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int) {
-        var tmp_bytesWritten = uint32()
-        var tmp_uncompressBytesWrittenDeprecated = uint32()
-        let rc = VoiceResult(SteamAPI_ISteamUser_GetVoice(interface, wantCompressed, destBuffer, uint32(destBufferSize), &tmp_bytesWritten, wantUncompressedDeprecated, uncompressedDestBufferDeprecated, uint32(uncompressedDestBufferSizeDeprecatedSize), &tmp_uncompressBytesWrittenDeprecated, uint32(uncompressedVoiceDesiredSampleRateDeprecated)))
-        return (rc: rc, bytesWritten: Int(tmp_bytesWritten), uncompressBytesWrittenDeprecated: Int(tmp_uncompressBytesWrittenDeprecated))
+        var tmpBytesWritten = uint32()
+        var tmpUncompressBytesWrittenDeprecated = uint32()
+        let rc = VoiceResult(SteamAPI_ISteamUser_GetVoice(interface, wantCompressed, destBuffer, uint32(destBufferSize), &tmpBytesWritten, wantUncompressedDeprecated, uncompressedDestBufferDeprecated, uint32(uncompressedDestBufferSizeDeprecatedSize), &tmpUncompressBytesWrittenDeprecated, uint32(uncompressedVoiceDesiredSampleRateDeprecated)))
+        return (rc: rc, bytesWritten: Int(tmpBytesWritten), uncompressBytesWrittenDeprecated: Int(tmpUncompressBytesWrittenDeprecated))
     }
 
     /// Steamworks `ISteamUser::GetVoiceOptimalSampleRate()`
