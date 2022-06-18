@@ -44,7 +44,7 @@ extension String {
         replacingOccurrences(of: "::", with: ".")
     }
 
-    /// Swift expression for 'casting' from this string, itself a Swift expression, to the given type
+    /// Swift expression for 'casting' from this string, itself a Swift expression, to the given Swift type
     func asCast(to: String?) -> String {
         guard let to = to else {
             return self
@@ -266,7 +266,7 @@ private let steamToSwiftTypes: [String : String] = [
 // How to represent an array of steam types (in a struct field,) special cases
 private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
     "char" : "String",
-    "uint8" : "[UInt8]" // Should be Data but can't use Foundation inside Steamworks because C++!
+    "uint8" : "[UInt8]" // Should be Data (?) but can't use Foundation inside Steamworks because C++!
 ]
 
 // Steam types whose Swift type version is typesafe to pass

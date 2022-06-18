@@ -384,15 +384,6 @@ final class SwiftParam {
         }
     }
 
-    /// What code (if any) is required after calling the Steamworks API
-    var postSuccessCallLine: String? {
-        switch style {
-        case .in, .in_string_array, .in_array, .in_array_count, .in_out: return nil
-        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string:
-            return nil
-        }
-    }
-
     /// Return-type tuple-builder
     var outParamReturnExpression: String {
         switch style {
@@ -555,11 +546,6 @@ extension Array where Element == SwiftParam {
         map { $0.callName }.joined(separator: ", ")
     }
 
-    /// Lines to add after the API call if it honoured out params
-    var postSuccessCallLines: [String] {
-        compactMap { $0.postSuccessCallLine }
-    }
-
     /// Call params when forwarding from async to callback API version
     var asyncForwardingParams: String {
         compactMap(\.swiftParamForwardingClause).joined(separator: ", ")
@@ -644,7 +630,7 @@ struct SwiftMethod {
         switch style {
         case .callReturn, .normal(_, nil): return .implicit
         case .normal:
-            if outParams.isEmpty && params.postSuccessCallLines.isEmpty { // XXX ?? postCallLines ?? include iff stuff?
+            if outParams.isEmpty  {
                 if params.preCallLines.isEmpty {
                     return .implicit
                 }
@@ -674,50 +660,49 @@ struct SwiftMethod {
         }
     }
 
-    /// Code to go following the API call.  This does copy-back of out params.
+    /// Code to go following the API call.  This builds the return value/tuple.
     ///
     /// Usually, steamworks says that even if the API call fails the out params are updated to some 'invalid' value,
-    /// meaning we must do the copyback anyway.
+    /// meaning we must return them anyway.
     ///
-    /// But infrequently this does not happen, so we must not try to copy-back for fear of out-of-range typechecks
-    /// and uninitialized data UB.  Our patch json says what test to apply to `rc` - we may be able to generalize
-    /// based on type later on but leave it manual for now.
+    /// But infrequently this does not happen, so we must not access the out params for fear of out-of-range
+    /// typechecks and uninitialized data UB.  Our patch json says what test to apply to `rc`.
+    ///
     var postCallLines: [String] {
-        linesConditionalOnRc(params.postSuccessCallLines)
-    }
-
-    private func linesConditionalOnRc(_ lines: [String], elseLines: [String] = []) -> [String] {
-        guard !(lines.isEmpty && elseLines.isEmpty),
-              let testExpr = db.outParamIffRc else {
-            return lines
-        }
-        let test = "if rc \(testExpr.isEmpty ? "" : "\(testExpr) "){"
-        let elseLines = elseLines.isEmpty ? [] : (["} else {"] + elseLines.indented(1))
-        return [test] + lines.indented(1) + elseLines + ["}"]
-    }
-
-    var finalBodyLines: [String] {
         guard returnSyntax == .intermediate,
               case let .normal(apiIsVoid, _) = style,
               let expr = outParams.returnValueWithOutParams(apiIsVoid: apiIsVoid) else {
             return []
         }
+        guard let testExpr = db.outParamIffRc else {
+            return ["return \(expr)"]
+        }
         guard let elseExpr = outParams.returnValueWithDummyOutParams(apiIsVoid: apiIsVoid) else {
             preconditionFailure("Can't be no dummy-params if there are no-dummy params")
         }
-        return linesConditionalOnRc(["return \(expr)"], elseLines: ["return \(elseExpr)"])
+
+        return [
+            "if rc \(testExpr.isEmpty ? "" : "\(testExpr) "){",
+            "return \(expr)".indented(1),
+            "} else {",
+            "return \(elseExpr)".indented(1),
+            "}"
+        ]
     }
 
+    /// Function body
     var bodyLines: [String] {
-        params.preCallLines + callLines + postCallLines + finalBodyLines
+        params.preCallLines + callLines + postCallLines
     }
 
+    /// Synchronous version of the entire function
     func syncDecl(comment baseComment: String) -> [String] {
         let comment = callReturnType.flatMap { _ in "\(baseComment), callback" } ?? baseComment
         let attrLine = db.discardableResult ? ["@discardableResult"] : []
         return [comment] + attrLine + [declLine] + bodyLines.indented(1) + ["}"]
     }
 
+    /// Asynchronous version of the entire function, [] for functions without an async version
     func asyncDecl(comment: String) -> [String] {
         guard let type = callReturnType else {
             return []
@@ -733,6 +718,7 @@ struct SwiftMethod {
         ]
     }
 
+    /// All the Swift code for this API method
     func decl(comment: String) -> [String] {
         syncDecl(comment: comment) + asyncDecl(comment: comment)
     }
