@@ -199,25 +199,26 @@ final class SwiftParam {
         db.type
     }
 
-    private let swiftTypeBaseName: String
-
     private enum Style {
         case `in` // pass by value or const ref, flat, cast at time of use
-        case in_string_array // pass by value, array of strings
-        case out  // return in a tuple
-        case out_transparent // return in a tuple, no temporary
-        case out_transparent_array(String) // return in a tuple, array, no temporary
-        case in_out // pass in, return in a tuple
         case in_array // pass by value but a Swift array, use a temporary to cast, no copy-back
+        case in_string_array // pass by value, array of strings
+
         case in_array_count(SwiftParam) // a C param for the length of an `in_array` param that is absent in Swift
-        case out_array(String) // pass inout, temporary to cast, copy-back, array.  Required size given by another param.
-                               // 'nullable' pattern here is super-ugly, review all uses when done and maybe make different case.
-                               // also check how to use, `nil` inout is tricky - better to gen a separate function?
-        case out_string(String) // return in a tuple, length comes from somewhere else
-                                // if nullable than can request to not produce, comes back empty
+
+        case out // create on stack, return in a tuple
+        case out_transparent // create on stack, return in a tuple, no need to convert type
+        case out_array(String) // create on stack, return in a tuple, array.  String is required length,
+                               // either constant name or parameter name
+        case out_transparent_array(String) // create on stack, return in a tuple, array, no need to convert type.
+                                           // String is required length.
+        case out_string(String) // create on stack, return in a type, string.  String is required length.
+
+        case in_out // pass in, return new value in tuple
     }
     private let style: Style
 
+    /// Does this C-API param go in the return tuple in the Swift API?
     var includeInReturnTuple: Bool {
         switch style {
         case .out, .out_transparent, .out_array, .out_transparent_array, .out_string, .in_out: return true
@@ -225,63 +226,67 @@ final class SwiftParam {
         }
     }
 
-    /// What is the type of the param in the Swift version of the function - nil if omitted
-    private var swiftParamType: String? {
-        let optional = db.nullable ? "?" : ""
+    /// The 'base' swift type of the param.  If the param is an array
+    /// then this is the array element, not the array itself -- use `swiftType` to access the actual type
+    private let swiftTypeBaseName: String
+
+    /// The Swift type for this param
+    var swiftType: String {
         switch style {
-        case .in, .in_string_array, .in_out: return swiftTypeBaseName + optional
-        case .in_array: return "[\(swiftTypeBaseName)]"
-        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string: return nil
-        case .in_array_count: return nil
-        }
-    }
-
-    /// What actually appears in the formal param list - complicated by nullable out params
-    /// xxx can merge with above now?
-    var swiftParamClause: String? {
-        switch (style, db.nullable) {
-        case (.out, true), (.out_transparent, true), (.out_array, true), (.out_transparent_array, true), (.out_string, true):
-            return "\(returnParamName): Bool = true"
-        default:
-            guard let swiftType = swiftParamType else {
-                return nil
-            }
-            return "\(swiftName): \(swiftType)"
-        }
-    }
-
-    /// Clause to forward a value to a similarly shaped function
-    /// xxx obviously stuff to refactor...
-    var swiftParamForwardingClause: String? {
-        let paramName: String
-        switch (style, db.nullable) {
-        case (.out, true), (.out_transparent, true), (.out_array, true), (.out_transparent_array, true), (.out_string, true):
-            paramName = returnParamName
-        case (.in_array_count, _):
-            return nil
-        default:
-            paramName = swiftName
-        }
-        return "\(paramName): \(paramName)"
-    }
-
-    /// How should the param appear in the Swift return tuple
-    var swiftReturnType: String {
-        switch style {
-        case .out_array, .out_transparent_array: return "[\(swiftTypeBaseName)]"
+        case .in_array, .out_array, .out_transparent_array: return "[\(swiftTypeBaseName)]"
         default: return swiftTypeBaseName
         }
     }
 
-    /// A default instance for the Swift return tuple
+    /// What appears in the function param list.  Nil if nothing.
+    ///
+    /// Nullable out params need a flag to request its return.
+    /// Nullable in params get an optional.
+    var swiftParamClause: String? {
+        let typeSuffix = db.nullable ? "?" : ""
+
+        switch style {
+        case .in, .in_string_array, .in_out, .in_array:
+            return "\(swiftName): \(swiftType)\(typeSuffix)"
+
+        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string:
+            return db.nullable ? "\(returnParamName): Bool = true" : nil
+
+        case .in_array_count:
+            return nil
+        }
+    }
+
+    /// Clause to forward a value to a similarly shaped function
+    var swiftParamForwardingClause: String? {
+        let paramName: String
+        switch style {
+        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string:
+            if db.nullable {
+                paramName = returnParamName
+            } else {
+                fallthrough
+            }
+
+        case .in, .in_string_array, .in_out, .in_array:
+            paramName = swiftName
+
+        case .in_array_count:
+            return nil
+        }
+        return "\(paramName): \(paramName)"
+    }
+
+    /// A default instance for a (out) param for cases we can't
     var swiftReturnDummyInstance: String {
-        // big yikes here, figure out properly
         switch style {
         case .out_array, .out_transparent_array: return "[]"
         case .out_string: return #""""#
-        default:
-            // exclam is about non-optional bufferpointers that we can't just fabricate
+        case .out, .out_transparent, .in_out:
+            // exclam is about non-optional bufferpointers, should not arise
             return steamTypeName.desuffixed.asSwiftTypeInstance!
+        default:
+            preconditionFailure("Not an out param: \(style)")
         }
     }
 
@@ -300,58 +305,53 @@ final class SwiftParam {
     }
 
     /// What code (if any) is required before calling the Steamworks API
-    /// (Need to review for stack-allocation, new APIs in Swift 5.6 might help)
     var preCallLines: [String] {
+        var line = ""
+        var deallocateTemp = false
+
         switch style {
         case .in:
-            guard db.nullable && !steamTypeName.isSteamTypePassedInTransparently else {
-                return []
+            if db.nullable && !steamTypeName.isSteamTypePassedInTransparently {
+                let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
+                line = "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))"
+                deallocateTemp = true
             }
-            let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
-            return [
-                "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))",
-                "defer { \(tempName).deallocate() }"
-                ]
         case .in_array_count:
-            return []
+            break
         case .in_string_array:
-            return [
-                "let \(tempName) = StringArray(\(swiftName))",
-                "defer { \(tempName).deallocate() }"
-            ]
+            line = "let \(tempName) = StringArray(\(swiftName))"
+            deallocateTemp = true
         case .in_array:
-            return ["var \(tempName) = \(swiftName).map { \(steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"]
+            line = "var \(tempName) = \(swiftName).map { \(steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"
         case .out, .out_transparent:
             if !db.nullable {
-                return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks())"]
+                line = "var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks())"
+            } else {
+                let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
+                line = "let \(tempName) = SteamNullable<\(typeName)>(isReal: \(returnParamName))"
+                deallocateTemp = true
             }
-            let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
-            return [
-                "let \(tempName) = SteamNullable<\(typeName)>(isReal: \(returnParamName))",
-                "defer { \(tempName).deallocate() }"
-            ]
         case .in_out:
             if !db.nullable {
-                return ["var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"]
+                line = "var \(tempName) = \(steamTypeName.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"
+            } else {
+                let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
+                line = "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))"
+                deallocateTemp = true
             }
-            let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
-            return [
-                "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))",
-                "defer { \(tempName).deallocate() }"
-            ]
         case .out_array(let sizeParam):
             let typeName = steamTypeName.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
             let nullability = db.nullable ? ", \(returnParamName)" : ""
-            return [ "let \(tempName) = SteamOutArray<\(typeName)>(\(sizeParam.asArraySizeExpression)\(nullability))" ]
+            line = "let \(tempName) = SteamOutArray<\(typeName)>(\(sizeParam.asArraySizeExpression)\(nullability))"
         case .out_transparent_array(let sizeParam):
             precondition(!db.nullable, "Can't do transparent-out-array-nullable")
-            return ["var \(swiftName) = Array<\(swiftTypeBaseName)>(repeating: .init(), count: \(sizeParam.asArraySizeExpression))"]
+            line = "var \(swiftName) = \(swiftType)(repeating: .init(), count: \(sizeParam.asArraySizeExpression))"
         case .out_string(let sizeParam):
             let nullability = db.nullable ? ", isReal: \(returnParamName)" : ""
-            return [
-                "let \(tempName) = SteamString(length: \(sizeParam.asArraySizeExpression)\(nullability))"
-            ]
+            line = "let \(tempName) = SteamString(length: \(sizeParam.asArraySizeExpression)\(nullability))"
         }
+
+        return line.isEmpty ? [] : deallocateTemp ? [line, "defer { \(tempName).deallocate() }"] : [line]
     }
 
     /// How to refer to the param in the Steamworks API call
@@ -389,7 +389,7 @@ final class SwiftParam {
         switch style {
         case .out, .in_out:
             guard db.nullable else {
-                return "\(swiftTypeBaseName)(\(tempName))"
+                return "\(swiftType)(\(tempName))"
             }
             return "\(tempName).swiftValue(dummy: \(swiftReturnDummyInstance))"
 
@@ -509,7 +509,7 @@ extension Array where Element == SwiftParam {
 
     /// If the routine naturally returns X, what does it return taking out params into account?
     func returnTypeWithOutParams(rcType: String?) -> String? {
-        entupleWithApiRc(rcText: rcType, paramField: \.swiftReturnType)
+        entupleWithApiRc(rcText: rcType, paramField: \.swiftType)
     }
 
     /// Actually make the tuple including out params
