@@ -12,11 +12,11 @@ extension String {
     /// * Get rid of C++ nesting - everything top-level in Swift
     /// * Drop leading capital E/I/C - used in SDK for enums/interfaces/classes (but not for structs...)
     var asSwiftTypeName: String {
-        if let arrayMatch = re_match(#"^(.*) +\[.*\]"#) {
-            if let special = steamArrayElementTypeToSwiftArrayTypes[arrayMatch[1]] {
+        if let arrayMatch = parseCArray {
+            if let special = steamArrayElementTypeToSwiftArrayTypes[arrayMatch.element] {
                 return special
             }
-            return "[\(arrayMatch[1].asSwiftTypeName)]"
+            return "[\(arrayMatch.element.asSwiftTypeName)]"
         }
         if let mapped = steamToSwiftTypes[self] ?? Metadata.steamToSwiftTypeName(self) {
             return mapped
@@ -56,8 +56,8 @@ extension String {
     }
 
     /// Decompose a C fixed-size array into its pieces
-    var parseCArray: (String, Int)? {
-        re_match(#"^(.*) \[(.+)\]$"#).flatMap { ($0[1], Int($0[2])!) }
+    var parseCArray: (element: String, size: Int)? {
+        re_match(#"^(.*) \[(.+)\]$"#).flatMap { (element: $0[1], size: Int($0[2])!) }
     }
 
     /// * get rid of 'BIsBShortForBool'
@@ -150,12 +150,15 @@ extension String {
     /// strings and our usage of `Int` upstream.  `OptionSet` enums are
     /// confusing again - see `EnumConvertible` discussion.
     var asSwiftTypeForPassingIntoSteamworks: String? {
-        if steamTypesPassedInTransparently.contains(self) {
+        if isSteamTypePassedInTransparently {
             return nil
         }
         return asExplicitSwiftTypeForPassingIntoSteamworks
     }
 
+    /// Does the Swift API version of this Steam type pass directly to steamworks without
+    /// any kind of casting?  Eg. `const char *`-- because its Swift type is `String` and
+    /// there is compiler magic to let this be passed to C functions expecting `cc*`.
     var isSteamTypePassedInTransparently: Bool {
         steamTypesPassedInTransparently.contains(self)
     }
@@ -186,26 +189,9 @@ extension String {
         return typename + suffix
     }
 
-    /// Can a steam type be used transparently as an out param in Swift.
-    var isTransparentOutType: Bool {
-        steamTypesPassedInTransparently.contains(self)
-    }
-
-    /// Cast needed from a value to meet the type
-    var asSwiftTypeForPassingOutOfSteamworks: String? {
-        if steamTypesPassedOutTransparently.contains(self) {
-            return nil
-        }
-        return asSwiftReturnTypeName
-    }
-
-    /// Name of the type in return position - pass values instead of pointers to structs
-    var asSwiftReturnTypeName: String {
-        let naive = asSwiftTypeName
-        guard naive.hasSuffix("*") else {
-            return naive
-        }
-        return desuffixed.asSwiftTypeName
+    /// If returned by a C function, does it map without a cast to the Swift version of the type
+    var isSteamTypePassedOutTransparently: Bool {
+        steamTypesPassedOutTransparently.contains(self)
     }
 
     /// Drop one layer of C pointer/reference from a type
@@ -256,6 +242,7 @@ private let steamToSwiftTypes: [String : String] = [
     "unsigned int": "Int", // ""
     "intptr_t": "Int",
     "size_t": "Int",
+    "void": "Void",
 
     // - because these are used all over the place non-const-correctly
     "SteamParamStringArray_t *" : "[String]",
