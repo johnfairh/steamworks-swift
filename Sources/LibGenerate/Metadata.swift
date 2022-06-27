@@ -219,13 +219,13 @@ struct Patch: Codable {
 struct MetadataDB {
     struct Const {
         let name: String
-        let type: String
+        let type: SteamType
         let value: String
         let nestedName: String?
 
         init(base: SteamJSON.Const, patch: Patch.Const?) {
             self.name = base.constname
-            self.type = patch?.type ?? base.consttype
+            self.type = SteamType(patch?.type ?? base.consttype)
             self.value = patch?.value ?? base.constval
             self.nestedName = patch?.nested_name
         }
@@ -235,13 +235,13 @@ struct MetadataDB {
     let consts: [String : Const]
 
     final class Enum {
-        let name: String
-        let setPassedInTypeName: String?
+        let name: SteamType
+        let setPassedInTypeName: String? // XXX Some kind of SwiftType
         var isSet: Bool { setPassedInTypeName != nil }
         let prefix: String
         let numericPrefix: String?
-        let manualSwiftName: String?
-        let intXToSelf: String?
+        let manualSwiftName: SwiftType?
+        let intXToSelf: String? // XXX some kind of SwiftType
 
         struct Value: Codable {
             let name: String
@@ -257,11 +257,11 @@ struct MetadataDB {
         let values: [Value]
 
         init(base: SteamJSON.Enum, patch: Patch.Enum?) {
-            name = base.name
+            name = SteamType(base.name)
             setPassedInTypeName = patch?.is_set
-            prefix = patch?.prefix ?? name
+            prefix = patch?.prefix ?? base.name
             numericPrefix = patch?.numeric_prefix
-            manualSwiftName = patch?.manual_swift_name
+            manualSwiftName = patch?.manual_swift_name.map { .init($0) }
             intXToSelf = patch?.intx_to_self
             values = base.values.map {
                 Value(base: $0, patch: patch?.values?[$0.name])
@@ -269,7 +269,7 @@ struct MetadataDB {
         }
     }
     /// Indexed by `enumname`
-    let enums: [String : Enum]
+    let enums: [SteamType : Enum]
 
     struct Method {
         let name: String
@@ -473,7 +473,7 @@ struct MetadataDB {
         })
 
         enums = .init(uniqueKeysWithValues: base.enums.map {
-            ($0.name, Enum(base: $0, patch: patch.enums[$0.name]))
+            (SteamType($0.name), Enum(base: $0, patch: patch.enums[$0.name]))
         })
 
         interfaces = .init(uniqueKeysWithValues: base.interfaces.compactMap {
@@ -504,7 +504,7 @@ final class Metadata: CustomStringConvertible {
     let io: IO
     let db: MetadataDB
 
-    private let nestedEnums: [String : MetadataDB.Enum]
+    private let nestedEnums: [SteamType : MetadataDB.Enum]
     private let manualSwiftNames: [String : String]
 
     init(io: IO) throws {
@@ -526,7 +526,7 @@ final class Metadata: CustomStringConvertible {
 
         self.nestedEnums = .init(uniqueKeysWithValues: nestedStructEnums + nestedInterfaceEnums)
         let eClo: (MetadataDB.Enum) -> (String, String)? = { enu in
-            enu.manualSwiftName.map { (enu.name, $0) }
+            enu.manualSwiftName.map { (enu.name.name, $0.name) } // XXX
         }
         let sClo: (MetadataDB.Struct) -> (String, String)? = { str in
             str.manualSwiftName.map { (str.name, $0) }
@@ -561,7 +561,7 @@ final class Metadata: CustomStringConvertible {
     }
 
     static private func findEnum(name: String) -> MetadataDB.Enum? {
-        shared?.db.enums[name] ?? shared?.nestedEnums[name]
+        shared?.db.enums[SteamType(name)] ?? shared?.nestedEnums[SteamType(name)] // XXX
     }
 
     static func isEnum(steamType name: String) -> Bool {

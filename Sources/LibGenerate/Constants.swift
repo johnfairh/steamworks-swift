@@ -59,19 +59,20 @@ extension MetadataDB.Const {
     }
 
     private func nestedTypeDefDeclLines(fieldName: String) -> String {
-        """
-        extension \(type.asSwiftTypeName) {
-            /// Steamworks `\(name)`
-            public static let \(fieldName) = \(type.asSwiftTypeName)(\(value.asSwiftValue))
-        }
-        """
+        let swiftType = SwiftType(type)
+        return """
+               extension \(swiftType) {
+                   /// Steamworks `\(name)`
+                   public static let \(fieldName) = \(swiftType)(\(value.asSwiftValue))
+               }
+               """
     }
 
     /// Fallback to a regular constant
     var flatDeclLines: String {
         """
             /// Steamworks `\(name)`
-            public static let \(name.asSwiftConstantName) = \(type.asSwiftTypeName)(\(value.asSwiftValue))
+            public static let \(name.asSwiftConstantName) = \(type.swiftType)(\(value.asSwiftValue))
         """
     }
 }

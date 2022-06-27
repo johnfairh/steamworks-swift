@@ -21,6 +21,14 @@ struct SteamType {
             (element: SteamType($0[1]), size: Int($0[2])!)
         }
     }
+
+    /// Convert this C++ spelling to something the Swift compiler understands
+    ///
+    /// Currently only has to deals with unsuffixed/prefixed types.  Basically for
+    /// generating extensions to nested C++ types.
+    var swiftCompilerSpelling: String {
+        name.replacingOccurrences(of: "::", with: ".")
+    }
 }
 
 extension SteamType {
@@ -121,13 +129,17 @@ extension SteamType {
     }
 }
 
-extension SteamType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral {
+extension SteamType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, Comparable {
     public init(stringLiteral value: String) {
         self.init(value)
     }
 
     public var description: String {
         name
+    }
+
+    static func < (lhs: SteamType, rhs: SteamType) -> Bool {
+        lhs.name < rhs.name
     }
 }
 
