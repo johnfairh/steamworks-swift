@@ -56,7 +56,7 @@ extension MetadataDB.Struct.Field {
     /// Contribution to the C header file to define a method on the C++ structure that returns
     /// a pointer to an array structure element instead of a tuple.
     func getArrayGetterLines(structName: String) -> String? {
-        guard let (elemType, arrayLen) = type.parseCArray else {
+        guard let (elemType, arrayLen) = type.parseArray else {
             return nil
         }
         // Make sure these strings are actually null-terminated.
@@ -79,7 +79,7 @@ extension MetadataDB.Struct.Field {
     }
 
     func getArraySetterLines(structName: String) -> String? {
-        guard let (elemType, arrayLen) = type.parseCArray else {
+        guard let (elemType, arrayLen) = type.parseArray else {
             return nil
         }
         return """
@@ -94,14 +94,14 @@ extension MetadataDB.Struct.Field {
     /// Swift structure declaration field
     var declLine: [String] {[
         "/// Steamworks `\(name)`",
-        "public let \(name.asSwiftStructFieldName): \(type.asSwiftTypeName)"
+        "public let \(name.asSwiftStructFieldName): \(type.swiftType)"
     ]}
 
     /// Swift structure initializer lines
     var initFromSteamLine: String {
         let rvalue: String
 
-        if let decomposed = type.parseCArray {
+        if let decomposed = type.parseArray {
             if decomposed.0 == "char" {
                 rvalue = ".init(steam.\(arrayFieldName))"
             } else if decomposed.0 == "uint8" {
@@ -118,7 +118,7 @@ extension MetadataDB.Struct.Field {
     /// Steam structure initializer lines - only for a few types, opt-in
     var initSteamFromSwiftLine: String {
         let rvalue = "swift.\(name.asSwiftStructFieldName)"
-        if type.parseCArray != nil {
+        if type.parseArray != nil {
             return "self.\(arraySetterName)(from: \(rvalue))"
         }
         return "\(name) = .init(\(rvalue))"
@@ -126,8 +126,8 @@ extension MetadataDB.Struct.Field {
 
     /// Default value setup for memberwise initializer
     var memberwiseParameter: String {
-        let initClause = type.asSwiftTypeInstance.flatMap { " = \($0)"} ?? ""
-        return "\(name.asSwiftStructFieldName): \(type.asSwiftTypeName)\(initClause)"
+        let initClause = type.swiftTypeInstance.flatMap { " = \($0)"} ?? ""
+        return "\(name.asSwiftStructFieldName): \(type.swiftType)\(initClause)"
     }
 
     /// Initializer line for memberwise initializer

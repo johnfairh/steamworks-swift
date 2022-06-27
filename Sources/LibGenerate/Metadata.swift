@@ -402,12 +402,12 @@ struct MetadataDB {
     struct Struct {
         struct Field {
             let name: String
-            let type: String
+            let type: SteamType
             let ignore: Bool
 
             init(base: SteamJSON.Struct.Field, patch: Patch.Struct.Field?) {
                 name = base.fieldname
-                type = patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype)
+                type = SteamType(patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype))
                 ignore = base.private ?? patch?.bIgnore ?? false
             }
 
@@ -572,20 +572,37 @@ final class Metadata: CustomStringConvertible {
         findEnum(name: name)?.setPassedInTypeName
     }
 
-    static func findEnumDefaultInstance(steamType name: String) -> String? {
+    static func findEnumDefaultInstance(steamType name: String) -> String? { // XXX
         findEnum(name: name)?.defaultInstance
+    }
+
+    static func findEnumDefaultInstance(steamType: SteamType) -> SwiftExpression? {
+        findEnumDefaultInstance(steamType: steamType.name).map { .init($0) }
     }
 
     static func isStruct(steamType name: String) -> Bool {
         shared.flatMap { $0.db.structs[name] != nil } ?? false
     }
 
-    static func isTypedef(steamType name: String) -> Bool {
+    static func isStruct(steamType: SteamType) -> Bool {
+        isStruct(steamType: steamType.name)
+    }
+
+    static func isTypedef(steamType: SteamType) -> Bool {
+        isTypedef(steamType: steamType.name)
+    }
+
+    static func isTypedef(steamType name: String) -> Bool { // XXX
         shared.flatMap { $0.db.typedefs[name] != nil } ?? false
     }
 
     /// Look up any overridden type names from the DB
-    static func steamToSwiftTypeName(_ steam: String) -> String? {
+    static func steamToSwiftTypeName(_ steam: String) -> String? { // XXX
         shared.flatMap { $0.manualSwiftNames[steam] }
+    }
+
+    /// Look up any overridden type names from the DB
+    static func steamTypeToSwiftType(_ steamType: SteamType) -> SwiftType? {
+        steamToSwiftTypeName(steamType.name).map { .init($0) }
     }
 }
