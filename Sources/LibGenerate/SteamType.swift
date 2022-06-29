@@ -5,6 +5,8 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
+// MARK: SteamType
+
 /// A C++ type used in the native Steam API.  Would be understood by the C++ compiler.
 ///
 /// Eg. a straight type name `SteamFoo_t` or a parameter type eg. `const SteamFoo_t *`.
@@ -29,12 +31,20 @@ struct SteamType {
     var swiftCompilerSpelling: String {
         name.replacingOccurrences(of: "::", with: ".")
     }
+
+    /// Drop one layer of C pointer/reference from a type
+    fileprivate var desuffixed: SteamType {
+        SteamType(name.re_sub(" *(\\*|&)$", with: ""))
+    }
 }
+
+// MARK: SteamType -> SwiftType
 
 extension SteamType {
     /// Get the Swift type used in the public Swift API to represent this C++ type
     ///
-    /// This is usually not a type that can be passed to the C++ API.
+    /// This is usually not a type that can be passed to the C++ API: that is the
+    /// `SwiftNativeType`.
     ///
     /// Various structural and syntactic special cases.
     /// Const removed.
@@ -64,6 +74,31 @@ extension SteamType {
             name1 = name1.re_sub("^[CEI](?=[A-Z])", with: "")
         }
         return SwiftType(name1.replacingOccurrences(of: "_", with: ""))
+    }
+
+    /// Does this C++ type look like a pointer but is actually something else?
+    /// Mostly for `const char *` -> `String`
+    fileprivate var isPointerTypePassedByValue: Bool {
+        name.hasSuffix("*") && steamToSwiftTypes[self] != nil
+    }
+
+    /// Get the Swift type used in the public Swift API to represent this C++ type
+    /// _as a function parameter_.
+    ///
+    /// Pointer types get converted to instances, with special cases.  Eg:
+    /// ```
+    /// void * -> UnsafeMutablePointer
+    /// const char * -> String
+    /// int32 -> Int
+    /// Foo_t * -> Foo
+    /// const Foo & -> Foo
+    /// void -> Void
+    /// ```
+    var swiftTypeForParameter: SwiftType { // XXX subclass & override swiftType??
+        if isPointerTypePassedByValue {
+            return swiftType
+        }
+        return desuffixed.swiftType
     }
 }
 
@@ -109,6 +144,8 @@ private let steamArrayElementTypeToSwiftArrayTypes: [SteamType : SwiftType] = [
     "uint8" : "[UInt8]" // Should be Data (?) but can't use Foundation inside Steamworks because C++!
 ]
 
+// MARK: SteamType -> SwiftInstance
+
 extension SteamType {
     /// Get a safe-ish instance of the Swift version of this steam type
     ///
@@ -128,6 +165,31 @@ extension SteamType {
         return swiftType.instance
     }
 }
+
+// MARK: SteamType -> SwiftNativeType
+
+extension SteamType {
+
+    var swiftNativeType: SwiftNativeType {
+        // deal with fixed-size arrays, rare
+        if let arrayDetails = parseArray,
+           let arrayType = steamArrayElementTypeToSwiftArrayTypes[arrayDetails.element] {
+            return SwiftNativeType(arrayType.name)
+        }
+        return steamToSwiftNativeTypes[self]!
+    }
+}
+
+private let steamToSwiftNativeTypes: [SteamType : SwiftNativeType] = [
+    "unsigned int" : "CUnsignedInt",
+    "unsigned long long" : "CUnsignedLongLong",
+    "long long": "CLongLong",
+    "int" : "CInt",
+    "short": "CShort",
+    "void *": "UnsafeMutableRawPointer", // living on the edge isteammatchmaking
+]
+
+// MARK: SteamType boilerplate
 
 extension SteamType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, Comparable {
     public init(stringLiteral value: String) {
@@ -157,14 +219,6 @@ struct SwiftType {
         self = steamType.swiftType
     }
 
-    var isIntegerType: Bool {
-        name.re_isMatch(#"^U?Int\d*$"#)
-    }
-
-    var isArrayType: Bool {
-        name.re_isMatch(#"^\[.*\]$"#)
-    }
-
     /// An expression to create a default instance of the type
     ///
     /// Not comprehensive - have to go via `SteamType.swiftTypeInstance` for reasons
@@ -187,7 +241,21 @@ struct SwiftType {
     }
 }
 
-extension SwiftType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral {
+protocol SwiftTypeUtils {
+    var name: String { get }
+}
+
+extension SwiftTypeUtils {
+    var isIntegerType: Bool {
+        name.re_isMatch(#"^U?Int\d*$"#) || name.re_isMatch(#"^C(?:Unsigned)?(?:Short|Int|Long(?:Long)?)$"#)
+    }
+
+    var isArrayType: Bool {
+        name.re_isMatch(#"^\[.*\]$"#)
+    }
+}
+
+extension SwiftType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, SwiftTypeUtils {
     public init(stringLiteral value: String) {
         self.init(value)
     }
@@ -210,6 +278,35 @@ private let swiftTypeDefaultValues: [SwiftType : SwiftExpression] = [
 private let swiftTypesWithoutDefaultValues = Set<SwiftType>([
     "UnsafeRawPointer"
 ])
+
+// MARK: SwiftNativeType
+
+/// The Swift type required to pass a value to a C++ function parameter with some declared `SteamType`.
+struct SwiftNativeType {
+    let name: String
+
+    init(_ name: String) {
+        self.name = name
+    }
+
+    init(_ steamType: SteamType) {
+        self = steamType.swiftNativeType
+    }
+}
+
+extension SwiftNativeType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, Comparable, SwiftTypeUtils {
+    public init(stringLiteral value: String) {
+        self.init(value)
+    }
+
+    public var description: String {
+        name
+    }
+
+    static func < (lhs: SwiftNativeType, rhs: SwiftNativeType) -> Bool {
+        lhs.name < rhs.name
+    }
+}
 
 // MARK: SwiftExpression
 

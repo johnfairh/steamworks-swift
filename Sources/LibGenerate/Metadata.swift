@@ -452,9 +452,18 @@ struct MetadataDB {
     /// Indexed by `struct` -- 'callback structs' first
     let structs: [SteamType : Struct]
 
-    typealias Typedef = SteamJSON.Typedef
+    struct Typedef {
+        let typedef: SteamType
+        let type: SteamType
+
+        init(base: SteamJSON.Typedef) {
+            typedef = SteamType(base.typedef)
+            type = SteamType(base.type)
+        }
+    }
+
     /// Indexed by `typedef`, order from original file
-    let typedefs: [String : Typedef]
+    let typedefs: [SteamType : Typedef]
 
     init(base: SteamJSON, patch: Patch) {
         let ignoredConsts = Set(patch.consts_to_ignore)
@@ -481,11 +490,11 @@ struct MetadataDB {
 
         let ignoredTypedefs = Set(patch.typedefs_to_ignore)
         typedefs = .init(uniqueKeysWithValues: base.typedefs.compactMap {
-            let name = $0.typedef
-            guard !ignoredTypedefs.contains(name) else {
+            guard !ignoredTypedefs.contains($0.typedef) else {
                 return nil
             }
-            return (name, $0)
+            let t = Typedef(base: $0)
+            return (t.typedef, t)
         })
     }
 }
@@ -587,7 +596,7 @@ final class Metadata: CustomStringConvertible {
     }
 
     static func isTypedef(steamType name: String) -> Bool { // XXX
-        shared.flatMap { $0.db.typedefs[name] != nil } ?? false
+        shared.flatMap { $0.db.typedefs[SteamType(name)] != nil } ?? false
     }
 
     /// Look up any overridden type names from the DB
