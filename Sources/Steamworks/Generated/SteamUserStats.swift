@@ -39,7 +39,7 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::DownloadLeaderboardEntries()`, callback
     public func downloadLeaderboardEntries(steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int, completion: @escaping (LeaderboardScoresDownloaded?) -> Void) {
-        let rc = SteamAPI_ISteamUserStats_DownloadLeaderboardEntries(interface, SteamLeaderboard_t(steamLeaderboard), ELeaderboardDataRequest(leaderboardDataRequest), Int32(rangeStart), Int32(rangeEnd))
+        let rc = SteamAPI_ISteamUserStats_DownloadLeaderboardEntries(interface, SteamLeaderboard_t(steamLeaderboard), ELeaderboardDataRequest(leaderboardDataRequest), CInt(rangeStart), CInt(rangeEnd))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -53,7 +53,7 @@ public struct SteamUserStats {
     /// Steamworks `ISteamUserStats::DownloadLeaderboardEntriesForUsers()`, callback
     public func downloadLeaderboardEntriesForUsers(steamLeaderboard: SteamLeaderboard, users: [SteamID], completion: @escaping (LeaderboardScoresDownloaded?) -> Void) {
         var tmpUsers = users.map { CSteamID($0) }
-        let rc = SteamAPI_ISteamUserStats_DownloadLeaderboardEntriesForUsers(interface, SteamLeaderboard_t(steamLeaderboard), &tmpUsers, Int32(users.count))
+        let rc = SteamAPI_ISteamUserStats_DownloadLeaderboardEntriesForUsers(interface, SteamLeaderboard_t(steamLeaderboard), &tmpUsers, CInt(users.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -92,21 +92,21 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::GetAchievement()`
     public func getAchievement(name: String) -> (rc: Bool, achieved: Bool) {
-        var tmpAchieved = Bool()
+        var tmpAchieved = CBool()
         let rc = SteamAPI_ISteamUserStats_GetAchievement(interface, name, &tmpAchieved)
         return (rc: rc, achieved: tmpAchieved)
     }
 
     /// Steamworks `ISteamUserStats::GetAchievementAchievedPercent()`
     public func getAchievementAchievedPercent(name: String) -> (rc: Bool, percent: Float) {
-        var tmpPercent = Float()
+        var tmpPercent = CFloat()
         let rc = SteamAPI_ISteamUserStats_GetAchievementAchievedPercent(interface, name, &tmpPercent)
         return (rc: rc, percent: tmpPercent)
     }
 
     /// Steamworks `ISteamUserStats::GetAchievementAndUnlockTime()`
     public func getAchievementAndUnlockTime(name: String) -> (rc: Bool, achieved: Bool, unlockTime: RTime32) {
-        var tmpAchieved = Bool()
+        var tmpAchieved = CBool()
         var tmpUnlockTime = CSteamworks.RTime32()
         let rc = SteamAPI_ISteamUserStats_GetAchievementAndUnlockTime(interface, name, &tmpAchieved, &tmpUnlockTime)
         if rc {
@@ -133,8 +133,8 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::GetAchievementProgressLimits()`
     public func getAchievementProgressLimitsFloat(name: String) -> (rc: Bool, minProgress: Float, maxProgress: Float) {
-        var tmpMinProgress = Float()
-        var tmpMaxProgress = Float()
+        var tmpMinProgress = CFloat()
+        var tmpMaxProgress = CFloat()
         let rc = SteamAPI_ISteamUserStats_GetAchievementProgressLimitsFloat(interface, name, &tmpMinProgress, &tmpMaxProgress)
         return (rc: rc, minProgress: tmpMinProgress, maxProgress: tmpMaxProgress)
     }
@@ -155,7 +155,7 @@ public struct SteamUserStats {
     public func getDownloadedLeaderboardEntry(steamLeaderboardEntries: SteamLeaderboardEntries, index: Int, detailsMax: Int) -> (rc: Bool, leaderboardEntry: LeaderboardEntry, details: [Int]) {
         var tmpLeaderboardEntry = LeaderboardEntry_t()
         let tmpDetails = SteamOutArray<int32>(detailsMax)
-        let rc = SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry(interface, SteamLeaderboardEntries_t(steamLeaderboardEntries), Int32(index), &tmpLeaderboardEntry, tmpDetails.steamArray, Int32(detailsMax))
+        let rc = SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry(interface, SteamLeaderboardEntries_t(steamLeaderboardEntries), CInt(index), &tmpLeaderboardEntry, tmpDetails.steamArray, CInt(detailsMax))
         if rc {
             return (rc: rc, leaderboardEntry: LeaderboardEntry(tmpLeaderboardEntry), details: tmpDetails.swiftArray())
         } else {
@@ -165,7 +165,7 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::GetGlobalStat()`
     public func getGlobalStatDouble(statName: String) -> (rc: Bool, data: Double) {
-        var tmpData = Double()
+        var tmpData = CDouble()
         let rc = SteamAPI_ISteamUserStats_GetGlobalStatDouble(interface, statName, &tmpData)
         return (rc: rc, data: tmpData)
     }
@@ -218,8 +218,8 @@ public struct SteamUserStats {
     /// Steamworks `ISteamUserStats::GetMostAchievedAchievementInfo()`
     public func getMostAchievedAchievementInfo(nameBufLen: Int) -> (rc: Int, name: String, percent: Float, achieved: Bool) {
         let tmpName = SteamString(length: nameBufLen)
-        var tmpPercent = Float()
-        var tmpAchieved = Bool()
+        var tmpPercent = CFloat()
+        var tmpAchieved = CBool()
         let rc = Int(SteamAPI_ISteamUserStats_GetMostAchievedAchievementInfo(interface, tmpName.charBuffer, uint32(nameBufLen), &tmpPercent, &tmpAchieved))
         return (rc: rc, name: tmpName.swiftString, percent: tmpPercent, achieved: tmpAchieved)
     }
@@ -227,9 +227,9 @@ public struct SteamUserStats {
     /// Steamworks `ISteamUserStats::GetNextMostAchievedAchievementInfo()`
     public func getNextMostAchievedAchievementInfo(iteratorPreviousIndex: Int, nameBufLen: Int) -> (rc: Int, name: String, percent: Float, achieved: Bool) {
         let tmpName = SteamString(length: nameBufLen)
-        var tmpPercent = Float()
-        var tmpAchieved = Bool()
-        let rc = Int(SteamAPI_ISteamUserStats_GetNextMostAchievedAchievementInfo(interface, Int32(iteratorPreviousIndex), tmpName.charBuffer, uint32(nameBufLen), &tmpPercent, &tmpAchieved))
+        var tmpPercent = CFloat()
+        var tmpAchieved = CBool()
+        let rc = Int(SteamAPI_ISteamUserStats_GetNextMostAchievedAchievementInfo(interface, CInt(iteratorPreviousIndex), tmpName.charBuffer, uint32(nameBufLen), &tmpPercent, &tmpAchieved))
         return (rc: rc, name: tmpName.swiftString, percent: tmpPercent, achieved: tmpAchieved)
     }
 
@@ -253,7 +253,7 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::GetStat()`
     public func getStatFloat(name: String) -> (rc: Bool, data: Float) {
-        var tmpData = Float()
+        var tmpData = CFloat()
         let rc = SteamAPI_ISteamUserStats_GetStatFloat(interface, name, &tmpData)
         return (rc: rc, data: tmpData)
     }
@@ -271,14 +271,14 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::GetUserAchievement()`
     public func getUserAchievement(user: SteamID, name: String) -> (rc: Bool, achieved: Bool) {
-        var tmpAchieved = Bool()
+        var tmpAchieved = CBool()
         let rc = SteamAPI_ISteamUserStats_GetUserAchievement(interface, UInt64(user), name, &tmpAchieved)
         return (rc: rc, achieved: tmpAchieved)
     }
 
     /// Steamworks `ISteamUserStats::GetUserAchievementAndUnlockTime()`
     public func getUserAchievementAndUnlockTime(user: SteamID, name: String) -> (rc: Bool, achieved: Bool, unlockTime: RTime32) {
-        var tmpAchieved = Bool()
+        var tmpAchieved = CBool()
         var tmpUnlockTime = CSteamworks.RTime32()
         let rc = SteamAPI_ISteamUserStats_GetUserAchievementAndUnlockTime(interface, UInt64(user), name, &tmpAchieved, &tmpUnlockTime)
         if rc {
@@ -290,7 +290,7 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::GetUserStat()`
     public func getUserStatFloat(user: SteamID, name: String) -> (rc: Bool, data: Float) {
-        var tmpData = Float()
+        var tmpData = CFloat()
         let rc = SteamAPI_ISteamUserStats_GetUserStatFloat(interface, UInt64(user), name, &tmpData)
         return (rc: rc, data: tmpData)
     }
@@ -331,7 +331,7 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::RequestGlobalStats()`, callback
     public func requestGlobalStats(historyDays: Int, completion: @escaping (GlobalStatsReceived?) -> Void) {
-        let rc = SteamAPI_ISteamUserStats_RequestGlobalStats(interface, Int32(historyDays))
+        let rc = SteamAPI_ISteamUserStats_RequestGlobalStats(interface, CInt(historyDays))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -388,7 +388,7 @@ public struct SteamUserStats {
     /// Steamworks `ISteamUserStats::UploadLeaderboardScore()`, callback
     public func uploadLeaderboardScore(steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int], completion: @escaping (LeaderboardScoreUploaded?) -> Void) {
         var tmpScoreDetails = scoreDetails.map { int32($0) }
-        let rc = SteamAPI_ISteamUserStats_UploadLeaderboardScore(interface, SteamLeaderboard_t(steamLeaderboard), ELeaderboardUploadScoreMethod(leaderboardUploadScoreMethod), int32(score), &tmpScoreDetails, Int32(scoreDetails.count))
+        let rc = SteamAPI_ISteamUserStats_UploadLeaderboardScore(interface, SteamLeaderboard_t(steamLeaderboard), ELeaderboardUploadScoreMethod(leaderboardUploadScoreMethod), int32(score), &tmpScoreDetails, CInt(scoreDetails.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 

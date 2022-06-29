@@ -43,7 +43,7 @@ public struct SteamVideo {
 
     /// Steamworks `ISteamVideo::IsBroadcasting()`
     public func isBroadcasting() -> (rc: Bool, numViewers: Int) {
-        var tmpNumViewers = Int32()
+        var tmpNumViewers = CInt()
         let rc = SteamAPI_ISteamVideo_IsBroadcasting(interface, &tmpNumViewers)
         return (rc: rc, numViewers: Int(tmpNumViewers))
     }

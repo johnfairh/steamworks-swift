@@ -73,14 +73,14 @@ public struct SteamParties {
         var tmpBeaconOwner = CSteamID()
         var tmpLocation = SteamPartyBeaconLocation_t()
         let tmpMetadata = SteamString(length: metadataSize)
-        let rc = SteamAPI_ISteamParties_GetBeaconDetails(interface, PartyBeaconID_t(beaconID), &tmpBeaconOwner, &tmpLocation, tmpMetadata.charBuffer, Int32(metadataSize))
+        let rc = SteamAPI_ISteamParties_GetBeaconDetails(interface, PartyBeaconID_t(beaconID), &tmpBeaconOwner, &tmpLocation, tmpMetadata.charBuffer, CInt(metadataSize))
         return (rc: rc, beaconOwner: SteamID(tmpBeaconOwner), location: SteamPartyBeaconLocation(tmpLocation), metadata: tmpMetadata.swiftString)
     }
 
     /// Steamworks `ISteamParties::GetBeaconLocationData()`
     public func getBeaconLocationData(beaconLocation: SteamPartyBeaconLocation, data: SteamPartyBeaconLocationData, dataStringOutSize: Int) -> (rc: Bool, dataString: String) {
         let tmpDataString = SteamString(length: dataStringOutSize)
-        let rc = SteamAPI_ISteamParties_GetBeaconLocationData(interface, SteamPartyBeaconLocation_t(beaconLocation), ESteamPartyBeaconLocationData(data), tmpDataString.charBuffer, Int32(dataStringOutSize))
+        let rc = SteamAPI_ISteamParties_GetBeaconLocationData(interface, SteamPartyBeaconLocation_t(beaconLocation), ESteamPartyBeaconLocationData(data), tmpDataString.charBuffer, CInt(dataStringOutSize))
         return (rc: rc, dataString: tmpDataString.swiftString)
     }
 

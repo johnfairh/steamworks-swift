@@ -248,7 +248,7 @@ public struct SteamRemoteStorage {
     /// Steamworks `ISteamRemoteStorage::GetFileNameAndSize()`
     public func getFileNameAndSize(fileIndex: Int) -> (rc: String, fileSizeInBytes: Int) {
         var tmpFileSizeInBytes = int32()
-        let rc = String(SteamAPI_ISteamRemoteStorage_GetFileNameAndSize(interface, Int32(fileIndex), &tmpFileSizeInBytes))
+        let rc = String(SteamAPI_ISteamRemoteStorage_GetFileNameAndSize(interface, CInt(fileIndex), &tmpFileSizeInBytes))
         return (rc: rc, fileSizeInBytes: Int(tmpFileSizeInBytes))
     }
 
@@ -266,7 +266,7 @@ public struct SteamRemoteStorage {
     public func getLocalFileChange(fileIndex: Int) -> (rc: String, eChangeType: RemoteStorageLocalFileChangeType, eFilePathType: RemoteStorageFilePathType) {
         var tmpEChangeType = ERemoteStorageLocalFileChange(rawValue: 0)
         var tmpEFilePathType = ERemoteStorageFilePathType(rawValue: 0)
-        let rc = String(SteamAPI_ISteamRemoteStorage_GetLocalFileChange(interface, Int32(fileIndex), &tmpEChangeType, &tmpEFilePathType))
+        let rc = String(SteamAPI_ISteamRemoteStorage_GetLocalFileChange(interface, CInt(fileIndex), &tmpEChangeType, &tmpEFilePathType))
         return (rc: rc, eChangeType: RemoteStorageLocalFileChangeType(tmpEChangeType), eFilePathType: RemoteStorageFilePathType(tmpEFilePathType))
     }
 

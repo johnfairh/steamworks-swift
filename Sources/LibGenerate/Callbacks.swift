@@ -38,7 +38,7 @@ struct Callbacks {
         // And so generate callback APIs for structs that are either explicitly
         // identified as such or are _not_ identified for callresult.
         return Array(metadata.db.structs.values.filter { strct in
-            strct.callbackID != nil && !callResults.contains(strct.name)
+            strct.callbackID != nil && !callResults.contains(strct.name.name) // XXX
         })
     }
 
@@ -63,21 +63,21 @@ struct Callbacks {
 
 extension MetadataDB.Struct {
     var callbackSyncLines: String {
-        let swiftTypeName = name.asSwiftTypeName
+        let swiftType = name.swiftType
         return """
                    /// Registration for Steamworks `\(name)` callback
-                   func on\(swiftTypeName)(_ client: @escaping (\(swiftTypeName)) -> Void) {
+                   func on\(swiftType)(_ client: @escaping (\(swiftType)) -> Void) {
                        callbacks.add(callbackID: CallbackID(\(callbackID!)), rawClient: SteamBaseAPI.makeRaw(client))
                    }
                """
     }
 
     var callbackAsyncLines: String {
-        let swiftTypeName = name.asSwiftTypeName
+        let swiftType = name.swiftType
         return """
                    /// Async stream of Steamworks `\(name)` callbacks
-                   var \(swiftTypeName.asSwiftIdentifier): AsyncStream<\(swiftTypeName)> {
-                       AsyncStream { on\(swiftTypeName)($0.yield0) }
+                   var \(swiftType.name.asSwiftIdentifier/*XXX*/): AsyncStream<\(swiftType)> {
+                       AsyncStream { on\(swiftType)($0.yield0) }
                    }
                """
     }

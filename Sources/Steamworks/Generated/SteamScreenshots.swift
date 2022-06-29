@@ -21,7 +21,7 @@ public struct SteamScreenshots {
 
     /// Steamworks `ISteamScreenshots::AddScreenshotToLibrary()`
     public func addScreenshotToLibrary(filename: String, thumbnailFilename: String?, width: Int, height: Int) -> ScreenshotHandle {
-        ScreenshotHandle(SteamAPI_ISteamScreenshots_AddScreenshotToLibrary(interface, filename, thumbnailFilename, Int32(width), Int32(height)))
+        ScreenshotHandle(SteamAPI_ISteamScreenshots_AddScreenshotToLibrary(interface, filename, thumbnailFilename, CInt(width), CInt(height)))
     }
 
     /// Steamworks `ISteamScreenshots::AddVRScreenshotToLibrary()`
@@ -61,6 +61,6 @@ public struct SteamScreenshots {
 
     /// Steamworks `ISteamScreenshots::WriteScreenshot()`
     public func writeScreenshot(rgb: UnsafeMutableRawPointer, rgbSize: Int, width: Int, height: Int) -> ScreenshotHandle {
-        ScreenshotHandle(SteamAPI_ISteamScreenshots_WriteScreenshot(interface, rgb, uint32(rgbSize), Int32(width), Int32(height)))
+        ScreenshotHandle(SteamAPI_ISteamScreenshots_WriteScreenshot(interface, rgb, uint32(rgbSize), CInt(width), CInt(height)))
     }
 }

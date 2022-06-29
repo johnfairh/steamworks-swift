@@ -56,29 +56,29 @@ public struct SteamGameSearch {
 
     /// Steamworks `ISteamGameSearch::RequestPlayersForGame()`
     public func requestPlayersForGame(playerMin: Int, playerMax: Int, maxTeamSize: Int) -> GameSearchErrorCode {
-        GameSearchErrorCode(SteamAPI_ISteamGameSearch_RequestPlayersForGame(interface, Int32(playerMin), Int32(playerMax), Int32(maxTeamSize)))
+        GameSearchErrorCode(SteamAPI_ISteamGameSearch_RequestPlayersForGame(interface, CInt(playerMin), CInt(playerMax), CInt(maxTeamSize)))
     }
 
     /// Steamworks `ISteamGameSearch::RetrieveConnectionDetails()`
     public func retrieveConnectionDetails(host: SteamID, connectionDetailsSize: Int) -> (rc: GameSearchErrorCode, connectionDetails: String) {
         let tmpConnectionDetails = SteamString(length: connectionDetailsSize)
-        let rc = GameSearchErrorCode(SteamAPI_ISteamGameSearch_RetrieveConnectionDetails(interface, UInt64(host), tmpConnectionDetails.charBuffer, Int32(connectionDetailsSize)))
+        let rc = GameSearchErrorCode(SteamAPI_ISteamGameSearch_RetrieveConnectionDetails(interface, UInt64(host), tmpConnectionDetails.charBuffer, CInt(connectionDetailsSize)))
         return (rc: rc, connectionDetails: tmpConnectionDetails.swiftString)
     }
 
     /// Steamworks `ISteamGameSearch::SearchForGameSolo()`
     public func searchForGameSolo(playerMin: Int, playerMax: Int) -> GameSearchErrorCode {
-        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SearchForGameSolo(interface, Int32(playerMin), Int32(playerMax)))
+        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SearchForGameSolo(interface, CInt(playerMin), CInt(playerMax)))
     }
 
     /// Steamworks `ISteamGameSearch::SearchForGameWithLobby()`
     public func searchForGameWithLobby(lobby: SteamID, playerMin: Int, playerMax: Int) -> GameSearchErrorCode {
-        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SearchForGameWithLobby(interface, UInt64(lobby), Int32(playerMin), Int32(playerMax)))
+        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SearchForGameWithLobby(interface, UInt64(lobby), CInt(playerMin), CInt(playerMax)))
     }
 
     /// Steamworks `ISteamGameSearch::SetConnectionDetails()`
     public func setConnectionDetails(connectionDetails: String, connectionDetailsSize: Int) -> GameSearchErrorCode {
-        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SetConnectionDetails(interface, connectionDetails, Int32(connectionDetailsSize)))
+        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SetConnectionDetails(interface, connectionDetails, CInt(connectionDetailsSize)))
     }
 
     /// Steamworks `ISteamGameSearch::SetGameHostParams()`

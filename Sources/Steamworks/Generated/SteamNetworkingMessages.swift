@@ -30,7 +30,7 @@ public struct SteamNetworkingMessages {
     /// Steamworks `ISteamNetworkingMessages::CloseChannelWithUser()`
     @discardableResult
     public func closeChannelWithUser(identityRemote: SteamNetworkingIdentity, localChannel: Int) -> Bool {
-        SteamAPI_ISteamNetworkingMessages_CloseChannelWithUser(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), Int32(localChannel))
+        SteamAPI_ISteamNetworkingMessages_CloseChannelWithUser(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), CInt(localChannel))
     }
 
     /// Steamworks `ISteamNetworkingMessages::CloseSessionWithUser()`
@@ -54,12 +54,12 @@ public struct SteamNetworkingMessages {
     /// Steamworks `ISteamNetworkingMessages::ReceiveMessagesOnChannel()`
     public func receiveMessagesOnChannel(localChannel: Int, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
         let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
-        let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, Int32(localChannel), tmpMessages.steamArray, Int32(maxMessages)))
+        let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, CInt(localChannel), tmpMessages.steamArray, CInt(maxMessages)))
         return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamNetworkingMessages::SendMessageToUser()`
     public func sendMessageToUser(identityRemote: SteamNetworkingIdentity, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags, remoteChannel: Int) -> Result {
-        Result(SteamAPI_ISteamNetworkingMessages_SendMessageToUser(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), data, uint32(dataSize), Int32(sendFlags), Int32(remoteChannel)))
+        Result(SteamAPI_ISteamNetworkingMessages_SendMessageToUser(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), data, uint32(dataSize), Int32(sendFlags), CInt(remoteChannel)))
     }
 }

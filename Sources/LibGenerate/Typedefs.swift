@@ -38,11 +38,11 @@ struct Typedefs {
 /// is in terms of these typealiases.
 private extension String {
     static let cToSwiftTypeMap: [String : String] = [
-        "unsigned int" : "UInt32",
-        "unsigned long long" : "UInt64",
-        "long long": "Int64",
-        "int" : "Int32",
-        "short": "Int16",
+        "unsigned int" : "CUnsignedInt",
+        "unsigned long long" : "CUnsignedLongLong",
+        "long long": "CLongLong",
+        "int" : "CInt",
+        "short": "CShort",
         "void *": "UnsafeMutableRawPointer", // living on the edge isteammatchmaking
         "char [1024]": "String", // guess, networking stuff is wild
     ]

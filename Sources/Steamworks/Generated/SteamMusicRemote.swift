@@ -133,12 +133,12 @@ public struct SteamMusicRemote {
 
     /// Steamworks `ISteamMusicRemote::SetCurrentPlaylistEntry()`
     public func setCurrentPlaylistEntry(id: Int) -> Bool {
-        SteamAPI_ISteamMusicRemote_SetCurrentPlaylistEntry(interface, Int32(id))
+        SteamAPI_ISteamMusicRemote_SetCurrentPlaylistEntry(interface, CInt(id))
     }
 
     /// Steamworks `ISteamMusicRemote::SetCurrentQueueEntry()`
     public func setCurrentQueueEntry(id: Int) -> Bool {
-        SteamAPI_ISteamMusicRemote_SetCurrentQueueEntry(interface, Int32(id))
+        SteamAPI_ISteamMusicRemote_SetCurrentQueueEntry(interface, CInt(id))
     }
 
     /// Steamworks `ISteamMusicRemote::SetDisplayName()`
@@ -153,12 +153,12 @@ public struct SteamMusicRemote {
 
     /// Steamworks `ISteamMusicRemote::SetPlaylistEntry()`
     public func setPlaylistEntry(id: Int, position: Int, entryText: String) -> Bool {
-        SteamAPI_ISteamMusicRemote_SetPlaylistEntry(interface, Int32(id), Int32(position), entryText)
+        SteamAPI_ISteamMusicRemote_SetPlaylistEntry(interface, CInt(id), CInt(position), entryText)
     }
 
     /// Steamworks `ISteamMusicRemote::SetQueueEntry()`
     public func setQueueEntry(id: Int, position: Int, entryText: String) -> Bool {
-        SteamAPI_ISteamMusicRemote_SetQueueEntry(interface, Int32(id), Int32(position), entryText)
+        SteamAPI_ISteamMusicRemote_SetQueueEntry(interface, CInt(id), CInt(position), entryText)
     }
 
     /// Steamworks `ISteamMusicRemote::UpdateCurrentEntryCoverArt()`
@@ -170,7 +170,7 @@ public struct SteamMusicRemote {
     /// Steamworks `ISteamMusicRemote::UpdateCurrentEntryElapsedSeconds()`
     @discardableResult
     public func updateCurrentEntryElapsedSeconds(value: Int) -> Bool {
-        SteamAPI_ISteamMusicRemote_UpdateCurrentEntryElapsedSeconds(interface, Int32(value))
+        SteamAPI_ISteamMusicRemote_UpdateCurrentEntryElapsedSeconds(interface, CInt(value))
     }
 
     /// Steamworks `ISteamMusicRemote::UpdateCurrentEntryText()`

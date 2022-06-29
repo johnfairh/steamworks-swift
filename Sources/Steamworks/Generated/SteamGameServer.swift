@@ -49,7 +49,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::BeginAuthSession()`
     public func beginAuthSession(authTicket: UnsafeRawPointer, authTicketSize: Int, steamID: SteamID) -> BeginAuthSessionResult {
-        BeginAuthSessionResult(SteamAPI_ISteamGameServer_BeginAuthSession(interface, authTicket, Int32(authTicketSize), UInt64(steamID)))
+        BeginAuthSessionResult(SteamAPI_ISteamGameServer_BeginAuthSession(interface, authTicket, CInt(authTicketSize), UInt64(steamID)))
     }
 
     /// Steamworks `ISteamGameServer::CancelAuthTicket()`
@@ -88,7 +88,7 @@ public struct SteamGameServer {
     /// Steamworks `ISteamGameServer::GetAuthSessionTicket()`
     public func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: HAuthTicket, ticketSize: Int) {
         var tmpTicketSize = uint32()
-        let rc = HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, ticket, Int32(maxTicketSize), &tmpTicketSize))
+        let rc = HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, ticket, CInt(maxTicketSize), &tmpTicketSize))
         return (rc: rc, ticketSize: Int(tmpTicketSize))
     }
 
@@ -101,7 +101,7 @@ public struct SteamGameServer {
     public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: Int) {
         var tmpNetAdr = uint32()
         var tmpPort = uint16()
-        let rc = Int(SteamAPI_ISteamGameServer_GetNextOutgoingPacket(interface, out, Int32(maxOutSize), &tmpNetAdr, &tmpPort))
+        let rc = Int(SteamAPI_ISteamGameServer_GetNextOutgoingPacket(interface, out, CInt(maxOutSize), &tmpNetAdr, &tmpPort))
         return (rc: rc, netAdr: Int(tmpNetAdr), port: Int(tmpPort))
     }
 
@@ -130,7 +130,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::HandleIncomingPacket()`
     public func handleIncomingPacket(data: UnsafeRawPointer, dataSize: Int, srcIP: Int, srcPort: Int) -> Bool {
-        SteamAPI_ISteamGameServer_HandleIncomingPacket(interface, data, Int32(dataSize), uint32(srcIP), uint16(srcPort))
+        SteamAPI_ISteamGameServer_HandleIncomingPacket(interface, data, CInt(dataSize), uint32(srcIP), uint16(srcPort))
     }
 
     /// Steamworks `ISteamGameServer::LogOff()`
@@ -172,7 +172,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::SetBotPlayerCount()`
     public func setBotPlayerCount(botplayers: Int) {
-        SteamAPI_ISteamGameServer_SetBotPlayerCount(interface, Int32(botplayers))
+        SteamAPI_ISteamGameServer_SetBotPlayerCount(interface, CInt(botplayers))
     }
 
     /// Steamworks `ISteamGameServer::SetDedicatedServer()`
@@ -207,7 +207,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::SetMaxPlayerCount()`
     public func setMaxPlayerCount(playersMax: Int) {
-        SteamAPI_ISteamGameServer_SetMaxPlayerCount(interface, Int32(playersMax))
+        SteamAPI_ISteamGameServer_SetMaxPlayerCount(interface, CInt(playersMax))
     }
 
     /// Steamworks `ISteamGameServer::SetModDir()`

@@ -28,13 +28,13 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::BeginAsyncRequestFakeIP()`
     public func beginAsyncRequestFakeIP(numPorts: Int) -> Bool {
-        SteamAPI_ISteamNetworkingSockets_BeginAsyncRequestFakeIP(interface, Int32(numPorts))
+        SteamAPI_ISteamNetworkingSockets_BeginAsyncRequestFakeIP(interface, CInt(numPorts))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CloseConnection()`
     @discardableResult
     public func closeConnection(peer: HSteamNetConnection, reason: Int, debug: String, enableLinger: Bool) -> Bool {
-        SteamAPI_ISteamNetworkingSockets_CloseConnection(interface, CSteamworks.HSteamNetConnection(peer), Int32(reason), debug, enableLinger)
+        SteamAPI_ISteamNetworkingSockets_CloseConnection(interface, CSteamworks.HSteamNetConnection(peer), CInt(reason), debug, enableLinger)
     }
 
     /// Steamworks `ISteamNetworkingSockets::CloseListenSocket()`
@@ -45,56 +45,56 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::ConfigureConnectionLanes()`
     public func configureConnectionLanes(conn: HSteamNetConnection, lanePriorities: [Int], laneWeights: [Int]) -> Result {
-        var tmpLanePriorities = lanePriorities.map { Int32($0) }
+        var tmpLanePriorities = lanePriorities.map { CInt($0) }
         var tmpLaneWeights = laneWeights.map { uint16($0) }
-        return Result(SteamAPI_ISteamNetworkingSockets_ConfigureConnectionLanes(interface, CSteamworks.HSteamNetConnection(conn), Int32(laneWeights.count), &tmpLanePriorities, &tmpLaneWeights))
+        return Result(SteamAPI_ISteamNetworkingSockets_ConfigureConnectionLanes(interface, CSteamworks.HSteamNetConnection(conn), CInt(laneWeights.count), &tmpLanePriorities, &tmpLaneWeights))
     }
 
     /// Steamworks `ISteamNetworkingSockets::ConnectByIPAddress()`
     public func connectByIPAddress(address: SteamNetworkingIPAddr, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
         var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress(interface, CSteamworks.SteamNetworkingIPAddr(address), Int32(options.count), &tmpOptions))
+        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress(interface, CSteamworks.SteamNetworkingIPAddr(address), CInt(options.count), &tmpOptions))
     }
 
     /// Steamworks `ISteamNetworkingSockets::ConnectP2P()`
     public func connectP2P(identityRemote: SteamNetworkingIdentity, remoteVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
         var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectP2P(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), Int32(remoteVirtualPort), Int32(options.count), &tmpOptions))
+        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectP2P(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), CInt(remoteVirtualPort), CInt(options.count), &tmpOptions))
     }
 
     /// Steamworks `ISteamNetworkingSockets::ConnectToHostedDedicatedServer()`
     public func connectToHostedDedicatedServer(identityTarget: SteamNetworkingIdentity, remoteVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
         var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectToHostedDedicatedServer(interface, CSteamworks.SteamNetworkingIdentity(identityTarget), Int32(remoteVirtualPort), Int32(options.count), &tmpOptions))
+        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectToHostedDedicatedServer(interface, CSteamworks.SteamNetworkingIdentity(identityTarget), CInt(remoteVirtualPort), CInt(options.count), &tmpOptions))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateFakeUDPPort()`
     public func createFakeUDPPort(fakeServerPort: Int) -> SteamNetworkingFakeUDPPort {
-        SteamNetworkingFakeUDPPort(SteamAPI_ISteamNetworkingSockets_CreateFakeUDPPort(interface, Int32(fakeServerPort)))
+        SteamNetworkingFakeUDPPort(SteamAPI_ISteamNetworkingSockets_CreateFakeUDPPort(interface, CInt(fakeServerPort)))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateHostedDedicatedServerListenSocket()`
     public func createHostedDedicatedServerListenSocket(localVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
         var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateHostedDedicatedServerListenSocket(interface, Int32(localVirtualPort), Int32(options.count), &tmpOptions))
+        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateHostedDedicatedServerListenSocket(interface, CInt(localVirtualPort), CInt(options.count), &tmpOptions))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateListenSocketIP()`
     public func createListenSocketIP(address: SteamNetworkingIPAddr, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
         var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketIP(interface, CSteamworks.SteamNetworkingIPAddr(address), Int32(options.count), &tmpOptions))
+        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketIP(interface, CSteamworks.SteamNetworkingIPAddr(address), CInt(options.count), &tmpOptions))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateListenSocketP2P()`
     public func createListenSocketP2P(localVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
         var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2P(interface, Int32(localVirtualPort), Int32(options.count), &tmpOptions))
+        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2P(interface, CInt(localVirtualPort), CInt(options.count), &tmpOptions))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateListenSocketP2PFakeIP()`
     public func createListenSocketP2PFakeIP(fakePort: Int, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
         var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2PFakeIP(interface, Int32(fakePort), Int32(options.count), &tmpOptions))
+        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2PFakeIP(interface, CInt(fakePort), CInt(options.count), &tmpOptions))
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreatePollGroup()`
@@ -136,7 +136,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
     public func getCertificateRequest(blobSize: Int, blob: UnsafeMutableRawPointer?) -> (rc: Bool, blobSize: Int, msg: String) {
-        var tmpBlobSize = Int32(blobSize)
+        var tmpBlobSize = CInt(blobSize)
         let tmpMsg = SteamString(length: Int(1024))
         let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, blob, tmpMsg.charBuffer)
         return (rc: rc, blobSize: Int(tmpBlobSize), msg: tmpMsg.swiftString)
@@ -156,7 +156,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::GetConnectionName()`
     public func getConnectionName(peer: HSteamNetConnection, maxLen: Int) -> (rc: Bool, name: String) {
         let tmpName = SteamString(length: maxLen)
-        let rc = SteamAPI_ISteamNetworkingSockets_GetConnectionName(interface, CSteamworks.HSteamNetConnection(peer), tmpName.charBuffer, Int32(maxLen))
+        let rc = SteamAPI_ISteamNetworkingSockets_GetConnectionName(interface, CSteamworks.HSteamNetConnection(peer), tmpName.charBuffer, CInt(maxLen))
         if rc {
             return (rc: rc, name: tmpName.swiftString)
         } else {
@@ -169,7 +169,7 @@ public struct SteamNetworkingSockets {
         let tmpStatus = SteamNullable<SteamNetConnectionRealTimeStatus_t>(isReal: returnStatus)
         defer { tmpStatus.deallocate() }
         let tmpLaneStatus = SteamOutArray<SteamNetConnectionRealTimeLaneStatus_t>(laneCount, returnLaneStatus)
-        let rc = Result(SteamAPI_ISteamNetworkingSockets_GetConnectionRealTimeStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpStatus.steamValue, Int32(laneCount), tmpLaneStatus.steamArray))
+        let rc = Result(SteamAPI_ISteamNetworkingSockets_GetConnectionRealTimeStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpStatus.steamValue, CInt(laneCount), tmpLaneStatus.steamArray))
         if rc == .ok {
             return (rc: rc, status: tmpStatus.swiftValue(dummy: SteamNetConnectionRealTimeStatus()), laneStatus: tmpLaneStatus.swiftArray())
         } else {
@@ -185,7 +185,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::GetDetailedConnectionStatus()`
     public func getDetailedConnectionStatus(conn: HSteamNetConnection, bufSize: Int) -> (rc: Int, buf: String) {
         let tmpBuf = SteamString(length: bufSize)
-        let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpBuf.charBuffer, Int32(bufSize)))
+        let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpBuf.charBuffer, CInt(bufSize)))
         if rc == 0 {
             return (rc: rc, buf: tmpBuf.swiftString)
         } else {
@@ -196,7 +196,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::GetFakeIP()`
     public func getFakeIP(firstPort: Int) -> SteamNetworkingFakeIPResult {
         var tmpInfo = SteamNetworkingFakeIPResult_t()
-        SteamAPI_ISteamNetworkingSockets_GetFakeIP(interface, Int32(firstPort), &tmpInfo)
+        SteamAPI_ISteamNetworkingSockets_GetFakeIP(interface, CInt(firstPort), &tmpInfo)
         return SteamNetworkingFakeIPResult(tmpInfo)
     }
 
@@ -252,7 +252,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::ReceiveMessagesOnConnection()`
     public func receiveMessagesOnConnection(conn: HSteamNetConnection, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
         let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
-        let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection(interface, CSteamworks.HSteamNetConnection(conn), tmpMessages.steamArray, Int32(maxMessages)))
+        let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection(interface, CSteamworks.HSteamNetConnection(conn), tmpMessages.steamArray, CInt(maxMessages)))
         if rc >= 0 {
             return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
         } else {
@@ -263,7 +263,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::ReceiveMessagesOnPollGroup()`
     public func receiveMessagesOnPollGroup(pollGroup: HSteamNetPollGroup, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
         let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
-        let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup(interface, CSteamworks.HSteamNetPollGroup(pollGroup), tmpMessages.steamArray, Int32(maxMessages)))
+        let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup(interface, CSteamworks.HSteamNetPollGroup(pollGroup), tmpMessages.steamArray, CInt(maxMessages)))
         if rc >= 0 {
             return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
         } else {
@@ -294,14 +294,14 @@ public struct SteamNetworkingSockets {
     public func sendMessages(messages: [SteamNetworkingMessage]) -> [Int] {
         var tmpMessages = messages.map { OpaquePointer?($0) }
         let tmpMessageNumberOrResult = SteamOutArray<int64>(messages.count)
-        SteamAPI_ISteamNetworkingSockets_SendMessages(interface, Int32(messages.count), &tmpMessages, tmpMessageNumberOrResult.steamArray)
+        SteamAPI_ISteamNetworkingSockets_SendMessages(interface, CInt(messages.count), &tmpMessages, tmpMessageNumberOrResult.steamArray)
         return tmpMessageNumberOrResult.swiftArray()
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`
     public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int) -> (rc: Bool, msg: String) {
         let tmpMsg = SteamString(length: Int(1024))
-        let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, Int32(certificateSize), tmpMsg.charBuffer)
+        let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, CInt(certificateSize), tmpMsg.charBuffer)
         return (rc: rc, msg: tmpMsg.swiftString)
     }
 

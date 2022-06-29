@@ -55,7 +55,7 @@ extension MetadataDB.Struct.Field {
 
     /// Contribution to the C header file to define a method on the C++ structure that returns
     /// a pointer to an array structure element instead of a tuple.
-    func getArrayGetterLines(structName: String) -> String? {
+    func getArrayGetterLines(structName: SteamType) -> String? {
         guard let (elemType, arrayLen) = type.parseArray else {
             return nil
         }
@@ -78,7 +78,7 @@ extension MetadataDB.Struct.Field {
                """
     }
 
-    func getArraySetterLines(structName: String) -> String? {
+    func getArraySetterLines(structName: SteamType) -> String? {
         guard let (elemType, arrayLen) = type.parseArray else {
             return nil
         }
@@ -158,11 +158,11 @@ extension Array where Element == MetadataDB.Struct.Field {
         filter(\.shouldGenerate).map(\.memberwiseParameter).joined(separator: ", ")
     }
 
-    func getArrayGetterLines(structName: String) -> [String] {
+    func getArrayGetterLines(structName: SteamType) -> [String] {
         filter(\.shouldGenerate).compactMap { $0.getArrayGetterLines(structName: structName) }
     }
 
-    func getArraySetterLines(structName: String) -> [String] {
+    func getArraySetterLines(structName: SteamType) -> [String] {
         filter(\.shouldGenerate).compactMap { $0.getArraySetterLines(structName: structName) }
     }
 }
@@ -187,7 +187,7 @@ extension MetadataDB.Struct {
         return [
             "",
             "extension CSteamworks.\(name) : SwiftCreatable {",
-            "    init(_ swift: \(name.asSwiftTypeName)) {",
+            "    init(_ swift: \(name.swiftType)) {",
             "        self.init()"
         ] + fields.initSteamFromSwiftLines.indented(2) + [
             "    }",
@@ -197,7 +197,7 @@ extension MetadataDB.Struct {
 
     var memberwiseInitializer: [String] {
         [
-            "/// Create a customized `\(name.asSwiftTypeName)`",
+            "/// Create a customized `\(name.swiftType)`",
             "public init(\(fields.memberwiseParameters)) {"
         ] +
         fields.initFromMemberwiseLines.indented(1) +
@@ -208,10 +208,10 @@ extension MetadataDB.Struct {
     // Not going to conform these to any protocols.  Should review as we go,
     // some will be PODs that make sense to be Equatable/etc, do via patch.
     var generateSwift: String {
-        let swiftTypeName = name.asSwiftTypeName
+        let swiftType = name.swiftType
         let lines = [[
             "/// Steamworks `\(name)`",
-            "public struct \(swiftTypeName) {"
+            "public struct \(swiftType) {"
         ],
         fields.declLines.indented(1),
         fields.isEmpty ? [] : [
@@ -220,7 +220,7 @@ extension MetadataDB.Struct {
         memberwiseInitializer.indented(1), [
             "}",
             "",
-            "extension \(swiftTypeName): SteamCreatable {",
+            "extension \(swiftType): SteamCreatable {",
             "    typealias SteamType = CSteamworks.\(name)",
             "    init(_ steam: CSteamworks.\(name)) {"
         ],

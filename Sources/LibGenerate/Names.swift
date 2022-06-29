@@ -200,7 +200,7 @@ extension String {
     }
 
     var isSwiftIntegerType: Bool {
-        re_isMatch(#"^U?Int\d*$"#)
+        re_isMatch(#"^U?Int\d*$"#) || re_isMatch(#"^C(?:Unsigned)?(?:Short|Int|Long|LongLong)$"#)
     }
 
     var isSwiftArrayType: Bool {
@@ -276,15 +276,15 @@ private let steamTypesPassedOutTransparently = Set<String>([
 // Steam types whose Swift type version needs a non-standard
 // cast to pass to a Steamworks function expecting the Steam type.
 private let steamTypesPassedInStrangely: [String : String] = [
-    "int" : "Int32",
-    "bool" : "Bool",
+    "int" : "CInt",
+    "bool" : "CBool",
     "uint64_steamid" : "UInt64",
     "uint64_gameid" : "UInt64",
-    "unsigned short" : "UInt16",
-    "unsigned int" : "UInt32",
-    "char" : "Int8",
-    "float": "Float",
-    "double": "Double",
+    "unsigned short" : "CUnsignedShort",
+    "unsigned int" : "CUnsignedInt",
+    "char" : "CChar",
+    "float": "CFloat",
+    "double": "CDouble",
 
     "SteamNetworkingMessage_t *": "OpaquePointer?" // struct not imported plus weird pointer semantics
 ]

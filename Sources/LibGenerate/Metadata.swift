@@ -424,21 +424,19 @@ struct MetadataDB {
             }
         }
 
-        let name: String // "struct" too annoying
-        let manualSwiftName: String?
+        let name: SteamType // "struct" too annoying
+        let manualSwiftName: SwiftType?
         let fields: [Field]
         let callbackID: Int?
         let ignore: Bool
         let swiftToSteam: Bool
-        /// Indexed by `name`
-        let enums: [String : Enum]
-        /// Indexed by `methodname_flat` ... `methodname` is not unique...
-        let methods: [String : Method]
+        /// Indexed by `enum.name`
+        let enums: [SteamType : Enum]
 
         init(base: SteamJSON.Struct, patch: Patch) {
             let structPatch = patch.structs[base.struct]
-            name = structPatch?.name ?? base.struct
-            manualSwiftName = structPatch?.manual_swift_name
+            name = SteamType(structPatch?.name ?? base.struct)
+            manualSwiftName = structPatch?.manual_swift_name.map { .init($0) }
             fields = base.fields.map {
                 .init(base: $0, patch: structPatch?.fields?[$0.fieldname])
             }
@@ -447,16 +445,12 @@ struct MetadataDB {
             swiftToSteam = structPatch?.swift_to_steam ?? false
 
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
-                (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
-            })
-
-            methods = .init(uniqueKeysWithValues: (base.methods ?? []).map { baseMethod in
-                (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
+                (SteamType(baseEnum.name), Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
             })
         }
     }
     /// Indexed by `struct` -- 'callback structs' first
-    let structs: [String : Struct]
+    let structs: [SteamType : Struct]
 
     typealias Typedef = SteamJSON.Typedef
     /// Indexed by `typedef`, order from original file
@@ -505,7 +499,7 @@ final class Metadata: CustomStringConvertible {
     let db: MetadataDB
 
     private let nestedEnums: [SteamType : MetadataDB.Enum]
-    private let manualSwiftNames: [String : String]
+    private let manualSwiftNames: [SteamType : SwiftType]
 
     init(io: IO) throws {
         self.io = io
@@ -525,10 +519,10 @@ final class Metadata: CustomStringConvertible {
         }
 
         self.nestedEnums = .init(uniqueKeysWithValues: nestedStructEnums + nestedInterfaceEnums)
-        let eClo: (MetadataDB.Enum) -> (String, String)? = { enu in
-            enu.manualSwiftName.map { (enu.name.name, $0.name) } // XXX
+        let eClo: (MetadataDB.Enum) -> (SteamType, SwiftType)? = { enu in
+            enu.manualSwiftName.map { (enu.name, $0) }
         }
-        let sClo: (MetadataDB.Struct) -> (String, String)? = { str in
+        let sClo: (MetadataDB.Struct) -> (SteamType, SwiftType)? = { str in
             str.manualSwiftName.map { (str.name, $0) }
         }
         self.manualSwiftNames =
@@ -581,7 +575,7 @@ final class Metadata: CustomStringConvertible {
     }
 
     static func isStruct(steamType name: String) -> Bool {
-        shared.flatMap { $0.db.structs[name] != nil } ?? false
+        shared.flatMap { $0.db.structs[SteamType(name)] != nil } ?? false
     }
 
     static func isStruct(steamType: SteamType) -> Bool {
@@ -598,7 +592,7 @@ final class Metadata: CustomStringConvertible {
 
     /// Look up any overridden type names from the DB
     static func steamToSwiftTypeName(_ steam: String) -> String? { // XXX
-        shared.flatMap { $0.manualSwiftNames[steam] }
+        shared.flatMap { $0.manualSwiftNames[SteamType(steam)]?.name }
     }
 
     /// Look up any overridden type names from the DB

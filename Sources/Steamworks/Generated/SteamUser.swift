@@ -61,7 +61,7 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::BeginAuthSession()`
     public func beginAuthSession(authTicket: UnsafeRawPointer, authTicketSize: Int, steamID: SteamID) -> BeginAuthSessionResult {
-        BeginAuthSessionResult(SteamAPI_ISteamUser_BeginAuthSession(interface, authTicket, Int32(authTicketSize), UInt64(steamID)))
+        BeginAuthSessionResult(SteamAPI_ISteamUser_BeginAuthSession(interface, authTicket, CInt(authTicketSize), UInt64(steamID)))
     }
 
     /// Steamworks `ISteamUser::CancelAuthTicket()`
@@ -84,7 +84,7 @@ public struct SteamUser {
     /// Steamworks `ISteamUser::GetAuthSessionTicket()`
     public func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: HAuthTicket, ticketSize: Int) {
         var tmpTicketSize = uint32()
-        let rc = HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, ticket, Int32(maxTicketSize), &tmpTicketSize))
+        let rc = HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, ticket, CInt(maxTicketSize), &tmpTicketSize))
         return (rc: rc, ticketSize: Int(tmpTicketSize))
     }
 
@@ -112,13 +112,13 @@ public struct SteamUser {
     /// Steamworks `ISteamUser::GetEncryptedAppTicket()`
     public func getEncryptedAppTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: Bool, ticketSize: Int) {
         var tmpTicketSize = uint32()
-        let rc = SteamAPI_ISteamUser_GetEncryptedAppTicket(interface, ticket, Int32(maxTicketSize), &tmpTicketSize)
+        let rc = SteamAPI_ISteamUser_GetEncryptedAppTicket(interface, ticket, CInt(maxTicketSize), &tmpTicketSize)
         return (rc: rc, ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamUser::GetGameBadgeLevel()`
     public func getGameBadgeLevel(series: Int, foil: Bool) -> Int {
-        Int(SteamAPI_ISteamUser_GetGameBadgeLevel(interface, Int32(series), foil))
+        Int(SteamAPI_ISteamUser_GetGameBadgeLevel(interface, CInt(series), foil))
     }
 
     /// Steamworks `ISteamUser::GetHSteamUser()`
@@ -152,7 +152,7 @@ public struct SteamUser {
     /// Steamworks `ISteamUser::GetUserDataFolder()`
     public func getUserDataFolder(bufferSize: Int) -> (rc: Bool, buffer: String) {
         let tmpBuffer = SteamString(length: bufferSize)
-        let rc = SteamAPI_ISteamUser_GetUserDataFolder(interface, tmpBuffer.charBuffer, Int32(bufferSize))
+        let rc = SteamAPI_ISteamUser_GetUserDataFolder(interface, tmpBuffer.charBuffer, CInt(bufferSize))
         if rc {
             return (rc: rc, buffer: tmpBuffer.swiftString)
         } else {
@@ -175,12 +175,12 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::InitiateGameConnection_DEPRECATED()`
     public func initiateGameConnectionDEPRECATED(authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: Int, gameServer: SteamID, ipServer: Int, portServer: Int, secure: Bool) -> Int {
-        Int(SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED(interface, authBlob, Int32(maxAuthBlobSize), UInt64(gameServer), uint32(ipServer), uint16(portServer), secure))
+        Int(SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED(interface, authBlob, CInt(maxAuthBlobSize), UInt64(gameServer), uint32(ipServer), uint16(portServer), secure))
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, callback
     public func requestEncryptedAppTicket(dataToInclude: UnsafeMutableRawPointer, dataToIncludeSize: Int, completion: @escaping (EncryptedAppTicketResponse?) -> Void) {
-        let rc = SteamAPI_ISteamUser_RequestEncryptedAppTicket(interface, dataToInclude, Int32(dataToIncludeSize))
+        let rc = SteamAPI_ISteamUser_RequestEncryptedAppTicket(interface, dataToInclude, CInt(dataToIncludeSize))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -221,7 +221,7 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::TrackAppUsageEvent()`
     public func trackAppUsageEvent(id: GameID, appUsageEvent: Int, extraInfo: String) {
-        SteamAPI_ISteamUser_TrackAppUsageEvent(interface, UInt64(id), Int32(appUsageEvent), extraInfo)
+        SteamAPI_ISteamUser_TrackAppUsageEvent(interface, UInt64(id), CInt(appUsageEvent), extraInfo)
     }
 
     /// Steamworks `ISteamUser::UserHasLicenseForApp()`

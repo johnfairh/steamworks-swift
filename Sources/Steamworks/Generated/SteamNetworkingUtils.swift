@@ -21,7 +21,7 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::AllocateMessage()`
     public func allocateMessage(allocateBufferSize: Int) -> SteamNetworkingMessage {
-        SteamNetworkingMessage(SteamAPI_ISteamNetworkingUtils_AllocateMessage(interface, Int32(allocateBufferSize)))
+        SteamNetworkingMessage(SteamAPI_ISteamNetworkingUtils_AllocateMessage(interface, CInt(allocateBufferSize)))
     }
 
     /// Steamworks `ISteamNetworkingUtils::CheckPingDataUpToDate()`
@@ -32,7 +32,7 @@ public struct SteamNetworkingUtils {
     /// Steamworks `ISteamNetworkingUtils::ConvertPingLocationToString()`
     public func convertPingLocationToString(location: SteamNetworkPingLocation, bufSize: Int) -> String {
         let tmpBuf = SteamString(length: bufSize)
-        SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString(interface, SteamNetworkPingLocation_t(location), tmpBuf.charBuffer, Int32(bufSize))
+        SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString(interface, SteamNetworkPingLocation_t(location), tmpBuf.charBuffer, CInt(bufSize))
         return tmpBuf.swiftString
     }
 
@@ -92,7 +92,7 @@ public struct SteamNetworkingUtils {
     /// Steamworks `ISteamNetworkingUtils::GetPOPList()`
     public func getPOPList(listSz: Int) -> (rc: Int, list: [SteamNetworkingPOPID]) {
         let tmpList = SteamOutArray<CSteamworks.SteamNetworkingPOPID>(listSz)
-        let rc = Int(SteamAPI_ISteamNetworkingUtils_GetPOPList(interface, tmpList.steamArray, Int32(listSz)))
+        let rc = Int(SteamAPI_ISteamNetworkingUtils_GetPOPList(interface, tmpList.steamArray, CInt(listSz)))
         return (rc: rc, list: tmpList.swiftArray(Int(rc)))
     }
 
