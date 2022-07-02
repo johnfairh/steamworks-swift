@@ -244,13 +244,13 @@ final class SwiftParam {
     }
 
     /// A default instance for a (out) param for cases we can't get a real value
-    var swiftReturnDummyInstance: String {
+    var swiftReturnDummyInstance: String { // XXX expression
         switch style {
         case .out_array, .out_transparent_array: return "[]"
         case .out_string: return #""""#
         case .out, .out_transparent, .in_out:
             // exclam is about non-optional bufferpointers, should not arise
-            return steamType.desuffixed.asSwiftTypeInstance!
+            return db.type.swiftTypeInstance!.expr
         default:
             preconditionFailure("Not an out param: \(style)")
         }
@@ -278,7 +278,7 @@ final class SwiftParam {
         switch style {
         case .in:
             if db.nullable && db.type.needsParameterCast {
-                let typeName = steamType.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
+                let typeName = db.type.swiftNativeType
                 line = "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))"
                 deallocateTemp = true
             }
@@ -288,25 +288,25 @@ final class SwiftParam {
             line = "let \(tempName) = StringArray(\(swiftName))"
             deallocateTemp = true
         case .in_array:
-            line = "var \(tempName) = \(swiftName).map { \(steamType.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks)($0) }"
+            line = "var \(tempName) = \(swiftName).map { \(db.type.swiftNativeType.instance("$0")) }"
         case .out, .out_transparent:
             if !db.nullable {
-                line = "var \(tempName) = \(steamType.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks())"
+                line = "var \(tempName) = \(db.type.swiftNativeType.instance())"
             } else {
-                let typeName = steamType.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
+                let typeName = db.type.swiftNativeType
                 line = "let \(tempName) = SteamNullable<\(typeName)>(isReal: \(returnParamName))"
                 deallocateTemp = true
             }
         case .in_out:
             if !db.nullable {
-                line = "var \(tempName) = \(steamType.desuffixed.asExplicitSwiftInstanceForPassingIntoSteamworks(swiftName))"
+                line = "var \(tempName) = \(db.type.swiftNativeType.instance(SwiftExpression(swiftName)))" // XXX
             } else {
-                let typeName = steamType.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
+                let typeName = db.type.swiftNativeType
                 line = "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))"
                 deallocateTemp = true
             }
         case .out_array(let sizeParam):
-            let typeName = steamType.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
+            let typeName = db.type.swiftNativeType
             let nullability = db.nullable ? ", \(returnParamName)" : ""
             line = "let \(tempName) = SteamOutArray<\(typeName)>(\(sizeParam.asArraySizeExpression)\(nullability))"
         case .out_transparent_array(let sizeParam):
@@ -327,7 +327,7 @@ final class SwiftParam {
             if db.nullable && db.type.needsParameterCast {
                 return "\(tempName).steamValue"
             } else {
-                return swiftName.asCast(to: steamType.asSwiftTypeForPassingIntoSteamworks)
+                return swiftName.asCast(to: db.type.parameterCast?.name) // XXX
             }
 
         case .in_array:
@@ -338,7 +338,7 @@ final class SwiftParam {
             }
 
         case .in_array_count(let ap):
-            return "\(ap.swiftName).count".asCast(to: steamType.asSwiftTypeForPassingIntoSteamworks)
+            return "\(ap.swiftName).count".asCast(to: db.type.parameterCast?.name) // XXX
 
         case .in_string_array:
             return ".init(\(tempName))"

@@ -573,8 +573,12 @@ final class Metadata: CustomStringConvertible {
         findEnum(name: name) != nil
     }
 
-    static func isOptionSetEnumPassedUnpredictably(steamType name: String) -> String? {
+    static func isOptionSetEnumPassedUnpredictably(steamType name: String) -> String? { // XXX
         findEnum(name: name)?.setPassedInTypeName
+    }
+
+    static func isOptionSetEnumPassedUnpredictably(steamType: SteamType) -> SwiftNativeType? {
+        findEnum(name: steamType.name)?.setPassedInTypeName.map { SwiftNativeType($0) }
     }
 
     static func findEnumDefaultInstance(steamType name: String) -> String? { // XXX

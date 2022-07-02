@@ -28,8 +28,8 @@ struct SteamType {
     ///
     /// Currently only has to deals with unsuffixed/prefixed types.  Basically for
     /// generating extensions to nested C++ types.
-    var swiftCompilerSpelling: String {
-        name.replacingOccurrences(of: "::", with: ".")
+    var swiftCompilerSpelling: SwiftNativeType {
+        SwiftNativeType(name.replacingOccurrences(of: "::", with: "."))
     }
 
     /// Drop one layer of C pointer/reference from a type
@@ -188,6 +188,14 @@ struct SteamParamType {
         swiftApiSteamType.swiftType
     }
 
+    var swiftTypeInstance: SwiftExpression? {
+        swiftApiSteamType.swiftTypeInstance
+    }
+
+    var swiftNativeType: SwiftNativeType {
+        swiftApiSteamType.swiftNativeType // XXX this seems wrong
+    }
+
     /// What type cast, if any, is required on a function returning this type?
     var returnValueCast: SwiftType? {
         swiftApiSteamType.isReturnedWithoutCast ? nil : swiftType
@@ -196,6 +204,10 @@ struct SteamParamType {
     /// XXX explain this nonsense then track down the ref to the function below this one
     var needsParameterCast: Bool {
         !swiftApiSteamType.isPassedToFunctionWithoutCast
+    }
+
+    var parameterCast: SwiftNativeType? {
+        needsParameterCast ? swiftNativeType : nil
     }
 
     /// This is a native steam (C) type
@@ -269,22 +281,55 @@ extension SteamType {
 extension SteamType {
 
     var swiftNativeType: SwiftNativeType {
-        // deal with fixed-size arrays, rare
         if let arrayDetails = parseArray,
            let arrayType = steamArrayElementTypeToSwiftArrayTypes[arrayDetails.element] {
             return SwiftNativeType(arrayType.name)
         }
-        return steamToSwiftNativeTypes[self]!
+
+        if let unConsted = name.re_match("^const (.*?)( &)?$") {
+            return SteamType(unConsted[1]).swiftNativeType
+        }
+
+        if let special = steamToSwiftNativeTypes[self] {
+            return special
+        }
+
+        if let optionSetType = Metadata.isOptionSetEnumPassedUnpredictably(steamType: self) {
+            return optionSetType
+        }
+
+        // General case: the compiler's spelling of this C++ type.
+        //
+        // Watch out though: if the SwiftType has the same name, which happens
+        // when the Steam type is something dumb like `SteamSomething` without
+        // any prefix or suffix, then we have to add the module prefix to get
+        // the right type.
+        let result = swiftCompilerSpelling
+        if result.name == swiftType.name {
+            return SwiftNativeType("CSteamworks.\(result)")
+        }
+        return result
     }
 }
 
 private let steamToSwiftNativeTypes: [SteamType : SwiftNativeType] = [
-    "unsigned int" : "CUnsignedInt",
-    "unsigned long long" : "CUnsignedLongLong",
-    "long long": "CLongLong",
-    "int" : "CInt",
+    "char" : "CChar",
     "short": "CShort",
-    "void *": "UnsafeMutableRawPointer", // living on the edge isteammatchmaking
+    "unsigned short" : "CUnsignedShort",
+    "bool" : "CBool",
+    "int" : "CInt",
+    "unsigned int" : "CUnsignedInt",
+    "long long": "CLongLong",
+    "unsigned long long" : "CUnsignedLongLong",
+    "float": "CFloat",
+    "double": "CDouble",
+
+    "void *": "UnsafeMutableRawPointer",
+
+    "uint64_steamid" : "UInt64", // XXX how is this actually defined
+    "uint64_gameid" : "UInt64",
+
+    "SteamNetworkingMessage_t *": "OpaquePointer?" // struct not imported plus weird pointer semantics
 ]
 
 // MARK: SteamType boilerplate
@@ -393,6 +438,11 @@ struct SwiftNativeType {
 
     init(_ steamType: SteamType) {
         self = steamType.swiftNativeType
+    }
+
+    func instance(_ initWith: SwiftExpression = "") -> SwiftExpression {
+        let suffix = Metadata.isEnum(steamType: name) ? "(rawValue: 0)" : "(\(initWith))"
+        return SwiftExpression(name + suffix)
     }
 }
 

@@ -33,17 +33,6 @@ extension String {
         return name.replacingOccurrences(of: "_", with: "")
     }
 
-    /// Is this a Steam type that looks like a pointer but is actually something else
-    /// Mostly for `const char *` -> `String`
-    var isSteamPointerTypePassedByValue: Bool {
-        hasSuffix("*") && steamToSwiftTypes[self] != nil
-    }
-
-    /// Given a canonical C++ type name, convert it to how Swift sees it
-    var asSwiftNameForSteamType: String {
-        replacingOccurrences(of: "::", with: ".")
-    }
-
     /// Swift expression for 'casting' from this string, itself a Swift expression, to the given Swift type
     func asCast(to: String?) -> String {
         guard let to = to else {
@@ -143,52 +132,6 @@ extension String {
         backtickKeywords.contains(self) ? "`\(self)`" : self
     }
 
-    /// `self` is a a steam-declared (C++) type, represented in the Swift interface
-    /// as `asSwiftTypeName`.  What Swift type is required to pass this to the
-    /// steamworks interface?   This is normally `self`, the type itself, but there
-    /// are special cases thanks to things like the Swift Clang Importer magicking
-    /// strings and our usage of `Int` upstream.  `OptionSet` enums are
-    /// confusing again - see `EnumConvertible` discussion.
-    var asSwiftTypeForPassingIntoSteamworks: String? {
-        if isSteamTypePassedInTransparently {
-            return nil
-        }
-        return asExplicitSwiftTypeForPassingIntoSteamworks
-    }
-
-    /// Does the Swift API version of this Steam type pass directly to steamworks without
-    /// any kind of casting?  Eg. `const char *`-- because its Swift type is `String` and
-    /// there is compiler magic to let this be passed to C functions expecting `cc*`.
-    var isSteamTypePassedInTransparently: Bool {
-        steamTypesPassedInTransparently.contains(self)
-    }
-
-    /// As above but with explicit types, not used calling a C function with clang importer magic
-    var asExplicitSwiftTypeForPassingIntoSteamworks: String {
-        if let unConsted = re_match("^const (.*?)( &)?$") {
-            return unConsted[1].asExplicitSwiftTypeForPassingIntoSteamworks
-        }
-        if let special = steamTypesPassedInStrangely[self] {
-            return special
-        }
-        if let optionSetType = Metadata.isOptionSetEnumPassedUnpredictably(steamType: self) {
-            return optionSetType
-        }
-        let result = asSwiftNameForSteamType
-        if result == asSwiftTypeName {
-            return "CSteamworks.\(result)"
-        }
-        return result
-    }
-
-    /// For constructing a temporary instance, in Swift, to pass by ref to Steamworks
-    /// and then to be copied back out to the Swift type.
-    func asExplicitSwiftInstanceForPassingIntoSteamworks(_ initWith: String = "") -> String {
-        let typename = asExplicitSwiftTypeForPassingIntoSteamworks
-        let suffix = Metadata.isEnum(steamType: self) ? "(rawValue: 0)" : "(\(initWith))"
-        return typename + suffix
-    }
-
     /// Drop one layer of C pointer/reference from a type
     var desuffixed: String {
         re_sub(" *(\\*|&)$", with: "")
@@ -249,32 +192,6 @@ private let steamToSwiftTypes: [String : String] = [
 private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
     "char" : "String",
     "uint8" : "[UInt8]" // Should be Data (?) but can't use Foundation inside Steamworks because C++!
-]
-
-// Steam types whose Swift type version is typesafe to pass
-// directly (without a cast) to a Steamworks function expecting
-// the Steam type.
-private let steamTypesPassedInTransparently = Set<String>([
-    "bool", "const char *", "void *", "uint8 *",
-    "const void *", "float", "double", "uint64",
-
-    "SteamAPIWarningMessageHook_t" // function pointer special case
-])
-
-// Steam types whose Swift type version needs a non-standard
-// cast to pass to a Steamworks function expecting the Steam type.
-private let steamTypesPassedInStrangely: [String : String] = [
-    "int" : "CInt",
-    "bool" : "CBool",
-    "uint64_steamid" : "UInt64",
-    "uint64_gameid" : "UInt64",
-    "unsigned short" : "CUnsignedShort",
-    "unsigned int" : "CUnsignedInt",
-    "char" : "CChar",
-    "float": "CFloat",
-    "double": "CDouble",
-
-    "SteamNetworkingMessage_t *": "OpaquePointer?" // struct not imported plus weird pointer semantics
 ]
 
 // Parameter/field hungarian-smelling prefixes that are actually
