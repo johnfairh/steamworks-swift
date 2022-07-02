@@ -279,7 +279,8 @@ struct MetadataDB {
 
         struct Param {
             let name: String
-            let type: String
+            let type1: String
+            let type: SteamParamType
             let arrayCount: String?
             let outArrayLength: String?
             let outArrayValidLength: String?
@@ -290,7 +291,8 @@ struct MetadataDB {
 
             init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
                 self.name = patch?.name ?? base.paramname
-                self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
+                self.type1 = patch?.type ?? base.paramtype_flat ?? base.paramtype
+                self.type = SteamParamType(self.type1)
                 self.inOut = patch?.in_out ?? false
                 self.nullable = patch?.nullable ?? false
                 if let patchedArrayCount = patch?.array_count, patchedArrayCount == "DELETE" {
@@ -323,7 +325,7 @@ struct MetadataDB {
         }
         let params: [Param]
         let returnType: SteamReturnType
-        let outParamIffRc: String?
+        let outParamIffRc: String? // XXX swiftexpr?
         let discardableResult: Bool
         let ignore: Bool
 

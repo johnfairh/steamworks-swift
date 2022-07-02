@@ -82,29 +82,17 @@ extension SteamType {
         name.hasSuffix("*") && steamToSwiftTypes[self] != nil
     }
 
-    /// Get the Swift type used in the public Swift API to represent this C++ type
-    /// _as a function parameter_.
-    ///
-    /// Pointer types get converted to instances, with special cases.  Eg:
-    /// ```
-    /// void * -> UnsafeMutablePointer
-    /// const char * -> String
-    /// int32 -> Int
-    /// Foo_t * -> Foo
-    /// const Foo & -> Foo
-    /// void -> Void
-    /// ```
-    var swiftTypeForParameter: SwiftType { // XXX subclass & override swiftType??
-        if isPointerTypePassedByValue {
-            return swiftType
-        }
-        return desuffixed.swiftType
-    }
-
     /// If returned from a C++ function, can this be assigned without a cast to a `swiftType` variable
     /// thanks to happenstance or Clang importer magic.
     var isReturnedWithoutCast: Bool {
-        steamTypesReturnedTransparently.contains(self)
+        steamTypesReturnedWithoutCast.contains(self)
+    }
+
+    /// If passed as a parameter to a C++ function, can a value of `swiftType` be passed directly
+    /// thanks to happenstance or Clang importer magic?  If not then a cast to the `nativeSwiftType`
+    /// is required.
+    var isPassedToFunctionWithoutCast: Bool {
+        steamTypesPassedInWithoutCast.contains(self)
     }
 }
 
@@ -112,6 +100,7 @@ extension SteamType {
 private let steamToSwiftTypes: [SteamType : SwiftType] = [
     // Base types
     "const char *" : "String",
+    "char *" : "String",
     "const SteamParamStringArray_t *" : "[String]",
     "int" : "Int",
     "uint8" : "Int",
@@ -152,11 +141,20 @@ private let steamArrayElementTypeToSwiftArrayTypes: [SteamType : SwiftType] = [
 
 /// Steam types that, when returned from a C++ function, can be directly assigned
 /// to a variable of their `SwiftType` without a cast.
-private let steamTypesReturnedTransparently = Set<SteamType>([
+private let steamTypesReturnedWithoutCast = Set<SteamType>([
     "bool", "void"
 ])
 
-// MARK:
+/// Steam types whose `SwiftType` is typesafe to pass directly (without a cast) to
+/// a C++ function expecting the type.
+private let steamTypesPassedInWithoutCast = Set<SteamType>([
+    "bool", "const char *", "void *", "uint8 *",
+    "const void *", "float", "double", "uint64",
+
+    "SteamAPIWarningMessageHook_t" // function pointer special case
+])
+
+// MARK: SteamParamType, SteamReturnType
 
 /// A C++ type used in function parameter (and return) position
 ///
@@ -192,7 +190,22 @@ struct SteamParamType {
 
     /// What type cast, if any, is required on a function returning this type?
     var returnValueCast: SwiftType? {
-        nativeType.isReturnedWithoutCast ? nil : swiftType
+        swiftApiSteamType.isReturnedWithoutCast ? nil : swiftType
+    }
+
+    /// XXX explain this nonsense then track down the ref to the function below this one
+    var needsParameterCast: Bool {
+        !swiftApiSteamType.isPassedToFunctionWithoutCast
+    }
+
+    /// This is a native steam (C) type
+    ///
+    /// It's being used in a function parameter context.
+    /// Detect if this is (probably) supposed to have `out` / `in_out` semantics and return the pointee type
+    ///
+    /// 'probably' - steam APIs not const-correct for in-arrays, callers have to deal.
+    var isProbablyOutParameter: Bool {
+        nativeType.isProbablyOutParameter
     }
 }
 
@@ -204,6 +217,30 @@ extension SteamParamType: Hashable, CustomStringConvertible {
 
 typealias SteamReturnType = SteamParamType
 
+extension SteamType {
+    /// Policy for what parameters in C++ function definitions are treated as 'out' direction, that is
+    /// output from functions (includes in-out).  Very hand-rolled.
+    fileprivate var isProbablyOutParameter: Bool {
+        if name.hasPrefix("const") { // if const then not out
+            return false
+        }
+
+        if !name.re_isMatch("(?:&|\\*)$") { // if not a pointer/ref then not out
+            return false
+        }
+
+        if name == "char *" { // special case for non-const strings
+            return true
+        }
+
+        if isPointerTypePassedByValue {
+            // some kind of buffer, like `uint8 *` - model as in-param to keep buffer
+            // allocation on the client side
+            return false
+        }
+        return true
+    }
+}
 
 // MARK: SteamType -> SwiftInstance
 

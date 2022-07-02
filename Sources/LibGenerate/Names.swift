@@ -189,11 +189,6 @@ extension String {
         return typename + suffix
     }
 
-    /// If returned by a C function, does it map without a cast to the Swift version of the type
-    var isSteamTypePassedOutTransparently: Bool {
-        steamTypesPassedOutTransparently.contains(self)
-    }
-
     /// Drop one layer of C pointer/reference from a type
     var desuffixed: String {
         re_sub(" *(\\*|&)$", with: "")
@@ -264,13 +259,6 @@ private let steamTypesPassedInTransparently = Set<String>([
     "const void *", "float", "double", "uint64",
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
-])
-
-// Steam types whose Swift type version is typesafe to pass
-// directly (without a cast) from a Steamworks function to a
-// Swift value expecting the corresponding Swift type.
-private let steamTypesPassedOutTransparently = Set<String>([
-    "bool", "void"
 ])
 
 // Steam types whose Swift type version needs a non-standard

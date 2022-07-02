@@ -154,54 +154,6 @@ private extension String {
 
 // MARK: Method Parameters
 
-private extension String {
-    /// This is a native steam (C) type
-    ///
-    /// It's being used in a function parameter context.
-    /// Detect if this is (probably) supposed to have `out` / `in_out` semantics and return the pointee type
-    ///
-    /// 'probably' - steam APIs not const-correct for in-arrays, spot that later...
-    var asOutSteamTypeBaseType: String? {
-        guard !hasPrefix("const") else { // if const then not out
-            return nil
-        }
-
-        guard re_isMatch("(?:&|\\*)$") else { // if not a pointer/ref then not out
-            return nil
-        }
-
-        guard !isSteamPointerTypePassedByValue else {
-            /// something like `uint8 *` - model as in param
-            /// to keep buffer allocation client-side
-            return nil
-        }
-
-        /// `Foo *` -> `Foo`, `Foo **` -> `Foo *`
-        return desuffixed
-    }
-
-    /// This is a native steam (C) type
-    ///
-    /// It's being used in an API context, either as a Cfunction param or return type
-    /// What is the Swift type to use for it?
-    ///
-    /// Pointer types get converted to instances, with special cases.  Eg:
-    /// ```
-    /// void * -> UnsafeMutablePointer
-    /// const char * -> String
-    /// int32 -> Int
-    /// Foo_t * -> Foo
-    /// const Foo & -> Foo
-    /// void -> Void
-    /// ```
-    var asSwiftTypeNameForApi: String {
-        if isSteamPointerTypePassedByValue {
-            return self.asSwiftTypeName
-        }
-        return self.desuffixed.asSwiftTypeName
-    }
-}
-
 final class SwiftParam {
     let db: MetadataDB.Method.Param
 
@@ -210,7 +162,7 @@ final class SwiftParam {
     }
 
     var steamType: String {
-        db.type
+        db.type1
     }
 
     private enum Style {
@@ -242,12 +194,12 @@ final class SwiftParam {
 
     /// The 'base' swift type of the param.  If the param is an array
     /// then this is the array element, not the array itself -- use `swiftType` to access the actual type
-    private let swiftBaseType: String
+    private let swiftBaseType: SwiftType
 
     /// The Swift type for this param
-    var swiftType: String {
+    var swiftType: SwiftType {
         switch style {
-        case .in_array, .out_array, .out_transparent_array: return "[\(swiftBaseType)]"
+        case .in_array, .out_array, .out_transparent_array: return SwiftType("[\(swiftBaseType)]") // XXX SwiftType(arrayOf:)
         default: return swiftBaseType
         }
     }
@@ -325,7 +277,7 @@ final class SwiftParam {
 
         switch style {
         case .in:
-            if db.nullable && !steamType.isSteamTypePassedInTransparently {
+            if db.nullable && db.type.needsParameterCast {
                 let typeName = steamType.desuffixed.asExplicitSwiftTypeForPassingIntoSteamworks
                 line = "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))"
                 deallocateTemp = true
@@ -372,7 +324,7 @@ final class SwiftParam {
     var callName: String {
         switch style {
         case .in:
-            if db.nullable && !steamType.isSteamTypePassedInTransparently {
+            if db.nullable && db.type.needsParameterCast {
                 return "\(tempName).steamValue"
             } else {
                 return swiftName.asCast(to: steamType.asSwiftTypeForPassingIntoSteamworks)
@@ -407,7 +359,7 @@ final class SwiftParam {
 
     /// Return-type tuple-builder
     var outParamReturnExpression: String {
-        var outCast: String? = swiftType
+        var outCast: SwiftType? = swiftType
 
         switch style {
         case .out_transparent:
@@ -416,7 +368,7 @@ final class SwiftParam {
 
         case .out, .in_out:
             guard db.nullable else {
-                return tempName.asCast(to: outCast)
+                return tempName.asCast(to: outCast?.name) // XXX
             }
             return "\(tempName).swiftValue(dummy: \(swiftReturnDummyInstance))"
 
@@ -437,42 +389,38 @@ final class SwiftParam {
 
     init(_ db: MetadataDB.Method.Param, inArrayParam: SwiftParam? = nil) {
         self.db = db
+        self.swiftBaseType = db.type.swiftType
+
         if let arrayParam = inArrayParam {
-            swiftBaseType = "ERROR"
+            // phantom param not present in swift, we just look at the array length
             style = .in_array_count(arrayParam)
-        } else if let outSteamType = db.type.asOutSteamTypeBaseType {
+        } else if db.type.isProbablyOutParameter {
+            // out parameter (probably) for return tuple
             if let outStringLength = db.outStringLength {
-                swiftBaseType = "String"
                 style = .out_string(outStringLength)
-            } else {
-                swiftBaseType = outSteamType.asSwiftTypeName
-                if let outLength = db.outArrayLength {
-                    if !db.nullable && outSteamType.isSteamTypePassedInTransparently {
-                        style = .out_transparent_array(outLength)
-                    } else {
-                        style = .out_array(outLength)
-                    }
-                } else if outSteamType.isSteamTypePassedInTransparently {
-                    style = .out_transparent
-                } else if db.arrayCount != nil {
-                    // steam APIs aren't very const-correct so some out-looking
-                    // params are actually in-only
-                    style = .in_array
-                } else if db.inOut {
-                    style = .in_out
+            } else if let outLength = db.outArrayLength {
+                if !db.nullable && !db.type.needsParameterCast {
+                    style = .out_transparent_array(outLength)
                 } else {
-                    style = .out
+                    style = .out_array(outLength)
                 }
-            }
-        } else {
-            swiftBaseType = db.type.asSwiftTypeNameForApi
-            if swiftBaseType == "[String]" {
-                style = .in_string_array
+            } else if !db.type.needsParameterCast {
+                style = .out_transparent
             } else if db.arrayCount != nil {
+                // steam APIs aren't very const-correct so some out-looking
+                // params are actually in-only
                 style = .in_array
+            } else if db.inOut {
+                style = .in_out
             } else {
-                style = .in
+                style = .out
             }
+        } else if swiftBaseType == "[String]" {
+            style = .in_string_array
+        } else if db.arrayCount != nil {
+            style = .in_array
+        } else {
+            style = .in
         }
     }
 }
@@ -544,7 +492,7 @@ extension Array where Element == SwiftParam {
 
     /// If the Steam API returns X, what does the Swift API return taking out params into account?
     func returnTypeWithOutParams(apiReturnType: SwiftType?) -> String? {
-        entupleWithApiRc(rcText: apiReturnType?.name, paramField: \.swiftType)
+        entupleWithApiRc(rcText: apiReturnType?.name, paramField: \.swiftType.name) // XXX ?
     }
 
     /// Create a return value/tuple from the params
