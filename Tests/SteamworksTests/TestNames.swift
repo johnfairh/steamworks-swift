@@ -12,7 +12,7 @@ import XCTest
 // Individual special cases are just in code and observed by generation.
 class TestNames: XCTestCase {
     func testTypenames() {
-        let cases = [
+        let cases: [(SteamType, SwiftType)] = [
             ("Type", "Type"),
             ("TypeCamel", "TypeCamel"),
             ("Type_t", "Type"), // strip trailing _t
@@ -30,7 +30,7 @@ class TestNames: XCTestCase {
             ("SomeId", "SomeID")
         ]
         cases.forEach { steam, swift in
-            XCTAssertEqual(steam.asSwiftTypeName, swift)
+            XCTAssertEqual(steam.swiftType, swift)
         }
     }
 
@@ -74,9 +74,9 @@ class TestNames: XCTestCase {
 
     /// This is for the nicely-formatted style in the json...
     func testCArray() throws {
-        XCTAssertNil("int".parseCArray)
-        XCTAssertNil("int []".parseCArray)
-        let unwrapped = try XCTUnwrap("int [10]".parseCArray)
+        XCTAssertNil(SteamType("int").parseArray)
+        XCTAssertNil(SteamType("int []").parseArray)
+        let unwrapped = try XCTUnwrap(SteamType("int [10]").parseArray)
         XCTAssertEqual("int", unwrapped.0)
         XCTAssertEqual(10, unwrapped.1)
     }

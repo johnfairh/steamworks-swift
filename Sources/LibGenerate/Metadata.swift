@@ -279,7 +279,6 @@ struct MetadataDB {
 
         struct Param {
             let name: String
-            let type1: String
             let type: SteamParamType
             let arrayCount: String?
             let outArrayLength: String?
@@ -291,8 +290,7 @@ struct MetadataDB {
 
             init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
                 self.name = patch?.name ?? base.paramname
-                self.type1 = patch?.type ?? base.paramtype_flat ?? base.paramtype
-                self.type = SteamParamType(self.type1)
+                self.type = SteamParamType(patch?.type ?? base.paramtype_flat ?? base.paramtype)
                 self.inOut = patch?.in_out ?? false
                 self.nullable = patch?.nullable ?? false
                 if let patchedArrayCount = patch?.array_count, patchedArrayCount == "DELETE" {
@@ -343,7 +341,7 @@ struct MetadataDB {
     }
 
     struct Interface {
-        let name: String
+        let name: SteamType
         let realClassName: String?
         /// Indexed by `name`
         let enums: [SteamType : Enum]
@@ -364,7 +362,7 @@ struct MetadataDB {
             if let ipatch = ipatch, ipatch.bIgnore {
                 return nil
             }
-            name = base.classname
+            name = SteamType(base.classname)
             realClassName = ipatch?.real_classname
             methods = .init(uniqueKeysWithValues: base.methods.map { baseMethod in
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
@@ -397,7 +395,7 @@ struct MetadataDB {
         }
     }
     /// Indexed by `classname`
-    let interfaces: [String : Interface]
+    let interfaces: [SteamType : Interface]
 
     /// Shared type between callback-structs and regular structs - regular structs don't have
     /// a callback ID and may have methods (though these are rarely coherent)

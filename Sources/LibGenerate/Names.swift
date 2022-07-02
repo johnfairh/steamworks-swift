@@ -7,32 +7,6 @@
 
 /// Utilities for converting Steamworks API names to Swift names.
 extension String {
-    /// * Convert arrays
-    /// * Drop unwanted suffixes
-    /// * Get rid of C++ nesting - everything top-level in Swift
-    /// * Drop leading capital E/I/C - used in SDK for enums/interfaces/classes (but not for structs...)
-    var asSwiftTypeName: String {
-        if let arrayMatch = parseCArray {
-            if let special = steamArrayElementTypeToSwiftArrayTypes[arrayMatch.element] {
-                return special
-            }
-            return "[\(arrayMatch.element.asSwiftTypeName)]"
-        }
-        if let mapped = steamToSwiftTypes[self] ?? Metadata.steamToSwiftTypeName(self) {
-            return mapped
-        }
-        if let constMatch = re_match("^const (.*)$") {
-            return constMatch[1].asSwiftTypeName
-        }
-        var name = re_sub("_t\\b", with: "")
-            .re_sub("^.*::", with: "")
-            .re_sub("Id\\b", with: "ID")
-        if !Metadata.isStruct(steamType: self) {
-            name = name.re_sub("^[CEI](?=[A-Z])", with: "")
-        }
-        return name.replacingOccurrences(of: "_", with: "")
-    }
-
     /// Swift expression for 'casting' from this string, itself a Swift expression, to the given Swift type
     func asCast(to: String?) -> String {
         guard let to = to else {
@@ -42,11 +16,6 @@ extension String {
             return "\(to)(\(self))"
         }
         return "\(self).map { \(to.dropLast())($0) }"
-    }
-
-    /// Decompose a C fixed-size array into its pieces
-    var parseCArray: (element: String, size: Int)? {
-        re_match(#"^(.*) \[(.+)\]$"#).flatMap { (element: $0[1], size: Int($0[2])!) }
     }
 
     /// * get rid of 'BIsBShortForBool'
@@ -131,19 +100,6 @@ extension String {
     var backtickedIfNecessary: String {
         backtickKeywords.contains(self) ? "`\(self)`" : self
     }
-
-    /// Drop one layer of C pointer/reference from a type
-    var desuffixed: String {
-        re_sub(" *(\\*|&)$", with: "")
-    }
-
-    var isSwiftIntegerType: Bool {
-        re_isMatch(#"^U?Int\d*$"#) || re_isMatch(#"^C(?:Unsigned)?(?:Short|Int|Long|LongLong)$"#)
-    }
-
-    var isSwiftArrayType: Bool {
-        re_isMatch(#"^\[.*\]$"#)
-    }
 }
 
 /// Just what we've seen necessary
@@ -151,48 +107,6 @@ private let backtickKeywords = Set<String>([
     "case", "default", "for", "internal", "private", "protocol", "public",
     "switch", "init", "repeat"
 ])
-
-// How to represent a steam type in the Swift interface, special cases
-private let steamToSwiftTypes: [String : String] = [
-    // Base types
-    "const char *" : "String",
-    "const SteamParamStringArray_t *" : "[String]",
-    "int" : "Int",
-    "uint8" : "Int",
-    "uint16" : "Int",
-    "uint32" : "Int",
-    "int32" : "Int",
-    "const int32" : "Int", // hmm
-    "int64" : "Int",
-    "int64_t" : "Int", // steamnetworking == disaster
-    "uint64": "UInt64",
-    "bool" : "Bool",
-    "float" : "Float",
-    "double" : "Double",
-    "void *" : "UnsafeMutableRawPointer",
-    "const void *": "UnsafeRawPointer",
-    "uint8 *" : "UnsafeMutablePointer<UInt8>",
-    "uint64_steamid" : "SteamID",
-    "uint64_gameid" : "GameID",
-    "const char **": "[String]",
-    "char": "Int", // SteamInput going its own way...
-    "unsigned short": "Int", // ""
-    "unsigned int": "Int", // ""
-    "intptr_t": "Int",
-    "size_t": "Int",
-    "void": "Void",
-
-    // - because these are used all over the place non-const-correctly
-    "SteamParamStringArray_t *" : "[String]",
-    // - because these occur in arrays
-    "SteamNetworkingMessage_t *" : "SteamNetworkingMessage"
-]
-
-// How to represent an array of steam types (in a struct field,) special cases
-private let steamArrayElementTypeToSwiftArrayTypes: [String : String] = [
-    "char" : "String",
-    "uint8" : "[UInt8]" // Should be Data (?) but can't use Foundation inside Steamworks because C++!
-]
 
 // Parameter/field hungarian-smelling prefixes that are actually
 // parts of the name...

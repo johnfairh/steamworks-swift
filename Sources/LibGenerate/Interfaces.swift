@@ -22,9 +22,8 @@ struct Interfaces {
 
     func generate() throws {
         try metadata.db.interfaces.values.forEach { interface in
-            let swiftName = interface.name.asSwiftTypeName
-            try io.write(fileName: "\(swiftName).swift",
-                         contents: interface.generate(context: swiftName))
+            try io.write(fileName: "\(interface.name.swiftType).swift",
+                         contents: interface.generate())
         }
     }
 }
@@ -73,14 +72,14 @@ extension MetadataDB.Interface.Access {
     ///
     /// Complicated by some of them being user/server dual
     func declaration(db: MetadataDB.Interface) -> String {
-        let shortName = db.name.re_sub("^ISteam", with: "").asSwiftIdentifier  // "ISteamFriends" -> "friends"
+        let shortName = db.name.name.re_sub("^ISteam", with: "").asSwiftIdentifier  // "ISteamFriends" -> "friends" XXX
 
         let docComment =
             """
             /// Steamworks [`\(db.name)`](https://partner.steamgames.com/doc/api/\(db.name))
             ///
             /// Access via \(accessVia(getter: shortName)).
-            public \(swiftTypeKind) \(db.name.asSwiftTypeName) {
+            public \(swiftTypeKind) \(db.name.swiftType) {
             """
 
         let decl: String
@@ -128,7 +127,7 @@ private extension String {
 }
 
 extension MetadataDB.Interface {
-    func generate(context: String) -> String {
+    func generate() -> String {
         let declaration = access.declaration(db: self)
         let methods = methods.values
             .sorted(by: { $0.flatName.cless < $1.flatName.cless })
@@ -154,15 +153,15 @@ private extension String {
 
 // MARK: Method Parameters
 
-final class SwiftParam {
+final class SteamParam {
     let db: MetadataDB.Method.Param
 
     var swiftName: String {
         db.name.asSwiftParameterName
     }
 
-    var steamType: String {
-        db.type1
+    var steamType: SteamParamType {
+        db.type
     }
 
     private enum Style {
@@ -170,7 +169,7 @@ final class SwiftParam {
         case in_array // pass by value but a Swift array, use a temporary to cast, no copy-back
         case in_string_array // pass by value, array of strings
 
-        case in_array_count(SwiftParam) // a C param for the length of an `in_array` param that is absent in Swift
+        case in_array_count(SteamParam) // a C param for the length of an `in_array` param that is absent in Swift
 
         case out // create on stack, return in a tuple
         case out_transparent // create on stack, return in a tuple, no need to convert type
@@ -250,7 +249,7 @@ final class SwiftParam {
         case .out_string: return #""""#
         case .out, .out_transparent, .in_out:
             // exclam is about non-optional bufferpointers, should not arise
-            return db.type.swiftTypeInstance!.expr
+            return steamType.swiftTypeInstance!.expr
         default:
             preconditionFailure("Not an out param: \(style)")
         }
@@ -277,41 +276,49 @@ final class SwiftParam {
 
         switch style {
         case .in:
-            if db.nullable && db.type.needsParameterCast {
-                let typeName = db.type.swiftNativeType
+            if db.nullable && steamType.needsParameterCast {
+                let typeName = steamType.swiftNativeType
                 line = "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))"
                 deallocateTemp = true
             }
-        case .in_array_count:
-            break
+
         case .in_string_array:
             line = "let \(tempName) = StringArray(\(swiftName))"
             deallocateTemp = true
+
         case .in_array:
-            line = "var \(tempName) = \(swiftName).map { \(db.type.swiftNativeType.instance("$0")) }"
+            line = "var \(tempName) = \(swiftName).map { \(steamType.swiftNativeType.instance("$0")) }"
+
+        case .in_array_count:
+            break
+
         case .out, .out_transparent:
+            let nativeType = steamType.swiftNativeType
             if !db.nullable {
-                line = "var \(tempName) = \(db.type.swiftNativeType.instance())"
+                line = "var \(tempName) = \(nativeType.instance())"
             } else {
-                let typeName = db.type.swiftNativeType
-                line = "let \(tempName) = SteamNullable<\(typeName)>(isReal: \(returnParamName))"
+                line = "let \(tempName) = SteamNullable<\(nativeType)>(isReal: \(returnParamName))"
                 deallocateTemp = true
             }
+
         case .in_out:
+            let nativeType = steamType.swiftNativeType
             if !db.nullable {
-                line = "var \(tempName) = \(db.type.swiftNativeType.instance(SwiftExpression(swiftName)))" // XXX
+                line = "var \(tempName) = \(nativeType.instance(SwiftExpression(swiftName)))" // XXX
             } else {
-                let typeName = db.type.swiftNativeType
-                line = "let \(tempName) = SteamNullable<\(typeName)>(\(swiftName))"
+                line = "let \(tempName) = SteamNullable<\(nativeType)>(\(swiftName))"
                 deallocateTemp = true
             }
+
         case .out_array(let sizeParam):
-            let typeName = db.type.swiftNativeType
+            let nativeType = steamType.swiftNativeType
             let nullability = db.nullable ? ", \(returnParamName)" : ""
-            line = "let \(tempName) = SteamOutArray<\(typeName)>(\(sizeParam.asArraySizeExpression)\(nullability))"
+            line = "let \(tempName) = SteamOutArray<\(nativeType)>(\(sizeParam.asArraySizeExpression)\(nullability))"
+
         case .out_transparent_array(let sizeParam):
             precondition(!db.nullable, "Can't do transparent-out-array-nullable, regress to !transparent")
             line = "var \(swiftName) = \(swiftType)(repeating: .init(), count: \(sizeParam.asArraySizeExpression))"
+
         case .out_string(let sizeParam):
             let nullability = db.nullable ? ", isReal: \(returnParamName)" : ""
             line = "let \(tempName) = SteamString(length: \(sizeParam.asArraySizeExpression)\(nullability))"
@@ -324,10 +331,10 @@ final class SwiftParam {
     var callName: String {
         switch style {
         case .in:
-            if db.nullable && db.type.needsParameterCast {
+            if db.nullable && steamType.needsParameterCast {
                 return "\(tempName).steamValue"
             } else {
-                return swiftName.asCast(to: db.type.parameterCast?.name) // XXX
+                return swiftName.asCast(to: steamType.parameterCast?.name) // XXX
             }
 
         case .in_array:
@@ -338,7 +345,7 @@ final class SwiftParam {
             }
 
         case .in_array_count(let ap):
-            return "\(ap.swiftName).count".asCast(to: db.type.parameterCast?.name) // XXX
+            return "\(ap.swiftName).count".asCast(to: steamType.parameterCast?.name) // XXX
 
         case .in_string_array:
             return ".init(\(tempName))"
@@ -387,7 +394,7 @@ final class SwiftParam {
         }
     }
 
-    init(_ db: MetadataDB.Method.Param, inArrayParam: SwiftParam? = nil) {
+    init(_ db: MetadataDB.Method.Param, inArrayParam: SteamParam? = nil) {
         self.db = db
         self.swiftBaseType = db.type.swiftType
 
@@ -426,14 +433,14 @@ final class SwiftParam {
 }
 
 extension Array where Element == MetadataDB.Method.Param {
-    var asSwiftParams: [SwiftParam] {
-        var params = [SwiftParam]()
-        var lookingForCount = [String : SwiftParam]() // count name : array param
-        var arrayParams = [String : SwiftParam]() // array name : array param
+    var asSwiftParams: [SteamParam] {
+        var params = [SteamParam]()
+        var lookingForCount = [String : SteamParam]() // count name : array param
+        var arrayParams = [String : SteamParam]() // array name : array param
 
         forEach { p in
             if let countParamName = p.arrayCount {
-                let param = SwiftParam(p, inArrayParam: nil)
+                let param = SteamParam(p, inArrayParam: nil)
                 lookingForCount[countParamName] = param
                 arrayParams[p.name] = param
             }
@@ -441,7 +448,7 @@ extension Array where Element == MetadataDB.Method.Param {
 
         forEach { p in
             let param = arrayParams.removeValue(forKey: p.name) ??
-                        SwiftParam(p, inArrayParam: lookingForCount.removeValue(forKey: p.name))
+                        SteamParam(p, inArrayParam: lookingForCount.removeValue(forKey: p.name))
             params.append(param)
         }
 
@@ -458,7 +465,7 @@ extension Array where Element == MetadataDB.Method.Param {
     }
 }
 
-extension Array where Element == SwiftParam {
+extension Array where Element == SteamParam {
     /// Formal parameter list
     var functionParams: String {
         compactMap(\.swiftParamClause).joined(separator: ", ")
@@ -476,7 +483,7 @@ extension Array where Element == SwiftParam {
 
     /// Figure out how to express a 0/1 RC with the N (0+) out-params in a single type or a tuple.
     /// 1-element tuples are not allowed!
-    private func entupleWithApiRc(rcText: String?, paramField: KeyPath<SwiftParam,String>) -> String? {
+    private func entupleWithApiRc(rcText: String?, paramField: KeyPath<SteamParam,String>) -> String? {
         if isEmpty {
             return rcText
         } else if rcText == nil && count == 1 {
@@ -513,7 +520,7 @@ extension Array where Element == SwiftParam {
 
 // MARK: Methods
 
-struct SwiftMethod {
+struct SteamMethod {
     let db: MetadataDB.Method
 
     enum Style {
@@ -539,8 +546,8 @@ struct SwiftMethod {
     }
 
     let style: Style
-    let params: [SwiftParam] // all params
-    let outParams: [SwiftParam] // subset of params that are out-params
+    let params: [SteamParam] // all params
+    let outParams: [SteamParam] // subset of params that are out-params
 
     init(_ db: MetadataDB.Method) {
         self.db = db
@@ -724,8 +731,8 @@ extension MetadataDB.Method {
         String(name.dropFirst(3)).asSwiftIdentifier
     }
 
-    func generate(context: String) -> String {
-        let swiftMethod = SwiftMethod(self)
+    func generate(context: SteamType) -> String {
+        let swiftMethod = SteamMethod(self)
         let comment = "/// Steamworks `\(context)::\(name)()`"
         return swiftMethod.decl(comment: comment).indented(1).joined(separator: "\n")
     }
