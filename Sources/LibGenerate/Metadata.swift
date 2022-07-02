@@ -274,8 +274,8 @@ struct MetadataDB {
     struct Method {
         let name: String
         let flatName: String
-        let callResult: String?
-        let callback: String?
+        let callResult: SteamType?
+        let callback: SteamType?
 
         struct Param {
             let name: String
@@ -322,7 +322,7 @@ struct MetadataDB {
             }
         }
         let params: [Param]
-        let returnType: String
+        let returnType: SteamReturnType
         let outParamIffRc: String?
         let discardableResult: Bool
         let ignore: Bool
@@ -330,10 +330,10 @@ struct MetadataDB {
         init(base: SteamJSON.Method, patch: Patch.Method?) {
             name = base.methodname
             flatName = patch?.flat_name ?? base.methodname_flat
-            callResult = patch?.callresult ?? base.callresult
-            callback = base.callback
+            callResult = (patch?.callresult ?? base.callresult).map { SteamType($0) }
+            callback = base.callback.map { SteamType($0) }
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
-            returnType = patch?.returntype ?? base.returntype
+            returnType = SteamReturnType(patch?.returntype ?? base.returntype)
             outParamIffRc = patch?.out_param_iff_rc.map { $0 == " " ? "" : $0}
             discardableResult = patch?.discardable_result ?? false
             ignore = patch?.bIgnore ?? false
@@ -344,7 +344,7 @@ struct MetadataDB {
         let name: String
         let realClassName: String?
         /// Indexed by `name`
-        let enums: [String : Enum]
+        let enums: [SteamType : Enum]
         /// Indexed by `methodname_flat` ... `methodname` is not unique...
         let methods: [String : Method]
 
@@ -368,7 +368,7 @@ struct MetadataDB {
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
             })
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
-                (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
+                (SteamType(baseEnum.name), Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
             })
             guard let accessors = base.accessors else {
                 access = .instance(ipatch?.getter ?? "")

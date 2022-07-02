@@ -543,17 +543,17 @@ extension Array where Element == SwiftParam {
     }
 
     /// If the Steam API returns X, what does the Swift API return taking out params into account?
-    func returnTypeWithOutParams(apiReturnType: String?) -> String? {
-        entupleWithApiRc(rcText: apiReturnType, paramField: \.swiftType)
+    func returnTypeWithOutParams(apiReturnType: SwiftType?) -> String? {
+        entupleWithApiRc(rcText: apiReturnType?.name, paramField: \.swiftType)
     }
 
     /// Create a return value/tuple from the params
-    func returnValueWithOutParams(apiReturnType: String?) -> String? {
+    func returnValueWithOutParams(apiReturnType: SwiftType?) -> String? {
         entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.outParamReturnExpression)
     }
 
     /// Create a return value/tuple with dummy values, for after a failed API call
-    func returnValueWithDummyOutParams(apiReturnType: String?) -> String? {
+    func returnValueWithDummyOutParams(apiReturnType: SwiftType?) -> String? {
         entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.swiftReturnDummyInstance)
     }
 
@@ -569,10 +569,10 @@ struct SwiftMethod {
     let db: MetadataDB.Method
 
     enum Style {
-        case normal(apiReturnType: String?, swiftReturnType: String?) // 0+ args, return value that may be a tuple of out-params
-        case callReturn(String) // 0+ args, async return value with given Swift struct type
+        case normal(apiReturnType: SwiftType?, swiftReturnType: String?) // 0+ args, return value that may be a tuple of out-params
+        case callReturn(SwiftType) // 0+ args, async return value with given Swift struct type
 
-        var callReturnType: String? {
+        var callReturnType: SwiftType? {
             switch self {
             case .normal: return nil
             case .callReturn(let type): return type
@@ -581,10 +581,10 @@ struct SwiftMethod {
     }
 
     /// Swift cast needed, if any, to convert Steam API return type to fit the Swift type
-    var swiftApiCast: String? {
+    var swiftApiCast: SwiftType? {
         switch style {
-        case .normal(let apiReturnType, _):
-            return db.returnType.isSteamTypePassedOutTransparently ? nil : apiReturnType
+        case .normal:
+            return db.returnType.returnValueCast
         case .callReturn:
             return nil
         }
@@ -599,10 +599,10 @@ struct SwiftMethod {
         params = db.params.asSwiftParams
         outParams = params.filter(\.includeInReturnTuple)
         if let callResult = db.callResult {
-            style = .callReturn(callResult.asSwiftTypeName)
+            style = .callReturn(callResult.swiftType)
         } else {
-            let baseType = db.returnType.asSwiftTypeNameForApi
-            let apiReturnType = baseType == "Void" ? nil : baseType
+            let baseType = db.returnType.swiftType
+            let apiReturnType = baseType.isVoid ? nil : baseType
 
             style = .normal(apiReturnType: apiReturnType,
                             swiftReturnType: outParams.returnTypeWithOutParams(apiReturnType: apiReturnType))
@@ -632,7 +632,7 @@ struct SwiftMethod {
     var callExpression: String {
         let paramList = params.isEmpty ? "" : ", \(params.callParams)"
         let steamCall = "\(db.flatName)(interface\(paramList))"
-        return steamCall.asCast(to: swiftApiCast)
+        return steamCall.asCast(to: swiftApiCast?.name) // XXX
     }
 
     enum ReturnSyntax {

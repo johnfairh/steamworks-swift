@@ -64,7 +64,7 @@ extension SteamType {
             return mapped
         }
         if let constMatch = name.re_match("^const (.*)$") {
-            return SwiftType(SteamType(constMatch[1]))
+            return SteamType(constMatch[1]).swiftType
         }
         var name1 = name
             .re_sub("_t\\b", with: "")
@@ -100,9 +100,15 @@ extension SteamType {
         }
         return desuffixed.swiftType
     }
+
+    /// If returned from a C++ function, can this be assigned without a cast to a `swiftType` variable
+    /// thanks to happenstance or Clang importer magic.
+    var isReturnedWithoutCast: Bool {
+        steamTypesReturnedTransparently.contains(self)
+    }
 }
 
-// How to represent a steam type in the Swift interface, special cases
+/// How to represent a steam type in the Swift interface, special cases
 private let steamToSwiftTypes: [SteamType : SwiftType] = [
     // Base types
     "const char *" : "String",
@@ -138,11 +144,66 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "SteamNetworkingMessage_t *" : "SteamNetworkingMessage"
 ]
 
-/// How to represent an array of steam types (in a struct field,) special cases
+/// How to represent an array of steam types (eg. in a struct field,) special cases
 private let steamArrayElementTypeToSwiftArrayTypes: [SteamType : SwiftType] = [
     "char" : "String",
     "uint8" : "[UInt8]" // Should be Data (?) but can't use Foundation inside Steamworks because C++!
 ]
+
+/// Steam types that, when returned from a C++ function, can be directly assigned
+/// to a variable of their `SwiftType` without a cast.
+private let steamTypesReturnedTransparently = Set<SteamType>([
+    "bool", "void"
+])
+
+// MARK:
+
+/// A C++ type used in function parameter (and return) position
+///
+/// The NATIVE type is the C++ type as-declared in the json and seen in the header files.
+///
+/// The SWIFTAPI type is the C++ type that we use to generate the Swift type.  Broadly this
+/// means "pass by value not reference" but exceptions.
+///
+/// ```
+/// void * -> void * -> UnsafeMutablePointer
+/// const char * -> const char * -> String
+/// int32 -> int32 -> Int
+/// Foo_t * -> Foo_t -> Foo
+/// const Foo & -> const Foo -> Foo
+/// void -> void -> Void
+/// ```
+struct SteamParamType {
+    private let nativeType: SteamType
+    private let swiftApiSteamType: SteamType
+
+    init(_ nativeType: String) {
+        self.nativeType = SteamType(nativeType)
+        if self.nativeType.isPointerTypePassedByValue {
+            swiftApiSteamType = self.nativeType
+        } else {
+            swiftApiSteamType = self.nativeType.desuffixed
+        }
+    }
+
+    var swiftType: SwiftType {
+        swiftApiSteamType.swiftType
+    }
+
+    /// What type cast, if any, is required on a function returning this type?
+    var returnValueCast: SwiftType? {
+        nativeType.isReturnedWithoutCast ? nil : swiftType
+    }
+}
+
+extension SteamParamType: Hashable, CustomStringConvertible {
+    var description: String {
+        preconditionFailure("Error, can't generally string-interpolate this?") // XXX
+    }
+}
+
+typealias SteamReturnType = SteamParamType
+
 
 // MARK: SteamType -> SwiftInstance
 
@@ -217,6 +278,10 @@ struct SwiftType {
 
     init(_ steamType: SteamType) {
         self = steamType.swiftType
+    }
+
+    var isVoid: Bool {
+        name == "Void"
     }
 
     /// An expression to create a default instance of the type

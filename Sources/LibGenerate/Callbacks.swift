@@ -17,8 +17,8 @@ struct Callbacks {
 
     /// Figure out which structs need callback APIs.  Not exactly straightforward.
     var callbackStructs: [MetadataDB.Struct] {
-        var callResults: Set<String> = []
-        var explicitCallbacks: Set<String> = []
+        var callResults: Set<SteamType> = []
+        var explicitCallbacks: Set<SteamType> = []
 
         // Scan through and find structs with identified uses
         metadata.db.interfaces.values.forEach { interface in
@@ -38,7 +38,7 @@ struct Callbacks {
         // And so generate callback APIs for structs that are either explicitly
         // identified as such or are _not_ identified for callresult.
         return Array(metadata.db.structs.values.filter { strct in
-            strct.callbackID != nil && !callResults.contains(strct.name.name) // XXX
+            strct.callbackID != nil && !callResults.contains(strct.name)
         })
     }
 
