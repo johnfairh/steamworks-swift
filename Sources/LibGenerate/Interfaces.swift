@@ -160,7 +160,7 @@ final class SteamParam {
         db.name.asSwiftParameterName
     }
 
-    var steamType: SteamParamType {
+    var steamType: SteamType {
         db.type
     }
 
@@ -186,8 +186,10 @@ final class SteamParam {
     /// Does this C-API param go in the return tuple in the Swift API?
     var includeInReturnTuple: Bool {
         switch style {
-        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string, .in_out: return true
-        default: return false
+        case .out, .out_transparent, .out_array, .out_transparent_array, .out_string, .in_out:
+            return true
+        default:
+            return false
         }
     }
 
@@ -245,9 +247,9 @@ final class SteamParam {
     /// A default instance for a (out) param for cases we can't get a real value
     var swiftReturnDummyInstance: String { // XXX expression
         switch style {
-        case .out_array, .out_transparent_array: return "[]"
-        case .out_string: return #""""#
-        case .out, .out_transparent, .in_out:
+        case .out_array, .out_transparent_array:
+            return "[]"
+        case .out, .out_transparent, .in_out, .out_string:
             // exclam is about non-optional bufferpointers, should not arise
             return steamType.swiftTypeInstance!.expr
         default:
@@ -401,7 +403,9 @@ final class SteamParam {
         if let arrayParam = inArrayParam {
             // phantom param not present in swift, we just look at the array length
             style = .in_array_count(arrayParam)
-        } else if db.type.isProbablyOutParameter {
+        } else if db.arrayCount != nil {
+            style = .in_array
+        } else if db.probablyOutParam {
             // out parameter (probably) for return tuple
             if let outStringLength = db.outStringLength {
                 style = .out_string(outStringLength)
@@ -413,10 +417,6 @@ final class SteamParam {
                 }
             } else if !db.type.needsParameterCast {
                 style = .out_transparent
-            } else if db.arrayCount != nil {
-                // steam APIs aren't very const-correct so some out-looking
-                // params are actually in-only
-                style = .in_array
             } else if db.inOut {
                 style = .in_out
             } else {
@@ -424,8 +424,6 @@ final class SteamParam {
             }
         } else if swiftBaseType == "[String]" {
             style = .in_string_array
-        } else if db.arrayCount != nil {
-            style = .in_array
         } else {
             style = .in
         }

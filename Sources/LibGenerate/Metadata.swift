@@ -279,7 +279,8 @@ struct MetadataDB {
 
         struct Param {
             let name: String
-            let type: SteamParamType
+            let type: SteamType
+            let probablyOutParam: Bool
             let arrayCount: String?
             let outArrayLength: String?
             let outArrayValidLength: String?
@@ -290,7 +291,9 @@ struct MetadataDB {
 
             init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
                 self.name = patch?.name ?? base.paramname
-                self.type = SteamParamType(patch?.type ?? base.paramtype_flat ?? base.paramtype)
+                let nativeSteamType = SteamType(patch?.type ?? base.paramtype_flat ?? base.paramtype)
+                self.type = nativeSteamType.asParameterType
+                self.probablyOutParam = nativeSteamType.isProbablyOutParameter
                 self.inOut = patch?.in_out ?? false
                 self.nullable = patch?.nullable ?? false
                 if let patchedArrayCount = patch?.array_count, patchedArrayCount == "DELETE" {
@@ -322,7 +325,7 @@ struct MetadataDB {
             }
         }
         let params: [Param]
-        let returnType: SteamReturnType
+        let returnType: SteamType
         let outParamIffRc: String? // XXX swiftexpr?
         let discardableResult: Bool
         let ignore: Bool
@@ -333,7 +336,7 @@ struct MetadataDB {
             callResult = (patch?.callresult ?? base.callresult).map { SteamType($0) }
             callback = base.callback.map { SteamType($0) }
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
-            returnType = SteamReturnType(patch?.returntype ?? base.returntype)
+            returnType = SteamType(patch?.returntype ?? base.returntype).asReturnType
             outParamIffRc = patch?.out_param_iff_rc.map { $0 == " " ? "" : $0}
             discardableResult = patch?.discardable_result ?? false
             ignore = patch?.bIgnore ?? false

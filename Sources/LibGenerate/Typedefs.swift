@@ -93,7 +93,7 @@ private extension SteamType {
             preconditionFailure("Can't extract arguments for function-pointer typedef \(self)")
         }
         let args = matches[1].components(separatedBy: ", ")
-            .map { SteamParamType($0).swiftType.name }
+            .map { SteamType($0).asParameterType.swiftType.name }
             .joined(separator: ", ")
         // rn these all return void so don't bother converting
         return SwiftType("(\(args)) -> Void")

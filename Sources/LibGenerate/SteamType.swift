@@ -154,14 +154,14 @@ private let steamTypesPassedInWithoutCast = Set<SteamType>([
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])
 
-// MARK: SteamParamType, SteamReturnType
+// MARK: SteamType for function parameter and return
 
 /// A C++ type used in function parameter (and return) position
 ///
 /// The NATIVE type is the C++ type as-declared in the json and seen in the header files.
 ///
-/// The SWIFTAPI type is the C++ type that we use to generate the Swift type.  Broadly this
-/// means "pass by value not reference" but exceptions.
+/// The 'asParameter/ReturnType' type is the C++ type that we use to generate the Swift type.
+/// Broadly this means "pass by value not reference" but exceptions.
 ///
 /// ```
 /// void * -> void * -> UnsafeMutablePointer
@@ -171,68 +171,43 @@ private let steamTypesPassedInWithoutCast = Set<SteamType>([
 /// const Foo & -> const Foo -> Foo
 /// void -> void -> Void
 /// ```
-struct SteamParamType {
-    private let nativeType: SteamType
-    private let swiftApiSteamType: SteamType
-
-    init(_ nativeType: String) {
-        self.nativeType = SteamType(nativeType)
-        if self.nativeType.isPointerTypePassedByValue {
-            swiftApiSteamType = self.nativeType
+extension SteamType {
+    /// The API type to reason about for parameters
+    var asParameterType: SteamType {
+        if isPointerTypePassedByValue {
+            return self
         } else {
-            swiftApiSteamType = self.nativeType.desuffixed
+            return self.desuffixed
         }
     }
 
-    var swiftType: SwiftType {
-        swiftApiSteamType.swiftType
+    /// The API type to reason about for return values
+    var asReturnType: SteamType {
+        asParameterType
     }
 
-    var swiftTypeInstance: SwiftExpression? {
-        swiftApiSteamType.swiftTypeInstance
-    }
-
-    var swiftNativeType: SwiftNativeType {
-        swiftApiSteamType.swiftNativeType // XXX this seems wrong
-    }
-
-    /// What type cast, if any, is required on a function returning this type?
-    var returnValueCast: SwiftType? {
-        swiftApiSteamType.isReturnedWithoutCast ? nil : swiftType
-    }
-
-    /// XXX explain this nonsense then track down the ref to the function below this one
+    /// Does an instance of `swiftType` need a cast to be passed as a parameter to a C++ function declared
+    /// to take the native type
     var needsParameterCast: Bool {
-        !swiftApiSteamType.isPassedToFunctionWithoutCast
+        !isPassedToFunctionWithoutCast
     }
 
+    /// What type cast, if any, is required to pass something of `swiftType` as a C++ function
+    /// parameter of this steam type?
     var parameterCast: SwiftNativeType? {
         needsParameterCast ? swiftNativeType : nil
     }
 
-    /// This is a native steam (C) type
-    ///
-    /// It's being used in a function parameter context.
-    /// Detect if this is (probably) supposed to have `out` / `in_out` semantics and return the pointee type
-    ///
-    /// 'probably' - steam APIs not const-correct for in-arrays, callers have to deal.
-    var isProbablyOutParameter: Bool {
-        nativeType.isProbablyOutParameter
+    /// What type cast, if any, is required on a C++ function returning the native type to convert to the
+    /// `swiftType`?
+    var returnValueCast: SwiftType? {
+        isReturnedWithoutCast ? nil : swiftType
     }
-}
 
-extension SteamParamType: Hashable, CustomStringConvertible {
-    var description: String {
-        preconditionFailure("Error, can't generally string-interpolate this?") // XXX
-    }
-}
-
-typealias SteamReturnType = SteamParamType
-
-extension SteamType {
     /// Policy for what parameters in C++ function definitions are treated as 'out' direction, that is
     /// output from functions (includes in-out).  Very hand-rolled.
-    fileprivate var isProbablyOutParameter: Bool {
+    /// 'probably' - steam APIs not const-correct for in-arrays, callers have to deal.
+    var isProbablyOutParameter: Bool {
         if name.hasPrefix("const") { // if const then not out
             return false
         }
@@ -254,7 +229,7 @@ extension SteamType {
     }
 }
 
-// MARK: SteamType -> SwiftInstance
+// MARK: SteamType -> Swift instance
 
 extension SteamType {
     /// Get a safe-ish instance of the Swift version of this steam type
@@ -388,6 +363,7 @@ struct SwiftType {
     }
 }
 
+/// Helper to share between `SwiftType` and `SwiftNativeType`
 protocol SwiftTypeUtils {
     var name: String { get }
 }
@@ -400,15 +376,19 @@ extension SwiftTypeUtils {
     var isArrayType: Bool {
         name.re_isMatch(#"^\[.*\]$"#)
     }
+
+    var description: String {
+        name
+    }
+
+    static func < (lhs: Self, rhs: Self) -> Bool {
+        lhs.name < rhs.name
+    }
 }
 
 extension SwiftType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, SwiftTypeUtils {
     public init(stringLiteral value: String) {
         self.init(value)
-    }
-
-    public var description: String {
-        name
     }
 }
 
@@ -449,14 +429,6 @@ struct SwiftNativeType {
 extension SwiftNativeType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, Comparable, SwiftTypeUtils {
     public init(stringLiteral value: String) {
         self.init(value)
-    }
-
-    public var description: String {
-        name
-    }
-
-    static func < (lhs: SwiftNativeType, rhs: SwiftNativeType) -> Bool {
-        lhs.name < rhs.name
     }
 }
 
