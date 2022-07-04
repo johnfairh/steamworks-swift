@@ -7,17 +7,6 @@
 
 /// Utilities for converting Steamworks API names to Swift names.
 extension String {
-    /// Swift expression for 'casting' from this string, itself a Swift expression, to the given Swift type
-    func asCast(to: String?) -> String {
-        guard let to = to else {
-            return self
-        }
-        guard to.hasSuffix("?") else {
-            return "\(to)(\(self))"
-        }
-        return "\(self).map { \(to.dropLast())($0) }"
-    }
-
     /// * get rid of 'BIsBShortForBool'
     /// * to lowerCamelCase
     /// * keep one leading underscore, erase all others

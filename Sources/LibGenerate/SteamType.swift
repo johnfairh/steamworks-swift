@@ -237,7 +237,7 @@ extension SteamType {
     /// This is a bit messy because we can't do this entirely from the Swift type -- would need to
     /// restructure to do all the name mapping once up-front in Metadata, maybe not the worst thing in the world!
     /// XXX
-    var swiftTypeInstance: SwiftExpression? {
+    var swiftTypeInstance: SwiftExpr? {
         // typedefs conform to ExpressibleBy...
         if Metadata.isTypedef(steamType: self) {
             return "0"
@@ -344,22 +344,22 @@ struct SwiftType {
     /// An expression to create a default instance of the type
     ///
     /// Not comprehensive - have to go via `SteamType.swiftTypeInstance` for reasons
-    fileprivate var instance: SwiftExpression? {
+    fileprivate var instance: SwiftExpr? {
         if swiftTypesWithoutDefaultValues.contains(self) {
             return nil
         }
         if let instance = swiftTypeDefaultValues[self] {
             return instance
         }
-        if isArrayType {
+        if isArray {
             return "[]"
         }
-        if isIntegerType {
+        if isInteger {
             return "0"
         }
 
         // General fallback
-        return SwiftExpression("\(name)()")
+        return SwiftExpr("\(name)()")
     }
 }
 
@@ -369,12 +369,16 @@ protocol SwiftTypeUtils {
 }
 
 extension SwiftTypeUtils {
-    var isIntegerType: Bool {
+    var isInteger: Bool {
         name.re_isMatch(#"^U?Int\d*$"#) || name.re_isMatch(#"^C(?:Unsigned)?(?:Short|Int|Long(?:Long)?)$"#)
     }
 
-    var isArrayType: Bool {
+    var isArray: Bool {
         name.re_isMatch(#"^\[.*\]$"#)
+    }
+
+    var isOptional: Bool {
+        name.hasSuffix("?")
     }
 
     var description: String {
@@ -394,7 +398,7 @@ extension SwiftType: CustomStringConvertible, Hashable, ExpressibleByStringLiter
 
 /// Default values for Swift types.  These just need to compile and
 /// be broadly sensible.  Int types handled separately.
-private let swiftTypeDefaultValues: [SwiftType : SwiftExpression] = [
+private let swiftTypeDefaultValues: [SwiftType : SwiftExpr] = [
     "Bool" : "false",
     "String" : #""""#,
     "Double" : "0",
@@ -420,32 +424,44 @@ struct SwiftNativeType {
         self = steamType.swiftNativeType
     }
 
-    func instance(_ initWith: SwiftExpression = "") -> SwiftExpression {
-        let suffix = Metadata.isEnum(steamType: name) ? "(rawValue: 0)" : "(\(initWith))"
-        return SwiftExpression(name + suffix)
+    func instance(_ initWith: SwiftExpr = "") -> SwiftExpr {
+        let suffix = Metadata.isEnum(steamType: SteamType(name)) ? "(rawValue: 0)" : "(\(initWith))"
+        return SwiftExpr(name + suffix)
     }
 }
 
+// XXX interpolation
 extension SwiftNativeType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, Comparable, SwiftTypeUtils {
     public init(stringLiteral value: String) {
         self.init(value)
     }
 }
 
-// MARK: SwiftExpression
+// MARK: SwiftExpr
 
 /// A complete Swift expression that could serve as an rvalue
 ///
 /// This is just a wrapper to help type safety and confusion
-struct SwiftExpression {
+struct SwiftExpr {
     let expr: String
 
     init(_ expr: String) {
         self.expr = expr
     }
+
+    /// Swift expression for 'casting' from this string, itself a Swift expression, to the given Swift type
+    func asCast(to: (any SwiftTypeUtils)?) -> SwiftExpr {
+        guard let to = to else {
+            return self
+        }
+        guard to.isOptional else {
+            return SwiftExpr("\(to)(\(self))")
+        }
+        return SwiftExpr("\(self).map { \(to.name.dropLast())($0) }")
+    }
 }
 
-extension SwiftExpression: CustomStringConvertible, ExpressibleByStringLiteral {
+extension SwiftExpr: CustomStringConvertible, ExpressibleByStringLiteral, ExpressibleByStringInterpolation {
     public init(stringLiteral value: String) {
         self.init(value)
     }

@@ -173,7 +173,7 @@ extension MetadataDB.Enum {
     }
 
     /// An expression to safely initialize an enum instance, for struct default initializers
-    var defaultInstance: String {
+    var defaultInstance: SwiftExpr {
         if isSet {
             return "[]"
         }

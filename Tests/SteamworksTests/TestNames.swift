@@ -106,8 +106,8 @@ class TestNames: XCTestCase {
     }
 
     func testCasts() {
-        XCTAssertEqual("expr", "expr".asCast(to: nil))
-        XCTAssertEqual("T(expr)", "expr".asCast(to: "T"))
-        XCTAssertEqual("expr.map { T($0) }", "expr".asCast(to: "T?"))
+        XCTAssertEqual("expr", SwiftExpr("expr").asCast(to: nil).expr)
+        XCTAssertEqual("T(expr)", SwiftExpr("expr").asCast(to: SwiftType("T")).expr)
+        XCTAssertEqual("expr.map { T($0) }", SwiftExpr("expr").asCast(to: SwiftType("T?")).expr)
     }
 }

@@ -283,7 +283,7 @@ struct MetadataDB {
             let probablyOutParam: Bool
             let arrayCount: String?
             let outArrayLength: String?
-            let outArrayValidLength: String?
+            let outArrayValidLength: SwiftExpr?
             let outStringLength: String?
             let inOut: Bool
             let nullable: Bool
@@ -312,7 +312,7 @@ struct MetadataDB {
                 } else {
                     self.outArrayLength = nil
                 }
-                self.outArrayValidLength = patch?.out_array_valid_count
+                self.outArrayValidLength = patch?.out_array_valid_count.map { .init($0) }
 
                 if let outStringCount = patch?.out_string_count ?? base.out_string_count {
                     self.outStringLength = outStringCount
@@ -566,53 +566,32 @@ final class Metadata: CustomStringConvertible {
         Array(db.enums.values) + Array(nestedEnums.values)
     }
 
-    static private func findEnum(name: String) -> MetadataDB.Enum? {
-        shared?.db.enums[SteamType(name)] ?? shared?.nestedEnums[SteamType(name)] // XXX
+    static private func findEnum(steamType: SteamType) -> MetadataDB.Enum? {
+        shared?.db.enums[steamType] ?? shared?.nestedEnums[steamType]
     }
 
-    static func isEnum(steamType name: String) -> Bool {
-        findEnum(name: name) != nil
-    }
-
-    static func isOptionSetEnumPassedUnpredictably(steamType name: String) -> String? { // XXX
-        findEnum(name: name)?.setPassedInTypeName
+    static func isEnum(steamType: SteamType) -> Bool {
+        findEnum(steamType: steamType) != nil
     }
 
     static func isOptionSetEnumPassedUnpredictably(steamType: SteamType) -> SwiftNativeType? {
-        findEnum(name: steamType.name)?.setPassedInTypeName.map { SwiftNativeType($0) }
+        findEnum(steamType: steamType)?.setPassedInTypeName.map { SwiftNativeType($0) }
     }
 
-    static func findEnumDefaultInstance(steamType name: String) -> String? { // XXX
-        findEnum(name: name)?.defaultInstance
-    }
-
-    static func findEnumDefaultInstance(steamType: SteamType) -> SwiftExpression? {
-        findEnumDefaultInstance(steamType: steamType.name).map { .init($0) }
-    }
-
-    static func isStruct(steamType name: String) -> Bool {
-        shared.flatMap { $0.db.structs[SteamType(name)] != nil } ?? false
+    static func findEnumDefaultInstance(steamType: SteamType) -> SwiftExpr? {
+        findEnum(steamType: steamType)?.defaultInstance
     }
 
     static func isStruct(steamType: SteamType) -> Bool {
-        isStruct(steamType: steamType.name)
+        shared.flatMap { $0.db.structs[steamType] != nil } ?? false
     }
 
     static func isTypedef(steamType: SteamType) -> Bool {
-        isTypedef(steamType: steamType.name)
-    }
-
-    static func isTypedef(steamType name: String) -> Bool { // XXX
-        shared.flatMap { $0.db.typedefs[SteamType(name)] != nil } ?? false
-    }
-
-    /// Look up any overridden type names from the DB
-    static func steamToSwiftTypeName(_ steam: String) -> String? { // XXX
-        shared.flatMap { $0.manualSwiftNames[SteamType(steam)]?.name }
+        shared.flatMap { $0.db.typedefs[steamType] != nil } ?? false
     }
 
     /// Look up any overridden type names from the DB
     static func steamTypeToSwiftType(_ steamType: SteamType) -> SwiftType? {
-        steamToSwiftTypeName(steamType.name).map { .init($0) }
+        shared.flatMap { $0.manualSwiftNames[steamType] }
     }
 }

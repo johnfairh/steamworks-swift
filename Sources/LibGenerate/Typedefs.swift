@@ -59,7 +59,7 @@ extension MetadataDB.Typedef {
 
                    extension \(swiftType): SteamTypeAlias, SteamCreatable {}
                    """
-        if swiftNativeType.isIntegerType {
+        if swiftNativeType.isInteger {
             decl += """
 
                     extension \(swiftType): ExpressibleByIntegerLiteral {

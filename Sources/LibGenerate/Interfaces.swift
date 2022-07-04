@@ -156,8 +156,8 @@ private extension String {
 final class SteamParam {
     let db: MetadataDB.Method.Param
 
-    var swiftName: String {
-        db.name.asSwiftParameterName
+    var swiftName: SwiftExpr {
+        SwiftExpr(db.name.asSwiftParameterName) // XXX
     }
 
     var steamType: SteamType {
@@ -225,8 +225,8 @@ final class SteamParam {
     }
 
     /// Clause to forward a value to a similarly shaped function
-    var swiftParamForwardingClause: String? {
-        let paramName: String
+    var swiftParamForwardingClause: SwiftExpr? {
+        let paramName: SwiftExpr
         switch style {
         case .out, .out_transparent, .out_array, .out_transparent_array, .out_string:
             if db.nullable {
@@ -245,30 +245,30 @@ final class SteamParam {
     }
 
     /// A default instance for a (out) param for cases we can't get a real value
-    var swiftReturnDummyInstance: String { // XXX expression
+    var swiftReturnDummyInstance: SwiftExpr {
         switch style {
         case .out_array, .out_transparent_array:
             return "[]"
         case .out, .out_transparent, .in_out, .out_string:
             // exclam is about non-optional bufferpointers, should not arise
-            return steamType.swiftTypeInstance!.expr
+            return steamType.swiftTypeInstance!
         default:
             preconditionFailure("Not an out param: \(style)")
         }
     }
 
     /// The name of the local variable to store the Steam version of the type for an out param
-    private var tempName: String {
+    private var tempName: SwiftExpr {
         modifiedName("tmp")
     }
 
     /// The name of the parameter controlling a nullable out param
-    private var returnParamName: String {
+    private var returnParamName: SwiftExpr {
         modifiedName("return")
     }
 
-    private func modifiedName(_ modifier: String) -> String {
-        modifier + swiftName.prefix(1).uppercased() + String(swiftName.dropFirst())
+    private func modifiedName(_ modifier: String) -> SwiftExpr {
+        SwiftExpr(modifier + swiftName.expr.prefix(1).uppercased() + String(swiftName.expr.dropFirst())) // XXX
     }
 
     /// What code (if any) is required before calling the Steamworks API
@@ -306,7 +306,7 @@ final class SteamParam {
         case .in_out:
             let nativeType = steamType.swiftNativeType
             if !db.nullable {
-                line = "var \(tempName) = \(nativeType.instance(SwiftExpression(swiftName)))" // XXX
+                line = "var \(tempName) = \(nativeType.instance(swiftName))" // XXX
             } else {
                 line = "let \(tempName) = SteamNullable<\(nativeType)>(\(swiftName))"
                 deallocateTemp = true
@@ -330,13 +330,13 @@ final class SteamParam {
     }
 
     /// How to refer to the param in the Steamworks API call
-    var callName: String {
+    var callName: SwiftExpr {
         switch style {
         case .in:
             if db.nullable && steamType.needsParameterCast {
                 return "\(tempName).steamValue"
             } else {
-                return swiftName.asCast(to: steamType.parameterCast?.name) // XXX
+                return swiftName.asCast(to: steamType.parameterCast)
             }
 
         case .in_array:
@@ -347,7 +347,7 @@ final class SteamParam {
             }
 
         case .in_array_count(let ap):
-            return "\(ap.swiftName).count".asCast(to: steamType.parameterCast?.name) // XXX
+            return SwiftExpr("\(ap.swiftName).count").asCast(to: steamType.parameterCast)
 
         case .in_string_array:
             return ".init(\(tempName))"
@@ -367,7 +367,7 @@ final class SteamParam {
     }
 
     /// Return-type tuple-builder
-    var outParamReturnExpression: String {
+    var outParamReturnExpression: SwiftExpr {
         var outCast: SwiftType? = swiftType
 
         switch style {
@@ -377,12 +377,12 @@ final class SteamParam {
 
         case .out, .in_out:
             guard db.nullable else {
-                return tempName.asCast(to: outCast?.name) // XXX
+                return tempName.asCast(to: outCast)
             }
             return "\(tempName).swiftValue(dummy: \(swiftReturnDummyInstance))"
 
         case .out_array:
-            let subscrpt = db.outArrayValidLength.map { $0.asCast(to: "Int") } ?? ""
+            let subscrpt = db.outArrayValidLength.map { $0.asCast(to: SwiftType("Int")) } ?? ""
             return "\(tempName).swiftArray(\(subscrpt))"
 
         case .out_transparent_array:
@@ -471,12 +471,12 @@ extension Array where Element == SteamParam {
 
     /// Steamworks call parameter list
     var callParams: String {
-        map(\.callName).joined(separator: ", ")
+        map(\.callName.expr).joined(separator: ", ")
     }
 
     /// Call params when forwarding from async to callback API version
     var asyncForwardingParams: String {
-        compactMap(\.swiftParamForwardingClause).joined(separator: ", ")
+        compactMap(\.swiftParamForwardingClause?.expr).joined(separator: ", ")
     }
 
     /// Figure out how to express a 0/1 RC with the N (0+) out-params in a single type or a tuple.
@@ -502,12 +502,12 @@ extension Array where Element == SteamParam {
 
     /// Create a return value/tuple from the params
     func returnValueWithOutParams(apiReturnType: SwiftType?) -> String? {
-        entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.outParamReturnExpression)
+        entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.outParamReturnExpression.expr)
     }
 
     /// Create a return value/tuple with dummy values, for after a failed API call
     func returnValueWithDummyOutParams(apiReturnType: SwiftType?) -> String? {
-        entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.swiftReturnDummyInstance)
+        entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.swiftReturnDummyInstance.expr)
     }
 
     /// Lines to add before the API call
@@ -582,10 +582,10 @@ struct SteamMethod {
     }
 
     /// Expression returning the Swift type of the API
-    var callExpression: String {
+    var callExpression: SwiftExpr {
         let paramList = params.isEmpty ? "" : ", \(params.callParams)"
-        let steamCall = "\(db.flatName)(interface\(paramList))"
-        return steamCall.asCast(to: swiftApiCast?.name) // XXX
+        let steamCall = SwiftExpr("\(db.flatName)(interface\(paramList))")
+        return steamCall.asCast(to: swiftApiCast)
     }
 
     enum ReturnSyntax {
@@ -620,7 +620,7 @@ struct SteamMethod {
             switch (returnSyntax, apiReturn == nil) {
             case (.implicit, _),
                  (.intermediate, true):
-                return [callExpression]
+                return [callExpression.expr]
             case (.explicit, _):
                 return ["return \(callExpression)"]
             case (.intermediate, false):
