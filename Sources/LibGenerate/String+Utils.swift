@@ -30,10 +30,18 @@ extension Sequence where Element == String {
 
 protocol StringFungible: CustomStringConvertible, Hashable, ExpressibleByStringInterpolation, Comparable {
     init(_ val: String)
+    init(_ val: Substring)
+    init(_ val: any StringFungible)
     var _val: String { get }
 }
 
 extension StringFungible {
+    init(_ val: Substring) {
+        self.init(String(val))
+    }
+    init(_ val: any StringFungible) {
+        self.init(val._val)
+    }
     public init(stringLiteral value: String) {
         self.init(value)
     }

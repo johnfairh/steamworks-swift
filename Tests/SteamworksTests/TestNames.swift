@@ -49,7 +49,7 @@ class TestNames: XCTestCase {
         ]
 
         cases.forEach { steam, swift in
-            XCTAssertEqual(steam.asSwiftIdentifier, swift)
+            XCTAssertEqual(SteamName(steam).swiftName, swift)
         }
     }
 

@@ -37,7 +37,7 @@
 		020861002746747F00725122 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860FF2746747E00725122 /* Callbacks.swift */; };
 		020861022746CE8000725122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020861012746CE8000725122 /* Constants.swift */; };
 		020861042746D27000725122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020861032746D27000725122 /* Constants.swift */; };
-		0264BCD32865CFBB00AF26D1 /* SteamType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264BCD22865CFBB00AF26D1 /* SteamType.swift */; };
+		0264BCD32865CFBB00AF26D1 /* SteamSwiftTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264BCD22865CFBB00AF26D1 /* SteamSwiftTypes.swift */; };
 		0264BCD52873026B00AF26D1 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264BCD42873026B00AF26D1 /* String+Utils.swift */; };
 		027F8375274A681F00963383 /* SteamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F8374274A681F00963383 /* SteamID.swift */; };
 		027F8377274BB8E900963383 /* TestSteamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F8376274BB8E900963383 /* TestSteamID.swift */; };
@@ -237,7 +237,7 @@
 		020860FF2746747E00725122 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
 		020861012746CE8000725122 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		020861032746D27000725122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0264BCD22865CFBB00AF26D1 /* SteamType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamType.swift; sourceTree = "<group>"; };
+		0264BCD22865CFBB00AF26D1 /* SteamSwiftTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamSwiftTypes.swift; sourceTree = "<group>"; };
 		0264BCD42873026B00AF26D1 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		027F8374274A681F00963383 /* SteamID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamID.swift; sourceTree = "<group>"; };
 		027F8376274BB8E900963383 /* TestSteamID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSteamID.swift; sourceTree = "<group>"; };
@@ -376,8 +376,8 @@
 				020860A1272EBEC500725122 /* IO.swift */,
 				020860D62731B5CC00725122 /* Metadata.swift */,
 				020860DE27330CD200725122 /* Names.swift */,
-				0264BCD22865CFBB00AF26D1 /* SteamType.swift */,
 				0264BCD42873026B00AF26D1 /* String+Utils.swift */,
+				0264BCD22865CFBB00AF26D1 /* SteamSwiftTypes.swift */,
 				020860A527300E5F00725122 /* Version.swift */,
 				020860F5273FE55C00725122 /* Typedefs.swift */,
 				020861012746CE8000725122 /* Constants.swift */,
@@ -827,7 +827,7 @@
 			files = (
 				020860CE273048F200725122 /* Errors.swift in Sources */,
 				020860DB2732BA8900725122 /* Regexp.swift in Sources */,
-				0264BCD32865CFBB00AF26D1 /* SteamType.swift in Sources */,
+				0264BCD32865CFBB00AF26D1 /* SteamSwiftTypes.swift in Sources */,
 				020861002746747F00725122 /* Callbacks.swift in Sources */,
 				020860DF27330CD200725122 /* Names.swift in Sources */,
 				0264BCD52873026B00AF26D1 /* String+Utils.swift in Sources */,

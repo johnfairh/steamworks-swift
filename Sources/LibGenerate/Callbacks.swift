@@ -76,7 +76,7 @@ extension MetadataDB.Struct {
         let swiftType = name.swiftType
         return """
                    /// Async stream of Steamworks `\(name)` callbacks
-                   var \(swiftType.name.asSwiftIdentifier/*XXX*/): AsyncStream<\(swiftType)> {
+                   var \(SteamName(swiftType).swiftName): AsyncStream<\(swiftType)> {
                        AsyncStream { on\(swiftType)($0.yield0) }
                    }
                """

@@ -241,15 +241,15 @@ struct MetadataDB {
         let prefix: String
         let numericPrefix: String?
         let manualSwiftName: SwiftType?
-        let intXToSelf: String? // XXX some kind of SwiftType
+        let intXToSelf: SwiftNativeType?
 
-        struct Value: Codable {
-            let name: String
+        struct Value {
+            let name: SteamName
             let value: String
             let forceStatic: Bool
 
             init(base: SteamJSON.Enum.Value, patch: Patch.Enum.Value?) {
-                name = base.name
+                name = SteamName(base.name)
                 value = patch?.value ?? base.value
                 forceStatic = patch?.force_static ?? false
             }
@@ -262,7 +262,7 @@ struct MetadataDB {
             prefix = patch?.prefix ?? base.name
             numericPrefix = patch?.numeric_prefix
             manualSwiftName = patch?.manual_swift_name.map { .init($0) }
-            intXToSelf = patch?.intx_to_self
+            intXToSelf = patch?.intx_to_self.map { .init($0) }
             values = base.values.map {
                 Value(base: $0, patch: patch?.values?[$0.name])
             }
@@ -272,8 +272,8 @@ struct MetadataDB {
     let enums: [SteamType : Enum]
 
     struct Method {
-        let name: String
-        let flatName: String
+        let name: SteamName
+        let flatName: SteamName
         let callResult: SteamType?
         let callback: SteamType?
 
@@ -331,8 +331,8 @@ struct MetadataDB {
         let ignore: Bool
 
         init(base: SteamJSON.Method, patch: Patch.Method?) {
-            name = base.methodname
-            flatName = patch?.flat_name ?? base.methodname_flat
+            name = SteamName(base.methodname)
+            flatName = SteamName(patch?.flat_name ?? base.methodname_flat)
             callResult = (patch?.callresult ?? base.callresult).map { SteamType($0) }
             callback = base.callback.map { SteamType($0) }
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }

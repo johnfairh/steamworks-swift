@@ -32,7 +32,7 @@ struct Enums {
 
 extension MetadataDB.Enum.Value {
     var shouldGenerate: Bool {
-        !name.contains("__")
+        !name.name.contains("__")
     }
 }
 
@@ -64,7 +64,7 @@ extension MetadataDB.Enum {
             "",
             "extension \(name.swiftType) {",
             "    init(_ from: \(intType)) {",
-            "        self.init(From(rawValue: UInt32(from)))",
+            "        self.init(From(rawValue: UInt32(from)))", // XXX CUnsignedInt ?
             "    }",
             "}"
         ]
@@ -154,22 +154,8 @@ extension MetadataDB.Enum {
     }
 
     /// Convert a steamworks enum member name to Swift.
-    ///
-    /// Stripping the prefix:
-    /// * _Almost_ always begins with `k_`
-    /// * _Rarely_ has an `n`
-    /// * Scope string is usually constant but sometimes regexp and rarely case-incorrect
-    /// * Sometimes this leaves us with a case name that starts with a number, we add a
-    ///   prefix to fix this from the patch json.
-    func swiftCaseName(_ steamName: String) -> String {
-        var name = steamName.re_sub("^(?:k_)?n?\(prefix)_?", with: "", options: .i)
-        if name.first!.isNumber {
-            guard let numericPrefix = numericPrefix else {
-                preconditionFailure("Unhandled numeric-starting identifier \(steamName) -> \(name) (\(self))")
-            }
-            name = numericPrefix + name
-        }
-        return name.asSwiftIdentifier
+    func swiftCaseName(_ steamName: SteamName) -> String {
+        steamName.enumCasePrefixStripped(prefix: prefix, numericPrefix: numericPrefix).swiftName
     }
 
     /// An expression to safely initialize an enum instance, for struct default initializers
@@ -178,5 +164,30 @@ extension MetadataDB.Enum {
             return "[]"
         }
         return ".\(swiftCaseName(values.filter(\.shouldGenerate).first!.name))"
+    }
+}
+
+private extension SteamName {
+
+    /// Convert a steamworks enum member name to Swift.
+    ///
+    /// Stripping the prefix:
+    /// * _Almost_ always begins with `k_`
+    /// * _Rarely_ has an `n`
+    /// * Scope string is usually constant but sometimes regexp and rarely case-incorrect
+    /// * Sometimes this leaves us with a case name that starts with a number, we add a
+    ///   prefix to fix this from the patch json.
+    ///
+    func enumCasePrefixStripped(prefix: String, numericPrefix: String?) -> SteamName {
+        let deprefixed = name.re_sub("^(?:k_)?n?\(prefix)_?", with: "", options: .i)
+
+        guard let first = deprefixed.first, first.isNumber else {
+            return SteamName(deprefixed)
+        }
+        guard let numericPrefix = numericPrefix else {
+            preconditionFailure("Unhandled numeric-starting identifier \(name) -> \(deprefixed)")
+        }
+        print(numericPrefix)
+        return "\(numericPrefix)\(deprefixed)"
     }
 }

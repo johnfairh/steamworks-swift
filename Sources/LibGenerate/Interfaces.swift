@@ -72,7 +72,7 @@ extension MetadataDB.Interface.Access {
     ///
     /// Complicated by some of them being user/server dual
     func declaration(db: MetadataDB.Interface) -> String {
-        let shortName = db.name.name.re_sub("^ISteam", with: "").asSwiftIdentifier  // "ISteamFriends" -> "friends" XXX
+        let shortName = SteamName(db.name.name.re_sub("^ISteam", with: "")).swiftName // "ISteamFriends" -> "friends"
 
         let docComment =
             """
@@ -120,17 +120,11 @@ extension MetadataDB.Interface.Access {
     }
 }
 
-private extension String {
-    var cless: String {
-        re_sub("^C", with: "")
-    }
-}
-
 extension MetadataDB.Interface {
     func generate() -> String {
         let declaration = access.declaration(db: self)
         let methods = methods.values
-            .sorted(by: { $0.flatName.cless < $1.flatName.cless })
+            .sorted(by: { $0.flatName.normalizedApiName < $1.flatName.normalizedApiName })
             .filter(\.shouldGenerate)
             .map { $0.generate(context: name) }
             .joined(separator: "\n\n")
@@ -712,15 +706,15 @@ extension MetadataDB.Method {
     /// forcing users to make return types explicit, eg: `GetUserStatInt(..) -> Int` instead
     /// of `GetUserStat(...) -> Int`, `GetUserStat(...) -> Float`.
     var funcName: String {
-        let base = name.asSwiftIdentifier
-        guard let overloaded = flatName.re_match(#"Get.*(Float|Double|Int)(?:\d\d)?$"#) else {
+        let base = name.swiftName
+        guard let overloaded = flatName.name.re_match(#"Get.*(Float|Double|Int)(?:\d\d)?$"#) else {
             return base
         }
         return "\(base)\(overloaded[1])"
     }
 
     var varName: String {
-        String(name.dropFirst(3)).asSwiftIdentifier
+        SteamName(name.name.dropFirst(3)).swiftName
     }
 
     func generate(context: SteamType) -> String {
