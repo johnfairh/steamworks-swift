@@ -103,18 +103,3 @@ private let steamParameterNameGoodPrefixes = Set<String>([
     "friends", "steam", "csecs", "identity", "addr", "debug",
     "rtime", "src", "preview", "origins", "handles"
 ])
-
-extension String {
-    func indented(_ level: Int) -> String {
-        guard !isEmpty else {
-            return self
-        }
-        return String(repeating: "    ", count: level) + self
-    }
-}
-
-extension Sequence where Element == String {
-    func indented(_ level: Int) -> [String] {
-        map { $0.indented(level) }
-    }
-}

@@ -59,7 +59,7 @@ extension MetadataDB.Const {
     }
 
     private func nestedTypeDefDeclLines(fieldName: String) -> String {
-        let swiftType = SwiftType(type)
+        let swiftType = type.swiftType
         return """
                extension \(swiftType) {
                    /// Steamworks `\(name)`

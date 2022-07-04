@@ -200,7 +200,7 @@ final class SteamParam {
     /// The Swift type for this param
     var swiftType: SwiftType {
         switch style {
-        case .in_array, .out_array, .out_transparent_array: return SwiftType("[\(swiftBaseType)]") // XXX SwiftType(arrayOf:)
+        case .in_array, .out_array, .out_transparent_array: return "[\(swiftBaseType)]" // XXX SwiftType(arrayOf:)
         default: return swiftBaseType
         }
     }
@@ -306,7 +306,7 @@ final class SteamParam {
         case .in_out:
             let nativeType = steamType.swiftNativeType
             if !db.nullable {
-                line = "var \(tempName) = \(nativeType.instance(swiftName))" // XXX
+                line = "var \(tempName) = \(nativeType.instance(swiftName))"
             } else {
                 line = "let \(tempName) = SteamNullable<\(nativeType)>(\(swiftName))"
                 deallocateTemp = true
@@ -466,48 +466,48 @@ extension Array where Element == MetadataDB.Method.Param {
 extension Array where Element == SteamParam {
     /// Formal parameter list
     var functionParams: String {
-        compactMap(\.swiftParamClause).joined(separator: ", ")
+        compactMap(\.swiftParamClause).commaJoined
     }
 
     /// Steamworks call parameter list
     var callParams: String {
-        map(\.callName.expr).joined(separator: ", ")
+        map(\.callName.expr).commaJoined
     }
 
     /// Call params when forwarding from async to callback API version
     var asyncForwardingParams: String {
-        compactMap(\.swiftParamForwardingClause?.expr).joined(separator: ", ")
+        compactMap(\.swiftParamForwardingClause?.expr).commaJoined
     }
 
     /// Figure out how to express a 0/1 RC with the N (0+) out-params in a single type or a tuple.
     /// 1-element tuples are not allowed!
-    private func entupleWithApiRc(rcText: String?, paramField: KeyPath<SteamParam,String>) -> String? {
+    private func entupleWithApiRc<T: StringFungible>(rcText: String?, paramField: KeyPath<SteamParam, T>) -> T? {
         if isEmpty {
-            return rcText
+            return rcText.map { T($0) }
         } else if rcText == nil && count == 1 {
-            return self[0][keyPath: paramField].re_sub("^.*: ", with: "")
+            return T(self[0][keyPath: paramField].description.re_sub("^.*: ", with: ""))
         } else {
             let rcTuple = rcText.flatMap { "rc: \($0), "} ?? ""
             let outTuple = map { param in
                 "\(param.swiftName): \(param[keyPath: paramField])"
-            }.joined(separator: ", ")
-            return "(\(rcTuple)\(outTuple))"
+            }.commaJoined
+            return T("(\(rcTuple)\(outTuple))")
         }
     }
 
     /// If the Steam API returns X, what does the Swift API return taking out params into account?
-    func returnTypeWithOutParams(apiReturnType: SwiftType?) -> String? {
-        entupleWithApiRc(rcText: apiReturnType?.name, paramField: \.swiftType.name) // XXX ?
+    func returnTypeWithOutParams(apiReturnType: SwiftType?) -> SwiftType? {
+        entupleWithApiRc(rcText: apiReturnType?.name, paramField: \.swiftType)
     }
 
     /// Create a return value/tuple from the params
-    func returnValueWithOutParams(apiReturnType: SwiftType?) -> String? {
-        entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.outParamReturnExpression.expr)
+    func returnValueWithOutParams(apiReturnType: SwiftType?) -> SwiftExpr? {
+        entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.outParamReturnExpression)
     }
 
     /// Create a return value/tuple with dummy values, for after a failed API call
-    func returnValueWithDummyOutParams(apiReturnType: SwiftType?) -> String? {
-        entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.swiftReturnDummyInstance.expr)
+    func returnValueWithDummyOutParams(apiReturnType: SwiftType?) -> SwiftExpr? {
+        entupleWithApiRc(rcText: apiReturnType.map { _ in "rc" }, paramField: \.swiftReturnDummyInstance)
     }
 
     /// Lines to add before the API call
@@ -522,7 +522,7 @@ struct SteamMethod {
     let db: MetadataDB.Method
 
     enum Style {
-        case normal(apiReturnType: SwiftType?, swiftReturnType: String?) // 0+ args, return value that may be a tuple of out-params
+        case normal(apiReturnType: SwiftType?, swiftReturnType: SwiftType?) // 0+ args, return value that may be a tuple of out-params
         case callReturn(SwiftType) // 0+ args, async return value with given Swift struct type
 
         var callReturnType: SwiftType? {
@@ -577,7 +577,7 @@ struct SteamMethod {
         case .callReturn(let type):
             precondition(!db.isVar)
             let done = "completion: @escaping (\(type)?) -> Void"
-            return "public func \(db.funcName)(\(params.functionParams.commaJoin(done))) {"
+            return "public func \(db.funcName)(\(params.functionParams.commaAppend(done))) {"
         }
     }
 
@@ -681,7 +681,7 @@ struct SteamMethod {
             "\(comment), async",
             "public func \(db.funcName)(\(params.functionParams)) async -> \(type)? {",
             "    await withUnsafeContinuation {",
-            "        \(db.funcName)(\(params.asyncForwardingParams.commaJoin("completion: $0.resume")))",
+            "        \(db.funcName)(\(params.asyncForwardingParams.commaAppend("completion: $0.resume")))",
             "    }",
             "}",
         ]
@@ -690,12 +690,6 @@ struct SteamMethod {
     /// All the Swift code for this API method
     func decl(comment: String) -> [String] {
         syncDecl(comment: comment) + asyncDecl(comment: comment)
-    }
-}
-
-private extension String {
-    func commaJoin(_ with: String) -> String {
-        isEmpty ? with : "\(self), \(with)"
     }
 }
 

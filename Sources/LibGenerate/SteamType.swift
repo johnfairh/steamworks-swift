@@ -10,7 +10,7 @@
 /// A C++ type used in the native Steam API.  Would be understood by the C++ compiler.
 ///
 /// Eg. a straight type name `SteamFoo_t` or a parameter type eg. `const SteamFoo_t *`.
-struct SteamType {
+struct SteamType: StringFungible {
     let name: String
     
     init(_ name: String) {
@@ -36,6 +36,8 @@ struct SteamType {
     fileprivate var desuffixed: SteamType {
         SteamType(name.re_sub(" *(\\*|&)$", with: ""))
     }
+
+    var _val: String { name }
 }
 
 // MARK: SteamType -> SwiftType
@@ -58,7 +60,7 @@ extension SteamType {
             if let special = steamArrayElementTypeToSwiftArrayTypes[arrayMatch.element] {
                 return special
             }
-            return SwiftType("[\(SwiftType(arrayMatch.element))]")
+            return "[\(arrayMatch.element.swiftType)]"
         }
         if let mapped = steamToSwiftTypes[self] ?? Metadata.steamTypeToSwiftType(self) {
             return mapped
@@ -254,7 +256,11 @@ extension SteamType {
 // MARK: SteamType -> SwiftNativeType
 
 extension SteamType {
-
+    /// Find the Swift type required to pass this C++ type to a C++ function.
+    /// We call this the Swift _native_ type `SwiftNativeType`, contrast with `SwiftType` used in
+    /// the public API.
+    ///
+    /// This is generally a type with the same name of the C++ type, but some special cases.
     var swiftNativeType: SwiftNativeType {
         if let arrayDetails = parseArray,
            let arrayType = steamArrayElementTypeToSwiftArrayTypes[arrayDetails.element] {
@@ -307,34 +313,14 @@ private let steamToSwiftNativeTypes: [SteamType : SwiftNativeType] = [
     "SteamNetworkingMessage_t *": "OpaquePointer?" // struct not imported plus weird pointer semantics
 ]
 
-// MARK: SteamType boilerplate
-
-extension SteamType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, Comparable {
-    public init(stringLiteral value: String) {
-        self.init(value)
-    }
-
-    public var description: String {
-        name
-    }
-
-    static func < (lhs: SteamType, rhs: SteamType) -> Bool {
-        lhs.name < rhs.name
-    }
-}
-
 // MARK: SwiftType
 
 /// A Swift type used in the generated interface, derived from a `SteamType`.
-struct SwiftType {
+struct SwiftType: SwiftTypeUtils, StringFungible {
     let name: String
 
     init(_ name: String) {
         self.name = name
-    }
-
-    init(_ steamType: SteamType) {
-        self = steamType.swiftType
     }
 
     var isVoid: Bool {
@@ -361,39 +347,8 @@ struct SwiftType {
         // General fallback
         return SwiftExpr("\(name)()")
     }
-}
 
-/// Helper to share between `SwiftType` and `SwiftNativeType`
-protocol SwiftTypeUtils {
-    var name: String { get }
-}
-
-extension SwiftTypeUtils {
-    var isInteger: Bool {
-        name.re_isMatch(#"^U?Int\d*$"#) || name.re_isMatch(#"^C(?:Unsigned)?(?:Short|Int|Long(?:Long)?)$"#)
-    }
-
-    var isArray: Bool {
-        name.re_isMatch(#"^\[.*\]$"#)
-    }
-
-    var isOptional: Bool {
-        name.hasSuffix("?")
-    }
-
-    var description: String {
-        name
-    }
-
-    static func < (lhs: Self, rhs: Self) -> Bool {
-        lhs.name < rhs.name
-    }
-}
-
-extension SwiftType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, SwiftTypeUtils {
-    public init(stringLiteral value: String) {
-        self.init(value)
-    }
+    var _val: String { name }
 }
 
 /// Default values for Swift types.  These just need to compile and
@@ -413,27 +368,38 @@ private let swiftTypesWithoutDefaultValues = Set<SwiftType>([
 // MARK: SwiftNativeType
 
 /// The Swift type required to pass a value to a C++ function parameter with some declared `SteamType`.
-struct SwiftNativeType {
+struct SwiftNativeType: StringFungible, SwiftTypeUtils {
     let name: String
 
     init(_ name: String) {
         self.name = name
     }
 
-    init(_ steamType: SteamType) {
-        self = steamType.swiftNativeType
-    }
-
     func instance(_ initWith: SwiftExpr = "") -> SwiftExpr {
+        // kludge here, relies on SteamType == SteamNativeType for enums...
         let suffix = Metadata.isEnum(steamType: SteamType(name)) ? "(rawValue: 0)" : "(\(initWith))"
         return SwiftExpr(name + suffix)
     }
+
+    var _val: String { name }
 }
 
-// XXX interpolation
-extension SwiftNativeType: CustomStringConvertible, Hashable, ExpressibleByStringLiteral, Comparable, SwiftTypeUtils {
-    public init(stringLiteral value: String) {
-        self.init(value)
+/// Helper to share between `SwiftType` and `SwiftNativeType`
+protocol SwiftTypeUtils {
+    var name: String { get }
+}
+
+extension SwiftTypeUtils {
+    var isInteger: Bool {
+        name.re_isMatch(#"^U?Int\d*$"#) || name.re_isMatch(#"^C(?:Unsigned)?(?:Short|Int|Long(?:Long)?)$"#)
+    }
+
+    var isArray: Bool {
+        name.re_isMatch(#"^\[.*\]$"#)
+    }
+
+    var isOptional: Bool {
+        name.hasSuffix("?")
     }
 }
 
@@ -442,7 +408,7 @@ extension SwiftNativeType: CustomStringConvertible, Hashable, ExpressibleByStrin
 /// A complete Swift expression that could serve as an rvalue
 ///
 /// This is just a wrapper to help type safety and confusion
-struct SwiftExpr {
+struct SwiftExpr: StringFungible {
     let expr: String
 
     init(_ expr: String) {
@@ -459,14 +425,6 @@ struct SwiftExpr {
         }
         return SwiftExpr("\(self).map { \(to.name.dropLast())($0) }")
     }
-}
 
-extension SwiftExpr: CustomStringConvertible, ExpressibleByStringLiteral, ExpressibleByStringInterpolation {
-    public init(stringLiteral value: String) {
-        self.init(value)
-    }
-
-    public var description: String {
-        expr
-    }
+    var _val: String { expr }
 }

@@ -96,6 +96,6 @@ private extension SteamType {
             .map { SteamType($0).asParameterType.swiftType.name }
             .joined(separator: ", ")
         // rn these all return void so don't bother converting
-        return SwiftType("(\(args)) -> Void")
+        return "(\(args)) -> Void"
     }
 }
