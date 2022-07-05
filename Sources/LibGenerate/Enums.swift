@@ -39,13 +39,13 @@ extension MetadataDB.Enum.Value {
 extension MetadataDB.Enum {
     /// This has to match the raw type chosen by the Clang Importer for the imported C enum
     var rawType: String {
-        values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
+        values.contains(where: { $0.value.expr.hasPrefix("-") }) ? "Int32" : "UInt32" // XXX CInt ?
     }
 
     var unrepresentedValue: Int {
         (values
             .filter(\.shouldGenerate)
-            .compactMap { Int($0.value) }
+            .compactMap { Int($0.value.expr) }
             .max() ?? 0) + 1
     }
 
@@ -154,7 +154,7 @@ extension MetadataDB.Enum {
     }
 
     /// Convert a steamworks enum member name to Swift.
-    func swiftCaseName(_ steamName: SteamName) -> String {
+    func swiftCaseName(_ steamName: SteamName) -> SwiftExpr {
         steamName.enumCasePrefixStripped(prefix: prefix, numericPrefix: numericPrefix).swiftName
     }
 

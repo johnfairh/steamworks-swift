@@ -51,7 +51,7 @@ struct Interfaces {
 
 extension MetadataDB.Interface.Access {
     /// Generate a doc comment snippet
-    func accessVia(getter: String) -> String {
+    func accessVia(getter: SwiftExpr) -> String {
         switch self {
         case .instance(let actualGetter): return "`\(actualGetter)`"
         case .user: return "`SteamAPI.\(getter)`"
@@ -154,7 +154,7 @@ struct SteamParameterExpr: StringFungible {
         }
         // must be a parameter, convert
         return SwiftExpr(expr.split(separator: " ")
-            .map { SteamHungarianName($0).swiftParameterName }
+            .map { SteamHungarianName($0).swiftParameterName.expr }
             .joined(separator: " "))
     }
 }
@@ -162,15 +162,22 @@ struct SteamParameterExpr: StringFungible {
 private extension SteamHungarianName {
     /// Parameters - special behaviour for 'out' parameters, need to strip off
     /// the various expressions of 'out' in the steam name.
-    var swiftParameterName: String {
+    var swiftParameterName: SwiftExpr {
         let name = swiftName
-        if name.re_isMatch("^out[A-Z]") {
+        if name.expr.re_isMatch("^out[A-Z]") {
             return SteamHungarianName(name).swiftName
         }
-        if name.hasSuffix("TimedOut") {
+        if name.expr.hasSuffix("TimedOut") {
             return name
         }
-        return name.re_sub("(?<=[a-z])Out$", with: "")
+        return SwiftExpr(name.expr.re_sub("(?<=[a-z])Out$", with: ""))
+    }
+}
+
+private extension SwiftExpr {
+    /// New identifiers from old
+    func withPrefix(_ prefix: String) -> SwiftExpr {
+        "\(prefix)\(expr.prefix(1).uppercased())\(expr.dropFirst())"
     }
 }
 
@@ -178,7 +185,7 @@ final class SteamParam {
     let db: MetadataDB.Method.Param
 
     var swiftName: SwiftExpr {
-        SwiftExpr(db.name.swiftParameterName) // XXX
+        db.name.swiftParameterName
     }
 
     var steamType: SteamType {
@@ -279,16 +286,12 @@ final class SteamParam {
 
     /// The name of the local variable to store the Steam version of the type for an out param
     private var tempName: SwiftExpr {
-        modifiedName("tmp")
+        swiftName.withPrefix("tmp")
     }
 
     /// The name of the parameter controlling a nullable out param
     private var returnParamName: SwiftExpr {
-        modifiedName("return")
-    }
-
-    private func modifiedName(_ modifier: String) -> SwiftExpr {
-        SwiftExpr(modifier + swiftName.expr.prefix(1).uppercased() + String(swiftName.expr.dropFirst())) // XXX
+        swiftName.withPrefix("return")
     }
 
     /// What code (if any) is required before calling the Steamworks API
@@ -731,7 +734,7 @@ extension MetadataDB.Method {
     /// Because 'out' params are in the return tuple, add back the type cookie to the name to avoid
     /// forcing users to make return types explicit, eg: `GetUserStatInt(..) -> Int` instead
     /// of `GetUserStat(...) -> Int`, `GetUserStat(...) -> Float`.
-    var funcName: String {
+    var funcName: SwiftExpr {
         let base = name.swiftName
         guard let overloaded = flatName.name.re_match(#"Get.*(Float|Double|Int)(?:\d\d)?$"#) else {
             return base
@@ -739,7 +742,7 @@ extension MetadataDB.Method {
         return "\(base)\(overloaded[1])"
     }
 
-    var varName: String {
+    var varName: SwiftExpr {
         SteamName(name.name.dropFirst(3)).swiftName
     }
 

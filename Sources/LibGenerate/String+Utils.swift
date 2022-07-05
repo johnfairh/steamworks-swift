@@ -54,6 +54,10 @@ extension StringFungible {
 
     public var description: String { _val }
 
+    var isEmpty: Bool {
+        _val.isEmpty
+    }
+
     public static func < (lhs: Self, rhs: Self) -> Bool {
         lhs._val < rhs._val
     }

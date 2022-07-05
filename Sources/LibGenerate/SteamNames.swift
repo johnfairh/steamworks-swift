@@ -21,15 +21,15 @@ struct SteamName: StringFungible {
     /// * keep one leading underscore, erase all others
     /// * backticks if accidentally a Swift keyword
     /// * special cases to taste...
-    var swiftName: String { // SwiftExpr ?
+    var swiftName: SwiftExpr {
         switch name {
         case "IPv4", "IPv6":
-            return name.lowercased()
+            return SwiftExpr(name.lowercased())
         default:
-            return name.re_sub("^B(?=[A-Z].*[a-z])", with: "")
-                .re_sub("^[A-Z]+?(?=$|[^A-Z]|[A-Z][a-z])") { $0.lowercased() }
-                .re_sub("(?<!^)_", with: "")
-                .backtickedIfNecessary
+            return SwiftExpr(name.re_sub("^B(?=[A-Z].*[a-z])", with: "")
+                                 .re_sub("^[A-Z]+?(?=$|[^A-Z]|[A-Z][a-z])") { $0.lowercased() }
+                                 .re_sub("(?<!^)_", with: "")
+                                 .backtickedIfNecessary)
         }
     }
 
@@ -66,11 +66,11 @@ struct SteamHungarianName: StringFungible {
     init(_ name: String) { self.name = name }
     var _val: String { name }
 
-    var swiftName: String {
+    var swiftName: SwiftExpr {
         // All upper-case -> SHOUTY_NAME which happens for those constants that
         // are not hungarian.  Don't blame me.
         if !name.re_isMatch("[a-z]") {
-            return name
+            return SwiftExpr(name)
         }
         // 'm_' etc. prefix just drop and recurse, what follows is hungarian
         if let match = name.re_match("^[a-z]_(.*)$") {

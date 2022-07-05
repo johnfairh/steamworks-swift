@@ -221,13 +221,13 @@ struct MetadataDB {
         let name: SteamHungarianName
         let type: SteamType
         let value: SteamConstantExpr
-        let nestedName: String?
+        let nestedName: SwiftExpr?
 
         init(base: SteamJSON.Const, patch: Patch.Const?) {
             self.name = SteamHungarianName(base.constname)
             self.type = SteamType(patch?.type ?? base.consttype)
             self.value = SteamConstantExpr(patch?.value ?? base.constval)
-            self.nestedName = patch?.nested_name
+            self.nestedName = patch?.nested_name.map { .init($0) }
         }
     }
 
@@ -236,7 +236,7 @@ struct MetadataDB {
 
     final class Enum {
         let name: SteamType
-        let setPassedInTypeName: String? // XXX Some kind of SwiftType
+        let setPassedInTypeName: SwiftNativeType?
         var isSet: Bool { setPassedInTypeName != nil }
         let prefix: String
         let numericPrefix: String?
@@ -245,12 +245,12 @@ struct MetadataDB {
 
         struct Value {
             let name: SteamName
-            let value: String
+            let value: SwiftExpr
             let forceStatic: Bool
 
             init(base: SteamJSON.Enum.Value, patch: Patch.Enum.Value?) {
                 name = SteamName(base.name)
-                value = patch?.value ?? base.value
+                value = SwiftExpr(patch?.value ?? base.value)
                 forceStatic = patch?.force_static ?? false
             }
         }
@@ -258,7 +258,7 @@ struct MetadataDB {
 
         init(base: SteamJSON.Enum, patch: Patch.Enum?) {
             name = SteamType(base.name)
-            setPassedInTypeName = patch?.is_set
+            setPassedInTypeName = patch?.is_set.map { .init($0) }
             prefix = patch?.prefix ?? base.name
             numericPrefix = patch?.numeric_prefix
             manualSwiftName = patch?.manual_swift_name.map { .init($0) }
@@ -325,7 +325,7 @@ struct MetadataDB {
         }
         let params: [Param]
         let returnType: SteamType
-        let outParamIffRc: String? // XXX swiftexpr?
+        let outParamIffRc: SwiftExpr?
         let discardableResult: Bool
         let ignore: Bool
 
@@ -336,7 +336,7 @@ struct MetadataDB {
             callback = base.callback.map { SteamType($0) }
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
             returnType = SteamType(patch?.returntype ?? base.returntype).asReturnType
-            outParamIffRc = patch?.out_param_iff_rc.map { $0 == " " ? "" : $0}
+            outParamIffRc = patch?.out_param_iff_rc.map { $0 == " " ? "" : $0 }.map { .init($0) }
             discardableResult = patch?.discardable_result ?? false
             ignore = patch?.bIgnore ?? false
         }
@@ -344,7 +344,7 @@ struct MetadataDB {
 
     struct Interface {
         let name: SteamType
-        let realClassName: String?
+        let realClassName: SteamType?
         /// Indexed by `name`
         let enums: [SteamType : Enum]
         /// Indexed by `methodname_flat` ... `methodname` is not unique...
@@ -365,7 +365,7 @@ struct MetadataDB {
                 return nil
             }
             name = SteamType(base.classname)
-            realClassName = ipatch?.real_classname
+            realClassName = ipatch?.real_classname.map { .init($0) }
             methods = .init(uniqueKeysWithValues: base.methods.map { baseMethod in
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
             })
@@ -574,7 +574,7 @@ final class Metadata: CustomStringConvertible {
     }
 
     static func isOptionSetEnumPassedUnpredictably(steamType: SteamType) -> SwiftNativeType? {
-        findEnum(steamType: steamType)?.setPassedInTypeName.map { SwiftNativeType($0) }
+        findEnum(steamType: steamType)?.setPassedInTypeName
     }
 
     static func findEnumDefaultInstance(steamType: SteamType) -> SwiftExpr? {

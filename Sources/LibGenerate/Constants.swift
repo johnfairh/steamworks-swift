@@ -71,7 +71,7 @@ extension MetadataDB.Const {
         nestedTypeDefDeclLines(fieldName: nestedName ?? "invalid")
     }
 
-    private func nestedTypeDefDeclLines(fieldName: String) -> String {
+    private func nestedTypeDefDeclLines(fieldName: SwiftExpr) -> String {
         let swiftType = type.swiftType
         return """
                extension \(swiftType) {
