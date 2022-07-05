@@ -5,6 +5,10 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
+/// General string utils, content-agnostic
+
+// MARK: Indentation
+
 extension String {
     func indented(_ level: Int) -> String {
         guard !isEmpty else {
@@ -27,6 +31,8 @@ extension Sequence where Element == String {
         joined(separator: ", ")
     }
 }
+
+// MARK: Strongly-typed string-builder
 
 protocol StringFungible: CustomStringConvertible, Hashable, ExpressibleByStringInterpolation, Comparable {
     init(_ val: String)
@@ -52,4 +58,3 @@ extension StringFungible {
         lhs._val < rhs._val
     }
 }
-

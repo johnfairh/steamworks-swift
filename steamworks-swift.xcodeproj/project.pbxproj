@@ -24,7 +24,7 @@
 		020860D92732B5A600725122 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860D82732B5A600725122 /* Enums.swift */; };
 		020860DB2732BA8900725122 /* Regexp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DA2732BA8900725122 /* Regexp.swift */; };
 		020860DD273307C700725122 /* TestNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DC273307C700725122 /* TestNames.swift */; };
-		020860DF27330CD200725122 /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DE27330CD200725122 /* Names.swift */; };
+		020860DF27330CD200725122 /* SteamNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DE27330CD200725122 /* SteamNames.swift */; };
 		020860E12734054400725122 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E02734054400725122 /* Enums.swift */; };
 		020860E42735487600725122 /* Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E2273547B100725122 /* Interfaces.swift */; };
 		020860EB2736F8E700725122 /* SteamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E72735562A00725122 /* SteamFriends.swift */; };
@@ -224,7 +224,7 @@
 		020860D82732B5A600725122 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		020860DA2732BA8900725122 /* Regexp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regexp.swift; sourceTree = "<group>"; };
 		020860DC273307C700725122 /* TestNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNames.swift; sourceTree = "<group>"; };
-		020860DE27330CD200725122 /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
+		020860DE27330CD200725122 /* SteamNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamNames.swift; sourceTree = "<group>"; };
 		020860E02734054400725122 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		020860E2273547B100725122 /* Interfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interfaces.swift; sourceTree = "<group>"; };
 		020860E72735562A00725122 /* SteamFriends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamFriends.swift; sourceTree = "<group>"; };
@@ -375,8 +375,8 @@
 				020860A3272EBEE800725122 /* Generator.swift */,
 				020860A1272EBEC500725122 /* IO.swift */,
 				020860D62731B5CC00725122 /* Metadata.swift */,
-				020860DE27330CD200725122 /* Names.swift */,
 				0264BCD42873026B00AF26D1 /* String+Utils.swift */,
+				020860DE27330CD200725122 /* SteamNames.swift */,
 				0264BCD22865CFBB00AF26D1 /* SteamSwiftTypes.swift */,
 				020860A527300E5F00725122 /* Version.swift */,
 				020860F5273FE55C00725122 /* Typedefs.swift */,
@@ -829,7 +829,7 @@
 				020860DB2732BA8900725122 /* Regexp.swift in Sources */,
 				0264BCD32865CFBB00AF26D1 /* SteamSwiftTypes.swift in Sources */,
 				020861002746747F00725122 /* Callbacks.swift in Sources */,
-				020860DF27330CD200725122 /* Names.swift in Sources */,
+				020860DF27330CD200725122 /* SteamNames.swift in Sources */,
 				0264BCD52873026B00AF26D1 /* String+Utils.swift in Sources */,
 				020860FC274290DE00725122 /* Structs.swift in Sources */,
 				020860F6273FE55C00725122 /* Typedefs.swift in Sources */,

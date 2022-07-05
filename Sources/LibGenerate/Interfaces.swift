@@ -132,26 +132,53 @@ extension MetadataDB.Interface {
     }
 }
 
-private extension String {
-    /// Interpret a json term for the size of an 'out' array - might have to get a lot cleverer but seems
-    /// easy for now.
-    var asArraySizeExpression: String {
-        // check for ref to a constant, so far all upper-case
-        if self.uppercased() == self {
-            return "Int(\(self))"
+// MARK: Method Parameters
+
+/// A field in Steam JSON that describes the length of an 'out'
+/// array or string.
+///
+/// Have to cope with:
+///  * Numeric constant, eg. "1024"
+///  * Parameter SteamName, eg. "nMaxMessages"
+///  * Constant name, eg. "MAX_MESSAGES"
+///  * Arithmetic expression of the above, eg. "MAX_MESSAGE_BUF / 8"
+struct SteamParameterExpr: StringFungible {
+    let expr: String
+    init(_ expr: String) { self.expr = expr }
+    var _val: String { expr }
+
+    var swiftExpr: SwiftExpr {
+        // check for ref to a constant, so far all upper-case - would need to look up
+        if expr.uppercased() == expr {
+            return "Int(\(expr))"
         }
         // must be a parameter, convert
-        return asSwiftParameterExpression
+        return SwiftExpr(expr.split(separator: " ")
+            .map { SteamHungarianName($0).swiftParameterName }
+            .joined(separator: " "))
     }
 }
 
-// MARK: Method Parameters
+private extension SteamHungarianName {
+    /// Parameters - special behaviour for 'out' parameters, need to strip off
+    /// the various expressions of 'out' in the steam name.
+    var swiftParameterName: String {
+        let name = swiftName
+        if name.re_isMatch("^out[A-Z]") {
+            return SteamHungarianName(name).swiftName
+        }
+        if name.hasSuffix("TimedOut") {
+            return name
+        }
+        return name.re_sub("(?<=[a-z])Out$", with: "")
+    }
+}
 
 final class SteamParam {
     let db: MetadataDB.Method.Param
 
     var swiftName: SwiftExpr {
-        SwiftExpr(db.name.asSwiftParameterName) // XXX
+        SwiftExpr(db.name.swiftParameterName) // XXX
     }
 
     var steamType: SteamType {
@@ -167,11 +194,10 @@ final class SteamParam {
 
         case out // create on stack, return in a tuple
         case out_transparent // create on stack, return in a tuple, no need to convert type
-        case out_array(String) // create on stack, return in a tuple, array.  String is required length,
-                               // either constant name or parameter name
-        case out_transparent_array(String) // create on stack, return in a tuple, array, no need to convert type.
-                                           // String is required length.
-        case out_string(String) // create on stack, return in a type, string.  String is required length.
+        case out_array(SteamParameterExpr) // create on stack, return in a tuple, array.  Expr is required length.
+        case out_transparent_array(SteamParameterExpr) // create on stack, return in a tuple, array, no need to convert type.
+                                                       // Expr is required length.
+        case out_string(SteamParameterExpr) // create on stack, return in a type, string.  Expr is length.
 
         case in_out // pass in, return new value in tuple
     }
@@ -306,18 +332,18 @@ final class SteamParam {
                 deallocateTemp = true
             }
 
-        case .out_array(let sizeParam):
+        case .out_array(let size):
             let nativeType = steamType.swiftNativeType
             let nullability = db.nullable ? ", \(returnParamName)" : ""
-            line = "let \(tempName) = SteamOutArray<\(nativeType)>(\(sizeParam.asArraySizeExpression)\(nullability))"
+            line = "let \(tempName) = SteamOutArray<\(nativeType)>(\(size.swiftExpr)\(nullability))"
 
-        case .out_transparent_array(let sizeParam):
+        case .out_transparent_array(let size):
             precondition(!db.nullable, "Can't do transparent-out-array-nullable, regress to !transparent")
-            line = "var \(swiftName) = \(swiftType)(repeating: .init(), count: \(sizeParam.asArraySizeExpression))"
+            line = "var \(swiftName) = \(swiftType)(repeating: .init(), count: \(size.swiftExpr))"
 
-        case .out_string(let sizeParam):
+        case .out_string(let size):
             let nullability = db.nullable ? ", isReal: \(returnParamName)" : ""
-            line = "let \(tempName) = SteamString(length: \(sizeParam.asArraySizeExpression)\(nullability))"
+            line = "let \(tempName) = SteamString(length: \(size.swiftExpr)\(nullability))"
         }
 
         return line.isEmpty ? [] : deallocateTemp ? [line, "defer { \(tempName).deallocate() }"] : [line]
@@ -427,8 +453,8 @@ final class SteamParam {
 extension Array where Element == MetadataDB.Method.Param {
     var asSwiftParams: [SteamParam] {
         var params = [SteamParam]()
-        var lookingForCount = [String : SteamParam]() // count name : array param
-        var arrayParams = [String : SteamParam]() // array name : array param
+        var lookingForCount = [SteamHungarianName : SteamParam]() // count name : array param
+        var arrayParams = [SteamHungarianName : SteamParam]() // array name : array param
 
         forEach { p in
             if let countParamName = p.arrayCount {

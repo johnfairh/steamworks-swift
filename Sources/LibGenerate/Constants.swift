@@ -25,7 +25,7 @@ struct Constants {
         var invalidLines: [String] = []
 
         metadata.db.consts.values
-            .sorted(by: { $0.name.asSwiftConstantName < $1.name.asSwiftConstantName })
+            .sorted(by: { $0.name.swiftName < $1.name.swiftName })
             .forEach { c in
                 if c.isNestedTypeDefValue {
                     invalidLines.append(c.nestedTypeDefDeclLines)
@@ -47,11 +47,24 @@ struct Constants {
     }
 }
 
+/// Tuned specifically for the subset used to define constants
+struct SteamConstantExpr: StringFungible {
+    let name: String
+    init(_ name: String) { self.name = name }
+    var _val: String { name }
+
+    var swiftExpr: SwiftExpr {
+        SwiftExpr(name.re_sub(#"\(.*?\) *"#, with: "") // drop weird cast
+                      .re_sub("(?<=^-|~) ", with: "")  // no spacing for unary operators ...
+                      .re_sub("ull$", with: ""))       // no int-length suffix
+    }
+}
+
 extension MetadataDB.Const {
     /// Spot constants that are invalid values of some typedef type
     var isNestedTypeDefValue: Bool {
         Metadata.isTypedef(steamType: type) &&
-          (name.re_isMatch("invalid", options: .i) || nestedName != nil)
+            (name.name.re_isMatch("invalid", options: .i) || nestedName != nil)
     }
 
     var nestedTypeDefDeclLines: String {
@@ -63,7 +76,7 @@ extension MetadataDB.Const {
         return """
                extension \(swiftType) {
                    /// Steamworks `\(name)`
-                   public static let \(fieldName) = \(swiftType)(\(value.asSwiftValue))
+                   public static let \(fieldName) = \(swiftType)(\(value.swiftExpr))
                }
                """
     }
@@ -72,7 +85,7 @@ extension MetadataDB.Const {
     var flatDeclLines: String {
         """
             /// Steamworks `\(name)`
-            public static let \(name.asSwiftConstantName) = \(type.swiftType)(\(value.asSwiftValue))
+            public static let \(name.swiftName) = \(type.swiftType)(\(value.swiftExpr))
         """
     }
 }

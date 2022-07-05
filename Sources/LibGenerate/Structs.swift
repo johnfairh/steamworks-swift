@@ -37,7 +37,7 @@ struct Structs {
 }
 
 extension MetadataDB.Struct.Field {
-    static let unwantedFieldNames = Set<String>([
+    static let unwantedFieldNames = Set<SteamHungarianName>([
         "reserved", "m_ulUnused", "m__pad1", "_reservePad1"
     ])
 
@@ -94,7 +94,7 @@ extension MetadataDB.Struct.Field {
     /// Swift structure declaration field
     var declLine: [String] {[
         "/// Steamworks `\(name)`",
-        "public let \(name.asSwiftStructFieldName): \(type.swiftType)"
+        "public let \(name.swiftName): \(type.swiftType)"
     ]}
 
     /// Swift structure initializer lines
@@ -112,12 +112,12 @@ extension MetadataDB.Struct.Field {
         } else {
             rvalue = ".init(steam.\(name))"
         }
-        return "\(name.asSwiftStructFieldName) = \(rvalue)"
+        return "\(name.swiftName) = \(rvalue)"
     }
 
     /// Steam structure initializer lines - only for a few types, opt-in
     var initSteamFromSwiftLine: String {
-        let rvalue = "swift.\(name.asSwiftStructFieldName)"
+        let rvalue = "swift.\(name.swiftName)"
         if type.parseArray != nil {
             return "self.\(arraySetterName)(from: \(rvalue))"
         }
@@ -127,12 +127,12 @@ extension MetadataDB.Struct.Field {
     /// Default value setup for memberwise initializer
     var memberwiseParameter: String {
         let initClause = type.swiftTypeInstance.flatMap { " = \($0)"} ?? ""
-        return "\(name.asSwiftStructFieldName): \(type.swiftType)\(initClause)"
+        return "\(name.swiftName): \(type.swiftType)\(initClause)"
     }
 
     /// Initializer line for memberwise initializer
     var initFromMemberwiseLine: String {
-        let field = name.asSwiftStructFieldName
+        let field = name.swiftName
         return "self.\(field) = \(field)"
     }
 }

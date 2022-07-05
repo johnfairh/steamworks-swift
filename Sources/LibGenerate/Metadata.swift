@@ -218,21 +218,21 @@ struct Patch: Codable {
 ///
 struct MetadataDB {
     struct Const {
-        let name: String
+        let name: SteamHungarianName
         let type: SteamType
-        let value: String
+        let value: SteamConstantExpr
         let nestedName: String?
 
         init(base: SteamJSON.Const, patch: Patch.Const?) {
-            self.name = base.constname
+            self.name = SteamHungarianName(base.constname)
             self.type = SteamType(patch?.type ?? base.consttype)
-            self.value = patch?.value ?? base.constval
+            self.value = SteamConstantExpr(patch?.value ?? base.constval)
             self.nestedName = patch?.nested_name
         }
     }
 
     /// Indexed by `constname`, filtered by patch exclude-list
-    let consts: [String : Const]
+    let consts: [SteamHungarianName : Const]
 
     final class Enum {
         let name: SteamType
@@ -278,19 +278,18 @@ struct MetadataDB {
         let callback: SteamType?
 
         struct Param {
-            let name: String
+            let name: SteamHungarianName
             let type: SteamType
             let probablyOutParam: Bool
-            let arrayCount: String?
-            let outArrayLength: String?
+            let arrayCount: SteamHungarianName?
+            let outArrayLength: SteamParameterExpr?
             let outArrayValidLength: SwiftExpr?
-            let outStringLength: String?
+            let outStringLength: SteamParameterExpr?
             let inOut: Bool
             let nullable: Bool
-            // ?? let buffer_count: String?
 
             init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
-                self.name = patch?.name ?? base.paramname
+                self.name = SteamHungarianName(patch?.name ?? base.paramname)
                 let nativeSteamType = SteamType(patch?.type ?? base.paramtype_flat ?? base.paramtype)
                 self.type = nativeSteamType.asParameterType
                 self.probablyOutParam = nativeSteamType.isProbablyOutParameter
@@ -299,23 +298,23 @@ struct MetadataDB {
                 if let patchedArrayCount = patch?.array_count, patchedArrayCount == "DELETE" {
                     self.arrayCount = nil // fix a mistake
                 } else {
-                    self.arrayCount = patch?.array_count ?? base.array_count
+                    self.arrayCount = (patch?.array_count ?? base.array_count).map { .init($0) }
                 }
 
                 if let arrayCall = base.out_array_call {
                     // comma-separated list, first is param name, rest is dynamic recipe on how to calculate.
                     // used so sparingly (once) ignore the clever part.
-                    self.outArrayLength = String(arrayCall.split(separator: ",")[0])
+                    self.outArrayLength = SteamParameterExpr(arrayCall.split(separator: ",")[0])
                 } else if let arrayCount = patch?.out_array_count ?? base.out_array_count {
                     // const or param with the length
-                    self.outArrayLength = arrayCount
+                    self.outArrayLength = SteamParameterExpr(arrayCount)
                 } else {
                     self.outArrayLength = nil
                 }
                 self.outArrayValidLength = patch?.out_array_valid_count.map { .init($0) }
 
                 if let outStringCount = patch?.out_string_count ?? base.out_string_count {
-                    self.outStringLength = outStringCount
+                    self.outStringLength = SteamParameterExpr(outStringCount)
                 } else {
                     self.outStringLength = nil
                 }
@@ -404,24 +403,24 @@ struct MetadataDB {
     /// a callback ID and may have methods (though these are rarely coherent)
     struct Struct {
         struct Field {
-            let name: String
+            let name: SteamHungarianName
             let type: SteamType
             let ignore: Bool
 
             init(base: SteamJSON.Struct.Field, patch: Patch.Struct.Field?) {
-                name = base.fieldname
+                name = SteamHungarianName(base.fieldname)
                 type = SteamType(patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype))
                 ignore = base.private ?? patch?.bIgnore ?? false
             }
 
             /// Patch up some systemic errors / C-alignment-reasoning in types
-            static func patch(name: String, type: String) -> String {
-                if name.starts(with: "m_b") {
+            static func patch(name: SteamHungarianName, type: String) -> String {
+                if name.name.starts(with: "m_b") {
                     return "bool"
                 }
                 if type == "uint64" {
-                    if name.re_isMatch("steamid", options: .i) { return "CSteamID" }
-                    if name.re_isMatch("gameid", options: .i) { return "CGameID" }
+                    if name.name.re_isMatch("steamid", options: .i) { return "CSteamID" }
+                    if name.name.re_isMatch("gameid", options: .i) { return "CGameID" }
                 }
                 return type
             }
@@ -475,7 +474,7 @@ struct MetadataDB {
             guard !ignoredConsts.contains(name) else {
                 return nil
             }
-            return (name, Const(base: $0, patch: patch.consts[name]))
+            return (SteamHungarianName(name), Const(base: $0, patch: patch.consts[name]))
         })
 
         enums = .init(uniqueKeysWithValues: base.enums.map {

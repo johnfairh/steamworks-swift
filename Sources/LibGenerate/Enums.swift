@@ -168,7 +168,6 @@ extension MetadataDB.Enum {
 }
 
 private extension SteamName {
-
     /// Convert a steamworks enum member name to Swift.
     ///
     /// Stripping the prefix:
@@ -187,7 +186,6 @@ private extension SteamName {
         guard let numericPrefix = numericPrefix else {
             preconditionFailure("Unhandled numeric-starting identifier \(name) -> \(deprefixed)")
         }
-        print(numericPrefix)
         return "\(numericPrefix)\(deprefixed)"
     }
 }
