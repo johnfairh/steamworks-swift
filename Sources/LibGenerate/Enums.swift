@@ -36,16 +36,28 @@ extension MetadataDB.Enum.Value {
     }
 }
 
+private extension SwiftExpr {
+    var isNegative: Bool {
+        expr.hasPrefix("-")
+    }
+}
+
+private extension Int {
+    init?(_ expr: SwiftExpr) {
+        self.init(expr.expr)
+    }
+}
+
 extension MetadataDB.Enum {
     /// This has to match the raw type chosen by the Clang Importer for the imported C enum
     var rawType: String {
-        values.contains(where: { $0.value.expr.hasPrefix("-") }) ? "Int32" : "UInt32" // XXX CInt ?
+        values.contains(where: { $0.value.isNegative }) ? "CInt" : "CUnsignedInt"
     }
 
     var unrepresentedValue: Int {
         (values
             .filter(\.shouldGenerate)
-            .compactMap { Int($0.value.expr) }
+            .compactMap { Int($0.value) }
             .max() ?? 0) + 1
     }
 
@@ -64,7 +76,7 @@ extension MetadataDB.Enum {
             "",
             "extension \(name.swiftType) {",
             "    init(_ from: \(intType)) {",
-            "        self.init(From(rawValue: UInt32(from)))", // XXX CUnsignedInt ?
+            "        self.init(From(rawValue: CUnsignedInt(from)))",
             "    }",
             "}"
         ]

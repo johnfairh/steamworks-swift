@@ -238,7 +238,6 @@ extension SteamType {
     ///
     /// This is a bit messy because we can't do this entirely from the Swift type -- would need to
     /// restructure to do all the name mapping once up-front in Metadata, maybe not the worst thing in the world!
-    /// XXX
     var swiftTypeInstance: SwiftExpr? {
         // typedefs conform to ExpressibleBy...
         if Metadata.isTypedef(steamType: self) {
@@ -307,8 +306,8 @@ private let steamToSwiftNativeTypes: [SteamType : SwiftNativeType] = [
 
     "void *": "UnsafeMutableRawPointer",
 
-    "uint64_steamid" : "UInt64", // XXX how is this actually defined
-    "uint64_gameid" : "UInt64",
+    "uint64_steamid" : "CUnsignedLongLong",
+    "uint64_gameid" : "CUnsignedLongLong",
 
     "SteamNetworkingMessage_t *": "OpaquePointer?" // struct not imported plus weird pointer semantics
 ]

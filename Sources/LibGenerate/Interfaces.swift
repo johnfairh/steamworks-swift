@@ -227,7 +227,7 @@ final class SteamParam {
     /// The Swift type for this param
     var swiftType: SwiftType {
         switch style {
-        case .in_array, .out_array, .out_transparent_array: return "[\(swiftBaseType)]" // XXX SwiftType(arrayOf:)
+        case .in_array, .out_array, .out_transparent_array: return "[\(swiftBaseType)]"
         default: return swiftBaseType
         }
     }
