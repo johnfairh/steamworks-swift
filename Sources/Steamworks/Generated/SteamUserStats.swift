@@ -272,7 +272,7 @@ public struct SteamUserStats {
     /// Steamworks `ISteamUserStats::GetUserAchievement()`
     public func getUserAchievement(user: SteamID, name: String) -> (rc: Bool, achieved: Bool) {
         var tmpAchieved = CBool()
-        let rc = SteamAPI_ISteamUserStats_GetUserAchievement(interface, UInt64(user), name, &tmpAchieved)
+        let rc = SteamAPI_ISteamUserStats_GetUserAchievement(interface, CUnsignedLongLong(user), name, &tmpAchieved)
         return (rc: rc, achieved: tmpAchieved)
     }
 
@@ -280,7 +280,7 @@ public struct SteamUserStats {
     public func getUserAchievementAndUnlockTime(user: SteamID, name: String) -> (rc: Bool, achieved: Bool, unlockTime: RTime32) {
         var tmpAchieved = CBool()
         var tmpUnlockTime = CSteamworks.RTime32()
-        let rc = SteamAPI_ISteamUserStats_GetUserAchievementAndUnlockTime(interface, UInt64(user), name, &tmpAchieved, &tmpUnlockTime)
+        let rc = SteamAPI_ISteamUserStats_GetUserAchievementAndUnlockTime(interface, CUnsignedLongLong(user), name, &tmpAchieved, &tmpUnlockTime)
         if rc {
             return (rc: rc, achieved: tmpAchieved, unlockTime: RTime32(tmpUnlockTime))
         } else {
@@ -291,14 +291,14 @@ public struct SteamUserStats {
     /// Steamworks `ISteamUserStats::GetUserStat()`
     public func getUserStatFloat(user: SteamID, name: String) -> (rc: Bool, data: Float) {
         var tmpData = CFloat()
-        let rc = SteamAPI_ISteamUserStats_GetUserStatFloat(interface, UInt64(user), name, &tmpData)
+        let rc = SteamAPI_ISteamUserStats_GetUserStatFloat(interface, CUnsignedLongLong(user), name, &tmpData)
         return (rc: rc, data: tmpData)
     }
 
     /// Steamworks `ISteamUserStats::GetUserStat()`
     public func getUserStatInt(user: SteamID, name: String) -> (rc: Bool, data: Int) {
         var tmpData = int32()
-        let rc = SteamAPI_ISteamUserStats_GetUserStatInt32(interface, UInt64(user), name, &tmpData)
+        let rc = SteamAPI_ISteamUserStats_GetUserStatInt32(interface, CUnsignedLongLong(user), name, &tmpData)
         if rc {
             return (rc: rc, data: Int(tmpData))
         } else {
@@ -344,7 +344,7 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::RequestUserStats()`, callback
     public func requestUserStats(user: SteamID, completion: @escaping (UserStatsReceived?) -> Void) {
-        let rc = SteamAPI_ISteamUserStats_RequestUserStats(interface, UInt64(user))
+        let rc = SteamAPI_ISteamUserStats_RequestUserStats(interface, CUnsignedLongLong(user))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 

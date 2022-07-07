@@ -21,7 +21,7 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::AdvertiseGame()`
     public func advertiseGame(gameServer: SteamID, ipServer: Int, portServer: Int) {
-        SteamAPI_ISteamUser_AdvertiseGame(interface, UInt64(gameServer), uint32(ipServer), uint16(portServer))
+        SteamAPI_ISteamUser_AdvertiseGame(interface, CUnsignedLongLong(gameServer), uint32(ipServer), uint16(portServer))
     }
 
     /// Steamworks `ISteamUser::BIsBehindNAT()`
@@ -61,7 +61,7 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::BeginAuthSession()`
     public func beginAuthSession(authTicket: UnsafeRawPointer, authTicketSize: Int, steamID: SteamID) -> BeginAuthSessionResult {
-        BeginAuthSessionResult(SteamAPI_ISteamUser_BeginAuthSession(interface, authTicket, CInt(authTicketSize), UInt64(steamID)))
+        BeginAuthSessionResult(SteamAPI_ISteamUser_BeginAuthSession(interface, authTicket, CInt(authTicketSize), CUnsignedLongLong(steamID)))
     }
 
     /// Steamworks `ISteamUser::CancelAuthTicket()`
@@ -78,7 +78,7 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::EndAuthSession()`
     public func endAuthSession(steamID: SteamID) {
-        SteamAPI_ISteamUser_EndAuthSession(interface, UInt64(steamID))
+        SteamAPI_ISteamUser_EndAuthSession(interface, CUnsignedLongLong(steamID))
     }
 
     /// Steamworks `ISteamUser::GetAuthSessionTicket()`
@@ -175,7 +175,7 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::InitiateGameConnection_DEPRECATED()`
     public func initiateGameConnectionDEPRECATED(authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: Int, gameServer: SteamID, ipServer: Int, portServer: Int, secure: Bool) -> Int {
-        Int(SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED(interface, authBlob, CInt(maxAuthBlobSize), UInt64(gameServer), uint32(ipServer), uint16(portServer), secure))
+        Int(SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED(interface, authBlob, CInt(maxAuthBlobSize), CUnsignedLongLong(gameServer), uint32(ipServer), uint16(portServer), secure))
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, callback
@@ -221,11 +221,11 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::TrackAppUsageEvent()`
     public func trackAppUsageEvent(id: GameID, appUsageEvent: Int, extraInfo: String) {
-        SteamAPI_ISteamUser_TrackAppUsageEvent(interface, UInt64(id), CInt(appUsageEvent), extraInfo)
+        SteamAPI_ISteamUser_TrackAppUsageEvent(interface, CUnsignedLongLong(id), CInt(appUsageEvent), extraInfo)
     }
 
     /// Steamworks `ISteamUser::UserHasLicenseForApp()`
     public func userHasLicenseForApp(steamID: SteamID, id: AppID) -> UserHasLicenseForAppResult {
-        UserHasLicenseForAppResult(SteamAPI_ISteamUser_UserHasLicenseForApp(interface, UInt64(steamID), AppId_t(id)))
+        UserHasLicenseForAppResult(SteamAPI_ISteamUser_UserHasLicenseForApp(interface, CUnsignedLongLong(steamID), AppId_t(id)))
     }
 }

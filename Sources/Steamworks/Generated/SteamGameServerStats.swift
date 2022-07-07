@@ -21,33 +21,33 @@ public struct SteamGameServerStats {
 
     /// Steamworks `ISteamGameServerStats::ClearUserAchievement()`
     public func clearUserAchievement(user: SteamID, name: String) -> Bool {
-        SteamAPI_ISteamGameServerStats_ClearUserAchievement(interface, UInt64(user), name)
+        SteamAPI_ISteamGameServerStats_ClearUserAchievement(interface, CUnsignedLongLong(user), name)
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserAchievement()`
     public func getUserAchievement(user: SteamID, name: String) -> (rc: Bool, achieved: Bool) {
         var tmpAchieved = CBool()
-        let rc = SteamAPI_ISteamGameServerStats_GetUserAchievement(interface, UInt64(user), name, &tmpAchieved)
+        let rc = SteamAPI_ISteamGameServerStats_GetUserAchievement(interface, CUnsignedLongLong(user), name, &tmpAchieved)
         return (rc: rc, achieved: tmpAchieved)
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`
     public func getUserStatFloat(user: SteamID, name: String) -> (rc: Bool, data: Float) {
         var tmpData = CFloat()
-        let rc = SteamAPI_ISteamGameServerStats_GetUserStatFloat(interface, UInt64(user), name, &tmpData)
+        let rc = SteamAPI_ISteamGameServerStats_GetUserStatFloat(interface, CUnsignedLongLong(user), name, &tmpData)
         return (rc: rc, data: tmpData)
     }
 
     /// Steamworks `ISteamGameServerStats::GetUserStat()`
     public func getUserStatInt(user: SteamID, name: String) -> (rc: Bool, data: Int) {
         var tmpData = int32()
-        let rc = SteamAPI_ISteamGameServerStats_GetUserStatInt32(interface, UInt64(user), name, &tmpData)
+        let rc = SteamAPI_ISteamGameServerStats_GetUserStatInt32(interface, CUnsignedLongLong(user), name, &tmpData)
         return (rc: rc, data: Int(tmpData))
     }
 
     /// Steamworks `ISteamGameServerStats::RequestUserStats()`, callback
     public func requestUserStats(user: SteamID, completion: @escaping (GSStatsReceived?) -> Void) {
-        let rc = SteamAPI_ISteamGameServerStats_RequestUserStats(interface, UInt64(user))
+        let rc = SteamAPI_ISteamGameServerStats_RequestUserStats(interface, CUnsignedLongLong(user))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -60,22 +60,22 @@ public struct SteamGameServerStats {
 
     /// Steamworks `ISteamGameServerStats::SetUserAchievement()`
     public func setUserAchievement(user: SteamID, name: String) -> Bool {
-        SteamAPI_ISteamGameServerStats_SetUserAchievement(interface, UInt64(user), name)
+        SteamAPI_ISteamGameServerStats_SetUserAchievement(interface, CUnsignedLongLong(user), name)
     }
 
     /// Steamworks `ISteamGameServerStats::SetUserStat()`
     public func setUserStat(user: SteamID, name: String, data: Float) -> Bool {
-        SteamAPI_ISteamGameServerStats_SetUserStatFloat(interface, UInt64(user), name, data)
+        SteamAPI_ISteamGameServerStats_SetUserStatFloat(interface, CUnsignedLongLong(user), name, data)
     }
 
     /// Steamworks `ISteamGameServerStats::SetUserStat()`
     public func setUserStat(user: SteamID, name: String, data: Int) -> Bool {
-        SteamAPI_ISteamGameServerStats_SetUserStatInt32(interface, UInt64(user), name, int32(data))
+        SteamAPI_ISteamGameServerStats_SetUserStatInt32(interface, CUnsignedLongLong(user), name, int32(data))
     }
 
     /// Steamworks `ISteamGameServerStats::StoreUserStats()`, callback
     public func storeUserStats(user: SteamID, completion: @escaping (GSStatsStored?) -> Void) {
-        let rc = SteamAPI_ISteamGameServerStats_StoreUserStats(interface, UInt64(user))
+        let rc = SteamAPI_ISteamGameServerStats_StoreUserStats(interface, CUnsignedLongLong(user))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -88,6 +88,6 @@ public struct SteamGameServerStats {
 
     /// Steamworks `ISteamGameServerStats::UpdateUserAvgRateStat()`
     public func updateUserAvgRateStat(user: SteamID, name: String, countThisSession: Float, sessionLength: Double) -> Bool {
-        SteamAPI_ISteamGameServerStats_UpdateUserAvgRateStat(interface, UInt64(user), name, countThisSession, sessionLength)
+        SteamAPI_ISteamGameServerStats_UpdateUserAvgRateStat(interface, CUnsignedLongLong(user), name, countThisSession, sessionLength)
     }
 }

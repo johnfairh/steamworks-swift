@@ -29,7 +29,7 @@ public struct SteamRemotePlay {
 
     /// Steamworks `ISteamRemotePlay::BSendRemotePlayTogetherInvite()`
     public func sendRemotePlayTogetherInvite(friend: SteamID) -> Bool {
-        SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite(interface, UInt64(friend))
+        SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite(interface, CUnsignedLongLong(friend))
     }
 
     /// Steamworks `ISteamRemotePlay::GetSessionClientFormFactor()`

@@ -26,7 +26,7 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::AddRequestLobbyListCompatibleMembersFilter()`
     public func addRequestLobbyListCompatibleMembersFilter(lobby: SteamID) {
-        SteamAPI_ISteamMatchmaking_AddRequestLobbyListCompatibleMembersFilter(interface, UInt64(lobby))
+        SteamAPI_ISteamMatchmaking_AddRequestLobbyListCompatibleMembersFilter(interface, CUnsignedLongLong(lobby))
     }
 
     /// Steamworks `ISteamMatchmaking::AddRequestLobbyListDistanceFilter()`
@@ -75,7 +75,7 @@ public struct SteamMatchmaking {
     /// Steamworks `ISteamMatchmaking::DeleteLobbyData()`
     @discardableResult
     public func deleteLobbyData(lobby: SteamID, key: String) -> Bool {
-        SteamAPI_ISteamMatchmaking_DeleteLobbyData(interface, UInt64(lobby), key)
+        SteamAPI_ISteamMatchmaking_DeleteLobbyData(interface, CUnsignedLongLong(lobby), key)
     }
 
     /// Steamworks `ISteamMatchmaking::GetFavoriteGame()`
@@ -108,26 +108,26 @@ public struct SteamMatchmaking {
     public func getLobbyChatEntry(lobby: SteamID, chatIDIndex: Int, data: UnsafeMutableRawPointer, dataSize: Int) -> (rc: Int, user: SteamID, chatEntryType: ChatEntryType) {
         var tmpUser = CSteamID()
         var tmpChatEntryType = EChatEntryType(rawValue: 0)
-        let rc = Int(SteamAPI_ISteamMatchmaking_GetLobbyChatEntry(interface, UInt64(lobby), CInt(chatIDIndex), &tmpUser, data, CInt(dataSize), &tmpChatEntryType))
+        let rc = Int(SteamAPI_ISteamMatchmaking_GetLobbyChatEntry(interface, CUnsignedLongLong(lobby), CInt(chatIDIndex), &tmpUser, data, CInt(dataSize), &tmpChatEntryType))
         return (rc: rc, user: SteamID(tmpUser), chatEntryType: ChatEntryType(tmpChatEntryType))
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyData()`
     public func getLobbyData(lobby: SteamID, key: String) -> String {
-        String(SteamAPI_ISteamMatchmaking_GetLobbyData(interface, UInt64(lobby), key))
+        String(SteamAPI_ISteamMatchmaking_GetLobbyData(interface, CUnsignedLongLong(lobby), key))
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyDataByIndex()`
     public func getLobbyDataByIndex(lobby: SteamID, lobbyDataIndex: Int, keyBufferSize: Int, valueBufferSize: Int) -> (rc: Bool, key: String, value: String) {
         let tmpKey = SteamString(length: keyBufferSize)
         let tmpValue = SteamString(length: valueBufferSize)
-        let rc = SteamAPI_ISteamMatchmaking_GetLobbyDataByIndex(interface, UInt64(lobby), CInt(lobbyDataIndex), tmpKey.charBuffer, CInt(keyBufferSize), tmpValue.charBuffer, CInt(valueBufferSize))
+        let rc = SteamAPI_ISteamMatchmaking_GetLobbyDataByIndex(interface, CUnsignedLongLong(lobby), CInt(lobbyDataIndex), tmpKey.charBuffer, CInt(keyBufferSize), tmpValue.charBuffer, CInt(valueBufferSize))
         return (rc: rc, key: tmpKey.swiftString, value: tmpValue.swiftString)
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyDataCount()`
     public func getLobbyDataCount(lobby: SteamID) -> Int {
-        Int(SteamAPI_ISteamMatchmaking_GetLobbyDataCount(interface, UInt64(lobby)))
+        Int(SteamAPI_ISteamMatchmaking_GetLobbyDataCount(interface, CUnsignedLongLong(lobby)))
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyGameServer()`
@@ -135,7 +135,7 @@ public struct SteamMatchmaking {
         var tmpGameServerIP = uint32()
         var tmpGameServerPort = uint16()
         var tmpGameServer = CSteamID()
-        let rc = SteamAPI_ISteamMatchmaking_GetLobbyGameServer(interface, UInt64(lobby), &tmpGameServerIP, &tmpGameServerPort, &tmpGameServer)
+        let rc = SteamAPI_ISteamMatchmaking_GetLobbyGameServer(interface, CUnsignedLongLong(lobby), &tmpGameServerIP, &tmpGameServerPort, &tmpGameServer)
         if rc {
             return (rc: rc, gameServerIP: Int(tmpGameServerIP), gameServerPort: Int(tmpGameServerPort), gameServer: SteamID(tmpGameServer))
         } else {
@@ -145,38 +145,38 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::GetLobbyMemberByIndex()`
     public func getLobbyMemberByIndex(lobby: SteamID, memberIndex: Int) -> SteamID {
-        SteamID(SteamAPI_ISteamMatchmaking_GetLobbyMemberByIndex(interface, UInt64(lobby), CInt(memberIndex)))
+        SteamID(SteamAPI_ISteamMatchmaking_GetLobbyMemberByIndex(interface, CUnsignedLongLong(lobby), CInt(memberIndex)))
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyMemberData()`
     public func getLobbyMemberData(lobby: SteamID, user: SteamID, key: String) -> String? {
-        SteamAPI_ISteamMatchmaking_GetLobbyMemberData(interface, UInt64(lobby), UInt64(user), key).map { String($0) }
+        SteamAPI_ISteamMatchmaking_GetLobbyMemberData(interface, CUnsignedLongLong(lobby), CUnsignedLongLong(user), key).map { String($0) }
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyMemberLimit()`
     public func getLobbyMemberLimit(lobby: SteamID) -> Int {
-        Int(SteamAPI_ISteamMatchmaking_GetLobbyMemberLimit(interface, UInt64(lobby)))
+        Int(SteamAPI_ISteamMatchmaking_GetLobbyMemberLimit(interface, CUnsignedLongLong(lobby)))
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyOwner()`
     public func getLobbyOwner(lobby: SteamID) -> SteamID {
-        SteamID(SteamAPI_ISteamMatchmaking_GetLobbyOwner(interface, UInt64(lobby)))
+        SteamID(SteamAPI_ISteamMatchmaking_GetLobbyOwner(interface, CUnsignedLongLong(lobby)))
     }
 
     /// Steamworks `ISteamMatchmaking::GetNumLobbyMembers()`
     public func getNumLobbyMembers(lobby: SteamID) -> Int {
-        Int(SteamAPI_ISteamMatchmaking_GetNumLobbyMembers(interface, UInt64(lobby)))
+        Int(SteamAPI_ISteamMatchmaking_GetNumLobbyMembers(interface, CUnsignedLongLong(lobby)))
     }
 
     /// Steamworks `ISteamMatchmaking::InviteUserToLobby()`
     @discardableResult
     public func inviteUserToLobby(lobby: SteamID, invitee: SteamID) -> Bool {
-        SteamAPI_ISteamMatchmaking_InviteUserToLobby(interface, UInt64(lobby), UInt64(invitee))
+        SteamAPI_ISteamMatchmaking_InviteUserToLobby(interface, CUnsignedLongLong(lobby), CUnsignedLongLong(invitee))
     }
 
     /// Steamworks `ISteamMatchmaking::JoinLobby()`, callback
     public func joinLobby(lobby: SteamID, completion: @escaping (LobbyEnter?) -> Void) {
-        let rc = SteamAPI_ISteamMatchmaking_JoinLobby(interface, UInt64(lobby))
+        let rc = SteamAPI_ISteamMatchmaking_JoinLobby(interface, CUnsignedLongLong(lobby))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -189,7 +189,7 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::LeaveLobby()`
     public func leaveLobby(lobby: SteamID) {
-        SteamAPI_ISteamMatchmaking_LeaveLobby(interface, UInt64(lobby))
+        SteamAPI_ISteamMatchmaking_LeaveLobby(interface, CUnsignedLongLong(lobby))
     }
 
     /// Steamworks `ISteamMatchmaking::RemoveFavoriteGame()`
@@ -201,7 +201,7 @@ public struct SteamMatchmaking {
     /// Steamworks `ISteamMatchmaking::RequestLobbyData()`
     @discardableResult
     public func requestLobbyData(lobby: SteamID) -> Bool {
-        SteamAPI_ISteamMatchmaking_RequestLobbyData(interface, UInt64(lobby))
+        SteamAPI_ISteamMatchmaking_RequestLobbyData(interface, CUnsignedLongLong(lobby))
     }
 
     /// Steamworks `ISteamMatchmaking::RequestLobbyList()`, callback
@@ -220,49 +220,49 @@ public struct SteamMatchmaking {
     /// Steamworks `ISteamMatchmaking::SendLobbyChatMsg()`
     @discardableResult
     public func sendLobbyChatMsg(lobby: SteamID, msgBody: UnsafeRawPointer, msgBodySize: Int) -> Bool {
-        SteamAPI_ISteamMatchmaking_SendLobbyChatMsg(interface, UInt64(lobby), msgBody, CInt(msgBodySize))
+        SteamAPI_ISteamMatchmaking_SendLobbyChatMsg(interface, CUnsignedLongLong(lobby), msgBody, CInt(msgBodySize))
     }
 
     /// Steamworks `ISteamMatchmaking::SetLinkedLobby()`
     public func setLinkedLobby(lobby: SteamID, lobbyDependent: SteamID) -> Bool {
-        SteamAPI_ISteamMatchmaking_SetLinkedLobby(interface, UInt64(lobby), UInt64(lobbyDependent))
+        SteamAPI_ISteamMatchmaking_SetLinkedLobby(interface, CUnsignedLongLong(lobby), CUnsignedLongLong(lobbyDependent))
     }
 
     /// Steamworks `ISteamMatchmaking::SetLobbyData()`
     public func setLobbyData(lobby: SteamID, key: String, value: String) -> Bool {
-        SteamAPI_ISteamMatchmaking_SetLobbyData(interface, UInt64(lobby), key, value)
+        SteamAPI_ISteamMatchmaking_SetLobbyData(interface, CUnsignedLongLong(lobby), key, value)
     }
 
     /// Steamworks `ISteamMatchmaking::SetLobbyGameServer()`
     public func setLobbyGameServer(lobby: SteamID, gameServerIP: Int, gameServerPort: Int, gameServer: SteamID) {
-        SteamAPI_ISteamMatchmaking_SetLobbyGameServer(interface, UInt64(lobby), uint32(gameServerIP), uint16(gameServerPort), UInt64(gameServer))
+        SteamAPI_ISteamMatchmaking_SetLobbyGameServer(interface, CUnsignedLongLong(lobby), uint32(gameServerIP), uint16(gameServerPort), CUnsignedLongLong(gameServer))
     }
 
     /// Steamworks `ISteamMatchmaking::SetLobbyJoinable()`
     @discardableResult
     public func setLobbyJoinable(lobby: SteamID, lobbyJoinable: Bool) -> Bool {
-        SteamAPI_ISteamMatchmaking_SetLobbyJoinable(interface, UInt64(lobby), lobbyJoinable)
+        SteamAPI_ISteamMatchmaking_SetLobbyJoinable(interface, CUnsignedLongLong(lobby), lobbyJoinable)
     }
 
     /// Steamworks `ISteamMatchmaking::SetLobbyMemberData()`
     public func setLobbyMemberData(lobby: SteamID, key: String, value: String) {
-        SteamAPI_ISteamMatchmaking_SetLobbyMemberData(interface, UInt64(lobby), key, value)
+        SteamAPI_ISteamMatchmaking_SetLobbyMemberData(interface, CUnsignedLongLong(lobby), key, value)
     }
 
     /// Steamworks `ISteamMatchmaking::SetLobbyMemberLimit()`
     @discardableResult
     public func setLobbyMemberLimit(lobby: SteamID, maxMembers: Int) -> Bool {
-        SteamAPI_ISteamMatchmaking_SetLobbyMemberLimit(interface, UInt64(lobby), CInt(maxMembers))
+        SteamAPI_ISteamMatchmaking_SetLobbyMemberLimit(interface, CUnsignedLongLong(lobby), CInt(maxMembers))
     }
 
     /// Steamworks `ISteamMatchmaking::SetLobbyOwner()`
     public func setLobbyOwner(lobby: SteamID, newOwner: SteamID) -> Bool {
-        SteamAPI_ISteamMatchmaking_SetLobbyOwner(interface, UInt64(lobby), UInt64(newOwner))
+        SteamAPI_ISteamMatchmaking_SetLobbyOwner(interface, CUnsignedLongLong(lobby), CUnsignedLongLong(newOwner))
     }
 
     /// Steamworks `ISteamMatchmaking::SetLobbyType()`
     @discardableResult
     public func setLobbyType(lobby: SteamID, lobbyType: LobbyType) -> Bool {
-        SteamAPI_ISteamMatchmaking_SetLobbyType(interface, UInt64(lobby), ELobbyType(lobbyType))
+        SteamAPI_ISteamMatchmaking_SetLobbyType(interface, CUnsignedLongLong(lobby), ELobbyType(lobbyType))
     }
 }

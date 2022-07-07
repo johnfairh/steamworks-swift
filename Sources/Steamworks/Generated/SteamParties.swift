@@ -21,7 +21,7 @@ public struct SteamParties {
 
     /// Steamworks `ISteamParties::CancelReservation()`
     public func cancelReservation(beacon: PartyBeaconID, user: SteamID) {
-        SteamAPI_ISteamParties_CancelReservation(interface, PartyBeaconID_t(beacon), UInt64(user))
+        SteamAPI_ISteamParties_CancelReservation(interface, PartyBeaconID_t(beacon), CUnsignedLongLong(user))
     }
 
     /// Steamworks `ISteamParties::ChangeNumOpenSlots()`, callback
@@ -111,6 +111,6 @@ public struct SteamParties {
 
     /// Steamworks `ISteamParties::OnReservationCompleted()`
     public func onReservationCompleted(beacon: PartyBeaconID, user: SteamID) {
-        SteamAPI_ISteamParties_OnReservationCompleted(interface, PartyBeaconID_t(beacon), UInt64(user))
+        SteamAPI_ISteamParties_OnReservationCompleted(interface, PartyBeaconID_t(beacon), CUnsignedLongLong(user))
     }
 }

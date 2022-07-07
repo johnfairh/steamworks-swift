@@ -47,7 +47,7 @@ public struct SteamUtils {
     /// Steamworks `ISteamUtils::FilterText()`
     public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, byteSizeOutFilteredText: Int) -> (rc: Int, filteredText: String) {
         let tmpFilteredText = SteamString(length: byteSizeOutFilteredText)
-        let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), UInt64(steamID), inputMessage, tmpFilteredText.charBuffer, uint32(byteSizeOutFilteredText)))
+        let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), CUnsignedLongLong(steamID), inputMessage, tmpFilteredText.charBuffer, uint32(byteSizeOutFilteredText)))
         return (rc: rc, filteredText: tmpFilteredText.swiftString)
     }
 

@@ -51,7 +51,7 @@ public struct SteamScreenshots {
 
     /// Steamworks `ISteamScreenshots::TagUser()`
     public func tagUser(screenshot: ScreenshotHandle, steamID: SteamID) -> Bool {
-        SteamAPI_ISteamScreenshots_TagUser(interface, CSteamworks.ScreenshotHandle(screenshot), UInt64(steamID))
+        SteamAPI_ISteamScreenshots_TagUser(interface, CSteamworks.ScreenshotHandle(screenshot), CUnsignedLongLong(steamID))
     }
 
     /// Steamworks `ISteamScreenshots::TriggerScreenshot()`

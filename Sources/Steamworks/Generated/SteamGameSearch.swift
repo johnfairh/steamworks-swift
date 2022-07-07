@@ -62,7 +62,7 @@ public struct SteamGameSearch {
     /// Steamworks `ISteamGameSearch::RetrieveConnectionDetails()`
     public func retrieveConnectionDetails(host: SteamID, connectionDetailsSize: Int) -> (rc: GameSearchErrorCode, connectionDetails: String) {
         let tmpConnectionDetails = SteamString(length: connectionDetailsSize)
-        let rc = GameSearchErrorCode(SteamAPI_ISteamGameSearch_RetrieveConnectionDetails(interface, UInt64(host), tmpConnectionDetails.charBuffer, CInt(connectionDetailsSize)))
+        let rc = GameSearchErrorCode(SteamAPI_ISteamGameSearch_RetrieveConnectionDetails(interface, CUnsignedLongLong(host), tmpConnectionDetails.charBuffer, CInt(connectionDetailsSize)))
         return (rc: rc, connectionDetails: tmpConnectionDetails.swiftString)
     }
 
@@ -73,7 +73,7 @@ public struct SteamGameSearch {
 
     /// Steamworks `ISteamGameSearch::SearchForGameWithLobby()`
     public func searchForGameWithLobby(lobby: SteamID, playerMin: Int, playerMax: Int) -> GameSearchErrorCode {
-        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SearchForGameWithLobby(interface, UInt64(lobby), CInt(playerMin), CInt(playerMax)))
+        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SearchForGameWithLobby(interface, CUnsignedLongLong(lobby), CInt(playerMin), CInt(playerMax)))
     }
 
     /// Steamworks `ISteamGameSearch::SetConnectionDetails()`
@@ -88,6 +88,6 @@ public struct SteamGameSearch {
 
     /// Steamworks `ISteamGameSearch::SubmitPlayerResult()`
     public func submitPlayerResult(uniqueGameID: UInt64, player: SteamID, ePlayerResult: PlayerResult) -> GameSearchErrorCode {
-        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SubmitPlayerResult(interface, uniqueGameID, UInt64(player), EPlayerResult_t(ePlayerResult)))
+        GameSearchErrorCode(SteamAPI_ISteamGameSearch_SubmitPlayerResult(interface, uniqueGameID, CUnsignedLongLong(player), EPlayerResult_t(ePlayerResult)))
     }
 }

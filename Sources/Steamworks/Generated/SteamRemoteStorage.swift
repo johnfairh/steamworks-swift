@@ -109,7 +109,7 @@ public struct SteamRemoteStorage {
         defer { tmpRequiredTags.deallocate() }
         let tmpExcludedTags = StringArray(excludedTags)
         defer { tmpExcludedTags.deallocate() }
-        let rc = SteamAPI_ISteamRemoteStorage_EnumerateUserSharedWorkshopFiles(interface, UInt64(steamId), uint32(startIndex), .init(tmpRequiredTags), .init(tmpExcludedTags))
+        let rc = SteamAPI_ISteamRemoteStorage_EnumerateUserSharedWorkshopFiles(interface, CUnsignedLongLong(steamId), uint32(startIndex), .init(tmpRequiredTags), .init(tmpExcludedTags))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 

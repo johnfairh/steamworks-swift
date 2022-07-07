@@ -38,7 +38,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::CheckResultSteamID()`
     public func checkResultSteamID(handle: SteamInventoryResult, expected: SteamID) -> Bool {
-        SteamAPI_ISteamInventory_CheckResultSteamID(interface, SteamInventoryResult_t(handle), UInt64(expected))
+        SteamAPI_ISteamInventory_CheckResultSteamID(interface, SteamInventoryResult_t(handle), CUnsignedLongLong(expected))
     }
 
     /// Steamworks `ISteamInventory::ConsumeItem()`
@@ -91,7 +91,7 @@ public struct SteamInventory {
     public func getEligiblePromoItemDefinitionIDs(steamID: SteamID, itemDefIDsArraySize: Int) -> (rc: Bool, itemDefIDs: [SteamItemDef], itemDefIDsArraySize: Int) {
         let tmpItemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize)
         var tmpItemDefIDsArraySize = uint32(itemDefIDsArraySize)
-        let rc = SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs(interface, UInt64(steamID), tmpItemDefIDs.steamArray, &tmpItemDefIDsArraySize)
+        let rc = SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs(interface, CUnsignedLongLong(steamID), tmpItemDefIDs.steamArray, &tmpItemDefIDsArraySize)
         if rc {
             return (rc: rc, itemDefIDs: tmpItemDefIDs.swiftArray(Int(tmpItemDefIDsArraySize)), itemDefIDsArraySize: Int(tmpItemDefIDsArraySize))
         } else {
@@ -210,7 +210,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::RequestEligiblePromoItemDefinitionsIDs()`, callback
     public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID, completion: @escaping (SteamInventoryEligiblePromoItemDefIDs?) -> Void) {
-        let rc = SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs(interface, UInt64(steamID))
+        let rc = SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs(interface, CUnsignedLongLong(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 

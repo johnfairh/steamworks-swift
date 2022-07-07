@@ -1,0 +1,6777 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <link rel="stylesheet" href="../../css/fw2020.css">
+    
+    
+   <title>SteamNetworkingSockets - Steamworks v0.1.0</title>
+    
+  </head>
+  <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamnetworkingsockets.html" data-assets-path="../../">
+
+  <!-- messages for search -->
+  <div hidden>
+    <span id="text-loading">Loading index...</span>
+    <span id="text-failed">Failed to load index</span>
+    <span id="text-notfound">No matches</span>
+  </div>
+
+  <header class="j2-header">
+  <div class="navbar navbar-expand navbar-dark j2-titlebar">
+  <div class="container-fluid ps-0 pe-0">
+  <a class="visually-hidden-focusable visually-hidden fw-slightly-bold pe-2" href="#main-content">Skip to main content</a>
+  <a class="nav-item nav-link ps-0 pt-1 pe-2 d-md-none" id="nav-toggle-button" role="button" aria-controls="nav-column" aria-expanded="false" aria-label="Toggle navigation" href="#">
+    <span class="navbar-toggler-icon"></span>
+  </a>
+
+  <div class="navbar-brand me-1 fw-slightly-bold">
+    
+    <a href="../../index.html">
+    
+    Steamworks v0.1.0</a>
+  </div>
+  
+
+  <div class="navbar-nav ms-auto justify-content-end flex-fill">
+
+    
+    <form class="d-none d-md-block my-auto pe-2 ps-2" role="search">
+      <input class="form-control form-control-sm w-100" type="search" placeHolder="Search" aria-label="Search" aria-keyshortcuts="/" data-search-format="span">
+    </form>
+    
+
+    
+
+    
+    <a class="nav-item nav-link d-none d-sm-inline" rel="external" href="https://github.com/johnfairh/swift-steamworks">
+      <svg class="j2-title-svg" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 16 16"><title>Open on GitHub</title><path fill="currentcolor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+    </a>
+    
+    
+    
+    
+
+    
+
+    
+
+  </div>
+  </div>
+</div>
+
+<!-- narrow-style searchbar -->
+
+
+<div class="container-fluid j2-titlebar d-md-none">
+  <div class="row">
+    <div class="col">
+      <form class="pb-2">
+        <input class="form-control form-control-sm" type="search" placeHolder="Search" aria-label="Search" aria-keyshortcuts="/" data-search-format="div">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <nav aria-label="breadcrumb" class="small">
+  
+  
+    <ol class="breadcrumb j2-breadcrumb j2-swift">
+      <li class="breadcrumb-item"><a href="../../index.html">Index</a></li>
+      
+        
+          <li class="breadcrumb-item"><a href="../../steamworks-interfaces.html?swift">Steamworks interfaces</a></li>
+        
+        
+      
+        
+        
+          <li class="breadcrumb-item" aria-current="page">Steamworks.SteamNetworkingSockets</li>
+        
+      
+    </ol>
+  
+</nav>
+
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-auto d-none d-md-flex flex-column j2-nav" id="nav-column">
+  
+    <nav aria-label="Swift" class="j2-swift">
+    <ul class="j2-nav-list">
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../api-clients.html?swift">API clients</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steambaseapi3.html?swift">SteamBaseAPI</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapi.html?swift">SteamAPI</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamgameserverapi.html?swift">SteamGameServerAPI</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworksencryptedappticket/types/steamencryptedappticket.html?swift">SteamEncryptedAppTicket</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../steamworks-interfaces.html?swift">Steamworks interfaces</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapplist.html?swift">SteamAppList</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapps.html?swift">SteamApps</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamfriends.html?swift">SteamFriends</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamgamesearch.html?swift">SteamGameSearch</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamgameserver.html?swift">SteamGameServer</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamgameserverstats.html?swift">SteamGameServerStats</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamhtmlsurface.html?swift">SteamHTMLSurface</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamhttp.html?swift">SteamHTTP</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminput.html?swift">SteamInput</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventory.html?swift">SteamInventory</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmaking.html?swift">SteamMatchmaking</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingservers.html?swift">SteamMatchmakingServers</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammusic.html?swift">SteamMusic</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammusicremote.html?swift">SteamMusicRemote</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingfakeudpport.html?swift">SteamNetworkingFakeUDPPort</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmessages.html?swift">SteamNetworkingMessages</a>
+
+
+
+  </li>
+  
+  <li>
+    
+  <a class="j2-nav-item active" href="#" aria-current="page">SteamNetworkingSockets</a>
+
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingutils.html?swift">SteamNetworkingUtils</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamparentalsettings.html?swift">SteamParentalSettings</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamparties.html?swift">SteamParties</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamremoteplay.html?swift">SteamRemotePlay</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamremotestorage.html?swift">SteamRemoteStorage</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamscreenshots.html?swift">SteamScreenshots</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamugc.html?swift">SteamUGC</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamuser.html?swift">SteamUser</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamuserstats.html?swift">SteamUserStats</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamutils.html?swift">SteamUtils</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamvideo1.html?swift">SteamVideo</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../typealiases.html?swift">Typealiases</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/accountid1.html?swift">AccountID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/appid26.html?swift">AppID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controlleractionsethandle.html?swift">ControllerActionSetHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controlleranalogactionhandle.html?swift">ControllerAnalogActionHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controllerdigitalactionhandle.html?swift">ControllerDigitalActionHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controllerhandle.html?swift">ControllerHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/depotid1.html?swift">DepotID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendsgroupid1.html?swift">FriendsGroupID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hauthticket1.html?swift">HAuthTicket</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hserverlistrequest.html?swift">HServerListRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hserverquery1.html?swift">HServerQuery</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteamlistensocket1.html?swift">HSteamListenSocket</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteamnetpollgroup1.html?swift">HSteamNetPollGroup</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteampipe.html?swift">HSteamPipe</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteamuser.html?swift">HSteamUser</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httpcookiecontainerhandle.html?swift">HTTPCookieContainerHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httprequesthandle.html?swift">HTTPRequestHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputactionsethandle.html?swift">InputActionSetHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputanalogactionhandle.html?swift">InputAnalogActionHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputdigitalactionhandle.html?swift">InputDigitalActionHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputhandle1.html?swift">InputHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/publishedfileupdatehandle1.html?swift">PublishedFileUpdateHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/rtime32.html?swift">RTime32</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remoteplaysessionid1.html?swift">RemotePlaySessionID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/snetlistensocket.html?swift">SNetListenSocket</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/snetsocket.html?swift">SNetSocket</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/screenshothandle1.html?swift">ScreenshotHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapicall1.html?swift">SteamAPICall</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../typealiases.html?swift#steaminputactioneventcallbackpointer">SteamInputActionEventCallbackPointer</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryresult1.html?swift">SteamInventoryResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryupdatehandle1.html?swift">SteamInventoryUpdateHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamitemdef.html?swift">SteamItemDef</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamiteminstanceid1.html?swift">SteamItemInstanceID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamleaderboardentries1.html?swift">SteamLeaderboardEntries</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingerrmsg.html?swift">SteamNetworkingErrMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmicroseconds.html?swift">SteamNetworkingMicroseconds</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingpopid.html?swift">SteamNetworkingPOPID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcfilewritestreamhandle1.html?swift">UGCFileWriteStreamHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcqueryhandle1.html?swift">UGCQueryHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcupdatehandle1.html?swift">UGCUpdateHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../typealiases.html?swift#steamapiwarningmessagehook">SteamAPIWarningMessageHook</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../typealiases.html?swift#matchmakingkeyvaluepairs">MatchMakingKeyValuePairs</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../enumerations.html?swift">Enumerations</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/audioplaybackstatus.html?swift">AudioPlaybackStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/accounttype.html?swift">AccountType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/activategameoverlaytowebpagemode.html?swift">ActivateGameOverlayToWebPageMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/authsessionresponse.html?swift">AuthSessionResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/beginauthsessionresult.html?swift">BeginAuthSessionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/chatentrytype.html?swift">ChatEntryType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/chatmemberstatechange.html?swift">ChatMemberStateChange</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/chatroomenterresponse.html?swift">ChatRoomEnterResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/chatsteamidinstanceflags.html?swift">ChatSteamIDInstanceFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/checkfilesignatureresult.html?swift">CheckFileSignatureResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controlleractionorigin.html?swift">ControllerActionOrigin</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controllerhapticlocation.html?swift">ControllerHapticLocation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controllerhaptictype.html?swift">ControllerHapticType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/denyreason.html?swift">DenyReason</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/durationcontrolnotification.html?swift">DurationControlNotification</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/durationcontrolonlinestate.html?swift">DurationControlOnlineState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/durationcontrolprogress.html?swift">DurationControlProgress</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/favoriteflags.html?swift">FavoriteFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/floatinggamepadtextinputmode.html?swift">FloatingGamepadTextInputMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendflags.html?swift">FriendFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendrelationship.html?swift">FriendRelationship</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamesearcherrorcode.html?swift">GameSearchErrorCode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamepadtextinputlinemode.html?swift">GamepadTextInputLineMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamepadtextinputmode.html?swift">GamepadTextInputMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httpmethod.html?swift">HTTPMethod</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httpstatuscode.html?swift">HTTPStatusCode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputactionorigin.html?swift">InputActionOrigin</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputsourcemode.html?swift">InputSourceMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/itempreviewtype.html?swift">ItemPreviewType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/itemstate.html?swift">ItemState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/itemstatistic.html?swift">ItemStatistic</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/itemupdatestatus.html?swift">ItemUpdateStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboarddatarequest.html?swift">LeaderboardDataRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboarddisplaytype.html?swift">LeaderboardDisplayType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardsortmethod.html?swift">LeaderboardSortMethod</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboarduploadscoremethod.html?swift">LeaderboardUploadScoreMethod</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbycomparison.html?swift">LobbyComparison</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbydistancefilter.html?swift">LobbyDistanceFilter</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbytype.html?swift">LobbyType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/marketnotallowedreasonflags.html?swift">MarketNotAllowedReasonFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/matchmakingserverresponse.html?swift">MatchMakingServerResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/notificationposition.html?swift">NotificationPosition</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/overlaytostoreflag.html?swift">OverlayToStoreFlag</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psend.html?swift">P2PSend</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psessionerror.html?swift">P2PSessionError</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/parentalfeature.html?swift">ParentalFeature</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/personachange.html?swift">PersonaChange</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/personastate.html?swift">PersonaState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/playerresult.html?swift">PlayerResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/registeractivationcoderesult.html?swift">RegisterActivationCodeResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragefilepathtype.html?swift">RemoteStorageFilePathType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragelocalfilechangetype.html?swift">RemoteStorageLocalFileChangeType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageplatform.html?swift">RemoteStoragePlatform</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/result.html?swift">Result</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/snetsocketconnectiontype.html?swift">SNetSocketConnectionType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/snetsocketstate.html?swift">SNetSocketState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/servermode.html?swift">ServerMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapicallfailure.html?swift">SteamAPICallFailure</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamcontrollerledflag.html?swift">SteamControllerLEDFlag</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamcontrollerpad.html?swift">SteamControllerPad</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamdeviceformfactor.html?swift">SteamDeviceFormFactor</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamiptype.html?swift">SteamIPType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamipv6connectivityprotocol.html?swift">SteamIPv6ConnectivityProtocol</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamipv6connectivitystate.html?swift">SteamIPv6ConnectivityState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputactioneventtype.html?swift">SteamInputActionEventType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputconfigurationenabletype.html?swift">SteamInputConfigurationEnableType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputglyphsize.html?swift">SteamInputGlyphSize</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputglyphstyle.html?swift">SteamInputGlyphStyle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputledflag.html?swift">SteamInputLEDFlag</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputtype.html?swift">SteamInputType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamitemflags.html?swift">SteamItemFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectionend.html?swift">SteamNetConnectionEnd</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkconnectioninfoflags.html?swift">SteamNetworkConnectionInfoFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingavailability.html?swift">SteamNetworkingAvailability</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconfigdatatype.html?swift">SteamNetworkingConfigDataType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconfigscope.html?swift">SteamNetworkingConfigScope</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconfigvaluesetting.html?swift">SteamNetworkingConfigValueSetting</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconnectionstate.html?swift">SteamNetworkingConnectionState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingfakeiptype.html?swift">SteamNetworkingFakeIPType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkinggetconfigvalueresult.html?swift">SteamNetworkingGetConfigValueResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingidentitytype.html?swift">SteamNetworkingIdentityType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingsendflags.html?swift">SteamNetworkingSendFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingsocketsdebugoutputtype.html?swift">SteamNetworkingSocketsDebugOutputType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steampartybeaconlocationdata.html?swift">SteamPartyBeaconLocationData</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steampartybeaconlocationtype.html?swift">SteamPartyBeaconLocationType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/textfilteringcontext.html?swift">TextFilteringContext</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcmatchingugctype.html?swift">UGCMatchingUGCType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcquery.html?swift">UGCQuery</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcreadaction.html?swift">UGCReadAction</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/universe.html?swift">Universe</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userhaslicenseforappresult.html?swift">UserHasLicenseForAppResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userrestriction.html?swift">UserRestriction</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userugclist.html?swift">UserUGCList</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userugclistsortorder.html?swift">UserUGCListSortOrder</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/vrscreenshottype.html?swift">VRScreenshotType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/voiceresult.html?swift">VoiceResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopenumerationtype.html?swift">WorkshopEnumerationType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopvideoprovider.html?swift">WorkshopVideoProvider</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopvote.html?swift">WorkshopVote</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/xboxorigin.html?swift">XboxOrigin</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ipcfailuretype.html?swift">IPCFailureType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlkeymodifiers.html?swift">HTMLKeyModifiers</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlmousebutton.html?swift">HTMLMouseButton</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlmousecursor.html?swift">HTMLMouseCursor</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/playeracceptstate.html?swift">PlayerAcceptState</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../structures.html?swift">Structures</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/activebeaconsupdated1.html?swift">ActiveBeaconsUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/addappdependencyresult.html?swift">AddAppDependencyResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/addugcdependencyresult.html?swift">AddUGCDependencyResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/appproofofpurchasekeyresponse1.html?swift">AppProofOfPurchaseKeyResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/appresumingfromsuspend1.html?swift">AppResumingFromSuspend</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/associatewithclanresult.html?swift">AssociateWithClanResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/availablebeaconlocationsupdated1.html?swift">AvailableBeaconLocationsUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/avatarimageloaded1.html?swift">AvatarImageLoaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/changenumopenslotscallback.html?swift">ChangeNumOpenSlotsCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/checkfilesignature1.html?swift">CheckFileSignature</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/clanofficerlistresponse.html?swift">ClanOfficerListResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/clientgameserverdeny1.html?swift">ClientGameServerDeny</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/computenewplayercompatibilityresult.html?swift">ComputeNewPlayerCompatibilityResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/createbeaconcallback.html?swift">CreateBeaconCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/createitemresult.html?swift">CreateItemResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/deleteitemresult.html?swift">DeleteItemResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/dlcinstalled1.html?swift">DlcInstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/downloadclanactivitycountsresult.html?swift">DownloadClanActivityCountsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/downloaditemresult1.html?swift">DownloadItemResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/durationcontrol.html?swift">DurationControl</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/endgameresultcallback1.html?swift">EndGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/favoriteslistaccountsupdated1.html?swift">FavoritesListAccountsUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/favoriteslistchanged1.html?swift">FavoritesListChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/filedetailsresult.html?swift">FileDetailsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/floatinggamepadtextinputdismissed1.html?swift">FloatingGamepadTextInputDismissed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendgameinfo.html?swift">FriendGameInfo</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendrichpresenceupdate1.html?swift">FriendRichPresenceUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendsenumeratefollowinglist.html?swift">FriendsEnumerateFollowingList</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendsgetfollowercount.html?swift">FriendsGetFollowerCount</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendsisfollowing.html?swift">FriendsIsFollowing</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientachievementstatus1.html?swift">GSClientAchievementStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientapprove1.html?swift">GSClientApprove</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientdeny1.html?swift">GSClientDeny</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientgroupstatus1.html?swift">GSClientGroupStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientkick1.html?swift">GSClientKick</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsgameplaystats1.html?swift">GSGameplayStats</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gspolicyresponse1.html?swift">GSPolicyResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsreputation.html?swift">GSReputation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsstatsreceived.html?swift">GSStatsReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsstatsstored.html?swift">GSStatsStored</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsstatsunloaded1.html?swift">GSStatsUnloaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameconnectedchatjoin1.html?swift">GameConnectedChatJoin</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameconnectedchatleave1.html?swift">GameConnectedChatLeave</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameconnectedclanchatmsg1.html?swift">GameConnectedClanChatMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameconnectedfriendchatmsg1.html?swift">GameConnectedFriendChatMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamelobbyjoinrequested1.html?swift">GameLobbyJoinRequested</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameoverlayactivated1.html?swift">GameOverlayActivated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamerichpresencejoinrequested1.html?swift">GameRichPresenceJoinRequested</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameserverchangerequested1.html?swift">GameServerChangeRequested</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamewebcallback1.html?swift">GameWebCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamepadtextinputdismissed1.html?swift">GamepadTextInputDismissed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getappdependenciesresult.html?swift">GetAppDependenciesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getauthsessionticketresponse1.html?swift">GetAuthSessionTicketResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getopfsettingsresult1.html?swift">GetOPFSettingsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getuseritemvoteresult.html?swift">GetUserItemVoteResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getvideourlresult1.html?swift">GetVideoURLResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/globalachievementpercentagesready.html?swift">GlobalAchievementPercentagesReady</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/globalstatsreceived.html?swift">GlobalStatsReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlbrowserready.html?swift">HTMLBrowserReady</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlbrowserrestarted1.html?swift">HTMLBrowserRestarted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlcangobackandforward1.html?swift">HTMLCanGoBackAndForward</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlchangedtitle1.html?swift">HTMLChangedTitle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlclosebrowser1.html?swift">HTMLCloseBrowser</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlfileopendialog1.html?swift">HTMLFileOpenDialog</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlfinishedrequest1.html?swift">HTMLFinishedRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlhidetooltip1.html?swift">HTMLHideToolTip</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlhorizontalscroll1.html?swift">HTMLHorizontalScroll</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmljsalert1.html?swift">HTMLJSAlert</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmljsconfirm1.html?swift">HTMLJSConfirm</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmllinkatposition1.html?swift">HTMLLinkAtPosition</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlneedspaint1.html?swift">HTMLNeedsPaint</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlnewwindow1.html?swift">HTMLNewWindow</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlopenlinkinnewtab1.html?swift">HTMLOpenLinkInNewTab</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlsearchresults1.html?swift">HTMLSearchResults</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlsetcursor1.html?swift">HTMLSetCursor</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlshowtooltip1.html?swift">HTMLShowToolTip</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlstartrequest1.html?swift">HTMLStartRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlstatustext1.html?swift">HTMLStatusText</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlurlchanged1.html?swift">HTMLURLChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlupdatetooltip1.html?swift">HTMLUpdateToolTip</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlverticalscroll1.html?swift">HTMLVerticalScroll</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httprequestcompleted.html?swift">HTTPRequestCompleted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httprequestdatareceived1.html?swift">HTTPRequestDataReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httprequestheadersreceived1.html?swift">HTTPRequestHeadersReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ipcfailure1.html?swift">IPCFailure</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ipcountry1.html?swift">IPCountry</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputanalogactiondata.html?swift">InputAnalogActionData</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputdigitalactiondata.html?swift">InputDigitalActionData</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputmotiondata.html?swift">InputMotionData</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/iteminstalled1.html?swift">ItemInstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/joinclanchatroomcompletionresult.html?swift">JoinClanChatRoomCompletionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/joinpartycallback.html?swift">JoinPartyCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardentry.html?swift">LeaderboardEntry</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardscoreuploaded.html?swift">LeaderboardScoreUploaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardugcset.html?swift">LeaderboardUGCSet</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/licensesupdated1.html?swift">LicensesUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbychatmsg1.html?swift">LobbyChatMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbychatupdate1.html?swift">LobbyChatUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbycreated.html?swift">LobbyCreated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbydataupdate1.html?swift">LobbyDataUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbyenter.html?swift">LobbyEnter</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbygamecreated1.html?swift">LobbyGameCreated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbyinvite1.html?swift">LobbyInvite</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbykicked1.html?swift">LobbyKicked</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbymatchlist.html?swift">LobbyMatchList</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lowbatterypower1.html?swift">LowBatteryPower</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/marketeligibilityresponse.html?swift">MarketEligibilityResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/matchmakingkeyvaluepair.html?swift">MatchMakingKeyValuePair</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/microtxnauthorizationresponse1.html?swift">MicroTxnAuthorizationResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerremotetofront1.html?swift">MusicPlayerRemoteToFront</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerremotewillactivate1.html?swift">MusicPlayerRemoteWillActivate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerremotewilldeactivate1.html?swift">MusicPlayerRemoteWillDeactivate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerselectsplaylistentry1.html?swift">MusicPlayerSelectsPlaylistEntry</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerselectsqueueentry1.html?swift">MusicPlayerSelectsQueueEntry</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantslooped1.html?swift">MusicPlayerWantsLooped</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantspause1.html?swift">MusicPlayerWantsPause</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsplaynext1.html?swift">MusicPlayerWantsPlayNext</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsplayprevious1.html?swift">MusicPlayerWantsPlayPrevious</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsplay1.html?swift">MusicPlayerWantsPlay</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsplayingrepeatstatus1.html?swift">MusicPlayerWantsPlayingRepeatStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsshuffled1.html?swift">MusicPlayerWantsShuffled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsvolume1.html?swift">MusicPlayerWantsVolume</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwillquit1.html?swift">MusicPlayerWillQuit</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/newurllaunchparameters1.html?swift">NewUrlLaunchParameters</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/numberofcurrentplayers.html?swift">NumberOfCurrentPlayers</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/overlaybrowserprotocolnavigation1.html?swift">OverlayBrowserProtocolNavigation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psessionconnectfail1.html?swift">P2PSessionConnectFail</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psessionrequest1.html?swift">P2PSessionRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psessionstate.html?swift">P2PSessionState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ps3trophiesinstalled1.html?swift">PS3TrophiesInstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/psngamebootinviteresult1.html?swift">PSNGameBootInviteResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/personastatechange1.html?swift">PersonaStateChange</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/playbackstatushaschanged1.html?swift">PlaybackStatusHasChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/registeractivationcoderesponse1.html?swift">RegisterActivationCodeResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumeratepublishedfilesbyuseractionresult.html?swift">RemoteStorageEnumeratePublishedFilesByUserActionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumerateusersharedworkshopfilesresult1.html?swift">RemoteStorageEnumerateUserSharedWorkshopFilesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragelocalfilechange1.html?swift">RemoteStorageLocalFileChange</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishfileresult1.html?swift">RemoteStoragePublishFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfiledeleted1.html?swift">RemoteStoragePublishedFileDeleted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfilesubscribed1.html?swift">RemoteStoragePublishedFileSubscribed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfileunsubscribed1.html?swift">RemoteStoragePublishedFileUnsubscribed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfileupdated1.html?swift">RemoteStoragePublishedFileUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageuservotedetails1.html?swift">RemoteStorageUserVoteDetails</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/removeappdependencyresult.html?swift">RemoveAppDependencyResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/removeugcdependencyresult.html?swift">RemoveUGCDependencyResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/requestplayersforgamefinalresultcallback1.html?swift">RequestPlayersForGameFinalResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/requestplayersforgameprogresscallback1.html?swift">RequestPlayersForGameProgressCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/requestplayersforgameresultcallback1.html?swift">RequestPlayersForGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/reservationnotificationcallback1.html?swift">ReservationNotificationCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/screenshotready1.html?swift">ScreenshotReady</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/screenshotrequested1.html?swift">ScreenshotRequested</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/searchforgameprogresscallback1.html?swift">SearchForGameProgressCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/searchforgameresultcallback1.html?swift">SearchForGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/setpersonanameresponse.html?swift">SetPersonaNameResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/setuseritemvoteresult.html?swift">SetUserItemVoteResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/socketstatuscallback1.html?swift">SocketStatusCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/startplaytimetrackingresult.html?swift">StartPlaytimeTrackingResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapicallcompleted1.html?swift">SteamAPICallCompleted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamappinstalled1.html?swift">SteamAppInstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamappuninstalled1.html?swift">SteamAppUninstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputconfigurationloaded1.html?swift">SteamInputConfigurationLoaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputdeviceconnected1.html?swift">SteamInputDeviceConnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputdevicedisconnected1.html?swift">SteamInputDeviceDisconnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventorydefinitionupdate1.html?swift">SteamInventoryDefinitionUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryeligiblepromoitemdefids.html?swift">SteamInventoryEligiblePromoItemDefIDs</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryfullupdate1.html?swift">SteamInventoryFullUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryrequestpricesresult.html?swift">SteamInventoryRequestPricesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryresultready1.html?swift">SteamInventoryResultReady</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventorystartpurchaseresult.html?swift">SteamInventoryStartPurchaseResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamitemdetails.html?swift">SteamItemDetails</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetauthenticationstatus1.html?swift">SteamNetAuthenticationStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectioninfo.html?swift">SteamNetConnectionInfo</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectionrealtimelanestatus.html?swift">SteamNetConnectionRealTimeLaneStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectionrealtimestatus.html?swift">SteamNetConnectionRealTimeStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectionstatuschangedcallback1.html?swift">SteamNetConnectionStatusChangedCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkpinglocation.html?swift">SteamNetworkPingLocation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingfakeipresult1.html?swift">SteamNetworkingFakeIPResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmessagessessionfailed1.html?swift">SteamNetworkingMessagesSessionFailed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmessagessessionrequest1.html?swift">SteamNetworkingMessagesSessionRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamparentalsettingschanged1.html?swift">SteamParentalSettingsChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steampartybeaconlocation.html?swift">SteamPartyBeaconLocation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamrelaynetworkstatus1.html?swift">SteamRelayNetworkStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamremoteplaysessionconnected1.html?swift">SteamRemotePlaySessionConnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamremoteplaysessiondisconnected1.html?swift">SteamRemotePlaySessionDisconnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamserverconnectfailure1.html?swift">SteamServerConnectFailure</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamserversconnected1.html?swift">SteamServersConnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamserversdisconnected1.html?swift">SteamServersDisconnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamshutdown1.html?swift">SteamShutdown</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamugcdetails.html?swift">SteamUGCDetails</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamugcquerycompleted.html?swift">SteamUGCQueryCompleted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamugcrequestugcdetailsresult.html?swift">SteamUGCRequestUGCDetailsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/storeauthurlresponse.html?swift">StoreAuthURLResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/submititemupdateresult.html?swift">SubmitItemUpdateResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/submitplayerresultresultcallback1.html?swift">SubmitPlayerResultResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timedtrialstatus1.html?swift">TimedTrialStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/unreadchatmessageschanged1.html?swift">UnreadChatMessagesChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userachievementiconfetched1.html?swift">UserAchievementIconFetched</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userachievementstored1.html?swift">UserAchievementStored</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userstatsstored1.html?swift">UserStatsStored</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userstatsunloaded1.html?swift">UserStatsUnloaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/usersubscribeditemslistchanged1.html?swift">UserSubscribedItemsListChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/validateauthticketresponse1.html?swift">ValidateAuthTicketResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/volumehaschanged1.html?swift">VolumeHasChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopeulastatus.html?swift">WorkshopEULAStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameserveritem.html?swift">GameServerItem</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamipaddress.html?swift">SteamIPAddress</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputactionevent.html?swift">SteamInputActionEvent</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputactionevent/event.html?swift">Event</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/servernetadr.html?swift">ServerNetAdr</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingipaddr.html?swift">SteamNetworkingIPAddr</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmessage.html?swift">SteamNetworkingMessage</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamid14.html?swift">SteamID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameid.html?swift">GameID</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../protocols.html?swift">Protocols</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingpingresponse.html?swift">SteamMatchmakingPingResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingplayersresponse.html?swift">SteamMatchmakingPlayersResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingrulesresponse.html?swift">SteamMatchmakingRulesResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingserverlistresponse.html?swift">SteamMatchmakingServerListResponse</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../constants.html?swift">Constants</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamconstants.html?swift">SteamConstants</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+    </ul>
+  </nav>
+  
+</div>
+
+      <main class="col col-xl-8 j2-article px-lg-4 px-xl-5" id="article-column">
+        <article class="j2-article-wrapper" id="main-content">
+
+        <section>
+          
+          <header>
+            <h1 class="j2-anchor">
+              
+              
+              <span>SteamNetworkingSockets</span>
+              
+            </h1>
+          </header>
+          
+          
+          
+          <div class="j2-callout  j2-callout-declaration">
+            
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public struct SteamNetworkingSockets</code></pre>
+  </div>
+
+
+
+          </div>
+
+          <div class="clearfix">
+            
+  
+
+
+            
+
+
+<p>Steamworks <a href="https://partner.steamgames.com/doc/api/ISteamNetworkingSockets"><code>ISteamNetworkingSockets</code></a></p>
+<p>Access via <a href="../../steamworks/types/steambaseapi3.html?swift#networkingsockets"><code>SteamBaseAPI.networkingSockets</code></a> through a <a href="../../steamworks/types/steamapi.html?swift"><code>SteamAPI</code></a> or <a href="../../steamworks/types/steamgameserverapi.html?swift"><code>SteamGameServerAPI</code></a> instance.</p>
+
+
+
+            
+
+
+
+          </div>
+          
+          
+          <nav aria-label="item details" class="j2-main-item-nav">
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L14-L324">Show on GitHub</a>
+          </nav>
+          
+          
+        </section>
+
+        
+<div class="j2-swift">
+<hr/>
+<section>
+  <h1 class="visually-hidden">Topics</h1>
+  
+  <section class="j2-swift">
+  
+  
+  
+  
+  
+    <section id="acceptconnectionconn" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20acceptConnection(conn%3A%20HSteamNetConnection)%20-%3E%20Result" class="dashAnchor j2-item-dash-anchor" data-item-id="acceptconnectionconn"></a>
+    <h4 class="visually-hidden">func acceptConnection(conn: HSteamNetConnection) -&gt; Result</h4>
+    
+    
+    <a class="j2-item-title" href="#_acceptconnectionconn" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_acceptconnectionconn"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>acceptConnection<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection) -&gt; Result</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_acceptconnectionconn">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::AcceptConnection()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func acceptConnection(conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>) -&gt; <a href="../../steamworks/types/result.html?swift">Result</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L25-L27">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="beginasyncrequestfakeipnumports" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20beginAsyncRequestFakeIP(numPorts%3A%20Int)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="beginasyncrequestfakeipnumports"></a>
+    <h4 class="visually-hidden">func beginAsyncRequestFakeIP(numPorts: Int) -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_beginasyncrequestfakeipnumports" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_beginasyncrequestfakeipnumports"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>beginAsyncRequestFakeIP<span class="j2-item-secondary">(</span>numPorts<span class="j2-item-secondary">: Int) -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_beginasyncrequestfakeipnumports">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::BeginAsyncRequestFakeIP()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func beginAsyncRequestFakeIP(numPorts: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L30-L32">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="closeconnectionpeerreasondebugenablelinger" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20closeConnection(peer%3A%20HSteamNetConnection,%20reason%3A%20Int,%20debug%3A%20String,%20enableLinger%3A%20Bool)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="closeconnectionpeerreasondebugenablelinger"></a>
+    <h4 class="visually-hidden">func closeConnection(peer: HSteamNetConnection, reason: Int, debug: String, enableLinger: Bool) -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_closeconnectionpeerreasondebugenablelinger" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_closeconnectionpeerreasondebugenablelinger"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>closeConnection<span class="j2-item-secondary">(</span>peer<span class="j2-item-secondary">: HSteamNetConnection, </span>reason<span class="j2-item-secondary">: Int, </span>debug<span class="j2-item-secondary">: String, </span>enableLinger<span class="j2-item-secondary">: Bool) -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_closeconnectionpeerreasondebugenablelinger">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CloseConnection()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">@discardableResult
+public func closeConnection(
+    peer: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, reason: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, debug: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, enableLinger: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
+) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L36-L38">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="closelistensocketsocket" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20closeListenSocket(socket%3A%20HSteamListenSocket)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="closelistensocketsocket"></a>
+    <h4 class="visually-hidden">func closeListenSocket(socket: HSteamListenSocket) -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_closelistensocketsocket" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_closelistensocketsocket"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>closeListenSocket<span class="j2-item-secondary">(</span>socket<span class="j2-item-secondary">: HSteamListenSocket) -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_closelistensocketsocket">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CloseListenSocket()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">@discardableResult
+public func closeListenSocket(socket: <a href="../../steamworks/types/hsteamlistensocket1.html?swift">HSteamListenSocket</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L42-L44">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="configureconnectionlanesconnlaneprioritieslaneweights" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20configureConnectionLanes(conn%3A%20HSteamNetConnection,%20lanePriorities%3A%20%5BInt%5D,%20laneWeights%3A%20%5BInt%5D)%20-%3E%20Result" class="dashAnchor j2-item-dash-anchor" data-item-id="configureconnectionlanesconnlaneprioritieslaneweights"></a>
+    <h4 class="visually-hidden">func configureConnectionLanes(conn: HSteamNetConnection, lanePriorities: [Int], laneWeights: [Int]) -&gt; Result</h4>
+    
+    
+    <a class="j2-item-title" href="#_configureconnectionlanesconnlaneprioritieslaneweights" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_configureconnectionlanesconnlaneprioritieslaneweights"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>configureConnectionLanes<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection, </span>lanePriorities<span class="j2-item-secondary">: [Int], </span>laneWeights<span class="j2-item-secondary">: [Int]) -&gt; Result</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_configureconnectionlanesconnlaneprioritieslaneweights">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::ConfigureConnectionLanes()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func configureConnectionLanes(
+    conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, lanePriorities: [<a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>], laneWeights: [<a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>]
+) -&gt; <a href="../../steamworks/types/result.html?swift">Result</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L47-L51">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="connectbyipaddressaddressoptions" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20connectByIPAddress(address%3A%20SteamNetworkingIPAddr,%20options%3A%20%5BSteamNetworkingConfigValue%5D)%20-%3E%20HSteamNetConnection" class="dashAnchor j2-item-dash-anchor" data-item-id="connectbyipaddressaddressoptions"></a>
+    <h4 class="visually-hidden">func connectByIPAddress(address: SteamNetworkingIPAddr, options: [SteamNetworkingConfigValue]) -&gt; HSteamNetConnection</h4>
+    
+    
+    <a class="j2-item-title" href="#_connectbyipaddressaddressoptions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_connectbyipaddressaddressoptions"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>connectByIPAddress<span class="j2-item-secondary">(</span>address<span class="j2-item-secondary">: SteamNetworkingIPAddr, </span>options<span class="j2-item-secondary">: [SteamNetworkingConfigValue]) -&gt; HSteamNetConnection</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_connectbyipaddressaddressoptions">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::ConnectByIPAddress()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func connectByIPAddress(
+    address: <a href="../../steamworks/types/steamnetworkingipaddr.html?swift">SteamNetworkingIPAddr</a>, options: [<a href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>]
+) -&gt; <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L54-L57">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="connectp2pidentityremoteremotevirtualportoptions" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20connectP2P(identityRemote%3A%20SteamNetworkingIdentity,%20remoteVirtualPort%3A%20Int,%20options%3A%20%5BSteamNetworkingConfigValue%5D)%20-%3E%20HSteamNetConnection" class="dashAnchor j2-item-dash-anchor" data-item-id="connectp2pidentityremoteremotevirtualportoptions"></a>
+    <h4 class="visually-hidden">func connectP2P(identityRemote: SteamNetworkingIdentity, remoteVirtualPort: Int, options: [SteamNetworkingConfigValue]) -&gt; HSteamNetConnection</h4>
+    
+    
+    <a class="j2-item-title" href="#_connectp2pidentityremoteremotevirtualportoptions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_connectp2pidentityremoteremotevirtualportoptions"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>connectP2P<span class="j2-item-secondary">(</span>identityRemote<span class="j2-item-secondary">: SteamNetworkingIdentity, </span>remoteVirtualPort<span class="j2-item-secondary">: Int, </span>options<span class="j2-item-secondary">: [SteamNetworkingConfigValue]) -&gt; HSteamNetConnection</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_connectp2pidentityremoteremotevirtualportoptions">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::ConnectP2P()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func connectP2P(
+    identityRemote: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>, remoteVirtualPort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    options: [<a href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>]
+) -&gt; <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L60-L63">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="connecttohosteddedicatedserveridentitytargetremotevirtualportoptions" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20connectToHostedDedicatedServer(identityTarget%3A%20SteamNetworkingIdentity,%20remoteVirtualPort%3A%20Int,%20options%3A%20%5BSteamNetworkingConfigValue%5D)%20-%3E%20HSteamNetConnection" class="dashAnchor j2-item-dash-anchor" data-item-id="connecttohosteddedicatedserveridentitytargetremotevirtualportoptions"></a>
+    <h4 class="visually-hidden">func connectToHostedDedicatedServer(identityTarget: SteamNetworkingIdentity, remoteVirtualPort: Int, options: [SteamNetworkingConfigValue]) -&gt; HSteamNetConnection</h4>
+    
+    
+    <a class="j2-item-title" href="#_connecttohosteddedicatedserveridentitytargetremotevirtualportoptions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_connecttohosteddedicatedserveridentitytargetremotevirtualportoptions"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>connectToHostedDedicatedServer<span class="j2-item-secondary">(</span>identityTarget<span class="j2-item-secondary">: SteamNetworkingIdentity, </span>remoteVirtualPort<span class="j2-item-secondary">: Int, </span>options<span class="j2-item-secondary">: [SteamNetworkingConfigValue]) -&gt; HSteamNetConnection</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_connecttohosteddedicatedserveridentitytargetremotevirtualportoptions">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::ConnectToHostedDedicatedServer()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func connectToHostedDedicatedServer(
+    identityTarget: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>, remoteVirtualPort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    options: [<a href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>]
+) -&gt; <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L66-L69">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createfakeudpportfakeserverport" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createFakeUDPPort(fakeServerPort%3A%20Int)%20-%3E%20SteamNetworkingFakeUDPPort" class="dashAnchor j2-item-dash-anchor" data-item-id="createfakeudpportfakeserverport"></a>
+    <h4 class="visually-hidden">func createFakeUDPPort(fakeServerPort: Int) -&gt; SteamNetworkingFakeUDPPort</h4>
+    
+    
+    <a class="j2-item-title" href="#_createfakeudpportfakeserverport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createfakeudpportfakeserverport"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createFakeUDPPort<span class="j2-item-secondary">(</span>fakeServerPort<span class="j2-item-secondary">: Int) -&gt; SteamNetworkingFakeUDPPort</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createfakeudpportfakeserverport">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CreateFakeUDPPort()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createFakeUDPPort(fakeServerPort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) -&gt; <a href="../../steamworks/types/steamnetworkingfakeudpport.html?swift">SteamNetworkingFakeUDPPort</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L72-L74">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createhosteddedicatedserverlistensocketlocalvirtualportoptions" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createHostedDedicatedServerListenSocket(localVirtualPort%3A%20Int,%20options%3A%20%5BSteamNetworkingConfigValue%5D)%20-%3E%20HSteamListenSocket" class="dashAnchor j2-item-dash-anchor" data-item-id="createhosteddedicatedserverlistensocketlocalvirtualportoptions"></a>
+    <h4 class="visually-hidden">func createHostedDedicatedServerListenSocket(localVirtualPort: Int, options: [SteamNetworkingConfigValue]) -&gt; HSteamListenSocket</h4>
+    
+    
+    <a class="j2-item-title" href="#_createhosteddedicatedserverlistensocketlocalvirtualportoptions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createhosteddedicatedserverlistensocketlocalvirtualportoptions"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createHostedDedicatedServerListenSocket<span class="j2-item-secondary">(</span>localVirtualPort<span class="j2-item-secondary">: Int, </span>options<span class="j2-item-secondary">: [SteamNetworkingConfigValue]) -&gt; HSteamListenSocket</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createhosteddedicatedserverlistensocketlocalvirtualportoptions">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CreateHostedDedicatedServerListenSocket()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createHostedDedicatedServerListenSocket(
+    localVirtualPort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, options: [<a href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>]
+) -&gt; <a href="../../steamworks/types/hsteamlistensocket1.html?swift">HSteamListenSocket</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L77-L80">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createlistensocketipaddressoptions" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createListenSocketIP(address%3A%20SteamNetworkingIPAddr,%20options%3A%20%5BSteamNetworkingConfigValue%5D)%20-%3E%20HSteamListenSocket" class="dashAnchor j2-item-dash-anchor" data-item-id="createlistensocketipaddressoptions"></a>
+    <h4 class="visually-hidden">func createListenSocketIP(address: SteamNetworkingIPAddr, options: [SteamNetworkingConfigValue]) -&gt; HSteamListenSocket</h4>
+    
+    
+    <a class="j2-item-title" href="#_createlistensocketipaddressoptions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createlistensocketipaddressoptions"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createListenSocketIP<span class="j2-item-secondary">(</span>address<span class="j2-item-secondary">: SteamNetworkingIPAddr, </span>options<span class="j2-item-secondary">: [SteamNetworkingConfigValue]) -&gt; HSteamListenSocket</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createlistensocketipaddressoptions">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CreateListenSocketIP()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createListenSocketIP(
+    address: <a href="../../steamworks/types/steamnetworkingipaddr.html?swift">SteamNetworkingIPAddr</a>, options: [<a href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>]
+) -&gt; <a href="../../steamworks/types/hsteamlistensocket1.html?swift">HSteamListenSocket</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L83-L86">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createlistensocketp2plocalvirtualportoptions" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createListenSocketP2P(localVirtualPort%3A%20Int,%20options%3A%20%5BSteamNetworkingConfigValue%5D)%20-%3E%20HSteamListenSocket" class="dashAnchor j2-item-dash-anchor" data-item-id="createlistensocketp2plocalvirtualportoptions"></a>
+    <h4 class="visually-hidden">func createListenSocketP2P(localVirtualPort: Int, options: [SteamNetworkingConfigValue]) -&gt; HSteamListenSocket</h4>
+    
+    
+    <a class="j2-item-title" href="#_createlistensocketp2plocalvirtualportoptions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createlistensocketp2plocalvirtualportoptions"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createListenSocketP2P<span class="j2-item-secondary">(</span>localVirtualPort<span class="j2-item-secondary">: Int, </span>options<span class="j2-item-secondary">: [SteamNetworkingConfigValue]) -&gt; HSteamListenSocket</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createlistensocketp2plocalvirtualportoptions">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CreateListenSocketP2P()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createListenSocketP2P(
+    localVirtualPort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, options: [<a href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>]
+) -&gt; <a href="../../steamworks/types/hsteamlistensocket1.html?swift">HSteamListenSocket</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L89-L92">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createlistensocketp2pfakeipfakeportoptions" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createListenSocketP2PFakeIP(fakePort%3A%20Int,%20options%3A%20%5BSteamNetworkingConfigValue%5D)%20-%3E%20HSteamListenSocket" class="dashAnchor j2-item-dash-anchor" data-item-id="createlistensocketp2pfakeipfakeportoptions"></a>
+    <h4 class="visually-hidden">func createListenSocketP2PFakeIP(fakePort: Int, options: [SteamNetworkingConfigValue]) -&gt; HSteamListenSocket</h4>
+    
+    
+    <a class="j2-item-title" href="#_createlistensocketp2pfakeipfakeportoptions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createlistensocketp2pfakeipfakeportoptions"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createListenSocketP2PFakeIP<span class="j2-item-secondary">(</span>fakePort<span class="j2-item-secondary">: Int, </span>options<span class="j2-item-secondary">: [SteamNetworkingConfigValue]) -&gt; HSteamListenSocket</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createlistensocketp2pfakeipfakeportoptions">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CreateListenSocketP2PFakeIP()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createListenSocketP2PFakeIP(
+    fakePort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, options: [<a href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>]
+) -&gt; <a href="../../steamworks/types/hsteamlistensocket1.html?swift">HSteamListenSocket</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L95-L98">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createpollgroup" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createPollGroup()%20-%3E%20HSteamNetPollGroup" class="dashAnchor j2-item-dash-anchor" data-item-id="createpollgroup"></a>
+    <h4 class="visually-hidden">func createPollGroup() -&gt; HSteamNetPollGroup</h4>
+    
+    
+    <a class="j2-item-title" href="#_createpollgroup" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createpollgroup"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createPollGroup<span class="j2-item-secondary">() -&gt; HSteamNetPollGroup</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createpollgroup">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CreatePollGroup()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createPollGroup() -&gt; <a href="../../steamworks/types/hsteamnetpollgroup1.html?swift">HSteamNetPollGroup</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L101-L103">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createsocketpairusenetworkloopbackidentity1identity2" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createSocketPair(useNetworkLoopback%3A%20Bool,%20identity1%3A%20SteamNetworkingIdentity%3F,%20identity2%3A%20SteamNetworkingIdentity%3F)%20-%3E%20(rc%3A%20Bool,%20connection1%3A%20HSteamNetConnection,%20connection2%3A%20HSteamNetConnection)" class="dashAnchor j2-item-dash-anchor" data-item-id="createsocketpairusenetworkloopbackidentity1identity2"></a>
+    <h4 class="visually-hidden">func createSocketPair(useNetworkLoopback: Bool, identity1: SteamNetworkingIdentity?, identity2: SteamNetworkingIdentity?) -&gt; (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection)</h4>
+    
+    
+    <a class="j2-item-title" href="#_createsocketpairusenetworkloopbackidentity1identity2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createsocketpairusenetworkloopbackidentity1identity2"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createSocketPair<span class="j2-item-secondary">(</span>useNetworkLoopback<span class="j2-item-secondary">: Bool, </span>identity1<span class="j2-item-secondary">: SteamNetworkingIdentity?, </span>identity2<span class="j2-item-secondary">: SteamNetworkingIdentity?) -&gt; (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createsocketpairusenetworkloopbackidentity1identity2">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::CreateSocketPair()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createSocketPair(
+    useNetworkLoopback: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, identity1: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>?,
+    identity2: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>?
+) -&gt; (
+    rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, connection1: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, connection2: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>
+)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L106-L115">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="destroypollgrouppollgroup" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20destroyPollGroup(pollGroup%3A%20HSteamNetPollGroup)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="destroypollgrouppollgroup"></a>
+    <h4 class="visually-hidden">func destroyPollGroup(pollGroup: HSteamNetPollGroup) -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_destroypollgrouppollgroup" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_destroypollgrouppollgroup"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>destroyPollGroup<span class="j2-item-secondary">(</span>pollGroup<span class="j2-item-secondary">: HSteamNetPollGroup) -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_destroypollgrouppollgroup">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::DestroyPollGroup()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">@discardableResult
+public func destroyPollGroup(pollGroup: <a href="../../steamworks/types/hsteamnetpollgroup1.html?swift">HSteamNetPollGroup</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L119-L121">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="flushmessagesonconnectionconn" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20flushMessagesOnConnection(conn%3A%20HSteamNetConnection)%20-%3E%20Result" class="dashAnchor j2-item-dash-anchor" data-item-id="flushmessagesonconnectionconn"></a>
+    <h4 class="visually-hidden">func flushMessagesOnConnection(conn: HSteamNetConnection) -&gt; Result</h4>
+    
+    
+    <a class="j2-item-title" href="#_flushmessagesonconnectionconn" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_flushmessagesonconnectionconn"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>flushMessagesOnConnection<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection) -&gt; Result</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_flushmessagesonconnectionconn">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::FlushMessagesOnConnection()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">@discardableResult
+public func flushMessagesOnConnection(conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>) -&gt; <a href="../../steamworks/types/result.html?swift">Result</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L125-L127">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getauthenticationstatusreturndetails" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getAuthenticationStatus(returnDetails%3A%20Bool)%20-%3E%20(rc%3A%20SteamNetworkingAvailability,%20details%3A%20SteamNetAuthenticationStatus)" class="dashAnchor j2-item-dash-anchor" data-item-id="getauthenticationstatusreturndetails"></a>
+    <h4 class="visually-hidden">func getAuthenticationStatus(returnDetails: Bool) -&gt; (rc: SteamNetworkingAvailability, details: SteamNetAuthenticationStatus)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getauthenticationstatusreturndetails" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getauthenticationstatusreturndetails"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getAuthenticationStatus<span class="j2-item-secondary">(</span>returnDetails<span class="j2-item-secondary">: Bool) -&gt; (rc: SteamNetworkingAvailability, details: SteamNetAuthenticationStatus)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getauthenticationstatusreturndetails">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetAuthenticationStatus()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getAuthenticationStatus(returnDetails: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = true) -&gt; (
+    rc: <a href="../../steamworks/types/steamnetworkingavailability.html?swift">SteamNetworkingAvailability</a>, details: <a href="../../steamworks/types/steamnetauthenticationstatus1.html?swift">SteamNetAuthenticationStatus</a>
+)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L130-L135">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getcertificaterequestblobsizeblob" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getCertificateRequest(blobSize%3A%20Int,%20blob%3A%20UnsafeMutableRawPointer%3F)%20-%3E%20(rc%3A%20Bool,%20blobSize%3A%20Int,%20msg%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="getcertificaterequestblobsizeblob"></a>
+    <h4 class="visually-hidden">func getCertificateRequest(blobSize: Int, blob: UnsafeMutableRawPointer?) -&gt; (rc: Bool, blobSize: Int, msg: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getcertificaterequestblobsizeblob" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getcertificaterequestblobsizeblob"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getCertificateRequest<span class="j2-item-secondary">(</span>blobSize<span class="j2-item-secondary">: Int, </span>blob<span class="j2-item-secondary">: UnsafeMutableRawPointer?) -&gt; (rc: Bool, blobSize: Int, msg: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getcertificaterequestblobsizeblob">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetCertificateRequest()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getCertificateRequest(blobSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, blob: UnsafeMutableRawPointer?)
+    -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, blobSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, msg: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L138-L143">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getconnectioninfoconn" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getConnectionInfo(conn%3A%20HSteamNetConnection)%20-%3E%20(rc%3A%20Bool,%20info%3A%20SteamNetConnectionInfo)" class="dashAnchor j2-item-dash-anchor" data-item-id="getconnectioninfoconn"></a>
+    <h4 class="visually-hidden">func getConnectionInfo(conn: HSteamNetConnection) -&gt; (rc: Bool, info: SteamNetConnectionInfo)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getconnectioninfoconn" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getconnectioninfoconn"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getConnectionInfo<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection) -&gt; (rc: Bool, info: SteamNetConnectionInfo)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getconnectioninfoconn">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetConnectionInfo()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getConnectionInfo(conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>) -&gt; (
+    rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, info: <a href="../../steamworks/types/steamnetconnectioninfo.html?swift">SteamNetConnectionInfo</a>
+)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L146-L154">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getconnectionnamepeermaxlen" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getConnectionName(peer%3A%20HSteamNetConnection,%20maxLen%3A%20Int)%20-%3E%20(rc%3A%20Bool,%20name%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="getconnectionnamepeermaxlen"></a>
+    <h4 class="visually-hidden">func getConnectionName(peer: HSteamNetConnection, maxLen: Int) -&gt; (rc: Bool, name: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getconnectionnamepeermaxlen" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getconnectionnamepeermaxlen"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getConnectionName<span class="j2-item-secondary">(</span>peer<span class="j2-item-secondary">: HSteamNetConnection, </span>maxLen<span class="j2-item-secondary">: Int) -&gt; (rc: Bool, name: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getconnectionnamepeermaxlen">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetConnectionName()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getConnectionName(peer: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, maxLen: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) -&gt; (
+    rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>
+)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L157-L165">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getconnectionrealtimestatusconnreturnstatuslanecountreturnlanestatus" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getConnectionRealTimeStatus(conn%3A%20HSteamNetConnection,%20returnStatus%3A%20Bool,%20laneCount%3A%20Int,%20returnLaneStatus%3A%20Bool)%20-%3E%20(rc%3A%20Result,%20status%3A%20SteamNetConnectionRealTimeStatus,%20laneStatus%3A%20%5BSteamNetConnectionRealTimeLaneStatus%5D)" class="dashAnchor j2-item-dash-anchor" data-item-id="getconnectionrealtimestatusconnreturnstatuslanecountreturnlanestatus"></a>
+    <h4 class="visually-hidden">func getConnectionRealTimeStatus(conn: HSteamNetConnection, returnStatus: Bool, laneCount: Int, returnLaneStatus: Bool) -&gt; (rc: Result, status: SteamNetConnectionRealTimeStatus, laneStatus: [SteamNetConnectionRealTimeLaneStatus])</h4>
+    
+    
+    <a class="j2-item-title" href="#_getconnectionrealtimestatusconnreturnstatuslanecountreturnlanestatus" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getconnectionrealtimestatusconnreturnstatuslanecountreturnlanestatus"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getConnectionRealTimeStatus<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection, </span>returnStatus<span class="j2-item-secondary">: Bool, </span>laneCount<span class="j2-item-secondary">: Int, </span>returnLaneStatus<span class="j2-item-secondary">: Bool) -&gt; (rc: Result, status: SteamNetConnectionRealTimeStatus, laneStatus: [SteamNetConnectionRealTimeLaneStatus])</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getconnectionrealtimestatusconnreturnstatuslanecountreturnlanestatus">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetConnectionRealTimeStatus()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getConnectionRealTimeStatus(
+    conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, returnStatus: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = true, laneCount: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    returnLaneStatus: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = true
+) -&gt; (
+    rc: <a href="../../steamworks/types/result.html?swift">Result</a>, status: <a href="../../steamworks/types/steamnetconnectionrealtimestatus.html?swift">SteamNetConnectionRealTimeStatus</a>,
+    laneStatus: [<a href="../../steamworks/types/steamnetconnectionrealtimelanestatus.html?swift">SteamNetConnectionRealTimeLaneStatus</a>]
+)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L168-L178">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getconnectionuserdatapeer" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getConnectionUserData(peer%3A%20HSteamNetConnection)%20-%3E%20Int" class="dashAnchor j2-item-dash-anchor" data-item-id="getconnectionuserdatapeer"></a>
+    <h4 class="visually-hidden">func getConnectionUserData(peer: HSteamNetConnection) -&gt; Int</h4>
+    
+    
+    <a class="j2-item-title" href="#_getconnectionuserdatapeer" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getconnectionuserdatapeer"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getConnectionUserData<span class="j2-item-secondary">(</span>peer<span class="j2-item-secondary">: HSteamNetConnection) -&gt; Int</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getconnectionuserdatapeer">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetConnectionUserData()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getConnectionUserData(peer: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L181-L183">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getdetailedconnectionstatusconnbufsize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getDetailedConnectionStatus(conn%3A%20HSteamNetConnection,%20bufSize%3A%20Int)%20-%3E%20(rc%3A%20Int,%20buf%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="getdetailedconnectionstatusconnbufsize"></a>
+    <h4 class="visually-hidden">func getDetailedConnectionStatus(conn: HSteamNetConnection, bufSize: Int) -&gt; (rc: Int, buf: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getdetailedconnectionstatusconnbufsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getdetailedconnectionstatusconnbufsize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getDetailedConnectionStatus<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection, </span>bufSize<span class="j2-item-secondary">: Int) -&gt; (rc: Int, buf: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getdetailedconnectionstatusconnbufsize">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetDetailedConnectionStatus()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getDetailedConnectionStatus(conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, bufSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
+    -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, buf: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L186-L194">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getfakeipfirstport" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getFakeIP(firstPort%3A%20Int)%20-%3E%20SteamNetworkingFakeIPResult" class="dashAnchor j2-item-dash-anchor" data-item-id="getfakeipfirstport"></a>
+    <h4 class="visually-hidden">func getFakeIP(firstPort: Int) -&gt; SteamNetworkingFakeIPResult</h4>
+    
+    
+    <a class="j2-item-title" href="#_getfakeipfirstport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getfakeipfirstport"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getFakeIP<span class="j2-item-secondary">(</span>firstPort<span class="j2-item-secondary">: Int) -&gt; SteamNetworkingFakeIPResult</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getfakeipfirstport">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetFakeIP()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getFakeIP(firstPort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) -&gt; <a href="../../steamworks/types/steamnetworkingfakeipresult1.html?swift">SteamNetworkingFakeIPResult</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L197-L201">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="gethosteddedicatedserverpopid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getHostedDedicatedServerPOPID()%20-%3E%20SteamNetworkingPOPID" class="dashAnchor j2-item-dash-anchor" data-item-id="gethosteddedicatedserverpopid"></a>
+    <h4 class="visually-hidden">func getHostedDedicatedServerPOPID() -&gt; SteamNetworkingPOPID</h4>
+    
+    
+    <a class="j2-item-title" href="#_gethosteddedicatedserverpopid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_gethosteddedicatedserverpopid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getHostedDedicatedServerPOPID<span class="j2-item-secondary">() -&gt; SteamNetworkingPOPID</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_gethosteddedicatedserverpopid">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetHostedDedicatedServerPOPID()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getHostedDedicatedServerPOPID() -&gt; <a href="../../steamworks/types/steamnetworkingpopid.html?swift">SteamNetworkingPOPID</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L204-L206">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="gethosteddedicatedserverport" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getHostedDedicatedServerPort()%20-%3E%20Int" class="dashAnchor j2-item-dash-anchor" data-item-id="gethosteddedicatedserverport"></a>
+    <h4 class="visually-hidden">func getHostedDedicatedServerPort() -&gt; Int</h4>
+    
+    
+    <a class="j2-item-title" href="#_gethosteddedicatedserverport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_gethosteddedicatedserverport"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getHostedDedicatedServerPort<span class="j2-item-secondary">() -&gt; Int</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_gethosteddedicatedserverport">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetHostedDedicatedServerPort()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getHostedDedicatedServerPort() -&gt; <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L209-L211">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getidentity" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getIdentity()%20-%3E%20(rc%3A%20Bool,%20identity%3A%20SteamNetworkingIdentity)" class="dashAnchor j2-item-dash-anchor" data-item-id="getidentity"></a>
+    <h4 class="visually-hidden">func getIdentity() -&gt; (rc: Bool, identity: SteamNetworkingIdentity)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getidentity" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getidentity"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getIdentity<span class="j2-item-secondary">() -&gt; (rc: Bool, identity: SteamNetworkingIdentity)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getidentity">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetIdentity()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getIdentity() -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, identity: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L214-L222">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getlistensocketaddresssocket" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getListenSocketAddress(socket%3A%20HSteamListenSocket)%20-%3E%20(rc%3A%20Bool,%20address%3A%20SteamNetworkingIPAddr)" class="dashAnchor j2-item-dash-anchor" data-item-id="getlistensocketaddresssocket"></a>
+    <h4 class="visually-hidden">func getListenSocketAddress(socket: HSteamListenSocket) -&gt; (rc: Bool, address: SteamNetworkingIPAddr)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getlistensocketaddresssocket" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getlistensocketaddresssocket"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getListenSocketAddress<span class="j2-item-secondary">(</span>socket<span class="j2-item-secondary">: HSteamListenSocket) -&gt; (rc: Bool, address: SteamNetworkingIPAddr)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getlistensocketaddresssocket">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetListenSocketAddress()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getListenSocketAddress(socket: <a href="../../steamworks/types/hsteamlistensocket1.html?swift">HSteamListenSocket</a>) -&gt; (
+    rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, address: <a href="../../steamworks/types/steamnetworkingipaddr.html?swift">SteamNetworkingIPAddr</a>
+)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L225-L233">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getremotefakeipforconnectionconn" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getRemoteFakeIPForConnection(conn%3A%20HSteamNetConnection)%20-%3E%20(rc%3A%20Result,%20addr%3A%20SteamNetworkingIPAddr)" class="dashAnchor j2-item-dash-anchor" data-item-id="getremotefakeipforconnectionconn"></a>
+    <h4 class="visually-hidden">func getRemoteFakeIPForConnection(conn: HSteamNetConnection) -&gt; (rc: Result, addr: SteamNetworkingIPAddr)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getremotefakeipforconnectionconn" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getremotefakeipforconnectionconn"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getRemoteFakeIPForConnection<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection) -&gt; (rc: Result, addr: SteamNetworkingIPAddr)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getremotefakeipforconnectionconn">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::GetRemoteFakeIPForConnection()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getRemoteFakeIPForConnection(conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>) -&gt; (
+    rc: <a href="../../steamworks/types/result.html?swift">Result</a>, addr: <a href="../../steamworks/types/steamnetworkingipaddr.html?swift">SteamNetworkingIPAddr</a>
+)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L236-L244">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="initauthentication" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20initAuthentication()%20-%3E%20SteamNetworkingAvailability" class="dashAnchor j2-item-dash-anchor" data-item-id="initauthentication"></a>
+    <h4 class="visually-hidden">func initAuthentication() -&gt; SteamNetworkingAvailability</h4>
+    
+    
+    <a class="j2-item-title" href="#_initauthentication" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_initauthentication"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>initAuthentication<span class="j2-item-secondary">() -&gt; SteamNetworkingAvailability</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_initauthentication">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::InitAuthentication()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">@discardableResult
+public func initAuthentication() -&gt; <a href="../../steamworks/types/steamnetworkingavailability.html?swift">SteamNetworkingAvailability</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L248-L250">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="receivemessagesonconnectionconnmaxmessages" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20receiveMessagesOnConnection(conn%3A%20HSteamNetConnection,%20maxMessages%3A%20Int)%20-%3E%20(rc%3A%20Int,%20messages%3A%20%5BSteamNetworkingMessage%5D)" class="dashAnchor j2-item-dash-anchor" data-item-id="receivemessagesonconnectionconnmaxmessages"></a>
+    <h4 class="visually-hidden">func receiveMessagesOnConnection(conn: HSteamNetConnection, maxMessages: Int) -&gt; (rc: Int, messages: [SteamNetworkingMessage])</h4>
+    
+    
+    <a class="j2-item-title" href="#_receivemessagesonconnectionconnmaxmessages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_receivemessagesonconnectionconnmaxmessages"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>receiveMessagesOnConnection<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection, </span>maxMessages<span class="j2-item-secondary">: Int) -&gt; (rc: Int, messages: [SteamNetworkingMessage])</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_receivemessagesonconnectionconnmaxmessages">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::ReceiveMessagesOnConnection()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func receiveMessagesOnConnection(
+    conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, maxMessages: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, messages: [<a href="../../steamworks/types/steamnetworkingmessage.html?swift">SteamNetworkingMessage</a>])</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L253-L261">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="receivemessagesonpollgrouppollgroupmaxmessages" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20receiveMessagesOnPollGroup(pollGroup%3A%20HSteamNetPollGroup,%20maxMessages%3A%20Int)%20-%3E%20(rc%3A%20Int,%20messages%3A%20%5BSteamNetworkingMessage%5D)" class="dashAnchor j2-item-dash-anchor" data-item-id="receivemessagesonpollgrouppollgroupmaxmessages"></a>
+    <h4 class="visually-hidden">func receiveMessagesOnPollGroup(pollGroup: HSteamNetPollGroup, maxMessages: Int) -&gt; (rc: Int, messages: [SteamNetworkingMessage])</h4>
+    
+    
+    <a class="j2-item-title" href="#_receivemessagesonpollgrouppollgroupmaxmessages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_receivemessagesonpollgrouppollgroupmaxmessages"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>receiveMessagesOnPollGroup<span class="j2-item-secondary">(</span>pollGroup<span class="j2-item-secondary">: HSteamNetPollGroup, </span>maxMessages<span class="j2-item-secondary">: Int) -&gt; (rc: Int, messages: [SteamNetworkingMessage])</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_receivemessagesonpollgrouppollgroupmaxmessages">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::ReceiveMessagesOnPollGroup()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func receiveMessagesOnPollGroup(
+    pollGroup: <a href="../../steamworks/types/hsteamnetpollgroup1.html?swift">HSteamNetPollGroup</a>, maxMessages: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, messages: [<a href="../../steamworks/types/steamnetworkingmessage.html?swift">SteamNetworkingMessage</a>])</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L264-L272">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="resetidentityidentity" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20resetIdentity(identity%3A%20SteamNetworkingIdentity%3F)" class="dashAnchor j2-item-dash-anchor" data-item-id="resetidentityidentity"></a>
+    <h4 class="visually-hidden">func resetIdentity(identity: SteamNetworkingIdentity?)</h4>
+    
+    
+    <a class="j2-item-title" href="#_resetidentityidentity" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_resetidentityidentity"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>resetIdentity<span class="j2-item-secondary">(</span>identity<span class="j2-item-secondary">: SteamNetworkingIdentity?)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_resetidentityidentity">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::ResetIdentity()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func resetIdentity(identity: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>?)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L275-L279">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="runcallbacks" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20runCallbacks()" class="dashAnchor j2-item-dash-anchor" data-item-id="runcallbacks"></a>
+    <h4 class="visually-hidden">func runCallbacks()</h4>
+    
+    
+    <a class="j2-item-title" href="#_runcallbacks" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_runcallbacks"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>runCallbacks<span class="j2-item-secondary">()</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_runcallbacks">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::RunCallbacks()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func runCallbacks()</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L282-L284">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="sendmessagetoconnectionconndatadatasizesendflags" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20sendMessageToConnection(conn%3A%20HSteamNetConnection,%20data%3A%20UnsafeRawPointer,%20dataSize%3A%20Int,%20sendFlags%3A%20SteamNetworkingSendFlags)%20-%3E%20(rc%3A%20Result,%20messageNumber%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="sendmessagetoconnectionconndatadatasizesendflags"></a>
+    <h4 class="visually-hidden">func sendMessageToConnection(conn: HSteamNetConnection, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags) -&gt; (rc: Result, messageNumber: Int)</h4>
+    
+    
+    <a class="j2-item-title" href="#_sendmessagetoconnectionconndatadatasizesendflags" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sendmessagetoconnectionconndatadatasizesendflags"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendMessageToConnection<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection, </span>data<span class="j2-item-secondary">: UnsafeRawPointer, </span>dataSize<span class="j2-item-secondary">: Int, </span>sendFlags<span class="j2-item-secondary">: SteamNetworkingSendFlags) -&gt; (rc: Result, messageNumber: Int)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_sendmessagetoconnectionconndatadatasizesendflags">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::SendMessageToConnection()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func sendMessageToConnection(
+    conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, data: UnsafeRawPointer, dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    sendFlags: <a href="../../steamworks/types/steamnetworkingsendflags.html?swift">SteamNetworkingSendFlags</a>
+) -&gt; (rc: <a href="../../steamworks/types/result.html?swift">Result</a>, messageNumber: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L287-L291">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="sendmessagesmessages" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20sendMessages(messages%3A%20%5BSteamNetworkingMessage%5D)%20-%3E%20%5BInt%5D" class="dashAnchor j2-item-dash-anchor" data-item-id="sendmessagesmessages"></a>
+    <h4 class="visually-hidden">func sendMessages(messages: [SteamNetworkingMessage]) -&gt; [Int]</h4>
+    
+    
+    <a class="j2-item-title" href="#_sendmessagesmessages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sendmessagesmessages"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendMessages<span class="j2-item-secondary">(</span>messages<span class="j2-item-secondary">: [SteamNetworkingMessage]) -&gt; [Int]</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_sendmessagesmessages">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::SendMessages()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func sendMessages(messages: [<a href="../../steamworks/types/steamnetworkingmessage.html?swift">SteamNetworkingMessage</a>]) -&gt; [<a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>]</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L294-L299">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setcertificatecertificatecertificatesize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setCertificate(certificate%3A%20UnsafeRawPointer,%20certificateSize%3A%20Int)%20-%3E%20(rc%3A%20Bool,%20msg%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="setcertificatecertificatecertificatesize"></a>
+    <h4 class="visually-hidden">func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int) -&gt; (rc: Bool, msg: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setcertificatecertificatecertificatesize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setcertificatecertificatecertificatesize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setCertificate<span class="j2-item-secondary">(</span>certificate<span class="j2-item-secondary">: UnsafeRawPointer, </span>certificateSize<span class="j2-item-secondary">: Int) -&gt; (rc: Bool, msg: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setcertificatecertificatecertificatesize">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::SetCertificate()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setCertificate(certificate: UnsafeRawPointer, certificateSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
+    -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, msg: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L302-L306">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setconnectionnamepeername" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setConnectionName(peer%3A%20HSteamNetConnection,%20name%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="setconnectionnamepeername"></a>
+    <h4 class="visually-hidden">func setConnectionName(peer: HSteamNetConnection, name: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setconnectionnamepeername" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setconnectionnamepeername"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setConnectionName<span class="j2-item-secondary">(</span>peer<span class="j2-item-secondary">: HSteamNetConnection, </span>name<span class="j2-item-secondary">: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setconnectionnamepeername">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::SetConnectionName()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setConnectionName(peer: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L309-L311">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setconnectionpollgroupconnpollgroup" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setConnectionPollGroup(conn%3A%20HSteamNetConnection,%20pollGroup%3A%20HSteamNetPollGroup)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="setconnectionpollgroupconnpollgroup"></a>
+    <h4 class="visually-hidden">func setConnectionPollGroup(conn: HSteamNetConnection, pollGroup: HSteamNetPollGroup) -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_setconnectionpollgroupconnpollgroup" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setconnectionpollgroupconnpollgroup"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setConnectionPollGroup<span class="j2-item-secondary">(</span>conn<span class="j2-item-secondary">: HSteamNetConnection, </span>pollGroup<span class="j2-item-secondary">: HSteamNetPollGroup) -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setconnectionpollgroupconnpollgroup">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::SetConnectionPollGroup()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">@discardableResult
+public func setConnectionPollGroup(
+    conn: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, pollGroup: <a href="../../steamworks/types/hsteamnetpollgroup1.html?swift">HSteamNetPollGroup</a>
+) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L315-L317">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setconnectionuserdatapeeruserdata" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setConnectionUserData(peer%3A%20HSteamNetConnection,%20userData%3A%20Int)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="setconnectionuserdatapeeruserdata"></a>
+    <h4 class="visually-hidden">func setConnectionUserData(peer: HSteamNetConnection, userData: Int) -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_setconnectionuserdatapeeruserdata" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setconnectionuserdatapeeruserdata"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setConnectionUserData<span class="j2-item-secondary">(</span>peer<span class="j2-item-secondary">: HSteamNetConnection, </span>userData<span class="j2-item-secondary">: Int) -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setconnectionuserdatapeeruserdata">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamNetworkingSockets::SetConnectionUserData()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">@discardableResult
+public func setConnectionUserData(peer: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, userData: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
+    -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamNetworkingSockets.swift#L321-L323">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+</section>
+
+  
+</section>
+</div>
+
+
+
+        
+        <div class="flex-grow-1"></div>
+        <nav aria-label="paging" class="j2-pagination pb-3 pt-2">
+  <div id="pagination-prev" class="flex-fill">
+  
+    <a class="j2-swift" href="../../steamworks/types/steamnetworkingmessages.html?swift" aria-keyshortcuts="p">
+  <span aria-hidden="true">&laquo; </span>SteamNetworkingMessages
+</a>
+
+    <a class="j2-objc j2-secondary" href="../../steamworks/types/steamnetworkingmessages.html?swift" aria-keyshortcuts="p">
+  <span aria-hidden="true">&laquo; </span>SteamNetworkingMessages
+</a>
+
+  
+  
+  </div>
+  <div id="pagination-next" class="flex-fill text-end">
+  
+    <a class="j2-swift" href="../../steamworks/types/steamnetworkingutils.html?swift" aria-keyshortcuts="n">
+  SteamNetworkingUtils<span aria-hidden="true"> &raquo;</span>
+</a>
+
+    <a class="j2-objc j2-secondary" href="../../steamworks/types/steamnetworkingutils.html?swift" aria-keyshortcuts="n">
+  SteamNetworkingUtils<span aria-hidden="true"> &raquo;</span>
+</a>
+
+  
+  
+  </div>
+</nav>
+
+        
+
+        </article>
+      </main>
+
+      <div class="col-xl d-none d-xl-block j2-aux-nav" id="aux-nav-column">
+  <div class="j2-aux-nav-wrapper">
+    
+    <div class="j2-swift">
+    <h6 class="j2-inline-heading">Topics</h6>
+    <nav aria-label="page">
+      <ul class="j2-aux-group">
+        
+        <li><a href="#">Declaration</a></li>
+        
+      </ul>
+    </nav>
+    </div>
+    
+    
+    <h6 class="j2-inline-heading">Actions</h6>
+    <ul class="j2-aux-group">
+      
+      <li><a class="j2-aux-action" id="action-search" href="#" role="button" aria-keyshortcuts="/">Search (/)</a></li>
+      
+      
+      
+      <li><a class="j2-aux-action" id="action-collapse" href="#" role="button" aria-keyshortcuts="a">
+          <span id="action-collapse-expand">Open all (a)</span>
+          <span id="action-collapse-collapse" class="d-none">Close all (a)</span>
+      </a></li>
+      
+      
+      
+    </ul>
+    
+  </div>
+</div>
+
+
+    </div> <!-- end row -->
+
+    <footer class="row">
+  <div class="col j2-footer small pt-2">
+    <p>Distributed under the MIT license.  Maintained by <a href="mailto:johnfairh@gmail.com">John Fairhurst</a>.</p>
+    
+    <p>Generated by <a class="link" href="https://github.com/johnfairh/Bebop" target="_blank" rel="external noopener">Bebop v1.8.1</a> using the FW2020 theme, based on technology from <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫</a>.</p>
+    
+  </div>
+</footer>
+
+  </div> <!-- container -->
+
+  <script src="../../js/dependencies.min.js"></script>
+  
+  <script src="../../js/fw2020.js"></script>
+  </body>
+</html>

@@ -21,7 +21,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::AssociateWithClan()`, callback
     public func associateWithClan(clan: SteamID, completion: @escaping (AssociateWithClanResult?) -> Void) {
-        let rc = SteamAPI_ISteamGameServer_AssociateWithClan(interface, UInt64(clan))
+        let rc = SteamAPI_ISteamGameServer_AssociateWithClan(interface, CUnsignedLongLong(clan))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -44,12 +44,12 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::BUpdateUserData()`
     public func updateUserData(user: SteamID, playerName: String, score: Int) -> Bool {
-        SteamAPI_ISteamGameServer_BUpdateUserData(interface, UInt64(user), playerName, uint32(score))
+        SteamAPI_ISteamGameServer_BUpdateUserData(interface, CUnsignedLongLong(user), playerName, uint32(score))
     }
 
     /// Steamworks `ISteamGameServer::BeginAuthSession()`
     public func beginAuthSession(authTicket: UnsafeRawPointer, authTicketSize: Int, steamID: SteamID) -> BeginAuthSessionResult {
-        BeginAuthSessionResult(SteamAPI_ISteamGameServer_BeginAuthSession(interface, authTicket, CInt(authTicketSize), UInt64(steamID)))
+        BeginAuthSessionResult(SteamAPI_ISteamGameServer_BeginAuthSession(interface, authTicket, CInt(authTicketSize), CUnsignedLongLong(steamID)))
     }
 
     /// Steamworks `ISteamGameServer::CancelAuthTicket()`
@@ -64,7 +64,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::ComputeNewPlayerCompatibility()`, callback
     public func computeNewPlayerCompatibility(newPlayer: SteamID, completion: @escaping (ComputeNewPlayerCompatibilityResult?) -> Void) {
-        let rc = SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility(interface, UInt64(newPlayer))
+        let rc = SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility(interface, CUnsignedLongLong(newPlayer))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -82,7 +82,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::EndAuthSession()`
     public func endAuthSession(steamID: SteamID) {
-        SteamAPI_ISteamGameServer_EndAuthSession(interface, UInt64(steamID))
+        SteamAPI_ISteamGameServer_EndAuthSession(interface, CUnsignedLongLong(steamID))
     }
 
     /// Steamworks `ISteamGameServer::GetAuthSessionTicket()`
@@ -150,7 +150,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::RequestUserGroupStatus()`
     public func requestUserGroupStatus(user: SteamID, group: SteamID) -> Bool {
-        SteamAPI_ISteamGameServer_RequestUserGroupStatus(interface, UInt64(user), UInt64(group))
+        SteamAPI_ISteamGameServer_RequestUserGroupStatus(interface, CUnsignedLongLong(user), CUnsignedLongLong(group))
     }
 
     /// Steamworks `ISteamGameServer::SendUserConnectAndAuthenticate_DEPRECATED()`
@@ -162,7 +162,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::SendUserDisconnect_DEPRECATED()`
     public func sendUserDisconnectDEPRECATED(user: SteamID) {
-        SteamAPI_ISteamGameServer_SendUserDisconnect_DEPRECATED(interface, UInt64(user))
+        SteamAPI_ISteamGameServer_SendUserDisconnect_DEPRECATED(interface, CUnsignedLongLong(user))
     }
 
     /// Steamworks `ISteamGameServer::SetAdvertiseServerActive()`
@@ -247,7 +247,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::UserHasLicenseForApp()`
     public func userHasLicenseForApp(steamID: SteamID, id: AppID) -> UserHasLicenseForAppResult {
-        UserHasLicenseForAppResult(SteamAPI_ISteamGameServer_UserHasLicenseForApp(interface, UInt64(steamID), AppId_t(id)))
+        UserHasLicenseForAppResult(SteamAPI_ISteamGameServer_UserHasLicenseForApp(interface, CUnsignedLongLong(steamID), AppId_t(id)))
     }
 
     /// Steamworks `ISteamGameServer::WasRestartRequested()`
