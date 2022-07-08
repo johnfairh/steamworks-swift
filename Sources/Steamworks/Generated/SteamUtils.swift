@@ -46,9 +46,9 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::FilterText()`
     public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, byteSizeOutFilteredText: Int) -> (rc: Int, filteredText: String) {
-        let tmp_filteredText = SteamString(length: byteSizeOutFilteredText)
-        let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), UInt64(steamID), inputMessage, tmp_filteredText.charBuffer, uint32(byteSizeOutFilteredText)))
-        return (rc: rc, filteredText: tmp_filteredText.swiftString)
+        let tmpFilteredText = SteamString(length: byteSizeOutFilteredText)
+        let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), CUnsignedLongLong(steamID), inputMessage, tmpFilteredText.charBuffer, uint32(byteSizeOutFilteredText)))
+        return (rc: rc, filteredText: tmpFilteredText.swiftString)
     }
 
     /// Steamworks `ISteamUtils::GetAPICallFailureReason()`
@@ -58,9 +58,9 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::GetAPICallResult()`
     public func getAPICallResult(steamAPICall: SteamAPICall, callback: UnsafeMutableRawPointer, callbackSize: Int, callbackExpectedIndex: Int) -> (rc: Bool, failed: Bool) {
-        var tmp_failed = Bool()
-        let rc = SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, Int32(callbackSize), Int32(callbackExpectedIndex), &tmp_failed)
-        return (rc: rc, failed: tmp_failed)
+        var tmpFailed = CBool()
+        let rc = SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, CInt(callbackSize), CInt(callbackExpectedIndex), &tmpFailed)
+        return (rc: rc, failed: tmpFailed)
     }
 
     /// Steamworks `ISteamUtils::GetAppID()`
@@ -80,9 +80,9 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::GetEnteredGamepadTextInput()`
     public func getEnteredGamepadTextInput(textSize: Int) -> (rc: Bool, text: String) {
-        let tmp_text = SteamString(length: textSize)
-        let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmp_text.charBuffer, uint32(textSize))
-        return (rc: rc, text: tmp_text.swiftString)
+        let tmpText = SteamString(length: textSize)
+        let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmpText.charBuffer, uint32(textSize))
+        return (rc: rc, text: tmpText.swiftString)
     }
 
     /// Steamworks `ISteamUtils::GetEnteredGamepadTextLength()`
@@ -107,16 +107,16 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::GetImageRGBA()`
     public func getImageRGBA(imageIndex: Int, dest: UnsafeMutablePointer<UInt8>, destBufferSize: Int) -> Bool {
-        SteamAPI_ISteamUtils_GetImageRGBA(interface, Int32(imageIndex), dest, Int32(destBufferSize))
+        SteamAPI_ISteamUtils_GetImageRGBA(interface, CInt(imageIndex), dest, CInt(destBufferSize))
     }
 
     /// Steamworks `ISteamUtils::GetImageSize()`
     public func getImageSize(imageIndex: Int) -> (rc: Bool, width: Int, height: Int) {
-        var tmp_width = uint32()
-        var tmp_height = uint32()
-        let rc = SteamAPI_ISteamUtils_GetImageSize(interface, Int32(imageIndex), &tmp_width, &tmp_height)
+        var tmpWidth = uint32()
+        var tmpHeight = uint32()
+        let rc = SteamAPI_ISteamUtils_GetImageSize(interface, CInt(imageIndex), &tmpWidth, &tmpHeight)
         if rc {
-            return (rc: rc, width: Int(tmp_width), height: Int(tmp_height))
+            return (rc: rc, width: Int(tmpWidth), height: Int(tmpHeight))
         } else {
             return (rc: rc, width: 0, height: 0)
         }
@@ -149,9 +149,9 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::IsAPICallCompleted()`
     public func isAPICallCompleted(steamAPICall: SteamAPICall) -> (rc: Bool, failed: Bool) {
-        var tmp_failed = Bool()
-        let rc = SteamAPI_ISteamUtils_IsAPICallCompleted(interface, SteamAPICall_t(steamAPICall), &tmp_failed)
-        return (rc: rc, failed: tmp_failed)
+        var tmpFailed = CBool()
+        let rc = SteamAPI_ISteamUtils_IsAPICallCompleted(interface, SteamAPICall_t(steamAPICall), &tmpFailed)
+        return (rc: rc, failed: tmpFailed)
     }
 
     /// Steamworks `ISteamUtils::IsOverlayEnabled()`
@@ -191,7 +191,7 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::SetOverlayNotificationInset()`
     public func setOverlayNotificationInset(horizontalInset: Int, verticalInset: Int) {
-        SteamAPI_ISteamUtils_SetOverlayNotificationInset(interface, Int32(horizontalInset), Int32(verticalInset))
+        SteamAPI_ISteamUtils_SetOverlayNotificationInset(interface, CInt(horizontalInset), CInt(verticalInset))
     }
 
     /// Steamworks `ISteamUtils::SetOverlayNotificationPosition()`
@@ -211,7 +211,7 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::ShowFloatingGamepadTextInput()`
     public func showFloatingGamepadTextInput(keyboardMode: FloatingGamepadTextInputMode, textFieldXPosition: Int, textFieldYPosition: Int, textFieldWidth: Int, textFieldHeight: Int) -> Bool {
-        SteamAPI_ISteamUtils_ShowFloatingGamepadTextInput(interface, EFloatingGamepadTextInputMode(keyboardMode), Int32(textFieldXPosition), Int32(textFieldYPosition), Int32(textFieldWidth), Int32(textFieldHeight))
+        SteamAPI_ISteamUtils_ShowFloatingGamepadTextInput(interface, EFloatingGamepadTextInputMode(keyboardMode), CInt(textFieldXPosition), CInt(textFieldYPosition), CInt(textFieldWidth), CInt(textFieldHeight))
     }
 
     /// Steamworks `ISteamUtils::ShowGamepadTextInput()`

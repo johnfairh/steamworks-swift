@@ -37,7 +37,7 @@ struct Structs {
 }
 
 extension MetadataDB.Struct.Field {
-    static let unwantedFieldNames = Set<String>([
+    static let unwantedFieldNames = Set<SteamHungarianName>([
         "reserved", "m_ulUnused", "m__pad1", "_reservePad1"
     ])
 
@@ -55,8 +55,8 @@ extension MetadataDB.Struct.Field {
 
     /// Contribution to the C header file to define a method on the C++ structure that returns
     /// a pointer to an array structure element instead of a tuple.
-    func getArrayGetterLines(structName: String) -> String? {
-        guard let (elemType, arrayLen) = type.parseCArray else {
+    func getArrayGetterLines(structName: SteamType) -> String? {
+        guard let (elemType, arrayLen) = type.parseArray else {
             return nil
         }
         // Make sure these strings are actually null-terminated.
@@ -78,8 +78,8 @@ extension MetadataDB.Struct.Field {
                """
     }
 
-    func getArraySetterLines(structName: String) -> String? {
-        guard let (elemType, arrayLen) = type.parseCArray else {
+    func getArraySetterLines(structName: SteamType) -> String? {
+        guard let (elemType, arrayLen) = type.parseArray else {
             return nil
         }
         return """
@@ -94,14 +94,14 @@ extension MetadataDB.Struct.Field {
     /// Swift structure declaration field
     var declLine: [String] {[
         "/// Steamworks `\(name)`",
-        "public let \(name.asSwiftStructFieldName): \(type.asSwiftTypeName)"
+        "public let \(name.swiftName): \(type.swiftType)"
     ]}
 
     /// Swift structure initializer lines
     var initFromSteamLine: String {
         let rvalue: String
 
-        if let decomposed = type.parseCArray {
+        if let decomposed = type.parseArray {
             if decomposed.0 == "char" {
                 rvalue = ".init(steam.\(arrayFieldName))"
             } else if decomposed.0 == "uint8" {
@@ -112,13 +112,13 @@ extension MetadataDB.Struct.Field {
         } else {
             rvalue = ".init(steam.\(name))"
         }
-        return "\(name.asSwiftStructFieldName) = \(rvalue)"
+        return "\(name.swiftName) = \(rvalue)"
     }
 
     /// Steam structure initializer lines - only for a few types, opt-in
     var initSteamFromSwiftLine: String {
-        let rvalue = "swift.\(name.asSwiftStructFieldName)"
-        if type.parseCArray != nil {
+        let rvalue = "swift.\(name.swiftName)"
+        if type.parseArray != nil {
             return "self.\(arraySetterName)(from: \(rvalue))"
         }
         return "\(name) = .init(\(rvalue))"
@@ -126,13 +126,13 @@ extension MetadataDB.Struct.Field {
 
     /// Default value setup for memberwise initializer
     var memberwiseParameter: String {
-        let initClause = type.asSwiftTypeInstance.flatMap { " = \($0)"} ?? ""
-        return "\(name.asSwiftStructFieldName): \(type.asSwiftTypeName)\(initClause)"
+        let initClause = type.swiftTypeInstance.flatMap { " = \($0)"} ?? ""
+        return "\(name.swiftName): \(type.swiftType)\(initClause)"
     }
 
     /// Initializer line for memberwise initializer
     var initFromMemberwiseLine: String {
-        let field = name.asSwiftStructFieldName
+        let field = name.swiftName
         return "self.\(field) = \(field)"
     }
 }
@@ -158,11 +158,11 @@ extension Array where Element == MetadataDB.Struct.Field {
         filter(\.shouldGenerate).map(\.memberwiseParameter).joined(separator: ", ")
     }
 
-    func getArrayGetterLines(structName: String) -> [String] {
+    func getArrayGetterLines(structName: SteamType) -> [String] {
         filter(\.shouldGenerate).compactMap { $0.getArrayGetterLines(structName: structName) }
     }
 
-    func getArraySetterLines(structName: String) -> [String] {
+    func getArraySetterLines(structName: SteamType) -> [String] {
         filter(\.shouldGenerate).compactMap { $0.getArraySetterLines(structName: structName) }
     }
 }
@@ -187,7 +187,7 @@ extension MetadataDB.Struct {
         return [
             "",
             "extension CSteamworks.\(name) : SwiftCreatable {",
-            "    init(_ swift: \(name.asSwiftTypeName)) {",
+            "    init(_ swift: \(name.swiftType)) {",
             "        self.init()"
         ] + fields.initSteamFromSwiftLines.indented(2) + [
             "    }",
@@ -197,7 +197,7 @@ extension MetadataDB.Struct {
 
     var memberwiseInitializer: [String] {
         [
-            "/// Create a customized `\(name.asSwiftTypeName)`",
+            "/// Create a customized `\(name.swiftType)`",
             "public init(\(fields.memberwiseParameters)) {"
         ] +
         fields.initFromMemberwiseLines.indented(1) +
@@ -208,10 +208,10 @@ extension MetadataDB.Struct {
     // Not going to conform these to any protocols.  Should review as we go,
     // some will be PODs that make sense to be Equatable/etc, do via patch.
     var generateSwift: String {
-        let swiftTypeName = name.asSwiftTypeName
+        let swiftType = name.swiftType
         let lines = [[
             "/// Steamworks `\(name)`",
-            "public struct \(swiftTypeName) {"
+            "public struct \(swiftType) {"
         ],
         fields.declLines.indented(1),
         fields.isEmpty ? [] : [
@@ -220,7 +220,7 @@ extension MetadataDB.Struct {
         memberwiseInitializer.indented(1), [
             "}",
             "",
-            "extension \(swiftTypeName): SteamCreatable {",
+            "extension \(swiftType): SteamCreatable {",
             "    typealias SteamType = CSteamworks.\(name)",
             "    init(_ steam: CSteamworks.\(name)) {"
         ],
@@ -234,51 +234,3 @@ extension MetadataDB.Struct {
         return lines.joined(separator: "\n")
     }
 }
-
-extension String {
-    /// Get a safe-ish instance of the Swift version of this steam type
-    var asSwiftTypeInstance: String? {
-        let swiftTypeName = asSwiftTypeName
-
-        // hard-coded things
-        if swiftTypesWithoutDefaultValues.contains(swiftTypeName) {
-            return nil
-        }
-        if let instance = swiftTypeDefaultValues[swiftTypeName] {
-            return instance
-        }
-        // arrays
-        if swiftTypeName.isSwiftArrayType {
-            return "[]"
-        }
-        // integer types
-        if swiftTypeName.isSwiftIntegerType {
-            return "0"
-        }
-        // typedefs conform to ExpressibleBy...
-        if Metadata.isTypedef(steamType: self) {
-            return "0"
-        }
-        // enums can generate an initial value
-        if let instance = Metadata.findEnumDefaultInstance(steamType: self) {
-            return instance
-        }
-
-        // Fallback
-        return "\(swiftTypeName)()"
-    }
-}
-
-// Default values for Swift types.  These just need to compile and
-// be broadly sensible.  Int types handled separately.
-private let swiftTypeDefaultValues: [String : String] = [
-    "Bool" : "false",
-    "String" : #""""#,
-    "Double" : "0",
-    "Float" : "0",
-]
-
-// Swift types that do not have a default value.
-private let swiftTypesWithoutDefaultValues = Set([
-    "UnsafeRawPointer"
-])

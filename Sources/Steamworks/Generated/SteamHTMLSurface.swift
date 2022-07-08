@@ -54,9 +54,9 @@ public struct SteamHTMLSurface {
 
     /// Steamworks `ISteamHTMLSurface::FileLoadDialogResponse()`
     public func fileLoadDialogResponse(browserHandle: HHTMLBrowser, selectedFiles: [String]) {
-        let tmp_selectedFiles = StringArray(selectedFiles)
-        defer { tmp_selectedFiles.deallocate() }
-        SteamAPI_ISteamHTMLSurface_FileLoadDialogResponse(interface, CSteamworks.HHTMLBrowser(browserHandle), .init(tmp_selectedFiles))
+        let tmpSelectedFiles = StringArray(selectedFiles)
+        defer { tmpSelectedFiles.deallocate() }
+        SteamAPI_ISteamHTMLSurface_FileLoadDialogResponse(interface, CSteamworks.HHTMLBrowser(browserHandle), .init(tmpSelectedFiles))
     }
 
     /// Steamworks `ISteamHTMLSurface::Find()`
@@ -66,7 +66,7 @@ public struct SteamHTMLSurface {
 
     /// Steamworks `ISteamHTMLSurface::GetLinkAtPosition()`
     public func getLinkAtPosition(browserHandle: HHTMLBrowser, x: Int, y: Int) {
-        SteamAPI_ISteamHTMLSurface_GetLinkAtPosition(interface, CSteamworks.HHTMLBrowser(browserHandle), Int32(x), Int32(y))
+        SteamAPI_ISteamHTMLSurface_GetLinkAtPosition(interface, CSteamworks.HHTMLBrowser(browserHandle), CInt(x), CInt(y))
     }
 
     /// Steamworks `ISteamHTMLSurface::GoBack()`
@@ -121,7 +121,7 @@ public struct SteamHTMLSurface {
 
     /// Steamworks `ISteamHTMLSurface::MouseMove()`
     public func mouseMove(browserHandle: HHTMLBrowser, x: Int, y: Int) {
-        SteamAPI_ISteamHTMLSurface_MouseMove(interface, CSteamworks.HHTMLBrowser(browserHandle), Int32(x), Int32(y))
+        SteamAPI_ISteamHTMLSurface_MouseMove(interface, CSteamworks.HHTMLBrowser(browserHandle), CInt(x), CInt(y))
     }
 
     /// Steamworks `ISteamHTMLSurface::MouseUp()`
@@ -181,7 +181,7 @@ public struct SteamHTMLSurface {
 
     /// Steamworks `ISteamHTMLSurface::SetPageScaleFactor()`
     public func setPageScaleFactor(browserHandle: HHTMLBrowser, zoom: Float, pointX: Int, pointY: Int) {
-        SteamAPI_ISteamHTMLSurface_SetPageScaleFactor(interface, CSteamworks.HHTMLBrowser(browserHandle), zoom, Int32(pointX), Int32(pointY))
+        SteamAPI_ISteamHTMLSurface_SetPageScaleFactor(interface, CSteamworks.HHTMLBrowser(browserHandle), zoom, CInt(pointX), CInt(pointY))
     }
 
     /// Steamworks `ISteamHTMLSurface::SetSize()`

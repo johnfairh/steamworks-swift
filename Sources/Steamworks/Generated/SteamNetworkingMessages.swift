@@ -24,32 +24,28 @@ public struct SteamNetworkingMessages {
     /// Steamworks `ISteamNetworkingMessages::AcceptSessionWithUser()`
     @discardableResult
     public func acceptSessionWithUser(identityRemote: SteamNetworkingIdentity) -> Bool {
-        var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
-        return SteamAPI_ISteamNetworkingMessages_AcceptSessionWithUser(interface, &tmp_identityRemote)
+        SteamAPI_ISteamNetworkingMessages_AcceptSessionWithUser(interface, CSteamworks.SteamNetworkingIdentity(identityRemote))
     }
 
     /// Steamworks `ISteamNetworkingMessages::CloseChannelWithUser()`
     @discardableResult
     public func closeChannelWithUser(identityRemote: SteamNetworkingIdentity, localChannel: Int) -> Bool {
-        var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
-        return SteamAPI_ISteamNetworkingMessages_CloseChannelWithUser(interface, &tmp_identityRemote, Int32(localChannel))
+        SteamAPI_ISteamNetworkingMessages_CloseChannelWithUser(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), CInt(localChannel))
     }
 
     /// Steamworks `ISteamNetworkingMessages::CloseSessionWithUser()`
     @discardableResult
     public func closeSessionWithUser(identityRemote: SteamNetworkingIdentity) -> Bool {
-        var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
-        return SteamAPI_ISteamNetworkingMessages_CloseSessionWithUser(interface, &tmp_identityRemote)
+        SteamAPI_ISteamNetworkingMessages_CloseSessionWithUser(interface, CSteamworks.SteamNetworkingIdentity(identityRemote))
     }
 
     /// Steamworks `ISteamNetworkingMessages::GetSessionConnectionInfo()`
     public func getSessionConnectionInfo(identityRemote: SteamNetworkingIdentity) -> (rc: SteamNetworkingConnectionState, connectionInfo: SteamNetConnectionInfo, quickStatus: SteamNetConnectionRealTimeStatus) {
-        var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
-        var tmp_connectionInfo = SteamNetConnectionInfo_t()
-        var tmp_quickStatus = SteamNetConnectionRealTimeStatus_t()
-        let rc = SteamNetworkingConnectionState(SteamAPI_ISteamNetworkingMessages_GetSessionConnectionInfo(interface, &tmp_identityRemote, &tmp_connectionInfo, &tmp_quickStatus))
+        var tmpConnectionInfo = SteamNetConnectionInfo_t()
+        var tmpQuickStatus = SteamNetConnectionRealTimeStatus_t()
+        let rc = SteamNetworkingConnectionState(SteamAPI_ISteamNetworkingMessages_GetSessionConnectionInfo(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), &tmpConnectionInfo, &tmpQuickStatus))
         if rc != .none {
-            return (rc: rc, connectionInfo: SteamNetConnectionInfo(tmp_connectionInfo), quickStatus: SteamNetConnectionRealTimeStatus(tmp_quickStatus))
+            return (rc: rc, connectionInfo: SteamNetConnectionInfo(tmpConnectionInfo), quickStatus: SteamNetConnectionRealTimeStatus(tmpQuickStatus))
         } else {
             return (rc: rc, connectionInfo: SteamNetConnectionInfo(), quickStatus: SteamNetConnectionRealTimeStatus())
         }
@@ -57,14 +53,13 @@ public struct SteamNetworkingMessages {
 
     /// Steamworks `ISteamNetworkingMessages::ReceiveMessagesOnChannel()`
     public func receiveMessagesOnChannel(localChannel: Int, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
-        let tmp_messages = SteamOutArray<OpaquePointer?>(maxMessages)
-        let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, Int32(localChannel), tmp_messages.steamArray, Int32(maxMessages)))
-        return (rc: rc, messages: tmp_messages.swiftArray(rc))
+        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
+        let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, CInt(localChannel), tmpMessages.steamArray, CInt(maxMessages)))
+        return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamNetworkingMessages::SendMessageToUser()`
     public func sendMessageToUser(identityRemote: SteamNetworkingIdentity, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags, remoteChannel: Int) -> Result {
-        var tmp_identityRemote = CSteamworks.SteamNetworkingIdentity(identityRemote)
-        return Result(SteamAPI_ISteamNetworkingMessages_SendMessageToUser(interface, &tmp_identityRemote, data, uint32(dataSize), Int32(sendFlags), Int32(remoteChannel)))
+        Result(SteamAPI_ISteamNetworkingMessages_SendMessageToUser(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), data, uint32(dataSize), Int32(sendFlags), CInt(remoteChannel)))
     }
 }

@@ -17,8 +17,8 @@ struct Callbacks {
 
     /// Figure out which structs need callback APIs.  Not exactly straightforward.
     var callbackStructs: [MetadataDB.Struct] {
-        var callResults: Set<String> = []
-        var explicitCallbacks: Set<String> = []
+        var callResults: Set<SteamType> = []
+        var explicitCallbacks: Set<SteamType> = []
 
         // Scan through and find structs with identified uses
         metadata.db.interfaces.values.forEach { interface in
@@ -63,21 +63,21 @@ struct Callbacks {
 
 extension MetadataDB.Struct {
     var callbackSyncLines: String {
-        let swiftTypeName = name.asSwiftTypeName
+        let swiftType = name.swiftType
         return """
                    /// Registration for Steamworks `\(name)` callback
-                   func on\(swiftTypeName)(_ client: @escaping (\(swiftTypeName)) -> Void) {
+                   func on\(swiftType)(_ client: @escaping (\(swiftType)) -> Void) {
                        callbacks.add(callbackID: CallbackID(\(callbackID!)), rawClient: SteamBaseAPI.makeRaw(client))
                    }
                """
     }
 
     var callbackAsyncLines: String {
-        let swiftTypeName = name.asSwiftTypeName
+        let swiftType = name.swiftType
         return """
                    /// Async stream of Steamworks `\(name)` callbacks
-                   var \(swiftTypeName.asSwiftIdentifier): AsyncStream<\(swiftTypeName)> {
-                       AsyncStream { on\(swiftTypeName)($0.yield0) }
+                   var \(SteamName(swiftType).swiftName): AsyncStream<\(swiftType)> {
+                       AsyncStream { on\(swiftType)($0.yield0) }
                    }
                """
     }

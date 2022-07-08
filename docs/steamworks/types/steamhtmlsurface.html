@@ -1,0 +1,6554 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <link rel="stylesheet" href="../../css/fw2020.css">
+    
+    
+   <title>SteamHTMLSurface - Steamworks v0.1.0</title>
+    
+  </head>
+  <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamhtmlsurface.html" data-assets-path="../../">
+
+  <!-- messages for search -->
+  <div hidden>
+    <span id="text-loading">Loading index...</span>
+    <span id="text-failed">Failed to load index</span>
+    <span id="text-notfound">No matches</span>
+  </div>
+
+  <header class="j2-header">
+  <div class="navbar navbar-expand navbar-dark j2-titlebar">
+  <div class="container-fluid ps-0 pe-0">
+  <a class="visually-hidden-focusable visually-hidden fw-slightly-bold pe-2" href="#main-content">Skip to main content</a>
+  <a class="nav-item nav-link ps-0 pt-1 pe-2 d-md-none" id="nav-toggle-button" role="button" aria-controls="nav-column" aria-expanded="false" aria-label="Toggle navigation" href="#">
+    <span class="navbar-toggler-icon"></span>
+  </a>
+
+  <div class="navbar-brand me-1 fw-slightly-bold">
+    
+    <a href="../../index.html">
+    
+    Steamworks v0.1.0</a>
+  </div>
+  
+
+  <div class="navbar-nav ms-auto justify-content-end flex-fill">
+
+    
+    <form class="d-none d-md-block my-auto pe-2 ps-2" role="search">
+      <input class="form-control form-control-sm w-100" type="search" placeHolder="Search" aria-label="Search" aria-keyshortcuts="/" data-search-format="span">
+    </form>
+    
+
+    
+
+    
+    <a class="nav-item nav-link d-none d-sm-inline" rel="external" href="https://github.com/johnfairh/swift-steamworks">
+      <svg class="j2-title-svg" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 16 16"><title>Open on GitHub</title><path fill="currentcolor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+    </a>
+    
+    
+    
+    
+
+    
+
+    
+
+  </div>
+  </div>
+</div>
+
+<!-- narrow-style searchbar -->
+
+
+<div class="container-fluid j2-titlebar d-md-none">
+  <div class="row">
+    <div class="col">
+      <form class="pb-2">
+        <input class="form-control form-control-sm" type="search" placeHolder="Search" aria-label="Search" aria-keyshortcuts="/" data-search-format="div">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <nav aria-label="breadcrumb" class="small">
+  
+  
+    <ol class="breadcrumb j2-breadcrumb j2-swift">
+      <li class="breadcrumb-item"><a href="../../index.html">Index</a></li>
+      
+        
+          <li class="breadcrumb-item"><a href="../../steamworks-interfaces.html?swift">Steamworks interfaces</a></li>
+        
+        
+      
+        
+        
+          <li class="breadcrumb-item" aria-current="page">Steamworks.SteamHTMLSurface</li>
+        
+      
+    </ol>
+  
+</nav>
+
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-auto d-none d-md-flex flex-column j2-nav" id="nav-column">
+  
+    <nav aria-label="Swift" class="j2-swift">
+    <ul class="j2-nav-list">
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../api-clients.html?swift">API clients</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steambaseapi3.html?swift">SteamBaseAPI</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapi.html?swift">SteamAPI</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamgameserverapi.html?swift">SteamGameServerAPI</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworksencryptedappticket/types/steamencryptedappticket.html?swift">SteamEncryptedAppTicket</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../steamworks-interfaces.html?swift">Steamworks interfaces</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapplist.html?swift">SteamAppList</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapps.html?swift">SteamApps</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamfriends.html?swift">SteamFriends</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamgamesearch.html?swift">SteamGameSearch</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamgameserver.html?swift">SteamGameServer</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamgameserverstats.html?swift">SteamGameServerStats</a>
+
+
+
+  </li>
+  
+  <li>
+    
+  <a class="j2-nav-item active" href="#" aria-current="page">SteamHTMLSurface</a>
+
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamhttp.html?swift">SteamHTTP</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminput.html?swift">SteamInput</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventory.html?swift">SteamInventory</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmaking.html?swift">SteamMatchmaking</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingservers.html?swift">SteamMatchmakingServers</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammusic.html?swift">SteamMusic</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammusicremote.html?swift">SteamMusicRemote</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingfakeudpport.html?swift">SteamNetworkingFakeUDPPort</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmessages.html?swift">SteamNetworkingMessages</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingsockets.html?swift">SteamNetworkingSockets</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingutils.html?swift">SteamNetworkingUtils</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamparentalsettings.html?swift">SteamParentalSettings</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamparties.html?swift">SteamParties</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamremoteplay.html?swift">SteamRemotePlay</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamremotestorage.html?swift">SteamRemoteStorage</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamscreenshots.html?swift">SteamScreenshots</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamugc.html?swift">SteamUGC</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamuser.html?swift">SteamUser</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamuserstats.html?swift">SteamUserStats</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamutils.html?swift">SteamUtils</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamvideo1.html?swift">SteamVideo</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../typealiases.html?swift">Typealiases</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/accountid1.html?swift">AccountID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/appid26.html?swift">AppID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controlleractionsethandle.html?swift">ControllerActionSetHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controlleranalogactionhandle.html?swift">ControllerAnalogActionHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controllerdigitalactionhandle.html?swift">ControllerDigitalActionHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controllerhandle.html?swift">ControllerHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/depotid1.html?swift">DepotID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendsgroupid1.html?swift">FriendsGroupID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hauthticket1.html?swift">HAuthTicket</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hserverlistrequest.html?swift">HServerListRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hserverquery1.html?swift">HServerQuery</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteamlistensocket1.html?swift">HSteamListenSocket</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteamnetpollgroup1.html?swift">HSteamNetPollGroup</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteampipe.html?swift">HSteamPipe</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/hsteamuser.html?swift">HSteamUser</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httpcookiecontainerhandle.html?swift">HTTPCookieContainerHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httprequesthandle.html?swift">HTTPRequestHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputactionsethandle.html?swift">InputActionSetHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputanalogactionhandle.html?swift">InputAnalogActionHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputdigitalactionhandle.html?swift">InputDigitalActionHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputhandle1.html?swift">InputHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/publishedfileupdatehandle1.html?swift">PublishedFileUpdateHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/rtime32.html?swift">RTime32</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remoteplaysessionid1.html?swift">RemotePlaySessionID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/snetlistensocket.html?swift">SNetListenSocket</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/snetsocket.html?swift">SNetSocket</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/screenshothandle1.html?swift">ScreenshotHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapicall1.html?swift">SteamAPICall</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../typealiases.html?swift#steaminputactioneventcallbackpointer">SteamInputActionEventCallbackPointer</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryresult1.html?swift">SteamInventoryResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryupdatehandle1.html?swift">SteamInventoryUpdateHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamitemdef.html?swift">SteamItemDef</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamiteminstanceid1.html?swift">SteamItemInstanceID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamleaderboardentries1.html?swift">SteamLeaderboardEntries</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingerrmsg.html?swift">SteamNetworkingErrMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmicroseconds.html?swift">SteamNetworkingMicroseconds</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingpopid.html?swift">SteamNetworkingPOPID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcfilewritestreamhandle1.html?swift">UGCFileWriteStreamHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcqueryhandle1.html?swift">UGCQueryHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcupdatehandle1.html?swift">UGCUpdateHandle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../typealiases.html?swift#steamapiwarningmessagehook">SteamAPIWarningMessageHook</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../typealiases.html?swift#matchmakingkeyvaluepairs">MatchMakingKeyValuePairs</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../enumerations.html?swift">Enumerations</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/audioplaybackstatus.html?swift">AudioPlaybackStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/accounttype.html?swift">AccountType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/activategameoverlaytowebpagemode.html?swift">ActivateGameOverlayToWebPageMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/authsessionresponse.html?swift">AuthSessionResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/beginauthsessionresult.html?swift">BeginAuthSessionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/chatentrytype.html?swift">ChatEntryType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/chatmemberstatechange.html?swift">ChatMemberStateChange</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/chatroomenterresponse.html?swift">ChatRoomEnterResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/chatsteamidinstanceflags.html?swift">ChatSteamIDInstanceFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/checkfilesignatureresult.html?swift">CheckFileSignatureResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controlleractionorigin.html?swift">ControllerActionOrigin</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controllerhapticlocation.html?swift">ControllerHapticLocation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/controllerhaptictype.html?swift">ControllerHapticType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/denyreason.html?swift">DenyReason</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/durationcontrolnotification.html?swift">DurationControlNotification</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/durationcontrolonlinestate.html?swift">DurationControlOnlineState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/durationcontrolprogress.html?swift">DurationControlProgress</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/favoriteflags.html?swift">FavoriteFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/floatinggamepadtextinputmode.html?swift">FloatingGamepadTextInputMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendflags.html?swift">FriendFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendrelationship.html?swift">FriendRelationship</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamesearcherrorcode.html?swift">GameSearchErrorCode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamepadtextinputlinemode.html?swift">GamepadTextInputLineMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamepadtextinputmode.html?swift">GamepadTextInputMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httpmethod.html?swift">HTTPMethod</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httpstatuscode.html?swift">HTTPStatusCode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputactionorigin.html?swift">InputActionOrigin</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputsourcemode.html?swift">InputSourceMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/itempreviewtype.html?swift">ItemPreviewType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/itemstate.html?swift">ItemState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/itemstatistic.html?swift">ItemStatistic</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/itemupdatestatus.html?swift">ItemUpdateStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboarddatarequest.html?swift">LeaderboardDataRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboarddisplaytype.html?swift">LeaderboardDisplayType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardsortmethod.html?swift">LeaderboardSortMethod</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboarduploadscoremethod.html?swift">LeaderboardUploadScoreMethod</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbycomparison.html?swift">LobbyComparison</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbydistancefilter.html?swift">LobbyDistanceFilter</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbytype.html?swift">LobbyType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/marketnotallowedreasonflags.html?swift">MarketNotAllowedReasonFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/matchmakingserverresponse.html?swift">MatchMakingServerResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/notificationposition.html?swift">NotificationPosition</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/overlaytostoreflag.html?swift">OverlayToStoreFlag</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psend.html?swift">P2PSend</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psessionerror.html?swift">P2PSessionError</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/parentalfeature.html?swift">ParentalFeature</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/personachange.html?swift">PersonaChange</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/personastate.html?swift">PersonaState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/playerresult.html?swift">PlayerResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/registeractivationcoderesult.html?swift">RegisterActivationCodeResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragefilepathtype.html?swift">RemoteStorageFilePathType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragelocalfilechangetype.html?swift">RemoteStorageLocalFileChangeType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageplatform.html?swift">RemoteStoragePlatform</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/result.html?swift">Result</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/snetsocketconnectiontype.html?swift">SNetSocketConnectionType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/snetsocketstate.html?swift">SNetSocketState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/servermode.html?swift">ServerMode</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapicallfailure.html?swift">SteamAPICallFailure</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamcontrollerledflag.html?swift">SteamControllerLEDFlag</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamcontrollerpad.html?swift">SteamControllerPad</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamdeviceformfactor.html?swift">SteamDeviceFormFactor</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamiptype.html?swift">SteamIPType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamipv6connectivityprotocol.html?swift">SteamIPv6ConnectivityProtocol</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamipv6connectivitystate.html?swift">SteamIPv6ConnectivityState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputactioneventtype.html?swift">SteamInputActionEventType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputconfigurationenabletype.html?swift">SteamInputConfigurationEnableType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputglyphsize.html?swift">SteamInputGlyphSize</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputglyphstyle.html?swift">SteamInputGlyphStyle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputledflag.html?swift">SteamInputLEDFlag</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputtype.html?swift">SteamInputType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamitemflags.html?swift">SteamItemFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectionend.html?swift">SteamNetConnectionEnd</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkconnectioninfoflags.html?swift">SteamNetworkConnectionInfoFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingavailability.html?swift">SteamNetworkingAvailability</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconfigdatatype.html?swift">SteamNetworkingConfigDataType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconfigscope.html?swift">SteamNetworkingConfigScope</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconfigvaluesetting.html?swift">SteamNetworkingConfigValueSetting</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconnectionstate.html?swift">SteamNetworkingConnectionState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingfakeiptype.html?swift">SteamNetworkingFakeIPType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkinggetconfigvalueresult.html?swift">SteamNetworkingGetConfigValueResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingidentitytype.html?swift">SteamNetworkingIdentityType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingsendflags.html?swift">SteamNetworkingSendFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingsocketsdebugoutputtype.html?swift">SteamNetworkingSocketsDebugOutputType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steampartybeaconlocationdata.html?swift">SteamPartyBeaconLocationData</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steampartybeaconlocationtype.html?swift">SteamPartyBeaconLocationType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/textfilteringcontext.html?swift">TextFilteringContext</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcmatchingugctype.html?swift">UGCMatchingUGCType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcquery.html?swift">UGCQuery</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ugcreadaction.html?swift">UGCReadAction</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/universe.html?swift">Universe</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userhaslicenseforappresult.html?swift">UserHasLicenseForAppResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userrestriction.html?swift">UserRestriction</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userugclist.html?swift">UserUGCList</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userugclistsortorder.html?swift">UserUGCListSortOrder</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/vrscreenshottype.html?swift">VRScreenshotType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/voiceresult.html?swift">VoiceResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopenumerationtype.html?swift">WorkshopEnumerationType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopvideoprovider.html?swift">WorkshopVideoProvider</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopvote.html?swift">WorkshopVote</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/xboxorigin.html?swift">XboxOrigin</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ipcfailuretype.html?swift">IPCFailureType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlkeymodifiers.html?swift">HTMLKeyModifiers</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlmousebutton.html?swift">HTMLMouseButton</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlmousecursor.html?swift">HTMLMouseCursor</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/playeracceptstate.html?swift">PlayerAcceptState</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../structures.html?swift">Structures</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/activebeaconsupdated1.html?swift">ActiveBeaconsUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/addappdependencyresult.html?swift">AddAppDependencyResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/addugcdependencyresult.html?swift">AddUGCDependencyResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/appproofofpurchasekeyresponse1.html?swift">AppProofOfPurchaseKeyResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/appresumingfromsuspend1.html?swift">AppResumingFromSuspend</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/associatewithclanresult.html?swift">AssociateWithClanResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/availablebeaconlocationsupdated1.html?swift">AvailableBeaconLocationsUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/avatarimageloaded1.html?swift">AvatarImageLoaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/changenumopenslotscallback.html?swift">ChangeNumOpenSlotsCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/checkfilesignature1.html?swift">CheckFileSignature</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/clanofficerlistresponse.html?swift">ClanOfficerListResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/clientgameserverdeny1.html?swift">ClientGameServerDeny</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/computenewplayercompatibilityresult.html?swift">ComputeNewPlayerCompatibilityResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/createbeaconcallback.html?swift">CreateBeaconCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/createitemresult.html?swift">CreateItemResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/deleteitemresult.html?swift">DeleteItemResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/dlcinstalled1.html?swift">DlcInstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/downloadclanactivitycountsresult.html?swift">DownloadClanActivityCountsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/downloaditemresult1.html?swift">DownloadItemResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/durationcontrol.html?swift">DurationControl</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/endgameresultcallback1.html?swift">EndGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/favoriteslistaccountsupdated1.html?swift">FavoritesListAccountsUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/favoriteslistchanged1.html?swift">FavoritesListChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/filedetailsresult.html?swift">FileDetailsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/floatinggamepadtextinputdismissed1.html?swift">FloatingGamepadTextInputDismissed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendgameinfo.html?swift">FriendGameInfo</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendrichpresenceupdate1.html?swift">FriendRichPresenceUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendsenumeratefollowinglist.html?swift">FriendsEnumerateFollowingList</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendsgetfollowercount.html?swift">FriendsGetFollowerCount</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/friendsisfollowing.html?swift">FriendsIsFollowing</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientachievementstatus1.html?swift">GSClientAchievementStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientapprove1.html?swift">GSClientApprove</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientdeny1.html?swift">GSClientDeny</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientgroupstatus1.html?swift">GSClientGroupStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsclientkick1.html?swift">GSClientKick</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsgameplaystats1.html?swift">GSGameplayStats</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gspolicyresponse1.html?swift">GSPolicyResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsreputation.html?swift">GSReputation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsstatsreceived.html?swift">GSStatsReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsstatsstored.html?swift">GSStatsStored</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gsstatsunloaded1.html?swift">GSStatsUnloaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameconnectedchatjoin1.html?swift">GameConnectedChatJoin</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameconnectedchatleave1.html?swift">GameConnectedChatLeave</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameconnectedclanchatmsg1.html?swift">GameConnectedClanChatMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameconnectedfriendchatmsg1.html?swift">GameConnectedFriendChatMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamelobbyjoinrequested1.html?swift">GameLobbyJoinRequested</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameoverlayactivated1.html?swift">GameOverlayActivated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamerichpresencejoinrequested1.html?swift">GameRichPresenceJoinRequested</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameserverchangerequested1.html?swift">GameServerChangeRequested</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamewebcallback1.html?swift">GameWebCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gamepadtextinputdismissed1.html?swift">GamepadTextInputDismissed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getappdependenciesresult.html?swift">GetAppDependenciesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getauthsessionticketresponse1.html?swift">GetAuthSessionTicketResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getopfsettingsresult1.html?swift">GetOPFSettingsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getuseritemvoteresult.html?swift">GetUserItemVoteResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/getvideourlresult1.html?swift">GetVideoURLResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/globalachievementpercentagesready.html?swift">GlobalAchievementPercentagesReady</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/globalstatsreceived.html?swift">GlobalStatsReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlbrowserready.html?swift">HTMLBrowserReady</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlbrowserrestarted1.html?swift">HTMLBrowserRestarted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlcangobackandforward1.html?swift">HTMLCanGoBackAndForward</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlchangedtitle1.html?swift">HTMLChangedTitle</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlclosebrowser1.html?swift">HTMLCloseBrowser</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlfileopendialog1.html?swift">HTMLFileOpenDialog</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlfinishedrequest1.html?swift">HTMLFinishedRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlhidetooltip1.html?swift">HTMLHideToolTip</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlhorizontalscroll1.html?swift">HTMLHorizontalScroll</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmljsalert1.html?swift">HTMLJSAlert</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmljsconfirm1.html?swift">HTMLJSConfirm</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmllinkatposition1.html?swift">HTMLLinkAtPosition</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlneedspaint1.html?swift">HTMLNeedsPaint</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlnewwindow1.html?swift">HTMLNewWindow</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlopenlinkinnewtab1.html?swift">HTMLOpenLinkInNewTab</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlsearchresults1.html?swift">HTMLSearchResults</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlsetcursor1.html?swift">HTMLSetCursor</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlshowtooltip1.html?swift">HTMLShowToolTip</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlstartrequest1.html?swift">HTMLStartRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlstatustext1.html?swift">HTMLStatusText</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlurlchanged1.html?swift">HTMLURLChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlupdatetooltip1.html?swift">HTMLUpdateToolTip</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/htmlverticalscroll1.html?swift">HTMLVerticalScroll</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httprequestcompleted.html?swift">HTTPRequestCompleted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httprequestdatareceived1.html?swift">HTTPRequestDataReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/httprequestheadersreceived1.html?swift">HTTPRequestHeadersReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ipcfailure1.html?swift">IPCFailure</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ipcountry1.html?swift">IPCountry</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputanalogactiondata.html?swift">InputAnalogActionData</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputdigitalactiondata.html?swift">InputDigitalActionData</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/inputmotiondata.html?swift">InputMotionData</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/iteminstalled1.html?swift">ItemInstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/joinclanchatroomcompletionresult.html?swift">JoinClanChatRoomCompletionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/joinpartycallback.html?swift">JoinPartyCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardentry.html?swift">LeaderboardEntry</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardscoreuploaded.html?swift">LeaderboardScoreUploaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/leaderboardugcset.html?swift">LeaderboardUGCSet</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/licensesupdated1.html?swift">LicensesUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbychatmsg1.html?swift">LobbyChatMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbychatupdate1.html?swift">LobbyChatUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbycreated.html?swift">LobbyCreated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbydataupdate1.html?swift">LobbyDataUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbyenter.html?swift">LobbyEnter</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbygamecreated1.html?swift">LobbyGameCreated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbyinvite1.html?swift">LobbyInvite</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbykicked1.html?swift">LobbyKicked</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lobbymatchlist.html?swift">LobbyMatchList</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/lowbatterypower1.html?swift">LowBatteryPower</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/marketeligibilityresponse.html?swift">MarketEligibilityResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/matchmakingkeyvaluepair.html?swift">MatchMakingKeyValuePair</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/microtxnauthorizationresponse1.html?swift">MicroTxnAuthorizationResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerremotetofront1.html?swift">MusicPlayerRemoteToFront</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerremotewillactivate1.html?swift">MusicPlayerRemoteWillActivate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerremotewilldeactivate1.html?swift">MusicPlayerRemoteWillDeactivate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerselectsplaylistentry1.html?swift">MusicPlayerSelectsPlaylistEntry</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerselectsqueueentry1.html?swift">MusicPlayerSelectsQueueEntry</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantslooped1.html?swift">MusicPlayerWantsLooped</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantspause1.html?swift">MusicPlayerWantsPause</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsplaynext1.html?swift">MusicPlayerWantsPlayNext</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsplayprevious1.html?swift">MusicPlayerWantsPlayPrevious</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsplay1.html?swift">MusicPlayerWantsPlay</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsplayingrepeatstatus1.html?swift">MusicPlayerWantsPlayingRepeatStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsshuffled1.html?swift">MusicPlayerWantsShuffled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwantsvolume1.html?swift">MusicPlayerWantsVolume</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/musicplayerwillquit1.html?swift">MusicPlayerWillQuit</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/newurllaunchparameters1.html?swift">NewUrlLaunchParameters</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/numberofcurrentplayers.html?swift">NumberOfCurrentPlayers</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/overlaybrowserprotocolnavigation1.html?swift">OverlayBrowserProtocolNavigation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psessionconnectfail1.html?swift">P2PSessionConnectFail</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psessionrequest1.html?swift">P2PSessionRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/p2psessionstate.html?swift">P2PSessionState</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/ps3trophiesinstalled1.html?swift">PS3TrophiesInstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/psngamebootinviteresult1.html?swift">PSNGameBootInviteResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/personastatechange1.html?swift">PersonaStateChange</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/playbackstatushaschanged1.html?swift">PlaybackStatusHasChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/registeractivationcoderesponse1.html?swift">RegisterActivationCodeResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumeratepublishedfilesbyuseractionresult.html?swift">RemoteStorageEnumeratePublishedFilesByUserActionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumerateusersharedworkshopfilesresult1.html?swift">RemoteStorageEnumerateUserSharedWorkshopFilesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragelocalfilechange1.html?swift">RemoteStorageLocalFileChange</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishfileresult1.html?swift">RemoteStoragePublishFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfiledeleted1.html?swift">RemoteStoragePublishedFileDeleted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfilesubscribed1.html?swift">RemoteStoragePublishedFileSubscribed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfileunsubscribed1.html?swift">RemoteStoragePublishedFileUnsubscribed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragepublishedfileupdated1.html?swift">RemoteStoragePublishedFileUpdated</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/remotestorageuservotedetails1.html?swift">RemoteStorageUserVoteDetails</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/removeappdependencyresult.html?swift">RemoveAppDependencyResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/removeugcdependencyresult.html?swift">RemoveUGCDependencyResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/requestplayersforgamefinalresultcallback1.html?swift">RequestPlayersForGameFinalResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/requestplayersforgameprogresscallback1.html?swift">RequestPlayersForGameProgressCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/requestplayersforgameresultcallback1.html?swift">RequestPlayersForGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/reservationnotificationcallback1.html?swift">ReservationNotificationCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/screenshotready1.html?swift">ScreenshotReady</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/screenshotrequested1.html?swift">ScreenshotRequested</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/searchforgameprogresscallback1.html?swift">SearchForGameProgressCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/searchforgameresultcallback1.html?swift">SearchForGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/setpersonanameresponse.html?swift">SetPersonaNameResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/setuseritemvoteresult.html?swift">SetUserItemVoteResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/socketstatuscallback1.html?swift">SocketStatusCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/startplaytimetrackingresult.html?swift">StartPlaytimeTrackingResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamapicallcompleted1.html?swift">SteamAPICallCompleted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamappinstalled1.html?swift">SteamAppInstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamappuninstalled1.html?swift">SteamAppUninstalled</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputconfigurationloaded1.html?swift">SteamInputConfigurationLoaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputdeviceconnected1.html?swift">SteamInputDeviceConnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputdevicedisconnected1.html?swift">SteamInputDeviceDisconnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventorydefinitionupdate1.html?swift">SteamInventoryDefinitionUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryeligiblepromoitemdefids.html?swift">SteamInventoryEligiblePromoItemDefIDs</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryfullupdate1.html?swift">SteamInventoryFullUpdate</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryrequestpricesresult.html?swift">SteamInventoryRequestPricesResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventoryresultready1.html?swift">SteamInventoryResultReady</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminventorystartpurchaseresult.html?swift">SteamInventoryStartPurchaseResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamitemdetails.html?swift">SteamItemDetails</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetauthenticationstatus1.html?swift">SteamNetAuthenticationStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectioninfo.html?swift">SteamNetConnectionInfo</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectionrealtimelanestatus.html?swift">SteamNetConnectionRealTimeLaneStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectionrealtimestatus.html?swift">SteamNetConnectionRealTimeStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetconnectionstatuschangedcallback1.html?swift">SteamNetConnectionStatusChangedCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkpinglocation.html?swift">SteamNetworkPingLocation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingfakeipresult1.html?swift">SteamNetworkingFakeIPResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmessagessessionfailed1.html?swift">SteamNetworkingMessagesSessionFailed</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmessagessessionrequest1.html?swift">SteamNetworkingMessagesSessionRequest</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamparentalsettingschanged1.html?swift">SteamParentalSettingsChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steampartybeaconlocation.html?swift">SteamPartyBeaconLocation</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamrelaynetworkstatus1.html?swift">SteamRelayNetworkStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamremoteplaysessionconnected1.html?swift">SteamRemotePlaySessionConnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamremoteplaysessiondisconnected1.html?swift">SteamRemotePlaySessionDisconnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamserverconnectfailure1.html?swift">SteamServerConnectFailure</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamserversconnected1.html?swift">SteamServersConnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamserversdisconnected1.html?swift">SteamServersDisconnected</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamshutdown1.html?swift">SteamShutdown</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamugcdetails.html?swift">SteamUGCDetails</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamugcquerycompleted.html?swift">SteamUGCQueryCompleted</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamugcrequestugcdetailsresult.html?swift">SteamUGCRequestUGCDetailsResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/storeauthurlresponse.html?swift">StoreAuthURLResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/submititemupdateresult.html?swift">SubmitItemUpdateResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/submitplayerresultresultcallback1.html?swift">SubmitPlayerResultResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timedtrialstatus1.html?swift">TimedTrialStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/unreadchatmessageschanged1.html?swift">UnreadChatMessagesChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userachievementiconfetched1.html?swift">UserAchievementIconFetched</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userachievementstored1.html?swift">UserAchievementStored</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userstatsstored1.html?swift">UserStatsStored</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/userstatsunloaded1.html?swift">UserStatsUnloaded</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/usersubscribeditemslistchanged1.html?swift">UserSubscribedItemsListChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/validateauthticketresponse1.html?swift">ValidateAuthTicketResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/volumehaschanged1.html?swift">VolumeHasChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/workshopeulastatus.html?swift">WorkshopEULAStatus</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameserveritem.html?swift">GameServerItem</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamipaddress.html?swift">SteamIPAddress</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputactionevent.html?swift">SteamInputActionEvent</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steaminputactionevent/event.html?swift">Event</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/servernetadr.html?swift">ServerNetAdr</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingipaddr.html?swift">SteamNetworkingIPAddr</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingmessage.html?swift">SteamNetworkingMessage</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamnetworkingconfigvalue.html?swift">SteamNetworkingConfigValue</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamid14.html?swift">SteamID</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameid.html?swift">GameID</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../protocols.html?swift">Protocols</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingpingresponse.html?swift">SteamMatchmakingPingResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingplayersresponse.html?swift">SteamMatchmakingPlayersResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingrulesresponse.html?swift">SteamMatchmakingRulesResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingserverlistresponse.html?swift">SteamMatchmakingServerListResponse</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="../../constants.html?swift">Constants</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamconstants.html?swift">SteamConstants</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+    </ul>
+  </nav>
+  
+</div>
+
+      <main class="col col-xl-8 j2-article px-lg-4 px-xl-5" id="article-column">
+        <article class="j2-article-wrapper" id="main-content">
+
+        <section>
+          
+          <header>
+            <h1 class="j2-anchor">
+              
+              
+              <span>SteamHTMLSurface</span>
+              
+            </h1>
+          </header>
+          
+          
+          
+          <div class="j2-callout  j2-callout-declaration">
+            
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public struct SteamHTMLSurface</code></pre>
+  </div>
+
+
+
+          </div>
+
+          <div class="clearfix">
+            
+  
+
+
+            
+
+
+<p>Steamworks <a href="https://partner.steamgames.com/doc/api/ISteamHTMLSurface"><code>ISteamHTMLSurface</code></a></p>
+<p>Access via <a href="../../steamworks/types/steamapi.html?swift#htmlsurface"><code>SteamAPI.htmlSurface</code></a>.</p>
+
+
+
+            
+
+
+
+          </div>
+          
+          
+          <nav aria-label="item details" class="j2-main-item-nav">
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L14-L216">Show on GitHub</a>
+          </nav>
+          
+          
+        </section>
+
+        
+<div class="j2-swift">
+<hr/>
+<section>
+  <h1 class="visually-hidden">Topics</h1>
+  
+  <section class="j2-swift">
+  
+  
+  
+  
+  
+    <section id="addheaderbrowserhandlekeyvalue" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20addHeader(browserHandle%3A%20HHTMLBrowser,%20key%3A%20String,%20value%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="addheaderbrowserhandlekeyvalue"></a>
+    <h4 class="visually-hidden">func addHeader(browserHandle: HHTMLBrowser, key: String, value: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_addheaderbrowserhandlekeyvalue" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_addheaderbrowserhandlekeyvalue"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>addHeader<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>key<span class="j2-item-secondary">: String, </span>value<span class="j2-item-secondary">: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_addheaderbrowserhandlekeyvalue">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::AddHeader()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func addHeader(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, key: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, value: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L23-L25">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="allowstartrequestbrowserhandleallowed" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20allowStartRequest(browserHandle%3A%20HHTMLBrowser,%20allowed%3A%20Bool)" class="dashAnchor j2-item-dash-anchor" data-item-id="allowstartrequestbrowserhandleallowed"></a>
+    <h4 class="visually-hidden">func allowStartRequest(browserHandle: HHTMLBrowser, allowed: Bool)</h4>
+    
+    
+    <a class="j2-item-title" href="#_allowstartrequestbrowserhandleallowed" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_allowstartrequestbrowserhandleallowed"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>allowStartRequest<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>allowed<span class="j2-item-secondary">: Bool)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_allowstartrequestbrowserhandleallowed">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::AllowStartRequest()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func allowStartRequest(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, allowed: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L28-L30">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="copytoclipboardbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20copyToClipboard(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="copytoclipboardbrowserhandle"></a>
+    <h4 class="visually-hidden">func copyToClipboard(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_copytoclipboardbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_copytoclipboardbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>copyToClipboard<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_copytoclipboardbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::CopyToClipboard()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func copyToClipboard(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L33-L35">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createbrowseruseragentusercsscompletion" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createBrowser(userAgent%3A%20String,%20userCSS%3A%20String,%20completion%3A%20(HTMLBrowserReady%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="createbrowseruseragentusercsscompletion"></a>
+    <h4 class="visually-hidden">func createBrowser(userAgent: String, userCSS: String, completion: (HTMLBrowserReady?) -&gt; Void)</h4>
+    
+    
+    <a class="j2-item-title" href="#_createbrowseruseragentusercsscompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createbrowseruseragentusercsscompletion"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createBrowser<span class="j2-item-secondary">(</span>userAgent<span class="j2-item-secondary">: String, </span>userCSS<span class="j2-item-secondary">: String, </span>completion<span class="j2-item-secondary">: (HTMLBrowserReady?) -&gt; Void)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createbrowseruseragentusercsscompletion">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::CreateBrowser()</code>, callback</p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createBrowser(
+    userAgent: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, userCSS: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    completion: @escaping (<a href="../../steamworks/types/htmlbrowserready.html?swift">HTMLBrowserReady</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L38-L41">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="createbrowseruseragentusercss" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createBrowser(userAgent%3A%20String,%20userCSS%3A%20String)%20async%20-%3E%20HTMLBrowserReady%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="createbrowseruseragentusercss"></a>
+    <h4 class="visually-hidden">func createBrowser(userAgent: String, userCSS: String) async -&gt; HTMLBrowserReady?</h4>
+    
+    
+    <a class="j2-item-title" href="#_createbrowseruseragentusercss" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createbrowseruseragentusercss"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createBrowser<span class="j2-item-secondary">(</span>userAgent<span class="j2-item-secondary">: String, </span>userCSS<span class="j2-item-secondary">: String) async -&gt; HTMLBrowserReady?</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_createbrowseruseragentusercss">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::CreateBrowser()</code>, async</p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func createBrowser(userAgent: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, userCSS: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) async
+    -&gt; <a href="../../steamworks/types/htmlbrowserready.html?swift">HTMLBrowserReady</a>?</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L44-L48">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="executejavascriptbrowserhandlescript" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20executeJavascript(browserHandle%3A%20HHTMLBrowser,%20script%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="executejavascriptbrowserhandlescript"></a>
+    <h4 class="visually-hidden">func executeJavascript(browserHandle: HHTMLBrowser, script: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_executejavascriptbrowserhandlescript" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_executejavascriptbrowserhandlescript"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>executeJavascript<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>script<span class="j2-item-secondary">: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_executejavascriptbrowserhandlescript">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::ExecuteJavascript()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func executeJavascript(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, script: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L51-L53">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="fileloaddialogresponsebrowserhandleselectedfiles" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20fileLoadDialogResponse(browserHandle%3A%20HHTMLBrowser,%20selectedFiles%3A%20%5BString%5D)" class="dashAnchor j2-item-dash-anchor" data-item-id="fileloaddialogresponsebrowserhandleselectedfiles"></a>
+    <h4 class="visually-hidden">func fileLoadDialogResponse(browserHandle: HHTMLBrowser, selectedFiles: [String])</h4>
+    
+    
+    <a class="j2-item-title" href="#_fileloaddialogresponsebrowserhandleselectedfiles" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_fileloaddialogresponsebrowserhandleselectedfiles"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileLoadDialogResponse<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>selectedFiles<span class="j2-item-secondary">: [String])</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_fileloaddialogresponsebrowserhandleselectedfiles">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::FileLoadDialogResponse()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func fileLoadDialogResponse(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, selectedFiles: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>])</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L56-L60">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="findbrowserhandlesearchstrcurrentlyinfindreverse" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20find(browserHandle%3A%20HHTMLBrowser,%20searchStr%3A%20String,%20currentlyInFind%3A%20Bool,%20reverse%3A%20Bool)" class="dashAnchor j2-item-dash-anchor" data-item-id="findbrowserhandlesearchstrcurrentlyinfindreverse"></a>
+    <h4 class="visually-hidden">func find(browserHandle: HHTMLBrowser, searchStr: String, currentlyInFind: Bool, reverse: Bool)</h4>
+    
+    
+    <a class="j2-item-title" href="#_findbrowserhandlesearchstrcurrentlyinfindreverse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_findbrowserhandlesearchstrcurrentlyinfindreverse"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>find<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>searchStr<span class="j2-item-secondary">: String, </span>currentlyInFind<span class="j2-item-secondary">: Bool, </span>reverse<span class="j2-item-secondary">: Bool)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_findbrowserhandlesearchstrcurrentlyinfindreverse">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::Find()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func find(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, searchStr: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, currentlyInFind: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>,
+    reverse: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L63-L65">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getlinkatpositionbrowserhandlexy" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getLinkAtPosition(browserHandle%3A%20HHTMLBrowser,%20x%3A%20Int,%20y%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getlinkatpositionbrowserhandlexy"></a>
+    <h4 class="visually-hidden">func getLinkAtPosition(browserHandle: HHTMLBrowser, x: Int, y: Int)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getlinkatpositionbrowserhandlexy" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getlinkatpositionbrowserhandlexy"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getLinkAtPosition<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>x<span class="j2-item-secondary">: Int, </span>y<span class="j2-item-secondary">: Int)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getlinkatpositionbrowserhandlexy">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::GetLinkAtPosition()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getLinkAtPosition(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, x: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, y: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L68-L70">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="gobackbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20goBack(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="gobackbrowserhandle"></a>
+    <h4 class="visually-hidden">func goBack(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_gobackbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_gobackbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>goBack<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_gobackbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::GoBack()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func goBack(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L73-L75">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="goforwardbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20goForward(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="goforwardbrowserhandle"></a>
+    <h4 class="visually-hidden">func goForward(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_goforwardbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_goforwardbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>goForward<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_goforwardbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::GoForward()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func goForward(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L78-L80">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="init8" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Constructor/func%60init%60()%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="init8"></a>
+    <h4 class="visually-hidden">func`init`() -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_init8" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_init8"><code>
+        <span class="j2-swift">func<span class="j2-item-secondary">`init`() -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_init8">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::Init()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func `init`() -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L83-L85">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="jsdialogresponsebrowserhandleresult" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20jsDialogResponse(browserHandle%3A%20HHTMLBrowser,%20result%3A%20Bool)" class="dashAnchor j2-item-dash-anchor" data-item-id="jsdialogresponsebrowserhandleresult"></a>
+    <h4 class="visually-hidden">func jsDialogResponse(browserHandle: HHTMLBrowser, result: Bool)</h4>
+    
+    
+    <a class="j2-item-title" href="#_jsdialogresponsebrowserhandleresult" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_jsdialogresponsebrowserhandleresult"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>jsDialogResponse<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>result<span class="j2-item-secondary">: Bool)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_jsdialogresponsebrowserhandleresult">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::JSDialogResponse()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func jsDialogResponse(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, result: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L88-L90">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="keycharbrowserhandleunicodecharhtmlkeymodifiers" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20keyChar(browserHandle%3A%20HHTMLBrowser,%20unicodeChar%3A%20Int,%20htmlKeyModifiers%3A%20HTMLKeyModifiers)" class="dashAnchor j2-item-dash-anchor" data-item-id="keycharbrowserhandleunicodecharhtmlkeymodifiers"></a>
+    <h4 class="visually-hidden">func keyChar(browserHandle: HHTMLBrowser, unicodeChar: Int, htmlKeyModifiers: HTMLKeyModifiers)</h4>
+    
+    
+    <a class="j2-item-title" href="#_keycharbrowserhandleunicodecharhtmlkeymodifiers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_keycharbrowserhandleunicodecharhtmlkeymodifiers"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>keyChar<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>unicodeChar<span class="j2-item-secondary">: Int, </span>htmlKeyModifiers<span class="j2-item-secondary">: HTMLKeyModifiers)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_keycharbrowserhandleunicodecharhtmlkeymodifiers">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::KeyChar()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func keyChar(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, unicodeChar: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    htmlKeyModifiers: <a href="../../steamworks/types/htmlkeymodifiers.html?swift">HTMLKeyModifiers</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L93-L95">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="keydownbrowserhandlenativekeycodehtmlkeymodifiersissystemkey" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20keyDown(browserHandle%3A%20HHTMLBrowser,%20nativeKeyCode%3A%20Int,%20htmlKeyModifiers%3A%20HTMLKeyModifiers,%20isSystemKey%3A%20Bool)" class="dashAnchor j2-item-dash-anchor" data-item-id="keydownbrowserhandlenativekeycodehtmlkeymodifiersissystemkey"></a>
+    <h4 class="visually-hidden">func keyDown(browserHandle: HHTMLBrowser, nativeKeyCode: Int, htmlKeyModifiers: HTMLKeyModifiers, isSystemKey: Bool)</h4>
+    
+    
+    <a class="j2-item-title" href="#_keydownbrowserhandlenativekeycodehtmlkeymodifiersissystemkey" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_keydownbrowserhandlenativekeycodehtmlkeymodifiersissystemkey"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>keyDown<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>nativeKeyCode<span class="j2-item-secondary">: Int, </span>htmlKeyModifiers<span class="j2-item-secondary">: HTMLKeyModifiers, </span>isSystemKey<span class="j2-item-secondary">: Bool)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_keydownbrowserhandlenativekeycodehtmlkeymodifiersissystemkey">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::KeyDown()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func keyDown(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, nativeKeyCode: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    htmlKeyModifiers: <a href="../../steamworks/types/htmlkeymodifiers.html?swift">HTMLKeyModifiers</a>, isSystemKey: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L98-L100">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="keyupbrowserhandlenativekeycodehtmlkeymodifiers" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20keyUp(browserHandle%3A%20HHTMLBrowser,%20nativeKeyCode%3A%20Int,%20htmlKeyModifiers%3A%20HTMLKeyModifiers)" class="dashAnchor j2-item-dash-anchor" data-item-id="keyupbrowserhandlenativekeycodehtmlkeymodifiers"></a>
+    <h4 class="visually-hidden">func keyUp(browserHandle: HHTMLBrowser, nativeKeyCode: Int, htmlKeyModifiers: HTMLKeyModifiers)</h4>
+    
+    
+    <a class="j2-item-title" href="#_keyupbrowserhandlenativekeycodehtmlkeymodifiers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_keyupbrowserhandlenativekeycodehtmlkeymodifiers"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>keyUp<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>nativeKeyCode<span class="j2-item-secondary">: Int, </span>htmlKeyModifiers<span class="j2-item-secondary">: HTMLKeyModifiers)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_keyupbrowserhandlenativekeycodehtmlkeymodifiers">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::KeyUp()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func keyUp(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, nativeKeyCode: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    htmlKeyModifiers: <a href="../../steamworks/types/htmlkeymodifiers.html?swift">HTMLKeyModifiers</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L103-L105">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="loadurlbrowserhandleurlpostdata" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20loadURL(browserHandle%3A%20HHTMLBrowser,%20url%3A%20String,%20postData%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="loadurlbrowserhandleurlpostdata"></a>
+    <h4 class="visually-hidden">func loadURL(browserHandle: HHTMLBrowser, url: String, postData: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_loadurlbrowserhandleurlpostdata" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_loadurlbrowserhandleurlpostdata"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>loadURL<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>url<span class="j2-item-secondary">: String, </span>postData<span class="j2-item-secondary">: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_loadurlbrowserhandleurlpostdata">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::LoadURL()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func loadURL(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, url: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, postData: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L108-L110">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="mousedoubleclickbrowserhandlemousebutton" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20mouseDoubleClick(browserHandle%3A%20HHTMLBrowser,%20mouseButton%3A%20HTMLMouseButton)" class="dashAnchor j2-item-dash-anchor" data-item-id="mousedoubleclickbrowserhandlemousebutton"></a>
+    <h4 class="visually-hidden">func mouseDoubleClick(browserHandle: HHTMLBrowser, mouseButton: HTMLMouseButton)</h4>
+    
+    
+    <a class="j2-item-title" href="#_mousedoubleclickbrowserhandlemousebutton" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_mousedoubleclickbrowserhandlemousebutton"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>mouseDoubleClick<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>mouseButton<span class="j2-item-secondary">: HTMLMouseButton)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_mousedoubleclickbrowserhandlemousebutton">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::MouseDoubleClick()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func mouseDoubleClick(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, mouseButton: <a href="../../steamworks/types/htmlmousebutton.html?swift">HTMLMouseButton</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L113-L115">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="mousedownbrowserhandlemousebutton" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20mouseDown(browserHandle%3A%20HHTMLBrowser,%20mouseButton%3A%20HTMLMouseButton)" class="dashAnchor j2-item-dash-anchor" data-item-id="mousedownbrowserhandlemousebutton"></a>
+    <h4 class="visually-hidden">func mouseDown(browserHandle: HHTMLBrowser, mouseButton: HTMLMouseButton)</h4>
+    
+    
+    <a class="j2-item-title" href="#_mousedownbrowserhandlemousebutton" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_mousedownbrowserhandlemousebutton"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>mouseDown<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>mouseButton<span class="j2-item-secondary">: HTMLMouseButton)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_mousedownbrowserhandlemousebutton">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::MouseDown()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func mouseDown(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, mouseButton: <a href="../../steamworks/types/htmlmousebutton.html?swift">HTMLMouseButton</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L118-L120">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="mousemovebrowserhandlexy" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20mouseMove(browserHandle%3A%20HHTMLBrowser,%20x%3A%20Int,%20y%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="mousemovebrowserhandlexy"></a>
+    <h4 class="visually-hidden">func mouseMove(browserHandle: HHTMLBrowser, x: Int, y: Int)</h4>
+    
+    
+    <a class="j2-item-title" href="#_mousemovebrowserhandlexy" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_mousemovebrowserhandlexy"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>mouseMove<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>x<span class="j2-item-secondary">: Int, </span>y<span class="j2-item-secondary">: Int)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_mousemovebrowserhandlexy">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::MouseMove()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func mouseMove(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, x: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, y: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L123-L125">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="mouseupbrowserhandlemousebutton" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20mouseUp(browserHandle%3A%20HHTMLBrowser,%20mouseButton%3A%20HTMLMouseButton)" class="dashAnchor j2-item-dash-anchor" data-item-id="mouseupbrowserhandlemousebutton"></a>
+    <h4 class="visually-hidden">func mouseUp(browserHandle: HHTMLBrowser, mouseButton: HTMLMouseButton)</h4>
+    
+    
+    <a class="j2-item-title" href="#_mouseupbrowserhandlemousebutton" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_mouseupbrowserhandlemousebutton"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>mouseUp<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>mouseButton<span class="j2-item-secondary">: HTMLMouseButton)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_mouseupbrowserhandlemousebutton">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::MouseUp()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func mouseUp(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, mouseButton: <a href="../../steamworks/types/htmlmousebutton.html?swift">HTMLMouseButton</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L128-L130">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="mousewheelbrowserhandledelta" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20mouseWheel(browserHandle%3A%20HHTMLBrowser,%20delta%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="mousewheelbrowserhandledelta"></a>
+    <h4 class="visually-hidden">func mouseWheel(browserHandle: HHTMLBrowser, delta: Int)</h4>
+    
+    
+    <a class="j2-item-title" href="#_mousewheelbrowserhandledelta" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_mousewheelbrowserhandledelta"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>mouseWheel<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>delta<span class="j2-item-secondary">: Int)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_mousewheelbrowserhandledelta">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::MouseWheel()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func mouseWheel(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, delta: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L133-L135">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="opendevelopertoolsbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20openDeveloperTools(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="opendevelopertoolsbrowserhandle"></a>
+    <h4 class="visually-hidden">func openDeveloperTools(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_opendevelopertoolsbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_opendevelopertoolsbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>openDeveloperTools<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_opendevelopertoolsbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::OpenDeveloperTools()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func openDeveloperTools(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L138-L140">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="pastefromclipboardbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20pasteFromClipboard(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="pastefromclipboardbrowserhandle"></a>
+    <h4 class="visually-hidden">func pasteFromClipboard(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_pastefromclipboardbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_pastefromclipboardbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>pasteFromClipboard<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_pastefromclipboardbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::PasteFromClipboard()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func pasteFromClipboard(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L143-L145">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="reloadbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20reload(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="reloadbrowserhandle"></a>
+    <h4 class="visually-hidden">func reload(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_reloadbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_reloadbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>reload<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_reloadbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::Reload()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func reload(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L148-L150">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="removebrowserbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20removeBrowser(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="removebrowserbrowserhandle"></a>
+    <h4 class="visually-hidden">func removeBrowser(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_removebrowserbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_removebrowserbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>removeBrowser<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_removebrowserbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::RemoveBrowser()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func removeBrowser(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L153-L155">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setbackgroundmodebrowserhandlebackgroundmode" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setBackgroundMode(browserHandle%3A%20HHTMLBrowser,%20backgroundMode%3A%20Bool)" class="dashAnchor j2-item-dash-anchor" data-item-id="setbackgroundmodebrowserhandlebackgroundmode"></a>
+    <h4 class="visually-hidden">func setBackgroundMode(browserHandle: HHTMLBrowser, backgroundMode: Bool)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setbackgroundmodebrowserhandlebackgroundmode" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setbackgroundmodebrowserhandlebackgroundmode"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setBackgroundMode<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>backgroundMode<span class="j2-item-secondary">: Bool)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setbackgroundmodebrowserhandlebackgroundmode">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::SetBackgroundMode()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setBackgroundMode(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, backgroundMode: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L158-L160">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setcookiehostnamekeyvaluepathexpiressecurehttponly" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setCookie(hostname%3A%20String,%20key%3A%20String,%20value%3A%20String,%20path%3A%20String,%20expires%3A%20RTime32,%20secure%3A%20Bool,%20httpOnly%3A%20Bool)" class="dashAnchor j2-item-dash-anchor" data-item-id="setcookiehostnamekeyvaluepathexpiressecurehttponly"></a>
+    <h4 class="visually-hidden">func setCookie(hostname: String, key: String, value: String, path: String, expires: RTime32, secure: Bool, httpOnly: Bool)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setcookiehostnamekeyvaluepathexpiressecurehttponly" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setcookiehostnamekeyvaluepathexpiressecurehttponly"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setCookie<span class="j2-item-secondary">(</span>hostname<span class="j2-item-secondary">: String, </span>key<span class="j2-item-secondary">: String, </span>value<span class="j2-item-secondary">: String, </span>path<span class="j2-item-secondary">: String, </span>expires<span class="j2-item-secondary">: RTime32, </span>secure<span class="j2-item-secondary">: Bool, </span>httpOnly<span class="j2-item-secondary">: Bool)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setcookiehostnamekeyvaluepathexpiressecurehttponly">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::SetCookie()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setCookie(
+    hostname: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, key: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, value: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, path: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    expires: <a href="../../steamworks/types/rtime32.html?swift">RTime32</a>, secure: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, httpOnly: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L163-L165">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setdpiscalingfactorbrowserhandledpiscaling" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setDPIScalingFactor(browserHandle%3A%20HHTMLBrowser,%20dpiScaling%3A%20Float)" class="dashAnchor j2-item-dash-anchor" data-item-id="setdpiscalingfactorbrowserhandledpiscaling"></a>
+    <h4 class="visually-hidden">func setDPIScalingFactor(browserHandle: HHTMLBrowser, dpiScaling: Float)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setdpiscalingfactorbrowserhandledpiscaling" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setdpiscalingfactorbrowserhandledpiscaling"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setDPIScalingFactor<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>dpiScaling<span class="j2-item-secondary">: Float)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setdpiscalingfactorbrowserhandledpiscaling">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::SetDPIScalingFactor()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setDPIScalingFactor(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, dpiScaling: <a href="https://developer.apple.com/documentation/swift/float?language=swift">Float</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L168-L170">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="sethorizontalscrollbrowserhandleabsolutepixelscroll" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setHorizontalScroll(browserHandle%3A%20HHTMLBrowser,%20absolutePixelScroll%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="sethorizontalscrollbrowserhandleabsolutepixelscroll"></a>
+    <h4 class="visually-hidden">func setHorizontalScroll(browserHandle: HHTMLBrowser, absolutePixelScroll: Int)</h4>
+    
+    
+    <a class="j2-item-title" href="#_sethorizontalscrollbrowserhandleabsolutepixelscroll" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sethorizontalscrollbrowserhandleabsolutepixelscroll"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setHorizontalScroll<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>absolutePixelScroll<span class="j2-item-secondary">: Int)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_sethorizontalscrollbrowserhandleabsolutepixelscroll">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::SetHorizontalScroll()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setHorizontalScroll(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, absolutePixelScroll: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L173-L175">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setkeyfocusbrowserhandlehaskeyfocus" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setKeyFocus(browserHandle%3A%20HHTMLBrowser,%20hasKeyFocus%3A%20Bool)" class="dashAnchor j2-item-dash-anchor" data-item-id="setkeyfocusbrowserhandlehaskeyfocus"></a>
+    <h4 class="visually-hidden">func setKeyFocus(browserHandle: HHTMLBrowser, hasKeyFocus: Bool)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setkeyfocusbrowserhandlehaskeyfocus" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setkeyfocusbrowserhandlehaskeyfocus"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setKeyFocus<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>hasKeyFocus<span class="j2-item-secondary">: Bool)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setkeyfocusbrowserhandlehaskeyfocus">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::SetKeyFocus()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setKeyFocus(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, hasKeyFocus: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L178-L180">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setpagescalefactorbrowserhandlezoompointxpointy" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setPageScaleFactor(browserHandle%3A%20HHTMLBrowser,%20zoom%3A%20Float,%20pointX%3A%20Int,%20pointY%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="setpagescalefactorbrowserhandlezoompointxpointy"></a>
+    <h4 class="visually-hidden">func setPageScaleFactor(browserHandle: HHTMLBrowser, zoom: Float, pointX: Int, pointY: Int)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setpagescalefactorbrowserhandlezoompointxpointy" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setpagescalefactorbrowserhandlezoompointxpointy"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setPageScaleFactor<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>zoom<span class="j2-item-secondary">: Float, </span>pointX<span class="j2-item-secondary">: Int, </span>pointY<span class="j2-item-secondary">: Int)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setpagescalefactorbrowserhandlezoompointxpointy">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::SetPageScaleFactor()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setPageScaleFactor(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, zoom: <a href="https://developer.apple.com/documentation/swift/float?language=swift">Float</a>, pointX: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, pointY: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L183-L185">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setsizebrowserhandlewidthheight" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setSize(browserHandle%3A%20HHTMLBrowser,%20width%3A%20Int,%20height%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="setsizebrowserhandlewidthheight"></a>
+    <h4 class="visually-hidden">func setSize(browserHandle: HHTMLBrowser, width: Int, height: Int)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setsizebrowserhandlewidthheight" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setsizebrowserhandlewidthheight"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setSize<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>width<span class="j2-item-secondary">: Int, </span>height<span class="j2-item-secondary">: Int)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setsizebrowserhandlewidthheight">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::SetSize()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setSize(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, width: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, height: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L188-L190">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setverticalscrollbrowserhandleabsolutepixelscroll" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setVerticalScroll(browserHandle%3A%20HHTMLBrowser,%20absolutePixelScroll%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="setverticalscrollbrowserhandleabsolutepixelscroll"></a>
+    <h4 class="visually-hidden">func setVerticalScroll(browserHandle: HHTMLBrowser, absolutePixelScroll: Int)</h4>
+    
+    
+    <a class="j2-item-title" href="#_setverticalscrollbrowserhandleabsolutepixelscroll" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setverticalscrollbrowserhandleabsolutepixelscroll"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setVerticalScroll<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>absolutePixelScroll<span class="j2-item-secondary">: Int)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setverticalscrollbrowserhandleabsolutepixelscroll">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::SetVerticalScroll()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setVerticalScroll(
+    browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, absolutePixelScroll: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L193-L195">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="shutdown1" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20shutdown()%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="shutdown1"></a>
+    <h4 class="visually-hidden">func shutdown() -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_shutdown1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_shutdown1"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>shutdown<span class="j2-item-secondary">() -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_shutdown1">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::Shutdown()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func shutdown() -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L198-L200">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="stopfindbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20stopFind(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="stopfindbrowserhandle"></a>
+    <h4 class="visually-hidden">func stopFind(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_stopfindbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_stopfindbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>stopFind<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_stopfindbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::StopFind()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func stopFind(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L203-L205">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="stoploadbrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20stopLoad(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="stoploadbrowserhandle"></a>
+    <h4 class="visually-hidden">func stopLoad(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_stoploadbrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_stoploadbrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>stopLoad<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_stoploadbrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::StopLoad()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func stopLoad(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L208-L210">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="viewsourcebrowserhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20viewSource(browserHandle%3A%20HHTMLBrowser)" class="dashAnchor j2-item-dash-anchor" data-item-id="viewsourcebrowserhandle"></a>
+    <h4 class="visually-hidden">func viewSource(browserHandle: HHTMLBrowser)</h4>
+    
+    
+    <a class="j2-item-title" href="#_viewsourcebrowserhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_viewsourcebrowserhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>viewSource<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_viewsourcebrowserhandle">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamHTMLSurface::ViewSource()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func viewSource(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L213-L215">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+</section>
+
+  
+</section>
+</div>
+
+
+
+        
+        <div class="flex-grow-1"></div>
+        <nav aria-label="paging" class="j2-pagination pb-3 pt-2">
+  <div id="pagination-prev" class="flex-fill">
+  
+    <a class="j2-swift" href="../../steamworks/types/steamgameserverstats.html?swift" aria-keyshortcuts="p">
+  <span aria-hidden="true">&laquo; </span>SteamGameServerStats
+</a>
+
+    <a class="j2-objc j2-secondary" href="../../steamworks/types/steamgameserverstats.html?swift" aria-keyshortcuts="p">
+  <span aria-hidden="true">&laquo; </span>SteamGameServerStats
+</a>
+
+  
+  
+  </div>
+  <div id="pagination-next" class="flex-fill text-end">
+  
+    <a class="j2-swift" href="../../steamworks/types/steamhttp.html?swift" aria-keyshortcuts="n">
+  SteamHTTP<span aria-hidden="true"> &raquo;</span>
+</a>
+
+    <a class="j2-objc j2-secondary" href="../../steamworks/types/steamhttp.html?swift" aria-keyshortcuts="n">
+  SteamHTTP<span aria-hidden="true"> &raquo;</span>
+</a>
+
+  
+  
+  </div>
+</nav>
+
+        
+
+        </article>
+      </main>
+
+      <div class="col-xl d-none d-xl-block j2-aux-nav" id="aux-nav-column">
+  <div class="j2-aux-nav-wrapper">
+    
+    <div class="j2-swift">
+    <h6 class="j2-inline-heading">Topics</h6>
+    <nav aria-label="page">
+      <ul class="j2-aux-group">
+        
+        <li><a href="#">Declaration</a></li>
+        
+      </ul>
+    </nav>
+    </div>
+    
+    
+    <h6 class="j2-inline-heading">Actions</h6>
+    <ul class="j2-aux-group">
+      
+      <li><a class="j2-aux-action" id="action-search" href="#" role="button" aria-keyshortcuts="/">Search (/)</a></li>
+      
+      
+      
+      <li><a class="j2-aux-action" id="action-collapse" href="#" role="button" aria-keyshortcuts="a">
+          <span id="action-collapse-expand">Open all (a)</span>
+          <span id="action-collapse-collapse" class="d-none">Close all (a)</span>
+      </a></li>
+      
+      
+      
+    </ul>
+    
+  </div>
+</div>
+
+
+    </div> <!-- end row -->
+
+    <footer class="row">
+  <div class="col j2-footer small pt-2">
+    <p>Distributed under the MIT license.  Maintained by <a href="mailto:johnfairh@gmail.com">John Fairhurst</a>.</p>
+    
+    <p>Generated by <a class="link" href="https://github.com/johnfairh/Bebop" target="_blank" rel="external noopener">Bebop v1.8.1</a> using the FW2020 theme, based on technology from <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫</a>.</p>
+    
+  </div>
+</footer>
+
+  </div> <!-- container -->
+
+  <script src="../../js/dependencies.min.js"></script>
+  
+  <script src="../../js/fw2020.js"></script>
+  </body>
+</html>

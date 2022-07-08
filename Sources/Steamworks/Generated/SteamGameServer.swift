@@ -21,7 +21,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::AssociateWithClan()`, callback
     public func associateWithClan(clan: SteamID, completion: @escaping (AssociateWithClanResult?) -> Void) {
-        let rc = SteamAPI_ISteamGameServer_AssociateWithClan(interface, UInt64(clan))
+        let rc = SteamAPI_ISteamGameServer_AssociateWithClan(interface, CUnsignedLongLong(clan))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -44,12 +44,12 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::BUpdateUserData()`
     public func updateUserData(user: SteamID, playerName: String, score: Int) -> Bool {
-        SteamAPI_ISteamGameServer_BUpdateUserData(interface, UInt64(user), playerName, uint32(score))
+        SteamAPI_ISteamGameServer_BUpdateUserData(interface, CUnsignedLongLong(user), playerName, uint32(score))
     }
 
     /// Steamworks `ISteamGameServer::BeginAuthSession()`
     public func beginAuthSession(authTicket: UnsafeRawPointer, authTicketSize: Int, steamID: SteamID) -> BeginAuthSessionResult {
-        BeginAuthSessionResult(SteamAPI_ISteamGameServer_BeginAuthSession(interface, authTicket, Int32(authTicketSize), UInt64(steamID)))
+        BeginAuthSessionResult(SteamAPI_ISteamGameServer_BeginAuthSession(interface, authTicket, CInt(authTicketSize), CUnsignedLongLong(steamID)))
     }
 
     /// Steamworks `ISteamGameServer::CancelAuthTicket()`
@@ -64,7 +64,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::ComputeNewPlayerCompatibility()`, callback
     public func computeNewPlayerCompatibility(newPlayer: SteamID, completion: @escaping (ComputeNewPlayerCompatibilityResult?) -> Void) {
-        let rc = SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility(interface, UInt64(newPlayer))
+        let rc = SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility(interface, CUnsignedLongLong(newPlayer))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -82,14 +82,14 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::EndAuthSession()`
     public func endAuthSession(steamID: SteamID) {
-        SteamAPI_ISteamGameServer_EndAuthSession(interface, UInt64(steamID))
+        SteamAPI_ISteamGameServer_EndAuthSession(interface, CUnsignedLongLong(steamID))
     }
 
     /// Steamworks `ISteamGameServer::GetAuthSessionTicket()`
     public func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: HAuthTicket, ticketSize: Int) {
-        var tmp_ticketSize = uint32()
-        let rc = HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, ticket, Int32(maxTicketSize), &tmp_ticketSize))
-        return (rc: rc, ticketSize: Int(tmp_ticketSize))
+        var tmpTicketSize = uint32()
+        let rc = HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, ticket, CInt(maxTicketSize), &tmpTicketSize))
+        return (rc: rc, ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamGameServer::GetGameplayStats()`
@@ -99,10 +99,10 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::GetNextOutgoingPacket()`
     public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: Int) {
-        var tmp_netAdr = uint32()
-        var tmp_port = uint16()
-        let rc = Int(SteamAPI_ISteamGameServer_GetNextOutgoingPacket(interface, out, Int32(maxOutSize), &tmp_netAdr, &tmp_port))
-        return (rc: rc, netAdr: Int(tmp_netAdr), port: Int(tmp_port))
+        var tmpNetAdr = uint32()
+        var tmpPort = uint16()
+        let rc = Int(SteamAPI_ISteamGameServer_GetNextOutgoingPacket(interface, out, CInt(maxOutSize), &tmpNetAdr, &tmpPort))
+        return (rc: rc, netAdr: Int(tmpNetAdr), port: Int(tmpPort))
     }
 
     /// Steamworks `ISteamGameServer::GetPublicIP()`
@@ -130,7 +130,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::HandleIncomingPacket()`
     public func handleIncomingPacket(data: UnsafeRawPointer, dataSize: Int, srcIP: Int, srcPort: Int) -> Bool {
-        SteamAPI_ISteamGameServer_HandleIncomingPacket(interface, data, Int32(dataSize), uint32(srcIP), uint16(srcPort))
+        SteamAPI_ISteamGameServer_HandleIncomingPacket(interface, data, CInt(dataSize), uint32(srcIP), uint16(srcPort))
     }
 
     /// Steamworks `ISteamGameServer::LogOff()`
@@ -150,19 +150,19 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::RequestUserGroupStatus()`
     public func requestUserGroupStatus(user: SteamID, group: SteamID) -> Bool {
-        SteamAPI_ISteamGameServer_RequestUserGroupStatus(interface, UInt64(user), UInt64(group))
+        SteamAPI_ISteamGameServer_RequestUserGroupStatus(interface, CUnsignedLongLong(user), CUnsignedLongLong(group))
     }
 
     /// Steamworks `ISteamGameServer::SendUserConnectAndAuthenticate_DEPRECATED()`
     public func sendUserConnectAndAuthenticateDEPRECATED(ipClient: Int, authBlob: UnsafeRawPointer, authBlobSize: Int) -> (rc: Bool, user: SteamID) {
-        var tmp_user = CSteamID()
-        let rc = SteamAPI_ISteamGameServer_SendUserConnectAndAuthenticate_DEPRECATED(interface, uint32(ipClient), authBlob, uint32(authBlobSize), &tmp_user)
-        return (rc: rc, user: SteamID(tmp_user))
+        var tmpUser = CSteamID()
+        let rc = SteamAPI_ISteamGameServer_SendUserConnectAndAuthenticate_DEPRECATED(interface, uint32(ipClient), authBlob, uint32(authBlobSize), &tmpUser)
+        return (rc: rc, user: SteamID(tmpUser))
     }
 
     /// Steamworks `ISteamGameServer::SendUserDisconnect_DEPRECATED()`
     public func sendUserDisconnectDEPRECATED(user: SteamID) {
-        SteamAPI_ISteamGameServer_SendUserDisconnect_DEPRECATED(interface, UInt64(user))
+        SteamAPI_ISteamGameServer_SendUserDisconnect_DEPRECATED(interface, CUnsignedLongLong(user))
     }
 
     /// Steamworks `ISteamGameServer::SetAdvertiseServerActive()`
@@ -172,7 +172,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::SetBotPlayerCount()`
     public func setBotPlayerCount(botplayers: Int) {
-        SteamAPI_ISteamGameServer_SetBotPlayerCount(interface, Int32(botplayers))
+        SteamAPI_ISteamGameServer_SetBotPlayerCount(interface, CInt(botplayers))
     }
 
     /// Steamworks `ISteamGameServer::SetDedicatedServer()`
@@ -207,7 +207,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::SetMaxPlayerCount()`
     public func setMaxPlayerCount(playersMax: Int) {
-        SteamAPI_ISteamGameServer_SetMaxPlayerCount(interface, Int32(playersMax))
+        SteamAPI_ISteamGameServer_SetMaxPlayerCount(interface, CInt(playersMax))
     }
 
     /// Steamworks `ISteamGameServer::SetModDir()`
@@ -247,7 +247,7 @@ public struct SteamGameServer {
 
     /// Steamworks `ISteamGameServer::UserHasLicenseForApp()`
     public func userHasLicenseForApp(steamID: SteamID, id: AppID) -> UserHasLicenseForAppResult {
-        UserHasLicenseForAppResult(SteamAPI_ISteamGameServer_UserHasLicenseForApp(interface, UInt64(steamID), AppId_t(id)))
+        UserHasLicenseForAppResult(SteamAPI_ISteamGameServer_UserHasLicenseForApp(interface, CUnsignedLongLong(steamID), AppId_t(id)))
     }
 
     /// Steamworks `ISteamGameServer::WasRestartRequested()`

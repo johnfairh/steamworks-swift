@@ -9,7 +9,7 @@
 @_implementationOnly import CSteamworks
 
 /// Steamworks `AudioPlayback_Status`
-public enum AudioPlaybackStatus: UInt32 {
+public enum AudioPlaybackStatus: CUnsignedInt {
     /// Steamworks `AudioPlayback_Undefined`
     case undefined = 0
     /// Steamworks `AudioPlayback_Playing`
@@ -27,7 +27,7 @@ extension AudioPlaybackStatus: EnumWithUnrepresented { typealias From = AudioPla
 extension AudioPlaybackStatus: SteamCreatable {}
 
 /// Steamworks `EAccountType`
-public enum AccountType: UInt32 {
+public enum AccountType: CUnsignedInt {
     /// Steamworks `k_EAccountTypeInvalid`
     case invalid = 0
     /// Steamworks `k_EAccountTypeIndividual`
@@ -61,7 +61,7 @@ extension AccountType: EnumWithUnrepresented { typealias From = EAccountType }
 extension AccountType: SteamCreatable {}
 
 /// Steamworks `EActivateGameOverlayToWebPageMode`
-public enum ActivateGameOverlayToWebPageMode: UInt32 {
+public enum ActivateGameOverlayToWebPageMode: CUnsignedInt {
     /// Steamworks `k_EActivateGameOverlayToWebPageMode_Default`
     case `default` = 0
     /// Steamworks `k_EActivateGameOverlayToWebPageMode_Modal`
@@ -75,7 +75,7 @@ extension ActivateGameOverlayToWebPageMode: EnumWithUnrepresented { typealias Fr
 extension ActivateGameOverlayToWebPageMode: SteamCreatable {}
 
 /// Steamworks `EAuthSessionResponse`
-public enum AuthSessionResponse: UInt32 {
+public enum AuthSessionResponse: CUnsignedInt {
     /// Steamworks `k_EAuthSessionResponseOK`
     case ok = 0
     /// Steamworks `k_EAuthSessionResponseUserNotConnectedToSteam`
@@ -105,7 +105,7 @@ extension AuthSessionResponse: EnumWithUnrepresented { typealias From = EAuthSes
 extension AuthSessionResponse: SteamCreatable {}
 
 /// Steamworks `EBeginAuthSessionResult`
-public enum BeginAuthSessionResult: UInt32 {
+public enum BeginAuthSessionResult: CUnsignedInt {
     /// Steamworks `k_EBeginAuthSessionResultOK`
     case ok = 0
     /// Steamworks `k_EBeginAuthSessionResultInvalidTicket`
@@ -127,7 +127,7 @@ extension BeginAuthSessionResult: EnumWithUnrepresented { typealias From = EBegi
 extension BeginAuthSessionResult: SteamCreatable {}
 
 /// Steamworks `EBroadcastUploadResult`
-public enum BroadcastUploadResult: UInt32 {
+public enum BroadcastUploadResult: CUnsignedInt {
     /// Steamworks `k_EBroadcastUploadResultNone`
     case none = 0
     /// Steamworks `k_EBroadcastUploadResultOK`
@@ -185,7 +185,7 @@ extension BroadcastUploadResult: EnumWithUnrepresented { typealias From = EBroad
 extension BroadcastUploadResult: SteamCreatable {}
 
 /// Steamworks `EChatEntryType`
-public enum ChatEntryType: UInt32 {
+public enum ChatEntryType: CUnsignedInt {
     /// Steamworks `k_EChatEntryTypeInvalid`
     case invalid = 0
     /// Steamworks `k_EChatEntryTypeChatMsg`
@@ -219,7 +219,7 @@ extension ChatEntryType: EnumWithUnrepresented { typealias From = EChatEntryType
 extension ChatEntryType: SteamCreatable {}
 
 /// Steamworks `EChatMemberStateChange`
-public enum ChatMemberStateChange: UInt32 {
+public enum ChatMemberStateChange: CUnsignedInt {
     /// Steamworks `k_EChatMemberStateChangeEntered`
     case entered = 1
     /// Steamworks `k_EChatMemberStateChangeLeft`
@@ -239,7 +239,7 @@ extension ChatMemberStateChange: EnumWithUnrepresented { typealias From = EChatM
 extension ChatMemberStateChange: SteamCreatable {}
 
 /// Steamworks `EChatRoomEnterResponse`
-public enum ChatRoomEnterResponse: UInt32 {
+public enum ChatRoomEnterResponse: CUnsignedInt {
     /// Steamworks `k_EChatRoomEnterResponseSuccess`
     case success = 1
     /// Steamworks `k_EChatRoomEnterResponseDoesntExist`
@@ -275,9 +275,9 @@ extension ChatRoomEnterResponse: SteamCreatable {}
 /// Steamworks `EChatSteamIDInstanceFlags`
 public struct ChatSteamIDInstanceFlags: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_EChatAccountInstanceMask`
     public static let accountInstanceMask = ChatSteamIDInstanceFlags(rawValue: 4095)
     /// Steamworks `k_EChatInstanceFlagClan`
@@ -293,7 +293,7 @@ extension ChatSteamIDInstanceFlags: RawConvertible { typealias From = EChatSteam
 extension ChatSteamIDInstanceFlags: SteamCreatable {}
 
 /// Steamworks `ECheckFileSignature`
-public enum CheckFileSignatureResult: UInt32 {
+public enum CheckFileSignatureResult: CUnsignedInt {
     /// Steamworks `k_ECheckFileSignatureInvalidSignature`
     case invalidSignature = 0
     /// Steamworks `k_ECheckFileSignatureValidSignature`
@@ -313,7 +313,7 @@ extension CheckFileSignatureResult: EnumWithUnrepresented { typealias From = ECh
 extension CheckFileSignatureResult: SteamCreatable {}
 
 /// Steamworks `EControllerActionOrigin`
-public enum ControllerActionOrigin: UInt32 {
+public enum ControllerActionOrigin: CUnsignedInt {
     /// Steamworks `k_EControllerActionOrigin_None`
     case none = 0
     /// Steamworks `k_EControllerActionOrigin_A`
@@ -1083,7 +1083,7 @@ extension ControllerActionOrigin: EnumWithUnrepresented { typealias From = ECont
 extension ControllerActionOrigin: SteamCreatable {}
 
 /// Steamworks `EControllerHapticLocation`
-public enum ControllerHapticLocation: UInt32 {
+public enum ControllerHapticLocation: CUnsignedInt {
     /// Steamworks `k_EControllerHapticLocation_Left`
     case left = 1
     /// Steamworks `k_EControllerHapticLocation_Right`
@@ -1099,7 +1099,7 @@ extension ControllerHapticLocation: EnumWithUnrepresented { typealias From = ECo
 extension ControllerHapticLocation: SteamCreatable {}
 
 /// Steamworks `EControllerHapticType`
-public enum ControllerHapticType: UInt32 {
+public enum ControllerHapticType: CUnsignedInt {
     /// Steamworks `k_EControllerHapticType_Off`
     case off = 0
     /// Steamworks `k_EControllerHapticType_Tick`
@@ -1115,7 +1115,7 @@ extension ControllerHapticType: EnumWithUnrepresented { typealias From = EContro
 extension ControllerHapticType: SteamCreatable {}
 
 /// Steamworks `EDenyReason`
-public enum DenyReason: UInt32 {
+public enum DenyReason: CUnsignedInt {
     /// Steamworks `k_EDenyInvalid`
     case invalid = 0
     /// Steamworks `k_EDenyInvalidVersion`
@@ -1157,7 +1157,7 @@ extension DenyReason: EnumWithUnrepresented { typealias From = EDenyReason }
 extension DenyReason: SteamCreatable {}
 
 /// Steamworks `EDurationControlNotification`
-public enum DurationControlNotification: UInt32 {
+public enum DurationControlNotification: CUnsignedInt {
     /// Steamworks `k_EDurationControlNotification_None`
     case none = 0
     /// Steamworks `k_EDurationControlNotification_1Hour`
@@ -1183,7 +1183,7 @@ extension DurationControlNotification: EnumWithUnrepresented { typealias From = 
 extension DurationControlNotification: SteamCreatable {}
 
 /// Steamworks `EDurationControlOnlineState`
-public enum DurationControlOnlineState: UInt32 {
+public enum DurationControlOnlineState: CUnsignedInt {
     /// Steamworks `k_EDurationControlOnlineState_Invalid`
     case invalid = 0
     /// Steamworks `k_EDurationControlOnlineState_Offline`
@@ -1201,7 +1201,7 @@ extension DurationControlOnlineState: EnumWithUnrepresented { typealias From = E
 extension DurationControlOnlineState: SteamCreatable {}
 
 /// Steamworks `EDurationControlProgress`
-public enum DurationControlProgress: UInt32 {
+public enum DurationControlProgress: CUnsignedInt {
     /// Steamworks `k_EDurationControlProgress_Full`
     case full = 0
     /// Steamworks `k_EDurationControlProgress_Half`
@@ -1223,7 +1223,7 @@ extension DurationControlProgress: EnumWithUnrepresented { typealias From = EDur
 extension DurationControlProgress: SteamCreatable {}
 
 /// Steamworks `EFavoriteFlags`
-public enum FavoriteFlags: UInt32 {
+public enum FavoriteFlags: CUnsignedInt {
     /// Steamworks `k_unFavoriteFlagNone`
     case none = 0
     /// Steamworks `k_unFavoriteFlagFavorite`
@@ -1239,7 +1239,7 @@ extension FavoriteFlags: EnumWithUnrepresented { typealias From = EFavoriteFlags
 extension FavoriteFlags: SteamCreatable {}
 
 /// Steamworks `EFloatingGamepadTextInputMode`
-public enum FloatingGamepadTextInputMode: UInt32 {
+public enum FloatingGamepadTextInputMode: CUnsignedInt {
     /// Steamworks `k_EFloatingGamepadTextInputModeModeSingleLine`
     case singleLine = 0
     /// Steamworks `k_EFloatingGamepadTextInputModeModeMultipleLines`
@@ -1259,9 +1259,9 @@ extension FloatingGamepadTextInputMode: SteamCreatable {}
 /// Steamworks `EFriendFlags`
 public struct FriendFlags: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_EFriendFlagNone`
     public static let none = FriendFlags([])
     /// Steamworks `k_EFriendFlagBlocked`
@@ -1293,7 +1293,7 @@ extension FriendFlags: RawConvertible { typealias From = EFriendFlags }
 extension FriendFlags: SteamCreatable {}
 
 /// Steamworks `EFriendRelationship`
-public enum FriendRelationship: UInt32 {
+public enum FriendRelationship: CUnsignedInt {
     /// Steamworks `k_EFriendRelationshipNone`
     case none = 0
     /// Steamworks `k_EFriendRelationshipBlocked`
@@ -1321,7 +1321,7 @@ extension FriendRelationship: EnumWithUnrepresented { typealias From = EFriendRe
 extension FriendRelationship: SteamCreatable {}
 
 /// Steamworks `EGameSearchErrorCode_t`
-public enum GameSearchErrorCode: UInt32 {
+public enum GameSearchErrorCode: CUnsignedInt {
     /// Steamworks `k_EGameSearchErrorCode_OK`
     case ok = 1
     /// Steamworks `k_EGameSearchErrorCode_Failed_Search_Already_In_Progress`
@@ -1349,7 +1349,7 @@ extension GameSearchErrorCode: EnumWithUnrepresented { typealias From = EGameSea
 extension GameSearchErrorCode: SteamCreatable {}
 
 /// Steamworks `EGamepadTextInputLineMode`
-public enum GamepadTextInputLineMode: UInt32 {
+public enum GamepadTextInputLineMode: CUnsignedInt {
     /// Steamworks `k_EGamepadTextInputLineModeSingleLine`
     case singleLine = 0
     /// Steamworks `k_EGamepadTextInputLineModeMultipleLines`
@@ -1363,7 +1363,7 @@ extension GamepadTextInputLineMode: EnumWithUnrepresented { typealias From = EGa
 extension GamepadTextInputLineMode: SteamCreatable {}
 
 /// Steamworks `EGamepadTextInputMode`
-public enum GamepadTextInputMode: UInt32 {
+public enum GamepadTextInputMode: CUnsignedInt {
     /// Steamworks `k_EGamepadTextInputModeNormal`
     case normal = 0
     /// Steamworks `k_EGamepadTextInputModePassword`
@@ -1377,7 +1377,7 @@ extension GamepadTextInputMode: EnumWithUnrepresented { typealias From = EGamepa
 extension GamepadTextInputMode: SteamCreatable {}
 
 /// Steamworks `EHTTPMethod`
-public enum HTTPMethod: UInt32 {
+public enum HTTPMethod: CUnsignedInt {
     /// Steamworks `k_EHTTPMethodInvalid`
     case invalid = 0
     /// Steamworks `k_EHTTPMethodGET`
@@ -1403,7 +1403,7 @@ extension HTTPMethod: EnumWithUnrepresented { typealias From = EHTTPMethod }
 extension HTTPMethod: SteamCreatable {}
 
 /// Steamworks `EHTTPStatusCode`
-public enum HTTPStatusCode: UInt32 {
+public enum HTTPStatusCode: CUnsignedInt {
     /// Steamworks `k_EHTTPStatusCodeInvalid`
     case invalid = 0
     /// Steamworks `k_EHTTPStatusCode100Continue`
@@ -1503,7 +1503,7 @@ extension HTTPStatusCode: EnumWithUnrepresented { typealias From = EHTTPStatusCo
 extension HTTPStatusCode: SteamCreatable {}
 
 /// Steamworks `EInputActionOrigin`
-public enum InputActionOrigin: UInt32 {
+public enum InputActionOrigin: CUnsignedInt {
     /// Steamworks `k_EInputActionOrigin_None`
     case none = 0
     /// Steamworks `k_EInputActionOrigin_SteamController_A`
@@ -2329,7 +2329,7 @@ extension InputActionOrigin: EnumWithUnrepresented { typealias From = EInputActi
 extension InputActionOrigin: SteamCreatable {}
 
 /// Steamworks `EInputSourceMode`
-public enum InputSourceMode: UInt32 {
+public enum InputSourceMode: CUnsignedInt {
     /// Steamworks `k_EInputSourceMode_None`
     case none = 0
     /// Steamworks `k_EInputSourceMode_Dpad`
@@ -2373,7 +2373,7 @@ extension InputSourceMode: EnumWithUnrepresented { typealias From = EInputSource
 extension InputSourceMode: SteamCreatable {}
 
 /// Steamworks `EItemPreviewType`
-public enum ItemPreviewType: UInt32 {
+public enum ItemPreviewType: CUnsignedInt {
     /// Steamworks `k_EItemPreviewType_Image`
     case image = 0
     /// Steamworks `k_EItemPreviewType_YouTubeVideo`
@@ -2397,9 +2397,9 @@ extension ItemPreviewType: SteamCreatable {}
 /// Steamworks `EItemState`
 public struct ItemState: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_EItemStateNone`
     public static let none = ItemState([])
     /// Steamworks `k_EItemStateSubscribed`
@@ -2421,7 +2421,7 @@ extension ItemState: RawConvertible { typealias From = EItemState }
 extension ItemState: SteamCreatable {}
 
 /// Steamworks `EItemStatistic`
-public enum ItemStatistic: UInt32 {
+public enum ItemStatistic: CUnsignedInt {
     /// Steamworks `k_EItemStatistic_NumSubscriptions`
     case numSubscriptions = 0
     /// Steamworks `k_EItemStatistic_NumFavorites`
@@ -2457,7 +2457,7 @@ extension ItemStatistic: EnumWithUnrepresented { typealias From = EItemStatistic
 extension ItemStatistic: SteamCreatable {}
 
 /// Steamworks `EItemUpdateStatus`
-public enum ItemUpdateStatus: UInt32 {
+public enum ItemUpdateStatus: CUnsignedInt {
     /// Steamworks `k_EItemUpdateStatusInvalid`
     case invalid = 0
     /// Steamworks `k_EItemUpdateStatusPreparingConfig`
@@ -2479,7 +2479,7 @@ extension ItemUpdateStatus: EnumWithUnrepresented { typealias From = EItemUpdate
 extension ItemUpdateStatus: SteamCreatable {}
 
 /// Steamworks `ELeaderboardDataRequest`
-public enum LeaderboardDataRequest: UInt32 {
+public enum LeaderboardDataRequest: CUnsignedInt {
     /// Steamworks `k_ELeaderboardDataRequestGlobal`
     case global = 0
     /// Steamworks `k_ELeaderboardDataRequestGlobalAroundUser`
@@ -2497,7 +2497,7 @@ extension LeaderboardDataRequest: EnumWithUnrepresented { typealias From = ELead
 extension LeaderboardDataRequest: SteamCreatable {}
 
 /// Steamworks `ELeaderboardDisplayType`
-public enum LeaderboardDisplayType: UInt32 {
+public enum LeaderboardDisplayType: CUnsignedInt {
     /// Steamworks `k_ELeaderboardDisplayTypeNone`
     case none = 0
     /// Steamworks `k_ELeaderboardDisplayTypeNumeric`
@@ -2515,7 +2515,7 @@ extension LeaderboardDisplayType: EnumWithUnrepresented { typealias From = ELead
 extension LeaderboardDisplayType: SteamCreatable {}
 
 /// Steamworks `ELeaderboardSortMethod`
-public enum LeaderboardSortMethod: UInt32 {
+public enum LeaderboardSortMethod: CUnsignedInt {
     /// Steamworks `k_ELeaderboardSortMethodNone`
     case none = 0
     /// Steamworks `k_ELeaderboardSortMethodAscending`
@@ -2531,7 +2531,7 @@ extension LeaderboardSortMethod: EnumWithUnrepresented { typealias From = ELeade
 extension LeaderboardSortMethod: SteamCreatable {}
 
 /// Steamworks `ELeaderboardUploadScoreMethod`
-public enum LeaderboardUploadScoreMethod: UInt32 {
+public enum LeaderboardUploadScoreMethod: CUnsignedInt {
     /// Steamworks `k_ELeaderboardUploadScoreMethodNone`
     case none = 0
     /// Steamworks `k_ELeaderboardUploadScoreMethodKeepBest`
@@ -2547,7 +2547,7 @@ extension LeaderboardUploadScoreMethod: EnumWithUnrepresented { typealias From =
 extension LeaderboardUploadScoreMethod: SteamCreatable {}
 
 /// Steamworks `ELobbyComparison`
-public enum LobbyComparison: Int32 {
+public enum LobbyComparison: CInt {
     /// Steamworks `k_ELobbyComparisonEqualToOrLessThan`
     case equalToOrLessThan = -2
     /// Steamworks `k_ELobbyComparisonLessThan`
@@ -2569,7 +2569,7 @@ extension LobbyComparison: EnumWithUnrepresented { typealias From = ELobbyCompar
 extension LobbyComparison: SteamCreatable {}
 
 /// Steamworks `ELobbyDistanceFilter`
-public enum LobbyDistanceFilter: UInt32 {
+public enum LobbyDistanceFilter: CUnsignedInt {
     /// Steamworks `k_ELobbyDistanceFilterClose`
     case close = 0
     /// Steamworks `k_ELobbyDistanceFilterDefault`
@@ -2587,7 +2587,7 @@ extension LobbyDistanceFilter: EnumWithUnrepresented { typealias From = ELobbyDi
 extension LobbyDistanceFilter: SteamCreatable {}
 
 /// Steamworks `ELobbyType`
-public enum LobbyType: UInt32 {
+public enum LobbyType: CUnsignedInt {
     /// Steamworks `k_ELobbyTypePrivate`
     case `private` = 0
     /// Steamworks `k_ELobbyTypeFriendsOnly`
@@ -2609,9 +2609,9 @@ extension LobbyType: SteamCreatable {}
 /// Steamworks `EMarketNotAllowedReasonFlags`
 public struct MarketNotAllowedReasonFlags: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_EMarketNotAllowedReason_None`
     public static let none = MarketNotAllowedReasonFlags([])
     /// Steamworks `k_EMarketNotAllowedReason_TemporaryFailure`
@@ -2653,7 +2653,7 @@ extension MarketNotAllowedReasonFlags: RawConvertible { typealias From = EMarket
 extension MarketNotAllowedReasonFlags: SteamCreatable {}
 
 /// Steamworks `EMatchMakingServerResponse`
-public enum MatchMakingServerResponse: UInt32 {
+public enum MatchMakingServerResponse: CUnsignedInt {
     /// Steamworks `eServerResponded`
     case eServerResponded = 0
     /// Steamworks `eServerFailedToRespond`
@@ -2669,7 +2669,7 @@ extension MatchMakingServerResponse: EnumWithUnrepresented { typealias From = EM
 extension MatchMakingServerResponse: SteamCreatable {}
 
 /// Steamworks `ENotificationPosition`
-public enum NotificationPosition: UInt32 {
+public enum NotificationPosition: CUnsignedInt {
     /// Steamworks `k_EPositionTopLeft`
     case topLeft = 0
     /// Steamworks `k_EPositionTopRight`
@@ -2687,7 +2687,7 @@ extension NotificationPosition: EnumWithUnrepresented { typealias From = ENotifi
 extension NotificationPosition: SteamCreatable {}
 
 /// Steamworks `EOverlayToStoreFlag`
-public enum OverlayToStoreFlag: UInt32 {
+public enum OverlayToStoreFlag: CUnsignedInt {
     /// Steamworks `k_EOverlayToStoreFlag_None`
     case none = 0
     /// Steamworks `k_EOverlayToStoreFlag_AddToCart`
@@ -2703,7 +2703,7 @@ extension OverlayToStoreFlag: EnumWithUnrepresented { typealias From = EOverlayT
 extension OverlayToStoreFlag: SteamCreatable {}
 
 /// Steamworks `EP2PSend`
-public enum P2PSend: UInt32 {
+public enum P2PSend: CUnsignedInt {
     /// Steamworks `k_EP2PSendUnreliable`
     case unreliable = 0
     /// Steamworks `k_EP2PSendUnreliableNoDelay`
@@ -2721,7 +2721,7 @@ extension P2PSend: EnumWithUnrepresented { typealias From = EP2PSend }
 extension P2PSend: SteamCreatable {}
 
 /// Steamworks `EP2PSessionError`
-public enum P2PSessionError: UInt32 {
+public enum P2PSessionError: CUnsignedInt {
     /// Steamworks `k_EP2PSessionErrorNone`
     case none = 0
     /// Steamworks `k_EP2PSessionErrorNoRightsToApp`
@@ -2743,7 +2743,7 @@ extension P2PSessionError: EnumWithUnrepresented { typealias From = EP2PSessionE
 extension P2PSessionError: SteamCreatable {}
 
 /// Steamworks `EParentalFeature`
-public enum ParentalFeature: UInt32 {
+public enum ParentalFeature: CUnsignedInt {
     /// Steamworks `k_EFeatureInvalid`
     case invalid = 0
     /// Steamworks `k_EFeatureStore`
@@ -2785,9 +2785,9 @@ extension ParentalFeature: SteamCreatable {}
 /// Steamworks `EPersonaChange`
 public struct PersonaChange: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_EPersonaChangeName`
     public static let name = PersonaChange(rawValue: 1)
     /// Steamworks `k_EPersonaChangeStatus`
@@ -2825,7 +2825,7 @@ extension PersonaChange: RawConvertible { typealias From = EPersonaChange }
 extension PersonaChange: SteamCreatable {}
 
 /// Steamworks `EPersonaState`
-public enum PersonaState: UInt32 {
+public enum PersonaState: CUnsignedInt {
     /// Steamworks `k_EPersonaStateOffline`
     case offline = 0
     /// Steamworks `k_EPersonaStateOnline`
@@ -2853,7 +2853,7 @@ extension PersonaState: EnumWithUnrepresented { typealias From = EPersonaState }
 extension PersonaState: SteamCreatable {}
 
 /// Steamworks `EPlayerResult_t`
-public enum PlayerResult: UInt32 {
+public enum PlayerResult: CUnsignedInt {
     /// Steamworks `k_EPlayerResultFailedToConnect`
     case failedToConnect = 1
     /// Steamworks `k_EPlayerResultAbandoned`
@@ -2873,7 +2873,7 @@ extension PlayerResult: EnumWithUnrepresented { typealias From = EPlayerResult_t
 extension PlayerResult: SteamCreatable {}
 
 /// Steamworks `ERegisterActivationCodeResult`
-public enum RegisterActivationCodeResult: UInt32 {
+public enum RegisterActivationCodeResult: CUnsignedInt {
     /// Steamworks `k_ERegisterActivationCodeResultOK`
     case ok = 0
     /// Steamworks `k_ERegisterActivationCodeResultFail`
@@ -2893,7 +2893,7 @@ extension RegisterActivationCodeResult: EnumWithUnrepresented { typealias From =
 extension RegisterActivationCodeResult: SteamCreatable {}
 
 /// Steamworks `ERemoteStorageFilePathType`
-public enum RemoteStorageFilePathType: UInt32 {
+public enum RemoteStorageFilePathType: CUnsignedInt {
     /// Steamworks `k_ERemoteStorageFilePathType_Invalid`
     case invalid = 0
     /// Steamworks `k_ERemoteStorageFilePathType_Absolute`
@@ -2909,7 +2909,7 @@ extension RemoteStorageFilePathType: EnumWithUnrepresented { typealias From = ER
 extension RemoteStorageFilePathType: SteamCreatable {}
 
 /// Steamworks `ERemoteStorageLocalFileChange`
-public enum RemoteStorageLocalFileChangeType: UInt32 {
+public enum RemoteStorageLocalFileChangeType: CUnsignedInt {
     /// Steamworks `k_ERemoteStorageLocalFileChange_Invalid`
     case invalid = 0
     /// Steamworks `k_ERemoteStorageLocalFileChange_FileUpdated`
@@ -2927,9 +2927,9 @@ extension RemoteStorageLocalFileChangeType: SteamCreatable {}
 /// Steamworks `ERemoteStoragePlatform`
 public struct RemoteStoragePlatform: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_ERemoteStoragePlatformNone`
     public static let none = RemoteStoragePlatform([])
     /// Steamworks `k_ERemoteStoragePlatformWindows`
@@ -2955,7 +2955,7 @@ extension RemoteStoragePlatform: RawConvertible { typealias From = ERemoteStorag
 extension RemoteStoragePlatform: SteamCreatable {}
 
 /// Steamworks `ERemoteStoragePublishedFileVisibility`
-public enum RemoteStoragePublishedFileVisibility: UInt32 {
+public enum RemoteStoragePublishedFileVisibility: CUnsignedInt {
     /// Steamworks `k_ERemoteStoragePublishedFileVisibilityPublic`
     case `public` = 0
     /// Steamworks `k_ERemoteStoragePublishedFileVisibilityFriendsOnly`
@@ -2973,7 +2973,7 @@ extension RemoteStoragePublishedFileVisibility: EnumWithUnrepresented { typealia
 extension RemoteStoragePublishedFileVisibility: SteamCreatable {}
 
 /// Steamworks `EResult`
-public enum Result: UInt32 {
+public enum Result: CUnsignedInt {
     /// Steamworks `k_EResultNone`
     case none = 0
     /// Steamworks `k_EResultOK`
@@ -3229,7 +3229,7 @@ extension Result: EnumWithUnrepresented { typealias From = EResult }
 extension Result: SteamCreatable {}
 
 /// Steamworks `ESNetSocketConnectionType`
-public enum SNetSocketConnectionType: UInt32 {
+public enum SNetSocketConnectionType: CUnsignedInt {
     /// Steamworks `k_ESNetSocketConnectionTypeNotConnected`
     case notConnected = 0
     /// Steamworks `k_ESNetSocketConnectionTypeUDP`
@@ -3245,7 +3245,7 @@ extension SNetSocketConnectionType: EnumWithUnrepresented { typealias From = ESN
 extension SNetSocketConnectionType: SteamCreatable {}
 
 /// Steamworks `ESNetSocketState`
-public enum SNetSocketState: UInt32 {
+public enum SNetSocketState: CUnsignedInt {
     /// Steamworks `k_ESNetSocketStateInvalid`
     case invalid = 0
     /// Steamworks `k_ESNetSocketStateConnected`
@@ -3277,7 +3277,7 @@ extension SNetSocketState: EnumWithUnrepresented { typealias From = ESNetSocketS
 extension SNetSocketState: SteamCreatable {}
 
 /// Steamworks `EServerMode`
-public enum ServerMode: UInt32 {
+public enum ServerMode: CUnsignedInt {
     /// Steamworks `eServerModeInvalid`
     case invalid = 0
     /// Steamworks `eServerModeNoAuthentication`
@@ -3295,7 +3295,7 @@ extension ServerMode: EnumWithUnrepresented { typealias From = EServerMode }
 extension ServerMode: SteamCreatable {}
 
 /// Steamworks `ESteamAPICallFailure`
-public enum SteamAPICallFailure: Int32 {
+public enum SteamAPICallFailure: CInt {
     /// Steamworks `k_ESteamAPICallFailureNone`
     case none = -1
     /// Steamworks `k_ESteamAPICallFailureSteamGone`
@@ -3317,9 +3317,9 @@ extension SteamAPICallFailure: SteamCreatable {}
 /// Steamworks `ESteamControllerLEDFlag`
 public struct SteamControllerLEDFlag: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamControllerLEDFlag_SetColor`
     public static let setColor = SteamControllerLEDFlag([])
     /// Steamworks `k_ESteamControllerLEDFlag_RestoreUserDefault`
@@ -3331,7 +3331,7 @@ extension SteamControllerLEDFlag: RawConvertible { typealias From = ESteamContro
 extension SteamControllerLEDFlag: SteamCreatable {}
 
 /// Steamworks `ESteamControllerPad`
-public enum SteamControllerPad: UInt32 {
+public enum SteamControllerPad: CUnsignedInt {
     /// Steamworks `k_ESteamControllerPad_Left`
     case left = 0
     /// Steamworks `k_ESteamControllerPad_Right`
@@ -3345,7 +3345,7 @@ extension SteamControllerPad: EnumWithUnrepresented { typealias From = ESteamCon
 extension SteamControllerPad: SteamCreatable {}
 
 /// Steamworks `ESteamDeviceFormFactor`
-public enum SteamDeviceFormFactor: UInt32 {
+public enum SteamDeviceFormFactor: CUnsignedInt {
     /// Steamworks `k_ESteamDeviceFormFactorUnknown`
     case unknown = 0
     /// Steamworks `k_ESteamDeviceFormFactorPhone`
@@ -3365,7 +3365,7 @@ extension SteamDeviceFormFactor: EnumWithUnrepresented { typealias From = ESteam
 extension SteamDeviceFormFactor: SteamCreatable {}
 
 /// Steamworks `ESteamIPType`
-public enum SteamIPType: UInt32 {
+public enum SteamIPType: CUnsignedInt {
     /// Steamworks `k_ESteamIPTypeIPv4`
     case ipv4 = 0
     /// Steamworks `k_ESteamIPTypeIPv6`
@@ -3379,7 +3379,7 @@ extension SteamIPType: EnumWithUnrepresented { typealias From = ESteamIPType }
 extension SteamIPType: SteamCreatable {}
 
 /// Steamworks `ESteamIPv6ConnectivityProtocol`
-public enum SteamIPv6ConnectivityProtocol: UInt32 {
+public enum SteamIPv6ConnectivityProtocol: CUnsignedInt {
     /// Steamworks `k_ESteamIPv6ConnectivityProtocol_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamIPv6ConnectivityProtocol_HTTP`
@@ -3395,7 +3395,7 @@ extension SteamIPv6ConnectivityProtocol: EnumWithUnrepresented { typealias From 
 extension SteamIPv6ConnectivityProtocol: SteamCreatable {}
 
 /// Steamworks `ESteamIPv6ConnectivityState`
-public enum SteamIPv6ConnectivityState: UInt32 {
+public enum SteamIPv6ConnectivityState: CUnsignedInt {
     /// Steamworks `k_ESteamIPv6ConnectivityState_Unknown`
     case unknown = 0
     /// Steamworks `k_ESteamIPv6ConnectivityState_Good`
@@ -3411,7 +3411,7 @@ extension SteamIPv6ConnectivityState: EnumWithUnrepresented { typealias From = E
 extension SteamIPv6ConnectivityState: SteamCreatable {}
 
 /// Steamworks `ESteamInputActionEventType`
-public enum SteamInputActionEventType: UInt32 {
+public enum SteamInputActionEventType: CUnsignedInt {
     /// Steamworks `ESteamInputActionEventType_DigitalAction`
     case digitalAction = 0
     /// Steamworks `ESteamInputActionEventType_AnalogAction`
@@ -3425,7 +3425,7 @@ extension SteamInputActionEventType: EnumWithUnrepresented { typealias From = ES
 extension SteamInputActionEventType: SteamCreatable {}
 
 /// Steamworks `ESteamInputConfigurationEnableType`
-public enum SteamInputConfigurationEnableType: UInt32 {
+public enum SteamInputConfigurationEnableType: CUnsignedInt {
     /// Steamworks `k_ESteamInputConfigurationEnableType_None`
     case none = 0
     /// Steamworks `k_ESteamInputConfigurationEnableType_Playstation`
@@ -3445,7 +3445,7 @@ extension SteamInputConfigurationEnableType: EnumWithUnrepresented { typealias F
 extension SteamInputConfigurationEnableType: SteamCreatable {}
 
 /// Steamworks `ESteamInputGlyphSize`
-public enum SteamInputGlyphSize: UInt32 {
+public enum SteamInputGlyphSize: CUnsignedInt {
     /// Steamworks `k_ESteamInputGlyphSize_Small`
     case small = 0
     /// Steamworks `k_ESteamInputGlyphSize_Medium`
@@ -3465,9 +3465,9 @@ extension SteamInputGlyphSize: SteamCreatable {}
 /// Steamworks `ESteamInputGlyphStyle`
 public struct SteamInputGlyphStyle: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `ESteamInputGlyphStyle_Knockout`
     public static let knockout = SteamInputGlyphStyle([])
     /// Steamworks `ESteamInputGlyphStyle_Light`
@@ -3485,7 +3485,7 @@ extension SteamInputGlyphStyle: RawConvertible { typealias From = ESteamInputGly
 extension SteamInputGlyphStyle: SteamCreatable {}
 
 /// Steamworks `ESteamInputLEDFlag`
-public enum SteamInputLEDFlag: UInt32 {
+public enum SteamInputLEDFlag: CUnsignedInt {
     /// Steamworks `k_ESteamInputLEDFlag_SetColor`
     case setColor = 0
     /// Steamworks `k_ESteamInputLEDFlag_RestoreUserDefault`
@@ -3499,7 +3499,7 @@ extension SteamInputLEDFlag: EnumWithUnrepresented { typealias From = ESteamInpu
 extension SteamInputLEDFlag: SteamCreatable {}
 
 /// Steamworks `ESteamInputType`
-public enum SteamInputType: UInt32 {
+public enum SteamInputType: CUnsignedInt {
     /// Steamworks `k_ESteamInputType_Unknown`
     case unknown = 0
     /// Steamworks `k_ESteamInputType_SteamController`
@@ -3545,9 +3545,9 @@ extension SteamInputType: SteamCreatable {}
 /// Steamworks `ESteamItemFlags`
 public struct SteamItemFlags: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamItemNoTrade`
     public static let noTrade = SteamItemFlags(rawValue: 1)
     /// Steamworks `k_ESteamItemRemoved`
@@ -3561,7 +3561,7 @@ extension SteamItemFlags: RawConvertible { typealias From = ESteamItemFlags }
 extension SteamItemFlags: SteamCreatable {}
 
 /// Steamworks `ESteamNetConnectionEnd`
-public enum SteamNetConnectionEnd: UInt32 {
+public enum SteamNetConnectionEnd: CUnsignedInt {
     /// Steamworks `k_ESteamNetConnectionEnd_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamNetConnectionEnd_App_Min`
@@ -3637,9 +3637,9 @@ extension SteamNetConnectionEnd: SteamCreatable {}
 /// Steamworks `ESteamNetworkConnectionInfoFlags`
 public struct SteamNetworkConnectionInfoFlags: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Unauthenticated`
     public static let unauthenticated = SteamNetworkConnectionInfoFlags(rawValue: 1)
     /// Steamworks `k_nSteamNetworkConnectionInfoFlags_Unencrypted`
@@ -3659,7 +3659,7 @@ extension SteamNetworkConnectionInfoFlags: RawConvertible { typealias From = ESt
 extension SteamNetworkConnectionInfoFlags: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingAvailability`
-public enum SteamNetworkingAvailability: Int32 {
+public enum SteamNetworkingAvailability: CInt {
     /// Steamworks `k_ESteamNetworkingAvailability_CannotTry`
     case cannotTry = -102
     /// Steamworks `k_ESteamNetworkingAvailability_Failed`
@@ -3687,7 +3687,7 @@ extension SteamNetworkingAvailability: EnumWithUnrepresented { typealias From = 
 extension SteamNetworkingAvailability: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingConfigDataType`
-public enum SteamNetworkingConfigDataType: UInt32 {
+public enum SteamNetworkingConfigDataType: CUnsignedInt {
     /// Steamworks `k_ESteamNetworkingConfig_Int32`
     case int32 = 1
     /// Steamworks `k_ESteamNetworkingConfig_Int64`
@@ -3707,7 +3707,7 @@ extension SteamNetworkingConfigDataType: EnumWithUnrepresented { typealias From 
 extension SteamNetworkingConfigDataType: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingConfigScope`
-public enum SteamNetworkingConfigScope: UInt32 {
+public enum SteamNetworkingConfigScope: CUnsignedInt {
     /// Steamworks `k_ESteamNetworkingConfig_Global`
     case global = 1
     /// Steamworks `k_ESteamNetworkingConfig_SocketsInterface`
@@ -3725,7 +3725,7 @@ extension SteamNetworkingConfigScope: EnumWithUnrepresented { typealias From = E
 extension SteamNetworkingConfigScope: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingConfigValue`
-public enum SteamNetworkingConfigValueSetting: UInt32 {
+public enum SteamNetworkingConfigValueSetting: CUnsignedInt {
     /// Steamworks `k_ESteamNetworkingConfig_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamNetworkingConfig_TimeoutInitial`
@@ -3849,7 +3849,7 @@ extension SteamNetworkingConfigValueSetting: EnumWithUnrepresented { typealias F
 extension SteamNetworkingConfigValueSetting: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingConnectionState`
-public enum SteamNetworkingConnectionState: Int32 {
+public enum SteamNetworkingConnectionState: CInt {
     /// Steamworks `k_ESteamNetworkingConnectionState_None`
     case none = 0
     /// Steamworks `k_ESteamNetworkingConnectionState_Connecting`
@@ -3877,7 +3877,7 @@ extension SteamNetworkingConnectionState: EnumWithUnrepresented { typealias From
 extension SteamNetworkingConnectionState: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingFakeIPType`
-public enum SteamNetworkingFakeIPType: UInt32 {
+public enum SteamNetworkingFakeIPType: CUnsignedInt {
     /// Steamworks `k_ESteamNetworkingFakeIPType_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamNetworkingFakeIPType_NotFake`
@@ -3895,7 +3895,7 @@ extension SteamNetworkingFakeIPType: EnumWithUnrepresented { typealias From = ES
 extension SteamNetworkingFakeIPType: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingGetConfigValueResult`
-public enum SteamNetworkingGetConfigValueResult: Int32 {
+public enum SteamNetworkingGetConfigValueResult: CInt {
     /// Steamworks `k_ESteamNetworkingGetConfigValue_BadValue`
     case badValue = -1
     /// Steamworks `k_ESteamNetworkingGetConfigValue_BadScopeObj`
@@ -3915,7 +3915,7 @@ extension SteamNetworkingGetConfigValueResult: EnumWithUnrepresented { typealias
 extension SteamNetworkingGetConfigValueResult: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingIdentityType`
-public enum SteamNetworkingIdentityType: UInt32 {
+public enum SteamNetworkingIdentityType: CUnsignedInt {
     /// Steamworks `k_ESteamNetworkingIdentityType_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamNetworkingIdentityType_SteamID`
@@ -3945,9 +3945,9 @@ extension SteamNetworkingIdentityType: SteamCreatable {}
 /// Steamworks `ESteamNetworkingSendFlags`
 public struct SteamNetworkingSendFlags: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_nSteamNetworkingSend_Unreliable`
     public static let unreliable = SteamNetworkingSendFlags([])
     /// Steamworks `k_nSteamNetworkingSend_NoNagle`
@@ -3973,7 +3973,7 @@ extension SteamNetworkingSendFlags: RawConvertible { typealias From = ESteamNetw
 extension SteamNetworkingSendFlags: SteamCreatable {}
 
 /// Steamworks `ESteamNetworkingSocketsDebugOutputType`
-public enum SteamNetworkingSocketsDebugOutputType: UInt32 {
+public enum SteamNetworkingSocketsDebugOutputType: CUnsignedInt {
     /// Steamworks `k_ESteamNetworkingSocketsDebugOutputType_None`
     case none = 0
     /// Steamworks `k_ESteamNetworkingSocketsDebugOutputType_Bug`
@@ -4001,7 +4001,7 @@ extension SteamNetworkingSocketsDebugOutputType: EnumWithUnrepresented { typeali
 extension SteamNetworkingSocketsDebugOutputType: SteamCreatable {}
 
 /// Steamworks `ESteamPartyBeaconLocationData`
-public enum SteamPartyBeaconLocationData: UInt32 {
+public enum SteamPartyBeaconLocationData: CUnsignedInt {
     /// Steamworks `k_ESteamPartyBeaconLocationDataInvalid`
     case invalid = 0
     /// Steamworks `k_ESteamPartyBeaconLocationDataName`
@@ -4021,7 +4021,7 @@ extension SteamPartyBeaconLocationData: EnumWithUnrepresented { typealias From =
 extension SteamPartyBeaconLocationData: SteamCreatable {}
 
 /// Steamworks `ESteamPartyBeaconLocationType`
-public enum SteamPartyBeaconLocationType: UInt32 {
+public enum SteamPartyBeaconLocationType: CUnsignedInt {
     /// Steamworks `k_ESteamPartyBeaconLocationType_Invalid`
     case invalid = 0
     /// Steamworks `k_ESteamPartyBeaconLocationType_ChatGroup`
@@ -4037,7 +4037,7 @@ extension SteamPartyBeaconLocationType: EnumWithUnrepresented { typealias From =
 extension SteamPartyBeaconLocationType: SteamCreatable {}
 
 /// Steamworks `ETextFilteringContext`
-public enum TextFilteringContext: UInt32 {
+public enum TextFilteringContext: CUnsignedInt {
     /// Steamworks `k_ETextFilteringContextUnknown`
     case unknown = 0
     /// Steamworks `k_ETextFilteringContextGameContent`
@@ -4055,7 +4055,7 @@ extension TextFilteringContext: EnumWithUnrepresented { typealias From = ETextFi
 extension TextFilteringContext: SteamCreatable {}
 
 /// Steamworks `EUGCMatchingUGCType`
-public enum UGCMatchingUGCType: Int32 {
+public enum UGCMatchingUGCType: CInt {
     /// Steamworks `k_EUGCMatchingUGCType_Items`
     case items = 0
     /// Steamworks `k_EUGCMatchingUGCType_Items_Mtx`
@@ -4093,7 +4093,7 @@ extension UGCMatchingUGCType: EnumWithUnrepresented { typealias From = EUGCMatch
 extension UGCMatchingUGCType: SteamCreatable {}
 
 /// Steamworks `EUGCQuery`
-public enum UGCQuery: UInt32 {
+public enum UGCQuery: CUnsignedInt {
     /// Steamworks `k_EUGCQuery_RankedByVote`
     case rankedByVote = 0
     /// Steamworks `k_EUGCQuery_RankedByPublicationDate`
@@ -4143,7 +4143,7 @@ extension UGCQuery: EnumWithUnrepresented { typealias From = EUGCQuery }
 extension UGCQuery: SteamCreatable {}
 
 /// Steamworks `EUGCReadAction`
-public enum UGCReadAction: UInt32 {
+public enum UGCReadAction: CUnsignedInt {
     /// Steamworks `k_EUGCRead_ContinueReadingUntilFinished`
     case continueReadingUntilFinished = 0
     /// Steamworks `k_EUGCRead_ContinueReading`
@@ -4159,7 +4159,7 @@ extension UGCReadAction: EnumWithUnrepresented { typealias From = EUGCReadAction
 extension UGCReadAction: SteamCreatable {}
 
 /// Steamworks `EUniverse`
-public enum Universe: UInt32 {
+public enum Universe: CUnsignedInt {
     /// Steamworks `k_EUniverseInvalid`
     case invalid = 0
     /// Steamworks `k_EUniversePublic`
@@ -4181,7 +4181,7 @@ extension Universe: EnumWithUnrepresented { typealias From = EUniverse }
 extension Universe: SteamCreatable {}
 
 /// Steamworks `EUserHasLicenseForAppResult`
-public enum UserHasLicenseForAppResult: UInt32 {
+public enum UserHasLicenseForAppResult: CUnsignedInt {
     /// Steamworks `k_EUserHasLicenseResultHasLicense`
     case hasLicense = 0
     /// Steamworks `k_EUserHasLicenseResultDoesNotHaveLicense`
@@ -4199,9 +4199,9 @@ extension UserHasLicenseForAppResult: SteamCreatable {}
 /// Steamworks `EUserRestriction`
 public struct UserRestriction: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_nUserRestrictionNone`
     public static let none = UserRestriction([])
     /// Steamworks `k_nUserRestrictionUnknown`
@@ -4225,7 +4225,7 @@ extension UserRestriction: RawConvertible { typealias From = EUserRestriction }
 extension UserRestriction: SteamCreatable {}
 
 /// Steamworks `EUserUGCList`
-public enum UserUGCList: UInt32 {
+public enum UserUGCList: CUnsignedInt {
     /// Steamworks `k_EUserUGCList_Published`
     case published = 0
     /// Steamworks `k_EUserUGCList_VotedOn`
@@ -4253,7 +4253,7 @@ extension UserUGCList: EnumWithUnrepresented { typealias From = EUserUGCList }
 extension UserUGCList: SteamCreatable {}
 
 /// Steamworks `EUserUGCListSortOrder`
-public enum UserUGCListSortOrder: UInt32 {
+public enum UserUGCListSortOrder: CUnsignedInt {
     /// Steamworks `k_EUserUGCListSortOrder_CreationOrderDesc`
     case creationOrderDesc = 0
     /// Steamworks `k_EUserUGCListSortOrder_CreationOrderAsc`
@@ -4277,7 +4277,7 @@ extension UserUGCListSortOrder: EnumWithUnrepresented { typealias From = EUserUG
 extension UserUGCListSortOrder: SteamCreatable {}
 
 /// Steamworks `EVRScreenshotType`
-public enum VRScreenshotType: UInt32 {
+public enum VRScreenshotType: CUnsignedInt {
     /// Steamworks `k_EVRScreenshotType_None`
     case none = 0
     /// Steamworks `k_EVRScreenshotType_Mono`
@@ -4299,7 +4299,7 @@ extension VRScreenshotType: EnumWithUnrepresented { typealias From = EVRScreensh
 extension VRScreenshotType: SteamCreatable {}
 
 /// Steamworks `EVoiceResult`
-public enum VoiceResult: UInt32 {
+public enum VoiceResult: CUnsignedInt {
     /// Steamworks `k_EVoiceResultOK`
     case ok = 0
     /// Steamworks `k_EVoiceResultNotInitialized`
@@ -4329,7 +4329,7 @@ extension VoiceResult: EnumWithUnrepresented { typealias From = EVoiceResult }
 extension VoiceResult: SteamCreatable {}
 
 /// Steamworks `EWorkshopEnumerationType`
-public enum WorkshopEnumerationType: UInt32 {
+public enum WorkshopEnumerationType: CUnsignedInt {
     /// Steamworks `k_EWorkshopEnumerationTypeRankedByVote`
     case rankedByVote = 0
     /// Steamworks `k_EWorkshopEnumerationTypeRecent`
@@ -4353,7 +4353,7 @@ extension WorkshopEnumerationType: EnumWithUnrepresented { typealias From = EWor
 extension WorkshopEnumerationType: SteamCreatable {}
 
 /// Steamworks `EWorkshopFileAction`
-public enum WorkshopFileAction: UInt32 {
+public enum WorkshopFileAction: CUnsignedInt {
     /// Steamworks `k_EWorkshopFileActionPlayed`
     case played = 0
     /// Steamworks `k_EWorkshopFileActionCompleted`
@@ -4367,7 +4367,7 @@ extension WorkshopFileAction: EnumWithUnrepresented { typealias From = EWorkshop
 extension WorkshopFileAction: SteamCreatable {}
 
 /// Steamworks `EWorkshopFileType`
-public enum WorkshopFileType: UInt32 {
+public enum WorkshopFileType: CUnsignedInt {
     /// Steamworks `k_EWorkshopFileTypeFirst`
     public static let first = WorkshopFileType(rawValue: 0)!
     /// Steamworks `k_EWorkshopFileTypeCommunity`
@@ -4413,7 +4413,7 @@ extension WorkshopFileType: EnumWithUnrepresented { typealias From = EWorkshopFi
 extension WorkshopFileType: SteamCreatable {}
 
 /// Steamworks `EWorkshopVideoProvider`
-public enum WorkshopVideoProvider: UInt32 {
+public enum WorkshopVideoProvider: CUnsignedInt {
     /// Steamworks `k_EWorkshopVideoProviderNone`
     case none = 0
     /// Steamworks `k_EWorkshopVideoProviderYoutube`
@@ -4427,7 +4427,7 @@ extension WorkshopVideoProvider: EnumWithUnrepresented { typealias From = EWorks
 extension WorkshopVideoProvider: SteamCreatable {}
 
 /// Steamworks `EWorkshopVote`
-public enum WorkshopVote: UInt32 {
+public enum WorkshopVote: CUnsignedInt {
     /// Steamworks `k_EWorkshopVoteUnvoted`
     case unvoted = 0
     /// Steamworks `k_EWorkshopVoteFor`
@@ -4445,7 +4445,7 @@ extension WorkshopVote: EnumWithUnrepresented { typealias From = EWorkshopVote }
 extension WorkshopVote: SteamCreatable {}
 
 /// Steamworks `EXboxOrigin`
-public enum XboxOrigin: UInt32 {
+public enum XboxOrigin: CUnsignedInt {
     /// Steamworks `k_EXboxOrigin_A`
     case a = 0
     /// Steamworks `k_EXboxOrigin_B`
@@ -4513,7 +4513,7 @@ extension XboxOrigin: EnumWithUnrepresented { typealias From = EXboxOrigin }
 extension XboxOrigin: SteamCreatable {}
 
 /// Steamworks `IPCFailure_t::EFailureType`
-public enum IPCFailureType: UInt32 {
+public enum IPCFailureType: CUnsignedInt {
     /// Steamworks `k_EFailureFlushedCallbackQueue`
     case flushedCallbackQueue = 0
     /// Steamworks `k_EFailurePipeFail`
@@ -4528,16 +4528,16 @@ extension IPCFailureType: SteamCreatable {}
 
 extension IPCFailureType {
     init(_ from: UInt8) {
-        self.init(From(rawValue: UInt32(from)))
+        self.init(From(rawValue: CUnsignedInt(from)))
     }
 }
 
 /// Steamworks `ISteamHTMLSurface::EHTMLKeyModifiers`
 public struct HTMLKeyModifiers: OptionSet {
     /// The flags value.
-    public let rawValue: UInt32
+    public let rawValue: CUnsignedInt
     /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: UInt32) { self.rawValue = rawValue }
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_eHTMLKeyModifier_None`
     public static let none = HTMLKeyModifiers([])
     /// Steamworks `k_eHTMLKeyModifier_AltDown`
@@ -4553,7 +4553,7 @@ extension HTMLKeyModifiers: RawConvertible { typealias From = ISteamHTMLSurface.
 extension HTMLKeyModifiers: SteamCreatable {}
 
 /// Steamworks `ISteamHTMLSurface::EHTMLMouseButton`
-public enum HTMLMouseButton: UInt32 {
+public enum HTMLMouseButton: CUnsignedInt {
     /// Steamworks `eHTMLMouseButton_Left`
     case left = 0
     /// Steamworks `eHTMLMouseButton_Right`
@@ -4569,7 +4569,7 @@ extension HTMLMouseButton: EnumWithUnrepresented { typealias From = ISteamHTMLSu
 extension HTMLMouseButton: SteamCreatable {}
 
 /// Steamworks `ISteamHTMLSurface::EMouseCursor`
-public enum HTMLMouseCursor: UInt32 {
+public enum HTMLMouseCursor: CUnsignedInt {
     /// Steamworks `dc_user`
     case user = 0
     /// Steamworks `dc_none`
@@ -4664,12 +4664,12 @@ extension HTMLMouseCursor: SteamCreatable {}
 
 extension HTMLMouseCursor {
     init(_ from: UInt32) {
-        self.init(From(rawValue: UInt32(from)))
+        self.init(From(rawValue: CUnsignedInt(from)))
     }
 }
 
 /// Steamworks `RequestPlayersForGameResultCallback_t::PlayerAcceptState_t`
-public enum PlayerAcceptState: UInt32 {
+public enum PlayerAcceptState: CUnsignedInt {
     /// Steamworks `k_EStateUnknown`
     case unknown = 0
     /// Steamworks `k_EStatePlayerAccepted`

@@ -25,17 +25,14 @@ public struct SteamVideo {
     }
 
     /// Steamworks `ISteamVideo::GetOPFStringForApp()`
-    public func getOPFStringForApp(videoAppID: AppID, bufferSize: inout Int) -> (rc: Bool, buffer: String) {
-        let tmp_buffer = SteamString(length: bufferSize)
-        var tmp_bufferSize = int32(bufferSize)
-        let rc = SteamAPI_ISteamVideo_GetOPFStringForApp(interface, AppId_t(videoAppID), tmp_buffer.charBuffer, &tmp_bufferSize)
+    public func getOPFStringForApp(videoAppID: AppID, bufferSize: Int) -> (rc: Bool, buffer: String, bufferSize: Int) {
+        let tmpBuffer = SteamString(length: bufferSize)
+        var tmpBufferSize = int32(bufferSize)
+        let rc = SteamAPI_ISteamVideo_GetOPFStringForApp(interface, AppId_t(videoAppID), tmpBuffer.charBuffer, &tmpBufferSize)
         if rc {
-            bufferSize = Int(tmp_bufferSize)
-        }
-        if rc {
-            return (rc: rc, buffer: tmp_buffer.swiftString)
+            return (rc: rc, buffer: tmpBuffer.swiftString, bufferSize: Int(tmpBufferSize))
         } else {
-            return (rc: rc, buffer: "")
+            return (rc: rc, buffer: "", bufferSize: 0)
         }
     }
 
@@ -46,8 +43,8 @@ public struct SteamVideo {
 
     /// Steamworks `ISteamVideo::IsBroadcasting()`
     public func isBroadcasting() -> (rc: Bool, numViewers: Int) {
-        var tmp_numViewers = Int32()
-        let rc = SteamAPI_ISteamVideo_IsBroadcasting(interface, &tmp_numViewers)
-        return (rc: rc, numViewers: Int(tmp_numViewers))
+        var tmpNumViewers = CInt()
+        let rc = SteamAPI_ISteamVideo_IsBroadcasting(interface, &tmpNumViewers)
+        return (rc: rc, numViewers: Int(tmpNumViewers))
     }
 }

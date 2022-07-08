@@ -66,9 +66,9 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::GetActiveActionSetLayers()`
     public func getActiveActionSetLayers(handle: InputHandle) -> (rc: Int, handles: [InputActionSetHandle]) {
-        let tmp_handles = SteamOutArray<InputActionSetHandle_t>(Int(STEAM_INPUT_MAX_ACTIVE_LAYERS))
-        let rc = Int(SteamAPI_ISteamInput_GetActiveActionSetLayers(interface, InputHandle_t(handle), tmp_handles.steamArray))
-        return (rc: rc, handles: tmp_handles.swiftArray(rc))
+        let tmpHandles = SteamOutArray<InputActionSetHandle_t>(Int(STEAM_INPUT_MAX_ACTIVE_LAYERS))
+        let rc = Int(SteamAPI_ISteamInput_GetActiveActionSetLayers(interface, InputHandle_t(handle), tmpHandles.steamArray))
+        return (rc: rc, handles: tmpHandles.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamInput::GetAnalogActionData()`
@@ -83,21 +83,21 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::GetAnalogActionOrigins()`
     public func getAnalogActionOrigins(handle: InputHandle, setHandle: InputActionSetHandle, actionHandle: InputAnalogActionHandle) -> (rc: Int, origins: [InputActionOrigin]) {
-        let tmp_origins = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS))
-        let rc = Int(SteamAPI_ISteamInput_GetAnalogActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputAnalogActionHandle_t(actionHandle), tmp_origins.steamArray))
-        return (rc: rc, origins: tmp_origins.swiftArray(rc))
+        let tmpOrigins = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS))
+        let rc = Int(SteamAPI_ISteamInput_GetAnalogActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputAnalogActionHandle_t(actionHandle), tmpOrigins.steamArray))
+        return (rc: rc, origins: tmpOrigins.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamInput::GetConnectedControllers()`
     public func getConnectedControllers() -> (rc: Int, handles: [InputHandle]) {
-        let tmp_handles = SteamOutArray<InputHandle_t>(Int(STEAM_INPUT_MAX_COUNT))
-        let rc = Int(SteamAPI_ISteamInput_GetConnectedControllers(interface, tmp_handles.steamArray))
-        return (rc: rc, handles: tmp_handles.swiftArray(rc))
+        let tmpHandles = SteamOutArray<InputHandle_t>(Int(STEAM_INPUT_MAX_COUNT))
+        let rc = Int(SteamAPI_ISteamInput_GetConnectedControllers(interface, tmpHandles.steamArray))
+        return (rc: rc, handles: tmpHandles.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamInput::GetControllerForGamepadIndex()`
     public func getControllerForGamepadIndex(index: Int) -> InputHandle {
-        InputHandle(SteamAPI_ISteamInput_GetControllerForGamepadIndex(interface, Int32(index)))
+        InputHandle(SteamAPI_ISteamInput_GetControllerForGamepadIndex(interface, CInt(index)))
     }
 
     /// Steamworks `ISteamInput::GetCurrentActionSet()`
@@ -107,10 +107,10 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::GetDeviceBindingRevision()`
     public func getDeviceBindingRevision(handle: InputHandle) -> (rc: Bool, major: Int, minor: Int) {
-        var tmp_major = Int32()
-        var tmp_minor = Int32()
-        let rc = SteamAPI_ISteamInput_GetDeviceBindingRevision(interface, InputHandle_t(handle), &tmp_major, &tmp_minor)
-        return (rc: rc, major: Int(tmp_major), minor: Int(tmp_minor))
+        var tmpMajor = CInt()
+        var tmpMinor = CInt()
+        let rc = SteamAPI_ISteamInput_GetDeviceBindingRevision(interface, InputHandle_t(handle), &tmpMajor, &tmpMinor)
+        return (rc: rc, major: Int(tmpMajor), minor: Int(tmpMinor))
     }
 
     /// Steamworks `ISteamInput::GetDigitalActionData()`
@@ -125,9 +125,9 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::GetDigitalActionOrigins()`
     public func getDigitalActionOrigins(handle: InputHandle, setHandle: InputActionSetHandle, actionHandle: InputDigitalActionHandle) -> (rc: Int, origins: [InputActionOrigin]) {
-        let tmp_origins = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS))
-        let rc = Int(SteamAPI_ISteamInput_GetDigitalActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputDigitalActionHandle_t(actionHandle), tmp_origins.steamArray))
-        return (rc: rc, origins: tmp_origins.swiftArray(rc))
+        let tmpOrigins = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS))
+        let rc = Int(SteamAPI_ISteamInput_GetDigitalActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputDigitalActionHandle_t(actionHandle), tmpOrigins.steamArray))
+        return (rc: rc, origins: tmpOrigins.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamInput::GetGamepadIndexForController()`
@@ -202,12 +202,12 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::Legacy_TriggerHapticPulse()`
     public func legacyTriggerHapticPulse(handle: InputHandle, targetPad: SteamControllerPad, durationMicroSec: Int) {
-        SteamAPI_ISteamInput_Legacy_TriggerHapticPulse(interface, InputHandle_t(handle), ESteamControllerPad(targetPad), UInt16(durationMicroSec))
+        SteamAPI_ISteamInput_Legacy_TriggerHapticPulse(interface, InputHandle_t(handle), ESteamControllerPad(targetPad), CUnsignedShort(durationMicroSec))
     }
 
     /// Steamworks `ISteamInput::Legacy_TriggerRepeatedHapticPulse()`
     public func legacyTriggerRepeatedHapticPulse(handle: InputHandle, targetPad: SteamControllerPad, durationMicroSec: Int, offMicroSec: Int, `repeat`: Int, flags: Int) {
-        SteamAPI_ISteamInput_Legacy_TriggerRepeatedHapticPulse(interface, InputHandle_t(handle), ESteamControllerPad(targetPad), UInt16(durationMicroSec), UInt16(offMicroSec), UInt16(`repeat`), UInt32(flags))
+        SteamAPI_ISteamInput_Legacy_TriggerRepeatedHapticPulse(interface, InputHandle_t(handle), ESteamControllerPad(targetPad), CUnsignedShort(durationMicroSec), CUnsignedShort(offMicroSec), CUnsignedShort(`repeat`), CUnsignedInt(flags))
     }
 
     /// Steamworks `ISteamInput::RunFrame()`
@@ -247,16 +247,16 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::TriggerSimpleHapticEvent()`
     public func triggerSimpleHapticEvent(handle: InputHandle, hapticLocation: ControllerHapticLocation, intensity: Int, gainDB: Int, otherIntensity: Int, otherGainDB: Int) {
-        SteamAPI_ISteamInput_TriggerSimpleHapticEvent(interface, InputHandle_t(handle), EControllerHapticLocation(hapticLocation), uint8(intensity), Int8(gainDB), uint8(otherIntensity), Int8(otherGainDB))
+        SteamAPI_ISteamInput_TriggerSimpleHapticEvent(interface, InputHandle_t(handle), EControllerHapticLocation(hapticLocation), uint8(intensity), CChar(gainDB), uint8(otherIntensity), CChar(otherGainDB))
     }
 
     /// Steamworks `ISteamInput::TriggerVibration()`
     public func triggerVibration(handle: InputHandle, leftSpeed: Int, rightSpeed: Int) {
-        SteamAPI_ISteamInput_TriggerVibration(interface, InputHandle_t(handle), UInt16(leftSpeed), UInt16(rightSpeed))
+        SteamAPI_ISteamInput_TriggerVibration(interface, InputHandle_t(handle), CUnsignedShort(leftSpeed), CUnsignedShort(rightSpeed))
     }
 
     /// Steamworks `ISteamInput::TriggerVibrationExtended()`
     public func triggerVibrationExtended(handle: InputHandle, leftSpeed: Int, rightSpeed: Int, leftTriggerSpeed: Int, rightTriggerSpeed: Int) {
-        SteamAPI_ISteamInput_TriggerVibrationExtended(interface, InputHandle_t(handle), UInt16(leftSpeed), UInt16(rightSpeed), UInt16(leftTriggerSpeed), UInt16(rightTriggerSpeed))
+        SteamAPI_ISteamInput_TriggerVibrationExtended(interface, InputHandle_t(handle), CUnsignedShort(leftSpeed), CUnsignedShort(rightSpeed), CUnsignedShort(leftTriggerSpeed), CUnsignedShort(rightTriggerSpeed))
     }
 }

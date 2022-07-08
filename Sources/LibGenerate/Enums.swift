@@ -32,14 +32,26 @@ struct Enums {
 
 extension MetadataDB.Enum.Value {
     var shouldGenerate: Bool {
-        !name.contains("__")
+        !name.name.contains("__")
+    }
+}
+
+private extension SwiftExpr {
+    var isNegative: Bool {
+        expr.hasPrefix("-")
+    }
+}
+
+private extension Int {
+    init?(_ expr: SwiftExpr) {
+        self.init(expr.expr)
     }
 }
 
 extension MetadataDB.Enum {
     /// This has to match the raw type chosen by the Clang Importer for the imported C enum
     var rawType: String {
-        values.contains(where: { $0.value.hasPrefix("-") }) ? "Int32" : "UInt32"
+        values.contains(where: { $0.value.isNegative }) ? "CInt" : "CUnsignedInt"
     }
 
     var unrepresentedValue: Int {
@@ -54,7 +66,7 @@ extension MetadataDB.Enum {
         declLines.joined(separator: "\n") + "\n\n" + extensionLines().joined(separator: "\n") + intCoerceLines.joined(separator: "\n")
     }
 
-    /// Very few straight enums are baffingly presented in structs as some int-type and need aspecial conversion.
+    /// Very few straight enums are baffingly presented in structs as some int-type and need a special conversion.
     var intCoerceLines: [String] {
         guard let intType = intXToSelf else {
             return []
@@ -62,9 +74,9 @@ extension MetadataDB.Enum {
         return [
             "",
             "",
-            "extension \(name.asSwiftTypeName) {",
+            "extension \(name.swiftType) {",
             "    init(_ from: \(intType)) {",
-            "        self.init(From(rawValue: UInt32(from)))",
+            "        self.init(From(rawValue: CUnsignedInt(from)))",
             "    }",
             "}"
         ]
@@ -72,18 +84,18 @@ extension MetadataDB.Enum {
 
     /// The nominal part of the declaration
     var declLines: [String] {
-        let swiftTypeName = name.asSwiftTypeName
+        let swiftType = name.swiftType
         let rawType = rawType
 
         let typeDecl: String
-        let valueGen: (Value, String) -> String
+        let valueGen: (Value, SwiftType) -> String
 
         if !isSet {
-            typeDecl = "public enum \(swiftTypeName): \(rawType) {"
+            typeDecl = "public enum \(swiftType): \(rawType) {"
             valueGen = generateEnumCaseDecl
         } else {
             typeDecl = """
-                       public struct \(swiftTypeName): OptionSet {
+                       public struct \(swiftType): OptionSet {
                            /// The flags value.
                            public let rawValue: \(rawType)
                            /// Create a new instance with `rawValue` flags set.
@@ -96,7 +108,7 @@ extension MetadataDB.Enum {
             .filter(\.shouldGenerate)
             .flatMap { value in [
                 "/// Steamworks `\(value.name)`",
-                valueGen(value, swiftTypeName)]
+                valueGen(value, swiftType)]
             }
 
         if !isSet {
@@ -120,11 +132,11 @@ extension MetadataDB.Enum {
 
     /// The extension part of the declaration
     func extensionLines(namespace: String? = nil) -> [String] {
-        let swiftTypeName = (namespace.flatMap { "\($0)." } ?? "") + name.asSwiftTypeName
+        let swiftType = "\(namespace.flatMap { "\($0)." } ?? "")\(name.swiftType)"
         return [
-            "extension \(name.asSwiftNameForSteamType): RawConvertible { typealias From = \(swiftTypeName) }",
-            "extension \(swiftTypeName): \(enumProtocol) { typealias From = \(name.asSwiftNameForSteamType) }",
-            "extension \(swiftTypeName): SteamCreatable {}"
+            "extension \(name.swiftCompilerSpelling): RawConvertible { typealias From = \(swiftType) }",
+            "extension \(swiftType): \(enumProtocol) { typealias From = \(name.swiftCompilerSpelling) }",
+            "extension \(swiftType): SteamCreatable {}"
         ]
     }
 
@@ -132,27 +144,42 @@ extension MetadataDB.Enum {
     ///
     /// I have to admit I learnt more about the finickitiness of option sets getting these working
     /// than I learnt in the past five years... who made 0 magical ...
-    func generateOptionSetDecl(value: Value, swiftTypeName: String) -> String {
+    func generateOptionSetDecl(value: Value, swiftType: SwiftType) -> String {
         let initArgs: String
         if value.value == "0" && isSet {
             initArgs = "[]"
         } else {
             initArgs = "rawValue: \(value.value)"
         }
-        return "public static let \(swiftCaseName(value.name)) = \(swiftTypeName)(\(initArgs))"
+        return "public static let \(swiftCaseName(value.name)) = \(swiftType)(\(initArgs))"
     }
 
     /// The Swift declaration for the enum case.
     ///
     /// In the very rare case of duplicate values we treat it like an optionset member and force the
     /// init (it's optional for us, `RawRepresentable`) trusting it to actually be a duplicate.
-    func generateEnumCaseDecl(value: Value, swiftTypeName: String) -> String {
+    func generateEnumCaseDecl(value: Value, swiftType: SwiftType) -> String {
         guard !value.forceStatic else {
-            return generateOptionSetDecl(value: value, swiftTypeName: swiftTypeName) + "!"
+            return generateOptionSetDecl(value: value, swiftType: swiftType) + "!"
         }
         return "case \(swiftCaseName(value.name)) = \(value.value)"
     }
 
+    /// Convert a steamworks enum member name to Swift.
+    func swiftCaseName(_ steamName: SteamName) -> SwiftExpr {
+        steamName.enumCasePrefixStripped(prefix: prefix, numericPrefix: numericPrefix).swiftName
+    }
+
+    /// An expression to safely initialize an enum instance, for struct default initializers
+    var defaultInstance: SwiftExpr {
+        if isSet {
+            return "[]"
+        }
+        return ".\(swiftCaseName(values.filter(\.shouldGenerate).first!.name))"
+    }
+}
+
+private extension SteamName {
     /// Convert a steamworks enum member name to Swift.
     ///
     /// Stripping the prefix:
@@ -161,22 +188,16 @@ extension MetadataDB.Enum {
     /// * Scope string is usually constant but sometimes regexp and rarely case-incorrect
     /// * Sometimes this leaves us with a case name that starts with a number, we add a
     ///   prefix to fix this from the patch json.
-    func swiftCaseName(_ steamName: String) -> String {
-        var name = steamName.re_sub("^(?:k_)?n?\(prefix)_?", with: "", options: .i)
-        if name.first!.isNumber {
-            guard let numericPrefix = numericPrefix else {
-                preconditionFailure("Unhandled numeric-starting identifier \(steamName) -> \(name) (\(self))")
-            }
-            name = numericPrefix + name
-        }
-        return name.asSwiftIdentifier
-    }
+    ///
+    func enumCasePrefixStripped(prefix: String, numericPrefix: String?) -> SteamName {
+        let deprefixed = name.re_sub("^(?:k_)?n?\(prefix)_?", with: "", options: .i)
 
-    /// An expression to safely initialize an enum instance, for struct default initializers
-    var defaultInstance: String {
-        if isSet {
-            return "[]"
+        guard let first = deprefixed.first, first.isNumber else {
+            return SteamName(deprefixed)
         }
-        return ".\(swiftCaseName(values.filter(\.shouldGenerate).first!.name))"
+        guard let numericPrefix = numericPrefix else {
+            preconditionFailure("Unhandled numeric-starting identifier \(name) -> \(deprefixed)")
+        }
+        return "\(numericPrefix)\(deprefixed)"
     }
 }

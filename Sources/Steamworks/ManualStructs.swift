@@ -296,7 +296,12 @@ extension SteamNetworkingIPAddr: SteamCreatable {}
 
 extension SteamNetworkingIPAddr: Equatable, CustomStringConvertible {
     public static func == (lhs: SteamNetworkingIPAddr, rhs: SteamNetworkingIPAddr) -> Bool {
-        lhs.adr == rhs.adr
+        // operator == has broken in Swift 5.7 ...
+        withUnsafePointer(to: &lhs.adr) { lhsBytes in
+            withUnsafePointer(to: &rhs.adr) { rhsBytes in
+                memcmp(lhsBytes, rhsBytes, MemoryLayout<CSteamworks.SteamNetworkingIPAddr>.size) == 0
+            }
+        }
     }
 
     public var description: String {
@@ -413,8 +418,7 @@ public final class SteamNetworkingIdentity {
     /// Init from an IP address
     public convenience init(_ ipaddr: SteamNetworkingIPAddr) {
         self.init()
-        var adr = ipaddr.adr
-        identity.SetIPAddr(&adr) // also sets type
+        identity.SetIPAddr(ipaddr.adr) // also sets type
     }
 
     /// Identify as localhost, ~anonymous
@@ -455,7 +459,13 @@ extension SteamNetworkingIdentity: SteamCreatable, CustomStringConvertible, Equa
     typealias SteamType = CSteamworks.SteamNetworkingIdentity
 
     public static func == (lhs: SteamNetworkingIdentity, rhs: SteamNetworkingIdentity) -> Bool {
-        lhs.identity == rhs.identity
+        // operator == broken in Swift 5.7
+        // lhs.identity == rhs.identity
+        lhs.identity.m_eType == rhs.identity.m_eType &&
+            lhs.identity.m_cbSize == rhs.identity.m_cbSize &&
+            memcmp(lhs.identity.m_genericBytes_ptr,
+                   rhs.identity.m_genericBytes_ptr,
+                   Int(lhs.identity.m_cbSize)) == 0
     }
 }
 

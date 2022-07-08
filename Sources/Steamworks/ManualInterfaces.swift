@@ -34,7 +34,7 @@ extension SteamHTTP {
     }
 }
 
-/// Not sure how to systematically deal with function pointers yet.
+/// Not dealing systematically with function pointers -- this is the only one.
 extension SteamInput {
     /// Steamworks `ISteamInput::EnableActionEventCallbacks()`
     public func enableActionEventCallbacks(callback: SteamInputActionEventCallbackPointer?) {
@@ -52,10 +52,10 @@ extension SteamInput {
 }
 
 /// This one API has a really dumb design that returns a `char *` to some internal storage instead
-/// of just copying the string like a normal program.  This might work.
+/// of just copying the string like a normal program.  We copy it.
 extension SteamRemoteStorage {
     /// Steamworks `ISteamRemoteStorage::GetUGCDetails()`
-    public func getUGCDetails(content: UGCHandle, appID: inout AppID, name: inout String, fileSizeInBytes: inout Int, owner: inout SteamID) -> Bool {
+    public func getUGCDetails(content: UGCHandle) -> (rc: Bool, appID: AppID, name: String, fileSizeInBytes: Int, owner: SteamID) {
         var tmp_appID = AppId_t()
         let name_ptr = UnsafeMutablePointer<UnsafeMutablePointer<CChar>?>.allocate(capacity: 1) // as in, space for one pointer-to-char
         defer { name_ptr.deallocate() }
@@ -63,12 +63,10 @@ extension SteamRemoteStorage {
         var tmp_owner = CSteamID()
         let rc = SteamAPI_ISteamRemoteStorage_GetUGCDetails(interface, UGCHandle_t(content), &tmp_appID, name_ptr, &tmp_fileSizeInBytes, &tmp_owner)
         if rc {
-            appID = AppID(tmp_appID)
-            name = String(name_ptr.pointee) // yikes
-            fileSizeInBytes = Int(tmp_fileSizeInBytes)
-            owner = SteamID(tmp_owner)
+            return (rc: rc, appID: AppID(tmp_appID), name: String(name_ptr.pointee) /* yikes */, fileSizeInBytes: Int(tmp_fileSizeInBytes), owner: SteamID(tmp_owner))
+        } else {
+            return (rc: rc, appID: 0, name: "", fileSizeInBytes: 0, owner: SteamID())
         }
-        return rc
     }
 }
 
@@ -98,30 +96,27 @@ extension SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `Float`
     public func getConfigValueFloat(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int) -> (rc: SteamNetworkingGetConfigValueResult, outValue: Float) {
-        var size = MemoryLayout<Float>.size
         var result = Float(0)
         let rc = getConfigValue(value: value,
                                 scopeType: scopeType, obj: obj,
-                                result: &result, resultSize: &size).rc
+                                result: &result, resultSize: MemoryLayout<Float>.size).rc
         return (rc: rc, outValue: result)
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `Int`
     public func getConfigValueInt(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int) -> (rc: SteamNetworkingGetConfigValueResult, outValue: Int) {
         var int32Val = Int32(0)
-        var size = MemoryLayout<Int32>.size
         let rc = getConfigValue(value: value,
                                 scopeType: scopeType, obj: obj,
-                                result: &int32Val, resultSize: &size).rc
+                                result: &int32Val, resultSize: MemoryLayout<Int32>.size).rc
         return (rc: rc, outValue: Int(int32Val))
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()` for `String`
     public func getConfigValueString(_ value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int) -> (rc: SteamNetworkingGetConfigValueResult, outValue: String) {
-        var bufSize = Int(0)
-        let rc1 = getConfigValue(value: value,
-                                 scopeType: scopeType, obj: obj,
-                                 result: nil, resultSize: &bufSize).rc
+        let (rc1, _, bufSize) = getConfigValue(value: value,
+                                               scopeType: scopeType, obj: obj,
+                                               result: nil, resultSize: 0)
         if rc1 != .bufferTooSmall {
             return (rc: rc1, outValue: "") // hmm
         }
@@ -130,7 +125,7 @@ extension SteamNetworkingUtils {
         let outValue = String(unsafeUninitializedCapacity: bufSize) { buf in
             rc2 = getConfigValue(value: value,
                                  scopeType: scopeType, obj: obj,
-                                 result: buf.baseAddress!, resultSize: &bufSize).rc
+                                 result: buf.baseAddress!, resultSize: bufSize).rc
             return bufSize - 1 // don't tell Swift about the null?
         }
         return (rc: rc2, outValue: outValue)

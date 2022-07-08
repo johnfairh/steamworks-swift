@@ -23,36 +23,36 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::AddPromoItem()`
     public func addPromoItem(def: SteamItemDef) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_AddPromoItem(interface, &tmp_resultHandle, SteamItemDef_t(def))
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_AddPromoItem(interface, &tmpResultHandle, SteamItemDef_t(def))
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::AddPromoItems()`
     public func addPromoItems(arrayItemDefs: [SteamItemDef]) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        var tmp_arrayItemDefs = arrayItemDefs.map { SteamItemDef_t($0) }
-        let rc = SteamAPI_ISteamInventory_AddPromoItems(interface, &tmp_resultHandle, &tmp_arrayItemDefs, uint32(arrayItemDefs.count))
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        var tmpArrayItemDefs = arrayItemDefs.map { SteamItemDef_t($0) }
+        let rc = SteamAPI_ISteamInventory_AddPromoItems(interface, &tmpResultHandle, &tmpArrayItemDefs, uint32(arrayItemDefs.count))
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::CheckResultSteamID()`
     public func checkResultSteamID(handle: SteamInventoryResult, expected: SteamID) -> Bool {
-        SteamAPI_ISteamInventory_CheckResultSteamID(interface, SteamInventoryResult_t(handle), UInt64(expected))
+        SteamAPI_ISteamInventory_CheckResultSteamID(interface, SteamInventoryResult_t(handle), CUnsignedLongLong(expected))
     }
 
     /// Steamworks `ISteamInventory::ConsumeItem()`
     public func consumeItem(consume: SteamItemInstanceID, quantity: Int) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_ConsumeItem(interface, &tmp_resultHandle, SteamItemInstanceID_t(consume), uint32(quantity))
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_ConsumeItem(interface, &tmpResultHandle, SteamItemInstanceID_t(consume), uint32(quantity))
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::DeserializeResult()`
     public func deserializeResult(buffer: UnsafeRawPointer, bufferSize: Int, reservedMUSTBEFALSE: Bool) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_DeserializeResult(interface, &tmp_resultHandle, buffer, uint32(bufferSize), reservedMUSTBEFALSE)
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_DeserializeResult(interface, &tmpResultHandle, buffer, uint32(bufferSize), reservedMUSTBEFALSE)
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::DestroyResult()`
@@ -62,94 +62,87 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::ExchangeItems()`
     public func exchangeItems(arrayGenerate: [SteamItemDef], arrayGenerateQuantity: [Int], arrayDestroy: [SteamItemInstanceID], arrayDestroyQuantity: [Int]) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        var tmp_arrayGenerate = arrayGenerate.map { SteamItemDef_t($0) }
-        var tmp_arrayGenerateQuantity = arrayGenerateQuantity.map { uint32($0) }
-        var tmp_arrayDestroy = arrayDestroy.map { SteamItemInstanceID_t($0) }
-        var tmp_arrayDestroyQuantity = arrayDestroyQuantity.map { uint32($0) }
-        let rc = SteamAPI_ISteamInventory_ExchangeItems(interface, &tmp_resultHandle, &tmp_arrayGenerate, &tmp_arrayGenerateQuantity, uint32(arrayGenerateQuantity.count), &tmp_arrayDestroy, &tmp_arrayDestroyQuantity, uint32(arrayDestroyQuantity.count))
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        var tmpArrayGenerate = arrayGenerate.map { SteamItemDef_t($0) }
+        var tmpArrayGenerateQuantity = arrayGenerateQuantity.map { uint32($0) }
+        var tmpArrayDestroy = arrayDestroy.map { SteamItemInstanceID_t($0) }
+        var tmpArrayDestroyQuantity = arrayDestroyQuantity.map { uint32($0) }
+        let rc = SteamAPI_ISteamInventory_ExchangeItems(interface, &tmpResultHandle, &tmpArrayGenerate, &tmpArrayGenerateQuantity, uint32(arrayGenerateQuantity.count), &tmpArrayDestroy, &tmpArrayDestroyQuantity, uint32(arrayDestroyQuantity.count))
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::GenerateItems()`
     public func generateItems(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int]) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        var tmp_arrayItemDefs = arrayItemDefs.map { SteamItemDef_t($0) }
-        var tmp_arrayQuantity = arrayQuantity.map { uint32($0) }
-        let rc = SteamAPI_ISteamInventory_GenerateItems(interface, &tmp_resultHandle, &tmp_arrayItemDefs, &tmp_arrayQuantity, uint32(arrayQuantity.count))
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        var tmpArrayItemDefs = arrayItemDefs.map { SteamItemDef_t($0) }
+        var tmpArrayQuantity = arrayQuantity.map { uint32($0) }
+        let rc = SteamAPI_ISteamInventory_GenerateItems(interface, &tmpResultHandle, &tmpArrayItemDefs, &tmpArrayQuantity, uint32(arrayQuantity.count))
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::GetAllItems()`
     public func getAllItems() -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_GetAllItems(interface, &tmp_resultHandle)
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_GetAllItems(interface, &tmpResultHandle)
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::GetEligiblePromoItemDefinitionIDs()`
-    public func getEligiblePromoItemDefinitionIDs(steamID: SteamID, itemDefIDsArraySize: inout Int) -> (rc: Bool, itemDefIDs: [SteamItemDef]) {
-        let tmp_itemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize)
-        var tmp_itemDefIDsArraySize = uint32(itemDefIDsArraySize)
-        let rc = SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs(interface, UInt64(steamID), tmp_itemDefIDs.steamArray, &tmp_itemDefIDsArraySize)
+    public func getEligiblePromoItemDefinitionIDs(steamID: SteamID, itemDefIDsArraySize: Int) -> (rc: Bool, itemDefIDs: [SteamItemDef], itemDefIDsArraySize: Int) {
+        let tmpItemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize)
+        var tmpItemDefIDsArraySize = uint32(itemDefIDsArraySize)
+        let rc = SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs(interface, CUnsignedLongLong(steamID), tmpItemDefIDs.steamArray, &tmpItemDefIDsArraySize)
         if rc {
-            itemDefIDsArraySize = Int(tmp_itemDefIDsArraySize)
-        }
-        if rc {
-            return (rc: rc, itemDefIDs: tmp_itemDefIDs.swiftArray(itemDefIDsArraySize))
+            return (rc: rc, itemDefIDs: tmpItemDefIDs.swiftArray(Int(tmpItemDefIDsArraySize)), itemDefIDsArraySize: Int(tmpItemDefIDsArraySize))
         } else {
-            return (rc: rc, itemDefIDs: [])
+            return (rc: rc, itemDefIDs: [], itemDefIDsArraySize: 0)
         }
     }
 
     /// Steamworks `ISteamInventory::GetItemDefinitionIDs()`
-    public func getItemDefinitionIDs(returnItemDefIDs: Bool = true, itemDefIDsArraySize: inout Int) -> (rc: Bool, itemDefIDs: [SteamItemDef]) {
-        let tmp_itemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize, returnItemDefIDs)
-        var tmp_itemDefIDsArraySize = uint32(itemDefIDsArraySize)
-        let rc = SteamAPI_ISteamInventory_GetItemDefinitionIDs(interface, tmp_itemDefIDs.steamArray, &tmp_itemDefIDsArraySize)
+    public func getItemDefinitionIDs(returnItemDefIDs: Bool = true, itemDefIDsArraySize: Int) -> (rc: Bool, itemDefIDs: [SteamItemDef], itemDefIDsArraySize: Int) {
+        let tmpItemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize, returnItemDefIDs)
+        var tmpItemDefIDsArraySize = uint32(itemDefIDsArraySize)
+        let rc = SteamAPI_ISteamInventory_GetItemDefinitionIDs(interface, tmpItemDefIDs.steamArray, &tmpItemDefIDsArraySize)
         if rc {
-            itemDefIDsArraySize = Int(tmp_itemDefIDsArraySize)
-        }
-        if rc {
-            return (rc: rc, itemDefIDs: tmp_itemDefIDs.swiftArray(itemDefIDsArraySize))
+            return (rc: rc, itemDefIDs: tmpItemDefIDs.swiftArray(Int(tmpItemDefIDsArraySize)), itemDefIDsArraySize: Int(tmpItemDefIDsArraySize))
         } else {
-            return (rc: rc, itemDefIDs: [])
+            return (rc: rc, itemDefIDs: [], itemDefIDsArraySize: 0)
         }
     }
 
     /// Steamworks `ISteamInventory::GetItemDefinitionProperty()`
-    public func getItemDefinitionProperty(definitionIndex: SteamItemDef, propertyName: String?, returnValueBuffer: Bool = true, valueBufferSize: inout Int) -> (rc: Bool, valueBuffer: String) {
-        let tmp_valueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer)
-        var tmp_valueBufferSize = uint32(valueBufferSize)
-        let rc = SteamAPI_ISteamInventory_GetItemDefinitionProperty(interface, SteamItemDef_t(definitionIndex), propertyName, tmp_valueBuffer.charBuffer, &tmp_valueBufferSize)
-        valueBufferSize = Int(tmp_valueBufferSize)
-        return (rc: rc, valueBuffer: tmp_valueBuffer.swiftString)
+    public func getItemDefinitionProperty(definitionIndex: SteamItemDef, propertyName: String?, returnValueBuffer: Bool = true, valueBufferSize: Int) -> (rc: Bool, valueBuffer: String, valueBufferSize: Int) {
+        let tmpValueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer)
+        var tmpValueBufferSize = uint32(valueBufferSize)
+        let rc = SteamAPI_ISteamInventory_GetItemDefinitionProperty(interface, SteamItemDef_t(definitionIndex), propertyName, tmpValueBuffer.charBuffer, &tmpValueBufferSize)
+        return (rc: rc, valueBuffer: tmpValueBuffer.swiftString, valueBufferSize: Int(tmpValueBufferSize))
     }
 
     /// Steamworks `ISteamInventory::GetItemPrice()`
     public func getItemPrice(definitionIndex: SteamItemDef) -> (rc: Bool, currentPrice: UInt64, basePrice: UInt64) {
-        var tmp_currentPrice = uint64()
-        var tmp_basePrice = uint64()
-        let rc = SteamAPI_ISteamInventory_GetItemPrice(interface, SteamItemDef_t(definitionIndex), &tmp_currentPrice, &tmp_basePrice)
-        return (rc: rc, currentPrice: tmp_currentPrice, basePrice: tmp_basePrice)
+        var tmpCurrentPrice = uint64()
+        var tmpBasePrice = uint64()
+        let rc = SteamAPI_ISteamInventory_GetItemPrice(interface, SteamItemDef_t(definitionIndex), &tmpCurrentPrice, &tmpBasePrice)
+        return (rc: rc, currentPrice: tmpCurrentPrice, basePrice: tmpBasePrice)
     }
 
     /// Steamworks `ISteamInventory::GetItemsByID()`
     public func getItemsByID(instanceIDs: [SteamItemInstanceID]) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        var tmp_instanceIDs = instanceIDs.map { SteamItemInstanceID_t($0) }
-        let rc = SteamAPI_ISteamInventory_GetItemsByID(interface, &tmp_resultHandle, &tmp_instanceIDs, uint32(instanceIDs.count))
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        var tmpInstanceIDs = instanceIDs.map { SteamItemInstanceID_t($0) }
+        let rc = SteamAPI_ISteamInventory_GetItemsByID(interface, &tmpResultHandle, &tmpInstanceIDs, uint32(instanceIDs.count))
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::GetItemsWithPrices()`
     public func getItemsWithPrices(arrayLength: Int) -> (rc: Bool, arrayItemDefs: [SteamItemDef], currentPrices: [UInt64], basePrices: [UInt64]) {
-        let tmp_arrayItemDefs = SteamOutArray<SteamItemDef_t>(arrayLength)
-        var currentPrices = Array<UInt64>(repeating: .init(), count: arrayLength)
-        var basePrices = Array<UInt64>(repeating: .init(), count: arrayLength)
-        let rc = SteamAPI_ISteamInventory_GetItemsWithPrices(interface, tmp_arrayItemDefs.steamArray, &currentPrices, &basePrices, uint32(arrayLength))
+        let tmpArrayItemDefs = SteamOutArray<SteamItemDef_t>(arrayLength)
+        var currentPrices = [UInt64](repeating: .init(), count: arrayLength)
+        var basePrices = [UInt64](repeating: .init(), count: arrayLength)
+        let rc = SteamAPI_ISteamInventory_GetItemsWithPrices(interface, tmpArrayItemDefs.steamArray, &currentPrices, &basePrices, uint32(arrayLength))
         if rc {
-            return (rc: rc, arrayItemDefs: tmp_arrayItemDefs.swiftArray(), currentPrices: currentPrices, basePrices: basePrices)
+            return (rc: rc, arrayItemDefs: tmpArrayItemDefs.swiftArray(), currentPrices: currentPrices, basePrices: basePrices)
         } else {
             return (rc: rc, arrayItemDefs: [], currentPrices: [], basePrices: [])
         }
@@ -161,26 +154,22 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetResultItemProperty()`
-    public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, valueBufferSize: inout Int) -> (rc: Bool, valueBuffer: String) {
-        let tmp_valueBuffer = SteamString(length: valueBufferSize)
-        var tmp_valueBufferSize = uint32(valueBufferSize)
-        let rc = SteamAPI_ISteamInventory_GetResultItemProperty(interface, SteamInventoryResult_t(handle), uint32(itemIndex), propertyName, tmp_valueBuffer.charBuffer, &tmp_valueBufferSize)
-        valueBufferSize = Int(tmp_valueBufferSize)
-        return (rc: rc, valueBuffer: tmp_valueBuffer.swiftString)
+    public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, valueBufferSize: Int) -> (rc: Bool, valueBuffer: String, valueBufferSize: Int) {
+        let tmpValueBuffer = SteamString(length: valueBufferSize)
+        var tmpValueBufferSize = uint32(valueBufferSize)
+        let rc = SteamAPI_ISteamInventory_GetResultItemProperty(interface, SteamInventoryResult_t(handle), uint32(itemIndex), propertyName, tmpValueBuffer.charBuffer, &tmpValueBufferSize)
+        return (rc: rc, valueBuffer: tmpValueBuffer.swiftString, valueBufferSize: Int(tmpValueBufferSize))
     }
 
     /// Steamworks `ISteamInventory::GetResultItems()`
-    public func getResultItems(handle: SteamInventoryResult, returnItemsArray: Bool = true, itemsArraySize: inout Int) -> (rc: Bool, itemsArray: [SteamItemDetails]) {
-        let tmp_itemsArray = SteamOutArray<SteamItemDetails_t>(itemsArraySize, returnItemsArray)
-        var tmp_itemsArraySize = uint32(itemsArraySize)
-        let rc = SteamAPI_ISteamInventory_GetResultItems(interface, SteamInventoryResult_t(handle), tmp_itemsArray.steamArray, &tmp_itemsArraySize)
+    public func getResultItems(handle: SteamInventoryResult, returnItemsArray: Bool = true, itemsArraySize: Int) -> (rc: Bool, itemsArray: [SteamItemDetails], itemsArraySize: Int) {
+        let tmpItemsArray = SteamOutArray<SteamItemDetails_t>(itemsArraySize, returnItemsArray)
+        var tmpItemsArraySize = uint32(itemsArraySize)
+        let rc = SteamAPI_ISteamInventory_GetResultItems(interface, SteamInventoryResult_t(handle), tmpItemsArray.steamArray, &tmpItemsArraySize)
         if rc {
-            itemsArraySize = Int(tmp_itemsArraySize)
-        }
-        if rc {
-            return (rc: rc, itemsArray: tmp_itemsArray.swiftArray(itemsArraySize))
+            return (rc: rc, itemsArray: tmpItemsArray.swiftArray(Int(tmpItemsArraySize)), itemsArraySize: Int(tmpItemsArraySize))
         } else {
-            return (rc: rc, itemsArray: [])
+            return (rc: rc, itemsArray: [], itemsArraySize: 0)
         }
     }
 
@@ -196,16 +185,16 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::GrantPromoItems()`
     public func grantPromoItems() -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_GrantPromoItems(interface, &tmp_resultHandle)
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_GrantPromoItems(interface, &tmpResultHandle)
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::InspectItem()`
     public func inspectItem(itemToken: String) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_InspectItem(interface, &tmp_resultHandle, itemToken)
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_InspectItem(interface, &tmpResultHandle, itemToken)
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::LoadItemDefinitions()`
@@ -221,7 +210,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::RequestEligiblePromoItemDefinitionsIDs()`, callback
     public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID, completion: @escaping (SteamInventoryEligiblePromoItemDefIDs?) -> Void) {
-        let rc = SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs(interface, UInt64(steamID))
+        let rc = SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs(interface, CUnsignedLongLong(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -251,11 +240,10 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::SerializeResult()`
-    public func serializeResult(handle: SteamInventoryResult, buffer: UnsafeMutableRawPointer?, bufferSize: inout Int) -> Bool {
-        var tmp_bufferSize = uint32(bufferSize)
-        let rc = SteamAPI_ISteamInventory_SerializeResult(interface, SteamInventoryResult_t(handle), buffer, &tmp_bufferSize)
-        bufferSize = Int(tmp_bufferSize)
-        return rc
+    public func serializeResult(handle: SteamInventoryResult, buffer: UnsafeMutableRawPointer?, bufferSize: Int) -> (rc: Bool, bufferSize: Int) {
+        var tmpBufferSize = uint32(bufferSize)
+        let rc = SteamAPI_ISteamInventory_SerializeResult(interface, SteamInventoryResult_t(handle), buffer, &tmpBufferSize)
+        return (rc: rc, bufferSize: Int(tmpBufferSize))
     }
 
     /// Steamworks `ISteamInventory::SetProperty()`
@@ -280,9 +268,9 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::StartPurchase()`, callback
     public func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int], completion: @escaping (SteamInventoryStartPurchaseResult?) -> Void) {
-        var tmp_arrayItemDefs = arrayItemDefs.map { SteamItemDef_t($0) }
-        var tmp_arrayQuantity = arrayQuantity.map { uint32($0) }
-        let rc = SteamAPI_ISteamInventory_StartPurchase(interface, &tmp_arrayItemDefs, &tmp_arrayQuantity, uint32(arrayQuantity.count))
+        var tmpArrayItemDefs = arrayItemDefs.map { SteamItemDef_t($0) }
+        var tmpArrayQuantity = arrayQuantity.map { uint32($0) }
+        let rc = SteamAPI_ISteamInventory_StartPurchase(interface, &tmpArrayItemDefs, &tmpArrayQuantity, uint32(arrayQuantity.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
@@ -300,22 +288,22 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::SubmitUpdateProperties()`
     public func submitUpdateProperties(handle: SteamInventoryUpdateHandle) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_SubmitUpdateProperties(interface, SteamInventoryUpdateHandle_t(handle), &tmp_resultHandle)
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_SubmitUpdateProperties(interface, SteamInventoryUpdateHandle_t(handle), &tmpResultHandle)
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::TransferItemQuantity()`
     public func transferItemQuantity(idSource: SteamItemInstanceID, quantity: Int, idDest: SteamItemInstanceID) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_TransferItemQuantity(interface, &tmp_resultHandle, SteamItemInstanceID_t(idSource), uint32(quantity), SteamItemInstanceID_t(idDest))
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_TransferItemQuantity(interface, &tmpResultHandle, SteamItemInstanceID_t(idSource), uint32(quantity), SteamItemInstanceID_t(idDest))
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
     /// Steamworks `ISteamInventory::TriggerItemDrop()`
     public func triggerItemDrop(listDefinition: SteamItemDef) -> (rc: Bool, resultHandle: SteamInventoryResult) {
-        var tmp_resultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_TriggerItemDrop(interface, &tmp_resultHandle, SteamItemDef_t(listDefinition))
-        return (rc: rc, resultHandle: SteamInventoryResult(tmp_resultHandle))
+        var tmpResultHandle = SteamInventoryResult_t()
+        let rc = SteamAPI_ISteamInventory_TriggerItemDrop(interface, &tmpResultHandle, SteamItemDef_t(listDefinition))
+        return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 }

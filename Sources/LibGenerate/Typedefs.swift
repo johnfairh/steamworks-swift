@@ -34,61 +34,36 @@ struct Typedefs {
     }
 }
 
-/// This is the only file that deals with raw C types, everything else
-/// is in terms of these typealiases.
-private extension String {
-    static let cToSwiftTypeMap: [String : String] = [
-        "unsigned int" : "UInt32",
-        "unsigned long long" : "UInt64",
-        "long long": "Int64",
-        "int" : "Int32",
-        "short": "Int16",
-        "void *": "UnsafeMutableRawPointer", // living on the edge isteammatchmaking
-        "char [1024]": "String", // guess, networking stuff is wild
-    ]
-
-    var asSwiftBaseType: String {
-        guard let type = Self.cToSwiftTypeMap[self] else {
-            preconditionFailure("Unknown typealias base type \(self)")
-        }
-        return type
-    }
-}
-
 // MARK: Typedef generation
 
 extension MetadataDB.Typedef {
     /// Skip integer typedefs like 'int64', we handle these separately
     var shouldGenerate: Bool {
-        typedef.first!.isUppercase
-    }
-
-    var isFunctionPointer: Bool {
-        type.contains("(*)")
+        typedef.name.first!.isUppercase
     }
 
     var generate: String {
-        isFunctionPointer ? generateFunction : generateBox
+        type.isFunctionPointer ? generateFunction : generateBox
     }
 
     /// Normal case - integer/string boxed type
     var generateBox: String {
-        let swiftRawType = type.asSwiftBaseType
-        let swiftTypeName = typedef.asSwiftTypeName
+        let swiftNativeType = type.swiftNativeType
+        let swiftType = typedef.swiftType
         var decl = """
                    /// Steamworks `\(typedef)`
-                   public struct \(swiftTypeName): Hashable {
-                       public let value: \(swiftRawType)
-                       public init(_ value: \(swiftRawType)) { self.value = value }
+                   public struct \(swiftType): Hashable {
+                       public let value: \(swiftNativeType)
+                       public init(_ value: \(swiftNativeType)) { self.value = value }
                    }
 
-                   extension \(swiftTypeName): SteamTypeAlias, SteamCreatable {}
+                   extension \(swiftType): SteamTypeAlias, SteamCreatable {}
                    """
-        if swiftRawType.isSwiftIntegerType {
+        if swiftNativeType.isInteger {
             decl += """
 
-                    extension \(swiftTypeName): ExpressibleByIntegerLiteral {
-                        public init(integerLiteral value: \(swiftRawType)) { self.init(value) }
+                    extension \(swiftType): ExpressibleByIntegerLiteral {
+                        public init(integerLiteral value: \(swiftNativeType)) { self.init(value) }
                     }
                     """
         }
@@ -98,17 +73,29 @@ extension MetadataDB.Typedef {
 
     /// Function pointer types - guess for now, not sure how will actually handle at call site
     var generateFunction: String {
-        guard let matches = type.re_match(#"\(([^*].*)\)"#) else {
-            preconditionFailure("Can't extract arguments for function typedef \(self)")
+        """
+        /// Steamworks `\(typedef)`
+        public typealias \(typedef.swiftType) = \(type.swiftTypeForFunctionPointer)
+        """
+    }
+}
+
+/// Private helpers for function-pointer decoding, pretty janky & not general
+private extension SteamType {
+    /// Is this a function pointer type?
+    var isFunctionPointer: Bool {
+        name.re_isMatch(#"\(\*[ _a-zA-Z]*\)"#)
+    }
+
+    /// Generate the Swift API type
+    var swiftTypeForFunctionPointer: SwiftType {
+        guard let matches = name.re_match(#"\(([^*].*)\)"#) else {
+            preconditionFailure("Can't extract arguments for function-pointer typedef \(self)")
         }
         let args = matches[1].components(separatedBy: ", ")
-            .map(\.asSwiftTypeName)
-            .map { $0.depointeredType?.asSwiftTypeName ?? $0 }
+            .map { SteamType($0).asParameterType.swiftType.name }
             .joined(separator: ", ")
         // rn these all return void so don't bother converting
-        return """
-               /// Steamworks `\(typedef)`
-               public typealias \(typedef.asSwiftTypeName) = (\(args)) -> Void
-               """
+        return "(\(args)) -> Void"
     }
 }

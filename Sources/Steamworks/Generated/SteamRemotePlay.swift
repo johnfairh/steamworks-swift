@@ -21,15 +21,15 @@ public struct SteamRemotePlay {
 
     /// Steamworks `ISteamRemotePlay::BGetSessionClientResolution()`
     public func getSessionClientResolution(sessionID: RemotePlaySessionID) -> (rc: Bool, resolutionX: Int, resolutionY: Int) {
-        var tmp_resolutionX = Int32()
-        var tmp_resolutionY = Int32()
-        let rc = SteamAPI_ISteamRemotePlay_BGetSessionClientResolution(interface, RemotePlaySessionID_t(sessionID), &tmp_resolutionX, &tmp_resolutionY)
-        return (rc: rc, resolutionX: Int(tmp_resolutionX), resolutionY: Int(tmp_resolutionY))
+        var tmpResolutionX = CInt()
+        var tmpResolutionY = CInt()
+        let rc = SteamAPI_ISteamRemotePlay_BGetSessionClientResolution(interface, RemotePlaySessionID_t(sessionID), &tmpResolutionX, &tmpResolutionY)
+        return (rc: rc, resolutionX: Int(tmpResolutionX), resolutionY: Int(tmpResolutionY))
     }
 
     /// Steamworks `ISteamRemotePlay::BSendRemotePlayTogetherInvite()`
     public func sendRemotePlayTogetherInvite(friend: SteamID) -> Bool {
-        SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite(interface, UInt64(friend))
+        SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite(interface, CUnsignedLongLong(friend))
     }
 
     /// Steamworks `ISteamRemotePlay::GetSessionClientFormFactor()`
@@ -49,7 +49,7 @@ public struct SteamRemotePlay {
 
     /// Steamworks `ISteamRemotePlay::GetSessionID()`
     public func getSessionID(sessionIndex: Int) -> RemotePlaySessionID {
-        RemotePlaySessionID(SteamAPI_ISteamRemotePlay_GetSessionID(interface, Int32(sessionIndex)))
+        RemotePlaySessionID(SteamAPI_ISteamRemotePlay_GetSessionID(interface, CInt(sessionIndex)))
     }
 
     /// Steamworks `ISteamRemotePlay::GetSessionSteamID()`

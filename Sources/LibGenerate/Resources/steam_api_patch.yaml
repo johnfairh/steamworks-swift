@@ -299,13 +299,13 @@ methods:
       punItemDefIDsArraySize:
         in_out: true
       pItemDefIDs:
-        out_array_valid_count: punItemDefIDsArraySize
+        out_array_valid_count: tmpItemDefIDsArraySize
   SteamAPI_ISteamInventory_GetItemDefinitionIDs:
     out_param_iff_rc: ' '
     params:
       pItemDefIDs:
         nullable: true
-        out_array_valid_count: punItemDefIDsArraySize
+        out_array_valid_count: tmpItemDefIDsArraySize
       punItemDefIDsArraySize:
         in_out: true
   SteamAPI_ISteamInventory_GetItemDefinitionProperty:
@@ -339,7 +339,7 @@ methods:
     params:
       pOutItemsArray:
         nullable: true
-        out_array_valid_count: punOutItemsArraySize
+        out_array_valid_count: tmpItemsArraySize
       punOutItemsArraySize:
         in_out: true
   SteamAPI_ISteamInventory_GetResultTimestamp:
@@ -554,10 +554,8 @@ methods:
   SteamAPI_ISteamNetworkingSockets_CreateSocketPair:
     params:
       pIdentity1:
-        type: 'SteamNetworkingIdentity'
         nullable: true
       pIdentity2:
-        type: 'SteamNetworkingIdentity'
         nullable: true
   SteamAPI_ISteamNetworkingSockets_DestroyPollGroup:
     discardable_result: true
@@ -620,6 +618,10 @@ methods:
         out_array_count: nMaxMessages
         out_array_valid_count: rc
     out_param_iff_rc: '>= 0'
+  SteamAPI_ISteamNetworkingSockets_ResetIdentity:
+    params:
+      pIdentity:
+        nullable: true
   SteamAPI_ISteamNetworkingSockets_SendMessageToConnection:
     params:
       nSendFlags:
@@ -666,10 +668,6 @@ methods:
         nullable: true
       cbResult:
         in_out: true
-  SteamAPI_ISteamNetworkingUtils_GetLocalPingLocation:
-    params:
-      result:
-        type: 'SteamNetworkPingLocation_t *'
   SteamAPI_ISteamNetworkingUtils_GetPOPList:
     params:
       list:
@@ -681,6 +679,8 @@ methods:
     params:
       pDetails:
         nullable: true
+  SteamAPI_ISteamNetworkingUtils_ParsePingLocationString:
+    out_param_iff_rc: ' '
   SteamAPI_ISteamNetworkingUtils_SetConfigValue:
     discardable_result: true
   SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct:

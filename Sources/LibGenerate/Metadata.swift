@@ -218,101 +218,103 @@ struct Patch: Codable {
 ///
 struct MetadataDB {
     struct Const {
-        let name: String
-        let type: String
-        let value: String
-        let nestedName: String?
+        let name: SteamHungarianName
+        let type: SteamType
+        let value: SteamConstantExpr
+        let nestedName: SwiftExpr?
 
         init(base: SteamJSON.Const, patch: Patch.Const?) {
-            self.name = base.constname
-            self.type = patch?.type ?? base.consttype
-            self.value = patch?.value ?? base.constval
-            self.nestedName = patch?.nested_name
+            self.name = SteamHungarianName(base.constname)
+            self.type = SteamType(patch?.type ?? base.consttype)
+            self.value = SteamConstantExpr(patch?.value ?? base.constval)
+            self.nestedName = patch?.nested_name.map { .init($0) }
         }
     }
 
     /// Indexed by `constname`, filtered by patch exclude-list
-    let consts: [String : Const]
+    let consts: [SteamHungarianName : Const]
 
     final class Enum {
-        let name: String
-        let setPassedInTypeName: String?
+        let name: SteamType
+        let setPassedInTypeName: SwiftNativeType?
         var isSet: Bool { setPassedInTypeName != nil }
         let prefix: String
         let numericPrefix: String?
-        let manualSwiftName: String?
-        let intXToSelf: String?
+        let manualSwiftName: SwiftType?
+        let intXToSelf: SwiftNativeType?
 
-        struct Value: Codable {
-            let name: String
-            let value: String
+        struct Value {
+            let name: SteamName
+            let value: SwiftExpr
             let forceStatic: Bool
 
             init(base: SteamJSON.Enum.Value, patch: Patch.Enum.Value?) {
-                name = base.name
-                value = patch?.value ?? base.value
+                name = SteamName(base.name)
+                value = SwiftExpr(patch?.value ?? base.value)
                 forceStatic = patch?.force_static ?? false
             }
         }
         let values: [Value]
 
         init(base: SteamJSON.Enum, patch: Patch.Enum?) {
-            name = base.name
-            setPassedInTypeName = patch?.is_set
-            prefix = patch?.prefix ?? name
+            name = SteamType(base.name)
+            setPassedInTypeName = patch?.is_set.map { .init($0) }
+            prefix = patch?.prefix ?? base.name
             numericPrefix = patch?.numeric_prefix
-            manualSwiftName = patch?.manual_swift_name
-            intXToSelf = patch?.intx_to_self
+            manualSwiftName = patch?.manual_swift_name.map { .init($0) }
+            intXToSelf = patch?.intx_to_self.map { .init($0) }
             values = base.values.map {
                 Value(base: $0, patch: patch?.values?[$0.name])
             }
         }
     }
     /// Indexed by `enumname`
-    let enums: [String : Enum]
+    let enums: [SteamType : Enum]
 
     struct Method {
-        let name: String
-        let flatName: String
-        let callResult: String?
-        let callback: String?
+        let name: SteamName
+        let flatName: SteamName
+        let callResult: SteamType?
+        let callback: SteamType?
 
         struct Param {
-            let name: String
-            let type: String
-            let arrayCount: String?
-            let outArrayLength: String?
-            let outArrayValidLength: String?
-            let outStringLength: String?
+            let name: SteamHungarianName
+            let type: SteamType
+            let probablyOutParam: Bool
+            let arrayCount: SteamHungarianName?
+            let outArrayLength: SteamParameterExpr?
+            let outArrayValidLength: SwiftExpr?
+            let outStringLength: SteamParameterExpr?
             let inOut: Bool
             let nullable: Bool
-            // ?? let buffer_count: String?
 
             init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
-                self.name = patch?.name ?? base.paramname
-                self.type = patch?.type ?? base.paramtype_flat ?? base.paramtype
+                self.name = SteamHungarianName(patch?.name ?? base.paramname)
+                let nativeSteamType = SteamType(patch?.type ?? base.paramtype_flat ?? base.paramtype)
+                self.type = nativeSteamType.asParameterType
+                self.probablyOutParam = nativeSteamType.isProbablyOutParameter
                 self.inOut = patch?.in_out ?? false
                 self.nullable = patch?.nullable ?? false
                 if let patchedArrayCount = patch?.array_count, patchedArrayCount == "DELETE" {
                     self.arrayCount = nil // fix a mistake
                 } else {
-                    self.arrayCount = patch?.array_count ?? base.array_count
+                    self.arrayCount = (patch?.array_count ?? base.array_count).map { .init($0) }
                 }
 
                 if let arrayCall = base.out_array_call {
                     // comma-separated list, first is param name, rest is dynamic recipe on how to calculate.
                     // used so sparingly (once) ignore the clever part.
-                    self.outArrayLength = String(arrayCall.split(separator: ",")[0])
+                    self.outArrayLength = SteamParameterExpr(arrayCall.split(separator: ",")[0])
                 } else if let arrayCount = patch?.out_array_count ?? base.out_array_count {
                     // const or param with the length
-                    self.outArrayLength = arrayCount
+                    self.outArrayLength = SteamParameterExpr(arrayCount)
                 } else {
                     self.outArrayLength = nil
                 }
-                self.outArrayValidLength = patch?.out_array_valid_count
+                self.outArrayValidLength = patch?.out_array_valid_count.map { .init($0) }
 
                 if let outStringCount = patch?.out_string_count ?? base.out_string_count {
-                    self.outStringLength = outStringCount
+                    self.outStringLength = SteamParameterExpr(outStringCount)
                 } else {
                     self.outStringLength = nil
                 }
@@ -322,29 +324,29 @@ struct MetadataDB {
             }
         }
         let params: [Param]
-        let returnType: String
-        let outParamIffRc: String?
+        let returnType: SteamType
+        let outParamIffRc: SwiftExpr?
         let discardableResult: Bool
         let ignore: Bool
 
         init(base: SteamJSON.Method, patch: Patch.Method?) {
-            name = base.methodname
-            flatName = patch?.flat_name ?? base.methodname_flat
-            callResult = patch?.callresult ?? base.callresult
-            callback = base.callback
+            name = SteamName(base.methodname)
+            flatName = SteamName(patch?.flat_name ?? base.methodname_flat)
+            callResult = (patch?.callresult ?? base.callresult).map { SteamType($0) }
+            callback = base.callback.map { SteamType($0) }
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
-            returnType = patch?.returntype ?? base.returntype
-            outParamIffRc = patch?.out_param_iff_rc.map { $0 == " " ? "" : $0}
+            returnType = SteamType(patch?.returntype ?? base.returntype).asReturnType
+            outParamIffRc = patch?.out_param_iff_rc.map { $0 == " " ? "" : $0 }.map { .init($0) }
             discardableResult = patch?.discardable_result ?? false
             ignore = patch?.bIgnore ?? false
         }
     }
 
     struct Interface {
-        let name: String
-        let realClassName: String?
+        let name: SteamType
+        let realClassName: SteamType?
         /// Indexed by `name`
-        let enums: [String : Enum]
+        let enums: [SteamType : Enum]
         /// Indexed by `methodname_flat` ... `methodname` is not unique...
         let methods: [String : Method]
 
@@ -362,13 +364,13 @@ struct MetadataDB {
             if let ipatch = ipatch, ipatch.bIgnore {
                 return nil
             }
-            name = base.classname
-            realClassName = ipatch?.real_classname
+            name = SteamType(base.classname)
+            realClassName = ipatch?.real_classname.map { .init($0) }
             methods = .init(uniqueKeysWithValues: base.methods.map { baseMethod in
                 (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
             })
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
-                (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
+                (SteamType(baseEnum.name), Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
             })
             guard let accessors = base.accessors else {
                 access = .instance(ipatch?.getter ?? "")
@@ -395,50 +397,48 @@ struct MetadataDB {
         }
     }
     /// Indexed by `classname`
-    let interfaces: [String : Interface]
+    let interfaces: [SteamType : Interface]
 
     /// Shared type between callback-structs and regular structs - regular structs don't have
     /// a callback ID and may have methods (though these are rarely coherent)
     struct Struct {
         struct Field {
-            let name: String
-            let type: String
+            let name: SteamHungarianName
+            let type: SteamType
             let ignore: Bool
 
             init(base: SteamJSON.Struct.Field, patch: Patch.Struct.Field?) {
-                name = base.fieldname
-                type = patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype)
+                name = SteamHungarianName(base.fieldname)
+                type = SteamType(patch?.fieldtype ?? Self.patch(name: name, type: base.fieldtype))
                 ignore = base.private ?? patch?.bIgnore ?? false
             }
 
             /// Patch up some systemic errors / C-alignment-reasoning in types
-            static func patch(name: String, type: String) -> String {
-                if name.starts(with: "m_b") {
+            static func patch(name: SteamHungarianName, type: String) -> String {
+                if name.name.starts(with: "m_b") {
                     return "bool"
                 }
                 if type == "uint64" {
-                    if name.re_isMatch("steamid", options: .i) { return "CSteamID" }
-                    if name.re_isMatch("gameid", options: .i) { return "CGameID" }
+                    if name.name.re_isMatch("steamid", options: .i) { return "CSteamID" }
+                    if name.name.re_isMatch("gameid", options: .i) { return "CGameID" }
                 }
                 return type
             }
         }
 
-        let name: String // "struct" too annoying
-        let manualSwiftName: String?
+        let name: SteamType // "struct" too annoying
+        let manualSwiftName: SwiftType?
         let fields: [Field]
         let callbackID: Int?
         let ignore: Bool
         let swiftToSteam: Bool
-        /// Indexed by `name`
-        let enums: [String : Enum]
-        /// Indexed by `methodname_flat` ... `methodname` is not unique...
-        let methods: [String : Method]
+        /// Indexed by `enum.name`
+        let enums: [SteamType : Enum]
 
         init(base: SteamJSON.Struct, patch: Patch) {
             let structPatch = patch.structs[base.struct]
-            name = structPatch?.name ?? base.struct
-            manualSwiftName = structPatch?.manual_swift_name
+            name = SteamType(structPatch?.name ?? base.struct)
+            manualSwiftName = structPatch?.manual_swift_name.map { .init($0) }
             fields = base.fields.map {
                 .init(base: $0, patch: structPatch?.fields?[$0.fieldname])
             }
@@ -447,20 +447,25 @@ struct MetadataDB {
             swiftToSteam = structPatch?.swift_to_steam ?? false
 
             enums = .init(uniqueKeysWithValues: (base.enums ?? []).map { baseEnum in
-                (baseEnum.name, Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
-            })
-
-            methods = .init(uniqueKeysWithValues: (base.methods ?? []).map { baseMethod in
-                (baseMethod.methodname_flat, Method(base: baseMethod, patch: patch.methods[baseMethod.methodname_flat]))
+                (SteamType(baseEnum.name), Enum(base: baseEnum, patch: patch.enums[baseEnum.name]))
             })
         }
     }
     /// Indexed by `struct` -- 'callback structs' first
-    let structs: [String : Struct]
+    let structs: [SteamType : Struct]
 
-    typealias Typedef = SteamJSON.Typedef
+    struct Typedef {
+        let typedef: SteamType
+        let type: SteamType
+
+        init(base: SteamJSON.Typedef) {
+            typedef = SteamType(base.typedef)
+            type = SteamType(base.type)
+        }
+    }
+
     /// Indexed by `typedef`, order from original file
-    let typedefs: [String : Typedef]
+    let typedefs: [SteamType : Typedef]
 
     init(base: SteamJSON, patch: Patch) {
         let ignoredConsts = Set(patch.consts_to_ignore)
@@ -469,11 +474,11 @@ struct MetadataDB {
             guard !ignoredConsts.contains(name) else {
                 return nil
             }
-            return (name, Const(base: $0, patch: patch.consts[name]))
+            return (SteamHungarianName(name), Const(base: $0, patch: patch.consts[name]))
         })
 
         enums = .init(uniqueKeysWithValues: base.enums.map {
-            ($0.name, Enum(base: $0, patch: patch.enums[$0.name]))
+            (SteamType($0.name), Enum(base: $0, patch: patch.enums[$0.name]))
         })
 
         interfaces = .init(uniqueKeysWithValues: base.interfaces.compactMap {
@@ -487,11 +492,11 @@ struct MetadataDB {
 
         let ignoredTypedefs = Set(patch.typedefs_to_ignore)
         typedefs = .init(uniqueKeysWithValues: base.typedefs.compactMap {
-            let name = $0.typedef
-            guard !ignoredTypedefs.contains(name) else {
+            guard !ignoredTypedefs.contains($0.typedef) else {
                 return nil
             }
-            return (name, $0)
+            let t = Typedef(base: $0)
+            return (t.typedef, t)
         })
     }
 }
@@ -504,8 +509,8 @@ final class Metadata: CustomStringConvertible {
     let io: IO
     let db: MetadataDB
 
-    private let nestedEnums: [String : MetadataDB.Enum]
-    private let manualSwiftNames: [String : String]
+    private let nestedEnums: [SteamType : MetadataDB.Enum]
+    private let manualSwiftNames: [SteamType : SwiftType]
 
     init(io: IO) throws {
         self.io = io
@@ -525,10 +530,10 @@ final class Metadata: CustomStringConvertible {
         }
 
         self.nestedEnums = .init(uniqueKeysWithValues: nestedStructEnums + nestedInterfaceEnums)
-        let eClo: (MetadataDB.Enum) -> (String, String)? = { enu in
+        let eClo: (MetadataDB.Enum) -> (SteamType, SwiftType)? = { enu in
             enu.manualSwiftName.map { (enu.name, $0) }
         }
-        let sClo: (MetadataDB.Struct) -> (String, String)? = { str in
+        let sClo: (MetadataDB.Struct) -> (SteamType, SwiftType)? = { str in
             str.manualSwiftName.map { (str.name, $0) }
         }
         self.manualSwiftNames =
@@ -560,32 +565,32 @@ final class Metadata: CustomStringConvertible {
         Array(db.enums.values) + Array(nestedEnums.values)
     }
 
-    static private func findEnum(name: String) -> MetadataDB.Enum? {
-        shared?.db.enums[name] ?? shared?.nestedEnums[name]
+    static private func findEnum(steamType: SteamType) -> MetadataDB.Enum? {
+        shared?.db.enums[steamType] ?? shared?.nestedEnums[steamType]
     }
 
-    static func isEnum(steamType name: String) -> Bool {
-        findEnum(name: name) != nil
+    static func isEnum(steamType: SteamType) -> Bool {
+        findEnum(steamType: steamType) != nil
     }
 
-    static func isOptionSetEnumPassedUnpredictably(steamType name: String) -> String? {
-        findEnum(name: name)?.setPassedInTypeName
+    static func isOptionSetEnumPassedUnpredictably(steamType: SteamType) -> SwiftNativeType? {
+        findEnum(steamType: steamType)?.setPassedInTypeName
     }
 
-    static func findEnumDefaultInstance(steamType name: String) -> String? {
-        findEnum(name: name)?.defaultInstance
+    static func findEnumDefaultInstance(steamType: SteamType) -> SwiftExpr? {
+        findEnum(steamType: steamType)?.defaultInstance
     }
 
-    static func isStruct(steamType name: String) -> Bool {
-        shared.flatMap { $0.db.structs[name] != nil } ?? false
+    static func isStruct(steamType: SteamType) -> Bool {
+        shared.flatMap { $0.db.structs[steamType] != nil } ?? false
     }
 
-    static func isTypedef(steamType name: String) -> Bool {
-        shared.flatMap { $0.db.typedefs[name] != nil } ?? false
+    static func isTypedef(steamType: SteamType) -> Bool {
+        shared.flatMap { $0.db.typedefs[steamType] != nil } ?? false
     }
 
     /// Look up any overridden type names from the DB
-    static func steamToSwiftTypeName(_ steam: String) -> String? {
-        shared.flatMap { $0.manualSwiftNames[steam] }
+    static func steamTypeToSwiftType(_ steamType: SteamType) -> SwiftType? {
+        shared.flatMap { $0.manualSwiftNames[steamType] }
     }
 }

@@ -7,10 +7,10 @@
 Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
+* Requires Swift 5.7, Xcode 14 beta
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* First pass all interfaces complete - see [early docs](https://johnfairh.github.io/swift-steamworks/index.html)
-* Missing some utility type properties for clients
-* Interface types and patterns need reviewing and refactoring
+* First pass all interfaces complete - see [rough docs](https://johnfairh.github.io/swift-steamworks/index.html)
+* Interface quality-of-life tweaks needed, esp. returned string/array length
 * `make` builds and runs a demo Swift program that accesses the C++
   Steam API to initialize, do various sync and async queries, then shut it down.
 * Separate demo showing encrypted app-ticket stuff.
@@ -24,7 +24,7 @@ Current state:
 * Do not diverge too far from the 'real' API names to aid docs / searching / porting:
   I think this is a better starting point than doing a complete OO analysis to carve
   out function.  Can go to build `SteamworksPatterns` or something if worthwhile.  Name
-  etc. changes planned though at least:
+  etc. changes:
    * _Don't_ use Swift properties for 0-arg getters: diverges too far from Steamworks
      naming
    * Drop the intermittent Hungarian notation (argh the 1990s are calling)
@@ -35,6 +35,68 @@ Current state:
 * Access interfaces via central types.
 * Use code gen to deal with the ~900 APIs and their ~400 types, taking advantage of the
   handy JSON file.  This code-gen piece is the actual main work in this project.
+
+### API mapping design
+
+#### Functions
+
+```cpp
+auto handle = SteamInventory()->StartUpdateProperties();
+```
+```swift
+let handle = steamAPI.inventory.startUpdateProperties()
+```
+
+### 'Out' parameters
+
+C++ 'out' parameters filled in by APIs are returned in a tuple, or, if the Steam API
+is `void` then as the sole return value.
+
+```cpp
+SteamInventoryResult_t result;
+bool rc = SteamInventory()->GrantPromoItems(&result);
+```
+```swift
+let (rc, result) = steamAPI.inventory.grantPromotItems()
+```
+
+### Optional 'out' parameters
+
+Some C++ 'out' parameters are optional: they can be passed as `NULL` to indicate they're
+not required by caller.  In the Swift API these generate an additional boolean parameter
+`return<ParamName>` with default `true`.
+
+```cpp
+auto avail = SteamNetworkingUtils()->GetRelayNetworkStatusAvailability(NULL);
+```
+```swift
+let (avail, _) = steamAPI.networkingUtils.getRelayNetworkStatusAvailability(returnDetails: false)
+```
+
+The return tuple is still populated with something but its contents is undefined; the
+library guarantees to pass `NULL` to the underlying Steamworks API.
+
+### 'In-out' parameters
+
+C++ parameters whose values are significant and also have their value updated are present
+in _both_ Swift function parameters and the return tuple.
+
+```cpp
+uint32 itemDefIDCount = 0;
+bool rc1 = SteamInventory()->GetItemDefinitionIDs(NULL, &itemDefIDCount);
+auto itemDefIDs = new SteamItemDef_t [itemDefIDCount];
+bool rc2 = SteamInventory()->GetItemDefinitions(itemDefIDs, &itemDefIDCount);
+```
+```swift
+let (rc1, _, itemDefIDCount) = steamAPI.inventory.
+                                   getItemDefinitionIDs(returnItemDefIDs: false,
+                                                        itemDefIDsArraySize: 0)
+let (rc2, itemDefIDs, _) = steamAPI.inventory.
+                               getItemDefinitionIDs(itemDefIDsArraySize: itemDefIDCount)
+```
+This pattern is a best-effort translation of the Steamworks API that inherently requires two
+calls - still pretty ugly and would expect to be wrapped up in a utility.
+
 
 ### Swift C++ Bugs
 
@@ -53,8 +115,6 @@ Tech limitations, on 5.6:
 * Importing `Foundation` and `-enable-cxx-interop` and a C++ module goes wrong.  Swift
   5.6 doesn't crash; worse the compiler goes slow, spits out warnings, then the binary
   runs like treacle.  Will aim to not depend on Foundation, see how that goes.
-
-To review, spring 2022:
 * Calls to (?pure) virtual functions aren't generated properly: Swift generates a ref
   to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
   usable in practice.  Will use the flat API.
@@ -71,9 +131,26 @@ To review, spring 2022:
   with that could build the thing; don't really fancy installing the steam client but
   maybe that's doable.
 
+#### Weird Steam messages
+
+Getting unexpected SteamAPICallCompleteds out of
+`SteamAPI_ManualDispatch_GetNextCallback()` -- suspect parts of steamworks trying to
+use callbacks internally without understanding manual dispatch mode.  Or I'm missing
+an API somewhere to dispatch them.
+
+* 2101 - `HTTPRequestCompleted_t.k_iCallback`
+* 1296 - `k_iSteamNetworkingUtilsCallbacks + 16` - undefined, not a clue
+
+Seems triggered by using steamnetworking.
+
+Facepunch logs & drops these too, so, erm, shrug I suppose.
+
+Getting `src/steamnetworkingsockets/clientlib/csteamnetworkingmessages.cpp (229) : Assertion Failed: [#40725897 pipe] Unlinking connection in state 1` using steamnetworkingmessages; possibly
+it's not expecting to send messages from a steam ID to itself.
+
 ### Requirements
 
-* Needs Swift 5.6 (Xcode 13.3)
+* Needs Swift 5.7 (Xcode 14 beta)
 * Needs Steam client installed
 * I'm using macOS 12; should work on macOS 11, Linux; might work on Windows
 
@@ -92,10 +169,8 @@ ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVi
 SteamEncryptedAppTicket
 
 Left to do:
-* Public initializers for types
 * Pondering of int types etc.
 * Array and String management improvements
-* Review all the random customizations
 
 Skip:
 * ISteamAppTicket - er not actually a thing?

@@ -31,7 +31,7 @@ public struct SteamMatchmakingServers {
 
     /// Steamworks `ISteamMatchmakingServers::GetServerDetails()`
     public func getServerDetails(request: HServerListRequest, serverIndex: Int) -> GameServerItem {
-        GameServerItem(SteamAPI_ISteamMatchmakingServers_GetServerDetails(interface, CSteamworks.HServerListRequest(request), Int32(serverIndex)))
+        GameServerItem(SteamAPI_ISteamMatchmakingServers_GetServerDetails(interface, CSteamworks.HServerListRequest(request), CInt(serverIndex)))
     }
 
     /// Steamworks `ISteamMatchmakingServers::IsRefreshing()`
@@ -46,6 +46,6 @@ public struct SteamMatchmakingServers {
 
     /// Steamworks `ISteamMatchmakingServers::RefreshServer()`
     public func refreshServer(request: HServerListRequest, serverIndex: Int) {
-        SteamAPI_ISteamMatchmakingServers_RefreshServer(interface, CSteamworks.HServerListRequest(request), Int32(serverIndex))
+        SteamAPI_ISteamMatchmakingServers_RefreshServer(interface, CSteamworks.HServerListRequest(request), CInt(serverIndex))
     }
 }
