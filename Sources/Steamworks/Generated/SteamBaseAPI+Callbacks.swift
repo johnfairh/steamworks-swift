@@ -56,6 +56,11 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(5215), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
+    /// Registration for Steamworks `EquippedProfileItemsChanged_t` callback
+    func onEquippedProfileItemsChanged(_ client: @escaping (EquippedProfileItemsChanged) -> Void) {
+        callbacks.add(callbackID: CallbackID(350), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
     /// Registration for Steamworks `FavoritesListAccountsUpdated_t` callback
     func onFavoritesListAccountsUpdated(_ client: @escaping (FavoritesListAccountsUpdated) -> Void) {
         callbacks.add(callbackID: CallbackID(516), rawClient: SteamBaseAPI.makeRaw(client))
@@ -773,6 +778,11 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `EndGameResultCallback_t` callbacks
     var endGameResultCallback: AsyncStream<EndGameResultCallback> {
         AsyncStream { onEndGameResultCallback($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `EquippedProfileItemsChanged_t` callbacks
+    var equippedProfileItemsChanged: AsyncStream<EquippedProfileItemsChanged> {
+        AsyncStream { onEquippedProfileItemsChanged($0.yield0) }
     }
 
     /// Async stream of Steamworks `FavoritesListAccountsUpdated_t` callbacks

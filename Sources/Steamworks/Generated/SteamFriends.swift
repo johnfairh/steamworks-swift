@@ -54,6 +54,11 @@ public struct SteamFriends {
         SteamAPI_ISteamFriends_ActivateGameOverlayToWebPage(interface, url, EActivateGameOverlayToWebPageMode(mode))
     }
 
+    /// Steamworks `ISteamFriends::BHasEquippedProfileItem()`
+    public func hasEquippedProfileItem(steamID: SteamID, type: CommunityProfileItemType) -> Bool {
+        SteamAPI_ISteamFriends_BHasEquippedProfileItem(interface, CUnsignedLongLong(steamID), ECommunityProfileItemType(type))
+    }
+
     /// Steamworks `ISteamFriends::ClearRichPresence()`
     public func clearRichPresence() {
         SteamAPI_ISteamFriends_ClearRichPresence(interface)
@@ -321,6 +326,16 @@ public struct SteamFriends {
         SteamAPI_ISteamFriends_GetPlayerNickname(interface, CUnsignedLongLong(player)).map { String($0) }
     }
 
+    /// Steamworks `ISteamFriends::GetProfileItemPropertyString()`
+    public func getProfileItemPropertyString(steamID: SteamID, type: CommunityProfileItemType, prop: CommunityProfileItemProperty) -> String {
+        String(SteamAPI_ISteamFriends_GetProfileItemPropertyString(interface, CUnsignedLongLong(steamID), ECommunityProfileItemType(type), ECommunityProfileItemProperty(prop)))
+    }
+
+    /// Steamworks `ISteamFriends::GetProfileItemPropertyUint()`
+    public func getProfileItemPropertyUint(steamID: SteamID, type: CommunityProfileItemType, prop: CommunityProfileItemProperty) -> Int {
+        Int(SteamAPI_ISteamFriends_GetProfileItemPropertyUint(interface, CUnsignedLongLong(steamID), ECommunityProfileItemType(type), ECommunityProfileItemProperty(prop)))
+    }
+
     /// Steamworks `ISteamFriends::GetSmallFriendAvatar()`
     public func getSmallFriendAvatar(friend: SteamID) -> Int {
         Int(SteamAPI_ISteamFriends_GetSmallFriendAvatar(interface, CUnsignedLongLong(friend)))
@@ -422,6 +437,19 @@ public struct SteamFriends {
     public func requestClanOfficerList(clan: SteamID) async -> ClanOfficerListResponse? {
         await withUnsafeContinuation {
             requestClanOfficerList(clan: clan, completion: $0.resume)
+        }
+    }
+
+    /// Steamworks `ISteamFriends::RequestEquippedProfileItems()`, callback
+    public func requestEquippedProfileItems(steamID: SteamID, completion: @escaping (EquippedProfileItems?) -> Void) {
+        let rc = SteamAPI_ISteamFriends_RequestEquippedProfileItems(interface, CUnsignedLongLong(steamID))
+        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
+    }
+
+    /// Steamworks `ISteamFriends::RequestEquippedProfileItems()`, async
+    public func requestEquippedProfileItems(steamID: SteamID) async -> EquippedProfileItems? {
+        await withUnsafeContinuation {
+            requestEquippedProfileItems(steamID: steamID, completion: $0.resume)
         }
     }
 

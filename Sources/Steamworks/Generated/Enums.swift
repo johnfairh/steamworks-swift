@@ -312,6 +312,60 @@ extension ECheckFileSignature: RawConvertible { typealias From = CheckFileSignat
 extension CheckFileSignatureResult: EnumWithUnrepresented { typealias From = ECheckFileSignature }
 extension CheckFileSignatureResult: SteamCreatable {}
 
+/// Steamworks `ECommunityProfileItemProperty`
+public enum CommunityProfileItemProperty: CUnsignedInt {
+    /// Steamworks `k_ECommunityProfileItemProperty_ImageSmall`
+    case imageSmall = 0
+    /// Steamworks `k_ECommunityProfileItemProperty_ImageLarge`
+    case imageLarge = 1
+    /// Steamworks `k_ECommunityProfileItemProperty_InternalName`
+    case internalName = 2
+    /// Steamworks `k_ECommunityProfileItemProperty_Title`
+    case title = 3
+    /// Steamworks `k_ECommunityProfileItemProperty_Description`
+    case description = 4
+    /// Steamworks `k_ECommunityProfileItemProperty_AppID`
+    case appID = 5
+    /// Steamworks `k_ECommunityProfileItemProperty_TypeID`
+    case typeID = 6
+    /// Steamworks `k_ECommunityProfileItemProperty_Class`
+    case `class` = 7
+    /// Steamworks `k_ECommunityProfileItemProperty_MovieWebM`
+    case movieWebM = 8
+    /// Steamworks `k_ECommunityProfileItemProperty_MovieMP4`
+    case movieMP4 = 9
+    /// Steamworks `k_ECommunityProfileItemProperty_MovieWebMSmall`
+    case movieWebMSmall = 10
+    /// Steamworks `k_ECommunityProfileItemProperty_MovieMP4Small`
+    case movieMP4Small = 11
+    /// Some undocumented value
+    case unrepresentedInSwift = 12
+}
+
+extension ECommunityProfileItemProperty: RawConvertible { typealias From = CommunityProfileItemProperty }
+extension CommunityProfileItemProperty: EnumWithUnrepresented { typealias From = ECommunityProfileItemProperty }
+extension CommunityProfileItemProperty: SteamCreatable {}
+
+/// Steamworks `ECommunityProfileItemType`
+public enum CommunityProfileItemType: CUnsignedInt {
+    /// Steamworks `k_ECommunityProfileItemType_AnimatedAvatar`
+    case animatedAvatar = 0
+    /// Steamworks `k_ECommunityProfileItemType_AvatarFrame`
+    case avatarFrame = 1
+    /// Steamworks `k_ECommunityProfileItemType_ProfileModifier`
+    case profileModifier = 2
+    /// Steamworks `k_ECommunityProfileItemType_ProfileBackground`
+    case profileBackground = 3
+    /// Steamworks `k_ECommunityProfileItemType_MiniProfileBackground`
+    case miniProfileBackground = 4
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
+}
+
+extension ECommunityProfileItemType: RawConvertible { typealias From = CommunityProfileItemType }
+extension CommunityProfileItemType: EnumWithUnrepresented { typealias From = ECommunityProfileItemType }
+extension CommunityProfileItemType: SteamCreatable {}
+
 /// Steamworks `EControllerActionOrigin`
 public enum ControllerActionOrigin: CUnsignedInt {
     /// Steamworks `k_EControllerActionOrigin_None`
@@ -3220,8 +3274,14 @@ public enum Result: CUnsignedInt {
     case parseFailure = 122
     /// Steamworks `k_EResultNoVerifiedPhone`
     case noVerifiedPhone = 123
+    /// Steamworks `k_EResultInsufficientBattery`
+    case insufficientBattery = 124
+    /// Steamworks `k_EResultChargerRequired`
+    case chargerRequired = 125
+    /// Steamworks `k_EResultCachedCredentialInvalid`
+    case cachedCredentialInvalid = 126
     /// Some undocumented value
-    case unrepresentedInSwift = 124
+    case unrepresentedInSwift = 127
 }
 
 extension EResult: RawConvertible { typealias From = Result }
@@ -3810,6 +3870,14 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt {
     case p2PTransportICEPenalty = 105
     /// Steamworks `k_ESteamNetworkingConfig_P2P_Transport_SDR_Penalty`
     case p2PTransportSDRPenalty = 106
+    /// Steamworks `k_ESteamNetworkingConfig_P2P_TURN_ServerList`
+    case p2PTURNServerList = 107
+    /// Steamworks `k_ESteamNetworkingConfig_P2P_TURN_UserList`
+    case p2PTURNUserList = 108
+    /// Steamworks `k_ESteamNetworkingConfig_P2P_TURN_PassList`
+    case p2PTURNPassList = 109
+    /// Steamworks `k_ESteamNetworkingConfig_P2P_Transport_ICE_Implementation`
+    case p2PTransportICEImplementation = 110
     /// Steamworks `k_ESteamNetworkingConfig_SDRClient_ConsecutitivePingTimeoutsFailInitial`
     case sdrClientConsecutitivePingTimeoutsFailInitial = 19
     /// Steamworks `k_ESteamNetworkingConfig_SDRClient_ConsecutitivePingTimeoutsFail`

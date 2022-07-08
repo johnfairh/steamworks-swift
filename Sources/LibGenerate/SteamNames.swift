@@ -48,7 +48,7 @@ private extension String {
     /// Just what we've seen necessary
     static let backtickKeywords = Set<String>([
         "case", "default", "for", "internal", "private", "protocol", "public",
-        "switch", "init", "repeat"
+        "switch", "init", "repeat", "class"
     ])
 }
 

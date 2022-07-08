@@ -525,6 +525,66 @@ extension EndGameResultCallback: SteamCreatable {
     }
 }
 
+/// Steamworks `EquippedProfileItemsChanged_t`
+public struct EquippedProfileItemsChanged {
+    /// Steamworks `m_steamID`
+    public let steamID: SteamID
+
+    /// Create a customized `EquippedProfileItemsChanged`
+    public init(steamID: SteamID = SteamID()) {
+        self.steamID = steamID
+    }
+}
+
+extension EquippedProfileItemsChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.EquippedProfileItemsChanged_t
+    init(_ steam: CSteamworks.EquippedProfileItemsChanged_t) {
+        steamID = .init(steam.m_steamID)
+    }
+}
+
+/// Steamworks `EquippedProfileItems_t`
+public struct EquippedProfileItems {
+    /// Steamworks `m_eResult`
+    public let result: Result
+    /// Steamworks `m_steamID`
+    public let steamID: SteamID
+    /// Steamworks `m_bHasAnimatedAvatar`
+    public let hasAnimatedAvatar: Bool
+    /// Steamworks `m_bHasAvatarFrame`
+    public let hasAvatarFrame: Bool
+    /// Steamworks `m_bHasProfileModifier`
+    public let hasProfileModifier: Bool
+    /// Steamworks `m_bHasProfileBackground`
+    public let hasProfileBackground: Bool
+    /// Steamworks `m_bHasMiniProfileBackground`
+    public let hasMiniProfileBackground: Bool
+
+    /// Create a customized `EquippedProfileItems`
+    public init(result: Result = .none, steamID: SteamID = SteamID(), hasAnimatedAvatar: Bool = false, hasAvatarFrame: Bool = false, hasProfileModifier: Bool = false, hasProfileBackground: Bool = false, hasMiniProfileBackground: Bool = false) {
+        self.result = result
+        self.steamID = steamID
+        self.hasAnimatedAvatar = hasAnimatedAvatar
+        self.hasAvatarFrame = hasAvatarFrame
+        self.hasProfileModifier = hasProfileModifier
+        self.hasProfileBackground = hasProfileBackground
+        self.hasMiniProfileBackground = hasMiniProfileBackground
+    }
+}
+
+extension EquippedProfileItems: SteamCreatable {
+    typealias SteamType = CSteamworks.EquippedProfileItems_t
+    init(_ steam: CSteamworks.EquippedProfileItems_t) {
+        result = .init(steam.m_eResult)
+        steamID = .init(steam.m_steamID)
+        hasAnimatedAvatar = .init(steam.m_bHasAnimatedAvatar)
+        hasAvatarFrame = .init(steam.m_bHasAvatarFrame)
+        hasProfileModifier = .init(steam.m_bHasProfileModifier)
+        hasProfileBackground = .init(steam.m_bHasProfileBackground)
+        hasMiniProfileBackground = .init(steam.m_bHasMiniProfileBackground)
+    }
+}
+
 /// Steamworks `FavoritesListAccountsUpdated_t`
 public struct FavoritesListAccountsUpdated {
     /// Steamworks `m_eResult`
