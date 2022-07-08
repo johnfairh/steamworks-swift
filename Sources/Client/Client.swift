@@ -329,7 +329,8 @@ final class Client {
             guard let self = self else { return }
             let isClient = req.conn == clientConnection
             let connName = isClient ? "Client" : "Server"
-            print("\(connName) Connection Status: \(req.oldState)->\(req.info.state)")
+            let (rc, steamConnName) = self.api.networkingSockets.getConnectionName(peer: req.conn, maxLen: 100)
+            print("\(connName) (\(rc ? steamConnName : "")) Connection Status: \(req.oldState)->\(req.info.state)")
 
             switch req.info.state {
             case .problemDetectedLocally:
@@ -342,6 +343,7 @@ final class Client {
                 guard !isClient else { break }
                 let rc = self.api.networkingSockets.acceptConnection(conn: req.conn)
                 serverConnection = req.conn
+                self.api.networkingSockets.setConnectionName(peer: req.conn, name: "SERVER")
                 print("Accept rc=\(rc)")
 
             case .connected:
@@ -378,6 +380,7 @@ final class Client {
 
         clientConnection = api.networkingSockets.connectByIPAddress(address: .init(ipv4: .ipv4(127, 0, 0, 1), port: 27100), options: [])
         print("ConnectByIP rc=\(clientConnection)")
+        api.networkingSockets.setConnectionName(peer: clientConnection, name: "CLIENT")
         let status = api.networkingSockets.getDetailedConnectionStatus(conn: clientConnection, bufSize: 4096)
         print("ConnectionStatus: \(status)")
     }
@@ -394,13 +397,30 @@ final class Client {
 
         api.networkingUtils.initRelayNetworkAccess()
 
-        let status = api.networkingUtils.getRelayNetworkStatus()
-        print("Relay Network Status: \(status)")
+        print("Waiting for relay network...")
 
-        let (_, pops) = api.networkingUtils.getPOPList(listSz: api.networkingUtils.getPOPCount())
-        print("Got \(pops.count) POPs: \(pops)")
+        var prevStatus = SteamNetworkingAvailability.neverTried
+        var prevMsg = ""
 
-        endTest()
+        testFrameCallback = { [weak self] in
+            guard let self = self else { return }
+
+            let status = self.api.networkingUtils.getRelayNetworkStatus()
+            if status.rc != prevStatus || status.details.debugMsg != prevMsg {
+                print("  \(status.rc) \(status.details.debugMsg)")
+                prevStatus = status.rc
+                prevMsg = status.details.debugMsg
+            }
+            guard status.rc != .waiting && status.rc != .attempting else {
+                return // wait
+            }
+            print(status.details)
+
+            let (_, pops) = self.api.networkingUtils.getPOPList(listSz: self.api.networkingUtils.getPOPCount())
+            print("Got \(pops.count) POPs")
+            
+            self.endTest()
+        }
     }
 
     func testInventory() {
