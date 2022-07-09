@@ -89,7 +89,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::GetAvailableVoice()`
-    public func getAvailableVoice(uncompressedVoiceDesiredSampleRateDeprecated: Int) -> (rc: VoiceResult, compressedSize: Int, uncompressedDeprecatedSize: Int) {
+    public func getAvailableVoice(uncompressedVoiceDesiredSampleRateDeprecated: Int = 0) -> (rc: VoiceResult, compressedSize: Int, uncompressedDeprecatedSize: Int) {
         var tmpCompressedSize = uint32()
         var tmpUncompressedDeprecatedSize = uint32()
         let rc = VoiceResult(SteamAPI_ISteamUser_GetAvailableVoice(interface, &tmpCompressedSize, &tmpUncompressedDeprecatedSize, uint32(uncompressedVoiceDesiredSampleRateDeprecated)))
@@ -161,7 +161,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::GetVoice()`
-    public func getVoice(wantCompressed: Bool, destBuffer: UnsafeMutableRawPointer, destBufferSize: Int, wantUncompressedDeprecated: Bool, uncompressedDestBufferDeprecated: UnsafeMutableRawPointer, uncompressedDestBufferSizeDeprecatedSize: Int, uncompressedVoiceDesiredSampleRateDeprecated: Int) -> (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int) {
+    public func getVoice(wantCompressed: Bool, destBuffer: UnsafeMutableRawPointer, destBufferSize: Int, wantUncompressedDeprecated: Bool = false, uncompressedDestBufferDeprecated: UnsafeMutableRawPointer? = nil, uncompressedDestBufferSizeDeprecatedSize: Int = 0, uncompressedVoiceDesiredSampleRateDeprecated: Int = 0) -> (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int) {
         var tmpBytesWritten = uint32()
         var tmpUncompressBytesWrittenDeprecated = uint32()
         let rc = VoiceResult(SteamAPI_ISteamUser_GetVoice(interface, wantCompressed, destBuffer, uint32(destBufferSize), &tmpBytesWritten, wantUncompressedDeprecated, uncompressedDestBufferDeprecated, uint32(uncompressedDestBufferSizeDeprecatedSize), &tmpUncompressBytesWrittenDeprecated, uint32(uncompressedVoiceDesiredSampleRateDeprecated)))

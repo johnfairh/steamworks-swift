@@ -148,6 +148,10 @@ struct SteamParameterExpr: StringFungible {
     var _val: String { expr }
 
     var swiftExpr: SwiftExpr {
+        // numeric constant, unchanged
+        if expr.re_isMatch(#"^\d*$"#) {
+            return SwiftExpr(expr)
+        }
         // check for ref to a constant, so far all upper-case - would need to look up
         if expr.uppercased() == expr {
             return "Int(\(expr))"
@@ -238,12 +242,14 @@ final class SteamParam {
     /// Nullable in params get an optional.
     var swiftParamClause: String? {
         let typeSuffix = db.nullable ? "?" : ""
+        let defaultValue = db.defaultValue.map { " = \($0.swiftExpr)"} ?? ""
 
         switch style {
         case .in, .in_string_array, .in_out, .in_array:
-            return "\(swiftName): \(swiftType)\(typeSuffix)"
+            return "\(swiftName): \(swiftType)\(typeSuffix)\(defaultValue)"
 
         case .out, .out_transparent, .out_array, .out_transparent_array, .out_string:
+            precondition(defaultValue.isEmpty, "Not set up to deal with default values for out params")
             return db.nullable ? "\(returnParamName): Bool = true" : nil
 
         case .in_array_count:

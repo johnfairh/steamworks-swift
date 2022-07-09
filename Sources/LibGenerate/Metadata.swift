@@ -178,6 +178,7 @@ struct Patch: Codable {
             let array_count: String? // patch array_count
             let in_out: Bool? // mark up actual inout params
             let nullable: Bool? // out/array param can be null (nil)
+            let default_value: String? // C++ expr for a default value
         }
         let params: [String : Param]?
     }
@@ -285,6 +286,7 @@ struct MetadataDB {
             let outArrayLength: SteamParameterExpr?
             let outArrayValidLength: SwiftExpr?
             let outStringLength: SteamParameterExpr?
+            let defaultValue: SteamParameterExpr?
             let inOut: Bool
             let nullable: Bool
 
@@ -321,6 +323,7 @@ struct MetadataDB {
 //              precondition(arrayCount == nil || outArrayLength == nil, "base=\(base), patch=\(patch)")
                 // something weird in inventory...
                 precondition(outArrayLength == nil || outStringLength == nil)
+                self.defaultValue = patch?.default_value.map { .init($0) }
             }
         }
         let params: [Param]

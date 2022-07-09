@@ -137,7 +137,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
     public func getCertificateRequest(blobSize: Int, blob: UnsafeMutableRawPointer?) -> (rc: Bool, blobSize: Int, msg: String) {
         var tmpBlobSize = CInt(blobSize)
-        let tmpMsg = SteamString(length: Int(1024))
+        let tmpMsg = SteamString(length: 1024)
         let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, blob, tmpMsg.charBuffer)
         return (rc: rc, blobSize: Int(tmpBlobSize), msg: tmpMsg.swiftString)
     }
@@ -300,7 +300,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`
     public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int) -> (rc: Bool, msg: String) {
-        let tmpMsg = SteamString(length: Int(1024))
+        let tmpMsg = SteamString(length: 1024)
         let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, CInt(certificateSize), tmpMsg.charBuffer)
         return (rc: rc, msg: tmpMsg.swiftString)
     }

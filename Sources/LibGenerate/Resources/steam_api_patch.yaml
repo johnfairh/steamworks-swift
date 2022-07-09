@@ -884,6 +884,21 @@ methods:
       pchBuffer:
         out_string_count: cubBuffer
     out_param_iff_rc: ' '
+  SteamAPI_ISteamUser_GetAvailableVoice:
+    params:
+      nUncompressedVoiceDesiredSampleRate_Deprecated:
+        default_value: 0
+  SteamAPI_ISteamUser_GetVoice:
+    params:
+      bWantUncompressed_Deprecated:
+        default_value: false
+      pUncompressedDestBuffer_Deprecated:
+        nullable: true
+        default_value: nil
+      cbUncompressedDestBufferSize_Deprecated:
+        default_value: 0
+      nUncompressedVoiceDesiredSampleRate_Deprecated:
+        default_value: 0
 #
 # ISteamUserStats
 #
