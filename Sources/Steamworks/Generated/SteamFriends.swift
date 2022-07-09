@@ -286,7 +286,7 @@ public struct SteamFriends {
 
     /// Steamworks `ISteamFriends::GetFriendsGroupMembersList()`
     public func getFriendsGroupMembersList(friendsGroupID: FriendsGroupID, membersCount: Int) -> [SteamID] {
-        let tmpMembers = SteamOutArray<CSteamID>(membersCount)
+        let tmpMembers = SteamOutArray<CSteamID>(membersCount) /* ARR_SZ */
         SteamAPI_ISteamFriends_GetFriendsGroupMembersList(interface, FriendsGroupID_t(friendsGroupID), tmpMembers.steamArray, CInt(membersCount))
         return tmpMembers.swiftArray()
     }

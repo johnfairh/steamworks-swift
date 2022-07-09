@@ -91,7 +91,7 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::GetPOPList()`
     public func getPOPList(listSz: Int) -> (rc: Int, list: [SteamNetworkingPOPID]) {
-        let tmpList = SteamOutArray<CSteamworks.SteamNetworkingPOPID>(listSz)
+        let tmpList = SteamOutArray<CSteamworks.SteamNetworkingPOPID>(listSz) /* ARR_SZ */
         let rc = Int(SteamAPI_ISteamNetworkingUtils_GetPOPList(interface, tmpList.steamArray, CInt(listSz)))
         return (rc: rc, list: tmpList.swiftArray(Int(rc)))
     }

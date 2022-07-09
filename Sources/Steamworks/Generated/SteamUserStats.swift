@@ -154,7 +154,7 @@ public struct SteamUserStats {
     /// Steamworks `ISteamUserStats::GetDownloadedLeaderboardEntry()`
     public func getDownloadedLeaderboardEntry(steamLeaderboardEntries: SteamLeaderboardEntries, index: Int, detailsMax: Int) -> (rc: Bool, leaderboardEntry: LeaderboardEntry, details: [Int]) {
         var tmpLeaderboardEntry = LeaderboardEntry_t()
-        let tmpDetails = SteamOutArray<int32>(detailsMax)
+        let tmpDetails = SteamOutArray<int32>(detailsMax) /* ARR_SZ */
         let rc = SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry(interface, SteamLeaderboardEntries_t(steamLeaderboardEntries), CInt(index), &tmpLeaderboardEntry, tmpDetails.steamArray, CInt(detailsMax))
         if rc {
             return (rc: rc, leaderboardEntry: LeaderboardEntry(tmpLeaderboardEntry), details: tmpDetails.swiftArray())
@@ -179,7 +179,7 @@ public struct SteamUserStats {
 
     /// Steamworks `ISteamUserStats::GetGlobalStatHistory()`
     public func getGlobalStatHistoryInt(statName: String, dataSize: Int) -> (rc: Int, data: [Int]) {
-        let tmpData = SteamOutArray<int64>(dataSize / 8)
+        let tmpData = SteamOutArray<int64>(dataSize / 8) /* ARR_SZ */
         let rc = Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryInt64(interface, statName, tmpData.steamArray, uint32(dataSize)))
         return (rc: rc, data: tmpData.swiftArray(Int(rc)))
     }

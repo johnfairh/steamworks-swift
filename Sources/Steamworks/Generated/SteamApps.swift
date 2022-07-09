@@ -156,7 +156,7 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::GetInstalledDepots()`
     public func getInstalledDepots(id: AppID, maxDepots: Int) -> (rc: Int, depots: [DepotID]) {
-        let tmpDepots = SteamOutArray<DepotId_t>(maxDepots)
+        let tmpDepots = SteamOutArray<DepotId_t>(maxDepots) /* ARR_SZ */
         let rc = Int(SteamAPI_ISteamApps_GetInstalledDepots(interface, AppId_t(id), tmpDepots.steamArray, uint32(maxDepots)))
         return (rc: rc, depots: tmpDepots.swiftArray(Int(rc)))
     }

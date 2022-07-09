@@ -58,7 +58,7 @@ public struct SteamParties {
 
     /// Steamworks `ISteamParties::GetAvailableBeaconLocations()`
     public func getAvailableBeaconLocations(maxNumLocations: Int) -> (rc: Bool, locationList: [SteamPartyBeaconLocation]) {
-        let tmpLocationList = SteamOutArray<SteamPartyBeaconLocation_t>(maxNumLocations)
+        let tmpLocationList = SteamOutArray<SteamPartyBeaconLocation_t>(maxNumLocations) /* ARR_SZ */
         let rc = SteamAPI_ISteamParties_GetAvailableBeaconLocations(interface, tmpLocationList.steamArray, uint32(maxNumLocations))
         return (rc: rc, locationList: tmpLocationList.swiftArray())
     }

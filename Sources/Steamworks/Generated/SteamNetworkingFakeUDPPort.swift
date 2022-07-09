@@ -24,7 +24,7 @@ public final class SteamNetworkingFakeUDPPort {
 
     /// Steamworks `ISteamNetworkingFakeUDPPort::ReceiveMessages()`
     public func receiveMessages(maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
-        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
+        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages) /* ARR_SZ */
         let rc = Int(SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages(interface, tmpMessages.steamArray, CInt(maxMessages)))
         return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
     }

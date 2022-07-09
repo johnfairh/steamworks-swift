@@ -89,7 +89,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::GetEligiblePromoItemDefinitionIDs()`
     public func getEligiblePromoItemDefinitionIDs(steamID: SteamID, itemDefIDsArraySize: Int) -> (rc: Bool, itemDefIDs: [SteamItemDef], itemDefIDsArraySize: Int) {
-        let tmpItemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize)
+        let tmpItemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize) /* ARR_SZ */
         var tmpItemDefIDsArraySize = uint32(itemDefIDsArraySize)
         let rc = SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs(interface, CUnsignedLongLong(steamID), tmpItemDefIDs.steamArray, &tmpItemDefIDsArraySize)
         if rc {
@@ -101,7 +101,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::GetItemDefinitionIDs()`
     public func getItemDefinitionIDs(returnItemDefIDs: Bool = true, itemDefIDsArraySize: Int) -> (rc: Bool, itemDefIDs: [SteamItemDef], itemDefIDsArraySize: Int) {
-        let tmpItemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize, returnItemDefIDs)
+        let tmpItemDefIDs = SteamOutArray<SteamItemDef_t>(itemDefIDsArraySize, returnItemDefIDs) /* ARR_SZ */
         var tmpItemDefIDsArraySize = uint32(itemDefIDsArraySize)
         let rc = SteamAPI_ISteamInventory_GetItemDefinitionIDs(interface, tmpItemDefIDs.steamArray, &tmpItemDefIDsArraySize)
         if rc {
@@ -137,7 +137,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::GetItemsWithPrices()`
     public func getItemsWithPrices(arrayLength: Int) -> (rc: Bool, arrayItemDefs: [SteamItemDef], currentPrices: [UInt64], basePrices: [UInt64]) {
-        let tmpArrayItemDefs = SteamOutArray<SteamItemDef_t>(arrayLength)
+        let tmpArrayItemDefs = SteamOutArray<SteamItemDef_t>(arrayLength) /* ARR_SZ */
         var currentPrices = [UInt64](repeating: .init(), count: arrayLength)
         var basePrices = [UInt64](repeating: .init(), count: arrayLength)
         let rc = SteamAPI_ISteamInventory_GetItemsWithPrices(interface, tmpArrayItemDefs.steamArray, &currentPrices, &basePrices, uint32(arrayLength))
@@ -163,7 +163,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::GetResultItems()`
     public func getResultItems(handle: SteamInventoryResult, returnItemsArray: Bool = true, itemsArraySize: Int) -> (rc: Bool, itemsArray: [SteamItemDetails], itemsArraySize: Int) {
-        let tmpItemsArray = SteamOutArray<SteamItemDetails_t>(itemsArraySize, returnItemsArray)
+        let tmpItemsArray = SteamOutArray<SteamItemDetails_t>(itemsArraySize, returnItemsArray) /* ARR_SZ */
         var tmpItemsArraySize = uint32(itemsArraySize)
         let rc = SteamAPI_ISteamInventory_GetResultItems(interface, SteamInventoryResult_t(handle), tmpItemsArray.steamArray, &tmpItemsArraySize)
         if rc {

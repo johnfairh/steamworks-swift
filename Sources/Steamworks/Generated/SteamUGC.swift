@@ -335,7 +335,7 @@ public struct SteamUGC {
 
     /// Steamworks `ISteamUGC::GetSubscribedItems()`
     public func getSubscribedItems(maxEntries: Int) -> (rc: Int, publishedFileID: [PublishedFileID]) {
-        let tmpPublishedFileID = SteamOutArray<PublishedFileId_t>(maxEntries)
+        let tmpPublishedFileID = SteamOutArray<PublishedFileId_t>(maxEntries) /* ARR_SZ */
         let rc = Int(SteamAPI_ISteamUGC_GetSubscribedItems(interface, tmpPublishedFileID.steamArray, uint32(maxEntries)))
         return (rc: rc, publishedFileID: tmpPublishedFileID.swiftArray(Int(rc)))
     }

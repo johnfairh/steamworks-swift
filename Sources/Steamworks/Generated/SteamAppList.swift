@@ -48,7 +48,7 @@ public struct SteamAppList {
 
     /// Steamworks `ISteamAppList::GetInstalledApps()`
     public func getInstalledApps(maxAppIDs: Int) -> (rc: Int, appID: [AppID]) {
-        let tmpAppID = SteamOutArray<AppId_t>(maxAppIDs)
+        let tmpAppID = SteamOutArray<AppId_t>(maxAppIDs) /* ARR_SZ */
         let rc = Int(SteamAPI_ISteamAppList_GetInstalledApps(interface, tmpAppID.steamArray, uint32(maxAppIDs)))
         return (rc: rc, appID: tmpAppID.swiftArray(Int(rc)))
     }

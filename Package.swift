@@ -20,6 +20,9 @@ let package = Package(
     .library(
       name: "SteamworksEncryptedAppTicket",
       targets: ["SteamworksEncryptedAppTicket"]),
+    .library(
+      name: "SteamworksHelpers",
+      targets: ["SteamworksHelpers"]),
     .executable(
       name: "Client",
       targets: ["Client"]),
@@ -54,9 +57,15 @@ let package = Package(
         .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
       ]
     ),
+    .target(
+      name: "SteamworksHelpers",
+      dependencies: [
+        "Steamworks"
+      ]
+    ),
     .executableTarget(
         name: "Client",
-        dependencies: ["Steamworks"]),
+        dependencies: ["Steamworks", "SteamworksHelpers"]),
     .executableTarget(
         name: "TicketClient",
         dependencies: ["SteamworksEncryptedAppTicket"]),

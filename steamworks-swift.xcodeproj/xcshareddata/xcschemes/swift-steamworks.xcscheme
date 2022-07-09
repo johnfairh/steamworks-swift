@@ -104,6 +104,20 @@
                ReferencedContainer = "container:steamworks-swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "02B81ADF28799FEE00780A57"
+               BuildableName = "SteamworksHelpers.framework"
+               BlueprintName = "SteamworksHelpers"
+               ReferencedContainer = "container:steamworks-swift.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -165,6 +179,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "020860AD273047D100725122"
+            BuildableName = "LibGenerate.framework"
+            BlueprintName = "LibGenerate"
+            ReferencedContainer = "container:steamworks-swift.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
