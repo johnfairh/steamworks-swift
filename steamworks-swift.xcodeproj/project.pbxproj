@@ -86,6 +86,8 @@
 		02B81AFD2879A04D00780A57 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02B81AFE2879A04D00780A57 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02B81B032879A0B400780A57 /* SteamAppList+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B022879A0B400780A57 /* SteamAppList+Helpers.swift */; };
+		02B81B062879A54900780A57 /* SteamFriends+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B052879A54900780A57 /* SteamFriends+Helpers.swift */; };
+		02B81B08287AC08400780A57 /* SteamInventory+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B07287AC08400780A57 /* SteamInventory+Helpers.swift */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -313,6 +315,8 @@
 		02AD45EF2758F01100BD93ED /* steam_matchmaking_shims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = steam_matchmaking_shims.h; sourceTree = "<group>"; };
 		02B81AFA28799FEE00780A57 /* SteamworksHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SteamworksHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B81B022879A0B400780A57 /* SteamAppList+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SteamAppList+Helpers.swift"; sourceTree = "<group>"; };
+		02B81B052879A54900780A57 /* SteamFriends+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamFriends+Helpers.swift"; sourceTree = "<group>"; };
+		02B81B07287AC08400780A57 /* SteamInventory+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamInventory+Helpers.swift"; sourceTree = "<group>"; };
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 			isa = PBXGroup;
 			children = (
 				02B81B022879A0B400780A57 /* SteamAppList+Helpers.swift */,
+				02B81B052879A54900780A57 /* SteamFriends+Helpers.swift */,
+				02B81B07287AC08400780A57 /* SteamInventory+Helpers.swift */,
 			);
 			name = SteamworksHelpers;
 			path = Sources/SteamworksHelpers;
@@ -961,7 +967,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B81B062879A54900780A57 /* SteamFriends+Helpers.swift in Sources */,
 				02B81B032879A0B400780A57 /* SteamAppList+Helpers.swift in Sources */,
+				02B81B08287AC08400780A57 /* SteamInventory+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

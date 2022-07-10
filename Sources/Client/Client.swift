@@ -6,6 +6,7 @@
 //
 
 import Steamworks
+import SteamworksHelpers
 import Foundation
 
 // A testbed to verify API coherence and the callback etc. pieces, not attempting
@@ -430,8 +431,8 @@ final class Client {
             guard r.result == .ok else {
                 return // we wait
             }
-            let (rc, _, count) = self.api.inventory.getResultItems(handle: r.handle, returnItemsArray: false, itemsArraySize: 0)
-            print("GetResultItems rc=\(rc) itemCount=\(count)")
+            let (rc, items) = self.api.inventory.getResultItems(handle: r.handle)
+            print("GetResultItems rc=\(rc) itemCount=\(items.count)")
 
             self.api.inventory.destroyResult(handle: r.handle)
             self.endTest()
