@@ -53,7 +53,7 @@ public struct SteamNetworkingMessages {
 
     /// Steamworks `ISteamNetworkingMessages::ReceiveMessagesOnChannel()`
     public func receiveMessagesOnChannel(localChannel: Int, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
-        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages) /* ARR_SZ */
+        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
         let rc = Int(SteamAPI_ISteamNetworkingMessages_ReceiveMessagesOnChannel(interface, CInt(localChannel), tmpMessages.steamArray, CInt(maxMessages)))
         return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
     }

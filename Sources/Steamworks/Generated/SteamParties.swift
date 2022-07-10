@@ -58,7 +58,7 @@ public struct SteamParties {
 
     /// Steamworks `ISteamParties::GetAvailableBeaconLocations()`
     public func getAvailableBeaconLocations(maxNumLocations: Int) -> (rc: Bool, locationList: [SteamPartyBeaconLocation]) {
-        let tmpLocationList = SteamOutArray<SteamPartyBeaconLocation_t>(maxNumLocations) /* ARR_SZ */
+        let tmpLocationList = SteamOutArray<SteamPartyBeaconLocation_t>(maxNumLocations)
         let rc = SteamAPI_ISteamParties_GetAvailableBeaconLocations(interface, tmpLocationList.steamArray, uint32(maxNumLocations))
         return (rc: rc, locationList: tmpLocationList.swiftArray())
     }
@@ -72,14 +72,14 @@ public struct SteamParties {
     public func getBeaconDetails(beaconID: PartyBeaconID, metadataSize: Int) -> (rc: Bool, beaconOwner: SteamID, location: SteamPartyBeaconLocation, metadata: String) {
         var tmpBeaconOwner = CSteamID()
         var tmpLocation = SteamPartyBeaconLocation_t()
-        let tmpMetadata = SteamString(length: metadataSize)
+        let tmpMetadata = SteamString(length: metadataSize) /* OUT_STR */
         let rc = SteamAPI_ISteamParties_GetBeaconDetails(interface, PartyBeaconID_t(beaconID), &tmpBeaconOwner, &tmpLocation, tmpMetadata.charBuffer, CInt(metadataSize))
         return (rc: rc, beaconOwner: SteamID(tmpBeaconOwner), location: SteamPartyBeaconLocation(tmpLocation), metadata: tmpMetadata.swiftString)
     }
 
     /// Steamworks `ISteamParties::GetBeaconLocationData()`
     public func getBeaconLocationData(beaconLocation: SteamPartyBeaconLocation, data: SteamPartyBeaconLocationData, dataStringOutSize: Int) -> (rc: Bool, dataString: String) {
-        let tmpDataString = SteamString(length: dataStringOutSize)
+        let tmpDataString = SteamString(length: dataStringOutSize) /* OUT_STR */
         let rc = SteamAPI_ISteamParties_GetBeaconLocationData(interface, SteamPartyBeaconLocation_t(beaconLocation), ESteamPartyBeaconLocationData(data), tmpDataString.charBuffer, CInt(dataStringOutSize))
         return (rc: rc, dataString: tmpDataString.swiftString)
     }

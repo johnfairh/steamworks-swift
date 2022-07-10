@@ -119,8 +119,8 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::GetLobbyDataByIndex()`
     public func getLobbyDataByIndex(lobby: SteamID, lobbyDataIndex: Int, keyBufferSize: Int, valueBufferSize: Int) -> (rc: Bool, key: String, value: String) {
-        let tmpKey = SteamString(length: keyBufferSize)
-        let tmpValue = SteamString(length: valueBufferSize)
+        let tmpKey = SteamString(length: keyBufferSize) /* OUT_STR */
+        let tmpValue = SteamString(length: valueBufferSize) /* OUT_STR */
         let rc = SteamAPI_ISteamMatchmaking_GetLobbyDataByIndex(interface, CUnsignedLongLong(lobby), CInt(lobbyDataIndex), tmpKey.charBuffer, CInt(keyBufferSize), tmpValue.charBuffer, CInt(valueBufferSize))
         return (rc: rc, key: tmpKey.swiftString, value: tmpValue.swiftString)
     }

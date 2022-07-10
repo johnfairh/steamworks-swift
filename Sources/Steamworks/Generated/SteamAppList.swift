@@ -26,7 +26,7 @@ public struct SteamAppList {
 
     /// Steamworks `ISteamAppList::GetAppInstallDir()`
     public func getAppInstallDir(appID: AppID, nameMaxSize: Int) -> (rc: Int, directory: String) {
-        let tmpDirectory = SteamString(length: nameMaxSize)
+        let tmpDirectory = SteamString(length: nameMaxSize) /* OUT_STR */
         let rc = Int(SteamAPI_ISteamAppList_GetAppInstallDir(interface, AppId_t(appID), tmpDirectory.charBuffer, CInt(nameMaxSize)))
         if rc != -1 {
             return (rc: rc, directory: tmpDirectory.swiftString)
@@ -37,7 +37,7 @@ public struct SteamAppList {
 
     /// Steamworks `ISteamAppList::GetAppName()`
     public func getAppName(appID: AppID, nameMaxSize: Int) -> (rc: Int, name: String) {
-        let tmpName = SteamString(length: nameMaxSize)
+        let tmpName = SteamString(length: nameMaxSize) /* OUT_STR */
         let rc = Int(SteamAPI_ISteamAppList_GetAppName(interface, AppId_t(appID), tmpName.charBuffer, CInt(nameMaxSize)))
         if rc != -1 {
             return (rc: rc, name: tmpName.swiftString)
@@ -48,7 +48,7 @@ public struct SteamAppList {
 
     /// Steamworks `ISteamAppList::GetInstalledApps()`
     public func getInstalledApps(maxAppIDs: Int) -> (rc: Int, appID: [AppID]) {
-        let tmpAppID = SteamOutArray<AppId_t>(maxAppIDs) /* ARR_SZ */
+        let tmpAppID = SteamOutArray<AppId_t>(maxAppIDs)
         let rc = Int(SteamAPI_ISteamAppList_GetInstalledApps(interface, tmpAppID.steamArray, uint32(maxAppIDs)))
         return (rc: rc, appID: tmpAppID.swiftArray(Int(rc)))
     }

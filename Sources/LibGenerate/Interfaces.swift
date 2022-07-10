@@ -344,7 +344,7 @@ final class SteamParam {
         case .out_array(let size):
             let nativeType = steamType.swiftNativeType
             let nullability = db.nullable ? ", \(returnParamName)" : ""
-            line = "let \(tempName) = SteamOutArray<\(nativeType)>(\(size.swiftExpr)\(nullability)) /* ARR_SZ */"
+            line = "let \(tempName) = SteamOutArray<\(nativeType)>(\(size.swiftExpr)\(nullability))"
 
         case .out_transparent_array(let size):
             precondition(!db.nullable, "Can't do transparent-out-array-nullable, regress to !transparent")
@@ -352,7 +352,7 @@ final class SteamParam {
 
         case .out_string(let size):
             let nullability = db.nullable ? ", isReal: \(returnParamName)" : ""
-            line = "let \(tempName) = SteamString(length: \(size.swiftExpr)\(nullability))"
+            line = "let \(tempName) = SteamString(length: \(size.swiftExpr)\(nullability)) /* OUT_STR */"
         }
 
         return line.isEmpty ? [] : deallocateTemp ? [line, "defer { \(tempName).deallocate() }"] : [line]

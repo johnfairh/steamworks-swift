@@ -417,7 +417,7 @@ final class Client {
             }
             print(status.details)
 
-            let (_, pops) = self.api.networkingUtils.getPOPList(listSz: self.api.networkingUtils.getPOPCount())
+            let (_, pops) = self.api.networkingUtils.getPOPList()
             print("Got \(pops.count) POPs")
             
             self.endTest()

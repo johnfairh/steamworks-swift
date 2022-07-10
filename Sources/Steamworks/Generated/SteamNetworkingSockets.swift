@@ -137,7 +137,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
     public func getCertificateRequest(blobSize: Int, blob: UnsafeMutableRawPointer?) -> (rc: Bool, blobSize: Int, msg: String) {
         var tmpBlobSize = CInt(blobSize)
-        let tmpMsg = SteamString(length: 1024)
+        let tmpMsg = SteamString(length: 1024) /* OUT_STR */
         let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, blob, tmpMsg.charBuffer)
         return (rc: rc, blobSize: Int(tmpBlobSize), msg: tmpMsg.swiftString)
     }
@@ -155,7 +155,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionName()`
     public func getConnectionName(peer: HSteamNetConnection, maxLen: Int) -> (rc: Bool, name: String) {
-        let tmpName = SteamString(length: maxLen)
+        let tmpName = SteamString(length: maxLen) /* OUT_STR */
         let rc = SteamAPI_ISteamNetworkingSockets_GetConnectionName(interface, CSteamworks.HSteamNetConnection(peer), tmpName.charBuffer, CInt(maxLen))
         if rc {
             return (rc: rc, name: tmpName.swiftString)
@@ -168,7 +168,7 @@ public struct SteamNetworkingSockets {
     public func getConnectionRealTimeStatus(conn: HSteamNetConnection, returnStatus: Bool = true, laneCount: Int, returnLaneStatus: Bool = true) -> (rc: Result, status: SteamNetConnectionRealTimeStatus, laneStatus: [SteamNetConnectionRealTimeLaneStatus]) {
         let tmpStatus = SteamNullable<SteamNetConnectionRealTimeStatus_t>(isReal: returnStatus)
         defer { tmpStatus.deallocate() }
-        let tmpLaneStatus = SteamOutArray<SteamNetConnectionRealTimeLaneStatus_t>(laneCount, returnLaneStatus) /* ARR_SZ */
+        let tmpLaneStatus = SteamOutArray<SteamNetConnectionRealTimeLaneStatus_t>(laneCount, returnLaneStatus)
         let rc = Result(SteamAPI_ISteamNetworkingSockets_GetConnectionRealTimeStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpStatus.steamValue, CInt(laneCount), tmpLaneStatus.steamArray))
         if rc == .ok {
             return (rc: rc, status: tmpStatus.swiftValue(dummy: SteamNetConnectionRealTimeStatus()), laneStatus: tmpLaneStatus.swiftArray())
@@ -184,7 +184,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetDetailedConnectionStatus()`
     public func getDetailedConnectionStatus(conn: HSteamNetConnection, bufSize: Int) -> (rc: Int, buf: String) {
-        let tmpBuf = SteamString(length: bufSize)
+        let tmpBuf = SteamString(length: bufSize) /* OUT_STR */
         let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpBuf.charBuffer, CInt(bufSize)))
         if rc == 0 {
             return (rc: rc, buf: tmpBuf.swiftString)
@@ -251,7 +251,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::ReceiveMessagesOnConnection()`
     public func receiveMessagesOnConnection(conn: HSteamNetConnection, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
-        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages) /* ARR_SZ */
+        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
         let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection(interface, CSteamworks.HSteamNetConnection(conn), tmpMessages.steamArray, CInt(maxMessages)))
         if rc >= 0 {
             return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
@@ -262,7 +262,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::ReceiveMessagesOnPollGroup()`
     public func receiveMessagesOnPollGroup(pollGroup: HSteamNetPollGroup, maxMessages: Int) -> (rc: Int, messages: [SteamNetworkingMessage]) {
-        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages) /* ARR_SZ */
+        let tmpMessages = SteamOutArray<OpaquePointer?>(maxMessages)
         let rc = Int(SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnPollGroup(interface, CSteamworks.HSteamNetPollGroup(pollGroup), tmpMessages.steamArray, CInt(maxMessages)))
         if rc >= 0 {
             return (rc: rc, messages: tmpMessages.swiftArray(Int(rc)))
@@ -293,14 +293,14 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::SendMessages()`
     public func sendMessages(messages: [SteamNetworkingMessage]) -> [Int] {
         var tmpMessages = messages.map { OpaquePointer?($0) }
-        let tmpMessageNumberOrResult = SteamOutArray<int64>(messages.count) /* ARR_SZ */
+        let tmpMessageNumberOrResult = SteamOutArray<int64>(messages.count)
         SteamAPI_ISteamNetworkingSockets_SendMessages(interface, CInt(messages.count), &tmpMessages, tmpMessageNumberOrResult.steamArray)
         return tmpMessageNumberOrResult.swiftArray()
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`
     public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int) -> (rc: Bool, msg: String) {
-        let tmpMsg = SteamString(length: 1024)
+        let tmpMsg = SteamString(length: 1024) /* OUT_STR */
         let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, CInt(certificateSize), tmpMsg.charBuffer)
         return (rc: rc, msg: tmpMsg.swiftString)
     }

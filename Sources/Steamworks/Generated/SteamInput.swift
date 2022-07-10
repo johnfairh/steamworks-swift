@@ -66,7 +66,7 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::GetActiveActionSetLayers()`
     public func getActiveActionSetLayers(handle: InputHandle) -> (rc: Int, handles: [InputActionSetHandle]) {
-        let tmpHandles = SteamOutArray<InputActionSetHandle_t>(Int(STEAM_INPUT_MAX_ACTIVE_LAYERS)) /* ARR_SZ */
+        let tmpHandles = SteamOutArray<InputActionSetHandle_t>(Int(STEAM_INPUT_MAX_ACTIVE_LAYERS))
         let rc = Int(SteamAPI_ISteamInput_GetActiveActionSetLayers(interface, InputHandle_t(handle), tmpHandles.steamArray))
         return (rc: rc, handles: tmpHandles.swiftArray(Int(rc)))
     }
@@ -83,14 +83,14 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::GetAnalogActionOrigins()`
     public func getAnalogActionOrigins(handle: InputHandle, setHandle: InputActionSetHandle, actionHandle: InputAnalogActionHandle) -> (rc: Int, origins: [InputActionOrigin]) {
-        let tmpOrigins = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS)) /* ARR_SZ */
+        let tmpOrigins = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS))
         let rc = Int(SteamAPI_ISteamInput_GetAnalogActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputAnalogActionHandle_t(actionHandle), tmpOrigins.steamArray))
         return (rc: rc, origins: tmpOrigins.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamInput::GetConnectedControllers()`
     public func getConnectedControllers() -> (rc: Int, handles: [InputHandle]) {
-        let tmpHandles = SteamOutArray<InputHandle_t>(Int(STEAM_INPUT_MAX_COUNT)) /* ARR_SZ */
+        let tmpHandles = SteamOutArray<InputHandle_t>(Int(STEAM_INPUT_MAX_COUNT))
         let rc = Int(SteamAPI_ISteamInput_GetConnectedControllers(interface, tmpHandles.steamArray))
         return (rc: rc, handles: tmpHandles.swiftArray(Int(rc)))
     }
@@ -125,7 +125,7 @@ public struct SteamInput {
 
     /// Steamworks `ISteamInput::GetDigitalActionOrigins()`
     public func getDigitalActionOrigins(handle: InputHandle, setHandle: InputActionSetHandle, actionHandle: InputDigitalActionHandle) -> (rc: Int, origins: [InputActionOrigin]) {
-        let tmpOrigins = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS)) /* ARR_SZ */
+        let tmpOrigins = SteamOutArray<EInputActionOrigin>(Int(STEAM_INPUT_MAX_ORIGINS))
         let rc = Int(SteamAPI_ISteamInput_GetDigitalActionOrigins(interface, InputHandle_t(handle), InputActionSetHandle_t(setHandle), InputDigitalActionHandle_t(actionHandle), tmpOrigins.steamArray))
         return (rc: rc, origins: tmpOrigins.swiftArray(Int(rc)))
     }

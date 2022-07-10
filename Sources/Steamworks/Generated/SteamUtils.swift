@@ -46,7 +46,7 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::FilterText()`
     public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, byteSizeOutFilteredText: Int) -> (rc: Int, filteredText: String) {
-        let tmpFilteredText = SteamString(length: byteSizeOutFilteredText)
+        let tmpFilteredText = SteamString(length: byteSizeOutFilteredText) /* OUT_STR */
         let rc = Int(SteamAPI_ISteamUtils_FilterText(interface, ETextFilteringContext(context), CUnsignedLongLong(steamID), inputMessage, tmpFilteredText.charBuffer, uint32(byteSizeOutFilteredText)))
         return (rc: rc, filteredText: tmpFilteredText.swiftString)
     }
@@ -80,7 +80,7 @@ public struct SteamUtils {
 
     /// Steamworks `ISteamUtils::GetEnteredGamepadTextInput()`
     public func getEnteredGamepadTextInput(textSize: Int) -> (rc: Bool, text: String) {
-        let tmpText = SteamString(length: textSize)
+        let tmpText = SteamString(length: textSize) /* OUT_STR */
         let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmpText.charBuffer, uint32(textSize))
         return (rc: rc, text: tmpText.swiftString)
     }

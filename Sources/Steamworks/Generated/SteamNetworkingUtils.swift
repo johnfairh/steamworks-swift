@@ -31,7 +31,7 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::ConvertPingLocationToString()`
     public func convertPingLocationToString(location: SteamNetworkPingLocation, bufSize: Int) -> String {
-        let tmpBuf = SteamString(length: bufSize)
+        let tmpBuf = SteamString(length: bufSize) /* OUT_STR */
         SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString(interface, SteamNetworkPingLocation_t(location), tmpBuf.charBuffer, CInt(bufSize))
         return tmpBuf.swiftString
     }
@@ -91,7 +91,7 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::GetPOPList()`
     public func getPOPList(listSz: Int) -> (rc: Int, list: [SteamNetworkingPOPID]) {
-        let tmpList = SteamOutArray<CSteamworks.SteamNetworkingPOPID>(listSz) /* ARR_SZ */
+        let tmpList = SteamOutArray<CSteamworks.SteamNetworkingPOPID>(listSz)
         let rc = Int(SteamAPI_ISteamNetworkingUtils_GetPOPList(interface, tmpList.steamArray, CInt(listSz)))
         return (rc: rc, list: tmpList.swiftArray(Int(rc)))
     }

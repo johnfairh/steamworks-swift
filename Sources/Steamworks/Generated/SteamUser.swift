@@ -151,7 +151,7 @@ public struct SteamUser {
 
     /// Steamworks `ISteamUser::GetUserDataFolder()`
     public func getUserDataFolder(bufferSize: Int) -> (rc: Bool, buffer: String) {
-        let tmpBuffer = SteamString(length: bufferSize)
+        let tmpBuffer = SteamString(length: bufferSize) /* OUT_STR */
         let rc = SteamAPI_ISteamUser_GetUserDataFolder(interface, tmpBuffer.charBuffer, CInt(bufferSize))
         if rc {
             return (rc: rc, buffer: tmpBuffer.swiftString)
