@@ -49,7 +49,7 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::DeserializeResult()`
-    public func deserializeResult(buffer: UnsafeRawPointer, bufferSize: Int, reservedMUSTBEFALSE: Bool) -> (rc: Bool, resultHandle: SteamInventoryResult) {
+    public func deserializeResult(buffer: UnsafeRawPointer, bufferSize: Int, reservedMUSTBEFALSE: Bool = false) -> (rc: Bool, resultHandle: SteamInventoryResult) {
         var tmpResultHandle = SteamInventoryResult_t()
         let rc = SteamAPI_ISteamInventory_DeserializeResult(interface, &tmpResultHandle, buffer, uint32(bufferSize), reservedMUSTBEFALSE)
         return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))

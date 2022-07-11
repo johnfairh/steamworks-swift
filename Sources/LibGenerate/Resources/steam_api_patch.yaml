@@ -290,6 +290,10 @@ methods:
         out_array_valid_count: rc
   SteamAPI_ISteamInput_GetRemotePlaySessionID:
     returntype: RemotePlaySessionID_t
+  SteamAPI_ISteamInput_RunFrame:
+    params:
+      bReservedValue:
+        default_value: true
   SteamAPI_ISteamInput_SetLEDColor:
     params:
       nFlags:
@@ -297,6 +301,10 @@ methods:
 #
 # ISteamInventory
 #
+  SteamAPI_ISteamInventory_DeserializeResult:
+    params:
+      bRESERVED_MUST_BE_FALSE:
+        default_value: false
   SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs:
     out_param_iff_rc: ' '
     params:

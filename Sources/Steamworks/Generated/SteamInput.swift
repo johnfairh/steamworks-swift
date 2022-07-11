@@ -211,7 +211,7 @@ public struct SteamInput {
     }
 
     /// Steamworks `ISteamInput::RunFrame()`
-    public func runFrame(reservedValue: Bool) {
+    public func runFrame(reservedValue: Bool = true) {
         SteamAPI_ISteamInput_RunFrame(interface, reservedValue)
     }
 
