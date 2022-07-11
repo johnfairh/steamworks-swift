@@ -113,7 +113,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::GetItemDefinitionProperty()`
     public func getItemDefinitionProperty(definitionIndex: SteamItemDef, propertyName: String?, returnValueBuffer: Bool = true, valueBufferSize: Int) -> (rc: Bool, valueBuffer: String, valueBufferSize: Int) {
-        let tmpValueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer) /* OUT_STR */
+        let tmpValueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer)
         var tmpValueBufferSize = uint32(valueBufferSize)
         let rc = SteamAPI_ISteamInventory_GetItemDefinitionProperty(interface, SteamItemDef_t(definitionIndex), propertyName, tmpValueBuffer.charBuffer, &tmpValueBufferSize)
         return (rc: rc, valueBuffer: tmpValueBuffer.swiftString, valueBufferSize: Int(tmpValueBufferSize))
@@ -155,7 +155,7 @@ public struct SteamInventory {
 
     /// Steamworks `ISteamInventory::GetResultItemProperty()`
     public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, returnValueBuffer: Bool = true, valueBufferSize: Int) -> (rc: Bool, valueBuffer: String, valueBufferSize: Int) {
-        let tmpValueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer) /* OUT_STR */
+        let tmpValueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer)
         var tmpValueBufferSize = uint32(valueBufferSize)
         let rc = SteamAPI_ISteamInventory_GetResultItemProperty(interface, SteamInventoryResult_t(handle), uint32(itemIndex), propertyName, tmpValueBuffer.charBuffer, &tmpValueBufferSize)
         return (rc: rc, valueBuffer: tmpValueBuffer.swiftString, valueBufferSize: Int(tmpValueBufferSize))

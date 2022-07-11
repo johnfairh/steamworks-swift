@@ -795,6 +795,8 @@ methods:
     params:
       punTimeStamp:
         type: 'RTime32 *'
+      cchFolderSize:
+        default_value: k_cchFilenameMax
   SteamAPI_ISteamUGC_GetItemState:
     returntype: EItemState
   SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview:
@@ -802,20 +804,45 @@ methods:
     params:
       pchOriginalFileName:
         nullable: true
+      cchURLSize:
+        default_value: k_cchFilenameMax # sure
+      cchOriginalFileNameSize:
+        default_value: k_cchFilenameMax
   SteamAPI_ISteamUGC_GetQueryUGCChildren:
     out_param_iff_rc: ' '
+  SteamAPI_ISteamUGC_GetQueryFirstUGCKeyValueTag:
+    params:
+      cchValueSize:
+        default_value: k_cchUGCKeyValueMax + 1
   SteamAPI_ISteamUGC_GetQueryUGCKeyValueTag:
     out_param_iff_rc: ' '
+    params:
+      cchValueSize:
+        default_value: k_cchUGCKeyValueMax + 1
+      cchKeySize:
+        default_value: k_cchUGCKeyValueMax + 1
   SteamAPI_ISteamUGC_GetQueryUGCMetadata:
     out_param_iff_rc: ' '
+    params:
+      cchMetadataSize:
+        default_value: k_cchDeveloperMetadataMax
   SteamAPI_ISteamUGC_GetQueryUGCPreviewURL:
     out_param_iff_rc: ' '
+    params:
+      cchURLSize:
+        default_value: k_cchFilenameMax # sure
   SteamAPI_ISteamUGC_GetQueryUGCResult:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUGC_GetQueryUGCTag:
     out_param_iff_rc: ' '
+    params:
+      cchValueSize:
+        default_value: k_cchUGCKeyValueMax + 1
   SteamAPI_ISteamUGC_GetQueryUGCTagDisplayName:
     out_param_iff_rc: ' '
+    params:
+      cchValueSize:
+        default_value: k_cchUGCKeyValueMax + 1
   SteamAPI_ISteamUGC_GetSubscribedItems:
     params:
       pvecPublishedFileID:
@@ -894,6 +921,8 @@ methods:
     params:
       pchBuffer:
         out_string_count: cubBuffer
+      cubBuffer:
+        default_value: k_cchFilenameMax
     out_param_iff_rc: ' '
   SteamAPI_ISteamUser_GetAvailableVoice:
     params:
@@ -943,10 +972,14 @@ methods:
     params:
       pchName:
         out_string_count: unNameBufLen
+      unNameBufLen:
+        default_value: k_cchStatNameMax + 1
   SteamAPI_ISteamUserStats_GetNextMostAchievedAchievementInfo:
     params:
       pchName:
         out_string_count: unNameBufLen
+      unNameBufLen:
+        default_value: k_cchStatNameMax + 1
   SteamAPI_ISteamUserStats_GetStatInt32:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUserStats_GetUserAchievementAndUnlockTime:
@@ -986,6 +1019,7 @@ methods:
         out_string_count: pnBufferSize
       pnBufferSize:
         in_out: true
+        default_value: 48000 # sez the docs
     out_param_iff_rc: ' '
 #
 # Structs

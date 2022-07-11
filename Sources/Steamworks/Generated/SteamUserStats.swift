@@ -216,8 +216,8 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetMostAchievedAchievementInfo()`
-    public func getMostAchievedAchievementInfo(nameBufLen: Int) -> (rc: Int, name: String, percent: Float, achieved: Bool) {
-        let tmpName = SteamString(length: nameBufLen) /* OUT_STR */
+    public func getMostAchievedAchievementInfo(nameBufLen: Int = SteamConstants.statNameMaxSize + 1) -> (rc: Int, name: String, percent: Float, achieved: Bool) {
+        let tmpName = SteamString(length: nameBufLen)
         var tmpPercent = CFloat()
         var tmpAchieved = CBool()
         let rc = Int(SteamAPI_ISteamUserStats_GetMostAchievedAchievementInfo(interface, tmpName.charBuffer, uint32(nameBufLen), &tmpPercent, &tmpAchieved))
@@ -225,8 +225,8 @@ public struct SteamUserStats {
     }
 
     /// Steamworks `ISteamUserStats::GetNextMostAchievedAchievementInfo()`
-    public func getNextMostAchievedAchievementInfo(iteratorPreviousIndex: Int, nameBufLen: Int) -> (rc: Int, name: String, percent: Float, achieved: Bool) {
-        let tmpName = SteamString(length: nameBufLen) /* OUT_STR */
+    public func getNextMostAchievedAchievementInfo(iteratorPreviousIndex: Int, nameBufLen: Int = SteamConstants.statNameMaxSize + 1) -> (rc: Int, name: String, percent: Float, achieved: Bool) {
+        let tmpName = SteamString(length: nameBufLen)
         var tmpPercent = CFloat()
         var tmpAchieved = CBool()
         let rc = Int(SteamAPI_ISteamUserStats_GetNextMostAchievedAchievementInfo(interface, CInt(iteratorPreviousIndex), tmpName.charBuffer, uint32(nameBufLen), &tmpPercent, &tmpAchieved))

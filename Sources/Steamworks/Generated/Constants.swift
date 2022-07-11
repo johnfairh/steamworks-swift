@@ -135,6 +135,9 @@ public enum SteamConstants {
 
     /// Steamworks `k_cubUFSTagValueMax`
     public static let ufsTagValueMaxSize = Int(255)
+
+    /// Steamworks `k_cchUGCKeyValueMax`
+    public static let ugcKeyValueMaxSize = Int(255)
 }
 
 extension HServerQuery {

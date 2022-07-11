@@ -156,22 +156,26 @@ struct SteamParameterExpr: StringFungible {
     }
 
     private func swiftExprBase(prefix: String) -> SwiftExpr {
+        // recurse for arithmetic
+        if expr.contains(" ") {
+            return SwiftExpr(expr.split(separator: " ")
+                .map { SteamParameterExpr($0).swiftExprBase(prefix: prefix).expr }
+                .joined(separator: " "))
+        }
         // numeric constant, unchanged
         if expr.re_isMatch(#"^\d*$"#) {
             return SwiftExpr(expr)
         }
-        // check for ref to a constant
-        if expr.uppercased() == expr || expr.hasPrefix("k_"){
+        // check for ref to a constant (YIKES XXX just look up name?)
+        if expr.first!.isCased && (expr.uppercased() == expr || expr.hasPrefix("k_")) {
             if prefix.isEmpty {
                 return "Int(\(expr))"
             } else {
                 return "\(prefix)\(SteamHungarianName(expr).swiftName)"
             }
         }
-        // must be a parameter, convert
-        return SwiftExpr(expr.split(separator: " ")
-            .map { SteamHungarianName($0).swiftParameterName.expr }
-            .joined(separator: " "))
+        // must be a parameter ref
+        return SteamHungarianName(expr).swiftParameterName
     }
 }
 
@@ -364,7 +368,7 @@ final class SteamParam {
 
         case .out_string(let size):
             let nullability = db.nullable ? ", isReal: \(returnParamName)" : ""
-            line = "let \(tempName) = SteamString(length: \(size.swiftExpr)\(nullability)) /* OUT_STR */"
+            line = "let \(tempName) = SteamString(length: \(size.swiftExpr)\(nullability))"
         }
 
         return line.isEmpty ? [] : deallocateTemp ? [line, "defer { \(tempName).deallocate() }"] : [line]

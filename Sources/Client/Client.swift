@@ -156,7 +156,7 @@ final class Client {
 
         let rc = api.utils.initFilterText(filterOptions: 0)
         print("InitFilterText: \(rc)")
-        let (count, filteredStr) = api.utils.filterText(context: .chat, steamID: steamID, inputMessage: str, byteSizeOutFilteredText: 12)
+        let (count, filteredStr) = api.utils.filterText(context: .chat, steamID: steamID, inputMessage: str)
         print("Filtered, count=\(count) out=\(filteredStr)")
         endTest()
     }

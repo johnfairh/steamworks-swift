@@ -183,9 +183,9 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetItemInstallInfo()`
-    public func getItemInstallInfo(publishedFileID: PublishedFileID, folderSize: Int) -> (rc: Bool, sizeOnDisk: UInt64, folder: String, timeStamp: RTime32) {
+    public func getItemInstallInfo(publishedFileID: PublishedFileID, folderSize: Int = SteamConstants.filenameMaxSize) -> (rc: Bool, sizeOnDisk: UInt64, folder: String, timeStamp: RTime32) {
         var tmpSizeOnDisk = uint64()
-        let tmpFolder = SteamString(length: folderSize) /* OUT_STR */
+        let tmpFolder = SteamString(length: folderSize)
         var tmpTimeStamp = CSteamworks.RTime32()
         let rc = SteamAPI_ISteamUGC_GetItemInstallInfo(interface, PublishedFileId_t(publishedFileID), &tmpSizeOnDisk, tmpFolder.charBuffer, uint32(folderSize), &tmpTimeStamp)
         if rc {
@@ -214,16 +214,16 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCKeyValueTag()`
-    public func getQueryUGCKeyValueTag(handle: UGCQueryHandle, index: Int, key: String, valueSize: Int) -> (rc: Bool, value: String) {
-        let tmpValue = SteamString(length: valueSize) /* OUT_STR */
+    public func getQueryUGCKeyValueTag(handle: UGCQueryHandle, index: Int, key: String, valueSize: Int = SteamConstants.ugcKeyValueMaxSize + 1) -> (rc: Bool, value: String) {
+        let tmpValue = SteamString(length: valueSize)
         let rc = SteamAPI_ISteamUGC_GetQueryFirstUGCKeyValueTag(interface, UGCQueryHandle_t(handle), uint32(index), key, tmpValue.charBuffer, uint32(valueSize))
         return (rc: rc, value: tmpValue.swiftString)
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCAdditionalPreview()`
-    public func getQueryUGCAdditionalPreview(handle: UGCQueryHandle, index: Int, previewIndex: Int, urlSize: Int, returnOriginalFileName: Bool = true, originalFileNameSize: Int) -> (rc: Bool, urlOrVideoID: String, originalFileName: String, previewType: ItemPreviewType) {
-        let tmpUrlOrVideoID = SteamString(length: urlSize) /* OUT_STR */
-        let tmpOriginalFileName = SteamString(length: urlSize, isReal: returnOriginalFileName) /* OUT_STR */
+    public func getQueryUGCAdditionalPreview(handle: UGCQueryHandle, index: Int, previewIndex: Int, urlSize: Int = SteamConstants.filenameMaxSize, returnOriginalFileName: Bool = true, originalFileNameSize: Int = SteamConstants.filenameMaxSize) -> (rc: Bool, urlOrVideoID: String, originalFileName: String, previewType: ItemPreviewType) {
+        let tmpUrlOrVideoID = SteamString(length: urlSize)
+        let tmpOriginalFileName = SteamString(length: urlSize, isReal: returnOriginalFileName)
         var tmpPreviewType = EItemPreviewType(rawValue: 0)
         let rc = SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview(interface, UGCQueryHandle_t(handle), uint32(index), uint32(previewIndex), tmpUrlOrVideoID.charBuffer, uint32(urlSize), tmpOriginalFileName.charBuffer, uint32(originalFileNameSize), &tmpPreviewType)
         if rc {
@@ -245,9 +245,9 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCKeyValueTag()`
-    public func getQueryUGCKeyValueTag(handle: UGCQueryHandle, index: Int, valueTagIndex: Int, keySize: Int, valueSize: Int) -> (rc: Bool, key: String, value: String) {
-        let tmpKey = SteamString(length: keySize) /* OUT_STR */
-        let tmpValue = SteamString(length: valueSize) /* OUT_STR */
+    public func getQueryUGCKeyValueTag(handle: UGCQueryHandle, index: Int, valueTagIndex: Int, keySize: Int = SteamConstants.ugcKeyValueMaxSize + 1, valueSize: Int = SteamConstants.ugcKeyValueMaxSize + 1) -> (rc: Bool, key: String, value: String) {
+        let tmpKey = SteamString(length: keySize)
+        let tmpValue = SteamString(length: valueSize)
         let rc = SteamAPI_ISteamUGC_GetQueryUGCKeyValueTag(interface, UGCQueryHandle_t(handle), uint32(index), uint32(valueTagIndex), tmpKey.charBuffer, uint32(keySize), tmpValue.charBuffer, uint32(valueSize))
         if rc {
             return (rc: rc, key: tmpKey.swiftString, value: tmpValue.swiftString)
@@ -258,7 +258,7 @@ public struct SteamUGC {
 
     /// Steamworks `ISteamUGC::GetQueryUGCMetadata()`
     public func getQueryUGCMetadata(handle: UGCQueryHandle, index: Int, metadatasizeSize: Int) -> (rc: Bool, metadata: String) {
-        let tmpMetadata = SteamString(length: metadatasizeSize) /* OUT_STR */
+        let tmpMetadata = SteamString(length: metadatasizeSize)
         let rc = SteamAPI_ISteamUGC_GetQueryUGCMetadata(interface, UGCQueryHandle_t(handle), uint32(index), tmpMetadata.charBuffer, uint32(metadatasizeSize))
         if rc {
             return (rc: rc, metadata: tmpMetadata.swiftString)
@@ -283,8 +283,8 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCPreviewURL()`
-    public func getQueryUGCPreviewURL(handle: UGCQueryHandle, index: Int, urlSize: Int) -> (rc: Bool, url: String) {
-        let tmpUrl = SteamString(length: urlSize) /* OUT_STR */
+    public func getQueryUGCPreviewURL(handle: UGCQueryHandle, index: Int, urlSize: Int = SteamConstants.filenameMaxSize) -> (rc: Bool, url: String) {
+        let tmpUrl = SteamString(length: urlSize)
         let rc = SteamAPI_ISteamUGC_GetQueryUGCPreviewURL(interface, UGCQueryHandle_t(handle), uint32(index), tmpUrl.charBuffer, uint32(urlSize))
         if rc {
             return (rc: rc, url: tmpUrl.swiftString)
@@ -312,8 +312,8 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCTag()`
-    public func getQueryUGCTag(handle: UGCQueryHandle, index: Int, tag: Int, valueSize: Int) -> (rc: Bool, value: String) {
-        let tmpValue = SteamString(length: valueSize) /* OUT_STR */
+    public func getQueryUGCTag(handle: UGCQueryHandle, index: Int, tag: Int, valueSize: Int = SteamConstants.ugcKeyValueMaxSize + 1) -> (rc: Bool, value: String) {
+        let tmpValue = SteamString(length: valueSize)
         let rc = SteamAPI_ISteamUGC_GetQueryUGCTag(interface, UGCQueryHandle_t(handle), uint32(index), uint32(tag), tmpValue.charBuffer, uint32(valueSize))
         if rc {
             return (rc: rc, value: tmpValue.swiftString)
@@ -323,8 +323,8 @@ public struct SteamUGC {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCTagDisplayName()`
-    public func getQueryUGCTagDisplayName(handle: UGCQueryHandle, index: Int, tag: Int, valueSize: Int) -> (rc: Bool, value: String) {
-        let tmpValue = SteamString(length: valueSize) /* OUT_STR */
+    public func getQueryUGCTagDisplayName(handle: UGCQueryHandle, index: Int, tag: Int, valueSize: Int = SteamConstants.ugcKeyValueMaxSize + 1) -> (rc: Bool, value: String) {
+        let tmpValue = SteamString(length: valueSize)
         let rc = SteamAPI_ISteamUGC_GetQueryUGCTagDisplayName(interface, UGCQueryHandle_t(handle), uint32(index), uint32(tag), tmpValue.charBuffer, uint32(valueSize))
         if rc {
             return (rc: rc, value: tmpValue.swiftString)

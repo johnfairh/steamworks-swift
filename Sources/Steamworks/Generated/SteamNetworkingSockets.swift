@@ -137,7 +137,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
     public func getCertificateRequest(blobSize: Int, blob: UnsafeMutableRawPointer?) -> (rc: Bool, blobSize: Int, msg: String) {
         var tmpBlobSize = CInt(blobSize)
-        let tmpMsg = SteamString(length: 1024) /* OUT_STR */
+        let tmpMsg = SteamString(length: 1024)
         let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, blob, tmpMsg.charBuffer)
         return (rc: rc, blobSize: Int(tmpBlobSize), msg: tmpMsg.swiftString)
     }
@@ -155,7 +155,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionName()`
     public func getConnectionName(peer: HSteamNetConnection, maxLen: Int) -> (rc: Bool, name: String) {
-        let tmpName = SteamString(length: maxLen) /* OUT_STR */
+        let tmpName = SteamString(length: maxLen)
         let rc = SteamAPI_ISteamNetworkingSockets_GetConnectionName(interface, CSteamworks.HSteamNetConnection(peer), tmpName.charBuffer, CInt(maxLen))
         if rc {
             return (rc: rc, name: tmpName.swiftString)
@@ -184,7 +184,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetDetailedConnectionStatus()`
     public func getDetailedConnectionStatus(conn: HSteamNetConnection, returnBuf: Bool = true, bufSize: Int) -> (rc: Int, buf: String) {
-        let tmpBuf = SteamString(length: bufSize, isReal: returnBuf) /* OUT_STR */
+        let tmpBuf = SteamString(length: bufSize, isReal: returnBuf)
         let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpBuf.charBuffer, CInt(bufSize)))
         if rc == 0 {
             return (rc: rc, buf: tmpBuf.swiftString)
@@ -300,7 +300,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`
     public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int) -> (rc: Bool, msg: String) {
-        let tmpMsg = SteamString(length: 1024) /* OUT_STR */
+        let tmpMsg = SteamString(length: 1024)
         let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, CInt(certificateSize), tmpMsg.charBuffer)
         return (rc: rc, msg: tmpMsg.swiftString)
     }

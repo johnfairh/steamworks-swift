@@ -25,8 +25,8 @@ public struct SteamVideo {
     }
 
     /// Steamworks `ISteamVideo::GetOPFStringForApp()`
-    public func getOPFStringForApp(videoAppID: AppID, bufferSize: Int) -> (rc: Bool, buffer: String, bufferSize: Int) {
-        let tmpBuffer = SteamString(length: bufferSize) /* OUT_STR */
+    public func getOPFStringForApp(videoAppID: AppID, bufferSize: Int = 48000) -> (rc: Bool, buffer: String, bufferSize: Int) {
+        let tmpBuffer = SteamString(length: bufferSize)
         var tmpBufferSize = int32(bufferSize)
         let rc = SteamAPI_ISteamVideo_GetOPFStringForApp(interface, AppId_t(videoAppID), tmpBuffer.charBuffer, &tmpBufferSize)
         if rc {

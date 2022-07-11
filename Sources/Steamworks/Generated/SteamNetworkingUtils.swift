@@ -31,7 +31,7 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::ConvertPingLocationToString()`
     public func convertPingLocationToString(location: SteamNetworkPingLocation, bufSize: Int = SteamConstants.maxSteamNetworkingPingLocationStringSize) -> String {
-        let tmpBuf = SteamString(length: bufSize) /* OUT_STR */
+        let tmpBuf = SteamString(length: bufSize)
         SteamAPI_ISteamNetworkingUtils_ConvertPingLocationToString(interface, SteamNetworkPingLocation_t(location), tmpBuf.charBuffer, CInt(bufSize))
         return tmpBuf.swiftString
     }

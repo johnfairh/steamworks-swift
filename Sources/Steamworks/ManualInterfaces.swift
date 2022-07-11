@@ -150,3 +150,15 @@ private func networkingUtilsDebugCallback(type: ESteamNetworkingSocketsDebugOutp
     ]
     SteamBaseAPI.logger.debug(.init(stringLiteral: String(msg)), metadata: metadata)
 }
+
+extension SteamUtils {
+    /// Steamworks `ISteamUtils::GetEnteredGamepadTextInput()`
+    public func getEnteredGamepadTextInput() -> (rc: Bool, text: String) {
+        // this is so messed up, going strictly by the docs: the size passed in
+        // must be exactly the number of chars available which excludes a nul terminator
+        let textChars = getEnteredGamepadTextLength()
+        let tmpText = SteamString(length: textChars + 1)
+        let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmpText.charBuffer, uint32(textChars))
+        return (rc: rc, text: tmpText.swiftString)
+    }
+}

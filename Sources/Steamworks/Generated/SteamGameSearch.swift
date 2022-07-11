@@ -61,7 +61,7 @@ public struct SteamGameSearch {
 
     /// Steamworks `ISteamGameSearch::RetrieveConnectionDetails()`
     public func retrieveConnectionDetails(host: SteamID, connectionDetailsSize: Int) -> (rc: GameSearchErrorCode, connectionDetails: String) {
-        let tmpConnectionDetails = SteamString(length: connectionDetailsSize) /* OUT_STR */
+        let tmpConnectionDetails = SteamString(length: connectionDetailsSize)
         let rc = GameSearchErrorCode(SteamAPI_ISteamGameSearch_RetrieveConnectionDetails(interface, CUnsignedLongLong(host), tmpConnectionDetails.charBuffer, CInt(connectionDetailsSize)))
         return (rc: rc, connectionDetails: tmpConnectionDetails.swiftString)
     }
