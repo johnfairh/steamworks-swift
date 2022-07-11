@@ -148,13 +148,25 @@ struct SteamParameterExpr: StringFungible {
     var _val: String { expr }
 
     var swiftExpr: SwiftExpr {
+        swiftExprBase(prefix: "")
+    }
+
+    var swiftExprPublic: SwiftExpr {
+        swiftExprBase(prefix: "SteamConstants.")
+    }
+
+    private func swiftExprBase(prefix: String) -> SwiftExpr {
         // numeric constant, unchanged
         if expr.re_isMatch(#"^\d*$"#) {
             return SwiftExpr(expr)
         }
-        // check for ref to a constant, so far all upper-case - would need to look up
-        if expr.uppercased() == expr {
-            return "Int(\(expr))"
+        // check for ref to a constant
+        if expr.uppercased() == expr || expr.hasPrefix("k_"){
+            if prefix.isEmpty {
+                return "Int(\(expr))"
+            } else {
+                return "\(prefix)\(SteamHungarianName(expr).swiftName)"
+            }
         }
         // must be a parameter, convert
         return SwiftExpr(expr.split(separator: " ")
@@ -242,7 +254,7 @@ final class SteamParam {
     /// Nullable in params get an optional.
     var swiftParamClause: String? {
         let typeSuffix = db.nullable ? "?" : ""
-        let defaultValue = db.defaultValue.map { " = \($0.swiftExpr)"} ?? ""
+        let defaultValue = db.defaultValue.map { " = \($0.swiftExprPublic)"} ?? ""
 
         switch style {
         case .in, .in_string_array, .in_out, .in_array:

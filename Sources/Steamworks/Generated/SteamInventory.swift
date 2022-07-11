@@ -154,8 +154,8 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::GetResultItemProperty()`
-    public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, valueBufferSize: Int) -> (rc: Bool, valueBuffer: String, valueBufferSize: Int) {
-        let tmpValueBuffer = SteamString(length: valueBufferSize) /* OUT_STR */
+    public func getResultItemProperty(handle: SteamInventoryResult, itemIndex: Int, propertyName: String?, returnValueBuffer: Bool = true, valueBufferSize: Int) -> (rc: Bool, valueBuffer: String, valueBufferSize: Int) {
+        let tmpValueBuffer = SteamString(length: valueBufferSize, isReal: returnValueBuffer) /* OUT_STR */
         var tmpValueBufferSize = uint32(valueBufferSize)
         let rc = SteamAPI_ISteamInventory_GetResultItemProperty(interface, SteamInventoryResult_t(handle), uint32(itemIndex), propertyName, tmpValueBuffer.charBuffer, &tmpValueBufferSize)
         return (rc: rc, valueBuffer: tmpValueBuffer.swiftString, valueBufferSize: Int(tmpValueBufferSize))

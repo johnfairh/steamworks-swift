@@ -168,6 +168,8 @@ methods:
     params:
       pchDirectory:
         out_string_count: cchNameMax
+      cchNameMax:
+        default_value: k_cchFilenameMax
     out_param_iff_rc: '!= -1'
   SteamAPI_ISteamAppList_GetAppName:
     params:
@@ -191,6 +193,8 @@ methods:
     params:
       pchFolder:
         out_string_count: cchFolderBufferSize
+      cchFolderBufferSize:
+         default_value: k_cchFilenameMax
   SteamAPI_ISteamApps_GetCurrentBetaName:
     params:
       pchName:
@@ -334,6 +338,8 @@ methods:
         nullable: true
       punValueBufferSizeOut:
         in_out: true
+      pchValueBuffer:
+        nullable: true
   SteamAPI_ISteamInventory_GetResultItems:
     out_param_iff_rc: ' '
     params:
@@ -378,6 +384,8 @@ methods:
     params:
       pchKey:
         out_string_count: cchKeyBufferSize
+      cchKeyBufferSize:
+        default_value: k_nMaxLobbyKeyLength + 1
       pchValue:
         out_string_count: cchValueBufferSize
   SteamAPI_ISteamMatchmaking_GetLobbyGameServer:
@@ -597,6 +605,7 @@ methods:
     params:
       pszBuf:
         out_string_count: cbBuf
+        nullable: true
     out_param_iff_rc: '== 0'
   SteamAPI_ISteamNetworkingSockets_GetIdentity:
     out_param_iff_rc: ' '
@@ -662,6 +671,8 @@ methods:
     params:
       pszBuf:
         out_string_count: cchBufSize
+      cchBufSize:
+        default_value: k_cchMaxSteamNetworkingPingLocationString
   SteamAPI_ISteamNetworkingUtils_GetConfigValue:
     params:
       pResult:

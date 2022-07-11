@@ -55,6 +55,9 @@ public enum SteamConstants {
     /// Steamworks `k_cbMaxGameServerTags`
     public static let maxGameServerTagsSize = Int(128)
 
+    /// Steamworks `k_nMaxLobbyKeyLength`
+    public static let maxLobbyKeyLength = Int(255)
+
     /// Steamworks `k_cbMaxSteamDatagramGameCoordinatorServerLoginAppData`
     public static let maxSteamDatagramGameCoordinatorServerLoginAppDataSize = Int(2048)
 

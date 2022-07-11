@@ -25,7 +25,7 @@ public struct SteamAppList {
     }
 
     /// Steamworks `ISteamAppList::GetAppInstallDir()`
-    public func getAppInstallDir(appID: AppID, nameMaxSize: Int) -> (rc: Int, directory: String) {
+    public func getAppInstallDir(appID: AppID, nameMaxSize: Int = SteamConstants.filenameMaxSize) -> (rc: Int, directory: String) {
         let tmpDirectory = SteamString(length: nameMaxSize) /* OUT_STR */
         let rc = Int(SteamAPI_ISteamAppList_GetAppInstallDir(interface, AppId_t(appID), tmpDirectory.charBuffer, CInt(nameMaxSize)))
         if rc != -1 {

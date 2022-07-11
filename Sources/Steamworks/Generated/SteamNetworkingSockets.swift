@@ -183,8 +183,8 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetDetailedConnectionStatus()`
-    public func getDetailedConnectionStatus(conn: HSteamNetConnection, bufSize: Int) -> (rc: Int, buf: String) {
-        let tmpBuf = SteamString(length: bufSize) /* OUT_STR */
+    public func getDetailedConnectionStatus(conn: HSteamNetConnection, returnBuf: Bool = true, bufSize: Int) -> (rc: Int, buf: String) {
+        let tmpBuf = SteamString(length: bufSize, isReal: returnBuf) /* OUT_STR */
         let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpBuf.charBuffer, CInt(bufSize)))
         if rc == 0 {
             return (rc: rc, buf: tmpBuf.swiftString)
