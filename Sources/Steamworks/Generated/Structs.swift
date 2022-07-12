@@ -246,14 +246,14 @@ public struct ClientGameServerDeny {
     /// Steamworks `m_unGameServerIP`
     public let gameServerIP: Int
     /// Steamworks `m_usGameServerPort`
-    public let gameServerPort: Int
+    public let gameServerPort: UInt16
     /// Steamworks `m_bSecure`
     public let secure: Bool
     /// Steamworks `m_uReason`
     public let reason: Int
 
     /// Create a customized `ClientGameServerDeny`
-    public init(appID: AppID = 0, gameServerIP: Int = 0, gameServerPort: Int = 0, secure: Bool = false, reason: Int = 0) {
+    public init(appID: AppID = 0, gameServerIP: Int = 0, gameServerPort: UInt16 = 0, secure: Bool = false, reason: Int = 0) {
         self.appID = appID
         self.gameServerIP = gameServerIP
         self.gameServerPort = gameServerPort
@@ -695,14 +695,14 @@ public struct FriendGameInfo {
     /// Steamworks `m_unGameIP`
     public let gameIP: Int
     /// Steamworks `m_usGamePort`
-    public let gamePort: Int
+    public let gamePort: UInt16
     /// Steamworks `m_usQueryPort`
-    public let queryPort: Int
+    public let queryPort: UInt16
     /// Steamworks `m_steamIDLobby`
     public let lobby: SteamID
 
     /// Create a customized `FriendGameInfo`
-    public init(id: GameID = GameID(), gameIP: Int = 0, gamePort: Int = 0, queryPort: Int = 0, lobby: SteamID = SteamID()) {
+    public init(id: GameID = GameID(), gameIP: Int = 0, gamePort: UInt16 = 0, queryPort: UInt16 = 0, lobby: SteamID = SteamID()) {
         self.id = id
         self.gameIP = gameIP
         self.gamePort = gamePort
@@ -1011,14 +1011,14 @@ public struct GSReputation {
     /// Steamworks `m_unBannedIP`
     public let bannedIP: Int
     /// Steamworks `m_usBannedPort`
-    public let bannedPort: Int
+    public let bannedPort: UInt16
     /// Steamworks `m_ulBannedGameID`
     public let bannedGameID: GameID
     /// Steamworks `m_unBanExpires`
     public let banExpires: RTime32
 
     /// Create a customized `GSReputation`
-    public init(result: Result = .none, reputationScore: Int = 0, banned: Bool = false, bannedIP: Int = 0, bannedPort: Int = 0, bannedGameID: GameID = GameID(), banExpires: RTime32 = 0) {
+    public init(result: Result = .none, reputationScore: Int = 0, banned: Bool = false, bannedIP: Int = 0, bannedPort: UInt16 = 0, bannedGameID: GameID = GameID(), banExpires: RTime32 = 0) {
         self.result = result
         self.reputationScore = reputationScore
         self.banned = banned
@@ -2755,10 +2755,10 @@ public struct LobbyGameCreated {
     /// Steamworks `m_unIP`
     public let ip: Int
     /// Steamworks `m_usPort`
-    public let port: Int
+    public let port: UInt16
 
     /// Create a customized `LobbyGameCreated`
-    public init(steamIDLobby: SteamID = SteamID(), steamIDGameServer: SteamID = SteamID(), ip: Int = 0, port: Int = 0) {
+    public init(steamIDLobby: SteamID = SteamID(), steamIDGameServer: SteamID = SteamID(), ip: Int = 0, port: UInt16 = 0) {
         self.steamIDLobby = steamIDLobby
         self.steamIDGameServer = steamIDGameServer
         self.ip = ip
@@ -3268,10 +3268,10 @@ public struct P2PSessionState {
     /// Steamworks `m_nRemoteIP`
     public let remoteIP: Int
     /// Steamworks `m_nRemotePort`
-    public let remotePort: Int
+    public let remotePort: UInt16
 
     /// Create a customized `P2PSessionState`
-    public init(connectionActive: Bool = false, connecting: Bool = false, p2PSessionError: Int = 0, usingRelay: Bool = false, bytesQueuedForSend: Int = 0, packetsQueuedForSend: Int = 0, remoteIP: Int = 0, remotePort: Int = 0) {
+    public init(connectionActive: Bool = false, connecting: Bool = false, p2PSessionError: Int = 0, usingRelay: Bool = false, bytesQueuedForSend: Int = 0, packetsQueuedForSend: Int = 0, remoteIP: Int = 0, remotePort: UInt16 = 0) {
         self.connectionActive = connectionActive
         self.connecting = connecting
         self.p2PSessionError = p2PSessionError
@@ -4812,12 +4812,12 @@ public struct SteamItemDetails {
     /// Steamworks `m_iDefinition`
     public let definitionIndex: SteamItemDef
     /// Steamworks `m_unQuantity`
-    public let quantity: Int
+    public let quantity: UInt16
     /// Steamworks `m_unFlags`
     public let flags: SteamItemFlags
 
     /// Create a customized `SteamItemDetails`
-    public init(id: SteamItemInstanceID = 0, definitionIndex: SteamItemDef = 0, quantity: Int = 0, flags: SteamItemFlags = []) {
+    public init(id: SteamItemInstanceID = 0, definitionIndex: SteamItemDef = 0, quantity: UInt16 = 0, flags: SteamItemFlags = []) {
         self.id = id
         self.definitionIndex = definitionIndex
         self.quantity = quantity
@@ -5071,10 +5071,10 @@ public struct SteamNetworkingFakeIPResult {
     /// Steamworks `m_unIP`
     public let ip: Int
     /// Steamworks `m_unPorts`
-    public let ports: [Int]
+    public let ports: [UInt16]
 
     /// Create a customized `SteamNetworkingFakeIPResult`
-    public init(result: Result = .none, identity: SteamNetworkingIdentity = SteamNetworkingIdentity(), ip: Int = 0, ports: [Int] = []) {
+    public init(result: Result = .none, identity: SteamNetworkingIdentity = SteamNetworkingIdentity(), ip: Int = 0, ports: [UInt16] = []) {
         self.result = result
         self.identity = identity
         self.ip = ip

@@ -171,8 +171,8 @@ public struct SteamInput {
     }
 
     /// Steamworks `ISteamInput::GetSessionInputConfigurationSettings()`
-    public func getSessionInputConfigurationSettings() -> Int {
-        Int(SteamAPI_ISteamInput_GetSessionInputConfigurationSettings(interface))
+    public func getSessionInputConfigurationSettings() -> SteamInputConfigurationEnableType {
+        SteamInputConfigurationEnableType(SteamAPI_ISteamInput_GetSessionInputConfigurationSettings(interface))
     }
 
     /// Steamworks `ISteamInput::GetStringForActionOrigin()`

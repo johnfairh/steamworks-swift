@@ -110,6 +110,8 @@ enums:
     is_set: UInt32
   ESteamInputGlyphStyle:
     is_set: UInt32 # guess, not used anywhere yet?
+  ESteamInputConfigurationEnableType:
+    is_set: Int32
   ESteamItemFlags:
     is_set: Int32
     prefix: ESteamItem
@@ -290,6 +292,8 @@ methods:
         out_array_valid_count: rc
   SteamAPI_ISteamInput_GetRemotePlaySessionID:
     returntype: RemotePlaySessionID_t
+  SteamAPI_ISteamInput_GetSessionInputConfigurationSettings:
+    returntype: ESteamInputConfigurationEnableType
   SteamAPI_ISteamInput_RunFrame:
     params:
       bReservedValue:

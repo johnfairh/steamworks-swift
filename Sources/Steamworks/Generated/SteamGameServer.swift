@@ -98,11 +98,11 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::GetNextOutgoingPacket()`
-    public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: Int) {
+    public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: UInt16) {
         var tmpNetAdr = uint32()
         var tmpPort = uint16()
         let rc = Int(SteamAPI_ISteamGameServer_GetNextOutgoingPacket(interface, out, CInt(maxOutSize), &tmpNetAdr, &tmpPort))
-        return (rc: rc, netAdr: Int(tmpNetAdr), port: Int(tmpPort))
+        return (rc: rc, netAdr: Int(tmpNetAdr), port: UInt16(tmpPort))
     }
 
     /// Steamworks `ISteamGameServer::GetPublicIP()`
@@ -129,7 +129,7 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::HandleIncomingPacket()`
-    public func handleIncomingPacket(data: UnsafeRawPointer, dataSize: Int, srcIP: Int, srcPort: Int) -> Bool {
+    public func handleIncomingPacket(data: UnsafeRawPointer, dataSize: Int, srcIP: Int, srcPort: UInt16) -> Bool {
         SteamAPI_ISteamGameServer_HandleIncomingPacket(interface, data, CInt(dataSize), uint32(srcIP), uint16(srcPort))
     }
 
@@ -236,7 +236,7 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::SetSpectatorPort()`
-    public func setSpectatorPort(spectatorPort: Int) {
+    public func setSpectatorPort(spectatorPort: UInt16) {
         SteamAPI_ISteamGameServer_SetSpectatorPort(interface, uint16(spectatorPort))
     }
 

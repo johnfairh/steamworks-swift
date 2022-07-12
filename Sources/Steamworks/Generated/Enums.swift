@@ -3485,23 +3485,25 @@ extension SteamInputActionEventType: EnumWithUnrepresented { typealias From = ES
 extension SteamInputActionEventType: SteamCreatable {}
 
 /// Steamworks `ESteamInputConfigurationEnableType`
-public enum SteamInputConfigurationEnableType: CUnsignedInt {
+public struct SteamInputConfigurationEnableType: OptionSet {
+    /// The flags value.
+    public let rawValue: CUnsignedInt
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_ESteamInputConfigurationEnableType_None`
-    case none = 0
+    public static let none = SteamInputConfigurationEnableType([])
     /// Steamworks `k_ESteamInputConfigurationEnableType_Playstation`
-    case playstation = 1
+    public static let playstation = SteamInputConfigurationEnableType(rawValue: 1)
     /// Steamworks `k_ESteamInputConfigurationEnableType_Xbox`
-    case xbox = 2
+    public static let xbox = SteamInputConfigurationEnableType(rawValue: 2)
     /// Steamworks `k_ESteamInputConfigurationEnableType_Generic`
-    case generic = 4
+    public static let generic = SteamInputConfigurationEnableType(rawValue: 4)
     /// Steamworks `k_ESteamInputConfigurationEnableType_Switch`
-    case `switch` = 8
-    /// Some undocumented value
-    case unrepresentedInSwift = 9
+    public static let `switch` = SteamInputConfigurationEnableType(rawValue: 8)
 }
 
 extension ESteamInputConfigurationEnableType: RawConvertible { typealias From = SteamInputConfigurationEnableType }
-extension SteamInputConfigurationEnableType: EnumWithUnrepresented { typealias From = ESteamInputConfigurationEnableType }
+extension SteamInputConfigurationEnableType: RawConvertible { typealias From = ESteamInputConfigurationEnableType }
 extension SteamInputConfigurationEnableType: SteamCreatable {}
 
 /// Steamworks `ESteamInputGlyphSize`

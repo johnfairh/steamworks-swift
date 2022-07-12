@@ -20,7 +20,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::AdvertiseGame()`
-    public func advertiseGame(gameServer: SteamID, ipServer: Int, portServer: Int) {
+    public func advertiseGame(gameServer: SteamID, ipServer: Int, portServer: UInt16) {
         SteamAPI_ISteamUser_AdvertiseGame(interface, CUnsignedLongLong(gameServer), uint32(ipServer), uint16(portServer))
     }
 
@@ -174,7 +174,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::InitiateGameConnection_DEPRECATED()`
-    public func initiateGameConnectionDEPRECATED(authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: Int, gameServer: SteamID, ipServer: Int, portServer: Int, secure: Bool) -> Int {
+    public func initiateGameConnectionDEPRECATED(authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: Int, gameServer: SteamID, ipServer: Int, portServer: UInt16, secure: Bool) -> Int {
         Int(SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED(interface, authBlob, CInt(maxAuthBlobSize), CUnsignedLongLong(gameServer), uint32(ipServer), uint16(portServer), secure))
     }
 
@@ -215,7 +215,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::TerminateGameConnection_DEPRECATED()`
-    public func terminateGameConnectionDEPRECATED(ipServer: Int, portServer: Int) {
+    public func terminateGameConnectionDEPRECATED(ipServer: Int, portServer: UInt16) {
         SteamAPI_ISteamUser_TerminateGameConnection_DEPRECATED(interface, uint32(ipServer), uint16(portServer))
     }
 

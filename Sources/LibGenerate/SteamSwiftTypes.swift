@@ -106,7 +106,7 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "const SteamParamStringArray_t *" : "[String]",
     "int" : "Int",
     "uint8" : "Int",
-    "uint16" : "Int",
+    "uint16" : "UInt16",
     "uint32" : "Int",
     "int32" : "Int",
     "const int32" : "Int", // hmm
