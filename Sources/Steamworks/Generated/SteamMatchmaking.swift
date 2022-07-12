@@ -21,7 +21,7 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::AddFavoriteGame()`
     public func addFavoriteGame(appID: AppID, ip: Int, connPort: UInt16, queryPort: UInt16, flags: FavoriteFlags, time32LastPlayedOnServer: RTime32) -> Int {
-        Int(CSteamAPI_ISteamMatchmaking_AddFavoriteGame(interface, AppId_t(appID), uint32(ip), uint16(connPort), uint16(queryPort), EFavoriteFlags(flags), CSteamworks.RTime32(time32LastPlayedOnServer)))
+        Int(CSteamAPI_ISteamMatchmaking_AddFavoriteGame(interface, AppId_t(appID), uint32(ip), connPort, queryPort, EFavoriteFlags(flags), CSteamworks.RTime32(time32LastPlayedOnServer)))
     }
 
     /// Steamworks `ISteamMatchmaking::AddRequestLobbyListCompatibleMembersFilter()`
@@ -88,7 +88,7 @@ public struct SteamMatchmaking {
         var tmpRTime32LastPlayedOnServer = CSteamworks.RTime32()
         let rc = CSteamAPI_ISteamMatchmaking_GetFavoriteGame(interface, CInt(gameIndex), &tmpAppID, &tmpIp, &tmpConnPort, &tmpQueryPort, &tmpFlags, &tmpRTime32LastPlayedOnServer)
         if rc {
-            return (rc: rc, appID: AppID(tmpAppID), ip: Int(tmpIp), connPort: UInt16(tmpConnPort), queryPort: UInt16(tmpQueryPort), flags: FavoriteFlags(tmpFlags), rTime32LastPlayedOnServer: RTime32(tmpRTime32LastPlayedOnServer))
+            return (rc: rc, appID: AppID(tmpAppID), ip: Int(tmpIp), connPort: tmpConnPort, queryPort: tmpQueryPort, flags: FavoriteFlags(tmpFlags), rTime32LastPlayedOnServer: RTime32(tmpRTime32LastPlayedOnServer))
         } else {
             return (rc: rc, appID: 0, ip: 0, connPort: 0, queryPort: 0, flags: .none, rTime32LastPlayedOnServer: 0)
         }
@@ -137,7 +137,7 @@ public struct SteamMatchmaking {
         var tmpGameServer = CSteamID()
         let rc = SteamAPI_ISteamMatchmaking_GetLobbyGameServer(interface, CUnsignedLongLong(lobby), &tmpGameServerIP, &tmpGameServerPort, &tmpGameServer)
         if rc {
-            return (rc: rc, gameServerIP: Int(tmpGameServerIP), gameServerPort: UInt16(tmpGameServerPort), gameServer: SteamID(tmpGameServer))
+            return (rc: rc, gameServerIP: Int(tmpGameServerIP), gameServerPort: tmpGameServerPort, gameServer: SteamID(tmpGameServer))
         } else {
             return (rc: rc, gameServerIP: 0, gameServerPort: 0, gameServer: SteamID())
         }
@@ -195,7 +195,7 @@ public struct SteamMatchmaking {
     /// Steamworks `ISteamMatchmaking::RemoveFavoriteGame()`
     @discardableResult
     public func removeFavoriteGame(appID: AppID, ip: Int, connPort: UInt16, queryPort: UInt16, flags: FavoriteFlags) -> Bool {
-        CSteamAPI_ISteamMatchmaking_RemoveFavoriteGame(interface, AppId_t(appID), uint32(ip), uint16(connPort), uint16(queryPort), EFavoriteFlags(flags))
+        CSteamAPI_ISteamMatchmaking_RemoveFavoriteGame(interface, AppId_t(appID), uint32(ip), connPort, queryPort, EFavoriteFlags(flags))
     }
 
     /// Steamworks `ISteamMatchmaking::RequestLobbyData()`
@@ -235,7 +235,7 @@ public struct SteamMatchmaking {
 
     /// Steamworks `ISteamMatchmaking::SetLobbyGameServer()`
     public func setLobbyGameServer(lobby: SteamID, gameServerIP: Int, gameServerPort: UInt16, gameServer: SteamID) {
-        SteamAPI_ISteamMatchmaking_SetLobbyGameServer(interface, CUnsignedLongLong(lobby), uint32(gameServerIP), uint16(gameServerPort), CUnsignedLongLong(gameServer))
+        SteamAPI_ISteamMatchmaking_SetLobbyGameServer(interface, CUnsignedLongLong(lobby), uint32(gameServerIP), gameServerPort, CUnsignedLongLong(gameServer))
     }
 
     /// Steamworks `ISteamMatchmaking::SetLobbyJoinable()`

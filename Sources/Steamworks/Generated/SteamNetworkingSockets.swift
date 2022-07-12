@@ -46,8 +46,7 @@ public struct SteamNetworkingSockets {
     /// Steamworks `ISteamNetworkingSockets::ConfigureConnectionLanes()`
     public func configureConnectionLanes(conn: HSteamNetConnection, lanePriorities: [Int], laneWeights: [UInt16]) -> Result {
         var tmpLanePriorities = lanePriorities.map { CInt($0) }
-        var tmpLaneWeights = laneWeights.map { uint16($0) }
-        return Result(SteamAPI_ISteamNetworkingSockets_ConfigureConnectionLanes(interface, CSteamworks.HSteamNetConnection(conn), CInt(laneWeights.count), &tmpLanePriorities, &tmpLaneWeights))
+        return Result(SteamAPI_ISteamNetworkingSockets_ConfigureConnectionLanes(interface, CSteamworks.HSteamNetConnection(conn), CInt(laneWeights.count), &tmpLanePriorities, laneWeights))
     }
 
     /// Steamworks `ISteamNetworkingSockets::ConnectByIPAddress()`
@@ -207,7 +206,7 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetHostedDedicatedServerPort()`
     public func getHostedDedicatedServerPort() -> UInt16 {
-        UInt16(SteamAPI_ISteamNetworkingSockets_GetHostedDedicatedServerPort(interface))
+        SteamAPI_ISteamNetworkingSockets_GetHostedDedicatedServerPort(interface)
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetIdentity()`

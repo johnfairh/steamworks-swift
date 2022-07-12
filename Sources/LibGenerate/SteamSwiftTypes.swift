@@ -109,7 +109,6 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "uint16" : "UInt16",
     "uint32" : "Int",
     "int32" : "Int",
-    "const int32" : "Int", // hmm
     "int64" : "Int",
     "int64_t" : "Int", // steamnetworking == disaster
     "uint64": "UInt64",
@@ -123,7 +122,7 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "uint64_gameid" : "GameID",
     "const char **": "[String]",
     "char": "Int", // SteamInput going its own way...
-    "unsigned short": "Int", // ""
+    "unsigned short": "Int", // "", leaving as Int for now because not obviously u16
     "unsigned int": "Int", // ""
     "intptr_t": "Int",
     "size_t": "Int",
@@ -144,7 +143,7 @@ private let steamArrayElementTypeToSwiftArrayTypes: [SteamType : SwiftType] = [
 /// Steam types that, when returned from a C++ function, can be directly assigned
 /// to a variable of their `SwiftType` without a cast.
 private let steamTypesReturnedWithoutCast = Set<SteamType>([
-    "bool", "void"
+    "bool", "void", "uint16"
 ])
 
 /// Steam types whose `SwiftType` is typesafe to pass directly (without a cast) to
@@ -152,6 +151,7 @@ private let steamTypesReturnedWithoutCast = Set<SteamType>([
 private let steamTypesPassedInWithoutCast = Set<SteamType>([
     "bool", "const char *", "void *", "uint8 *",
     "const void *", "float", "double", "uint64",
+    "uint16", "const uint16" /* XXX broken somewhere else */,
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])

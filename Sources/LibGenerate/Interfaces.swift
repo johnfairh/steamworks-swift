@@ -334,7 +334,9 @@ final class SteamParam {
             deallocateTemp = true
 
         case .in_array:
-            line = "var \(tempName) = \(swiftName).map { \(steamType.swiftNativeType.instance("$0")) }"
+            if steamType.needsParameterCast {
+                line = "var \(tempName) = \(swiftName).map { \(steamType.swiftNativeType.instance("$0")) }"
+            }
 
         case .in_array_count:
             break
@@ -386,9 +388,9 @@ final class SteamParam {
 
         case .in_array:
             if !db.nullable {
-                return "&\(tempName)"
+                return steamType.needsParameterCast ? "&\(tempName)" : swiftName
             } else {
-                return "\(tempName)"
+                return tempName
             }
 
         case .in_array_count(let ap):
