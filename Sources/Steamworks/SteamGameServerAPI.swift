@@ -29,9 +29,9 @@ public final class SteamGameServerAPI: SteamBaseAPI {
     /// - parameter serverMode: Authentication mode.
     /// - parameter version: Server version.
     /// - returns: `nil` if the API failed to initialize.
-    public init?(ip: Int = 0, port: Int, queryPort: Int? = nil, serverMode: ServerMode, version: String) {
-        let qPort = queryPort.flatMap { UInt16($0) } ?? STEAMGAMESERVER_QUERY_PORT_SHARED
-        guard SteamGameServer_Init(UInt32(ip), UInt16(port), qPort, EServerMode(serverMode), version) else {
+    public init?(ip: Int = 0, port: UInt16, queryPort: UInt16? = nil, serverMode: ServerMode, version: String) {
+        let qPort = queryPort ?? STEAMGAMESERVER_QUERY_PORT_SHARED
+        guard SteamGameServer_Init(UInt32(ip), port, qPort, EServerMode(serverMode), version) else {
             logError("SteamGameServerAPI.init() failed: SteamGameServer_Init() returned false")
             return nil
         }

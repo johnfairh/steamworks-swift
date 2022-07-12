@@ -191,11 +191,11 @@ extension SteamMatchmakingServers {
     // MARK: Queries
 
     /// Steamworks `ISteamMatchmakingServers::PingServer()`
-    public func pingServer(ip: Int, port: Int, response: SteamMatchmakingPingResponse) -> HServerQuery {
+    public func pingServer(ip: Int, port: UInt16, response: SteamMatchmakingPingResponse) -> HServerQuery {
         let shim = CShimPingResponse.Allocate(MatchmakingServersControl.vtable)
         let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_PingServer(interface,
                                                                            UInt32(ip),
-                                                                           UInt16(port),
+                                                                           port,
                                                                            shim.pointee.getInterface()))
         guard rc != .invalid else {
             shim.pointee.Deallocate()
@@ -207,11 +207,11 @@ extension SteamMatchmakingServers {
     }
 
     /// Steamworks `ISteamMatchmakingServers::PlayerDetails()`
-    public func playerDetails(ip: Int, port: Int, response: SteamMatchmakingPlayersResponse) -> HServerQuery {
+    public func playerDetails(ip: Int, port: UInt16, response: SteamMatchmakingPlayersResponse) -> HServerQuery {
         let shim = CShimPlayersResponse.Allocate(MatchmakingServersControl.vtable)
         let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_PlayerDetails(interface,
                                                                               UInt32(ip),
-                                                                              UInt16(port),
+                                                                              port,
                                                                               shim.pointee.getInterface()))
         guard rc != .invalid else {
             shim.pointee.Deallocate()
@@ -223,11 +223,11 @@ extension SteamMatchmakingServers {
     }
 
     /// Steamworks `ISteamMatchmakingServers::ServerRules()`
-    public func serverRules(ip: Int, port: Int, response: SteamMatchmakingRulesResponse) -> HServerQuery {
+    public func serverRules(ip: Int, port: UInt16, response: SteamMatchmakingRulesResponse) -> HServerQuery {
         let shim = CShimRulesResponse.Allocate(MatchmakingServersControl.vtable)
         let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_ServerRules(interface,
                                                                             UInt32(ip),
-                                                                            UInt16(port),
+                                                                            port,
                                                                             shim.pointee.getInterface()))
         guard rc != .invalid else {
             shim.pointee.Deallocate()

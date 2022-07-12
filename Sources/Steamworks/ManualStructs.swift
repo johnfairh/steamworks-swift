@@ -172,12 +172,12 @@ public final class ServerNetAdr {
         self.adr = servernetadr_t()
     }
 
-    public var queryPort: Int {
-        Int(adr.GetQueryPort())
+    public var queryPort: UInt16 {
+        adr.GetQueryPort()
     }
 
-    public var connectionPort: Int {
-        Int(adr.GetConnectionPort())
+    public var connectionPort: UInt16 {
+        adr.GetConnectionPort()
     }
 
     public var ip: Int {
@@ -228,8 +228,8 @@ public final class SteamNetworkingIPAddr {
         return Array(buf)
     }
 
-    public var port: Int {
-        Int(adr.m_port)
+    public var port: UInt16 {
+        adr.m_port
     }
 
     /// Classify address as FakeIP.  Never returns `k_ESteamNetworkingFakeIPType_Invalid`.
@@ -263,23 +263,23 @@ public final class SteamNetworkingIPAddr {
     }
 
     /// `INADDR_ANY` with some port
-    public convenience init(inaddrAnyPort port: Int) {
+    public convenience init(inaddrAnyPort port: UInt16) {
         self.init()
         adr.Clear()
-        adr.m_port = UInt16(port)
+        adr.m_port = port
     }
 
     /// Sets to IPv4 mapped address.  IP and port are in host byte order.
-    public convenience init(ipv4: Int, port: Int) {
+    public convenience init(ipv4: Int, port: UInt16) {
         self.init()
-        adr.SetIPv4(UInt32(ipv4), UInt16(port))
+        adr.SetIPv4(UInt32(ipv4), port)
     }
 
     /// IP is interpreted as bytes, so there are no endian issues.  (Same as `inaddr_in6`.)
     /// The IP can be a mapped IPv4 address.
-    public convenience init(ipv6: [UInt8], port: Int) {
+    public convenience init(ipv6: [UInt8], port: UInt16) {
         self.init()
-        adr.SetIPv6(ipv6, UInt16(port))
+        adr.SetIPv6(ipv6, port)
     }
 
     /// Parse an IP address and optional port.  If a port is not present, it is set to 0.
@@ -297,6 +297,7 @@ extension SteamNetworkingIPAddr: SteamCreatable {}
 extension SteamNetworkingIPAddr: Equatable, CustomStringConvertible {
     public static func == (lhs: SteamNetworkingIPAddr, rhs: SteamNetworkingIPAddr) -> Bool {
         // operator == has broken in Swift 5.7 ...
+        // lhs.adr == rhs.adr
         withUnsafePointer(to: &lhs.adr) { lhsBytes in
             withUnsafePointer(to: &rhs.adr) { rhsBytes in
                 memcmp(lhsBytes, rhsBytes, MemoryLayout<CSteamworks.SteamNetworkingIPAddr>.size) == 0
@@ -360,9 +361,7 @@ public final class SteamNetworkingIdentity {
     }
 
     public var fakeIPType: SteamNetworkingFakeIPType {
-        .init(SteamAPI_SteamNetworkingIdentity_GetFakeIPType(&identity))
-// uh using the method causes a link failure, not implemented anywhere? valve pls
-//      .init(identity.GetFakeIPType())
+      .init(identity.GetFakeIPType())
     }
 
     public var isFakeIP: Bool {
