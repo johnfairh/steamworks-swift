@@ -138,7 +138,7 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
 /// How to represent an array of steam types (eg. in a struct field,) special cases
 private let steamArrayElementTypeToSwiftArrayTypes: [SteamType : SwiftType] = [
     "char" : "String",
-    "uint8" : "[UInt8]" // Should be Data (?) but can't use Foundation inside Steamworks because C++!
+    "uint8" : "[UInt8]"
 ]
 
 /// Steam types that, when returned from a C++ function, can be directly assigned
@@ -156,6 +156,10 @@ private let steamTypesPassedInWithoutCast = Set<SteamType>([
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])
+// We don't put int64 in here because there is no implicit conversion between
+// Int and Int64, presumably because of non-64-bit platforms.  OK.  We choose
+// to leave the interface type as a pleasant 'Int' and trust the compiler to
+// optimize away the type conversions.
 
 // MARK: SteamType for function parameter and return
 

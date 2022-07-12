@@ -325,7 +325,7 @@ extension Array {
     }
 }
 
-/// Because we can't use `Foundation.Data` here right now, arrays of bytes go over as-is
+/// Arrays of bytes go over as-is
 extension Array where Element == UInt8 {
     init(_ ptr: UnsafePointer<UInt8>, _ count: Int) {
         self.init(unsafeUninitializedCapacity: count) { buf, done in
