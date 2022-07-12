@@ -442,7 +442,7 @@
   <li>
     
 
-  <a class="j2-nav-item" href="../../steamworks/types/appid26.html?swift">AppID</a>
+  <a class="j2-nav-item" href="../../steamworks/types/appid27.html?swift">AppID</a>
 
 
 
@@ -970,6 +970,24 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/checkfilesignatureresult.html?swift">CheckFileSignatureResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/communityprofileitemproperty.html?swift">CommunityProfileItemProperty</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/communityprofileitemtype.html?swift">CommunityProfileItemType</a>
 
 
 
@@ -2064,6 +2082,24 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/endgameresultcallback1.html?swift">EndGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/equippedprofileitemschanged1.html?swift">EquippedProfileItemsChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/equippedprofileitems.html?swift">EquippedProfileItems</a>
 
 
 
@@ -3994,7 +4030,7 @@
   <li>
     
 
-  <a class="j2-nav-item" href="../../steamworks/types/steamid14.html?swift">SteamID</a>
+  <a class="j2-nav-item" href="../../steamworks/types/steamid16.html?swift">SteamID</a>
 
 
 
@@ -4192,7 +4228,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func advertiseGame(gameServer: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>, ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func advertiseGame(gameServer: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
   </div>
 
 
@@ -4674,7 +4710,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func beginAuthSession(
-    authTicket: UnsafeRawPointer, authTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, steamID: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>
+    authTicket: UnsafeRawPointer, authTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
 ) -&gt; <a href="../../steamworks/types/beginauthsessionresult.html?swift">BeginAuthSessionResult</a></code></pre>
   </div>
 
@@ -4859,7 +4895,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func endAuthSession(steamID: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>)</code></pre>
+    <pre><code class="language-swift">public func endAuthSession(steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>)</code></pre>
   </div>
 
 
@@ -4981,8 +5017,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getAvailableVoice(uncompressedVoiceDesiredSampleRateDeprecated: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
-    -&gt; (rc: <a href="../../steamworks/types/voiceresult.html?swift">VoiceResult</a>, compressedSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, uncompressedDeprecatedSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func getAvailableVoice(
+    uncompressedVoiceDesiredSampleRateDeprecated: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = 0
+) -&gt; (rc: <a href="../../steamworks/types/voiceresult.html?swift">VoiceResult</a>, compressedSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, uncompressedDeprecatedSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
   </div>
 
 
@@ -5525,7 +5562,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getSteamID() -&gt; <a href="../../steamworks/types/steamid14.html?swift">SteamID</a></code></pre>
+    <pre><code class="language-swift">public func getSteamID() -&gt; <a href="../../steamworks/types/steamid16.html?swift">SteamID</a></code></pre>
   </div>
 
 
@@ -5585,7 +5622,8 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getUserDataFolder(bufferSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, buffer: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+    <pre><code class="language-swift">public func getUserDataFolder(bufferSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = <a href="../../steamworks/types/steamconstants.html?swift#filenamemaxsize">SteamConstants.filenameMaxSize</a>)
+    -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, buffer: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
   </div>
 
 
@@ -5613,12 +5651,12 @@
   
   
     <section id="getvoicewantcompresseddestbufferdestbuffersizewantuncompresseddeprecateduncompresseddestbufferdeprecateduncompresseddestbuffersizedeprecatedsizeuncompressedvoicedesiredsampleratedeprecated" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getVoice(wantCompressed%3A%20Bool,%20destBuffer%3A%20UnsafeMutableRawPointer,%20destBufferSize%3A%20Int,%20wantUncompressedDeprecated%3A%20Bool,%20uncompressedDestBufferDeprecated%3A%20UnsafeMutableRawPointer,%20uncompressedDestBufferSizeDeprecatedSize%3A%20Int,%20uncompressedVoiceDesiredSampleRateDeprecated%3A%20Int)%20-%3E%20(rc%3A%20VoiceResult,%20bytesWritten%3A%20Int,%20uncompressBytesWrittenDeprecated%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getvoicewantcompresseddestbufferdestbuffersizewantuncompresseddeprecateduncompresseddestbufferdeprecateduncompresseddestbuffersizedeprecatedsizeuncompressedvoicedesiredsampleratedeprecated"></a>
-    <h4 class="visually-hidden">func getVoice(wantCompressed: Bool, destBuffer: UnsafeMutableRawPointer, destBufferSize: Int, wantUncompressedDeprecated: Bool, uncompressedDestBufferDeprecated: UnsafeMutableRawPointer, uncompressedDestBufferSizeDeprecatedSize: Int, uncompressedVoiceDesiredSampleRateDeprecated: Int) -&gt; (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int)</h4>
+    <a name="//apple_ref/cpp/Method/func%20getVoice(wantCompressed%3A%20Bool,%20destBuffer%3A%20UnsafeMutableRawPointer,%20destBufferSize%3A%20Int,%20wantUncompressedDeprecated%3A%20Bool,%20uncompressedDestBufferDeprecated%3A%20UnsafeMutableRawPointer%3F,%20uncompressedDestBufferSizeDeprecatedSize%3A%20Int,%20uncompressedVoiceDesiredSampleRateDeprecated%3A%20Int)%20-%3E%20(rc%3A%20VoiceResult,%20bytesWritten%3A%20Int,%20uncompressBytesWrittenDeprecated%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getvoicewantcompresseddestbufferdestbuffersizewantuncompresseddeprecateduncompresseddestbufferdeprecateduncompresseddestbuffersizedeprecatedsizeuncompressedvoicedesiredsampleratedeprecated"></a>
+    <h4 class="visually-hidden">func getVoice(wantCompressed: Bool, destBuffer: UnsafeMutableRawPointer, destBufferSize: Int, wantUncompressedDeprecated: Bool, uncompressedDestBufferDeprecated: UnsafeMutableRawPointer?, uncompressedDestBufferSizeDeprecatedSize: Int, uncompressedVoiceDesiredSampleRateDeprecated: Int) -&gt; (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int)</h4>
     
     
     <a class="j2-item-title" href="#_getvoicewantcompresseddestbufferdestbuffersizewantuncompresseddeprecateduncompresseddestbufferdeprecateduncompresseddestbuffersizedeprecatedsizeuncompressedvoicedesiredsampleratedeprecated" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getvoicewantcompresseddestbufferdestbuffersizewantuncompresseddeprecateduncompresseddestbufferdeprecateduncompresseddestbuffersizedeprecatedsizeuncompressedvoicedesiredsampleratedeprecated"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getVoice<span class="j2-item-secondary">(</span>wantCompressed<span class="j2-item-secondary">: Bool, </span>destBuffer<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>destBufferSize<span class="j2-item-secondary">: Int, </span>wantUncompressedDeprecated<span class="j2-item-secondary">: Bool, </span>uncompressedDestBufferDeprecated<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>uncompressedDestBufferSizeDeprecatedSize<span class="j2-item-secondary">: Int, </span>uncompressedVoiceDesiredSampleRateDeprecated<span class="j2-item-secondary">: Int) -&gt; (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getVoice<span class="j2-item-secondary">(</span>wantCompressed<span class="j2-item-secondary">: Bool, </span>destBuffer<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>destBufferSize<span class="j2-item-secondary">: Int, </span>wantUncompressedDeprecated<span class="j2-item-secondary">: Bool, </span>uncompressedDestBufferDeprecated<span class="j2-item-secondary">: UnsafeMutableRawPointer?, </span>uncompressedDestBufferSizeDeprecatedSize<span class="j2-item-secondary">: Int, </span>uncompressedVoiceDesiredSampleRateDeprecated<span class="j2-item-secondary">: Int) -&gt; (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_getvoicewantcompresseddestbufferdestbuffersizewantuncompresseddeprecateduncompresseddestbufferdeprecateduncompresseddestbuffersizedeprecatedsizeuncompressedvoicedesiredsampleratedeprecated">
@@ -5647,10 +5685,10 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getVoice(
     wantCompressed: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, destBuffer: UnsafeMutableRawPointer,
-    destBufferSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, wantUncompressedDeprecated: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>,
-    uncompressedDestBufferDeprecated: UnsafeMutableRawPointer,
-    uncompressedDestBufferSizeDeprecatedSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    uncompressedVoiceDesiredSampleRateDeprecated: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+    destBufferSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, wantUncompressedDeprecated: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = false,
+    uncompressedDestBufferDeprecated: UnsafeMutableRawPointer? = nil,
+    uncompressedDestBufferSizeDeprecatedSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = 0,
+    uncompressedVoiceDesiredSampleRateDeprecated: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = 0
 ) -&gt; (rc: <a href="../../steamworks/types/voiceresult.html?swift">VoiceResult</a>, bytesWritten: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, uncompressBytesWrittenDeprecated: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
   </div>
 
@@ -5773,7 +5811,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func initiateGameConnectionDEPRECATED(
     authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    gameServer: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>, ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, secure: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
+    gameServer: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, secure: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
 ) -&gt; <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a></code></pre>
   </div>
 
@@ -6321,7 +6359,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func userHasLicenseForApp(steamID: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>, id: <a href="../../steamworks/types/appid26.html?swift">AppID</a>)
+    <pre><code class="language-swift">public func userHasLicenseForApp(steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, id: <a href="../../steamworks/types/appid27.html?swift">AppID</a>)
     -&gt; <a href="../../steamworks/types/userhaslicenseforappresult.html?swift">UserHasLicenseForAppResult</a></code></pre>
   </div>
 

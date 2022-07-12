@@ -9,8 +9,8 @@ Experiment with Steamworks SDK and Swift C++ importer.
 Current state:
 * Requires Swift 5.7, Xcode 14 beta
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* First pass all interfaces complete - see [rough docs](https://johnfairh.github.io/swift-steamworks/index.html)
-* Interface quality-of-life tweaks needed, esp. returned string/array length
+* All interfaces complete - see [rough docs](https://johnfairh.github.io/swift-steamworks/index.html)
+* Some interface quality-of-life helpers in a spearate module
 * `make` builds and runs a demo Swift program that accesses the C++
   Steam API to initialize, do various sync and async queries, then shut it down.
 * Separate demo showing encrypted app-ticket stuff.
@@ -19,7 +19,7 @@ Current state:
 
 ### Concept
 
-* Offer a pure Swift module covering all of the current Steamworks API.
+* Offer a pure Swift module `Steamworks` covering all of the current Steamworks API.
 * Leave out the deprecated and WIN32-only stuff.
 * Do not diverge too far from the 'real' API names to aid docs / searching / porting:
   I think this is a better starting point than doing a complete OO analysis to carve
@@ -35,8 +35,39 @@ Current state:
 * Access interfaces via central types.
 * Use code gen to deal with the ~900 APIs and their ~400 types, taking advantage of the
   handy JSON file.  This code-gen piece is the actual main work in this project.
+* Provide quality-of-life helpers module `SteamworksHelpers` to wrap up API patterns
+  involving multiple calls, usually determining buffer lengths.
 
 ### API mapping design
+
+### Lifecycle
+
+```swift
+// Initialization
+let steam = SteamAPI(appID: MyAppId) // or `SteamGameServerAPI`
+
+// Frame loop
+steam.runCallbacks() // or `steam.releaseCurrentThreadMemory()`
+
+// Shutdown
+// ...when `steam` goes out of scope
+```
+
+### Callbacks
+
+```swift
+steam.onUserStatsReceived { userStatsReceived in
+  ...
+}
+```
+
+There are async versions too, like:
+```
+for await userStatsReceived in steam.userStatsReceived {
+  ...
+}
+```
+...but this needs the panacea of custom executors to be practical.
 
 #### Functions
 
@@ -44,7 +75,39 @@ Current state:
 auto handle = SteamInventory()->StartUpdateProperties();
 ```
 ```swift
-let handle = steamAPI.inventory.startUpdateProperties()
+let handle = steam.inventory.startUpdateProperties()
+```
+
+### Call-return style
+
+```cpp
+CCallResult<MyClass, FriendsGetFollowerCount_t> m_GetFollowerCountCallResult;
+
+...
+
+auto hSteamAPICall = SteamFriends.GetFollowerCount(steamID);
+m_GetFollowerCountCallResult.Set(hSteamAPICall, this, &MyClass::OnGetFollowerCount);
+
+...
+
+void MyClass::OnGetFollowerCount(FriendsGetFollowerCount_t *pCallback, bool bIOFailure) {
+  ...
+}
+
+```
+```swift
+steam.friends.getFollowerCount(steamID: steamID) { getFollowerCount in
+  guard let getFollowerCount = getFollowerCount else {
+    // `bIOFailure` case
+    ...
+  }
+  ...
+}
+```
+
+Again there are async versions that are impractical for now:
+```swift
+let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
 ```
 
 ### 'Out' parameters
@@ -94,9 +157,14 @@ let (rc1, _, itemDefIDCount) = steamAPI.inventory.
 let (rc2, itemDefIDs, _) = steamAPI.inventory.
                                getItemDefinitionIDs(itemDefIDsArraySize: itemDefIDCount)
 ```
-This pattern is a best-effort translation of the Steamworks API that inherently requires two
-calls - still pretty ugly and would expect to be wrapped up in a utility.
 
+### Default parameter values
+
+Default values are provided where the API docs suggest a value, but there are still APIs
+where caller is required to provide a max buffer length for an output string -- these look
+pretty weird in Swift but no way to avoid.  Some Steamworks APIs support the old "pass NULL
+to get the required length" two-pass style and these patterns are wrapped up in a Swifty
+way in the `SteamworksHelpers` module.
 
 ### Swift C++ Bugs
 
@@ -170,7 +238,6 @@ SteamEncryptedAppTicket
 
 Left to do:
 * Pondering of int types etc.
-* Array and String management improvements
 
 Skip:
 * ISteamAppTicket - er not actually a thing?
@@ -192,7 +259,7 @@ Capture some notes on troubles reflecting the json into the module.
 
 * `SteamNetworkingMessage_t` doesn't import into Swift.  Probably stumbling into a hole
   of C++ struct with function pointer fields.  Trust Apple will get to this eventually,
-  can write a zero-cost inline shim if necessary.
+  will write a zero-cost inline shim.
 
 * Json (and all non-C languages) struggles with unions.  Thankfully rare:
   `SteamIPAddress_t`, `SteamInputAction_t`, `SteamNetworkingConfigValue_t`.

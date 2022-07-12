@@ -14,6 +14,7 @@ theme: fw2020
 build_tool: spm
 modules:
   - Steamworks
+  - SteamworksHelpers
   - SteamworksEncryptedAppTicket
 build_tool_arguments:
   - "-Xswiftc"

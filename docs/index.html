@@ -431,7 +431,7 @@
   <li>
     
 
-  <a class="j2-nav-item" href="steamworks/types/appid26.html?swift">AppID</a>
+  <a class="j2-nav-item" href="steamworks/types/appid27.html?swift">AppID</a>
 
 
 
@@ -959,6 +959,24 @@
     
 
   <a class="j2-nav-item" href="steamworks/types/checkfilesignatureresult.html?swift">CheckFileSignatureResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/communityprofileitemproperty.html?swift">CommunityProfileItemProperty</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/communityprofileitemtype.html?swift">CommunityProfileItemType</a>
 
 
 
@@ -2053,6 +2071,24 @@
     
 
   <a class="j2-nav-item" href="steamworks/types/endgameresultcallback1.html?swift">EndGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/equippedprofileitemschanged1.html?swift">EquippedProfileItemsChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/equippedprofileitems.html?swift">EquippedProfileItems</a>
 
 
 
@@ -3983,7 +4019,7 @@
   <li>
     
 
-  <a class="j2-nav-item" href="steamworks/types/steamid14.html?swift">SteamID</a>
+  <a class="j2-nav-item" href="steamworks/types/steamid16.html?swift">SteamID</a>
 
 
 
@@ -4091,7 +4127,7 @@
           
           
           <p><img src="https://shields.io/badge/platform-macOS%20%7C%20%3F%3F-lightgrey" alt="macOS" />
-<img src="https://shields.io/badge/steamworks-1.53a-lightgrey" alt="Steamworks 1.53a" />
+<img src="https://shields.io/badge/steamworks-1.54-lightgrey" alt="Steamworks 1.53a" />
 <img src="https://shields.io/badge/license-MIT-black" alt="MIT" /></p>
 <h1 class="j2-anchor j2-heading heading" id="steamworksswift">
 <span data-anchor-id="steamworksswift">
@@ -4102,8 +4138,8 @@ steamworks-swift
 <ul>
 <li>Requires Swift 5.7, Xcode 14 beta</li>
 <li>Code gen creates Swift versions of Steam types; callbacks and call-returns work</li>
-<li>First pass all interfaces complete - see <a href="https://johnfairh.github.io/swift-steamworks/index.html">rough docs</a></li>
-<li>Interface quality-of-life tweaks needed, esp. returned string/array length</li>
+<li>All interfaces complete - see <a href="https://johnfairh.github.io/swift-steamworks/index.html">rough docs</a></li>
+<li>Some interface quality-of-life helpers in a spearate module</li>
 <li><code>make</code> builds and runs a demo Swift program that accesses the C++
 Steam API to initialize, do various sync and async queries, then shut it down.</li>
 <li>Separate demo showing encrypted app-ticket stuff.</li>
@@ -4115,12 +4151,12 @@ tab completion even if module interface gen is beyond it.</li>
 Concept
 </span></h3>
 <ul>
-<li>Offer a pure Swift module covering all of the current Steamworks API.</li>
+<li>Offer a pure Swift module <code>Steamworks</code> covering all of the current Steamworks API.</li>
 <li>Leave out the deprecated and WIN32-only stuff.</li>
 <li>Do not diverge too far from the ‘real’ API names to aid docs / searching / porting:
 I think this is a better starting point than doing a complete OO analysis to carve
 out function.  Can go to build <code>SteamworksPatterns</code> or something if worthwhile.  Name
-etc. changes planned though at least:
+etc. changes:
 <ul>
 <li><em>Don’t</em> use Swift properties for 0-arg getters: diverges too far from Steamworks
 naming</li>
@@ -4134,7 +4170,77 @@ naming</li>
 <li>Access interfaces via central types.</li>
 <li>Use code gen to deal with the ~900 APIs and their ~400 types, taking advantage of the
 handy JSON file.  This code-gen piece is the actual main work in this project.</li>
+<li>Provide quality-of-life helpers module <code>SteamworksHelpers</code> to wrap up API patterns
+involving multiple calls, usually determining buffer lengths.</li>
 </ul>
+<h3 class="j2-anchor j2-heading heading" id="api-mapping-design">
+<span data-anchor-id="api-mapping-design">
+API mapping design
+</span></h3>
+<h3 class="j2-anchor j2-heading heading" id="lifecycle">
+<span data-anchor-id="lifecycle">
+Lifecycle
+</span></h3>
+<h4 class="j2-anchor j2-heading heading" id="functions">
+<span data-anchor-id="functions">
+Functions
+</span></h4>
+<pre><code class="language-cpp">auto handle = SteamInventory()-&gt;StartUpdateProperties();
+</code></pre>
+<pre><code class="language-swift">let handle = steamAPI.inventory.startUpdateProperties()
+</code></pre>
+<h3 class="j2-anchor j2-heading heading" id="out-parameters">
+<span data-anchor-id="out-parameters">
+‘Out’ parameters
+</span></h3>
+<p>C++ ‘out’ parameters filled in by APIs are returned in a tuple, or, if the Steam API
+is <code>void</code> then as the sole return value.</p>
+<pre><code class="language-cpp">SteamInventoryResult_t result;
+bool rc = SteamInventory()-&gt;GrantPromoItems(&amp;result);
+</code></pre>
+<pre><code class="language-swift">let (rc, result) = steamAPI.inventory.grantPromotItems()
+</code></pre>
+<h3 class="j2-anchor j2-heading heading" id="optional-out-parameters">
+<span data-anchor-id="optional-out-parameters">
+Optional ‘out’ parameters
+</span></h3>
+<p>Some C++ ‘out’ parameters are optional: they can be passed as <code>NULL</code> to indicate they’re
+not required by caller.  In the Swift API these generate an additional boolean parameter
+<code>return&lt;ParamName&gt;</code> with default <code>true</code>.</p>
+<pre><code class="language-cpp">auto avail = SteamNetworkingUtils()-&gt;GetRelayNetworkStatusAvailability(NULL);
+</code></pre>
+<pre><code class="language-swift">let (avail, _) = steamAPI.networkingUtils.getRelayNetworkStatusAvailability(returnDetails: false)
+</code></pre>
+<p>The return tuple is still populated with something but its contents is undefined; the
+library guarantees to pass <code>NULL</code> to the underlying Steamworks API.</p>
+<h3 class="j2-anchor j2-heading heading" id="inout-parameters">
+<span data-anchor-id="inout-parameters">
+‘In-out’ parameters
+</span></h3>
+<p>C++ parameters whose values are significant and also have their value updated are present
+in <em>both</em> Swift function parameters and the return tuple.</p>
+<pre><code class="language-cpp">uint32 itemDefIDCount = 0;
+bool rc1 = SteamInventory()-&gt;GetItemDefinitionIDs(NULL, &amp;itemDefIDCount);
+auto itemDefIDs = new SteamItemDef_t [itemDefIDCount];
+bool rc2 = SteamInventory()-&gt;GetItemDefinitions(itemDefIDs, &amp;itemDefIDCount);
+</code></pre>
+<pre><code class="language-swift">let (rc1, _, itemDefIDCount) = steamAPI.inventory.
+                                   getItemDefinitionIDs(returnItemDefIDs: false,
+                                                        itemDefIDsArraySize: 0)
+let (rc2, itemDefIDs, _) = steamAPI.inventory.
+                               getItemDefinitionIDs(itemDefIDsArraySize: itemDefIDCount)
+</code></pre>
+<p>This pattern is a best-effort translation of the Steamworks API that inherently requires two
+calls - still pretty ugly and would expect to be wrapped up in a utility.</p>
+<h3 class="j2-anchor j2-heading heading" id="default-parameter-values">
+<span data-anchor-id="default-parameter-values">
+Default parameter values
+</span></h3>
+<p>Default values are provided where the API docs suggest a value, but there are still APIs
+where caller is required to provide a max buffer length for an output string – these look
+pretty weird in Swift but no way to avoid.  Some Steamworks APIs support the old “pass NULL
+to get the required length” two-pass style and these patterns are wrapped up in a Swifty
+way in the <code>SteamworksHelpers</code> module.</p>
 <h3 class="j2-anchor j2-heading heading" id="swift-c-bugs">
 <span data-anchor-id="swift-c-bugs">
 Swift C++ Bugs
@@ -4174,6 +4280,22 @@ Non-Swift Problems
 with that could build the thing; don’t really fancy installing the steam client but
 maybe that’s doable.</li>
 </ul>
+<h4 class="j2-anchor j2-heading heading" id="weird-steam-messages">
+<span data-anchor-id="weird-steam-messages">
+Weird Steam messages
+</span></h4>
+<p>Getting unexpected SteamAPICallCompleteds out of
+<code>SteamAPI_ManualDispatch_GetNextCallback()</code> – suspect parts of steamworks trying to
+use callbacks internally without understanding manual dispatch mode.  Or I’m missing
+an API somewhere to dispatch them.</p>
+<ul>
+<li>2101 - <code>HTTPRequestCompleted_t.k_iCallback</code></li>
+<li>1296 - <code>k_iSteamNetworkingUtilsCallbacks + 16</code> - undefined, not a clue</li>
+</ul>
+<p>Seems triggered by using steamnetworking.</p>
+<p>Facepunch logs &amp; drops these too, so, erm, shrug I suppose.</p>
+<p>Getting <code>src/steamnetworkingsockets/clientlib/csteamnetworkingmessages.cpp (229) : Assertion Failed: [#40725897 pipe] Unlinking connection in state 1</code> using steamnetworkingmessages; possibly
+it’s not expecting to send messages from a steam ID to itself.</p>
 <h3 class="j2-anchor j2-heading heading" id="requirements">
 <span data-anchor-id="requirements">
 Requirements
@@ -4202,7 +4324,6 @@ SteamEncryptedAppTicket</p>
 <p>Left to do:</p>
 <ul>
 <li>Pondering of int types etc.</li>
-<li>Array and String management improvements</li>
 </ul>
 <p>Skip:</p>
 <ul>
@@ -4229,7 +4350,7 @@ broken links.  Have to wait for Valve to fix this.</p>
 <li>
 <p><code>SteamNetworkingMessage_t</code> doesn’t import into Swift.  Probably stumbling into a hole
 of C++ struct with function pointer fields.  Trust Apple will get to this eventually,
-can write a zero-cost inline shim if necessary.</p>
+will write a zero-cost inline shim.</p>
 </li>
 <li>
 <p>Json (and all non-C languages) struggles with unions.  Thankfully rare:

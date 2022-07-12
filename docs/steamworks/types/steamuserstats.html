@@ -442,7 +442,7 @@
   <li>
     
 
-  <a class="j2-nav-item" href="../../steamworks/types/appid26.html?swift">AppID</a>
+  <a class="j2-nav-item" href="../../steamworks/types/appid27.html?swift">AppID</a>
 
 
 
@@ -970,6 +970,24 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/checkfilesignatureresult.html?swift">CheckFileSignatureResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/communityprofileitemproperty.html?swift">CommunityProfileItemProperty</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/communityprofileitemtype.html?swift">CommunityProfileItemType</a>
 
 
 
@@ -2064,6 +2082,24 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/endgameresultcallback1.html?swift">EndGameResultCallback</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/equippedprofileitemschanged1.html?swift">EquippedProfileItemsChanged</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/equippedprofileitems.html?swift">EquippedProfileItems</a>
 
 
 
@@ -3994,7 +4030,7 @@
   <li>
     
 
-  <a class="j2-nav-item" href="../../steamworks/types/steamid14.html?swift">SteamID</a>
+  <a class="j2-nav-item" href="../../steamworks/types/steamid16.html?swift">SteamID</a>
 
 
 
@@ -4504,7 +4540,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func downloadLeaderboardEntriesForUsers(
-    steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>, users: [<a href="../../steamworks/types/steamid14.html?swift">SteamID</a>],
+    steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>, users: [<a href="../../steamworks/types/steamid16.html?swift">SteamID</a>],
     completion: @escaping (<a href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -4566,7 +4602,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func downloadLeaderboardEntriesForUsers(
-    steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>, users: [<a href="../../steamworks/types/steamid14.html?swift">SteamID</a>]
+    steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>, users: [<a href="../../steamworks/types/steamid16.html?swift">SteamID</a>]
 ) async -&gt; <a href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>?</code></pre>
   </div>
 
@@ -5913,9 +5949,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getMostAchievedAchievementInfo(nameBufLen: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) -&gt; (
-    rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, percent: <a href="https://developer.apple.com/documentation/swift/float?language=swift">Float</a>, achieved: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
-)</code></pre>
+    <pre><code class="language-swift">public func getMostAchievedAchievementInfo(
+    nameBufLen: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = <a href="../../steamworks/types/steamconstants.html?swift#statnamemaxsize">SteamConstants.statNameMaxSize</a> + 1
+) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, percent: <a href="https://developer.apple.com/documentation/swift/float?language=swift">Float</a>, achieved: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
   </div>
 
 
@@ -5976,7 +6012,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getNextMostAchievedAchievementInfo(
-    iteratorPreviousIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, nameBufLen: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+    iteratorPreviousIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    nameBufLen: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = <a href="../../steamworks/types/steamconstants.html?swift#statnamemaxsize">SteamConstants.statNameMaxSize</a> + 1
 ) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, percent: <a href="https://developer.apple.com/documentation/swift/float?language=swift">Float</a>, achieved: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
   </div>
 
@@ -6338,7 +6375,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getUserAchievement(user: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) -&gt; (
+    <pre><code class="language-swift">public func getUserAchievement(user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) -&gt; (
     rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, achieved: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
 )</code></pre>
   </div>
@@ -6400,7 +6437,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getUserAchievementAndUnlockTime(user: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) -&gt; (
+    <pre><code class="language-swift">public func getUserAchievementAndUnlockTime(user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) -&gt; (
     rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, achieved: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, unlockTime: <a href="../../steamworks/types/rtime32.html?swift">RTime32</a>
 )</code></pre>
   </div>
@@ -6462,7 +6499,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getUserStatFloat(user: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) -&gt; (
+    <pre><code class="language-swift">public func getUserStatFloat(user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) -&gt; (
     rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, data: <a href="https://developer.apple.com/documentation/swift/float?language=swift">Float</a>
 )</code></pre>
   </div>
@@ -6524,7 +6561,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getUserStatInt(user: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, data: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func getUserStatInt(user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, name: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, data: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
   </div>
 
 
@@ -6950,7 +6987,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestUserStats(
-    user: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7010,7 +7047,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestUserStats(user: <a href="../../steamworks/types/steamid14.html?swift">SteamID</a>) async -&gt; <a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>?</code></pre>
+    <pre><code class="language-swift">public func requestUserStats(user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async -&gt; <a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>?</code></pre>
   </div>
 
 
