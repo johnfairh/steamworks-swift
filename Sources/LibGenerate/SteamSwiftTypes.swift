@@ -94,7 +94,8 @@ extension SteamType {
     /// thanks to happenstance or Clang importer magic?  If not then a cast to the `nativeSwiftType`
     /// is required.
     var isPassedToFunctionWithoutCast: Bool {
-        steamTypesPassedInWithoutCast.contains(self)
+        let queryTypeName = name.hasSuffix("*") ? name : name.re_sub("^const ", with: "")
+        return steamTypesPassedInWithoutCast.contains(SteamType(queryTypeName))
     }
 }
 
@@ -151,7 +152,7 @@ private let steamTypesReturnedWithoutCast = Set<SteamType>([
 private let steamTypesPassedInWithoutCast = Set<SteamType>([
     "bool", "const char *", "void *", "uint8 *",
     "const void *", "float", "double", "uint64",
-    "uint16", "const uint16" /* XXX broken somewhere else */,
+    "uint16",
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])

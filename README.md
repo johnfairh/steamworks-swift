@@ -127,6 +127,11 @@ Again there are async versions that are impractical for now:
 let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
 ```
 
+### Array-length parameters
+
+Parameters carrying the length of an input array are discarded because Swift arrays
+carry their length with them.
+
 ### 'Out' parameters
 
 C++ 'out' parameters filled in by APIs are returned in a tuple, or, if the Steam API
