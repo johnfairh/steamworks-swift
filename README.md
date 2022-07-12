@@ -7,15 +7,15 @@
 Experiment with Steamworks SDK and Swift C++ importer.
 
 Current state:
-* Requires Swift 5.7, Xcode 14 beta
+* Requires Swift 5.7, Xcode 14 beta -- the C++ importer is a unstable science project
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
 * All interfaces complete - see [rough docs](https://johnfairh.github.io/swift-steamworks/index.html)
-* Some interface quality-of-life helpers in a spearate module
-* `make` builds and runs a demo Swift program that accesses the C++
-  Steam API to initialize, do various sync and async queries, then shut it down.
-* Separate demo showing encrypted app-ticket stuff.
+* Some interface quality-of-life helpers in a separate module
+* `make` builds and runs a demo Swift program that accesses the Steam API to initialize, do
+  various sync and async queries, then shut it down
+* Separate demo showing encrypted app-ticket stuff
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
-  tab completion even if module interface gen is beyond it.
+  tab completion even if module interface gen is beyond it
 
 ### Concept
 
@@ -55,6 +55,21 @@ steam.runCallbacks() // or `steam.releaseCurrentThreadMemory()`
 
 ### Callbacks
 
+C++
+```cpp
+STEAM_CALLBACK(MyClass, OnUserStatsReceived, UserStatsReceived_t, m_CallbackUserStatsReceived);
+
+...
+
+m_CallbackUserStatsReceived( this, &MyClass::OnUserStatsReceived )
+
+...
+
+void MyClass::OnUserStatsReceived( UserStatsReceived_t *pCallback ) {
+  ...
+}
+```
+Swift
 ```swift
 steam.onUserStatsReceived { userStatsReceived in
   ...
@@ -67,7 +82,7 @@ for await userStatsReceived in steam.userStatsReceived {
   ...
 }
 ```
-...but this needs the panacea of custom executors to be practical.
+...but these need the panacea of custom executors to be practical.
 
 #### Functions
 
@@ -80,6 +95,7 @@ let handle = steam.inventory.startUpdateProperties()
 
 ### Call-return style
 
+C++
 ```cpp
 CCallResult<MyClass, FriendsGetFollowerCount_t> m_GetFollowerCountCallResult;
 
@@ -95,6 +111,7 @@ void MyClass::OnGetFollowerCount(FriendsGetFollowerCount_t *pCallback, bool bIOF
 }
 
 ```
+Swift
 ```swift
 steam.friends.getFollowerCount(steamID: steamID) { getFollowerCount in
   guard let getFollowerCount = getFollowerCount else {
@@ -120,7 +137,7 @@ SteamInventoryResult_t result;
 bool rc = SteamInventory()->GrantPromoItems(&result);
 ```
 ```swift
-let (rc, result) = steamAPI.inventory.grantPromotItems()
+let (rc, result) = steamAPI.inventory.grantPromoItems()
 ```
 
 ### Optional 'out' parameters
@@ -171,8 +188,9 @@ way in the `SteamworksHelpers` module.
 Tech limitations, on 5.6:
 * Have to manually tell Swift to link with `libc++`.  Verify by commenting from
   Makefile.  When resolved tidy Makefile.
-* Importing `Dispatch` and `-enable-cxx-interop` makes `DispatchSemaphore` disappear
-  but not the rest of the module?? Work around.  When resolved rewrite mutex.
+* ~~Importing `Dispatch` and `-enable-cxx-interop` makes `DispatchSemaphore` disappear
+  but not the rest of the module?? Work around.  When resolved rewrite mutex.~~ currently
+  fixed in 5.7
 * Some structures/classes aren't imported -- the common factor seems to be a `protected`
   destructor.  Verify by trying to use `SteamNetworkingMessage_t`.
 * Something goes wrong storing pointers to base classes and they get nobbled by
