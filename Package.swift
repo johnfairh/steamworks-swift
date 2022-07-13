@@ -79,7 +79,8 @@ let package = Package(
         ],
         resources: [
           .copy("Resources/steam_api_patch.yaml"),
-          .copy("Resources/steam_api_extra.json")
+          .copy("Resources/steam_api_extra.json"),
+          .copy("Resources/EXPECTED_SDK")
         ]),
     .testTarget(
         name: "SteamworksTests",

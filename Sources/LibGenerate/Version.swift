@@ -13,11 +13,10 @@ struct Version {
     }
 
     /// Generate `SteamBaseAPI.steamworksVersion` by parsing the readme file.
-    ///
-    /// How long can I go without dropping in the regex library...
     func generate() throws {
         let readme = try io.loadReadme()
         let version = try parseVersion(readme: readme)
+        io.checkSDKVersion(version)
 
         let contents = """
         // MARK: SDK version
@@ -38,17 +37,13 @@ struct Version {
     /// Format is like:
     /// ```
     /// ----------------------------------------------------------------
-    /// v1.52 14th September 2021
+    /// v1.52b 14th September 2021
     /// ----------------------------------------------------------------
     /// ```
     func parseVersion(readme: String) throws -> String {
-        guard let versionLine = readme
-            .split(whereSeparator: { $0.isNewline }) /* \r\n going on ... */
-            .first(where: { $0.hasPrefix("v") }) else {
+        guard let match = readme.re_match("^v(.*?) ", options: .m) else {
             throw Failed("Couldn't parse version line from readme \(io.readmeURL.path)")
         }
-
-        let tokens = versionLine.split(separator: " ")
-        return String(tokens[0].dropFirst())
+        return match[1]
     }
 }

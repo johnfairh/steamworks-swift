@@ -98,6 +98,20 @@ final class IO {
         return url
     }
 
+    func checkSDKVersion(_ actual: String) {
+        func warn(_ message: String) {
+            print("\(Colors.red)\(message)\(Colors.reset)")
+        }
+        guard let url = resources.url(forResource: "EXPECTED_SDK", withExtension: nil),
+              let expected = try? String(contentsOf: url).trimmingCharacters(in: .newlines) else {
+            warn("Can't resolve EXPECTED_SDK")
+            return
+        }
+        if actual != expected {
+            warn("Expected Steamworks SDK version \(expected) but is \(actual)")
+        }
+    }
+
     var fileHeaderLicense: String {
         """
         //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
