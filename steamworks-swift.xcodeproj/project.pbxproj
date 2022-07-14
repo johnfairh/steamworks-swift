@@ -19,7 +19,6 @@
 		020860CE273048F200725122 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860CC273048EE00725122 /* Errors.swift */; };
 		020860D12730493900725122 /* SteamBaseAPI+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860CF2730493300725122 /* SteamBaseAPI+Version.swift */; };
 		020860D327304C2300725122 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860D227304C2300725122 /* TestUtils.swift */; };
-		020860D52731701700725122 /* TestGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860D42731701700725122 /* TestGenerate.swift */; };
 		020860D72731B5CC00725122 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860D62731B5CC00725122 /* Metadata.swift */; };
 		020860D92732B5A600725122 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860D82732B5A600725122 /* Enums.swift */; };
 		020860DB2732BA8900725122 /* Regexp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DA2732BA8900725122 /* Regexp.swift */; };
@@ -28,7 +27,6 @@
 		020860E12734054400725122 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E02734054400725122 /* Enums.swift */; };
 		020860E42735487600725122 /* Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E2273547B100725122 /* Interfaces.swift */; };
 		020860EB2736F8E700725122 /* SteamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E72735562A00725122 /* SteamFriends.swift */; };
-		020860F4273E775200725122 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 020860F3273E775200725122 /* Fixtures */; };
 		020860F6273FE55C00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F5273FE55C00725122 /* Typedefs.swift */; };
 		020860F8273FED5A00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F7273FED5A00725122 /* Typedefs.swift */; };
 		020860FA27403F6E00725122 /* TestTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F927403F6E00725122 /* TestTypes.swift */; };
@@ -254,7 +252,6 @@
 		020860CC273048EE00725122 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		020860CF2730493300725122 /* SteamBaseAPI+Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SteamBaseAPI+Version.swift"; sourceTree = "<group>"; };
 		020860D227304C2300725122 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
-		020860D42731701700725122 /* TestGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGenerate.swift; sourceTree = "<group>"; };
 		020860D62731B5CC00725122 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		020860D82732B5A600725122 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		020860DA2732BA8900725122 /* Regexp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regexp.swift; sourceTree = "<group>"; };
@@ -264,7 +261,6 @@
 		020860E2273547B100725122 /* Interfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interfaces.swift; sourceTree = "<group>"; };
 		020860E72735562A00725122 /* SteamFriends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamFriends.swift; sourceTree = "<group>"; };
 		020860EC273D2CC500725122 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
-		020860F3273E775200725122 /* Fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fixtures; sourceTree = "<group>"; };
 		020860F5273FE55C00725122 /* Typedefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typedefs.swift; sourceTree = "<group>"; };
 		020860F7273FED5A00725122 /* Typedefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typedefs.swift; sourceTree = "<group>"; };
 		020860F927403F6E00725122 /* TestTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTypes.swift; sourceTree = "<group>"; };
@@ -587,13 +583,11 @@
 			children = (
 				OBJ_17 /* TestCallbacks.swift */,
 				020860A7273014B900725122 /* TestVersion.swift */,
-				020860D227304C2300725122 /* TestUtils.swift */,
-				020860D42731701700725122 /* TestGenerate.swift */,
 				020860DC273307C700725122 /* TestNames.swift */,
 				020860F927403F6E00725122 /* TestTypes.swift */,
 				027F8376274BB8E900963383 /* TestSteamID.swift */,
 				02AD455E2750E82900BD93ED /* TestStructs.swift */,
-				020860F3273E775200725122 /* Fixtures */,
+				020860D227304C2300725122 /* TestUtils.swift */,
 			);
 			name = SteamworksTests;
 			path = Tests/SteamworksTests;
@@ -897,7 +891,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				020860F4273E775200725122 /* Fixtures in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1059,7 +1052,6 @@
 				027F8377274BB8E900963383 /* TestSteamID.swift in Sources */,
 				020860DD273307C700725122 /* TestNames.swift in Sources */,
 				020860FA27403F6E00725122 /* TestTypes.swift in Sources */,
-				020860D52731701700725122 /* TestGenerate.swift in Sources */,
 				02AD45602750E84B00BD93ED /* TestStructs.swift in Sources */,
 				OBJ_47 /* TestCallbacks.swift in Sources */,
 				020860D327304C2300725122 /* TestUtils.swift in Sources */,

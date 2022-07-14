@@ -10,6 +10,8 @@ import XCTest
 
 // Test (describe) the Steamworks -> Swift naming rules
 // Individual special cases are just in code and observed by generation.
+//
+// (this is very out of date, really relying on the SDK translation stability...)
 class TestNames: XCTestCase {
     func testTypenames() {
         let cases: [(SteamType, SwiftType)] = [
@@ -53,24 +55,24 @@ class TestNames: XCTestCase {
         }
     }
 
-//    func testParameters() {
-//        let cases = [
-//            ("steamID", "steamID"), // preserve lone steamID
-//            ("steamidUser", "user"), // but strip if a prefix however spelt ..
-//            ("pOutSteamIDUsers", "users"), // ... even wildly
-//            ("pszInput", "input"), // strip hungarian
-//            ("aProtocol", "`protocol`"), // respect swift keywords
-//            ("iEntry", "entryIndex"), // i does not mean integer
-//            ("iEntryIndex", "entryIndex"), // people are thoughtless
-//            ("cubData", "dataSize"), // "count of unsigned bytes" ??
-//            ("wrong", "wrong"), // there's always one
-//            ("csecsStart", "csecsStart"), // special prefix
-//        ]
-//
-//        cases.forEach { steam, swift in
-//            XCTAssertEqual(steam.asSwiftParameterName, swift)
-//        }
-//    }
+    func testParameters() {
+        let cases: [(SteamHungarianName, SwiftExpr)] = [
+            ("steamID", "steamID"), // preserve lone steamID
+            ("steamidUser", "user"), // but strip if a prefix however spelt ..
+            ("pOutSteamIDUsers", "users"), // ... even wildly
+            ("pszInput", "input"), // strip hungarian
+            ("aProtocol", "`protocol`"), // respect swift keywords
+            ("iEntry", "entryIndex"), // i does not mean integer
+            ("iEntryIndex", "entryIndex"), // people are thoughtless
+            ("cubData", "dataSize"), // "count of unsigned bytes" ??
+            ("wrong", "wrong"), // there's always one
+            ("csecsStart", "csecsStart"), // special prefix
+        ]
+
+        cases.forEach { steam, swift in
+            XCTAssertEqual(steam.swiftParameterName, swift)
+        }
+    }
 
     /// This is for the nicely-formatted style in the json...
     func testCArray() throws {

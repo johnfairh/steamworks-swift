@@ -179,7 +179,7 @@ struct SteamParameterExpr: StringFungible {
     }
 }
 
-private extension SteamHungarianName {
+extension SteamHungarianName {
     /// Parameters - special behaviour for 'out' parameters, need to strip off
     /// the various expressions of 'out' in the steam name.
     var swiftParameterName: SwiftExpr {

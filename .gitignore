@@ -3,6 +3,6 @@
 /Packages
 xcuserdata/
 .swiftpm
-sdk
+/sdk*
 c_test
 steamworksexample.app

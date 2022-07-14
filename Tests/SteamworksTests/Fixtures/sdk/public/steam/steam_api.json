@@ -1,0 +1,151 @@
+{
+    "callback_structs": [],
+    "consts": [
+        { "constname":"k_uAppIdInvalid", "consttype":"AppId_t", "constval":"22" },
+        { "constname":"k_UGCHandleInvalid", "consttype":"UGCHandle_t", "constval":"0xffffffffffffffffull" },
+        { "constname":"BadConst", "consttype":"BadType", "constval":"BadValue" },
+    ],
+    "enums": [
+    {
+      "enumname": "ESteamEnum",
+      "values": [
+        { "name":"k_ESteamEnumIPv6", "value":"1" },
+        { "name":"k_ESteamEnum_3Straight", "value":"2" },
+        { "name":"k_ESteamEnum_A", "value":"3" },
+        { "name":"k_ESteamEnumPublic", "value":"-4" },
+        { "name":"k_ESteamEnumHTTPFailure", "value":"5" },
+        { "name":"k_ESteamEnumOK", "value":"6" },
+        { "name":"esteamEnumLower_Case", "value":"7"}
+      ]
+    },
+    {
+      "enumname": "ESteamMiscFlags",
+      "values": [
+        { "name":"k_ESteamMiscFlagsNone", "value":"0" },
+        { "name":"k_ESteamMiscFlagsSome", "value":"4" },
+        { "name":"k_ESteamMiscFlagsLoads", "value":"512" }
+      ]
+    },
+    {
+      "enumname": "EChatEntryType",
+      "values": [
+        { "name":"k_EChatEntryTypeInvalid", "value":"0" },
+        { "name":"k_EChatEntryTypeChatMsg", "value":"1" },
+      ]
+    }
+    ],
+    "interfaces": [
+    {
+      "accessors": [
+        {
+          "kind": "user",
+          "name": "SteamFriends",
+          "name_flat": "SteamAPI_SteamFriends_v017"
+        }
+      ],
+      "classname": "ISteamFriends",
+      "methods": [
+        {
+          "methodname": "GetUserRestrictions",
+          "methodname_flat": "SteamAPI_ISteamFriends_GetUserRestrictions",
+          "params": [],
+          "returntype": "uint32"
+        },
+        {
+          "methodname": "ClearRichPresence",
+          "methodname_flat": "SteamAPI_ISteamFriends_ClearRichPresence",
+          "params": [],
+          "returntype": "void"
+        },
+        {
+          "callresult": "SetPersonaNameResponse_t",
+          "methodname": "SetPersonaName",
+          "methodname_flat": "SteamAPI_ISteamFriends_SetPersonaName",
+          "params": [
+            { "paramname":"pchPersonaName", "paramtype":"const char *" }
+          ],
+          "returntype": "SteamAPICall_t"
+        },
+        {
+          "methodname": "GetPersonaState",
+          "methodname_flat": "SteamAPI_ISteamFriends_GetPersonaState",
+          "params": [],
+          "returntype": "EPersonaState"
+        },
+        {
+          "methodname": "GetClanChatMessage",
+          "methodname_flat": "SteamAPI_ISteamFriends_GetClanChatMessage",
+          "params": [
+            { "paramname":"steamIDClanChat", "paramtype":"CSteamID", "paramtype_flat":"uint64_steamid" },
+            { "paramname":"iMessage", "paramtype":"int" },
+            { "paramname":"prgchText", "paramtype":"void *" },
+            { "paramname":"cchTextMax", "paramtype":"int" },
+            { "paramname":"peChatEntryType", "paramtype":"EChatEntryType *" },
+            {
+              "out_struct": "",
+              "paramname": "psteamidChatter",
+              "paramtype": "CSteamID *"
+            }
+          ],
+          "returntype": "int"
+        },
+        {
+          "methodname": "GetFriendsGroupMembersListF",
+          "methodname_flat": "SteamAPI_ISteamFriends_GetFriendsGroupMembersListF",
+          "params": [
+            { "paramname":"friendsGroupID", "paramtype":"FriendsGroupID_t" },
+            {
+              "out_array_call": "nMembersCount,GetFriendsGroupMembersCount,friendsGroupID",
+              "paramname": "pOutSteamIDMembers",
+              "paramtype": "CSteamID *"
+            },
+            { "paramname":"nMembersCount", "paramtype":"int" },
+            { "array_count":"nInCount", "paramname":"pSomeInts", "paramtype":"int *"},
+            { "paramname":"nInCount", "paramtype":"int"}
+          ],
+          "returntype": "int"
+        },
+        {
+          "methodname": "GetFriendsGroupMembersListR",
+          "methodname_flat": "SteamAPI_ISteamFriends_GetFriendsGroupMembersListR",
+          "params": [
+            { "paramname":"friendsGroupID", "paramtype":"FriendsGroupID_t" },
+            { "array_count":"nInCount", "paramname":"pSomeInts", "paramtype":"int *"},
+            { "paramname":"nInCount", "paramtype":"int"}
+          ],
+          "returntype": "bool"
+        },
+      ]
+    }
+    ],
+    "structs": [
+    {
+      "callback_id": 117,
+      "enums": [
+        {
+          "enumname": "EFailureType",
+          "fqname": "IPCFailure_t::EFailureType",
+          "values": [
+            { "name":"k_EFailureFlushedCallbackQueue", "value":"0" },
+            { "name":"k_EFailurePipeFail", "value":"1" }
+          ]
+        }
+      ],
+      "fields": [
+        { "fieldname":"m_eFailureType", "fieldtype":"uint8" },
+        { "fieldname":"m_bSuccess", "fieldtype":"int16" },
+        { "fieldname":"m_steamIDUser", "fieldtype":"uint64"},
+        { "fieldname":"m_achName", "fieldtype":"char [200]"},
+        { "fieldname":"m_abData", "fieldtype":"uint8 [12]"},
+        { "fieldname":"m_aStruct", "fieldtype":"Something_t [4]"},
+      ],
+      "struct": "IPCFailure_t"
+    }
+    ],
+    "typedefs": [
+      { "typedef":"skippable", "type":"bad"},
+      { "typedef":"FriendID_t", "type":"unsigned int"},
+      { "typedef":"AppId_t", "type":"unsigned int" },
+      { "typedef":"Callback_t", "type":"void (*)(SteamType_t *, ESteamEnum)"}
+    ]
+}
