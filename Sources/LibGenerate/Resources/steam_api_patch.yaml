@@ -1022,6 +1022,11 @@ methods:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUtils_GetServerRealTime:
     returntype: RTime32_t
+  SteamAPI_ISteamUtils_InitFilterText:
+    params:
+      unFilterOptions:
+        default_value: 0
+
 #
 # ISteamVideo
 #

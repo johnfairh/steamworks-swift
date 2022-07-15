@@ -143,7 +143,7 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::InitFilterText()`
-    public func initFilterText(filterOptions: Int) -> Bool {
+    public func initFilterText(filterOptions: Int = 0) -> Bool {
         SteamAPI_ISteamUtils_InitFilterText(interface, uint32(filterOptions))
     }
 

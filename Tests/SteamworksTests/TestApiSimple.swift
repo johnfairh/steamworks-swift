@@ -74,7 +74,7 @@ class TestApiSimple: XCTestCase {
         let steamID = steam.user.getSteamID()
         let str = "Hello world"
 
-        let rc = steam.utils.initFilterText(filterOptions: 0)
+        let rc = steam.utils.initFilterText()
         guard rc else {
             XCTFail("InitFilterText")
             return
