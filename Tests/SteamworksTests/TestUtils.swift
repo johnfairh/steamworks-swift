@@ -8,7 +8,91 @@
 import Foundation
 import XCTest
 @testable import LibGenerate
+import Steamworks
 
+/// Wrapper for Steam API initialization
+///
+/// We attempt to share this across test instances -- the shutdown
+/// is a bit yolo relying on atexit() to kill the last ref and trigger
+/// deinit.
+///
+/// Also yoloing what XCTest is doing with its threads...
+///
+/// Not going to work as-written if tests run in parallel
+enum TestClient {
+    struct InitFailure: Error {}
+
+    typealias FrameCallback = (SteamAPI) -> Void
+
+    final class Client {
+        let steam: SteamAPI
+        private var runningFrames: Bool
+        private let frameSource: DispatchSourceTimer
+        private var frameCallback: FrameCallback?
+
+        init(steam: SteamAPI) {
+            self.steam = steam
+            runningFrames = false
+            frameSource = DispatchSource.makeTimerSource(queue: .main)
+            frameSource.schedule(deadline: .now(), repeating: .milliseconds(1000/60))
+            frameSource.setEventHandler() { [weak self] in self?.frame() }
+            frameCallback = nil
+            frameSource.resume()
+        }
+
+        private func frame() {
+            steam.runCallbacks()
+            frameCallback?(steam)
+        }
+
+        func runFrames(callback: FrameCallback?) {
+            precondition(!runningFrames)
+            frameCallback = callback
+            runningFrames = true
+            while runningFrames && RunLoop.current.run(mode: .default, before: .distantFuture) {
+            }
+        }
+
+        func stopRunningFrames() {
+            precondition(runningFrames)
+            frameCallback = nil
+            runningFrames = false
+        }
+    }
+
+    private static var client: Client?
+
+    static func getClient() throws -> SteamAPI {
+        if let client {
+            return client.steam
+        }
+        guard FileManager.default.fileExists(atPath: "/Applications/Steam.app") else {
+            throw XCTSkip("Skipping Steam API test, can't find Steam")
+        }
+        setenv("SteamAppId", "480", 1)
+        if let steam = SteamAPI() {
+            TestClient.client = Client(steam: steam)
+            atexit {
+                TestClient.client = nil
+            }
+            steam.useLoggerForSteamworksWarnings()
+            return steam
+        }
+        print("Can't initialize Steam API")
+        throw InitFailure()
+    }
+
+    /// Run frames until  `stopRunningFrames` is called
+    static func runFrames(callback: FrameCallback? = nil) {
+        client?.runFrames(callback: callback)
+    }
+
+    static func stopRunningFrames() {
+        client?.stopRunningFrames()
+    }
+}
+
+/// Foundation helpers
 extension FileManager {
     /// Create a new empty temporary directory.  Caller must delete.
     func createTemporaryDirectory(inDirectory directory: URL? = nil, name: String? = nil) throws -> URL {
@@ -32,6 +116,8 @@ extension FileManager {
     }
 }
 
+/// Stuff for faked up SDK database to test generator
+/// Didn't make much use of this in the end / so far
 extension XCTestCase {
     static var fixturesURL: URL {
         URL(fileURLWithPath: #filePath)

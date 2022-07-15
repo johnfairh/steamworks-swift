@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02086095272C194A00725122 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 02086094272C194A00725122 /* Logging */; };
-		020860A8273014B900725122 /* TestVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860A7273014B900725122 /* TestVersion.swift */; };
+		020860A8273014B900725122 /* TestGenVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860A7273014B900725122 /* TestGenVersion.swift */; };
 		020860B6273047E200725122 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860A3272EBEE800725122 /* Generator.swift */; };
 		020860B7273047E700725122 /* IO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860A1272EBEC500725122 /* IO.swift */; };
 		020860B8273047EA00725122 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860A527300E5F00725122 /* Version.swift */; };
@@ -22,14 +22,14 @@
 		020860D72731B5CC00725122 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860D62731B5CC00725122 /* Metadata.swift */; };
 		020860D92732B5A600725122 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860D82732B5A600725122 /* Enums.swift */; };
 		020860DB2732BA8900725122 /* Regexp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DA2732BA8900725122 /* Regexp.swift */; };
-		020860DD273307C700725122 /* TestNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DC273307C700725122 /* TestNames.swift */; };
+		020860DD273307C700725122 /* TestGenNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DC273307C700725122 /* TestGenNames.swift */; };
 		020860DF27330CD200725122 /* SteamNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860DE27330CD200725122 /* SteamNames.swift */; };
 		020860E12734054400725122 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E02734054400725122 /* Enums.swift */; };
 		020860E42735487600725122 /* Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E2273547B100725122 /* Interfaces.swift */; };
 		020860EB2736F8E700725122 /* SteamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860E72735562A00725122 /* SteamFriends.swift */; };
 		020860F6273FE55C00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F5273FE55C00725122 /* Typedefs.swift */; };
 		020860F8273FED5A00725122 /* Typedefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F7273FED5A00725122 /* Typedefs.swift */; };
-		020860FA27403F6E00725122 /* TestTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F927403F6E00725122 /* TestTypes.swift */; };
+		020860FA27403F6E00725122 /* TestGenTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860F927403F6E00725122 /* TestGenTypes.swift */; };
 		020860FC274290DE00725122 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860FB274290DE00725122 /* Structs.swift */; };
 		020860FE27451F9B00725122 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E92728145E00DE64F0 /* Structs.swift */; };
 		020861002746747F00725122 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860FF2746747E00725122 /* Callbacks.swift */; };
@@ -53,7 +53,6 @@
 		02AD4559274FB30700BD93ED /* SteamApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD4558274FB30700BD93ED /* SteamApps.swift */; };
 		02AD455B2750099B00BD93ED /* SteamGameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD455A2750099B00BD93ED /* SteamGameServer.swift */; };
 		02AD455D27500E5400BD93ED /* ManualStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD455C27500E5400BD93ED /* ManualStructs.swift */; };
-		02AD45602750E84B00BD93ED /* TestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD455E2750E82900BD93ED /* TestStructs.swift */; };
 		02AD45682750F41500BD93ED /* SteamGameServerStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD45672750F41500BD93ED /* SteamGameServerStats.swift */; };
 		02AD456A2750F67500BD93ED /* SteamHTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD45692750F67500BD93ED /* SteamHTTP.swift */; };
 		02AD456C2751033E00BD93ED /* ManualInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD456B2751033E00BD93ED /* ManualInterfaces.swift */; };
@@ -91,6 +90,7 @@
 		02B81B0E287AC88300780A57 /* SteamUGC+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B0D287AC88300780A57 /* SteamUGC+Helpers.swift */; };
 		02B81B10287C4B9500780A57 /* SteamNetworkingSockets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B0F287C4B9500780A57 /* SteamNetworkingSockets+Helpers.swift */; };
 		02B81B12287CA1CE00780A57 /* SteamUtils+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B11287CA1CE00780A57 /* SteamUtils+Helpers.swift */; };
+		02B81B142881779F00780A57 /* TestApiSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B132881779F00780A57 /* TestApiSimple.swift */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -101,7 +101,7 @@
 		02D309EE272969B900DE64F0 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D309D3272181D900DE64F0 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		02D309F02729730A00DE64F0 /* SteamGameServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EF2729730A00DE64F0 /* SteamGameServerAPI.swift */; };
 		OBJ_33 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Client.swift */; };
-		OBJ_47 /* TestCallbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* TestCallbacks.swift */; };
+		OBJ_47 /* TestCallbackImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* TestCallbackImpl.swift */; };
 		OBJ_49 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 /* End PBXBuildFile section */
 
@@ -245,7 +245,7 @@
 		020860A1272EBEC500725122 /* IO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IO.swift; sourceTree = "<group>"; };
 		020860A3272EBEE800725122 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		020860A527300E5F00725122 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
-		020860A7273014B900725122 /* TestVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVersion.swift; sourceTree = "<group>"; };
+		020860A7273014B900725122 /* TestGenVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGenVersion.swift; sourceTree = "<group>"; };
 		020860AE273047D100725122 /* LibGenerate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibGenerate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		020860BD2730485000725122 /* Generate */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Generate; sourceTree = BUILT_PRODUCTS_DIR; };
 		020860BF2730485000725122 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 		020860D62731B5CC00725122 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		020860D82732B5A600725122 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		020860DA2732BA8900725122 /* Regexp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regexp.swift; sourceTree = "<group>"; };
-		020860DC273307C700725122 /* TestNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNames.swift; sourceTree = "<group>"; };
+		020860DC273307C700725122 /* TestGenNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGenNames.swift; sourceTree = "<group>"; };
 		020860DE27330CD200725122 /* SteamNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamNames.swift; sourceTree = "<group>"; };
 		020860E02734054400725122 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		020860E2273547B100725122 /* Interfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interfaces.swift; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 		020860EC273D2CC500725122 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		020860F5273FE55C00725122 /* Typedefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typedefs.swift; sourceTree = "<group>"; };
 		020860F7273FED5A00725122 /* Typedefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typedefs.swift; sourceTree = "<group>"; };
-		020860F927403F6E00725122 /* TestTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTypes.swift; sourceTree = "<group>"; };
+		020860F927403F6E00725122 /* TestGenTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGenTypes.swift; sourceTree = "<group>"; };
 		020860FB274290DE00725122 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		020860FF2746747E00725122 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
 		020861012746CE8000725122 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -285,7 +285,6 @@
 		02AD4558274FB30700BD93ED /* SteamApps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamApps.swift; sourceTree = "<group>"; };
 		02AD455A2750099B00BD93ED /* SteamGameServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamGameServer.swift; sourceTree = "<group>"; };
 		02AD455C27500E5400BD93ED /* ManualStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualStructs.swift; sourceTree = "<group>"; };
-		02AD455E2750E82900BD93ED /* TestStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStructs.swift; sourceTree = "<group>"; };
 		02AD45672750F41500BD93ED /* SteamGameServerStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamGameServerStats.swift; sourceTree = "<group>"; };
 		02AD45692750F67500BD93ED /* SteamHTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamHTTP.swift; sourceTree = "<group>"; };
 		02AD456B2751033E00BD93ED /* ManualInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualInterfaces.swift; sourceTree = "<group>"; };
@@ -323,6 +322,7 @@
 		02B81B0D287AC88300780A57 /* SteamUGC+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamUGC+Helpers.swift"; sourceTree = "<group>"; };
 		02B81B0F287C4B9500780A57 /* SteamNetworkingSockets+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamNetworkingSockets+Helpers.swift"; sourceTree = "<group>"; };
 		02B81B11287CA1CE00780A57 /* SteamUtils+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamUtils+Helpers.swift"; sourceTree = "<group>"; };
+		02B81B132881779F00780A57 /* TestApiSimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApiSimple.swift; sourceTree = "<group>"; };
 		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 		02D309EF2729730A00DE64F0 /* SteamGameServerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamGameServerAPI.swift; sourceTree = "<group>"; };
 		OBJ_10 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		OBJ_12 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		OBJ_17 /* TestCallbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCallbacks.swift; sourceTree = "<group>"; };
+		OBJ_17 /* TestCallbackImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCallbackImpl.swift; sourceTree = "<group>"; };
 		OBJ_24 /* sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sdk; sourceTree = SOURCE_ROOT; };
 		OBJ_25 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_26 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -581,12 +581,12 @@
 		OBJ_16 /* SteamworksTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_17 /* TestCallbacks.swift */,
-				020860A7273014B900725122 /* TestVersion.swift */,
-				020860DC273307C700725122 /* TestNames.swift */,
-				020860F927403F6E00725122 /* TestTypes.swift */,
+				OBJ_17 /* TestCallbackImpl.swift */,
+				020860A7273014B900725122 /* TestGenVersion.swift */,
+				020860DC273307C700725122 /* TestGenNames.swift */,
+				020860F927403F6E00725122 /* TestGenTypes.swift */,
+				02B81B132881779F00780A57 /* TestApiSimple.swift */,
 				027F8376274BB8E900963383 /* TestSteamID.swift */,
-				02AD455E2750E82900BD93ED /* TestStructs.swift */,
 				020860D227304C2300725122 /* TestUtils.swift */,
 			);
 			name = SteamworksTests;
@@ -1050,12 +1050,12 @@
 			buildActionMask = 0;
 			files = (
 				027F8377274BB8E900963383 /* TestSteamID.swift in Sources */,
-				020860DD273307C700725122 /* TestNames.swift in Sources */,
-				020860FA27403F6E00725122 /* TestTypes.swift in Sources */,
-				02AD45602750E84B00BD93ED /* TestStructs.swift in Sources */,
-				OBJ_47 /* TestCallbacks.swift in Sources */,
+				020860DD273307C700725122 /* TestGenNames.swift in Sources */,
+				020860FA27403F6E00725122 /* TestGenTypes.swift in Sources */,
+				OBJ_47 /* TestCallbackImpl.swift in Sources */,
+				02B81B142881779F00780A57 /* TestApiSimple.swift in Sources */,
 				020860D327304C2300725122 /* TestUtils.swift in Sources */,
-				020860A8273014B900725122 /* TestVersion.swift in Sources */,
+				020860A8273014B900725122 /* TestGenVersion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

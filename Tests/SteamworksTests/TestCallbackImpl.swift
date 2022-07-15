@@ -1,5 +1,5 @@
 //
-//  TestCallbacks.swift
+//  TestCallbackImpl.swift
 //  Steamworks
 //
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE

@@ -1,5 +1,5 @@
 //
-//  TestNames.swift
+//  TestGenNames.swift
 //  SteamworksTests
 //
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
