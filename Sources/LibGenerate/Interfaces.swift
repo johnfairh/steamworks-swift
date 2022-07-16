@@ -316,6 +316,11 @@ final class SteamParam {
         swiftName.withPrefix("return")
     }
 
+    /// The name of the 'nested' version of the parameter, for `...withXxx { Yyy in` patterns
+    private var nestedName: SwiftExpr {
+        swiftName.withPrefix("nst")
+    }
+
     /// What code (if any) is required before calling the Steamworks API
     var preCallLines: [String] {
         var line = ""
@@ -365,8 +370,8 @@ final class SteamParam {
             line = "let \(tempName) = SteamOutArray<\(nativeType)>(\(size.swiftExpr)\(nullability))"
 
         case .out_transparent_array(let size):
-            precondition(!db.nullable, "Can't do transparent-out-array-nullable, regress to !transparent")
-            line = "var \(swiftName) = \(swiftType)(repeating: .init(), count: \(size.swiftExpr))"
+            let nullability = db.nullable ? ", \(returnParamName)" : ""
+            line = "var \(tempName) = SteamTransOutArray<\(swiftBaseType)>(\(size.swiftExpr)\(nullability))"
 
         case .out_string(let size):
             let nullability = db.nullable ? ", isReal: \(returnParamName)" : ""
@@ -374,6 +379,14 @@ final class SteamParam {
         }
 
         return line.isEmpty ? [] : deallocateTemp ? [line, "defer { \(tempName).deallocate() }"] : [line]
+    }
+
+    /// What code fragment is required to nest the API invocation -- if anything is returned then the system adds the un-nest later on
+    var callNestingLine: String? {
+        guard case .out_transparent_array = style else {
+            return nil
+        }
+        return "\(tempName).setContent { \(nestedName) in"
     }
 
     /// How to refer to the param in the Steamworks API call
@@ -403,7 +416,7 @@ final class SteamParam {
             return db.nullable ? "\(tempName).steamValue" : "&\(tempName)"
 
         case .out_transparent_array:
-            return "&\(swiftName)"
+            return nestedName
 
         case .out_array:
             return "\(tempName).steamArray"
@@ -433,7 +446,8 @@ final class SteamParam {
             return "\(tempName).swiftArray(\(subscrpt))"
 
         case .out_transparent_array:
-            return db.outArrayValidLength.map { "\(swiftName).safePrefix(\($0))" } ?? swiftName
+            let arrayName = SwiftExpr("\(tempName).swiftArray")
+            return db.outArrayValidLength.map { "\(arrayName).safePrefix(\($0))" } ?? arrayName
 
         case .out_string:
             return "\(tempName).swiftString"
@@ -561,6 +575,11 @@ extension Array where Element == SteamParam {
     var preCallLines: [String] {
         flatMap(\.preCallLines)
     }
+
+    /// Line fragments to nest before the API call
+    var nestingLines: [String] {
+        compactMap(\.callNestingLine)
+    }
 }
 
 // MARK: Methods
@@ -628,11 +647,20 @@ struct SteamMethod {
         }
     }
 
-    /// Expression returning the Swift type of the API
-    var callExpression: SwiftExpr {
+    /// Base expression invoking the Steam API that returns the Swift type of the API
+    var baseCallExpression: SwiftExpr {
         let paramList = params.isEmpty ? "" : ", \(params.callParams)"
         let steamCall = SwiftExpr("\(db.flatName)(interface\(paramList))")
         return steamCall.asCast(to: swiftApiCast)
+    }
+
+    /// Full expression including nesting from weird parameters.  Still returns the Swift type of the API.
+    var fullCallExpression: [String] {
+        var lines = [baseCallExpression.expr]
+        params.nestingLines.reversed().forEach { line in
+            lines = [line] + lines.indented(1) + ["}"]
+        }
+        return lines
     }
 
     enum ReturnSyntax {
@@ -657,21 +685,27 @@ struct SteamMethod {
     }
 
     var callLines: [String] {
+
+        func callLines(prefix: String) -> [String] {
+            var fullCall = fullCallExpression
+            fullCall[0] = "\(prefix)\(fullCall[0])"
+            return fullCall
+        }
+
         switch style {
         case .callReturn:
-            return [
-                "let rc = \(callExpression)",
+            return callLines(prefix: "let rc = ") + [
                 "SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))"
             ]
         case .normal(let apiReturn, _):
             switch (returnSyntax, apiReturn == nil) {
             case (.implicit, _),
                  (.intermediate, true):
-                return [callExpression.expr]
+                return callLines(prefix: "")
             case (.explicit, _):
-                return ["return \(callExpression)"]
+                return callLines(prefix: "return ")
             case (.intermediate, false):
-                return ["let rc = \(callExpression)"]
+                return callLines(prefix: "let rc = ")
             }
         }
     }

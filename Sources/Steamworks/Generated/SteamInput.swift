@@ -221,8 +221,8 @@ public struct SteamInput {
     }
 
     /// Steamworks `ISteamInput::SetLEDColor()`
-    public func setLEDColor(handle: InputHandle, colorR: Int, colorG: Int, colorB: Int, flags: SteamControllerLEDFlag) {
-        SteamAPI_ISteamInput_SetLEDColor(interface, InputHandle_t(handle), uint8(colorR), uint8(colorG), uint8(colorB), UInt32(flags))
+    public func setLEDColor(handle: InputHandle, colorR: UInt8, colorG: UInt8, colorB: UInt8, flags: SteamControllerLEDFlag) {
+        SteamAPI_ISteamInput_SetLEDColor(interface, InputHandle_t(handle), colorR, colorG, colorB, UInt32(flags))
     }
 
     /// Steamworks `ISteamInput::ShowBindingPanel()`
@@ -246,8 +246,8 @@ public struct SteamInput {
     }
 
     /// Steamworks `ISteamInput::TriggerSimpleHapticEvent()`
-    public func triggerSimpleHapticEvent(handle: InputHandle, hapticLocation: ControllerHapticLocation, intensity: Int, gainDB: Int, otherIntensity: Int, otherGainDB: Int) {
-        SteamAPI_ISteamInput_TriggerSimpleHapticEvent(interface, InputHandle_t(handle), EControllerHapticLocation(hapticLocation), uint8(intensity), CChar(gainDB), uint8(otherIntensity), CChar(otherGainDB))
+    public func triggerSimpleHapticEvent(handle: InputHandle, hapticLocation: ControllerHapticLocation, intensity: UInt8, gainDB: Int, otherIntensity: UInt8, otherGainDB: Int) {
+        SteamAPI_ISteamInput_TriggerSimpleHapticEvent(interface, InputHandle_t(handle), EControllerHapticLocation(hapticLocation), intensity, CChar(gainDB), otherIntensity, CChar(otherGainDB))
     }
 
     /// Steamworks `ISteamInput::TriggerVibration()`

@@ -74,8 +74,8 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetCurrentBatteryPower()`
-    public func getCurrentBatteryPower() -> Int {
-        Int(SteamAPI_ISteamUtils_GetCurrentBatteryPower(interface))
+    public func getCurrentBatteryPower() -> UInt8 {
+        SteamAPI_ISteamUtils_GetCurrentBatteryPower(interface)
     }
 
     /// Steamworks `ISteamUtils::GetEnteredGamepadTextInput()`
@@ -106,8 +106,12 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetImageRGBA()`
-    public func getImageRGBA(imageIndex: Int, dest: UnsafeMutablePointer<UInt8>, destBufferSize: Int) -> Bool {
-        SteamAPI_ISteamUtils_GetImageRGBA(interface, CInt(imageIndex), dest, CInt(destBufferSize))
+    public func getImageRGBA(imageIndex: Int, destBufferSize: Int) -> (rc: Bool, dest: [UInt8]) {
+        var tmpDest = SteamTransOutArray<UInt8>(destBufferSize)
+        let rc = tmpDest.setContent { nstDest in
+            SteamAPI_ISteamUtils_GetImageRGBA(interface, CInt(imageIndex), nstDest, CInt(destBufferSize))
+        }
+        return (rc: rc, dest: tmpDest.swiftArray)
     }
 
     /// Steamworks `ISteamUtils::GetImageSize()`

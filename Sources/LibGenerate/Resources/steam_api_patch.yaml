@@ -253,6 +253,19 @@ methods:
 #
   SteamAPI_ISteamHTTP_DeferHTTPRequest:
     discardable_result: true
+  SteamAPI_ISteamHTTP_GetHTTPResponseBodyData:
+    params:
+      pBodyDataBuffer:
+        out_array_count: unBufferSize
+  SteamAPI_ISteamHTTP_GetHTTPResponseHeaderValue:
+    params:
+      pHeaderValueBuffer:
+        out_array_count: unBufferSize
+  SteamAPI_ISteamHTTP_GetHTTPStreamingResponseBodyData:
+    params:
+      pBodyDataBuffer:
+        out_array_count: unBufferSize
+        in_out: true
   SteamAPI_ISteamHTTP_PrioritizeHTTPRequest:
     discardable_result: true
   SteamAPI_ISteamHTTP_ReleaseCookieContainer:
@@ -1018,6 +1031,10 @@ methods:
     params:
       pchText:
         out_string_count: cchText
+  SteamAPI_ISteamUtils_GetImageRGBA:
+    params:
+      pubDest:
+        out_array_count: nDestBufferSize
   SteamAPI_ISteamUtils_GetImageSize:
     out_param_iff_rc: ' '
   SteamAPI_ISteamUtils_GetServerRealTime:

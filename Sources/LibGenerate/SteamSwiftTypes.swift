@@ -106,7 +106,7 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "char *" : "String",
     "const SteamParamStringArray_t *" : "[String]",
     "int" : "Int",
-    "uint8" : "Int",
+    "uint8" : "UInt8",
     "uint16" : "UInt16",
     "uint32" : "Int",
     "int32" : "Int",
@@ -118,7 +118,6 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "double" : "Double",
     "void *" : "UnsafeMutableRawPointer",
     "const void *": "UnsafeRawPointer",
-    "uint8 *" : "UnsafeMutablePointer<UInt8>",
     "uint64_steamid" : "SteamID",
     "uint64_gameid" : "GameID",
     "const char **": "[String]",
@@ -144,7 +143,7 @@ private let steamArrayElementTypeToSwiftArrayTypes: [SteamType : SwiftType] = [
 /// Steam types that, when returned from a C++ function, can be directly assigned
 /// to a variable of their `SwiftType` without a cast.
 private let steamTypesReturnedWithoutCast = Set<SteamType>([
-    "bool", "void", "uint16"
+    "bool", "void", "uint16", "uint8"
 ])
 
 /// Steam types whose `SwiftType` is typesafe to pass directly (without a cast) to
@@ -152,7 +151,7 @@ private let steamTypesReturnedWithoutCast = Set<SteamType>([
 private let steamTypesPassedInWithoutCast = Set<SteamType>([
     "bool", "const char *", "void *", "uint8 *",
     "const void *", "float", "double", "uint64",
-    "uint16",
+    "uint16", "uint8",
 
     "SteamAPIWarningMessageHook_t" // function pointer special case
 ])

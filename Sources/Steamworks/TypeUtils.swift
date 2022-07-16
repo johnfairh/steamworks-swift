@@ -401,6 +401,44 @@ final class SteamOutArray<SteamType> {
     }
 }
 
+/// Wrapper for 'transparent out arrays'
+///
+/// This is the pattern where we allocate some memory once, have C fill it in, and return that memory
+/// untouched to the Swift client.  So it only works when the types are guaranteed bitwise identical,
+/// which turns out mostly to be byte arrays for opaque data blobs.
+///
+/// The only no-copy way I can figure out to populate an `Array` is through its initializer, which is gross
+/// because of the code generation and because of the need to pass stuff out -- we wrap up that here.
+/// It might work.
+///
+/// Oh and it has to cope with the 'nullable' case too where the client doesn't actually want the data
+/// so we have to pass `nil` into the API.
+struct SteamTransOutArray<SteamType> {
+    private var array: [SteamType]?
+    private let count: Int?
+
+    var swiftArray: [SteamType] {
+        array ?? []
+    }
+
+    init(_ count: Int, _ isReal: Bool = true) {
+        self.array = nil
+        self.count = isReal ? count : nil
+    }
+
+    mutating func setContent<T>(with: (UnsafeMutablePointer<SteamType>?) -> T) -> T {
+        guard let count else {
+            return with(nil)
+        }
+        var cascadedResult: T? = nil
+        array = .init(unsafeUninitializedCapacity: count) { umbp, actualCount in
+            actualCount = count
+            cascadedResult = with(umbp.baseAddress)
+        }
+        return cascadedResult!
+    }
+}
+
 /// Wrapper for values passed by reference to the steam API that can be nil - so importer magic doesn't work.
 ///
 /// Intentionally a struct with explicit deallocate for lifetime reasons.

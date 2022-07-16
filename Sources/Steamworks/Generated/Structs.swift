@@ -2615,12 +2615,12 @@ public struct LobbyChatMsg {
     /// Steamworks `m_ulSteamIDUser`
     public let steamIDUser: SteamID
     /// Steamworks `m_eChatEntryType`
-    public let chatEntryType: Int
+    public let chatEntryType: UInt8
     /// Steamworks `m_iChatID`
     public let chatIDIndex: Int
 
     /// Create a customized `LobbyChatMsg`
-    public init(steamIDLobby: SteamID = SteamID(), steamIDUser: SteamID = SteamID(), chatEntryType: Int = 0, chatIDIndex: Int = 0) {
+    public init(steamIDLobby: SteamID = SteamID(), steamIDUser: SteamID = SteamID(), chatEntryType: UInt8 = 0, chatIDIndex: Int = 0) {
         self.steamIDLobby = steamIDLobby
         self.steamIDUser = steamIDUser
         self.chatEntryType = chatEntryType
@@ -2849,10 +2849,10 @@ extension LobbyMatchList: SteamCreatable {
 /// Steamworks `LowBatteryPower_t`
 public struct LowBatteryPower {
     /// Steamworks `m_nMinutesBatteryLeft`
-    public let minutesBatteryLeft: Int
+    public let minutesBatteryLeft: UInt8
 
     /// Create a customized `LowBatteryPower`
-    public init(minutesBatteryLeft: Int = 0) {
+    public init(minutesBatteryLeft: UInt8 = 0) {
         self.minutesBatteryLeft = minutesBatteryLeft
     }
 }
@@ -3216,10 +3216,10 @@ public struct P2PSessionConnectFail {
     /// Steamworks `m_steamIDRemote`
     public let remote: SteamID
     /// Steamworks `m_eP2PSessionError`
-    public let p2PSessionError: Int
+    public let p2PSessionError: UInt8
 
     /// Create a customized `P2PSessionConnectFail`
-    public init(remote: SteamID = SteamID(), p2PSessionError: Int = 0) {
+    public init(remote: SteamID = SteamID(), p2PSessionError: UInt8 = 0) {
         self.remote = remote
         self.p2PSessionError = p2PSessionError
     }
@@ -3258,7 +3258,7 @@ public struct P2PSessionState {
     /// Steamworks `m_bConnecting`
     public let connecting: Bool
     /// Steamworks `m_eP2PSessionError`
-    public let p2PSessionError: Int
+    public let p2PSessionError: UInt8
     /// Steamworks `m_bUsingRelay`
     public let usingRelay: Bool
     /// Steamworks `m_nBytesQueuedForSend`
@@ -3271,7 +3271,7 @@ public struct P2PSessionState {
     public let remotePort: UInt16
 
     /// Create a customized `P2PSessionState`
-    public init(connectionActive: Bool = false, connecting: Bool = false, p2PSessionError: Int = 0, usingRelay: Bool = false, bytesQueuedForSend: Int = 0, packetsQueuedForSend: Int = 0, remoteIP: Int = 0, remotePort: UInt16 = 0) {
+    public init(connectionActive: Bool = false, connecting: Bool = false, p2PSessionError: UInt8 = 0, usingRelay: Bool = false, bytesQueuedForSend: Int = 0, packetsQueuedForSend: Int = 0, remoteIP: Int = 0, remotePort: UInt16 = 0) {
         self.connectionActive = connectionActive
         self.connecting = connecting
         self.p2PSessionError = p2PSessionError

@@ -103,10 +103,9 @@ class TestApiSimple: XCTestCase {
                 return
             }
 
-            let body = String(unsafeUninitializedCapacity: done.bodySize) { buffer in
-                let rc = steam.http.getHTTPResponseBodyData(request: req, bodyDataBuffer: buffer.baseAddress!, bufferSize: done.bodySize)
-                XCTAssertTrue(rc)
-                return done.bodySize
+            guard let body = steam.http.getHTTPResponseBodyData(request: req) else {
+                XCTFail("Can't extract HTTP response body")
+                return
             }
             XCTAssertTrue(body.contains("<title>Example Domain</title>"))
         }
