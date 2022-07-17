@@ -247,8 +247,21 @@ final class SteamParam {
     /// The Swift type for this param
     var swiftType: SwiftType {
         switch style {
-        case .in_array, .out_array, .out_transparent_array: return "[\(swiftBaseType)]"
-        default: return swiftBaseType
+        case .in_array:
+            if db.inOut {
+                return "UnsafeMutablePointer<\(swiftBaseType)>"
+            }
+            fallthrough
+        case .out_array, .out_transparent_array:
+            return "[\(swiftBaseType)]"
+
+        case .in:
+            if db.preferBuffer {
+                return "UnsafePointer<\(swiftBaseType)>"
+            }
+            fallthrough
+        default:
+            return swiftBaseType
         }
     }
 
@@ -395,6 +408,8 @@ final class SteamParam {
         case .in:
             if db.nullable && steamType.needsParameterCast {
                 return "\(tempName).steamValue"
+            } else if db.fixUpConst {
+                return ".init(mutating: \(swiftName))"
             } else {
                 return swiftName.asCast(to: steamType.parameterCast)
             }
@@ -471,7 +486,9 @@ final class SteamParam {
             if let outStringLength = db.outStringLength {
                 style = .out_string(outStringLength)
             } else if let outLength = db.outArrayLength {
-                if !db.nullable && !db.type.needsParameterCast {
+                if db.inOut {
+                    style = .in_array
+                } else if !db.nullable && !db.type.needsParameterCast {
                     style = .out_transparent_array(outLength)
                 } else {
                     style = .out_array(outLength)

@@ -84,12 +84,8 @@ public struct SteamHTTP {
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPStreamingResponseBodyData()`
-    public func getHTTPStreamingResponseBodyData(request: HTTPRequestHandle, offset: Int, bufferSize: Int) -> (rc: Bool, bodyDataBuffer: [UInt8]) {
-        var tmpBodyDataBuffer = SteamTransOutArray<UInt8>(bufferSize)
-        let rc = tmpBodyDataBuffer.setContent { nstBodyDataBuffer in
-            SteamAPI_ISteamHTTP_GetHTTPStreamingResponseBodyData(interface, CSteamworks.HTTPRequestHandle(request), uint32(offset), nstBodyDataBuffer, uint32(bufferSize))
-        }
-        return (rc: rc, bodyDataBuffer: tmpBodyDataBuffer.swiftArray)
+    public func getHTTPStreamingResponseBodyData(request: HTTPRequestHandle, offset: Int, bodyDataBuffer: UnsafeMutablePointer<UInt8>, bufferSize: Int) -> Bool {
+        SteamAPI_ISteamHTTP_GetHTTPStreamingResponseBodyData(interface, CSteamworks.HTTPRequestHandle(request), uint32(offset), bodyDataBuffer, uint32(bufferSize))
     }
 
     /// Steamworks `ISteamHTTP::PrioritizeHTTPRequest()`
@@ -147,10 +143,8 @@ public struct SteamHTTP {
     }
 
     /// Steamworks `ISteamHTTP::SetHTTPRequestRawPostBody()`
-    public func setHTTPRequestRawPostBody(request: HTTPRequestHandle, contentType: String, bodyLen: Int) -> (rc: Bool, body: UInt8) {
-        var tmpBody = uint8()
-        let rc = SteamAPI_ISteamHTTP_SetHTTPRequestRawPostBody(interface, CSteamworks.HTTPRequestHandle(request), contentType, &tmpBody, uint32(bodyLen))
-        return (rc: rc, body: tmpBody)
+    public func setHTTPRequestRawPostBody(request: HTTPRequestHandle, contentType: String, body: UnsafePointer<UInt8>, bodyLen: Int) -> Bool {
+        SteamAPI_ISteamHTTP_SetHTTPRequestRawPostBody(interface, CSteamworks.HTTPRequestHandle(request), contentType, .init(mutating: body), uint32(bodyLen))
     }
 
     /// Steamworks `ISteamHTTP::SetHTTPRequestRequiresVerifiedCertificate()`

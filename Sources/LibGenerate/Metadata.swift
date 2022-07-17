@@ -171,6 +171,7 @@ struct Patch: Codable {
 
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
+            let missing_const: Bool? // add a missing 'const' back to this (pointer) param
             let name: String? // patch param name
             let out_string_count: String? // patch out_string_count
             let out_array_count: String? // patch out_array_count
@@ -179,6 +180,7 @@ struct Patch: Codable {
             let in_out: Bool? // mark up actual inout params
             let nullable: Bool? // out/array param can be null (nil)
             let default_value: String? // C++ expr for a default value
+            let prefer_buffer: Bool? // Use UnsafePointer<X> instead of Array<X>
         }
         let params: [String : Param]?
     }
@@ -289,14 +291,19 @@ struct MetadataDB {
             let defaultValue: SteamParameterExpr?
             let inOut: Bool
             let nullable: Bool
+            let preferBuffer: Bool
+            let fixUpConst: Bool
 
             init(base: SteamJSON.Method.Param, patch: Patch.Method.Param?) {
                 self.name = SteamHungarianName(patch?.name ?? base.paramname)
-                let nativeSteamType = SteamType(patch?.type ?? base.paramtype_flat ?? base.paramtype)
+                let constPatch = (patch?.missing_const ?? false) ? "const " : ""
+                let nativeSteamType = SteamType(constPatch + (patch?.type ?? base.paramtype_flat ?? base.paramtype))
                 self.type = nativeSteamType.asParameterType
                 self.probablyOutParam = nativeSteamType.isProbablyOutParameter
                 self.inOut = patch?.in_out ?? false
                 self.nullable = patch?.nullable ?? false
+                self.preferBuffer = patch?.prefer_buffer ?? false
+                self.fixUpConst = !constPatch.isEmpty
                 if let patchedArrayCount = patch?.array_count, patchedArrayCount == "DELETE" {
                     self.arrayCount = nil // fix a mistake
                 } else {

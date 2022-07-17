@@ -280,6 +280,11 @@ methods:
     callresult: HTTPRequestCompleted_t
   SteamAPI_ISteamHTTP_SetHTTPRequestCookieContainer:
     discardable_result: true
+  SteamAPI_ISteamHTTP_SetHTTPRequestRawPostBody:
+    params:
+      pubBody:
+        missing_const: true
+        prefer_buffer: true
   SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo:
     discardable_result: true
 #

@@ -103,10 +103,9 @@ class TestApiSimple: XCTestCase {
                 return
             }
 
-            guard let body = steam.http.getHTTPResponseBodyData(request: req) else {
-                XCTFail("Can't extract HTTP response body")
-                return
-            }
+            let (rc, data) = steam.http.getHTTPResponseBodyData(request: req)
+            XCTAssertTrue(rc)
+            let body = String(cString: data + [0])
             XCTAssertTrue(body.contains("<title>Example Domain</title>"))
         }
 
