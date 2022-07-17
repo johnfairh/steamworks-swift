@@ -2615,12 +2615,12 @@ public struct LobbyChatMsg {
     /// Steamworks `m_ulSteamIDUser`
     public let steamIDUser: SteamID
     /// Steamworks `m_eChatEntryType`
-    public let chatEntryType: UInt8
+    public let chatEntryType: ChatEntryType
     /// Steamworks `m_iChatID`
     public let chatIDIndex: Int
 
     /// Create a customized `LobbyChatMsg`
-    public init(steamIDLobby: SteamID = SteamID(), steamIDUser: SteamID = SteamID(), chatEntryType: UInt8 = 0, chatIDIndex: Int = 0) {
+    public init(steamIDLobby: SteamID = SteamID(), steamIDUser: SteamID = SteamID(), chatEntryType: ChatEntryType = .invalid, chatIDIndex: Int = 0) {
         self.steamIDLobby = steamIDLobby
         self.steamIDUser = steamIDUser
         self.chatEntryType = chatEntryType
@@ -2647,10 +2647,10 @@ public struct LobbyChatUpdate {
     /// Steamworks `m_ulSteamIDMakingChange`
     public let steamIDMakingChange: SteamID
     /// Steamworks `m_rgfChatMemberStateChange`
-    public let chatMemberStateChange: Int
+    public let chatMemberStateChange: ChatMemberStateChange
 
     /// Create a customized `LobbyChatUpdate`
-    public init(steamIDLobby: SteamID = SteamID(), steamIDUserChanged: SteamID = SteamID(), steamIDMakingChange: SteamID = SteamID(), chatMemberStateChange: Int = 0) {
+    public init(steamIDLobby: SteamID = SteamID(), steamIDUserChanged: SteamID = SteamID(), steamIDMakingChange: SteamID = SteamID(), chatMemberStateChange: ChatMemberStateChange = []) {
         self.steamIDLobby = steamIDLobby
         self.steamIDUserChanged = steamIDUserChanged
         self.steamIDMakingChange = steamIDMakingChange
@@ -2725,10 +2725,10 @@ public struct LobbyEnter {
     /// Steamworks `m_bLocked`
     public let locked: Bool
     /// Steamworks `m_EChatRoomEnterResponse`
-    public let eChatRoomEnterResponse: Int
+    public let eChatRoomEnterResponse: ChatRoomEnterResponse
 
     /// Create a customized `LobbyEnter`
-    public init(steamIDLobby: SteamID = SteamID(), chatPermissions: Int = 0, locked: Bool = false, eChatRoomEnterResponse: Int = 0) {
+    public init(steamIDLobby: SteamID = SteamID(), chatPermissions: Int = 0, locked: Bool = false, eChatRoomEnterResponse: ChatRoomEnterResponse = .success) {
         self.steamIDLobby = steamIDLobby
         self.chatPermissions = chatPermissions
         self.locked = locked
@@ -3216,10 +3216,10 @@ public struct P2PSessionConnectFail {
     /// Steamworks `m_steamIDRemote`
     public let remote: SteamID
     /// Steamworks `m_eP2PSessionError`
-    public let p2PSessionError: UInt8
+    public let p2PSessionError: P2PSessionError
 
     /// Create a customized `P2PSessionConnectFail`
-    public init(remote: SteamID = SteamID(), p2PSessionError: UInt8 = 0) {
+    public init(remote: SteamID = SteamID(), p2PSessionError: P2PSessionError = .none) {
         self.remote = remote
         self.p2PSessionError = p2PSessionError
     }

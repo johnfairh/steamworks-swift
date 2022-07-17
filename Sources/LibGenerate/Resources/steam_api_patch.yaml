@@ -62,6 +62,12 @@ typedefs_to_ignore:
 enums:
   AudioPlayback_Status:
     prefix: AudioPlayback
+  EChatEntryType:
+    intx_to_self: uint8
+  EChatMemberStateChange:
+    is_set: UInt32
+  EChatRoomEnterResponse:
+    intx_to_self: uint32
   EChatSteamIDInstanceFlags:
     is_set: Int32
     prefix: EChat(?:InstanceFlag)?
@@ -91,6 +97,8 @@ enums:
     prefix: EMarketNotAllowedReason
   ENotificationPosition:
     prefix: EPosition
+  EP2PSessionError:
+    intx_to_self: uint8
   EParentalFeature:
     prefix: EFeature
   EPersonaChange:
@@ -1095,12 +1103,28 @@ structs:
     fields:
       m_eFailureType:
         fieldtype: IPCFailure_t::EFailureType
+  LobbyChatMsg_t:
+    fields:
+      m_eChatEntryType:
+        fieldtype: EChatEntryType
+  LobbyChatUpdate_t:
+    fields:
+      m_rgfChatMemberStateChange:
+        fieldtype: EChatMemberStateChange
+  LobbyEnter_t:
+    fields:
+      m_EChatRoomEnterResponse:
+        fieldtype: EChatRoomEnterResponse
   MicroTxnAuthorizationResponse_t:
     fields:
       m_unAppID:
         fieldtype: AppId_t
   ModalGamepadTextInputDismissed_t:
     name: FloatingGamepadTextInputDismissed_t
+  P2PSessionConnectFail_t:
+    fields:
+      m_eP2PSessionError:
+        fieldtype: EP2PSessionError
   PersonaStateChange_t:
     fields:
       m_nChangeFlags:

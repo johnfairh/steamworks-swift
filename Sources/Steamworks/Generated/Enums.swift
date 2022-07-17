@@ -218,24 +218,32 @@ extension EChatEntryType: RawConvertible { typealias From = ChatEntryType }
 extension ChatEntryType: EnumWithUnrepresented { typealias From = EChatEntryType }
 extension ChatEntryType: SteamCreatable {}
 
+extension ChatEntryType {
+    init(_ from: uint8) {
+        self.init(From(rawValue: CUnsignedInt(from)))
+    }
+}
+
 /// Steamworks `EChatMemberStateChange`
-public enum ChatMemberStateChange: CUnsignedInt {
+public struct ChatMemberStateChange: OptionSet {
+    /// The flags value.
+    public let rawValue: CUnsignedInt
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
     /// Steamworks `k_EChatMemberStateChangeEntered`
-    case entered = 1
+    public static let entered = ChatMemberStateChange(rawValue: 1)
     /// Steamworks `k_EChatMemberStateChangeLeft`
-    case left = 2
+    public static let left = ChatMemberStateChange(rawValue: 2)
     /// Steamworks `k_EChatMemberStateChangeDisconnected`
-    case disconnected = 4
+    public static let disconnected = ChatMemberStateChange(rawValue: 4)
     /// Steamworks `k_EChatMemberStateChangeKicked`
-    case kicked = 8
+    public static let kicked = ChatMemberStateChange(rawValue: 8)
     /// Steamworks `k_EChatMemberStateChangeBanned`
-    case banned = 16
-    /// Some undocumented value
-    case unrepresentedInSwift = 17
+    public static let banned = ChatMemberStateChange(rawValue: 16)
 }
 
 extension EChatMemberStateChange: RawConvertible { typealias From = ChatMemberStateChange }
-extension ChatMemberStateChange: EnumWithUnrepresented { typealias From = EChatMemberStateChange }
+extension ChatMemberStateChange: RawConvertible { typealias From = EChatMemberStateChange }
 extension ChatMemberStateChange: SteamCreatable {}
 
 /// Steamworks `EChatRoomEnterResponse`
@@ -271,6 +279,12 @@ public enum ChatRoomEnterResponse: CUnsignedInt {
 extension EChatRoomEnterResponse: RawConvertible { typealias From = ChatRoomEnterResponse }
 extension ChatRoomEnterResponse: EnumWithUnrepresented { typealias From = EChatRoomEnterResponse }
 extension ChatRoomEnterResponse: SteamCreatable {}
+
+extension ChatRoomEnterResponse {
+    init(_ from: uint32) {
+        self.init(From(rawValue: CUnsignedInt(from)))
+    }
+}
 
 /// Steamworks `EChatSteamIDInstanceFlags`
 public struct ChatSteamIDInstanceFlags: OptionSet {
@@ -2795,6 +2809,12 @@ public enum P2PSessionError: CUnsignedInt {
 extension EP2PSessionError: RawConvertible { typealias From = P2PSessionError }
 extension P2PSessionError: EnumWithUnrepresented { typealias From = EP2PSessionError }
 extension P2PSessionError: SteamCreatable {}
+
+extension P2PSessionError {
+    init(_ from: uint8) {
+        self.init(From(rawValue: CUnsignedInt(from)))
+    }
+}
 
 /// Steamworks `EParentalFeature`
 public enum ParentalFeature: CUnsignedInt {
