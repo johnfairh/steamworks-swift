@@ -111,4 +111,31 @@ class TestApiSimple: XCTestCase {
 
         TestClient.runFrames() // until req done
     }
+
+    /// Inventory bits - for some kind of API generation
+    func testInventory() throws {
+        let steam = try TestClient.getClient()
+
+        steam.onSteamInventoryResultReady { r in
+            print("InventoryResultReady: \(r.result)")
+            guard r.result == .ok else {
+                return // we wait
+            }
+            let (rc, items) = steam.inventory.getResultItems(handle: r.handle)
+            XCTAssertTrue(rc)
+            XCTAssertEqual(0, items.count)
+            print("GetResultItems rc=\(rc) itemCount=\(items.count)")
+
+            steam.inventory.destroyResult(handle: r.handle)
+            TestClient.stopRunningFrames()
+        }
+
+        let (rc, _) = steam.inventory.getAllItems()
+        guard rc else {
+            XCTFail("Inventory.GetAllItems failed")
+            return
+        }
+
+        TestClient.runFrames() // until IRR happens
+    }
 }
