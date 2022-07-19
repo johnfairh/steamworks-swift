@@ -48,8 +48,8 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::BeginAuthSession()`
-    public func beginAuthSession(authTicket: UnsafeRawPointer, authTicketSize: Int, steamID: SteamID) -> BeginAuthSessionResult {
-        BeginAuthSessionResult(SteamAPI_ISteamGameServer_BeginAuthSession(interface, authTicket, CInt(authTicketSize), CUnsignedLongLong(steamID)))
+    public func beginAuthSession(authTicket: [UInt8], steamID: SteamID) -> BeginAuthSessionResult {
+        BeginAuthSessionResult(SteamAPI_ISteamGameServer_BeginAuthSession(interface, authTicket, CInt(authTicket.count), CUnsignedLongLong(steamID)))
     }
 
     /// Steamworks `ISteamGameServer::CancelAuthTicket()`
@@ -86,10 +86,13 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::GetAuthSessionTicket()`
-    public func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: HAuthTicket, ticketSize: Int) {
+    public func getAuthSessionTicket(maxTicketSize: Int = 1024) -> (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int) {
+        var tmpTicket = SteamTransOutArray<UInt8>(maxTicketSize)
         var tmpTicketSize = uint32()
-        let rc = HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, ticket, CInt(maxTicketSize), &tmpTicketSize))
-        return (rc: rc, ticketSize: Int(tmpTicketSize))
+        let rc = tmpTicket.setContent { nstTicket in
+            HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize))
+        }
+        return (rc: rc, ticket: tmpTicket.swiftArray.safePrefix(tmpTicketSize), ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamGameServer::GetGameplayStats()`
@@ -98,7 +101,7 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::GetNextOutgoingPacket()`
-    public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: UInt16) {
+    public func getNextOutgoingPacket(out: /*OUT_BUF*/UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: UInt16) {
         var tmpNetAdr = uint32()
         var tmpPort = uint16()
         let rc = Int(SteamAPI_ISteamGameServer_GetNextOutgoingPacket(interface, out, CInt(maxOutSize), &tmpNetAdr, &tmpPort))

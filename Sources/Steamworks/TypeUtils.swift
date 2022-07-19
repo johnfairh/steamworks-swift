@@ -365,9 +365,9 @@ public typealias SteamAPIWarningMessageHook = Optional<@convention(c) (Int32, Un
 // MARK: Arrays of things coming out of Steam
 
 extension Array {
-    func safePrefix(_ count: Int) -> Self {
+    func safePrefix<T: BinaryInteger>(_ count: T) -> Self {
         guard count > 0 else { return [] }
-        return Self(self[0..<count])
+        return Self(self[0..<Int(count)])
     }
 }
 

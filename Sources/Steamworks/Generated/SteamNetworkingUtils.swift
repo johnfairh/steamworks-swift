@@ -47,7 +47,7 @@ public struct SteamNetworkingUtils {
     }
 
     /// Steamworks `ISteamNetworkingUtils::GetConfigValue()`
-    public func getConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, result: UnsafeMutableRawPointer?, resultSize: Int) -> (rc: SteamNetworkingGetConfigValueResult, dataType: SteamNetworkingConfigDataType, resultSize: Int) {
+    public func getConfigValue(value: SteamNetworkingConfigValueSetting, scopeType: SteamNetworkingConfigScope, obj: Int, result: /*OUT_BUF*/UnsafeMutableRawPointer?, resultSize: Int) -> (rc: SteamNetworkingGetConfigValueResult, dataType: SteamNetworkingConfigDataType, resultSize: Int) {
         var tmpDataType = ESteamNetworkingConfigDataType(rawValue: 0)
         var tmpResultSize = size_t(resultSize)
         let rc = SteamNetworkingGetConfigValueResult(SteamAPI_ISteamNetworkingUtils_GetConfigValue(interface, ESteamNetworkingConfigValue(value), ESteamNetworkingConfigScope(scopeType), intptr_t(obj), &tmpDataType, result, &tmpResultSize))
@@ -192,7 +192,7 @@ public struct SteamNetworkingUtils {
 
     /// Steamworks `ISteamNetworkingUtils::SetGlobalConfigValuePtr()`
     @discardableResult
-    public func setGlobalConfigValuePtr(value: SteamNetworkingConfigValueSetting, val: UnsafeMutableRawPointer) -> Bool {
+    public func setGlobalConfigValuePtr(value: SteamNetworkingConfigValueSetting, val: /*OUT_BUF*/UnsafeMutableRawPointer) -> Bool {
         SteamAPI_ISteamNetworkingUtils_SetGlobalConfigValuePtr(interface, ESteamNetworkingConfigValue(value), val)
     }
 

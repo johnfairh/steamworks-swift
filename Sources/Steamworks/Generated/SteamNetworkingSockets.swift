@@ -134,7 +134,7 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
-    public func getCertificateRequest(blobSize: Int, blob: UnsafeMutableRawPointer?) -> (rc: Bool, blobSize: Int, msg: String) {
+    public func getCertificateRequest(blobSize: Int, blob: /*OUT_BUF*/UnsafeMutableRawPointer?) -> (rc: Bool, blobSize: Int, msg: String) {
         var tmpBlobSize = CInt(blobSize)
         let tmpMsg = SteamString(length: 1024)
         let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, blob, tmpMsg.charBuffer)

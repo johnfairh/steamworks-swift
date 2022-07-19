@@ -156,7 +156,7 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::FileRead()`
-    public func fileRead(file: String, data: UnsafeMutableRawPointer, dataToReadSize: Int) -> Int {
+    public func fileRead(file: String, data: /*OUT_BUF*/UnsafeMutableRawPointer, dataToReadSize: Int) -> Int {
         Int(SteamAPI_ISteamRemoteStorage_FileRead(interface, file, data, int32(dataToReadSize)))
     }
 
@@ -174,7 +174,7 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::FileReadAsyncComplete()`
-    public func fileReadAsyncComplete(readCall: SteamAPICall, buffer: UnsafeMutableRawPointer, toReadSize: Int) -> Bool {
+    public func fileReadAsyncComplete(readCall: SteamAPICall, buffer: /*OUT_BUF*/UnsafeMutableRawPointer, toReadSize: Int) -> Bool {
         SteamAPI_ISteamRemoteStorage_FileReadAsyncComplete(interface, SteamAPICall_t(readCall), buffer, uint32(toReadSize))
     }
 
@@ -438,7 +438,7 @@ public struct SteamRemoteStorage {
     }
 
     /// Steamworks `ISteamRemoteStorage::UGCRead()`
-    public func ugcRead(content: UGCHandle, data: UnsafeMutableRawPointer, dataToReadSize: Int, offset: Int, action: UGCReadAction) -> Int {
+    public func ugcRead(content: UGCHandle, data: /*OUT_BUF*/UnsafeMutableRawPointer, dataToReadSize: Int, offset: Int, action: UGCReadAction) -> Int {
         Int(SteamAPI_ISteamRemoteStorage_UGCRead(interface, UGCHandle_t(content), data, int32(dataToReadSize), uint32(offset), EUGCReadAction(action)))
     }
 

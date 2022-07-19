@@ -488,7 +488,7 @@ final class SteamParam {
             } else if let outLength = db.outArrayLength {
                 if db.inOut {
                     style = .in_array
-                } else if !db.nullable && !db.type.needsParameterCast {
+                } else if !db.type.needsParameterCast {
                     style = .out_transparent_array(outLength)
                 } else {
                     style = .out_array(outLength)

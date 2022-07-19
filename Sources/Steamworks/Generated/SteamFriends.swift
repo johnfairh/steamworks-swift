@@ -121,11 +121,12 @@ public struct SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
-    public func getClanChatMessage(clanChat: SteamID, messageIndex: Int, text: UnsafeMutableRawPointer, textMaxSize: Int) -> (rc: Int, chatEntryType: ChatEntryType, chatter: SteamID) {
+    public func getClanChatMessage(clanChat: SteamID, messageIndex: Int, textMaxSize: Int = SteamConstants.chatMetadataMaxSize + 1) -> (rc: Int, text: String, chatEntryType: ChatEntryType, chatter: SteamID) {
+        let tmpText = SteamString(length: textMaxSize)
         var tmpChatEntryType = EChatEntryType(rawValue: 0)
         var tmpChatter = CSteamID()
-        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, CUnsignedLongLong(clanChat), CInt(messageIndex), text, CInt(textMaxSize), &tmpChatEntryType, &tmpChatter))
-        return (rc: rc, chatEntryType: ChatEntryType(tmpChatEntryType), chatter: SteamID(tmpChatter))
+        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, CUnsignedLongLong(clanChat), CInt(messageIndex), tmpText.charBuffer, CInt(textMaxSize), &tmpChatEntryType, &tmpChatter))
+        return (rc: rc, text: tmpText.swiftString, chatEntryType: ChatEntryType(tmpChatEntryType), chatter: SteamID(tmpChatter))
     }
 
     /// Steamworks `ISteamFriends::GetClanCount()`
@@ -223,10 +224,11 @@ public struct SteamFriends {
     }
 
     /// Steamworks `ISteamFriends::GetFriendMessage()`
-    public func getFriendMessage(friend: SteamID, messageIDIndex: Int, data: UnsafeMutableRawPointer, dataSize: Int) -> (rc: Int, chatEntryType: ChatEntryType) {
+    public func getFriendMessage(friend: SteamID, messageIDIndex: Int, dataSize: Int = SteamConstants.chatMetadataMaxSize + 1) -> (rc: Int, data: String, chatEntryType: ChatEntryType) {
+        let tmpData = SteamString(length: dataSize)
         var tmpChatEntryType = EChatEntryType(rawValue: 0)
-        let rc = Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, CUnsignedLongLong(friend), CInt(messageIDIndex), data, CInt(dataSize), &tmpChatEntryType))
-        return (rc: rc, chatEntryType: ChatEntryType(tmpChatEntryType))
+        let rc = Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, CUnsignedLongLong(friend), CInt(messageIDIndex), tmpData.charBuffer, CInt(dataSize), &tmpChatEntryType))
+        return (rc: rc, data: tmpData.swiftString, chatEntryType: ChatEntryType(tmpChatEntryType))
     }
 
     /// Steamworks `ISteamFriends::GetFriendPersonaName()`

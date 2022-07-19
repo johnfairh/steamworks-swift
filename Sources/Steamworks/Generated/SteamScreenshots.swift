@@ -60,7 +60,7 @@ public struct SteamScreenshots {
     }
 
     /// Steamworks `ISteamScreenshots::WriteScreenshot()`
-    public func writeScreenshot(rgb: UnsafeMutableRawPointer, rgbSize: Int, width: Int, height: Int) -> ScreenshotHandle {
+    public func writeScreenshot(rgb: /*OUT_BUF*/UnsafeMutableRawPointer, rgbSize: Int, width: Int, height: Int) -> ScreenshotHandle {
         ScreenshotHandle(SteamAPI_ISteamScreenshots_WriteScreenshot(interface, rgb, uint32(rgbSize), CInt(width), CInt(height)))
     }
 }

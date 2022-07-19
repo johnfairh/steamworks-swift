@@ -57,7 +57,7 @@ public struct SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetAPICallResult()`
-    public func getAPICallResult(steamAPICall: SteamAPICall, callback: UnsafeMutableRawPointer, callbackSize: Int, callbackExpectedIndex: Int) -> (rc: Bool, failed: Bool) {
+    public func getAPICallResult(steamAPICall: SteamAPICall, callback: /*OUT_BUF*/UnsafeMutableRawPointer, callbackSize: Int, callbackExpectedIndex: Int) -> (rc: Bool, failed: Bool) {
         var tmpFailed = CBool()
         let rc = SteamAPI_ISteamUtils_GetAPICallResult(interface, SteamAPICall_t(steamAPICall), callback, CInt(callbackSize), CInt(callbackExpectedIndex), &tmpFailed)
         return (rc: rc, failed: tmpFailed)

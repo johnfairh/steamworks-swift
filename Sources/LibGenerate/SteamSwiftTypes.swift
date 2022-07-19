@@ -116,7 +116,7 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "bool" : "Bool",
     "float" : "Float",
     "double" : "Double",
-    "void *" : "UnsafeMutableRawPointer",
+    "void *" : "/*OUT_BUF*/UnsafeMutableRawPointer",
     "const void *": "UnsafeRawPointer",
     "uint64_steamid" : "SteamID",
     "uint64_gameid" : "GameID",

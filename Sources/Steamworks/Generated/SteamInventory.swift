@@ -49,9 +49,9 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::DeserializeResult()`
-    public func deserializeResult(buffer: UnsafeRawPointer, bufferSize: Int, reservedMUSTBEFALSE: Bool = false) -> (rc: Bool, resultHandle: SteamInventoryResult) {
+    public func deserializeResult(buffer: [UInt8], reservedMUSTBEFALSE: Bool = false) -> (rc: Bool, resultHandle: SteamInventoryResult) {
         var tmpResultHandle = SteamInventoryResult_t()
-        let rc = SteamAPI_ISteamInventory_DeserializeResult(interface, &tmpResultHandle, buffer, uint32(bufferSize), reservedMUSTBEFALSE)
+        let rc = SteamAPI_ISteamInventory_DeserializeResult(interface, &tmpResultHandle, buffer, uint32(buffer.count), reservedMUSTBEFALSE)
         return (rc: rc, resultHandle: SteamInventoryResult(tmpResultHandle))
     }
 
@@ -244,10 +244,13 @@ public struct SteamInventory {
     }
 
     /// Steamworks `ISteamInventory::SerializeResult()`
-    public func serializeResult(handle: SteamInventoryResult, buffer: UnsafeMutableRawPointer?, bufferSize: Int) -> (rc: Bool, bufferSize: Int) {
+    public func serializeResult(handle: SteamInventoryResult, returnBuffer: Bool = true, bufferSize: Int) -> (rc: Bool, buffer: [UInt8], bufferSize: Int) {
+        var tmpBuffer = SteamTransOutArray<UInt8>(bufferSize, returnBuffer)
         var tmpBufferSize = uint32(bufferSize)
-        let rc = SteamAPI_ISteamInventory_SerializeResult(interface, SteamInventoryResult_t(handle), buffer, &tmpBufferSize)
-        return (rc: rc, bufferSize: Int(tmpBufferSize))
+        let rc = tmpBuffer.setContent { nstBuffer in
+            SteamAPI_ISteamInventory_SerializeResult(interface, SteamInventoryResult_t(handle), nstBuffer, &tmpBufferSize)
+        }
+        return (rc: rc, buffer: tmpBuffer.swiftArray, bufferSize: Int(tmpBufferSize))
     }
 
     /// Steamworks `ISteamInventory::SetProperty()`

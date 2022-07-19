@@ -224,6 +224,20 @@ methods:
 #
 # ISteamFriends
 #
+  SteamAPI_ISteamFriends_GetClanChatMessage:
+    params:
+      prgchText:
+        type: char *
+        out_string_count: cchTextMax
+      cchTextMax:
+        default_value: k_cubChatMetadataMax + 1
+  SteamAPI_ISteamFriends_GetFriendMessage:
+    params:
+      pvData:
+        type: char *
+        out_string_count: cubData
+      cubData:
+        default_value: k_cubChatMetadataMax + 1
   SteamAPI_ISteamFriends_GetUserRestrictions:
     returntype: EUserRestriction
   SteamAPI_ISteamFriends_GetFriendGamePlayed:
@@ -256,6 +270,22 @@ methods:
     params:
       pchConnectionDetails:
         out_string_count: cubConnectionDetails
+#
+# ISteamGameServer
+#
+  SteamAPI_ISteamGameServer_BeginAuthSession:
+    params:
+      pAuthTicket:
+        type: const uint8 *
+        array_count: cbAuthTicket
+  SteamAPI_ISteamGameServer_GetAuthSessionTicket:
+    params:
+      pTicket:
+        type: uint8 *
+        out_array_count: cbMaxTicket
+        out_array_valid_count: tmpTicketSize
+      cbMaxTicket:
+        default_value: 1024 # docs
 #
 # ISteamHTTP
 #
@@ -333,6 +363,9 @@ methods:
 #
   SteamAPI_ISteamInventory_DeserializeResult:
     params:
+      pBuffer:
+        type: const uint8 *
+        array_count: unBufferSize
       bRESERVED_MUST_BE_FALSE:
         default_value: false
   SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs:
@@ -393,7 +426,9 @@ methods:
   SteamAPI_ISteamInventory_SerializeResult:
     params:
       pOutBuffer:
+        type: uint8 *
         nullable: true
+        out_array_count: punOutBufferSize
       punOutBufferSize:
         in_out: true
   SteamAPI_ISteamInventory_TradeItems:

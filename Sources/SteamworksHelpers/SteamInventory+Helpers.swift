@@ -64,4 +64,14 @@ extension SteamInventory {
                                           valueBufferSize: count)
         return (props.rc, props.valueBuffer)
     }
+
+    /// Steamworks `ISteamInventory::SerializeResult()`
+    public func serializeResult(handle: SteamInventoryResult) -> (rc: Bool, buffer: [UInt8]) {
+        let (rc, _, count) = serializeResult(handle: handle, returnBuffer: false, bufferSize: 0)
+        guard rc else {
+            return (false, [])
+        }
+        let ser = serializeResult(handle: handle, bufferSize: count)
+        return (ser.rc, ser.buffer)
+    }
 }
