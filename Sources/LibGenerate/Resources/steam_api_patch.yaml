@@ -286,6 +286,14 @@ methods:
         out_array_valid_count: tmpTicketSize
       cbMaxTicket:
         default_value: 1024 # docs
+  SteamAPI_ISteamUser_GetAuthSessionTicket:
+    params:
+      pTicket:
+        type: uint8 *
+        out_array_count: cbMaxTicket
+        out_array_valid_count: tmpTicketSize
+      cbMaxTicket:
+        default_value: 1024 # docs
 #
 # ISteamHTTP
 #
@@ -547,8 +555,15 @@ methods:
     discardable_result: true
   SteamAPI_ISteamMusicRemote_ResetQueueEntries:
     discardable_result: true
+  SteamAPI_ISteamMusicRemote_SetPNGIcon_64x64:
+    params:
+      pvBuffer:
+        missing_const: true
   SteamAPI_ISteamMusicRemote_UpdateCurrentEntryCoverArt:
     discardable_result: true
+    params:
+      pvBuffer:
+        missing_const: true
   SteamAPI_ISteamMusicRemote_UpdateCurrentEntryElapsedSeconds:
     discardable_result: true
   SteamAPI_ISteamMusicRemote_UpdateLooped:
@@ -650,7 +665,9 @@ methods:
     flat_name: CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest
     params:
       pBlob:
+        type: uint8 *
         nullable: true
+        out_array_count: pcbBlob
       pcbBlob:
         in_out: true
       errMsg:
@@ -718,6 +735,9 @@ methods:
   SteamAPI_ISteamNetworkingSockets_SetCertificate:
     flat_name: CSteamAPI_ISteamNetworkingSockets_SetCertificate
     params:
+      pCertificate:
+        type: const uint8 *
+        array_count: cbCertificate
       errMsg:
         type: 'char *'
         out_string_count: 1024 # See GetCertificate
@@ -842,6 +862,10 @@ methods:
     params:
       pchThumbnailFilename:
         nullable: true
+  SteamAPI_ISteamScreenshots_WriteScreenshot:
+    params:
+      pubRGB:
+        missing_const: true
 #
 # ISteamUGC
 #
@@ -990,6 +1014,22 @@ methods:
 #
 # ISteamUser
 #
+  SteamAPI_ISteamUser_GetAuthSessionTicket:
+    params:
+      pTicket:
+        type: uint8 *
+        out_array_count: cbMaxTicket
+        out_array_valid_count: tmpTicketSize
+      cbMaxTicket:
+        default_value: 1024 # docs
+  SteamAPI_ISteamUser_GetEncryptedAppTicket:
+    params:
+      pTicket:
+        type: uint8 *
+        optional: true
+        nullable: true
+        out_array_count: cbMaxTicket
+        out_array_valid_count: tmpTicketSize
   SteamAPI_ISteamUser_GetUserDataFolder:
     params:
       pchBuffer:
@@ -1012,6 +1052,12 @@ methods:
         default_value: 0
       nUncompressedVoiceDesiredSampleRate_Deprecated:
         default_value: 0
+  SteamAPI_ISteamUser_RequestEncryptedAppTicket:
+    flat_name: CSteamAPI_ISteamUser_RequestEncryptedAppTicket
+    params:
+      pDataToInclude:
+        type: const uint8 *
+        array_count: cbDataToInclude
 #
 # ISteamUserStats
 #

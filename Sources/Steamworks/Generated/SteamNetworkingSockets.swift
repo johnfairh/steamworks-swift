@@ -134,11 +134,14 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetCertificateRequest()`
-    public func getCertificateRequest(blobSize: Int, blob: /*OUT_BUF*/UnsafeMutableRawPointer?) -> (rc: Bool, blobSize: Int, msg: String) {
+    public func getCertificateRequest(blobSize: Int, returnBlob: Bool = true) -> (rc: Bool, blobSize: Int, blob: [UInt8], msg: String) {
         var tmpBlobSize = CInt(blobSize)
+        var tmpBlob = SteamTransOutArray<UInt8>(blobSize, returnBlob)
         let tmpMsg = SteamString(length: 1024)
-        let rc = CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, blob, tmpMsg.charBuffer)
-        return (rc: rc, blobSize: Int(tmpBlobSize), msg: tmpMsg.swiftString)
+        let rc = tmpBlob.setContent { nstBlob in
+            CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, nstBlob, tmpMsg.charBuffer)
+        }
+        return (rc: rc, blobSize: Int(tmpBlobSize), blob: tmpBlob.swiftArray, msg: tmpMsg.swiftString)
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionInfo()`
@@ -298,9 +301,9 @@ public struct SteamNetworkingSockets {
     }
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`
-    public func setCertificate(certificate: UnsafeRawPointer, certificateSize: Int) -> (rc: Bool, msg: String) {
+    public func setCertificate(certificate: [UInt8]) -> (rc: Bool, msg: String) {
         let tmpMsg = SteamString(length: 1024)
-        let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, CInt(certificateSize), tmpMsg.charBuffer)
+        let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, CInt(certificate.count), tmpMsg.charBuffer)
         return (rc: rc, msg: tmpMsg.swiftString)
     }
 

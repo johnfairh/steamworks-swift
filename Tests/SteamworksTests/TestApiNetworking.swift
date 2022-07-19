@@ -195,6 +195,11 @@ class TestApiNetworking: XCTestCase {
         print("p2PSTUNServerList: rc \(rc3), stunlist \(stunList)")
         XCTAssertEqual(.ok, rc3)
 
+        let certReq = steam.networkingSockets.getCertificateRequest()
+        XCTAssertTrue(certReq.rc)
+        XCTAssertFalse(certReq.blob.isEmpty)
+        XCTAssertTrue(certReq.msg.isEmpty)
+
         steam.networkingUtils.initRelayNetworkAccess()
 
         print("Waiting for relay network...")

@@ -147,8 +147,8 @@ public struct SteamMusicRemote {
     }
 
     /// Steamworks `ISteamMusicRemote::SetPNGIcon_64x64()`
-    public func setPNGIcon64x64(buffer: /*OUT_BUF*/UnsafeMutableRawPointer, bufferSize: Int) -> Bool {
-        SteamAPI_ISteamMusicRemote_SetPNGIcon_64x64(interface, buffer, uint32(bufferSize))
+    public func setPNGIcon64x64(buffer: UnsafeRawPointer, bufferSize: Int) -> Bool {
+        SteamAPI_ISteamMusicRemote_SetPNGIcon_64x64(interface, .init(mutating: buffer), uint32(bufferSize))
     }
 
     /// Steamworks `ISteamMusicRemote::SetPlaylistEntry()`
@@ -163,8 +163,8 @@ public struct SteamMusicRemote {
 
     /// Steamworks `ISteamMusicRemote::UpdateCurrentEntryCoverArt()`
     @discardableResult
-    public func updateCurrentEntryCoverArt(buffer: /*OUT_BUF*/UnsafeMutableRawPointer, bufferSize: Int) -> Bool {
-        SteamAPI_ISteamMusicRemote_UpdateCurrentEntryCoverArt(interface, buffer, uint32(bufferSize))
+    public func updateCurrentEntryCoverArt(buffer: UnsafeRawPointer, bufferSize: Int) -> Bool {
+        SteamAPI_ISteamMusicRemote_UpdateCurrentEntryCoverArt(interface, .init(mutating: buffer), uint32(bufferSize))
     }
 
     /// Steamworks `ISteamMusicRemote::UpdateCurrentEntryElapsedSeconds()`

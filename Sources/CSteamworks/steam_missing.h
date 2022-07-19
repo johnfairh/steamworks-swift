@@ -35,6 +35,10 @@ static inline SteamAPICall_t CSteamAPI_ISteamParties_CreateBeacon( ISteamParties
   return SteamAPI_ISteamParties_CreateBeacon(self, unOpenSlots, &beaconLocation, pchConnectString, pchMetadata);
 }
 
+// One more missing const in an awkward place - because we model the data here as an array
+static inline SteamAPICall_t CSteamAPI_ISteamUser_RequestEncryptedAppTicket( ISteamUser* self, const void * pDataToInclude, int cbDataToInclude ) {
+    return SteamAPI_ISteamUser_RequestEncryptedAppTicket(self, const_cast<void *>(pDataToInclude), cbDataToInclude);
+}
 
 // Shim for structs that we don't generate because unions and C++
 

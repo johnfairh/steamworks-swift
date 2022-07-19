@@ -9,22 +9,6 @@
 @_implementationOnly import CSteamworksEncryptedAppTicket
 import Steamworks
 
-extension SteamUser {
-    /// Swift-friendly wrapper to call `getEncryptedAppTicket(...)`.  You still have to know
-    /// the max size of the encrypted ticket
-    public func getEncryptedAppTicket(maxSize: Int) -> [UInt8]? {
-        var rc = false
-        let array: [UInt8] = .init(unsafeUninitializedCapacity: maxSize) { buf, count in
-            var actualSize = 0
-            if let baseAddress = buf.baseAddress {
-                (rc, actualSize) = getEncryptedAppTicket(ticket: baseAddress, maxTicketSize: maxSize)
-            }
-            count = actualSize
-        }
-        return rc ? array : nil
-    }
-}
-
 /// Wrap up the `SteamEncryptedAppTicket` functions.
 ///
 /// See [Encrypted Application Tickets](https://partner.steamgames.com/doc/features/auth#encryptedapptickets)

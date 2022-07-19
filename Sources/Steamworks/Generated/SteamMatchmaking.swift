@@ -105,7 +105,7 @@ public struct SteamMatchmaking {
     }
 
     /// Steamworks `ISteamMatchmaking::GetLobbyChatEntry()`
-    public func getLobbyChatEntry(lobby: SteamID, chatIDIndex: Int, data: /*OUT_BUF*/UnsafeMutableRawPointer, dataSize: Int) -> (rc: Int, user: SteamID, chatEntryType: ChatEntryType) {
+    public func getLobbyChatEntry(lobby: SteamID, chatIDIndex: Int, data: UnsafeMutableRawPointer, dataSize: Int) -> (rc: Int, user: SteamID, chatEntryType: ChatEntryType) {
         var tmpUser = CSteamID()
         var tmpChatEntryType = EChatEntryType(rawValue: 0)
         let rc = Int(SteamAPI_ISteamMatchmaking_GetLobbyChatEntry(interface, CUnsignedLongLong(lobby), CInt(chatIDIndex), &tmpUser, data, CInt(dataSize), &tmpChatEntryType))

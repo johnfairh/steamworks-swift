@@ -70,7 +70,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::DecompressVoice()`
-    public func decompressVoice(compressed: UnsafeRawPointer, compressedSize: Int, destBuffer: /*OUT_BUF*/UnsafeMutableRawPointer, destBufferSize: Int, desiredSampleRate: Int) -> (rc: VoiceResult, bytesWritten: Int) {
+    public func decompressVoice(compressed: UnsafeRawPointer, compressedSize: Int, destBuffer: UnsafeMutableRawPointer, destBufferSize: Int, desiredSampleRate: Int) -> (rc: VoiceResult, bytesWritten: Int) {
         var tmpBytesWritten = uint32()
         let rc = VoiceResult(SteamAPI_ISteamUser_DecompressVoice(interface, compressed, uint32(compressedSize), destBuffer, uint32(destBufferSize), &tmpBytesWritten, uint32(desiredSampleRate)))
         return (rc: rc, bytesWritten: Int(tmpBytesWritten))
@@ -82,10 +82,13 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::GetAuthSessionTicket()`
-    public func getAuthSessionTicket(ticket: /*OUT_BUF*/UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: HAuthTicket, ticketSize: Int) {
+    public func getAuthSessionTicket(maxTicketSize: Int = 1024) -> (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int) {
+        var tmpTicket = SteamTransOutArray<UInt8>(maxTicketSize)
         var tmpTicketSize = uint32()
-        let rc = HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, ticket, CInt(maxTicketSize), &tmpTicketSize))
-        return (rc: rc, ticketSize: Int(tmpTicketSize))
+        let rc = tmpTicket.setContent { nstTicket in
+            HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize))
+        }
+        return (rc: rc, ticket: tmpTicket.swiftArray.safePrefix(tmpTicketSize), ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamUser::GetAvailableVoice()`
@@ -110,10 +113,13 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::GetEncryptedAppTicket()`
-    public func getEncryptedAppTicket(ticket: /*OUT_BUF*/UnsafeMutableRawPointer, maxTicketSize: Int) -> (rc: Bool, ticketSize: Int) {
+    public func getEncryptedAppTicket(returnTicket: Bool = true, maxTicketSize: Int) -> (rc: Bool, ticket: [UInt8], ticketSize: Int) {
+        var tmpTicket = SteamTransOutArray<UInt8>(maxTicketSize, returnTicket)
         var tmpTicketSize = uint32()
-        let rc = SteamAPI_ISteamUser_GetEncryptedAppTicket(interface, ticket, CInt(maxTicketSize), &tmpTicketSize)
-        return (rc: rc, ticketSize: Int(tmpTicketSize))
+        let rc = tmpTicket.setContent { nstTicket in
+            SteamAPI_ISteamUser_GetEncryptedAppTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize)
+        }
+        return (rc: rc, ticket: tmpTicket.swiftArray.safePrefix(tmpTicketSize), ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamUser::GetGameBadgeLevel()`
@@ -161,7 +167,7 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::GetVoice()`
-    public func getVoice(wantCompressed: Bool, destBuffer: /*OUT_BUF*/UnsafeMutableRawPointer, destBufferSize: Int, wantUncompressedDeprecated: Bool = false, uncompressedDestBufferDeprecated: /*OUT_BUF*/UnsafeMutableRawPointer? = nil, uncompressedDestBufferSizeDeprecatedSize: Int = 0, uncompressedVoiceDesiredSampleRateDeprecated: Int = 0) -> (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int) {
+    public func getVoice(wantCompressed: Bool, destBuffer: UnsafeMutableRawPointer, destBufferSize: Int, wantUncompressedDeprecated: Bool = false, uncompressedDestBufferDeprecated: UnsafeMutableRawPointer? = nil, uncompressedDestBufferSizeDeprecatedSize: Int = 0, uncompressedVoiceDesiredSampleRateDeprecated: Int = 0) -> (rc: VoiceResult, bytesWritten: Int, uncompressBytesWrittenDeprecated: Int) {
         var tmpBytesWritten = uint32()
         var tmpUncompressBytesWrittenDeprecated = uint32()
         let rc = VoiceResult(SteamAPI_ISteamUser_GetVoice(interface, wantCompressed, destBuffer, uint32(destBufferSize), &tmpBytesWritten, wantUncompressedDeprecated, uncompressedDestBufferDeprecated, uint32(uncompressedDestBufferSizeDeprecatedSize), &tmpUncompressBytesWrittenDeprecated, uint32(uncompressedVoiceDesiredSampleRateDeprecated)))
@@ -174,20 +180,20 @@ public struct SteamUser {
     }
 
     /// Steamworks `ISteamUser::InitiateGameConnection_DEPRECATED()`
-    public func initiateGameConnectionDEPRECATED(authBlob: /*OUT_BUF*/UnsafeMutableRawPointer, maxAuthBlobSize: Int, gameServer: SteamID, ipServer: Int, portServer: UInt16, secure: Bool) -> Int {
+    public func initiateGameConnectionDEPRECATED(authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: Int, gameServer: SteamID, ipServer: Int, portServer: UInt16, secure: Bool) -> Int {
         Int(SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED(interface, authBlob, CInt(maxAuthBlobSize), CUnsignedLongLong(gameServer), uint32(ipServer), portServer, secure))
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, callback
-    public func requestEncryptedAppTicket(dataToInclude: /*OUT_BUF*/UnsafeMutableRawPointer, dataToIncludeSize: Int, completion: @escaping (EncryptedAppTicketResponse?) -> Void) {
-        let rc = SteamAPI_ISteamUser_RequestEncryptedAppTicket(interface, dataToInclude, CInt(dataToIncludeSize))
+    public func requestEncryptedAppTicket(dataToInclude: [UInt8], completion: @escaping (EncryptedAppTicketResponse?) -> Void) {
+        let rc = CSteamAPI_ISteamUser_RequestEncryptedAppTicket(interface, dataToInclude, CInt(dataToInclude.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, async
-    public func requestEncryptedAppTicket(dataToInclude: /*OUT_BUF*/UnsafeMutableRawPointer, dataToIncludeSize: Int) async -> EncryptedAppTicketResponse? {
+    public func requestEncryptedAppTicket(dataToInclude: [UInt8]) async -> EncryptedAppTicketResponse? {
         await withUnsafeContinuation {
-            requestEncryptedAppTicket(dataToInclude: dataToInclude, dataToIncludeSize: dataToIncludeSize, completion: $0.resume)
+            requestEncryptedAppTicket(dataToInclude: dataToInclude, completion: $0.resume)
         }
     }
 

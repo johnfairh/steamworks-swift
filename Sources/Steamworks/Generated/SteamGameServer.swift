@@ -101,7 +101,7 @@ public struct SteamGameServer {
     }
 
     /// Steamworks `ISteamGameServer::GetNextOutgoingPacket()`
-    public func getNextOutgoingPacket(out: /*OUT_BUF*/UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: UInt16) {
+    public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -> (rc: Int, netAdr: Int, port: UInt16) {
         var tmpNetAdr = uint32()
         var tmpPort = uint16()
         let rc = Int(SteamAPI_ISteamGameServer_GetNextOutgoingPacket(interface, out, CInt(maxOutSize), &tmpNetAdr, &tmpPort))
