@@ -146,7 +146,7 @@ public struct SteamInventory {
             }
         }
         if rc {
-            return (rc: rc, arrayItemDefs: tmpArrayItemDefs.swiftArray(), currentPrices: tmpCurrentPrices.swiftArray, basePrices: tmpBasePrices.swiftArray)
+            return (rc: rc, arrayItemDefs: tmpArrayItemDefs.swiftArray(), currentPrices: tmpCurrentPrices.swiftArray(), basePrices: tmpBasePrices.swiftArray())
         } else {
             return (rc: rc, arrayItemDefs: [], currentPrices: [], basePrices: [])
         }
@@ -250,7 +250,7 @@ public struct SteamInventory {
         let rc = tmpBuffer.setContent { nstBuffer in
             SteamAPI_ISteamInventory_SerializeResult(interface, SteamInventoryResult_t(handle), nstBuffer, &tmpBufferSize)
         }
-        return (rc: rc, buffer: tmpBuffer.swiftArray, bufferSize: Int(tmpBufferSize))
+        return (rc: rc, buffer: tmpBuffer.swiftArray(), bufferSize: Int(tmpBufferSize))
     }
 
     /// Steamworks `ISteamInventory::SetProperty()`

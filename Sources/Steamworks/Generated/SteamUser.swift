@@ -88,7 +88,7 @@ public struct SteamUser {
         let rc = tmpTicket.setContent { nstTicket in
             HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize))
         }
-        return (rc: rc, ticket: tmpTicket.swiftArray.safePrefix(tmpTicketSize), ticketSize: Int(tmpTicketSize))
+        return (rc: rc, ticket: tmpTicket.swiftArray(Int(tmpTicketSize)), ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamUser::GetAvailableVoice()`
@@ -119,7 +119,7 @@ public struct SteamUser {
         let rc = tmpTicket.setContent { nstTicket in
             SteamAPI_ISteamUser_GetEncryptedAppTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize)
         }
-        return (rc: rc, ticket: tmpTicket.swiftArray.safePrefix(tmpTicketSize), ticketSize: Int(tmpTicketSize))
+        return (rc: rc, ticket: tmpTicket.swiftArray(Int(tmpTicketSize)), ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamUser::GetGameBadgeLevel()`

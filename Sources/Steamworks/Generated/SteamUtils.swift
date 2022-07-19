@@ -111,7 +111,7 @@ public struct SteamUtils {
         let rc = tmpDest.setContent { nstDest in
             SteamAPI_ISteamUtils_GetImageRGBA(interface, CInt(imageIndex), nstDest, CInt(destBufferSize))
         }
-        return (rc: rc, dest: tmpDest.swiftArray)
+        return (rc: rc, dest: tmpDest.swiftArray())
     }
 
     /// Steamworks `ISteamUtils::GetImageSize()`

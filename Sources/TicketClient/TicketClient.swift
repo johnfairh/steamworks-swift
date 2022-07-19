@@ -6,6 +6,7 @@
 //
 
 import Steamworks
+import SteamworksHelpers
 import SteamworksEncryptedAppTicket
 import Foundation
 
@@ -70,9 +71,9 @@ struct Main {
             return
         }
 
-        var secret: [UInt8] = [0xfe, 0xed, 0xfa, 0xce]
+        let secret: [UInt8] = [0xfe, 0xed, 0xfa, 0xce]
 
-        client.steam.user.requestEncryptedAppTicket(dataToInclude: &secret, dataToIncludeSize: secret.count) { rsp in
+        client.steam.user.requestEncryptedAppTicket(dataToInclude: secret) { rsp in
             defer { client.stop() }
             guard let rsp = rsp else {
                 print("RequestAppTicket failed, IO failure from steam")
@@ -83,7 +84,7 @@ struct Main {
                 return
             }
             print("RequestAppTicket OK")
-            guard let encryptedTicketBytes = client.steam.user.getEncryptedAppTicket(maxSize: 1024) else {
+            guard let encryptedTicketBytes = client.steam.user.getEncryptedAppTicket() else {
                 print("But GetEncryptedAppTicket says no.")
                 return
             }

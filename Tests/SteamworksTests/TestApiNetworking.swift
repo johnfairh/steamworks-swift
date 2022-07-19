@@ -198,7 +198,6 @@ class TestApiNetworking: XCTestCase {
         let certReq = steam.networkingSockets.getCertificateRequest()
         XCTAssertTrue(certReq.rc)
         XCTAssertFalse(certReq.blob.isEmpty)
-        XCTAssertTrue(certReq.msg.isEmpty)
 
         steam.networkingUtils.initRelayNetworkAccess()
 

@@ -57,7 +57,7 @@ public struct SteamHTTP {
         let rc = tmpBodyDataBuffer.setContent { nstBodyDataBuffer in
             SteamAPI_ISteamHTTP_GetHTTPResponseBodyData(interface, CSteamworks.HTTPRequestHandle(request), nstBodyDataBuffer, uint32(bufferSize))
         }
-        return (rc: rc, bodyDataBuffer: tmpBodyDataBuffer.swiftArray)
+        return (rc: rc, bodyDataBuffer: tmpBodyDataBuffer.swiftArray())
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPResponseBodySize()`
@@ -80,7 +80,7 @@ public struct SteamHTTP {
         let rc = tmpHeaderValueBuffer.setContent { nstHeaderValueBuffer in
             SteamAPI_ISteamHTTP_GetHTTPResponseHeaderValue(interface, CSteamworks.HTTPRequestHandle(request), headerName, nstHeaderValueBuffer, uint32(bufferSize))
         }
-        return (rc: rc, headerValueBuffer: tmpHeaderValueBuffer.swiftArray)
+        return (rc: rc, headerValueBuffer: tmpHeaderValueBuffer.swiftArray())
     }
 
     /// Steamworks `ISteamHTTP::GetHTTPStreamingResponseBodyData()`

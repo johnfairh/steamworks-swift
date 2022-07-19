@@ -176,7 +176,7 @@ public struct SteamUserStats {
         let rc = tmpData.setContent { nstData in
             Int(SteamAPI_ISteamUserStats_GetGlobalStatHistoryDouble(interface, statName, nstData, uint32(dataSize)))
         }
-        return (rc: rc, data: tmpData.swiftArray.safePrefix(rc))
+        return (rc: rc, data: tmpData.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamUserStats::GetGlobalStatHistory()`

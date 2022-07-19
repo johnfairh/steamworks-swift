@@ -68,7 +68,7 @@ let package = Package(
         dependencies: ["Steamworks", "SteamworksHelpers"]),
     .executableTarget(
         name: "TicketClient",
-        dependencies: ["SteamworksEncryptedAppTicket"]),
+        dependencies: ["SteamworksEncryptedAppTicket", "SteamworksHelpers"]),
     .executableTarget(
         name: "Generate",
         dependencies: ["LibGenerate"]),

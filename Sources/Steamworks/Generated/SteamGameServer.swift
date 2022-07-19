@@ -92,7 +92,7 @@ public struct SteamGameServer {
         let rc = tmpTicket.setContent { nstTicket in
             HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize))
         }
-        return (rc: rc, ticket: tmpTicket.swiftArray.safePrefix(tmpTicketSize), ticketSize: Int(tmpTicketSize))
+        return (rc: rc, ticket: tmpTicket.swiftArray(Int(tmpTicketSize)), ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamGameServer::GetGameplayStats()`

@@ -456,13 +456,9 @@ final class SteamParam {
             }
             return "\(tempName).swiftValue(dummy: \(swiftReturnDummyInstance))"
 
-        case .out_array:
+        case .out_array, .out_transparent_array:
             let subscrpt = db.outArrayValidLength.map { $0.asCast(to: SwiftType("Int")) } ?? ""
             return "\(tempName).swiftArray(\(subscrpt))"
-
-        case .out_transparent_array:
-            let arrayName = SwiftExpr("\(tempName).swiftArray")
-            return db.outArrayValidLength.map { "\(arrayName).safePrefix(\($0))" } ?? arrayName
 
         case .out_string:
             return "\(tempName).swiftString"

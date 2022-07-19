@@ -100,6 +100,7 @@
 		02B81B1F2885C87200780A57 /* TestApiServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B1E2885C87200780A57 /* TestApiServer.swift */; };
 		02B81B222886C82900780A57 /* SteamMatchmaking+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B202886C82400780A57 /* SteamMatchmaking+Helpers.swift */; };
 		02B81B252886D69000780A57 /* SteamUser+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B232886D68B00780A57 /* SteamUser+Helpers.swift */; };
+		02B81B262886DE5200780A57 /* SteamworksHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B81AFA28799FEE00780A57 /* SteamworksHelpers.framework */; };
 		02D309D72722C49B00DE64F0 /* SteamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309D62722C49B00DE64F0 /* SteamAPI.swift */; };
 		02D309D82722C55E00DE64F0 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02D309D92722C55E00DE64F0 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -390,6 +391,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B81B262886DE5200780A57 /* SteamworksHelpers.framework in Frameworks */,
 				02AD45DF27578D5900BD93ED /* Steamworks.framework in Frameworks */,
 				02AD45E327578D5900BD93ED /* SteamworksEncryptedAppTicket.framework in Frameworks */,
 			);

@@ -417,8 +417,9 @@ struct SteamTransOutArray<SteamType> {
     private var array: [SteamType]?
     private let count: Int?
 
-    var swiftArray: [SteamType] {
-        array ?? []
+    func swiftArray(_ count: Int = -1) -> [SteamType] {
+        guard let array else { return [] }
+        return count < 0 ? array : Array(array[0..<count])
     }
 
     init(_ count: Int, _ isReal: Bool = true) {

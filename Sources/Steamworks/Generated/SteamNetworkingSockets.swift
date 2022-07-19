@@ -141,7 +141,7 @@ public struct SteamNetworkingSockets {
         let rc = tmpBlob.setContent { nstBlob in
             CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, nstBlob, tmpMsg.charBuffer)
         }
-        return (rc: rc, blobSize: Int(tmpBlobSize), blob: tmpBlob.swiftArray, msg: tmpMsg.swiftString)
+        return (rc: rc, blobSize: Int(tmpBlobSize), blob: tmpBlob.swiftArray(), msg: tmpMsg.swiftString)
     }
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionInfo()`
