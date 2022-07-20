@@ -591,6 +591,10 @@ final class Metadata: CustomStringConvertible {
         findEnum(steamType: steamType)?.defaultInstance
     }
 
+    static func isConstant(name: SteamHungarianName) -> Bool {
+        shared.flatMap { $0.db.consts[name] != nil } ?? false
+    }
+
     static func isStruct(steamType: SteamType) -> Bool {
         shared.flatMap { $0.db.structs[steamType] != nil } ?? false
     }

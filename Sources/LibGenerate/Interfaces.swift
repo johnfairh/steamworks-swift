@@ -166,8 +166,8 @@ struct SteamParameterExpr: StringFungible {
         if expr.re_isMatch(#"^\d*$"#) {
             return SwiftExpr(expr)
         }
-        // check for ref to a constant (YIKES XXX just look up name?)
-        if expr.first!.isCased && (expr.uppercased() == expr || expr.hasPrefix("k_")) {
+        // check for ref to a constant .. some aren't actully public constants we know about
+        if Metadata.isConstant(name: SteamHungarianName(expr)) || expr.first!.isUppercase {
             if prefix.isEmpty {
                 return "Int(\(expr))"
             } else {
@@ -329,7 +329,7 @@ final class SteamParam {
         swiftName.withPrefix("return")
     }
 
-    /// The name of the 'nested' version of the parameter, for `...withXxx { Yyy in` patterns
+    /// The name of the 'nested' version of the parameter, for `...withSomething { Yyy in` patterns
     private var nestedName: SwiftExpr {
         swiftName.withPrefix("nst")
     }
