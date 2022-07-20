@@ -1,26 +1,29 @@
 ![macOS](https://shields.io/badge/platform-macOS%20|%20%3F%3F-lightgrey)
-![Steamworks 1.53a](https://shields.io/badge/steamworks-1.54-lightgrey)
+![Steamworks 1.54](https://shields.io/badge/steamworks-1.54-lightgrey)
 ![MIT](https://shields.io/badge/license-MIT-black)
 
 # steamworks-swift
 
 Experiment with Steamworks SDK and Swift C++ importer.
 
+**Caveat Integrator: The Swift C++ importer is a chaotic science project; this package is built on top**
+
 Current state:
 * Requires Swift 5.7, Xcode 14 beta -- the C++ importer is a unstable science project
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
 * All interfaces complete - see [rough docs](https://johnfairh.github.io/swift-steamworks/index.html)
-* Some interface quality-of-life helpers in a separate module
-* `make` builds and runs a demo Swift program that accesses the Steam API to initialize, do
-  various sync and async queries, then shut it down
-* Separate demo showing encrypted app-ticket stuff
+* Some interface quality-of-life helpers in a separate `SteamworksHelpers` module
+* `make test` builds and runs unit tests that run frame loops and access portions of the Steam API
+  doing various sync and async tasks.
+* Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
+* Separate demo showing encrypted app-ticket stuff, `make run_ticket`
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
   tab completion even if module interface gen is beyond it
 
 ### Concept
 
-* Offer a pure Swift module `Steamworks` covering all of the current Steamworks API.
-* Leave out the deprecated and WIN32-only stuff.
+* Offer a pure Swift module `Steamworks` covering all of the current Steamworks API
+* Leave out the deprecated and WIN32-only stuff
 * Do not diverge too far from the 'real' API names to aid docs / searching / porting:
   I think this is a better starting point than doing a complete OO analysis to carve
   out function.  Can go to build `SteamworksPatterns` or something if worthwhile.  Name
@@ -30,13 +33,13 @@ Current state:
    * Drop the intermittent Hungarian notation (argh the 1990s are calling)
    * Use Swift closures for callbacks as well as async-await sugar
    * Map unions onto enums with associated values
-* Provide custom API-lifetime and message dispatch classes.
-* Provide strongly typed handles.
-* Access interfaces via central types.
+* Provide custom API-lifetime and message dispatch classes
+* Provide strongly typed handles
+* Access interfaces via central types
 * Use code gen to deal with the ~900 APIs and their ~400 types, taking advantage of the
-  handy JSON file.  This code-gen piece is the actual main work in this project.
+  handy JSON file.  This code-gen piece is the actual main work in this project
 * Provide quality-of-life helpers module `SteamworksHelpers` to wrap up API patterns
-  involving multiple calls, usually determining buffer lengths.
+  involving multiple calls, usually determining buffer lengths
 
 ### API mapping design
 
@@ -190,23 +193,24 @@ way in the `SteamworksHelpers` module.
 
 ### Swift C++ Bugs
 
-Tech limitations, on 5.6:
-* Have to manually tell Swift to link with `libc++`.  Verify by commenting from
-  Makefile.  When resolved tidy Makefile.
+Tech limitations, on 5.7 Xcode 14.0b3:
+* ~~Have to manually tell Swift to link with `libc++`.  Verify by commenting from
+  Makefile.  When resolved tidy Makefile. ~~ currently fixed in 5.7
 * ~~Importing `Dispatch` and `-enable-cxx-interop` makes `DispatchSemaphore` disappear
   but not the rest of the module?? Work around.  When resolved rewrite mutex.~~ currently
   fixed in 5.7
 * Some structures/classes aren't imported -- the common factor seems to be a `protected`
   destructor.  Verify by trying to use `SteamNetworkingMessage_t`.
-* Something goes wrong storing pointers to base classes and they get nobbled by
-  something.  Verify by making `SteamIPAddress` a struct, changing interfaces to cache
-  the interface pointers.
-* C++ types with `operator ==` don't have `Equatable` generated.  Verify with
-  `SteamNetworkingIPAddr`.
-* Importing `Foundation` and `-enable-cxx-interop` and a C++ module goes wrong.  Swift
+* Something goes wrong storing pointers to classes and they get nobbled by something.
+  Verify by making `SteamIPAddress` a struct, changing interfaces to cache the interface
+  pointers.
+* Some C++ types with `operator ==` don't have `Equatable` generated.  Verify with
+  `SteamNetworkingIPAddr`.  Got worse in 5.7
+* ~~ Importing `Foundation` and `-enable-cxx-interop` and a C++ module goes wrong.  Swift
   5.6 doesn't crash; worse the compiler goes slow, spits out warnings, then the binary
-  runs like treacle.  Will aim to not depend on Foundation, see how that goes.
-* Calls to (?pure) virtual functions aren't generated properly: Swift generates a ref
+  runs like treacle.  Will aim to not depend on Foundation, see how that goes. ~~ seems
+  fixed in 5.7 but build is really slow - keep up not using Foundation?
+* Calls to virtual functions aren't generated properly: Swift generates a ref
   to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
   usable in practice.  Will use the flat API.
 * Anonymous enums are not imported at all.  Affects callback etc. ID constants.
@@ -259,9 +263,6 @@ ISteamParentalSettings, ISteamParties, ISteamRemotePlay, ISteamRemoteStorage,
 ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo,
 SteamEncryptedAppTicket
 
-Left to do:
-* Pondering of int types etc.
-
 Skip:
 * ISteamAppTicket - er not actually a thing?
 * ISteamClient - internal stuff, very C++y, looks ignorable
@@ -279,6 +280,9 @@ Capture some notes on troubles reflecting the json into the module.
   `SteamDatagramGameCoordinatorServerLogin`, `SteamDatagramHostedAddress` are missing
   from the header files.  The online API docs are hilariously broken here, scads of
   broken links.  Have to wait for Valve to fix this.
+
+  I found some of this in the SDR SDK, but it's not supported on macOS and uses actual
+  grown-up C++ with `std::string` and friends so best leave it alone for now.
 
 * `SteamNetworkingMessage_t` doesn't import into Swift.  Probably stumbling into a hole
   of C++ struct with function pointer fields.  Trust Apple will get to this eventually,

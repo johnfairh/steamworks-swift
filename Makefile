@@ -28,8 +28,7 @@ TICKET_LIB := ${STEAM_SDK}/public/steam/lib/${PLATFORM}
 STEAM_SWIFT_FLAGS := \
 	-Xswiftc -I${STEAM_INCLUDE} \
  	-Xlinker -L${STEAM_LIB} \
-	-Xlinker -L${TICKET_LIB} \
- 	-Xlinker -lc++
+	-Xlinker -L${TICKET_LIB}
 
 all: build run
 

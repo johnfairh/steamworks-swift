@@ -35,19 +35,16 @@ struct Interfaces {
 // Instinct is to cache the `ISteamWhatever` pointer in the member rather than
 // figure it out each time.  But this falls foul of Swift C++ interop issues:
 //
-// 1. Generates link errors, missing refs to `__cxa_pure_virtual` etc.
-//    So manually add `-lc++` and this goes away.
-//
-// 2. But now the cached value gets clobbered somehow at runtime: it's correct
+// 1. The cached value gets clobbered somehow at runtime: it's correct
 //    when called but then later referencing it, has changed to very bad value
 //    that is mostly zeroes with the top (63rd) bit set.
-//    So, erm, this must be a limitation to do with storing refs to base
-//    classes or something?
+//    So, erm, this must be a limitation to do with storing pointers to classes
+//    or something?
 //
 // Hence current approach of figuring out each time, never storing a ref to
 // the thing.
 //
-// Last checked Xcode 13.2 beta 2, Nov 24 2021.
+// Last checked Xcode 14.0 beta 3, July 20th 2022
 
 extension MetadataDB.Interface.Access {
     /// Generate a doc comment snippet
