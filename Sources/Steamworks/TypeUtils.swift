@@ -18,7 +18,7 @@ extension String {
     /// For converting const strings received from Steamworks.  We promote `nullptr` to empty string;
     /// where Steamworks specifies a string may legitimately be NULL we use a `String?` instead.
     init(_ cString: UnsafePointer<CChar>?) {
-        if let cString = cString {
+        if let cString {
             self.init(cString: cString)
         } else {
             self = ""
@@ -41,9 +41,8 @@ extension String {
 
 /// Far too much work to translate badly-thought-out C code.
 ///
-/// C API is written "const char **" but is a mistake, actually
-/// means "const char * const *"; we work around.  It's maddening
-/// to see the same 'const' mistakes now as I did in the early 90s.
+/// C API is written `const char **` but probably means
+/// `const char * const *`; we work around.
 ///
 /// Needs to allow NULL.
 ///
@@ -60,10 +59,9 @@ extension String {
 /// SomeAPI(s.cStrings)
 /// ```
 ///  ...has UB/crashiness because Swift will deinit `s` after evalulating `s.cStrings` but before
-///  actually calling `SomeAPI()`.  And yes, C++ explicitly doesn't work like this...
+///  actually calling `SomeAPI()`.  And yes, C++ explicitly doesn't work like this.
 struct StringArray {
-    // Storage -- the auto-trick with arrays doesn't work through all the
-    // optional nonsense we have going on
+    /// Storage -- the auto-trick with arrays doesn't work through all the optionals
     private let buf: UnsafeMutableBufferPointer<UnsafePointer<CChar>?>?
 
     /// The `_Nullable const char **`
@@ -106,7 +104,7 @@ extension Optional where Wrapped == UnsafeMutablePointer<SteamParamStringArray_t
     }
 }
 
-// sometime's it's 'const'...
+// sometimes it's 'const'...
 extension Optional where Wrapped == UnsafePointer<SteamParamStringArray_t> {
     init(_ stringArray: StringArray) {
         self = .init(stringArray.steamParamStringArray)
@@ -138,7 +136,7 @@ struct MatchMakingKeyValuePairArray {
     }
 
     init(_ pairs: MatchMakingKeyValuePairs?) {
-        guard let pairs = pairs, pairs.count > 0 else {
+        guard let pairs, pairs.count > 0 else {
             pairBuffer = nil
             pairPointerBuffer = nil
             return
@@ -163,8 +161,7 @@ extension Optional where Wrapped == UnsafeMutablePointer<UnsafeMutablePointer<Ma
 
 // MARK: Typedefs
 
-/// Conversion of Swift Types to Steam types, for passing in typedefs
-/// to Steamworks.
+/// Conversion of Swift Types to Steam types, for passing in typedefs to Steamworks
 protocol SteamTypeAlias {
     associatedtype SwiftType
     var value: SwiftType { get }
@@ -176,6 +173,7 @@ extension FixedWidthInteger {
     }
 }
 
+/// HServerListRequest is the only `void *` typedef, deal with it manually
 extension UnsafeMutableRawPointer {
     init(_ value: HServerListRequest) {
         self = value.value
@@ -188,7 +186,7 @@ extension HServerListRequest {
     typealias SteamType = UnsafeMutableRawPointer
 
     init(_ steam: CSteamworks.HServerListRequest?) {
-        if let steam = steam {
+        if let steam {
             self.init(steam)
         } else {
             self = .invalid
@@ -257,7 +255,7 @@ extension Int32 {
     }
 }
 
-/// Same again for uint32 ... ffs SteamInput ... obviously nobody wearing the 'architectural integrity' hat...
+/// Same again for uint32 ... SteamInput doing its own thing
 extension UInt32 {
     init<T>(_ optionSet: T) where T: OptionSet, T.RawValue: BinaryInteger {
         self = UInt32(optionSet.rawValue)
@@ -293,7 +291,7 @@ extension UInt64 {
     }
 }
 
-/// Always that one dumb outlier, and of course it's in mms
+/// Always that one dumb outlier.  :eyes: at this type name..
 extension GameServerItem {
     init(_ ptr: UnsafeMutablePointer<gameserveritem_t>) {
         self.init(ptr.pointee)
@@ -313,25 +311,18 @@ extension Bool {
 ///
 /// We generate C shims to get pointers instead, then stumble around copying the memory over
 /// at runtime and converting the elements.
+///
+/// This is probably simplifiable using one of the convertible protocols
 extension Array {
     init<T>(_ ptr: UnsafePointer<T>, _ count: Int, convert: (T) -> Element) {
-        self.init(unsafeUninitializedCapacity: count) { buf, done in
-            let ubp = UnsafeBufferPointer(start: ptr, count: count)
-            for i in 0..<count {
-                buf[i] = convert(ubp[i])
-            }
-            done = count
-        }
+        self = UnsafeBufferPointer(start: ptr, count: count).map(convert)
     }
 }
 
-/// Arrays of bytes go over as-is
+/// Arrays of bytes go over skipping conversion (transparent)
 extension Array where Element == UInt8 {
     init(_ ptr: UnsafePointer<UInt8>, _ count: Int) {
-        self.init(unsafeUninitializedCapacity: count) { buf, done in
-            buf.baseAddress!.initialize(from: ptr, count: count)
-            done = count
-        }
+        self.init(UnsafeBufferPointer(start: ptr, count: count))
     }
 }
 
@@ -355,21 +346,9 @@ extension Int {
 
 // MARK: Function pointers
 
-// Not sure how to / whether to generalize this yet.
-// If there are more that are missing then can add to the extra_api and
-// figure out how to translate the C typedefs.
-// See kludge in Names.swift too to make it transparent.
-
 public typealias SteamAPIWarningMessageHook = Optional<@convention(c) (Int32, UnsafePointer<CChar>?) -> Void>
 
 // MARK: Arrays of things coming out of Steam
-
-extension Array {
-    func safePrefix<T: BinaryInteger>(_ count: T) -> Self {
-        guard count > 0 else { return [] }
-        return Self(self[0..<Int(count)])
-    }
-}
 
 /// This pulls out all the gross management of arrays of stuff into code that gets compiled once
 /// rather than being assembled by the generator.  We also pull the 'nullable' use case into here
@@ -390,13 +369,13 @@ final class SteamOutArray<SteamType> {
     }
 
     func swiftArray<SwiftType>(_ count: Int = -1) -> [SwiftType] where SwiftType: SteamCreatable, SwiftType.SteamType == SteamType {
-        guard let steamBuffer = steamBuffer else { return [] }
+        guard let steamBuffer else { return [] }
         return count < 0 ? steamBuffer.map { .init($0) } : steamBuffer[0..<count].map { .init($0) }
     }
 
-    /// Specialization for Int because we have many steam types mapping to there... another sign this is a bad choice?
+    /// Specialization for Int32 and Int64 because we have many steam types mapping to there... another sign this is a bad choice?
     func swiftArray(_ count: Int = -1) -> [Int] where SteamType: BinaryInteger {
-        guard let steamBuffer = steamBuffer else { return [] }
+        guard let steamBuffer else { return [] }
         return count < 0 ? steamBuffer.map { .init($0) } : steamBuffer[0..<count].map { .init($0) }
     }
 }
@@ -417,11 +396,6 @@ struct SteamTransOutArray<SteamType> {
     private var array: [SteamType]?
     private let count: Int?
 
-    func swiftArray(_ count: Int = -1) -> [SteamType] {
-        guard let array else { return [] }
-        return count < 0 ? array : Array(array[0..<count])
-    }
-
     init(_ count: Int, _ isReal: Bool = true) {
         self.array = nil
         self.count = isReal ? count : nil
@@ -438,6 +412,11 @@ struct SteamTransOutArray<SteamType> {
         }
         return cascadedResult!
     }
+
+    func swiftArray(_ count: Int = -1) -> [SteamType] {
+        guard let array else { return [] }
+        return count < 0 ? array : Array(array[0..<count])
+    }
 }
 
 /// Wrapper for values passed by reference to the steam API that can be nil - so importer magic doesn't work.
@@ -453,7 +432,7 @@ struct SteamNullable<SteamType> {
 
     /// Init for in param, optional initial value
     init<SwiftType>(_ swiftValue: SwiftType?) where SteamType: SwiftCreatable, SteamType.SwiftType == SwiftType {
-        guard let swiftValue = swiftValue else {
+        guard let swiftValue else {
             steamValue = nil
             return
         }
@@ -466,7 +445,7 @@ struct SteamNullable<SteamType> {
     }
 
     func swiftValue<SwiftType>(dummy: @autoclosure () -> SwiftType) -> SwiftType where SwiftType: SteamCreatable, SwiftType.SteamType == SteamType {
-        guard let steamValue = steamValue else { return dummy() }
+        guard let steamValue else { return dummy() }
         return SwiftType(steamValue.pointee)
     }
 }

@@ -105,35 +105,6 @@ struct SteamJSON: Codable {
 
 /// Description of the `steam_api_patch.yaml` file that holds additions and corrections
 /// to the SDK json.  Yaml rather easier to write and read by humans.
-///
-/// Features:
-/// * Constants: Fix value to something Swift understands
-/// * Constants: Correct the type
-/// * Constants: ignore constants
-/// * Constants: nesting control
-/// * Enums: use OptionSet or Enum in Swift
-/// * Enums: value prefix to strip -- Steam has a clear convention for this but breaks it in
-///   various ways that we have to hard-code.
-/// * Enums: token to insert to avoid enum cases starting with numbers
-/// * Enums: hint to generate a static member instead of an enum case
-/// * Enums: generate from-IntX
-/// * Enums: special-case the type name
-/// * Enums: override the value
-/// * Methods: correct the return type
-/// * Methods: specify out-param behaviour when API call fails
-/// * Methods: specify partially-completed out-arrays
-/// * Methods: correct a parameter type
-/// * Methods: correct a parameter name
-/// * Methods: set discardableResult
-/// * Methods: patch in missed `out_string_count` etc.
-/// * Methods: ignore entirely
-/// * Methods: modify flatname
-/// * Structs: correct a field type (steam or swift)
-/// * Structs: ignore field or entire struct
-/// * Structs: correct the steam name
-/// * Structs: generate a swift->steam converter
-/// * Interfaces: Patch the C++ type name...
-///
 struct Patch: Codable {
     struct Const: Codable {
         let value: String? // patch C expression for value
@@ -327,8 +298,6 @@ struct MetadataDB {
                 } else {
                     self.outStringLength = nil
                 }
-//              precondition(arrayCount == nil || outArrayLength == nil, "base=\(base), patch=\(patch)")
-                // something weird in inventory...
                 precondition(outArrayLength == nil || outStringLength == nil)
                 self.defaultValue = patch?.default_value.map { .init($0) }
             }
@@ -423,6 +392,7 @@ struct MetadataDB {
                 ignore = base.private ?? patch?.bIgnore ?? false
             }
 
+            // XXX this is at the wrong layer?
             /// Patch up some systemic errors / C-alignment-reasoning in types
             static func patch(name: SteamHungarianName, type: String) -> String {
                 if name.name.starts(with: "m_b") {

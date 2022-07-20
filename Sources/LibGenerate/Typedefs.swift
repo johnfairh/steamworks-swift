@@ -71,7 +71,7 @@ extension MetadataDB.Typedef {
         return decl
     }
 
-    /// Function pointer types - guess for now, not sure how will actually handle at call site
+    /// Function pointer types - not common
     var generateFunction: String {
         """
         /// Steamworks `\(typedef)`

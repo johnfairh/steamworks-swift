@@ -90,5 +90,4 @@ public final class SteamAPI: SteamBaseAPI {
     public let userStats = SteamUserStats()
     /// Access the Steamworks `ISteamVideo` interface
     public let video = SteamVideo()
-
 }

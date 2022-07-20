@@ -195,7 +195,7 @@ private extension SteamName {
         guard let first = deprefixed.first, first.isNumber else {
             return SteamName(deprefixed)
         }
-        guard let numericPrefix = numericPrefix else {
+        guard let numericPrefix else {
             preconditionFailure("Unhandled numeric-starting identifier \(name) -> \(deprefixed)")
         }
         return "\(numericPrefix)\(deprefixed)"

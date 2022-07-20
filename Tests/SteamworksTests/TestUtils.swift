@@ -76,6 +76,7 @@ enum TestClient {
                 TestClient.client = nil
             }
             steam.useLoggerForSteamworksWarnings()
+            steam.networkingUtils.useLoggerForDebug(detailLevel: .everything)
             return steam
         }
         print("Can't initialize Steam API")

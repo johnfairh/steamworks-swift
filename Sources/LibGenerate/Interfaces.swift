@@ -698,7 +698,6 @@ struct SteamMethod {
     }
 
     var callLines: [String] {
-
         func callLines(prefix: String) -> [String] {
             var fullCall = fullCallExpression
             fullCall[0] = "\(prefix)\(fullCall[0])"

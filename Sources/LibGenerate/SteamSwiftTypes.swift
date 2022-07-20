@@ -100,7 +100,7 @@ extension SteamType {
 }
 
 /// How to represent a steam type in the Swift interface, special cases
-private let steamToSwiftTypes: [SteamType : SwiftType] = [
+private let steamToSwiftTypes: [SteamType : SwiftType] = [ // XXX review consts
     // Base types
     "const char *" : "String",
     "char *" : "String",
@@ -111,7 +111,7 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "uint32" : "Int",
     "int32" : "Int",
     "int64" : "Int",
-    "int64_t" : "Int", // steamnetworking == disaster
+    "int64_t" : "Int", // steamnetworking..
     "uint64": "UInt64",
     "bool" : "Bool",
     "float" : "Float",
@@ -121,7 +121,7 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "uint64_steamid" : "SteamID",
     "uint64_gameid" : "GameID",
     "const char **": "[String]",
-    "char": "Int", // SteamInput going its own way...
+    "char": "Int", // steaminput..
     "unsigned short": "Int", // "", leaving as Int for now because not obviously u16
     "unsigned int": "Int", // ""
     "intptr_t": "Int",
@@ -130,14 +130,14 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
 
     // - because these are used all over the place non-const-correctly
     "SteamParamStringArray_t *" : "[String]",
-    // - because these occur in arrays
+    // - because these have unusual semantics
     "SteamNetworkingMessage_t *" : "SteamNetworkingMessage"
 ]
 
 /// How to represent an array of steam types (eg. in a struct field,) special cases
 private let steamArrayElementTypeToSwiftArrayTypes: [SteamType : SwiftType] = [
     "char" : "String",
-    "uint8" : "[UInt8]"
+    "uint8" : "[UInt8]" // XXX still?
 ]
 
 /// Steam types that, when returned from a C++ function, can be directly assigned

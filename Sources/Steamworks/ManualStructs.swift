@@ -12,7 +12,7 @@
 // A very rough manual wrap to work around the union implementation
 // and expose the static getters.
 
-// omg if we make `SteamIPAddress` a `struct` as it should be then the
+// if we make `SteamIPAddress` a `struct` as it should be then the
 // embedded `SteamIPAddress_t` gets nobbled somehow during runtime...
 
 /// Steamworks `SteamIPAddress_t`
