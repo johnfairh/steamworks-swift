@@ -385,7 +385,7 @@ final class SteamParam {
 
         case .out_string(let size):
             let nullability = db.nullable ? ", isReal: \(returnParamName)" : ""
-            line = "let \(tempName) = SteamString(length: \(size.swiftExpr)\(nullability))"
+            line = "var \(tempName) = SteamOutString(length: \(size.swiftExpr)\(nullability))"
         }
 
         return line.isEmpty ? [] : deallocateTemp ? [line, "defer { \(tempName).deallocate() }"] : [line]
@@ -393,10 +393,16 @@ final class SteamParam {
 
     /// What code fragment is required to nest the API invocation -- if anything is returned then the system adds the un-nest later on
     var callNestingLine: String? {
-        guard case .out_transparent_array = style else {
+        switch style {
+        case .out_transparent_array, .out_string:
+            return "\(tempName).setContent { \(nestedName) in"
+        case .in, .in_array, .in_string_array, .in_array_count:
+            return nil
+        case .out, .out_transparent, .in_out:
+            return nil
+        case .out_array(_):
             return nil
         }
-        return "\(tempName).setContent { \(nestedName) in"
     }
 
     /// How to refer to the param in the Steamworks API call
@@ -434,7 +440,7 @@ final class SteamParam {
             return "\(tempName).steamArray"
 
         case .out_string:
-            return "\(tempName).charBuffer"
+            return nestedName
         }
     }
 

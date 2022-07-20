@@ -137,9 +137,11 @@ public struct SteamNetworkingSockets {
     public func getCertificateRequest(blobSize: Int, returnBlob: Bool = true) -> (rc: Bool, blobSize: Int, blob: [UInt8], msg: String) {
         var tmpBlobSize = CInt(blobSize)
         var tmpBlob = SteamTransOutArray<UInt8>(blobSize, returnBlob)
-        let tmpMsg = SteamString(length: 1024)
+        var tmpMsg = SteamOutString(length: 1024)
         let rc = tmpBlob.setContent { nstBlob in
-            CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, nstBlob, tmpMsg.charBuffer)
+            tmpMsg.setContent { nstMsg in
+                CSteamAPI_ISteamNetworkingSockets_GetCertificateRequest(interface, &tmpBlobSize, nstBlob, nstMsg)
+            }
         }
         return (rc: rc, blobSize: Int(tmpBlobSize), blob: tmpBlob.swiftArray(), msg: tmpMsg.swiftString)
     }
@@ -157,8 +159,10 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetConnectionName()`
     public func getConnectionName(peer: HSteamNetConnection, maxLen: Int) -> (rc: Bool, name: String) {
-        let tmpName = SteamString(length: maxLen)
-        let rc = SteamAPI_ISteamNetworkingSockets_GetConnectionName(interface, CSteamworks.HSteamNetConnection(peer), tmpName.charBuffer, CInt(maxLen))
+        var tmpName = SteamOutString(length: maxLen)
+        let rc = tmpName.setContent { nstName in
+            SteamAPI_ISteamNetworkingSockets_GetConnectionName(interface, CSteamworks.HSteamNetConnection(peer), nstName, CInt(maxLen))
+        }
         if rc {
             return (rc: rc, name: tmpName.swiftString)
         } else {
@@ -186,8 +190,10 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::GetDetailedConnectionStatus()`
     public func getDetailedConnectionStatus(conn: HSteamNetConnection, returnBuf: Bool = true, bufSize: Int) -> (rc: Int, buf: String) {
-        let tmpBuf = SteamString(length: bufSize, isReal: returnBuf)
-        let rc = Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), tmpBuf.charBuffer, CInt(bufSize)))
+        var tmpBuf = SteamOutString(length: bufSize, isReal: returnBuf)
+        let rc = tmpBuf.setContent { nstBuf in
+            Int(SteamAPI_ISteamNetworkingSockets_GetDetailedConnectionStatus(interface, CSteamworks.HSteamNetConnection(conn), nstBuf, CInt(bufSize)))
+        }
         if rc == 0 {
             return (rc: rc, buf: tmpBuf.swiftString)
         } else {
@@ -302,8 +308,10 @@ public struct SteamNetworkingSockets {
 
     /// Steamworks `ISteamNetworkingSockets::SetCertificate()`
     public func setCertificate(certificate: [UInt8]) -> (rc: Bool, msg: String) {
-        let tmpMsg = SteamString(length: 1024)
-        let rc = CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, CInt(certificate.count), tmpMsg.charBuffer)
+        var tmpMsg = SteamOutString(length: 1024)
+        let rc = tmpMsg.setContent { nstMsg in
+            CSteamAPI_ISteamNetworkingSockets_SetCertificate(interface, certificate, CInt(certificate.count), nstMsg)
+        }
         return (rc: rc, msg: tmpMsg.swiftString)
     }
 

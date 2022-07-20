@@ -388,7 +388,6 @@ final class SteamOutArray<SteamType> {
 ///
 /// The only no-copy way I can figure out to populate an `Array` is through its initializer, which is gross
 /// because of the code generation and because of the need to pass stuff out -- we wrap up that here.
-/// It might work.
 ///
 /// Oh and it has to cope with the 'nullable' case too where the client doesn't actually want the data
 /// so we have to pass `nil` into the API.
@@ -419,6 +418,44 @@ struct SteamTransOutArray<SteamType> {
     }
 }
 
+/// Wrap up strings produced by the Steam API.
+///
+/// Length allocation includes space for nul terminator.
+/// Output is forced to be nul-terminated.
+/// Handles 'nil means don't want this' case.
+struct SteamOutString {
+    private var str: String?
+    private let length: Int?
+
+    /// Length here is as defined by the C API, typically 'length of buffer' which includes a null terminator
+    init(length: Int, isReal: Bool = true) {
+        self.str = nil
+        self.length = isReal ? length : nil
+    }
+
+    mutating func setContent<T>(with: (UnsafeMutablePointer<UInt8>?) -> T) -> T {
+        guard let length else {
+            return with(nil)
+        }
+        var cascadedResult: T? = nil
+        str = String(unsafeUninitializedCapacity: length) { umbp in
+            cascadedResult = with(umbp.baseAddress)
+            return strlentrunc(umbp)
+        }
+        return cascadedResult!
+    }
+
+    var swiftString: String {
+        str ?? ""
+    }
+}
+
+/// lordy ... the design of the swift API seems rooted in some legacy Objective-C stuff
+private func strlentrunc(_ cstr: UnsafeMutableBufferPointer<UInt8>) -> Int {
+    cstr[cstr.count-1] = 0
+    return cstr.prefix(while: { $0 != 0 }).count
+}
+
 /// Wrapper for values passed by reference to the steam API that can be nil - so importer magic doesn't work.
 ///
 /// Intentionally a struct with explicit deallocate for lifetime reasons.
@@ -447,30 +484,5 @@ struct SteamNullable<SteamType> {
     func swiftValue<SwiftType>(dummy: @autoclosure () -> SwiftType) -> SwiftType where SwiftType: SteamCreatable, SwiftType.SteamType == SteamType {
         guard let steamValue else { return dummy() }
         return SwiftType(steamValue.pointee)
-    }
-}
-
-/// Wrap up strings produced by the steam API.
-///
-/// Length allocation includes space for nul terminator.
-/// Output is forced to be nul-terminated.
-/// Handles 'nil means don't want this' case.
-final class SteamString {
-    private let buf: UnsafeMutableBufferPointer<CChar>?
-
-    init(length: Int, isReal: Bool = true) {
-        buf = isReal ? .allocate(capacity: length) : nil
-    }
-
-    var charBuffer: UnsafeMutablePointer<CChar>? {
-        buf?.baseAddress
-    }
-
-    deinit {
-        buf?.deallocate()
-    }
-
-    var swiftString: String {
-        buf.map { String($0) } ?? ""
     }
 }

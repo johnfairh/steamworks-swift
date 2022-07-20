@@ -157,8 +157,10 @@ extension SteamUtils {
         // this is so messed up, going strictly by the docs: the size passed in
         // must be exactly the number of chars available which excludes a nul terminator
         let textChars = getEnteredGamepadTextLength()
-        let tmpText = SteamString(length: textChars + 1)
-        let rc = SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, tmpText.charBuffer, uint32(textChars))
+        var tmpText = SteamOutString(length: textChars + 1)
+        let rc = tmpText.setContent { nstText in
+            SteamAPI_ISteamUtils_GetEnteredGamepadTextInput(interface, nstText, uint32(textChars))
+        }
         return (rc: rc, text: tmpText.swiftString)
     }
 }

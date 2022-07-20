@@ -122,10 +122,12 @@ public struct SteamFriends {
 
     /// Steamworks `ISteamFriends::GetClanChatMessage()`
     public func getClanChatMessage(clanChat: SteamID, messageIndex: Int, textMaxSize: Int = SteamConstants.chatMetadataMaxSize + 1) -> (rc: Int, text: String, chatEntryType: ChatEntryType, chatter: SteamID) {
-        let tmpText = SteamString(length: textMaxSize)
+        var tmpText = SteamOutString(length: textMaxSize)
         var tmpChatEntryType = EChatEntryType(rawValue: 0)
         var tmpChatter = CSteamID()
-        let rc = Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, CUnsignedLongLong(clanChat), CInt(messageIndex), tmpText.charBuffer, CInt(textMaxSize), &tmpChatEntryType, &tmpChatter))
+        let rc = tmpText.setContent { nstText in
+            Int(SteamAPI_ISteamFriends_GetClanChatMessage(interface, CUnsignedLongLong(clanChat), CInt(messageIndex), nstText, CInt(textMaxSize), &tmpChatEntryType, &tmpChatter))
+        }
         return (rc: rc, text: tmpText.swiftString, chatEntryType: ChatEntryType(tmpChatEntryType), chatter: SteamID(tmpChatter))
     }
 
@@ -225,9 +227,11 @@ public struct SteamFriends {
 
     /// Steamworks `ISteamFriends::GetFriendMessage()`
     public func getFriendMessage(friend: SteamID, messageIDIndex: Int, dataSize: Int = SteamConstants.chatMetadataMaxSize + 1) -> (rc: Int, data: String, chatEntryType: ChatEntryType) {
-        let tmpData = SteamString(length: dataSize)
+        var tmpData = SteamOutString(length: dataSize)
         var tmpChatEntryType = EChatEntryType(rawValue: 0)
-        let rc = Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, CUnsignedLongLong(friend), CInt(messageIDIndex), tmpData.charBuffer, CInt(dataSize), &tmpChatEntryType))
+        let rc = tmpData.setContent { nstData in
+            Int(SteamAPI_ISteamFriends_GetFriendMessage(interface, CUnsignedLongLong(friend), CInt(messageIDIndex), nstData, CInt(dataSize), &tmpChatEntryType))
+        }
         return (rc: rc, data: tmpData.swiftString, chatEntryType: ChatEntryType(tmpChatEntryType))
     }
 

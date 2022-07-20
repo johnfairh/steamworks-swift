@@ -4,19 +4,19 @@
 
 # steamworks-swift
 
-Experiment with Steamworks SDK and Swift C++ importer.
+A practical interface to the Steamworks SDK using the Swift C++ importer.
 
 **Caveat Integrator: The Swift C++ importer is a chaotic science project; this package is built on top**
 
 Current state:
-* Requires Swift 5.7, Xcode 14 beta -- the C++ importer is a unstable science project
+* All Steamworks interfaces complete - see [rough docs](https://johnfairh.github.io/swift-steamworks/index.html)
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
-* All interfaces complete - see [rough docs](https://johnfairh.github.io/swift-steamworks/index.html)
 * Some interface quality-of-life helpers in a separate `SteamworksHelpers` module
 * `make test` builds and runs unit tests that run frame loops and access portions of the Steam API
   doing various sync and async tasks.
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
+* Requires Swift 5.7, Xcode 14 beta 3
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
   tab completion even if module interface gen is beyond it
 
@@ -80,7 +80,7 @@ steam.onUserStatsReceived { userStatsReceived in
 ```
 
 There are async versions too, like:
-```
+```swift
 for await userStatsReceived in steam.userStatsReceived {
   ...
 }
@@ -195,7 +195,7 @@ way in the `SteamworksHelpers` module.
 
 Tech limitations, on 5.7 Xcode 14.0b3:
 * ~~Have to manually tell Swift to link with `libc++`.  Verify by commenting from
-  Makefile.  When resolved tidy Makefile. ~~ currently fixed in 5.7
+  Makefile.  When resolved tidy Makefile.~~ currently fixed in 5.7
 * ~~Importing `Dispatch` and `-enable-cxx-interop` makes `DispatchSemaphore` disappear
   but not the rest of the module?? Work around.  When resolved rewrite mutex.~~ currently
   fixed in 5.7
@@ -206,9 +206,9 @@ Tech limitations, on 5.7 Xcode 14.0b3:
   pointers.
 * Some C++ types with `operator ==` don't have `Equatable` generated.  Verify with
   `SteamNetworkingIPAddr`.  Got worse in 5.7
-* ~~ Importing `Foundation` and `-enable-cxx-interop` and a C++ module goes wrong.  Swift
+* ~~Importing `Foundation` and `-enable-cxx-interop` and a C++ module goes wrong.  Swift
   5.6 doesn't crash; worse the compiler goes slow, spits out warnings, then the binary
-  runs like treacle.  Will aim to not depend on Foundation, see how that goes. ~~ seems
+  runs like treacle.  Will aim to not depend on Foundation, see how that goes.~~ seems
   fixed in 5.7 but build is really slow - keep up not using Foundation?
 * Calls to virtual functions aren't generated properly: Swift generates a ref
   to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not

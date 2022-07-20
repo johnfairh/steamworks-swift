@@ -23,8 +23,10 @@ public struct SteamApps {
     public func getDLCDataByIndex(dlcIndex: Int, nameBufferSize: Int) -> (rc: Bool, appID: AppID, available: Bool, name: String) {
         var tmpAppID = AppId_t()
         var tmpAvailable = CBool()
-        let tmpName = SteamString(length: nameBufferSize)
-        let rc = SteamAPI_ISteamApps_BGetDLCDataByIndex(interface, CInt(dlcIndex), &tmpAppID, &tmpAvailable, tmpName.charBuffer, CInt(nameBufferSize))
+        var tmpName = SteamOutString(length: nameBufferSize)
+        let rc = tmpName.setContent { nstName in
+            SteamAPI_ISteamApps_BGetDLCDataByIndex(interface, CInt(dlcIndex), &tmpAppID, &tmpAvailable, nstName, CInt(nameBufferSize))
+        }
         if rc {
             return (rc: rc, appID: AppID(tmpAppID), available: tmpAvailable, name: tmpName.swiftString)
         } else {
@@ -92,8 +94,10 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::GetAppInstallDir()`
     public func getAppInstallDir(id: AppID, folderBufferSize: Int = SteamConstants.filenameMaxSize) -> (rc: Int, folder: String) {
-        let tmpFolder = SteamString(length: folderBufferSize)
-        let rc = Int(SteamAPI_ISteamApps_GetAppInstallDir(interface, AppId_t(id), tmpFolder.charBuffer, uint32(folderBufferSize)))
+        var tmpFolder = SteamOutString(length: folderBufferSize)
+        let rc = tmpFolder.setContent { nstFolder in
+            Int(SteamAPI_ISteamApps_GetAppInstallDir(interface, AppId_t(id), nstFolder, uint32(folderBufferSize)))
+        }
         return (rc: rc, folder: tmpFolder.swiftString)
     }
 
@@ -109,8 +113,10 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::GetCurrentBetaName()`
     public func getCurrentBetaName(nameBufferSize: Int) -> (rc: Bool, name: String) {
-        let tmpName = SteamString(length: nameBufferSize)
-        let rc = SteamAPI_ISteamApps_GetCurrentBetaName(interface, tmpName.charBuffer, CInt(nameBufferSize))
+        var tmpName = SteamOutString(length: nameBufferSize)
+        let rc = tmpName.setContent { nstName in
+            SteamAPI_ISteamApps_GetCurrentBetaName(interface, nstName, CInt(nameBufferSize))
+        }
         if rc {
             return (rc: rc, name: tmpName.swiftString)
         } else {
@@ -163,8 +169,10 @@ public struct SteamApps {
 
     /// Steamworks `ISteamApps::GetLaunchCommandLine()`
     public func getLaunchCommandLine(commandLineSize: Int) -> (rc: Int, commandLine: String) {
-        let tmpCommandLine = SteamString(length: commandLineSize)
-        let rc = Int(SteamAPI_ISteamApps_GetLaunchCommandLine(interface, tmpCommandLine.charBuffer, CInt(commandLineSize)))
+        var tmpCommandLine = SteamOutString(length: commandLineSize)
+        let rc = tmpCommandLine.setContent { nstCommandLine in
+            Int(SteamAPI_ISteamApps_GetLaunchCommandLine(interface, nstCommandLine, CInt(commandLineSize)))
+        }
         return (rc: rc, commandLine: tmpCommandLine.swiftString)
     }
 
