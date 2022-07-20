@@ -62,7 +62,7 @@ extension SteamType {
             }
             return "[\(arrayMatch.element.swiftType)]"
         }
-        if let mapped = steamToSwiftTypes[self] ?? Metadata.steamTypeToSwiftType(self) {
+        if let mapped = mapSteamType(self) ?? Metadata.steamTypeToSwiftType(self) {
             return mapped
         }
         if let constMatch = name.re_match("^const (.*)$") {
@@ -81,7 +81,7 @@ extension SteamType {
     /// Does this C++ type look like a pointer but is actually something else?
     /// Mostly for `const char *` -> `String`
     fileprivate var isPointerTypePassedByValue: Bool {
-        name.hasSuffix("*") && steamToSwiftTypes[self] != nil
+        name.hasSuffix("*") && mapSteamType(self) != nil
     }
 
     /// If returned from a C++ function, can this be assigned without a cast to a `swiftType` variable
@@ -99,12 +99,21 @@ extension SteamType {
     }
 }
 
+/// Look for a special-case rule for mapping the steam type.
+/// If the steam type is "const Foo" and there is no rule for that then it queries against "Foo" too.
+private func mapSteamType(_ type: SteamType) -> SwiftType? {
+    steamToSwiftTypes[type] ??
+        type.name.re_match("^const (.*)$").flatMap {
+            steamToSwiftTypes[SteamType($0[1])]
+        }
+}
+
 /// How to represent a steam type in the Swift interface, special cases
-private let steamToSwiftTypes: [SteamType : SwiftType] = [ // XXX review consts
+private let steamToSwiftTypes: [SteamType : SwiftType] = [
     // Base types
-    "const char *" : "String",
     "char *" : "String",
-    "const SteamParamStringArray_t *" : "[String]",
+    "SteamParamStringArray_t *" : "[String]",
+    "char **": "[String]",
     "int" : "Int",
     "uint8" : "UInt8",
     "uint16" : "UInt16",
@@ -120,7 +129,6 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [ // XXX review consts
     "const void *": "UnsafeRawPointer",
     "uint64_steamid" : "SteamID",
     "uint64_gameid" : "GameID",
-    "const char **": "[String]",
     "char": "Int", // steaminput..
     "unsigned short": "Int", // "", leaving as Int for now because not obviously u16
     "unsigned int": "Int", // ""
@@ -128,16 +136,13 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [ // XXX review consts
     "size_t": "Int",
     "void": "Void",
 
-    // - because these are used all over the place non-const-correctly
-    "SteamParamStringArray_t *" : "[String]",
     // - because these have unusual semantics
     "SteamNetworkingMessage_t *" : "SteamNetworkingMessage"
 ]
 
 /// How to represent an array of steam types (eg. in a struct field,) special cases
 private let steamArrayElementTypeToSwiftArrayTypes: [SteamType : SwiftType] = [
-    "char" : "String",
-    "uint8" : "[UInt8]" // XXX still?
+    "char" : "String"
 ]
 
 /// Steam types that, when returned from a C++ function, can be directly assigned

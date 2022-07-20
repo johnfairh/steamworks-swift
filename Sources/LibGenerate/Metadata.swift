@@ -392,7 +392,6 @@ struct MetadataDB {
                 ignore = base.private ?? patch?.bIgnore ?? false
             }
 
-            // XXX this is at the wrong layer?
             /// Patch up some systemic errors / C-alignment-reasoning in types
             static func patch(name: SteamHungarianName, type: String) -> String {
                 if name.name.starts(with: "m_b") {
