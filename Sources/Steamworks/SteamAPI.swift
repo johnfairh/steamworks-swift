@@ -21,7 +21,7 @@ import Logging
 /// Create and retain one of these to access and use the Steamworks APIs.
 ///
 /// Steamworks ref: [steam_api.h](https://partner.steamgames.com/doc/api/steam_api)
-public final class SteamAPI: SteamBaseAPI {
+public final class SteamAPI: SteamBaseAPI, Sendable {
 
     // MARK: Lifecycle
 

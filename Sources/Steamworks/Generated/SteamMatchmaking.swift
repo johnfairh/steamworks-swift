@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamMatchmaking`](https://partner.steamgames.com/doc/api/ISteamMatchmaking)
 ///
 /// Access via `SteamAPI.matchmaking`.
-public struct SteamMatchmaking {
+public struct SteamMatchmaking: Sendable {
     var interface: UnsafeMutablePointer<ISteamMatchmaking> {
         SteamAPI_SteamMatchmaking_v009()
     }

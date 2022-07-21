@@ -16,7 +16,7 @@
 /// Create and retain one of these to access and use the Steamworks game server APIs.
 ///
 /// Steamworks ref: [steam_gameserver.h](https://partner.steamgames.com/doc/api/steam_gameserver)
-public final class SteamGameServerAPI: SteamBaseAPI {
+public final class SteamGameServerAPI: SteamBaseAPI, Sendable {
     // MARK: Lifecycle
 
     /// Initialize the Steamworks game server API.

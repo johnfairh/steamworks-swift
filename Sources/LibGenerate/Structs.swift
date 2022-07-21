@@ -211,7 +211,7 @@ extension MetadataDB.Struct {
         let swiftType = name.swiftType
         let lines = [[
             "/// Steamworks `\(name)`",
-            "public struct \(swiftType) {"
+            "public struct \(swiftType): Sendable {"
         ],
         fields.declLines.indented(1),
         fields.isEmpty ? [] : [

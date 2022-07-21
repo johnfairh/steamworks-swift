@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamParties`](https://partner.steamgames.com/doc/api/ISteamParties)
 ///
 /// Access via `SteamAPI.parties`.
-public struct SteamParties {
+public struct SteamParties: Sendable {
     var interface: UnsafeMutablePointer<ISteamParties> {
         SteamAPI_SteamParties_v002()
     }

@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamRemoteStorage`](https://partner.steamgames.com/doc/api/ISteamRemoteStorage)
 ///
 /// Access via `SteamAPI.remoteStorage`.
-public struct SteamRemoteStorage {
+public struct SteamRemoteStorage: Sendable {
     var interface: UnsafeMutablePointer<ISteamRemoteStorage> {
         SteamAPI_SteamRemoteStorage_v016()
     }

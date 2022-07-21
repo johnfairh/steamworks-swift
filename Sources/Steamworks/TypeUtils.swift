@@ -7,6 +7,9 @@
 
 @_implementationOnly import CSteamworks
 
+// A bunch of internal utilities mostly for implementing the generated API methods.
+// Not part of the Steamworks API, all to do with C interop.
+
 // MARK: Callbacks
 
 /// Type of Steam Callback ID used as interface from Generated/Callbacks -> SteamCallbacks
@@ -119,8 +122,6 @@ extension Optional where Wrapped == UnsafeMutablePointer<UnsafePointer<CChar>?> 
 
 // MARK: Arrays of pairs of strings ...
 
-public typealias MatchMakingKeyValuePairs = KeyValuePairs<String, String>
-
 /// This dumb thing is for isteammatchmaking, which requires an array of pointers
 /// to C++ classes that contain two (inline) strings.  We model the input data in Swift as
 /// a String:String dictionary and build the data structure here.
@@ -181,8 +182,6 @@ extension UnsafeMutableRawPointer {
 }
 
 extension HServerListRequest {
-    public static let invalid = Self(UnsafeMutableRawPointer(bitPattern: UInt(1)))
-
     typealias SteamType = UnsafeMutableRawPointer
 
     init(_ steam: CSteamworks.HServerListRequest?) {
@@ -334,19 +333,6 @@ extension AsyncStream.Continuation {
         _ = yield(thing)
     }
 }
-
-// MARK: IP addresses
-
-extension Int {
-    /// Helper for providing IPv4 addresses by byte
-    public static func ipv4(_ hi1: UInt8, _ hi2: UInt8, _ lo2: UInt8, _ lo: UInt8) -> Int {
-        Int(hi1) << 24 | Int(hi2) << 16 | Int(lo2) << 8 | Int(lo)
-    }
-}
-
-// MARK: Function pointers
-
-public typealias SteamAPIWarningMessageHook = Optional<@convention(c) (Int32, UnsafePointer<CChar>?) -> Void>
 
 // MARK: Arrays of things coming out of Steam
 

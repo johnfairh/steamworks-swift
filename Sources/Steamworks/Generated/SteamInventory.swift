@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamInventory`](https://partner.steamgames.com/doc/api/ISteamInventory)
 ///
 /// Access via `SteamBaseAPI.inventory` through a `SteamAPI` or `SteamGameServerAPI` instance.
-public struct SteamInventory {
+public struct SteamInventory: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamInventory> {
         isServer ? SteamAPI_SteamGameServerInventory_v003() : SteamAPI_SteamInventory_v003()

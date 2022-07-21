@@ -9,7 +9,7 @@
 @_implementationOnly import CSteamworks
 
 /// Steamworks `AccountID_t`
-public struct AccountID: Hashable {
+public struct AccountID: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -20,7 +20,7 @@ extension AccountID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `AppId_t`
-public struct AppID: Hashable {
+public struct AppID: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -31,7 +31,7 @@ extension AppID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `ControllerActionSetHandle_t`
-public struct ControllerActionSetHandle: Hashable {
+public struct ControllerActionSetHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -42,7 +42,7 @@ extension ControllerActionSetHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `ControllerAnalogActionHandle_t`
-public struct ControllerAnalogActionHandle: Hashable {
+public struct ControllerAnalogActionHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -53,7 +53,7 @@ extension ControllerAnalogActionHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `ControllerDigitalActionHandle_t`
-public struct ControllerDigitalActionHandle: Hashable {
+public struct ControllerDigitalActionHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -64,7 +64,7 @@ extension ControllerDigitalActionHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `ControllerHandle_t`
-public struct ControllerHandle: Hashable {
+public struct ControllerHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -75,7 +75,7 @@ extension ControllerHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `DepotId_t`
-public struct DepotID: Hashable {
+public struct DepotID: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -86,7 +86,7 @@ extension DepotID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `FriendsGroupID_t`
-public struct FriendsGroupID: Hashable {
+public struct FriendsGroupID: Hashable, Sendable {
     public let value: CShort
     public init(_ value: CShort) { self.value = value }
 }
@@ -97,7 +97,7 @@ extension FriendsGroupID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HAuthTicket`
-public struct HAuthTicket: Hashable {
+public struct HAuthTicket: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -108,7 +108,7 @@ extension HAuthTicket: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HHTMLBrowser`
-public struct HHTMLBrowser: Hashable {
+public struct HHTMLBrowser: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -119,7 +119,7 @@ extension HHTMLBrowser: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HServerListRequest`
-public struct HServerListRequest: Hashable {
+public struct HServerListRequest: Hashable, Sendable {
     public let value: UnsafeMutableRawPointer
     public init(_ value: UnsafeMutableRawPointer) { self.value = value }
 }
@@ -127,7 +127,7 @@ public struct HServerListRequest: Hashable {
 extension HServerListRequest: SteamTypeAlias, SteamCreatable {}
 
 /// Steamworks `HServerQuery`
-public struct HServerQuery: Hashable {
+public struct HServerQuery: Hashable, Sendable {
     public let value: CInt
     public init(_ value: CInt) { self.value = value }
 }
@@ -138,7 +138,7 @@ extension HServerQuery: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HSteamListenSocket`
-public struct HSteamListenSocket: Hashable {
+public struct HSteamListenSocket: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -149,7 +149,7 @@ extension HSteamListenSocket: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HSteamNetConnection`
-public struct HSteamNetConnection: Hashable {
+public struct HSteamNetConnection: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -160,7 +160,7 @@ extension HSteamNetConnection: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HSteamNetPollGroup`
-public struct HSteamNetPollGroup: Hashable {
+public struct HSteamNetPollGroup: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -171,7 +171,7 @@ extension HSteamNetPollGroup: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HSteamPipe`
-public struct HSteamPipe: Hashable {
+public struct HSteamPipe: Hashable, Sendable {
     public let value: CInt
     public init(_ value: CInt) { self.value = value }
 }
@@ -182,7 +182,7 @@ extension HSteamPipe: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HSteamUser`
-public struct HSteamUser: Hashable {
+public struct HSteamUser: Hashable, Sendable {
     public let value: CInt
     public init(_ value: CInt) { self.value = value }
 }
@@ -193,7 +193,7 @@ extension HSteamUser: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HTTPCookieContainerHandle`
-public struct HTTPCookieContainerHandle: Hashable {
+public struct HTTPCookieContainerHandle: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -204,7 +204,7 @@ extension HTTPCookieContainerHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `HTTPRequestHandle`
-public struct HTTPRequestHandle: Hashable {
+public struct HTTPRequestHandle: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -215,7 +215,7 @@ extension HTTPRequestHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `InputActionSetHandle_t`
-public struct InputActionSetHandle: Hashable {
+public struct InputActionSetHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -226,7 +226,7 @@ extension InputActionSetHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `InputAnalogActionHandle_t`
-public struct InputAnalogActionHandle: Hashable {
+public struct InputAnalogActionHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -237,7 +237,7 @@ extension InputAnalogActionHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `InputDigitalActionHandle_t`
-public struct InputDigitalActionHandle: Hashable {
+public struct InputDigitalActionHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -248,7 +248,7 @@ extension InputDigitalActionHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `InputHandle_t`
-public struct InputHandle: Hashable {
+public struct InputHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -259,7 +259,7 @@ extension InputHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `PartyBeaconID_t`
-public struct PartyBeaconID: Hashable {
+public struct PartyBeaconID: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -270,7 +270,7 @@ extension PartyBeaconID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `PublishedFileId_t`
-public struct PublishedFileID: Hashable {
+public struct PublishedFileID: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -281,7 +281,7 @@ extension PublishedFileID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `PublishedFileUpdateHandle_t`
-public struct PublishedFileUpdateHandle: Hashable {
+public struct PublishedFileUpdateHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -292,7 +292,7 @@ extension PublishedFileUpdateHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `RTime32`
-public struct RTime32: Hashable {
+public struct RTime32: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -303,7 +303,7 @@ extension RTime32: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `RemotePlaySessionID_t`
-public struct RemotePlaySessionID: Hashable {
+public struct RemotePlaySessionID: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -314,7 +314,7 @@ extension RemotePlaySessionID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SNetListenSocket_t`
-public struct SNetListenSocket: Hashable {
+public struct SNetListenSocket: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -325,7 +325,7 @@ extension SNetListenSocket: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SNetSocket_t`
-public struct SNetSocket: Hashable {
+public struct SNetSocket: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -336,7 +336,7 @@ extension SNetSocket: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `ScreenshotHandle`
-public struct ScreenshotHandle: Hashable {
+public struct ScreenshotHandle: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -347,7 +347,7 @@ extension ScreenshotHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SteamAPICall_t`
-public struct SteamAPICall: Hashable {
+public struct SteamAPICall: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -361,7 +361,7 @@ extension SteamAPICall: ExpressibleByIntegerLiteral {
 public typealias SteamInputActionEventCallbackPointer = (SteamInputActionEvent) -> Void
 
 /// Steamworks `SteamInventoryResult_t`
-public struct SteamInventoryResult: Hashable {
+public struct SteamInventoryResult: Hashable, Sendable {
     public let value: CInt
     public init(_ value: CInt) { self.value = value }
 }
@@ -372,7 +372,7 @@ extension SteamInventoryResult: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SteamInventoryUpdateHandle_t`
-public struct SteamInventoryUpdateHandle: Hashable {
+public struct SteamInventoryUpdateHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -383,7 +383,7 @@ extension SteamInventoryUpdateHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SteamItemDef_t`
-public struct SteamItemDef: Hashable {
+public struct SteamItemDef: Hashable, Sendable {
     public let value: CInt
     public init(_ value: CInt) { self.value = value }
 }
@@ -394,7 +394,7 @@ extension SteamItemDef: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SteamItemInstanceID_t`
-public struct SteamItemInstanceID: Hashable {
+public struct SteamItemInstanceID: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -405,7 +405,7 @@ extension SteamItemInstanceID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SteamLeaderboardEntries_t`
-public struct SteamLeaderboardEntries: Hashable {
+public struct SteamLeaderboardEntries: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -416,7 +416,7 @@ extension SteamLeaderboardEntries: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SteamLeaderboard_t`
-public struct SteamLeaderboard: Hashable {
+public struct SteamLeaderboard: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -427,7 +427,7 @@ extension SteamLeaderboard: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SteamNetworkingErrMsg`
-public struct SteamNetworkingErrMsg: Hashable {
+public struct SteamNetworkingErrMsg: Hashable, Sendable {
     public let value: String
     public init(_ value: String) { self.value = value }
 }
@@ -435,7 +435,7 @@ public struct SteamNetworkingErrMsg: Hashable {
 extension SteamNetworkingErrMsg: SteamTypeAlias, SteamCreatable {}
 
 /// Steamworks `SteamNetworkingMicroseconds`
-public struct SteamNetworkingMicroseconds: Hashable {
+public struct SteamNetworkingMicroseconds: Hashable, Sendable {
     public let value: CLongLong
     public init(_ value: CLongLong) { self.value = value }
 }
@@ -446,7 +446,7 @@ extension SteamNetworkingMicroseconds: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `SteamNetworkingPOPID`
-public struct SteamNetworkingPOPID: Hashable {
+public struct SteamNetworkingPOPID: Hashable, Sendable {
     public let value: CUnsignedInt
     public init(_ value: CUnsignedInt) { self.value = value }
 }
@@ -457,7 +457,7 @@ extension SteamNetworkingPOPID: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `UGCFileWriteStreamHandle_t`
-public struct UGCFileWriteStreamHandle: Hashable {
+public struct UGCFileWriteStreamHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -468,7 +468,7 @@ extension UGCFileWriteStreamHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `UGCHandle_t`
-public struct UGCHandle: Hashable {
+public struct UGCHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -479,7 +479,7 @@ extension UGCHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `UGCQueryHandle_t`
-public struct UGCQueryHandle: Hashable {
+public struct UGCQueryHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }
@@ -490,7 +490,7 @@ extension UGCQueryHandle: ExpressibleByIntegerLiteral {
 }
 
 /// Steamworks `UGCUpdateHandle_t`
-public struct UGCUpdateHandle: Hashable {
+public struct UGCUpdateHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong
     public init(_ value: CUnsignedLongLong) { self.value = value }
 }

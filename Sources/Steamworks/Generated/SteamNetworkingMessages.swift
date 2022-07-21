@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamNetworkingMessages`](https://partner.steamgames.com/doc/api/ISteamNetworkingMessages)
 ///
 /// Access via `SteamBaseAPI.networkingMessages` through a `SteamAPI` or `SteamGameServerAPI` instance.
-public struct SteamNetworkingMessages {
+public struct SteamNetworkingMessages: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamNetworkingMessages> {
         isServer ? SteamAPI_SteamGameServerNetworkingMessages_SteamAPI_v002() : SteamAPI_SteamNetworkingMessages_SteamAPI_v002()

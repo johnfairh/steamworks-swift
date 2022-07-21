@@ -41,6 +41,11 @@ Current state:
 * Provide quality-of-life helpers module `SteamworksHelpers` to wrap up API patterns
   involving multiple calls, usually determining buffer lengths
 
+### Next
+
+* Try generating a DocC package, using code-gen to make a sensible layout
+* Port Spacewar over to Swift
+
 ### API mapping design
 
 ### Lifecycle

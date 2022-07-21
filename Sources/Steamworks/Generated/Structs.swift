@@ -9,7 +9,7 @@
 @_implementationOnly import CSteamworks
 
 /// Steamworks `ActiveBeaconsUpdated_t`
-public struct ActiveBeaconsUpdated {
+public struct ActiveBeaconsUpdated: Sendable {
     /// Create a customized `ActiveBeaconsUpdated`
     public init() {
     }
@@ -22,7 +22,7 @@ extension ActiveBeaconsUpdated: SteamCreatable {
 }
 
 /// Steamworks `AddAppDependencyResult_t`
-public struct AddAppDependencyResult {
+public struct AddAppDependencyResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -48,7 +48,7 @@ extension AddAppDependencyResult: SteamCreatable {
 }
 
 /// Steamworks `AddUGCDependencyResult_t`
-public struct AddUGCDependencyResult {
+public struct AddUGCDependencyResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -74,7 +74,7 @@ extension AddUGCDependencyResult: SteamCreatable {
 }
 
 /// Steamworks `AppProofOfPurchaseKeyResponse_t`
-public struct AppProofOfPurchaseKeyResponse {
+public struct AppProofOfPurchaseKeyResponse: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nAppID`
@@ -104,7 +104,7 @@ extension AppProofOfPurchaseKeyResponse: SteamCreatable {
 }
 
 /// Steamworks `AppResumingFromSuspend_t`
-public struct AppResumingFromSuspend {
+public struct AppResumingFromSuspend: Sendable {
     /// Create a customized `AppResumingFromSuspend`
     public init() {
     }
@@ -117,7 +117,7 @@ extension AppResumingFromSuspend: SteamCreatable {
 }
 
 /// Steamworks `AssociateWithClanResult_t`
-public struct AssociateWithClanResult {
+public struct AssociateWithClanResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
 
@@ -135,7 +135,7 @@ extension AssociateWithClanResult: SteamCreatable {
 }
 
 /// Steamworks `AvailableBeaconLocationsUpdated_t`
-public struct AvailableBeaconLocationsUpdated {
+public struct AvailableBeaconLocationsUpdated: Sendable {
     /// Create a customized `AvailableBeaconLocationsUpdated`
     public init() {
     }
@@ -148,7 +148,7 @@ extension AvailableBeaconLocationsUpdated: SteamCreatable {
 }
 
 /// Steamworks `AvatarImageLoaded_t`
-public struct AvatarImageLoaded {
+public struct AvatarImageLoaded: Sendable {
     /// Steamworks `m_steamID`
     public let steamID: SteamID
     /// Steamworks `m_iImage`
@@ -178,7 +178,7 @@ extension AvatarImageLoaded: SteamCreatable {
 }
 
 /// Steamworks `ChangeNumOpenSlotsCallback_t`
-public struct ChangeNumOpenSlotsCallback {
+public struct ChangeNumOpenSlotsCallback: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
 
@@ -196,7 +196,7 @@ extension ChangeNumOpenSlotsCallback: SteamCreatable {
 }
 
 /// Steamworks `CheckFileSignature_t`
-public struct CheckFileSignature {
+public struct CheckFileSignature: Sendable {
     /// Steamworks `m_eCheckFileSignature`
     public let checkFileSignature: CheckFileSignatureResult
 
@@ -214,7 +214,7 @@ extension CheckFileSignature: SteamCreatable {
 }
 
 /// Steamworks `ClanOfficerListResponse_t`
-public struct ClanOfficerListResponse {
+public struct ClanOfficerListResponse: Sendable {
     /// Steamworks `m_steamIDClan`
     public let clan: SteamID
     /// Steamworks `m_cOfficers`
@@ -240,7 +240,7 @@ extension ClanOfficerListResponse: SteamCreatable {
 }
 
 /// Steamworks `ClientGameServerDeny_t`
-public struct ClientGameServerDeny {
+public struct ClientGameServerDeny: Sendable {
     /// Steamworks `m_uAppID`
     public let appID: AppID
     /// Steamworks `m_unGameServerIP`
@@ -274,7 +274,7 @@ extension ClientGameServerDeny: SteamCreatable {
 }
 
 /// Steamworks `ComputeNewPlayerCompatibilityResult_t`
-public struct ComputeNewPlayerCompatibilityResult {
+public struct ComputeNewPlayerCompatibilityResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_cPlayersThatDontLikeCandidate`
@@ -308,7 +308,7 @@ extension ComputeNewPlayerCompatibilityResult: SteamCreatable {
 }
 
 /// Steamworks `CreateBeaconCallback_t`
-public struct CreateBeaconCallback {
+public struct CreateBeaconCallback: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_ulBeaconID`
@@ -330,7 +330,7 @@ extension CreateBeaconCallback: SteamCreatable {
 }
 
 /// Steamworks `CreateItemResult_t`
-public struct CreateItemResult {
+public struct CreateItemResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -356,7 +356,7 @@ extension CreateItemResult: SteamCreatable {
 }
 
 /// Steamworks `DeleteItemResult_t`
-public struct DeleteItemResult {
+public struct DeleteItemResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -378,7 +378,7 @@ extension DeleteItemResult: SteamCreatable {
 }
 
 /// Steamworks `DlcInstalled_t`
-public struct DlcInstalled {
+public struct DlcInstalled: Sendable {
     /// Steamworks `m_nAppID`
     public let appID: AppID
 
@@ -396,7 +396,7 @@ extension DlcInstalled: SteamCreatable {
 }
 
 /// Steamworks `DownloadClanActivityCountsResult_t`
-public struct DownloadClanActivityCountsResult {
+public struct DownloadClanActivityCountsResult: Sendable {
     /// Steamworks `m_bSuccess`
     public let success: Bool
 
@@ -414,7 +414,7 @@ extension DownloadClanActivityCountsResult: SteamCreatable {
 }
 
 /// Steamworks `DownloadItemResult_t`
-public struct DownloadItemResult {
+public struct DownloadItemResult: Sendable {
     /// Steamworks `m_unAppID`
     public let appID: AppID
     /// Steamworks `m_nPublishedFileId`
@@ -440,7 +440,7 @@ extension DownloadItemResult: SteamCreatable {
 }
 
 /// Steamworks `DurationControl_t`
-public struct DurationControl {
+public struct DurationControl: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_appid`
@@ -486,7 +486,7 @@ extension DurationControl: SteamCreatable {
 }
 
 /// Steamworks `EncryptedAppTicketResponse_t`
-public struct EncryptedAppTicketResponse {
+public struct EncryptedAppTicketResponse: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
 
@@ -504,7 +504,7 @@ extension EncryptedAppTicketResponse: SteamCreatable {
 }
 
 /// Steamworks `EndGameResultCallback_t`
-public struct EndGameResultCallback {
+public struct EndGameResultCallback: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `ullUniqueGameID`
@@ -526,7 +526,7 @@ extension EndGameResultCallback: SteamCreatable {
 }
 
 /// Steamworks `EquippedProfileItemsChanged_t`
-public struct EquippedProfileItemsChanged {
+public struct EquippedProfileItemsChanged: Sendable {
     /// Steamworks `m_steamID`
     public let steamID: SteamID
 
@@ -544,7 +544,7 @@ extension EquippedProfileItemsChanged: SteamCreatable {
 }
 
 /// Steamworks `EquippedProfileItems_t`
-public struct EquippedProfileItems {
+public struct EquippedProfileItems: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_steamID`
@@ -586,7 +586,7 @@ extension EquippedProfileItems: SteamCreatable {
 }
 
 /// Steamworks `FavoritesListAccountsUpdated_t`
-public struct FavoritesListAccountsUpdated {
+public struct FavoritesListAccountsUpdated: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
 
@@ -604,7 +604,7 @@ extension FavoritesListAccountsUpdated: SteamCreatable {
 }
 
 /// Steamworks `FavoritesListChanged_t`
-public struct FavoritesListChanged {
+public struct FavoritesListChanged: Sendable {
     /// Steamworks `m_nIP`
     public let ip: Int
     /// Steamworks `m_nQueryPort`
@@ -646,7 +646,7 @@ extension FavoritesListChanged: SteamCreatable {
 }
 
 /// Steamworks `FileDetailsResult_t`
-public struct FileDetailsResult {
+public struct FileDetailsResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_ulFileSize`
@@ -676,7 +676,7 @@ extension FileDetailsResult: SteamCreatable {
 }
 
 /// Steamworks `FloatingGamepadTextInputDismissed_t`
-public struct FloatingGamepadTextInputDismissed {
+public struct FloatingGamepadTextInputDismissed: Sendable {
     /// Create a customized `FloatingGamepadTextInputDismissed`
     public init() {
     }
@@ -689,7 +689,7 @@ extension FloatingGamepadTextInputDismissed: SteamCreatable {
 }
 
 /// Steamworks `FriendGameInfo_t`
-public struct FriendGameInfo {
+public struct FriendGameInfo: Sendable {
     /// Steamworks `m_gameID`
     public let id: GameID
     /// Steamworks `m_unGameIP`
@@ -723,7 +723,7 @@ extension FriendGameInfo: SteamCreatable {
 }
 
 /// Steamworks `FriendRichPresenceUpdate_t`
-public struct FriendRichPresenceUpdate {
+public struct FriendRichPresenceUpdate: Sendable {
     /// Steamworks `m_steamIDFriend`
     public let friend: SteamID
     /// Steamworks `m_nAppID`
@@ -745,7 +745,7 @@ extension FriendRichPresenceUpdate: SteamCreatable {
 }
 
 /// Steamworks `FriendsEnumerateFollowingList_t`
-public struct FriendsEnumerateFollowingList {
+public struct FriendsEnumerateFollowingList: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_rgSteamID`
@@ -775,7 +775,7 @@ extension FriendsEnumerateFollowingList: SteamCreatable {
 }
 
 /// Steamworks `FriendsGetFollowerCount_t`
-public struct FriendsGetFollowerCount {
+public struct FriendsGetFollowerCount: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_steamID`
@@ -801,7 +801,7 @@ extension FriendsGetFollowerCount: SteamCreatable {
 }
 
 /// Steamworks `FriendsIsFollowing_t`
-public struct FriendsIsFollowing {
+public struct FriendsIsFollowing: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_steamID`
@@ -827,7 +827,7 @@ extension FriendsIsFollowing: SteamCreatable {
 }
 
 /// Steamworks `GSClientAchievementStatus_t`
-public struct GSClientAchievementStatus {
+public struct GSClientAchievementStatus: Sendable {
     /// Steamworks `m_SteamID`
     public let steamID: SteamID
     /// Steamworks `m_pchAchievement`
@@ -853,7 +853,7 @@ extension GSClientAchievementStatus: SteamCreatable {
 }
 
 /// Steamworks `GSClientApprove_t`
-public struct GSClientApprove {
+public struct GSClientApprove: Sendable {
     /// Steamworks `m_SteamID`
     public let steamID: SteamID
     /// Steamworks `m_OwnerSteamID`
@@ -875,7 +875,7 @@ extension GSClientApprove: SteamCreatable {
 }
 
 /// Steamworks `GSClientDeny_t`
-public struct GSClientDeny {
+public struct GSClientDeny: Sendable {
     /// Steamworks `m_SteamID`
     public let steamID: SteamID
     /// Steamworks `m_eDenyReason`
@@ -901,7 +901,7 @@ extension GSClientDeny: SteamCreatable {
 }
 
 /// Steamworks `GSClientGroupStatus_t`
-public struct GSClientGroupStatus {
+public struct GSClientGroupStatus: Sendable {
     /// Steamworks `m_SteamIDUser`
     public let user: SteamID
     /// Steamworks `m_SteamIDGroup`
@@ -931,7 +931,7 @@ extension GSClientGroupStatus: SteamCreatable {
 }
 
 /// Steamworks `GSClientKick_t`
-public struct GSClientKick {
+public struct GSClientKick: Sendable {
     /// Steamworks `m_SteamID`
     public let steamID: SteamID
     /// Steamworks `m_eDenyReason`
@@ -953,7 +953,7 @@ extension GSClientKick: SteamCreatable {
 }
 
 /// Steamworks `GSGameplayStats_t`
-public struct GSGameplayStats {
+public struct GSGameplayStats: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nRank`
@@ -983,7 +983,7 @@ extension GSGameplayStats: SteamCreatable {
 }
 
 /// Steamworks `GSPolicyResponse_t`
-public struct GSPolicyResponse {
+public struct GSPolicyResponse: Sendable {
     /// Steamworks `m_bSecure`
     public let secure: Bool
 
@@ -1001,7 +1001,7 @@ extension GSPolicyResponse: SteamCreatable {
 }
 
 /// Steamworks `GSReputation_t`
-public struct GSReputation {
+public struct GSReputation: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_unReputationScore`
@@ -1043,7 +1043,7 @@ extension GSReputation: SteamCreatable {
 }
 
 /// Steamworks `GSStatsReceived_t`
-public struct GSStatsReceived {
+public struct GSStatsReceived: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_steamIDUser`
@@ -1065,7 +1065,7 @@ extension GSStatsReceived: SteamCreatable {
 }
 
 /// Steamworks `GSStatsStored_t`
-public struct GSStatsStored {
+public struct GSStatsStored: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_steamIDUser`
@@ -1087,7 +1087,7 @@ extension GSStatsStored: SteamCreatable {
 }
 
 /// Steamworks `GSStatsUnloaded_t`
-public struct GSStatsUnloaded {
+public struct GSStatsUnloaded: Sendable {
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
 
@@ -1105,7 +1105,7 @@ extension GSStatsUnloaded: SteamCreatable {
 }
 
 /// Steamworks `GameConnectedChatJoin_t`
-public struct GameConnectedChatJoin {
+public struct GameConnectedChatJoin: Sendable {
     /// Steamworks `m_steamIDClanChat`
     public let clanChat: SteamID
     /// Steamworks `m_steamIDUser`
@@ -1127,7 +1127,7 @@ extension GameConnectedChatJoin: SteamCreatable {
 }
 
 /// Steamworks `GameConnectedChatLeave_t`
-public struct GameConnectedChatLeave {
+public struct GameConnectedChatLeave: Sendable {
     /// Steamworks `m_steamIDClanChat`
     public let clanChat: SteamID
     /// Steamworks `m_steamIDUser`
@@ -1157,7 +1157,7 @@ extension GameConnectedChatLeave: SteamCreatable {
 }
 
 /// Steamworks `GameConnectedClanChatMsg_t`
-public struct GameConnectedClanChatMsg {
+public struct GameConnectedClanChatMsg: Sendable {
     /// Steamworks `m_steamIDClanChat`
     public let clanChat: SteamID
     /// Steamworks `m_steamIDUser`
@@ -1183,7 +1183,7 @@ extension GameConnectedClanChatMsg: SteamCreatable {
 }
 
 /// Steamworks `GameConnectedFriendChatMsg_t`
-public struct GameConnectedFriendChatMsg {
+public struct GameConnectedFriendChatMsg: Sendable {
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
     /// Steamworks `m_iMessageID`
@@ -1205,7 +1205,7 @@ extension GameConnectedFriendChatMsg: SteamCreatable {
 }
 
 /// Steamworks `GameLobbyJoinRequested_t`
-public struct GameLobbyJoinRequested {
+public struct GameLobbyJoinRequested: Sendable {
     /// Steamworks `m_steamIDLobby`
     public let lobby: SteamID
     /// Steamworks `m_steamIDFriend`
@@ -1227,7 +1227,7 @@ extension GameLobbyJoinRequested: SteamCreatable {
 }
 
 /// Steamworks `GameOverlayActivated_t`
-public struct GameOverlayActivated {
+public struct GameOverlayActivated: Sendable {
     /// Steamworks `m_bActive`
     public let active: Bool
 
@@ -1245,7 +1245,7 @@ extension GameOverlayActivated: SteamCreatable {
 }
 
 /// Steamworks `GameRichPresenceJoinRequested_t`
-public struct GameRichPresenceJoinRequested {
+public struct GameRichPresenceJoinRequested: Sendable {
     /// Steamworks `m_steamIDFriend`
     public let friend: SteamID
     /// Steamworks `m_rgchConnect`
@@ -1267,7 +1267,7 @@ extension GameRichPresenceJoinRequested: SteamCreatable {
 }
 
 /// Steamworks `GameServerChangeRequested_t`
-public struct GameServerChangeRequested {
+public struct GameServerChangeRequested: Sendable {
     /// Steamworks `m_rgchServer`
     public let server: String
     /// Steamworks `m_rgchPassword`
@@ -1289,7 +1289,7 @@ extension GameServerChangeRequested: SteamCreatable {
 }
 
 /// Steamworks `GameWebCallback_t`
-public struct GameWebCallback {
+public struct GameWebCallback: Sendable {
     /// Steamworks `m_szURL`
     public let url: String
 
@@ -1307,7 +1307,7 @@ extension GameWebCallback: SteamCreatable {
 }
 
 /// Steamworks `GamepadTextInputDismissed_t`
-public struct GamepadTextInputDismissed {
+public struct GamepadTextInputDismissed: Sendable {
     /// Steamworks `m_bSubmitted`
     public let submitted: Bool
     /// Steamworks `m_unSubmittedText`
@@ -1329,7 +1329,7 @@ extension GamepadTextInputDismissed: SteamCreatable {
 }
 
 /// Steamworks `GetAppDependenciesResult_t`
-public struct GetAppDependenciesResult {
+public struct GetAppDependenciesResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -1363,7 +1363,7 @@ extension GetAppDependenciesResult: SteamCreatable {
 }
 
 /// Steamworks `GetAuthSessionTicketResponse_t`
-public struct GetAuthSessionTicketResponse {
+public struct GetAuthSessionTicketResponse: Sendable {
     /// Steamworks `m_hAuthTicket`
     public let authTicket: HAuthTicket
     /// Steamworks `m_eResult`
@@ -1385,7 +1385,7 @@ extension GetAuthSessionTicketResponse: SteamCreatable {
 }
 
 /// Steamworks `GetOPFSettingsResult_t`
-public struct GetOPFSettingsResult {
+public struct GetOPFSettingsResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_unVideoAppID`
@@ -1407,7 +1407,7 @@ extension GetOPFSettingsResult: SteamCreatable {
 }
 
 /// Steamworks `GetUserItemVoteResult_t`
-public struct GetUserItemVoteResult {
+public struct GetUserItemVoteResult: Sendable {
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
@@ -1441,7 +1441,7 @@ extension GetUserItemVoteResult: SteamCreatable {
 }
 
 /// Steamworks `GetVideoURLResult_t`
-public struct GetVideoURLResult {
+public struct GetVideoURLResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_unVideoAppID`
@@ -1467,7 +1467,7 @@ extension GetVideoURLResult: SteamCreatable {
 }
 
 /// Steamworks `GlobalAchievementPercentagesReady_t`
-public struct GlobalAchievementPercentagesReady {
+public struct GlobalAchievementPercentagesReady: Sendable {
     /// Steamworks `m_nGameID`
     public let gameID: GameID
     /// Steamworks `m_eResult`
@@ -1489,7 +1489,7 @@ extension GlobalAchievementPercentagesReady: SteamCreatable {
 }
 
 /// Steamworks `GlobalStatsReceived_t`
-public struct GlobalStatsReceived {
+public struct GlobalStatsReceived: Sendable {
     /// Steamworks `m_nGameID`
     public let gameID: GameID
     /// Steamworks `m_eResult`
@@ -1511,7 +1511,7 @@ extension GlobalStatsReceived: SteamCreatable {
 }
 
 /// Steamworks `HTML_BrowserReady_t`
-public struct HTMLBrowserReady {
+public struct HTMLBrowserReady: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
 
@@ -1529,7 +1529,7 @@ extension HTMLBrowserReady: SteamCreatable {
 }
 
 /// Steamworks `HTML_BrowserRestarted_t`
-public struct HTMLBrowserRestarted {
+public struct HTMLBrowserRestarted: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `unOldBrowserHandle`
@@ -1551,7 +1551,7 @@ extension HTMLBrowserRestarted: SteamCreatable {
 }
 
 /// Steamworks `HTML_CanGoBackAndForward_t`
-public struct HTMLCanGoBackAndForward {
+public struct HTMLCanGoBackAndForward: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `bCanGoBack`
@@ -1577,7 +1577,7 @@ extension HTMLCanGoBackAndForward: SteamCreatable {
 }
 
 /// Steamworks `HTML_ChangedTitle_t`
-public struct HTMLChangedTitle {
+public struct HTMLChangedTitle: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchTitle`
@@ -1599,7 +1599,7 @@ extension HTMLChangedTitle: SteamCreatable {
 }
 
 /// Steamworks `HTML_CloseBrowser_t`
-public struct HTMLCloseBrowser {
+public struct HTMLCloseBrowser: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
 
@@ -1617,7 +1617,7 @@ extension HTMLCloseBrowser: SteamCreatable {
 }
 
 /// Steamworks `HTML_FileOpenDialog_t`
-public struct HTMLFileOpenDialog {
+public struct HTMLFileOpenDialog: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchTitle`
@@ -1643,7 +1643,7 @@ extension HTMLFileOpenDialog: SteamCreatable {
 }
 
 /// Steamworks `HTML_FinishedRequest_t`
-public struct HTMLFinishedRequest {
+public struct HTMLFinishedRequest: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchURL`
@@ -1669,7 +1669,7 @@ extension HTMLFinishedRequest: SteamCreatable {
 }
 
 /// Steamworks `HTML_HideToolTip_t`
-public struct HTMLHideToolTip {
+public struct HTMLHideToolTip: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
 
@@ -1687,7 +1687,7 @@ extension HTMLHideToolTip: SteamCreatable {
 }
 
 /// Steamworks `HTML_HorizontalScroll_t`
-public struct HTMLHorizontalScroll {
+public struct HTMLHorizontalScroll: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `unScrollMax`
@@ -1725,7 +1725,7 @@ extension HTMLHorizontalScroll: SteamCreatable {
 }
 
 /// Steamworks `HTML_JSAlert_t`
-public struct HTMLJSAlert {
+public struct HTMLJSAlert: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMessage`
@@ -1747,7 +1747,7 @@ extension HTMLJSAlert: SteamCreatable {
 }
 
 /// Steamworks `HTML_JSConfirm_t`
-public struct HTMLJSConfirm {
+public struct HTMLJSConfirm: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMessage`
@@ -1769,7 +1769,7 @@ extension HTMLJSConfirm: SteamCreatable {
 }
 
 /// Steamworks `HTML_LinkAtPosition_t`
-public struct HTMLLinkAtPosition {
+public struct HTMLLinkAtPosition: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `x`
@@ -1807,7 +1807,7 @@ extension HTMLLinkAtPosition: SteamCreatable {
 }
 
 /// Steamworks `HTML_NeedsPaint_t`
-public struct HTMLNeedsPaint {
+public struct HTMLNeedsPaint: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pBGRA`
@@ -1869,7 +1869,7 @@ extension HTMLNeedsPaint: SteamCreatable {
 }
 
 /// Steamworks `HTML_NewWindow_t`
-public struct HTMLNewWindow {
+public struct HTMLNewWindow: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchURL`
@@ -1911,7 +1911,7 @@ extension HTMLNewWindow: SteamCreatable {
 }
 
 /// Steamworks `HTML_OpenLinkInNewTab_t`
-public struct HTMLOpenLinkInNewTab {
+public struct HTMLOpenLinkInNewTab: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchURL`
@@ -1933,7 +1933,7 @@ extension HTMLOpenLinkInNewTab: SteamCreatable {
 }
 
 /// Steamworks `HTML_SearchResults_t`
-public struct HTMLSearchResults {
+public struct HTMLSearchResults: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `unResults`
@@ -1959,7 +1959,7 @@ extension HTMLSearchResults: SteamCreatable {
 }
 
 /// Steamworks `HTML_SetCursor_t`
-public struct HTMLSetCursor {
+public struct HTMLSetCursor: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `eMouseCursor`
@@ -1981,7 +1981,7 @@ extension HTMLSetCursor: SteamCreatable {
 }
 
 /// Steamworks `HTML_ShowToolTip_t`
-public struct HTMLShowToolTip {
+public struct HTMLShowToolTip: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMsg`
@@ -2003,7 +2003,7 @@ extension HTMLShowToolTip: SteamCreatable {
 }
 
 /// Steamworks `HTML_StartRequest_t`
-public struct HTMLStartRequest {
+public struct HTMLStartRequest: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchURL`
@@ -2037,7 +2037,7 @@ extension HTMLStartRequest: SteamCreatable {
 }
 
 /// Steamworks `HTML_StatusText_t`
-public struct HTMLStatusText {
+public struct HTMLStatusText: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMsg`
@@ -2059,7 +2059,7 @@ extension HTMLStatusText: SteamCreatable {
 }
 
 /// Steamworks `HTML_URLChanged_t`
-public struct HTMLURLChanged {
+public struct HTMLURLChanged: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchURL`
@@ -2097,7 +2097,7 @@ extension HTMLURLChanged: SteamCreatable {
 }
 
 /// Steamworks `HTML_UpdateToolTip_t`
-public struct HTMLUpdateToolTip {
+public struct HTMLUpdateToolTip: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pchMsg`
@@ -2119,7 +2119,7 @@ extension HTMLUpdateToolTip: SteamCreatable {
 }
 
 /// Steamworks `HTML_VerticalScroll_t`
-public struct HTMLVerticalScroll {
+public struct HTMLVerticalScroll: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `unScrollMax`
@@ -2157,7 +2157,7 @@ extension HTMLVerticalScroll: SteamCreatable {
 }
 
 /// Steamworks `HTTPRequestCompleted_t`
-public struct HTTPRequestCompleted {
+public struct HTTPRequestCompleted: Sendable {
     /// Steamworks `m_hRequest`
     public let request: HTTPRequestHandle
     /// Steamworks `m_ulContextValue`
@@ -2191,7 +2191,7 @@ extension HTTPRequestCompleted: SteamCreatable {
 }
 
 /// Steamworks `HTTPRequestDataReceived_t`
-public struct HTTPRequestDataReceived {
+public struct HTTPRequestDataReceived: Sendable {
     /// Steamworks `m_hRequest`
     public let request: HTTPRequestHandle
     /// Steamworks `m_ulContextValue`
@@ -2221,7 +2221,7 @@ extension HTTPRequestDataReceived: SteamCreatable {
 }
 
 /// Steamworks `HTTPRequestHeadersReceived_t`
-public struct HTTPRequestHeadersReceived {
+public struct HTTPRequestHeadersReceived: Sendable {
     /// Steamworks `m_hRequest`
     public let request: HTTPRequestHandle
     /// Steamworks `m_ulContextValue`
@@ -2243,7 +2243,7 @@ extension HTTPRequestHeadersReceived: SteamCreatable {
 }
 
 /// Steamworks `IPCFailure_t`
-public struct IPCFailure {
+public struct IPCFailure: Sendable {
     /// Steamworks `m_eFailureType`
     public let failureType: IPCFailureType
 
@@ -2261,7 +2261,7 @@ extension IPCFailure: SteamCreatable {
 }
 
 /// Steamworks `IPCountry_t`
-public struct IPCountry {
+public struct IPCountry: Sendable {
     /// Create a customized `IPCountry`
     public init() {
     }
@@ -2274,7 +2274,7 @@ extension IPCountry: SteamCreatable {
 }
 
 /// Steamworks `InputAnalogActionData_t`
-public struct InputAnalogActionData {
+public struct InputAnalogActionData: Sendable {
     /// Steamworks `eMode`
     public let mode: InputSourceMode
     /// Steamworks `x`
@@ -2304,7 +2304,7 @@ extension InputAnalogActionData: SteamCreatable {
 }
 
 /// Steamworks `InputDigitalActionData_t`
-public struct InputDigitalActionData {
+public struct InputDigitalActionData: Sendable {
     /// Steamworks `bState`
     public let state: Bool
     /// Steamworks `bActive`
@@ -2326,7 +2326,7 @@ extension InputDigitalActionData: SteamCreatable {
 }
 
 /// Steamworks `InputMotionData_t`
-public struct InputMotionData {
+public struct InputMotionData: Sendable {
     /// Steamworks `rotQuatX`
     public let quatX: Float
     /// Steamworks `rotQuatY`
@@ -2380,7 +2380,7 @@ extension InputMotionData: SteamCreatable {
 }
 
 /// Steamworks `ItemInstalled_t`
-public struct ItemInstalled {
+public struct ItemInstalled: Sendable {
     /// Steamworks `m_unAppID`
     public let appID: AppID
     /// Steamworks `m_nPublishedFileId`
@@ -2402,7 +2402,7 @@ extension ItemInstalled: SteamCreatable {
 }
 
 /// Steamworks `JoinClanChatRoomCompletionResult_t`
-public struct JoinClanChatRoomCompletionResult {
+public struct JoinClanChatRoomCompletionResult: Sendable {
     /// Steamworks `m_steamIDClanChat`
     public let clanChat: SteamID
     /// Steamworks `m_eChatRoomEnterResponse`
@@ -2424,7 +2424,7 @@ extension JoinClanChatRoomCompletionResult: SteamCreatable {
 }
 
 /// Steamworks `JoinPartyCallback_t`
-public struct JoinPartyCallback {
+public struct JoinPartyCallback: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_ulBeaconID`
@@ -2454,7 +2454,7 @@ extension JoinPartyCallback: SteamCreatable {
 }
 
 /// Steamworks `LeaderboardEntry_t`
-public struct LeaderboardEntry {
+public struct LeaderboardEntry: Sendable {
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
     /// Steamworks `m_nGlobalRank`
@@ -2488,7 +2488,7 @@ extension LeaderboardEntry: SteamCreatable {
 }
 
 /// Steamworks `LeaderboardFindResult_t`
-public struct LeaderboardFindResult {
+public struct LeaderboardFindResult: Sendable {
     /// Steamworks `m_hSteamLeaderboard`
     public let steamLeaderboard: SteamLeaderboard
     /// Steamworks `m_bLeaderboardFound`
@@ -2510,7 +2510,7 @@ extension LeaderboardFindResult: SteamCreatable {
 }
 
 /// Steamworks `LeaderboardScoreUploaded_t`
-public struct LeaderboardScoreUploaded {
+public struct LeaderboardScoreUploaded: Sendable {
     /// Steamworks `m_bSuccess`
     public let success: Bool
     /// Steamworks `m_hSteamLeaderboard`
@@ -2548,7 +2548,7 @@ extension LeaderboardScoreUploaded: SteamCreatable {
 }
 
 /// Steamworks `LeaderboardScoresDownloaded_t`
-public struct LeaderboardScoresDownloaded {
+public struct LeaderboardScoresDownloaded: Sendable {
     /// Steamworks `m_hSteamLeaderboard`
     public let steamLeaderboard: SteamLeaderboard
     /// Steamworks `m_hSteamLeaderboardEntries`
@@ -2574,7 +2574,7 @@ extension LeaderboardScoresDownloaded: SteamCreatable {
 }
 
 /// Steamworks `LeaderboardUGCSet_t`
-public struct LeaderboardUGCSet {
+public struct LeaderboardUGCSet: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_hSteamLeaderboard`
@@ -2596,7 +2596,7 @@ extension LeaderboardUGCSet: SteamCreatable {
 }
 
 /// Steamworks `LicensesUpdated_t`
-public struct LicensesUpdated {
+public struct LicensesUpdated: Sendable {
     /// Create a customized `LicensesUpdated`
     public init() {
     }
@@ -2609,7 +2609,7 @@ extension LicensesUpdated: SteamCreatable {
 }
 
 /// Steamworks `LobbyChatMsg_t`
-public struct LobbyChatMsg {
+public struct LobbyChatMsg: Sendable {
     /// Steamworks `m_ulSteamIDLobby`
     public let steamIDLobby: SteamID
     /// Steamworks `m_ulSteamIDUser`
@@ -2639,7 +2639,7 @@ extension LobbyChatMsg: SteamCreatable {
 }
 
 /// Steamworks `LobbyChatUpdate_t`
-public struct LobbyChatUpdate {
+public struct LobbyChatUpdate: Sendable {
     /// Steamworks `m_ulSteamIDLobby`
     public let steamIDLobby: SteamID
     /// Steamworks `m_ulSteamIDUserChanged`
@@ -2669,7 +2669,7 @@ extension LobbyChatUpdate: SteamCreatable {
 }
 
 /// Steamworks `LobbyCreated_t`
-public struct LobbyCreated {
+public struct LobbyCreated: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_ulSteamIDLobby`
@@ -2691,7 +2691,7 @@ extension LobbyCreated: SteamCreatable {
 }
 
 /// Steamworks `LobbyDataUpdate_t`
-public struct LobbyDataUpdate {
+public struct LobbyDataUpdate: Sendable {
     /// Steamworks `m_ulSteamIDLobby`
     public let steamIDLobby: SteamID
     /// Steamworks `m_ulSteamIDMember`
@@ -2717,7 +2717,7 @@ extension LobbyDataUpdate: SteamCreatable {
 }
 
 /// Steamworks `LobbyEnter_t`
-public struct LobbyEnter {
+public struct LobbyEnter: Sendable {
     /// Steamworks `m_ulSteamIDLobby`
     public let steamIDLobby: SteamID
     /// Steamworks `m_rgfChatPermissions`
@@ -2747,7 +2747,7 @@ extension LobbyEnter: SteamCreatable {
 }
 
 /// Steamworks `LobbyGameCreated_t`
-public struct LobbyGameCreated {
+public struct LobbyGameCreated: Sendable {
     /// Steamworks `m_ulSteamIDLobby`
     public let steamIDLobby: SteamID
     /// Steamworks `m_ulSteamIDGameServer`
@@ -2777,7 +2777,7 @@ extension LobbyGameCreated: SteamCreatable {
 }
 
 /// Steamworks `LobbyInvite_t`
-public struct LobbyInvite {
+public struct LobbyInvite: Sendable {
     /// Steamworks `m_ulSteamIDUser`
     public let steamIDUser: SteamID
     /// Steamworks `m_ulSteamIDLobby`
@@ -2803,7 +2803,7 @@ extension LobbyInvite: SteamCreatable {
 }
 
 /// Steamworks `LobbyKicked_t`
-public struct LobbyKicked {
+public struct LobbyKicked: Sendable {
     /// Steamworks `m_ulSteamIDLobby`
     public let steamIDLobby: SteamID
     /// Steamworks `m_ulSteamIDAdmin`
@@ -2829,7 +2829,7 @@ extension LobbyKicked: SteamCreatable {
 }
 
 /// Steamworks `LobbyMatchList_t`
-public struct LobbyMatchList {
+public struct LobbyMatchList: Sendable {
     /// Steamworks `m_nLobbiesMatching`
     public let lobbiesMatching: Int
 
@@ -2847,7 +2847,7 @@ extension LobbyMatchList: SteamCreatable {
 }
 
 /// Steamworks `LowBatteryPower_t`
-public struct LowBatteryPower {
+public struct LowBatteryPower: Sendable {
     /// Steamworks `m_nMinutesBatteryLeft`
     public let minutesBatteryLeft: UInt8
 
@@ -2865,7 +2865,7 @@ extension LowBatteryPower: SteamCreatable {
 }
 
 /// Steamworks `MarketEligibilityResponse_t`
-public struct MarketEligibilityResponse {
+public struct MarketEligibilityResponse: Sendable {
     /// Steamworks `m_bAllowed`
     public let allowed: Bool
     /// Steamworks `m_eNotAllowedReason`
@@ -2899,7 +2899,7 @@ extension MarketEligibilityResponse: SteamCreatable {
 }
 
 /// Steamworks `MatchMakingKeyValuePair_t`
-public struct MatchMakingKeyValuePair {
+public struct MatchMakingKeyValuePair: Sendable {
     /// Steamworks `m_szKey`
     public let key: String
     /// Steamworks `m_szValue`
@@ -2921,7 +2921,7 @@ extension MatchMakingKeyValuePair: SteamCreatable {
 }
 
 /// Steamworks `MicroTxnAuthorizationResponse_t`
-public struct MicroTxnAuthorizationResponse {
+public struct MicroTxnAuthorizationResponse: Sendable {
     /// Steamworks `m_unAppID`
     public let appID: AppID
     /// Steamworks `m_ulOrderID`
@@ -2947,7 +2947,7 @@ extension MicroTxnAuthorizationResponse: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerRemoteToFront_t`
-public struct MusicPlayerRemoteToFront {
+public struct MusicPlayerRemoteToFront: Sendable {
     /// Create a customized `MusicPlayerRemoteToFront`
     public init() {
     }
@@ -2960,7 +2960,7 @@ extension MusicPlayerRemoteToFront: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerRemoteWillActivate_t`
-public struct MusicPlayerRemoteWillActivate {
+public struct MusicPlayerRemoteWillActivate: Sendable {
     /// Create a customized `MusicPlayerRemoteWillActivate`
     public init() {
     }
@@ -2973,7 +2973,7 @@ extension MusicPlayerRemoteWillActivate: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerRemoteWillDeactivate_t`
-public struct MusicPlayerRemoteWillDeactivate {
+public struct MusicPlayerRemoteWillDeactivate: Sendable {
     /// Create a customized `MusicPlayerRemoteWillDeactivate`
     public init() {
     }
@@ -2986,7 +2986,7 @@ extension MusicPlayerRemoteWillDeactivate: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerSelectsPlaylistEntry_t`
-public struct MusicPlayerSelectsPlaylistEntry {
+public struct MusicPlayerSelectsPlaylistEntry: Sendable {
     /// Steamworks `nID`
     public let id: Int
 
@@ -3004,7 +3004,7 @@ extension MusicPlayerSelectsPlaylistEntry: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerSelectsQueueEntry_t`
-public struct MusicPlayerSelectsQueueEntry {
+public struct MusicPlayerSelectsQueueEntry: Sendable {
     /// Steamworks `nID`
     public let id: Int
 
@@ -3022,7 +3022,7 @@ extension MusicPlayerSelectsQueueEntry: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWantsLooped_t`
-public struct MusicPlayerWantsLooped {
+public struct MusicPlayerWantsLooped: Sendable {
     /// Steamworks `m_bLooped`
     public let looped: Bool
 
@@ -3040,7 +3040,7 @@ extension MusicPlayerWantsLooped: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWantsPause_t`
-public struct MusicPlayerWantsPause {
+public struct MusicPlayerWantsPause: Sendable {
     /// Create a customized `MusicPlayerWantsPause`
     public init() {
     }
@@ -3053,7 +3053,7 @@ extension MusicPlayerWantsPause: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWantsPlayNext_t`
-public struct MusicPlayerWantsPlayNext {
+public struct MusicPlayerWantsPlayNext: Sendable {
     /// Create a customized `MusicPlayerWantsPlayNext`
     public init() {
     }
@@ -3066,7 +3066,7 @@ extension MusicPlayerWantsPlayNext: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWantsPlayPrevious_t`
-public struct MusicPlayerWantsPlayPrevious {
+public struct MusicPlayerWantsPlayPrevious: Sendable {
     /// Create a customized `MusicPlayerWantsPlayPrevious`
     public init() {
     }
@@ -3079,7 +3079,7 @@ extension MusicPlayerWantsPlayPrevious: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWantsPlay_t`
-public struct MusicPlayerWantsPlay {
+public struct MusicPlayerWantsPlay: Sendable {
     /// Create a customized `MusicPlayerWantsPlay`
     public init() {
     }
@@ -3092,7 +3092,7 @@ extension MusicPlayerWantsPlay: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWantsPlayingRepeatStatus_t`
-public struct MusicPlayerWantsPlayingRepeatStatus {
+public struct MusicPlayerWantsPlayingRepeatStatus: Sendable {
     /// Steamworks `m_nPlayingRepeatStatus`
     public let playingRepeatStatus: Int
 
@@ -3110,7 +3110,7 @@ extension MusicPlayerWantsPlayingRepeatStatus: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWantsShuffled_t`
-public struct MusicPlayerWantsShuffled {
+public struct MusicPlayerWantsShuffled: Sendable {
     /// Steamworks `m_bShuffled`
     public let shuffled: Bool
 
@@ -3128,7 +3128,7 @@ extension MusicPlayerWantsShuffled: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWantsVolume_t`
-public struct MusicPlayerWantsVolume {
+public struct MusicPlayerWantsVolume: Sendable {
     /// Steamworks `m_flNewVolume`
     public let newVolume: Float
 
@@ -3146,7 +3146,7 @@ extension MusicPlayerWantsVolume: SteamCreatable {
 }
 
 /// Steamworks `MusicPlayerWillQuit_t`
-public struct MusicPlayerWillQuit {
+public struct MusicPlayerWillQuit: Sendable {
     /// Create a customized `MusicPlayerWillQuit`
     public init() {
     }
@@ -3159,7 +3159,7 @@ extension MusicPlayerWillQuit: SteamCreatable {
 }
 
 /// Steamworks `NewUrlLaunchParameters_t`
-public struct NewUrlLaunchParameters {
+public struct NewUrlLaunchParameters: Sendable {
     /// Create a customized `NewUrlLaunchParameters`
     public init() {
     }
@@ -3172,7 +3172,7 @@ extension NewUrlLaunchParameters: SteamCreatable {
 }
 
 /// Steamworks `NumberOfCurrentPlayers_t`
-public struct NumberOfCurrentPlayers {
+public struct NumberOfCurrentPlayers: Sendable {
     /// Steamworks `m_bSuccess`
     public let success: Bool
     /// Steamworks `m_cPlayers`
@@ -3194,7 +3194,7 @@ extension NumberOfCurrentPlayers: SteamCreatable {
 }
 
 /// Steamworks `OverlayBrowserProtocolNavigation_t`
-public struct OverlayBrowserProtocolNavigation {
+public struct OverlayBrowserProtocolNavigation: Sendable {
     /// Steamworks `rgchURI`
     public let uri: String
 
@@ -3212,7 +3212,7 @@ extension OverlayBrowserProtocolNavigation: SteamCreatable {
 }
 
 /// Steamworks `P2PSessionConnectFail_t`
-public struct P2PSessionConnectFail {
+public struct P2PSessionConnectFail: Sendable {
     /// Steamworks `m_steamIDRemote`
     public let remote: SteamID
     /// Steamworks `m_eP2PSessionError`
@@ -3234,7 +3234,7 @@ extension P2PSessionConnectFail: SteamCreatable {
 }
 
 /// Steamworks `P2PSessionRequest_t`
-public struct P2PSessionRequest {
+public struct P2PSessionRequest: Sendable {
     /// Steamworks `m_steamIDRemote`
     public let remote: SteamID
 
@@ -3252,7 +3252,7 @@ extension P2PSessionRequest: SteamCreatable {
 }
 
 /// Steamworks `P2PSessionState_t`
-public struct P2PSessionState {
+public struct P2PSessionState: Sendable {
     /// Steamworks `m_bConnectionActive`
     public let connectionActive: Bool
     /// Steamworks `m_bConnecting`
@@ -3298,7 +3298,7 @@ extension P2PSessionState: SteamCreatable {
 }
 
 /// Steamworks `PS3TrophiesInstalled_t`
-public struct PS3TrophiesInstalled {
+public struct PS3TrophiesInstalled: Sendable {
     /// Steamworks `m_nGameID`
     public let gameID: GameID
     /// Steamworks `m_eResult`
@@ -3324,7 +3324,7 @@ extension PS3TrophiesInstalled: SteamCreatable {
 }
 
 /// Steamworks `PSNGameBootInviteResult_t`
-public struct PSNGameBootInviteResult {
+public struct PSNGameBootInviteResult: Sendable {
     /// Steamworks `m_bGameBootInviteExists`
     public let gameBootInviteExists: Bool
     /// Steamworks `m_steamIDLobby`
@@ -3346,7 +3346,7 @@ extension PSNGameBootInviteResult: SteamCreatable {
 }
 
 /// Steamworks `PersonaStateChange_t`
-public struct PersonaStateChange {
+public struct PersonaStateChange: Sendable {
     /// Steamworks `m_ulSteamID`
     public let steamID: SteamID
     /// Steamworks `m_nChangeFlags`
@@ -3368,7 +3368,7 @@ extension PersonaStateChange: SteamCreatable {
 }
 
 /// Steamworks `PlaybackStatusHasChanged_t`
-public struct PlaybackStatusHasChanged {
+public struct PlaybackStatusHasChanged: Sendable {
     /// Create a customized `PlaybackStatusHasChanged`
     public init() {
     }
@@ -3381,7 +3381,7 @@ extension PlaybackStatusHasChanged: SteamCreatable {
 }
 
 /// Steamworks `RegisterActivationCodeResponse_t`
-public struct RegisterActivationCodeResponse {
+public struct RegisterActivationCodeResponse: Sendable {
     /// Steamworks `m_eResult`
     public let result: RegisterActivationCodeResult
     /// Steamworks `m_unPackageRegistered`
@@ -3403,7 +3403,7 @@ extension RegisterActivationCodeResponse: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageDeletePublishedFileResult_t`
-public struct RemoteStorageDeletePublishedFileResult {
+public struct RemoteStorageDeletePublishedFileResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -3425,7 +3425,7 @@ extension RemoteStorageDeletePublishedFileResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageDownloadUGCResult_t`
-public struct RemoteStorageDownloadUGCResult {
+public struct RemoteStorageDownloadUGCResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_hFile`
@@ -3463,7 +3463,7 @@ extension RemoteStorageDownloadUGCResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageEnumeratePublishedFilesByUserActionResult_t`
-public struct RemoteStorageEnumeratePublishedFilesByUserActionResult {
+public struct RemoteStorageEnumeratePublishedFilesByUserActionResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_eAction`
@@ -3501,7 +3501,7 @@ extension RemoteStorageEnumeratePublishedFilesByUserActionResult: SteamCreatable
 }
 
 /// Steamworks `RemoteStorageEnumerateUserPublishedFilesResult_t`
-public struct RemoteStorageEnumerateUserPublishedFilesResult {
+public struct RemoteStorageEnumerateUserPublishedFilesResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nResultsReturned`
@@ -3531,7 +3531,7 @@ extension RemoteStorageEnumerateUserPublishedFilesResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageEnumerateUserSharedWorkshopFilesResult_t`
-public struct RemoteStorageEnumerateUserSharedWorkshopFilesResult {
+public struct RemoteStorageEnumerateUserSharedWorkshopFilesResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nResultsReturned`
@@ -3561,7 +3561,7 @@ extension RemoteStorageEnumerateUserSharedWorkshopFilesResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageEnumerateUserSubscribedFilesResult_t`
-public struct RemoteStorageEnumerateUserSubscribedFilesResult {
+public struct RemoteStorageEnumerateUserSubscribedFilesResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nResultsReturned`
@@ -3595,7 +3595,7 @@ extension RemoteStorageEnumerateUserSubscribedFilesResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageEnumerateWorkshopFilesResult_t`
-public struct RemoteStorageEnumerateWorkshopFilesResult {
+public struct RemoteStorageEnumerateWorkshopFilesResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nResultsReturned`
@@ -3637,7 +3637,7 @@ extension RemoteStorageEnumerateWorkshopFilesResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageFileReadAsyncComplete_t`
-public struct RemoteStorageFileReadAsyncComplete {
+public struct RemoteStorageFileReadAsyncComplete: Sendable {
     /// Steamworks `m_hFileReadAsync`
     public let fileReadAsync: SteamAPICall
     /// Steamworks `m_eResult`
@@ -3667,7 +3667,7 @@ extension RemoteStorageFileReadAsyncComplete: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageFileShareResult_t`
-public struct RemoteStorageFileShareResult {
+public struct RemoteStorageFileShareResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_hFile`
@@ -3693,7 +3693,7 @@ extension RemoteStorageFileShareResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageFileWriteAsyncComplete_t`
-public struct RemoteStorageFileWriteAsyncComplete {
+public struct RemoteStorageFileWriteAsyncComplete: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
 
@@ -3711,7 +3711,7 @@ extension RemoteStorageFileWriteAsyncComplete: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageGetPublishedFileDetailsResult_t`
-public struct RemoteStorageGetPublishedFileDetailsResult {
+public struct RemoteStorageGetPublishedFileDetailsResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -3809,7 +3809,7 @@ extension RemoteStorageGetPublishedFileDetailsResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageGetPublishedItemVoteDetailsResult_t`
-public struct RemoteStorageGetPublishedItemVoteDetailsResult {
+public struct RemoteStorageGetPublishedItemVoteDetailsResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_unPublishedFileId`
@@ -3847,7 +3847,7 @@ extension RemoteStorageGetPublishedItemVoteDetailsResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageLocalFileChange_t`
-public struct RemoteStorageLocalFileChange {
+public struct RemoteStorageLocalFileChange: Sendable {
     /// Create a customized `RemoteStorageLocalFileChange`
     public init() {
     }
@@ -3860,7 +3860,7 @@ extension RemoteStorageLocalFileChange: SteamCreatable {
 }
 
 /// Steamworks `RemoteStoragePublishFileProgress_t`
-public struct RemoteStoragePublishFileProgress {
+public struct RemoteStoragePublishFileProgress: Sendable {
     /// Steamworks `m_dPercentFile`
     public let percentFile: Double
     /// Steamworks `m_bPreview`
@@ -3882,7 +3882,7 @@ extension RemoteStoragePublishFileProgress: SteamCreatable {
 }
 
 /// Steamworks `RemoteStoragePublishFileResult_t`
-public struct RemoteStoragePublishFileResult {
+public struct RemoteStoragePublishFileResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -3908,7 +3908,7 @@ extension RemoteStoragePublishFileResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStoragePublishedFileDeleted_t`
-public struct RemoteStoragePublishedFileDeleted {
+public struct RemoteStoragePublishedFileDeleted: Sendable {
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
@@ -3930,7 +3930,7 @@ extension RemoteStoragePublishedFileDeleted: SteamCreatable {
 }
 
 /// Steamworks `RemoteStoragePublishedFileSubscribed_t`
-public struct RemoteStoragePublishedFileSubscribed {
+public struct RemoteStoragePublishedFileSubscribed: Sendable {
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
@@ -3952,7 +3952,7 @@ extension RemoteStoragePublishedFileSubscribed: SteamCreatable {
 }
 
 /// Steamworks `RemoteStoragePublishedFileUnsubscribed_t`
-public struct RemoteStoragePublishedFileUnsubscribed {
+public struct RemoteStoragePublishedFileUnsubscribed: Sendable {
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
@@ -3974,7 +3974,7 @@ extension RemoteStoragePublishedFileUnsubscribed: SteamCreatable {
 }
 
 /// Steamworks `RemoteStoragePublishedFileUpdated_t`
-public struct RemoteStoragePublishedFileUpdated {
+public struct RemoteStoragePublishedFileUpdated: Sendable {
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_nAppID`
@@ -3996,7 +3996,7 @@ extension RemoteStoragePublishedFileUpdated: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageSetUserPublishedFileActionResult_t`
-public struct RemoteStorageSetUserPublishedFileActionResult {
+public struct RemoteStorageSetUserPublishedFileActionResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -4022,7 +4022,7 @@ extension RemoteStorageSetUserPublishedFileActionResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageSubscribePublishedFileResult_t`
-public struct RemoteStorageSubscribePublishedFileResult {
+public struct RemoteStorageSubscribePublishedFileResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -4044,7 +4044,7 @@ extension RemoteStorageSubscribePublishedFileResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageUnsubscribePublishedFileResult_t`
-public struct RemoteStorageUnsubscribePublishedFileResult {
+public struct RemoteStorageUnsubscribePublishedFileResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -4066,7 +4066,7 @@ extension RemoteStorageUnsubscribePublishedFileResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageUpdatePublishedFileResult_t`
-public struct RemoteStorageUpdatePublishedFileResult {
+public struct RemoteStorageUpdatePublishedFileResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -4092,7 +4092,7 @@ extension RemoteStorageUpdatePublishedFileResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageUpdateUserPublishedItemVoteResult_t`
-public struct RemoteStorageUpdateUserPublishedItemVoteResult {
+public struct RemoteStorageUpdateUserPublishedItemVoteResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -4114,7 +4114,7 @@ extension RemoteStorageUpdateUserPublishedItemVoteResult: SteamCreatable {
 }
 
 /// Steamworks `RemoteStorageUserVoteDetails_t`
-public struct RemoteStorageUserVoteDetails {
+public struct RemoteStorageUserVoteDetails: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -4140,7 +4140,7 @@ extension RemoteStorageUserVoteDetails: SteamCreatable {
 }
 
 /// Steamworks `RemoveAppDependencyResult_t`
-public struct RemoveAppDependencyResult {
+public struct RemoveAppDependencyResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -4166,7 +4166,7 @@ extension RemoveAppDependencyResult: SteamCreatable {
 }
 
 /// Steamworks `RemoveUGCDependencyResult_t`
-public struct RemoveUGCDependencyResult {
+public struct RemoveUGCDependencyResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nPublishedFileId`
@@ -4192,7 +4192,7 @@ extension RemoveUGCDependencyResult: SteamCreatable {
 }
 
 /// Steamworks `RequestPlayersForGameFinalResultCallback_t`
-public struct RequestPlayersForGameFinalResultCallback {
+public struct RequestPlayersForGameFinalResultCallback: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_ullSearchID`
@@ -4218,7 +4218,7 @@ extension RequestPlayersForGameFinalResultCallback: SteamCreatable {
 }
 
 /// Steamworks `RequestPlayersForGameProgressCallback_t`
-public struct RequestPlayersForGameProgressCallback {
+public struct RequestPlayersForGameProgressCallback: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_ullSearchID`
@@ -4240,7 +4240,7 @@ extension RequestPlayersForGameProgressCallback: SteamCreatable {
 }
 
 /// Steamworks `RequestPlayersForGameResultCallback_t`
-public struct RequestPlayersForGameResultCallback {
+public struct RequestPlayersForGameResultCallback: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_ullSearchID`
@@ -4294,7 +4294,7 @@ extension RequestPlayersForGameResultCallback: SteamCreatable {
 }
 
 /// Steamworks `ReservationNotificationCallback_t`
-public struct ReservationNotificationCallback {
+public struct ReservationNotificationCallback: Sendable {
     /// Steamworks `m_ulBeaconID`
     public let beaconID: PartyBeaconID
     /// Steamworks `m_steamIDJoiner`
@@ -4316,7 +4316,7 @@ extension ReservationNotificationCallback: SteamCreatable {
 }
 
 /// Steamworks `ScreenshotReady_t`
-public struct ScreenshotReady {
+public struct ScreenshotReady: Sendable {
     /// Steamworks `m_hLocal`
     public let local: ScreenshotHandle
     /// Steamworks `m_eResult`
@@ -4338,7 +4338,7 @@ extension ScreenshotReady: SteamCreatable {
 }
 
 /// Steamworks `ScreenshotRequested_t`
-public struct ScreenshotRequested {
+public struct ScreenshotRequested: Sendable {
     /// Create a customized `ScreenshotRequested`
     public init() {
     }
@@ -4351,7 +4351,7 @@ extension ScreenshotRequested: SteamCreatable {
 }
 
 /// Steamworks `SearchForGameProgressCallback_t`
-public struct SearchForGameProgressCallback {
+public struct SearchForGameProgressCallback: Sendable {
     /// Steamworks `m_ullSearchID`
     public let searchID: UInt64
     /// Steamworks `m_eResult`
@@ -4389,7 +4389,7 @@ extension SearchForGameProgressCallback: SteamCreatable {
 }
 
 /// Steamworks `SearchForGameResultCallback_t`
-public struct SearchForGameResultCallback {
+public struct SearchForGameResultCallback: Sendable {
     /// Steamworks `m_ullSearchID`
     public let searchID: UInt64
     /// Steamworks `m_eResult`
@@ -4427,7 +4427,7 @@ extension SearchForGameResultCallback: SteamCreatable {
 }
 
 /// Steamworks `SetPersonaNameResponse_t`
-public struct SetPersonaNameResponse {
+public struct SetPersonaNameResponse: Sendable {
     /// Steamworks `m_bSuccess`
     public let success: Bool
     /// Steamworks `m_bLocalSuccess`
@@ -4453,7 +4453,7 @@ extension SetPersonaNameResponse: SteamCreatable {
 }
 
 /// Steamworks `SetUserItemVoteResult_t`
-public struct SetUserItemVoteResult {
+public struct SetUserItemVoteResult: Sendable {
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
@@ -4479,7 +4479,7 @@ extension SetUserItemVoteResult: SteamCreatable {
 }
 
 /// Steamworks `SocketStatusCallback_t`
-public struct SocketStatusCallback {
+public struct SocketStatusCallback: Sendable {
     /// Steamworks `m_hSocket`
     public let socket: SNetSocket
     /// Steamworks `m_hListenSocket`
@@ -4509,7 +4509,7 @@ extension SocketStatusCallback: SteamCreatable {
 }
 
 /// Steamworks `StartPlaytimeTrackingResult_t`
-public struct StartPlaytimeTrackingResult {
+public struct StartPlaytimeTrackingResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
 
@@ -4527,7 +4527,7 @@ extension StartPlaytimeTrackingResult: SteamCreatable {
 }
 
 /// Steamworks `SteamAPICallCompleted_t`
-public struct SteamAPICallCompleted {
+public struct SteamAPICallCompleted: Sendable {
     /// Steamworks `m_hAsyncCall`
     public let asyncCall: SteamAPICall
     /// Steamworks `m_iCallback`
@@ -4553,7 +4553,7 @@ extension SteamAPICallCompleted: SteamCreatable {
 }
 
 /// Steamworks `SteamAppInstalled_t`
-public struct SteamAppInstalled {
+public struct SteamAppInstalled: Sendable {
     /// Steamworks `m_nAppID`
     public let appID: AppID
     /// Steamworks `m_iInstallFolderIndex`
@@ -4575,7 +4575,7 @@ extension SteamAppInstalled: SteamCreatable {
 }
 
 /// Steamworks `SteamAppUninstalled_t`
-public struct SteamAppUninstalled {
+public struct SteamAppUninstalled: Sendable {
     /// Steamworks `m_nAppID`
     public let appID: AppID
     /// Steamworks `m_iInstallFolderIndex`
@@ -4597,7 +4597,7 @@ extension SteamAppUninstalled: SteamCreatable {
 }
 
 /// Steamworks `SteamInputConfigurationLoaded_t`
-public struct SteamInputConfigurationLoaded {
+public struct SteamInputConfigurationLoaded: Sendable {
     /// Steamworks `m_unAppID`
     public let appID: AppID
     /// Steamworks `m_ulDeviceHandle`
@@ -4639,7 +4639,7 @@ extension SteamInputConfigurationLoaded: SteamCreatable {
 }
 
 /// Steamworks `SteamInputDeviceConnected_t`
-public struct SteamInputDeviceConnected {
+public struct SteamInputDeviceConnected: Sendable {
     /// Steamworks `m_ulConnectedDeviceHandle`
     public let connectedDeviceHandle: InputHandle
 
@@ -4657,7 +4657,7 @@ extension SteamInputDeviceConnected: SteamCreatable {
 }
 
 /// Steamworks `SteamInputDeviceDisconnected_t`
-public struct SteamInputDeviceDisconnected {
+public struct SteamInputDeviceDisconnected: Sendable {
     /// Steamworks `m_ulDisconnectedDeviceHandle`
     public let disconnectedDeviceHandle: InputHandle
 
@@ -4675,7 +4675,7 @@ extension SteamInputDeviceDisconnected: SteamCreatable {
 }
 
 /// Steamworks `SteamInventoryDefinitionUpdate_t`
-public struct SteamInventoryDefinitionUpdate {
+public struct SteamInventoryDefinitionUpdate: Sendable {
     /// Create a customized `SteamInventoryDefinitionUpdate`
     public init() {
     }
@@ -4688,7 +4688,7 @@ extension SteamInventoryDefinitionUpdate: SteamCreatable {
 }
 
 /// Steamworks `SteamInventoryEligiblePromoItemDefIDs_t`
-public struct SteamInventoryEligiblePromoItemDefIDs {
+public struct SteamInventoryEligiblePromoItemDefIDs: Sendable {
     /// Steamworks `m_result`
     public let result: Result
     /// Steamworks `m_steamID`
@@ -4718,7 +4718,7 @@ extension SteamInventoryEligiblePromoItemDefIDs: SteamCreatable {
 }
 
 /// Steamworks `SteamInventoryFullUpdate_t`
-public struct SteamInventoryFullUpdate {
+public struct SteamInventoryFullUpdate: Sendable {
     /// Steamworks `m_handle`
     public let handle: SteamInventoryResult
 
@@ -4736,7 +4736,7 @@ extension SteamInventoryFullUpdate: SteamCreatable {
 }
 
 /// Steamworks `SteamInventoryRequestPricesResult_t`
-public struct SteamInventoryRequestPricesResult {
+public struct SteamInventoryRequestPricesResult: Sendable {
     /// Steamworks `m_result`
     public let result: Result
     /// Steamworks `m_rgchCurrency`
@@ -4758,7 +4758,7 @@ extension SteamInventoryRequestPricesResult: SteamCreatable {
 }
 
 /// Steamworks `SteamInventoryResultReady_t`
-public struct SteamInventoryResultReady {
+public struct SteamInventoryResultReady: Sendable {
     /// Steamworks `m_handle`
     public let handle: SteamInventoryResult
     /// Steamworks `m_result`
@@ -4780,7 +4780,7 @@ extension SteamInventoryResultReady: SteamCreatable {
 }
 
 /// Steamworks `SteamInventoryStartPurchaseResult_t`
-public struct SteamInventoryStartPurchaseResult {
+public struct SteamInventoryStartPurchaseResult: Sendable {
     /// Steamworks `m_result`
     public let result: Result
     /// Steamworks `m_ulOrderID`
@@ -4806,7 +4806,7 @@ extension SteamInventoryStartPurchaseResult: SteamCreatable {
 }
 
 /// Steamworks `SteamItemDetails_t`
-public struct SteamItemDetails {
+public struct SteamItemDetails: Sendable {
     /// Steamworks `m_itemId`
     public let id: SteamItemInstanceID
     /// Steamworks `m_iDefinition`
@@ -4836,7 +4836,7 @@ extension SteamItemDetails: SteamCreatable {
 }
 
 /// Steamworks `SteamNetAuthenticationStatus_t`
-public struct SteamNetAuthenticationStatus {
+public struct SteamNetAuthenticationStatus: Sendable {
     /// Steamworks `m_eAvail`
     public let avail: SteamNetworkingAvailability
     /// Steamworks `m_debugMsg`
@@ -4858,7 +4858,7 @@ extension SteamNetAuthenticationStatus: SteamCreatable {
 }
 
 /// Steamworks `SteamNetConnectionInfo_t`
-public struct SteamNetConnectionInfo {
+public struct SteamNetConnectionInfo: Sendable {
     /// Steamworks `m_identityRemote`
     public let identityRemote: SteamNetworkingIdentity
     /// Steamworks `m_nUserData`
@@ -4916,7 +4916,7 @@ extension SteamNetConnectionInfo: SteamCreatable {
 }
 
 /// Steamworks `SteamNetConnectionRealTimeLaneStatus_t`
-public struct SteamNetConnectionRealTimeLaneStatus {
+public struct SteamNetConnectionRealTimeLaneStatus: Sendable {
     /// Steamworks `m_cbPendingUnreliable`
     public let pendingUnreliableSize: Int
     /// Steamworks `m_cbPendingReliable`
@@ -4946,7 +4946,7 @@ extension SteamNetConnectionRealTimeLaneStatus: SteamCreatable {
 }
 
 /// Steamworks `SteamNetConnectionRealTimeStatus_t`
-public struct SteamNetConnectionRealTimeStatus {
+public struct SteamNetConnectionRealTimeStatus: Sendable {
     /// Steamworks `m_eState`
     public let state: SteamNetworkingConnectionState
     /// Steamworks `m_nPing`
@@ -5012,7 +5012,7 @@ extension SteamNetConnectionRealTimeStatus: SteamCreatable {
 }
 
 /// Steamworks `SteamNetConnectionStatusChangedCallback_t`
-public struct SteamNetConnectionStatusChangedCallback {
+public struct SteamNetConnectionStatusChangedCallback: Sendable {
     /// Steamworks `m_hConn`
     public let conn: HSteamNetConnection
     /// Steamworks `m_info`
@@ -5038,7 +5038,7 @@ extension SteamNetConnectionStatusChangedCallback: SteamCreatable {
 }
 
 /// Steamworks `SteamNetworkPingLocation_t`
-public struct SteamNetworkPingLocation {
+public struct SteamNetworkPingLocation: Sendable {
     /// Steamworks `m_data`
     public let data: [UInt8]
 
@@ -5063,7 +5063,7 @@ extension CSteamworks.SteamNetworkPingLocation_t : SwiftCreatable {
 }
 
 /// Steamworks `SteamNetworkingFakeIPResult_t`
-public struct SteamNetworkingFakeIPResult {
+public struct SteamNetworkingFakeIPResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_identity`
@@ -5093,7 +5093,7 @@ extension SteamNetworkingFakeIPResult: SteamCreatable {
 }
 
 /// Steamworks `SteamNetworkingMessagesSessionFailed_t`
-public struct SteamNetworkingMessagesSessionFailed {
+public struct SteamNetworkingMessagesSessionFailed: Sendable {
     /// Steamworks `m_info`
     public let info: SteamNetConnectionInfo
 
@@ -5111,7 +5111,7 @@ extension SteamNetworkingMessagesSessionFailed: SteamCreatable {
 }
 
 /// Steamworks `SteamNetworkingMessagesSessionRequest_t`
-public struct SteamNetworkingMessagesSessionRequest {
+public struct SteamNetworkingMessagesSessionRequest: Sendable {
     /// Steamworks `m_identityRemote`
     public let identityRemote: SteamNetworkingIdentity
 
@@ -5129,7 +5129,7 @@ extension SteamNetworkingMessagesSessionRequest: SteamCreatable {
 }
 
 /// Steamworks `SteamParentalSettingsChanged_t`
-public struct SteamParentalSettingsChanged {
+public struct SteamParentalSettingsChanged: Sendable {
     /// Create a customized `SteamParentalSettingsChanged`
     public init() {
     }
@@ -5142,7 +5142,7 @@ extension SteamParentalSettingsChanged: SteamCreatable {
 }
 
 /// Steamworks `SteamPartyBeaconLocation_t`
-public struct SteamPartyBeaconLocation {
+public struct SteamPartyBeaconLocation: Sendable {
     /// Steamworks `m_eType`
     public let type: SteamPartyBeaconLocationType
     /// Steamworks `m_ulLocationID`
@@ -5172,7 +5172,7 @@ extension CSteamworks.SteamPartyBeaconLocation_t : SwiftCreatable {
 }
 
 /// Steamworks `SteamRelayNetworkStatus_t`
-public struct SteamRelayNetworkStatus {
+public struct SteamRelayNetworkStatus: Sendable {
     /// Steamworks `m_eAvail`
     public let avail: SteamNetworkingAvailability
     /// Steamworks `m_bPingMeasurementInProgress`
@@ -5206,7 +5206,7 @@ extension SteamRelayNetworkStatus: SteamCreatable {
 }
 
 /// Steamworks `SteamRemotePlaySessionConnected_t`
-public struct SteamRemotePlaySessionConnected {
+public struct SteamRemotePlaySessionConnected: Sendable {
     /// Steamworks `m_unSessionID`
     public let sessionID: RemotePlaySessionID
 
@@ -5224,7 +5224,7 @@ extension SteamRemotePlaySessionConnected: SteamCreatable {
 }
 
 /// Steamworks `SteamRemotePlaySessionDisconnected_t`
-public struct SteamRemotePlaySessionDisconnected {
+public struct SteamRemotePlaySessionDisconnected: Sendable {
     /// Steamworks `m_unSessionID`
     public let sessionID: RemotePlaySessionID
 
@@ -5242,7 +5242,7 @@ extension SteamRemotePlaySessionDisconnected: SteamCreatable {
 }
 
 /// Steamworks `SteamServerConnectFailure_t`
-public struct SteamServerConnectFailure {
+public struct SteamServerConnectFailure: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_bStillRetrying`
@@ -5264,7 +5264,7 @@ extension SteamServerConnectFailure: SteamCreatable {
 }
 
 /// Steamworks `SteamServersConnected_t`
-public struct SteamServersConnected {
+public struct SteamServersConnected: Sendable {
     /// Create a customized `SteamServersConnected`
     public init() {
     }
@@ -5277,7 +5277,7 @@ extension SteamServersConnected: SteamCreatable {
 }
 
 /// Steamworks `SteamServersDisconnected_t`
-public struct SteamServersDisconnected {
+public struct SteamServersDisconnected: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
 
@@ -5295,7 +5295,7 @@ extension SteamServersDisconnected: SteamCreatable {
 }
 
 /// Steamworks `SteamShutdown_t`
-public struct SteamShutdown {
+public struct SteamShutdown: Sendable {
     /// Create a customized `SteamShutdown`
     public init() {
     }
@@ -5308,7 +5308,7 @@ extension SteamShutdown: SteamCreatable {
 }
 
 /// Steamworks `SteamUGCDetails_t`
-public struct SteamUGCDetails {
+public struct SteamUGCDetails: Sendable {
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
@@ -5426,7 +5426,7 @@ extension SteamUGCDetails: SteamCreatable {
 }
 
 /// Steamworks `SteamUGCQueryCompleted_t`
-public struct SteamUGCQueryCompleted {
+public struct SteamUGCQueryCompleted: Sendable {
     /// Steamworks `m_handle`
     public let handle: UGCQueryHandle
     /// Steamworks `m_eResult`
@@ -5464,7 +5464,7 @@ extension SteamUGCQueryCompleted: SteamCreatable {
 }
 
 /// Steamworks `SteamUGCRequestUGCDetailsResult_t`
-public struct SteamUGCRequestUGCDetailsResult {
+public struct SteamUGCRequestUGCDetailsResult: Sendable {
     /// Steamworks `m_details`
     public let details: SteamUGCDetails
     /// Steamworks `m_bCachedData`
@@ -5486,7 +5486,7 @@ extension SteamUGCRequestUGCDetailsResult: SteamCreatable {
 }
 
 /// Steamworks `StopPlaytimeTrackingResult_t`
-public struct StopPlaytimeTrackingResult {
+public struct StopPlaytimeTrackingResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
 
@@ -5504,7 +5504,7 @@ extension StopPlaytimeTrackingResult: SteamCreatable {
 }
 
 /// Steamworks `StoreAuthURLResponse_t`
-public struct StoreAuthURLResponse {
+public struct StoreAuthURLResponse: Sendable {
     /// Steamworks `m_szURL`
     public let url: String
 
@@ -5522,7 +5522,7 @@ extension StoreAuthURLResponse: SteamCreatable {
 }
 
 /// Steamworks `SubmitItemUpdateResult_t`
-public struct SubmitItemUpdateResult {
+public struct SubmitItemUpdateResult: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_bUserNeedsToAcceptWorkshopLegalAgreement`
@@ -5548,7 +5548,7 @@ extension SubmitItemUpdateResult: SteamCreatable {
 }
 
 /// Steamworks `SubmitPlayerResultResultCallback_t`
-public struct SubmitPlayerResultResultCallback {
+public struct SubmitPlayerResultResultCallback: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `ullUniqueGameID`
@@ -5574,7 +5574,7 @@ extension SubmitPlayerResultResultCallback: SteamCreatable {
 }
 
 /// Steamworks `TimedTrialStatus_t`
-public struct TimedTrialStatus {
+public struct TimedTrialStatus: Sendable {
     /// Steamworks `m_unAppID`
     public let appID: AppID
     /// Steamworks `m_bIsOffline`
@@ -5604,7 +5604,7 @@ extension TimedTrialStatus: SteamCreatable {
 }
 
 /// Steamworks `UnreadChatMessagesChanged_t`
-public struct UnreadChatMessagesChanged {
+public struct UnreadChatMessagesChanged: Sendable {
     /// Create a customized `UnreadChatMessagesChanged`
     public init() {
     }
@@ -5617,7 +5617,7 @@ extension UnreadChatMessagesChanged: SteamCreatable {
 }
 
 /// Steamworks `UserAchievementIconFetched_t`
-public struct UserAchievementIconFetched {
+public struct UserAchievementIconFetched: Sendable {
     /// Steamworks `m_nGameID`
     public let gameID: GameID
     /// Steamworks `m_rgchAchievementName`
@@ -5647,7 +5647,7 @@ extension UserAchievementIconFetched: SteamCreatable {
 }
 
 /// Steamworks `UserAchievementStored_t`
-public struct UserAchievementStored {
+public struct UserAchievementStored: Sendable {
     /// Steamworks `m_nGameID`
     public let gameID: GameID
     /// Steamworks `m_bGroupAchievement`
@@ -5681,7 +5681,7 @@ extension UserAchievementStored: SteamCreatable {
 }
 
 /// Steamworks `UserFavoriteItemsListChanged_t`
-public struct UserFavoriteItemsListChanged {
+public struct UserFavoriteItemsListChanged: Sendable {
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
     /// Steamworks `m_eResult`
@@ -5707,7 +5707,7 @@ extension UserFavoriteItemsListChanged: SteamCreatable {
 }
 
 /// Steamworks `UserStatsReceived_t`
-public struct UserStatsReceived {
+public struct UserStatsReceived: Sendable {
     /// Steamworks `m_nGameID`
     public let gameID: GameID
     /// Steamworks `m_eResult`
@@ -5733,7 +5733,7 @@ extension UserStatsReceived: SteamCreatable {
 }
 
 /// Steamworks `UserStatsStored_t`
-public struct UserStatsStored {
+public struct UserStatsStored: Sendable {
     /// Steamworks `m_nGameID`
     public let gameID: GameID
     /// Steamworks `m_eResult`
@@ -5755,7 +5755,7 @@ extension UserStatsStored: SteamCreatable {
 }
 
 /// Steamworks `UserStatsUnloaded_t`
-public struct UserStatsUnloaded {
+public struct UserStatsUnloaded: Sendable {
     /// Steamworks `m_steamIDUser`
     public let user: SteamID
 
@@ -5773,7 +5773,7 @@ extension UserStatsUnloaded: SteamCreatable {
 }
 
 /// Steamworks `UserSubscribedItemsListChanged_t`
-public struct UserSubscribedItemsListChanged {
+public struct UserSubscribedItemsListChanged: Sendable {
     /// Steamworks `m_nAppID`
     public let appID: AppID
 
@@ -5791,7 +5791,7 @@ extension UserSubscribedItemsListChanged: SteamCreatable {
 }
 
 /// Steamworks `ValidateAuthTicketResponse_t`
-public struct ValidateAuthTicketResponse {
+public struct ValidateAuthTicketResponse: Sendable {
     /// Steamworks `m_SteamID`
     public let steamID: SteamID
     /// Steamworks `m_eAuthSessionResponse`
@@ -5817,7 +5817,7 @@ extension ValidateAuthTicketResponse: SteamCreatable {
 }
 
 /// Steamworks `VolumeHasChanged_t`
-public struct VolumeHasChanged {
+public struct VolumeHasChanged: Sendable {
     /// Steamworks `m_flNewVolume`
     public let newVolume: Float
 
@@ -5835,7 +5835,7 @@ extension VolumeHasChanged: SteamCreatable {
 }
 
 /// Steamworks `WorkshopEULAStatus_t`
-public struct WorkshopEULAStatus {
+public struct WorkshopEULAStatus: Sendable {
     /// Steamworks `m_eResult`
     public let result: Result
     /// Steamworks `m_nAppID`
@@ -5873,7 +5873,7 @@ extension WorkshopEULAStatus: SteamCreatable {
 }
 
 /// Steamworks `gameserveritem_t`
-public struct GameServerItem {
+public struct GameServerItem: Sendable {
     /// Steamworks `m_NetAdr`
     public let netAdr: ServerNetAdr
     /// Steamworks `m_nPing`

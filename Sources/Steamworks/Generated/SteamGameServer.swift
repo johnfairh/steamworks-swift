@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamGameServer`](https://partner.steamgames.com/doc/api/ISteamGameServer)
 ///
 /// Access via `SteamGameServerAPI.gameServer`.
-public struct SteamGameServer {
+public struct SteamGameServer: Sendable {
     var interface: UnsafeMutablePointer<ISteamGameServer> {
         SteamAPI_SteamGameServer_v014()
     }

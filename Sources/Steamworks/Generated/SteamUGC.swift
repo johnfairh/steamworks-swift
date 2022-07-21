@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamUGC`](https://partner.steamgames.com/doc/api/ISteamUGC)
 ///
 /// Access via `SteamBaseAPI.ugc` through a `SteamAPI` or `SteamGameServerAPI` instance.
-public struct SteamUGC {
+public struct SteamUGC: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamUGC> {
         isServer ? SteamAPI_SteamGameServerUGC_v016() : SteamAPI_SteamUGC_v016()

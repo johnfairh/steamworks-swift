@@ -162,6 +162,7 @@ class TestApiNetworking: XCTestCase {
         let (adrRc, adr) = steam.networkingSockets.getListenSocketAddress(socket: listenSocket!)
         print("GetListenSocketAddress rc=\(adrRc) adr=\(adr)")
         XCTAssertTrue(adrRc)
+        XCTAssertEqual("[::]:27100", adr.description)
 
         clientConnection = steam.networkingSockets.connectByIPAddress(address: .init(ipv4: .ipv4(127, 0, 0, 1), port: 27100), options: [])
         print("ConnectByIP rc=\(clientConnection)")

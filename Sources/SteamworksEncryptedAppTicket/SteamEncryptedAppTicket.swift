@@ -12,12 +12,21 @@ import Steamworks
 /// Wrap up the `SteamEncryptedAppTicket` functions.
 ///
 /// See [Encrypted Application Tickets](https://partner.steamgames.com/doc/features/auth#encryptedapptickets)
-public final class SteamEncryptedAppTicket {
+public struct SteamEncryptedAppTicket: Sendable {
     /// Expected length in bytes of the encryption key
     public static let symmetricKeyLen = Int(k_nSteamEncryptedAppTicketSymmetricKeyLen)
 
     /// The decrypted ticket
-    private var decrypted: [UInt8]
+    private let decrypted: [UInt8]
+
+    /// So, all the getters here are declared taking the decrypted ticket as `uint8 *`with no `const`... the author
+    /// manages to use `const` elsewhere but not here -- I'm betting it's just a mistake rather than the ticket containing
+    /// some record of what's done to it, or something.
+    private func withTicket<T>(call: (UnsafeMutablePointer<UInt8>) -> T) -> T {
+        decrypted.withContiguousStorageIfAvailable { ubp in
+            call(.init(mutating: ubp.baseAddress!))
+        }!
+    }
 
     /// Using the secret key, attempt to decrypt an encrypted app ticket previously returned by
     /// `ISteamUser::GetEncryptedAppTicket()`.
@@ -49,46 +58,57 @@ public final class SteamEncryptedAppTicket {
 
     /// Steamworks `SteamEncryptedAppTicket_BIsTicketForApp()`
     public func isFor(appID: AppID) -> Bool {
-        SteamEncryptedAppTicket_BIsTicketForApp(&decrypted, UInt32(decrypted.count), appID.value);
+        withTicket { ticket in
+            SteamEncryptedAppTicket_BIsTicketForApp(ticket, UInt32(decrypted.count), appID.value)
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_GetTicketIssueTime()`
     public var issueTime: Steamworks.RTime32 {
-        .init(SteamEncryptedAppTicket_GetTicketIssueTime(&decrypted, UInt32(decrypted.count)))
+        withTicket { ticket in
+            .init(SteamEncryptedAppTicket_GetTicketIssueTime(ticket, UInt32(decrypted.count)))
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_GetTicketSteamID()`
     public var steamID: SteamID {
-        var cSteamID = CSteamID()
-        SteamEncryptedAppTicket_GetTicketSteamID(&decrypted, UInt32(decrypted.count), &cSteamID)
-        return SteamID(cSteamID.ConvertToUint64())
+        withTicket { ticket in
+            var cSteamID = CSteamID()
+            SteamEncryptedAppTicket_GetTicketSteamID(ticket, UInt32(decrypted.count), &cSteamID)
+            return SteamID(cSteamID.ConvertToUint64())
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_GetTicketAppID()`
     public var appID: AppID {
-        AppID(SteamEncryptedAppTicket_GetTicketAppID(&decrypted, UInt32(decrypted.count)))
+        withTicket { ticket in
+            AppID(SteamEncryptedAppTicket_GetTicketAppID(ticket, UInt32(decrypted.count)))
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_BUserOwnsAppInTicket()`
     public func userOwns(app: AppID) -> Bool {
-        SteamEncryptedAppTicket_BUserOwnsAppInTicket(&decrypted, UInt32(decrypted.count), app.value)
+        withTicket { ticket in
+            SteamEncryptedAppTicket_BUserOwnsAppInTicket(ticket, UInt32(decrypted.count), app.value)
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_BUserIsVacBanned()`
     public var userIsVacBanned: Bool {
-        SteamEncryptedAppTicket_BUserIsVacBanned(&decrypted, UInt32(decrypted.count))
+        withTicket { ticket in
+            SteamEncryptedAppTicket_BUserIsVacBanned(ticket, UInt32(decrypted.count))
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_GetUserVariableData()`
     public var userVariableData: [UInt8]? {
-        var userDataSize = UInt32(0)
-        guard let userDataPtr = SteamEncryptedAppTicket_GetUserVariableData(&decrypted, UInt32(decrypted.count), &userDataSize),
-              userDataSize > 0 else {
-            return nil
-        }
-        return Array<UInt8>(unsafeUninitializedCapacity: Int(userDataSize)) { buf, done in
-            buf.baseAddress!.initialize(from: userDataPtr, count: Int(userDataSize))
-            done = Int(userDataSize)
+        withTicket { ticket -> [UInt8]? in
+            var userDataSize = UInt32(0)
+            guard let userDataPtr = SteamEncryptedAppTicket_GetUserVariableData(ticket, UInt32(decrypted.count), &userDataSize),
+                  userDataSize > 0 else {
+                return nil
+            }
+            return Array(UnsafeBufferPointer(start: userDataPtr, count: Int(userDataSize)))
         }
     }
 }
@@ -99,24 +119,32 @@ public final class SteamEncryptedAppTicket {
 extension SteamEncryptedAppTicket {
     /// Steamworks `SteamEncryptedAppTicket_BGetAppDefinedValue()`
     public var appDefinedValue: Int? {
-        var val = UInt32(0)
-        let rc = SteamEncryptedAppTicket_BGetAppDefinedValue(&decrypted, UInt32(decrypted.count), &val)
-        return rc ? Int(val) : nil
+        withTicket { ticket in
+            var val = UInt32(0)
+            let rc = SteamEncryptedAppTicket_BGetAppDefinedValue(ticket, UInt32(decrypted.count), &val)
+            return rc ? Int(val) : nil
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_BIsTicketSigned()`
     public func isSigned(pubRSAKey: [UInt8]) -> Bool {
-        SteamEncryptedAppTicket_BIsTicketSigned(&decrypted, UInt32(decrypted.count), pubRSAKey, UInt32(pubRSAKey.count))
+        withTicket { ticket in
+            SteamEncryptedAppTicket_BIsTicketSigned(ticket, UInt32(decrypted.count), pubRSAKey, UInt32(pubRSAKey.count))
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_BIsLicenseBorrowed()`
     public var isLicenseBorrowed: Bool {
-        SteamEncryptedAppTicket_BIsLicenseBorrowed(&decrypted, UInt32(decrypted.count))
+        withTicket { ticket in
+            SteamEncryptedAppTicket_BIsLicenseBorrowed(ticket, UInt32(decrypted.count))
+        }
     }
 
     /// Steamworks `SteamEncryptedAppTicket_BIsLicenseTemporary()`
     public var isLicenseTemporary: Bool {
-        SteamEncryptedAppTicket_BIsLicenseTemporary(&decrypted, UInt32(decrypted.count))
+        withTicket { ticket in
+            SteamEncryptedAppTicket_BIsLicenseTemporary(ticket, UInt32(decrypted.count))
+        }
     }
 }
 

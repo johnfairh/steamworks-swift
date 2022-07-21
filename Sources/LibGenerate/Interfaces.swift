@@ -76,7 +76,7 @@ extension MetadataDB.Interface.Access {
             /// Steamworks [`\(db.name)`](https://partner.steamgames.com/doc/api/\(db.name))
             ///
             /// Access via \(accessVia(getter: shortName)).
-            public \(swiftTypeKind) \(db.name.swiftType) {
+            public \(swiftTypeKind) \(db.name.swiftType): Sendable {
             """
 
         let decl: String

@@ -52,7 +52,7 @@ extension MetadataDB.Typedef {
         let swiftType = typedef.swiftType
         var decl = """
                    /// Steamworks `\(typedef)`
-                   public struct \(swiftType): Hashable {
+                   public struct \(swiftType): Hashable, Sendable {
                        public let value: \(swiftNativeType)
                        public init(_ value: \(swiftNativeType)) { self.value = value }
                    }

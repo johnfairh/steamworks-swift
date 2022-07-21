@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamInput`](https://partner.steamgames.com/doc/api/ISteamInput)
 ///
 /// Access via `SteamAPI.input`.
-public struct SteamInput {
+public struct SteamInput: Sendable {
     var interface: UnsafeMutablePointer<ISteamInput> {
         SteamAPI_SteamInput_v006()
     }

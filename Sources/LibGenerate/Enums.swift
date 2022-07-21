@@ -91,11 +91,11 @@ extension MetadataDB.Enum {
         let valueGen: (Value, SwiftType) -> String
 
         if !isSet {
-            typeDecl = "public enum \(swiftType): \(rawType) {"
+            typeDecl = "public enum \(swiftType): \(rawType), Sendable {"
             valueGen = generateEnumCaseDecl
         } else {
             typeDecl = """
-                       public struct \(swiftType): OptionSet {
+                       public struct \(swiftType): OptionSet, Sendable {
                            /// The flags value.
                            public let rawValue: \(rawType)
                            /// Create a new instance with `rawValue` flags set.

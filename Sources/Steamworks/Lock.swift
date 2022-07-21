@@ -5,9 +5,7 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
-//
-// Swift 5.7 -- `import Dispatch` appears to work again...
-//
+// Swift 5.7 -- `import Dispatch` appears to work again in C++ mode...
 import Dispatch
 
 struct Lock {

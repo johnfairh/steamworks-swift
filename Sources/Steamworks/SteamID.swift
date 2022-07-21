@@ -10,54 +10,54 @@
 /// The globally unique identifier for all Steam accounts, Steam groups, lobbies, and chat rooms.
 ///
 /// Steamworks `CSteamID`.  Methods and interface style to follow Steamworks, see docs there.
-public struct SteamID: Sendable {
+public struct SteamID {
     private var value: UInt64
 
-    private let UNI_SPEC = (shift: 56, mask: UInt64(0xff))       //  8
-    private let ATY_SPEC = (shift: 52, mask: UInt64(0xf))        //  4
-    private let AIN_SPEC = (shift: 32, mask: UInt64(0xfffff))    // 20 (if ATY==chat then 8 flags+12 instance...)
-    private let AID_SPEC = (shift: 0,  mask: UInt64(0xffffffff)) // 32 = 64 total
+    private static let UNI_SPEC = (shift: 56, mask: UInt64(0xff))       //  8
+    private static let ATY_SPEC = (shift: 52, mask: UInt64(0xf))        //  4
+    private static let AIN_SPEC = (shift: 32, mask: UInt64(0xfffff))    // 20 (if ATY==chat then 8 flags+12 instance...)
+    private static let AID_SPEC = (shift: 0,  mask: UInt64(0xffffffff)) // 32 = 64 total
 
     // MARK: Properties
 
     /// The universe of the `SteamID`.
     public var universe: Universe {
         get {
-            Universe(rawValue: value.shiftOut(UNI_SPEC)) ?? .unrepresentedInSwift
+            Universe(rawValue: value.shiftOut(Self.UNI_SPEC)) ?? .unrepresentedInSwift
         }
         set {
-            value.shiftIn(newValue.rawValue, UNI_SPEC)
+            value.shiftIn(newValue.rawValue, Self.UNI_SPEC)
         }
     }
 
     /// The account type of the `SteamID`.
     public var accountType: AccountType {
         get {
-            AccountType(rawValue: value.shiftOut(ATY_SPEC)) ?? .unrepresentedInSwift
+            AccountType(rawValue: value.shiftOut(Self.ATY_SPEC)) ?? .unrepresentedInSwift
         }
         set {
-            value.shiftIn(newValue.rawValue, ATY_SPEC)
+            value.shiftIn(newValue.rawValue, Self.ATY_SPEC)
         }
     }
 
     /// The account instance of the `SteamID`.  Max 20 bits, 0xfffff.
     public var accountInstance: Int {
         get {
-            Int(value.shiftOut(AIN_SPEC))
+            Int(value.shiftOut(Self.AIN_SPEC))
         }
         set {
-            precondition(newValue >= 0 && newValue <= AIN_SPEC.mask, "\(newValue) out of range for account instance, max \(AIN_SPEC.mask)")
-            value.shiftIn(UInt32(newValue), AIN_SPEC)
+            precondition(newValue >= 0 && newValue <= Self.AIN_SPEC.mask, "\(newValue) out of range for account instance, max \(Self.AIN_SPEC.mask)")
+            value.shiftIn(UInt32(newValue), Self.AIN_SPEC)
         }
     }
 
     /// The account ID of the `SteamID`.
     public var accountID: AccountID {
         get {
-            AccountID(value.shiftOut(AID_SPEC))
+            AccountID(value.shiftOut(Self.AID_SPEC))
         }
         set {
-            value.shiftIn(newValue.value, AID_SPEC)
+            value.shiftIn(newValue.value, Self.AID_SPEC)
         }
     }
 
@@ -218,8 +218,8 @@ public struct SteamID: Sendable {
 
     /// Initialize a steam ID from its 52 bit parts and universe/type
     public mutating func fullSet(identifier: UInt64, universe: Universe, accountType: AccountType) {
-        instancedSet(accountID: AccountID(identifier.shiftOut(AID_SPEC)),
-                     accountInstance: Int(identifier.shiftOut(AIN_SPEC)),
+        instancedSet(accountID: AccountID(identifier.shiftOut(Self.AID_SPEC)),
+                     accountInstance: Int(identifier.shiftOut(Self.AIN_SPEC)),
                      universe: universe,
                      accountType: accountType)
     }
@@ -271,18 +271,9 @@ public struct SteamID: Sendable {
     public static let nonSteamGS = SteamID(accountID: AccountID(2), accountInstance: 0, universe: .invalid, accountType: .invalid)
 }
 
-extension SteamID: Hashable, Comparable, CustomStringConvertible {
+
+extension SteamID: Hashable, Comparable, CustomStringConvertible, Sendable {
     // MARK: Conformances
-
-    /// SteamIDs are equal if all their properties are identical
-    public static func == (lhs: SteamID, rhs: SteamID) -> Bool {
-        lhs.value == rhs.value
-    }
-
-    /// Steam IDs can be used as dictionary keys.
-    public func hash(into hasher: inout Hasher) {
-        value.hash(into: &hasher)
-    }
 
     /// Following steam, ordering is defined on the raw 64-bit numeric value, for whatever good that does.
     public static func < (lhs: SteamID, rhs: SteamID) -> Bool {

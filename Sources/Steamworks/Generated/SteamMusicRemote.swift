@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamMusicRemote`](https://partner.steamgames.com/doc/api/ISteamMusicRemote)
 ///
 /// Access via `SteamAPI.musicRemote`.
-public struct SteamMusicRemote {
+public struct SteamMusicRemote: Sendable {
     var interface: UnsafeMutablePointer<ISteamMusicRemote> {
         SteamAPI_SteamMusicRemote_v001()
     }

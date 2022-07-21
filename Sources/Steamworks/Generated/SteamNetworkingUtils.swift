@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamNetworkingUtils`](https://partner.steamgames.com/doc/api/ISteamNetworkingUtils)
 ///
 /// Access via `SteamBaseAPI.networkingUtils` through a `SteamAPI` or `SteamGameServerAPI` instance.
-public struct SteamNetworkingUtils {
+public struct SteamNetworkingUtils: Sendable {
     var interface: OpaquePointer {
         SteamAPI_SteamNetworkingUtils_SteamAPI_v004()
     }

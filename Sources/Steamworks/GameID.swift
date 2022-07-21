@@ -17,20 +17,20 @@ private extension Int {
 public struct GameID {
     private var value: UInt64
 
-    private let MOD_SPEC = (shift: 32, mask: UInt64(0xffffffff)) // 32
-    private let TYP_SPEC = (shift: 24, mask: UInt64(0xff))       //  8
-    private let APP_SPEC = (shift: 0,  mask: UInt64(0xffffff))   // 24 = 64 total
+    private static let MOD_SPEC = (shift: 32, mask: UInt64(0xffffffff)) // 32
+    private static let TYP_SPEC = (shift: 24, mask: UInt64(0xff))       //  8
+    private static let APP_SPEC = (shift: 0,  mask: UInt64(0xffffff))   // 24 = 64 total
 
     // MARK: Properties
 
     /// The ModID of the `GameID`, max 32 bits (no typedef for this?)
     public var modID: Int {
         get {
-            Int(value.shiftOut(MOD_SPEC))
+            Int(value.shiftOut(Self.MOD_SPEC))
         }
         set {
-            precondition(newValue >= 0 && newValue <= UInt32.max, "Invalid modID \(newValue), max \(MOD_SPEC.mask)")
-            value.shiftIn(UInt32(newValue), MOD_SPEC)
+            precondition(newValue >= 0 && newValue <= UInt32.max, "Invalid modID \(newValue), max \(Self.MOD_SPEC.mask)")
+            value.shiftIn(UInt32(newValue), Self.MOD_SPEC)
         }
     }
 
@@ -46,21 +46,21 @@ public struct GameID {
     /// The type of the `GameID`.
     var gameType: GameType {
         get {
-            GameType(rawValue: value.shiftOut(TYP_SPEC)) ?? .unrepresentedInSwift
+            GameType(rawValue: value.shiftOut(Self.TYP_SPEC)) ?? .unrepresentedInSwift
         }
         set {
-            value.shiftIn(newValue.rawValue, TYP_SPEC)
+            value.shiftIn(newValue.rawValue, Self.TYP_SPEC)
         }
     }
 
     /// The `AppID` of the `GameID` - note for manual construction this is only a 24-bit value.
     public var appID: AppID {
         get {
-            AppID(value.shiftOut(APP_SPEC))
+            AppID(value.shiftOut(Self.APP_SPEC))
         }
         set {
-            precondition(appID.value <= APP_SPEC.mask, "Invalid AppID \(newValue), max \(APP_SPEC.mask)")
-            value.shiftIn(newValue.value, APP_SPEC)
+            precondition(appID.value <= Self.APP_SPEC.mask, "Invalid AppID \(newValue), max \(Self.APP_SPEC.mask)")
+            value.shiftIn(newValue.value, Self.APP_SPEC)
         }
     }
 
@@ -159,18 +159,8 @@ public struct GameID {
     }
 }
 
-extension GameID: Hashable, Comparable, CustomStringConvertible {
+extension GameID: Hashable, Comparable, CustomStringConvertible, Sendable {
     // MARK: Conformances
-
-    /// `GameID`s are equal if all their properties are identical
-    public static func == (lhs: GameID, rhs: GameID) -> Bool {
-        lhs.value == rhs.value
-    }
-
-    /// `GameID`s can be used as dictionary keys.
-    public func hash(into hasher: inout Hasher) {
-        value.hash(into: &hasher)
-    }
 
     /// Following steam, ordering is defined on the raw 64-bit numeric value, for whatever good that does.
     public static func < (lhs: GameID, rhs: GameID) -> Bool {

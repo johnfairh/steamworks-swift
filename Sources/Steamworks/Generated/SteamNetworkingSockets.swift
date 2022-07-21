@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamNetworkingSockets`](https://partner.steamgames.com/doc/api/ISteamNetworkingSockets)
 ///
 /// Access via `SteamBaseAPI.networkingSockets` through a `SteamAPI` or `SteamGameServerAPI` instance.
-public struct SteamNetworkingSockets {
+public struct SteamNetworkingSockets: Sendable {
     private let isServer: Bool
     var interface: OpaquePointer {
         isServer ? SteamAPI_SteamGameServerNetworkingSockets_SteamAPI_v012() : SteamAPI_SteamNetworkingSockets_SteamAPI_v012()

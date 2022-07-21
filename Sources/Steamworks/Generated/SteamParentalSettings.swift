@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamParentalSettings`](https://partner.steamgames.com/doc/api/ISteamParentalSettings)
 ///
 /// Access via `SteamAPI.parentalSettings`.
-public struct SteamParentalSettings {
+public struct SteamParentalSettings: Sendable {
     var interface: UnsafeMutablePointer<ISteamParentalSettings> {
         SteamAPI_SteamParentalSettings_v001()
     }

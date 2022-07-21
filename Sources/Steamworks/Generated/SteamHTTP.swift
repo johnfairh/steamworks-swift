@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamHTTP`](https://partner.steamgames.com/doc/api/ISteamHTTP)
 ///
 /// Access via `SteamBaseAPI.http` through a `SteamAPI` or `SteamGameServerAPI` instance.
-public struct SteamHTTP {
+public struct SteamHTTP: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamHTTP> {
         isServer ? SteamAPI_SteamGameServerHTTP_v003() : SteamAPI_SteamHTTP_v003()

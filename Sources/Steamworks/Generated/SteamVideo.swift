@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamVideo`](https://partner.steamgames.com/doc/api/ISteamVideo)
 ///
 /// Access via `SteamAPI.video`.
-public struct SteamVideo {
+public struct SteamVideo: Sendable {
     var interface: UnsafeMutablePointer<ISteamVideo> {
         SteamAPI_SteamVideo_v002()
     }

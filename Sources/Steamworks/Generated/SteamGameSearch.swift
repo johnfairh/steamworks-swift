@@ -11,7 +11,7 @@
 /// Steamworks [`ISteamGameSearch`](https://partner.steamgames.com/doc/api/ISteamGameSearch)
 ///
 /// Access via `SteamAPI.gameSearch`.
-public struct SteamGameSearch {
+public struct SteamGameSearch: Sendable {
     var interface: UnsafeMutablePointer<ISteamGameSearch> {
         SteamAPI_SteamGameSearch_v001()
     }
