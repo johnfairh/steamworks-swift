@@ -358,6 +358,8 @@ methods:
     returntype: RemotePlaySessionID_t
   SteamAPI_ISteamInput_GetSessionInputConfigurationSettings:
     returntype: ESteamInputConfigurationEnableType
+  SteamAPI_ISteamInput_Init:
+    name: Initialize
   SteamAPI_ISteamInput_RunFrame:
     params:
       bReservedValue:
@@ -366,6 +368,8 @@ methods:
     params:
       nFlags:
         type: ESteamControllerLEDFlag
+  SteamAPI_ISteamInput_Shutdown:
+    discardable_result: true
 #
 # ISteamInventory
 #

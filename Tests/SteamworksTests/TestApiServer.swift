@@ -5,8 +5,6 @@
 //  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
 //
 
-import Foundation
-
 import Steamworks
 import SteamworksHelpers
 import XCTest

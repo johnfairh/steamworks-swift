@@ -139,6 +139,7 @@ struct Patch: Codable {
         var bIgnore: Bool { ignore != nil }
         let callresult: String? // missing callresult
         let flat_name: String? // change called method
+        let name: String? // change method name
 
         struct Param: Codable {
             let type: String? // patch paramtype (steam type)
@@ -309,7 +310,7 @@ struct MetadataDB {
         let ignore: Bool
 
         init(base: SteamJSON.Method, patch: Patch.Method?) {
-            name = SteamName(base.methodname)
+            name = SteamName(patch?.name ?? base.methodname)
             flatName = SteamName(patch?.flat_name ?? base.methodname_flat)
             callResult = (patch?.callresult ?? base.callresult).map { SteamType($0) }
             callback = base.callback.map { SteamType($0) }

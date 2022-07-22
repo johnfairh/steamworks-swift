@@ -19,6 +19,7 @@ Current state:
 * Requires Swift 5.7, Xcode 14 beta 3
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
   tab completion even if module interface gen is beyond it
+* Can't get anything out of SteamInput so can't tell if the translation is reasonable :/
 
 ### Concept
 

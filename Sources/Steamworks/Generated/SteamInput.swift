@@ -195,8 +195,8 @@ public struct SteamInput: Sendable {
         String(SteamAPI_ISteamInput_GetStringForXboxOrigin(interface, EXboxOrigin(origin)))
     }
 
-    /// Steamworks `ISteamInput::Init()`
-    public func `init`(explicitlyCallRunFrame: Bool) -> Bool {
+    /// Steamworks `ISteamInput::Initialize()`
+    public func initialize(explicitlyCallRunFrame: Bool) -> Bool {
         SteamAPI_ISteamInput_Init(interface, explicitlyCallRunFrame)
     }
 
@@ -231,6 +231,7 @@ public struct SteamInput: Sendable {
     }
 
     /// Steamworks `ISteamInput::Shutdown()`
+    @discardableResult
     public func shutdown() -> Bool {
         SteamAPI_ISteamInput_Shutdown(interface)
     }

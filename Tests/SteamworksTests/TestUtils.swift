@@ -88,6 +88,16 @@ enum TestClient {
         client?.runFrames(callback: callback)
     }
 
+    static func runFrames(count: Int) {
+        var frameCount = 0
+        runFrames { _ in
+            if frameCount >= count {
+                stopRunningFrames()
+            }
+            frameCount += 1
+        }
+    }
+
     static func stopRunningFrames() {
         client?.stopRunningFrames()
     }

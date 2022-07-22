@@ -42,6 +42,7 @@
 		027F8379274BC05F00963383 /* GameID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F8378274BC05F00963383 /* GameID.swift */; };
 		027F837B274C0B0500963383 /* SteamUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F837A274C0B0500963383 /* SteamUtils.swift */; };
 		0287442627D8D851008F9638 /* SteamNetworkingFakeUDPPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0287442527D8D851008F9638 /* SteamNetworkingFakeUDPPort.swift */; };
+		0292DD16288AAB39003B72D6 /* TestApiInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292DD15288AAB39003B72D6 /* TestApiInput.swift */; };
 		02ABAD1227667EF2003F0A31 /* SteamNetworkingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABAD1127667EF1003F0A31 /* SteamNetworkingMessages.swift */; };
 		02ABAD142769013E003F0A31 /* SteamNetworkingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABAD132769013E003F0A31 /* SteamNetworkingUtils.swift */; };
 		02ABAD16276B959C003F0A31 /* SteamNetworkingSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABAD15276B959B003F0A31 /* SteamNetworkingSockets.swift */; };
@@ -285,6 +286,7 @@
 		027F8378274BC05F00963383 /* GameID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameID.swift; sourceTree = "<group>"; };
 		027F837A274C0B0500963383 /* SteamUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamUtils.swift; sourceTree = "<group>"; };
 		0287442527D8D851008F9638 /* SteamNetworkingFakeUDPPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamNetworkingFakeUDPPort.swift; sourceTree = "<group>"; };
+		0292DD15288AAB39003B72D6 /* TestApiInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApiInput.swift; sourceTree = "<group>"; };
 		02ABAD1027650F9D003F0A31 /* steam_networking_shims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = steam_networking_shims.h; sourceTree = "<group>"; };
 		02ABAD1127667EF1003F0A31 /* SteamNetworkingMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamNetworkingMessages.swift; sourceTree = "<group>"; };
 		02ABAD132769013E003F0A31 /* SteamNetworkingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamNetworkingUtils.swift; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 				02B81B1A2885551600780A57 /* TestApiMatchmaking.swift */,
 				02B81B1C288556BB00780A57 /* TestApiNetworking.swift */,
 				02B81B1E2885C87200780A57 /* TestApiServer.swift */,
+				0292DD15288AAB39003B72D6 /* TestApiInput.swift */,
 				027F8376274BB8E900963383 /* TestSteamID.swift */,
 				020860D227304C2300725122 /* TestUtils.swift */,
 			);
@@ -1088,6 +1091,7 @@
 				020860D327304C2300725122 /* TestUtils.swift in Sources */,
 				02B81B1B2885551600780A57 /* TestApiMatchmaking.swift in Sources */,
 				020860A8273014B900725122 /* TestGenVersion.swift in Sources */,
+				0292DD16288AAB39003B72D6 /* TestApiInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
