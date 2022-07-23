@@ -121,13 +121,27 @@ class TestApiSimple: XCTestCase {
             guard r.result == .ok else {
                 return // we wait
             }
+            defer {
+                steam.inventory.destroyResult(handle: r.handle)
+                TestClient.stopRunningFrames()
+            }
             let (rc, items) = steam.inventory.getResultItems(handle: r.handle)
             XCTAssertTrue(rc)
-            XCTAssertEqual(0, items.count)
+            // depends whether the active steam ID has the spacewar trading card
             print("GetResultItems rc=\(rc) itemCount=\(items.count)")
-
-            steam.inventory.destroyResult(handle: r.handle)
-            TestClient.stopRunningFrames()
+            if items.isEmpty {
+                print("No inventory, skipping rest of test")
+                return
+            }
+            XCTAssertEqual(1, items.count)
+            let (rc2, properties) = steam.inventory.getResultItemProperty(handle: r.handle, itemIndex: 0, propertyName: nil)
+            XCTAssertTrue(rc2)
+            let props = Set(properties.split(separator: ","))
+            XCTAssertEqual(10, props.count)
+            XCTAssertTrue(props.contains("accountid"))
+            let (rc3, accountIdStr) = steam.inventory.getResultItemProperty(handle: r.handle, itemIndex: 0, propertyName: "accountid")
+            XCTAssertTrue(rc3)
+            XCTAssertEqual(steam.user.getSteamID(), SteamID(UInt64(accountIdStr)!))
         }
 
         let (rc, _) = steam.inventory.getAllItems()
