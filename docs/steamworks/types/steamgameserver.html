@@ -4149,7 +4149,7 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public struct SteamGameServer</code></pre>
+    <pre><code class="language-swift">public struct SteamGameServer: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -4177,7 +4177,7 @@
           
           
           <nav aria-label="item details" class="j2-main-item-nav">
-            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L14-L257">Show on GitHub</a>
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L14-L260">Show on GitHub</a>
           </nav>
           
           
@@ -4497,16 +4497,16 @@
   
   
   
-    <section id="beginauthsessionauthticketauthticketsizesteamid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20beginAuthSession(authTicket%3A%20UnsafeRawPointer,%20authTicketSize%3A%20Int,%20steamID%3A%20SteamID)%20-%3E%20BeginAuthSessionResult" class="dashAnchor j2-item-dash-anchor" data-item-id="beginauthsessionauthticketauthticketsizesteamid"></a>
-    <h4 class="visually-hidden">func beginAuthSession(authTicket: UnsafeRawPointer, authTicketSize: Int, steamID: SteamID) -&gt; BeginAuthSessionResult</h4>
+    <section id="beginauthsessionauthticketsteamid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20beginAuthSession(authTicket%3A%20%5BUInt8%5D,%20steamID%3A%20SteamID)%20-%3E%20BeginAuthSessionResult" class="dashAnchor j2-item-dash-anchor" data-item-id="beginauthsessionauthticketsteamid"></a>
+    <h4 class="visually-hidden">func beginAuthSession(authTicket: [UInt8], steamID: SteamID) -&gt; BeginAuthSessionResult</h4>
     
     
-    <a class="j2-item-title" href="#_beginauthsessionauthticketauthticketsizesteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_beginauthsessionauthticketauthticketsizesteamid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>beginAuthSession<span class="j2-item-secondary">(</span>authTicket<span class="j2-item-secondary">: UnsafeRawPointer, </span>authTicketSize<span class="j2-item-secondary">: Int, </span>steamID<span class="j2-item-secondary">: SteamID) -&gt; BeginAuthSessionResult</span></span>
+    <a class="j2-item-title" href="#_beginauthsessionauthticketsteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_beginauthsessionauthticketsteamid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>beginAuthSession<span class="j2-item-secondary">(</span>authTicket<span class="j2-item-secondary">: [UInt8], </span>steamID<span class="j2-item-secondary">: SteamID) -&gt; BeginAuthSessionResult</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_beginauthsessionauthticketauthticketsizesteamid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_beginauthsessionauthticketsteamid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4530,9 +4530,8 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func beginAuthSession(
-    authTicket: UnsafeRawPointer, authTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
-) -&gt; <a href="../../steamworks/types/beginauthsessionresult.html?swift">BeginAuthSessionResult</a></code></pre>
+    <pre><code class="language-swift">public func beginAuthSession(authTicket: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>], steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>)
+    -&gt; <a href="../../steamworks/types/beginauthsessionresult.html?swift">BeginAuthSessionResult</a></code></pre>
   </div>
 
 
@@ -4922,16 +4921,16 @@
   
   
   
-    <section id="getauthsessionticketticketmaxticketsize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getAuthSessionTicket(ticket%3A%20UnsafeMutableRawPointer,%20maxTicketSize%3A%20Int)%20-%3E%20(rc%3A%20HAuthTicket,%20ticketSize%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getauthsessionticketticketmaxticketsize"></a>
-    <h4 class="visually-hidden">func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -&gt; (rc: HAuthTicket, ticketSize: Int)</h4>
+    <section id="getauthsessionticketmaxticketsize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getAuthSessionTicket(maxTicketSize%3A%20Int)%20-%3E%20(rc%3A%20HAuthTicket,%20ticket%3A%20%5BUInt8%5D,%20ticketSize%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getauthsessionticketmaxticketsize"></a>
+    <h4 class="visually-hidden">func getAuthSessionTicket(maxTicketSize: Int) -&gt; (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int)</h4>
     
     
-    <a class="j2-item-title" href="#_getauthsessionticketticketmaxticketsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getauthsessionticketticketmaxticketsize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getAuthSessionTicket<span class="j2-item-secondary">(</span>ticket<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>maxTicketSize<span class="j2-item-secondary">: Int) -&gt; (rc: HAuthTicket, ticketSize: Int)</span></span>
+    <a class="j2-item-title" href="#_getauthsessionticketmaxticketsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getauthsessionticketmaxticketsize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getAuthSessionTicket<span class="j2-item-secondary">(</span>maxTicketSize<span class="j2-item-secondary">: Int) -&gt; (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int)</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getauthsessionticketticketmaxticketsize">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getauthsessionticketmaxticketsize">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4955,9 +4954,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getAuthSessionTicket(
-    ticket: UnsafeMutableRawPointer, maxTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
-) -&gt; (rc: <a href="../../steamworks/types/hauthticket1.html?swift">HAuthTicket</a>, ticketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func getAuthSessionTicket(maxTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = 1024) -&gt; (
+    rc: <a href="../../steamworks/types/hauthticket1.html?swift">HAuthTicket</a>, ticket: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>], ticketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+)</code></pre>
   </div>
 
 
@@ -4972,7 +4971,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L89-L93">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L89-L96">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5032,7 +5031,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L96-L98">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L99-L101">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5045,12 +5044,12 @@
   
   
     <section id="getnextoutgoingpacketoutmaxoutsize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getNextOutgoingPacket(out%3A%20UnsafeMutableRawPointer,%20maxOutSize%3A%20Int)%20-%3E%20(rc%3A%20Int,%20netAdr%3A%20Int,%20port%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getnextoutgoingpacketoutmaxoutsize"></a>
-    <h4 class="visually-hidden">func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -&gt; (rc: Int, netAdr: Int, port: Int)</h4>
+    <a name="//apple_ref/cpp/Method/func%20getNextOutgoingPacket(out%3A%20UnsafeMutableRawPointer,%20maxOutSize%3A%20Int)%20-%3E%20(rc%3A%20Int,%20netAdr%3A%20Int,%20port%3A%20UInt16)" class="dashAnchor j2-item-dash-anchor" data-item-id="getnextoutgoingpacketoutmaxoutsize"></a>
+    <h4 class="visually-hidden">func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: Int) -&gt; (rc: Int, netAdr: Int, port: UInt16)</h4>
     
     
     <a class="j2-item-title" href="#_getnextoutgoingpacketoutmaxoutsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getnextoutgoingpacketoutmaxoutsize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getNextOutgoingPacket<span class="j2-item-secondary">(</span>out<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>maxOutSize<span class="j2-item-secondary">: Int) -&gt; (rc: Int, netAdr: Int, port: Int)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getNextOutgoingPacket<span class="j2-item-secondary">(</span>out<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>maxOutSize<span class="j2-item-secondary">: Int) -&gt; (rc: Int, netAdr: Int, port: UInt16)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_getnextoutgoingpacketoutmaxoutsize">
@@ -5078,7 +5077,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getNextOutgoingPacket(out: UnsafeMutableRawPointer, maxOutSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
-    -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, netAdr: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, port: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, netAdr: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, port: <a href="https://developer.apple.com/documentation/swift/uint16?language=swift">UInt16</a>)</code></pre>
   </div>
 
 
@@ -5093,7 +5092,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L101-L106">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L104-L109">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5153,7 +5152,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L109-L111">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L112-L114">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5213,7 +5212,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L114-L117">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L117-L120">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5273,7 +5272,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L120-L124">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L123-L127">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5333,7 +5332,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L127-L129">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L130-L132">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5346,12 +5345,12 @@
   
   
     <section id="handleincomingpacketdatadatasizesrcipsrcport" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20handleIncomingPacket(data%3A%20UnsafeRawPointer,%20dataSize%3A%20Int,%20srcIP%3A%20Int,%20srcPort%3A%20Int)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="handleincomingpacketdatadatasizesrcipsrcport"></a>
-    <h4 class="visually-hidden">func handleIncomingPacket(data: UnsafeRawPointer, dataSize: Int, srcIP: Int, srcPort: Int) -&gt; Bool</h4>
+    <a name="//apple_ref/cpp/Method/func%20handleIncomingPacket(data%3A%20UnsafeRawPointer,%20dataSize%3A%20Int,%20srcIP%3A%20Int,%20srcPort%3A%20UInt16)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="handleincomingpacketdatadatasizesrcipsrcport"></a>
+    <h4 class="visually-hidden">func handleIncomingPacket(data: UnsafeRawPointer, dataSize: Int, srcIP: Int, srcPort: UInt16) -&gt; Bool</h4>
     
     
     <a class="j2-item-title" href="#_handleincomingpacketdatadatasizesrcipsrcport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_handleincomingpacketdatadatasizesrcipsrcport"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>handleIncomingPacket<span class="j2-item-secondary">(</span>data<span class="j2-item-secondary">: UnsafeRawPointer, </span>dataSize<span class="j2-item-secondary">: Int, </span>srcIP<span class="j2-item-secondary">: Int, </span>srcPort<span class="j2-item-secondary">: Int) -&gt; Bool</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>handleIncomingPacket<span class="j2-item-secondary">(</span>data<span class="j2-item-secondary">: UnsafeRawPointer, </span>dataSize<span class="j2-item-secondary">: Int, </span>srcIP<span class="j2-item-secondary">: Int, </span>srcPort<span class="j2-item-secondary">: UInt16) -&gt; Bool</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_handleincomingpacketdatadatasizesrcipsrcport">
@@ -5379,7 +5378,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func handleIncomingPacket(
-    data: UnsafeRawPointer, dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, srcIP: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, srcPort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+    data: UnsafeRawPointer, dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, srcIP: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, srcPort: <a href="https://developer.apple.com/documentation/swift/uint16?language=swift">UInt16</a>
 ) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
   </div>
 
@@ -5395,7 +5394,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L132-L134">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L135-L137">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5455,7 +5454,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L137-L139">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L140-L142">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5515,7 +5514,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L142-L144">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L145-L147">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5575,7 +5574,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L147-L149">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L150-L152">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5635,7 +5634,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L152-L154">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L155-L157">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5697,7 +5696,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L157-L161">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L160-L164">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5757,7 +5756,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L164-L166">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L167-L169">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5817,7 +5816,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L169-L171">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L172-L174">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5877,7 +5876,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L174-L176">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L177-L179">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5937,7 +5936,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L179-L181">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L182-L184">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5997,7 +5996,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L184-L186">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L187-L189">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6057,7 +6056,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L189-L191">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L192-L194">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6117,7 +6116,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L194-L196">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L197-L199">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6177,7 +6176,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L199-L201">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L202-L204">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6237,7 +6236,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L204-L206">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L207-L209">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6297,7 +6296,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L209-L211">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L212-L214">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6357,7 +6356,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L214-L216">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L217-L219">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6417,7 +6416,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L219-L221">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L222-L224">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6477,7 +6476,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L224-L226">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L227-L229">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6537,7 +6536,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L229-L231">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L232-L234">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6597,7 +6596,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L234-L236">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L237-L239">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6610,12 +6609,12 @@
   
   
     <section id="setspectatorportspectatorport" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20setSpectatorPort(spectatorPort%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="setspectatorportspectatorport"></a>
-    <h4 class="visually-hidden">func setSpectatorPort(spectatorPort: Int)</h4>
+    <a name="//apple_ref/cpp/Method/func%20setSpectatorPort(spectatorPort%3A%20UInt16)" class="dashAnchor j2-item-dash-anchor" data-item-id="setspectatorportspectatorport"></a>
+    <h4 class="visually-hidden">func setSpectatorPort(spectatorPort: UInt16)</h4>
     
     
     <a class="j2-item-title" href="#_setspectatorportspectatorport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setspectatorportspectatorport"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>setSpectatorPort<span class="j2-item-secondary">(</span>spectatorPort<span class="j2-item-secondary">: Int)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setSpectatorPort<span class="j2-item-secondary">(</span>spectatorPort<span class="j2-item-secondary">: UInt16)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_setspectatorportspectatorport">
@@ -6642,7 +6641,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func setSpectatorPort(spectatorPort: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func setSpectatorPort(spectatorPort: <a href="https://developer.apple.com/documentation/swift/uint16?language=swift">UInt16</a>)</code></pre>
   </div>
 
 
@@ -6657,7 +6656,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L239-L241">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L242-L244">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6717,7 +6716,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L244-L246">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L247-L249">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6778,7 +6777,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L249-L251">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L252-L254">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6838,7 +6837,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L254-L256">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamGameServer.swift#L257-L259">Show on GitHub</a></span>
             
           </nav>
         </div>

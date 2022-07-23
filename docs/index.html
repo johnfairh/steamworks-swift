@@ -4127,32 +4127,35 @@
           
           
           <p><img src="https://shields.io/badge/platform-macOS%20%7C%20%3F%3F-lightgrey" alt="macOS" />
-<img src="https://shields.io/badge/steamworks-1.54-lightgrey" alt="Steamworks 1.53a" />
+<img src="https://shields.io/badge/steamworks-1.54-lightgrey" alt="Steamworks 1.54" />
 <img src="https://shields.io/badge/license-MIT-black" alt="MIT" /></p>
 <h1 class="j2-anchor j2-heading heading" id="steamworksswift">
 <span data-anchor-id="steamworksswift">
 steamworks-swift
 </span></h1>
-<p>Experiment with Steamworks SDK and Swift C++ importer.</p>
+<p>A practical interface to the Steamworks SDK using the Swift C++ importer.</p>
+<p><strong>Caveat Integrator: The Swift C++ importer is a chaotic science project; this package is built on top</strong></p>
 <p>Current state:</p>
 <ul>
-<li>Requires Swift 5.7, Xcode 14 beta</li>
+<li>All Steamworks interfaces complete - see <a href="https://johnfairh.github.io/swift-steamworks/index.html">rough docs</a></li>
 <li>Code gen creates Swift versions of Steam types; callbacks and call-returns work</li>
-<li>All interfaces complete - see <a href="https://johnfairh.github.io/swift-steamworks/index.html">rough docs</a></li>
-<li>Some interface quality-of-life helpers in a spearate module</li>
-<li><code>make</code> builds and runs a demo Swift program that accesses the C++
-Steam API to initialize, do various sync and async queries, then shut it down.</li>
-<li>Separate demo showing encrypted app-ticket stuff.</li>
+<li>Some interface quality-of-life helpers in a separate <code>SteamworksHelpers</code> module</li>
+<li><code>make test</code> builds and runs unit tests that run frame loops and access portions of the Steam API
+doing various sync and async tasks.</li>
+<li>Encrypted app ticket support in separate <code>SteamworksEncryptedAppTicket</code> module</li>
+<li>Separate demo showing encrypted app-ticket stuff, <code>make run_ticket</code></li>
+<li>Requires Swift 5.7, Xcode 14 beta 3</li>
 <li>The Xcode project basically works, assumes <code>sdk</code> exists.  SourceKit can manage
-tab completion even if module interface gen is beyond it.</li>
+tab completion even if module interface gen is beyond it</li>
+<li>Can’t get anything out of SteamInput so can’t tell if the translation is reasonable :/</li>
 </ul>
 <h3 class="j2-anchor j2-heading heading" id="concept">
 <span data-anchor-id="concept">
 Concept
 </span></h3>
 <ul>
-<li>Offer a pure Swift module <code>Steamworks</code> covering all of the current Steamworks API.</li>
-<li>Leave out the deprecated and WIN32-only stuff.</li>
+<li>Offer a pure Swift module <code>Steamworks</code> covering all of the current Steamworks API</li>
+<li>Leave out the deprecated and WIN32-only stuff</li>
 <li>Do not diverge too far from the ‘real’ API names to aid docs / searching / porting:
 I think this is a better starting point than doing a complete OO analysis to carve
 out function.  Can go to build <code>SteamworksPatterns</code> or something if worthwhile.  Name
@@ -4165,13 +4168,21 @@ naming</li>
 <li>Map unions onto enums with associated values</li>
 </ul>
 </li>
-<li>Provide custom API-lifetime and message dispatch classes.</li>
-<li>Provide strongly typed handles.</li>
-<li>Access interfaces via central types.</li>
+<li>Provide custom API-lifetime and message dispatch classes</li>
+<li>Provide strongly typed handles</li>
+<li>Access interfaces via central types</li>
 <li>Use code gen to deal with the ~900 APIs and their ~400 types, taking advantage of the
-handy JSON file.  This code-gen piece is the actual main work in this project.</li>
+handy JSON file.  This code-gen piece is the actual main work in this project</li>
 <li>Provide quality-of-life helpers module <code>SteamworksHelpers</code> to wrap up API patterns
-involving multiple calls, usually determining buffer lengths.</li>
+involving multiple calls, usually determining buffer lengths</li>
+</ul>
+<h3 class="j2-anchor j2-heading heading" id="next">
+<span data-anchor-id="next">
+Next
+</span></h3>
+<ul>
+<li>Try generating a DocC package, using code-gen to make a sensible layout</li>
+<li>Port Spacewar over to Swift</li>
 </ul>
 <h3 class="j2-anchor j2-heading heading" id="api-mapping-design">
 <span data-anchor-id="api-mapping-design">
@@ -4181,14 +4192,88 @@ API mapping design
 <span data-anchor-id="lifecycle">
 Lifecycle
 </span></h3>
+<pre><code class="language-swift">// Initialization
+let steam = SteamAPI(appID: MyAppId) // or `SteamGameServerAPI`
+
+// Frame loop
+steam.runCallbacks() // or `steam.releaseCurrentThreadMemory()`
+
+// Shutdown
+// ...when `steam` goes out of scope
+</code></pre>
+<h3 class="j2-anchor j2-heading heading" id="callbacks">
+<span data-anchor-id="callbacks">
+Callbacks
+</span></h3>
+<p>C++</p>
+<pre><code class="language-cpp">STEAM_CALLBACK(MyClass, OnUserStatsReceived, UserStatsReceived_t, m_CallbackUserStatsReceived);
+
+...
+
+m_CallbackUserStatsReceived( this, &amp;MyClass::OnUserStatsReceived )
+
+...
+
+void MyClass::OnUserStatsReceived( UserStatsReceived_t *pCallback ) {
+  ...
+}
+</code></pre>
+<p>Swift</p>
+<pre><code class="language-swift">steam.onUserStatsReceived { userStatsReceived in
+  ...
+}
+</code></pre>
+<p>There are async versions too, like:</p>
+<pre><code class="language-swift">for await userStatsReceived in steam.userStatsReceived {
+  ...
+}
+</code></pre>
+<p>…but these need the panacea of custom executors to be practical.</p>
 <h4 class="j2-anchor j2-heading heading" id="functions">
 <span data-anchor-id="functions">
 Functions
 </span></h4>
 <pre><code class="language-cpp">auto handle = SteamInventory()-&gt;StartUpdateProperties();
 </code></pre>
-<pre><code class="language-swift">let handle = steamAPI.inventory.startUpdateProperties()
+<pre><code class="language-swift">let handle = steam.inventory.startUpdateProperties()
 </code></pre>
+<h3 class="j2-anchor j2-heading heading" id="callreturn-style">
+<span data-anchor-id="callreturn-style">
+Call-return style
+</span></h3>
+<p>C++</p>
+<pre><code class="language-cpp">CCallResult&lt;MyClass, FriendsGetFollowerCount_t&gt; m_GetFollowerCountCallResult;
+
+...
+
+auto hSteamAPICall = SteamFriends.GetFollowerCount(steamID);
+m_GetFollowerCountCallResult.Set(hSteamAPICall, this, &amp;MyClass::OnGetFollowerCount);
+
+...
+
+void MyClass::OnGetFollowerCount(FriendsGetFollowerCount_t *pCallback, bool bIOFailure) {
+  ...
+}
+
+</code></pre>
+<p>Swift</p>
+<pre><code class="language-swift">steam.friends.getFollowerCount(steamID: steamID) { getFollowerCount in
+  guard let getFollowerCount = getFollowerCount else {
+    // `bIOFailure` case
+    ...
+  }
+  ...
+}
+</code></pre>
+<p>Again there are async versions that are impractical for now:</p>
+<pre><code class="language-swift">let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
+</code></pre>
+<h3 class="j2-anchor j2-heading heading" id="arraylength-parameters">
+<span data-anchor-id="arraylength-parameters">
+Array-length parameters
+</span></h3>
+<p>Parameters carrying the length of an input array are discarded because Swift arrays
+carry their length with them.</p>
 <h3 class="j2-anchor j2-heading heading" id="out-parameters">
 <span data-anchor-id="out-parameters">
 ‘Out’ parameters
@@ -4198,7 +4283,7 @@ is <code>void</code> then as the sole return value.</p>
 <pre><code class="language-cpp">SteamInventoryResult_t result;
 bool rc = SteamInventory()-&gt;GrantPromoItems(&amp;result);
 </code></pre>
-<pre><code class="language-swift">let (rc, result) = steamAPI.inventory.grantPromotItems()
+<pre><code class="language-swift">let (rc, result) = steamAPI.inventory.grantPromoItems()
 </code></pre>
 <h3 class="j2-anchor j2-heading heading" id="optional-out-parameters">
 <span data-anchor-id="optional-out-parameters">
@@ -4230,8 +4315,6 @@ bool rc2 = SteamInventory()-&gt;GetItemDefinitions(itemDefIDs, &amp;itemDefIDCou
 let (rc2, itemDefIDs, _) = steamAPI.inventory.
                                getItemDefinitionIDs(itemDefIDsArraySize: itemDefIDCount)
 </code></pre>
-<p>This pattern is a best-effort translation of the Steamworks API that inherently requires two
-calls - still pretty ugly and would expect to be wrapped up in a utility.</p>
 <h3 class="j2-anchor j2-heading heading" id="default-parameter-values">
 <span data-anchor-id="default-parameter-values">
 Default parameter values
@@ -4245,23 +4328,25 @@ way in the <code>SteamworksHelpers</code> module.</p>
 <span data-anchor-id="swift-c-bugs">
 Swift C++ Bugs
 </span></h3>
-<p>Tech limitations, on 5.6:</p>
+<p>Tech limitations, on 5.7 Xcode 14.0b3:</p>
 <ul>
-<li>Have to manually tell Swift to link with <code>libc++</code>.  Verify by commenting from
-Makefile.  When resolved tidy Makefile.</li>
-<li>Importing <code>Dispatch</code> and <code>-enable-cxx-interop</code> makes <code>DispatchSemaphore</code> disappear
-but not the rest of the module?? Work around.  When resolved rewrite mutex.</li>
+<li><del>Have to manually tell Swift to link with <code>libc++</code>.  Verify by commenting from
+Makefile.  When resolved tidy Makefile.</del> currently fixed in 5.7</li>
+<li><del>Importing <code>Dispatch</code> and <code>-enable-cxx-interop</code> makes <code>DispatchSemaphore</code> disappear
+but not the rest of the module?? Work around.  When resolved rewrite mutex.</del> currently
+fixed in 5.7</li>
 <li>Some structures/classes aren’t imported – the common factor seems to be a <code>protected</code>
 destructor.  Verify by trying to use <code>SteamNetworkingMessage_t</code>.</li>
-<li>Something goes wrong storing pointers to base classes and they get nobbled by
-something.  Verify by making <a href="steamworks/types/steamipaddress.html?swift"><code>SteamIPAddress</code></a> a struct, changing interfaces to cache
-the interface pointers.</li>
-<li>C++ types with <code>operator ==</code> don’t have <a href="https://developer.apple.com/documentation/swift/equatable?language=swift" class="j2-swift"><code>Equatable</code></a><a href="https://developer.apple.com/documentation/swift/equatable?language=objc" class="j2-objc j2-secondary"><code>Equatable</code></a> generated.  Verify with
-<a href="steamworks/types/steamnetworkingipaddr.html?swift"><code>SteamNetworkingIPAddr</code></a>.</li>
-<li>Importing <code>Foundation</code> and <code>-enable-cxx-interop</code> and a C++ module goes wrong.  Swift
+<li>Something goes wrong storing pointers to classes and they get nobbled by something.
+Verify by making <a href="steamworks/types/steamipaddress.html?swift"><code>SteamIPAddress</code></a> a struct, changing interfaces to cache the interface
+pointers.</li>
+<li>Some C++ types with <code>operator ==</code> don’t have <a href="https://developer.apple.com/documentation/swift/equatable?language=swift" class="j2-swift"><code>Equatable</code></a><a href="https://developer.apple.com/documentation/swift/equatable?language=objc" class="j2-objc j2-secondary"><code>Equatable</code></a> generated.  Verify with
+<a href="steamworks/types/steamnetworkingipaddr.html?swift"><code>SteamNetworkingIPAddr</code></a>.  Got worse in 5.7</li>
+<li><del>Importing <code>Foundation</code> and <code>-enable-cxx-interop</code> and a C++ module goes wrong.  Swift
 5.6 doesn’t crash; worse the compiler goes slow, spits out warnings, then the binary
-runs like treacle.  Will aim to not depend on Foundation, see how that goes.</li>
-<li>Calls to (?pure) virtual functions aren’t generated properly: Swift generates a ref
+runs like treacle.  Will aim to not depend on Foundation, see how that goes.</del> seems
+fixed in 5.7 but build is really slow - keep up not using Foundation?</li>
+<li>Calls to virtual functions aren’t generated properly: Swift generates a ref
 to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
 usable in practice.  Will use the flat API.</li>
 <li>Anonymous enums are not imported at all.  Affects callback etc. ID constants.
@@ -4321,10 +4406,6 @@ ISteamNetworkingMessages, ISteamNetworkingSockets, ISteamNetworkingUtils,
 ISteamParentalSettings, ISteamParties, ISteamRemotePlay, ISteamRemoteStorage,
 ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo,
 SteamEncryptedAppTicket</p>
-<p>Left to do:</p>
-<ul>
-<li>Pondering of int types etc.</li>
-</ul>
 <p>Skip:</p>
 <ul>
 <li>ISteamAppTicket - er not actually a thing?</li>
@@ -4346,6 +4427,8 @@ JSON notes
 <code>SteamDatagramGameCoordinatorServerLogin</code>, <code>SteamDatagramHostedAddress</code> are missing
 from the header files.  The online API docs are hilariously broken here, scads of
 broken links.  Have to wait for Valve to fix this.</p>
+<p>I found some of this in the SDR SDK, but it’s not supported on macOS and uses actual
+grown-up C++ with <code>std::string</code> and friends so best leave it alone for now.</p>
 </li>
 <li>
 <p><code>SteamNetworkingMessage_t</code> doesn’t import into Swift.  Probably stumbling into a hole

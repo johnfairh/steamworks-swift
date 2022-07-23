@@ -4151,7 +4151,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public struct GameID
 
-extension GameID: <a href="https://developer.apple.com/documentation/swift/hashable?language=swift">Hashable</a>, <a href="https://developer.apple.com/documentation/swift/comparable?language=swift">Comparable</a>, <a href="https://developer.apple.com/documentation/swift/customstringconvertible?language=swift">CustomStringConvertible</a></code></pre>
+extension GameID: <a href="https://developer.apple.com/documentation/swift/hashable?language=swift">Hashable</a>, <a href="https://developer.apple.com/documentation/swift/comparable?language=swift">Comparable</a>, <a href="https://developer.apple.com/documentation/swift/customstringconvertible?language=swift">CustomStringConvertible</a>, <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -4911,135 +4911,15 @@ extension GameID: <a href="https://developer.apple.com/documentation/swift/hasha
   
   
     <section id="gameid-gameid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Function/static%20func%20==(lhs%3A%20GameID,%20rhs%3A%20GameID)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="gameid-gameid"></a>
-    <h4 class="visually-hidden">static func ==(lhs: GameID, rhs: GameID) -&gt; Bool</h4>
-    
-    
-    <a class="j2-item-title" href="#_gameid-gameid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_gameid-gameid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">static func </span>==<span class="j2-item-secondary">(</span>lhs<span class="j2-item-secondary">: GameID, </span>rhs<span class="j2-item-secondary">: GameID) -&gt; Bool</span></span>
-        
-      </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_gameid-gameid">
-      <div class="j2-item-popopen">
-        <div class="j2-item-popopen-pointer" role="none presentation"></div>
-        <div class="j2-item-popopen-body">
-          
-            <div class="clearfix">
-              
-  
-
-
-              
-
-
-<p><a href="../../steamworks/types/gameid.html?swift"><code>GameID</code></a>s are equal if all their properties are identical</p>
-
-
-
-
-            </div>
-            <h5>Declaration</h5>
-            <div class="j2-item-declaration">
-              
-  <div class="j2-swift">
-    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public static func == (lhs: <a href="../../steamworks/types/gameid.html?swift">GameID</a>, rhs: <a href="../../steamworks/types/gameid.html?swift">GameID</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
-  </div>
-
-
-
-            </div>
-            
-
-
-
-          
-
-          <nav class="j2-item-nav" aria-label="item details">
-            
-            
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/GameID.swift#L166-L168">Show on GitHub</a></span>
-            
-          </nav>
-        </div>
-      </div>
-    </div>
-    
-  </section>
-  
-  
-  
-  
-    <section id="hashinto" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20hash(into%3A%20inout%20Hasher)" class="dashAnchor j2-item-dash-anchor" data-item-id="hashinto"></a>
-    <h4 class="visually-hidden">func hash(into: inout Hasher)</h4>
-    
-    
-    <a class="j2-item-title" href="#_hashinto" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_hashinto"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>hash<span class="j2-item-secondary">(</span>into<span class="j2-item-secondary">: inout Hasher)</span></span>
-        
-      </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_hashinto">
-      <div class="j2-item-popopen">
-        <div class="j2-item-popopen-pointer" role="none presentation"></div>
-        <div class="j2-item-popopen-body">
-          
-            <div class="clearfix">
-              
-  
-
-
-              
-
-
-<p><a href="../../steamworks/types/gameid.html?swift"><code>GameID</code></a>s can be used as dictionary keys.</p>
-
-
-
-
-            </div>
-            <h5>Declaration</h5>
-            <div class="j2-item-declaration">
-              
-  <div class="j2-swift">
-    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func hash(into hasher: inout <a href="https://developer.apple.com/documentation/swift/hasher?language=swift">Hasher</a>)</code></pre>
-  </div>
-
-
-
-            </div>
-            
-
-
-
-          
-
-          <nav class="j2-item-nav" aria-label="item details">
-            
-            
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/GameID.swift#L171-L173">Show on GitHub</a></span>
-            
-          </nav>
-        </div>
-      </div>
-    </div>
-    
-  </section>
-  
-  
-  
-  
-    <section id="gameid-gameid1" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Function/static%20func%20%3C(lhs%3A%20GameID,%20rhs%3A%20GameID)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="gameid-gameid1"></a>
+    <a name="//apple_ref/cpp/Function/static%20func%20%3C(lhs%3A%20GameID,%20rhs%3A%20GameID)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="gameid-gameid"></a>
     <h4 class="visually-hidden">static func &lt;(lhs: GameID, rhs: GameID) -&gt; Bool</h4>
     
     
-    <a class="j2-item-title" href="#_gameid-gameid1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_gameid-gameid1"><code>
+    <a class="j2-item-title" href="#_gameid-gameid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_gameid-gameid"><code>
         <span class="j2-swift"><span class="j2-item-secondary">static func </span>&lt;<span class="j2-item-secondary">(</span>lhs<span class="j2-item-secondary">: GameID, </span>rhs<span class="j2-item-secondary">: GameID) -&gt; Bool</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_gameid-gameid1">
+    <div class="collapse  j2-item-popopen-wrapper" id="_gameid-gameid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5078,7 +4958,7 @@ extension GameID: <a href="https://developer.apple.com/documentation/swift/hasha
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/GameID.swift#L176-L178">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/GameID.swift#L166-L168">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5138,7 +5018,7 @@ extension GameID: <a href="https://developer.apple.com/documentation/swift/hasha
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/GameID.swift#L181-L183">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/GameID.swift#L171-L173">Show on GitHub</a></span>
             
           </nav>
         </div>

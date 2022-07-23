@@ -4149,7 +4149,7 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public struct SteamMusicRemote</code></pre>
+    <pre><code class="language-swift">public struct SteamMusicRemote: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -5533,12 +5533,12 @@ public func resetQueueEntries() -&gt; <a href="https://developer.apple.com/docum
   
   
     <section id="setpngicon64x64bufferbuffersize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20setPNGIcon64x64(buffer%3A%20UnsafeMutableRawPointer,%20bufferSize%3A%20Int)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="setpngicon64x64bufferbuffersize"></a>
-    <h4 class="visually-hidden">func setPNGIcon64x64(buffer: UnsafeMutableRawPointer, bufferSize: Int) -&gt; Bool</h4>
+    <a name="//apple_ref/cpp/Method/func%20setPNGIcon64x64(buffer%3A%20UnsafeRawPointer,%20bufferSize%3A%20Int)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="setpngicon64x64bufferbuffersize"></a>
+    <h4 class="visually-hidden">func setPNGIcon64x64(buffer: UnsafeRawPointer, bufferSize: Int) -&gt; Bool</h4>
     
     
     <a class="j2-item-title" href="#_setpngicon64x64bufferbuffersize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setpngicon64x64bufferbuffersize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>setPNGIcon64x64<span class="j2-item-secondary">(</span>buffer<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>bufferSize<span class="j2-item-secondary">: Int) -&gt; Bool</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setPNGIcon64x64<span class="j2-item-secondary">(</span>buffer<span class="j2-item-secondary">: UnsafeRawPointer, </span>bufferSize<span class="j2-item-secondary">: Int) -&gt; Bool</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_setpngicon64x64bufferbuffersize">
@@ -5565,8 +5565,7 @@ public func resetQueueEntries() -&gt; <a href="https://developer.apple.com/docum
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func setPNGIcon64x64(buffer: UnsafeMutableRawPointer, bufferSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
-    -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+    <pre><code class="language-swift">public func setPNGIcon64x64(buffer: UnsafeRawPointer, bufferSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
   </div>
 
 
@@ -5714,12 +5713,12 @@ public func resetQueueEntries() -&gt; <a href="https://developer.apple.com/docum
   
   
     <section id="updatecurrententrycoverartbufferbuffersize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20updateCurrentEntryCoverArt(buffer%3A%20UnsafeMutableRawPointer,%20bufferSize%3A%20Int)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="updatecurrententrycoverartbufferbuffersize"></a>
-    <h4 class="visually-hidden">func updateCurrentEntryCoverArt(buffer: UnsafeMutableRawPointer, bufferSize: Int) -&gt; Bool</h4>
+    <a name="//apple_ref/cpp/Method/func%20updateCurrentEntryCoverArt(buffer%3A%20UnsafeRawPointer,%20bufferSize%3A%20Int)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="updatecurrententrycoverartbufferbuffersize"></a>
+    <h4 class="visually-hidden">func updateCurrentEntryCoverArt(buffer: UnsafeRawPointer, bufferSize: Int) -&gt; Bool</h4>
     
     
     <a class="j2-item-title" href="#_updatecurrententrycoverartbufferbuffersize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_updatecurrententrycoverartbufferbuffersize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>updateCurrentEntryCoverArt<span class="j2-item-secondary">(</span>buffer<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>bufferSize<span class="j2-item-secondary">: Int) -&gt; Bool</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>updateCurrentEntryCoverArt<span class="j2-item-secondary">(</span>buffer<span class="j2-item-secondary">: UnsafeRawPointer, </span>bufferSize<span class="j2-item-secondary">: Int) -&gt; Bool</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_updatecurrententrycoverartbufferbuffersize">
@@ -5748,7 +5747,7 @@ public func resetQueueEntries() -&gt; <a href="https://developer.apple.com/docum
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">@discardableResult
 public func updateCurrentEntryCoverArt(
-    buffer: UnsafeMutableRawPointer, bufferSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+    buffer: UnsafeRawPointer, bufferSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
 ) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
   </div>
 

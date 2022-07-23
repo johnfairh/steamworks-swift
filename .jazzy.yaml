@@ -10,7 +10,7 @@ code_host_file_url: https://github.com/johnfairh/swift-steamworks/blob/main
 clean: true
 sdk: macosx
 theme: fw2020
-  #deployment_url: https://johnfairh.github.io/swift-steamworks/
+deployment_url: https://johnfairh.github.io/swift-steamworks/
 build_tool: spm
 modules:
   - Steamworks
@@ -47,6 +47,7 @@ custom_groups:
   - name: Structures
     children:
       - filepath /Structs.swift/
+      - filepath /ManualTypes.swift/
       - SteamID
       - GameID
   - name: Protocols

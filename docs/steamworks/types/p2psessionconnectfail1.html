@@ -4149,7 +4149,7 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public struct P2PSessionConnectFail</code></pre>
+    <pre><code class="language-swift">public struct P2PSessionConnectFail: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -4255,16 +4255,16 @@
   
   
   
-    <section id="p2psessionerror3" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Property/var%20p2PSessionError%3A%20Int" class="dashAnchor j2-item-dash-anchor" data-item-id="p2psessionerror3"></a>
-    <h4 class="visually-hidden">var p2PSessionError: Int</h4>
+    <section id="p2psessionerror4" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Property/var%20p2PSessionError%3A%20P2PSessionError" class="dashAnchor j2-item-dash-anchor" data-item-id="p2psessionerror4"></a>
+    <h4 class="visually-hidden">var p2PSessionError: P2PSessionError</h4>
     
     
-    <a class="j2-item-title" href="#_p2psessionerror3" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_p2psessionerror3"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">var </span>p2PSessionError<span class="j2-item-secondary">: Int</span></span>
+    <a class="j2-item-title" href="#_p2psessionerror4" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_p2psessionerror4"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">var </span>p2PSessionError<span class="j2-item-secondary">: P2PSessionError</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_p2psessionerror3">
+    <div class="collapse  j2-item-popopen-wrapper" id="_p2psessionerror4">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4288,7 +4288,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public let p2PSessionError: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a></code></pre>
+    <pre><code class="language-swift">public let p2PSessionError: <a href="../../steamworks/types/p2psessionerror.html?swift">P2PSessionError</a></code></pre>
   </div>
 
 
@@ -4316,12 +4316,12 @@
   
   
     <section id="initremotep2psessionerror" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Constructor/init(remote%3A%20SteamID,%20p2PSessionError%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="initremotep2psessionerror"></a>
-    <h4 class="visually-hidden">init(remote: SteamID, p2PSessionError: Int)</h4>
+    <a name="//apple_ref/cpp/Constructor/init(remote%3A%20SteamID,%20p2PSessionError%3A%20P2PSessionError)" class="dashAnchor j2-item-dash-anchor" data-item-id="initremotep2psessionerror"></a>
+    <h4 class="visually-hidden">init(remote: SteamID, p2PSessionError: P2PSessionError)</h4>
     
     
     <a class="j2-item-title" href="#_initremotep2psessionerror" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_initremotep2psessionerror"><code>
-        <span class="j2-swift">init<span class="j2-item-secondary">(</span>remote<span class="j2-item-secondary">: SteamID, </span>p2PSessionError<span class="j2-item-secondary">: Int)</span></span>
+        <span class="j2-swift">init<span class="j2-item-secondary">(</span>remote<span class="j2-item-secondary">: SteamID, </span>p2PSessionError<span class="j2-item-secondary">: P2PSessionError)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_initremotep2psessionerror">
@@ -4348,7 +4348,8 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public init(remote: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a> = <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>(), p2PSessionError: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = 0)</code></pre>
+    <pre><code class="language-swift">public init(
+    remote: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a> = <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>(), p2PSessionError: <a href="../../steamworks/types/p2psessionerror.html?swift">P2PSessionError</a> = .none)</code></pre>
   </div>
 
 

@@ -4149,7 +4149,7 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public struct SteamFriends</code></pre>
+    <pre><code class="language-swift">public struct SteamFriends: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -4177,7 +4177,7 @@
           
           
           <nav aria-label="item details" class="j2-main-item-nav">
-            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L14-L504">Show on GitHub</a>
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L14-L510">Show on GitHub</a>
           </nav>
           
           
@@ -5286,16 +5286,16 @@
   
   
   
-    <section id="getclanchatmessageclanchatmessageindextexttextmaxsize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getClanChatMessage(clanChat%3A%20SteamID,%20messageIndex%3A%20Int,%20text%3A%20UnsafeMutableRawPointer,%20textMaxSize%3A%20Int)%20-%3E%20(rc%3A%20Int,%20chatEntryType%3A%20ChatEntryType,%20chatter%3A%20SteamID)" class="dashAnchor j2-item-dash-anchor" data-item-id="getclanchatmessageclanchatmessageindextexttextmaxsize"></a>
-    <h4 class="visually-hidden">func getClanChatMessage(clanChat: SteamID, messageIndex: Int, text: UnsafeMutableRawPointer, textMaxSize: Int) -&gt; (rc: Int, chatEntryType: ChatEntryType, chatter: SteamID)</h4>
+    <section id="getclanchatmessageclanchatmessageindextextmaxsize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getClanChatMessage(clanChat%3A%20SteamID,%20messageIndex%3A%20Int,%20textMaxSize%3A%20Int)%20-%3E%20(rc%3A%20Int,%20text%3A%20String,%20chatEntryType%3A%20ChatEntryType,%20chatter%3A%20SteamID)" class="dashAnchor j2-item-dash-anchor" data-item-id="getclanchatmessageclanchatmessageindextextmaxsize"></a>
+    <h4 class="visually-hidden">func getClanChatMessage(clanChat: SteamID, messageIndex: Int, textMaxSize: Int) -&gt; (rc: Int, text: String, chatEntryType: ChatEntryType, chatter: SteamID)</h4>
     
     
-    <a class="j2-item-title" href="#_getclanchatmessageclanchatmessageindextexttextmaxsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getclanchatmessageclanchatmessageindextexttextmaxsize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getClanChatMessage<span class="j2-item-secondary">(</span>clanChat<span class="j2-item-secondary">: SteamID, </span>messageIndex<span class="j2-item-secondary">: Int, </span>text<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>textMaxSize<span class="j2-item-secondary">: Int) -&gt; (rc: Int, chatEntryType: ChatEntryType, chatter: SteamID)</span></span>
+    <a class="j2-item-title" href="#_getclanchatmessageclanchatmessageindextextmaxsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getclanchatmessageclanchatmessageindextextmaxsize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getClanChatMessage<span class="j2-item-secondary">(</span>clanChat<span class="j2-item-secondary">: SteamID, </span>messageIndex<span class="j2-item-secondary">: Int, </span>textMaxSize<span class="j2-item-secondary">: Int) -&gt; (rc: Int, text: String, chatEntryType: ChatEntryType, chatter: SteamID)</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getclanchatmessageclanchatmessageindextexttextmaxsize">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getclanchatmessageclanchatmessageindextextmaxsize">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5320,9 +5320,9 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getClanChatMessage(
-    clanChat: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, messageIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, text: UnsafeMutableRawPointer,
-    textMaxSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
-) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, chatEntryType: <a href="../../steamworks/types/chatentrytype.html?swift">ChatEntryType</a>, chatter: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>)</code></pre>
+    clanChat: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, messageIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    textMaxSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = <a href="../../steamworks/types/steamconstants.html?swift#chatmetadatamaxsize">SteamConstants.chatMetadataMaxSize</a> + 1
+) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, text: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, chatEntryType: <a href="../../steamworks/types/chatentrytype.html?swift">ChatEntryType</a>, chatter: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>)</code></pre>
   </div>
 
 
@@ -5337,7 +5337,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L124-L129">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L124-L132">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5397,7 +5397,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L132-L134">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L135-L137">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5457,7 +5457,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L137-L139">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L140-L142">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5517,7 +5517,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L142-L144">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L145-L147">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5577,7 +5577,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L147-L149">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L150-L152">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5637,7 +5637,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L152-L154">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L155-L157">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5697,7 +5697,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L157-L159">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L160-L162">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5757,7 +5757,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L162-L164">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L165-L167">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5817,7 +5817,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L167-L169">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L170-L172">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5878,7 +5878,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L172-L175">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L175-L178">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5938,7 +5938,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L178-L182">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L181-L185">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5999,7 +5999,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L185-L187">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L188-L190">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6059,7 +6059,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L190-L192">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L193-L195">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6119,7 +6119,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L195-L197">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L198-L200">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6179,7 +6179,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L200-L202">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L203-L205">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6239,7 +6239,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L205-L207">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L208-L210">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6300,7 +6300,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L210-L212">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L213-L215">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6362,7 +6362,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L215-L223">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L218-L226">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6374,16 +6374,16 @@
   
   
   
-    <section id="getfriendmessagefriendmessageidindexdatadatasize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getFriendMessage(friend%3A%20SteamID,%20messageIDIndex%3A%20Int,%20data%3A%20UnsafeMutableRawPointer,%20dataSize%3A%20Int)%20-%3E%20(rc%3A%20Int,%20chatEntryType%3A%20ChatEntryType)" class="dashAnchor j2-item-dash-anchor" data-item-id="getfriendmessagefriendmessageidindexdatadatasize"></a>
-    <h4 class="visually-hidden">func getFriendMessage(friend: SteamID, messageIDIndex: Int, data: UnsafeMutableRawPointer, dataSize: Int) -&gt; (rc: Int, chatEntryType: ChatEntryType)</h4>
+    <section id="getfriendmessagefriendmessageidindexdatasize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getFriendMessage(friend%3A%20SteamID,%20messageIDIndex%3A%20Int,%20dataSize%3A%20Int)%20-%3E%20(rc%3A%20Int,%20data%3A%20String,%20chatEntryType%3A%20ChatEntryType)" class="dashAnchor j2-item-dash-anchor" data-item-id="getfriendmessagefriendmessageidindexdatasize"></a>
+    <h4 class="visually-hidden">func getFriendMessage(friend: SteamID, messageIDIndex: Int, dataSize: Int) -&gt; (rc: Int, data: String, chatEntryType: ChatEntryType)</h4>
     
     
-    <a class="j2-item-title" href="#_getfriendmessagefriendmessageidindexdatadatasize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getfriendmessagefriendmessageidindexdatadatasize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getFriendMessage<span class="j2-item-secondary">(</span>friend<span class="j2-item-secondary">: SteamID, </span>messageIDIndex<span class="j2-item-secondary">: Int, </span>data<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>dataSize<span class="j2-item-secondary">: Int) -&gt; (rc: Int, chatEntryType: ChatEntryType)</span></span>
+    <a class="j2-item-title" href="#_getfriendmessagefriendmessageidindexdatasize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getfriendmessagefriendmessageidindexdatasize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getFriendMessage<span class="j2-item-secondary">(</span>friend<span class="j2-item-secondary">: SteamID, </span>messageIDIndex<span class="j2-item-secondary">: Int, </span>dataSize<span class="j2-item-secondary">: Int) -&gt; (rc: Int, data: String, chatEntryType: ChatEntryType)</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getfriendmessagefriendmessageidindexdatadatasize">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getfriendmessagefriendmessageidindexdatasize">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6408,9 +6408,9 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getFriendMessage(
-    friend: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, messageIDIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, data: UnsafeMutableRawPointer,
-    dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
-) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, chatEntryType: <a href="../../steamworks/types/chatentrytype.html?swift">ChatEntryType</a>)</code></pre>
+    friend: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, messageIDIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = <a href="../../steamworks/types/steamconstants.html?swift#chatmetadatamaxsize">SteamConstants.chatMetadataMaxSize</a> + 1
+) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, data: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, chatEntryType: <a href="../../steamworks/types/chatentrytype.html?swift">ChatEntryType</a>)</code></pre>
   </div>
 
 
@@ -6425,7 +6425,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L226-L230">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L229-L236">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6485,7 +6485,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L233-L235">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L239-L241">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6546,7 +6546,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L238-L240">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L244-L246">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6606,7 +6606,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L243-L245">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L249-L251">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6666,7 +6666,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L248-L250">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L254-L256">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6726,7 +6726,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L253-L255">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L259-L261">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6787,7 +6787,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L258-L260">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L264-L266">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6847,7 +6847,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L263-L265">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L269-L271">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6907,7 +6907,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L268-L270">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L274-L276">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6967,7 +6967,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L273-L275">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L279-L281">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7027,7 +7027,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L278-L280">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L284-L286">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7087,7 +7087,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L283-L285">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L289-L291">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7149,7 +7149,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L288-L292">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L294-L298">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7209,7 +7209,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L295-L297">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L301-L303">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7269,7 +7269,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L300-L302">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L306-L308">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7329,7 +7329,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L305-L307">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L311-L313">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7389,7 +7389,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L310-L312">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L316-L318">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7449,7 +7449,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L315-L317">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L321-L323">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7509,7 +7509,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L320-L322">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L326-L328">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7569,7 +7569,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L325-L327">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L331-L333">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7632,7 +7632,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L330-L332">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L336-L338">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7695,7 +7695,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L335-L337">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L341-L343">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7755,7 +7755,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L340-L342">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L346-L348">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7815,7 +7815,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L345-L347">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L351-L353">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7875,7 +7875,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L350-L352">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L356-L358">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7935,7 +7935,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L355-L357">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L361-L363">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7995,7 +7995,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L360-L362">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L366-L368">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8055,7 +8055,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L365-L367">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L371-L373">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8115,7 +8115,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L370-L372">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L376-L378">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8175,7 +8175,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L375-L377">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L381-L383">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8236,7 +8236,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L380-L383">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L386-L389">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8296,7 +8296,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L386-L390">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L392-L396">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8356,7 +8356,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L393-L395">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L399-L401">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8418,7 +8418,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L398-L401">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L404-L407">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8479,7 +8479,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L404-L408">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L410-L414">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8539,7 +8539,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L411-L413">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L417-L419">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8599,7 +8599,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L416-L418">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L422-L424">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8659,7 +8659,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L421-L423">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L427-L429">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8719,7 +8719,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L426-L428">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L432-L434">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8780,7 +8780,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L431-L434">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L437-L440">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8841,7 +8841,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L437-L441">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L443-L447">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8902,7 +8902,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L444-L447">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L450-L453">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8963,7 +8963,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L450-L454">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L456-L460">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9023,7 +9023,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L457-L459">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L463-L465">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9083,7 +9083,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L462-L464">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L468-L470">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9143,7 +9143,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L467-L469">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L473-L475">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9203,7 +9203,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L472-L474">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L478-L480">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9264,7 +9264,7 @@ public func setListenForFriendsMessages(interceptEnabled: <a href="https://devel
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L478-L480">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L484-L486">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9326,7 +9326,7 @@ public func setListenForFriendsMessages(interceptEnabled: <a href="https://devel
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L483-L486">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L489-L492">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9386,7 +9386,7 @@ public func setListenForFriendsMessages(interceptEnabled: <a href="https://devel
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L489-L493">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L495-L499">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9446,7 +9446,7 @@ public func setListenForFriendsMessages(interceptEnabled: <a href="https://devel
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L496-L498">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L502-L504">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9506,7 +9506,7 @@ public func setListenForFriendsMessages(interceptEnabled: <a href="https://devel
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L501-L503">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamFriends.swift#L507-L509">Show on GitHub</a></span>
             
           </nav>
         </div>

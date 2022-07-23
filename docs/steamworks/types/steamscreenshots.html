@@ -4149,7 +4149,7 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public struct SteamScreenshots</code></pre>
+    <pre><code class="language-swift">public struct SteamScreenshots: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -4682,12 +4682,12 @@
   
   
     <section id="writescreenshotrgbrgbsizewidthheight" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20writeScreenshot(rgb%3A%20UnsafeMutableRawPointer,%20rgbSize%3A%20Int,%20width%3A%20Int,%20height%3A%20Int)%20-%3E%20ScreenshotHandle" class="dashAnchor j2-item-dash-anchor" data-item-id="writescreenshotrgbrgbsizewidthheight"></a>
-    <h4 class="visually-hidden">func writeScreenshot(rgb: UnsafeMutableRawPointer, rgbSize: Int, width: Int, height: Int) -&gt; ScreenshotHandle</h4>
+    <a name="//apple_ref/cpp/Method/func%20writeScreenshot(rgb%3A%20UnsafeRawPointer,%20rgbSize%3A%20Int,%20width%3A%20Int,%20height%3A%20Int)%20-%3E%20ScreenshotHandle" class="dashAnchor j2-item-dash-anchor" data-item-id="writescreenshotrgbrgbsizewidthheight"></a>
+    <h4 class="visually-hidden">func writeScreenshot(rgb: UnsafeRawPointer, rgbSize: Int, width: Int, height: Int) -&gt; ScreenshotHandle</h4>
     
     
     <a class="j2-item-title" href="#_writescreenshotrgbrgbsizewidthheight" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_writescreenshotrgbrgbsizewidthheight"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>writeScreenshot<span class="j2-item-secondary">(</span>rgb<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>rgbSize<span class="j2-item-secondary">: Int, </span>width<span class="j2-item-secondary">: Int, </span>height<span class="j2-item-secondary">: Int) -&gt; ScreenshotHandle</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>writeScreenshot<span class="j2-item-secondary">(</span>rgb<span class="j2-item-secondary">: UnsafeRawPointer, </span>rgbSize<span class="j2-item-secondary">: Int, </span>width<span class="j2-item-secondary">: Int, </span>height<span class="j2-item-secondary">: Int) -&gt; ScreenshotHandle</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_writescreenshotrgbrgbsizewidthheight">
@@ -4715,7 +4715,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func writeScreenshot(
-    rgb: UnsafeMutableRawPointer, rgbSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, width: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, height: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+    rgb: UnsafeRawPointer, rgbSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, width: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, height: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
 ) -&gt; <a href="../../steamworks/types/screenshothandle1.html?swift">ScreenshotHandle</a></code></pre>
   </div>
 

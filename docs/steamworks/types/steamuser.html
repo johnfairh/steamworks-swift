@@ -4149,7 +4149,7 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public struct SteamUser</code></pre>
+    <pre><code class="language-swift">public struct SteamUser: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -4177,7 +4177,7 @@
           
           
           <nav aria-label="item details" class="j2-main-item-nav">
-            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L14-L231">Show on GitHub</a>
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L14-L239">Show on GitHub</a>
           </nav>
           
           
@@ -4196,12 +4196,12 @@
   
   
     <section id="advertisegamegameserveripserverportserver" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20advertiseGame(gameServer%3A%20SteamID,%20ipServer%3A%20Int,%20portServer%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="advertisegamegameserveripserverportserver"></a>
-    <h4 class="visually-hidden">func advertiseGame(gameServer: SteamID, ipServer: Int, portServer: Int)</h4>
+    <a name="//apple_ref/cpp/Method/func%20advertiseGame(gameServer%3A%20SteamID,%20ipServer%3A%20Int,%20portServer%3A%20UInt16)" class="dashAnchor j2-item-dash-anchor" data-item-id="advertisegamegameserveripserverportserver"></a>
+    <h4 class="visually-hidden">func advertiseGame(gameServer: SteamID, ipServer: Int, portServer: UInt16)</h4>
     
     
     <a class="j2-item-title" href="#_advertisegamegameserveripserverportserver" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_advertisegamegameserveripserverportserver"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>advertiseGame<span class="j2-item-secondary">(</span>gameServer<span class="j2-item-secondary">: SteamID, </span>ipServer<span class="j2-item-secondary">: Int, </span>portServer<span class="j2-item-secondary">: Int)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>advertiseGame<span class="j2-item-secondary">(</span>gameServer<span class="j2-item-secondary">: SteamID, </span>ipServer<span class="j2-item-secondary">: Int, </span>portServer<span class="j2-item-secondary">: UInt16)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_advertisegamegameserveripserverportserver">
@@ -4228,7 +4228,8 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func advertiseGame(gameServer: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func advertiseGame(
+    gameServer: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/uint16?language=swift">UInt16</a>)</code></pre>
   </div>
 
 
@@ -4676,16 +4677,16 @@
   
   
   
-    <section id="beginauthsessionauthticketauthticketsizesteamid1" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20beginAuthSession(authTicket%3A%20UnsafeRawPointer,%20authTicketSize%3A%20Int,%20steamID%3A%20SteamID)%20-%3E%20BeginAuthSessionResult" class="dashAnchor j2-item-dash-anchor" data-item-id="beginauthsessionauthticketauthticketsizesteamid1"></a>
+    <section id="beginauthsessionauthticketauthticketsizesteamid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20beginAuthSession(authTicket%3A%20UnsafeRawPointer,%20authTicketSize%3A%20Int,%20steamID%3A%20SteamID)%20-%3E%20BeginAuthSessionResult" class="dashAnchor j2-item-dash-anchor" data-item-id="beginauthsessionauthticketauthticketsizesteamid"></a>
     <h4 class="visually-hidden">func beginAuthSession(authTicket: UnsafeRawPointer, authTicketSize: Int, steamID: SteamID) -&gt; BeginAuthSessionResult</h4>
     
     
-    <a class="j2-item-title" href="#_beginauthsessionauthticketauthticketsizesteamid1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_beginauthsessionauthticketauthticketsizesteamid1"><code>
+    <a class="j2-item-title" href="#_beginauthsessionauthticketauthticketsizesteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_beginauthsessionauthticketauthticketsizesteamid"><code>
         <span class="j2-swift"><span class="j2-item-secondary">func </span>beginAuthSession<span class="j2-item-secondary">(</span>authTicket<span class="j2-item-secondary">: UnsafeRawPointer, </span>authTicketSize<span class="j2-item-secondary">: Int, </span>steamID<span class="j2-item-secondary">: SteamID) -&gt; BeginAuthSessionResult</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_beginauthsessionauthticketauthticketsizesteamid1">
+    <div class="collapse  j2-item-popopen-wrapper" id="_beginauthsessionauthticketauthticketsizesteamid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4922,16 +4923,16 @@
   
   
   
-    <section id="getauthsessionticketticketmaxticketsize1" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getAuthSessionTicket(ticket%3A%20UnsafeMutableRawPointer,%20maxTicketSize%3A%20Int)%20-%3E%20(rc%3A%20HAuthTicket,%20ticketSize%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getauthsessionticketticketmaxticketsize1"></a>
-    <h4 class="visually-hidden">func getAuthSessionTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -&gt; (rc: HAuthTicket, ticketSize: Int)</h4>
+    <section id="getauthsessionticketmaxticketsize1" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getAuthSessionTicket(maxTicketSize%3A%20Int)%20-%3E%20(rc%3A%20HAuthTicket,%20ticket%3A%20%5BUInt8%5D,%20ticketSize%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getauthsessionticketmaxticketsize1"></a>
+    <h4 class="visually-hidden">func getAuthSessionTicket(maxTicketSize: Int) -&gt; (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int)</h4>
     
     
-    <a class="j2-item-title" href="#_getauthsessionticketticketmaxticketsize1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getauthsessionticketticketmaxticketsize1"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getAuthSessionTicket<span class="j2-item-secondary">(</span>ticket<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>maxTicketSize<span class="j2-item-secondary">: Int) -&gt; (rc: HAuthTicket, ticketSize: Int)</span></span>
+    <a class="j2-item-title" href="#_getauthsessionticketmaxticketsize1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getauthsessionticketmaxticketsize1"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getAuthSessionTicket<span class="j2-item-secondary">(</span>maxTicketSize<span class="j2-item-secondary">: Int) -&gt; (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int)</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getauthsessionticketticketmaxticketsize1">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getauthsessionticketmaxticketsize1">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4955,9 +4956,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getAuthSessionTicket(
-    ticket: UnsafeMutableRawPointer, maxTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
-) -&gt; (rc: <a href="../../steamworks/types/hauthticket1.html?swift">HAuthTicket</a>, ticketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func getAuthSessionTicket(maxTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a> = 1024) -&gt; (
+    rc: <a href="../../steamworks/types/hauthticket1.html?swift">HAuthTicket</a>, ticket: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>], ticketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+)</code></pre>
   </div>
 
 
@@ -4972,7 +4973,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L85-L89">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L85-L92">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5034,7 +5035,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L92-L97">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L95-L100">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5094,7 +5095,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L100-L103">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L103-L106">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5154,7 +5155,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L106-L110">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L109-L113">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5166,16 +5167,16 @@
   
   
   
-    <section id="getencryptedappticketticketmaxticketsize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getEncryptedAppTicket(ticket%3A%20UnsafeMutableRawPointer,%20maxTicketSize%3A%20Int)%20-%3E%20(rc%3A%20Bool,%20ticketSize%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getencryptedappticketticketmaxticketsize"></a>
-    <h4 class="visually-hidden">func getEncryptedAppTicket(ticket: UnsafeMutableRawPointer, maxTicketSize: Int) -&gt; (rc: Bool, ticketSize: Int)</h4>
+    <section id="getencryptedappticketreturnticketmaxticketsize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getEncryptedAppTicket(returnTicket%3A%20Bool,%20maxTicketSize%3A%20Int)%20-%3E%20(rc%3A%20Bool,%20ticket%3A%20%5BUInt8%5D,%20ticketSize%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="getencryptedappticketreturnticketmaxticketsize"></a>
+    <h4 class="visually-hidden">func getEncryptedAppTicket(returnTicket: Bool, maxTicketSize: Int) -&gt; (rc: Bool, ticket: [UInt8], ticketSize: Int)</h4>
     
     
-    <a class="j2-item-title" href="#_getencryptedappticketticketmaxticketsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getencryptedappticketticketmaxticketsize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getEncryptedAppTicket<span class="j2-item-secondary">(</span>ticket<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>maxTicketSize<span class="j2-item-secondary">: Int) -&gt; (rc: Bool, ticketSize: Int)</span></span>
+    <a class="j2-item-title" href="#_getencryptedappticketreturnticketmaxticketsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getencryptedappticketreturnticketmaxticketsize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getEncryptedAppTicket<span class="j2-item-secondary">(</span>returnTicket<span class="j2-item-secondary">: Bool, </span>maxTicketSize<span class="j2-item-secondary">: Int) -&gt; (rc: Bool, ticket: [UInt8], ticketSize: Int)</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getencryptedappticketticketmaxticketsize">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getencryptedappticketreturnticketmaxticketsize">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5199,9 +5200,8 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getEncryptedAppTicket(
-    ticket: UnsafeMutableRawPointer, maxTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
-) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, ticketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func getEncryptedAppTicket(returnTicket: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = true, maxTicketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
+    -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, ticket: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>], ticketSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
   </div>
 
 
@@ -5216,7 +5216,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L113-L117">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L116-L123">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5276,7 +5276,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L120-L122">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L126-L128">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5336,7 +5336,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L125-L127">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L131-L133">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5397,7 +5397,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L130-L133">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L136-L139">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5457,7 +5457,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L136-L140">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L142-L146">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5517,7 +5517,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L143-L145">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L149-L151">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5577,7 +5577,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L148-L150">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L154-L156">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5638,7 +5638,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L153-L161">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L159-L169">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5704,7 +5704,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L164-L169">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L172-L177">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5764,7 +5764,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L172-L174">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L180-L182">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5777,12 +5777,12 @@
   
   
     <section id="initiategameconnectiondeprecatedauthblobmaxauthblobsizegameserveripserverportserversecure" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20initiateGameConnectionDEPRECATED(authBlob%3A%20UnsafeMutableRawPointer,%20maxAuthBlobSize%3A%20Int,%20gameServer%3A%20SteamID,%20ipServer%3A%20Int,%20portServer%3A%20Int,%20secure%3A%20Bool)%20-%3E%20Int" class="dashAnchor j2-item-dash-anchor" data-item-id="initiategameconnectiondeprecatedauthblobmaxauthblobsizegameserveripserverportserversecure"></a>
-    <h4 class="visually-hidden">func initiateGameConnectionDEPRECATED(authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: Int, gameServer: SteamID, ipServer: Int, portServer: Int, secure: Bool) -&gt; Int</h4>
+    <a name="//apple_ref/cpp/Method/func%20initiateGameConnectionDEPRECATED(authBlob%3A%20UnsafeMutableRawPointer,%20maxAuthBlobSize%3A%20Int,%20gameServer%3A%20SteamID,%20ipServer%3A%20Int,%20portServer%3A%20UInt16,%20secure%3A%20Bool)%20-%3E%20Int" class="dashAnchor j2-item-dash-anchor" data-item-id="initiategameconnectiondeprecatedauthblobmaxauthblobsizegameserveripserverportserversecure"></a>
+    <h4 class="visually-hidden">func initiateGameConnectionDEPRECATED(authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: Int, gameServer: SteamID, ipServer: Int, portServer: UInt16, secure: Bool) -&gt; Int</h4>
     
     
     <a class="j2-item-title" href="#_initiategameconnectiondeprecatedauthblobmaxauthblobsizegameserveripserverportserversecure" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_initiategameconnectiondeprecatedauthblobmaxauthblobsizegameserveripserverportserversecure"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>initiateGameConnectionDEPRECATED<span class="j2-item-secondary">(</span>authBlob<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>maxAuthBlobSize<span class="j2-item-secondary">: Int, </span>gameServer<span class="j2-item-secondary">: SteamID, </span>ipServer<span class="j2-item-secondary">: Int, </span>portServer<span class="j2-item-secondary">: Int, </span>secure<span class="j2-item-secondary">: Bool) -&gt; Int</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>initiateGameConnectionDEPRECATED<span class="j2-item-secondary">(</span>authBlob<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>maxAuthBlobSize<span class="j2-item-secondary">: Int, </span>gameServer<span class="j2-item-secondary">: SteamID, </span>ipServer<span class="j2-item-secondary">: Int, </span>portServer<span class="j2-item-secondary">: UInt16, </span>secure<span class="j2-item-secondary">: Bool) -&gt; Int</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_initiategameconnectiondeprecatedauthblobmaxauthblobsizegameserveripserverportserversecure">
@@ -5811,7 +5811,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func initiateGameConnectionDEPRECATED(
     authBlob: UnsafeMutableRawPointer, maxAuthBlobSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    gameServer: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, secure: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
+    gameServer: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/uint16?language=swift">UInt16</a>, secure: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
 ) -&gt; <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a></code></pre>
   </div>
 
@@ -5827,7 +5827,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L177-L179">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L185-L187">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5839,16 +5839,16 @@
   
   
   
-    <section id="requestencryptedappticketdatatoincludedatatoincludesizecompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestEncryptedAppTicket(dataToInclude%3A%20UnsafeMutableRawPointer,%20dataToIncludeSize%3A%20Int,%20completion%3A%20(EncryptedAppTicketResponse%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="requestencryptedappticketdatatoincludedatatoincludesizecompletion"></a>
-    <h4 class="visually-hidden">func requestEncryptedAppTicket(dataToInclude: UnsafeMutableRawPointer, dataToIncludeSize: Int, completion: (EncryptedAppTicketResponse?) -&gt; Void)</h4>
+    <section id="requestencryptedappticketdatatoincludecompletion" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestEncryptedAppTicket(dataToInclude%3A%20%5BUInt8%5D,%20completion%3A%20(EncryptedAppTicketResponse%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="requestencryptedappticketdatatoincludecompletion"></a>
+    <h4 class="visually-hidden">func requestEncryptedAppTicket(dataToInclude: [UInt8], completion: (EncryptedAppTicketResponse?) -&gt; Void)</h4>
     
     
-    <a class="j2-item-title" href="#_requestencryptedappticketdatatoincludedatatoincludesizecompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestencryptedappticketdatatoincludedatatoincludesizecompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEncryptedAppTicket<span class="j2-item-secondary">(</span>dataToInclude<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>dataToIncludeSize<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (EncryptedAppTicketResponse?) -&gt; Void)</span></span>
+    <a class="j2-item-title" href="#_requestencryptedappticketdatatoincludecompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestencryptedappticketdatatoincludecompletion"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEncryptedAppTicket<span class="j2-item-secondary">(</span>dataToInclude<span class="j2-item-secondary">: [UInt8], </span>completion<span class="j2-item-secondary">: (EncryptedAppTicketResponse?) -&gt; Void)</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestencryptedappticketdatatoincludedatatoincludesizecompletion">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestencryptedappticketdatatoincludecompletion">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5873,7 +5873,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestEncryptedAppTicket(
-    dataToInclude: UnsafeMutableRawPointer, dataToIncludeSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    dataToInclude: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>],
     completion: @escaping (<a href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -5889,7 +5889,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L182-L185">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L190-L193">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5901,16 +5901,16 @@
   
   
   
-    <section id="requestencryptedappticketdatatoincludedatatoincludesize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestEncryptedAppTicket(dataToInclude%3A%20UnsafeMutableRawPointer,%20dataToIncludeSize%3A%20Int)%20async%20-%3E%20EncryptedAppTicketResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestencryptedappticketdatatoincludedatatoincludesize"></a>
-    <h4 class="visually-hidden">func requestEncryptedAppTicket(dataToInclude: UnsafeMutableRawPointer, dataToIncludeSize: Int) async -&gt; EncryptedAppTicketResponse?</h4>
+    <section id="requestencryptedappticketdatatoinclude" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestEncryptedAppTicket(dataToInclude%3A%20%5BUInt8%5D)%20async%20-%3E%20EncryptedAppTicketResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestencryptedappticketdatatoinclude"></a>
+    <h4 class="visually-hidden">func requestEncryptedAppTicket(dataToInclude: [UInt8]) async -&gt; EncryptedAppTicketResponse?</h4>
     
     
-    <a class="j2-item-title" href="#_requestencryptedappticketdatatoincludedatatoincludesize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestencryptedappticketdatatoincludedatatoincludesize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEncryptedAppTicket<span class="j2-item-secondary">(</span>dataToInclude<span class="j2-item-secondary">: UnsafeMutableRawPointer, </span>dataToIncludeSize<span class="j2-item-secondary">: Int) async -&gt; EncryptedAppTicketResponse?</span></span>
+    <a class="j2-item-title" href="#_requestencryptedappticketdatatoinclude" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestencryptedappticketdatatoinclude"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEncryptedAppTicket<span class="j2-item-secondary">(</span>dataToInclude<span class="j2-item-secondary">: [UInt8]) async -&gt; EncryptedAppTicketResponse?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestencryptedappticketdatatoincludedatatoincludesize">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestencryptedappticketdatatoinclude">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5934,9 +5934,8 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestEncryptedAppTicket(
-    dataToInclude: UnsafeMutableRawPointer, dataToIncludeSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
-) async -&gt; <a href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>?</code></pre>
+    <pre><code class="language-swift">public func requestEncryptedAppTicket(dataToInclude: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>]) async
+    -&gt; <a href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>?</code></pre>
   </div>
 
 
@@ -5951,7 +5950,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L188-L192">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L196-L200">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6012,7 +6011,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L195-L198">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L203-L206">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6073,7 +6072,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L201-L205">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L209-L213">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6133,7 +6132,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L208-L210">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L216-L218">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6193,7 +6192,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L213-L215">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L221-L223">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6206,12 +6205,12 @@
   
   
     <section id="terminategameconnectiondeprecatedipserverportserver" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20terminateGameConnectionDEPRECATED(ipServer%3A%20Int,%20portServer%3A%20Int)" class="dashAnchor j2-item-dash-anchor" data-item-id="terminategameconnectiondeprecatedipserverportserver"></a>
-    <h4 class="visually-hidden">func terminateGameConnectionDEPRECATED(ipServer: Int, portServer: Int)</h4>
+    <a name="//apple_ref/cpp/Method/func%20terminateGameConnectionDEPRECATED(ipServer%3A%20Int,%20portServer%3A%20UInt16)" class="dashAnchor j2-item-dash-anchor" data-item-id="terminategameconnectiondeprecatedipserverportserver"></a>
+    <h4 class="visually-hidden">func terminateGameConnectionDEPRECATED(ipServer: Int, portServer: UInt16)</h4>
     
     
     <a class="j2-item-title" href="#_terminategameconnectiondeprecatedipserverportserver" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_terminategameconnectiondeprecatedipserverportserver"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>terminateGameConnectionDEPRECATED<span class="j2-item-secondary">(</span>ipServer<span class="j2-item-secondary">: Int, </span>portServer<span class="j2-item-secondary">: Int)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>terminateGameConnectionDEPRECATED<span class="j2-item-secondary">(</span>ipServer<span class="j2-item-secondary">: Int, </span>portServer<span class="j2-item-secondary">: UInt16)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_terminategameconnectiondeprecatedipserverportserver">
@@ -6238,7 +6237,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func terminateGameConnectionDEPRECATED(ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)</code></pre>
+    <pre><code class="language-swift">public func terminateGameConnectionDEPRECATED(ipServer: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, portServer: <a href="https://developer.apple.com/documentation/swift/uint16?language=swift">UInt16</a>)</code></pre>
   </div>
 
 
@@ -6253,7 +6252,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L218-L220">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L226-L228">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6314,7 +6313,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L223-L225">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L231-L233">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6375,7 +6374,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L228-L230">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUser.swift#L236-L238">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6387,16 +6386,16 @@
   
   
   
-    <section id="getencryptedappticketmaxsize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getEncryptedAppTicket(maxSize%3A%20Int)%20-%3E%20%5BUInt8%5D%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getencryptedappticketmaxsize"></a>
-    <h4 class="visually-hidden">func getEncryptedAppTicket(maxSize: Int) -&gt; [UInt8]?</h4>
+    <section id="getencryptedappticket" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getEncryptedAppTicket()%20-%3E%20%5BUInt8%5D%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getencryptedappticket"></a>
+    <h4 class="visually-hidden">func getEncryptedAppTicket() -&gt; [UInt8]?</h4>
     
     
-    <a class="j2-item-title" href="#_getencryptedappticketmaxsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getencryptedappticketmaxsize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getEncryptedAppTicket<span class="j2-item-secondary">(</span>maxSize<span class="j2-item-secondary">: Int) -&gt; [UInt8]?</span></span>
+    <a class="j2-item-title" href="#_getencryptedappticket" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getencryptedappticket"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getEncryptedAppTicket<span class="j2-item-secondary">() -&gt; [UInt8]?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getencryptedappticketmaxsize">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getencryptedappticket">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6411,11 +6410,10 @@
 
 <div class="j2-callout j2-callout-note">
   <div class="j2-callout-title" role=heading aria-level="6">Note</div>
-  <p>Provided by module <code>SteamworksEncryptedAppTicket</code>.</p>
+  <p>Provided by module <code>SteamworksHelpers</code>.</p>
 </div>
 
-<p>Swift-friendly wrapper to call <code>getEncryptedAppTicket(...)</code>.  You still have to know
-the max size of the encrypted ticket</p>
+<p>Steamworks <code>ISteamUser::GetEncryptedAppTicket()</code></p>
 
 
 
@@ -6426,7 +6424,7 @@ the max size of the encrypted ticket</p>
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getEncryptedAppTicket(maxSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) -&gt; [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>]?</code></pre>
+    <pre><code class="language-swift">public func getEncryptedAppTicket() -&gt; [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>]?</code></pre>
   </div>
 
 
@@ -6441,7 +6439,7 @@ the max size of the encrypted ticket</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksEncryptedAppTicket/SteamEncryptedAppTicket.swift#L15-L25">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksHelpers/SteamUser+Helpers.swift#L12-L16">Show on GitHub</a></span>
             
           </nav>
         </div>

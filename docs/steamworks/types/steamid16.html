@@ -4149,9 +4149,9 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public struct SteamID: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a>
+    <pre><code class="language-swift">public struct SteamID
 
-extension SteamID: <a href="https://developer.apple.com/documentation/swift/hashable?language=swift">Hashable</a>, <a href="https://developer.apple.com/documentation/swift/comparable?language=swift">Comparable</a>, <a href="https://developer.apple.com/documentation/swift/customstringconvertible?language=swift">CustomStringConvertible</a></code></pre>
+extension SteamID: <a href="https://developer.apple.com/documentation/swift/hashable?language=swift">Hashable</a>, <a href="https://developer.apple.com/documentation/swift/comparable?language=swift">Comparable</a>, <a href="https://developer.apple.com/documentation/swift/customstringconvertible?language=swift">CustomStringConvertible</a>, <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -5549,16 +5549,16 @@ key, so they can be grouped together by the static account key.</p>
   
   
   
-    <section id="init_297" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Constructor/init(UInt64)" class="dashAnchor j2-item-dash-anchor" data-item-id="init_297"></a>
+    <section id="init_300" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Constructor/init(UInt64)" class="dashAnchor j2-item-dash-anchor" data-item-id="init_300"></a>
     <h4 class="visually-hidden">init(UInt64)</h4>
     
     
-    <a class="j2-item-title" href="#_init_297" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_init_297"><code>
+    <a class="j2-item-title" href="#_init_300" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_init_300"><code>
         <span class="j2-swift">init<span class="j2-item-secondary">(UInt64)</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_init_297">
+    <div class="collapse  j2-item-popopen-wrapper" id="_init_300">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6373,135 +6373,15 @@ wants to support the “Join Game” option in the friends list</p>
   
   
     <section id="steamid-steamid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Function/static%20func%20==(lhs%3A%20SteamID,%20rhs%3A%20SteamID)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="steamid-steamid"></a>
-    <h4 class="visually-hidden">static func ==(lhs: SteamID, rhs: SteamID) -&gt; Bool</h4>
-    
-    
-    <a class="j2-item-title" href="#_steamid-steamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_steamid-steamid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">static func </span>==<span class="j2-item-secondary">(</span>lhs<span class="j2-item-secondary">: SteamID, </span>rhs<span class="j2-item-secondary">: SteamID) -&gt; Bool</span></span>
-        
-      </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_steamid-steamid">
-      <div class="j2-item-popopen">
-        <div class="j2-item-popopen-pointer" role="none presentation"></div>
-        <div class="j2-item-popopen-body">
-          
-            <div class="clearfix">
-              
-  
-
-
-              
-
-
-<p>SteamIDs are equal if all their properties are identical</p>
-
-
-
-
-            </div>
-            <h5>Declaration</h5>
-            <div class="j2-item-declaration">
-              
-  <div class="j2-swift">
-    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public static func == (lhs: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, rhs: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
-  </div>
-
-
-
-            </div>
-            
-
-
-
-          
-
-          <nav class="j2-item-nav" aria-label="item details">
-            
-            
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/SteamID.swift#L278-L280">Show on GitHub</a></span>
-            
-          </nav>
-        </div>
-      </div>
-    </div>
-    
-  </section>
-  
-  
-  
-  
-    <section id="hashinto2" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20hash(into%3A%20inout%20Hasher)" class="dashAnchor j2-item-dash-anchor" data-item-id="hashinto2"></a>
-    <h4 class="visually-hidden">func hash(into: inout Hasher)</h4>
-    
-    
-    <a class="j2-item-title" href="#_hashinto2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_hashinto2"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>hash<span class="j2-item-secondary">(</span>into<span class="j2-item-secondary">: inout Hasher)</span></span>
-        
-      </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_hashinto2">
-      <div class="j2-item-popopen">
-        <div class="j2-item-popopen-pointer" role="none presentation"></div>
-        <div class="j2-item-popopen-body">
-          
-            <div class="clearfix">
-              
-  
-
-
-              
-
-
-<p>Steam IDs can be used as dictionary keys.</p>
-
-
-
-
-            </div>
-            <h5>Declaration</h5>
-            <div class="j2-item-declaration">
-              
-  <div class="j2-swift">
-    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func hash(into hasher: inout <a href="https://developer.apple.com/documentation/swift/hasher?language=swift">Hasher</a>)</code></pre>
-  </div>
-
-
-
-            </div>
-            
-
-
-
-          
-
-          <nav class="j2-item-nav" aria-label="item details">
-            
-            
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/SteamID.swift#L283-L285">Show on GitHub</a></span>
-            
-          </nav>
-        </div>
-      </div>
-    </div>
-    
-  </section>
-  
-  
-  
-  
-    <section id="steamid-steamid1" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Function/static%20func%20%3C(lhs%3A%20SteamID,%20rhs%3A%20SteamID)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="steamid-steamid1"></a>
+    <a name="//apple_ref/cpp/Function/static%20func%20%3C(lhs%3A%20SteamID,%20rhs%3A%20SteamID)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="steamid-steamid"></a>
     <h4 class="visually-hidden">static func &lt;(lhs: SteamID, rhs: SteamID) -&gt; Bool</h4>
     
     
-    <a class="j2-item-title" href="#_steamid-steamid1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_steamid-steamid1"><code>
+    <a class="j2-item-title" href="#_steamid-steamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_steamid-steamid"><code>
         <span class="j2-swift"><span class="j2-item-secondary">static func </span>&lt;<span class="j2-item-secondary">(</span>lhs<span class="j2-item-secondary">: SteamID, </span>rhs<span class="j2-item-secondary">: SteamID) -&gt; Bool</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_steamid-steamid1">
+    <div class="collapse  j2-item-popopen-wrapper" id="_steamid-steamid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6540,7 +6420,7 @@ wants to support the “Join Game” option in the friends list</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/SteamID.swift#L288-L290">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/SteamID.swift#L279-L281">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6600,7 +6480,7 @@ wants to support the “Join Game” option in the friends list</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/SteamID.swift#L293-L295">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/SteamID.swift#L284-L286">Show on GitHub</a></span>
             
           </nav>
         </div>
