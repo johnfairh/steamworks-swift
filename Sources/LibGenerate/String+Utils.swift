@@ -2,7 +2,7 @@
 //  String+Utils.swift
 //  LibGenerate
 //
-//  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
+//  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
 /// General string utils, content-agnostic

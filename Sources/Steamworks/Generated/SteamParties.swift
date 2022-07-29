@@ -2,7 +2,7 @@
 //  SteamParties.swift
 //  Steamworks
 //
-//  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
+//  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 //  This file is generated code: any edits will be overwritten.
 

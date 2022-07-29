@@ -2,7 +2,7 @@
 //  SteamBaseAPI.swift
 //  Steamworks
 //
-//  Licensed under MIT (https://github.com/johnfairh/swift-steamworks/blob/main/LICENSE
+//  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
 // SteamBase API - wrap up common interface stuff between user and gameserver APIs
