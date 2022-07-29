@@ -136,8 +136,8 @@ extension XCTestCase {
             .appendingPathComponent("Fixtures")
     }
 
-    static var fixturesSdkURL: URL {
-        fixturesURL.appendingPathComponent("sdk")
+    static var fixturesRedistSdkURL: URL {
+        fixturesURL.appendingPathComponent("redist")
     }
 
     static var patchYAMLURL: URL {
@@ -158,7 +158,7 @@ extension XCTestCase {
             setenv(IO.SDK_EXTRA_JSON_PATH_VAR, sdkExtraJSONURL.path, 1)
             swiftOutputDirURL = try! FileManager.default.createTemporaryDirectory()
             cOutputDirURL = try! FileManager.default.createTemporaryDirectory()
-            generator = try Generator(sdkURL: fixturesSdkURL,
+            generator = try Generator(redistSdkURL: fixturesRedistSdkURL,
                                       swiftOutputDirURL: swiftOutputDirURL,
                                       cOutputDirURL: cOutputDirURL)
         }

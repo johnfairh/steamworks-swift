@@ -1,59 +1,45 @@
-.PHONY: all build run clean test generate docs bin_setup
+.PHONY: all build run clean test generate docs bin_setup redist
 
-STEAM_SDK ?= ${CURDIR}/sdk
-STEAM_INCLUDE := ${STEAM_SDK}/public
+STEAM_INCLUDE := ${CURDIR}/redist/include
 
 ifeq (${OS},Windows_NT)
 	PLATFORM := win64
   XCTESTOS := Windows
-	STEAM_DYLIB := steam_api64.dll
-  TICKET_DYLIB := sdkencryptedappticket64.dll
 else
 	ifeq ($(shell uname -s),Darwin)
 		PLATFORM := osx
     XCTESTOS := MacOS
-		STEAM_DYLIB := libsteam_api.dylib
-    TICKET_DYLIB := libsdkencryptedappticket.dylib
 	else
 		PLATFORM := linux64
     XCTESTOS := Linux
-		STEAM_DYLIB := libsteam_api.so
-    TICKET_DYLIB := libsdkencryptedappticket64.so
 	endif
 endif
 
-STEAM_LIB := ${STEAM_SDK}/redistributable_bin/${PLATFORM}
-TICKET_LIB := ${STEAM_SDK}/public/steam/lib/${PLATFORM}
-
-STEAM_SWIFT_FLAGS := \
-	-Xswiftc -I${STEAM_INCLUDE} \
- 	-Xlinker -L${STEAM_LIB} \
-	-Xlinker -L${TICKET_LIB}
+STEAM_LIB := ${CURDIR}/redist/lib/${PLATFORM}
 
 all: build run
 
 build: generate
-	swift build ${STEAM_SWIFT_FLAGS}
+	swift build
 
 BINPATH := $(shell swift build --show-bin-path)
 TESTBINPATH := ${BINPATH}/steamworks-swiftPackageTests.xctest/Contents/${XCTESTOS}
 
 bin_setup:
-	mkdir -p ${TESTBINPATH}
-	ln -sf ${STEAM_LIB}/${STEAM_DYLIB} ${BINPATH}/
-	ln -sf ${STEAM_LIB}/${STEAM_DYLIB} ${TESTBINPATH}/
-	ln -sf ${TICKET_LIB}/${TICKET_DYLIB} ${BINPATH}/
+	mkdir -p ${BINPATH} ${TESTBINPATH}
+	ln -sf ${STEAM_LIB}/* ${BINPATH}/
+	ln -sf ${STEAM_LIB}/* ${TESTBINPATH}/
 	echo 480 > ${BINPATH}/steam_appid.txt
 
 test: bin_setup
-	swift test ${STEAM_SWIFT_FLAGS}
+	swift test
 
 run: bin_setup
-	swift build --product Client ${STEAM_SWIFT_FLAGS}
+	swift build --product Client
 	swift run --skip-build Client
 
 run_ticket: bin_setup
-	swift build --product TicketClient ${STEAM_SWIFT_FLAGS}
+	swift build --product TicketClient
 	swift run --skip-build TicketClient
 
 docs: generate
@@ -64,3 +50,21 @@ generate:
 
 clean:
 	swift package clean
+
+# Populate the 'redist' tree from a Steamworks SDK
+
+STEAM_SDK ?= ${CURDIR}/sdk
+
+REDIST_ARCHS := osx win64 linux64
+
+redist:
+	rm -rf redist/*
+	mkdir -p redist/include/steam redist/lib
+	cp ${STEAM_SDK}/public/steam/*h redist/include/steam
+	cp ${STEAM_SDK}/public/steam/*json redist/include/steam
+	cp ${STEAM_SDK}/Readme.txt redist/
+	for ARCH in ${REDIST_ARCHS} ; do \
+		mkdir -p redist/lib/$${ARCH} ; \
+		cp ${STEAM_SDK}/redistributable_bin/$${ARCH}/* redist/lib/$${ARCH}; \
+		cp ${STEAM_SDK}/public/steam/lib/$${ARCH}/* redist/lib/$${ARCH}; \
+	done
