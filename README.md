@@ -16,12 +16,12 @@ Current state:
   doing various sync and async tasks.
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
-* Requires Swift 5.7, Xcode 14 beta 3
+* Requires Swift 5.7, Xcode 14 beta 4
 * The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
   tab completion even if module interface gen is beyond it
 * Can't get anything out of SteamInput so can't tell if the translation is reasonable :/
 
-### Concept
+## Concept
 
 * Offer a pure Swift module `Steamworks` covering all of the current Steamworks API
 * Leave out the deprecated and WIN32-only stuff
@@ -47,7 +47,7 @@ Current state:
 * Try generating a DocC package, using code-gen to make a sensible layout
 * Port Spacewar over to Swift
 
-### API mapping design
+## API mapping design
 
 ### Lifecycle
 
@@ -93,7 +93,7 @@ for await userStatsReceived in steam.userStatsReceived {
 ```
 ...but these need the panacea of custom executors to be practical.
 
-#### Functions
+### Functions
 
 ```cpp
 auto handle = SteamInventory()->StartUpdateProperties();
@@ -228,9 +228,8 @@ Tech limitations, on 5.7 Xcode 14.0b3:
 ### Non-Swift Problems
 
 * Some [Steamworks SDK issues](#json-notes), nothing too serious.
-* How do I CI this stuff?  SDK license doesn't seem to allow non-local redistribution,
-  with that could build the thing; don't really fancy installing the steam client but
-  maybe that's doable.
+* CI really needs a private runner with a logged-in steam account, current version
+  just runs the non-steam-requiring tests.
 
 #### Weird Steam messages
 
@@ -252,12 +251,8 @@ it's not expecting to send messages from a steam ID to itself.
 ### Requirements
 
 * Needs Swift 5.7 (Xcode 14 beta)
-* Needs Steam client installed
+* Needs Steam client installed (and logged-in, running for the tests)
 * I'm using macOS 12; should work on macOS 11, Linux; might work on Windows
-
-To run the generator / build:
-* Needs Steamworks SDK downloaded as `sdk` at the top level of the package, or
-  set `STEAM_SDK`
 
 ### Interface plan
 
@@ -299,3 +294,11 @@ Capture some notes on troubles reflecting the json into the module.
   `SteamNetworkingConfigValue_t`.  Rare enough to deal with manually.
 
 * Loads of missing `out_string_count` etc. annotations and a few wrong, see patchfile.
+
+## Contributions
+
+Welcome: open an issue / johnfairh@gmail.com / @johnfairh
+
+## License
+
+Distributed under the MIT license.  Except the Steamworks SDK parts.

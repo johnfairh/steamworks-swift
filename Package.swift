@@ -2,11 +2,39 @@
 
 import PackageDescription
 
-// Building Swift code importing CSteamworks requires cxx-interop,
-// which is incompatible (rn) with Foundation.  So only Steamworks
-// has those flags and only Steamworks imports CSteamworks, without
-// re-exporting it.  Then clients of Steamworks can freely import
-// Foundation.
+// We need the steam headers to build Steamworks and the steam libraries
+// to link (and run) programs that use it.
+//
+// SPM doesn't support binary targets for libraries so we fake it by
+// providing those files and injecting the search paths here using
+// UnsafeFlags.  Moved to this from requiring outer-level `-Xswiftc`
+// things to make `swift build` work out of the box: we already need to
+// provide UnsafeFlags to enable C++ interop so that is no great loss.
+//
+// If C++ interop becomes part of real Swift then will need revision to
+// enable clients to depend on tags: something like only injecting the
+// unsafe search-path flags if they're not set already.
+
+import class Foundation.FileManager
+let curdir = FileManager.default.currentDirectoryPath
+
+let steamworksSwiftFlags: [SwiftSetting] = [
+    .unsafeFlags([
+      "-Xfrontend", "-enable-cxx-interop",
+      "-I\(curdir)/redist/include"
+    ])
+]
+
+let linkBase = "-L\(curdir)/redist/lib/"
+let platforms: [(String, Platform)] = [
+    ("osx", .macOS),
+    ("linux64", .linux),
+    ("win64", .windows)
+]
+
+let clientLinkerFlags = platforms.map {
+    LinkerSetting.unsafeFlags([linkBase + $0.0], .when(platforms: [$0.1]))
+}
 
 let package = Package(
   name: "steamworks-swift",
@@ -43,9 +71,7 @@ let package = Package(
         "CSteamworks",
         .product(name: "Logging", package: "swift-log")
       ],
-      swiftSettings: [
-        .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
-      ]
+      swiftSettings: steamworksSwiftFlags
     ),
     .target(
       name: "SteamworksEncryptedAppTicket",
@@ -53,9 +79,7 @@ let package = Package(
         "Steamworks",
         "CSteamworksEncryptedAppTicket"
       ],  
-      swiftSettings: [
-        .unsafeFlags(["-Xfrontend", "-enable-cxx-interop"])
-      ]
+      swiftSettings: steamworksSwiftFlags
     ),
     .target(
       name: "SteamworksHelpers",
@@ -65,10 +89,14 @@ let package = Package(
     ),
     .executableTarget(
         name: "Client",
-        dependencies: ["Steamworks", "SteamworksHelpers"]),
+        dependencies: ["Steamworks", "SteamworksHelpers"],
+        linkerSettings: clientLinkerFlags
+    ),
     .executableTarget(
         name: "TicketClient",
-        dependencies: ["SteamworksEncryptedAppTicket", "SteamworksHelpers"]),
+        dependencies: ["SteamworksEncryptedAppTicket", "SteamworksHelpers"],
+        linkerSettings: clientLinkerFlags
+    ),
     .executableTarget(
         name: "Generate",
         dependencies: ["LibGenerate"]),

@@ -18,8 +18,8 @@ public struct Generator {
     let interfaces: Interfaces
     let callbacks: Callbacks
 
-    public init(sdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
-        io = try IO(sdkURL: sdkURL, swiftOutputDirURL: swiftOutputDirURL, cOutputDirURL: cOutputDirURL)
+    public init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
+        io = try IO(redistSdkURL: redistSdkURL, swiftOutputDirURL: swiftOutputDirURL, cOutputDirURL: cOutputDirURL)
         metadata = try Metadata(io: io)
         version = Version(io: io)
         typedefs = Typedefs(io: io, metadata: metadata)

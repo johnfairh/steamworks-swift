@@ -8,13 +8,13 @@
 import Foundation
 
 final class IO {
-    let sdkURL: URL
+    let redistSdkURL: URL
     let swiftOutputDirURL: URL
     let cOutputDirURL: URL
     let resources: Bundle
 
-    init(sdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
-        self.sdkURL = sdkURL
+    init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
+        self.redistSdkURL = redistSdkURL
         self.swiftOutputDirURL = swiftOutputDirURL
         self.cOutputDirURL = cOutputDirURL
         #if SWIFT_PACKAGE
@@ -37,13 +37,13 @@ final class IO {
     }
 
     var jsonURL: URL {
-        sdkURL.appendingPathComponent("public")
+        redistSdkURL.appendingPathComponent("include")
             .appendingPathComponent("steam")
             .appendingPathComponent("steam_api.json")
     }
 
     var readmeURL: URL {
-        sdkURL.appendingPathComponent("Readme.txt")
+        redistSdkURL.appendingPathComponent("Readme.txt")
     }
 
     // Text files are normal windows-format that swift + foundation utterly
