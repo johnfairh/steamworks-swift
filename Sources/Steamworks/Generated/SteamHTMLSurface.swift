@@ -35,13 +35,13 @@ public struct SteamHTMLSurface: Sendable {
     }
 
     /// Steamworks `ISteamHTMLSurface::CreateBrowser()`, callback
-    public func createBrowser(userAgent: String, userCSS: String, completion: @escaping (HTMLBrowserReady?) -> Void) {
+    public func createBrowser(userAgent: String?, userCSS: String?, completion: @escaping (HTMLBrowserReady?) -> Void) {
         let rc = SteamAPI_ISteamHTMLSurface_CreateBrowser(interface, userAgent, userCSS)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamHTMLSurface::CreateBrowser()`, async
-    public func createBrowser(userAgent: String, userCSS: String) async -> HTMLBrowserReady? {
+    public func createBrowser(userAgent: String?, userCSS: String?) async -> HTMLBrowserReady? {
         await withUnsafeContinuation {
             createBrowser(userAgent: userAgent, userCSS: userCSS, completion: $0.resume)
         }
@@ -79,8 +79,8 @@ public struct SteamHTMLSurface: Sendable {
         SteamAPI_ISteamHTMLSurface_GoForward(interface, CSteamworks.HHTMLBrowser(browserHandle))
     }
 
-    /// Steamworks `ISteamHTMLSurface::Init()`
-    public func `init`() -> Bool {
+    /// Steamworks `ISteamHTMLSurface::Initialize()`
+    public func initialize() -> Bool {
         SteamAPI_ISteamHTMLSurface_Init(interface)
     }
 
@@ -95,7 +95,7 @@ public struct SteamHTMLSurface: Sendable {
     }
 
     /// Steamworks `ISteamHTMLSurface::KeyDown()`
-    public func keyDown(browserHandle: HHTMLBrowser, nativeKeyCode: Int, htmlKeyModifiers: HTMLKeyModifiers, isSystemKey: Bool) {
+    public func keyDown(browserHandle: HHTMLBrowser, nativeKeyCode: Int, htmlKeyModifiers: HTMLKeyModifiers, isSystemKey: Bool = false) {
         SteamAPI_ISteamHTMLSurface_KeyDown(interface, CSteamworks.HHTMLBrowser(browserHandle), uint32(nativeKeyCode), ISteamHTMLSurface.EHTMLKeyModifiers(htmlKeyModifiers), isSystemKey)
     }
 
@@ -105,7 +105,7 @@ public struct SteamHTMLSurface: Sendable {
     }
 
     /// Steamworks `ISteamHTMLSurface::LoadURL()`
-    public func loadURL(browserHandle: HHTMLBrowser, url: String, postData: String) {
+    public func loadURL(browserHandle: HHTMLBrowser, url: String, postData: String?) {
         SteamAPI_ISteamHTMLSurface_LoadURL(interface, CSteamworks.HHTMLBrowser(browserHandle), url, postData)
     }
 
@@ -160,7 +160,7 @@ public struct SteamHTMLSurface: Sendable {
     }
 
     /// Steamworks `ISteamHTMLSurface::SetCookie()`
-    public func setCookie(hostname: String, key: String, value: String, path: String, expires: RTime32, secure: Bool, httpOnly: Bool) {
+    public func setCookie(hostname: String, key: String, value: String, path: String = "/", expires: RTime32 = 0, secure: Bool = false, httpOnly: Bool = false) {
         SteamAPI_ISteamHTMLSurface_SetCookie(interface, hostname, key, value, path, CSteamworks.RTime32(expires), secure, httpOnly)
     }
 
@@ -195,6 +195,7 @@ public struct SteamHTMLSurface: Sendable {
     }
 
     /// Steamworks `ISteamHTMLSurface::Shutdown()`
+    @discardableResult
     public func shutdown() -> Bool {
         SteamAPI_ISteamHTMLSurface_Shutdown(interface)
     }

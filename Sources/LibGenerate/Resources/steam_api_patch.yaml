@@ -295,6 +295,38 @@ methods:
       cbMaxTicket:
         default_value: 1024 # docs
 #
+# ISteamHTMLSurface
+#
+  SteamAPI_ISteamHTMLSurface_CreateBrowser:
+    params:
+      pchUserAgent:
+        nullable: true
+      pchUserCSS:
+        nullable: true
+  SteamAPI_ISteamHTMLSurface_Init:
+    name: Initialize
+  SteamAPI_ISteamHTMLSurface_KeyDown:
+    params:
+      bIsSystemKey:
+        default_value: false
+  SteamAPI_ISteamHTMLSurface_LoadURL:
+    params:
+      pchPostData:
+        nullable: true
+  SteamAPI_ISteamHTMLSurface_SetCookie:
+    params:
+      pchPath:
+        default_value: '"/"'
+      nExpires:
+        default_value: 0
+      bSecure:
+        default_value: false
+      bHTTPOnly:
+        default_value: false
+  SteamAPI_ISteamHTMLSurface_Shutdown:
+    discardable_result: true
+
+#
 # ISteamHTTP
 #
   SteamAPI_ISteamHTTP_DeferHTTPRequest:
