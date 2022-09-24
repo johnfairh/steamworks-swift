@@ -14,18 +14,23 @@ import PackageDescription
 // If C++ interop becomes part of real Swift then will need revision to
 // enable clients to depend on tags: something like only injecting the
 // unsafe search-path flags if they're not set already.
+//
+// Xcode support for packages is an absolute horror show, the env. var
+// approach is to try and cope with that scenario.
 
 import class Foundation.FileManager
+import class Foundation.ProcessInfo
 let curdir = FileManager.default.currentDirectoryPath
+let sdkdir = ProcessInfo.processInfo.environment["STEAMAPI_REDIST_DIR"] ?? curdir
 
 let steamworksSwiftFlags: [SwiftSetting] = [
     .unsafeFlags([
       "-Xfrontend", "-enable-cxx-interop",
-      "-I\(curdir)/redist/include"
+      "-I\(sdkdir)/redist/include"
     ])
 ]
 
-let linkBase = "-L\(curdir)/redist/lib/"
+let linkBase = "-L\(sdkdir)/redist/lib/"
 let platforms: [(String, Platform)] = [
     ("osx", .macOS),
     ("linux64", .linux),
