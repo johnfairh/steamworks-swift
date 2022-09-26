@@ -1,45 +1,27 @@
 // swift-tools-version:5.7
 
+// pkg-config error?  See https://github.com/johnfairh/steamworks-swift-sdk
+
 import PackageDescription
 
 // We need the steam headers to build Steamworks and the steam libraries
 // to link (and run) programs that use it.
 //
-// SPM doesn't support binary targets for libraries so we fake it by
-// providing those files and injecting the search paths here using
-// UnsafeFlags.  Moved to this from requiring outer-level `-Xswiftc`
-// things to make `swift build` work out of the box: we already need to
-// provide UnsafeFlags to enable C++ interop so that is no great loss.
+// SPM doesn't support binary targets for libraries so we provide a very
+// unofficial and dubious installation of the Steamworks SDK along with a
+// pkgconfig setup.
 //
-// If C++ interop becomes part of real Swift then will need revision to
-// enable clients to depend on tags: something like only injecting the
-// unsafe search-path flags if they're not set already.
+// We need to provide UnsafeFlags to enable C++ interop.
 //
-// Xcode support for packages is an absolute horror show, the env. var
-// approach is to try and cope with that scenario.
-
-import class Foundation.FileManager
-import class Foundation.ProcessInfo
-let curdir = FileManager.default.currentDirectoryPath
-let sdkdir = ProcessInfo.processInfo.environment["STEAMAPI_REDIST_DIR"] ?? curdir
+// If C++ interop becomes part of real Swift then this can go away and clients
+// will be able to depend on tags
+//
 
 let steamworksSwiftFlags: [SwiftSetting] = [
     .unsafeFlags([
       "-Xfrontend", "-enable-cxx-interop",
-      "-I\(sdkdir)/redist/include"
     ])
 ]
-
-let linkBase = "-L\(sdkdir)/redist/lib/"
-let platforms: [(String, Platform)] = [
-    ("osx", .macOS),
-    ("linux64", .linux),
-    ("win64", .windows)
-]
-
-let clientLinkerFlags = platforms.map {
-    LinkerSetting.unsafeFlags([linkBase + $0.0], .when(platforms: [$0.1]))
-}
 
 let package = Package(
   name: "steamworks-swift",
@@ -68,8 +50,14 @@ let package = Package(
     .package(url: "https://github.com/jpsim/Yams.git", from: "4.0.6")
   ],
   targets: [
-    .systemLibrary(name: "CSteamworks"),
-    .systemLibrary(name: "CSteamworksEncryptedAppTicket"),
+    .systemLibrary(
+      name: "CSteamworks",
+      pkgConfig: "steamworks-swift"
+    ),
+    .systemLibrary(
+      name: "CSteamworksEncryptedAppTicket",
+      pkgConfig: "steamworks-swift"
+    ),
     .target(
       name: "Steamworks",
       dependencies: [
@@ -93,32 +81,31 @@ let package = Package(
       ]
     ),
     .executableTarget(
-        name: "Client",
-        dependencies: ["Steamworks", "SteamworksHelpers"],
-        linkerSettings: clientLinkerFlags
+      name: "Client",
+      dependencies: ["Steamworks", "SteamworksHelpers"]
     ),
     .executableTarget(
-        name: "TicketClient",
-        dependencies: ["SteamworksEncryptedAppTicket", "SteamworksHelpers"],
-        linkerSettings: clientLinkerFlags
+      name: "TicketClient",
+      dependencies: ["SteamworksEncryptedAppTicket", "SteamworksHelpers"]
     ),
     .executableTarget(
-        name: "Generate",
-        dependencies: ["LibGenerate"]),
+      name: "Generate",
+      dependencies: ["LibGenerate"]
+    ),
     .target(
-        name: "LibGenerate",
-        dependencies: [
-        "Yams"
-        ],
-        resources: [
-          .copy("Resources/steam_api_patch.yaml"),
-          .copy("Resources/steam_api_extra.json"),
-          .copy("Resources/EXPECTED_SDK")
-        ]),
+      name: "LibGenerate",
+      dependencies: ["Yams"],
+      resources: [
+        .copy("Resources/steam_api_patch.yaml"),
+        .copy("Resources/steam_api_extra.json"),
+        .copy("Resources/EXPECTED_SDK")
+      ]
+    ),
     .testTarget(
-        name: "SteamworksTests",
-        dependencies: ["Steamworks", "SteamworksHelpers", "LibGenerate"],
-        exclude: ["Fixtures"])
+      name: "SteamworksTests",
+      dependencies: ["Steamworks", "SteamworksHelpers", "LibGenerate"],
+      exclude: ["Fixtures"]
+    )
   ],
   cxxLanguageStandard: .cxx11
 )
