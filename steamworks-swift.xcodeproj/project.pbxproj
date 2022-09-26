@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -73,7 +73,6 @@
 		02AD458B275636A200BD93ED /* SteamUGC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD458A275636A200BD93ED /* SteamUGC.swift */; };
 		02AD45C727578A0500BD93ED /* SteamEncryptedAppTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD45C627578A0500BD93ED /* SteamEncryptedAppTicket.swift */; };
 		02AD45C827578A5B00BD93ED /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
-		02AD45CE27578BD000BD93ED /* libsdkencryptedappticket.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AD45CD27578BCF00BD93ED /* libsdkencryptedappticket.dylib */; };
 		02AD45DF27578D5900BD93ED /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
 		02AD45E027578D5900BD93ED /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02AD45E327578D5900BD93ED /* SteamworksEncryptedAppTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AD45C32757892B00BD93ED /* SteamworksEncryptedAppTicket.framework */; };
@@ -109,7 +108,6 @@
 		02D309E32728111A00DE64F0 /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E22728111A00DE64F0 /* Lock.swift */; };
 		02D309E52728122600DE64F0 /* TypeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E42728122600DE64F0 /* TypeUtils.swift */; };
 		02D309E8272813D000DE64F0 /* SteamBaseAPI+Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E7272813CF00DE64F0 /* SteamBaseAPI+Callbacks.swift */; };
-		02D309EE272969B900DE64F0 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D309D3272181D900DE64F0 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		02D309F02729730A00DE64F0 /* SteamGameServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EF2729730A00DE64F0 /* SteamGameServerAPI.swift */; };
 		02FD863C28D48BC900E4DE85 /* TestHtmlSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD863B28D48BC900E4DE85 /* TestHtmlSurface.swift */; };
 		OBJ_33 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Client.swift */; };
@@ -246,7 +244,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				02D309EE272969B900DE64F0 /* libsteam_api.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +315,6 @@
 		02AD458A275636A200BD93ED /* SteamUGC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamUGC.swift; sourceTree = "<group>"; };
 		02AD45C32757892B00BD93ED /* SteamworksEncryptedAppTicket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SteamworksEncryptedAppTicket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02AD45C627578A0500BD93ED /* SteamEncryptedAppTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteamEncryptedAppTicket.swift; sourceTree = "<group>"; };
-		02AD45CD27578BCF00BD93ED /* libsdkencryptedappticket.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsdkencryptedappticket.dylib; path = redist/lib/osx/libsdkencryptedappticket.dylib; sourceTree = "<group>"; };
 		02AD45D027578C2700BD93ED /* steamworksencryptedappticket_headers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = steamworksencryptedappticket_headers.h; sourceTree = "<group>"; };
 		02AD45D127578C2700BD93ED /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		02AD45D327578CB000BD93ED /* TicketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketClient.swift; sourceTree = "<group>"; };
@@ -342,7 +338,6 @@
 		02B81B1E2885C87200780A57 /* TestApiServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApiServer.swift; sourceTree = "<group>"; };
 		02B81B202886C82400780A57 /* SteamMatchmaking+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamMatchmaking+Helpers.swift"; sourceTree = "<group>"; };
 		02B81B232886D68B00780A57 /* SteamUser+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamUser+Helpers.swift"; sourceTree = "<group>"; };
-		02D309D3272181D900DE64F0 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = redist/lib/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
 		02D309E22728111A00DE64F0 /* Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
@@ -385,7 +380,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				02AD45CE27578BD000BD93ED /* libsdkencryptedappticket.dylib in Frameworks */,
 				02AD45C827578A5B00BD93ED /* Steamworks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,8 +642,6 @@
 				OBJ_25 /* LICENSE */,
 				OBJ_26 /* Makefile */,
 				OBJ_27 /* README.md */,
-				02D309D3272181D900DE64F0 /* libsteam_api.dylib */,
-				02AD45CD27578BCF00BD93ED /* libsdkencryptedappticket.dylib */,
 				020860C42730485900725122 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -813,7 +805,6 @@
 				OBJ_32 /* Sources */,
 				OBJ_34 /* Frameworks */,
 				02D309DC2722C55F00DE64F0 /* Embed Frameworks */,
-				02D309DF2724205600DE64F0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -931,27 +922,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		02D309DF2724205600DE64F0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo 480 > ${CONFIGURATION_BUILD_DIR}/steam_appid.txt\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		020860AA273047D100725122 /* Sources */ = {
@@ -1757,8 +1727,8 @@
 					"SWIFT_PACKAGE=1",
 					"DEBUG=1",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/redist/lib/osx";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/redist/lib/osx";
+				HEADER_SEARCH_PATHS = "/usr/local/include/steamworks-swift";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
@@ -1767,7 +1737,6 @@
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/redist/include";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USE_HEADERMAP = NO;
 			};
@@ -1922,8 +1891,8 @@
 					"$(inherited)",
 					"SWIFT_PACKAGE=1",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/redist/lib/osx";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/redist/lib/osx";
+				HEADER_SEARCH_PATHS = "/usr/local/include/steamworks-swift";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1932,7 +1901,6 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/redist/include";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				USE_HEADERMAP = NO;
 			};
