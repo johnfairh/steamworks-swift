@@ -10,7 +10,7 @@ import Foundation
 
 let cwd = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 
-let generator = try Generator(redistSdkURL: cwd.appendingPathComponent("redist"),
+let generator = try Generator(redistSdkURL: cwd.appendingPathComponent("sdk/redist"),
                               swiftOutputDirURL: cwd.appendingPathComponent("Sources/Steamworks/Generated"),
                               cOutputDirURL: cwd.appendingPathComponent("Sources/CSteamworks/Generated"))
 try generator.generate()
