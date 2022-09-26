@@ -1,5 +1,5 @@
 ![macOS](https://shields.io/badge/platform-macOS%20|%20%3F%3F-lightgrey)
-![Steamworks 1.54](https://shields.io/badge/steamworks-1.54-lightgrey)
+![Steamworks 1.55](https://shields.io/badge/steamworks-1.55-lightgrey)
 ![MIT](https://shields.io/badge/license-MIT-black)
 
 # steamworks-swift
@@ -16,9 +16,9 @@ Current state:
   doing various sync and async tasks.
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
-* Requires Swift 5.7, Xcode 14 beta 4
-* The Xcode project basically works, assumes `sdk` exists.  SourceKit can manage
-  tab completion even if module interface gen is beyond it
+* Requires Swift 5.7, Xcode 14
+* The Xcode project basically works.  SourceKit can manage tab completion even if module
+  interface gen is beyond it
 * Can't get anything out of SteamInput so can't tell if the translation is reasonable :/
 
 ## Concept

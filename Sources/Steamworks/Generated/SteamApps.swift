@@ -201,6 +201,11 @@ public struct SteamApps: Sendable {
         SteamAPI_ISteamApps_RequestAppProofOfPurchaseKey(interface, AppId_t(appID))
     }
 
+    /// Steamworks `ISteamApps::SetDlcContext()`
+    public func setDlcContext(appID: AppID) -> Bool {
+        SteamAPI_ISteamApps_SetDlcContext(interface, AppId_t(appID))
+    }
+
     /// Steamworks `ISteamApps::UninstallDLC()`
     public func uninstallDLC(appID: AppID) {
         SteamAPI_ISteamApps_UninstallDLC(interface, AppId_t(appID))
