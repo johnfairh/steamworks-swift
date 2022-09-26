@@ -133,7 +133,7 @@ class TestApiSimple: XCTestCase {
                 print("No inventory, skipping rest of test")
                 return
             }
-            XCTAssertEqual(1, items.count)
+            XCTAssertTrue(items.count >= 1)
             let (rc2, properties) = steam.inventory.getResultItemProperty(handle: r.handle, itemIndex: 0, propertyName: nil)
             XCTAssertTrue(rc2)
             let props = Set(properties.split(separator: ","))
