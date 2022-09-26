@@ -27,15 +27,24 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
 
     /// Initialize the Steamworks API.
     ///
-    /// Calls `SteamAPI_Init()` and also, if `appID` is non-`nil`, `SteamAPI_RestartAppIfNecessary()`.
+    /// Calls `SteamAPI_RestartAppIfNecessary()` and `SteamAPI_Init()`.
+    ///
+    /// If you set`fakeAppIdTxtFile` to `true` then the system behaves as though you
+    /// have a `steam_appid.txt` file in the correct location containing your appID:
+    /// 1. `SteamAPI_RestartAppIfNecessary()` never returns `true`;
+    /// 2. `SteamAPI_Init()` uses the passed-in App ID.
+    /// ...so it's a development assist to stop you having to manage the text file.
     ///
     /// The Steamworks API is shut down when this object goes out of scope.
     ///
     /// - returns: `nil` if the Steam API connection failed or app restart is necessary.
-    public init?(appID: AppID? = nil) {
-        if let appID = appID, SteamAPI_RestartAppIfNecessary(UInt32(appID)) {
+    public init?(appID: AppID, fakeAppIdTxtFile: Bool = false) {
+        if !fakeAppIdTxtFile && SteamAPI_RestartAppIfNecessary(UInt32(appID)) {
             logError("SteamAPI.init() failed: SteamAPI_RestartAppIfNecessary(\(appID)) returned true")
             return nil
+        }
+        if fakeAppIdTxtFile {
+            setenv("SteamAppId", "\(appID.value)", 1)
         }
         guard SteamAPI_Init() else {
             logError("SteamAPI.init() failed: SteamAPI_Init() returned false")
