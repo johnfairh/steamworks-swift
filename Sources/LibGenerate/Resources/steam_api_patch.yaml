@@ -396,6 +396,8 @@ methods:
     params:
       bReservedValue:
         default_value: true
+  SteamAPI_ISteamInput_SetDualSenseTriggerEffect:
+    ignore: "scary SIE-confidential header file..."
   SteamAPI_ISteamInput_SetLEDColor:
     params:
       nFlags:

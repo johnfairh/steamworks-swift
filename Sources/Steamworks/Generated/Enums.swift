@@ -3300,8 +3300,10 @@ public enum Result: CUnsignedInt, Sendable {
     case chargerRequired = 125
     /// Steamworks `k_EResultCachedCredentialInvalid`
     case cachedCredentialInvalid = 126
+    /// Steamworks `K_EResultPhoneNumberIsVOIP`
+    case phoneNumberIsVOIP = 127
     /// Some undocumented value
-    case unrepresentedInSwift = 127
+    case unrepresentedInSwift = 128
 }
 
 extension EResult: RawConvertible { typealias From = Result }
