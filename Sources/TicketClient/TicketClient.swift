@@ -31,7 +31,7 @@ final class Client {
     }
 
     init?() {
-        guard let api = SteamAPI() else {
+        guard let api = SteamAPI(appID: .spaceWar, fakeAppIdTxtFile: true) else {
             print("SteamAPI init failed")
             return nil
         }

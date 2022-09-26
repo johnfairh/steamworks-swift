@@ -677,3 +677,8 @@ public typealias MatchMakingKeyValuePairs = KeyValuePairs<String, String>
 extension HServerListRequest {
     public static let invalid = Self(UnsafeMutableRawPointer(bitPattern: UInt(1)))
 }
+
+extension AppID {
+    /// The well-known `SpaceWar` `AppID`
+    public static let spaceWar = Self(480)
+}

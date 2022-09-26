@@ -70,7 +70,8 @@ enum TestClient {
             throw XCTSkip("Skipping Steam API test, can't find Steam")
         }
         setenv("SteamAppId", "480", 1)
-        if let steam = SteamAPI() {
+
+        if let steam = SteamAPI(appID: .spaceWar, fakeAppIdTxtFile: true) {
             TestClient.client = Client(steam: steam)
             atexit {
                 TestClient.client = nil
