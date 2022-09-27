@@ -7,6 +7,14 @@
 
 @_implementationOnly import CSteamworks
 
+// strdup(), free()
+#if canImport(Glibc)
+import Glibc
+#endif
+#if canImport(Darwin)
+import Darwin
+#endif
+
 // A bunch of internal utilities mostly for implementing the generated API methods.
 // Not part of the Steamworks API, all to do with C interop.
 

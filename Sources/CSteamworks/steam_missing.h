@@ -71,3 +71,14 @@ static inline bool CSteamAPI_ISteamNetworkingSockets_SetCertificate( ISteamNetwo
     auto msgp = reinterpret_cast<SteamNetworkingErrMsg *>(errMsg);
     return SteamAPI_ISteamNetworkingSockets_SetCertificate(self, pCertificate, cbCertificate, *msgp);
 }
+
+// On Linux but not Darwin, Swift importer decides not to implement these two
+// implicit dumb-struct constructors and instead leaves them as dangling symbols.
+
+static inline SteamNetworkingIPAddr CSteamNetworkingIPAddr_Allocate() {
+    return SteamNetworkingIPAddr();
+}
+
+static inline SteamNetworkingIdentity CSteamNetworkingIdentity_Allocate() {
+    return SteamNetworkingIdentity();
+}

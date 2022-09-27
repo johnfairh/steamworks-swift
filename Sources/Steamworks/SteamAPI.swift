@@ -16,6 +16,14 @@
 @_implementationOnly import CSteamworks
 import Logging
 
+// setenv()
+#if canImport(Glibc)
+import Glibc
+#endif
+#if canImport(Darwin)
+import Darwin
+#endif
+
 /// An instance of the Steamworks user API
 ///
 /// Create and retain one of these to access and use the Steamworks APIs.
