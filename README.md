@@ -21,14 +21,20 @@ Current state:
   interface gen is beyond it
 * Can't get anything out of SteamInput so can't tell if the translation is reasonable :/
 
+Below:
+* [Concept](#concept)
+* [API design](#api-mapping-design)
+* [How to use](#how-to-use-this-project)
+* [Implementation notes](#implementation-notes)
+
 ## Concept
 
 * Offer a pure Swift module `Steamworks` covering all of the current Steamworks API
 * Leave out the deprecated and WIN32-only stuff
 * Do not diverge too far from the 'real' API names to aid docs / searching / porting:
   I think this is a better starting point than doing a complete OO analysis to carve
-  out function.  Can go to build `SteamworksPatterns` or something if worthwhile.  Name
-  etc. changes:
+  out function.  Can go on to augment `SteamworksHelpers` if worthwhile.  Name etc.
+  changes:
    * _Don't_ use Swift properties for 0-arg getters: diverges too far from Steamworks
      naming
    * Drop the intermittent Hungarian notation (argh the 1990s are calling)
@@ -44,8 +50,10 @@ Current state:
 
 ### Next
 
-* Try generating a DocC package, using code-gen to make a sensible layout
-* Port Spacewar over to Swift
+* Port SpaceWar over to Swift to check general practicality, somewhat real-world usage,
+  general interest
+* Generate docs more thematically, code-gen the layout?  See if DocC is up to it yet
+* Have another crack at SteamInput
 
 ## API mapping design
 
@@ -197,6 +205,67 @@ pretty weird in Swift but no way to avoid.  Some Steamworks APIs support the old
 to get the required length" two-pass style and these patterns are wrapped up in a Swifty
 way in the `SteamworksHelpers` module.
 
+## How To Use This Project
+
+Prereqs:
+* Needs Swift 5.7 (Xcode 14)
+* Needs Steam client installed (and logged-in, running for the tests or to do anything useful
+* I'm using macOS 12; should work on macOS 11, Linux; might work on Windows eventually
+
+Install the Steamworks SDK:
+* Clone [steamworks-swift-sdk](https://github.com/johnfairh/steamworks-swift-sdk)
+* `make install`
+
+Sample `Package.swift`:
+```swift
+// swift-tools-version: 5.7
+
+import PackageDescription
+
+let package = Package(
+  name: "MySteamApp",
+  platforms: [
+    .macOS("11.0"),
+  ],
+  dependencies: [
+    .package(url: "https://github.com/johnfairh/steamworks-swift",
+             branch: "main"),
+  ],
+  targets: [
+    .executableTarget(
+      name: "MySteamApp",
+      dependencies: [
+        .product(name: "Steamworks", package: "steamworks-swift"),
+        .product(name: "SteamworksHelpers", package: "steamworks-swift"),
+      ]
+    )
+  ]
+)
+```
+
+Note that the dependency on `steamworks-swift` must be by branch (or commit)
+rather than a SemVer because it requires the "unsafe" C++ interop mode.
+
+Sample skeleton program:
+```swift
+import Steamworks
+
+@main
+public struct MySteamApp {
+    public static func main() {
+        guard let steam = SteamAPI(appID: .spaceWar, fakeAppIdTxtFile: true) else {
+            print("SteamInit failed")
+            return
+        }
+        print("Hello world with Steam name \(steam.friends.getPersonaName())")
+    }
+}
+```
+
+There may be a more fully-fledged AppKit demo [here](https://github.com/johnfairh/spacewar-swift).
+
+## Implementation notes
+
 ### Swift C++ Bugs
 
 Tech limitations, on 5.7 Xcode 14.0b3:
@@ -231,7 +300,7 @@ Tech limitations, on 5.7 Xcode 14.0b3:
 * CI really needs a private runner with a logged-in steam account, current version
   just runs the non-steam-requiring tests.
 
-#### Weird Steam messages
+### Weird Steam messages
 
 Getting unexpected SteamAPICallCompleteds out of
 `SteamAPI_ManualDispatch_GetNextCallback()` -- suspect parts of steamworks trying to
@@ -247,31 +316,6 @@ Facepunch logs & drops these too, so, erm, shrug I suppose.
 
 Getting `src/steamnetworkingsockets/clientlib/csteamnetworkingmessages.cpp (229) : Assertion Failed: [#40725897 pipe] Unlinking connection in state 1` using steamnetworkingmessages; possibly
 it's not expecting to send messages from a steam ID to itself.
-
-### Requirements
-
-* Needs Swift 5.7 (Xcode 14 beta)
-* Needs Steam client installed (and logged-in, running for the tests)
-* I'm using macOS 12; should work on macOS 11, Linux; might work on Windows
-
-### Interface plan
-
-✅ ISteamAppList, ISteamApps, ISteamFriends, ISteamGameSearch, ISteamGameServer,
-ISteamGameServerStats, ISteamHTMLSruface, ISteamHTTP, ISteamInput, ISteamInventory,
-ISteamMatchMaking, ISteamMatchmakingServers, ISteamMusic, ISteamMusicRemote,
-ISteamNetworkingMessages, ISteamNetworkingSockets, ISteamNetworkingUtils,
-ISteamParentalSettings, ISteamParties, ISteamRemotePlay, ISteamRemoteStorage,
-ISteamScreenshots, ISteamUGC, ISteamUser, ISteamUserStats, ISteamUtils, ISteamVideo,
-SteamEncryptedAppTicket
-
-Skip:
-* ISteamAppTicket - er not actually a thing?
-* ISteamClient - internal stuff, very C++y, looks ignorable
-* ISteamController - deprecated, need to review for stuff that's been generated and
-  can actually be deleted after working through ISteamInput
-* ISteamGameCoordinator - "largely" deprecated
-* ISteamNetworking - this is the pre-modern interface
-* ISteamPS3... - will leave Swift-on-PS3 for another day
 
 ### JSON notes
 
