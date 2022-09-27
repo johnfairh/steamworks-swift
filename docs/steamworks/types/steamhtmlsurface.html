@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamHTMLSurface - Steamworks v0.1.0</title>
+   <title>SteamHTMLSurface - Steamworks v0.2.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamhtmlsurface.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.1.0</a>
+    Steamworks v0.2.0</a>
   </div>
   
 
@@ -55,6 +55,13 @@
     
     
 
+    
+      <a class="nav-item nav-link d-none d-sm-inline" rel="alternate" href="dash-feed://https%3A%2F%2Fjohnfairh%2Egithub%2Eio%2Fswift%2Dsteamworks%2Fdocsets%2FSteamworks%2Exml">
+      <svg class="j2-title-svg" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 700 670">
+        <title>Open in Dash</title>
+        <path fill="currentcolor" d="m0 0 132.58 160.54h130.76v0.0312c63.501 0.196 140.87-6.9887 193.12 10.227 26.125 8.6076 43.475 19.899 57.578 40.781 14.103 20.882 26.733 55.737 25.781 118.52-0.8784 57.953-16.7 88.91-38.672 112.89-21.972 23.98-54.208 41.154-90.703 51.953-28.462 8.4219-55.314 10.153-80.547 11.953v-266.25h-160v419.92l71.328 7.8125s103.75 12.802 214.61-20c55.429-16.401 115.46-45.078 163.28-97.266 47.816-52.187 79.327-127.83 80.703-218.59 1.3028-85.935-16.743-156.6-53.125-210.47-36.382-53.871-89.369-86.47-140.16-103.2-50.787-16.733-101.87-18.272-145.08-18.504-43.211-0.2316-78.502 0.0768-97.578 0.0176v2e-3h-131.31z"/>
+      </svg>
+    </a>
     
 
     
@@ -4177,7 +4184,7 @@
           
           
           <nav aria-label="item details" class="j2-main-item-nav">
-            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L14-L216">Show on GitHub</a>
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L14-L217">Show on GitHub</a>
           </nav>
           
           
@@ -4376,12 +4383,12 @@
   
   
     <section id="createbrowseruseragentusercsscompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20createBrowser(userAgent%3A%20String,%20userCSS%3A%20String,%20completion%3A%20(HTMLBrowserReady%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="createbrowseruseragentusercsscompletion"></a>
-    <h4 class="visually-hidden">func createBrowser(userAgent: String, userCSS: String, completion: (HTMLBrowserReady?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20createBrowser(userAgent%3A%20String%3F,%20userCSS%3A%20String%3F,%20completion%3A%20(HTMLBrowserReady%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="createbrowseruseragentusercsscompletion"></a>
+    <h4 class="visually-hidden">func createBrowser(userAgent: String?, userCSS: String?, completion: (HTMLBrowserReady?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_createbrowseruseragentusercsscompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createbrowseruseragentusercsscompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>createBrowser<span class="j2-item-secondary">(</span>userAgent<span class="j2-item-secondary">: String, </span>userCSS<span class="j2-item-secondary">: String, </span>completion<span class="j2-item-secondary">: (HTMLBrowserReady?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createBrowser<span class="j2-item-secondary">(</span>userAgent<span class="j2-item-secondary">: String?, </span>userCSS<span class="j2-item-secondary">: String?, </span>completion<span class="j2-item-secondary">: (HTMLBrowserReady?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_createbrowseruseragentusercsscompletion">
@@ -4409,7 +4416,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func createBrowser(
-    userAgent: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, userCSS: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    userAgent: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>?, userCSS: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>?,
     completion: @escaping (<a href="../../steamworks/types/htmlbrowserready.html?swift">HTMLBrowserReady</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -4438,12 +4445,12 @@
   
   
     <section id="createbrowseruseragentusercss" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20createBrowser(userAgent%3A%20String,%20userCSS%3A%20String)%20async%20-%3E%20HTMLBrowserReady%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="createbrowseruseragentusercss"></a>
-    <h4 class="visually-hidden">func createBrowser(userAgent: String, userCSS: String) async -&gt; HTMLBrowserReady?</h4>
+    <a name="//apple_ref/cpp/Method/func%20createBrowser(userAgent%3A%20String%3F,%20userCSS%3A%20String%3F)%20async%20-%3E%20HTMLBrowserReady%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="createbrowseruseragentusercss"></a>
+    <h4 class="visually-hidden">func createBrowser(userAgent: String?, userCSS: String?) async -&gt; HTMLBrowserReady?</h4>
     
     
     <a class="j2-item-title" href="#_createbrowseruseragentusercss" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createbrowseruseragentusercss"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>createBrowser<span class="j2-item-secondary">(</span>userAgent<span class="j2-item-secondary">: String, </span>userCSS<span class="j2-item-secondary">: String) async -&gt; HTMLBrowserReady?</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createBrowser<span class="j2-item-secondary">(</span>userAgent<span class="j2-item-secondary">: String?, </span>userCSS<span class="j2-item-secondary">: String?) async -&gt; HTMLBrowserReady?</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_createbrowseruseragentusercss">
@@ -4470,7 +4477,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func createBrowser(userAgent: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, userCSS: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) async
+    <pre><code class="language-swift">public func createBrowser(userAgent: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>?, userCSS: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>?) async
     -&gt; <a href="../../steamworks/types/htmlbrowserready.html?swift">HTMLBrowserReady</a>?</code></pre>
   </div>
 
@@ -4861,16 +4868,16 @@
   
   
   
-    <section id="init8" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Constructor/func%60init%60()%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="init8"></a>
-    <h4 class="visually-hidden">func`init`() -&gt; Bool</h4>
+    <section id="initialize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20initialize()%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="initialize"></a>
+    <h4 class="visually-hidden">func initialize() -&gt; Bool</h4>
     
     
-    <a class="j2-item-title" href="#_init8" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_init8"><code>
-        <span class="j2-swift">func<span class="j2-item-secondary">`init`() -&gt; Bool</span></span>
+    <a class="j2-item-title" href="#_initialize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_initialize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>initialize<span class="j2-item-secondary">() -&gt; Bool</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_init8">
+    <div class="collapse  j2-item-popopen-wrapper" id="_initialize">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4883,7 +4890,7 @@
               
 
 
-<p>Steamworks <code>ISteamHTMLSurface::Init()</code></p>
+<p>Steamworks <code>ISteamHTMLSurface::Initialize()</code></p>
 
 
 
@@ -4894,7 +4901,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func `init`() -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+    <pre><code class="language-swift">public func initialize() -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
   </div>
 
 
@@ -5078,7 +5085,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func keyDown(
     browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, nativeKeyCode: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    htmlKeyModifiers: <a href="../../steamworks/types/htmlkeymodifiers.html?swift">HTMLKeyModifiers</a>, isSystemKey: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+    htmlKeyModifiers: <a href="../../steamworks/types/htmlkeymodifiers.html?swift">HTMLKeyModifiers</a>, isSystemKey: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = false)</code></pre>
   </div>
 
 
@@ -5168,12 +5175,12 @@
   
   
     <section id="loadurlbrowserhandleurlpostdata" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20loadURL(browserHandle%3A%20HHTMLBrowser,%20url%3A%20String,%20postData%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="loadurlbrowserhandleurlpostdata"></a>
-    <h4 class="visually-hidden">func loadURL(browserHandle: HHTMLBrowser, url: String, postData: String)</h4>
+    <a name="//apple_ref/cpp/Method/func%20loadURL(browserHandle%3A%20HHTMLBrowser,%20url%3A%20String,%20postData%3A%20String%3F)" class="dashAnchor j2-item-dash-anchor" data-item-id="loadurlbrowserhandleurlpostdata"></a>
+    <h4 class="visually-hidden">func loadURL(browserHandle: HHTMLBrowser, url: String, postData: String?)</h4>
     
     
     <a class="j2-item-title" href="#_loadurlbrowserhandleurlpostdata" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_loadurlbrowserhandleurlpostdata"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>loadURL<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>url<span class="j2-item-secondary">: String, </span>postData<span class="j2-item-secondary">: String)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>loadURL<span class="j2-item-secondary">(</span>browserHandle<span class="j2-item-secondary">: HHTMLBrowser, </span>url<span class="j2-item-secondary">: String, </span>postData<span class="j2-item-secondary">: String?)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_loadurlbrowserhandleurlpostdata">
@@ -5200,7 +5207,7 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func loadURL(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, url: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, postData: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+    <pre><code class="language-swift">public func loadURL(browserHandle: <a href="../../steamworks/types/hhtmlbrowser1.html?swift">HHTMLBrowser</a>, url: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, postData: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>?)</code></pre>
   </div>
 
 
@@ -5862,8 +5869,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func setCookie(
-    hostname: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, key: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, value: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, path: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
-    expires: <a href="../../steamworks/types/rtime32.html?swift">RTime32</a>, secure: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, httpOnly: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)</code></pre>
+    hostname: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, key: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, value: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, path: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a> = &quot;/&quot;,
+    expires: <a href="../../steamworks/types/rtime32.html?swift">RTime32</a> = 0, secure: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = false, httpOnly: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = false)</code></pre>
   </div>
 
 
@@ -6286,7 +6293,8 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func shutdown() -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+    <pre><code class="language-swift">@discardableResult
+public func shutdown() -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
   </div>
 
 
@@ -6301,7 +6309,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L198-L200">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L199-L201">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6361,7 +6369,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L203-L205">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L204-L206">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6421,7 +6429,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L208-L210">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L209-L211">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6481,7 +6489,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L213-L215">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamHTMLSurface.swift#L214-L216">Show on GitHub</a></span>
             
           </nav>
         </div>

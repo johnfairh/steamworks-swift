@@ -110,7 +110,7 @@
     "abstract" : "Steamworks ActiveBeaconsUpdated_t",
     "name" : "ActiveBeaconsUpdated"
   },
-  "steamworks\/types\/activebeaconsupdated1.html?swift#init23" : {
+  "steamworks\/types\/activebeaconsupdated1.html?swift#init22" : {
     "abstract" : "Create a customized ActiveBeaconsUpdated",
     "name" : "init()",
     "parent_name" : "ActiveBeaconsUpdated"
@@ -182,6 +182,11 @@
     "name" : "invalid",
     "parent_name" : "AppID"
   },
+  "steamworks\/types\/appid27.html?swift#spacewar" : {
+    "abstract" : "The well-known SpaceWar AppID",
+    "name" : "spaceWar",
+    "parent_name" : "AppID"
+  },
   "steamworks\/types\/appid27.html?swift#value3" : {
     "abstract" : "",
     "name" : "value",
@@ -220,7 +225,7 @@
     "abstract" : "Steamworks AppResumingFromSuspend_t",
     "name" : "AppResumingFromSuspend"
   },
-  "steamworks\/types\/appresumingfromsuspend1.html?swift#init24" : {
+  "steamworks\/types\/appresumingfromsuspend1.html?swift#init23" : {
     "abstract" : "Create a customized AppResumingFromSuspend",
     "name" : "init()",
     "parent_name" : "AppResumingFromSuspend"
@@ -331,7 +336,7 @@
     "abstract" : "Steamworks AvailableBeaconLocationsUpdated_t",
     "name" : "AvailableBeaconLocationsUpdated"
   },
-  "steamworks\/types\/availablebeaconlocationsupdated1.html?swift#init25" : {
+  "steamworks\/types\/availablebeaconlocationsupdated1.html?swift#init24" : {
     "abstract" : "Create a customized AvailableBeaconLocationsUpdated",
     "name" : "init()",
     "parent_name" : "AvailableBeaconLocationsUpdated"
@@ -3633,7 +3638,7 @@
     "abstract" : "Steamworks FloatingGamepadTextInputDismissed_t",
     "name" : "FloatingGamepadTextInputDismissed"
   },
-  "steamworks\/types\/floatinggamepadtextinputdismissed1.html?swift#init26" : {
+  "steamworks\/types\/floatinggamepadtextinputdismissed1.html?swift#init25" : {
     "abstract" : "Create a customized FloatingGamepadTextInputDismissed",
     "name" : "init()",
     "parent_name" : "FloatingGamepadTextInputDismissed"
@@ -8682,7 +8687,7 @@
     "abstract" : "Steamworks IPCountry_t",
     "name" : "IPCountry"
   },
-  "steamworks\/types\/ipcountry1.html?swift#init27" : {
+  "steamworks\/types\/ipcountry1.html?swift#init26" : {
     "abstract" : "Create a customized IPCountry",
     "name" : "init()",
     "parent_name" : "IPCountry"
@@ -9200,7 +9205,7 @@
     "abstract" : "Steamworks LicensesUpdated_t",
     "name" : "LicensesUpdated"
   },
-  "steamworks\/types\/licensesupdated1.html?swift#init28" : {
+  "steamworks\/types\/licensesupdated1.html?swift#init27" : {
     "abstract" : "Create a customized LicensesUpdated",
     "name" : "init()",
     "parent_name" : "LicensesUpdated"
@@ -9746,7 +9751,7 @@
     "abstract" : "Steamworks MusicPlayerRemoteToFront_t",
     "name" : "MusicPlayerRemoteToFront"
   },
-  "steamworks\/types\/musicplayerremotetofront1.html?swift#init29" : {
+  "steamworks\/types\/musicplayerremotetofront1.html?swift#init28" : {
     "abstract" : "Create a customized MusicPlayerRemoteToFront",
     "name" : "init()",
     "parent_name" : "MusicPlayerRemoteToFront"
@@ -9755,7 +9760,7 @@
     "abstract" : "Steamworks MusicPlayerRemoteWillActivate_t",
     "name" : "MusicPlayerRemoteWillActivate"
   },
-  "steamworks\/types\/musicplayerremotewillactivate1.html?swift#init30" : {
+  "steamworks\/types\/musicplayerremotewillactivate1.html?swift#init29" : {
     "abstract" : "Create a customized MusicPlayerRemoteWillActivate",
     "name" : "init()",
     "parent_name" : "MusicPlayerRemoteWillActivate"
@@ -9764,7 +9769,7 @@
     "abstract" : "Steamworks MusicPlayerRemoteWillDeactivate_t",
     "name" : "MusicPlayerRemoteWillDeactivate"
   },
-  "steamworks\/types\/musicplayerremotewilldeactivate1.html?swift#init31" : {
+  "steamworks\/types\/musicplayerremotewilldeactivate1.html?swift#init30" : {
     "abstract" : "Create a customized MusicPlayerRemoteWillDeactivate",
     "name" : "init()",
     "parent_name" : "MusicPlayerRemoteWillDeactivate"
@@ -9815,7 +9820,7 @@
     "abstract" : "Steamworks MusicPlayerWantsPause_t",
     "name" : "MusicPlayerWantsPause"
   },
-  "steamworks\/types\/musicplayerwantspause1.html?swift#init32" : {
+  "steamworks\/types\/musicplayerwantspause1.html?swift#init31" : {
     "abstract" : "Create a customized MusicPlayerWantsPause",
     "name" : "init()",
     "parent_name" : "MusicPlayerWantsPause"
@@ -9824,7 +9829,7 @@
     "abstract" : "Steamworks MusicPlayerWantsPlay_t",
     "name" : "MusicPlayerWantsPlay"
   },
-  "steamworks\/types\/musicplayerwantsplay1.html?swift#init35" : {
+  "steamworks\/types\/musicplayerwantsplay1.html?swift#init34" : {
     "abstract" : "Create a customized MusicPlayerWantsPlay",
     "name" : "init()",
     "parent_name" : "MusicPlayerWantsPlay"
@@ -9847,7 +9852,7 @@
     "abstract" : "Steamworks MusicPlayerWantsPlayNext_t",
     "name" : "MusicPlayerWantsPlayNext"
   },
-  "steamworks\/types\/musicplayerwantsplaynext1.html?swift#init33" : {
+  "steamworks\/types\/musicplayerwantsplaynext1.html?swift#init32" : {
     "abstract" : "Create a customized MusicPlayerWantsPlayNext",
     "name" : "init()",
     "parent_name" : "MusicPlayerWantsPlayNext"
@@ -9856,7 +9861,7 @@
     "abstract" : "Steamworks MusicPlayerWantsPlayPrevious_t",
     "name" : "MusicPlayerWantsPlayPrevious"
   },
-  "steamworks\/types\/musicplayerwantsplayprevious1.html?swift#init34" : {
+  "steamworks\/types\/musicplayerwantsplayprevious1.html?swift#init33" : {
     "abstract" : "Create a customized MusicPlayerWantsPlayPrevious",
     "name" : "init()",
     "parent_name" : "MusicPlayerWantsPlayPrevious"
@@ -9893,7 +9898,7 @@
     "abstract" : "Steamworks MusicPlayerWillQuit_t",
     "name" : "MusicPlayerWillQuit"
   },
-  "steamworks\/types\/musicplayerwillquit1.html?swift#init36" : {
+  "steamworks\/types\/musicplayerwillquit1.html?swift#init35" : {
     "abstract" : "Create a customized MusicPlayerWillQuit",
     "name" : "init()",
     "parent_name" : "MusicPlayerWillQuit"
@@ -9902,7 +9907,7 @@
     "abstract" : "Steamworks NewUrlLaunchParameters_t",
     "name" : "NewUrlLaunchParameters"
   },
-  "steamworks\/types\/newurllaunchparameters1.html?swift#init37" : {
+  "steamworks\/types\/newurllaunchparameters1.html?swift#init36" : {
     "abstract" : "Create a customized NewUrlLaunchParameters",
     "name" : "init()",
     "parent_name" : "NewUrlLaunchParameters"
@@ -10417,7 +10422,7 @@
     "abstract" : "Steamworks PlaybackStatusHasChanged_t",
     "name" : "PlaybackStatusHasChanged"
   },
-  "steamworks\/types\/playbackstatushaschanged1.html?swift#init38" : {
+  "steamworks\/types\/playbackstatushaschanged1.html?swift#init37" : {
     "abstract" : "Create a customized PlaybackStatusHasChanged",
     "name" : "init()",
     "parent_name" : "PlaybackStatusHasChanged"
@@ -11129,7 +11134,7 @@
     "abstract" : "Steamworks RemoteStorageLocalFileChange_t",
     "name" : "RemoteStorageLocalFileChange"
   },
-  "steamworks\/types\/remotestoragelocalfilechange1.html?swift#init39" : {
+  "steamworks\/types\/remotestoragelocalfilechange1.html?swift#init38" : {
     "abstract" : "Create a customized RemoteStorageLocalFileChange",
     "name" : "init()",
     "parent_name" : "RemoteStorageLocalFileChange"
@@ -12167,6 +12172,11 @@
     "name" : "phoneActivityLimitExceeded",
     "parent_name" : "Result"
   },
+  "steamworks\/types\/result.html?swift#phonenumberisvoip" : {
+    "abstract" : "Steamworks K_EResultPhoneNumberIsVOIP",
+    "name" : "phoneNumberIsVOIP",
+    "parent_name" : "Result"
+  },
   "steamworks\/types\/result.html?swift#psnticketinvalid" : {
     "abstract" : "Steamworks k_EResultPSNTicketInvalid",
     "name" : "psnTicketInvalid",
@@ -12368,7 +12378,7 @@
     "abstract" : "Steamworks ScreenshotRequested_t",
     "name" : "ScreenshotRequested"
   },
-  "steamworks\/types\/screenshotrequested1.html?swift#init40" : {
+  "steamworks\/types\/screenshotrequested1.html?swift#init39" : {
     "abstract" : "Create a customized ScreenshotRequested",
     "name" : "init()",
     "parent_name" : "ScreenshotRequested"
@@ -12494,7 +12504,7 @@
     "name" : "connectionPort",
     "parent_name" : "ServerNetAdr"
   },
-  "steamworks\/types\/servernetadr.html?swift#init47" : {
+  "steamworks\/types\/servernetadr.html?swift#init46" : {
     "abstract" : "",
     "name" : "init()",
     "parent_name" : "ServerNetAdr"
@@ -12760,9 +12770,9 @@
     "name" : "htmlSurface",
     "parent_name" : "SteamAPI"
   },
-  "steamworks\/types\/steamapi.html?swift#initappid2" : {
+  "steamworks\/types\/steamapi.html?swift#initappidfakeappidtxtfile" : {
     "abstract" : "Initialize the Steamworks API.",
-    "name" : "init(appID:)",
+    "name" : "init(appID:fakeAppIdTxtFile:)",
     "parent_name" : "SteamAPI"
   },
   "steamworks\/types\/steamapi.html?swift#input1" : {
@@ -13112,6 +13122,11 @@
   "steamworks\/types\/steamapps.html?swift#requestappproofofpurchasekeyappid" : {
     "abstract" : "Steamworks ISteamApps::RequestAppProofOfPurchaseKey()",
     "name" : "requestAppProofOfPurchaseKey(appID:)",
+    "parent_name" : "SteamApps"
+  },
+  "steamworks\/types\/steamapps.html?swift#setdlccontextappid" : {
+    "abstract" : "Steamworks ISteamApps::SetDlcContext()",
+    "name" : "setDlcContext(appID:)",
     "parent_name" : "SteamApps"
   },
   "steamworks\/types\/steamapps.html?swift#uninstalldlcappid" : {
@@ -15827,9 +15842,9 @@
     "name" : "goForward(browserHandle:)",
     "parent_name" : "SteamHTMLSurface"
   },
-  "steamworks\/types\/steamhtmlsurface.html?swift#init8" : {
-    "abstract" : "Steamworks ISteamHTMLSurface::Init()",
-    "name" : "init()",
+  "steamworks\/types\/steamhtmlsurface.html?swift#initialize" : {
+    "abstract" : "Steamworks ISteamHTMLSurface::Initialize()",
+    "name" : "initialize()",
     "parent_name" : "SteamHTMLSurface"
   },
   "steamworks\/types\/steamhtmlsurface.html?swift#jsdialogresponsebrowserhandleresult" : {
@@ -16155,7 +16170,7 @@
     "name" : "init(_:)",
     "parent_name" : "SteamID"
   },
-  "steamworks\/types\/steamid16.html?swift#init51" : {
+  "steamworks\/types\/steamid16.html?swift#init50" : {
     "abstract" : "Create a fresh invalid SteamID.",
     "name" : "init()",
     "parent_name" : "SteamID"
@@ -17112,7 +17127,7 @@
     "abstract" : "Steamworks SteamInventoryDefinitionUpdate_t",
     "name" : "SteamInventoryDefinitionUpdate"
   },
-  "steamworks\/types\/steaminventorydefinitionupdate1.html?swift#init41" : {
+  "steamworks\/types\/steaminventorydefinitionupdate1.html?swift#init40" : {
     "abstract" : "Create a customized SteamInventoryDefinitionUpdate",
     "name" : "init()",
     "parent_name" : "SteamInventoryDefinitionUpdate"
@@ -19208,7 +19223,7 @@
     "name" : "init(_:type:)",
     "parent_name" : "SteamNetworkingIdentity"
   },
-  "steamworks\/types\/steamnetworkingidentity.html?swift#init49" : {
+  "steamworks\/types\/steamnetworkingidentity.html?swift#init48" : {
     "abstract" : "Create an invalid identity",
     "name" : "init()",
     "parent_name" : "SteamNetworkingIdentity"
@@ -19331,7 +19346,7 @@
     "name" : "fakeIPType",
     "parent_name" : "SteamNetworkingIPAddr"
   },
-  "steamworks\/types\/steamnetworkingipaddr.html?swift#init48" : {
+  "steamworks\/types\/steamnetworkingipaddr.html?swift#init47" : {
     "abstract" : "An invalid address",
     "name" : "init()",
     "parent_name" : "SteamNetworkingIPAddr"
@@ -20158,7 +20173,7 @@
     "abstract" : "Steamworks SteamParentalSettingsChanged_t",
     "name" : "SteamParentalSettingsChanged"
   },
-  "steamworks\/types\/steamparentalsettingschanged1.html?swift#init42" : {
+  "steamworks\/types\/steamparentalsettingschanged1.html?swift#init41" : {
     "abstract" : "Create a customized SteamParentalSettingsChanged",
     "name" : "init()",
     "parent_name" : "SteamParentalSettingsChanged"
@@ -20901,7 +20916,7 @@
     "abstract" : "Steamworks SteamServersConnected_t",
     "name" : "SteamServersConnected"
   },
-  "steamworks\/types\/steamserversconnected1.html?swift#init43" : {
+  "steamworks\/types\/steamserversconnected1.html?swift#init42" : {
     "abstract" : "Create a customized SteamServersConnected",
     "name" : "init()",
     "parent_name" : "SteamServersConnected"
@@ -20924,7 +20939,7 @@
     "abstract" : "Steamworks SteamShutdown_t",
     "name" : "SteamShutdown"
   },
-  "steamworks\/types\/steamshutdown1.html?swift#init44" : {
+  "steamworks\/types\/steamshutdown1.html?swift#init43" : {
     "abstract" : "Create a customized SteamShutdown",
     "name" : "init()",
     "parent_name" : "SteamShutdown"
@@ -22846,7 +22861,7 @@
     "abstract" : "Steamworks UnreadChatMessagesChanged_t",
     "name" : "UnreadChatMessagesChanged"
   },
-  "steamworks\/types\/unreadchatmessageschanged1.html?swift#init45" : {
+  "steamworks\/types\/unreadchatmessageschanged1.html?swift#init44" : {
     "abstract" : "Create a customized UnreadChatMessagesChanged",
     "name" : "init()",
     "parent_name" : "UnreadChatMessagesChanged"
@@ -23728,7 +23743,7 @@
     "abstract" : "Wrap up the SteamEncryptedAppTicket functions.",
     "name" : "SteamEncryptedAppTicket"
   },
-  "steamworksencryptedappticket\/types\/steamencryptedappticket.html?swift#appid30" : {
+  "steamworksencryptedappticket\/types\/steamencryptedappticket.html?swift#appid31" : {
     "abstract" : "Steamworks SteamEncryptedAppTicket_GetTicketAppID()",
     "name" : "appID",
     "parent_name" : "SteamEncryptedAppTicket"

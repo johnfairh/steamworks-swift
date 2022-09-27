@@ -1,5 +1,6 @@
-![macOS](https://shields.io/badge/platform-macOS%20|%20%3F%3F-lightgrey)
+![macOS](https://shields.io/badge/platform-macOS%20|%20Linux%20|%20%3F%3F-lightgrey)
 ![Steamworks 1.55](https://shields.io/badge/steamworks-1.55-lightgrey)
+[![Test](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml/badge.svg)](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml)
 ![MIT](https://shields.io/badge/license-MIT-black)
 
 # steamworks-swift
@@ -9,7 +10,7 @@ A practical interface to the Steamworks SDK using the Swift C++ importer.
 **Caveat Integrator: The Swift C++ importer is a chaotic science project; this package is built on top**
 
 Current state:
-* All Steamworks interfaces complete - see [rough docs](https://johnfairh.github.io/swift-steamworks/index.html)
+* All Steamworks interfaces complete - see [rough docs](https://johnfairh.github.io/steamworks-swift/index.html)
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
 * Some interface quality-of-life helpers in a separate `SteamworksHelpers` module
 * `make test` builds and runs unit tests that run frame loops and access portions of the Steam API
@@ -215,6 +216,7 @@ Prereqs:
 Install the Steamworks SDK:
 * Clone [steamworks-swift-sdk](https://github.com/johnfairh/steamworks-swift-sdk)
 * `make install`
+(this is far from ideal but hard stuck behind various Swift issues)
 
 Sample `Package.swift`:
 ```swift
@@ -235,8 +237,7 @@ let package = Package(
     .executableTarget(
       name: "MySteamApp",
       dependencies: [
-        .product(name: "Steamworks", package: "steamworks-swift"),
-        .product(name: "SteamworksHelpers", package: "steamworks-swift"),
+        .product(name: "Steamworks", package: "steamworks-swift")
       ]
     )
   ]
@@ -252,15 +253,17 @@ import Steamworks
 
 @main
 public struct MySteamApp {
-    public static func main() {
-        guard let steam = SteamAPI(appID: .spaceWar, fakeAppIdTxtFile: true) else {
-            print("SteamInit failed")
-            return
-        }
-        print("Hello world with Steam name \(steam.friends.getPersonaName())")
+  public static func main() {
+    guard let steam = SteamAPI(appID: .spaceWar, fakeAppIdTxtFile: true) else {
+      print("SteamInit failed")
+      return
     }
+    print("Hello world with Steam name \(steam.friends.getPersonaName())")
+  }
 }
 ```
+
+API docs [here](https://johnfairh.github.io/steamworks-swift/index.html).
 
 There may be a more fully-fledged AppKit demo [here](https://github.com/johnfairh/spacewar-swift).
 
@@ -293,6 +296,9 @@ Tech limitations, on 5.7 Xcode 14.0b3:
 * sourcekit won't give me a module interface for `CSteamworks` to see what else the
   importer is doing.  Probably Xcode's fault, still not passing the user's flags to
   sourcekit and still doing insultingly bad error-reporting.
+* Linux only: implicit struct constructors are not created, Swift generates a ref
+  to a non-existent method that fails at link time.  Work around with dumb C++
+  allocate shim.
 
 ### Non-Swift Problems
 
