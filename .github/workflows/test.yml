@@ -12,7 +12,6 @@ jobs:
     runs-on: macos-12
     env:
       DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
-
     steps:
       - uses: actions/checkout@v3
         with:
@@ -22,6 +21,18 @@ jobs:
       - name: Run tests
         run: swift test
 
+  macos_raw:
+    name: macOS raw build
+    runs-on: macos-12
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Raw build
+        run: swift build
+  
   linux:
     name: Linux SPM unit tests
     runs-on: ubuntu-latest
