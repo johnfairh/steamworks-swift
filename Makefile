@@ -24,3 +24,9 @@ generate:
 
 clean:
 	swift package clean
+
+test_linux:
+	docker run -v `pwd`:`pwd` -w `pwd` --name steamworks --rm swift:5.7 /bin/bash -c "apt-get update; apt-get install make; (cd sdk && make install); swift test"
+
+shell_linux:
+	docker run -it -v `pwd`:`pwd` -w `pwd` --name steamworks --rm swift:5.7 /bin/bash
