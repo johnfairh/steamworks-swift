@@ -2,7 +2,7 @@
 
 //
 // "couldn't find pc file for steamworks-swift" ?
-// See https://github.com/johnfairh/steamworks-swift/tree/install-sdk#how-to-use-this-project
+// See https://github.com/johnfairh/steamworks-swift#how-to-use-this-project
 //
 
 import PackageDescription

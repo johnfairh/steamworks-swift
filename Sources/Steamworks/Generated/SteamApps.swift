@@ -168,7 +168,7 @@ public struct SteamApps: Sendable {
     }
 
     /// Steamworks `ISteamApps::GetLaunchCommandLine()`
-    public func getLaunchCommandLine(commandLineSize: Int) -> (rc: Int, commandLine: String) {
+    public func getLaunchCommandLine(commandLineSize: Int = 1024) -> (rc: Int, commandLine: String) {
         var tmpCommandLine = SteamOutString(length: commandLineSize)
         let rc = tmpCommandLine.setContent { nstCommandLine in
             Int(SteamAPI_ISteamApps_GetLaunchCommandLine(interface, nstCommandLine, CInt(commandLineSize)))

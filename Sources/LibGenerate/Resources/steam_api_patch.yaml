@@ -221,6 +221,8 @@ methods:
     params:
       pszCommandLine:
         out_string_count: cubCommandLine
+      cubCommandLine:
+        default_value: 1024 # From SpaceWar but just a guess really
 #
 # ISteamFriends
 #
