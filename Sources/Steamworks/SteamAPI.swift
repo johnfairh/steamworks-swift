@@ -37,6 +37,9 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
     ///
     /// Calls `SteamAPI_RestartAppIfNecessary()` and `SteamAPI_Init()`.
     ///
+    /// If you installed a hook with `Steamworks_InstallCEGHooks()` then the CEG init
+    /// hook is called before `SteamAPI_Init()`.
+    ///
     /// If you set`fakeAppIdTxtFile` to `true` then the system behaves as though you
     /// have a `steam_appid.txt` file in the correct location containing your appID:
     /// 1. `SteamAPI_RestartAppIfNecessary()` never returns `true`;
@@ -54,6 +57,10 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
         if fakeAppIdTxtFile {
             setenv("SteamAppId", "\(appID.value)", 1)
         }
+        if let initSteamCEG, !initSteamCEG() {
+            logError("SteamAPI.init() failed: Steamworks_InitCEGLibrary() returned false")
+            return nil
+        }
         guard SteamAPI_Init() else {
             logError("SteamAPI.init() failed: SteamAPI_Init() returned false")
             return nil
@@ -69,6 +76,10 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
 
     deinit {
         SteamAPI_Shutdown()
+
+        if let termSteamCEG {
+            termSteamCEG()
+        }
     }
 
     // MARK: Interfaces
@@ -107,4 +118,14 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
     public let userStats = SteamUserStats()
     /// Access the Steamworks `ISteamVideo` interface
     public let video = SteamVideo()
+}
+
+private var initSteamCEG: (() -> Bool)? = nil
+private var termSteamCEG: (() -> Void)? = nil
+
+/// Initialize Steam DRM hooks - you can call these manually or pass them in here to let the library
+/// call them at the right time around `SteamAPI_Init()` and `SteamAPI_Term()`.
+public func Steamworks_InstallCEGHooks(initCEG: @escaping () -> Bool, termCEG: @escaping () -> Void) {
+    initSteamCEG = initCEG
+    termSteamCEG = termCEG
 }
