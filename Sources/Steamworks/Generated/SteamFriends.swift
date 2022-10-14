@@ -504,7 +504,8 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::SetRichPresence()`
-    public func setRichPresence(key: String, value: String) -> Bool {
+    @discardableResult
+    public func setRichPresence(key: String, value: String?) -> Bool {
         SteamAPI_ISteamFriends_SetRichPresence(interface, key, value)
     }
 }

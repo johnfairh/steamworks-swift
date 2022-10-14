@@ -265,6 +265,12 @@ methods:
         type: EFriendFlags
   SteamAPI_ISteamFriends_SetListenForFriendsMessages:
     discardable_result: true
+  SteamAPI_ISteamFriends_SetRichPresence:
+    discardable_result: true
+    params:
+      pchValue:
+        nullable: true
+
 #
 # ISteamGameSearch
 #
