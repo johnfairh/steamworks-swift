@@ -138,6 +138,7 @@ struct Patch: Codable {
         let ignore: String? // ignore this method for interface-gen
         var bIgnore: Bool { ignore != nil }
         let callresult: String? // missing callresult
+        let callback: String? // missing callback
         let flat_name: String? // change called method
         let name: String? // change method name
 
@@ -313,7 +314,7 @@ struct MetadataDB {
             name = SteamName(patch?.name ?? base.methodname)
             flatName = SteamName(patch?.flat_name ?? base.methodname_flat)
             callResult = (patch?.callresult ?? base.callresult).map { SteamType($0) }
-            callback = base.callback.map { SteamType($0) }
+            callback = (patch?.callback ?? base.callback).map { SteamType($0) }
             params = base.params.map { .init(base: $0, patch: patch?.params?[$0.paramname]) }
             returnType = SteamType(patch?.returntype ?? base.returntype).asReturnType
             outParamIffRc = patch?.out_param_iff_rc.map { $0 == " " ? "" : $0 }.map { .init($0) }

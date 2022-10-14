@@ -51,6 +51,11 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(3406), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
+    /// Registration for Steamworks `DurationControl_t` callback
+    func onDurationControl(_ client: @escaping (DurationControl) -> Void) {
+        callbacks.add(callbackID: CallbackID(167), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
     /// Registration for Steamworks `EndGameResultCallback_t` callback
     func onEndGameResultCallback(_ client: @escaping (EndGameResultCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5215), rawClient: SteamBaseAPI.makeRaw(client))
@@ -773,6 +778,11 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `DownloadItemResult_t` callbacks
     var downloadItemResult: AsyncStream<DownloadItemResult> {
         AsyncStream { onDownloadItemResult($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `DurationControl_t` callbacks
+    var durationControl: AsyncStream<DurationControl> {
+        AsyncStream { onDurationControl($0.yield0) }
     }
 
     /// Async stream of Steamworks `EndGameResultCallback_t` callbacks
