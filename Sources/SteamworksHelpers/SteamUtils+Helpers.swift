@@ -14,11 +14,12 @@ extension SteamUtils {
     }
 
     /// Steamworks `ISteamUtils::GetImageRGBA()`
-    public func getImageRGBA(imageIndex: Int) -> (rc: Bool, dest: [UInt8]) {
+    public func getImageRGBA(imageIndex: Int) -> (rc: Bool, width: Int, height: Int, dest: [UInt8]) {
         let (rc, width, height) = getImageSize(imageIndex: imageIndex)
         guard rc else {
-            return (rc, [])
+            return (rc, 0, 0, [])
         }
-        return getImageRGBA(imageIndex: imageIndex, destBufferSize: width * height * 4) // per docs
+        let bytes = getImageRGBA(imageIndex: imageIndex, destBufferSize: width * height * 4) // per docs
+        return (bytes.rc, width, height, bytes.dest)
     }
 }
