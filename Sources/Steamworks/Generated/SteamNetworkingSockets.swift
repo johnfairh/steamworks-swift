@@ -33,7 +33,7 @@ public struct SteamNetworkingSockets: Sendable {
 
     /// Steamworks `ISteamNetworkingSockets::CloseConnection()`
     @discardableResult
-    public func closeConnection(peer: HSteamNetConnection, reason: Int, debug: String, enableLinger: Bool) -> Bool {
+    public func closeConnection(peer: HSteamNetConnection, reason: Int, debug: String?, enableLinger: Bool) -> Bool {
         SteamAPI_ISteamNetworkingSockets_CloseConnection(interface, CSteamworks.HSteamNetConnection(peer), CInt(reason), debug, enableLinger)
     }
 
@@ -292,16 +292,17 @@ public struct SteamNetworkingSockets: Sendable {
     }
 
     /// Steamworks `ISteamNetworkingSockets::SendMessageToConnection()`
-    public func sendMessageToConnection(conn: HSteamNetConnection, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags) -> (rc: Result, messageNumber: Int) {
-        var tmpMessageNumber = int64()
-        let rc = Result(SteamAPI_ISteamNetworkingSockets_SendMessageToConnection(interface, CSteamworks.HSteamNetConnection(conn), data, uint32(dataSize), Int32(sendFlags), &tmpMessageNumber))
-        return (rc: rc, messageNumber: Int(tmpMessageNumber))
+    public func sendMessageToConnection(conn: HSteamNetConnection, data: UnsafeRawPointer, dataSize: Int, sendFlags: SteamNetworkingSendFlags, returnMessageNumber: Bool = true) -> (rc: Result, messageNumber: Int) {
+        let tmpMessageNumber = SteamNullable<int64>(isReal: returnMessageNumber)
+        defer { tmpMessageNumber.deallocate() }
+        let rc = Result(SteamAPI_ISteamNetworkingSockets_SendMessageToConnection(interface, CSteamworks.HSteamNetConnection(conn), data, uint32(dataSize), Int32(sendFlags), tmpMessageNumber.steamValue))
+        return (rc: rc, messageNumber: tmpMessageNumber.swiftValue(dummy: 0))
     }
 
     /// Steamworks `ISteamNetworkingSockets::SendMessages()`
-    public func sendMessages(messages: [SteamNetworkingMessage]) -> [Int] {
+    public func sendMessages(messages: [SteamNetworkingMessage], returnMessageNumberOrResult: Bool = true) -> [Int] {
         var tmpMessages = messages.map { OpaquePointer?($0) }
-        let tmpMessageNumberOrResult = SteamOutArray<int64>(messages.count)
+        let tmpMessageNumberOrResult = SteamOutArray<int64>(messages.count, returnMessageNumberOrResult)
         SteamAPI_ISteamNetworkingSockets_SendMessages(interface, CInt(messages.count), &tmpMessages, tmpMessageNumberOrResult.steamArray)
         return tmpMessageNumberOrResult.swiftArray()
     }

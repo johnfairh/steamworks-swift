@@ -657,6 +657,9 @@ methods:
 #
   SteamAPI_ISteamNetworkingSockets_CloseConnection:
     discardable_result: true
+    params:
+      pszDebug:
+        nullable: true
   SteamAPI_ISteamNetworkingSockets_CloseListenSocket:
     discardable_result: true
   SteamAPI_ISteamNetworkingSockets_ConfigureConnectionLanes:
@@ -771,6 +774,8 @@ methods:
     params:
       nSendFlags:
         type: ESteamNetworkingSendFlags
+      pOutMessageNumber:
+        nullable: true
   SteamAPI_ISteamNetworkingSockets_SendMessages:
     params:
       pMessages:
@@ -778,6 +783,7 @@ methods:
         array_count: nMessages
       pOutMessageNumberOrResult:
         out_array_count: messages.count
+        nullable: true
   SteamAPI_ISteamNetworkingSockets_SetCertificate:
     flat_name: CSteamAPI_ISteamNetworkingSockets_SetCertificate
     params:
@@ -1106,6 +1112,8 @@ methods:
       pDataToInclude:
         type: const uint8 *
         array_count: cbDataToInclude
+  SteamAPI_ISteamUser_BSetDurationControlOnlineState:
+    discardable_result: true
 #
 # ISteamUserStats
 #

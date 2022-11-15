@@ -480,3 +480,11 @@ struct SteamNullable<SteamType> {
         return SwiftType(steamValue.pointee)
     }
 }
+
+/// Slightly tentative specialization...
+extension SteamNullable where SteamType == int64 {
+    func swiftValue(dummy: @autoclosure () -> Int) -> Int {
+        guard let steamValue else { return dummy() }
+        return Int(steamValue.pointee)
+    }
+}

@@ -55,6 +55,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::BSetDurationControlOnlineState()`
+    @discardableResult
     public func setDurationControlOnlineState(newState: DurationControlOnlineState) -> Bool {
         SteamAPI_ISteamUser_BSetDurationControlOnlineState(interface, EDurationControlOnlineState(newState))
     }

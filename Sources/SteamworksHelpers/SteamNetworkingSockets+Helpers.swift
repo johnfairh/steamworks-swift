@@ -26,4 +26,10 @@ extension SteamNetworkingSockets {
         }
         return getDetailedConnectionStatus(conn: conn, bufSize: rc)
     }
+
+    /// Steamworks `ISteamNetworkingSockets::CloseConnection()` -- for built-in end-reasons
+    @discardableResult
+    public func closeConnection(peer: HSteamNetConnection, reason: SteamNetConnectionEnd, debug: String?, enableLinger: Bool) -> Bool {
+        closeConnection(peer: peer, reason: Int(reason.rawValue), debug: debug, enableLinger: enableLinger)
+    }
 }
