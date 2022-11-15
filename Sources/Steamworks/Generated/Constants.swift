@@ -160,6 +160,11 @@ extension InputHandle {
     public static let allControllers = InputHandle(UInt64.max)
 }
 
+extension InputHandle {
+    /// Steamworks `STEAM_INPUT_HANDLE_INVALID`
+    public static let invalid = InputHandle(0)
+}
+
 extension SteamAPICall {
     /// Steamworks `k_uAPICallInvalid`
     public static let invalid = SteamAPICall(0x0)
