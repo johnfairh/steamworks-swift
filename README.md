@@ -20,7 +20,7 @@ Current state:
 * Requires Swift 5.7, Xcode 14
 * The Xcode project basically works.  SourceKit can manage tab completion even if module
   interface gen is beyond it
-* Can't get anything out of SteamInput so can't tell if the translation is reasonable :/
+* Unit tests sometimes crash inside steam on exit - some kind of XCTest incompatibility.
 
 Below:
 * [Concept](#concept)
@@ -52,9 +52,8 @@ Below:
 ### Next
 
 * Port SpaceWar over to Swift to check general practicality, somewhat real-world usage,
-  general interest
+  general interest - see [spacewar-swift](https://github.com/johnfairh/spacewar-swift).
 * Generate docs more thematically, code-gen the layout?  See if DocC is up to it yet
-* Have another crack at SteamInput
 
 ## API mapping design
 
