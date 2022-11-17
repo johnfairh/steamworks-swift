@@ -43,6 +43,7 @@ public struct SteamGameServer: Sendable {
     }
 
     /// Steamworks `ISteamGameServer::BUpdateUserData()`
+    @discardableResult
     public func updateUserData(user: SteamID, playerName: String, score: Int) -> Bool {
         SteamAPI_ISteamGameServer_BUpdateUserData(interface, CUnsignedLongLong(user), playerName, uint32(score))
     }

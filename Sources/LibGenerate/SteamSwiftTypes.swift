@@ -129,9 +129,9 @@ private let steamToSwiftTypes: [SteamType : SwiftType] = [
     "const void *": "UnsafeRawPointer",
     "uint64_steamid" : "SteamID",
     "uint64_gameid" : "GameID",
-    "char": "Int", // steaminput..
-    "unsigned short": "Int", // "", leaving as Int for now because not obviously u16
-    "unsigned int": "Int", // ""
+    "char": "Int8", // steaminput, two dumb places
+    "unsigned short": "UInt16", // steaminput again, mostly vibration-related
+    "unsigned int": "UInt32", // steaminput, one dumb legacy place
     "intptr_t": "Int",
     "size_t": "Int",
     "void": "Void",

@@ -201,12 +201,12 @@ public struct SteamInput: Sendable {
     }
 
     /// Steamworks `ISteamInput::Legacy_TriggerHapticPulse()`
-    public func legacyTriggerHapticPulse(handle: InputHandle, targetPad: SteamControllerPad, durationMicroSec: Int) {
+    public func legacyTriggerHapticPulse(handle: InputHandle, targetPad: SteamControllerPad, durationMicroSec: UInt16) {
         SteamAPI_ISteamInput_Legacy_TriggerHapticPulse(interface, InputHandle_t(handle), ESteamControllerPad(targetPad), CUnsignedShort(durationMicroSec))
     }
 
     /// Steamworks `ISteamInput::Legacy_TriggerRepeatedHapticPulse()`
-    public func legacyTriggerRepeatedHapticPulse(handle: InputHandle, targetPad: SteamControllerPad, durationMicroSec: Int, offMicroSec: Int, `repeat`: Int, flags: Int) {
+    public func legacyTriggerRepeatedHapticPulse(handle: InputHandle, targetPad: SteamControllerPad, durationMicroSec: UInt16, offMicroSec: UInt16, `repeat`: UInt16, flags: UInt32 = 0) {
         SteamAPI_ISteamInput_Legacy_TriggerRepeatedHapticPulse(interface, InputHandle_t(handle), ESteamControllerPad(targetPad), CUnsignedShort(durationMicroSec), CUnsignedShort(offMicroSec), CUnsignedShort(`repeat`), CUnsignedInt(flags))
     }
 
@@ -247,17 +247,17 @@ public struct SteamInput: Sendable {
     }
 
     /// Steamworks `ISteamInput::TriggerSimpleHapticEvent()`
-    public func triggerSimpleHapticEvent(handle: InputHandle, hapticLocation: ControllerHapticLocation, intensity: UInt8, gainDB: Int, otherIntensity: UInt8, otherGainDB: Int) {
+    public func triggerSimpleHapticEvent(handle: InputHandle, hapticLocation: ControllerHapticLocation, intensity: UInt8, gainDB: Int8, otherIntensity: UInt8, otherGainDB: Int8) {
         SteamAPI_ISteamInput_TriggerSimpleHapticEvent(interface, InputHandle_t(handle), EControllerHapticLocation(hapticLocation), intensity, CChar(gainDB), otherIntensity, CChar(otherGainDB))
     }
 
     /// Steamworks `ISteamInput::TriggerVibration()`
-    public func triggerVibration(handle: InputHandle, leftSpeed: Int, rightSpeed: Int) {
+    public func triggerVibration(handle: InputHandle, leftSpeed: UInt16, rightSpeed: UInt16) {
         SteamAPI_ISteamInput_TriggerVibration(interface, InputHandle_t(handle), CUnsignedShort(leftSpeed), CUnsignedShort(rightSpeed))
     }
 
     /// Steamworks `ISteamInput::TriggerVibrationExtended()`
-    public func triggerVibrationExtended(handle: InputHandle, leftSpeed: Int, rightSpeed: Int, leftTriggerSpeed: Int, rightTriggerSpeed: Int) {
+    public func triggerVibrationExtended(handle: InputHandle, leftSpeed: UInt16, rightSpeed: UInt16, leftTriggerSpeed: UInt16, rightTriggerSpeed: UInt16) {
         SteamAPI_ISteamInput_TriggerVibrationExtended(interface, InputHandle_t(handle), CUnsignedShort(leftSpeed), CUnsignedShort(rightSpeed), CUnsignedShort(leftTriggerSpeed), CUnsignedShort(rightTriggerSpeed))
     }
 }
