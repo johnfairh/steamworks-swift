@@ -7,7 +7,7 @@
 
 A practical interface to the Steamworks SDK using the Swift C++ importer.
 
-**Caveat Integrator: The Swift C++ importer is a chaotic science project; this package is built on top**
+**Caveat Integrator: The Swift C++ importer is a stabilizing science project; this package is built on top**
 
 Current state:
 * All Steamworks interfaces complete - see [rough docs](https://johnfairh.github.io/steamworks-swift/index.html)
@@ -17,7 +17,7 @@ Current state:
   doing various sync and async tasks.
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
-* Requires Swift 5.7, Xcode 14
+* Requires Swift 5.8, Xcode 14
 * The Xcode project basically works.  SourceKit can manage tab completion even if module
   interface gen is beyond it
 * Unit tests sometimes crash inside steam on exit - some kind of XCTest incompatibility.
@@ -208,9 +208,9 @@ way in the `SteamworksHelpers` module.
 ## How To Use This Project
 
 Prereqs:
-* Needs Swift 5.7 (Xcode 14)
+* Needs Swift 5.8 (Xcode 14.3)
 * Needs Steam client installed (and logged-in, running for the tests or to do anything useful
-* I'm using macOS 12; should work on macOS 11, Linux; might work on Windows eventually
+* I'm using macOS 13; should work on macOS 12, Linux; might work on Windows eventually
 
 Install the Steamworks SDK:
 * Clone [steamworks-swift-sdk](https://github.com/johnfairh/steamworks-swift-sdk)
@@ -219,14 +219,14 @@ Install the Steamworks SDK:
 
 Sample `Package.swift`:
 ```swift
-// swift-tools-version: 5.7
+// swift-tools-version: 5.8
 
 import PackageDescription
 
 let package = Package(
   name: "MySteamApp",
   platforms: [
-    .macOS("11.0"),
+    .macOS("12.0"),
   ],
   dependencies: [
     .package(url: "https://github.com/johnfairh/steamworks-swift",
@@ -270,23 +270,14 @@ There may be a more fully-fledged AppKit demo [here](https://github.com/johnfair
 
 ### Swift C++ Bugs
 
-Tech limitations, on 5.7 Xcode 14.0b3:
-* ~~Have to manually tell Swift to link with `libc++`.  Verify by commenting from
-  Makefile.  When resolved tidy Makefile.~~ currently fixed in 5.7
-* ~~Importing `Dispatch` and `-enable-cxx-interop` makes `DispatchSemaphore` disappear
-  but not the rest of the module?? Work around.  When resolved rewrite mutex.~~ currently
-  fixed in 5.7
-* Some structures/classes aren't imported -- the common factor seems to be a `protected`
-  destructor.  Verify by trying to use `SteamNetworkingMessage_t`.
+Tech limitations, on 5.8 Xcode 14.3b2:
+* Some structures/classes aren't imported -- is the common factor a `protected`
+  destructor?  Verify by trying to use `SteamNetworkingMessage_t`.
 * Something goes wrong storing pointers to classes and they get nobbled by something.
-  Verify by making `SteamIPAddress` a struct, changing interfaces to cache the interface
-  pointers.
-* Some C++ types with `operator ==` don't have `Equatable` generated.  Verify with
-  `SteamNetworkingIPAddr`.  Got worse in 5.7
-* ~~Importing `Foundation` and `-enable-cxx-interop` and a C++ module goes wrong.  Swift
-  5.6 doesn't crash; worse the compiler goes slow, spits out warnings, then the binary
-  runs like treacle.  Will aim to not depend on Foundation, see how that goes.~~ seems
-  fixed in 5.7 but build is really slow - keep up not using Foundation?
+  Verify by making `SteamIPAddress` a struct and running `TestApiServer`.  Or change
+  interfaces to cache the interface pointers.
+* ~~Some C++ types with `operator ==` don't have `Equatable` generated.  Verify with
+  `SteamNetworkingIPAddr`.  Got worse in 5.7~~ Fixed for now in 5.8
 * Calls to virtual functions aren't generated properly: Swift generates a ref
   to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
   usable in practice.  Will use the flat API.
@@ -298,6 +289,8 @@ Tech limitations, on 5.7 Xcode 14.0b3:
 * Linux only: implicit struct constructors are not created, Swift generates a ref
   to a non-existent method that fails at link time.  Work around with dumb C++
   allocate shim.
+* Swift 5.8 adopts a broken/paranoid model about 'projected pointers' requiring some fairly
+  ugly code to work around.   Verify with the `__ unsafe` stuff in `ManualTypes.swift`.
 
 ### Non-Swift Problems
 

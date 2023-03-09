@@ -52,9 +52,10 @@ class CShimServerListResponse: ISteamMatchmakingServerListResponse {
         delete this;
     }
 
-    // Help poor confused Swift get hold of the superclass interface!
-    _Nonnull ISteamMatchmakingServerListResponse *getInterface() {
-        return this;
+    // Help poor confused Swift get hold of the superclass interface.
+    // Swift 5.8: It's, somehow, even more confused: the member version of this no longer works
+    static _Nonnull ISteamMatchmakingServerListResponse *GetSteamInterface(_Nonnull CShimServerListResponse *thiz) {
+        return thiz;
     }
 
     // Overrides - proxy to vtable
@@ -87,15 +88,15 @@ class CShimPingResponse: ISteamMatchmakingPingResponse {
         delete this;
     }
 
+    static _Nonnull ISteamMatchmakingPingResponse *GetSteamInterface(_Nonnull CShimPingResponse *thiz) {
+        return thiz;
+    }
+
     // Steamworks doesn't put this in the callbacks so we have to stash it in order
     // to carry through context back to Swift.  Painfully we have to stash it here
     // *after* giving the interface to Steam, but because of the threading model this
     // is *probably* not a race condition.
     HServerQuery handle;
-
-    _Nonnull ISteamMatchmakingPingResponse *getInterface() {
-        return this;
-    }
 
     // Overrides
 
@@ -124,11 +125,11 @@ class CShimPlayersResponse: ISteamMatchmakingPlayersResponse {
         delete this;
     }
 
-    HServerQuery handle;
-
-    _Nonnull ISteamMatchmakingPlayersResponse *getInterface() {
-        return this;
+    static _Nonnull ISteamMatchmakingPlayersResponse *GetSteamInterface(_Nonnull CShimPlayersResponse *thiz) {
+        return thiz;
     }
+
+    HServerQuery handle;
 
     // Overrides
 
@@ -162,11 +163,12 @@ class CShimRulesResponse: ISteamMatchmakingRulesResponse {
         delete this;
     }
 
-    HServerQuery handle;
-
-    _Nonnull ISteamMatchmakingRulesResponse *getInterface() {
-        return this;
+    static _Nonnull ISteamMatchmakingRulesResponse *GetSteamInterface(_Nonnull CShimRulesResponse *thiz) {
+        return thiz;
     }
+
+
+    HServerQuery handle;
 
     // Overrides
 
