@@ -108,7 +108,7 @@ extension SteamMatchmakingServers {
                                          AppId_t(appIndex),
                                          .init(tmp_filters),
                                          uint32(filters.count),
-                                         shim.pointee.getInterface()))
+                                         CShimServerListResponse.GetSteamInterface(shim)))
         guard rc != .invalid else {
             shim.pointee.Deallocate()
             return .invalid
@@ -196,7 +196,7 @@ extension SteamMatchmakingServers {
         let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_PingServer(interface,
                                                                            UInt32(ip),
                                                                            port,
-                                                                           shim.pointee.getInterface()))
+                                                                           CShimPingResponse.GetSteamInterface(shim)))
         guard rc != .invalid else {
             shim.pointee.Deallocate()
             return .invalid
@@ -212,7 +212,7 @@ extension SteamMatchmakingServers {
         let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_PlayerDetails(interface,
                                                                               UInt32(ip),
                                                                               port,
-                                                                              shim.pointee.getInterface()))
+                                                                              CShimPlayersResponse.GetSteamInterface(shim)))
         guard rc != .invalid else {
             shim.pointee.Deallocate()
             return .invalid
@@ -228,7 +228,7 @@ extension SteamMatchmakingServers {
         let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_ServerRules(interface,
                                                                             UInt32(ip),
                                                                             port,
-                                                                            shim.pointee.getInterface()))
+                                                                            CShimRulesResponse.GetSteamInterface(shim)))
         guard rc != .invalid else {
             shim.pointee.Deallocate()
             return .invalid

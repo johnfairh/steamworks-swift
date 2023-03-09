@@ -1,4 +1,4 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.8
 
 //
 // "couldn't find pc file for steamworks-swift" ?
@@ -53,7 +53,7 @@ import PackageDescription
 
 var steamworksSwiftFlags: [SwiftSetting] = [
     .unsafeFlags([
-      "-Xfrontend", "-enable-cxx-interop"
+      "-Xfrontend", "-enable-experimental-cxx-interop"
     ])
 ]
 
@@ -95,7 +95,7 @@ if !hasPkgConfig {
 let package = Package(
   name: "steamworks-swift",
   platforms: [
-    .macOS("11.0"),
+    .macOS("12.0"),
   ],
   products: [
     .library(

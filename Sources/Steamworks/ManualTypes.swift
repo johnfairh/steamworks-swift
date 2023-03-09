@@ -170,6 +170,17 @@ extension SteamInputActionEvent: SteamCreatable {}
 //
 // Can't implement comparable because Swift C++ import doesn't understand C++ operator overloads.
 
+/// Swift 5.8 workarounds for C++ importer being dumb
+extension servernetadr_t {
+    func GetConnectionAddressString() -> UnsafePointer<CChar>! {
+        __GetConnectionAddressStringUnsafe()
+    }
+
+    func GetQueryAddressString() -> UnsafePointer<CChar>! {
+        __GetQueryAddressStringUnsafe()
+    }
+}
+
 /// Steamworks `servernetadr`
 public final class ServerNetAdr: Sendable {
     private let adr: servernetadr_t
@@ -311,14 +322,15 @@ extension SteamNetworkingIPAddr: SteamCreatable {}
 extension SteamNetworkingIPAddr: Equatable, CustomStringConvertible {
     public static func == (lhs: SteamNetworkingIPAddr, rhs: SteamNetworkingIPAddr) -> Bool {
         // operator == has broken in Swift 5.7 ...
-        // lhs.adr == rhs.adr
-        var lhsadr = lhs.adr
-        var rhsadr = rhs.adr
-        return withUnsafePointer(to: &lhsadr) { lhsBytes in
-            withUnsafePointer(to: &rhsadr) { rhsBytes in
-                memcmp(lhsBytes, rhsBytes, MemoryLayout<SteamType>.size) == 0
-            }
-        }
+        // ... but it's back in Swift 5.8
+         lhs.adr == rhs.adr
+//        var lhsadr = lhs.adr
+//        var rhsadr = rhs.adr
+//        return withUnsafePointer(to: &lhsadr) { lhsBytes in
+//            withUnsafePointer(to: &rhsadr) { rhsBytes in
+//                memcmp(lhsBytes, rhsBytes, MemoryLayout<SteamType>.size) == 0
+//            }
+//        }
     }
 
     public var description: String {
@@ -338,6 +350,21 @@ extension CSteamworks.SteamNetworkingIPAddr {
 // Can't quite `enum`-ify this because:
 // 1) The random non-class-corruption issue;
 // 2) The 'types' enum is large and weird.
+
+/// Swift 5.8 workarounds for the C++ importer trying to be clever but ending up being really dumb
+extension CSteamworks.SteamNetworkingIdentity {
+    func GetIPAddr() -> UnsafePointer<CSteamworks.SteamNetworkingIPAddr>! {
+        __GetIPAddrUnsafe()
+    }
+
+    func GetGenericString() -> UnsafePointer<CChar>! {
+        __GetGenericStringUnsafe()
+    }
+
+    func GetGenericBytes(_ cbLen: inout int32) -> UnsafePointer<uint8>! {
+        __GetGenericBytesUnsafe(&cbLen)
+    }
+}
 
 /// Steamworks `SteamNetworkingIPAddr`
 public final class SteamNetworkingIdentity: @unchecked Sendable {
@@ -472,13 +499,13 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
 
 extension SteamNetworkingIdentity: SteamCreatable, CustomStringConvertible, Equatable {
     public static func == (lhs: SteamNetworkingIdentity, rhs: SteamNetworkingIdentity) -> Bool {
-        // operator == broken in Swift 5.7
-        // lhs.identity == rhs.identity
-        lhs.identity.m_eType == rhs.identity.m_eType &&
-            lhs.identity.m_cbSize == rhs.identity.m_cbSize &&
-            memcmp(lhs.identity.m_genericBytes_ptr,
-                   rhs.identity.m_genericBytes_ptr,
-                   Int(lhs.identity.m_cbSize)) == 0
+        // operator == broken in Swift 5.7; fixed again in Swift 5.8
+        lhs.identity == rhs.identity
+//        lhs.identity.m_eType == rhs.identity.m_eType &&
+//            lhs.identity.m_cbSize == rhs.identity.m_cbSize &&
+//            memcmp(lhs.identity.m_genericBytes_ptr,
+//                   rhs.identity.m_genericBytes_ptr,
+//                   Int(lhs.identity.m_cbSize)) == 0
     }
 }
 

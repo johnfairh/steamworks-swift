@@ -1399,7 +1399,7 @@
 					"$(inherited)",
 					"-lc++",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-cxx-interop";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
 				PRODUCT_BUNDLE_IDENTIFIER = SteamworksEncryptedAppTicket;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1440,7 +1440,7 @@
 					"$(inherited)",
 					"-lc++",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-cxx-interop";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
 				PRODUCT_BUNDLE_IDENTIFIER = SteamworksEncryptedAppTicket;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1826,7 +1826,7 @@
 					"$(inherited)",
 					"-lc++",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-cxx-interop";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
 				PRODUCT_BUNDLE_IDENTIFIER = Steamworks;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1865,7 +1865,7 @@
 					"$(inherited)",
 					"-lc++",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-cxx-interop";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
 				PRODUCT_BUNDLE_IDENTIFIER = Steamworks;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
