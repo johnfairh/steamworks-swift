@@ -288,7 +288,7 @@ Tech limitations, on 5.8 Xcode 14.3b2:
   sourcekit and still doing insultingly bad error-reporting.
 * Linux only: implicit struct constructors are not created, Swift generates a ref
   to a non-existent method that fails at link time.  Work around with dumb C++
-  allocate shim.
+  allocate shim.  Can't get Linux working on 5.8 to check.
 * Swift 5.8 adopts a broken/paranoid model about 'projected pointers' requiring some fairly
   ugly code to work around.   Verify with the `__ unsafe` stuff in `ManualTypes.swift`.
 
