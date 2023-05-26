@@ -339,7 +339,7 @@ Capture some notes on troubles reflecting the json into the module.
 
 ## Contributions
 
-Welcome: open an issue / johnfairh@gmail.com / @johnfairh
+Welcome: open an issue / johnfairh@gmail.com / @johnfairh@mastodon.social
 
 ## License
 
