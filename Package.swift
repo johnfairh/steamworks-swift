@@ -1,4 +1,4 @@
-// swift-tools-version:5.8
+// swift-tools-version:5.9
 
 //
 // "couldn't find pc file for steamworks-swift" ?
@@ -21,8 +21,8 @@ import PackageDescription
 //    This is very smooth but means you've done a system installation of
 //    stuff that varies per-target, not ideal.
 //
-// 2) a) Use further "unsafe" flags to point the build at the SDK files
-//       inside the package, AND
+// 2) a) Use "unsafe" flags to point the build at the SDK files inside the
+//       package, AND
 //
 //    b) ...require the end developer to supply the unsafe library flags to
 //       their build AND
@@ -36,8 +36,8 @@ import PackageDescription
 //
 //    This avoids the system installation but is tough on developers.
 //    
-// Way (1) is easier in general so document that as the norm.  It also reduces
-// the amount of 'unsafe' flags so that SemVer is achievable.
+// Way (1) is easier in general so document that as the norm.  It also removes
+// the 'unsafe' flags so that SemVer is achievable.
 //
 // Way (2) is supported here and used if pkg-config is not available. One
 // concrete thing this allows is a `swift build` of *this* project without any
@@ -45,16 +45,13 @@ import PackageDescription
 //
 
 //
-// We need to provide UnsafeFlags to enable C++ interop.
+// We no longer need to provide UnsafeFlags to enable C++ interop.
 //
-// If C++ interop becomes part of real Swift then this can go away and clients
-// will depend on tags (subject to binary library target essay above...)
+// Still abstract the flags because of finding the library details.
 //
 
 var steamworksSwiftFlags: [SwiftSetting] = [
-    .unsafeFlags([
-      "-Xfrontend", "-enable-experimental-cxx-interop"
-    ])
+    .interoperabilityMode(.Cxx)
 ]
 
 let pkgConfigSetting = "steamworks-swift"
@@ -95,7 +92,7 @@ if !hasPkgConfig {
 let package = Package(
   name: "steamworks-swift",
   platforms: [
-    .macOS("12.0"),
+    .macOS("13.0"),
   ],
   products: [
     .library(
@@ -147,16 +144,19 @@ let package = Package(
       name: "SteamworksHelpers",
       dependencies: [
         "Steamworks"
-      ]
+      ],
+      swiftSettings: [.interoperabilityMode(.Cxx)] // lies lies lies
     ),
     .executableTarget(
       name: "Client",
       dependencies: ["Steamworks", "SteamworksHelpers"],
+      swiftSettings: [.interoperabilityMode(.Cxx)], // lies lies lies
       linkerSettings: clientLinkerSettings
     ),
     .executableTarget(
       name: "TicketClient",
       dependencies: ["SteamworksEncryptedAppTicket", "SteamworksHelpers"],
+      swiftSettings: [.interoperabilityMode(.Cxx)], // lies lies lies
       linkerSettings: clientLinkerSettings
     ),
     .executableTarget(
@@ -176,6 +176,7 @@ let package = Package(
       name: "SteamworksTests",
       dependencies: ["Steamworks", "SteamworksHelpers", "LibGenerate"],
       exclude: ["Fixtures"],
+      swiftSettings: [.interoperabilityMode(.Cxx)], // lies lies lies
       linkerSettings: clientLinkerSettings
     )
   ],
