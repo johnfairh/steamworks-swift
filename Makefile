@@ -26,7 +26,7 @@ clean:
 	swift package clean
 
 test_linux:
-	docker run -v `pwd`:`pwd` -w `pwd` --name steamworks --rm swiftlang/swift:nightly-5.8-focal /bin/bash -c "apt-get update; apt-get install make; (cd sdk && make install); swift test"
+	docker run -v `pwd`:`pwd` -w `pwd` --name steamworks --rm swiftlang/swift:nightly-5.9-focal /bin/bash -c "apt-get update; apt-get install make; (cd sdk && make install); swift test"
 
 shell_linux:
-	docker run -it -v `pwd`:`pwd` -w `pwd` --name steamworks --rm  swiftlang/swift:nightly-5.8-focal/bin/bash
+	docker run -it -v `pwd`:`pwd` -w `pwd` --name steamworks --rm  swiftlang/swift:nightly-5.9-focal /bin/bash
