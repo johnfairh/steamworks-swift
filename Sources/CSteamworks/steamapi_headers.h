@@ -6,3 +6,4 @@
 #include "steam_missing.h"
 #include "steam_matchmaking_shims.h"
 #include "steam_networking_shims.h"
+#include "swift_shims.h"
