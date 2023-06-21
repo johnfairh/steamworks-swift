@@ -10,6 +10,13 @@ import XCTest
 @testable import LibGenerate
 import Steamworks
 
+#if canImport(Darwin)
+import Darwin
+#endif
+#if canImport(GLibc)
+import Glibc
+#endif
+
 /// Wrapper for Steam API initialization
 ///
 /// We attempt to share this across test instances -- the shutdown
@@ -73,9 +80,14 @@ enum TestClient {
 
         if let steam = SteamAPI(appID: .spaceWar, fakeAppIdTxtFile: true) {
             TestClient.client = Client(steam: steam)
-            atexit {
-                TestClient.client = nil
-            }
+//
+// Not entirely sure this worked but I can't get `atexit` to actually appear on
+// github actions running the same linux docker image as locally .. this is
+// exhausting so I'm just giving up for now.
+//
+//            atexit {
+//                TestClient.client = nil
+//            }
             steam.useLoggerForSteamworksWarnings()
             steam.networkingUtils.useLoggerForDebug(detailLevel: .everything)
             return steam

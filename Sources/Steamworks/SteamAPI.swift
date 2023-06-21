@@ -55,7 +55,7 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
             return nil
         }
         if fakeAppIdTxtFile {
-            setenv("SteamAppId", "\(appID.value)", 1)
+            my_setenv("SteamAppId", "\(appID.value)")
         }
         if let initSteamCEG, !initSteamCEG() {
             logError("SteamAPI.init() failed: Steamworks_InitCEGLibrary() returned false")

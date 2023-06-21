@@ -7,7 +7,7 @@
 
 A practical interface to the Steamworks SDK using the Swift C++ importer.
 
-**Caveat Integrator: The Swift C++ importer is a stabilizing science project; this package is built on top**
+**Caveat Integrator: The Swift C++ importer is immature and unpredictable; this package is built on top**
 
 Current state:
 * All Steamworks interfaces complete - see [rough docs](https://johnfairh.github.io/steamworks-swift/index.html)
@@ -208,9 +208,9 @@ way in the `SteamworksHelpers` module.
 ## How To Use This Project
 
 Prereqs:
-* Needs Swift 5.8 (Xcode 14.3)
+* Needs Swift 5.9 (Xcode 14.3)
 * Needs Steam client installed (and logged-in, running for the tests or to do anything useful
-* I'm using macOS 13; should work on macOS 12, Linux; might work on Windows eventually
+* I'm using macOS 13; should work on macOS 14, Linux; might work on Windows eventually
 
 Install the Steamworks SDK:
 * Clone [steamworks-swift-sdk](https://github.com/johnfairh/steamworks-swift-sdk)
@@ -219,14 +219,14 @@ Install the Steamworks SDK:
 
 Sample `Package.swift`:
 ```swift
-// swift-tools-version: 5.8
+// swift-tools-version: 5.9
 
 import PackageDescription
 
 let package = Package(
   name: "MySteamApp",
   platforms: [
-    .macOS("12.0"),
+    .macOS("13.0"),
   ],
   dependencies: [
     .package(url: "https://github.com/johnfairh/steamworks-swift",
@@ -270,14 +270,12 @@ There may be a more fully-fledged AppKit demo [here](https://github.com/johnfair
 
 ### Swift C++ Bugs
 
-Tech limitations, on 5.8 Xcode 14.3b2:
+Tech limitations, on 5.9 Xcode 15.b1:
 * Some structures/classes aren't imported -- is the common factor a `protected`
   destructor?  Verify by trying to use `SteamNetworkingMessage_t`.
 * Something goes wrong storing pointers to classes and they get nobbled by something.
   Verify by making `SteamIPAddress` a struct and running `TestApiServer`.  Or change
   interfaces to cache the interface pointers.
-* ~~Some C++ types with `operator ==` don't have `Equatable` generated.  Verify with
-  `SteamNetworkingIPAddr`.  Got worse in 5.7~~ Fixed for now in 5.8
 * Calls to virtual functions aren't generated properly: Swift generates a ref
   to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
   usable in practice.  Will use the flat API.
@@ -286,9 +284,13 @@ Tech limitations, on 5.8 Xcode 14.3b2:
 * sourcekit won't give me a module interface for `CSteamworks` to see what else the
   importer is doing.  Probably Xcode's fault, still not passing the user's flags to
   sourcekit and still doing insultingly bad error-reporting.
-* Linux only: implicit struct constructors are not created, Swift generates a ref
+* Linux only: random parts of Glibc silently fail to import. SMH.  Work around in C++.
+* ~Linux only: implicit struct constructors are not created, Swift generates a ref
   to a non-existent method that fails at link time.  Work around with dumb C++
-  allocate shim.  Can't get Linux working on 5.8 to check.
+  allocate shim.~  Sort of fixed in 5.9, but instead swiftc crashes on some uses -- on
+  both macOS and Linux.
+* Linux only, _again_: SPM test auto-discovery has no clue about C++ interop.  Work around by
+  smashing in the flag everywhere...
 * Swift 5.8 adopts a broken/paranoid model about 'projected pointers' requiring some fairly
   ugly code to work around.   Verify with the `__ unsafe` stuff in `ManualTypes.swift`.
 

@@ -170,7 +170,7 @@ extension SteamInputActionEvent: SteamCreatable {}
 //
 // Can't implement comparable because Swift C++ import doesn't understand C++ operator overloads.
 
-/// Swift 5.8 workarounds for C++ importer being dumb
+/// Swift 5.8+ workarounds for C++ importer being dumb
 extension servernetadr_t {
     func GetConnectionAddressString() -> UnsafePointer<CChar>! {
         __GetConnectionAddressStringUnsafe()
@@ -280,12 +280,13 @@ public final class SteamNetworkingIPAddr: @unchecked Sendable {
 
     /// An invalid address
     public init() {
-        adr = CSteamNetworkingIPAddr_Allocate()
+        // Crashes Swift 5.9 compiler without thunk...
+        adr = CSteamNetworkingIPAddr_Allocate() // SteamType
     }
 
     /// `INADDR_ANY` with some port
     public convenience init(inaddrAnyPort port: UInt16) {
-        var adr = CSteamNetworkingIPAddr_Allocate()
+        var adr = SteamType()
         adr.Clear()
         adr.m_port = port
         self.init(adr)
@@ -293,7 +294,7 @@ public final class SteamNetworkingIPAddr: @unchecked Sendable {
 
     /// Sets to IPv4 mapped address.  IP and port are in host byte order.
     public convenience init(ipv4: Int, port: UInt16) {
-        var adr = CSteamNetworkingIPAddr_Allocate()
+        var adr = SteamType()
         adr.SetIPv4(UInt32(ipv4), port)
         self.init(adr)
     }
@@ -301,14 +302,14 @@ public final class SteamNetworkingIPAddr: @unchecked Sendable {
     /// IP is interpreted as bytes, so there are no endian issues.  (Same as `inaddr_in6`.)
     /// The IP can be a mapped IPv4 address.
     public convenience init(ipv6: [UInt8], port: UInt16) {
-        var adr = CSteamNetworkingIPAddr_Allocate()//SteamType()
+        var adr = SteamType()
         adr.SetIPv6(ipv6, port)
         self.init(adr)
     }
 
     /// Parse an IP address and optional port.  If a port is not present, it is set to 0.
     public convenience init?(addressAndPort: String) {
-        var adr = CSteamNetworkingIPAddr_Allocate()//SteamType()
+        var adr = SteamType()
         adr.Clear()
         guard adr.ParseString(addressAndPort) else {
             return nil
@@ -443,33 +444,34 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
 
     /// Create an invalid identity
     public init() {
-        identity = CSteamNetworkingIdentity_Allocate()
+        // Crashes Swift 5.9 compiler without thunk...
+        identity = CSteamNetworkingIdentity_Allocate() //SteamType()
     }
 
     /// Init from a Steam ID
     public convenience init(_ steamID: SteamID) {
-        var identity = CSteamNetworkingIdentity_Allocate()
+        var identity = SteamType()
         identity.SetSteamID64(steamID.asUInt64) // also sets type
         self.init(identity)
     }
 
     /// Init from an IP address
     public convenience init(_ ipaddr: SteamNetworkingIPAddr) {
-        var identity = CSteamNetworkingIdentity_Allocate()
+        var identity = SteamType()
         identity.SetIPAddr(ipaddr.adr) // also sets type
         self.init(identity)
     }
 
     /// Identify as localhost, ~anonymous
     public static var localhost: SteamNetworkingIdentity {
-        var identity = CSteamNetworkingIdentity_Allocate()
+        var identity = SteamType()
         identity.SetLocalHost()
         return .init(identity)
     }
 
     /// Init generic string or some other type.  Max length 31 bytes.
     public convenience init?(genericString: String, type: SteamNetworkingIdentityType = .genericString) {
-        var identity = CSteamNetworkingIdentity_Allocate()
+        var identity = SteamType()
         guard identity.SetGenericString(genericString) else {
             return nil
         }
@@ -479,7 +481,7 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
 
     /// Init from a `description` string.
     public convenience init?(description: String) {
-        var identity = CSteamNetworkingIdentity_Allocate()
+        var identity = SteamType()
         guard identity.ParseString(description) else {
             return nil
         }
@@ -488,7 +490,7 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
 
     /// Init generic bytes or some other type.  Max 32 bytes.
     public convenience init?(_ bytes: [UInt8], type: SteamNetworkingIdentityType = .genericBytes) {
-        var identity = CSteamNetworkingIdentity_Allocate()
+        var identity = SteamType()
         guard identity.SetGenericBytes(bytes, bytes.count) else {
             return nil
         }

@@ -74,6 +74,11 @@ static inline bool CSteamAPI_ISteamNetworkingSockets_SetCertificate( ISteamNetwo
 
 // On Linux but not Darwin, Swift importer decides not to implement these two
 // implicit dumb-struct constructors and instead leaves them as dangling symbols.
+//
+// OK, that part is fixed in Swift 5.9....
+// ...but the swift compiler crashes in IRGen instead in some of invocations.
+//
+// So we still need these dumb functions.
 
 static inline SteamNetworkingIPAddr CSteamNetworkingIPAddr_Allocate() {
     return SteamNetworkingIPAddr();
