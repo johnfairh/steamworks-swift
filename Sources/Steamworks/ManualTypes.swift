@@ -171,13 +171,14 @@ extension SteamInputActionEvent: SteamCreatable {}
 // Can't implement comparable because Swift C++ import doesn't understand C++ operator overloads.
 
 /// Swift 5.8+ workarounds for C++ importer being dumb
+/// (though in this case the C++ implementation is shockingly unsafe for utterly  non-C++ reasons)
 extension servernetadr_t {
-    func GetConnectionAddressString() -> UnsafePointer<CChar>! {
-        __GetConnectionAddressStringUnsafe()
+    func GetConnectionAddressString() -> String {
+        String(__GetConnectionAddressStringUnsafe())
     }
 
-    func GetQueryAddressString() -> UnsafePointer<CChar>! {
-        __GetQueryAddressStringUnsafe()
+    func GetQueryAddressString() -> String {
+        String(__GetQueryAddressStringUnsafe())
     }
 }
 

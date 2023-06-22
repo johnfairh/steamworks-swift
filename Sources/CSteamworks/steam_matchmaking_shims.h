@@ -54,6 +54,7 @@ class CShimServerListResponse: ISteamMatchmakingServerListResponse {
 
     // Help poor confused Swift get hold of the superclass interface.
     // Swift 5.8: It's, somehow, even more confused: the member version of this no longer works
+    // Swift 5.9: Still borked - member version appears as an '__.Unsafe' monstrosity.
     static _Nonnull ISteamMatchmakingServerListResponse *GetSteamInterface(_Nonnull CShimServerListResponse *thiz) {
         return thiz;
     }
