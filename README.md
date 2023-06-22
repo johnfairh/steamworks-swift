@@ -17,9 +17,9 @@ Current state:
   doing various sync and async tasks.
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
-* Requires Swift 5.8, Xcode 14
-* The Xcode project basically works.  SourceKit can manage tab completion even if module
-  interface gen is beyond it
+* Requires Swift 5.9, Xcode 15 -- Linux C++ interop is extremely flakey in 5.9 but sort of works
+* The Xcode project basically works.  SourceKit can manage tab completion; in Xcode 15 even the module
+  interface view seems to work.
 * Unit tests sometimes crash inside steam on exit - some kind of XCTest incompatibility.
 
 Below:
@@ -208,7 +208,7 @@ way in the `SteamworksHelpers` module.
 ## How To Use This Project
 
 Prereqs:
-* Needs Swift 5.9 (Xcode 14.3)
+* Needs Swift 5.9 (Xcode 15)
 * Needs Steam client installed (and logged-in, running for the tests or to do anything useful
 * I'm using macOS 13; should work on macOS 14, Linux; might work on Windows eventually
 
@@ -229,22 +229,23 @@ let package = Package(
     .macOS("13.0"),
   ],
   dependencies: [
-    .package(url: "https://github.com/johnfairh/steamworks-swift",
-             branch: "main"),
+    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "0.3.0"),
   ],
   targets: [
     .executableTarget(
       name: "MySteamApp",
       dependencies: [
         .product(name: "Steamworks", package: "steamworks-swift")
-      ]
+      ],
+      swiftSettings: [.interoperabilityMode(.Cxx)]
     )
   ]
 )
 ```
 
-Note that the dependency on `steamworks-swift` must be by branch (or commit)
-rather than a SemVer because it requires the "unsafe" C++ interop mode.
+Note that you must set `.interoperabilityMode(.Cxx)` in all targets that depend on
+Steamworks, _and_ all targets that depend on them, forever and forever unto the last
+dependency.  This virality is part of the Swift 5.9 design and unavoidable for now.
 
 Sample skeleton program:
 ```swift
@@ -281,17 +282,17 @@ Tech limitations, on 5.9 Xcode 15.b1:
   usable in practice.  Will use the flat API.
 * Anonymous enums are not imported at all.  Affects callback etc. ID constants.
   Will work around.
-* sourcekit won't give me a module interface for `CSteamworks` to see what else the
+* ~sourcekit won't give me a module interface for `CSteamworks` to see what else the
   importer is doing.  Probably Xcode's fault, still not passing the user's flags to
-  sourcekit and still doing insultingly bad error-reporting.
+  sourcekit and still doing insultingly bad error-reporting.~ fixed in Xcode 15?!
 * Linux only: random parts of Glibc silently fail to import. SMH.  Work around in C++.
 * ~Linux only: implicit struct constructors are not created, Swift generates a ref
   to a non-existent method that fails at link time.  Work around with dumb C++
-  allocate shim.~  Sort of fixed in 5.9, but instead swiftc crashes on some uses -- on
-  both macOS and Linux.
+  allocate shim.~  Sort of fixed in 5.9, but instead `swiftc` crashes on some uses -- on
+  both macOS and Linux.  Check by refs to eg. `CSteamNetworkingIPAddr_Allocate()`.`
 * Linux only, _again_: SPM test auto-discovery has no clue about C++ interop.  Work around by
   smashing in the flag everywhere...
-* Swift 5.8 adopts a broken/paranoid model about 'projected pointers' requiring some fairly
+* Swift 5.8+ adopts a broken/paranoid model about 'projected pointers' requiring some fairly
   ugly code to work around.   Verify with the `__ unsafe` stuff in `ManualTypes.swift`.
 
 ### Non-Swift Problems
