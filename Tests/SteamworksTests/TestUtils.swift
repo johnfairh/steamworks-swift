@@ -9,6 +9,7 @@ import Foundation
 import XCTest
 @testable import LibGenerate
 import Steamworks
+import CSteamworks // for weird 'Linux C++ mode erase random stdlib calls' issue
 
 #if canImport(Darwin)
 import Darwin
@@ -76,8 +77,6 @@ enum TestClient {
         guard FileManager.default.fileExists(atPath: "/Applications/Steam.app") else {
             throw XCTSkip("Skipping Steam API test, can't find Steam")
         }
-        setenv("SteamAppId", "480", 1)
-
         if let steam = SteamAPI(appID: .spaceWar, fakeAppIdTxtFile: true) {
             TestClient.client = Client(steam: steam)
 //
@@ -167,8 +166,8 @@ extension XCTestCase {
         let generator: Generator
 
         init() throws {
-            setenv(IO.PATCH_YAML_PATH_VAR, patchYAMLURL.path, 1)
-            setenv(IO.SDK_EXTRA_JSON_PATH_VAR, sdkExtraJSONURL.path, 1)
+            my_setenv(IO.PATCH_YAML_PATH_VAR, patchYAMLURL.path)
+            my_setenv(IO.SDK_EXTRA_JSON_PATH_VAR, sdkExtraJSONURL.path)
             swiftOutputDirURL = try! FileManager.default.createTemporaryDirectory()
             cOutputDirURL = try! FileManager.default.createTemporaryDirectory()
             generator = try Generator(redistSdkURL: fixturesRedistSdkURL,
@@ -179,8 +178,8 @@ extension XCTestCase {
         deinit {
             try? FileManager.default.removeItem(at: swiftOutputDirURL)
             try? FileManager.default.removeItem(at: cOutputDirURL)
-            unsetenv(IO.PATCH_YAML_PATH_VAR)
-            unsetenv(IO.SDK_EXTRA_JSON_PATH_VAR)
+            my_unsetenv(IO.PATCH_YAML_PATH_VAR)
+            my_unsetenv(IO.SDK_EXTRA_JSON_PATH_VAR)
         }
     }
 }

@@ -1933,7 +1933,10 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Sources/CSteamworks",
+				);
 				INFOPLIST_FILE = "steamworks-swift.xcodeproj/SteamworksTests_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1964,7 +1967,10 @@
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Sources/CSteamworks",
+				);
 				INFOPLIST_FILE = "steamworks-swift.xcodeproj/SteamworksTests_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
