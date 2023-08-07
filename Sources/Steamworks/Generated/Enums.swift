@@ -4153,15 +4153,15 @@ extension TextFilteringContext: SteamCreatable {}
 /// Steamworks `EUGCContentDescriptorID`
 public enum UGCContentDescriptorID: CUnsignedInt, Sendable {
     /// Steamworks `k_EUGCContentDescriptor_NudityOrSexualContent`
-    case kEUGCContentDescriptorNudityOrSexualContent = 1
+    case nudityOrSexualContent = 1
     /// Steamworks `k_EUGCContentDescriptor_FrequentViolenceOrGore`
-    case kEUGCContentDescriptorFrequentViolenceOrGore = 2
+    case frequentViolenceOrGore = 2
     /// Steamworks `k_EUGCContentDescriptor_AdultOnlySexualContent`
-    case kEUGCContentDescriptorAdultOnlySexualContent = 3
+    case adultOnlySexualContent = 3
     /// Steamworks `k_EUGCContentDescriptor_GratuitousSexualContent`
-    case kEUGCContentDescriptorGratuitousSexualContent = 4
+    case gratuitousSexualContent = 4
     /// Steamworks `k_EUGCContentDescriptor_AnyMatureContent`
-    case kEUGCContentDescriptorAnyMatureContent = 5
+    case anyMatureContent = 5
     /// Some undocumented value
     case unrepresentedInSwift = 6
 }

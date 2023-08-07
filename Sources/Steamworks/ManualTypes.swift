@@ -368,7 +368,7 @@ extension CSteamworks.SteamNetworkingIdentity {
     }
 }
 
-/// Steamworks `SteamNetworkingIPAddr`
+/// Steamworks `SteamNetworkingIdentity`
 public final class SteamNetworkingIdentity: @unchecked Sendable {
     typealias SteamType = CSteamworks.SteamNetworkingIdentity
     let identity: SteamType

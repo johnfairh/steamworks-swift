@@ -258,10 +258,10 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCContentDescriptors()`
-    public func getQueryUGCContentDescriptors(handle: UGCQueryHandle, index: Int, maxEntries: Int) -> (rc: Int, descriptors: UGCContentDescriptorID) {
-        var tmpDescriptors = EUGCContentDescriptorID(rawValue: 0)
-        let rc = Int(SteamAPI_ISteamUGC_GetQueryUGCContentDescriptors(interface, UGCQueryHandle_t(handle), uint32(index), &tmpDescriptors, uint32(maxEntries)))
-        return (rc: rc, descriptors: UGCContentDescriptorID(tmpDescriptors))
+    public func getQueryUGCContentDescriptors(handle: UGCQueryHandle, index: Int, maxEntries: Int) -> (rc: Int, descriptors: [UGCContentDescriptorID]) {
+        let tmpDescriptors = SteamOutArray<EUGCContentDescriptorID>(maxEntries)
+        let rc = Int(SteamAPI_ISteamUGC_GetQueryUGCContentDescriptors(interface, UGCQueryHandle_t(handle), uint32(index), tmpDescriptors.steamArray, uint32(maxEntries)))
+        return (rc: rc, descriptors: tmpDescriptors.swiftArray())
     }
 
     /// Steamworks `ISteamUGC::GetQueryUGCKeyValueTag()`

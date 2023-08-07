@@ -87,11 +87,13 @@ public struct SteamGameServer: Sendable {
     }
 
     /// Steamworks `ISteamGameServer::GetAuthSessionTicket()`
-    public func getAuthSessionTicket(maxTicketSize: Int = 1024, snid: SteamNetworkingIdentity) -> (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int) {
+    public func getAuthSessionTicket(maxTicketSize: Int = 1024, snid: SteamNetworkingIdentity?) -> (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int) {
         var tmpTicket = SteamTransOutArray<UInt8>(maxTicketSize)
         var tmpTicketSize = uint32()
+        let tmpSnid = SteamNullable<CSteamworks.SteamNetworkingIdentity>(snid)
+        defer { tmpSnid.deallocate() }
         let rc = tmpTicket.setContent { nstTicket in
-            HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize, CSteamworks.SteamNetworkingIdentity(snid)))
+            HAuthTicket(SteamAPI_ISteamGameServer_GetAuthSessionTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize, tmpSnid.steamValue))
         }
         return (rc: rc, ticket: tmpTicket.swiftArray(Int(tmpTicketSize)), ticketSize: Int(tmpTicketSize))
     }

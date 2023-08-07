@@ -83,17 +83,19 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::GetAuthSessionTicket()`
-    public func getAuthSessionTicket(maxTicketSize: Int = 1024, steamNetworkingIdentity: SteamNetworkingIdentity) -> (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int) {
+    public func getAuthSessionTicket(maxTicketSize: Int = 1024, steamNetworkingIdentity: SteamNetworkingIdentity?) -> (rc: HAuthTicket, ticket: [UInt8], ticketSize: Int) {
         var tmpTicket = SteamTransOutArray<UInt8>(maxTicketSize)
         var tmpTicketSize = uint32()
+        let tmpSteamNetworkingIdentity = SteamNullable<CSteamworks.SteamNetworkingIdentity>(steamNetworkingIdentity)
+        defer { tmpSteamNetworkingIdentity.deallocate() }
         let rc = tmpTicket.setContent { nstTicket in
-            HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize, CSteamworks.SteamNetworkingIdentity(steamNetworkingIdentity)))
+            HAuthTicket(SteamAPI_ISteamUser_GetAuthSessionTicket(interface, nstTicket, CInt(maxTicketSize), &tmpTicketSize, tmpSteamNetworkingIdentity.steamValue))
         }
         return (rc: rc, ticket: tmpTicket.swiftArray(Int(tmpTicketSize)), ticketSize: Int(tmpTicketSize))
     }
 
     /// Steamworks `ISteamUser::GetAuthTicketForWebApi()`
-    public func getAuthTicketForWebApi(identity: String) -> HAuthTicket {
+    public func getAuthTicketForWebApi(identity: String?) -> HAuthTicket {
         HAuthTicket(SteamAPI_ISteamUser_GetAuthTicketForWebApi(interface, identity))
     }
 
