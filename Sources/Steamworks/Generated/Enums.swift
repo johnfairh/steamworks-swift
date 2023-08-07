@@ -96,8 +96,10 @@ public enum AuthSessionResponse: CUnsignedInt, Sendable {
     case authTicketInvalid = 8
     /// Steamworks `k_EAuthSessionResponsePublisherIssuedBan`
     case publisherIssuedBan = 9
+    /// Steamworks `k_EAuthSessionResponseAuthTicketNetworkIdentityFailure`
+    case authTicketNetworkIdentityFailure = 10
     /// Some undocumented value
-    case unrepresentedInSwift = 10
+    case unrepresentedInSwift = 11
 }
 
 extension EAuthSessionResponse: RawConvertible { typealias From = AuthSessionResponse }
@@ -1138,8 +1140,24 @@ public enum ControllerActionOrigin: CUnsignedInt, Sendable {
     case steamDeckReserved19 = 376
     /// Steamworks `k_EControllerActionOrigin_SteamDeck_Reserved20`
     case steamDeckReserved20 = 377
+    /// Steamworks `k_EControllerActionOrigin_Switch_JoyConButton_N`
+    case switchJoyConButtonN = 378
+    /// Steamworks `k_EControllerActionOrigin_Switch_JoyConButton_E`
+    case switchJoyConButtonE = 379
+    /// Steamworks `k_EControllerActionOrigin_Switch_JoyConButton_S`
+    case switchJoyConButtonS = 380
+    /// Steamworks `k_EControllerActionOrigin_Switch_JoyConButton_W`
+    case switchJoyConButtonW = 381
+    /// Steamworks `k_EControllerActionOrigin_PS5_LeftGrip`
+    case ps5LeftGrip = 382
+    /// Steamworks `k_EControllerActionOrigin_PS5_RightGrip`
+    case ps5RightGrip = 383
+    /// Steamworks `k_EControllerActionOrigin_PS5_LeftFn`
+    case ps5LeftFn = 384
+    /// Steamworks `k_EControllerActionOrigin_PS5_RightFn`
+    case ps5RightFn = 385
     /// Steamworks `k_EControllerActionOrigin_Count`
-    case count = 378
+    case count = 386
     /// Steamworks `k_EControllerActionOrigin_MaximumPossibleValue`
     case maximumPossibleValue = 32767
     /// Some undocumented value
@@ -1506,6 +1524,8 @@ public enum HTTPStatusCode: CUnsignedInt, Sendable {
     case http305UseProxy = 305
     /// Steamworks `k_EHTTPStatusCode307TemporaryRedirect`
     case http307TemporaryRedirect = 307
+    /// Steamworks `k_EHTTPStatusCode308PermanentRedirect`
+    case http308PermanentRedirect = 308
     /// Steamworks `k_EHTTPStatusCode400BadRequest`
     case http400BadRequest = 400
     /// Steamworks `k_EHTTPStatusCode401Unauthorized`
@@ -2068,14 +2088,14 @@ public enum InputActionOrigin: CUnsignedInt, Sendable {
     case switchRightGripLower = 246
     /// Steamworks `k_EInputActionOrigin_Switch_RightGrip_Upper`
     case switchRightGripUpper = 247
-    /// Steamworks `k_EInputActionOrigin_Switch_Reserved11`
-    case switchReserved11 = 248
-    /// Steamworks `k_EInputActionOrigin_Switch_Reserved12`
-    case switchReserved12 = 249
-    /// Steamworks `k_EInputActionOrigin_Switch_Reserved13`
-    case switchReserved13 = 250
-    /// Steamworks `k_EInputActionOrigin_Switch_Reserved14`
-    case switchReserved14 = 251
+    /// Steamworks `k_EInputActionOrigin_Switch_JoyConButton_N`
+    case switchJoyConButtonN = 248
+    /// Steamworks `k_EInputActionOrigin_Switch_JoyConButton_E`
+    case switchJoyConButtonE = 249
+    /// Steamworks `k_EInputActionOrigin_Switch_JoyConButton_S`
+    case switchJoyConButtonS = 250
+    /// Steamworks `k_EInputActionOrigin_Switch_JoyConButton_W`
+    case switchJoyConButtonW = 251
     /// Steamworks `k_EInputActionOrigin_Switch_Reserved15`
     case switchReserved15 = 252
     /// Steamworks `k_EInputActionOrigin_Switch_Reserved16`
@@ -2198,14 +2218,14 @@ public enum InputActionOrigin: CUnsignedInt, Sendable {
     case ps5GyroRoll = 311
     /// Steamworks `k_EInputActionOrigin_PS5_DPad_Move`
     case ps5DPadMove = 312
-    /// Steamworks `k_EInputActionOrigin_PS5_Reserved1`
-    case ps5Reserved1 = 313
-    /// Steamworks `k_EInputActionOrigin_PS5_Reserved2`
-    case ps5Reserved2 = 314
-    /// Steamworks `k_EInputActionOrigin_PS5_Reserved3`
-    case ps5Reserved3 = 315
-    /// Steamworks `k_EInputActionOrigin_PS5_Reserved4`
-    case ps5Reserved4 = 316
+    /// Steamworks `k_EInputActionOrigin_PS5_LeftGrip`
+    case ps5LeftGrip = 313
+    /// Steamworks `k_EInputActionOrigin_PS5_RightGrip`
+    case ps5RightGrip = 314
+    /// Steamworks `k_EInputActionOrigin_PS5_LeftFn`
+    case ps5LeftFn = 315
+    /// Steamworks `k_EInputActionOrigin_PS5_RightFn`
+    case ps5RightFn = 316
     /// Steamworks `k_EInputActionOrigin_PS5_Reserved5`
     case ps5Reserved5 = 317
     /// Steamworks `k_EInputActionOrigin_PS5_Reserved6`
@@ -2737,7 +2757,9 @@ extension MatchMakingServerResponse: EnumWithUnrepresented { typealias From = EM
 extension MatchMakingServerResponse: SteamCreatable {}
 
 /// Steamworks `ENotificationPosition`
-public enum NotificationPosition: CUnsignedInt, Sendable {
+public enum NotificationPosition: CInt, Sendable {
+    /// Steamworks `k_EPositionInvalid`
+    case invalid = -1
     /// Steamworks `k_EPositionTopLeft`
     case topLeft = 0
     /// Steamworks `k_EPositionTopRight`
@@ -2846,10 +2868,12 @@ public enum ParentalFeature: CUnsignedInt, Sendable {
     case test = 12
     /// Steamworks `k_EFeatureSiteLicense`
     case siteLicense = 13
+    /// Steamworks `k_EFeatureKioskMode`
+    case kioskMode = 14
     /// Steamworks `k_EFeatureMax`
-    case max = 14
+    case max = 15
     /// Some undocumented value
-    case unrepresentedInSwift = 15
+    case unrepresentedInSwift = 16
 }
 
 extension EParentalFeature: RawConvertible { typealias From = ParentalFeature }
@@ -2945,26 +2969,6 @@ public enum PlayerResult: CUnsignedInt, Sendable {
 extension EPlayerResult_t: RawConvertible { typealias From = PlayerResult }
 extension PlayerResult: EnumWithUnrepresented { typealias From = EPlayerResult_t }
 extension PlayerResult: SteamCreatable {}
-
-/// Steamworks `ERegisterActivationCodeResult`
-public enum RegisterActivationCodeResult: CUnsignedInt, Sendable {
-    /// Steamworks `k_ERegisterActivationCodeResultOK`
-    case ok = 0
-    /// Steamworks `k_ERegisterActivationCodeResultFail`
-    case fail = 1
-    /// Steamworks `k_ERegisterActivationCodeResultAlreadyRegistered`
-    case alreadyRegistered = 2
-    /// Steamworks `k_ERegisterActivationCodeResultTimeout`
-    case timeout = 3
-    /// Steamworks `k_ERegisterActivationCodeAlreadyOwned`
-    case alreadyOwned = 4
-    /// Some undocumented value
-    case unrepresentedInSwift = 5
-}
-
-extension ERegisterActivationCodeResult: RawConvertible { typealias From = RegisterActivationCodeResult }
-extension RegisterActivationCodeResult: EnumWithUnrepresented { typealias From = ERegisterActivationCodeResult }
-extension RegisterActivationCodeResult: SteamCreatable {}
 
 /// Steamworks `ERemoteStorageFilePathType`
 public enum RemoteStorageFilePathType: CUnsignedInt, Sendable {
@@ -4145,6 +4149,26 @@ public enum TextFilteringContext: CUnsignedInt, Sendable {
 extension ETextFilteringContext: RawConvertible { typealias From = TextFilteringContext }
 extension TextFilteringContext: EnumWithUnrepresented { typealias From = ETextFilteringContext }
 extension TextFilteringContext: SteamCreatable {}
+
+/// Steamworks `EUGCContentDescriptorID`
+public enum UGCContentDescriptorID: CUnsignedInt, Sendable {
+    /// Steamworks `k_EUGCContentDescriptor_NudityOrSexualContent`
+    case kEUGCContentDescriptorNudityOrSexualContent = 1
+    /// Steamworks `k_EUGCContentDescriptor_FrequentViolenceOrGore`
+    case kEUGCContentDescriptorFrequentViolenceOrGore = 2
+    /// Steamworks `k_EUGCContentDescriptor_AdultOnlySexualContent`
+    case kEUGCContentDescriptorAdultOnlySexualContent = 3
+    /// Steamworks `k_EUGCContentDescriptor_GratuitousSexualContent`
+    case kEUGCContentDescriptorGratuitousSexualContent = 4
+    /// Steamworks `k_EUGCContentDescriptor_AnyMatureContent`
+    case kEUGCContentDescriptorAnyMatureContent = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
+}
+
+extension EUGCContentDescriptorID: RawConvertible { typealias From = UGCContentDescriptorID }
+extension UGCContentDescriptorID: EnumWithUnrepresented { typealias From = EUGCContentDescriptorID }
+extension UGCContentDescriptorID: SteamCreatable {}
 
 /// Steamworks `EUGCMatchingUGCType`
 public enum UGCMatchingUGCType: CInt, Sendable {

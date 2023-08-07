@@ -14,7 +14,7 @@
 public struct SteamUGC: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamUGC> {
-        isServer ? SteamAPI_SteamGameServerUGC_v016() : SteamAPI_SteamUGC_v016()
+        isServer ? SteamAPI_SteamGameServerUGC_v017() : SteamAPI_SteamUGC_v017()
     }
 
     init(isServer: Bool) {
@@ -32,6 +32,11 @@ public struct SteamUGC: Sendable {
         await withUnsafeContinuation {
             addAppDependency(publishedFileID: publishedFileID, appID: appID, completion: $0.resume)
         }
+    }
+
+    /// Steamworks `ISteamUGC::AddContentDescriptor()`
+    public func addContentDescriptor(handle: UGCUpdateHandle, descid: UGCContentDescriptorID) -> Bool {
+        SteamAPI_ISteamUGC_AddContentDescriptor(interface, UGCUpdateHandle_t(handle), EUGCContentDescriptorID(descid))
     }
 
     /// Steamworks `ISteamUGC::AddDependency()`, callback
@@ -252,6 +257,13 @@ public struct SteamUGC: Sendable {
         }
     }
 
+    /// Steamworks `ISteamUGC::GetQueryUGCContentDescriptors()`
+    public func getQueryUGCContentDescriptors(handle: UGCQueryHandle, index: Int, maxEntries: Int) -> (rc: Int, descriptors: UGCContentDescriptorID) {
+        var tmpDescriptors = EUGCContentDescriptorID(rawValue: 0)
+        let rc = Int(SteamAPI_ISteamUGC_GetQueryUGCContentDescriptors(interface, UGCQueryHandle_t(handle), uint32(index), &tmpDescriptors, uint32(maxEntries)))
+        return (rc: rc, descriptors: UGCContentDescriptorID(tmpDescriptors))
+    }
+
     /// Steamworks `ISteamUGC::GetQueryUGCKeyValueTag()`
     public func getQueryUGCKeyValueTag(handle: UGCQueryHandle, index: Int, valueTagIndex: Int, keySize: Int = SteamConstants.ugcKeyValueMaxSize + 1, valueSize: Int = SteamConstants.ugcKeyValueMaxSize + 1) -> (rc: Bool, key: String, value: String) {
         var tmpKey = SteamOutString(length: keySize)
@@ -408,6 +420,11 @@ public struct SteamUGC: Sendable {
         await withUnsafeContinuation {
             removeAppDependency(publishedFileID: publishedFileID, appID: appID, completion: $0.resume)
         }
+    }
+
+    /// Steamworks `ISteamUGC::RemoveContentDescriptor()`
+    public func removeContentDescriptor(handle: UGCUpdateHandle, descid: UGCContentDescriptorID) -> Bool {
+        SteamAPI_ISteamUGC_RemoveContentDescriptor(interface, UGCUpdateHandle_t(handle), EUGCContentDescriptorID(descid))
     }
 
     /// Steamworks `ISteamUGC::RemoveDependency()`, callback

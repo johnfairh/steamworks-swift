@@ -76,6 +76,12 @@ static inline const AppId_t * _Nonnull GetAppDependenciesResult_t_m_rgAppIDs_ptr
     return s->m_rgAppIDs;
 }
 
+__attribute__((swift_name("getter:GetTicketForWebApiResponse_t.m_rgubTicket_ptr(self:)")))
+static inline const uint8 * _Nonnull GetTicketForWebApiResponse_t_m_rgubTicket_ptr(const GetTicketForWebApiResponse_t * _Nonnull s)
+{
+    return s->m_rgubTicket;
+}
+
 __attribute__((swift_name("getter:GetVideoURLResult_t.m_rgchURL_ptr(self:)")))
 static inline const char * _Nonnull GetVideoURLResult_t_m_rgchURL_ptr(const GetVideoURLResult_t * _Nonnull s)
 {
@@ -259,6 +265,13 @@ static inline const char * _Nonnull SteamRelayNetworkStatus_t_m_debugMsg_ptr(con
 {
     const_cast<SteamRelayNetworkStatus_t *>(s)->m_debugMsg[255] = 0;
     return s->m_debugMsg;
+}
+
+__attribute__((swift_name("getter:SteamRemotePlayTogetherGuestInvite_t.m_szConnectURL_ptr(self:)")))
+static inline const char * _Nonnull SteamRemotePlayTogetherGuestInvite_t_m_szConnectURL_ptr(const SteamRemotePlayTogetherGuestInvite_t * _Nonnull s)
+{
+    const_cast<SteamRemotePlayTogetherGuestInvite_t *>(s)->m_szConnectURL[1023] = 0;
+    return s->m_szConnectURL;
 }
 
 __attribute__((swift_name("getter:SteamUGCDetails_t.m_rgchTitle_ptr(self:)")))
