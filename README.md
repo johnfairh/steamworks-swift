@@ -1,5 +1,5 @@
 ![macOS](https://shields.io/badge/platform-macOS%20|%20Linux%20|%20%3F%3F-lightgrey)
-![Steamworks 1.55](https://shields.io/badge/steamworks-1.55-lightgrey)
+![Steamworks 1.57](https://shields.io/badge/steamworks-1.57-lightgrey)
 [![Test](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml/badge.svg)](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml)
 ![MIT](https://shields.io/badge/license-MIT-black)
 
@@ -209,7 +209,7 @@ way in the `SteamworksHelpers` module.
 
 Prereqs:
 * Needs Swift 5.9 (Xcode 15)
-* Needs Steam client installed (and logged-in, running for the tests or to do anything useful
+* Needs Steam client installed (and logged-in, running for the tests or to do anything useful)
 * I'm using macOS 13; should work on macOS 14, Linux; might work on Windows eventually
 
 Install the Steamworks SDK:
@@ -271,7 +271,7 @@ There may be a more fully-fledged AppKit demo [here](https://github.com/johnfair
 
 ### Swift C++ Bugs
 
-Tech limitations, on 5.9 Xcode 15.b1:
+Tech limitations, on 5.9 Xcode 15.b3:
 * Some structures/classes aren't imported -- is the common factor a `protected`
   destructor?  Verify by trying to use `SteamNetworkingMessage_t`.
 * Something goes wrong storing pointers to classes and they get nobbled by something.
