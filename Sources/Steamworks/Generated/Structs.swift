@@ -675,6 +675,24 @@ extension FileDetailsResult: SteamCreatable {
     }
 }
 
+/// Steamworks `FilterTextDictionaryChanged_t`
+public struct FilterTextDictionaryChanged: Sendable {
+    /// Steamworks `m_eLanguage`
+    public let language: Int
+
+    /// Create a customized `FilterTextDictionaryChanged`
+    public init(language: Int = 0) {
+        self.language = language
+    }
+}
+
+extension FilterTextDictionaryChanged: SteamCreatable {
+    typealias SteamType = CSteamworks.FilterTextDictionaryChanged_t
+    init(_ steam: CSteamworks.FilterTextDictionaryChanged_t) {
+        language = .init(steam.m_eLanguage)
+    }
+}
+
 /// Steamworks `FloatingGamepadTextInputDismissed_t`
 public struct FloatingGamepadTextInputDismissed: Sendable {
     /// Create a customized `FloatingGamepadTextInputDismissed`
@@ -1230,10 +1248,16 @@ extension GameLobbyJoinRequested: SteamCreatable {
 public struct GameOverlayActivated: Sendable {
     /// Steamworks `m_bActive`
     public let active: Bool
+    /// Steamworks `m_bUserInitiated`
+    public let userInitiated: Bool
+    /// Steamworks `m_nAppID`
+    public let appID: AppID
 
     /// Create a customized `GameOverlayActivated`
-    public init(active: Bool = false) {
+    public init(active: Bool = false, userInitiated: Bool = false, appID: AppID = 0) {
         self.active = active
+        self.userInitiated = userInitiated
+        self.appID = appID
     }
 }
 
@@ -1241,6 +1265,8 @@ extension GameOverlayActivated: SteamCreatable {
     typealias SteamType = CSteamworks.GameOverlayActivated_t
     init(_ steam: CSteamworks.GameOverlayActivated_t) {
         active = .init(steam.m_bActive)
+        userInitiated = .init(steam.m_bUserInitiated)
+        appID = .init(steam.m_nAppID)
     }
 }
 
@@ -1312,11 +1338,14 @@ public struct GamepadTextInputDismissed: Sendable {
     public let submitted: Bool
     /// Steamworks `m_unSubmittedText`
     public let submittedText: Int
+    /// Steamworks `m_unAppID`
+    public let appID: AppID
 
     /// Create a customized `GamepadTextInputDismissed`
-    public init(submitted: Bool = false, submittedText: Int = 0) {
+    public init(submitted: Bool = false, submittedText: Int = 0, appID: AppID = 0) {
         self.submitted = submitted
         self.submittedText = submittedText
+        self.appID = appID
     }
 }
 
@@ -1325,6 +1354,7 @@ extension GamepadTextInputDismissed: SteamCreatable {
     init(_ steam: CSteamworks.GamepadTextInputDismissed_t) {
         submitted = .init(steam.m_bSubmitted)
         submittedText = .init(steam.m_unSubmittedText)
+        appID = .init(steam.m_unAppID)
     }
 }
 
@@ -1403,6 +1433,36 @@ extension GetOPFSettingsResult: SteamCreatable {
     init(_ steam: CSteamworks.GetOPFSettingsResult_t) {
         result = .init(steam.m_eResult)
         videoAppID = .init(steam.m_unVideoAppID)
+    }
+}
+
+/// Steamworks `GetTicketForWebApiResponse_t`
+public struct GetTicketForWebApiResponse: Sendable {
+    /// Steamworks `m_hAuthTicket`
+    public let authTicket: HAuthTicket
+    /// Steamworks `m_eResult`
+    public let result: Result
+    /// Steamworks `m_cubTicket`
+    public let ticketSize: Int
+    /// Steamworks `m_rgubTicket`
+    public let ticket: [UInt8]
+
+    /// Create a customized `GetTicketForWebApiResponse`
+    public init(authTicket: HAuthTicket = 0, result: Result = .none, ticketSize: Int = 0, ticket: [UInt8] = []) {
+        self.authTicket = authTicket
+        self.result = result
+        self.ticketSize = ticketSize
+        self.ticket = ticket
+    }
+}
+
+extension GetTicketForWebApiResponse: SteamCreatable {
+    typealias SteamType = CSteamworks.GetTicketForWebApiResponse_t
+    init(_ steam: CSteamworks.GetTicketForWebApiResponse_t) {
+        authTicket = .init(steam.m_hAuthTicket)
+        result = .init(steam.m_eResult)
+        ticketSize = .init(steam.m_cubTicket)
+        ticket = .init(steam.m_rgubTicket_ptr, 2560)
     }
 }
 
@@ -2322,6 +2382,92 @@ extension InputDigitalActionData: SteamCreatable {
     init(_ steam: CSteamworks.InputDigitalActionData_t) {
         state = .init(steam.bState)
         active = .init(steam.bActive)
+    }
+}
+
+/// Steamworks `InputMotionDataV2_t`
+public struct InputMotionDataV2: Sendable {
+    /// Steamworks `driftCorrectedQuatX`
+    public let correctedQuatX: Float
+    /// Steamworks `driftCorrectedQuatY`
+    public let correctedQuatY: Float
+    /// Steamworks `driftCorrectedQuatZ`
+    public let correctedQuatZ: Float
+    /// Steamworks `driftCorrectedQuatW`
+    public let correctedQuatW: Float
+    /// Steamworks `sensorFusionQuatX`
+    public let fusionQuatX: Float
+    /// Steamworks `sensorFusionQuatY`
+    public let fusionQuatY: Float
+    /// Steamworks `sensorFusionQuatZ`
+    public let fusionQuatZ: Float
+    /// Steamworks `sensorFusionQuatW`
+    public let fusionQuatW: Float
+    /// Steamworks `deferredSensorFusionQuatX`
+    public let sensorFusionQuatX: Float
+    /// Steamworks `deferredSensorFusionQuatY`
+    public let sensorFusionQuatY: Float
+    /// Steamworks `deferredSensorFusionQuatZ`
+    public let sensorFusionQuatZ: Float
+    /// Steamworks `deferredSensorFusionQuatW`
+    public let sensorFusionQuatW: Float
+    /// Steamworks `gravityX`
+    public let x: Float
+    /// Steamworks `gravityY`
+    public let y: Float
+    /// Steamworks `gravityZ`
+    public let z: Float
+    /// Steamworks `degreesPerSecondX`
+    public let perSecondX: Float
+    /// Steamworks `degreesPerSecondY`
+    public let perSecondY: Float
+    /// Steamworks `degreesPerSecondZ`
+    public let perSecondZ: Float
+
+    /// Create a customized `InputMotionDataV2`
+    public init(correctedQuatX: Float = 0, correctedQuatY: Float = 0, correctedQuatZ: Float = 0, correctedQuatW: Float = 0, fusionQuatX: Float = 0, fusionQuatY: Float = 0, fusionQuatZ: Float = 0, fusionQuatW: Float = 0, sensorFusionQuatX: Float = 0, sensorFusionQuatY: Float = 0, sensorFusionQuatZ: Float = 0, sensorFusionQuatW: Float = 0, x: Float = 0, y: Float = 0, z: Float = 0, perSecondX: Float = 0, perSecondY: Float = 0, perSecondZ: Float = 0) {
+        self.correctedQuatX = correctedQuatX
+        self.correctedQuatY = correctedQuatY
+        self.correctedQuatZ = correctedQuatZ
+        self.correctedQuatW = correctedQuatW
+        self.fusionQuatX = fusionQuatX
+        self.fusionQuatY = fusionQuatY
+        self.fusionQuatZ = fusionQuatZ
+        self.fusionQuatW = fusionQuatW
+        self.sensorFusionQuatX = sensorFusionQuatX
+        self.sensorFusionQuatY = sensorFusionQuatY
+        self.sensorFusionQuatZ = sensorFusionQuatZ
+        self.sensorFusionQuatW = sensorFusionQuatW
+        self.x = x
+        self.y = y
+        self.z = z
+        self.perSecondX = perSecondX
+        self.perSecondY = perSecondY
+        self.perSecondZ = perSecondZ
+    }
+}
+
+extension InputMotionDataV2: SteamCreatable {
+    typealias SteamType = CSteamworks.InputMotionDataV2_t
+    init(_ steam: CSteamworks.InputMotionDataV2_t) {
+        correctedQuatX = .init(steam.driftCorrectedQuatX)
+        correctedQuatY = .init(steam.driftCorrectedQuatY)
+        correctedQuatZ = .init(steam.driftCorrectedQuatZ)
+        correctedQuatW = .init(steam.driftCorrectedQuatW)
+        fusionQuatX = .init(steam.sensorFusionQuatX)
+        fusionQuatY = .init(steam.sensorFusionQuatY)
+        fusionQuatZ = .init(steam.sensorFusionQuatZ)
+        fusionQuatW = .init(steam.sensorFusionQuatW)
+        sensorFusionQuatX = .init(steam.deferredSensorFusionQuatX)
+        sensorFusionQuatY = .init(steam.deferredSensorFusionQuatY)
+        sensorFusionQuatZ = .init(steam.deferredSensorFusionQuatZ)
+        sensorFusionQuatW = .init(steam.deferredSensorFusionQuatW)
+        x = .init(steam.gravityX)
+        y = .init(steam.gravityY)
+        z = .init(steam.gravityZ)
+        perSecondX = .init(steam.degreesPerSecondX)
+        perSecondY = .init(steam.degreesPerSecondY)
+        perSecondZ = .init(steam.degreesPerSecondZ)
     }
 }
 
@@ -3377,28 +3523,6 @@ public struct PlaybackStatusHasChanged: Sendable {
 extension PlaybackStatusHasChanged: SteamCreatable {
     typealias SteamType = CSteamworks.PlaybackStatusHasChanged_t
     init(_ steam: CSteamworks.PlaybackStatusHasChanged_t) {
-    }
-}
-
-/// Steamworks `RegisterActivationCodeResponse_t`
-public struct RegisterActivationCodeResponse: Sendable {
-    /// Steamworks `m_eResult`
-    public let result: RegisterActivationCodeResult
-    /// Steamworks `m_unPackageRegistered`
-    public let packageRegistered: Int
-
-    /// Create a customized `RegisterActivationCodeResponse`
-    public init(result: RegisterActivationCodeResult = .ok, packageRegistered: Int = 0) {
-        self.result = result
-        self.packageRegistered = packageRegistered
-    }
-}
-
-extension RegisterActivationCodeResponse: SteamCreatable {
-    typealias SteamType = CSteamworks.RegisterActivationCodeResponse_t
-    init(_ steam: CSteamworks.RegisterActivationCodeResponse_t) {
-        result = .init(steam.m_eResult)
-        packageRegistered = .init(steam.m_unPackageRegistered)
     }
 }
 
@@ -4674,6 +4798,40 @@ extension SteamInputDeviceDisconnected: SteamCreatable {
     }
 }
 
+/// Steamworks `SteamInputGamepadSlotChange_t`
+public struct SteamInputGamepadSlotChange: Sendable {
+    /// Steamworks `m_unAppID`
+    public let appID: AppID
+    /// Steamworks `m_ulDeviceHandle`
+    public let deviceHandle: InputHandle
+    /// Steamworks `m_eDeviceType`
+    public let deviceType: SteamInputType
+    /// Steamworks `m_nOldGamepadSlot`
+    public let oldGamepadSlot: Int
+    /// Steamworks `m_nNewGamepadSlot`
+    public let newGamepadSlot: Int
+
+    /// Create a customized `SteamInputGamepadSlotChange`
+    public init(appID: AppID = 0, deviceHandle: InputHandle = 0, deviceType: SteamInputType = .unknown, oldGamepadSlot: Int = 0, newGamepadSlot: Int = 0) {
+        self.appID = appID
+        self.deviceHandle = deviceHandle
+        self.deviceType = deviceType
+        self.oldGamepadSlot = oldGamepadSlot
+        self.newGamepadSlot = newGamepadSlot
+    }
+}
+
+extension SteamInputGamepadSlotChange: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamInputGamepadSlotChange_t
+    init(_ steam: CSteamworks.SteamInputGamepadSlotChange_t) {
+        appID = .init(steam.m_unAppID)
+        deviceHandle = .init(steam.m_ulDeviceHandle)
+        deviceType = .init(steam.m_eDeviceType)
+        oldGamepadSlot = .init(steam.m_nOldGamepadSlot)
+        newGamepadSlot = .init(steam.m_nNewGamepadSlot)
+    }
+}
+
 /// Steamworks `SteamInventoryDefinitionUpdate_t`
 public struct SteamInventoryDefinitionUpdate: Sendable {
     /// Create a customized `SteamInventoryDefinitionUpdate`
@@ -5238,6 +5396,24 @@ extension SteamRemotePlaySessionDisconnected: SteamCreatable {
     typealias SteamType = CSteamworks.SteamRemotePlaySessionDisconnected_t
     init(_ steam: CSteamworks.SteamRemotePlaySessionDisconnected_t) {
         sessionID = .init(steam.m_unSessionID)
+    }
+}
+
+/// Steamworks `SteamRemotePlayTogetherGuestInvite_t`
+public struct SteamRemotePlayTogetherGuestInvite: Sendable {
+    /// Steamworks `m_szConnectURL`
+    public let connectURL: String
+
+    /// Create a customized `SteamRemotePlayTogetherGuestInvite`
+    public init(connectURL: String = "") {
+        self.connectURL = connectURL
+    }
+}
+
+extension SteamRemotePlayTogetherGuestInvite: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamRemotePlayTogetherGuestInvite_t
+    init(_ steam: CSteamworks.SteamRemotePlayTogetherGuestInvite_t) {
+        connectURL = .init(steam.m_szConnectURL_ptr)
     }
 }
 

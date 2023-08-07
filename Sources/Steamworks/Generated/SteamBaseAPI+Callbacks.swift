@@ -76,6 +76,11 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(502), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
+    /// Registration for Steamworks `FilterTextDictionaryChanged_t` callback
+    func onFilterTextDictionaryChanged(_ client: @escaping (FilterTextDictionaryChanged) -> Void) {
+        callbacks.add(callbackID: CallbackID(739), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
     /// Registration for Steamworks `FloatingGamepadTextInputDismissed_t` callback
     func onFloatingGamepadTextInputDismissed(_ client: @escaping (FloatingGamepadTextInputDismissed) -> Void) {
         callbacks.add(callbackID: CallbackID(738), rawClient: SteamBaseAPI.makeRaw(client))
@@ -184,6 +189,11 @@ public extension SteamBaseAPI {
     /// Registration for Steamworks `GetOPFSettingsResult_t` callback
     func onGetOPFSettingsResult(_ client: @escaping (GetOPFSettingsResult) -> Void) {
         callbacks.add(callbackID: CallbackID(4624), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
+    /// Registration for Steamworks `GetTicketForWebApiResponse_t` callback
+    func onGetTicketForWebApiResponse(_ client: @escaping (GetTicketForWebApiResponse) -> Void) {
+        callbacks.add(callbackID: CallbackID(168), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GetVideoURLResult_t` callback
@@ -481,11 +491,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(4001), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `RegisterActivationCodeResponse_t` callback
-    func onRegisterActivationCodeResponse(_ client: @escaping (RegisterActivationCodeResponse) -> Void) {
-        callbacks.add(callbackID: CallbackID(1008), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `RemoteStorageEnumerateUserSharedWorkshopFilesResult_t` callback
     func onRemoteStorageEnumerateUserSharedWorkshopFilesResult(_ client: @escaping (RemoteStorageEnumerateUserSharedWorkshopFilesResult) -> Void) {
         callbacks.add(callbackID: CallbackID(1326), rawClient: SteamBaseAPI.makeRaw(client))
@@ -601,6 +606,11 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(2802), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
+    /// Registration for Steamworks `SteamInputGamepadSlotChange_t` callback
+    func onSteamInputGamepadSlotChange(_ client: @escaping (SteamInputGamepadSlotChange) -> Void) {
+        callbacks.add(callbackID: CallbackID(2804), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
     /// Registration for Steamworks `SteamInventoryDefinitionUpdate_t` callback
     func onSteamInventoryDefinitionUpdate(_ client: @escaping (SteamInventoryDefinitionUpdate) -> Void) {
         callbacks.add(callbackID: CallbackID(4702), rawClient: SteamBaseAPI.makeRaw(client))
@@ -659,6 +669,11 @@ public extension SteamBaseAPI {
     /// Registration for Steamworks `SteamRemotePlaySessionDisconnected_t` callback
     func onSteamRemotePlaySessionDisconnected(_ client: @escaping (SteamRemotePlaySessionDisconnected) -> Void) {
         callbacks.add(callbackID: CallbackID(5702), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
+    /// Registration for Steamworks `SteamRemotePlayTogetherGuestInvite_t` callback
+    func onSteamRemotePlayTogetherGuestInvite(_ client: @escaping (SteamRemotePlayTogetherGuestInvite) -> Void) {
+        callbacks.add(callbackID: CallbackID(5703), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamServerConnectFailure_t` callback
@@ -805,6 +820,11 @@ public extension SteamBaseAPI {
         AsyncStream { onFavoritesListChanged($0.yield0) }
     }
 
+    /// Async stream of Steamworks `FilterTextDictionaryChanged_t` callbacks
+    var filterTextDictionaryChanged: AsyncStream<FilterTextDictionaryChanged> {
+        AsyncStream { onFilterTextDictionaryChanged($0.yield0) }
+    }
+
     /// Async stream of Steamworks `FloatingGamepadTextInputDismissed_t` callbacks
     var floatingGamepadTextInputDismissed: AsyncStream<FloatingGamepadTextInputDismissed> {
         AsyncStream { onFloatingGamepadTextInputDismissed($0.yield0) }
@@ -913,6 +933,11 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `GetOPFSettingsResult_t` callbacks
     var getOPFSettingsResult: AsyncStream<GetOPFSettingsResult> {
         AsyncStream { onGetOPFSettingsResult($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `GetTicketForWebApiResponse_t` callbacks
+    var getTicketForWebApiResponse: AsyncStream<GetTicketForWebApiResponse> {
+        AsyncStream { onGetTicketForWebApiResponse($0.yield0) }
     }
 
     /// Async stream of Steamworks `GetVideoURLResult_t` callbacks
@@ -1210,11 +1235,6 @@ public extension SteamBaseAPI {
         AsyncStream { onPlaybackStatusHasChanged($0.yield0) }
     }
 
-    /// Async stream of Steamworks `RegisterActivationCodeResponse_t` callbacks
-    var registerActivationCodeResponse: AsyncStream<RegisterActivationCodeResponse> {
-        AsyncStream { onRegisterActivationCodeResponse($0.yield0) }
-    }
-
     /// Async stream of Steamworks `RemoteStorageEnumerateUserSharedWorkshopFilesResult_t` callbacks
     var remoteStorageEnumerateUserSharedWorkshopFilesResult: AsyncStream<RemoteStorageEnumerateUserSharedWorkshopFilesResult> {
         AsyncStream { onRemoteStorageEnumerateUserSharedWorkshopFilesResult($0.yield0) }
@@ -1330,6 +1350,11 @@ public extension SteamBaseAPI {
         AsyncStream { onSteamInputDeviceDisconnected($0.yield0) }
     }
 
+    /// Async stream of Steamworks `SteamInputGamepadSlotChange_t` callbacks
+    var steamInputGamepadSlotChange: AsyncStream<SteamInputGamepadSlotChange> {
+        AsyncStream { onSteamInputGamepadSlotChange($0.yield0) }
+    }
+
     /// Async stream of Steamworks `SteamInventoryDefinitionUpdate_t` callbacks
     var steamInventoryDefinitionUpdate: AsyncStream<SteamInventoryDefinitionUpdate> {
         AsyncStream { onSteamInventoryDefinitionUpdate($0.yield0) }
@@ -1388,6 +1413,11 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `SteamRemotePlaySessionDisconnected_t` callbacks
     var steamRemotePlaySessionDisconnected: AsyncStream<SteamRemotePlaySessionDisconnected> {
         AsyncStream { onSteamRemotePlaySessionDisconnected($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `SteamRemotePlayTogetherGuestInvite_t` callbacks
+    var steamRemotePlayTogetherGuestInvite: AsyncStream<SteamRemotePlayTogetherGuestInvite> {
+        AsyncStream { onSteamRemotePlayTogetherGuestInvite($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamServerConnectFailure_t` callbacks

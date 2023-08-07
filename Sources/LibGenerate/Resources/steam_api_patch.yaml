@@ -144,6 +144,8 @@ enums:
   ESteamNetworkingSendFlags:
     is_set: Int32
     prefix: nSteamNetworkingSend
+  EUGCContentDescriptorID:
+    prefix: EUGCContentDescriptor
   EUGCReadAction:
     prefix: EUGCRead
   EUserHasLicenseForAppResult:
@@ -296,6 +298,8 @@ methods:
         out_array_valid_count: tmpTicketSize
       cbMaxTicket:
         default_value: 1024 # docs
+      pSnid:
+        nullable: true
   SteamAPI_ISteamUser_GetAuthSessionTicket:
     params:
       pTicket:
@@ -955,6 +959,10 @@ methods:
         default_value: k_cchFilenameMax
   SteamAPI_ISteamUGC_GetItemState:
     returntype: EItemState
+  SteamAPI_ISteamUGC_GetQueryUGCContentDescriptors:
+    params:
+      pvecDescriptors:
+        out_array_count: cMaxEntries
   SteamAPI_ISteamUGC_GetQueryUGCAdditionalPreview:
     out_param_iff_rc: ' '
     params:
@@ -1081,6 +1089,12 @@ methods:
         out_array_valid_count: tmpTicketSize
       cbMaxTicket:
         default_value: 1024 # docs
+      pSteamNetworkingIdentity:
+        nullable: true
+  SteamAPI_ISteamUser_GetAuthTicketForWebApi:
+    params:
+      pchIdentity:
+        nullable: true
   SteamAPI_ISteamUser_GetDurationControl:
     callback: DurationControl_t
   SteamAPI_ISteamUser_GetEncryptedAppTicket:

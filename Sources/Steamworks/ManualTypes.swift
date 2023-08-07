@@ -170,6 +170,8 @@ extension SteamInputActionEvent: SteamCreatable {}
 //
 // Can't implement comparable because Swift C++ import doesn't understand C++ operator overloads.
 
+#if $NewCxxMethodSafetyHeuristics
+#else
 /// Swift 5.8+ workarounds for C++ importer being dumb
 /// (though in this case the C++ implementation is shockingly unsafe for utterly  non-C++ reasons)
 extension servernetadr_t {
@@ -181,6 +183,7 @@ extension servernetadr_t {
         String(__GetQueryAddressStringUnsafe())
     }
 }
+#endif
 
 /// Steamworks `servernetadr`
 public final class ServerNetAdr: Sendable {
@@ -353,6 +356,8 @@ extension CSteamworks.SteamNetworkingIPAddr {
 // 1) The random non-class-corruption issue;
 // 2) The 'types' enum is large and weird.
 
+#if $NewCxxMethodSafetyHeuristics
+#else
 /// Swift 5.8 workarounds for the C++ importer trying to be clever but ending up being really dumb
 extension CSteamworks.SteamNetworkingIdentity {
     func GetIPAddr() -> UnsafePointer<CSteamworks.SteamNetworkingIPAddr>! {
@@ -367,8 +372,9 @@ extension CSteamworks.SteamNetworkingIdentity {
         __GetGenericBytesUnsafe(&cbLen)
     }
 }
+#endif
 
-/// Steamworks `SteamNetworkingIPAddr`
+/// Steamworks `SteamNetworkingIdentity`
 public final class SteamNetworkingIdentity: @unchecked Sendable {
     typealias SteamType = CSteamworks.SteamNetworkingIdentity
     let identity: SteamType
