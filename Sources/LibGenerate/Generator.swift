@@ -17,6 +17,7 @@ public struct Generator {
     let structs: Structs
     let interfaces: Interfaces
     let callbacks: Callbacks
+    let docStructure: DocStructure
 
     public init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
         io = try IO(redistSdkURL: redistSdkURL, swiftOutputDirURL: swiftOutputDirURL, cOutputDirURL: cOutputDirURL)
@@ -28,6 +29,7 @@ public struct Generator {
         structs = Structs(io: io, metadata: metadata)
         interfaces = Interfaces(io: io, metadata: metadata)
         callbacks = Callbacks(io: io, metadata: metadata)
+        docStructure = DocStructure(io: io)
     }
 
     public func generate() throws {
@@ -36,12 +38,14 @@ public struct Generator {
         print("Swift output directory: \(io.swiftOutputDirURL.path)")
         print("C++ output directory: \(io.cOutputDirURL.path)")
 
-        try version.generate()
-        try typedefs.generate()
-        try constants.generate()
-        try enums.generate()
-        try structs.generate()
-        try interfaces.generate()
-        try callbacks.generate()
+//        try version.generate()
+//        try typedefs.generate()
+//        try constants.generate()
+//        try enums.generate()
+//        try structs.generate()
+//        try interfaces.generate()
+//        try callbacks.generate()
+
+        try docStructure.generate()
     }
 }

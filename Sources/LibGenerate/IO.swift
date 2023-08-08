@@ -36,10 +36,13 @@ final class IO {
         }
     }
 
-    var jsonURL: URL {
+    var includeURL: URL {
         redistSdkURL.appendingPathComponent("include")
             .appendingPathComponent("steam")
-            .appendingPathComponent("steam_api.json")
+    }
+
+    var jsonURL: URL {
+        includeURL.appendingPathComponent("steam_api.json")
     }
 
     var readmeURL: URL {
