@@ -55,79 +55,70 @@ struct DocStructure {
     // Get it working, sort into 'other' maybe
     // struct/enum/typedef/interface/other -
     // then generate some kind of tree file from that
+    // should figure out callbacks too
+    // the key of this dict is just a uniquer, take the name of the section from the 'first' interface
+    // XXX secondaryheader stuff fuck
     func generate() throws {
-        var allTypeNames: [String : Set<SwiftType>] = [:]
-        for rootHeader in Self.rootHeaders {
-            let headerURL = io.includeURL.appendingPathComponent(rootHeader)
-            let typeNames = try swiftNamesFromHeader(url: headerURL)
-            allTypeNames.merge(typeNames, uniquingKeysWith: { l, _ in l })
-        }
+        let typeNames = try swiftNamesFromRootHeaders()
 
-        for info in allTypeNames {
+        for info in typeNames {
             print("\(info.key): \(info.value)")
         }
     }
 
-    func swiftNamesFromHeader(url: URL) throws -> [String : Set<SwiftType>] {
-        let results = Exec.run("/usr/bin/env", "clang++", "-std=c++11", "-x", "c++-header", "-fsyntax-only", "-Xclang", "-ast-dump=json", url.path)
-        if results.terminationStatus != 0 {
-            throw Failed("Couldn't run clang++ on \(url.path): \(results.terminationStatus)")
-        }
+    /// Merge together the unfortunately plural root headers - expect that if we do pull in the same
+    /// header multiple times then it will have the same content and can pick arbitrarily.
+    private func swiftNamesFromRootHeaders() throws -> [String : Set<SwiftType>] {
+        try Self.rootHeaders.map {
+            try swiftNamesFromHeader(url: io.includeURL.appendingPathComponent($0))
+        }.reduce(into: [:], { $0.merge($1, uniquingKeysWith: { l, _ in l }) })
+    }
 
-        let rawClangNode = try decoder.decode(RawClangNode.self, from: results.data)
-
-        guard let bodyNodes = rawClangNode.inner else {
-            throw Failed("Clang produced AST JSON with no content nodes for \(url.path)")
-        }
-
-        var types: [String : Set<SwiftType>] = [:]
-
-        var currentFile: String? = nil
-        var currentTypes: Set<SwiftType> = []
-
-        func saveCurrent() {
-            if currentFile != nil {
-                if doesFileNeedCollection(filename: URL(filePath: currentFile!).lastPathComponent) {
-                    types[currentFile!] = currentTypes
-                }
-                currentFile = nil
-                currentTypes = []
+    /// Take the URL of a header file and return a collection of all its referenced (#include'd) files
+    /// along with the Swift versions of the top-level types they define.
+    private func swiftNamesFromHeader(url: URL) throws -> [String : Set<SwiftType>] {
+        Dictionary(uniqueKeysWithValues: (try ClangNode(file: url).inner ?? [])
+            .segmentify { $0.loc?.file != nil }
+            .filter { $0.filepath.hasPrefix(io.includeURL.path) }
+            .map { nodes in
+                (nodes.filepath, Set(nodes.compactMap { $0.swiftTypeName }))
             }
-        }
-
-        for node in bodyNodes {
-            if let newFile = node.loc?.file {
-                // Started a new file of declarations - possible end of a previous
-                saveCurrent()
-                currentFile = newFile
-            }
-            if let name = node.name {
-                currentTypes.insert(SteamType(name).swiftType)
-            }
-        }
-        saveCurrent()
-
-        return types
+        )
     }
 }
 
-struct RawClangNode: Decodable {
+// MARK: Running Clang and getting the output
+
+struct ClangNode: Decodable {
     let id: String?
-    let kind: String
+    let kind: String // XXX don't think we need this one
 
     // missing pieces of 'loc' mean use previous in file..
     struct Loc: Decodable {
         let file: String?
-        let line: Int?
     }
     let loc: Loc?
 
-    let inner: [RawClangNode]?
+    let inner: [ClangNode]?
     let name: String?
+
+    var swiftTypeName: SwiftType? {
+        name.map { SteamType($0).swiftType }
+    }
+
+    init(file: URL) throws {
+        let results = Exec.run("/usr/bin/env",
+                               "clang++", "-std=c++11", "-x", "c++-header", "-fsyntax-only", "-Xclang", "-ast-dump=json", file.path)
+        if results.terminationStatus != 0 {
+            throw Failed("Couldn't run clang++ on \(file.path): \(results.terminationStatus)")
+        }
+
+        self = try JSONDecoder().decode(Self.self, from: results.data)
+    }
 }
 
 /// Namespace for utilities to execute a child process.
-enum Exec {
+fileprivate enum Exec {
     /// How to handle stderr output from the child process.
     enum Stderr {
         /// Treat stderr same as parent process.
@@ -212,5 +203,35 @@ enum Exec {
         let data = file.readDataToEndOfFile()
         process.waitUntilExit()
         return Results(terminationStatus: process.terminationStatus, data: data)
+    }
+}
+
+extension Collection {
+    func segmentify(newSeg: (Element) -> Bool) -> [[Element]] {
+        var output: [[Element]] = []
+        var curSeg: [Element] = []
+        func saveCurrent() {
+            if !curSeg.isEmpty {
+                output.append(curSeg)
+                curSeg = []
+            }
+        }
+        for el in self {
+            if newSeg(el) {
+                saveCurrent()
+                curSeg.append(el)
+            }
+            if !curSeg.isEmpty { // skip builtins at start that are not in a segment
+                curSeg.append(el)
+            }
+        }
+        saveCurrent()
+        return output
+    }
+}
+
+extension Collection where Element == ClangNode {
+    var filepath: String {
+        first!.loc!.file!
     }
 }
