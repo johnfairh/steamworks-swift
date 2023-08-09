@@ -9,21 +9,23 @@ import Foundation
 
 struct DocSection {
     let title: String
-    let interfaces: [SwiftType]
-    let structures: [SwiftType]
-    let callbacks: [SwiftType]
-    let enums: [SwiftType]
+    let items: [Generated.Kind : [SwiftType]]
+
+    func dump() {
+        print(title)
+        for kv in items {
+            print("  \(kv.key): \(kv.value.count)")
+        }
+    }
 }
 
 struct DocStructure {
     let io: IO
-    let decoder: JSONDecoder
+    let generated: Generated
 
-    init(io: IO) {
+    init(io: IO, generated: Generated) {
         self.io = io
-        let decoder = JSONDecoder()
-        decoder.allowsJSON5 = true
-        self.decoder = decoder
+        self.generated = generated
     }
 
     /// Root headers to parse.  For unknown reasons there is just one odd one out.
@@ -46,8 +48,8 @@ struct DocStructure {
 
     /// Does this header file's types warrant inclusion in a docs section?
     func doesFileNeedCollection(filename: String) -> Bool {
-        // Include the roots
-        if Self.rootHeaders.contains(filename) {
+        // Include the annoying special case
+        if filename == "steamnetworkingfakeip.h" {
             return true
         }
 
@@ -69,36 +71,18 @@ struct DocStructure {
 
     typealias SwiftTypeSets = [String : Set<SwiftType>]
 
-    // Types for all this, avoid repeating
-    // Add 'target' types by datatype
-    // Get it working, sort into 'other' maybe
-    // struct/enum/typedef/interface/other -
     // then generate some kind of tree file from that
+    // pretty-print in some way - i guess to a file, the eventual output of all this
     // should figure out callbacks too
-    // the key of this dict is just a uniquer, take the name of the section from the 'first' interface
     func generate() throws {
         let typeSets = mergeSecondaryHeaders(types: try swiftTypesFromRootHeaders())
             .filter { doesFileNeedCollection(filename: $0.key) }
 
-        for info in typeSets.sorted(by: { l, r in l.key < r.key }) {
-            print("\(info.key): \(info.value.count) types")
-        }
-    }
+        let sections = createDocSections(typeSets: typeSets)
 
-    /// Add the secondary files' types into their primary files' sets, remove the secondaries from the list
-    private func mergeSecondaryHeaders(types: SwiftTypeSets) -> SwiftTypeSets {
-        var result = types
-        for (prim, sec) in Self.secondaryHeaderMap {
-            guard let secTypes = result.removeValue(forKey: sec) else {
-                fatalError("Can't find sec types for \(sec)")
-            }
-            guard let oldprim = result[prim] else {
-                print("files: \(types.keys)")
-                preconditionFailure("Can't find prim types for \(prim)")
-            }
-            result[prim]?.formUnion(secTypes)
+        for section in sections.sorted(by: { l, r in l.title < r.title }) {
+            section.dump()
         }
-        return result
     }
 
     /// Merge together the unfortunately plural root headers - expect that if we do pull in the same
@@ -119,6 +103,37 @@ struct DocStructure {
                 (nodes.filename, Set(nodes.compactMap { $0.swiftTypeName }))
             }
         )
+    }
+
+    /// Add the secondary files' types into their primary files' sets, remove the secondaries from the list
+    private func mergeSecondaryHeaders(types: SwiftTypeSets) -> SwiftTypeSets {
+        var result = types
+        for (prim, sec) in Self.secondaryHeaderMap {
+            guard let secTypes = result.removeValue(forKey: sec) else {
+                fatalError("Can't find sec types for \(sec)")
+            }
+            guard result[prim] != nil else {
+                print("files: \(types.keys)")
+                preconditionFailure("Can't find prim types for \(prim)")
+            }
+            result[prim]?.formUnion(secTypes)
+        }
+        return result
+    }
+
+    /// Take list of types per file and produce the doc structure, grouped by kind (interfaces/structures/etc)
+    private func createDocSections(typeSets: SwiftTypeSets) -> [DocSection] {
+        typeSets.map { (filename, types) in
+            var typesByKind: [Generated.Kind : [SwiftType]] = [:]
+            for swiftType in types {
+                let kind = generated.find(type: swiftType) ?? .other
+                typesByKind[kind, default: []].append(swiftType)
+            }
+            guard let interface = typesByKind[.interface]?.first else {
+                preconditionFailure("Missing an interface in \(filename), just got: \(types)")
+            }
+            return DocSection(title: interface.name, items: typesByKind)
+        }
     }
 }
 

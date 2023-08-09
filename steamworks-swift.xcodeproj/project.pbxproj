@@ -35,6 +35,7 @@
 		020861002746747F00725122 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860FF2746747E00725122 /* Callbacks.swift */; };
 		020861022746CE8000725122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020861012746CE8000725122 /* Constants.swift */; };
 		020861042746D27000725122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020861032746D27000725122 /* Constants.swift */; };
+		0234566D2A83B32E00DF4D9E /* Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234566C2A83B32E00DF4D9E /* Generated.swift */; };
 		0251F12D2A82430B00D70E15 /* DocStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251F12B2A8242EC00D70E15 /* DocStructure.swift */; };
 		0264BCD32865CFBB00AF26D1 /* SteamSwiftTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264BCD22865CFBB00AF26D1 /* SteamSwiftTypes.swift */; };
 		0264BCD52873026B00AF26D1 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264BCD42873026B00AF26D1 /* String+Utils.swift */; };
@@ -280,6 +281,7 @@
 		020860FF2746747E00725122 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
 		020861012746CE8000725122 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		020861032746D27000725122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0234566C2A83B32E00DF4D9E /* Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generated.swift; sourceTree = "<group>"; };
 		0251F12B2A8242EC00D70E15 /* DocStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocStructure.swift; sourceTree = "<group>"; };
 		0264BCD22865CFBB00AF26D1 /* SteamSwiftTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamSwiftTypes.swift; sourceTree = "<group>"; };
 		0264BCD42873026B00AF26D1 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				020860A3272EBEE800725122 /* Generator.swift */,
+				0234566C2A83B32E00DF4D9E /* Generated.swift */,
 				020860A1272EBEC500725122 /* IO.swift */,
 				020860D62731B5CC00725122 /* Metadata.swift */,
 				0264BCD42873026B00AF26D1 /* String+Utils.swift */,
@@ -948,6 +951,7 @@
 				0264BCD32865CFBB00AF26D1 /* SteamSwiftTypes.swift in Sources */,
 				020861002746747F00725122 /* Callbacks.swift in Sources */,
 				0251F12D2A82430B00D70E15 /* DocStructure.swift in Sources */,
+				0234566D2A83B32E00DF4D9E /* Generated.swift in Sources */,
 				020860DF27330CD200725122 /* SteamNames.swift in Sources */,
 				0264BCD52873026B00AF26D1 /* String+Utils.swift in Sources */,
 				020860FC274290DE00725122 /* Structs.swift in Sources */,

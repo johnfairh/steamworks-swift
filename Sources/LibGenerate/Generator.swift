@@ -9,6 +9,7 @@ import Foundation
 
 public struct Generator {
     let io: IO
+    let generated: Generated
     let metadata: Metadata
     let version: Version
     let typedefs: Typedefs
@@ -21,15 +22,16 @@ public struct Generator {
 
     public init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
         io = try IO(redistSdkURL: redistSdkURL, swiftOutputDirURL: swiftOutputDirURL, cOutputDirURL: cOutputDirURL)
+        generated = Generated()
         metadata = try Metadata(io: io)
         version = Version(io: io)
-        typedefs = Typedefs(io: io, metadata: metadata)
+        typedefs = Typedefs(io: io, metadata: metadata, generated: generated)
         constants = Constants(io: io, metadata: metadata)
         enums = Enums(io: io, metadata: metadata)
         structs = Structs(io: io, metadata: metadata)
-        interfaces = Interfaces(io: io, metadata: metadata)
+        interfaces = Interfaces(io: io, metadata: metadata, generated: generated)
         callbacks = Callbacks(io: io, metadata: metadata)
-        docStructure = DocStructure(io: io)
+        docStructure = DocStructure(io: io, generated: generated)
     }
 
     public func generate() throws {
@@ -38,13 +40,13 @@ public struct Generator {
         print("Swift output directory: \(io.swiftOutputDirURL.path)")
         print("C++ output directory: \(io.cOutputDirURL.path)")
 
-//        try version.generate()
-//        try typedefs.generate()
-//        try constants.generate()
-//        try enums.generate()
-//        try structs.generate()
-//        try interfaces.generate()
-//        try callbacks.generate()
+        try version.generate()
+        try typedefs.generate()
+        try constants.generate()
+        try enums.generate()
+        try structs.generate()
+        try interfaces.generate()
+        try callbacks.generate()
 
         try docStructure.generate()
     }

@@ -18,16 +18,19 @@ import Foundation
 struct Typedefs {
     let io: IO
     let metadata: Metadata
+    let generated: Generated
 
-    init(io: IO, metadata: Metadata) {
+    init(io: IO, metadata: Metadata, generated: Generated) {
         self.io = io
         self.metadata = metadata
+        self.generated = generated
     }
 
     func generate() throws {
         let contents = metadata.db.typedefs.values
             .filter(\.shouldGenerate)
             .sorted(by: { $0.typedef < $1.typedef })
+            .map { generated.add(type: $0.typedef.swiftType, kind: .typedef); return $0 }
             .map(\.generate)
             .joined(separator: "\n\n")
         try io.write(fileName: "Typedefs.swift", contents: contents)

@@ -14,16 +14,20 @@
 struct Interfaces {
     let io: IO
     let metadata: Metadata
+    let generated: Generated
 
-    init(io: IO, metadata: Metadata) {
+    init(io: IO, metadata: Metadata, generated: Generated) {
         self.io = io
         self.metadata = metadata
+        self.generated = generated
     }
 
     func generate() throws {
         try metadata.db.interfaces.values.forEach { interface in
-            try io.write(fileName: "\(interface.name.swiftType).swift",
+            let swiftType = interface.name.swiftType
+            try io.write(fileName: "\(swiftType).swift",
                          contents: interface.generate())
+            generated.add(type: swiftType, kind: .interface)
         }
     }
 }
