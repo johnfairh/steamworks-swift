@@ -23,6 +23,7 @@ struct Enums {
 
     func generate() throws {
         let contents = metadata.allEnums
+            .filter { !$0.ignore }
             .sorted(by: { $0.name < $1.name })
             .map { generated.add(type: $0.name.swiftType, kind: .enum); return $0 }
             .map(\.generated)

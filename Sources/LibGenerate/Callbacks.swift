@@ -38,7 +38,7 @@ struct Callbacks {
         // And so generate callback APIs for structs that are either explicitly
         // identified as such or are _not_ identified for callresult.
         return Array(metadata.db.structs.values.filter { strct in
-            strct.callbackID != nil && !callResults.contains(strct.name)
+            !strct.ignore && strct.callbackID != nil && !callResults.contains(strct.name)
         })
     }
 

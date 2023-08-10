@@ -461,16 +461,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(349), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `P2PSessionConnectFail_t` callback
-    func onP2PSessionConnectFail(_ client: @escaping (P2PSessionConnectFail) -> Void) {
-        callbacks.add(callbackID: CallbackID(1203), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `P2PSessionRequest_t` callback
-    func onP2PSessionRequest(_ client: @escaping (P2PSessionRequest) -> Void) {
-        callbacks.add(callbackID: CallbackID(1202), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `PS3TrophiesInstalled_t` callback
     func onPS3TrophiesInstalled(_ client: @escaping (PS3TrophiesInstalled) -> Void) {
         callbacks.add(callbackID: CallbackID(1112), rawClient: SteamBaseAPI.makeRaw(client))
@@ -569,11 +559,6 @@ public extension SteamBaseAPI {
     /// Registration for Steamworks `SearchForGameResultCallback_t` callback
     func onSearchForGameResultCallback(_ client: @escaping (SearchForGameResultCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5202), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `SocketStatusCallback_t` callback
-    func onSocketStatusCallback(_ client: @escaping (SocketStatusCallback) -> Void) {
-        callbacks.add(callbackID: CallbackID(1201), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamAPICallCompleted_t` callback
@@ -1205,16 +1190,6 @@ public extension SteamBaseAPI {
         AsyncStream { onOverlayBrowserProtocolNavigation($0.yield0) }
     }
 
-    /// Async stream of Steamworks `P2PSessionConnectFail_t` callbacks
-    var p2PSessionConnectFail: AsyncStream<P2PSessionConnectFail> {
-        AsyncStream { onP2PSessionConnectFail($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `P2PSessionRequest_t` callbacks
-    var p2PSessionRequest: AsyncStream<P2PSessionRequest> {
-        AsyncStream { onP2PSessionRequest($0.yield0) }
-    }
-
     /// Async stream of Steamworks `PS3TrophiesInstalled_t` callbacks
     var ps3TrophiesInstalled: AsyncStream<PS3TrophiesInstalled> {
         AsyncStream { onPS3TrophiesInstalled($0.yield0) }
@@ -1313,11 +1288,6 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `SearchForGameResultCallback_t` callbacks
     var searchForGameResultCallback: AsyncStream<SearchForGameResultCallback> {
         AsyncStream { onSearchForGameResultCallback($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `SocketStatusCallback_t` callbacks
-    var socketStatusCallback: AsyncStream<SocketStatusCallback> {
-        AsyncStream { onSocketStatusCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamAPICallCompleted_t` callbacks

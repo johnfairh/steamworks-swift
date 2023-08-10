@@ -3357,92 +3357,6 @@ extension OverlayBrowserProtocolNavigation: SteamCreatable {
     }
 }
 
-/// Steamworks `P2PSessionConnectFail_t`
-public struct P2PSessionConnectFail: Sendable {
-    /// Steamworks `m_steamIDRemote`
-    public let remote: SteamID
-    /// Steamworks `m_eP2PSessionError`
-    public let p2PSessionError: P2PSessionError
-
-    /// Create a customized `P2PSessionConnectFail`
-    public init(remote: SteamID = SteamID(), p2PSessionError: P2PSessionError = .none) {
-        self.remote = remote
-        self.p2PSessionError = p2PSessionError
-    }
-}
-
-extension P2PSessionConnectFail: SteamCreatable {
-    typealias SteamType = CSteamworks.P2PSessionConnectFail_t
-    init(_ steam: CSteamworks.P2PSessionConnectFail_t) {
-        remote = .init(steam.m_steamIDRemote)
-        p2PSessionError = .init(steam.m_eP2PSessionError)
-    }
-}
-
-/// Steamworks `P2PSessionRequest_t`
-public struct P2PSessionRequest: Sendable {
-    /// Steamworks `m_steamIDRemote`
-    public let remote: SteamID
-
-    /// Create a customized `P2PSessionRequest`
-    public init(remote: SteamID = SteamID()) {
-        self.remote = remote
-    }
-}
-
-extension P2PSessionRequest: SteamCreatable {
-    typealias SteamType = CSteamworks.P2PSessionRequest_t
-    init(_ steam: CSteamworks.P2PSessionRequest_t) {
-        remote = .init(steam.m_steamIDRemote)
-    }
-}
-
-/// Steamworks `P2PSessionState_t`
-public struct P2PSessionState: Sendable {
-    /// Steamworks `m_bConnectionActive`
-    public let connectionActive: Bool
-    /// Steamworks `m_bConnecting`
-    public let connecting: Bool
-    /// Steamworks `m_eP2PSessionError`
-    public let p2PSessionError: UInt8
-    /// Steamworks `m_bUsingRelay`
-    public let usingRelay: Bool
-    /// Steamworks `m_nBytesQueuedForSend`
-    public let bytesQueuedForSend: Int
-    /// Steamworks `m_nPacketsQueuedForSend`
-    public let packetsQueuedForSend: Int
-    /// Steamworks `m_nRemoteIP`
-    public let remoteIP: Int
-    /// Steamworks `m_nRemotePort`
-    public let remotePort: UInt16
-
-    /// Create a customized `P2PSessionState`
-    public init(connectionActive: Bool = false, connecting: Bool = false, p2PSessionError: UInt8 = 0, usingRelay: Bool = false, bytesQueuedForSend: Int = 0, packetsQueuedForSend: Int = 0, remoteIP: Int = 0, remotePort: UInt16 = 0) {
-        self.connectionActive = connectionActive
-        self.connecting = connecting
-        self.p2PSessionError = p2PSessionError
-        self.usingRelay = usingRelay
-        self.bytesQueuedForSend = bytesQueuedForSend
-        self.packetsQueuedForSend = packetsQueuedForSend
-        self.remoteIP = remoteIP
-        self.remotePort = remotePort
-    }
-}
-
-extension P2PSessionState: SteamCreatable {
-    typealias SteamType = CSteamworks.P2PSessionState_t
-    init(_ steam: CSteamworks.P2PSessionState_t) {
-        connectionActive = .init(steam.m_bConnectionActive)
-        connecting = .init(steam.m_bConnecting)
-        p2PSessionError = .init(steam.m_eP2PSessionError)
-        usingRelay = .init(steam.m_bUsingRelay)
-        bytesQueuedForSend = .init(steam.m_nBytesQueuedForSend)
-        packetsQueuedForSend = .init(steam.m_nPacketsQueuedForSend)
-        remoteIP = .init(steam.m_nRemoteIP)
-        remotePort = .init(steam.m_nRemotePort)
-    }
-}
-
 /// Steamworks `PS3TrophiesInstalled_t`
 public struct PS3TrophiesInstalled: Sendable {
     /// Steamworks `m_nGameID`
@@ -4599,36 +4513,6 @@ extension SetUserItemVoteResult: SteamCreatable {
         publishedFileId = .init(steam.m_nPublishedFileId)
         result = .init(steam.m_eResult)
         voteUp = .init(steam.m_bVoteUp)
-    }
-}
-
-/// Steamworks `SocketStatusCallback_t`
-public struct SocketStatusCallback: Sendable {
-    /// Steamworks `m_hSocket`
-    public let socket: SNetSocket
-    /// Steamworks `m_hListenSocket`
-    public let listenSocket: SNetListenSocket
-    /// Steamworks `m_steamIDRemote`
-    public let remote: SteamID
-    /// Steamworks `m_eSNetSocketState`
-    public let sNetSocketState: Int
-
-    /// Create a customized `SocketStatusCallback`
-    public init(socket: SNetSocket = 0, listenSocket: SNetListenSocket = 0, remote: SteamID = SteamID(), sNetSocketState: Int = 0) {
-        self.socket = socket
-        self.listenSocket = listenSocket
-        self.remote = remote
-        self.sNetSocketState = sNetSocketState
-    }
-}
-
-extension SocketStatusCallback: SteamCreatable {
-    typealias SteamType = CSteamworks.SocketStatusCallback_t
-    init(_ steam: CSteamworks.SocketStatusCallback_t) {
-        socket = .init(steam.m_hSocket)
-        listenSocket = .init(steam.m_hListenSocket)
-        remote = .init(steam.m_steamIDRemote)
-        sNetSocketState = .init(steam.m_eSNetSocketState)
     }
 }
 

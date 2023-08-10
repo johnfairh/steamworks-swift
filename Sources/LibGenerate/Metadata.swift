@@ -122,6 +122,8 @@ struct Patch: Codable {
         let numeric_prefix: String? // numeric-identifier workaround
         let manual_swift_name: String? // hard-code swift name
         let intx_to_self: String? // require converter from some int-type
+        let ignore: String? // filter out deprecated/broken things
+        var bIgnore: Bool { ignore != nil }
 
         struct Value: Codable {
             let force_static: Bool? // generate a static member instead of an enum case
@@ -218,6 +220,7 @@ struct MetadataDB {
         let numericPrefix: String?
         let manualSwiftName: SwiftType?
         let intXToSelf: SwiftNativeType?
+        let ignore: Bool
 
         struct Value {
             let name: SteamName
@@ -239,6 +242,7 @@ struct MetadataDB {
             numericPrefix = patch?.numeric_prefix
             manualSwiftName = patch?.manual_swift_name.map { .init($0) }
             intXToSelf = patch?.intx_to_self.map { .init($0) }
+            ignore = patch?.bIgnore ?? false
             values = base.values.map {
                 Value(base: $0, patch: patch?.values?[$0.name])
             }

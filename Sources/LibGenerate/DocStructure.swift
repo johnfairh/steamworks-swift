@@ -78,7 +78,7 @@ struct DocStructure {
         "isteamhttp.h" : ["steamhttpenums.h"],
         "isteamnetworkingutils.h" : ["steamnetworkingtypes.h"], /* bit arbitrary */
         "isteamnetworkingsockets.h" : ["steamnetworkingfakeip.h"],
-        "steamclientpublic.h" : ["steamtypes.h", "steamuniverse.h", "steam_api_common.h"]
+        "steamclientpublic.h" : ["steamtypes.h", "steamuniverse.h", "steam_api_common.h", "steam_gameserver.h"]
     ]
 
     static var secondaryHeaders = Set(secondaryHeaderMap.values.joined())
