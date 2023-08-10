@@ -33,6 +33,27 @@ final class Generated {
     init() {
         typesByKind = [:]
         typeToKind = [:]
+        addManualTypes()
+    }
+
+    /// Steamworks types that are implemented manually instead of being generated.
+    /// They should appear in doc sections driven by the header files.
+    private static var manualTypes: [(String, Kind)] = [
+        ("SteamID", .struct),
+        ("GameID", .struct),
+        ("SteamIPAddress", .struct),
+        ("SteamInputActionEvent", .struct),
+        ("ServerNetAdr", .struct),
+        ("SteamNetworkingIPAddr", .struct),
+        ("SteamNetworkingIdentity", .struct),
+        ("SteamNetworkingMessage", .struct),
+        ("SteamNetworkingConfigValue", .struct)
+    ]
+
+    private func addManualTypes() {
+        for t in Self.manualTypes {
+            add(type: SwiftType(t.0), kind: t.1)
+        }
     }
 
     func add(type: SwiftType, kind: Kind) {

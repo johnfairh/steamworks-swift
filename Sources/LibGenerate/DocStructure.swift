@@ -60,7 +60,7 @@ struct DocStructure {
         self.generated = generated
     }
 
-    /// Root headers to parse.  For unknown reasons there is just one odd one out.
+    /// Root headers to parse.
     static let rootHeaders = Set([
         "steam_api.h",
         "steam_gameserver.h",
@@ -78,7 +78,7 @@ struct DocStructure {
         "isteamhttp.h" : ["steamhttpenums.h"],
         "isteamnetworkingutils.h" : ["steamnetworkingtypes.h"], /* bit arbitrary */
         "isteamnetworkingsockets.h" : ["steamnetworkingfakeip.h"],
-        "steamclientpublic.h" : ["steamtypes.h", "steamuniverse.h", "steam_api_common.h", "steam_gameserver.h"]
+        commonTypesHeader : ["steamtypes.h", "steamuniverse.h", "steam_api_common.h", "steam_gameserver.h"]
     ]
 
     static var secondaryHeaders = Set(secondaryHeaderMap.values.joined())
@@ -204,6 +204,7 @@ struct ClangNode: Decodable {
     }
 
     init(file: URL) throws {
+        // clang++ -std=c++11 -x c++-header -fsyntax-only -Xclang -ast-dump=json
         let results = Exec.run("/usr/bin/env",
                                "clang++", "-std=c++11", "-x", "c++-header", "-fsyntax-only", "-Xclang", "-ast-dump=json", file.path)
         if results.terminationStatus != 0 {
