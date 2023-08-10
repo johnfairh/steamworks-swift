@@ -16,6 +16,38 @@ struct DocSection {
         for kv in items {
             print("  \(kv.key): \(kv.value.count)")
         }
+        if let others = items[.other], others.count > 0 {
+            print("  others: \(others)")
+        }
+    }
+
+    /// Ordered list of named topics and topic articles
+    var docStructure: [(String, [String])] {
+        var result: [(String, [String])] = []
+        for kind in Generated.Kind.allCases {
+            guard kind != .other, let kindItems = items[kind], kindItems.count > 0 else {
+                continue
+            }
+            result.append((kind.englishName, kindItems.map(\.name)))
+        }
+        return result
+    }
+
+    var jazzyIndexYaml: String {
+        ([
+            "- name: \(title)", "  topics:"
+        ] + docStructure.map { (topic, articles) in
+            [
+                "- name: \(topic)",
+                "  children:"
+            ] + articles.map { "    - \($0) "}
+        }.joined().yamlIndented()).yamlIndented().joined(separator: "\n")
+    }
+}
+
+extension Sequence where Element == DocSection {
+    var jazzyIndexYaml: String {
+        map(\.jazzyIndexYaml).joined(separator: "\n")
     }
 }
 
@@ -71,18 +103,15 @@ struct DocStructure {
 
     typealias SwiftTypeSets = [String : Set<SwiftType>]
 
-    // then generate some kind of tree file from that
-    // pretty-print in some way - i guess to a file, the eventual output of all this
     // should figure out callbacks too
     func generate() throws {
         let typeSets = mergeSecondaryHeaders(types: try swiftTypesFromRootHeaders())
             .filter { doesFileNeedCollection(filename: $0.key) }
 
         let sections = createDocSections(typeSets: typeSets)
+            .sorted(by: { l, r in l.title < r.title })
 
-        for section in sections.sorted(by: { l, r in l.title < r.title }) {
-            section.dump()
-        }
+        try io.writeDocStructure(fileName: "jazzy-custom-groups.yaml", contents: sections.jazzyIndexYaml)
     }
 
     /// Merge together the unfortunately plural root headers - expect that if we do pull in the same

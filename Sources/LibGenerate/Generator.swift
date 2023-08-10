@@ -20,15 +20,18 @@ public struct Generator {
     let callbacks: Callbacks
     let docStructure: DocStructure
 
-    public init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
-        io = try IO(redistSdkURL: redistSdkURL, swiftOutputDirURL: swiftOutputDirURL, cOutputDirURL: cOutputDirURL)
+    public init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL, docStructureOutputDirURL: URL) throws {
+        io = try IO(redistSdkURL: redistSdkURL,
+                    swiftOutputDirURL: swiftOutputDirURL,
+                    cOutputDirURL: cOutputDirURL,
+                    docStructureOutputDirURL: docStructureOutputDirURL)
         generated = Generated()
         metadata = try Metadata(io: io)
         version = Version(io: io)
         typedefs = Typedefs(io: io, metadata: metadata, generated: generated)
         constants = Constants(io: io, metadata: metadata)
-        enums = Enums(io: io, metadata: metadata)
-        structs = Structs(io: io, metadata: metadata)
+        enums = Enums(io: io, metadata: metadata, generated: generated)
+        structs = Structs(io: io, metadata: metadata, generated: generated)
         interfaces = Interfaces(io: io, metadata: metadata, generated: generated)
         callbacks = Callbacks(io: io, metadata: metadata)
         docStructure = DocStructure(io: io, generated: generated)

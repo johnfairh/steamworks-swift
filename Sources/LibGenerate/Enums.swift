@@ -13,15 +13,18 @@
 struct Enums {
     let io: IO
     let metadata: Metadata
+    let generated: Generated
 
-    init(io: IO, metadata: Metadata) {
+    init(io: IO, metadata: Metadata, generated: Generated) {
         self.io = io
         self.metadata = metadata
+        self.generated = generated
     }
 
     func generate() throws {
         let contents = metadata.allEnums
             .sorted(by: { $0.name < $1.name })
+            .map { generated.add(type: $0.name.swiftType, kind: .enum); return $0 }
             .map(\.generated)
             .joined(separator: "\n\n")
         try io.write(fileName: "Enums.swift", contents: contents)

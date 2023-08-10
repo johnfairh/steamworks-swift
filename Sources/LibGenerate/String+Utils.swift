@@ -17,6 +17,13 @@ extension String {
         return String(repeating: "    ", count: level) + self
     }
 
+    func yamlIndented(_ level: Int = 1) -> String {
+        guard !isEmpty else {
+            return self
+        }
+        return String(repeating: "  ", count: level) + self
+    }
+
     func commaAppend(_ string: String) -> String {
         isEmpty ? string : "\(self), \(string)"
     }
@@ -25,6 +32,10 @@ extension String {
 extension Sequence where Element == String {
     func indented(_ level: Int) -> [String] {
         map { $0.indented(level) }
+    }
+
+    func yamlIndented(_ level: Int = 1) -> [String] {
+        map { $0.yamlIndented(level) }
     }
 
     var commaJoined: String {

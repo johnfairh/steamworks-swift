@@ -12,5 +12,6 @@ let cwd = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 
 let generator = try Generator(redistSdkURL: cwd.appendingPathComponent("sdk/redist"),
                               swiftOutputDirURL: cwd.appendingPathComponent("Sources/Steamworks/Generated"),
-                              cOutputDirURL: cwd.appendingPathComponent("Sources/CSteamworks/Generated"))
+                              cOutputDirURL: cwd.appendingPathComponent("Sources/CSteamworks/Generated"),
+                              docStructureOutputDirURL: cwd)
 try generator.generate()
