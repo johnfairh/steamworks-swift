@@ -3044,28 +3044,6 @@ extension MarketEligibilityResponse: SteamCreatable {
     }
 }
 
-/// Steamworks `MatchMakingKeyValuePair_t`
-public struct MatchMakingKeyValuePair: Sendable {
-    /// Steamworks `m_szKey`
-    public let key: String
-    /// Steamworks `m_szValue`
-    public let value: String
-
-    /// Create a customized `MatchMakingKeyValuePair`
-    public init(key: String = "", value: String = "") {
-        self.key = key
-        self.value = value
-    }
-}
-
-extension MatchMakingKeyValuePair: SteamCreatable {
-    typealias SteamType = CSteamworks.MatchMakingKeyValuePair_t
-    init(_ steam: CSteamworks.MatchMakingKeyValuePair_t) {
-        key = .init(steam.m_szKey_ptr)
-        value = .init(steam.m_szValue_ptr)
-    }
-}
-
 /// Steamworks `MicroTxnAuthorizationResponse_t`
 public struct MicroTxnAuthorizationResponse: Sendable {
     /// Steamworks `m_unAppID`

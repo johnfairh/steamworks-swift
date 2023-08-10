@@ -1289,6 +1289,8 @@ structs:
     fields:
       m_EChatRoomEnterResponse:
         fieldtype: EChatRoomEnterResponse
+  MatchMakingKeyValuePair_t:
+    ignore: "Superseded by manual interface"
   MicroTxnAuthorizationResponse_t:
     fields:
       m_unAppID:

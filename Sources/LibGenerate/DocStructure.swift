@@ -106,6 +106,9 @@ struct DocStructure {
     typealias SwiftTypeSets = [String : Set<SwiftType>]
 
     // should figure out callbacks too
+    // final tweako is completely new types, that aren't found in the SDK, but need inserting into the
+    // doc tree as though they were.
+    // need to make sort stable, split out those multi-interface places
     func generate() throws {
         let typeSets = mergeSecondaryHeaders(types: try swiftTypesFromRootHeaders())
             .filter { doesFileNeedCollection(filename: $0.key) }
