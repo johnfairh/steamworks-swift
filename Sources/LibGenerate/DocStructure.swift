@@ -73,18 +73,14 @@ struct DocStructure {
         /* primary : secondary */
         "isteammatchmaking.h" : "matchmakingtypes.h",
         "isteamhttp.h" : "steamhttpenums.h",
-        "isteamnetworkingutils.h" : "steamnetworkingtypes.h" /* bit arbitrary */
+        "isteamnetworkingutils.h" : "steamnetworkingtypes.h", /* bit arbitrary */
+        "isteamnetworkingsockets.h" : "steamnetworkingfakeip.h"
     ]
 
     static var secondaryHeaders = Set(secondaryHeaderMap.values)
 
     /// Does this header file's types warrant inclusion in a docs section?
     func doesFileNeedCollection(filename: String) -> Bool {
-        // Include the annoying special case
-        if filename == "steamnetworkingfakeip.h" {
-            return true
-        }
-
         // Things that begin with "isteam" but we don't want
         let ignoredISteamHeaders = Set([
             "isteamclient.h", // internal
@@ -161,7 +157,7 @@ struct DocStructure {
             guard let interface = typesByKind[.interface]?.first else {
                 preconditionFailure("Missing an interface in \(filename), just got: \(types)")
             }
-            return DocSection(title: interface.name, items: typesByKind)
+            return DocSection(title: interface.name, items: typesByKind.mapValues { $0.sorted() })
         }
     }
 }
@@ -170,7 +166,7 @@ struct DocStructure {
 
 struct ClangNode: Decodable {
     let id: String?
-    let kind: String // XXX don't think we need this one
+    let kind: String
 
     // missing pieces of 'loc' mean use previous in file..
     struct Loc: Decodable {
@@ -182,7 +178,15 @@ struct ClangNode: Decodable {
     let name: String?
 
     var swiftTypeName: SwiftType? {
-        name.map { SteamType($0).swiftType }
+        guard !isForwardDeclaration else {
+            return nil
+        }
+        return name.map { SteamType($0).swiftType }
+    }
+
+    // Identify forward type declarations, don't want to match these
+    var isForwardDeclaration: Bool {
+        inner == nil && kind == "CXXRecordDecl"
     }
 
     init(file: URL) throws {

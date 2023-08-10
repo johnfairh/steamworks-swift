@@ -19,8 +19,8 @@ final class Generated {
         var englishName: String {
             switch self {
             case .interface: "Interfaces"
-            case .typedef: "Typealiases"
-            case .enum: "Enumerations"
+            case .typedef: "Simple types"
+            case .enum: "Enumerations and Option Sets"
             case .struct: "Structures"
             case .other: "Other"
             }
