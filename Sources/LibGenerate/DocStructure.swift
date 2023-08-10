@@ -67,17 +67,21 @@ struct DocStructure {
         "steamnetworkingfakeip.h"
     ])
 
+    /// Common Types is a special catch-all
+    static let commonTypesHeader = "steamclientpublic.h"
+
     /// 'Primary' headers each generate a section in the docs.
     /// 'Secondary' headers' contents are merged over into their primaries.
     static let secondaryHeaderMap = [
         /* primary : secondary */
-        "isteammatchmaking.h" : "matchmakingtypes.h",
-        "isteamhttp.h" : "steamhttpenums.h",
-        "isteamnetworkingutils.h" : "steamnetworkingtypes.h", /* bit arbitrary */
-        "isteamnetworkingsockets.h" : "steamnetworkingfakeip.h"
+        "isteammatchmaking.h" : ["matchmakingtypes.h"],
+        "isteamhttp.h" : ["steamhttpenums.h"],
+        "isteamnetworkingutils.h" : ["steamnetworkingtypes.h"], /* bit arbitrary */
+        "isteamnetworkingsockets.h" : ["steamnetworkingfakeip.h"],
+        "steamclientpublic.h" : ["steamtypes.h", "steamuniverse.h", "steam_api_common.h"]
     ]
 
-    static var secondaryHeaders = Set(secondaryHeaderMap.values)
+    static var secondaryHeaders = Set(secondaryHeaderMap.values.joined())
 
     /// Does this header file's types warrant inclusion in a docs section?
     func doesFileNeedCollection(filename: String) -> Bool {
@@ -94,7 +98,9 @@ struct DocStructure {
             return false
         }
 
-        return Self.secondaryHeaders.contains(filename) || filename.hasPrefix("isteam")
+        return Self.secondaryHeaders.contains(filename) ||
+                 filename.hasPrefix("isteam") ||
+                 filename == Self.commonTypesHeader
     }
 
     typealias SwiftTypeSets = [String : Set<SwiftType>]
@@ -133,15 +139,17 @@ struct DocStructure {
     /// Add the secondary files' types into their primary files' sets, remove the secondaries from the list
     private func mergeSecondaryHeaders(types: SwiftTypeSets) -> SwiftTypeSets {
         var result = types
-        for (prim, sec) in Self.secondaryHeaderMap {
-            guard let secTypes = result.removeValue(forKey: sec) else {
-                fatalError("Can't find sec types for \(sec)")
+        for (prim, secs) in Self.secondaryHeaderMap {
+            for sec in secs {
+                guard let secTypes = result.removeValue(forKey: sec) else {
+                    fatalError("Can't find sec types for \(sec)")
+                }
+                guard result[prim] != nil else {
+                    print("files: \(types.keys)")
+                    preconditionFailure("Can't find prim types for \(prim)")
+                }
+                result[prim]?.formUnion(secTypes)
             }
-            guard result[prim] != nil else {
-                print("files: \(types.keys)")
-                preconditionFailure("Can't find prim types for \(prim)")
-            }
-            result[prim]?.formUnion(secTypes)
         }
         return result
     }
@@ -154,10 +162,16 @@ struct DocStructure {
                 let kind = generated.find(type: swiftType) ?? .other
                 typesByKind[kind, default: []].append(swiftType)
             }
-            guard let interface = typesByKind[.interface]?.first else {
+            let title: String
+
+            if let interface = typesByKind[.interface]?.first {
+                title = interface.name
+            } else if filename == Self.commonTypesHeader {
+                title = "Common Types"
+            } else {
                 preconditionFailure("Missing an interface in \(filename), just got: \(types)")
             }
-            return DocSection(title: interface.name, items: typesByKind.mapValues { $0.sorted() })
+            return DocSection(title: title, items: typesByKind.mapValues { $0.sorted() })
         }
     }
 }
