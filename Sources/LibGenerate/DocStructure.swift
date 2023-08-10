@@ -130,6 +130,7 @@ struct DocStructure {
         Dictionary(uniqueKeysWithValues: (try ClangNode(file: url).inner ?? [])
             .segmentify { $0.loc?.file != nil }
             .filter { $0.filepath.hasPrefix(io.includeURL.path) }
+            .map(\.unnested)
             .map { nodes in
                 (nodes.filename, Set(nodes.compactMap { $0.swiftTypeName }))
             }
@@ -212,6 +213,44 @@ struct ClangNode: Decodable {
         }
 
         self = try JSONDecoder().decode(Self.self, from: results.data)
+    }
+
+    init(from: ClangNode, renamed: String) {
+        self.id = from.id
+        self.kind = from.kind
+        self.loc = from.loc
+        self.inner = from.inner
+        self.name = renamed
+    }
+}
+
+extension Collection where Element == ClangNode {
+    var filepath: String {
+        first!.loc!.file!
+    }
+
+    var filename: String {
+        URL(filePath: filepath).lastPathComponent
+    }
+
+    /// Sometimes Steam puts enum declarations inside a struct or class.
+    /// This takes a file's worth of clang-nodes, hunts out any such nested enums, and moves them
+    /// to the global scope.
+    var unnested: [ClangNode] {
+        var nestedEnums: [ClangNode] = []
+        for outerDecl in self {
+            guard let inner = outerDecl.inner, let outerName = outerDecl.name else {
+                continue
+            }
+            for innerDecl in inner {
+                if innerDecl.kind == "EnumDecl", let innerName = innerDecl.name {
+                    // Must give it the fully-qualified name for name-matching to work.
+                    // leave it where it was too, harmless
+                    nestedEnums.append(ClangNode(from: innerDecl, renamed: "\(outerName)::\(innerName)"))
+                }
+            }
+        }
+        return Array(self) + nestedEnums
     }
 }
 
@@ -325,15 +364,5 @@ extension Collection {
         }
         saveCurrent()
         return output
-    }
-}
-
-extension Collection where Element == ClangNode {
-    var filepath: String {
-        first!.loc!.file!
-    }
-
-    var filename: String {
-        URL(filePath: filepath).lastPathComponent
     }
 }
