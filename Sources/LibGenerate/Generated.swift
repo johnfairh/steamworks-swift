@@ -14,6 +14,7 @@ final class Generated {
         case typedef
         case `enum`
         case `struct`
+        case `protocol`
         case other
 
         var englishName: String {
@@ -22,6 +23,7 @@ final class Generated {
             case .typedef: "Simple types"
             case .enum: "Enumerations and Option Sets"
             case .struct: "Structures"
+            case .protocol: "Protocols"
             case .other: "Other"
             }
         }
@@ -48,7 +50,11 @@ final class Generated {
         ("SteamNetworkingIdentity", .struct),
         ("SteamNetworkingMessage", .struct),
         ("SteamNetworkingConfigValue", .struct),
-        ("SteamAPIWarningMessageHook", .typedef)
+        ("SteamAPIWarningMessageHook", .typedef),
+        ("SteamMatchmakingPingResponse", .protocol),
+        ("SteamMatchmakingPlayersResponse", .protocol),
+        ("SteamMatchmakingRulesResponse", .protocol),
+        ("SteamMatchmakingServerListResponse", .protocol),
     ]
 
     private func addManualTypes() {
