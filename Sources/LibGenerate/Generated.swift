@@ -16,6 +16,8 @@ final class Generated {
         case `struct`
         case `protocol`
         case callback
+        case client
+        case constants
         case other
 
         var englishName: String {
@@ -26,6 +28,8 @@ final class Generated {
             case .struct: "Structures"
             case .protocol: "Protocols"
             case .callback: "Callbacks"
+            case .client: "Clients"
+            case .constants: "Constants"
             case .other: "Other"
             }
         }
@@ -55,7 +59,7 @@ final class Generated {
         ("SteamMatchmakingPlayersResponse", .protocol),
         ("SteamMatchmakingRulesResponse", .protocol),
         ("SteamMatchmakingServerListResponse", .protocol),
-        ("MatchMakingKeyValuePairs", .struct)
+        ("MatchMakingKeyValuePairs", .typedef)
     ]
 
     private func addManualTypes() {

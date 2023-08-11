@@ -21,6 +21,25 @@ struct DocSection {
         }
     }
 
+    static let commonTypesTitle = "Common Types"
+
+    static let apiClientsSection = DocSection(
+        title: "API Clients",
+        items: [
+            .client : [
+                "SteamBaseAPI",
+                "SteamAPI",
+                "SteamGameServerAPI",
+                "SteamEncryptedAppTicket"
+            ]
+        ]
+    )
+
+    static let constantsSection = DocSection(
+        title: "Constants",
+        items: [.constants : ["SteamConstants"]]
+    )
+
     /// Ordered list of named topics and topic articles
     var docStructure: [(String, [String])] {
         var result: [(String, [String])] = []
@@ -105,17 +124,15 @@ struct DocStructure {
 
     typealias SwiftTypeSets = [String : Set<SwiftType>]
 
-    // * trim out special case for dual-interface somehow
-    // * fixed header for API clients, constants - so entire thing is here
-    // * sort out order, API clients -> <interfaces> -> Common Types -> Constants
-    // * done??
     // * docc!
     func generate() throws {
         let typeSets = mergeSecondaryHeaders(types: try swiftTypesFromRootHeaders())
             .filter { doesFileNeedCollection(filename: $0.key) }
 
-        let sections = createDocSections(typeSets: typeSets)
-            .sorted(by: { l, r in l.title < r.title })
+        let sections =
+            [DocSection.apiClientsSection] +
+            createDocSections(typeSets: typeSets) +
+            [DocSection.constantsSection]
 
         try io.writeDocStructure(fileName: "jazzy-custom-groups.yaml", contents: sections.jazzyIndexYaml)
     }
@@ -168,7 +185,10 @@ struct DocStructure {
 
     /// Take list of types per file and produce the doc structure, grouped by kind (interfaces/structures/etc)
     private func createDocSections(typeSets: SwiftTypeSets) -> [DocSection] {
-        typeSets.map { (filename, types) in
+        var interfaceSections: [DocSection] = []
+        var commonSection: DocSection? = nil
+
+        for (filename, types) in typeSets {
             var typesByKind: [Generated.Kind : [SwiftType]] = [:]
             for swiftType in types {
                 let kind = generated.find(type: swiftType) ?? .other
@@ -177,24 +197,21 @@ struct DocStructure {
             Metadata.extraEnumsFor(header: filename).map {
                 typesByKind[.enum, default: []].append(contentsOf: $0.map(\.swiftType))
             }
-            let title: String
+            let items = typesByKind.mapValues { $0.sorted() }
 
-            // Special cases for header files that define multiple interfaces,
-            // have to hard-code which of them are in-charge.  This is an
-            // aesthetic decision.
+            // Special cases for the fakeudpport interface which is not a regular
+            // steam interface.
             if let interfaces = typesByKind[.interface] {
-                if interfaces.count == 1 {
-                    title = interfaces[0].name
-                } else {
-                    title = interfaces.findHighPrioInterface
-                }
+                let title = interfaces.first(where: { $0.name != "SteamNetworkingFakeUDPPort"})!.name
+                interfaceSections.append(DocSection(title: title, items: items))
             } else if filename == Self.commonTypesHeader {
-                title = "Common Types"
+                commonSection = DocSection(title: DocSection.commonTypesTitle, items: items)
             } else {
                 preconditionFailure("Missing an interface in \(filename), just got: \(types)")
             }
-            return DocSection(title: title, items: typesByKind.mapValues { $0.sorted() })
         }
+
+        return interfaceSections.sorted(by: { l, r in l.title < r.title }) + [commonSection!]
     }
 
     /// isteammatchmaking is annoying because it contains four separate interfaces that would
@@ -230,19 +247,6 @@ struct DocStructure {
         ps += nodes
 
         return [mm, mms, gs, ps]
-    }
-
-    static let highPrioInterfaces = Set(["SteamNetworkingSockets"])
-}
-
-private extension Collection where Element == SwiftType {
-    var findHighPrioInterface: String {
-        for f in self {
-            if DocStructure.highPrioInterfaces.contains(f.name) {
-                return f.name
-            }
-        }
-        preconditionFailure("Can't find high prio interface: \(self)")
     }
 }
 
