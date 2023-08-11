@@ -81,7 +81,7 @@ struct DocStructure {
         commonTypesHeader : ["steamtypes.h", "steamuniverse.h", "steam_api_common.h", "steam_gameserver.h"]
     ]
 
-    static var secondaryHeaders = Set(secondaryHeaderMap.values.joined())
+    static let secondaryHeaders = Set(secondaryHeaderMap.values.joined())
 
     /// Does this header file's types warrant inclusion in a docs section?
     func doesFileNeedCollection(filename: String) -> Bool {
@@ -158,6 +158,18 @@ struct DocStructure {
         return result
     }
 
+    /// Types that we've invented from whole cloth that need inserting as though they were from Steamworks
+    static let additionalTypesByHeader: [String : [(Generated.Kind, SwiftType)]] = [
+        "isteammatchmaking.h" : [
+            (.enum, "FavoriteFlags"),
+            (.struct, "MatchMakingKeyValuePairs") /* Should be mmservers, todo split */
+        ],
+        "isteamnetworkingutils.h" : [
+            (.enum, "SteamNetworkConnectionInfoFlags"),
+            (.enum, "SteamNetworkingSendFlags")
+        ]
+    ]
+
     /// Take list of types per file and produce the doc structure, grouped by kind (interfaces/structures/etc)
     private func createDocSections(typeSets: SwiftTypeSets) -> [DocSection] {
         typeSets.map { (filename, types) in
@@ -165,6 +177,11 @@ struct DocStructure {
             for swiftType in types {
                 let kind = generated.find(type: swiftType) ?? .other
                 typesByKind[kind, default: []].append(swiftType)
+            }
+            Self.additionalTypesByHeader[filename].map {
+                for typeinfo in $0 {
+                    typesByKind[typeinfo.0, default: []].append(typeinfo.1)
+                }
             }
             let title: String
 
@@ -270,20 +287,24 @@ extension Collection where Element == ClangNode {
     /// This takes a file's worth of clang-nodes, hunts out any such nested enums, and moves them
     /// to the global scope.
     var unnested: [ClangNode] {
-        var nestedEnums: [ClangNode] = []
+        var nestedNodes: [ClangNode] = []
         for outerDecl in self {
-            guard let inner = outerDecl.inner, let outerName = outerDecl.name else {
+            guard let inner = outerDecl.inner else {
                 continue
             }
             for innerDecl in inner {
-                if innerDecl.kind == "EnumDecl", let innerName = innerDecl.name {
+                if innerDecl.kind == "EnumDecl", let innerName = innerDecl.name, let outerName = outerDecl.name {
                     // Must give it the fully-qualified name for name-matching to work.
                     // leave it where it was too, harmless
-                    nestedEnums.append(ClangNode(from: innerDecl, renamed: "\(outerName)::\(innerName)"))
+                    nestedNodes.append(ClangNode(from: innerDecl, renamed: "\(outerName)::\(innerName)"))
+                }
+                if outerDecl.kind == "LinkageSpecDecl" && innerDecl.kind == "TypedefDecl" {
+                    // Function pointer typedefs come out nested
+                    nestedNodes.append(innerDecl)
                 }
             }
         }
-        return Array(self) + nestedEnums
+        return Array(self) + nestedNodes
     }
 }
 

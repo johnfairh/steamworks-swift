@@ -47,7 +47,8 @@ final class Generated {
         ("SteamNetworkingIPAddr", .struct),
         ("SteamNetworkingIdentity", .struct),
         ("SteamNetworkingMessage", .struct),
-        ("SteamNetworkingConfigValue", .struct)
+        ("SteamNetworkingConfigValue", .struct),
+        ("SteamAPIWarningMessageHook", .typedef)
     ]
 
     private func addManualTypes() {
