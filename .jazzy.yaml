@@ -27,586 +27,697 @@ topic_style: source-order-defs
 hide_coverage: true
 undocumented_text: ""
 custom_groups:
-  - name: API clients
-    children:
-      - SteamBaseAPI
-      - SteamAPI
-      - SteamGameServerAPI
-      - SteamEncryptedAppTicket
-  - name: Protocols
-    children:
-      - /Matchmaking.*Response/
-  - name: Constants
-    children:
-      - SteamConstants
+# paste
+  - name: API Clients
+    topics:
+    - name: Clients
+      children:
+        - SteamBaseAPI
+        - SteamAPI
+        - SteamGameServerAPI
+        - SteamEncryptedAppTicket
   - name: SteamAppList
     topics:
     - name: Interfaces
       children:
-        - SteamAppList 
-    - name: Structures
+        - SteamAppList
+    - name: Callbacks
       children:
-        - SteamAppUninstalled 
-        - SteamAppInstalled 
+        - SteamAppInstalled
+        - SteamAppUninstalled
   - name: SteamApps
     topics:
     - name: Interfaces
       children:
-        - SteamApps 
+        - SteamApps
     - name: Structures
       children:
-        - FileDetailsResult 
-        - DlcInstalled 
-        - NewUrlLaunchParameters 
-        - AppProofOfPurchaseKeyResponse 
-        - TimedTrialStatus 
+        - FileDetailsResult
+    - name: Callbacks
+      children:
+        - AppProofOfPurchaseKeyResponse
+        - DlcInstalled
+        - NewUrlLaunchParameters
+        - TimedTrialStatus
   - name: SteamFriends
     topics:
     - name: Interfaces
       children:
-        - SteamFriends 
-    - name: Typealiases
+        - SteamFriends
+    - name: Simple types
       children:
-        - FriendsGroupID 
-    - name: Enumerations
+        - FriendsGroupID
+    - name: Enumerations and Option Sets
       children:
-        - FriendFlags 
-        - FriendRelationship 
-        - ActivateGameOverlayToWebPageMode 
-        - PersonaState 
-        - CommunityProfileItemProperty 
-        - UserRestriction 
-        - PersonaChange 
-        - OverlayToStoreFlag 
-        - CommunityProfileItemType 
+        - ActivateGameOverlayToWebPageMode
+        - CommunityProfileItemProperty
+        - CommunityProfileItemType
+        - FriendFlags
+        - FriendRelationship
+        - OverlayToStoreFlag
+        - PersonaChange
+        - PersonaState
+        - UserRestriction
     - name: Structures
       children:
-        - SetPersonaNameResponse 
-        - EquippedProfileItems 
-        - ClanOfficerListResponse 
-        - JoinClanChatRoomCompletionResult 
-        - DownloadClanActivityCountsResult 
-        - GameLobbyJoinRequested 
-        - FriendGameInfo 
-        - GameServerChangeRequested 
-        - FriendRichPresenceUpdate 
-        - GameConnectedClanChatMsg 
-        - GameOverlayActivated 
-        - GameConnectedChatJoin 
-        - GameRichPresenceJoinRequested 
-        - FriendsEnumerateFollowingList 
-        - GameConnectedFriendChatMsg 
-        - OverlayBrowserProtocolNavigation 
-        - PersonaStateChange 
-        - AvatarImageLoaded 
-        - GameConnectedChatLeave 
-        - FriendsGetFollowerCount 
-        - FriendsIsFollowing 
-        - UnreadChatMessagesChanged 
-        - EquippedProfileItemsChanged 
+        - ClanOfficerListResponse
+        - DownloadClanActivityCountsResult
+        - EquippedProfileItems
+        - FriendGameInfo
+        - FriendsEnumerateFollowingList
+        - FriendsGetFollowerCount
+        - FriendsIsFollowing
+        - JoinClanChatRoomCompletionResult
+        - SetPersonaNameResponse
+    - name: Callbacks
+      children:
+        - AvatarImageLoaded
+        - EquippedProfileItemsChanged
+        - FriendRichPresenceUpdate
+        - GameConnectedChatJoin
+        - GameConnectedChatLeave
+        - GameConnectedClanChatMsg
+        - GameConnectedFriendChatMsg
+        - GameLobbyJoinRequested
+        - GameOverlayActivated
+        - GameRichPresenceJoinRequested
+        - GameServerChangeRequested
+        - OverlayBrowserProtocolNavigation
+        - PersonaStateChange
+        - UnreadChatMessagesChanged
+  - name: SteamGameSearch
+    topics:
+    - name: Interfaces
+      children:
+        - SteamGameSearch
+    - name: Enumerations and Option Sets
+      children:
+        - ChatMemberStateChange
+        - PlayerAcceptState
+    - name: Callbacks
+      children:
+        - EndGameResultCallback
+        - RequestPlayersForGameFinalResultCallback
+        - RequestPlayersForGameProgressCallback
+        - RequestPlayersForGameResultCallback
+        - SearchForGameProgressCallback
+        - SearchForGameResultCallback
+        - SubmitPlayerResultResultCallback
   - name: SteamGameServer
     topics:
     - name: Interfaces
       children:
-        - SteamGameServer 
+        - SteamGameServer
     - name: Structures
       children:
-        - GSClientGroupStatus 
-        - AssociateWithClanResult 
-        - GSPolicyResponse 
-        - GSClientKick 
-        - GSGameplayStats 
-        - GSClientAchievementStatus 
-        - GSClientDeny 
-        - ComputeNewPlayerCompatibilityResult 
-        - GSReputation 
-        - GSClientApprove 
+        - AssociateWithClanResult
+        - ComputeNewPlayerCompatibilityResult
+        - GSReputation
+    - name: Callbacks
+      children:
+        - GSClientAchievementStatus
+        - GSClientApprove
+        - GSClientDeny
+        - GSClientGroupStatus
+        - GSClientKick
+        - GSGameplayStats
+        - GSPolicyResponse
   - name: SteamGameServerStats
     topics:
     - name: Interfaces
       children:
-        - SteamGameServerStats 
+        - SteamGameServerStats
     - name: Structures
       children:
-        - GSStatsStored 
-        - GSStatsReceived 
-        - GSStatsUnloaded 
+        - GSStatsReceived
+        - GSStatsStored
+    - name: Callbacks
+      children:
+        - GSStatsUnloaded
   - name: SteamHTMLSurface
     topics:
     - name: Interfaces
       children:
-        - SteamHTMLSurface 
-    - name: Typealiases
+        - SteamHTMLSurface
+    - name: Simple types
       children:
-        - HHTMLBrowser 
+        - HHTMLBrowser
+    - name: Enumerations and Option Sets
+      children:
+        - HTMLKeyModifiers
+        - HTMLMouseButton
+        - HTMLMouseCursor
     - name: Structures
       children:
-        - HTMLCloseBrowser 
-        - HTMLStartRequest 
-        - HTMLFinishedRequest 
-        - HTMLStatusText 
-        - HTMLLinkAtPosition 
-        - HTMLBrowserRestarted 
-        - HTMLOpenLinkInNewTab 
-        - HTMLURLChanged 
-        - HTMLShowToolTip 
-        - HTMLUpdateToolTip 
-        - HTMLCanGoBackAndForward 
-        - HTMLNewWindow 
-        - HTMLVerticalScroll 
-        - HTMLSearchResults 
-        - HTMLSetCursor 
-        - HTMLBrowserReady 
-        - HTMLHideToolTip 
-        - HTMLNeedsPaint 
-        - HTMLChangedTitle 
-        - HTMLJSConfirm 
-        - HTMLFileOpenDialog 
-        - HTMLHorizontalScroll 
-        - HTMLJSAlert 
+        - HTMLBrowserReady
+    - name: Callbacks
+      children:
+        - HTMLBrowserRestarted
+        - HTMLCanGoBackAndForward
+        - HTMLChangedTitle
+        - HTMLCloseBrowser
+        - HTMLFileOpenDialog
+        - HTMLFinishedRequest
+        - HTMLHideToolTip
+        - HTMLHorizontalScroll
+        - HTMLJSAlert
+        - HTMLJSConfirm
+        - HTMLLinkAtPosition
+        - HTMLNeedsPaint
+        - HTMLNewWindow
+        - HTMLOpenLinkInNewTab
+        - HTMLSearchResults
+        - HTMLSetCursor
+        - HTMLShowToolTip
+        - HTMLStartRequest
+        - HTMLStatusText
+        - HTMLURLChanged
+        - HTMLUpdateToolTip
+        - HTMLVerticalScroll
   - name: SteamHTTP
     topics:
     - name: Interfaces
       children:
-        - SteamHTTP 
-    - name: Typealiases
+        - SteamHTTP
+    - name: Simple types
       children:
-        - HTTPCookieContainerHandle 
-        - HTTPRequestHandle 
-    - name: Enumerations
+        - HTTPCookieContainerHandle
+        - HTTPRequestHandle
+    - name: Enumerations and Option Sets
       children:
-        - HTTPStatusCode 
-        - HTTPMethod 
+        - HTTPMethod
+        - HTTPStatusCode
     - name: Structures
       children:
-        - HTTPRequestDataReceived 
-        - HTTPRequestCompleted 
-        - HTTPRequestHeadersReceived 
+        - HTTPRequestCompleted
+    - name: Callbacks
+      children:
+        - HTTPRequestDataReceived
+        - HTTPRequestHeadersReceived
   - name: SteamInput
     topics:
     - name: Interfaces
       children:
-        - SteamInput 
-    - name: Typealiases
+        - SteamInput
+    - name: Simple types
       children:
-        - InputHandle 
-        - InputAnalogActionHandle 
-        - SteamInputActionEventCallbackPointer 
-        - InputDigitalActionHandle 
-        - InputActionSetHandle 
-    - name: Enumerations
+        - InputActionSetHandle
+        - InputAnalogActionHandle
+        - InputDigitalActionHandle
+        - InputHandle
+        - SteamInputActionEventCallbackPointer
+    - name: Enumerations and Option Sets
       children:
-        - SteamControllerPad 
-        - ControllerHapticLocation 
-        - InputSourceMode 
-        - SteamInputGlyphStyle 
-        - InputActionOrigin 
-        - SteamInputConfigurationEnableType 
-        - SteamInputLEDFlag 
-        - SteamInputType 
-        - SteamInputActionEventType 
-        - XboxOrigin 
-        - ControllerHapticType 
-        - SteamInputGlyphSize 
+        - ControllerHapticLocation
+        - ControllerHapticType
+        - InputActionOrigin
+        - InputSourceMode
+        - SteamControllerPad
+        - SteamInputActionEventType
+        - SteamInputConfigurationEnableType
+        - SteamInputGlyphSize
+        - SteamInputGlyphStyle
+        - SteamInputLEDFlag
+        - SteamInputType
+        - XboxOrigin
     - name: Structures
       children:
-        - InputDigitalActionData 
-        - InputAnalogActionData 
-        - SteamInputConfigurationLoaded 
-        - SteamInputDeviceDisconnected 
-        - SteamInputDeviceConnected 
-        - SteamInputGamepadSlotChange 
-        - InputMotionData 
-        - InputMotionDataV2 
+        - InputAnalogActionData
+        - InputDigitalActionData
+        - InputMotionData
+        - InputMotionDataV2
+        - SteamInputActionEvent
+    - name: Callbacks
+      children:
+        - SteamInputConfigurationLoaded
+        - SteamInputDeviceConnected
+        - SteamInputDeviceDisconnected
+        - SteamInputGamepadSlotChange
   - name: SteamInventory
     topics:
     - name: Interfaces
       children:
-        - SteamInventory 
-    - name: Typealiases
+        - SteamInventory
+    - name: Simple types
       children:
-        - SteamItemDef 
-        - SteamInventoryUpdateHandle 
-        - SteamItemInstanceID 
-        - SteamInventoryResult 
-    - name: Enumerations
+        - SteamInventoryResult
+        - SteamInventoryUpdateHandle
+        - SteamItemDef
+        - SteamItemInstanceID
+    - name: Enumerations and Option Sets
       children:
-        - SteamItemFlags 
+        - SteamItemFlags
     - name: Structures
       children:
-        - SteamInventoryFullUpdate 
-        - SteamInventoryResultReady 
-        - SteamItemDetails 
-        - SteamInventoryStartPurchaseResult 
-        - SteamInventoryRequestPricesResult 
-        - SteamInventoryDefinitionUpdate 
-        - SteamInventoryEligiblePromoItemDefIDs 
+        - SteamInventoryEligiblePromoItemDefIDs
+        - SteamInventoryRequestPricesResult
+        - SteamInventoryStartPurchaseResult
+        - SteamItemDetails
+    - name: Callbacks
+      children:
+        - SteamInventoryDefinitionUpdate
+        - SteamInventoryFullUpdate
+        - SteamInventoryResultReady
+  - name: SteamMatchmaking
+    topics:
+    - name: Interfaces
+      children:
+        - SteamMatchmaking
+    - name: Simple types
+      children:
+        - MatchMakingKeyValuePairs
+    - name: Enumerations and Option Sets
+      children:
+        - FavoriteFlags
+        - LobbyComparison
+        - LobbyDistanceFilter
+        - LobbyType
+        - MatchMakingServerResponse
+    - name: Structures
+      children:
+        - GameServerItem
+        - LobbyCreated
+        - LobbyEnter
+        - LobbyMatchList
+        - ServerNetAdr
+    - name: Callbacks
+      children:
+        - FavoritesListAccountsUpdated
+        - FavoritesListChanged
+        - LobbyChatMsg
+        - LobbyChatUpdate
+        - LobbyDataUpdate
+        - LobbyGameCreated
+        - LobbyInvite
+        - LobbyKicked
+        - PSNGameBootInviteResult
   - name: SteamMatchmakingServers
     topics:
     - name: Interfaces
       children:
-        - SteamMatchmakingServers 
-        - SteamParties 
-        - SteamMatchmaking 
-        - SteamGameSearch 
-    - name: Typealiases
+        - SteamMatchmakingServers
+    - name: Simple types
       children:
-        - HServerQuery 
-        - HServerListRequest 
-    - name: Enumerations
+        - HServerListRequest
+        - HServerQuery
+    - name: Protocols
       children:
-        - SteamPartyBeaconLocationType 
-        - LobbyDistanceFilter 
-        - LobbyType 
-        - ChatMemberStateChange 
-        - LobbyComparison 
-        - MatchMakingServerResponse 
-        - SteamPartyBeaconLocationData 
-    - name: Structures
-      children:
-        - LobbyCreated 
-        - LobbyChatUpdate 
-        - SearchForGameProgressCallback 
-        - RequestPlayersForGameFinalResultCallback 
-        - ReservationNotificationCallback 
-        - RequestPlayersForGameResultCallback 
-        - GameServerItem 
-        - LobbyKicked 
-        - LobbyInvite 
-        - AvailableBeaconLocationsUpdated 
-        - JoinPartyCallback 
-        - LobbyMatchList 
-        - EndGameResultCallback 
-        - ActiveBeaconsUpdated 
-        - FavoritesListChanged 
-        - MatchMakingKeyValuePair 
-        - ChangeNumOpenSlotsCallback 
-        - CreateBeaconCallback 
-        - SearchForGameResultCallback 
-        - LobbyGameCreated 
-        - SubmitPlayerResultResultCallback 
-        - SteamPartyBeaconLocation 
-        - FavoritesListAccountsUpdated 
-        - LobbyDataUpdate 
-        - PSNGameBootInviteResult 
-        - LobbyEnter 
-        - RequestPlayersForGameProgressCallback 
-        - LobbyChatMsg 
+        - SteamMatchmakingPingResponse
+        - SteamMatchmakingPlayersResponse
+        - SteamMatchmakingRulesResponse
+        - SteamMatchmakingServerListResponse
   - name: SteamMusic
     topics:
     - name: Interfaces
       children:
-        - SteamMusic 
-    - name: Enumerations
+        - SteamMusic
+    - name: Enumerations and Option Sets
       children:
-        - AudioPlaybackStatus 
-    - name: Structures
+        - AudioPlaybackStatus
+    - name: Callbacks
       children:
-        - PlaybackStatusHasChanged 
-        - VolumeHasChanged 
+        - PlaybackStatusHasChanged
+        - VolumeHasChanged
   - name: SteamMusicRemote
     topics:
     - name: Interfaces
       children:
-        - SteamMusicRemote 
-    - name: Structures
+        - SteamMusicRemote
+    - name: Callbacks
       children:
-        - MusicPlayerSelectsPlaylistEntry 
-        - MusicPlayerSelectsQueueEntry 
-        - MusicPlayerRemoteWillActivate 
-        - MusicPlayerWantsPause 
-        - MusicPlayerWantsPlayNext 
-        - MusicPlayerWantsShuffled 
-        - MusicPlayerWantsPlay 
-        - MusicPlayerRemoteToFront 
-        - MusicPlayerWantsPlayPrevious 
-        - MusicPlayerWillQuit 
-        - MusicPlayerWantsLooped 
-        - MusicPlayerWantsPlayingRepeatStatus 
-        - MusicPlayerWantsVolume 
-        - MusicPlayerRemoteWillDeactivate 
-  - name: SteamNetworkingFakeUDPPort
-    topics:
-    - name: Interfaces
-      children:
-        - SteamNetworkingFakeUDPPort 
-    - name: Structures
-      children:
-        - SteamNetworkingFakeIPResult 
-  - name: SteamNetworkingFakeUDPPort
-    topics:
-    - name: Interfaces
-      children:
-        - SteamNetworkingFakeUDPPort 
-        - SteamNetworkingSockets 
-    - name: Structures
-      children:
-        - SteamNetConnectionStatusChangedCallback 
-        - SteamNetAuthenticationStatus 
-        - SteamNetworkingFakeIPResult 
+        - MusicPlayerRemoteToFront
+        - MusicPlayerRemoteWillActivate
+        - MusicPlayerRemoteWillDeactivate
+        - MusicPlayerSelectsPlaylistEntry
+        - MusicPlayerSelectsQueueEntry
+        - MusicPlayerWantsLooped
+        - MusicPlayerWantsPause
+        - MusicPlayerWantsPlay
+        - MusicPlayerWantsPlayNext
+        - MusicPlayerWantsPlayPrevious
+        - MusicPlayerWantsPlayingRepeatStatus
+        - MusicPlayerWantsShuffled
+        - MusicPlayerWantsVolume
+        - MusicPlayerWillQuit
   - name: SteamNetworkingMessages
     topics:
     - name: Interfaces
       children:
-        - SteamNetworkingMessages 
-    - name: Structures
+        - SteamNetworkingMessages
+    - name: Callbacks
       children:
-        - SteamNetworkingMessagesSessionFailed 
-        - SteamNetworkingMessagesSessionRequest 
+        - SteamNetworkingMessagesSessionFailed
+        - SteamNetworkingMessagesSessionRequest
+  - name: SteamNetworkingSockets
+    topics:
+    - name: Interfaces
+      children:
+        - SteamNetworkingFakeUDPPort
+        - SteamNetworkingSockets
+    - name: Callbacks
+      children:
+        - SteamNetAuthenticationStatus
+        - SteamNetConnectionStatusChangedCallback
+        - SteamNetworkingFakeIPResult
   - name: SteamNetworkingUtils
     topics:
     - name: Interfaces
       children:
-        - SteamNetworkingUtils 
-    - name: Typealiases
+        - SteamNetworkingUtils
+    - name: Simple types
       children:
-        - SteamNetworkingPOPID 
-        - SteamNetworkingMicroseconds 
-        - HSteamListenSocket 
-        - SteamNetworkingErrMsg 
-        - HSteamNetConnection 
-        - HSteamNetPollGroup 
-    - name: Enumerations
+        - HSteamListenSocket
+        - HSteamNetConnection
+        - HSteamNetPollGroup
+        - SteamNetworkingErrMsg
+        - SteamNetworkingMicroseconds
+        - SteamNetworkingPOPID
+    - name: Enumerations and Option Sets
       children:
-        - SteamNetworkingConfigDataType 
-        - SteamNetworkingIdentityType 
-        - SteamNetworkingConfigValueSetting 
-        - SteamNetworkingAvailability 
-        - SteamNetworkingConfigScope 
-        - SteamNetworkingSocketsDebugOutputType 
-        - SteamNetworkingGetConfigValueResult 
-        - SteamNetworkingFakeIPType 
-        - SteamNetConnectionEnd 
-        - SteamNetworkingConnectionState 
+        - SteamNetConnectionEnd
+        - SteamNetworkConnectionInfoFlags
+        - SteamNetworkingAvailability
+        - SteamNetworkingConfigDataType
+        - SteamNetworkingConfigScope
+        - SteamNetworkingConfigValueSetting
+        - SteamNetworkingConnectionState
+        - SteamNetworkingFakeIPType
+        - SteamNetworkingGetConfigValueResult
+        - SteamNetworkingIdentityType
+        - SteamNetworkingSendFlags
+        - SteamNetworkingSocketsDebugOutputType
     - name: Structures
       children:
-        - SteamNetworkingMessagesSessionFailed 
-        - SteamNetworkingFakeIPResult 
-        - SteamNetConnectionRealTimeLaneStatus 
-        - SteamNetworkPingLocation 
-        - SteamRelayNetworkStatus 
-        - SteamNetConnectionRealTimeStatus 
-        - SteamNetworkingMessagesSessionRequest 
-        - SteamNetConnectionStatusChangedCallback 
-        - SteamNetAuthenticationStatus 
-        - SteamNetConnectionInfo 
+        - SteamNetConnectionInfo
+        - SteamNetConnectionRealTimeLaneStatus
+        - SteamNetConnectionRealTimeStatus
+        - SteamNetworkPingLocation
+        - SteamNetworkingConfigValue
+        - SteamNetworkingIPAddr
+        - SteamNetworkingIdentity
+        - SteamNetworkingMessage
+    - name: Callbacks
+      children:
+        - SteamRelayNetworkStatus
   - name: SteamParentalSettings
     topics:
     - name: Interfaces
       children:
-        - SteamParentalSettings 
-    - name: Enumerations
+        - SteamParentalSettings
+    - name: Enumerations and Option Sets
       children:
-        - ParentalFeature 
+        - ParentalFeature
+    - name: Callbacks
+      children:
+        - SteamParentalSettingsChanged
+  - name: SteamParties
+    topics:
+    - name: Interfaces
+      children:
+        - SteamParties
+    - name: Enumerations and Option Sets
+      children:
+        - SteamPartyBeaconLocationData
+        - SteamPartyBeaconLocationType
     - name: Structures
       children:
-        - SteamParentalSettingsChanged 
+        - ChangeNumOpenSlotsCallback
+        - CreateBeaconCallback
+        - JoinPartyCallback
+        - SteamPartyBeaconLocation
+    - name: Callbacks
+      children:
+        - ActiveBeaconsUpdated
+        - AvailableBeaconLocationsUpdated
+        - ReservationNotificationCallback
   - name: SteamRemotePlay
     topics:
     - name: Interfaces
       children:
-        - SteamRemotePlay 
-    - name: Typealiases
+        - SteamRemotePlay
+    - name: Simple types
       children:
-        - RemotePlaySessionID 
-    - name: Enumerations
+        - RemotePlaySessionID
+    - name: Enumerations and Option Sets
       children:
-        - SteamDeviceFormFactor 
-    - name: Structures
+        - SteamDeviceFormFactor
+    - name: Callbacks
       children:
-        - SteamRemotePlaySessionDisconnected 
-        - SteamRemotePlaySessionConnected 
-        - SteamRemotePlayTogetherGuestInvite 
+        - SteamRemotePlaySessionConnected
+        - SteamRemotePlaySessionDisconnected
+        - SteamRemotePlayTogetherGuestInvite
   - name: SteamRemoteStorage
     topics:
     - name: Interfaces
       children:
-        - SteamRemoteStorage 
-    - name: Typealiases
+        - SteamRemoteStorage
+    - name: Simple types
       children:
-        - PublishedFileUpdateHandle 
-        - PublishedFileID 
-        - UGCHandle 
-        - UGCFileWriteStreamHandle 
-    - name: Enumerations
+        - PublishedFileID
+        - PublishedFileUpdateHandle
+        - UGCFileWriteStreamHandle
+        - UGCHandle
+    - name: Enumerations and Option Sets
       children:
-        - WorkshopVideoProvider 
-        - RemoteStorageFilePathType 
-        - RemoteStoragePlatform 
-        - WorkshopVote 
-        - WorkshopEnumerationType 
-        - RemoteStorageLocalFileChangeType 
-        - WorkshopFileAction 
-        - RemoteStoragePublishedFileVisibility 
-        - WorkshopFileType 
-        - UGCReadAction 
+        - RemoteStorageFilePathType
+        - RemoteStorageLocalFileChangeType
+        - RemoteStoragePlatform
+        - RemoteStoragePublishedFileVisibility
+        - UGCReadAction
+        - WorkshopEnumerationType
+        - WorkshopFileAction
+        - WorkshopFileType
+        - WorkshopVideoProvider
+        - WorkshopVote
     - name: Structures
       children:
-        - RemoteStorageFileWriteAsyncComplete 
-        - RemoteStoragePublishedFileUpdated 
-        - RemoteStorageGetPublishedItemVoteDetailsResult 
-        - RemoteStorageEnumerateUserSharedWorkshopFilesResult 
-        - RemoteStorageUpdatePublishedFileResult 
-        - RemoteStoragePublishedFileUnsubscribed 
-        - RemoteStorageLocalFileChange 
-        - RemoteStorageDeletePublishedFileResult 
-        - RemoteStorageUserVoteDetails 
-        - RemoteStorageEnumerateUserSubscribedFilesResult 
-        - RemoteStorageEnumerateUserPublishedFilesResult 
-        - RemoteStorageEnumeratePublishedFilesByUserActionResult 
-        - RemoteStorageSetUserPublishedFileActionResult 
-        - RemoteStoragePublishedFileDeleted 
-        - RemoteStoragePublishFileResult 
-        - RemoteStoragePublishedFileSubscribed 
-        - RemoteStoragePublishFileProgress 
-        - RemoteStorageUpdateUserPublishedItemVoteResult 
-        - RemoteStorageFileShareResult 
-        - RemoteStorageEnumerateWorkshopFilesResult 
-        - RemoteStorageFileReadAsyncComplete 
-        - RemoteStorageGetPublishedFileDetailsResult 
-        - RemoteStorageDownloadUGCResult 
-        - RemoteStorageUnsubscribePublishedFileResult 
-        - RemoteStorageSubscribePublishedFileResult 
+        - RemoteStorageDeletePublishedFileResult
+        - RemoteStorageDownloadUGCResult
+        - RemoteStorageEnumeratePublishedFilesByUserActionResult
+        - RemoteStorageEnumerateUserPublishedFilesResult
+        - RemoteStorageEnumerateUserSubscribedFilesResult
+        - RemoteStorageEnumerateWorkshopFilesResult
+        - RemoteStorageFileReadAsyncComplete
+        - RemoteStorageFileShareResult
+        - RemoteStorageFileWriteAsyncComplete
+        - RemoteStorageGetPublishedFileDetailsResult
+        - RemoteStorageGetPublishedItemVoteDetailsResult
+        - RemoteStoragePublishFileProgress
+        - RemoteStorageSetUserPublishedFileActionResult
+        - RemoteStorageSubscribePublishedFileResult
+        - RemoteStorageUnsubscribePublishedFileResult
+        - RemoteStorageUpdatePublishedFileResult
+        - RemoteStorageUpdateUserPublishedItemVoteResult
+    - name: Callbacks
+      children:
+        - RemoteStorageEnumerateUserSharedWorkshopFilesResult
+        - RemoteStorageLocalFileChange
+        - RemoteStoragePublishFileResult
+        - RemoteStoragePublishedFileDeleted
+        - RemoteStoragePublishedFileSubscribed
+        - RemoteStoragePublishedFileUnsubscribed
+        - RemoteStoragePublishedFileUpdated
+        - RemoteStorageUserVoteDetails
   - name: SteamScreenshots
     topics:
     - name: Interfaces
       children:
-        - SteamScreenshots 
-    - name: Typealiases
+        - SteamScreenshots
+    - name: Simple types
       children:
-        - ScreenshotHandle 
-    - name: Enumerations
+        - ScreenshotHandle
+    - name: Enumerations and Option Sets
       children:
-        - VRScreenshotType 
-    - name: Structures
+        - VRScreenshotType
+    - name: Callbacks
       children:
-        - ScreenshotRequested 
-        - ScreenshotReady 
+        - ScreenshotReady
+        - ScreenshotRequested
   - name: SteamUGC
     topics:
     - name: Interfaces
       children:
-        - SteamUGC 
-    - name: Typealiases
+        - SteamUGC
+    - name: Simple types
       children:
-        - UGCQueryHandle 
-        - UGCUpdateHandle 
-    - name: Enumerations
+        - UGCQueryHandle
+        - UGCUpdateHandle
+    - name: Enumerations and Option Sets
       children:
-        - UserUGCList 
-        - UGCQuery 
-        - ItemUpdateStatus 
-        - ItemState 
-        - ItemPreviewType 
-        - UserUGCListSortOrder 
-        - UGCContentDescriptorID 
-        - ItemStatistic 
-        - UGCMatchingUGCType 
+        - ItemPreviewType
+        - ItemState
+        - ItemStatistic
+        - ItemUpdateStatus
+        - UGCContentDescriptorID
+        - UGCMatchingUGCType
+        - UGCQuery
+        - UserUGCList
+        - UserUGCListSortOrder
     - name: Structures
       children:
-        - GetAppDependenciesResult 
-        - AddUGCDependencyResult 
-        - SubmitItemUpdateResult 
-        - StartPlaytimeTrackingResult 
-        - DeleteItemResult 
-        - UserSubscribedItemsListChanged 
-        - DownloadItemResult 
-        - StopPlaytimeTrackingResult 
-        - RemoveUGCDependencyResult 
-        - CreateItemResult 
-        - AddAppDependencyResult 
-        - SetUserItemVoteResult 
-        - GetUserItemVoteResult 
-        - RemoveAppDependencyResult 
-        - SteamUGCDetails 
-        - SteamUGCRequestUGCDetailsResult 
-        - UserFavoriteItemsListChanged 
-        - ItemInstalled 
-        - WorkshopEULAStatus 
-        - SteamUGCQueryCompleted 
+        - AddAppDependencyResult
+        - AddUGCDependencyResult
+        - CreateItemResult
+        - DeleteItemResult
+        - GetAppDependenciesResult
+        - GetUserItemVoteResult
+        - RemoveAppDependencyResult
+        - RemoveUGCDependencyResult
+        - SetUserItemVoteResult
+        - StartPlaytimeTrackingResult
+        - SteamUGCDetails
+        - SteamUGCQueryCompleted
+        - SteamUGCRequestUGCDetailsResult
+        - StopPlaytimeTrackingResult
+        - SubmitItemUpdateResult
+        - UserFavoriteItemsListChanged
+        - WorkshopEULAStatus
+    - name: Callbacks
+      children:
+        - DownloadItemResult
+        - ItemInstalled
+        - UserSubscribedItemsListChanged
   - name: SteamUser
     topics:
     - name: Interfaces
       children:
-        - SteamUser 
+        - SteamUser
+    - name: Enumerations and Option Sets
+      children:
+        - IPCFailureType
     - name: Structures
       children:
-        - SteamServersDisconnected 
-        - MicroTxnAuthorizationResponse 
-        - GameWebCallback 
-        - GetAuthSessionTicketResponse 
-        - ValidateAuthTicketResponse 
-        - StoreAuthURLResponse 
-        - DurationControl 
-        - MarketEligibilityResponse 
-        - SteamServersConnected 
-        - SteamServerConnectFailure 
-        - EncryptedAppTicketResponse 
-        - LicensesUpdated 
-        - GetTicketForWebApiResponse 
-        - ClientGameServerDeny 
-        - IPCFailure 
+        - EncryptedAppTicketResponse
+        - MarketEligibilityResponse
+        - StoreAuthURLResponse
+    - name: Callbacks
+      children:
+        - ClientGameServerDeny
+        - DurationControl
+        - GameWebCallback
+        - GetAuthSessionTicketResponse
+        - GetTicketForWebApiResponse
+        - IPCFailure
+        - LicensesUpdated
+        - MicroTxnAuthorizationResponse
+        - SteamServerConnectFailure
+        - SteamServersConnected
+        - SteamServersDisconnected
+        - ValidateAuthTicketResponse
   - name: SteamUserStats
     topics:
     - name: Interfaces
       children:
-        - SteamUserStats 
-    - name: Typealiases
+        - SteamUserStats
+    - name: Simple types
       children:
-        - SteamLeaderboard 
-        - SteamLeaderboardEntries 
-    - name: Enumerations
+        - SteamLeaderboard
+        - SteamLeaderboardEntries
+    - name: Enumerations and Option Sets
       children:
-        - LeaderboardSortMethod 
-        - LeaderboardUploadScoreMethod 
-        - LeaderboardDisplayType 
-        - LeaderboardDataRequest 
+        - LeaderboardDataRequest
+        - LeaderboardDisplayType
+        - LeaderboardSortMethod
+        - LeaderboardUploadScoreMethod
     - name: Structures
       children:
-        - LeaderboardFindResult 
-        - NumberOfCurrentPlayers 
-        - LeaderboardUGCSet 
-        - UserStatsReceived 
-        - LeaderboardEntry 
-        - LeaderboardScoreUploaded 
-        - UserAchievementStored 
-        - GlobalAchievementPercentagesReady 
-        - LeaderboardScoresDownloaded 
-        - UserStatsUnloaded 
-        - PS3TrophiesInstalled 
-        - UserAchievementIconFetched 
-        - UserStatsStored 
-        - GlobalStatsReceived 
+        - GlobalAchievementPercentagesReady
+        - GlobalStatsReceived
+        - LeaderboardEntry
+        - LeaderboardFindResult
+        - LeaderboardScoreUploaded
+        - LeaderboardScoresDownloaded
+        - LeaderboardUGCSet
+        - NumberOfCurrentPlayers
+    - name: Callbacks
+      children:
+        - PS3TrophiesInstalled
+        - UserAchievementIconFetched
+        - UserAchievementStored
+        - UserStatsReceived
+        - UserStatsStored
+        - UserStatsUnloaded
   - name: SteamUtils
     topics:
     - name: Interfaces
       children:
-        - SteamUtils 
-    - name: Enumerations
+        - SteamUtils
+    - name: Enumerations and Option Sets
       children:
-        - TextFilteringContext 
-        - SteamAPICallFailure 
-        - GamepadTextInputLineMode 
-        - GamepadTextInputMode 
-        - FloatingGamepadTextInputMode 
-        - CheckFileSignatureResult 
+        - CheckFileSignatureResult
+        - FloatingGamepadTextInputMode
+        - GamepadTextInputLineMode
+        - GamepadTextInputMode
+        - SteamAPICallFailure
+        - TextFilteringContext
     - name: Structures
       children:
-        - SteamShutdown 
-        - CheckFileSignature 
-        - IPCountry 
-        - LowBatteryPower 
-        - SteamAPICallCompleted 
-        - FilterTextDictionaryChanged 
-        - AppResumingFromSuspend 
-        - GamepadTextInputDismissed 
-        - FloatingGamepadTextInputDismissed 
+        - CheckFileSignature
+    - name: Callbacks
+      children:
+        - AppResumingFromSuspend
+        - FilterTextDictionaryChanged
+        - FloatingGamepadTextInputDismissed
+        - GamepadTextInputDismissed
+        - IPCountry
+        - LowBatteryPower
+        - SteamAPICallCompleted
+        - SteamShutdown
   - name: SteamVideo
     topics:
     - name: Interfaces
       children:
-        - SteamVideo 
+        - SteamVideo
+    - name: Callbacks
+      children:
+        - GetOPFSettingsResult
+        - GetVideoURLResult
+  - name: Common Types
+    topics:
+    - name: Simple types
+      children:
+        - AccountID
+        - AppID
+        - DepotID
+        - HAuthTicket
+        - HSteamPipe
+        - HSteamUser
+        - PartyBeaconID
+        - RTime32
+        - SteamAPICall
+        - SteamAPIWarningMessageHook
+    - name: Enumerations and Option Sets
+      children:
+        - AccountType
+        - AuthSessionResponse
+        - BeginAuthSessionResult
+        - BroadcastUploadResult
+        - ChatEntryType
+        - ChatRoomEnterResponse
+        - ChatSteamIDInstanceFlags
+        - DenyReason
+        - DurationControlNotification
+        - DurationControlOnlineState
+        - DurationControlProgress
+        - GameSearchErrorCode
+        - MarketNotAllowedReasonFlags
+        - NotificationPosition
+        - PlayerResult
+        - Result
+        - ServerMode
+        - SteamIPType
+        - SteamIPv6ConnectivityProtocol
+        - SteamIPv6ConnectivityState
+        - Universe
+        - UserHasLicenseForAppResult
+        - VoiceResult
     - name: Structures
       children:
-        - GetVideoURLResult 
-        - GetOPFSettingsResult 
+        - GameID
+        - SteamID
+        - SteamIPAddress
+  - name: Constants
+    topics:
+    - name: Constants
+      children:
+        - SteamConstants

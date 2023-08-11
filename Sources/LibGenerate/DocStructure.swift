@@ -59,7 +59,7 @@ struct DocSection {
             [
                 "- name: \(topic)",
                 "  children:"
-            ] + articles.map { "    - \($0) "}
+            ] + articles.map { "    - \($0)"}
         }.joined().yamlIndented()).yamlIndented().joined(separator: "\n")
     }
 }
