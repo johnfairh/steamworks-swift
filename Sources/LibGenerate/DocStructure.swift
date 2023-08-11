@@ -168,8 +168,15 @@ struct DocStructure {
             }
             let title: String
 
-            if let interface = typesByKind[.interface]?.first {
-                title = interface.name
+            // Special cases for header files that define multiple interfaces,
+            // have to hard-code which of them are in-charge.  This is an
+            // aesthetic decision.
+            if let interfaces = typesByKind[.interface] {
+                if interfaces.count == 1 {
+                    title = interfaces[0].name
+                } else {
+                    title = interfaces.findHighPrioInterface
+                }
             } else if filename == Self.commonTypesHeader {
                 title = "Common Types"
             } else {
@@ -177,6 +184,19 @@ struct DocStructure {
             }
             return DocSection(title: title, items: typesByKind.mapValues { $0.sorted() })
         }
+    }
+
+    static let highPrioInterfaces = Set(["SteamNetworkingSockets", "SteamMatchmaking"])
+}
+
+private extension Collection where Element == SwiftType {
+    var findHighPrioInterface: String {
+        for f in self {
+            if DocStructure.highPrioInterfaces.contains(f.name) {
+                return f.name
+            }
+        }
+        preconditionFailure("Can't find high prio interface: \(self)")
     }
 }
 
@@ -204,7 +224,17 @@ struct ClangNode: Decodable {
 
     // Identify forward type declarations, don't want to match these
     var isForwardDeclaration: Bool {
-        inner == nil && kind == "CXXRecordDecl"
+        guard kind == "CXXRecordDecl" else {
+            // not a type we care about
+            return false
+        }
+        guard let inner, inner.count > 0 else {
+            // record with no inner -> forward-decl
+            return true
+        }
+        // Think this means clang has only the fwd-decl, so has to put
+        // something inside it to remember the alignment is known?
+        return inner.count == 1 && inner.first!.kind == "MaxFieldAlignmentAttr"
     }
 
     init(file: URL) throws {
