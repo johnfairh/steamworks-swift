@@ -33,7 +33,7 @@ public struct Generator {
         enums = Enums(io: io, metadata: metadata, generated: generated)
         structs = Structs(io: io, metadata: metadata, generated: generated)
         interfaces = Interfaces(io: io, metadata: metadata, generated: generated)
-        callbacks = Callbacks(io: io, metadata: metadata)
+        callbacks = Callbacks(io: io, metadata: metadata, generated: generated)
         docStructure = DocStructure(io: io, generated: generated)
     }
 

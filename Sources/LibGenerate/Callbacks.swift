@@ -9,10 +9,12 @@
 struct Callbacks {
     let io: IO
     let metadata: Metadata
+    let generated: Generated
 
-    init(io: IO, metadata: Metadata) {
+    init(io: IO, metadata: Metadata, generated: Generated) {
         self.io = io
         self.metadata = metadata
+        self.generated = generated
     }
 
     /// Figure out which structs need callback APIs.  Not exactly straightforward.
@@ -44,6 +46,7 @@ struct Callbacks {
 
     func generate() throws {
         let callbacks = callbackStructs.sorted(by: { $0.name < $1.name })
+        callbacks.forEach { generated.add(type: $0.name.swiftType, kind: .callback) }
         let contents = """
                        public extension SteamBaseAPI {
                            // MARK: Callbacks

@@ -15,6 +15,7 @@ final class Generated {
         case `enum`
         case `struct`
         case `protocol`
+        case callback
         case other
 
         var englishName: String {
@@ -24,16 +25,15 @@ final class Generated {
             case .enum: "Enumerations and Option Sets"
             case .struct: "Structures"
             case .protocol: "Protocols"
+            case .callback: "Callbacks"
             case .other: "Other"
             }
         }
     }
 
-    private var typesByKind: [Kind : [SwiftType]]
     private var typeToKind: [SwiftType : Kind]
 
     init() {
-        typesByKind = [:]
         typeToKind = [:]
         addManualTypes()
     }
@@ -55,6 +55,7 @@ final class Generated {
         ("SteamMatchmakingPlayersResponse", .protocol),
         ("SteamMatchmakingRulesResponse", .protocol),
         ("SteamMatchmakingServerListResponse", .protocol),
+        ("MatchMakingKeyValuePairs", .struct)
     ]
 
     private func addManualTypes() {
@@ -65,10 +66,11 @@ final class Generated {
 
     func add(type: SwiftType, kind: Kind) {
         if let oldKind = typeToKind[type] {
-            preconditionFailure("Duplicate type \(type): already \(oldKind) now \(kind)")
+            guard oldKind == .struct, kind == .callback else {
+                preconditionFailure("Duplicate type \(type): already \(oldKind) now \(kind)")
+            }
         }
         typeToKind[type] = kind
-        typesByKind[kind, default: []].append(type)
     }
 
     func find(type: SwiftType) -> Kind? {

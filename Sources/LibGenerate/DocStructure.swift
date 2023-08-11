@@ -105,10 +105,10 @@ struct DocStructure {
 
     typealias SwiftTypeSets = [String : Set<SwiftType>]
 
-    // should figure out callbacks too
-    // final tweako is completely new types, that aren't found in the SDK, but need inserting into the
-    // doc tree as though they were.
-    // need to make sort stable, split out those multi-interface places
+    // * get new-enum filename from yaml, metadata everywhere!
+    // * trim out special case for dual-interface somehow
+    // * done??
+    // * docc!
     func generate() throws {
         let typeSets = mergeSecondaryHeaders(types: try swiftTypesFromRootHeaders())
             .filter { doesFileNeedCollection(filename: $0.key) }
@@ -133,6 +133,13 @@ struct DocStructure {
         Dictionary(uniqueKeysWithValues: (try ClangNode(file: url).inner ?? [])
             .segmentify { $0.loc?.file != nil }
             .filter { $0.filepath.hasPrefix(io.includeURL.path) }
+            .map { nodes in
+                if nodes.filename == "isteammatchmaking.h" {
+                    return decomposeMatchMaking(nodes)
+                }
+                return [nodes]
+            }
+            .joined()
             .map(\.unnested)
             .map { nodes in
                 (nodes.filename, Set(nodes.compactMap { $0.swiftTypeName }))
@@ -159,10 +166,10 @@ struct DocStructure {
     }
 
     /// Types that we've invented from whole cloth that need inserting as though they were from Steamworks
+    /// XXX get from the 'extras' yaml?
     static let additionalTypesByHeader: [String : [(Generated.Kind, SwiftType)]] = [
         "isteammatchmaking.h" : [
             (.enum, "FavoriteFlags"),
-            (.struct, "MatchMakingKeyValuePairs") /* Should be mmservers, todo split */
         ],
         "isteamnetworkingutils.h" : [
             (.enum, "SteamNetworkConnectionInfoFlags"),
@@ -203,7 +210,42 @@ struct DocStructure {
         }
     }
 
-    static let highPrioInterfaces = Set(["SteamNetworkingSockets", "SteamMatchmaking"])
+    /// isteammatchmaking is annoying because it contains four separate interfaces that would
+    /// normally be in their own header file.  Hard-coded here what to do:
+    /// start of file: isteammatchmaking
+    /// ...
+    /// HServerListRequest: start ISteamMatchmakingServers
+    /// ...
+    /// k_unFavoriteFlagNone: start ISteamGameSearch
+    /// ...
+    /// ESteamPartyBeaconLocationType: start ISteamParties
+    /// ...
+    /// FavoritesListChanged_t: start callbacks for ISteamMatchmaking
+    /// ...
+    /// SearchForGameProgressCallback_t: start callbacks for ISteamGameSearch
+    /// ...
+    /// JoinPartyCallback_t: start callbacks for ISteamParties
+    ///
+    /// We could figure out the callback associating by diving into them and finding the callback enum base value
+    /// but I can't be bothered!
+    private func decomposeMatchMaking(_ nodes: [ClangNode]) -> [[ClangNode]]{
+        var nodes = nodes
+
+        var mm = nodes.removeNodesUpToDecl(name: "HServerListRequest")
+        nodes[0] = ClangNode(from: nodes[0], filename: "isteammatchmakingservers.h")
+        let mms = nodes.removeNodesUpToDecl(name: "k_unFavoriteFlagNone")
+        nodes[0] = ClangNode(from: nodes[0], filename: "isteamgamesearch.h")
+        var gs = nodes.removeNodesUpToDecl(name: "ESteamPartyBeaconLocationType")
+        nodes[0] = ClangNode(from: nodes[0], filename: "isteamparties.h")
+        var ps = nodes.removeNodesUpToDecl(name: "FavoritesListChanged_t")
+        mm += nodes.removeNodesUpToDecl(name: "SearchForGameProgressCallback_t")
+        gs += nodes.removeNodesUpToDecl(name: "JoinPartyCallback_t")
+        ps += nodes
+
+        return [mm, mms, gs, ps]
+    }
+
+    static let highPrioInterfaces = Set(["SteamNetworkingSockets"])
 }
 
 private extension Collection where Element == SwiftType {
@@ -272,9 +314,17 @@ struct ClangNode: Decodable {
         self.inner = from.inner
         self.name = renamed
     }
+
+    init(from: ClangNode, filename: String) {
+        self.id = from.id
+        self.kind = from.kind
+        self.loc = Loc(file: filename)
+        self.inner = from.inner
+        self.name = from.name
+    }
 }
 
-extension Collection where Element == ClangNode {
+extension Array where Element == ClangNode {
     var filepath: String {
         first!.loc!.file!
     }
@@ -305,6 +355,14 @@ extension Collection where Element == ClangNode {
             }
         }
         return Array(self) + nestedNodes
+    }
+
+    mutating func removeNodesUpToDecl(name: String) -> [ClangNode] {
+        guard let declIndex = firstIndex(where: { $0.name == name }) else {
+            preconditionFailure("Can't find \(name) in nodes")
+        }
+        defer { self = Array(self[declIndex...]) }
+        return Array(self[startIndex..<declIndex])
     }
 }
 

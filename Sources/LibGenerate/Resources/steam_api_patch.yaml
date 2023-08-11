@@ -1291,6 +1291,7 @@ structs:
         fieldtype: EChatRoomEnterResponse
   MatchMakingKeyValuePair_t:
     ignore: "Superseded by manual interface"
+    manual_swift_name: MatchMakingKeyValuePairs
   MicroTxnAuthorizationResponse_t:
     fields:
       m_unAppID:
