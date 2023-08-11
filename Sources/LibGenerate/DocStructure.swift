@@ -321,7 +321,7 @@ extension Array where Element == ClangNode {
     }
 
     var filename: String {
-        URL(filePath: filepath).lastPathComponent
+        URL(fileURLWithPath: filepath).lastPathComponent
     }
 
     /// Sometimes Steam puts enum declarations inside a struct or class.
