@@ -105,8 +105,9 @@ struct DocStructure {
 
     typealias SwiftTypeSets = [String : Set<SwiftType>]
 
-    // * get new-enum filename from yaml, metadata everywhere!
     // * trim out special case for dual-interface somehow
+    // * fixed header for API clients, constants - so entire thing is here
+    // * sort out order, API clients -> <interfaces> -> Common Types -> Constants
     // * done??
     // * docc!
     func generate() throws {
@@ -165,18 +166,6 @@ struct DocStructure {
         return result
     }
 
-    /// Types that we've invented from whole cloth that need inserting as though they were from Steamworks
-    /// XXX get from the 'extras' yaml?
-    static let additionalTypesByHeader: [String : [(Generated.Kind, SwiftType)]] = [
-        "isteammatchmaking.h" : [
-            (.enum, "FavoriteFlags"),
-        ],
-        "isteamnetworkingutils.h" : [
-            (.enum, "SteamNetworkConnectionInfoFlags"),
-            (.enum, "SteamNetworkingSendFlags")
-        ]
-    ]
-
     /// Take list of types per file and produce the doc structure, grouped by kind (interfaces/structures/etc)
     private func createDocSections(typeSets: SwiftTypeSets) -> [DocSection] {
         typeSets.map { (filename, types) in
@@ -185,10 +174,8 @@ struct DocStructure {
                 let kind = generated.find(type: swiftType) ?? .other
                 typesByKind[kind, default: []].append(swiftType)
             }
-            Self.additionalTypesByHeader[filename].map {
-                for typeinfo in $0 {
-                    typesByKind[typeinfo.0, default: []].append(typeinfo.1)
-                }
+            Metadata.extraEnumsFor(header: filename).map {
+                typesByKind[.enum, default: []].append(contentsOf: $0.map(\.swiftType))
             }
             let title: String
 
