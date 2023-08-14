@@ -10,8 +10,9 @@ A practical interface to the Steamworks SDK using the Swift C++ importer.
 **Caveat Integrator: The Swift C++ importer is immature and unpredictable; this package is built on top**
 
 Current state:
-* All Steamworks interfaces complete - see [rough docs](https://johnfairh.github.io/steamworks-swift/index.html)
+* All Steamworks interfaces complete - see [API docs](https://johnfairh.github.io/steamworks-swift/index.html)
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
+* Code gen creates SDK header-file oriented type index for documentation
 * Some interface quality-of-life helpers in a separate `SteamworksHelpers` module
 * `make test` builds and runs unit tests that run frame loops and access portions of the Steam API
   doing various sync and async tasks.
@@ -51,9 +52,10 @@ Below:
 
 ### Next
 
+* Review `async` model using `@MainActor` to fix up the threads
 * Port SpaceWar over to Swift to check general practicality, somewhat real-world usage,
   general interest - see [spacewar-swift](https://github.com/johnfairh/spacewar-swift).
-* Generate docs more thematically, code-gen the layout?  See if DocC is up to it yet
+* Have a go at getting DocC running
 
 ## API mapping design
 

@@ -62,6 +62,32 @@ struct DocSection {
             ] + articles.map { "    - \($0)"}
         }.joined().yamlIndented()).yamlIndented().joined(separator: "\n")
     }
+
+    /// Markdown for an entire file, a category file, listing a bunch of topics (one per kind)
+    var doccCategoryMarkdown: String {
+        let intro = ["# \(doccTitle)", "", "## Topics"]
+        let topics = docStructure.map { (topic, articles) in
+            ["", "### \(topic)"] + articles.map { "- ``\($0)``" }
+        }
+        return (intro + topics.joined()).joined(separator: "\n")
+    }
+
+    /// Markdown for a topic in the Documentation.md, assumed to have just one kind populated
+    var doccTopicMarkdown: String {
+        (["### \(title)"] + items.first!.value.map { "- ``\($0)``"})
+            .joined(separator: "\n")
+    }
+
+    /// DocC can't handle types & articles with the same name so we stick 'Interface' on the end
+    /// of the interface's main type for the pageref.
+    var doccTitle: String {
+        title.contains(" ") ? title : "\(title) Interface"
+    }
+
+    /// <doc:something-something> - syntax to link to this thing
+    var doccRefLink: String {
+        "<doc:\(doccTitle.replacingOccurrences(of: " ", with: "-"))>"
+    }
 }
 
 extension Sequence where Element == DocSection {
@@ -125,16 +151,39 @@ struct DocStructure {
     typealias SwiftTypeSets = [String : Set<SwiftType>]
 
     // * docc!
+    // * gen links to steamworks API docs using a placeholder link in the codegen?
+    // ** or restructure this whole thing to scan the headers first, then codegen
+    //    making use of the known filenames, then generate docs on the generated types?
     func generate() throws {
         let typeSets = mergeSecondaryHeaders(types: try swiftTypesFromRootHeaders())
             .filter { doesFileNeedCollection(filename: $0.key) }
 
-        let sections =
-            [DocSection.apiClientsSection] +
-            createDocSections(typeSets: typeSets) +
-            [DocSection.constantsSection]
+        let (interfaceSections, commonTypesSection) = createDocSections(typeSets: typeSets)
 
-        try io.writeDocStructure(fileName: "jazzy-custom-groups.yaml", contents: sections.jazzyIndexYaml)
+        // Jazzy gets one MD file to be pasted into the main yaml
+        let jazzySections =
+            [DocSection.apiClientsSection] +
+            interfaceSections +
+            [commonTypesSection, DocSection.constantsSection]
+
+        try io.writeDocStructure(fileName: "jazzy-custom-groups.yaml", contents: jazzySections.jazzyIndexYaml)
+
+        // DocC gets one complete category file per interface + common-types -- the only
+        // way to get collapsing sections in the left nav -- and a topics snippet for pasting
+        // into the Documentation.md.
+
+        for section in interfaceSections + [commonTypesSection] {
+            try io.writeDocStructure(fileName: "\(section.doccTitle).md", contents: section.doccCategoryMarkdown)
+        }
+
+        let doccStart = "## Topics\n\n" + DocSection.apiClientsSection.doccTopicMarkdown + "\n"
+        let doccInterfaces = (["### Interfaces"] + interfaceSections.map {
+            "- \($0.doccRefLink)"
+        }).joined(separator: "\n")
+        let doccEnd = "\n### \(DocSection.commonTypesTitle)\n- <doc:Common-Types>\n- ``SteamConstants``"
+
+        try io.writeDocStructure(fileName: "docc-custom-topics.yaml",
+                                 contents: doccStart + doccInterfaces + doccEnd)
     }
 
     /// Merge together the unfortunately plural root headers - expect that if we do pull in the same
@@ -184,7 +233,7 @@ struct DocStructure {
     }
 
     /// Take list of types per file and produce the doc structure, grouped by kind (interfaces/structures/etc)
-    private func createDocSections(typeSets: SwiftTypeSets) -> [DocSection] {
+    private func createDocSections(typeSets: SwiftTypeSets) -> (interfaces: [DocSection], commonTypes: DocSection) {
         var interfaceSections: [DocSection] = []
         var commonSection: DocSection? = nil
 
@@ -211,7 +260,7 @@ struct DocStructure {
             }
         }
 
-        return interfaceSections.sorted(by: { l, r in l.title < r.title }) + [commonSection!]
+        return (interfaceSections.sorted(by: { l, r in l.title < r.title }), commonSection!)
     }
 
     /// isteammatchmaking is annoying because it contains four separate interfaces that would
@@ -345,7 +394,7 @@ extension Array where Element == ClangNode {
                 }
             }
         }
-        return Array(self) + nestedNodes
+        return self + nestedNodes
     }
 
     mutating func removeNodesUpToDecl(name: String) -> [ClangNode] {
