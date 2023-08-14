@@ -1,0 +1,4 @@
+version: 1
+builder:
+  configs:
+    - documentation_targets: [Steamworks, SteamworksHelpers, SteamworksEncryptedAppTicket]
