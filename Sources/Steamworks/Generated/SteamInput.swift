@@ -221,7 +221,7 @@ public struct SteamInput: Sendable {
     }
 
     /// Steamworks `ISteamInput::SetLEDColor()`
-    public func setLEDColor(handle: InputHandle, colorR: UInt8, colorG: UInt8, colorB: UInt8, flags: SteamControllerLEDFlag) {
+    public func setLEDColor(handle: InputHandle, colorR: UInt8, colorG: UInt8, colorB: UInt8, flags: SteamInputLEDFlag) {
         SteamAPI_ISteamInput_SetLEDColor(interface, InputHandle_t(handle), colorR, colorG, colorB, UInt32(flags))
     }
 

@@ -43,6 +43,7 @@ struct SteamJSON: Codable {
         var name: String {
             fqname ?? enumname
         }
+        let filename: String?
     }
     let enums: [Enum]
 
@@ -122,6 +123,8 @@ struct Patch: Codable {
         let numeric_prefix: String? // numeric-identifier workaround
         let manual_swift_name: String? // hard-code swift name
         let intx_to_self: String? // require converter from some int-type
+        let ignore: String? // filter out deprecated/broken things
+        var bIgnore: Bool { ignore != nil }
 
         struct Value: Codable {
             let force_static: Bool? // generate a static member instead of an enum case
@@ -218,6 +221,7 @@ struct MetadataDB {
         let numericPrefix: String?
         let manualSwiftName: SwiftType?
         let intXToSelf: SwiftNativeType?
+        let ignore: Bool
 
         struct Value {
             let name: SteamName
@@ -239,6 +243,7 @@ struct MetadataDB {
             numericPrefix = patch?.numeric_prefix
             manualSwiftName = patch?.manual_swift_name.map { .init($0) }
             intXToSelf = patch?.intx_to_self.map { .init($0) }
+            ignore = patch?.bIgnore ?? false
             values = base.values.map {
                 Value(base: $0, patch: patch?.values?[$0.name])
             }
@@ -492,6 +497,8 @@ final class Metadata: CustomStringConvertible {
 
     private let nestedEnums: [SteamType : MetadataDB.Enum]
     private let manualSwiftNames: [SteamType : SwiftType]
+    private let extraTypeFilenames: [SteamType : String]
+    private let filenamesToExtraTypes: [String : [SteamType]]
 
     init(io: IO) throws {
         self.io = io
@@ -523,6 +530,19 @@ final class Metadata: CustomStringConvertible {
                 nestedEnums.values.compactMap(eClo) +
                 db.structs.values.compactMap(sClo)
         )
+
+        self.extraTypeFilenames = Dictionary(
+            uniqueKeysWithValues: extraAPI.enums.compactMap { enu in
+                enu.filename.map {
+                    (SteamType(enu.name), $0)
+                }
+            }
+        )
+        var inverse: [String : [SteamType]] = [:]
+        for kv in extraTypeFilenames {
+            inverse[kv.value, default: []].append(kv.key)
+        }
+        self.filenamesToExtraTypes = inverse
 
         Self.shared = self
     }
@@ -577,5 +597,10 @@ final class Metadata: CustomStringConvertible {
     /// Look up any overridden type names from the DB
     static func steamTypeToSwiftType(_ steamType: SteamType) -> SwiftType? {
         shared.flatMap { $0.manualSwiftNames[steamType] }
+    }
+
+    /// Get list of extra enums from a particular header file
+    static func extraEnumsFor(header: String) -> [SteamType]? {
+        shared.flatMap { $0.filenamesToExtraTypes[header] }
     }
 }

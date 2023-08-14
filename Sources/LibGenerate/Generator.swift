@@ -9,6 +9,7 @@ import Foundation
 
 public struct Generator {
     let io: IO
+    let generated: Generated
     let metadata: Metadata
     let version: Version
     let typedefs: Typedefs
@@ -17,17 +18,27 @@ public struct Generator {
     let structs: Structs
     let interfaces: Interfaces
     let callbacks: Callbacks
+    let docStructure: DocStructure
 
-    public init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
-        io = try IO(redistSdkURL: redistSdkURL, swiftOutputDirURL: swiftOutputDirURL, cOutputDirURL: cOutputDirURL)
+    public init(redistSdkURL: URL,
+                swiftOutputDirURL: URL, cOutputDirURL: URL,
+                docStructureOutputDirURL: URL,
+                doccCollectionOutputDirURL: URL) throws {
+        io = try IO(redistSdkURL: redistSdkURL,
+                    swiftOutputDirURL: swiftOutputDirURL,
+                    cOutputDirURL: cOutputDirURL,
+                    docStructureOutputDirURL: docStructureOutputDirURL,
+                    doccCollectionOutputDirURL: doccCollectionOutputDirURL)
+        generated = Generated()
         metadata = try Metadata(io: io)
         version = Version(io: io)
-        typedefs = Typedefs(io: io, metadata: metadata)
+        typedefs = Typedefs(io: io, metadata: metadata, generated: generated)
         constants = Constants(io: io, metadata: metadata)
-        enums = Enums(io: io, metadata: metadata)
-        structs = Structs(io: io, metadata: metadata)
-        interfaces = Interfaces(io: io, metadata: metadata)
-        callbacks = Callbacks(io: io, metadata: metadata)
+        enums = Enums(io: io, metadata: metadata, generated: generated)
+        structs = Structs(io: io, metadata: metadata, generated: generated)
+        interfaces = Interfaces(io: io, metadata: metadata, generated: generated)
+        callbacks = Callbacks(io: io, metadata: metadata, generated: generated)
+        docStructure = DocStructure(io: io, generated: generated)
     }
 
     public func generate() throws {
@@ -43,5 +54,7 @@ public struct Generator {
         try structs.generate()
         try interfaces.generate()
         try callbacks.generate()
+
+        try docStructure.generate()
     }
 }

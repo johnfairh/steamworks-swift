@@ -56,6 +56,12 @@ typedefs_to_ignore:
 - FnSteamNetworkingMessagesSessionRequest
 - FnSteamRelayNetworkStatusChanged
 - PFNPreMinidumpCallback
+- ControllerActionSetHandle_t
+- ControllerAnalogActionHandle_t
+- ControllerDigitalActionHandle_t
+- ControllerHandle_t
+- SNetListenSocket_t
+- SNetSocket_t
 #
 # Enums
 #
@@ -73,6 +79,8 @@ enums:
     prefix: EChat(?:InstanceFlag)?
   ECheckFileSignature:
     manual_swift_name: CheckFileSignatureResult # name clash
+  EControllerActionOrigin:
+    ignore: "deprecated isteamcontroller"
   EDenyReason:
     prefix: EDeny
   EDurationControlNotification:
@@ -97,8 +105,10 @@ enums:
     prefix: EMarketNotAllowedReason
   ENotificationPosition:
     prefix: EPosition
+  EP2PSend:
+    ignore: "deprecated steamnetworking"
   EP2PSessionError:
-    intx_to_self: uint8
+    ignore: "deprecated steamnetworking"
   EParentalFeature:
     prefix: EFeature
   EPersonaChange:
@@ -114,12 +124,18 @@ enums:
     values:
       k_ERemoteStoragePlatformAll:
         value: 0xffffffff
+  ESNetSocketConnectionType:
+    ignore: "deprecated steamnetworking"
+  ESNetSocketState:
+    ignore: "deprecated steamnetworking"
   ESteamControllerLEDFlag:
-    is_set: UInt32
+    ignore: "deprecated steamcontroller"
   ESteamInputGlyphStyle:
     is_set: UInt32 # guess, not used anywhere yet?
   ESteamInputConfigurationEnableType:
     is_set: Int32
+  ESteamInputLEDFlag:
+    is_set: UInt32
   ESteamItemFlags:
     is_set: Int32
     prefix: ESteamItem
@@ -416,7 +432,7 @@ methods:
   SteamAPI_ISteamInput_SetLEDColor:
     params:
       nFlags:
-        type: ESteamControllerLEDFlag
+        type: ESteamInputLEDFlag
   SteamAPI_ISteamInput_Shutdown:
     discardable_result: true
   SteamAPI_ISteamInput_Legacy_TriggerRepeatedHapticPulse:
@@ -1273,6 +1289,9 @@ structs:
     fields:
       m_EChatRoomEnterResponse:
         fieldtype: EChatRoomEnterResponse
+  MatchMakingKeyValuePair_t:
+    ignore: "Superseded by manual interface"
+    manual_swift_name: MatchMakingKeyValuePairs
   MicroTxnAuthorizationResponse_t:
     fields:
       m_unAppID:
@@ -1280,9 +1299,11 @@ structs:
   ModalGamepadTextInputDismissed_t:
     name: FloatingGamepadTextInputDismissed_t
   P2PSessionConnectFail_t:
-    fields:
-      m_eP2PSessionError:
-        fieldtype: EP2PSessionError
+    ignore: "deprecated steamnetworking"
+  P2PSessionRequest_t:
+    ignore: "deprecated steamnetworking"
+  P2PSessionState_t:
+    ignore: "deprecated steamnetworking"
   PersonaStateChange_t:
     fields:
       m_nChangeFlags:
@@ -1304,6 +1325,8 @@ structs:
   servernetadr_t:
     ignore: "Too weird, done manually"
     manual_swift_name: ServerNetAdr
+  SocketStatusCallback_t:
+    ignore: "deprecated, steamnetworking"
   SteamDatagramGameCoordinatorServerLogin:
     ignore: C declaration is missing
   SteamDatagramHostedAddress:

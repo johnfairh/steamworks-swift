@@ -30,50 +30,6 @@ extension AppID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: CUnsignedInt) { self.init(value) }
 }
 
-/// Steamworks `ControllerActionSetHandle_t`
-public struct ControllerActionSetHandle: Hashable, Sendable {
-    public let value: CUnsignedLongLong
-    public init(_ value: CUnsignedLongLong) { self.value = value }
-}
-
-extension ControllerActionSetHandle: SteamTypeAlias, SteamCreatable {}
-extension ControllerActionSetHandle: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: CUnsignedLongLong) { self.init(value) }
-}
-
-/// Steamworks `ControllerAnalogActionHandle_t`
-public struct ControllerAnalogActionHandle: Hashable, Sendable {
-    public let value: CUnsignedLongLong
-    public init(_ value: CUnsignedLongLong) { self.value = value }
-}
-
-extension ControllerAnalogActionHandle: SteamTypeAlias, SteamCreatable {}
-extension ControllerAnalogActionHandle: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: CUnsignedLongLong) { self.init(value) }
-}
-
-/// Steamworks `ControllerDigitalActionHandle_t`
-public struct ControllerDigitalActionHandle: Hashable, Sendable {
-    public let value: CUnsignedLongLong
-    public init(_ value: CUnsignedLongLong) { self.value = value }
-}
-
-extension ControllerDigitalActionHandle: SteamTypeAlias, SteamCreatable {}
-extension ControllerDigitalActionHandle: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: CUnsignedLongLong) { self.init(value) }
-}
-
-/// Steamworks `ControllerHandle_t`
-public struct ControllerHandle: Hashable, Sendable {
-    public let value: CUnsignedLongLong
-    public init(_ value: CUnsignedLongLong) { self.value = value }
-}
-
-extension ControllerHandle: SteamTypeAlias, SteamCreatable {}
-extension ControllerHandle: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: CUnsignedLongLong) { self.init(value) }
-}
-
 /// Steamworks `DepotId_t`
 public struct DepotID: Hashable, Sendable {
     public let value: CUnsignedInt
@@ -310,28 +266,6 @@ public struct RemotePlaySessionID: Hashable, Sendable {
 
 extension RemotePlaySessionID: SteamTypeAlias, SteamCreatable {}
 extension RemotePlaySessionID: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: CUnsignedInt) { self.init(value) }
-}
-
-/// Steamworks `SNetListenSocket_t`
-public struct SNetListenSocket: Hashable, Sendable {
-    public let value: CUnsignedInt
-    public init(_ value: CUnsignedInt) { self.value = value }
-}
-
-extension SNetListenSocket: SteamTypeAlias, SteamCreatable {}
-extension SNetListenSocket: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: CUnsignedInt) { self.init(value) }
-}
-
-/// Steamworks `SNetSocket_t`
-public struct SNetSocket: Hashable, Sendable {
-    public let value: CUnsignedInt
-    public init(_ value: CUnsignedInt) { self.value = value }
-}
-
-extension SNetSocket: SteamTypeAlias, SteamCreatable {}
-extension SNetSocket: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: CUnsignedInt) { self.init(value) }
 }
 

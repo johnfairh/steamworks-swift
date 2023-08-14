@@ -12,16 +12,19 @@ import Foundation
 struct Structs {
     let io: IO
     let metadata: Metadata
+    let generated: Generated
 
-    init(io: IO, metadata: Metadata) {
+    init(io: IO, metadata: Metadata, generated: Generated) {
         self.io = io
         self.metadata = metadata
+        self.generated = generated
     }
 
     func generate() throws {
         let swiftContents = metadata.db.structs.values
             .filter(\.shouldGenerate)
             .sorted(by: { $0.name < $1.name })
+            .map { generated.add(type: $0.name.swiftType, kind: .struct); return $0 }
             .map(\.generateSwift)
             .joined(separator: "\n\n")
         try io.write(fileName: "Structs.swift", contents: swiftContents)

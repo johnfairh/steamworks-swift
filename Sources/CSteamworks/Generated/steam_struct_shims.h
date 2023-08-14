@@ -96,20 +96,6 @@ static inline const char * _Nonnull JoinPartyCallback_t_m_rgchConnectString_ptr(
     return s->m_rgchConnectString;
 }
 
-__attribute__((swift_name("getter:MatchMakingKeyValuePair_t.m_szKey_ptr(self:)")))
-static inline const char * _Nonnull MatchMakingKeyValuePair_t_m_szKey_ptr(const MatchMakingKeyValuePair_t * _Nonnull s)
-{
-    const_cast<MatchMakingKeyValuePair_t *>(s)->m_szKey[255] = 0;
-    return s->m_szKey;
-}
-
-__attribute__((swift_name("getter:MatchMakingKeyValuePair_t.m_szValue_ptr(self:)")))
-static inline const char * _Nonnull MatchMakingKeyValuePair_t_m_szValue_ptr(const MatchMakingKeyValuePair_t * _Nonnull s)
-{
-    const_cast<MatchMakingKeyValuePair_t *>(s)->m_szValue[255] = 0;
-    return s->m_szValue;
-}
-
 __attribute__((swift_name("getter:OverlayBrowserProtocolNavigation_t.rgchURI_ptr(self:)")))
 static inline const char * _Nonnull OverlayBrowserProtocolNavigation_t_rgchURI_ptr(const OverlayBrowserProtocolNavigation_t * _Nonnull s)
 {

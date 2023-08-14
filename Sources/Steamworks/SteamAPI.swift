@@ -16,14 +16,6 @@
 @_implementationOnly import CSteamworks
 import Logging
 
-// setenv()
-#if canImport(Glibc)
-import Glibc
-#endif
-#if canImport(Darwin)
-import Darwin
-#endif
-
 /// An instance of the Steamworks user API
 ///
 /// Create and retain one of these to access and use the Steamworks APIs.
@@ -37,7 +29,7 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
     ///
     /// Calls `SteamAPI_RestartAppIfNecessary()` and `SteamAPI_Init()`.
     ///
-    /// If you installed a hook with `Steamworks_InstallCEGHooks()` then the CEG init
+    /// If you installed a hook with `SteamAPI.installCEGHooks(...)` then the CEG init
     /// hook is called before `SteamAPI_Init()`.
     ///
     /// If you set`fakeAppIdTxtFile` to `true` then the system behaves as though you
@@ -118,14 +110,18 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
     public let userStats = SteamUserStats()
     /// Access the Steamworks `ISteamVideo` interface
     public let video = SteamVideo()
+
+    // MARK: CEG
+
+    /// Initialize Steam DRM hooks - you can call these manually or pass them in here to let the library
+    /// call them at the right time around `SteamAPI_Init()` and `SteamAPI_Term()`.
+    ///
+    /// Call this _before_ actually creating a `SteamAPI` or `SteamGameServerAPI`.
+    public static func installCEGHooks(initCEG: @escaping () -> Bool, termCEG: @escaping () -> Void) {
+        initSteamCEG = initCEG
+        termSteamCEG = termCEG
+    }
 }
 
 private var initSteamCEG: (() -> Bool)? = nil
 private var termSteamCEG: (() -> Void)? = nil
-
-/// Initialize Steam DRM hooks - you can call these manually or pass them in here to let the library
-/// call them at the right time around `SteamAPI_Init()` and `SteamAPI_Term()`.
-public func Steamworks_InstallCEGHooks(initCEG: @escaping () -> Bool, termCEG: @escaping () -> Void) {
-    initSteamCEG = initCEG
-    termSteamCEG = termCEG
-}

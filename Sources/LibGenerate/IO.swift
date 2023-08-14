@@ -11,12 +11,16 @@ final class IO {
     let redistSdkURL: URL
     let swiftOutputDirURL: URL
     let cOutputDirURL: URL
+    let docStructureOutputDirURL: URL
+    let doccCollectionOutputDirURL: URL
     let resources: Bundle
 
-    init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL) throws {
+    init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL, docStructureOutputDirURL: URL, doccCollectionOutputDirURL: URL) throws {
         self.redistSdkURL = redistSdkURL
         self.swiftOutputDirURL = swiftOutputDirURL
         self.cOutputDirURL = cOutputDirURL
+        self.docStructureOutputDirURL = docStructureOutputDirURL
+        self.doccCollectionOutputDirURL = doccCollectionOutputDirURL
         #if SWIFT_PACKAGE
         self.resources = Bundle.module
         #else
@@ -28,7 +32,7 @@ final class IO {
         guard FileManager.default.fileExists(atPath: jsonURL.path) else {
             throw Failed("JSON file missing at \(jsonURL.path)")
         }
-        try [swiftOutputDirURL, cOutputDirURL].forEach { url in
+        try [swiftOutputDirURL, cOutputDirURL, docStructureOutputDirURL].forEach { url in
             var isDir = ObjCBool(false)
             guard FileManager.default.fileExists(atPath: url.path, isDirectory: &isDir), isDir.boolValue else {
                 throw Failed("Output directory missing at \(url.path)")
@@ -36,10 +40,13 @@ final class IO {
         }
     }
 
-    var jsonURL: URL {
+    var includeURL: URL {
         redistSdkURL.appendingPathComponent("include")
             .appendingPathComponent("steam")
-            .appendingPathComponent("steam_api.json")
+    }
+
+    var jsonURL: URL {
+        includeURL.appendingPathComponent("steam_api.json")
     }
 
     var readmeURL: URL {
@@ -155,9 +162,20 @@ final class IO {
         } else {
             preconditionFailure("Bad output filename \(fileName)")
         }
+        try write(baseURL: baseURL, fileName: fileName, header: header, contents: contents)
+    }
 
+    func writeDocStructure(fileName: String, contents: String) throws {
+        try write(baseURL: docStructureOutputDirURL, fileName: fileName, contents: contents)
+    }
+
+    func writeDoccCollection(fileName: String, contents: String) throws {
+        try write(baseURL: doccCollectionOutputDirURL, fileName: fileName, contents: contents)
+    }
+
+    private func write(baseURL: URL, fileName: String, header: String? = nil, contents: String) throws {
         let url = baseURL.appendingPathComponent(fileName)
-        let fullContents = header + "\n\n" + contents + "\n"
+        let fullContents = (header.map { $0 + "\n\n" } ?? "") + contents + "\n"
 
         if let existing = try? String(contentsOf: url) {
             if existing == fullContents {
