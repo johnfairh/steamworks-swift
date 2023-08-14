@@ -164,6 +164,7 @@ extension XCTestCase {
         let swiftOutputDirURL: URL
         let cOutputDirURL: URL
         let docsOutputDirURL: URL
+        let doccCollectionOutputDirURL: URL
         let generator: Generator
 
         init() throws {
@@ -172,17 +173,20 @@ extension XCTestCase {
             swiftOutputDirURL = try! FileManager.default.createTemporaryDirectory()
             cOutputDirURL = try! FileManager.default.createTemporaryDirectory()
             docsOutputDirURL = try! FileManager.default.createTemporaryDirectory()
+            doccCollectionOutputDirURL = try! FileManager.default.createTemporaryDirectory()
 
             generator = try Generator(redistSdkURL: fixturesRedistSdkURL,
                                       swiftOutputDirURL: swiftOutputDirURL,
                                       cOutputDirURL: cOutputDirURL,
-                                      docStructureOutputDirURL: docsOutputDirURL)
+                                      docStructureOutputDirURL: docsOutputDirURL,
+                                      doccCollectionOutputDirURL: doccCollectionOutputDirURL)
         }
 
         deinit {
             try? FileManager.default.removeItem(at: swiftOutputDirURL)
             try? FileManager.default.removeItem(at: cOutputDirURL)
             try? FileManager.default.removeItem(at: docsOutputDirURL)
+            try? FileManager.default.removeItem(at: doccCollectionOutputDirURL)
             my_unsetenv(IO.PATCH_YAML_PATH_VAR)
             my_unsetenv(IO.SDK_EXTRA_JSON_PATH_VAR)
         }

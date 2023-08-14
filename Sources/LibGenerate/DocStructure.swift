@@ -173,7 +173,7 @@ struct DocStructure {
         // into the Documentation.md.
 
         for section in interfaceSections + [commonTypesSection] {
-            try io.writeDocStructure(fileName: "\(section.doccTitle).md", contents: section.doccCategoryMarkdown)
+            try io.writeDoccCollection(fileName: "\(section.doccTitle).md", contents: section.doccCategoryMarkdown)
         }
 
         let doccStart = "## Topics\n\n" + DocSection.apiClientsSection.doccTopicMarkdown + "\n"
@@ -182,7 +182,7 @@ struct DocStructure {
         }).joined(separator: "\n")
         let doccEnd = "\n### \(DocSection.commonTypesTitle)\n- <doc:Common-Types>\n- ``SteamConstants``"
 
-        try io.writeDocStructure(fileName: "docc-custom-topics.yaml",
+        try io.writeDocStructure(fileName: "docc-custom-topics.md",
                                  contents: doccStart + doccInterfaces + doccEnd)
     }
 

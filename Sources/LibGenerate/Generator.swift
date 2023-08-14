@@ -20,11 +20,15 @@ public struct Generator {
     let callbacks: Callbacks
     let docStructure: DocStructure
 
-    public init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL, docStructureOutputDirURL: URL) throws {
+    public init(redistSdkURL: URL,
+                swiftOutputDirURL: URL, cOutputDirURL: URL,
+                docStructureOutputDirURL: URL,
+                doccCollectionOutputDirURL: URL) throws {
         io = try IO(redistSdkURL: redistSdkURL,
                     swiftOutputDirURL: swiftOutputDirURL,
                     cOutputDirURL: cOutputDirURL,
-                    docStructureOutputDirURL: docStructureOutputDirURL)
+                    docStructureOutputDirURL: docStructureOutputDirURL,
+                    doccCollectionOutputDirURL: doccCollectionOutputDirURL)
         generated = Generated()
         metadata = try Metadata(io: io)
         version = Version(io: io)

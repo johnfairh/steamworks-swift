@@ -1,11 +1,3 @@
-# ``Steamworks``
-
-A Swift interface to the Steamworks API.
-
-## Overview
-
-All the words
-
 ## Topics
 
 ### API Clients

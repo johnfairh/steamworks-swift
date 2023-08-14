@@ -12,13 +12,15 @@ final class IO {
     let swiftOutputDirURL: URL
     let cOutputDirURL: URL
     let docStructureOutputDirURL: URL
+    let doccCollectionOutputDirURL: URL
     let resources: Bundle
 
-    init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL, docStructureOutputDirURL: URL) throws {
+    init(redistSdkURL: URL, swiftOutputDirURL: URL, cOutputDirURL: URL, docStructureOutputDirURL: URL, doccCollectionOutputDirURL: URL) throws {
         self.redistSdkURL = redistSdkURL
         self.swiftOutputDirURL = swiftOutputDirURL
         self.cOutputDirURL = cOutputDirURL
         self.docStructureOutputDirURL = docStructureOutputDirURL
+        self.doccCollectionOutputDirURL = doccCollectionOutputDirURL
         #if SWIFT_PACKAGE
         self.resources = Bundle.module
         #else
@@ -165,6 +167,10 @@ final class IO {
 
     func writeDocStructure(fileName: String, contents: String) throws {
         try write(baseURL: docStructureOutputDirURL, fileName: fileName, contents: contents)
+    }
+
+    func writeDoccCollection(fileName: String, contents: String) throws {
+        try write(baseURL: doccCollectionOutputDirURL, fileName: fileName, contents: contents)
     }
 
     private func write(baseURL: URL, fileName: String, header: String? = nil, contents: String) throws {
