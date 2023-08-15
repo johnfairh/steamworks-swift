@@ -53,9 +53,8 @@ Below:
 ### Next
 
 * Review `async` model using `@MainActor` to fix up the threads
-* Port SpaceWar over to Swift to check general practicality, somewhat real-world usage,
+* More SpaceWar porting over to Swift to check general practicality, somewhat real-world usage,
   general interest - see [spacewar-swift](https://github.com/johnfairh/spacewar-swift).
-* Have a go at getting DocC running
 
 ## API mapping design
 
@@ -231,7 +230,7 @@ let package = Package(
     .macOS("13.0"),
   ],
   dependencies: [
-    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "0.3.0"),
+    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "0.4.0"),
   ],
   targets: [
     .executableTarget(
@@ -267,13 +266,13 @@ public struct MySteamApp {
 
 API docs [here](https://johnfairh.github.io/steamworks-swift/index.html).
 
-There may be a more fully-fledged AppKit demo [here](https://github.com/johnfairh/spacewar-swift).
+Fully-fledged AppKit demo [here](https://github.com/johnfairh/spacewar-swift).
 
 ## Implementation notes
 
 ### Swift C++ Bugs
 
-Tech limitations, on 5.9 Xcode 15.b3:
+Tech limitations, on 5.9 Xcode 15.b6:
 * Some structures/classes aren't imported -- is the common factor a `protected`
   destructor?  Verify by trying to use `SteamNetworkingMessage_t`.
 * Something goes wrong storing pointers to classes and they get nobbled by something.
