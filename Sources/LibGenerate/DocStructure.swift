@@ -150,16 +150,23 @@ struct DocStructure {
 
     typealias SwiftTypeSets = [String : Set<SwiftType>]
 
-    // * docc!
-    // * gen links to steamworks API docs using a placeholder link in the codegen?
-    // ** or restructure this whole thing to scan the headers first, then codegen
-    //    making use of the known filenames, then generate docs on the generated types?
+    /// Generate ToC / Index for jazzy/bebop/j2 and docc structured 'semantically',
+    /// that is by steam interface.  Broadly use the SDK header files to figure out
+    /// which enums/structs etc. are associated with which interfaces, but a fair bit
+    /// of hard-coding necessary.
     func generate() throws {
         let typeSets = mergeSecondaryHeaders(types: try swiftTypesFromRootHeaders())
             .filter { doesFileNeedCollection(filename: $0.key) }
 
         let (interfaceSections, commonTypesSection) = createDocSections(typeSets: typeSets)
 
+        try generateJazzy(interfaceSections: interfaceSections, commonTypesSection: commonTypesSection)
+
+        try generateDocC(interfaceSections: interfaceSections, commonTypesSection: commonTypesSection)
+    }
+
+    /// Jazzy gets one MD file to be pasted into the main yaml
+    private func generateJazzy(interfaceSections: [DocSection], commonTypesSection: DocSection) throws {
         // Jazzy gets one MD file to be pasted into the main yaml
         let jazzySections =
             [DocSection.apiClientsSection] +
@@ -167,15 +174,18 @@ struct DocStructure {
             [commonTypesSection, DocSection.constantsSection]
 
         try io.writeDocStructure(fileName: "jazzy-custom-groups.yaml", contents: jazzySections.jazzyIndexYaml)
+    }
 
-        // DocC gets one complete category file per interface + common-types -- the only
-        // way to get collapsing sections in the left nav -- and a topics snippet for pasting
-        // into the Documentation.md.
-
+    /// DocC gets one complete category file per interface + common-types -- the only
+    /// way to get collapsing sections in the left nav -- and a topics snippet for pasting
+    /// into the Documentation.md and a topics snippet for pasting into SteamBaseAPI.md
+    private func generateDocC(interfaceSections: [DocSection], commonTypesSection: DocSection) throws {
+        // collections
         for section in interfaceSections + [commonTypesSection] {
             try io.writeDoccCollection(fileName: "\(section.doccTitle).md", contents: section.doccCategoryMarkdown)
         }
 
+        // snippet for overall index
         let doccStart = "## Topics\n\n" + DocSection.apiClientsSection.doccTopicMarkdown + "\n"
         let doccInterfaces = (["### Interfaces"] + interfaceSections.map {
             "- \($0.doccRefLink)"
@@ -184,6 +194,15 @@ struct DocStructure {
 
         try io.writeDocStructure(fileName: "docc-custom-topics.md",
                                  contents: doccStart + doccInterfaces + doccEnd)
+
+        // snippet for baseapi, all the callbacks - bit annoying doesn't work manually
+        let callbackNames = generated.all(kind: .callback).sorted()
+        let cbks = "### Callbacks\n" + callbackNames.map {
+            "- ``\(Callbacks.syncDocSymbol($0))``"
+        }.joined(separator: "\n") + "\n\n### `AsyncStream` callbacks\n " + callbackNames.map {
+            "- ``\(Callbacks.asyncDocSymbol($0))``"
+        }.joined(separator: "\n")
+        try io.writeDocStructure(fileName: "docc-steambase-callbacks.md", contents: cbks)
     }
 
     /// Merge together the unfortunately plural root headers - expect that if we do pull in the same

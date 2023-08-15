@@ -80,4 +80,8 @@ final class Generated {
     func find(type: SwiftType) -> Kind? {
         typeToKind[type]
     }
+
+    func all(kind: Kind) -> [SwiftType] {
+        Array(typeToKind.filter { _, v in v == kind }.keys)
+    }
 }

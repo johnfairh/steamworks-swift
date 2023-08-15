@@ -85,3 +85,21 @@ extension MetadataDB.Struct {
                """
     }
 }
+
+extension Callbacks {
+    static func syncSymbolName(_ callback: SwiftType) -> String {
+        "on\(callback)"
+    }
+
+    static func syncDocSymbol(_ callback: SwiftType) -> String {
+        "\(syncSymbolName(callback))(_:)"
+    }
+
+    static func asyncSymbolName(_ callback: SwiftType) -> SwiftExpr {
+        SteamName(callback).swiftName // gets the lower-casing
+    }
+
+    static func asyncDocSymbol(_ callback: SwiftType) -> String {
+        asyncSymbolName(callback).expr
+    }
+}
