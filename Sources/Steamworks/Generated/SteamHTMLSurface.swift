@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamHTMLSurface`](https://partner.steamgames.com/doc/api/ISteamHTMLSurface)
 ///
-/// Access via `SteamAPI.htmlSurface`.
+/// Access via ``SteamAPI/htmlSurface``.
 public struct SteamHTMLSurface: Sendable {
     var interface: UnsafeMutablePointer<ISteamHTMLSurface> {
         SteamAPI_SteamHTMLSurface_v005()

@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamNetworkingFakeUDPPort`](https://partner.steamgames.com/doc/api/ISteamNetworkingFakeUDPPort)
 ///
-/// Access via `ISteamNetworkingSockets.CreateFakeUDPPort(...)`.
+/// Access via ``SteamNetworkingSockets/createFakeUDPPort(fakeServerPort:)``.
 public final class SteamNetworkingFakeUDPPort: Sendable {
     private let interface: UnsafeMutablePointer<ISteamNetworkingFakeUDPPort>
     init(_ interface: UnsafeMutablePointer<ISteamNetworkingFakeUDPPort>) {

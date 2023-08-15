@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamRemotePlay`](https://partner.steamgames.com/doc/api/ISteamRemotePlay)
 ///
-/// Access via `SteamAPI.remotePlay`.
+/// Access via ``SteamAPI/remotePlay``.
 public struct SteamRemotePlay: Sendable {
     var interface: UnsafeMutablePointer<ISteamRemotePlay> {
         SteamAPI_SteamRemotePlay_v001()

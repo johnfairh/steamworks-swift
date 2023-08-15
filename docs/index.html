@@ -4350,8 +4350,9 @@ steamworks-swift
 <p><strong>Caveat Integrator: The Swift C++ importer is immature and unpredictable; this package is built on top</strong></p>
 <p>Current state:</p>
 <ul>
-<li>All Steamworks interfaces complete - see <a href="https://johnfairh.github.io/steamworks-swift/index.html">rough docs</a></li>
+<li>All Steamworks interfaces complete - see <a href="https://johnfairh.github.io/steamworks-swift/index.html">API docs</a></li>
 <li>Code gen creates Swift versions of Steam types; callbacks and call-returns work</li>
+<li>Code gen creates SDK header-file oriented type index for documentation</li>
 <li>Some interface quality-of-life helpers in a separate <code>SteamworksHelpers</code> module</li>
 <li><code>make test</code> builds and runs unit tests that run frame loops and access portions of the Steam API
 doing various sync and async tasks.</li>
@@ -4401,9 +4402,10 @@ involving multiple calls, usually determining buffer lengths</li>
 Next
 </span></h3>
 <ul>
+<li>Review <code>async</code> model using <code>@MainActor</code> to fix up the threads</li>
 <li>Port SpaceWar over to Swift to check general practicality, somewhat real-world usage,
 general interest - see <a href="https://github.com/johnfairh/spacewar-swift">spacewar-swift</a>.</li>
-<li>Generate docs more thematically, code-gen the layout?  See if DocC is up to it yet</li>
+<li>Have a go at getting DocC running</li>
 </ul>
 <h2 class="j2-anchor j2-heading heading" id="api-mapping-design">
 <span data-anchor-id="api-mapping-design">

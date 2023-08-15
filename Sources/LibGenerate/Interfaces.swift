@@ -54,11 +54,11 @@ extension MetadataDB.Interface.Access {
     /// Generate a doc comment snippet
     func accessVia(getter: SwiftExpr) -> String {
         switch self {
-        case .instance(let actualGetter): return "`\(actualGetter)`"
-        case .user: return "`SteamAPI.\(getter)`"
-        case .gameserver: return "`SteamGameServerAPI.\(getter)`"
+        case .instance(let actualGetter): return "``\(actualGetter)``"
+        case .user: return "``SteamAPI/\(getter)``"
+        case .gameserver: return "``SteamGameServerAPI/\(getter)``"
         case .global, .userAndServer:
-            return "`SteamBaseAPI.\(getter)` through a `SteamAPI` or `SteamGameServerAPI` instance"
+            return "``SteamBaseAPI/\(getter)`` through a ``SteamAPI`` or ``SteamGameServerAPI`` instance"
         }
     }
 

@@ -108,7 +108,7 @@ extension SteamIPAddress: Sendable, Hashable {
         }
     }
 
-    /// Use `SteamIPAddress` as a dictionary key.
+    /// Use ``SteamIPAddress`` as a dictionary key.
     public func hash(into hasher: inout Hasher) {
         hasher.combine(type)
         switch type {
@@ -329,16 +329,7 @@ extension SteamNetworkingIPAddr: SteamCreatable {}
 
 extension SteamNetworkingIPAddr: Equatable, CustomStringConvertible {
     public static func == (lhs: SteamNetworkingIPAddr, rhs: SteamNetworkingIPAddr) -> Bool {
-        // operator == has broken in Swift 5.7 ...
-        // ... but it's back in Swift 5.8
          lhs.adr == rhs.adr
-//        var lhsadr = lhs.adr
-//        var rhsadr = rhs.adr
-//        return withUnsafePointer(to: &lhsadr) { lhsBytes in
-//            withUnsafePointer(to: &rhsadr) { rhsBytes in
-//                memcmp(lhsBytes, rhsBytes, MemoryLayout<SteamType>.size) == 0
-//            }
-//        }
     }
 
     public var description: String {
@@ -389,7 +380,7 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
         .init(identity.m_eType)
     }
 
-    /// Returns true if we are the invalid type.  Does not make any other validity checks (e.g. is SteamID actually valid)
+    /// Returns true if we are the invalid type.  Does not make any other validity checks (e.g. is Steam ID actually valid)
     public var isValid: Bool {
         !identity.IsInvalid()
     }
@@ -511,13 +502,7 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
 
 extension SteamNetworkingIdentity: SteamCreatable, CustomStringConvertible, Equatable {
     public static func == (lhs: SteamNetworkingIdentity, rhs: SteamNetworkingIdentity) -> Bool {
-        // operator == broken in Swift 5.7; fixed again in Swift 5.8
         lhs.identity == rhs.identity
-//        lhs.identity.m_eType == rhs.identity.m_eType &&
-//            lhs.identity.m_cbSize == rhs.identity.m_cbSize &&
-//            memcmp(lhs.identity.m_genericBytes_ptr,
-//                   rhs.identity.m_genericBytes_ptr,
-//                   Int(lhs.identity.m_cbSize)) == 0
     }
 }
 
@@ -599,8 +584,8 @@ public struct SteamNetworkingMessage {
     }
 
     /// Function used to free up the data buffer when not supplied by Steam.
-    /// The token passed to this callback should then be converted into a `SteamNetworkingMessage`
-    /// using `SteamNetworkingMessage.fromFreeDataToken()`.
+    /// The token passed to this callback should then be converted into a ``SteamNetworkingMessage``
+    /// using ``SteamNetworkingMessage/fromFreeDataToken(_:)``.
     public func setFreeData(_ f: @escaping @convention(c) (UnsafeMutableRawPointer) -> Void) {
         CSteamNetworkingMessage_SetFreeData(cmsg, f)
     }
@@ -619,7 +604,7 @@ public struct SteamNetworkingMessage {
         Int(CSteamNetworkingMessage_GetChannel(cmsg))
     }
 
-    /// For received messages, only the `reliable` bit is valid.
+    /// For received messages, only the ``SteamNetworkingSendFlags/reliable`` bit is valid.
     /// For outbound messages, all bits are relevant
     public var sendFlags: SteamNetworkingSendFlags {
         get {
@@ -726,6 +711,6 @@ extension HServerListRequest {
 }
 
 extension AppID {
-    /// The well-known `SpaceWar` `AppID`
+    /// The well-known _SpaceWar_ ``AppID``
     public static let spaceWar = Self(480)
 }

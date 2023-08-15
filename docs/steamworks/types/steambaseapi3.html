@@ -4381,7 +4381,7 @@
 <p>In Steamworks, a <em>callback</em> is a broadcast notification.  In C++ you discover what notifications
 are available from the docs and use the <code>STEAM_CALLBACK()</code> macro to connect your method.
 In this Swift version you register using a run-time call to one of the <a href="#tpc-callback-registration">registration methods</a>
-such as <a href="../../steamworks/types/steambaseapi3.html?swift#onsteamserversconnected_"><code>onSteamServersConnected(...)</code></a>.  If you register after creating your API instance
+such as <a href="../../steamworks/types/steambaseapi3.html?swift#onsteamserversconnected_"><code>onSteamServersConnected(_:)</code></a>.  If you register after creating your API instance
 and before making your first call to <a href="../../steamworks/types/steambaseapi3.html?swift#runcallbacks1"><code>runCallbacks()</code></a> then your code is equivalent to the C++
 version.</p>
 
@@ -4442,7 +4442,7 @@ version.</p>
 
 <p>Dispatch callbacks and call-returns.</p>
 <p><em>Callbacks</em> are broadcast notifications.  <em>Call returns</em> are asynchronous replies to
-certain API functions such as <a href="../../steamworks/types/steamfriends.html?swift#getfollowercountsteamid"><code>SteamFriends.getFollowerCount(...)</code></a>.</p>
+certain API functions such as <a href="../../steamworks/types/steamfriends.html?swift#getfollowercountsteamidcompletion"><code>getFollowerCount(steamID:completion:)</code></a>.</p>
 <p>Typically call once per frame on one thread.  The implementation uses the steamworks
 ‘manual dispatch’ approach, but the docs from <code>SteamAPI_RunCallbacks</code> and
 <code>SteamGameServer_RunCallbacks</code> apply.</p>

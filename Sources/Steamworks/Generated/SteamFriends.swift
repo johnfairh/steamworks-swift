@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamFriends`](https://partner.steamgames.com/doc/api/ISteamFriends)
 ///
-/// Access via `SteamAPI.friends`.
+/// Access via ``SteamAPI/friends``.
 public struct SteamFriends: Sendable {
     var interface: UnsafeMutablePointer<ISteamFriends> {
         SteamAPI_SteamFriends_v017()

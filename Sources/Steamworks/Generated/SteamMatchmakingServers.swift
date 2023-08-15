@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamMatchmakingServers`](https://partner.steamgames.com/doc/api/ISteamMatchmakingServers)
 ///
-/// Access via `SteamAPI.matchmakingServers`.
+/// Access via ``SteamAPI/matchmakingServers``.
 public struct SteamMatchmakingServers: Sendable {
     var interface: UnsafeMutablePointer<ISteamMatchmakingServers> {
         SteamAPI_SteamMatchmakingServers_v002()

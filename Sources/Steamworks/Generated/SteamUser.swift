@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamUser`](https://partner.steamgames.com/doc/api/ISteamUser)
 ///
-/// Access via `SteamAPI.user`.
+/// Access via ``SteamAPI/user``.
 public struct SteamUser: Sendable {
     var interface: UnsafeMutablePointer<ISteamUser> {
         SteamAPI_SteamUser_v023()

@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamMusic`](https://partner.steamgames.com/doc/api/ISteamMusic)
 ///
-/// Access via `SteamAPI.music`.
+/// Access via ``SteamAPI/music``.
 public struct SteamMusic: Sendable {
     var interface: UnsafeMutablePointer<ISteamMusic> {
         SteamAPI_SteamMusic_v001()

@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamScreenshots`](https://partner.steamgames.com/doc/api/ISteamScreenshots)
 ///
-/// Access via `SteamAPI.screenshots`.
+/// Access via ``SteamAPI/screenshots``.
 public struct SteamScreenshots: Sendable {
     var interface: UnsafeMutablePointer<ISteamScreenshots> {
         SteamAPI_SteamScreenshots_v003()

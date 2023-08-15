@@ -10613,7 +10613,7 @@
     "parent_name" : "SteamAPI"
   },
   "steamworks\/types\/steamapi.html?swift#installceghooksinitcegtermceg" : {
-    "abstract" : "Initialize Steam DRM hooks - you can call these manually or pass them in here to let the library\ncall them at the right time around SteamAPI_Init() and SteamAPI_Term().",
+    "abstract" : "Initialize Steam DRM hooks.",
     "name" : "installCEGHooks(initCEG:termCEG:)",
     "parent_name" : "SteamAPI"
   },
@@ -10660,6 +10660,11 @@
   "steamworks\/types\/steamapi.html?swift#remotestorage" : {
     "abstract" : "Access the Steamworks ISteamRemoteStorage interface",
     "name" : "remoteStorage",
+    "parent_name" : "SteamAPI"
+  },
+  "steamworks\/types\/steamapi.html?swift#screenshots1" : {
+    "abstract" : "Access the Steamworks ISteamScreenshots interface",
+    "name" : "screenshots",
     "parent_name" : "SteamAPI"
   },
   "steamworks\/types\/steamapi.html?swift#user12" : {
@@ -17116,7 +17121,7 @@
     "parent_name" : "SteamNetworkingIdentity"
   },
   "steamworks\/types\/steamnetworkingidentity.html?swift#isvalid1" : {
-    "abstract" : "Returns true if we are the invalid type.  Does not make any other validity checks (e.g. is SteamID actually valid)",
+    "abstract" : "Returns true if we are the invalid type.  Does not make any other validity checks (e.g. is Steam ID actually valid)",
     "name" : "isValid",
     "parent_name" : "SteamNetworkingIdentity"
   },
@@ -17328,7 +17333,7 @@
     "parent_name" : "SteamNetworkingMessage"
   },
   "steamworks\/types\/steamnetworkingmessage.html?swift#sendflags" : {
-    "abstract" : "For received messages, only the reliable bit is valid.\nFor outbound messages, all bits are relevant",
+    "abstract" : "For received messages, only the SteamNetworkingSendFlags\/reliable bit is valid.\nFor outbound messages, all bits are relevant",
     "name" : "sendFlags",
     "parent_name" : "SteamNetworkingMessage"
   },
@@ -17338,7 +17343,7 @@
     "parent_name" : "SteamNetworkingMessage"
   },
   "steamworks\/types\/steamnetworkingmessage.html?swift#setfreedata_" : {
-    "abstract" : "Function used to free up the data buffer when not supplied by Steam.\nThe token passed to this callback should then be converted into a SteamNetworkingMessage\nusing SteamNetworkingMessage.fromFreeDataToken().",
+    "abstract" : "Function used to free up the data buffer when not supplied by Steam.\nThe token passed to this callback should then be converted into a SteamNetworkingMessage\nusing SteamNetworkingMessage\/fromFreeDataToken(_:).",
     "name" : "setFreeData(_:)",
     "parent_name" : "SteamNetworkingMessage"
   },
@@ -17984,7 +17989,7 @@
     "parent_name" : "SteamNetworkingUtils"
   },
   "steamworks\/types\/steamnetworkingutils.html?swift#useloggerfordebugdetaillevel" : {
-    "abstract" : "Use ISteamNetworkingUtils::SetDebugOutputFunction() to send networking debug tracing\nthrough the SteamBaseAPI.logger logger.",
+    "abstract" : "Use ISteamNetworkingUtils::SetDebugOutputFunction() to send networking debug tracing\nthrough the SteamBaseAPI\/logger logger.",
     "name" : "useLoggerForDebug(detailLevel:)",
     "parent_name" : "SteamNetworkingUtils"
   },

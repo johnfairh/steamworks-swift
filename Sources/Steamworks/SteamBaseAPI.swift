@@ -19,13 +19,13 @@ import Logging
 
 /// Behavior common to both the user and game server APIs.
 ///
-/// You can't create this directly; instead use a `SteamAPI` or `SteamGameServerAPI`.
+/// You can't create this directly; instead use a ``SteamAPI`` or ``SteamGameServerAPI``.
 ///
 /// In Steamworks, a _callback_ is a broadcast notification.  In C++ you discover what notifications
 /// are available from the docs and use the `STEAM_CALLBACK()` macro to connect your method.
 /// In this Swift version you register using a run-time call to one of the [registration methods](#tpc-callback-registration)
-/// such as `onSteamServersConnected(...)`.  If you register after creating your API instance
-/// and before making your first call to `runCallbacks()` then your code is equivalent to the C++
+/// such as ``onSteamServersConnected(_:)``.  If you register after creating your API instance
+/// and before making your first call to ``runCallbacks()`` then your code is equivalent to the C++
 /// version.
 public class SteamBaseAPI: @unchecked Sendable {
     /// Type-erased callresult client closure, expose this to other files because of code gen
@@ -143,7 +143,7 @@ public class SteamBaseAPI: @unchecked Sendable {
     /// Dispatch callbacks and call-returns.
     ///
     /// _Callbacks_ are broadcast notifications.  _Call returns_ are asynchronous replies to
-    /// certain API functions such as `SteamFriends.getFollowerCount(...)`.
+    /// certain API functions such as ``SteamFriends/getFollowerCount(steamID:completion:)``.
     ///
     /// Typically call once per frame on one thread.  The implementation uses the steamworks
     /// 'manual dispatch' approach, but the docs from `SteamAPI_RunCallbacks` and
@@ -169,7 +169,7 @@ public class SteamBaseAPI: @unchecked Sendable {
         CallResults.shared.dispatchFailures()
     }
 
-    /// Call periodically on all threads that are not calling `runCallbacks()`.
+    /// Call periodically on all threads that are not calling ``runCallbacks()``.
     public func releaseCurrentThreadMemory() {
         SteamAPI_ReleaseCurrentThreadMemory() // === SteamGameServer_ReleaseCur....
     }
@@ -227,7 +227,7 @@ public class SteamBaseAPI: @unchecked Sendable {
     /// operations that are actually implemented by the `Steamworks` Swift module.
     public static var logger = Logger(label: "steamworks")
 
-    /// Hook the Steamworks warning messages up to `logger`
+    /// Hook the Steamworks warning messages up to ``logger``
     ///
     /// This calls the appropriate version of `ISteamUtils::SetWarningMessageHook()`.
     public func useLoggerForSteamworksWarnings() {

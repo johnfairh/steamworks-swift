@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamGameServerStats`](https://partner.steamgames.com/doc/api/ISteamGameServerStats)
 ///
-/// Access via `SteamGameServerAPI.gameServerStats`.
+/// Access via ``SteamGameServerAPI/gameServerStats``.
 public struct SteamGameServerStats: Sendable {
     var interface: UnsafeMutablePointer<ISteamGameServerStats> {
         SteamAPI_SteamGameServerStats_v001()

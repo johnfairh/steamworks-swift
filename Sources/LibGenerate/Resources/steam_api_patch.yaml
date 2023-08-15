@@ -1379,7 +1379,7 @@ interfaces:
   ISteamMatchmakingRulesResponse:
     ignore: "Callbacks"
   ISteamNetworkingFakeUDPPort:
-    getter: "ISteamNetworkingSockets.CreateFakeUDPPort(...)"
+    getter: "SteamNetworkingSockets/createFakeUDPPort(fakeServerPort:)"
   ISteamNetworking:
     ignore: "Deprecated"
   ISteamNetworkingSockets:

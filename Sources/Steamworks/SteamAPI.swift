@@ -29,10 +29,10 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
     ///
     /// Calls `SteamAPI_RestartAppIfNecessary()` and `SteamAPI_Init()`.
     ///
-    /// If you installed a hook with `SteamAPI.installCEGHooks(...)` then the CEG init
+    /// If you installed a hook with ``SteamAPI/installCEGHooks(initCEG:termCEG:)`` then the
     /// hook is called before `SteamAPI_Init()`.
     ///
-    /// If you set`fakeAppIdTxtFile` to `true` then the system behaves as though you
+    /// If you set `fakeAppIdTxtFile` to `true` then the system behaves as though you
     /// have a `steam_appid.txt` file in the correct location containing your appID:
     /// 1. `SteamAPI_RestartAppIfNecessary()` never returns `true`;
     /// 2. `SteamAPI_Init()` uses the passed-in App ID.
@@ -104,6 +104,8 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
     public let remotePlay = SteamRemotePlay()
     /// Access the Steamworks `ISteamRemoteStorage` interface
     public let remoteStorage = SteamRemoteStorage()
+    /// Access the Steamworks `ISteamScreenshots` interface
+    public let screenshots = SteamScreenshots()
     /// Access the Steamworks `ISteamUser` interface
     public let user = SteamUser()
     /// Access the Steamworks `ISteamUserStats` interface
@@ -113,10 +115,12 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
 
     // MARK: CEG
 
-    /// Initialize Steam DRM hooks - you can call these manually or pass them in here to let the library
-    /// call them at the right time around `SteamAPI_Init()` and `SteamAPI_Term()`.
+    /// Initialize Steam DRM hooks.
     ///
-    /// Call this _before_ actually creating a `SteamAPI` or `SteamGameServerAPI`.
+    /// You can call the hooks manually or pass them in here to let the library call them at the right time
+    /// around `SteamAPI_Init()` and `SteamAPI_Term()`.
+    ///
+    /// Call this _before_ actually creating a ``SteamAPI`` or ``SteamGameServerAPI``.
     public static func installCEGHooks(initCEG: @escaping () -> Bool, termCEG: @escaping () -> Void) {
         initSteamCEG = initCEG
         termSteamCEG = termCEG

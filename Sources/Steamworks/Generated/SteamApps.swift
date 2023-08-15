@@ -10,7 +10,7 @@
 
 /// Steamworks [`ISteamApps`](https://partner.steamgames.com/doc/api/ISteamApps)
 ///
-/// Access via `SteamAPI.apps`.
+/// Access via ``SteamAPI/apps``.
 public struct SteamApps: Sendable {
     var interface: UnsafeMutablePointer<ISteamApps> {
         SteamAPI_SteamApps_v008()

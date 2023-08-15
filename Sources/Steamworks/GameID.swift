@@ -23,7 +23,7 @@ public struct GameID {
 
     // MARK: Properties
 
-    /// The ModID of the `GameID`, max 32 bits (no typedef for this?)
+    /// The ModID of the ``GameID``, max 32 bits (no typedef for this?)
     public var modID: Int {
         get {
             Int(value.shiftOut(Self.MOD_SPEC))
@@ -43,7 +43,7 @@ public struct GameID {
         case unrepresentedInSwift = 4
     }
 
-    /// The type of the `GameID`.
+    /// The type of the ``GameID``.
     var gameType: GameType {
         get {
             GameType(rawValue: value.shiftOut(Self.TYP_SPEC)) ?? .unrepresentedInSwift
@@ -53,7 +53,7 @@ public struct GameID {
         }
     }
 
-    /// The `AppID` of the `GameID` - note for manual construction this is only a 24-bit value.
+    /// The ``AppID`` of the ``GameID`` - note for manual construction this is only a 24-bit value.
     public var appID: AppID {
         get {
             AppID(value.shiftOut(Self.APP_SPEC))
@@ -64,14 +64,14 @@ public struct GameID {
         }
     }
 
-    /// The flat version of the `GameID`
+    /// The flat version of the ``GameID``
     public var asUInt64: UInt64 {
         value
     }
 
     // MARK: Queries
 
-    /// Is the `GameID` representing a valid thing?
+    /// Is the ``GameID`` representing a valid thing?
     public var isValid: Bool {
         // each type has its own invalid fixed point:
         switch gameType {
@@ -114,7 +114,7 @@ public struct GameID {
 
     // MARK: Initializers
 
-    /// Create a fresh invalid `GameID`.
+    /// Create a fresh invalid ``GameID``.
     public init() {
         value = 0
         gameType = .app
@@ -122,23 +122,23 @@ public struct GameID {
         assert(modID == 0)
     }
 
-    /// Create a `GameID` from a flat value
+    /// Create a ``GameID`` from a flat value
     public init(_ gameID: UInt64) {
         value = gameID
     }
 
-    /// Create a `GameID` from a C++ `CGameID`
+    /// Create a ``GameID`` from a C++ `CGameID`
     init(_ gameID: CGameID) {
         value = gameID.m_ulGameID
     }
 
-    /// Create a `GameID` from an `AppID` - other fields invalid
+    /// Create a ``GameID`` from an ``AppID`` - other fields invalid
     init(_ appID: AppID) {
         value = 0
         self.appID = appID
     }
 
-    /// Create a `GameID` for a mod
+    /// Create a ``GameID`` for a mod
     init(_ appID: AppID, modID: Int) {
         value = 0
         self.appID = appID
@@ -148,7 +148,7 @@ public struct GameID {
 
     // MARK: Compound Setters
 
-    /// Set the `GameID` from a 64-bit representation
+    /// Set the ``GameID`` from a 64-bit representation
     mutating func setFromUInt64(_ u: UInt64) {
         self = GameID(u)
     }
@@ -167,7 +167,7 @@ extension GameID: Hashable, Comparable, CustomStringConvertible, Sendable {
         lhs.value < rhs.value
     }
 
-    /// A human-readable description of the `GameID`
+    /// A human-readable description of the ``GameID``
     public var description: String {
         "[\(appID.value) t=\(gameType) m=\(modID)]"
     }

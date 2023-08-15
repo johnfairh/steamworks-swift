@@ -20,7 +20,7 @@ public struct SteamID {
 
     // MARK: Properties
 
-    /// The universe of the `SteamID`.
+    /// The universe of the ``SteamID``.
     public var universe: Universe {
         get {
             Universe(rawValue: value.shiftOut(Self.UNI_SPEC)) ?? .unrepresentedInSwift
@@ -30,7 +30,7 @@ public struct SteamID {
         }
     }
 
-    /// The account type of the `SteamID`.
+    /// The account type of the ``SteamID``.
     public var accountType: AccountType {
         get {
             AccountType(rawValue: value.shiftOut(Self.ATY_SPEC)) ?? .unrepresentedInSwift
@@ -40,7 +40,7 @@ public struct SteamID {
         }
     }
 
-    /// The account instance of the `SteamID`.  Max 20 bits, 0xfffff.
+    /// The account instance of the ``SteamID``.  Max 20 bits, 0xfffff.
     public var accountInstance: Int {
         get {
             Int(value.shiftOut(Self.AIN_SPEC))
@@ -51,7 +51,7 @@ public struct SteamID {
         }
     }
 
-    /// The account ID of the `SteamID`.
+    /// The account ID of the ``SteamID``.
     public var accountID: AccountID {
         get {
             AccountID(value.shiftOut(Self.AID_SPEC))
