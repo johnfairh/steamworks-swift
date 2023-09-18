@@ -13,7 +13,7 @@
 /// Access via ``SteamAPI/remotePlay``.
 public struct SteamRemotePlay: Sendable {
     var interface: UnsafeMutablePointer<ISteamRemotePlay> {
-        SteamAPI_SteamRemotePlay_v001()
+        SteamAPI_SteamRemotePlay_v002()
     }
 
     init() {
@@ -30,6 +30,11 @@ public struct SteamRemotePlay: Sendable {
     /// Steamworks `ISteamRemotePlay::BSendRemotePlayTogetherInvite()`
     public func sendRemotePlayTogetherInvite(friend: SteamID) -> Bool {
         SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite(interface, CUnsignedLongLong(friend))
+    }
+
+    /// Steamworks `ISteamRemotePlay::BStartRemotePlayTogether()`
+    public func startRemotePlayTogether(showOverlay: Bool = true) -> Bool {
+        SteamAPI_ISteamRemotePlay_BStartRemotePlayTogether(interface, showOverlay)
     }
 
     /// Steamworks `ISteamRemotePlay::GetSessionClientFormFactor()`

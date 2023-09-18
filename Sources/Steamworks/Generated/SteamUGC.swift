@@ -14,7 +14,7 @@
 public struct SteamUGC: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamUGC> {
-        isServer ? SteamAPI_SteamGameServerUGC_v017() : SteamAPI_SteamUGC_v017()
+        isServer ? SteamAPI_SteamGameServerUGC_v018() : SteamAPI_SteamUGC_v018()
     }
 
     init(isServer: Bool) {
@@ -372,6 +372,13 @@ public struct SteamUGC: Sendable {
         return (rc: rc, publishedFileID: tmpPublishedFileID.swiftArray(Int(rc)))
     }
 
+    /// Steamworks `ISteamUGC::GetUserContentDescriptorPreferences()`
+    public func getUserContentDescriptorPreferences(maxEntries: Int) -> (rc: Int, descriptors: [UGCContentDescriptorID]) {
+        let tmpDescriptors = SteamOutArray<EUGCContentDescriptorID>(maxEntries)
+        let rc = Int(SteamAPI_ISteamUGC_GetUserContentDescriptorPreferences(interface, tmpDescriptors.steamArray, uint32(maxEntries)))
+        return (rc: rc, descriptors: tmpDescriptors.swiftArray())
+    }
+
     /// Steamworks `ISteamUGC::GetUserItemVote()`, callback
     public func getUserItemVote(publishedFileID: PublishedFileID, completion: @escaping (GetUserItemVoteResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_GetUserItemVote(interface, PublishedFileId_t(publishedFileID))
@@ -534,10 +541,10 @@ public struct SteamUGC: Sendable {
 
     /// Steamworks `ISteamUGC::SetItemTags()`
     @discardableResult
-    public func setItemTags(handle: UGCUpdateHandle, tags: [String]) -> Bool {
+    public func setItemTags(handle: UGCUpdateHandle, tags: [String], allowAdminTags: Bool = false) -> Bool {
         let tmpTags = StringArray(tags)
         defer { tmpTags.deallocate() }
-        return SteamAPI_ISteamUGC_SetItemTags(interface, UGCUpdateHandle_t(handle), .init(tmpTags))
+        return SteamAPI_ISteamUGC_SetItemTags(interface, UGCUpdateHandle_t(handle), .init(tmpTags), allowAdminTags)
     }
 
     /// Steamworks `ISteamUGC::SetItemTitle()`

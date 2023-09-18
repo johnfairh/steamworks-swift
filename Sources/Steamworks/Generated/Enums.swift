@@ -2520,6 +2520,24 @@ extension ESteamAPICallFailure: RawConvertible { typealias From = SteamAPICallFa
 extension SteamAPICallFailure: EnumWithUnrepresented { typealias From = ESteamAPICallFailure }
 extension SteamAPICallFailure: SteamCreatable {}
 
+/// Steamworks `ESteamAPIInitResult`
+public enum SteamAPIInitResult: CUnsignedInt, Sendable {
+    /// Steamworks `k_ESteamAPIInitResult_OK`
+    case ok = 0
+    /// Steamworks `k_ESteamAPIInitResult_FailedGeneric`
+    case failedGeneric = 1
+    /// Steamworks `k_ESteamAPIInitResult_NoSteamClient`
+    case noSteamClient = 2
+    /// Steamworks `k_ESteamAPIInitResult_VersionMismatch`
+    case versionMismatch = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
+}
+
+extension ESteamAPIInitResult: RawConvertible { typealias From = SteamAPIInitResult }
+extension SteamAPIInitResult: EnumWithUnrepresented { typealias From = ESteamAPIInitResult }
+extension SteamAPIInitResult: SteamCreatable {}
+
 /// Steamworks `ESteamControllerPad`
 public enum SteamControllerPad: CUnsignedInt, Sendable {
     /// Steamworks `k_ESteamControllerPad_Left`
@@ -2928,6 +2946,14 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt, Sendable {
     case timeoutConnected = 25
     /// Steamworks `k_ESteamNetworkingConfig_SendBufferSize`
     case sendBufferSize = 9
+    /// Steamworks `k_ESteamNetworkingConfig_RecvBufferSize`
+    case recvBufferSize = 47
+    /// Steamworks `k_ESteamNetworkingConfig_RecvBufferMessages`
+    case recvBufferMessages = 48
+    /// Steamworks `k_ESteamNetworkingConfig_RecvMaxMessageSize`
+    case recvMaxMessageSize = 49
+    /// Steamworks `k_ESteamNetworkingConfig_RecvMaxSegmentsPerPacket`
+    case recvMaxSegmentsPerPacket = 50
     /// Steamworks `k_ESteamNetworkingConfig_ConnectionUserData`
     case connectionUserData = 40
     /// Steamworks `k_ESteamNetworkingConfig_SendRateMin`
@@ -3255,6 +3281,26 @@ public enum TextFilteringContext: CUnsignedInt, Sendable {
 extension ETextFilteringContext: RawConvertible { typealias From = TextFilteringContext }
 extension TextFilteringContext: EnumWithUnrepresented { typealias From = ETextFilteringContext }
 extension TextFilteringContext: SteamCreatable {}
+
+/// Steamworks `ETimelineGameMode`
+public enum TimelineGameMode: CUnsignedInt, Sendable {
+    /// Steamworks `k_ETimelineGameMode_Invalid`
+    case invalid = 0
+    /// Steamworks `k_ETimelineGameMode_Playing`
+    case playing = 1
+    /// Steamworks `k_ETimelineGameMode_Staging`
+    case staging = 2
+    /// Steamworks `k_ETimelineGameMode_Menus`
+    case menus = 3
+    /// Steamworks `k_ETimelineGameMode_Max`
+    case max = 4
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
+}
+
+extension ETimelineGameMode: RawConvertible { typealias From = TimelineGameMode }
+extension TimelineGameMode: EnumWithUnrepresented { typealias From = ETimelineGameMode }
+extension TimelineGameMode: SteamCreatable {}
 
 /// Steamworks `EUGCContentDescriptorID`
 public enum UGCContentDescriptorID: CUnsignedInt, Sendable {

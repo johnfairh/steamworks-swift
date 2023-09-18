@@ -10,6 +10,7 @@ consts:
   STEAM_INPUT_HANDLE_ALL_CONTROLLERS:
     nested_name: allControllers
 consts_to_ignore:
+- k_cchMaxSteamErrMsg
 - k_cchPublishedDocumentChangeDescriptionMax
 - k_cFriendsGroupLimit
 - k_cEnumerateFollowersMax
@@ -923,6 +924,10 @@ methods:
 #
   SteamAPI_ISteamRemotePlay_GetSessionClientName:
     returntype: String?
+  SteamAPI_ISteamRemotePlay_BStartRemotePlayTogether:
+    params:
+      bShowOverlay:
+        default_value: true
 #
 # ISteamRemoteStorage
 #
@@ -966,6 +971,10 @@ methods:
     params:
       pvecPublishedFileID:
         array_count: unNumPublishedFileIDs
+  SteamAPI_ISteamUGC_GetUserContentDescriptorPreferences:
+    params:
+      pvecDescriptors:
+        out_array_count: cMaxEntries
   SteamAPI_ISteamUGC_GetItemInstallInfo:
     out_param_iff_rc: ' '
     params:
@@ -1048,6 +1057,9 @@ methods:
     discardable_result: true
   SteamAPI_ISteamUGC_SetItemTags:
     discardable_result: true
+    params:
+      bAllowAdminTags:
+        default_value: false
   SteamAPI_ISteamUGC_SetItemTitle:
     discardable_result: true
   SteamAPI_ISteamUGC_SetItemUpdateLanguage:
@@ -1242,6 +1254,8 @@ methods:
         in_out: true
         default_value: 48000 # sez the docs
     out_param_iff_rc: ' '
+  SteamAPI_ISteamVideo_SetTimelineGameMode:
+    ignore: "broken, missing enum defn"
 #
 # Structs
 #

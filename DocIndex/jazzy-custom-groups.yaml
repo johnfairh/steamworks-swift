@@ -656,6 +656,7 @@
         - RTime32
         - SteamAPICall
         - SteamAPIWarningMessageHook
+        - SteamErrMsg
     - name: Enumerations and Option Sets
       children:
         - AccountType

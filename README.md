@@ -1,5 +1,5 @@
 ![macOS](https://shields.io/badge/platform-macOS%20|%20Linux%20|%20%3F%3F-lightgrey)
-![Steamworks 1.57](https://shields.io/badge/steamworks-1.57-lightgrey)
+![Steamworks 1.58](https://shields.io/badge/steamworks-1.58-lightgrey)
 [![Test](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml/badge.svg)](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml)
 ![MIT](https://shields.io/badge/license-MIT-black)
 

@@ -73,6 +73,9 @@ public enum SteamConstants {
     /// Steamworks `k_cbMaxSteamNetworkingSocketsMessageSizeSend`
     public static let maxSteamNetworkingSocketsMessageSizeSendSize = Int(512 * 1024)
 
+    /// Steamworks `k_nMaxTimelineRangeIDLength`
+    public static let maxTimelineRangeIDLength = Int(64)
+
     /// Steamworks `kNumUGCResultsPerPage`
     public static let numUGCResultsPerPage = Int(50)
 

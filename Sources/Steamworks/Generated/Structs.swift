@@ -1252,12 +1252,15 @@ public struct GameOverlayActivated: Sendable {
     public let userInitiated: Bool
     /// Steamworks `m_nAppID`
     public let appID: AppID
+    /// Steamworks `m_dwOverlayPID`
+    public let overlayPID: Int
 
     /// Create a customized `GameOverlayActivated`
-    public init(active: Bool = false, userInitiated: Bool = false, appID: AppID = 0) {
+    public init(active: Bool = false, userInitiated: Bool = false, appID: AppID = 0, overlayPID: Int = 0) {
         self.active = active
         self.userInitiated = userInitiated
         self.appID = appID
+        self.overlayPID = overlayPID
     }
 }
 
@@ -1267,6 +1270,7 @@ extension GameOverlayActivated: SteamCreatable {
         active = .init(steam.m_bActive)
         userInitiated = .init(steam.m_bUserInitiated)
         appID = .init(steam.m_nAppID)
+        overlayPID = .init(steam.m_dwOverlayPID)
     }
 }
 

@@ -4065,6 +4065,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="steamworks/types/steamerrmsg.html?swift">SteamErrMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="steamworks/types/accounttype.html?swift">AccountType</a>
 
 
@@ -4325,6 +4334,38 @@
 
       </li>
       
+      <li class="j2-nav-group">
+        
+
+  <a class="j2-nav-item" href="steamworks-types.html?swift">Steamworks Types</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/steamapiinitresult.html?swift">SteamAPIInitResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
     </ul>
   </nav>
   
@@ -4339,7 +4380,7 @@
           
           
           <p><img src="https://shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20%3F%3F-lightgrey" alt="macOS" />
-<img src="https://shields.io/badge/steamworks-1.57-lightgrey" alt="Steamworks 1.57" />
+<img src="https://shields.io/badge/steamworks-1.58-lightgrey" alt="Steamworks 1.58" />
 <a href="https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml"><img src="https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml/badge.svg" alt="Test" /></a>
 <img src="https://shields.io/badge/license-MIT-black" alt="MIT" /></p>
 <h1 class="j2-anchor j2-heading heading" id="steamworksswift">
@@ -4403,9 +4444,8 @@ Next
 </span></h3>
 <ul>
 <li>Review <code>async</code> model using <code>@MainActor</code> to fix up the threads</li>
-<li>Port SpaceWar over to Swift to check general practicality, somewhat real-world usage,
+<li>More SpaceWar porting over to Swift to check general practicality, somewhat real-world usage,
 general interest - see <a href="https://github.com/johnfairh/spacewar-swift">spacewar-swift</a>.</li>
-<li>Have a go at getting DocC running</li>
 </ul>
 <h2 class="j2-anchor j2-heading heading" id="api-mapping-design">
 <span data-anchor-id="api-mapping-design">
@@ -4574,7 +4614,7 @@ let package = Package(
     .macOS(&quot;13.0&quot;),
   ],
   dependencies: [
-    .package(url: &quot;https://github.com/johnfairh/steamworks-swift&quot;, from: &quot;0.3.0&quot;),
+    .package(url: &quot;https://github.com/johnfairh/steamworks-swift&quot;, from: &quot;0.4.0&quot;),
   ],
   targets: [
     .executableTarget(
@@ -4605,7 +4645,7 @@ public struct MySteamApp {
 }
 </code></pre>
 <p>API docs <a href="https://johnfairh.github.io/steamworks-swift/index.html">here</a>.</p>
-<p>There may be a more fully-fledged AppKit demo <a href="https://github.com/johnfairh/spacewar-swift">here</a>.</p>
+<p>Fully-fledged AppKit demo <a href="https://github.com/johnfairh/spacewar-swift">here</a>.</p>
 <h2 class="j2-anchor j2-heading heading" id="implementation-notes">
 <span data-anchor-id="implementation-notes">
 Implementation notes
@@ -4614,7 +4654,7 @@ Implementation notes
 <span data-anchor-id="swift-c-bugs">
 Swift C++ Bugs
 </span></h3>
-<p>Tech limitations, on 5.9 Xcode 15.b3:</p>
+<p>Tech limitations, on 5.9 Xcode 15.b6:</p>
 <ul>
 <li>Some structures/classes aren’t imported – is the common factor a <code>protected</code>
 destructor?  Verify by trying to use <code>SteamNetworkingMessage_t</code>.</li>
@@ -4712,12 +4752,12 @@ License
         <nav aria-label="paging" class="j2-pagination pb-3 pt-2">
   <div id="pagination-prev" class="flex-fill">
   
-    <a class="j2-swift" href="steamworks/types/steamconstants.html?swift" aria-keyshortcuts="p">
-  <span aria-hidden="true">&laquo; </span>SteamConstants
+    <a class="j2-swift" href="steamworks/types/timelinegamemode.html?swift" aria-keyshortcuts="p">
+  <span aria-hidden="true">&laquo; </span>TimelineGameMode
 </a>
 
-    <a class="j2-objc j2-secondary" href="steamworks/types/steamconstants.html?swift" aria-keyshortcuts="p">
-  <span aria-hidden="true">&laquo; </span>SteamConstants
+    <a class="j2-objc j2-secondary" href="steamworks/types/timelinegamemode.html?swift" aria-keyshortcuts="p">
+  <span aria-hidden="true">&laquo; </span>TimelineGameMode
 </a>
 
   

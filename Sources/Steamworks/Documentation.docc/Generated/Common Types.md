@@ -13,6 +13,7 @@
 - ``RTime32``
 - ``SteamAPICall``
 - ``SteamAPIWarningMessageHook``
+- ``SteamErrMsg``
 
 ### Enumerations and Option Sets
 - ``AccountType``

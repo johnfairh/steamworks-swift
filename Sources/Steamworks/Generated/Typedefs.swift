@@ -291,6 +291,14 @@ extension SteamAPICall: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: CUnsignedLongLong) { self.init(value) }
 }
 
+/// Steamworks `SteamErrMsg`
+public struct SteamErrMsg: Hashable, Sendable {
+    public let value: String
+    public init(_ value: String) { self.value = value }
+}
+
+extension SteamErrMsg: SteamTypeAlias, SteamCreatable {}
+
 /// Steamworks `SteamInputActionEventCallbackPointer`
 public typealias SteamInputActionEventCallbackPointer = (SteamInputActionEvent) -> Void
 
