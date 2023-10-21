@@ -19,7 +19,7 @@ import PackageDescription
 //    all found via a pkg-config file.
 //
 //    This is very smooth but means you've done a system installation of
-//    stuff that varies per-target, not ideal.
+//    stuff that can vary per-steam client app, not ideal.
 //
 // 2) a) Use "unsafe" flags to point the build at the SDK files inside the
 //       package, AND
@@ -44,11 +44,9 @@ import PackageDescription
 // other system setup.
 //
 
-//
-// We no longer need to provide UnsafeFlags to enable C++ interop.
-//
-// Still abstract the flags because of finding the library details.
-//
+// To further complicate things, while SPM executes this file in the user's
+// environment, Xcode thinks it knows what $PATH ought to be.  Try to spot this
+// so that Xcode in SPM mode can depend on Steamworks.
 
 var steamworksSwiftFlags: [SwiftSetting] = [
     .interoperabilityMode(.Cxx)
@@ -62,9 +60,19 @@ var clientLinkerSettings: [LinkerSetting] = []
 
 import Foundation
 
+let pkgConfigPath: String
+
+let envPath = Context.environment["PATH"] ?? ""
+if envPath.contains("/usr/local/bin") {
+    pkgConfigPath = envPath
+} else {
+    // Xcode's broken PATH or no standard pkgconfig; make a guess
+    pkgConfigPath = "\(envPath):/usr/local/bin"
+}
+
 let hasPkgConfig =
   (try? Process.run(URL(fileURLWithPath: "/usr/bin/env"),
-                    arguments: ["pkg-config", "steamworks-swift"])).map { p in
+                    arguments: ["-P", pkgConfigPath, "pkg-config", "steamworks-swift"])).map { p in
     p.waitUntilExit()
     return p.terminationStatus == 0
   } ?? false
