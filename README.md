@@ -230,7 +230,7 @@ let package = Package(
     .macOS("13.0"),
   ],
   dependencies: [
-    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "0.4.0"),
+    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "0.5.1"),
   ],
   targets: [
     .executableTarget(
@@ -266,7 +266,7 @@ public struct MySteamApp {
 
 API docs [here](https://johnfairh.github.io/steamworks-swift/index.html).
 
-Fully-fledged AppKit demo [here](https://github.com/johnfairh/spacewar-swift).
+Fully-fledged AppKit/Metal demo [here](https://github.com/johnfairh/spacewar-swift).
 
 ## Implementation notes
 
