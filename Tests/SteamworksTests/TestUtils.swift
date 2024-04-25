@@ -68,7 +68,7 @@ enum TestClient {
         }
     }
 
-    private static var client: Client?
+    nonisolated(unsafe) private static var client: Client?
 
     static func getClient() throws -> SteamAPI {
         if let client {

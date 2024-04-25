@@ -195,7 +195,7 @@ struct Patch: Codable {
 /// Also fast lookups and central access for weird special cases of knowledge needs
 /// (like 'is this random string an enum?')
 ///
-struct MetadataDB {
+struct MetadataDB: Sendable {
     struct Const {
         let name: SteamHungarianName
         let type: SteamType
@@ -213,7 +213,7 @@ struct MetadataDB {
     /// Indexed by `constname`, filtered by patch exclude-list
     let consts: [SteamHungarianName : Const]
 
-    final class Enum {
+    final class Enum: Sendable {
         let name: SteamType
         let setPassedInTypeName: SwiftNativeType?
         var isSet: Bool { setPassedInTypeName != nil }
@@ -491,7 +491,7 @@ struct MetadataDB {
 /// Sharable reference wrapper around the API metadata
 ///
 /// The API available here is the patched version.
-final class Metadata: CustomStringConvertible {
+final class Metadata: CustomStringConvertible, Sendable {
     let io: IO
     let db: MetadataDB
 
@@ -560,7 +560,7 @@ final class Metadata: CustomStringConvertible {
         """
     }
 
-    static private(set) var shared: Metadata?
+    nonisolated(unsafe) static private(set) var shared: Metadata?
 
     var allEnums: [MetadataDB.Enum] {
         Array(db.enums.values) + Array(nestedEnums.values)

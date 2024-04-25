@@ -8,7 +8,7 @@
 // Swift 5.7 -- `import Dispatch` appears to work again in C++ mode...
 import Dispatch
 
-struct Lock {
+final class Lock: Sendable {
     private let dsem: DispatchSemaphore
 
     init() {

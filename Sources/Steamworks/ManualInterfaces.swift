@@ -48,7 +48,7 @@ extension SteamInput {
         }
     }
 
-    static var actionEventCallback: SteamInputActionEventCallbackPointer?
+    nonisolated(unsafe) static var actionEventCallback: SteamInputActionEventCallbackPointer?
 }
 
 /// This one API has a really dumb design that returns a `char *` to some internal storage instead

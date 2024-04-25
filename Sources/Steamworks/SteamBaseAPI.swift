@@ -71,7 +71,7 @@ public class SteamBaseAPI: @unchecked Sendable {
 
     // MARK: CallResults
 
-    final class CallResults {
+    final class CallResults: @unchecked Sendable {
         private var pending = [SteamAPICall_t : RawClient]()
         private var pendingFailures = [RawClient]()
         private var lock = Lock()
@@ -119,7 +119,7 @@ public class SteamBaseAPI: @unchecked Sendable {
     private let steamPipe: HSteamPipe
     private let lock: Lock
 
-    private static var initOnce: Void = {
+    private static let initOnce: Void = {
         SteamAPI_ManualDispatch_Init()
     }()
 
@@ -225,7 +225,7 @@ public class SteamBaseAPI: @unchecked Sendable {
     ///
     /// Produces infrequent error-path diagnostic info at `Logger.Level.error` log level for the few
     /// operations that are actually implemented by the `Steamworks` Swift module.
-    public static var logger = Logger(label: "steamworks")
+    nonisolated static let logger = Logger(label: "steamworks")
 
     /// Hook the Steamworks warning messages up to ``logger``
     ///

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class IO {
+final class IO: Sendable {
     let redistSdkURL: URL
     let swiftOutputDirURL: URL
     let cOutputDirURL: URL

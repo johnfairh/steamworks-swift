@@ -256,8 +256,6 @@ enum MatchmakingServersControl {
         let swift: SteamMatchmakingServerListResponse
         let cpp: CShimServerListResponsePtr
     }
-    private static var lock = Lock()
-    private static var serverQueries: [HServerListRequest : ServerListClient] = [:]
 
     private struct QueryClient {
         let ping: SteamMatchmakingPingResponse?
@@ -265,7 +263,14 @@ enum MatchmakingServersControl {
         let rules: SteamMatchmakingRulesResponse?
         let cppDeallocate: () -> Void
     }
-    private static var queryQueries: [HServerQuery : QueryClient] = [:]
+
+    private final class Store: @unchecked Sendable {
+        var serverQueries: [HServerListRequest : ServerListClient] = [:]
+        var queryQueries: [HServerQuery : QueryClient] = [:]
+    }
+
+    private static let lock = Lock()
+    nonisolated(unsafe) private static let store = Store()
 
     // MARK: The list of glue callbacks exposed to C++ shim
 
@@ -330,13 +335,13 @@ enum MatchmakingServersControl {
 
     static func bind(handle: HServerListRequest, swift: SteamMatchmakingServerListResponse, cpp: CShimServerListResponsePtr) {
         lock.locked {
-            serverQueries[handle] = ServerListClient(swift: swift, cpp: cpp)
+            store.serverQueries[handle] = ServerListClient(swift: swift, cpp: cpp)
         }
     }
 
     static func unbind(handle: HServerListRequest) {
         lock.locked {
-            if let client = serverQueries.removeValue(forKey: handle) {
+            if let client = store.serverQueries.removeValue(forKey: handle) {
                 client.cpp.pointee.Deallocate()
             }
         }
@@ -344,7 +349,7 @@ enum MatchmakingServersControl {
 
     private static func find(handle: HServerListRequest) -> SteamMatchmakingServerListResponse? {
         lock.locked {
-            if let rsp = serverQueries[handle]?.swift {
+            if let rsp = store.serverQueries[handle]?.swift {
                 return rsp
             }
             logError("Got SteamMatchmakingServerListResponse callback for unknown handle: \(handle)")
@@ -358,16 +363,16 @@ enum MatchmakingServersControl {
                      rules: SteamMatchmakingRulesResponse? = nil,
                      cppDeallocate: @escaping () -> Void) {
         lock.locked {
-            queryQueries[handle] = QueryClient(ping: ping,
-                                               players: players,
-                                               rules: rules,
-                                               cppDeallocate: cppDeallocate)
+            store.queryQueries[handle] = QueryClient(ping: ping,
+                                                     players: players,
+                                                     rules: rules,
+                                                     cppDeallocate: cppDeallocate)
         }
     }
 
     static func unbind(handle: HServerQuery) {
         lock.locked {
-            if let client = queryQueries.removeValue(forKey: handle) {
+            if let client = store.queryQueries.removeValue(forKey: handle) {
                 client.cppDeallocate()
             }
         }
@@ -375,7 +380,7 @@ enum MatchmakingServersControl {
 
     private static func find(handle: HServerQuery) -> QueryClient? {
         lock.locked {
-            if let rsp = queryQueries[handle] {
+            if let rsp = store.queryQueries[handle] {
                 return rsp
             }
             logError("Got SteamMatchmaking ServerQuery callback for unknown handle: \(handle)")
