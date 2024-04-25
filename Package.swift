@@ -100,7 +100,7 @@ if !hasPkgConfig {
 let package = Package(
   name: "steamworks-swift",
   platforms: [
-    .macOS("13.0"),
+    .macOS("14.0"),
   ],
   products: [
     .library(

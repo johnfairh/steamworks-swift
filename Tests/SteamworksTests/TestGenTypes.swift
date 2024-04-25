@@ -31,7 +31,7 @@ public struct ESteamFlags: RawRepresentable {
     public init(rawValue: UInt32) { self.rawValue = rawValue }
 }
 
-public struct SteamFlags: OptionSet {
+public struct SteamFlags: OptionSet, Sendable {
     public let rawValue: UInt32
     public init(rawValue: UInt32) { self.rawValue = rawValue }
     public static let noTrade = SteamFlags(rawValue: 1)

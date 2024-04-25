@@ -66,7 +66,7 @@ struct Main {
                                      0x53, 0x3b, 0xa3, 0x3c, 0xd8, 0x03, 0xbd, 0xbd ]
 
         print("TicketClient testbed, steamworks version \(SteamAPI.steamworksVersion)")
-        SteamAPI.logger.logLevel = .trace
+        // XXX need to fix? SteamAPI.logger.logLevel = .trace
         guard let client = Client() else {
             return
         }

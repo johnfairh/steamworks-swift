@@ -127,5 +127,5 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
     }
 }
 
-private var initSteamCEG: (() -> Bool)? = nil
-private var termSteamCEG: (() -> Void)? = nil
+nonisolated(unsafe) private var initSteamCEG: (() -> Bool)? = nil
+nonisolated(unsafe) private var termSteamCEG: (() -> Void)? = nil

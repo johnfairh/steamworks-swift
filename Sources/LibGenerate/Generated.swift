@@ -44,7 +44,7 @@ final class Generated {
 
     /// Steamworks types that are implemented manually instead of being generated.
     /// They should appear in doc sections driven by the header files.
-    private static var manualTypes: [(String, Kind)] = [
+    private static let manualTypes: [(String, Kind)] = [
         ("SteamID", .struct),
         ("GameID", .struct),
         ("SteamIPAddress", .struct),

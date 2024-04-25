@@ -10,7 +10,7 @@
 /// A C++ type used in the native Steam API.  Would be understood by the C++ compiler.
 ///
 /// Eg. a straight type name `SteamFoo_t` or a parameter type eg. `const SteamFoo_t *`.
-struct SteamType: StringFungible {
+struct SteamType: StringFungible, Sendable {
     let name: String
     
     init(_ name: String) {
