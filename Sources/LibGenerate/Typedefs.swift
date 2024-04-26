@@ -56,12 +56,28 @@ extension MetadataDB.Typedef {
         var decl = """
                    /// Steamworks `\(typedef)`
                    public struct \(swiftType): Hashable, Sendable {
-                       public let value: \(swiftNativeType)
-                       public init(_ value: \(swiftNativeType)) { self.value = value }
-                   }
 
-                   extension \(swiftType): SteamTypeAlias, SteamCreatable {}
                    """
+        if swiftNativeType.isSendable {
+            decl += """
+                        public let value: \(swiftNativeType)
+                        public init(_ value: \(swiftNativeType)) { self.value = value }
+                    }
+                    """
+        } else {
+            decl += """
+                        private let _value: Steam\(swiftNativeType)
+                        public var value: \(swiftNativeType) { _value.base }
+                        public init(_ value: \(swiftNativeType)) { self._value = .init(value) }
+                    }
+                    """
+        }
+        decl += """
+
+
+                extension \(swiftType): SteamTypeAlias, SteamCreatable {}
+                """
+
         if swiftNativeType.isInteger {
             decl += """
 

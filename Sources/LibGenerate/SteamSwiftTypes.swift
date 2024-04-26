@@ -78,6 +78,14 @@ extension SteamType {
         return SwiftType(name1.replacingOccurrences(of: "_", with: ""))
     }
 
+    var sendableSwiftType: SwiftType {
+        let base = swiftType
+        if base.isSendable {
+            return base
+        }
+        return SwiftType("Steam\(base.name)")
+    }
+
     /// Does this C++ type look like a pointer but is actually something else?
     /// Mostly for `const char *` -> `String`
     fileprivate var isPointerTypePassedByValue: Bool {
@@ -408,6 +416,10 @@ extension SwiftTypeUtils {
 
     var isOptional: Bool {
         name.hasSuffix("?")
+    }
+
+    var isSendable: Bool {
+        !name.re_isMatch("^Unsafe.*Pointer$")
     }
 }
 

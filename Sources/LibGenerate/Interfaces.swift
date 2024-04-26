@@ -89,10 +89,14 @@ extension MetadataDB.Interface.Access {
 
         switch self {
         case .instance:
+            let sendableSwiftType = "Steam\(swiftType)"
             decl = """
-                       private let interface: \(swiftType)
+                       private let _interface: \(sendableSwiftType)
+                       private var interface: \(swiftType) {
+                           _interface.base
+                       }
                        init(_ interface: \(swiftType)) {
-                           self.interface = interface
+                           self._interface = .init(interface)
                        }
                    """
         case .user(let accessor), .gameserver(let accessor), .global(let accessor):

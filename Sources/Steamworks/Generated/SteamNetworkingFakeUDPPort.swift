@@ -12,9 +12,12 @@
 ///
 /// Access via ``SteamNetworkingSockets/createFakeUDPPort(fakeServerPort:)``.
 public final class SteamNetworkingFakeUDPPort: Sendable {
-    private let interface: UnsafeMutablePointer<ISteamNetworkingFakeUDPPort>
+    private let _interface: SteamUnsafeMutablePointer<ISteamNetworkingFakeUDPPort>
+    private var interface: UnsafeMutablePointer<ISteamNetworkingFakeUDPPort> {
+        _interface.base
+    }
     init(_ interface: UnsafeMutablePointer<ISteamNetworkingFakeUDPPort>) {
-        self.interface = interface
+        self._interface = .init(interface)
     }
 
     /// Steamworks `ISteamNetworkingFakeUDPPort::DestroyFakeUDPPort()`
