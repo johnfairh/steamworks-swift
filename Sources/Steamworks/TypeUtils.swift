@@ -168,6 +168,44 @@ extension Optional where Wrapped == UnsafeMutablePointer<UnsafeMutablePointer<Ma
     }
 }
 
+// MARK: Sendable
+
+/// An unsafe `Sendable` wrapper.
+///
+/// This is used to wrap pointers that the Steam API uses in a potentially-sendable context.
+/// Typically these pointers are read-only, whether or not the Steam API has marked them `const`,
+/// so there is no real risk to them, but the Steam API client code is responsible for serializing any
+/// write action that is required.
+public struct SteamUncheckedSendable<Base>: @unchecked Sendable {
+    let base: Base
+    init(_ base: Base) {
+        self.base = base
+    }
+}
+
+extension SteamUncheckedSendable: Equatable where Base: Equatable {
+    /// :nodoc:
+    public static func == (lhs: SteamUncheckedSendable<Base>, rhs: SteamUncheckedSendable<Base>) -> Bool {
+        lhs.base == rhs.base
+    }
+}
+
+extension SteamUncheckedSendable: Hashable where Base: Hashable {
+    /// :nodoc:
+    public func hash(into hasher: inout Hasher) {
+        base.hash(into: &hasher)
+    }
+}
+
+/// A `Sendable` wrapper of `UnsafeMutableRawPointer`.
+public typealias SteamUnsafeMutableRawPointer = SteamUncheckedSendable<UnsafeMutableRawPointer>
+
+/// A `Sendable` wrapper of `UnsafeRawPointer`.
+public typealias SteamUnsafeRawPointer = SteamUncheckedSendable<UnsafeRawPointer>
+
+/// A `Sendable` wrapper of `UnsafeMutablePointer`.
+public typealias SteamUnsafeMutablePointer<T> = SteamUncheckedSendable<UnsafeMutablePointer<T>>
+
 // MARK: Typedefs
 
 /// Conversion of Swift Types to Steam types, for passing in typedefs to Steamworks

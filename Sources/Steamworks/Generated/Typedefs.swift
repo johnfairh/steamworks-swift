@@ -76,8 +76,9 @@ extension HHTMLBrowser: ExpressibleByIntegerLiteral {
 
 /// Steamworks `HServerListRequest`
 public struct HServerListRequest: Hashable, Sendable {
-    public let value: UnsafeMutableRawPointer
-    public init(_ value: UnsafeMutableRawPointer) { self.value = value }
+    private let _value: SteamUnsafeMutableRawPointer
+    public var value: UnsafeMutableRawPointer { _value.base }
+    public init(_ value: UnsafeMutableRawPointer) { self._value = .init(value) }
 }
 
 extension HServerListRequest: SteamTypeAlias, SteamCreatable {}

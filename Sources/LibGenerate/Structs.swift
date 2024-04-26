@@ -97,7 +97,7 @@ extension MetadataDB.Struct.Field {
     /// Swift structure declaration field
     var declLine: [String] {[
         "/// Steamworks `\(name)`",
-        "public let \(name.swiftName): \(type.swiftType)"
+        "public let \(name.swiftName): \(type.sendableSwiftType)"
     ]}
 
     /// Swift structure initializer lines
@@ -130,7 +130,7 @@ extension MetadataDB.Struct.Field {
     /// Default value setup for memberwise initializer
     var memberwiseParameter: String {
         let initClause = type.swiftTypeInstance.flatMap { " = \($0)"} ?? ""
-        return "\(name.swiftName): \(type.swiftType)\(initClause)"
+        return "\(name.swiftName): \(type.sendableSwiftType)\(initClause)"
     }
 
     /// Initializer line for memberwise initializer

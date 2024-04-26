@@ -1875,7 +1875,7 @@ public struct HTMLNeedsPaint: Sendable {
     /// Steamworks `unBrowserHandle`
     public let browserHandle: HHTMLBrowser
     /// Steamworks `pBGRA`
-    public let bgra: UnsafeRawPointer
+    public let bgra: SteamUnsafeRawPointer
     /// Steamworks `unWide`
     public let wide: Int
     /// Steamworks `unTall`
@@ -1898,7 +1898,7 @@ public struct HTMLNeedsPaint: Sendable {
     public let pageSerial: Int
 
     /// Create a customized `HTMLNeedsPaint`
-    public init(browserHandle: HHTMLBrowser = 0, bgra: UnsafeRawPointer, wide: Int = 0, tall: Int = 0, updateX: Int = 0, updateY: Int = 0, updateWide: Int = 0, updateTall: Int = 0, scrollX: Int = 0, scrollY: Int = 0, pageScale: Float = 0, pageSerial: Int = 0) {
+    public init(browserHandle: HHTMLBrowser = 0, bgra: SteamUnsafeRawPointer, wide: Int = 0, tall: Int = 0, updateX: Int = 0, updateY: Int = 0, updateWide: Int = 0, updateTall: Int = 0, scrollX: Int = 0, scrollY: Int = 0, pageScale: Float = 0, pageSerial: Int = 0) {
         self.browserHandle = browserHandle
         self.bgra = bgra
         self.wide = wide
