@@ -13,8 +13,8 @@ import XCTest
 class TestApiMatchmaking: XCTestCase {
 
     final class ServerPing: SteamMatchmakingPingResponse {
-        let done: () -> Void
-        init(done: @escaping () -> Void) {
+        let done: @Sendable () -> Void
+        init(done: @Sendable @escaping () -> Void) {
             self.done = done
         }
 
@@ -29,15 +29,15 @@ class TestApiMatchmaking: XCTestCase {
         }
     }
 
-    final class ServerCallbacks: SteamMatchmakingServerListResponse {
+    final class ServerCallbacks: SteamMatchmakingServerListResponse, @unchecked Sendable {
         let api: SteamAPI
-        let done: () -> Void
+        let done: @Sendable () -> Void
         var serverIDs: Set<Int> = []
         let serverPingRsp: ServerPing
         var request: HServerListRequest?
         var queryHandle: HServerQuery
 
-        init(api: SteamAPI, done: @escaping () -> Void) {
+        init(api: SteamAPI, done: @Sendable @escaping () -> Void) {
             self.api = api
             self.done = done
             self.serverPingRsp = ServerPing(done: done)
@@ -73,16 +73,20 @@ class TestApiMatchmaking: XCTestCase {
     func testMatchmakingServers() throws {
         let steam = try TestClient.getClient()
 
-        var handle: HServerListRequest?
+        final class HandleBox: @unchecked Sendable {
+            var handle: HServerListRequest?
+            init() { handle = nil }
+        }
+        let handle = HandleBox()
 
         let callbacks = ServerCallbacks(api: steam) {
-            steam.matchmakingServers.releaseRequest(handle!)
+            steam.matchmakingServers.releaseRequest(handle.handle!)
             TestClient.stopRunningFrames()
         }
 
-        handle = steam.matchmakingServers.requestInternetServerList(appIndex: steam.utils.getAppID(),
-                                                                    filters: ["gamedir" : "spacewar", "secure" : "1"],
-                                                                    requestServersResponse: callbacks)
+        handle.handle = steam.matchmakingServers.requestInternetServerList(appIndex: steam.utils.getAppID(),
+                                                                           filters: ["gamedir" : "spacewar", "secure" : "1"],
+                                                                           requestServersResponse: callbacks)
 
         TestClient.runFrames() // until we finish...
     }

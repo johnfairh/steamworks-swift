@@ -518,6 +518,9 @@ extension CSteamworks.SteamNetworkingIdentity: SwiftCreatable {
 // we provide a C-style flat API of our own to deal with it.
 
 /// Steamworks `SteamNetworkingMessage_t`
+///
+/// This is not marked `Sendable` because it wraps a buffer of abritrary writable memory.
+/// May be that it needs that conformance anyway because of usage patterns, TBD.
 public struct SteamNetworkingMessage {
     private(set) var cmsg: CMsgPtr
 
@@ -648,8 +651,8 @@ extension SteamNetworkingMessage: SteamCreatable {
 // Another enum-y union thing, used for writing to SteamNetworking
 
 /// Steamworks `SteamNetworkingConfigValue_t`
-public final class SteamNetworkingConfigValue {
-    private(set) var val: SteamNetworkingConfigValue_t
+public final class SteamNetworkingConfigValue: @unchecked Sendable {
+    let val: SteamNetworkingConfigValue_t
     private var owned: UnsafeMutablePointer<CChar>! = nil
 
     deinit {
@@ -661,19 +664,22 @@ public final class SteamNetworkingConfigValue {
     }
 
     public init(_ s: SteamNetworkingConfigValueSetting, value: Int) {
-        val = SteamNetworkingConfigValue_t()
+        var val = SteamNetworkingConfigValue_t()
         val.SetInt32(.init(s), Int32(value))
+        self.val = val
     }
 
     public init(_ s: SteamNetworkingConfigValueSetting, value: Float) {
-        val = SteamNetworkingConfigValue_t()
+        var val = SteamNetworkingConfigValue_t()
         val.SetFloat(.init(s), value)
+        self.val = val
     }
 
     public init(_ s: SteamNetworkingConfigValueSetting, value: String) {
         owned = strdup(value)
-        val = SteamNetworkingConfigValue_t()
+        var val = SteamNetworkingConfigValue_t()
         val.SetString(.init(s), owned)
+        self.val = val
     }
 }
 
@@ -687,8 +693,7 @@ extension SteamNetworkingConfigValue_t {
 
 // MARK: SteamAPIWarningMessageHook
 
-public typealias SteamAPIWarningMessageHook = Optional<@convention(c) (Int32, UnsafePointer<CChar>?) -> Void>
-// XXX nullable?
+public typealias SteamAPIWarningMessageHook = Optional<@Sendable @convention(c) (Int32, UnsafePointer<CChar>?) -> Void>
 
 // MARK: IPv4 address helper
 
