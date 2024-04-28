@@ -231,7 +231,7 @@ public class SteamBaseAPI: @unchecked Sendable {
     ///
     /// This calls the appropriate version of `ISteamUtils::SetWarningMessageHook()`.
     public func useLoggerForSteamworksWarnings() {
-        utils.setWarningMessageHook(function: steamApiWarningMessageHook)
+        utils.setWarningMessageHook(function: { @Sendable x, y in steamApiWarningMessageHook(isWarning: x, message: y) })
     }
 
     // MARK: Interfaces

@@ -48,7 +48,7 @@
 // MARK: Client Protocols
 
 /// Steamworks `ISteamMatchmakingServerListResponse`
-public protocol SteamMatchmakingServerListResponse {
+public protocol SteamMatchmakingServerListResponse: Sendable {
     /// Server has responded ok with updated data
     func serverResponded(request: HServerListRequest, iServer: Int)
     /// Server has failed to respond
@@ -58,7 +58,7 @@ public protocol SteamMatchmakingServerListResponse {
 }
 
 /// Steamworks `ISteamMatchmakingPingResponse`
-public protocol SteamMatchmakingPingResponse {
+public protocol SteamMatchmakingPingResponse: Sendable {
     /// Server has responded successfully and has updated data
     func serverResponded(server: GameServerItem)
     /// Server failed to respond to the ping request
@@ -66,7 +66,7 @@ public protocol SteamMatchmakingPingResponse {
 }
 
 /// Steamworks `ISteamMatchmakingPlayersResponse`
-public protocol SteamMatchmakingPlayersResponse {
+public protocol SteamMatchmakingPlayersResponse: Sendable {
     /// Got data on a new player on the server
     func addPlayerToList(name: String, score: Int, timePlayed: Float)
     /// The server failed to respond to the request for player details
@@ -76,7 +76,7 @@ public protocol SteamMatchmakingPlayersResponse {
 }
 
 /// Steamworks `ISteamMatchmakingRulesResponse`
-public protocol SteamMatchmakingRulesResponse {
+public protocol SteamMatchmakingRulesResponse: Sendable {
     /// One of these per rule defined on the server you are querying
     func rulesResponded(rule: String, value: String)
     /// The server failed to respond to the request for rule details
