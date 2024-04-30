@@ -115,6 +115,9 @@ struct DocStructure {
     /// Common Types is a special catch-all
     static let commonTypesHeader = "steamclientpublic.h"
 
+    /// A fabricated header that we use to hold common types purely created by Steamworks-swift
+    static let fakeCommonTypesHeader = "fakecommon.h"
+
     /// 'Primary' headers each generate a section in the docs.
     /// 'Secondary' headers' contents are merged over into their primaries.
     static let secondaryHeaderMap = [
@@ -123,7 +126,10 @@ struct DocStructure {
         "isteamhttp.h" : ["steamhttpenums.h"],
         "isteamnetworkingutils.h" : ["steamnetworkingtypes.h"], /* bit arbitrary */
         "isteamnetworkingsockets.h" : ["steamnetworkingfakeip.h"],
-        commonTypesHeader : ["steamtypes.h", "steamuniverse.h", "steam_api_common.h", "steam_gameserver.h"]
+        commonTypesHeader : [
+            "steamtypes.h", "steamuniverse.h", "steam_api_common.h",
+            "steam_gameserver.h", "steam_api.h", fakeCommonTypesHeader
+        ]
     ]
 
     static let secondaryHeaders = Set(secondaryHeaderMap.values.joined())
@@ -148,7 +154,28 @@ struct DocStructure {
                  filename == Self.commonTypesHeader
     }
 
+    /// List of SwiftType type names found per header file
     typealias SwiftTypeSets = [String : Set<SwiftType>]
+
+    /// Types that need to go into the common types docs that are not found from the Steam headers
+    static let fakeCommonTypes: [(String, Generated.Kind)] = [
+        ("SteamUncheckedSendable", .struct),
+        ("SteamUnsafeRawPointer", .typedef),
+        ("SteamUnsafeMutablePointer", .typedef),
+        ("SteamUnsafeMutableRawPointer", .typedef)
+    ]
+
+    func addFakeCommonTypes(types: SwiftTypeSets) -> SwiftTypeSets {
+        var fakeTypes: Set<SwiftType> = []
+        for (name, kind) in Self.fakeCommonTypes {
+            let swiftType = SwiftType(name)
+            fakeTypes.insert(swiftType)
+            generated.add(type: swiftType, kind: kind)
+        }
+        var types = types
+        types[Self.fakeCommonTypesHeader] = fakeTypes
+        return types
+    }
 
     /// Generate ToC / Index for jazzy/bebop/j2 and docc structured 'semantically',
     /// that is by steam interface.  Broadly use the SDK header files to figure out
@@ -235,7 +262,7 @@ struct DocStructure {
 
     /// Add the secondary files' types into their primary files' sets, remove the secondaries from the list
     private func mergeSecondaryHeaders(types: SwiftTypeSets) -> SwiftTypeSets {
-        var result = types
+        var result = addFakeCommonTypes(types: types)
         for (prim, secs) in Self.secondaryHeaderMap {
             for sec in secs {
                 guard let secTypes = result.removeValue(forKey: sec) else {
