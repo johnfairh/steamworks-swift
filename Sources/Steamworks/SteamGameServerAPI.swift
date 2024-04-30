@@ -9,7 +9,7 @@
 // * `SteamGameServer_GetSteamID()`, `_BSecure()` - use the isteamgameserver version instead
 // * `SteamGameServer_ReleaseCurrentThreadMemory()` - just calls the normal version
 
-@_implementationOnly import CSteamworks
+internal import CSteamworks
 
 /// An instance of the Steamworks game server API
 ///

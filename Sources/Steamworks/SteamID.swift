@@ -5,7 +5,7 @@
 //  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
-@_implementationOnly import CSteamworks
+internal import CSteamworks
 
 /// The globally unique identifier for all Steam accounts, Steam groups, lobbies, and chat rooms.
 ///

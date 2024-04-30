@@ -5,7 +5,7 @@
 //  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
-@_implementationOnly import CSteamworks
+internal import CSteamworks
 import Logging
 
 // Interfaces that are so unusually formed and rare that there's no point

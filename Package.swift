@@ -49,7 +49,9 @@ import PackageDescription
 // so that Xcode in SPM mode can depend on Steamworks.
 
 var steamworksSwiftFlags: [SwiftSetting] = [
-    .interoperabilityMode(.Cxx)
+    .interoperabilityMode(.Cxx),
+    .enableExperimentalFeature("AccessLevelOnImport"),
+    .enableExperimentalFeature("StrictConcurrency")
 ]
 
 let pkgConfigSetting = "steamworks-swift"

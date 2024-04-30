@@ -6,7 +6,7 @@
 //
 //  This file is generated code: any edits will be overwritten.
 
-@_implementationOnly import CSteamworks
+internal import CSteamworks
 
 /// Steamworks [`ISteamNetworkingMessages`](https://partner.steamgames.com/doc/api/ISteamNetworkingMessages)
 ///

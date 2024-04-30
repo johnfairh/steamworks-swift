@@ -13,7 +13,7 @@
 // * Breakpad stuff eg. `SteamAPI_SetBreakpadAppID()` -- undocumented
 // * `SteamAPI_SetTryCatchCallbacks()` - not required because manual dispatch
 
-@_implementationOnly import CSteamworks
+internal import CSteamworks
 import Logging
 
 /// An instance of the Steamworks user API

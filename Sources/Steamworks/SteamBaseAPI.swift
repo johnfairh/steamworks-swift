@@ -14,7 +14,7 @@
 // 1) Steamworks doesn't let you do it
 // 2) The locking/cancellation honouring is horrendous
 
-@_implementationOnly import CSteamworks
+internal import CSteamworks
 import Logging
 
 /// Behavior common to both the user and game server APIs.

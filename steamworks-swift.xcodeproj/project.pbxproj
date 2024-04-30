@@ -1525,6 +1525,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/steamworks-swift",
+					"$(SRCROOT)/Sources/CSteamworks",
+					"$(SRCROOT)/Sources/CSteamworksEncryptedAppTicket",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1579,6 +1584,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/steamworks-swift",
+					"$(SRCROOT)/Sources/CSteamworks",
+					"$(SRCROOT)/Sources/CSteamworksEncryptedAppTicket",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1643,6 +1653,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/steamworks-swift",
+					"$(SRCROOT)/Sources/CSteamworks",
+				);
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1718,6 +1732,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/steamworks-swift",
+					"$(SRCROOT)/Sources/CSteamworks",
+				);
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1759,7 +1777,7 @@
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -enable-experimental-feature AccessLevelOnImport";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
@@ -1779,6 +1797,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/steamworks-swift",
+					"$(SRCROOT)/Sources/CSteamworks",
 				);
 				INFOPLIST_FILE = "steamworks-swift.xcodeproj/Client_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1808,6 +1830,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/steamworks-swift",
+					"$(SRCROOT)/Sources/CSteamworks",
 				);
 				INFOPLIST_FILE = "steamworks-swift.xcodeproj/Client_Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1923,7 +1949,7 @@
 				HEADER_SEARCH_PATHS = "/usr/local/include/steamworks-swift";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -enable-experimental-feature AccessLevelOnImport";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
