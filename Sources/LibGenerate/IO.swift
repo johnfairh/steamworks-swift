@@ -135,7 +135,7 @@ final class IO: Sendable {
         //
         \(fileHeaderLicense)
 
-        @_implementationOnly import CSteamworks
+        internal import CSteamworks
         """
     }
 

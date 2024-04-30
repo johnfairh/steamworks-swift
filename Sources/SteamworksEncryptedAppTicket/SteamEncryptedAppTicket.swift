@@ -5,8 +5,8 @@
 //  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
-@_implementationOnly import CSteamworks
-@_implementationOnly import CSteamworksEncryptedAppTicket
+internal import CSteamworks
+internal import CSteamworksEncryptedAppTicket
 import Steamworks
 
 /// Wrap up the `SteamEncryptedAppTicket` functions.

@@ -6,7 +6,7 @@
 //
 //  This file is generated code: any edits will be overwritten.
 
-@_implementationOnly import CSteamworks
+internal import CSteamworks
 
 /// Steamworks [`ISteamAppList`](https://partner.steamgames.com/doc/api/ISteamAppList)
 ///
