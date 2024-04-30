@@ -161,6 +161,8 @@ enums:
   ESteamNetworkingSendFlags:
     is_set: Int32
     prefix: nSteamNetworkingSend
+  ETimelineGameMode:
+    ignore: "In metadata but not header"
   EUGCContentDescriptorID:
     prefix: EUGCContentDescriptor
   EUGCReadAction:

@@ -657,6 +657,9 @@
         - SteamAPICall
         - SteamAPIWarningMessageHook
         - SteamErrMsg
+        - SteamUnsafeMutablePointer
+        - SteamUnsafeMutableRawPointer
+        - SteamUnsafeRawPointer
     - name: Enumerations and Option Sets
       children:
         - AccountType
@@ -676,6 +679,7 @@
         - PlayerResult
         - Result
         - ServerMode
+        - SteamAPIInitResult
         - SteamIPType
         - SteamIPv6ConnectivityProtocol
         - SteamIPv6ConnectivityState
@@ -687,6 +691,7 @@
         - GameID
         - SteamID
         - SteamIPAddress
+        - SteamUncheckedSendable
   - name: Constants
     topics:
     - name: Constants

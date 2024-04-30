@@ -3282,26 +3282,6 @@ extension ETextFilteringContext: RawConvertible { typealias From = TextFiltering
 extension TextFilteringContext: EnumWithUnrepresented { typealias From = ETextFilteringContext }
 extension TextFilteringContext: SteamCreatable {}
 
-/// Steamworks `ETimelineGameMode`
-public enum TimelineGameMode: CUnsignedInt, Sendable {
-    /// Steamworks `k_ETimelineGameMode_Invalid`
-    case invalid = 0
-    /// Steamworks `k_ETimelineGameMode_Playing`
-    case playing = 1
-    /// Steamworks `k_ETimelineGameMode_Staging`
-    case staging = 2
-    /// Steamworks `k_ETimelineGameMode_Menus`
-    case menus = 3
-    /// Steamworks `k_ETimelineGameMode_Max`
-    case max = 4
-    /// Some undocumented value
-    case unrepresentedInSwift = 5
-}
-
-extension ETimelineGameMode: RawConvertible { typealias From = TimelineGameMode }
-extension TimelineGameMode: EnumWithUnrepresented { typealias From = ETimelineGameMode }
-extension TimelineGameMode: SteamCreatable {}
-
 /// Steamworks `EUGCContentDescriptorID`
 public enum UGCContentDescriptorID: CUnsignedInt, Sendable {
     /// Steamworks `k_EUGCContentDescriptor_NudityOrSexualContent`

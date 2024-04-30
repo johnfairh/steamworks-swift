@@ -14,6 +14,9 @@
 - ``SteamAPICall``
 - ``SteamAPIWarningMessageHook``
 - ``SteamErrMsg``
+- ``SteamUnsafeMutablePointer``
+- ``SteamUnsafeMutableRawPointer``
+- ``SteamUnsafeRawPointer``
 
 ### Enumerations and Option Sets
 - ``AccountType``
@@ -33,6 +36,7 @@
 - ``PlayerResult``
 - ``Result``
 - ``ServerMode``
+- ``SteamAPIInitResult``
 - ``SteamIPType``
 - ``SteamIPv6ConnectivityProtocol``
 - ``SteamIPv6ConnectivityState``
@@ -44,3 +48,4 @@
 - ``GameID``
 - ``SteamID``
 - ``SteamIPAddress``
+- ``SteamUncheckedSendable``
