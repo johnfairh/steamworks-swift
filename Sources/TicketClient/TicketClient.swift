@@ -13,6 +13,14 @@ import Foundation
 // A quick test that the encryptedappticket stuff is linking properly.
 // Code smash-ported from SpaceWar, ticket generation is rate-limited
 // so this routine doesn't run automatically.
+//
+// This has become broken in SDK 1.59, April 2024.  Getting a failure from
+// `SteamEncryptedAppTicket_BDecryptTicket()` suggesting the hard-coded key
+// is wrong?  But even the spacewar steamworks demo code doesn't work, gets
+// the same result.  Notable that code is marked WIN32 only though, and the
+// dylib isn't set up properly in the project.
+//
+// So, dunno.  Shame.
 
 final class Client {
     let steam: SteamAPI
@@ -66,7 +74,6 @@ struct Main {
                                      0x53, 0x3b, 0xa3, 0x3c, 0xd8, 0x03, 0xbd, 0xbd ]
 
         print("TicketClient testbed, steamworks version \(SteamAPI.steamworksVersion)")
-        // XXX need to fix? SteamAPI.logger.logLevel = .trace
         guard let client = Client() else {
             return
         }
