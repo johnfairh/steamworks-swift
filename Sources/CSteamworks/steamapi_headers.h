@@ -1,9 +1,8 @@
 #include <steam/steam_api.h>
 #include <steam/steam_gameserver.h>
 
-// Steamworks 1.58 has api_flat & json that's missing from
-// isteamvideo and it straight-up doesn't build.
-enum ETimelineGameMode {};
+// Steamworks 1.59 still has fucked up SteamVideo json
+S_API ISteamVideo *SteamAPI_SteamVideo_v004();
 
 #include <steam/steam_api_flat.h>
 #include <steam/steamnetworkingfakeip.h>

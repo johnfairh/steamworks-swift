@@ -6,15 +6,6 @@
         - SteamAPI
         - SteamGameServerAPI
         - SteamEncryptedAppTicket
-  - name: SteamAppList
-    topics:
-    - name: Interfaces
-      children:
-        - SteamAppList
-    - name: Callbacks
-      children:
-        - SteamAppInstalled
-        - SteamAppUninstalled
   - name: SteamApps
     topics:
     - name: Interfaces
@@ -215,7 +206,6 @@
         - InputAnalogActionData
         - InputDigitalActionData
         - InputMotionData
-        - InputMotionDataV2
         - SteamInputActionEvent
     - name: Callbacks
       children:
@@ -633,15 +623,6 @@
         - LowBatteryPower
         - SteamAPICallCompleted
         - SteamShutdown
-  - name: SteamVideo
-    topics:
-    - name: Interfaces
-      children:
-        - SteamVideo
-    - name: Callbacks
-      children:
-        - GetOPFSettingsResult
-        - GetVideoURLResult
   - name: Common Types
     topics:
     - name: Simple types

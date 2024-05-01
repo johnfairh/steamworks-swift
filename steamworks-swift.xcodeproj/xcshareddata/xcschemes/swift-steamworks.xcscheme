@@ -160,7 +160,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      launchStyle = "0"
+      launchStyle = "1"
       useCustomWorkingDirectory = "YES"
       customWorkingDirectory = "/Users/johnf/project/swift-steamworks"
       ignoresPersistentStateOnLaunch = "NO"

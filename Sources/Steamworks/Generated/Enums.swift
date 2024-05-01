@@ -1686,6 +1686,8 @@ public enum ItemPreviewType: CUnsignedInt, Sendable {
     case environmentMapHorizontalCross = 3
     /// Steamworks `k_EItemPreviewType_EnvironmentMap_LatLong`
     case environmentMapLatLong = 4
+    /// Steamworks `k_EItemPreviewType_Clip`
+    case clip = 5
     /// Steamworks `k_EItemPreviewType_ReservedMax`
     case reservedMax = 255
     /// Some undocumented value
@@ -1716,6 +1718,8 @@ public struct ItemState: OptionSet, Sendable {
     public static let downloading = ItemState(rawValue: 16)
     /// Steamworks `k_EItemStateDownloadPending`
     public static let downloadPending = ItemState(rawValue: 32)
+    /// Steamworks `k_EItemStateDisabledLocally`
+    public static let disabledLocally = ItemState(rawValue: 64)
 }
 
 extension EItemState: RawConvertible { typealias From = ItemState }
@@ -2036,8 +2040,8 @@ public enum ParentalFeature: CUnsignedInt, Sendable {
     case test = 12
     /// Steamworks `k_EFeatureSiteLicense`
     case siteLicense = 13
-    /// Steamworks `k_EFeatureKioskMode`
-    case kioskMode = 14
+    /// Steamworks `k_EFeatureKioskMode_Deprecated`
+    case kioskModeDeprecated = 14
     /// Steamworks `k_EFeatureMax`
     case max = 15
     /// Some undocumented value
@@ -2474,8 +2478,12 @@ public enum Result: CUnsignedInt, Sendable {
     case cachedCredentialInvalid = 126
     /// Steamworks `K_EResultPhoneNumberIsVOIP`
     case phoneNumberIsVOIP = 127
+    /// Steamworks `k_EResultNotSupported`
+    case notSupported = 128
+    /// Steamworks `k_EResultFamilySizeLimitExceeded`
+    case familySizeLimitExceeded = 129
     /// Some undocumented value
-    case unrepresentedInSwift = 128
+    case unrepresentedInSwift = 130
 }
 
 extension EResult: RawConvertible { typealias From = Result }
@@ -2564,8 +2572,10 @@ public enum SteamDeviceFormFactor: CUnsignedInt, Sendable {
     case computer = 3
     /// Steamworks `k_ESteamDeviceFormFactorTV`
     case tv = 4
+    /// Steamworks `k_ESteamDeviceFormFactorVRHeadset`
+    case vrHeadset = 5
     /// Some undocumented value
-    case unrepresentedInSwift = 5
+    case unrepresentedInSwift = 6
 }
 
 extension ESteamDeviceFormFactor: RawConvertible { typealias From = SteamDeviceFormFactor }
@@ -3008,6 +3018,8 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt, Sendable {
     case fakeRateLimitRecvRate = 44
     /// Steamworks `k_ESteamNetworkingConfig_FakeRateLimit_Recv_Burst`
     case fakeRateLimitRecvBurst = 45
+    /// Steamworks `k_ESteamNetworkingConfig_OutOfOrderCorrectionWindowMicroseconds`
+    case outOfOrderCorrectionWindowMicroseconds = 51
     /// Steamworks `k_ESteamNetworkingConfig_Callback_ConnectionStatusChanged`
     case callbackConnectionStatusChanged = 201
     /// Steamworks `k_ESteamNetworkingConfig_Callback_AuthStatusChanged`
@@ -3048,12 +3060,14 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt, Sendable {
     case sdrClientSingleSocket = 22
     /// Steamworks `k_ESteamNetworkingConfig_SDRClient_ForceRelayCluster`
     case sdrClientForceRelayCluster = 29
-    /// Steamworks `k_ESteamNetworkingConfig_SDRClient_DebugTicketAddress`
-    case sdrClientDebugTicketAddress = 30
+    /// Steamworks `k_ESteamNetworkingConfig_SDRClient_DevTicket`
+    case sdrClientDevTicket = 30
     /// Steamworks `k_ESteamNetworkingConfig_SDRClient_ForceProxyAddr`
     case sdrClientForceProxyAddr = 31
     /// Steamworks `k_ESteamNetworkingConfig_SDRClient_FakeClusterPing`
     case sdrClientFakeClusterPing = 36
+    /// Steamworks `k_ESteamNetworkingConfig_SDRClient_LimitPingProbesToNearestN`
+    case sdrClientLimitPingProbesToNearestN = 60
     /// Steamworks `k_ESteamNetworkingConfig_LogLevel_AckRTT`
     case logLevelAckRTT = 13
     /// Steamworks `k_ESteamNetworkingConfig_LogLevel_PacketDecode`
@@ -3066,10 +3080,12 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt, Sendable {
     case logLevelP2PRendezvous = 17
     /// Steamworks `k_ESteamNetworkingConfig_LogLevel_SDRRelayPings`
     case logLevelSDRRelayPings = 18
+    /// Steamworks `k_ESteamNetworkingConfig_ECN`
+    case ecn = 999
     /// Steamworks `k_ESteamNetworkingConfig_DELETED_EnumerateDevVars`
     case deletedEnumerateDevVars = 35
     /// Some undocumented value
-    case unrepresentedInSwift = 208
+    case unrepresentedInSwift = 1000
 }
 
 extension ESteamNetworkingConfigValue: RawConvertible { typealias From = SteamNetworkingConfigValueSetting }
@@ -3650,10 +3666,12 @@ public enum WorkshopFileType: CUnsignedInt, Sendable {
     case steamVideo = 14
     /// Steamworks `k_EWorkshopFileTypeGameManagedItem`
     case gameManagedItem = 15
+    /// Steamworks `k_EWorkshopFileTypeClip`
+    case clip = 16
     /// Steamworks `k_EWorkshopFileTypeMax`
-    case max = 16
+    case max = 17
     /// Some undocumented value
-    case unrepresentedInSwift = 17
+    case unrepresentedInSwift = 18
 }
 
 extension EWorkshopFileType: RawConvertible { typealias From = WorkshopFileType }

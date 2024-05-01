@@ -76,8 +76,6 @@ public final class SteamAPI: SteamBaseAPI, Sendable {
 
     // MARK: Interfaces
 
-    /// Access the Steamworks `ISteamAppList` interface
-    public let appList = SteamAppList()
     /// Access the Steamworks `ISteamApps` interface
     public let apps = SteamApps()
     /// Access the Steamworks `ISteamFriends` interface

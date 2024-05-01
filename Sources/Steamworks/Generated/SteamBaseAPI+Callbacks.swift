@@ -566,16 +566,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(703), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `SteamAppInstalled_t` callback
-    func onSteamAppInstalled(_ client: @escaping (SteamAppInstalled) -> Void) {
-        callbacks.add(callbackID: CallbackID(3901), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `SteamAppUninstalled_t` callback
-    func onSteamAppUninstalled(_ client: @escaping (SteamAppUninstalled) -> Void) {
-        callbacks.add(callbackID: CallbackID(3902), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `SteamInputConfigurationLoaded_t` callback
     func onSteamInputConfigurationLoaded(_ client: @escaping (SteamInputConfigurationLoaded) -> Void) {
         callbacks.add(callbackID: CallbackID(2803), rawClient: SteamBaseAPI.makeRaw(client))
@@ -1293,16 +1283,6 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `SteamAPICallCompleted_t` callbacks
     var steamAPICallCompleted: AsyncStream<SteamAPICallCompleted> {
         AsyncStream { onSteamAPICallCompleted($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `SteamAppInstalled_t` callbacks
-    var steamAppInstalled: AsyncStream<SteamAppInstalled> {
-        AsyncStream { onSteamAppInstalled($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `SteamAppUninstalled_t` callbacks
-    var steamAppUninstalled: AsyncStream<SteamAppUninstalled> {
-        AsyncStream { onSteamAppUninstalled($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamInputConfigurationLoaded_t` callbacks

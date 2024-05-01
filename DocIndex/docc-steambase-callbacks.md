@@ -110,8 +110,6 @@
 - ``onSearchForGameProgressCallback(_:)``
 - ``onSearchForGameResultCallback(_:)``
 - ``onSteamAPICallCompleted(_:)``
-- ``onSteamAppInstalled(_:)``
-- ``onSteamAppUninstalled(_:)``
 - ``onSteamInputConfigurationLoaded(_:)``
 - ``onSteamInputDeviceConnected(_:)``
 - ``onSteamInputDeviceDisconnected(_:)``
@@ -257,8 +255,6 @@
 - ``searchForGameProgressCallback``
 - ``searchForGameResultCallback``
 - ``steamAPICallCompleted``
-- ``steamAppInstalled``
-- ``steamAppUninstalled``
 - ``steamInputConfigurationLoaded``
 - ``steamInputDeviceConnected``
 - ``steamInputDeviceDisconnected``

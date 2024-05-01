@@ -143,6 +143,8 @@ struct DocStructure {
             "isteamgamecoordinator.h", // ??
             "isteamps3overlayrenderer.h", // PS3
             "isteamnetworking.h", // deprecated
+
+            "isteamvideo.h" // randomly broken in 1.59
         ])
 
         guard !ignoredISteamHeaders.contains(filename) else {
@@ -243,7 +245,7 @@ struct DocStructure {
     /// Take the URL of a header file and return a collection of all its referenced (#include'd) files
     /// along with the Swift versions of the top-level types they define.
     private func swiftTypesFromHeader(url: URL) throws -> SwiftTypeSets {
-        Dictionary(uniqueKeysWithValues: (try ClangNode(file: url).inner ?? [])
+        Dictionary((try ClangNode(file: url).inner ?? [])
             .segmentify { $0.loc?.file != nil }
             .filter { $0.filepath.hasPrefix(io.includeURL.path) }
             .map { nodes in
@@ -256,7 +258,8 @@ struct DocStructure {
             .map(\.unnested)
             .map { nodes in
                 (nodes.filename, Set(nodes.compactMap { $0.swiftTypeName }))
-            }
+            },
+            uniquingKeysWith: { a, b in a.union(b) }
         )
     }
 
