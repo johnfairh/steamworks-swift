@@ -6,7 +6,6 @@
 - ``SteamGameServerAPI``
 - ``SteamEncryptedAppTicket``
 ### Interfaces
-- <doc:SteamAppList-Interface>
 - <doc:SteamApps-Interface>
 - <doc:SteamFriends-Interface>
 - <doc:SteamGameSearch-Interface>
@@ -32,7 +31,6 @@
 - <doc:SteamUser-Interface>
 - <doc:SteamUserStats-Interface>
 - <doc:SteamUtils-Interface>
-- <doc:SteamVideo-Interface>
 ### Common Types
 - <doc:Common-Types>
 - ``SteamConstants``

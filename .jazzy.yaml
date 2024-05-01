@@ -36,15 +36,6 @@ custom_groups:
         - SteamAPI
         - SteamGameServerAPI
         - SteamEncryptedAppTicket
-  - name: SteamAppList
-    topics:
-    - name: Interfaces
-      children:
-        - SteamAppList
-    - name: Callbacks
-      children:
-        - SteamAppInstalled
-        - SteamAppUninstalled
   - name: SteamApps
     topics:
     - name: Interfaces
@@ -245,7 +236,6 @@ custom_groups:
         - InputAnalogActionData
         - InputDigitalActionData
         - InputMotionData
-        - InputMotionDataV2
         - SteamInputActionEvent
     - name: Callbacks
       children:
@@ -663,15 +653,15 @@ custom_groups:
         - LowBatteryPower
         - SteamAPICallCompleted
         - SteamShutdown
-  - name: SteamVideo
-    topics:
-    - name: Interfaces
-      children:
-        - SteamVideo
-    - name: Callbacks
-      children:
-        - GetOPFSettingsResult
-        - GetVideoURLResult
+   - name: SteamVideo
+     topics:
+     - name: Interfaces
+       children:
+         - SteamVideo
+     - name: Callbacks
+       children:
+         - GetOPFSettingsResult
+         - GetVideoURLResult
   - name: Common Types
     topics:
     - name: Simple types
@@ -687,6 +677,9 @@ custom_groups:
         - SteamAPICall
         - SteamAPIWarningMessageHook
         - SteamErrMsg
+        - SteamUnsafeMutablePointer
+        - SteamUnsafeMutableRawPointer
+        - SteamUnsafeRawPointer
     - name: Enumerations and Option Sets
       children:
         - AccountType
@@ -706,6 +699,7 @@ custom_groups:
         - PlayerResult
         - Result
         - ServerMode
+        - SteamAPIInitResult
         - SteamIPType
         - SteamIPv6ConnectivityProtocol
         - SteamIPv6ConnectivityState
@@ -717,6 +711,7 @@ custom_groups:
         - GameID
         - SteamID
         - SteamIPAddress
+        - SteamUncheckedSendable
   - name: Constants
     topics:
     - name: Constants

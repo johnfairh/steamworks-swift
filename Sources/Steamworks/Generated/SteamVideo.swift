@@ -13,30 +13,10 @@ internal import CSteamworks
 /// Access via ``SteamAPI/video``.
 public struct SteamVideo: Sendable {
     var interface: UnsafeMutablePointer<ISteamVideo> {
-        SteamAPI_SteamVideo_v003()
+        SteamAPI_SteamVideo_v004()
     }
 
     init() {
-    }
-
-    /// Steamworks `ISteamVideo::AddTimelineHighlightMarker()`
-    public func addTimelineHighlightMarker(icon: String, title: String, description: String, priority: Int) {
-        SteamAPI_ISteamVideo_AddTimelineHighlightMarker(interface, icon, title, description, uint32(priority))
-    }
-
-    /// Steamworks `ISteamVideo::AddTimelineRangeEnd()`
-    public func addTimelineRangeEnd(id: String) {
-        SteamAPI_ISteamVideo_AddTimelineRangeEnd(interface, id)
-    }
-
-    /// Steamworks `ISteamVideo::AddTimelineRangeStart()`
-    public func addTimelineRangeStart(id: String, title: String) {
-        SteamAPI_ISteamVideo_AddTimelineRangeStart(interface, id, title)
-    }
-
-    /// Steamworks `ISteamVideo::AddTimelineTimestamp()`
-    public func addTimelineTimestamp(title: String) {
-        SteamAPI_ISteamVideo_AddTimelineTimestamp(interface, title)
     }
 
     /// Steamworks `ISteamVideo::GetOPFSettings()`

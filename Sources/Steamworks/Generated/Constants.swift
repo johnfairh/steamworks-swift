@@ -22,6 +22,12 @@ public enum SteamConstants {
     /// Steamworks `k_cchFilenameMax`
     public static let filenameMaxSize = Int(260)
 
+    /// Steamworks `k_usFriendGameInfoQueryPort_Error`
+    public static let friendGameInfoQueryPortError = UInt16(0xFFFE)
+
+    /// Steamworks `k_usFriendGameInfoQueryPort_NotInitialized`
+    public static let friendGameInfoQueryPortNotInitialized = UInt16(0xFFFF)
+
     /// Steamworks `k_cchGameExtraInfoMax`
     public static let gameExtraInfoMaxSize = Int(64)
 
@@ -166,6 +172,11 @@ extension InputHandle {
 extension InputHandle {
     /// Steamworks `STEAM_INPUT_HANDLE_INVALID`
     public static let invalid = InputHandle(0)
+}
+
+extension AccountID {
+    /// Steamworks `k_uAccountIdInvalid`
+    public static let invalid = AccountID(0)
 }
 
 extension SteamAPICall {

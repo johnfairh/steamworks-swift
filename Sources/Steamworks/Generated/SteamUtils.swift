@@ -44,6 +44,11 @@ public struct SteamUtils: Sendable {
         SteamAPI_ISteamUtils_DismissFloatingGamepadTextInput(interface)
     }
 
+    /// Steamworks `ISteamUtils::DismissGamepadTextInput()`
+    public func dismissGamepadTextInput() -> Bool {
+        SteamAPI_ISteamUtils_DismissGamepadTextInput(interface)
+    }
+
     /// Steamworks `ISteamUtils::FilterText()`
     public func filterText(context: TextFilteringContext, steamID: SteamID, inputMessage: String, byteSizeOutFilteredText: Int) -> (rc: Int, filteredText: String) {
         var tmpFilteredText = SteamOutString(length: byteSizeOutFilteredText)

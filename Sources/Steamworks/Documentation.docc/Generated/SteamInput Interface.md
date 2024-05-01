@@ -30,7 +30,6 @@
 - ``InputAnalogActionData``
 - ``InputDigitalActionData``
 - ``InputMotionData``
-- ``InputMotionDataV2``
 - ``SteamInputActionEvent``
 
 ### Callbacks
