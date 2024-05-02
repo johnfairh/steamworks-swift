@@ -63,18 +63,19 @@ var clientLinkerSettings: [LinkerSetting] = []
 import Foundation
 
 let pkgConfigPath: String
+let pathArgs: [String]
 
 let envPath = Context.environment["PATH"] ?? ""
 if envPath.contains("/usr/local/bin") {
-    pkgConfigPath = envPath
+    pathArgs = []
 } else {
     // Xcode's broken PATH or no standard pkgconfig; make a guess
-    pkgConfigPath = "\(envPath):/usr/local/bin"
+    pathArgs = ["-P", "\(envPath):/usr/local/bin"]
 }
 
 let hasPkgConfig =
   (try? Process.run(URL(fileURLWithPath: "/usr/bin/env"),
-                    arguments: ["-P", pkgConfigPath, "pkg-config", "steamworks-swift"])).map { p in
+                    arguments: pathArgs + ["pkg-config", "steamworks-swift"])).map { p in
     p.waitUntilExit()
     return p.terminationStatus == 0
   } ?? false
