@@ -49,11 +49,44 @@ class TestApiSimple: XCTestCase {
         TestClient.runFrames()
     }
 
+    /// CallReturn -- async callbacks with async-await
+    func testCallReturnAsync() async throws {
+        let steam = try await TestClient.getAsyncClient()
+        let steamID = steam.user.getSteamID()
+        XCTAssertTrue(steamID.isValid)
+        print("SteamID = \(steamID)")
+
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask { @MainActor in
+                MainActor.assertIsolated()
+                if let res = await steam.friends.getFollowerCount(steamID: steamID),
+                   res.result == .ok {
+                    MainActor.assertIsolated()
+                    print("GetFollowerCount: \(res.count) followers")
+                } else {
+                    XCTFail("GetFollowerCount async failed in some way.")
+                }
+
+                await TestClient.stopRunningFramesAsync()
+            }
+
+            group.addTask {
+                // This ends up running frames on the main actor
+                await TestClient.runFramesAsync()
+            }
+        }
+    }
+
     /// Callbacks - pure async notifications
     func testCallback() throws {
         let steam = try TestClient.getClient()
+        nonisolated(unsafe) var count = 0
         steam.onUserStatsReceived { statsMsg in
             XCTAssertNotNil(statsMsg)
+            guard count == 0 else {
+                return
+            }
+            count = 1
             print("User stats received: \(statsMsg)")
 
             TestClient.stopRunningFrames()
@@ -66,6 +99,41 @@ class TestApiSimple: XCTestCase {
         }
 
         TestClient.runFrames() // until callback
+    }
+
+    /// Version of the same code using async-await
+    /// Be very careful to call Steam on the main thread - this is where callbacks are delivered
+    /// by the polling in AsyncClient.  The AsyncStream of stats received happens on whatever
+    /// thread you want -- but typically I think you'd constrain that to be MainActor as well to make
+    /// it easy to call back into steam or other parts of the system.
+    func testCallbackAsync() async throws {
+        let steam = try await TestClient.getAsyncClient()
+
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+                // Probably not on main actor here
+                for await statsMsg in steam.userStatsReceived {
+                    // On same executor as above, probably not main, can't call steam
+                    print("User stats received: \(statsMsg)")
+                    await TestClient.stopRunningFramesAsync()
+                    break
+                }
+            }
+
+            group.addTask { @MainActor in
+                MainActor.assertIsolated()
+                let rc = steam.userStats.requestCurrentStats()
+                guard rc else {
+                    XCTFail("RequestCurrentStats failed")
+                    return
+                }
+            }
+
+            group.addTask {
+                // This ends up running frames on the main actor
+                await TestClient.runFramesAsync()
+            }
+        }
     }
 
     /// Simple string stuff

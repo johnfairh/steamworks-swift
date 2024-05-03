@@ -68,7 +68,48 @@ enum TestClient {
         }
     }
 
+    typealias FrameCallbackAsync = @Sendable (SteamAPI) async -> Void
+
+    @MainActor
+    final class AsyncClient {
+        let steam: SteamAPI
+        private var runningFrames: Bool { runningFramesTask != nil }
+        private var runningFramesTask: Task<Void,Never>?
+        private var frameCallback: FrameCallbackAsync?
+
+        init(steam: SteamAPI) {
+            self.steam = steam
+            frameCallback = nil
+        }
+
+        private func frame() async {
+            steam.runCallbacks()
+            await frameCallback?(steam)
+        }
+
+        func runFrames(callback: FrameCallbackAsync?) async {
+            precondition(runningFramesTask == nil)
+            frameCallback = callback
+            runningFramesTask = Task {
+                while !Task.isCancelled {
+                    try? await Task.sleep(nanoseconds: (1000/60) * 1000)
+                    MainActor.assertIsolated()
+                    await frame()
+                }
+            }
+            _ = await runningFramesTask?.result
+            runningFramesTask = nil
+        }
+
+        func stopRunningFrames() {
+            precondition(runningFramesTask != nil)
+            runningFramesTask!.cancel()
+        }
+    }
+
+
     nonisolated(unsafe) private static var client: Client?
+    nonisolated(unsafe) private static var asyncClient: AsyncClient?
 
     static func getClient() throws -> SteamAPI {
         if let client {
@@ -95,9 +136,22 @@ enum TestClient {
         throw InitFailure()
     }
 
+    static func getAsyncClient() async throws -> SteamAPI {
+        if let asyncClient {
+            return asyncClient.steam
+        }
+        let steam = try getClient()
+        asyncClient = await AsyncClient(steam: steam)
+        return steam
+    }
+
     /// Run frames until  `stopRunningFrames` is called
     static func runFrames(callback: FrameCallback? = nil) {
         client?.runFrames(callback: callback)
+    }
+
+    static func runFramesAsync(callback: FrameCallbackAsync? = nil) async {
+        await asyncClient?.runFrames(callback: callback)
     }
 
     static func runFrames(count: Int) {
@@ -112,6 +166,10 @@ enum TestClient {
 
     static func stopRunningFrames() {
         client?.stopRunningFrames()
+    }
+
+    static func stopRunningFramesAsync() async {
+        await asyncClient?.stopRunningFrames()
     }
 }
 
