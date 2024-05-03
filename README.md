@@ -99,7 +99,7 @@ for await userStatsReceived in steam.userStatsReceived {
   ...
 }
 ```
-...but see [Swift concurrency concerns](#swift-concurrency-concerns).
+Be sure to check [Swift concurrency concerns](#swift-concurrency-concerns).
 
 ### Functions
 
@@ -139,10 +139,11 @@ steam.friends.getFollowerCount(steamID: steamID) { getFollowerCount in
 }
 ```
 
-Again there are async versions, see [Swift concurrency concerns](#swift-concurrency-concerns):
+There are async versions:
 ```swift
 let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
 ```
+...but do check [Swift concurrency concerns](#swift-concurrency-concerns).
 
 ### Array-length parameters
 
@@ -205,23 +206,24 @@ pretty weird in Swift but no way to avoid.  Some Steamworks APIs support the old
 to get the required length" two-pass style and these patterns are wrapped up in a Swifty
 way in the `SteamworksHelpers` module.
 
-## Swift concurrency concerns
+## Swift Concurrency Concerns
 
-The Steamworks architecture is thread-based.  For each thread you want to call steam APIs
+The Steamworks architecture is thread-based.  For each thread you want to call Steam APIs
 you must regularly call `SteamAPI.runCallbacks()` or `SteamAPI.releaseCurrentThreadMemory()`.
 The former synchronously calls back into your code to fulfill callbacks; they both do
 internal thread-specific housekeeping.
 
-Swift concurrency and its built-in dispatch-based executors are dead-set against users
+Swift concurrency and its built-in libdispatch-based executors are dead-set against users
 thinking about threads, with a begrudging exception for 'the main thread'.
 
 To use async-await with Steamworks I think there are two approaches:
 1. Keep Steam interactions on the main thread.  Use `@MainActor` and related tools to keep
-   your code there.  If you need to call steam from another isolation domain then you have
-   to hop over -- just like AppKit and friends.
-2. Write a custom executor that creates and runs its own threads, manages a work queue and
-   the Steam polling required.  Assign instances of these executors to actors to host your
-   program.
+   your code there (`MainActor.assumeIsolated()` can be a life-saver).  If you need to call
+   Steam from another isolation domain then you have to hop over -- just like with AppKit
+   and friends.
+2. Write a custom executor that creates and runs its own threads, manages a work queue, and
+   integrates the required Steam polling.  Assign instances of these executors to actors to
+   host your program, tastefully choosing the number and distribution of threads.
 
 A couple of examples of (1) in the tests, see `TestApiSimple.testCallReturnAsync()` and
 `TestApiSimple.testCallbackAsync()` along with their callback-based versions.
