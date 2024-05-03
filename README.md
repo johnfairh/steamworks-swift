@@ -7,7 +7,7 @@
 
 A practical interface to the Steamworks SDK using the Swift C++ importer.
 
-**Caveat Integrator: The Swift C++ importer is immature and unpredictable; this package is built on top**
+**Caveat Integrator: The Swift C++ importer is new and shaky; this package is built on top**
 
 Current state:
 * All Steamworks interfaces complete - see [API docs](https://johnfairh.github.io/steamworks-swift/index.html)
@@ -18,10 +18,9 @@ Current state:
   doing various sync and async tasks.
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
-* Requires Swift 5.9, Xcode 15 -- Linux C++ interop is extremely flakey in 5.9 but sort of works
-* The Xcode project basically works.  SourceKit can manage tab completion; in Xcode 15 even the module
-  interface view seems to work.
-* Unit tests sometimes crash inside steam on exit - some kind of XCTest incompatibility.
+* Requires Swift 5.10, Xcode 15.3 -- Linux C++ interop is a bit better in 5.10 but still curious
+* The Xcode project basically works.
+* Unit tests sometimes crash inside steam on exit - some kind of XCTest incompatibility?
 
 Below:
 * [Concept](#concept)
@@ -52,7 +51,7 @@ Below:
 
 ### Next
 
-* Review `async` model using `@MainActor` to fix up the threads
+* Try to sketch out a working steamworks custom executor.
 * More SpaceWar porting over to Swift to check general practicality, somewhat real-world usage,
   general interest - see [spacewar-swift](https://github.com/johnfairh/spacewar-swift).
 
@@ -100,7 +99,7 @@ for await userStatsReceived in steam.userStatsReceived {
   ...
 }
 ```
-...but these need the panacea of custom executors to be practical.
+Be sure to check [Swift concurrency concerns](#swift-concurrency-concerns).
 
 ### Functions
 
@@ -140,10 +139,11 @@ steam.friends.getFollowerCount(steamID: steamID) { getFollowerCount in
 }
 ```
 
-Again there are async versions that are impractical for now:
+There are async versions:
 ```swift
 let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
 ```
+...but do check [Swift concurrency concerns](#swift-concurrency-concerns).
 
 ### Array-length parameters
 
@@ -206,12 +206,34 @@ pretty weird in Swift but no way to avoid.  Some Steamworks APIs support the old
 to get the required length" two-pass style and these patterns are wrapped up in a Swifty
 way in the `SteamworksHelpers` module.
 
+## Swift Concurrency Concerns
+
+The Steamworks architecture is thread-based.  For each thread you want to call Steam APIs
+you must regularly call `SteamAPI.runCallbacks()` or `SteamAPI.releaseCurrentThreadMemory()`.
+The former synchronously calls back into your code to fulfill callbacks; they both do
+internal thread-specific housekeeping.
+
+Swift concurrency and its built-in libdispatch-based executors are dead-set against users
+thinking about threads, with a begrudging exception for 'the main thread'.
+
+To use async-await with Steamworks I think there are two approaches:
+1. Keep Steam interactions on the main thread.  Use `@MainActor` and related tools to keep
+   your code there (`MainActor.assumeIsolated()` can be a life-saver).  If you need to call
+   Steam from another isolation domain then you have to hop over -- just like with AppKit
+   and friends.
+2. Write a custom executor that creates and runs its own threads, manages a work queue, and
+   integrates the required Steam polling.  Assign instances of these executors to actors to
+   host your program, tastefully choosing the number and distribution of threads.
+
+A couple of examples of (1) in the tests, see `TestApiSimple.testCallReturnAsync()` and
+`TestApiSimple.testCallbackAsync()` along with their callback-based versions.
+
 ## How To Use This Project
 
 Prereqs:
-* Needs Swift 5.9 (Xcode 15)
+* Needs Swift 5.10 (Xcode 15.3)
 * Needs Steam client installed (and logged-in, running for the tests or to do anything useful)
-* I'm using macOS 13; should work on macOS 14, Linux; might work on Windows eventually
+* I'm using macOS 14; should work on Linux; might work on Windows eventually
 
 Install the Steamworks SDK:
 * Clone [steamworks-swift-sdk](https://github.com/johnfairh/steamworks-swift-sdk)
@@ -227,10 +249,10 @@ import PackageDescription
 let package = Package(
   name: "MySteamApp",
   platforms: [
-    .macOS("13.0"),
+    .macOS("14.0"),
   ],
   dependencies: [
-    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "0.5.1"),
+    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "0.5.2"),
   ],
   targets: [
     .executableTarget(
@@ -246,7 +268,7 @@ let package = Package(
 
 Note that you must set `.interoperabilityMode(.Cxx)` in all targets that depend on
 Steamworks, _and_ all targets that depend on them, forever and forever unto the last
-dependency.  This virality is part of the Swift 5.9 design and unavoidable for now.
+dependency.  This virality is part of the current Swift design and unavoidable for now.
 
 Sample skeleton program:
 ```swift
@@ -271,6 +293,8 @@ Fully-fledged AppKit/Metal demo [here](https://github.com/johnfairh/spacewar-swi
 ## Implementation notes
 
 ### Swift C++ Bugs
+
+_to recheck in Swift 6, noticed 5.10 has fewer simd screw-ups at least_
 
 Tech limitations, on 5.9 Xcode 15.b6:
 * Some structures/classes aren't imported -- is the common factor a `protected`
