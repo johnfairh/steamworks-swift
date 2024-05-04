@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamNetworkingMessage - Steamworks v0.2.0</title>
+   <title>SteamNetworkingMessage - Steamworks v0.5.2</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamnetworkingmessage.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.2.0</a>
+    Steamworks v0.5.2</a>
   </div>
   
 
@@ -152,47 +152,6 @@
     
 
   <a class="j2-nav-item" href="../../steamworksencryptedappticket/types/steamencryptedappticket.html?swift">SteamEncryptedAppTicket</a>
-
-
-
-  </li>
-  
-</ul>
-
-
-
-      </li>
-      
-      <li class="j2-nav-group">
-        
-
-  <a class="j2-nav-item" href="../../steamapplist.html?swift">SteamAppList</a>
-
-
-  <ul class="j2-nav-sublist">
-  
-  <li>
-    
-
-  <a class="j2-nav-item" href="../../steamworks/types/steamapplist.html?swift">SteamAppList</a>
-
-
-
-  </li>
-  
-  <li>
-    
-
-  <a class="j2-nav-item" href="../../steamworks/types/steamappinstalled1.html?swift">SteamAppInstalled</a>
-
-
-
-  </li>
-  
-  <li>
-    
-
-  <a class="j2-nav-item" href="../../steamworks/types/steamappuninstalled1.html?swift">SteamAppUninstalled</a>
 
 
 
@@ -1403,15 +1362,6 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/inputmotiondata.html?swift">InputMotionData</a>
-
-
-
-  </li>
-  
-  <li>
-    
-
-  <a class="j2-nav-item" href="../../steamworks/types/inputmotiondatav2.html?swift">InputMotionDataV2</a>
 
 
 
@@ -3986,7 +3936,7 @@
   <li>
     
 
-  <a class="j2-nav-item" href="../../steamworks/types/accountid1.html?swift">AccountID</a>
+  <a class="j2-nav-item" href="../../steamworks/types/accountid2.html?swift">AccountID</a>
 
 
 
@@ -3995,7 +3945,7 @@
   <li>
     
 
-  <a class="j2-nav-item" href="../../steamworks/types/appid30.html?swift">AppID</a>
+  <a class="j2-nav-item" href="../../steamworks/types/appid28.html?swift">AppID</a>
 
 
 
@@ -4077,6 +4027,33 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/steamerrmsg.html?swift">SteamErrMsg</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../common-types.html?swift#steamunsafemutablepointer">SteamUnsafeMutablePointer</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../common-types.html?swift#steamunsafemutablerawpointer">SteamUnsafeMutableRawPointer</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../common-types.html?swift#steamunsaferawpointer">SteamUnsafeRawPointer</a>
 
 
 
@@ -4238,6 +4215,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/steamapiinitresult.html?swift">SteamAPIInitResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/steamiptype.html?swift">SteamIPType</a>
 
 
@@ -4316,6 +4302,15 @@
 
   </li>
   
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../common-types.html?swift#steamuncheckedsendable">SteamUncheckedSendable</a>
+
+
+
+  </li>
+  
 </ul>
 
 
@@ -4334,38 +4329,6 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/steamconstants.html?swift">SteamConstants</a>
-
-
-
-  </li>
-  
-</ul>
-
-
-
-      </li>
-      
-      <li class="j2-nav-group">
-        
-
-  <a class="j2-nav-item" href="../../steamworks-types.html?swift">Steamworks Types</a>
-
-
-  <ul class="j2-nav-sublist">
-  
-  <li>
-    
-
-  <a class="j2-nav-item" href="../../steamworks/types/steamapiinitresult.html?swift">SteamAPIInitResult</a>
-
-
-
-  </li>
-  
-  <li>
-    
-
-  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
 
 
 
@@ -4418,7 +4381,8 @@
 
 
 <p>Steamworks <code>SteamNetworkingMessage_t</code></p>
-
+<p>This is not marked <a href="https://developer.apple.com/documentation/swift/sendable?language=swift" class="j2-swift"><code>Sendable</code></a><a href="https://developer.apple.com/documentation/swift/sendable?language=objc" class="j2-objc j2-secondary"><code>Sendable</code></a> because it wraps a buffer of abritrary writable memory.
+May be that it needs that conformance anyway because of usage patterns, TBD.</p>
 
 
 
@@ -4430,7 +4394,7 @@
           
           
           <nav aria-label="item details" class="j2-main-item-nav">
-            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L521-L634">Show on GitHub</a>
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L524-L637">Show on GitHub</a>
           </nav>
           
           
@@ -4496,7 +4460,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L533-L535">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L536-L538">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4556,7 +4520,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L538-L540">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L541-L543">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4616,7 +4580,7 @@
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L543-L545">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L546-L548">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4678,7 +4642,7 @@ Not used when using the ISteamNetworkingMessages interface</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L550-L557">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L553-L560">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4740,7 +4704,7 @@ For outbound messages on the ad-hoc ISteamNetworkingMessages interface: who shou
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L562-L569">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L565-L572">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4800,7 +4764,7 @@ For outbound messages on the ad-hoc ISteamNetworkingMessages interface: who shou
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L572-L574">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L575-L577">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4860,7 +4824,7 @@ For outbound messages on the ad-hoc ISteamNetworkingMessages interface: who shou
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L577-L579">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L580-L582">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4920,7 +4884,7 @@ For outbound messages on the ad-hoc ISteamNetworkingMessages interface: who shou
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L582-L584">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L585-L587">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4983,7 +4947,7 @@ using <a href="../../steamworks/types/steamnetworkingmessage.html?swift#fromfree
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L589-L591">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L592-L594">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5044,7 +5008,7 @@ using <a href="../../steamworks/types/steamnetworkingmessage.html?swift#fromfree
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L593-L595">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L596-L598">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5104,7 +5068,7 @@ using <a href="../../steamworks/types/steamnetworkingmessage.html?swift#fromfree
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L598-L600">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L601-L603">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5164,7 +5128,7 @@ using <a href="../../steamworks/types/steamnetworkingmessage.html?swift#fromfree
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L603-L605">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L606-L608">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5225,7 +5189,7 @@ For outbound messages, all bits are relevant</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L609-L616">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L612-L619">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5286,7 +5250,7 @@ For outbound messages, all bits are relevant</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L620-L622">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L623-L625">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5347,7 +5311,7 @@ For inbound messages, what lane was the message received on?</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L626-L633">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/ManualTypes.swift#L629-L636">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5442,7 +5406,7 @@ For inbound messages, what lane was the message received on?</p>
   <div class="col j2-footer small pt-2">
     <p>Distributed under the MIT license.  Maintained by <a href="mailto:johnfairh@gmail.com">John Fairhurst</a>.</p>
     
-    <p>Generated by <a class="link" href="https://github.com/johnfairh/Bebop" target="_blank" rel="external noopener">Bebop v1.10.0</a> using the FW2020 theme, based on technology from <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫</a>.</p>
+    <p>Generated by <a class="link" href="https://github.com/johnfairh/Bebop" target="_blank" rel="external noopener">Bebop v1.11.0</a> using the FW2020 theme, based on technology from <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫</a>.</p>
     
   </div>
 </footer>

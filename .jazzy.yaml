@@ -21,8 +21,8 @@ build_tool_arguments:
   - "-I${PWD}/sdk/public"
   - "-Xlinker"
   - "-lc++"
-title: Steamworks v0.2.0
-module_version: 0.2.0
+title: Steamworks v0.5.2
+module_version: 0.5.2
 topic_style: source-order-defs
 hide_coverage: true
 undocumented_text: ""
@@ -653,15 +653,15 @@ custom_groups:
         - LowBatteryPower
         - SteamAPICallCompleted
         - SteamShutdown
-   - name: SteamVideo
-     topics:
-     - name: Interfaces
-       children:
-         - SteamVideo
-     - name: Callbacks
-       children:
-         - GetOPFSettingsResult
-         - GetVideoURLResult
+  - name: SteamVideo
+    topics:
+    - name: Interfaces
+      children:
+        - SteamVideo
+    - name: Callbacks
+      children:
+        - GetOPFSettingsResult
+        - GetVideoURLResult
   - name: Common Types
     topics:
     - name: Simple types
