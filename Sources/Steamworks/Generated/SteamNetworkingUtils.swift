@@ -159,7 +159,8 @@ public struct SteamNetworkingUtils: Sendable {
     /// Steamworks `ISteamNetworkingUtils::SetConfigValueStruct()`
     @discardableResult
     public func setConfigValueStruct(opt: SteamNetworkingConfigValue, scopeType: SteamNetworkingConfigScope, obj: Int) -> Bool {
-        SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct(interface, SteamNetworkingConfigValue_t(opt), ESteamNetworkingConfigScope(scopeType), intptr_t(obj))
+//        SteamAPI_ISteamNetworkingUtils_SetConfigValueStruct(interface, SteamNetworkingConfigValue_t(opt), ESteamNetworkingConfigScope(scopeType), intptr_t(obj))
+        false
     }
 
     /// Steamworks `ISteamNetworkingUtils::SetConnectionConfigValueFloat()`
