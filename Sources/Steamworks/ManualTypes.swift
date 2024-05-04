@@ -685,11 +685,11 @@ public final class SteamNetworkingConfigValue: @unchecked Sendable {
 
 extension SteamNetworkingConfigValue: SteamCreatable {}
 
-extension SteamNetworkingConfigValue_t {
-    init(_ swift: SteamNetworkingConfigValue) {
-        self = swift.val
-    }
-}
+//extension SteamNetworkingConfigValue_t {
+//    init(_ swift: SteamNetworkingConfigValue) {
+//        self = swift.val
+//    }
+//}
 
 // MARK: SteamAPIWarningMessageHook
 

@@ -51,20 +51,23 @@ public struct SteamNetworkingSockets: Sendable {
 
     /// Steamworks `ISteamNetworkingSockets::ConnectByIPAddress()`
     public func connectByIPAddress(address: SteamNetworkingIPAddr, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
-        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress(interface, CSteamworks.SteamNetworkingIPAddr(address), CInt(options.count), &tmpOptions))
+//        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
+//        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectByIPAddress(interface, CSteamworks.SteamNetworkingIPAddr(address), CInt(options.count), &tmpOptions))
+        .invalid
     }
 
     /// Steamworks `ISteamNetworkingSockets::ConnectP2P()`
     public func connectP2P(identityRemote: SteamNetworkingIdentity, remoteVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
-        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectP2P(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), CInt(remoteVirtualPort), CInt(options.count), &tmpOptions))
+//        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
+//        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectP2P(interface, CSteamworks.SteamNetworkingIdentity(identityRemote), CInt(remoteVirtualPort), CInt(options.count), &tmpOptions))
+        .invalid
     }
 
     /// Steamworks `ISteamNetworkingSockets::ConnectToHostedDedicatedServer()`
     public func connectToHostedDedicatedServer(identityTarget: SteamNetworkingIdentity, remoteVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamNetConnection {
-        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectToHostedDedicatedServer(interface, CSteamworks.SteamNetworkingIdentity(identityTarget), CInt(remoteVirtualPort), CInt(options.count), &tmpOptions))
+//        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
+//        return HSteamNetConnection(SteamAPI_ISteamNetworkingSockets_ConnectToHostedDedicatedServer(interface, CSteamworks.SteamNetworkingIdentity(identityTarget), CInt(remoteVirtualPort), CInt(options.count), &tmpOptions))
+        .invalid
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateFakeUDPPort()`
@@ -74,26 +77,30 @@ public struct SteamNetworkingSockets: Sendable {
 
     /// Steamworks `ISteamNetworkingSockets::CreateHostedDedicatedServerListenSocket()`
     public func createHostedDedicatedServerListenSocket(localVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
-        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateHostedDedicatedServerListenSocket(interface, CInt(localVirtualPort), CInt(options.count), &tmpOptions))
+//        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
+//        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateHostedDedicatedServerListenSocket(interface, CInt(localVirtualPort), CInt(options.count), &tmpOptions))
+        .invalid
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateListenSocketIP()`
     public func createListenSocketIP(address: SteamNetworkingIPAddr, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
-        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketIP(interface, CSteamworks.SteamNetworkingIPAddr(address), CInt(options.count), &tmpOptions))
+//        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
+//        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketIP(interface, CSteamworks.SteamNetworkingIPAddr(address), CInt(options.count), &tmpOptions))
+        .invalid
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateListenSocketP2P()`
     public func createListenSocketP2P(localVirtualPort: Int, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
-        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2P(interface, CInt(localVirtualPort), CInt(options.count), &tmpOptions))
+//        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
+//        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2P(interface, CInt(localVirtualPort), CInt(options.count), &tmpOptions))
+        .invalid
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateListenSocketP2PFakeIP()`
     public func createListenSocketP2PFakeIP(fakePort: Int, options: [SteamNetworkingConfigValue]) -> HSteamListenSocket {
-        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
-        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2PFakeIP(interface, CInt(fakePort), CInt(options.count), &tmpOptions))
+//        var tmpOptions = options.map { SteamNetworkingConfigValue_t($0) }
+//        return HSteamListenSocket(SteamAPI_ISteamNetworkingSockets_CreateListenSocketP2PFakeIP(interface, CInt(fakePort), CInt(options.count), &tmpOptions))
+        .invalid
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreatePollGroup()`

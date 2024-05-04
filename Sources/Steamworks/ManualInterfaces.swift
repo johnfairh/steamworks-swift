@@ -137,9 +137,9 @@ extension SteamNetworkingUtils {
     /// Use `ISteamNetworkingUtils::SetDebugOutputFunction()` to send networking debug tracing
     /// through the ``SteamBaseAPI/logger`` logger.
     public func useLoggerForDebug(detailLevel: SteamNetworkingSocketsDebugOutputType) {
-        SteamAPI_ISteamNetworkingUtils_SetDebugOutputFunction(interface,
-                                                              ESteamNetworkingSocketsDebugOutputType(detailLevel),
-                                                              networkingUtilsDebugCallback)
+//        SteamAPI_ISteamNetworkingUtils_SetDebugOutputFunction(interface,
+//                                                              ESteamNetworkingSocketsDebugOutputType(detailLevel),
+//                                                              networkingUtilsDebugCallback)
     }
 }
 

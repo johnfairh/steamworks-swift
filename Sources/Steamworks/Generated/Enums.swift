@@ -3154,7 +3154,7 @@ public enum SteamNetworkingGetConfigValueResult: CInt, Sendable {
     case unrepresentedInSwift = 3
 }
 
-extension ESteamNetworkingGetConfigValueResult: RawConvertible { typealias From = SteamNetworkingGetConfigValueResult }
+//extension ESteamNetworkingGetConfigValueResult: RawConvertible { typealias From = SteamNetworkingGetConfigValueResult }
 extension SteamNetworkingGetConfigValueResult: EnumWithUnrepresented { typealias From = ESteamNetworkingGetConfigValueResult }
 extension SteamNetworkingGetConfigValueResult: SteamCreatable {}
 
@@ -3240,7 +3240,7 @@ public enum SteamNetworkingSocketsDebugOutputType: CUnsignedInt, Sendable {
     case unrepresentedInSwift = 9
 }
 
-extension ESteamNetworkingSocketsDebugOutputType: RawConvertible { typealias From = SteamNetworkingSocketsDebugOutputType }
+//extension ESteamNetworkingSocketsDebugOutputType: RawConvertible { typealias From = SteamNetworkingSocketsDebugOutputType }
 extension SteamNetworkingSocketsDebugOutputType: EnumWithUnrepresented { typealias From = ESteamNetworkingSocketsDebugOutputType }
 extension SteamNetworkingSocketsDebugOutputType: SteamCreatable {}
 
