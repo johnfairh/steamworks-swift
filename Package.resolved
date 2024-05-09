@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-atomics.git",
       "state" : {
-        "revision" : "cd142fd2f64be2100422d658e7411e39489da985",
-        "version" : "1.2.0"
+        "branch" : "main",
+        "revision" : "1f2007ef4165432f59f28615c473eb79a844a2af"
       }
     },
     {

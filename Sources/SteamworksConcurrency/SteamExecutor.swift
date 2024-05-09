@@ -6,15 +6,23 @@
 //
 
 import Foundation // NSCondition, Thread
-import Atomics
-
-// add in steam tweaks
 
 // hmm
 extension TimeInterval {
     public static let steamFastPoll: TimeInterval = Double(1)/Double(60)
     public static let steamSlowPoll: TimeInterval = 0.1
 }
+
+// doesn't work on Linux:
+//
+// 1) foundation APIs don't match
+// 2) swift-atomics doesn't link (maybe C++ breakage)
+
+#if !os(Linux)
+
+import Atomics
+
+// add in steam tweaks
 
 public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     /// Combination mutex & CV protecting ``jobs`` and ``quit`` and ``thread``
@@ -95,7 +103,9 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
         }
 
         func maybePoll() -> Date {
-            if Date.now >= due {
+            let now = Date.now
+            if now >= due {
+//                print("\(client.name) overdue by \(now.timeIntervalSince1970 * 1000 - due.timeIntervalSince1970 * 1000)ms")
                 poll()
                 // intentionally resample, not counting time in `poll()`
                 due = Date.now.advanced(by: client.interval)
@@ -218,3 +228,36 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
         }
     }
 }
+
+#else
+
+public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
+    public struct APIClient {
+        public init(interval: TimeInterval = .steamSlowPoll, name: String = "APIClient") {
+        }
+    }
+
+    public struct Stats {
+        public let jobCount: Int
+        public struct APIClient {
+            public let name: String
+            public let pollCount: Int
+        }
+        public let apiClients: [APIClient]
+    }
+
+    public var thread: Thread? {
+        nil
+    }
+
+    public var stats: Stats { Stats(jobCount: 0, apiClients:[Stats.APIClient(name: "", pollCount: 0)]) }
+    public func enqueue(_ job: consuming ExecutorJob) {}
+    public func stop() {}
+
+    public init(apiClients: [APIClient], name: String = "SteamExecutor", qos: QualityOfService = .default) {}
+    public convenience init(apiClient: APIClient, name: String = "SteamExecutor", qos: QualityOfService = .default) {
+        self.init(apiClients: [apiClient])
+    }
+}
+
+#endif

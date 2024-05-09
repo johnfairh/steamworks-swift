@@ -126,7 +126,7 @@ let package = Package(
     .package(url: "https://github.com/apple/swift-log.git", from: "1.4.2"),
     .package(url: "https://github.com/jpsim/Yams.git", from: "5.0.5"),
     .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
-    .package(url: "https://github.com/apple/swift-atomics.git", from: "1.2.0"),
+    .package(url: "https://github.com/apple/swift-atomics.git", branch: "main"),
   ],
   targets: [
     .systemLibrary(
@@ -164,7 +164,8 @@ let package = Package(
       name: "SteamworksConcurrency",
       dependencies: [
         "Steamworks",
-        .product(name: "Atomics", package: "swift-atomics")
+        .product(name: "Atomics", package: "swift-atomics",
+                 condition: .when(platforms: [.macOS]))
       ],
       swiftSettings: [.interoperabilityMode(.Cxx)] // lies lies lies
     ),
