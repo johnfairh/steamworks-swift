@@ -7,22 +7,17 @@
 
 import Foundation // NSCondition, Thread
 
-// hmm
-extension TimeInterval {
-    public static let steamFastPoll: TimeInterval = Double(1)/Double(60)
-    public static let steamSlowPoll: TimeInterval = 0.1
-}
-
 // doesn't work on Linux:
 //
 // 1) foundation APIs don't match
-// 2) swift-atomics doesn't link (maybe C++ breakage)
+// 2) swift-atomics doesn't link (maybe C++ breakage?)
 
 #if !os(Linux)
 
 import Atomics
 
-// add in steam tweaks
+// straighten out field init
+// add in actual steam tweaks
 
 public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     /// Combination mutex & CV protecting ``jobs`` and ``quit`` and ``thread``
@@ -68,7 +63,7 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
 
 
         /// Create a new client to be polled
-        public init(interval: TimeInterval = .steamSlowPoll, name: String = "APIClient") {
+        public init(interval: TimeInterval = 0.1, name: String = "APIClient") {
             self.interval = interval
             self.name = name
         }
@@ -105,7 +100,6 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
         func maybePoll() -> Date {
             let now = Date.now
             if now >= due {
-//                print("\(client.name) overdue by \(now.timeIntervalSince1970 * 1000 - due.timeIntervalSince1970 * 1000)ms")
                 poll()
                 // intentionally resample, not counting time in `poll()`
                 due = Date.now.advanced(by: client.interval)
@@ -176,25 +170,37 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     }
 
     private func threadMain() {
+        cond.lock()
+
         while quit == .no {
             maybePoll()
-            let loopJobs = cond.withLock {
+
+            if jobs.isEmpty {
                 cond.wait(until: apiPollDue)
-                defer { jobs = [] }
-                return jobs
             }
+            let loopJobs = jobs
+            jobs = []
+
+            cond.unlock()
+
+            // May be worth adding ``maybePoll()`` calls into this loop,
+            // or limiting the time spent - on the whole though think not,
+            // we're not in RT-world here.  New jobs created by this loop
+            // don't extend it, in practice the length of the list is of the
+            // order #-actors-using-executor
 
             for job in loopJobs {
                 jobCount.wrappingIncrement(ordering: .relaxed)
                 job.runSynchronously(on: asUnownedSerialExecutor())
-                maybePoll()
             }
+
+            cond.lock()
         }
 
-        cond.withLock {
-            quit = .done
-            cond.signal()
-        }
+        quit = .done
+        cond.signal()
+
+        cond.unlock()
     }
 
     /// Get a snapshot of the executor's statistics
@@ -233,7 +239,7 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
 
 public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     public struct APIClient {
-        public init(interval: TimeInterval = .steamSlowPoll, name: String = "APIClient") {
+        public init(interval: TimeInterval = 0.1, name: String = "APIClient") {
         }
     }
 
