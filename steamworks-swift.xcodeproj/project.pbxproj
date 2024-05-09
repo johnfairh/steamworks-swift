@@ -35,6 +35,23 @@
 		020861002746747F00725122 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860FF2746747E00725122 /* Callbacks.swift */; };
 		020861022746CE8000725122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020861012746CE8000725122 /* Constants.swift */; };
 		020861042746D27000725122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020861032746D27000725122 /* Constants.swift */; };
+		021D5CD62BE69F6F00AC6757 /* SteamFriends+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B052879A54900780A57 /* SteamFriends+Helpers.swift */; };
+		021D5CD72BE69F6F00AC6757 /* SteamMatchmaking+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B202886C82400780A57 /* SteamMatchmaking+Helpers.swift */; };
+		021D5CD82BE69F6F00AC6757 /* SteamUser+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B232886D68B00780A57 /* SteamUser+Helpers.swift */; };
+		021D5CD92BE69F6F00AC6757 /* SteamNetworkingSockets+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B0F287C4B9500780A57 /* SteamNetworkingSockets+Helpers.swift */; };
+		021D5CDA2BE69F6F00AC6757 /* SteamParties+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B0B287AC7C000780A57 /* SteamParties+Helpers.swift */; };
+		021D5CDB2BE69F6F00AC6757 /* SteamUtils+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B11287CA1CE00780A57 /* SteamUtils+Helpers.swift */; };
+		021D5CDD2BE69F6F00AC6757 /* SteamNetworkingUtils+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B09287AC6B900780A57 /* SteamNetworkingUtils+Helpers.swift */; };
+		021D5CDE2BE69F6F00AC6757 /* SteamUGC+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B0D287AC88300780A57 /* SteamUGC+Helpers.swift */; };
+		021D5CDF2BE69F6F00AC6757 /* SteamInventory+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B07287AC08400780A57 /* SteamInventory+Helpers.swift */; };
+		021D5CE02BE69F6F00AC6757 /* SteamHTTP+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B81B152881955700780A57 /* SteamHTTP+Helpers.swift */; };
+		021D5CE22BE69F6F00AC6757 /* Steamworks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; };
+		021D5CE52BE69F6F00AC6757 /* Steamworks.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		021D5CF02BE6A02600AC6757 /* SteamExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D5CEF2BE6A02600AC6757 /* SteamExecutor.swift */; };
+		021D5CF22BE6A5ED00AC6757 /* TestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D5CF12BE6A5ED00AC6757 /* TestExecutor.swift */; };
+		021D5CF32BE6A63C00AC6757 /* SteamworksConcurrency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 021D5CE92BE69F6F00AC6757 /* SteamworksConcurrency.framework */; };
+		021D5CF42BE6A63D00AC6757 /* SteamworksConcurrency.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 021D5CE92BE69F6F00AC6757 /* SteamworksConcurrency.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		021D5CFA2BECCBD400AC6757 /* Atomics in Frameworks */ = {isa = PBXBuildFile; productRef = 021D5CF92BECCBD400AC6757 /* Atomics */; };
 		0234566D2A83B32E00DF4D9E /* Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234566C2A83B32E00DF4D9E /* Generated.swift */; };
 		0234566F2A8A400600DF4D9E /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0234566E2A8A400600DF4D9E /* Documentation.docc */; };
 		0251F12D2A82430B00D70E15 /* DocStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251F12B2A8242EC00D70E15 /* DocStructure.swift */; };
@@ -125,6 +142,27 @@
 			remoteGlobalIDString = 020860AD273047D100725122;
 			remoteInfo = LibGenerate;
 		};
+		021D5CD12BE69F6F00AC6757 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "swift-steamworks::Steamworks";
+			remoteInfo = Steamworks;
+		};
+		021D5CD32BE69F6F00AC6757 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "swift-steamworks::Steamworks";
+			remoteInfo = Steamworks;
+		};
+		021D5CF52BE6A63D00AC6757 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 021D5CCF2BE69F6F00AC6757;
+			remoteInfo = SteamworksConcurrency;
+		};
 		02AD45CA27578A5B00BD93ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
@@ -193,6 +231,28 @@
 			dstSubfolderSpec = 10;
 			files = (
 				020860C62730485900725122 /* LibGenerate.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		021D5CE42BE69F6F00AC6757 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				021D5CE52BE69F6F00AC6757 /* Steamworks.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		021D5CF72BE6A63D00AC6757 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				021D5CF42BE6A63D00AC6757 /* SteamworksConcurrency.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +340,9 @@
 		020860FF2746747E00725122 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
 		020861012746CE8000725122 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		020861032746D27000725122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		021D5CE92BE69F6F00AC6757 /* SteamworksConcurrency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SteamworksConcurrency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		021D5CEF2BE6A02600AC6757 /* SteamExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SteamExecutor.swift; path = Sources/SteamworksConcurrency/SteamExecutor.swift; sourceTree = SOURCE_ROOT; };
+		021D5CF12BE6A5ED00AC6757 /* TestExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExecutor.swift; sourceTree = "<group>"; };
 		0234566C2A83B32E00DF4D9E /* Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generated.swift; sourceTree = "<group>"; };
 		0234566E2A8A400600DF4D9E /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		0251F12B2A8242EC00D70E15 /* DocStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocStructure.swift; sourceTree = "<group>"; };
@@ -381,6 +444,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		021D5CE12BE69F6F00AC6757 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				021D5CE22BE69F6F00AC6757 /* Steamworks.framework in Frameworks */,
+				021D5CFA2BECCBD400AC6757 /* Atomics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		02AD45BB2757892B00BD93ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -431,6 +503,7 @@
 			files = (
 				02B81B182882E00000780A57 /* SteamworksHelpers.framework in Frameworks */,
 				020860CA2730486A00725122 /* LibGenerate.framework in Frameworks */,
+				021D5CF32BE6A63C00AC6757 /* SteamworksConcurrency.framework in Frameworks */,
 				OBJ_49 /* Steamworks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +552,15 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		021D5CEC2BE69FF000AC6757 /* SteamworksConcurrency */ = {
+			isa = PBXGroup;
+			children = (
+				021D5CEF2BE6A02600AC6757 /* SteamExecutor.swift */,
+			);
+			name = SteamworksConcurrency;
+			path = Sources/SteamworksConcurrency;
+			sourceTree = SOURCE_ROOT;
 		};
 		02AD45C527578A0500BD93ED /* SteamworksEncryptedAppTicket */ = {
 			isa = PBXGroup;
@@ -617,6 +699,7 @@
 				0292DD15288AAB39003B72D6 /* TestApiInput.swift */,
 				027F8376274BB8E900963383 /* TestSteamID.swift */,
 				02FD863B28D48BC900E4DE85 /* TestHtmlSurface.swift */,
+				021D5CF12BE6A5ED00AC6757 /* TestExecutor.swift */,
 				020860D227304C2300725122 /* TestUtils.swift */,
 			);
 			name = SteamworksTests;
@@ -634,6 +717,7 @@
 				02AD45C32757892B00BD93ED /* SteamworksEncryptedAppTicket.framework */,
 				02AD45D827578D3C00BD93ED /* TicketClient */,
 				02B81AFA28799FEE00780A57 /* SteamworksHelpers.framework */,
+				021D5CE92BE69F6F00AC6757 /* SteamworksConcurrency.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -659,6 +743,7 @@
 				OBJ_13 /* Steamworks */,
 				02AD45C527578A0500BD93ED /* SteamworksEncryptedAppTicket */,
 				02B81B042879A0BE00780A57 /* SteamworksHelpers */,
+				021D5CEC2BE69FF000AC6757 /* SteamworksConcurrency */,
 				OBJ_8 /* CSteamworks */,
 				02AD45CF27578C2700BD93ED /* CSteamworksEncryptedAppTicket */,
 				0208609B272EB98600725122 /* LibGenerate */,
@@ -687,6 +772,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		020860A9273047D100725122 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		021D5CD42BE69F6F00AC6757 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -742,6 +834,30 @@
 			productName = Generate;
 			productReference = 020860BD2730485000725122 /* Generate */;
 			productType = "com.apple.product-type.tool";
+		};
+		021D5CCF2BE69F6F00AC6757 /* SteamworksConcurrency */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 021D5CE62BE69F6F00AC6757 /* Build configuration list for PBXNativeTarget "SteamworksConcurrency" */;
+			buildPhases = (
+				021D5CD42BE69F6F00AC6757 /* Headers */,
+				021D5CD52BE69F6F00AC6757 /* Sources */,
+				021D5CE12BE69F6F00AC6757 /* Frameworks */,
+				021D5CE32BE69F6F00AC6757 /* Resources */,
+				021D5CE42BE69F6F00AC6757 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				021D5CD02BE69F6F00AC6757 /* PBXTargetDependency */,
+				021D5CD22BE69F6F00AC6757 /* PBXTargetDependency */,
+			);
+			name = SteamworksConcurrency;
+			packageProductDependencies = (
+				021D5CF92BECCBD400AC6757 /* Atomics */,
+			);
+			productName = Generate;
+			productReference = 021D5CE92BE69F6F00AC6757 /* SteamworksConcurrency.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		02AD458E2757892B00BD93ED /* SteamworksEncryptedAppTicket */ = {
 			isa = PBXNativeTarget;
@@ -851,11 +967,13 @@
 				OBJ_46 /* Sources */,
 				OBJ_48 /* Frameworks */,
 				02D4F6642A3F24450061C798 /* Resources */,
+				021D5CF72BE6A63D00AC6757 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				OBJ_50 /* PBXTargetDependency */,
+				021D5CF62BE6A63D00AC6757 /* PBXTargetDependency */,
 			);
 			name = SteamworksTests;
 			productName = SteamworksTests;
@@ -897,6 +1015,7 @@
 			packageReferences = (
 				02086093272C194A00725122 /* XCRemoteSwiftPackageReference "swift-log" */,
 				02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */,
+				021D5CF82BECCBD400AC6757 /* XCRemoteSwiftPackageReference "swift-atomics" */,
 			);
 			productRefGroup = OBJ_18 /* Products */;
 			projectDirPath = "";
@@ -910,12 +1029,20 @@
 				020860AD273047D100725122 /* LibGenerate */,
 				"swift-steamworks::SteamworksTests" /* SteamworksTests */,
 				02AD45D727578D3C00BD93ED /* TicketClient */,
+				021D5CCF2BE69F6F00AC6757 /* SteamworksConcurrency */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		020860AC273047D100725122 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		021D5CE32BE69F6F00AC6757 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -968,6 +1095,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				020860C02730485000725122 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		021D5CD52BE69F6F00AC6757 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				021D5CD62BE69F6F00AC6757 /* SteamFriends+Helpers.swift in Sources */,
+				021D5CD72BE69F6F00AC6757 /* SteamMatchmaking+Helpers.swift in Sources */,
+				021D5CD82BE69F6F00AC6757 /* SteamUser+Helpers.swift in Sources */,
+				021D5CD92BE69F6F00AC6757 /* SteamNetworkingSockets+Helpers.swift in Sources */,
+				021D5CDA2BE69F6F00AC6757 /* SteamParties+Helpers.swift in Sources */,
+				021D5CDB2BE69F6F00AC6757 /* SteamUtils+Helpers.swift in Sources */,
+				021D5CDD2BE69F6F00AC6757 /* SteamNetworkingUtils+Helpers.swift in Sources */,
+				021D5CDE2BE69F6F00AC6757 /* SteamUGC+Helpers.swift in Sources */,
+				021D5CDF2BE69F6F00AC6757 /* SteamInventory+Helpers.swift in Sources */,
+				021D5CE02BE69F6F00AC6757 /* SteamHTTP+Helpers.swift in Sources */,
+				021D5CF02BE6A02600AC6757 /* SteamExecutor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,6 +1221,7 @@
 				02B81B142881779F00780A57 /* TestApiSimple.swift in Sources */,
 				02B81B1D288556BB00780A57 /* TestApiNetworking.swift in Sources */,
 				02FD863C28D48BC900E4DE85 /* TestHtmlSurface.swift in Sources */,
+				021D5CF22BE6A5ED00AC6757 /* TestExecutor.swift in Sources */,
 				020860D327304C2300725122 /* TestUtils.swift in Sources */,
 				02B81B1B2885551600780A57 /* TestApiMatchmaking.swift in Sources */,
 				020860A8273014B900725122 /* TestGenVersion.swift in Sources */,
@@ -1090,6 +1236,21 @@
 			isa = PBXTargetDependency;
 			target = 020860AD273047D100725122 /* LibGenerate */;
 			targetProxy = 020860C72730485900725122 /* PBXContainerItemProxy */;
+		};
+		021D5CD02BE69F6F00AC6757 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "swift-steamworks::Steamworks" /* Steamworks */;
+			targetProxy = 021D5CD12BE69F6F00AC6757 /* PBXContainerItemProxy */;
+		};
+		021D5CD22BE69F6F00AC6757 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "swift-steamworks::Steamworks" /* Steamworks */;
+			targetProxy = 021D5CD32BE69F6F00AC6757 /* PBXContainerItemProxy */;
+		};
+		021D5CF62BE6A63D00AC6757 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 021D5CCF2BE69F6F00AC6757 /* SteamworksConcurrency */;
+			targetProxy = 021D5CF52BE6A63D00AC6757 /* PBXContainerItemProxy */;
 		};
 		02AD45CB27578A5B00BD93ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1191,7 +1352,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1264,7 +1425,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1326,7 +1487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1379,11 +1540,171 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		021D5CE72BE69F6F00AC6757 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/steamworks-swift",
+					"$(SRCROOT)/Sources/CSteamworks",
+				);
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
+				PRODUCT_BUNDLE_IDENTIFIER = tml.Generate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		021D5CE82BE69F6F00AC6757 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/steamworks-swift",
+					"$(SRCROOT)/Sources/CSteamworks",
+				);
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
+				PRODUCT_BUNDLE_IDENTIFIER = tml.Generate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1409,7 +1730,7 @@
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1450,7 +1771,7 @@
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1522,7 +1843,7 @@
 					"$(SRCROOT)/Sources/CSteamworks",
 					"$(SRCROOT)/Sources/CSteamworksEncryptedAppTicket",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
@@ -1581,7 +1902,7 @@
 					"$(SRCROOT)/Sources/CSteamworks",
 					"$(SRCROOT)/Sources/CSteamworksEncryptedAppTicket",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
@@ -1656,7 +1977,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1735,7 +2056,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1767,7 +2088,7 @@
 				);
 				HEADER_SEARCH_PATHS = "/usr/local/include/steamworks-swift";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -enable-experimental-feature AccessLevelOnImport";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1801,7 +2122,7 @@
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 					"@executable_path",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
@@ -1834,7 +2155,7 @@
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 					"@executable_path",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
@@ -1867,7 +2188,7 @@
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1906,7 +2227,7 @@
 					"$(inherited)",
 					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1940,7 +2261,7 @@
 				);
 				HEADER_SEARCH_PATHS = "/usr/local/include/steamworks-swift";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -enable-experimental-feature AccessLevelOnImport";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1976,7 +2297,7 @@
 					"@loader_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
@@ -2010,7 +2331,7 @@
 					"@loader_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -enable-experimental-cxx-interop";
@@ -2039,6 +2360,15 @@
 			buildConfigurations = (
 				020860C22730485000725122 /* Debug */,
 				020860C32730485000725122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		021D5CE62BE69F6F00AC6757 /* Build configuration list for PBXNativeTarget "SteamworksConcurrency" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				021D5CE72BE69F6F00AC6757 /* Debug */,
+				021D5CE82BE69F6F00AC6757 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2117,6 +2447,14 @@
 				minimumVersion = 1.4.2;
 			};
 		};
+		021D5CF82BECCBD400AC6757 /* XCRemoteSwiftPackageReference "swift-atomics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-atomics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jpsim/Yams.git";
@@ -2132,6 +2470,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02086093272C194A00725122 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
+		};
+		021D5CF92BECCBD400AC6757 /* Atomics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 021D5CF82BECCBD400AC6757 /* XCRemoteSwiftPackageReference "swift-atomics" */;
+			productName = Atomics;
 		};
 		02AD4552274FA54B00BD93ED /* Yams */ = {
 			isa = XCSwiftPackageProductDependency;
