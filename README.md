@@ -16,6 +16,8 @@ Current state:
 * Some interface quality-of-life helpers in a separate `SteamworksHelpers` module
 * `make test` builds and runs unit tests that run frame loops and access portions of the Steam API
   doing various sync and async tasks.
+* Experimental custom-executor for multithreaded Steamworks access in a separate
+  `SteamworksConcurrency` module
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
 * Requires Swift 5.10, Xcode 15.3 -- Linux C++ interop is a bit better in 5.10 but still curious
@@ -51,7 +53,7 @@ Below:
 
 ### Next
 
-* Try to sketch out a working steamworks custom executor.
+* Finish practical Swift concurrency support in Swift 6
 * More SpaceWar porting over to Swift to check general practicality, somewhat real-world usage,
   general interest - see [spacewar-swift](https://github.com/johnfairh/spacewar-swift).
 
@@ -143,7 +145,8 @@ There are async versions:
 ```swift
 let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
 ```
-...but do check [Swift concurrency concerns](#swift-concurrency-concerns).
+...but do check [Swift concurrency concerns](#swift-concurrency-concerns): this form is
+not safe right now, though this should be fixable in Swift 6.
 
 ### Array-length parameters
 
@@ -221,12 +224,22 @@ To use async-await with Steamworks I think there are two approaches:
    your code there (`MainActor.assumeIsolated()` can be a life-saver).  If you need to call
    Steam from another isolation domain then you have to hop over -- just like with AppKit
    and friends.
-2. Write a custom executor that creates and runs its own threads, manages a work queue, and
-   integrates the required Steam polling.  Assign instances of these executors to actors to
-   host your program, tastefully choosing the number and distribution of threads.
+
+   Call `SteamAPI.runCallbacks()` as part of your frame loop or similar.
+
+2. Use a Swift custom executor to manage a thread to run your code and do the required
+   Steam polling.  Assign instances of these executors to actors to host your program,
+   tastefully choosing the number and distribution of threads.
 
 A couple of examples of (1) in the tests, see `TestApiSimple.testCallReturnAsync()` and
 `TestApiSimple.testCallbackAsync()` along with their callback-based versions.
+
+A prototype executor for (2) in ``SteamExecutor`` in the `SteamworksConcurrency` module,
+along with an example of use in `TestExecutor.testExecutorSteam()`.
+
+I think a practical solution is to mix these: use `@MainActor`-bound code for general
+things, using the frame loop to trigger frequent callbacks, and then use one or more
+executors to look after gameservers or lower-priority work.
 
 ## How To Use This Project
 

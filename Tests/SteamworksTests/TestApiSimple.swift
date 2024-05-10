@@ -59,6 +59,9 @@ class TestApiSimple: XCTestCase {
         await withTaskGroup(of: Void.self) { group in
             group.addTask { @MainActor in
                 MainActor.assertIsolated()
+
+                // XXX wrong! This await switches executors -- need to
+                // XXX inherit the caller's isolation (Swift 6 #isolation probably).
                 if let res = await steam.friends.getFollowerCount(steamID: steamID),
                    res.result == .ok {
                     MainActor.assertIsolated()
@@ -111,7 +114,9 @@ class TestApiSimple: XCTestCase {
 
         await withTaskGroup(of: Void.self) { group in
             group.addTask {
-                // Probably not on main actor here
+                // Probably not on main actor here, but that's fine, these guys
+                // don't actually call C Steamworks - they just register a function
+                // on the Swift side to get called later by the frameloop.
                 for await statsMsg in steam.userStatsReceived {
                     // On same executor as above, probably not main, can't call steam
                     print("User stats received: \(statsMsg)")

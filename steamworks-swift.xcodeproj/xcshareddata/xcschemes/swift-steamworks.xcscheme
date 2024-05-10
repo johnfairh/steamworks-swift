@@ -142,6 +142,13 @@
             BlueprintName = "Steamworks"
             ReferencedContainer = "container:swift-steamworks.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "021D5CCF2BE69F6F00AC6757"
+            BuildableName = "SteamworksConcurrency.framework"
+            BlueprintName = "SteamworksConcurrency"
+            ReferencedContainer = "container:steamworks-swift.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
