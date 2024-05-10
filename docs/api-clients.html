@@ -152,6 +152,66 @@
 
   </li>
   
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor.html?swift">SteamExecutor</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor/apiclient.html?swift">APIClient</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor/apiclient/pollkind.html?swift">PollKind</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor/stats.html?swift">Stats</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor/stats/apiclient1.html?swift">APIClient</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+  </li>
+  
 </ul>
 
 
@@ -4642,6 +4702,96 @@ version.</p>
             
             
             <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksEncryptedAppTicket/SteamEncryptedAppTicket.swift#L15-L114">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="steamexecutor" class="j2-item j2-swift j2-always">
+    <a name="//apple_ref/cpp/Class/class%20SteamExecutor" class="dashAnchor j2-item-dash-anchor" data-item-id="steamexecutor"></a>
+    <h4 class="visually-hidden">class SteamExecutor</h4>
+    
+    
+    <a class="j2-item-title" href="#_steamexecutor" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_steamexecutor"><code>
+        <span class="j2-swift j2-always"><span class="j2-item-secondary">class </span>SteamExecutor</span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_steamexecutor">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>An executor for associating actors with Steamworks</p>
+<p><strong>EXPERIMENTAL</strong></p>
+<p>This creates a single new thread to run <code>Actor</code>/<code>Task</code> code and periodically
+call Steamworks – either to dispatch callbacks or do Steamworks maintenance work.</p>
+<p>A single executor thread can support multiple <a href="steamworksconcurrency/types/steamexecutor/apiclient.html?swift"><code>APIClient</code></a>s so you can service a
+gameserver and client API from the same thread.</p>
+<p>This solves the problem of using Swift concurrency with Steamworks outside of the
+main thread.</p>
+<p>Problems:</p>
+<ol>
+<li>
+<p>Until Swift 6 makes isolation inheritance work, it’s still not safe to actually use the
+<code>async</code> version of the APIs.</p>
+</li>
+<li>
+<p>The poll resolution promised by the API is dubious – probably because of the
+thread priorities available via <code>NSThread</code> getting anything below 100ms is a
+bit sketchy.</p>
+</li>
+</ol>
+<p>To Do (perhaps):</p>
+<ul>
+<li>Change the API clients at runtime - eg. creation of a server or something</li>
+<li>Figure out what on earth is wrong with Linux vs. swift-atomics</li>
+</ul>
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift j2-always">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public final class SteamExecutor: <a href="https://developer.apple.com/documentation/swift/serialexecutor?language=swift">SerialExecutor</a>, @unchecked <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            <span class="j2-item-nav-item">
+            
+              <span class="j2-swift j2-always"><a href="steamworksconcurrency/types/steamexecutor.html?swift">Show members</a></span>
+            
+            
+            </span>
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L44-L315">Show on GitHub</a></span>
             
           </nav>
         </div>

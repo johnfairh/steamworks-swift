@@ -17,7 +17,7 @@ import Steamworks
 
 import Atomics
 
-/// An executor for associating Actors with Steamworks
+/// An executor for associating actors with Steamworks
 ///
 /// **EXPERIMENTAL**
 ///
@@ -56,42 +56,19 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     }
     private var quit: Quit
 
-    /// The `QualityOfService`used by the executor's thread
-    public let qos: QualityOfService
-    /// The (debug) name associated with the executor's thread and locks
-    public let name: String
-
-    private var _thread: Thread?
-
-    /// The ``Thread`` for the executor, or ``nil`` if it's not running
-    public private(set) var thread: Thread? {
-        get {
-            cond.withLock { _thread }
-        }
-        set {
-            cond.withLock { _thread = newValue }
-        }
-    }
+    // MARK: Lifecycle
 
     /// A Steam API Client to be periodically polled
     public struct APIClient {
-        /// The Steamworks API to poll
-        public let steam: SteamBaseAPI?
+        // MARK: Configuration
 
-        /// Kind of polling to perform
+        /// The kind of polling to perform
         public enum PollKind {
             /// Call ``SteamBaseAPI.runCallbacks()``
             case runCallbacks
             /// Call ``SteamBaseAPI.releaseCurrentThreadMemory()``
             case releaseCurrentThreadMemory
         }
-        public let pollKind: PollKind
-
-        /// How frequently to poll
-        public let interval: TimeInterval
-
-        /// An identifier for this client, used for stats and debug
-        public let name: String
 
         /// Create a new client to be polled
         /// - Parameters:
@@ -108,7 +85,97 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
             self.interval = interval
             self.name = name
         }
+
+        // MARK: Properties
+
+        /// The Steamworks API being polled
+        public let steam: SteamBaseAPI?
+
+        /// The kind of polling being done
+        public let pollKind: PollKind
+
+        /// How frequently the API is polled
+        public let interval: TimeInterval
+
+        /// An identifier for this client, used for stats and debug
+        public let name: String
     }
+
+    // MARK: Lifecycle
+
+    /// Create a new Steamworks-focussed executor
+    ///
+    /// - Parameters:
+    ///   - apiClients: Description of Steamworks tasks to perform on this thread.
+    ///   - qos: The ``QualityOfService`` for the executor's thread.
+    ///   - name: A name for the executor's thread, used in stats and debug.
+    public init(apiClients: [APIClient], qos: QualityOfService = .default, name: String = "SteamExecutor") {
+        self.cond = NSCondition()
+        self.jobs = []
+        self.quit = .no
+        self.qos = qos
+        self.name = name
+        self.cond.name = "\(name) CV"
+        self._thread = nil
+        self.apiPolls = apiClients.map { .init(client: $0) }
+        self.apiPollDue = .distantPast
+        self.jobCount = .init(0)
+
+        Thread.detachNewThread { [unowned self] in
+            Thread.current.qualityOfService = qos
+            Thread.current.name = name
+            thread = Thread.current
+            threadMain()
+            thread = nil
+        }
+    }
+
+    /// Create an executor to service a single Steam API client.
+    ///
+    /// See ``init(apiClients:qos:name:)``.
+    public convenience init(apiClient: APIClient, qos: QualityOfService = .default, name: String = "SteamExecutor") {
+        self.init(apiClients: [apiClient], qos: qos, name: name)
+    }
+
+    /// Stop the executor.
+    ///
+    /// Blocks until the thread has finished any pending jobs. If any actors still exist associated with
+    /// this then they will stop working in a bad way.
+    public func stop() {
+        cond.withLock {
+            guard quit == .no else {
+                return
+            }
+            quit = .sent
+            cond.signal()
+
+            while quit == .sent {
+                cond.wait()
+            }
+        }
+    }
+
+    // MARK: Properties
+
+    /// The `QualityOfService`used by the executor's thread
+    public let qos: QualityOfService
+
+    /// The (debug) name associated with the executor's thread and locks
+    public let name: String
+
+    private var _thread: Thread?
+
+    /// The ``Thread`` for the executor, or ``nil`` if it's not running
+    public private(set) var thread: Thread? {
+        get {
+            cond.withLock { _thread }
+        }
+        set {
+            cond.withLock { _thread = newValue }
+        }
+    }
+
+    // MARK: Statistics
 
     /// Statistics about the executor and its API clients
     public struct Stats {
@@ -126,6 +193,13 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
         /// Per-``APIClient`` statistics, in order of clients passed to ``SteamExecutor.init()``.
         public let apiClients: [APIClient]
     }
+
+    /// Get a snapshot of the executor's statistics
+    public var stats: Stats {
+        Stats(jobCount: jobCount.load(ordering: .relaxed),
+              apiClients: apiPolls.map(\.stats))
+    }
+
 
     /// Executor tracking of the API Clients
     private final class APIPoll {
@@ -181,40 +255,6 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     /// Stats
     private var jobCount: ManagedAtomic<Int>
 
-    /// Create a new steamworks-focussed executor
-    ///
-    /// - Parameters:
-    ///   - apiClients: Description of Steamworks tasks to perform on this thread.
-    ///   - qos: The ``QualityOfService`` for the executor's thread.
-    ///   - name: A name for the executor's thread, used in stats and debug.
-    public init(apiClients: [APIClient], qos: QualityOfService = .default, name: String = "SteamExecutor") {
-        self.cond = NSCondition()
-        self.jobs = []
-        self.quit = .no
-        self.qos = qos
-        self.name = name
-        self.cond.name = "\(name) CV"
-        self._thread = nil
-        self.apiPolls = apiClients.map { .init(client: $0) }
-        self.apiPollDue = .distantPast
-        self.jobCount = .init(0)
-
-        Thread.detachNewThread { [unowned self] in
-            Thread.current.qualityOfService = qos
-            Thread.current.name = name
-            thread = Thread.current
-            threadMain()
-            thread = nil
-        }
-    }
-
-    /// Create an executor to service a single Steam API client.
-    ///
-    /// See ``init(apiClients:name:qos:)``.
-    public convenience init(apiClient: APIClient, qos: QualityOfService = .default, name: String = "SteamExecutor") {
-        self.init(apiClients: [apiClient], qos: qos, name: name)
-    }
-
     private func maybePoll() {
         guard Date.now >= apiPollDue else {
             return
@@ -262,12 +302,6 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
         cond.unlock()
     }
 
-    /// Get a snapshot of the executor's statistics
-    public var stats: Stats {
-        Stats(jobCount: jobCount.load(ordering: .relaxed),
-              apiClients: apiPolls.map(\.stats))
-    }
-
     /// Send a job to be executed later on the thread
     ///
     /// Called by the Swift runtime, do not call.  :nodoc:
@@ -276,24 +310,6 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
         cond.withLock {
             jobs.append(unownedJob)
             cond.signal()
-        }
-    }
-
-    /// Stop the executor.
-    ///
-    /// Blocks until the thread has finished any pending jobs. If any actors still exist associated with
-    /// this then they will stop working in a bad way.
-    public func stop() {
-        cond.withLock {
-            guard quit == .no else {
-                return
-            }
-            quit = .sent
-            cond.signal()
-
-            while quit == .sent {
-                cond.wait()
-            }
         }
     }
 }

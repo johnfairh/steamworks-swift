@@ -146,6 +146,66 @@
 
   </li>
   
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor.html?swift">SteamExecutor</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor/apiclient.html?swift">APIClient</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor/apiclient/pollkind.html?swift">PollKind</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor/stats.html?swift">Stats</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworksconcurrency/types/steamexecutor/stats/apiclient1.html?swift">APIClient</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+  </li>
+  
 </ul>
 
 
@@ -4360,6 +4420,8 @@ steamworks-swift
 <li>Some interface quality-of-life helpers in a separate <code>SteamworksHelpers</code> module</li>
 <li><code>make test</code> builds and runs unit tests that run frame loops and access portions of the Steam API
 doing various sync and async tasks.</li>
+<li>Experimental custom-executor for multithreaded Steamworks access in a separate
+<code>SteamworksConcurrency</code> module</li>
 <li>Encrypted app ticket support in separate <code>SteamworksEncryptedAppTicket</code> module</li>
 <li>Separate demo showing encrypted app-ticket stuff, <code>make run_ticket</code></li>
 <li>Requires Swift 5.10, Xcode 15.3 – Linux C++ interop is a bit better in 5.10 but still curious</li>
@@ -4405,7 +4467,7 @@ involving multiple calls, usually determining buffer lengths</li>
 Next
 </span></h3>
 <ul>
-<li>Try to sketch out a working steamworks custom executor.</li>
+<li>Finish practical Swift concurrency support in Swift 6</li>
 <li>More SpaceWar porting over to Swift to check general practicality, somewhat real-world usage,
 general interest - see <a href="https://github.com/johnfairh/spacewar-swift">spacewar-swift</a>.</li>
 </ul>
@@ -4493,7 +4555,8 @@ void MyClass::OnGetFollowerCount(FriendsGetFollowerCount_t *pCallback, bool bIOF
 <p>There are async versions:</p>
 <pre><code class="language-swift">let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
 </code></pre>
-<p>…but do check <a href="#swift-concurrency-concerns">Swift concurrency concerns</a>.</p>
+<p>…but do check <a href="#swift-concurrency-concerns">Swift concurrency concerns</a>: this form is
+not safe right now, though this should be fixable in Swift 6.</p>
 <h3 class="j2-anchor j2-heading heading" id="arraylength-parameters">
 <span data-anchor-id="arraylength-parameters">
 Array-length parameters
@@ -4562,16 +4625,26 @@ internal thread-specific housekeeping.</p>
 thinking about threads, with a begrudging exception for ‘the main thread’.</p>
 <p>To use async-await with Steamworks I think there are two approaches:</p>
 <ol>
-<li>Keep Steam interactions on the main thread.  Use <code>@MainActor</code> and related tools to keep
+<li>
+<p>Keep Steam interactions on the main thread.  Use <code>@MainActor</code> and related tools to keep
 your code there (<code>MainActor.assumeIsolated()</code> can be a life-saver).  If you need to call
 Steam from another isolation domain then you have to hop over – just like with AppKit
-and friends.</li>
-<li>Write a custom executor that creates and runs its own threads, manages a work queue, and
-integrates the required Steam polling.  Assign instances of these executors to actors to
-host your program, tastefully choosing the number and distribution of threads.</li>
+and friends.</p>
+<p>Call <code>SteamAPI.runCallbacks()</code> as part of your frame loop or similar.</p>
+</li>
+<li>
+<p>Use a Swift custom executor to manage a thread to run your code and do the required
+Steam polling.  Assign instances of these executors to actors to host your program,
+tastefully choosing the number and distribution of threads.</p>
+</li>
 </ol>
 <p>A couple of examples of (1) in the tests, see <code>TestApiSimple.testCallReturnAsync()</code> and
 <code>TestApiSimple.testCallbackAsync()</code> along with their callback-based versions.</p>
+<p>A prototype executor for (2) in <a href="steamworksconcurrency/types/steamexecutor.html?swift"><code>SteamExecutor</code></a> in the <code>SteamworksConcurrency</code> module,
+along with an example of use in <code>TestExecutor.testExecutorSteam()</code>.</p>
+<p>I think a practical solution is to mix these: use <code>@MainActor</code>-bound code for general
+things, using the frame loop to trigger frequent callbacks, and then use one or more
+executors to look after gameservers or lower-priority work.</p>
 <h2 class="j2-anchor j2-heading heading" id="how-to-use-this-project">
 <span data-anchor-id="how-to-use-this-project">
 How To Use This Project

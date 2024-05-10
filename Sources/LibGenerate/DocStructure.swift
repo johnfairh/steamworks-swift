@@ -30,7 +30,8 @@ struct DocSection {
                 "SteamBaseAPI",
                 "SteamAPI",
                 "SteamGameServerAPI",
-                "SteamEncryptedAppTicket"
+                "SteamEncryptedAppTicket",
+                "SteamExecutor" // XXX for now, should move to a separate concurrency section
             ]
         ]
     )

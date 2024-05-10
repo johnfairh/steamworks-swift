@@ -21642,6 +21642,120 @@
     "name" : "y",
     "parent_name" : "XboxOrigin"
   },
+  "steamworksconcurrency\/types\/steamexecutor.html?swift" : {
+    "abstract" : "An executor for associating actors with Steamworks",
+    "name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor.html?swift#initapiclientqosname" : {
+    "abstract" : "Create an executor to service a single Steam API client.",
+    "name" : "init(apiClient:qos:name:)",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor.html?swift#initapiclientsqosname" : {
+    "abstract" : "Create a new Steamworks-focussed executor",
+    "name" : "init(apiClients:qos:name:)",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor.html?swift#name4" : {
+    "abstract" : "The (debug) name associated with the executor’s thread and locks",
+    "name" : "name",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor.html?swift#qos" : {
+    "abstract" : "The QualityOfServiceused by the executor’s thread",
+    "name" : "qos",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor.html?swift#stats1" : {
+    "abstract" : "Get a snapshot of the executor’s statistics",
+    "name" : "stats",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor.html?swift#stop" : {
+    "abstract" : "Stop the executor.",
+    "name" : "stop()",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor.html?swift#thread" : {
+    "abstract" : "The Thread for the executor, or nil if it’s not running",
+    "name" : "thread",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient.html?swift" : {
+    "abstract" : "A Steam API Client to be periodically polled",
+    "name" : "APIClient",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient.html?swift#init_pollkindintervalname" : {
+    "abstract" : "Create a new client to be polled",
+    "name" : "init(_:pollKind:interval:name:)",
+    "parent_name" : "APIClient"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient.html?swift#interval" : {
+    "abstract" : "How frequently the API is polled",
+    "name" : "interval",
+    "parent_name" : "APIClient"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient.html?swift#name3" : {
+    "abstract" : "An identifier for this client, used for stats and debug",
+    "name" : "name",
+    "parent_name" : "APIClient"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient.html?swift#pollkind1" : {
+    "abstract" : "The kind of polling being done",
+    "name" : "pollKind",
+    "parent_name" : "APIClient"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient.html?swift#steam" : {
+    "abstract" : "The Steamworks API being polled",
+    "name" : "steam",
+    "parent_name" : "APIClient"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient\/pollkind.html?swift" : {
+    "abstract" : "The kind of polling to perform",
+    "name" : "PollKind",
+    "parent_name" : "APIClient"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient\/pollkind.html?swift#releasecurrentthreadmemory1" : {
+    "abstract" : "Call SteamBaseAPI.releaseCurrentThreadMemory()",
+    "name" : "releaseCurrentThreadMemory",
+    "parent_name" : "PollKind"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/apiclient\/pollkind.html?swift#runcallbacks2" : {
+    "abstract" : "Call SteamBaseAPI.runCallbacks()",
+    "name" : "runCallbacks",
+    "parent_name" : "PollKind"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/stats.html?swift" : {
+    "abstract" : "Statistics about the executor and its API clients",
+    "name" : "Stats",
+    "parent_name" : "SteamExecutor"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/stats.html?swift#apiclients" : {
+    "abstract" : "Per-APIClient statistics, in order of clients passed to SteamExecutor.init().",
+    "name" : "apiClients",
+    "parent_name" : "Stats"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/stats.html?swift#jobcount" : {
+    "abstract" : "Total number of jobs executed",
+    "name" : "jobCount",
+    "parent_name" : "Stats"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/stats\/apiclient1.html?swift" : {
+    "abstract" : "Statistics for one SteamExecutor.APIClient",
+    "name" : "APIClient",
+    "parent_name" : "Stats"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/stats\/apiclient1.html?swift#name5" : {
+    "abstract" : "The name of the API client",
+    "name" : "name",
+    "parent_name" : "APIClient"
+  },
+  "steamworksconcurrency\/types\/steamexecutor\/stats\/apiclient1.html?swift#pollcount" : {
+    "abstract" : "Total number of polls",
+    "name" : "pollCount",
+    "parent_name" : "APIClient"
+  },
   "steamworksencryptedappticket\/types\/steamencryptedappticket.html?swift" : {
     "abstract" : "Wrap up the SteamEncryptedAppTicket functions.",
     "name" : "SteamEncryptedAppTicket"
