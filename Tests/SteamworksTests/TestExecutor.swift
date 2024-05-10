@@ -11,11 +11,11 @@ import Foundation
 
 /// Custom executor
 class TestExecutor: XCTestCase {
-    actor SimpleActor {
+    actor SteamActor {
         nonisolated let unownedExecutor: UnownedSerialExecutor
         var counter = 0
-        init(executor: UnownedSerialExecutor) {
-            self.unownedExecutor = executor
+        init(executor: SteamExecutor) {
+            self.unownedExecutor = executor.asUnownedSerialExecutor()
         }
 
         func doSomething() async {
@@ -56,10 +56,10 @@ class TestExecutor: XCTestCase {
         try skipLinux()
 
         let threadName = "TestExec"
-        let executor = SteamExecutor(apiClient: .init(), name: threadName)
+        let executor = SteamExecutor(apiClient: .init(nil), name: threadName)
         defer { executor.stop() }
 
-        let actor = SimpleActor(executor: executor.asUnownedSerialExecutor())
+        let actor = SteamActor(executor: executor)
         await actor.doSomething()
         let counter = await actor.counter
         XCTAssertEqual(3, counter)
@@ -80,10 +80,10 @@ class TestExecutor: XCTestCase {
     func testExecutorSinglePolling() async throws {
         try skipLinux()
 
-        let executor = SteamExecutor(apiClient: .init(interval: 0.5)) // poll every 0.5s
+        let executor = SteamExecutor(apiClient: .init(nil, interval: 0.5)) // poll every 0.5s
         defer { executor.stop() }
 
-        let actor = SimpleActor(executor: executor.asUnownedSerialExecutor())
+        let actor = SteamActor(executor: executor)
         try await actor.idlePause(seconds: 4)
         let stats = try XCTUnwrap(executor.stats.apiClients.first)
         XCTAssertGreaterThanOrEqual(stats.pollCount, isCI ? 6 : 8)
@@ -95,13 +95,13 @@ class TestExecutor: XCTestCase {
         try skipLinux()
 
         let executor = SteamExecutor(apiClients: [
-            .init(interval: 0.5, name: "500ms"),
-            .init(interval: 0.1, name: "100ms"),
-            .init(interval: 1.0, name: "1s")
+            .init(nil, interval: 0.5, name: "500ms"),
+            .init(nil, interval: 0.1, name: "100ms"),
+            .init(nil, interval: 1.0, name: "1s"),
         ], qos: .userInteractive)
         defer { executor.stop() }
 
-        let actor = SimpleActor(executor: executor.asUnownedSerialExecutor())
+        let actor = SteamActor(executor: executor)
         try await actor.busyPause(seconds: 4)
         let stats = executor.stats
 
