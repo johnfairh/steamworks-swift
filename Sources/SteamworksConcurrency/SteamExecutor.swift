@@ -19,6 +19,8 @@ import Atomics
 
 /// An executor for associating Actors with Steamworks
 ///
+/// **EXPERIMENTAL**
+///
 /// This creates a single new thread to run ``Actor``/``Task`` code and periodically
 /// call Steamworks -- either to dispatch callbacks or do Steamworks maintenance work.
 ///
@@ -38,8 +40,7 @@ import Atomics
 ///
 /// To Do (perhaps):
 /// * Change the API clients at runtime - eg. creation of a server or something
-/// * Experiment with a pthread implementation instead of the foundation stuff
-/// * Figure out what on earth is wrong with Linux
+/// * Figure out what on earth is wrong with Linux vs. swift-atomics
 public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     /// Combination mutex & CV protecting ``jobs`` and ``quit`` and ``thread``
     private let cond: NSCondition
@@ -329,3 +330,68 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
 }
 
 #endif
+
+// Quick manual implementation of NSCondition - has no effect on scheduling
+// performance or anything really, guess this is what NSCondition is doing:
+// it has objc_msgSend going on but I guess that is all cached or irrelevant.
+//
+//private final class JCond {
+//    private var mutex: UnsafeMutablePointer<pthread_mutex_t>
+//    private var cond: UnsafeMutablePointer<pthread_cond_t>
+//
+//    init() {
+//        mutex = .allocate(capacity: 1)
+//        var mattr = pthread_mutexattr_t()
+//        pthread_mutexattr_init(&mattr)
+//        pthread_mutexattr_settype(&mattr, PTHREAD_MUTEX_NORMAL)
+//        pthread_mutex_init(mutex, &mattr)
+//        pthread_mutexattr_destroy(&mattr)
+//
+//        cond = .allocate(capacity: 1)
+//        pthread_cond_init(cond, nil)
+//    }
+//
+//    func lock() {
+//        pthread_mutex_lock(mutex)
+//    }
+//
+//    func unlock() {
+//        pthread_mutex_unlock(mutex)
+//    }
+//
+//    func withLock<R>(_ call: () throws -> R) rethrows -> R {
+//        lock()
+//        defer { unlock() }
+//        return try call()
+//    }
+//
+//    func wait() {
+//        pthread_cond_wait(cond, mutex)
+//    }
+//
+//    func wait(until: Date) {
+//        let epochDouble = until.timeIntervalSince1970
+//        let epochSeconds = trunc(epochDouble)
+//        let epochNano = trunc(fmod(epochDouble, 1.0) * 1E9)
+//        var timespec = timespec(tv_sec: epochSeconds, tv_nsec: epochNano)
+//        pthread_cond_timedwait(cond, mutex, &timespec)
+//    }
+//
+//    func signal() {
+//        pthread_cond_signal(cond)
+//    }
+//
+//    deinit {
+//        pthread_cond_destroy(cond)
+//        cond.deallocate()
+//        pthread_mutex_destroy(mutex)
+//        mutex.deallocate()
+//    }
+//}
+//
+// Swift C++ baffling decisions
+//extension pthread_mutexattr_t {
+//    init() {
+//        self.init(__sig: 0, __opaque: (0,0,0,0,0,0,0,0))
+//    }
+//}

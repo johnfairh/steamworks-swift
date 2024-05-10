@@ -5,6 +5,7 @@
 //  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
+import Steamworks
 import SteamworksConcurrency
 import XCTest
 import Foundation
@@ -36,6 +37,21 @@ class TestExecutor: XCTestCase {
             let until = Date.now.addingTimeInterval(TimeInterval(seconds))
             while Date.now < until {
                 try await Task.sleep(for: .milliseconds(20))
+            }
+        }
+
+        func steamWork(_ steam: SteamAPI) async {
+            let steamID = steam.user.getSteamID()
+
+            // XXX actually not safe - isolation doesn't inherit yet
+            // XXX so this dumb thing switches to a random thread...
+
+            let fc = await steam.friends.getFollowerCount(steamID: steamID)
+
+            if let fc, fc.result == .ok {
+                print("GetFollowerCount: \(fc.count) followers")
+            } else {
+                XCTFail("GetFollowerCount async failed in some way.")
             }
         }
     }
@@ -97,7 +113,7 @@ class TestExecutor: XCTestCase {
         let executor = SteamExecutor(apiClients: [
             .init(nil, interval: 0.5, name: "500ms"),
             .init(nil, interval: 0.1, name: "100ms"),
-            .init(nil, interval: 1.0, name: "1s"),
+            .init(nil, interval: 1.0, name: "1s")
         ], qos: .userInteractive)
         defer { executor.stop() }
 
@@ -119,5 +135,17 @@ class TestExecutor: XCTestCase {
                 XCTAssertLessThanOrEqual(c.pollCount, m + 2)
             }
         }
+    }
+
+    func testExecutorSteam() async throws {
+        try skipLinux()
+
+        let steam = try TestClient.getClient()
+
+        let executor = SteamExecutor(apiClient: .init(steam, interval: 0.1, name: "SteamClient"))
+        defer { executor.stop() }
+
+        let actor = SteamActor(executor: executor)
+        await actor.steamWork(steam)
     }
 }
