@@ -43,10 +43,18 @@ class TestExecutor: XCTestCase {
         func steamWork(_ steam: SteamAPI) async {
             let steamID = steam.user.getSteamID()
 
-            // XXX actually not safe - isolation doesn't inherit yet
-            // XXX so this dumb thing switches to a random thread...
+            // XXX actually not safe to call the `async` method because
+            // XXX isolation doesn't inherit.  Best can do is this inside-out
+            // XXX thing -- maddeningly this is exactly what the `async` version
+            // XXX does but because it goes in another object the isolation
+            // XXX gets broken.
 
-            let fc = await steam.friends.getFollowerCount(steamID: steamID)
+            let fc = await withUnsafeContinuation { cont in
+                self.assertIsolated()
+                steam.friends.getFollowerCount(steamID: steamID) { fc in
+                    cont.resume(returning: fc)
+                }
+            }
 
             if let fc, fc.result == .ok {
                 print("GetFollowerCount: \(fc.count) followers")
