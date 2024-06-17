@@ -5,6 +5,7 @@
 - ``SteamAPI``
 - ``SteamGameServerAPI``
 - ``SteamEncryptedAppTicket``
+- ``SteamExecutor``
 ### Interfaces
 - <doc:SteamApps-Interface>
 - <doc:SteamFriends-Interface>
