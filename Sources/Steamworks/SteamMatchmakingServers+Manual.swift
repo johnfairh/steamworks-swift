@@ -274,6 +274,7 @@ enum MatchmakingServersControl {
 
     // MARK: The list of glue callbacks exposed to C++ shim
 
+    nonisolated(unsafe)
     static let vtable: UnsafePointer<ShimMatchmakingVTable_t> = {
         let ptr = UnsafeMutablePointer<ShimMatchmakingVTable_t>.allocate(capacity: 1)
         ptr.initialize(to: .init(

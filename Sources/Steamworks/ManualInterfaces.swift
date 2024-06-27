@@ -139,7 +139,8 @@ extension SteamNetworkingUtils {
     public func useLoggerForDebug(detailLevel: SteamNetworkingSocketsDebugOutputType) {
         SteamAPI_ISteamNetworkingUtils_SetDebugOutputFunction(interface,
                                                               ESteamNetworkingSocketsDebugOutputType(detailLevel),
-                                                              networkingUtilsDebugCallback)
+                                                              // XXX swift 6 
+                                                              { networkingUtilsDebugCallback(type: $0, msg: $1) } )
     }
 }
 

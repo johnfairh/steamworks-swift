@@ -6,6 +6,7 @@
         - SteamAPI
         - SteamGameServerAPI
         - SteamEncryptedAppTicket
+        - SteamExecutor
   - name: SteamApps
     topics:
     - name: Interfaces

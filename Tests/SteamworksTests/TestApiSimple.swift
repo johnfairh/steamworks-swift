@@ -178,7 +178,7 @@ class TestApiSimple: XCTestCase {
 
             let (rc, data) = steam.http.getHTTPResponseBodyData(request: req)
             XCTAssertTrue(rc)
-            let body = String(cString: data + [0])
+            let body = String(decoding: data + [0], as: UTF8.self)
             XCTAssertTrue(body.contains("<title>Example Domain</title>"))
         }
 
