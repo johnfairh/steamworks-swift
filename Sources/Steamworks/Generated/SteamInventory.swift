@@ -217,26 +217,26 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::RequestEligiblePromoItemDefinitionsIDs()`, callback
-    public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID, completion: @escaping (SteamInventoryEligiblePromoItemDefIDs?) -> Void) {
+    public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID, completion: @Sendable @escaping (SteamInventoryEligiblePromoItemDefIDs?) -> Void) {
         let rc = SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs(interface, CUnsignedLongLong(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamInventory::RequestEligiblePromoItemDefinitionsIDs()`, async
-    public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID) async -> SteamInventoryEligiblePromoItemDefIDs? {
+    public func requestEligiblePromoItemDefinitionsIDs(isolation: isolated (any Actor)? = #isolation, steamID: SteamID) async -> SteamInventoryEligiblePromoItemDefIDs? {
         await withUnsafeContinuation {
             requestEligiblePromoItemDefinitionsIDs(steamID: steamID, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamInventory::RequestPrices()`, callback
-    public func requestPrices(completion: @escaping (SteamInventoryRequestPricesResult?) -> Void) {
+    public func requestPrices(completion: @Sendable @escaping (SteamInventoryRequestPricesResult?) -> Void) {
         let rc = SteamAPI_ISteamInventory_RequestPrices(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamInventory::RequestPrices()`, async
-    public func requestPrices() async -> SteamInventoryRequestPricesResult? {
+    public func requestPrices(isolation: isolated (any Actor)? = #isolation) async -> SteamInventoryRequestPricesResult? {
         await withUnsafeContinuation {
             requestPrices(completion: $0.resume)
         }
@@ -278,7 +278,7 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::StartPurchase()`, callback
-    public func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int], completion: @escaping (SteamInventoryStartPurchaseResult?) -> Void) {
+    public func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int], completion: @Sendable @escaping (SteamInventoryStartPurchaseResult?) -> Void) {
         var tmpArrayItemDefs = arrayItemDefs.map { SteamItemDef_t($0) }
         var tmpArrayQuantity = arrayQuantity.map { uint32($0) }
         let rc = SteamAPI_ISteamInventory_StartPurchase(interface, &tmpArrayItemDefs, &tmpArrayQuantity, uint32(arrayQuantity.count))
@@ -286,7 +286,7 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::StartPurchase()`, async
-    public func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int]) async -> SteamInventoryStartPurchaseResult? {
+    public func startPurchase(isolation: isolated (any Actor)? = #isolation, arrayItemDefs: [SteamItemDef], arrayQuantity: [Int]) async -> SteamInventoryStartPurchaseResult? {
         await withUnsafeContinuation {
             startPurchase(arrayItemDefs: arrayItemDefs, arrayQuantity: arrayQuantity, completion: $0.resume)
         }

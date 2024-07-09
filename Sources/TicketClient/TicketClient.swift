@@ -22,7 +22,7 @@ import Foundation
 //
 // So, dunno.  Shame.
 
-final class Client {
+final class Client: @unchecked Sendable {
     let steam: SteamAPI
 
     let frameSource: DispatchSourceTimer

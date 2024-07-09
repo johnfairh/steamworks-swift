@@ -6,6 +6,7 @@
 //
 
 // Swift 5.7 -- `import Dispatch` appears to work again in C++ mode...
+// Swift 6 - Swift's Synchronization.Mutex doesn't seem to exist yet...
 import Dispatch
 
 final class Lock: Sendable {

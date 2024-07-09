@@ -20,13 +20,13 @@ public struct SteamGameServer: Sendable {
     }
 
     /// Steamworks `ISteamGameServer::AssociateWithClan()`, callback
-    public func associateWithClan(clan: SteamID, completion: @escaping (AssociateWithClanResult?) -> Void) {
+    public func associateWithClan(clan: SteamID, completion: @Sendable @escaping (AssociateWithClanResult?) -> Void) {
         let rc = SteamAPI_ISteamGameServer_AssociateWithClan(interface, CUnsignedLongLong(clan))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamGameServer::AssociateWithClan()`, async
-    public func associateWithClan(clan: SteamID) async -> AssociateWithClanResult? {
+    public func associateWithClan(isolation: isolated (any Actor)? = #isolation, clan: SteamID) async -> AssociateWithClanResult? {
         await withUnsafeContinuation {
             associateWithClan(clan: clan, completion: $0.resume)
         }
@@ -64,13 +64,13 @@ public struct SteamGameServer: Sendable {
     }
 
     /// Steamworks `ISteamGameServer::ComputeNewPlayerCompatibility()`, callback
-    public func computeNewPlayerCompatibility(newPlayer: SteamID, completion: @escaping (ComputeNewPlayerCompatibilityResult?) -> Void) {
+    public func computeNewPlayerCompatibility(newPlayer: SteamID, completion: @Sendable @escaping (ComputeNewPlayerCompatibilityResult?) -> Void) {
         let rc = SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility(interface, CUnsignedLongLong(newPlayer))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamGameServer::ComputeNewPlayerCompatibility()`, async
-    public func computeNewPlayerCompatibility(newPlayer: SteamID) async -> ComputeNewPlayerCompatibilityResult? {
+    public func computeNewPlayerCompatibility(isolation: isolated (any Actor)? = #isolation, newPlayer: SteamID) async -> ComputeNewPlayerCompatibilityResult? {
         await withUnsafeContinuation {
             computeNewPlayerCompatibility(newPlayer: newPlayer, completion: $0.resume)
         }
@@ -117,13 +117,13 @@ public struct SteamGameServer: Sendable {
     }
 
     /// Steamworks `ISteamGameServer::GetServerReputation()`, callback
-    public func getServerReputation(completion: @escaping (GSReputation?) -> Void) {
+    public func getServerReputation(completion: @Sendable @escaping (GSReputation?) -> Void) {
         let rc = SteamAPI_ISteamGameServer_GetServerReputation(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamGameServer::GetServerReputation()`, async
-    public func getServerReputation() async -> GSReputation? {
+    public func getServerReputation(isolation: isolated (any Actor)? = #isolation) async -> GSReputation? {
         await withUnsafeContinuation {
             getServerReputation(completion: $0.resume)
         }

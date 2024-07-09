@@ -9,10 +9,14 @@ import Steamworks
 import SteamworksHelpers
 import XCTest
 
+// Private client + private server, shutdown server before client => SUCCESS NO CRASHY
+// Shared client + private server, no shutdown client => CRASHY ON ATEXIT
+// Shared client + private server, shutdown client here & restart it => SUCCESS NO CRASHY
+
 /// Create and shut down the gameserver version of the API
 class TestApiServer: XCTestCase {
     func testGameServer() throws {
-        let _ = try TestClient.getClient() // need steam client init to make server work
+        let client = try TestClient.getClient() // need steam client init to make server work
 
         guard let server = SteamGameServerAPI(port: 27100, serverMode: .noAuthentication, version: "1.0.0.0") else {
             XCTFail("SteamGameServerAPI init failed")
@@ -24,8 +28,10 @@ class TestApiServer: XCTestCase {
         let ip = server.gameServer.getPublicIP()
         XCTAssertEqual(0, ip.ipv4Address)
         server.runCallbacks()
+        client.runCallbacks()
+    }
 
-        // seems to cause "src/tier1/fileio.cpp (5164) : m_vecRegisteredWriters.Count() == 0" at exit.
-        // definitely calling `SteamGameServer_Shutdown()`; weird
+    override func tearDown() {
+        _ = try? TestClient.recycleClient()
     }
 }

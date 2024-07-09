@@ -46,13 +46,13 @@ public struct SteamGameServerStats: Sendable {
     }
 
     /// Steamworks `ISteamGameServerStats::RequestUserStats()`, callback
-    public func requestUserStats(user: SteamID, completion: @escaping (GSStatsReceived?) -> Void) {
+    public func requestUserStats(user: SteamID, completion: @Sendable @escaping (GSStatsReceived?) -> Void) {
         let rc = SteamAPI_ISteamGameServerStats_RequestUserStats(interface, CUnsignedLongLong(user))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamGameServerStats::RequestUserStats()`, async
-    public func requestUserStats(user: SteamID) async -> GSStatsReceived? {
+    public func requestUserStats(isolation: isolated (any Actor)? = #isolation, user: SteamID) async -> GSStatsReceived? {
         await withUnsafeContinuation {
             requestUserStats(user: user, completion: $0.resume)
         }
@@ -74,13 +74,13 @@ public struct SteamGameServerStats: Sendable {
     }
 
     /// Steamworks `ISteamGameServerStats::StoreUserStats()`, callback
-    public func storeUserStats(user: SteamID, completion: @escaping (GSStatsStored?) -> Void) {
+    public func storeUserStats(user: SteamID, completion: @Sendable @escaping (GSStatsStored?) -> Void) {
         let rc = SteamAPI_ISteamGameServerStats_StoreUserStats(interface, CUnsignedLongLong(user))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamGameServerStats::StoreUserStats()`, async
-    public func storeUserStats(user: SteamID) async -> GSStatsStored? {
+    public func storeUserStats(isolation: isolated (any Actor)? = #isolation, user: SteamID) async -> GSStatsStored? {
         await withUnsafeContinuation {
             storeUserStats(user: user, completion: $0.resume)
         }

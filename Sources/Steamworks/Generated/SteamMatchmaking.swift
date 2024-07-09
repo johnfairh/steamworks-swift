@@ -60,13 +60,13 @@ public struct SteamMatchmaking: Sendable {
     }
 
     /// Steamworks `ISteamMatchmaking::CreateLobby()`, callback
-    public func createLobby(lobbyType: LobbyType, maxMembers: Int, completion: @escaping (LobbyCreated?) -> Void) {
+    public func createLobby(lobbyType: LobbyType, maxMembers: Int, completion: @Sendable @escaping (LobbyCreated?) -> Void) {
         let rc = SteamAPI_ISteamMatchmaking_CreateLobby(interface, ELobbyType(lobbyType), CInt(maxMembers))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamMatchmaking::CreateLobby()`, async
-    public func createLobby(lobbyType: LobbyType, maxMembers: Int) async -> LobbyCreated? {
+    public func createLobby(isolation: isolated (any Actor)? = #isolation, lobbyType: LobbyType, maxMembers: Int) async -> LobbyCreated? {
         await withUnsafeContinuation {
             createLobby(lobbyType: lobbyType, maxMembers: maxMembers, completion: $0.resume)
         }
@@ -179,13 +179,13 @@ public struct SteamMatchmaking: Sendable {
     }
 
     /// Steamworks `ISteamMatchmaking::JoinLobby()`, callback
-    public func joinLobby(lobby: SteamID, completion: @escaping (LobbyEnter?) -> Void) {
+    public func joinLobby(lobby: SteamID, completion: @Sendable @escaping (LobbyEnter?) -> Void) {
         let rc = SteamAPI_ISteamMatchmaking_JoinLobby(interface, CUnsignedLongLong(lobby))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamMatchmaking::JoinLobby()`, async
-    public func joinLobby(lobby: SteamID) async -> LobbyEnter? {
+    public func joinLobby(isolation: isolated (any Actor)? = #isolation, lobby: SteamID) async -> LobbyEnter? {
         await withUnsafeContinuation {
             joinLobby(lobby: lobby, completion: $0.resume)
         }
@@ -209,13 +209,13 @@ public struct SteamMatchmaking: Sendable {
     }
 
     /// Steamworks `ISteamMatchmaking::RequestLobbyList()`, callback
-    public func requestLobbyList(completion: @escaping (LobbyMatchList?) -> Void) {
+    public func requestLobbyList(completion: @Sendable @escaping (LobbyMatchList?) -> Void) {
         let rc = SteamAPI_ISteamMatchmaking_RequestLobbyList(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamMatchmaking::RequestLobbyList()`, async
-    public func requestLobbyList() async -> LobbyMatchList? {
+    public func requestLobbyList(isolation: isolated (any Actor)? = #isolation) async -> LobbyMatchList? {
         await withUnsafeContinuation {
             requestLobbyList(completion: $0.resume)
         }

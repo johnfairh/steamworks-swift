@@ -41,8 +41,11 @@ class TestApiNetworking: XCTestCase {
         let steamID = steam.user.getSteamID()
         let message: [UInt8] = [1,2,3,4]
 
-        steam.onSteamNetworkingMessagesSessionRequest { req in
+        steam.onSteamNetworkingMessagesSessionRequest { [weak steam] req in
             print("Session Request from \(req.identityRemote)")
+            guard let steam else {
+                return
+            }
 
             let (count, msgs) = steam.networkingMessages.receiveMessagesOnChannel(localChannel: 0, maxMessages: 1)
             XCTAssertEqual(1, count)
@@ -83,13 +86,18 @@ class TestApiNetworking: XCTestCase {
         let msgData: [UInt8] = [1,2,3,4]
         let debugCloseMsg = "Bye"
 
-        var listenSocket: HSteamListenSocket?
-        var clientConnection = HSteamNetConnection(0)
-        var serverConnection = HSteamNetConnection(0)
+        final class State: @unchecked Sendable {
+            var listenSocket: HSteamListenSocket?
+            var clientConnection = HSteamNetConnection(0)
+            var serverConnection = HSteamNetConnection(0)
+            init() {}
+        }
+
+        let state = State()
 
         // we have to poll for inbound messages, no callback on 'readable'
         let pollFrameCallback: (SteamAPI) -> Void = { steam in
-            let (_, msgs) = steam.networkingSockets.receiveMessagesOnConnection(conn: serverConnection, maxMessages: 1)
+            let (_, msgs) = steam.networkingSockets.receiveMessagesOnConnection(conn: state.serverConnection, maxMessages: 1)
             if !msgs.isEmpty {
                 let msg = msgs.first!
                 let bytePtr = msg.data.bindMemory(to: UInt8.self, capacity: msg.size)
@@ -97,8 +105,8 @@ class TestApiNetworking: XCTestCase {
                 print("Server received message, len=\(msg.size) body=\(bytes)")
                 XCTAssertEqual(msgData, bytes)
                 msg.release()
-                let rc1 = steam.networkingSockets.closeConnection(peer: serverConnection, reason: 0, debug: debugCloseMsg, enableLinger: false)
-                let rc2 = steam.networkingSockets.closeListenSocket(socket: listenSocket!)
+                let rc1 = steam.networkingSockets.closeConnection(peer: state.serverConnection, reason: 0, debug: debugCloseMsg, enableLinger: false)
+                let rc2 = steam.networkingSockets.closeListenSocket(socket: state.listenSocket!)
                 print("Server close conn=\(rc1) sock=\(rc2)")
                 XCTAssertTrue(rc1)
                 XCTAssertTrue(rc2)
@@ -106,15 +114,17 @@ class TestApiNetworking: XCTestCase {
         }
 
         // callback for connection state machine -- we get both ends here!
-        steam.onSteamNetConnectionStatusChangedCallback { req in
-            let isClient = req.conn == clientConnection
+        steam.onSteamNetConnectionStatusChangedCallback { [weak steam] req in
+            guard let steam else { return }
+
+            let isClient = req.conn == state.clientConnection
             let connName = isClient ? "Client" : "Server"
             let (rc, steamConnName) = steam.networkingSockets.getConnectionName(peer: req.conn, maxLen: 100)
             print("\(connName) (\(rc ? steamConnName : "")) Connection Status: \(req.oldState)->\(req.info.state)")
 
             switch req.info.state {
             case .problemDetectedLocally:
-                let rc = steam.networkingSockets.closeListenSocket(socket: listenSocket!)
+                let rc = steam.networkingSockets.closeListenSocket(socket: state.listenSocket!)
                 XCTFail("Abandoning test, close rc=\(rc)")
                 TestClient.stopRunningFrames()
 
@@ -122,7 +132,7 @@ class TestApiNetworking: XCTestCase {
                 // Accept connection on server
                 guard !isClient else { break }
                 let rc = steam.networkingSockets.acceptConnection(conn: req.conn)
-                serverConnection = req.conn
+                state.serverConnection = req.conn
                 steam.networkingSockets.setConnectionName(peer: req.conn, name: "SERVER")
                 print("Accept rc=\(rc)")
                 XCTAssertEqual(.ok, rc)
@@ -156,28 +166,38 @@ class TestApiNetworking: XCTestCase {
             }
         }
 
-        listenSocket = steam.networkingSockets.createListenSocketIP(address: .init(inaddrAnyPort: 27100), options: [])
-        print("CreateListenSocketIP rc=\(listenSocket!)")
-        XCTAssertNotEqual(.invalid, listenSocket)
-        let (adrRc, adr) = steam.networkingSockets.getListenSocketAddress(socket: listenSocket!)
+        state.listenSocket = steam.networkingSockets.createListenSocketIP(address: .init(inaddrAnyPort: 27100), options: [])
+        print("CreateListenSocketIP rc=\(state.listenSocket!)")
+        XCTAssertNotEqual(.invalid, state.listenSocket)
+        let (adrRc, adr) = steam.networkingSockets.getListenSocketAddress(socket: state.listenSocket!)
         print("GetListenSocketAddress rc=\(adrRc) adr=\(adr)")
         XCTAssertTrue(adrRc)
         XCTAssertEqual("[::]:27100", adr.description)
 
-        clientConnection = steam.networkingSockets.connectByIPAddress(address: .init(ipv4: .ipv4(127, 0, 0, 1), port: 27100), options: [])
-        print("ConnectByIP rc=\(clientConnection)")
-        XCTAssertNotEqual(.invalid, clientConnection)
+        state.clientConnection = steam.networkingSockets.connectByIPAddress(address: .init(ipv4: .ipv4(127, 0, 0, 1), port: 27100), options: [])
+        print("ConnectByIP rc=\(state.clientConnection)")
+        XCTAssertNotEqual(.invalid, state.clientConnection)
 
-        steam.networkingSockets.setConnectionName(peer: clientConnection, name: "CLIENT")
-        let status = steam.networkingSockets.getDetailedConnectionStatus(conn: clientConnection)
+        steam.networkingSockets.setConnectionName(peer: state.clientConnection, name: "CLIENT")
+        let status = steam.networkingSockets.getDetailedConnectionStatus(conn: state.clientConnection)
         XCTAssertEqual(0, status.rc)
         print("ConnectionStatus: \(status.buf)")
 
         TestClient.runFrames(callback: pollFrameCallback)
 
-        // If we run *just this* test then get "Trying to close low level socket support, but we still have sockets open!"
-        // but all 3 sockets are definitely fully closed.  The message doesn't happen if we run the full suite, so I guess
-        // there is some undocumented async cleanup work.  CBA to write an async sleep, untestable and would just break.
+        // If we run just this test and let the process exit then get "Trying to close low level socket support, but we still have sockets open!"
+        // but all 3 sockets are definitely fully closed.  So slip in a recycle - doing a controlled shutdown before too much other network stuff
+        // seems to sort things out.
+        needRecycle = true
+    }
+
+    var needRecycle = false
+
+    override func tearDown() {
+        if needRecycle {
+            needRecycle = false
+            _ = try? TestClient.recycleClient()
+        }
     }
 
     /// API shape test

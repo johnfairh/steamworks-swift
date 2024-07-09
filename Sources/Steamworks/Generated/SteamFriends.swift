@@ -70,27 +70,27 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`, callback
-    public func downloadClanActivityCounts(clans: [SteamID], completion: @escaping (DownloadClanActivityCountsResult?) -> Void) {
+    public func downloadClanActivityCounts(clans: [SteamID], completion: @Sendable @escaping (DownloadClanActivityCountsResult?) -> Void) {
         var tmpClans = clans.map { CSteamID($0) }
         let rc = SteamAPI_ISteamFriends_DownloadClanActivityCounts(interface, &tmpClans, CInt(clans.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`, async
-    public func downloadClanActivityCounts(clans: [SteamID]) async -> DownloadClanActivityCountsResult? {
+    public func downloadClanActivityCounts(isolation: isolated (any Actor)? = #isolation, clans: [SteamID]) async -> DownloadClanActivityCountsResult? {
         await withUnsafeContinuation {
             downloadClanActivityCounts(clans: clans, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamFriends::EnumerateFollowingList()`, callback
-    public func enumerateFollowingList(startIndex: Int, completion: @escaping (FriendsEnumerateFollowingList?) -> Void) {
+    public func enumerateFollowingList(startIndex: Int, completion: @Sendable @escaping (FriendsEnumerateFollowingList?) -> Void) {
         let rc = SteamAPI_ISteamFriends_EnumerateFollowingList(interface, uint32(startIndex))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::EnumerateFollowingList()`, async
-    public func enumerateFollowingList(startIndex: Int) async -> FriendsEnumerateFollowingList? {
+    public func enumerateFollowingList(isolation: isolated (any Actor)? = #isolation, startIndex: Int) async -> FriendsEnumerateFollowingList? {
         await withUnsafeContinuation {
             enumerateFollowingList(startIndex: startIndex, completion: $0.resume)
         }
@@ -172,13 +172,13 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::GetFollowerCount()`, callback
-    public func getFollowerCount(steamID: SteamID, completion: @escaping (FriendsGetFollowerCount?) -> Void) {
+    public func getFollowerCount(steamID: SteamID, completion: @Sendable @escaping (FriendsGetFollowerCount?) -> Void) {
         let rc = SteamAPI_ISteamFriends_GetFollowerCount(interface, CUnsignedLongLong(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::GetFollowerCount()`, async
-    public func getFollowerCount(steamID: SteamID) async -> FriendsGetFollowerCount? {
+    public func getFollowerCount(isolation: isolated (any Actor)? = #isolation, steamID: SteamID) async -> FriendsGetFollowerCount? {
         await withUnsafeContinuation {
             getFollowerCount(steamID: steamID, completion: $0.resume)
         }
@@ -383,13 +383,13 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::IsFollowing()`, callback
-    public func isFollowing(steamID: SteamID, completion: @escaping (FriendsIsFollowing?) -> Void) {
+    public func isFollowing(steamID: SteamID, completion: @Sendable @escaping (FriendsIsFollowing?) -> Void) {
         let rc = SteamAPI_ISteamFriends_IsFollowing(interface, CUnsignedLongLong(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::IsFollowing()`, async
-    public func isFollowing(steamID: SteamID) async -> FriendsIsFollowing? {
+    public func isFollowing(isolation: isolated (any Actor)? = #isolation, steamID: SteamID) async -> FriendsIsFollowing? {
         await withUnsafeContinuation {
             isFollowing(steamID: steamID, completion: $0.resume)
         }
@@ -401,13 +401,13 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::JoinClanChatRoom()`, callback
-    public func joinClanChatRoom(clan: SteamID, completion: @escaping (JoinClanChatRoomCompletionResult?) -> Void) {
+    public func joinClanChatRoom(clan: SteamID, completion: @Sendable @escaping (JoinClanChatRoomCompletionResult?) -> Void) {
         let rc = SteamAPI_ISteamFriends_JoinClanChatRoom(interface, CUnsignedLongLong(clan))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::JoinClanChatRoom()`, async
-    public func joinClanChatRoom(clan: SteamID) async -> JoinClanChatRoomCompletionResult? {
+    public func joinClanChatRoom(isolation: isolated (any Actor)? = #isolation, clan: SteamID) async -> JoinClanChatRoomCompletionResult? {
         await withUnsafeContinuation {
             joinClanChatRoom(clan: clan, completion: $0.resume)
         }
@@ -434,26 +434,26 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::RequestClanOfficerList()`, callback
-    public func requestClanOfficerList(clan: SteamID, completion: @escaping (ClanOfficerListResponse?) -> Void) {
+    public func requestClanOfficerList(clan: SteamID, completion: @Sendable @escaping (ClanOfficerListResponse?) -> Void) {
         let rc = SteamAPI_ISteamFriends_RequestClanOfficerList(interface, CUnsignedLongLong(clan))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::RequestClanOfficerList()`, async
-    public func requestClanOfficerList(clan: SteamID) async -> ClanOfficerListResponse? {
+    public func requestClanOfficerList(isolation: isolated (any Actor)? = #isolation, clan: SteamID) async -> ClanOfficerListResponse? {
         await withUnsafeContinuation {
             requestClanOfficerList(clan: clan, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamFriends::RequestEquippedProfileItems()`, callback
-    public func requestEquippedProfileItems(steamID: SteamID, completion: @escaping (EquippedProfileItems?) -> Void) {
+    public func requestEquippedProfileItems(steamID: SteamID, completion: @Sendable @escaping (EquippedProfileItems?) -> Void) {
         let rc = SteamAPI_ISteamFriends_RequestEquippedProfileItems(interface, CUnsignedLongLong(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::RequestEquippedProfileItems()`, async
-    public func requestEquippedProfileItems(steamID: SteamID) async -> EquippedProfileItems? {
+    public func requestEquippedProfileItems(isolation: isolated (any Actor)? = #isolation, steamID: SteamID) async -> EquippedProfileItems? {
         await withUnsafeContinuation {
             requestEquippedProfileItems(steamID: steamID, completion: $0.resume)
         }
@@ -486,13 +486,13 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::SetPersonaName()`, callback
-    public func setPersonaName(personaName: String, completion: @escaping (SetPersonaNameResponse?) -> Void) {
+    public func setPersonaName(personaName: String, completion: @Sendable @escaping (SetPersonaNameResponse?) -> Void) {
         let rc = SteamAPI_ISteamFriends_SetPersonaName(interface, personaName)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamFriends::SetPersonaName()`, async
-    public func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
+    public func setPersonaName(isolation: isolated (any Actor)? = #isolation, personaName: String) async -> SetPersonaNameResponse? {
         await withUnsafeContinuation {
             setPersonaName(personaName: personaName, completion: $0.resume)
         }

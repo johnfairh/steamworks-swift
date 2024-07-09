@@ -27,13 +27,13 @@ public struct SteamUtils: Sendable {
     }
 
     /// Steamworks `ISteamUtils::CheckFileSignature()`, callback
-    public func checkFileSignature(fileName: String, completion: @escaping (CheckFileSignature?) -> Void) {
+    public func checkFileSignature(fileName: String, completion: @Sendable @escaping (CheckFileSignature?) -> Void) {
         let rc = SteamAPI_ISteamUtils_CheckFileSignature(interface, fileName)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUtils::CheckFileSignature()`, async
-    public func checkFileSignature(fileName: String) async -> CheckFileSignature? {
+    public func checkFileSignature(isolation: isolated (any Actor)? = #isolation, fileName: String) async -> CheckFileSignature? {
         await withUnsafeContinuation {
             checkFileSignature(fileName: fileName, completion: $0.resume)
         }

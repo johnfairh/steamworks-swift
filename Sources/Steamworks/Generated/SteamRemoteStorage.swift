@@ -25,13 +25,13 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::CommitPublishedFileUpdate()`, callback
-    public func commitPublishedFileUpdate(handle: PublishedFileUpdateHandle, completion: @escaping (RemoteStorageUpdatePublishedFileResult?) -> Void) {
+    public func commitPublishedFileUpdate(handle: PublishedFileUpdateHandle, completion: @Sendable @escaping (RemoteStorageUpdatePublishedFileResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_CommitPublishedFileUpdate(interface, PublishedFileUpdateHandle_t(handle))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::CommitPublishedFileUpdate()`, async
-    public func commitPublishedFileUpdate(handle: PublishedFileUpdateHandle) async -> RemoteStorageUpdatePublishedFileResult? {
+    public func commitPublishedFileUpdate(isolation: isolated (any Actor)? = #isolation, handle: PublishedFileUpdateHandle) async -> RemoteStorageUpdatePublishedFileResult? {
         await withUnsafeContinuation {
             commitPublishedFileUpdate(handle: handle, completion: $0.resume)
         }
@@ -43,13 +43,13 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::DeletePublishedFile()`, callback
-    public func deletePublishedFile(publishedFileId: PublishedFileID, completion: @escaping (RemoteStorageDeletePublishedFileResult?) -> Void) {
+    public func deletePublishedFile(publishedFileId: PublishedFileID, completion: @Sendable @escaping (RemoteStorageDeletePublishedFileResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_DeletePublishedFile(interface, PublishedFileId_t(publishedFileId))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::DeletePublishedFile()`, async
-    public func deletePublishedFile(publishedFileId: PublishedFileID) async -> RemoteStorageDeletePublishedFileResult? {
+    public func deletePublishedFile(isolation: isolated (any Actor)? = #isolation, publishedFileId: PublishedFileID) async -> RemoteStorageDeletePublishedFileResult? {
         await withUnsafeContinuation {
             deletePublishedFile(publishedFileId: publishedFileId, completion: $0.resume)
         }
@@ -61,20 +61,20 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumeratePublishedFilesByUserAction()`, callback
-    public func enumeratePublishedFilesByUserAction(action: WorkshopFileAction, startIndex: Int, completion: @escaping (RemoteStorageEnumeratePublishedFilesByUserActionResult?) -> Void) {
+    public func enumeratePublishedFilesByUserAction(action: WorkshopFileAction, startIndex: Int, completion: @Sendable @escaping (RemoteStorageEnumeratePublishedFilesByUserActionResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_EnumeratePublishedFilesByUserAction(interface, EWorkshopFileAction(action), uint32(startIndex))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumeratePublishedFilesByUserAction()`, async
-    public func enumeratePublishedFilesByUserAction(action: WorkshopFileAction, startIndex: Int) async -> RemoteStorageEnumeratePublishedFilesByUserActionResult? {
+    public func enumeratePublishedFilesByUserAction(isolation: isolated (any Actor)? = #isolation, action: WorkshopFileAction, startIndex: Int) async -> RemoteStorageEnumeratePublishedFilesByUserActionResult? {
         await withUnsafeContinuation {
             enumeratePublishedFilesByUserAction(action: action, startIndex: startIndex, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumeratePublishedWorkshopFiles()`, callback
-    public func enumeratePublishedWorkshopFiles(enumerationType: WorkshopEnumerationType, startIndex: Int, count: Int, days: Int, tags: [String], userTags: [String], completion: @escaping (RemoteStorageEnumerateWorkshopFilesResult?) -> Void) {
+    public func enumeratePublishedWorkshopFiles(enumerationType: WorkshopEnumerationType, startIndex: Int, count: Int, days: Int, tags: [String], userTags: [String], completion: @Sendable @escaping (RemoteStorageEnumerateWorkshopFilesResult?) -> Void) {
         let tmpTags = StringArray(tags)
         defer { tmpTags.deallocate() }
         let tmpUserTags = StringArray(userTags)
@@ -84,27 +84,27 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumeratePublishedWorkshopFiles()`, async
-    public func enumeratePublishedWorkshopFiles(enumerationType: WorkshopEnumerationType, startIndex: Int, count: Int, days: Int, tags: [String], userTags: [String]) async -> RemoteStorageEnumerateWorkshopFilesResult? {
+    public func enumeratePublishedWorkshopFiles(isolation: isolated (any Actor)? = #isolation, enumerationType: WorkshopEnumerationType, startIndex: Int, count: Int, days: Int, tags: [String], userTags: [String]) async -> RemoteStorageEnumerateWorkshopFilesResult? {
         await withUnsafeContinuation {
             enumeratePublishedWorkshopFiles(enumerationType: enumerationType, startIndex: startIndex, count: count, days: days, tags: tags, userTags: userTags, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumerateUserPublishedFiles()`, callback
-    public func enumerateUserPublishedFiles(startIndex: Int, completion: @escaping (RemoteStorageEnumerateUserPublishedFilesResult?) -> Void) {
+    public func enumerateUserPublishedFiles(startIndex: Int, completion: @Sendable @escaping (RemoteStorageEnumerateUserPublishedFilesResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_EnumerateUserPublishedFiles(interface, uint32(startIndex))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumerateUserPublishedFiles()`, async
-    public func enumerateUserPublishedFiles(startIndex: Int) async -> RemoteStorageEnumerateUserPublishedFilesResult? {
+    public func enumerateUserPublishedFiles(isolation: isolated (any Actor)? = #isolation, startIndex: Int) async -> RemoteStorageEnumerateUserPublishedFilesResult? {
         await withUnsafeContinuation {
             enumerateUserPublishedFiles(startIndex: startIndex, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumerateUserSharedWorkshopFiles()`, callback
-    public func enumerateUserSharedWorkshopFiles(steamId: SteamID, startIndex: Int, requiredTags: [String], excludedTags: [String], completion: @escaping (RemoteStorageEnumerateUserPublishedFilesResult?) -> Void) {
+    public func enumerateUserSharedWorkshopFiles(steamId: SteamID, startIndex: Int, requiredTags: [String], excludedTags: [String], completion: @Sendable @escaping (RemoteStorageEnumerateUserPublishedFilesResult?) -> Void) {
         let tmpRequiredTags = StringArray(requiredTags)
         defer { tmpRequiredTags.deallocate() }
         let tmpExcludedTags = StringArray(excludedTags)
@@ -114,20 +114,20 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumerateUserSharedWorkshopFiles()`, async
-    public func enumerateUserSharedWorkshopFiles(steamId: SteamID, startIndex: Int, requiredTags: [String], excludedTags: [String]) async -> RemoteStorageEnumerateUserPublishedFilesResult? {
+    public func enumerateUserSharedWorkshopFiles(isolation: isolated (any Actor)? = #isolation, steamId: SteamID, startIndex: Int, requiredTags: [String], excludedTags: [String]) async -> RemoteStorageEnumerateUserPublishedFilesResult? {
         await withUnsafeContinuation {
             enumerateUserSharedWorkshopFiles(steamId: steamId, startIndex: startIndex, requiredTags: requiredTags, excludedTags: excludedTags, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumerateUserSubscribedFiles()`, callback
-    public func enumerateUserSubscribedFiles(startIndex: Int, completion: @escaping (RemoteStorageEnumerateUserSubscribedFilesResult?) -> Void) {
+    public func enumerateUserSubscribedFiles(startIndex: Int, completion: @Sendable @escaping (RemoteStorageEnumerateUserSubscribedFilesResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_EnumerateUserSubscribedFiles(interface, uint32(startIndex))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::EnumerateUserSubscribedFiles()`, async
-    public func enumerateUserSubscribedFiles(startIndex: Int) async -> RemoteStorageEnumerateUserSubscribedFilesResult? {
+    public func enumerateUserSubscribedFiles(isolation: isolated (any Actor)? = #isolation, startIndex: Int) async -> RemoteStorageEnumerateUserSubscribedFilesResult? {
         await withUnsafeContinuation {
             enumerateUserSubscribedFiles(startIndex: startIndex, completion: $0.resume)
         }
@@ -161,13 +161,13 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::FileReadAsync()`, callback
-    public func fileReadAsync(file: String, offset: Int, toReadSize: Int, completion: @escaping (RemoteStorageFileReadAsyncComplete?) -> Void) {
+    public func fileReadAsync(file: String, offset: Int, toReadSize: Int, completion: @Sendable @escaping (RemoteStorageFileReadAsyncComplete?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_FileReadAsync(interface, file, uint32(offset), uint32(toReadSize))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::FileReadAsync()`, async
-    public func fileReadAsync(file: String, offset: Int, toReadSize: Int) async -> RemoteStorageFileReadAsyncComplete? {
+    public func fileReadAsync(isolation: isolated (any Actor)? = #isolation, file: String, offset: Int, toReadSize: Int) async -> RemoteStorageFileReadAsyncComplete? {
         await withUnsafeContinuation {
             fileReadAsync(file: file, offset: offset, toReadSize: toReadSize, completion: $0.resume)
         }
@@ -179,13 +179,13 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::FileShare()`, callback
-    public func fileShare(file: String, completion: @escaping (RemoteStorageFileShareResult?) -> Void) {
+    public func fileShare(file: String, completion: @Sendable @escaping (RemoteStorageFileShareResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_FileShare(interface, file)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::FileShare()`, async
-    public func fileShare(file: String) async -> RemoteStorageFileShareResult? {
+    public func fileShare(isolation: isolated (any Actor)? = #isolation, file: String) async -> RemoteStorageFileShareResult? {
         await withUnsafeContinuation {
             fileShare(file: file, completion: $0.resume)
         }
@@ -197,13 +197,13 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::FileWriteAsync()`, callback
-    public func fileWriteAsync(file: String, data: UnsafeRawPointer, dataSize: Int, completion: @escaping (RemoteStorageFileWriteAsyncComplete?) -> Void) {
+    public func fileWriteAsync(file: String, data: UnsafeRawPointer, dataSize: Int, completion: @Sendable @escaping (RemoteStorageFileWriteAsyncComplete?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_FileWriteAsync(interface, file, data, uint32(dataSize))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::FileWriteAsync()`, async
-    public func fileWriteAsync(file: String, data: UnsafeRawPointer, dataSize: Int) async -> RemoteStorageFileWriteAsyncComplete? {
+    public func fileWriteAsync(isolation: isolated (any Actor)? = #isolation, file: String, data: UnsafeRawPointer, dataSize: Int) async -> RemoteStorageFileWriteAsyncComplete? {
         await withUnsafeContinuation {
             fileWriteAsync(file: file, data: data, dataSize: dataSize, completion: $0.resume)
         }
@@ -276,26 +276,26 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::GetPublishedFileDetails()`, callback
-    public func getPublishedFileDetails(publishedFileId: PublishedFileID, maxSecondsOld: Int, completion: @escaping (RemoteStorageGetPublishedFileDetailsResult?) -> Void) {
+    public func getPublishedFileDetails(publishedFileId: PublishedFileID, maxSecondsOld: Int, completion: @Sendable @escaping (RemoteStorageGetPublishedFileDetailsResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_GetPublishedFileDetails(interface, PublishedFileId_t(publishedFileId), uint32(maxSecondsOld))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::GetPublishedFileDetails()`, async
-    public func getPublishedFileDetails(publishedFileId: PublishedFileID, maxSecondsOld: Int) async -> RemoteStorageGetPublishedFileDetailsResult? {
+    public func getPublishedFileDetails(isolation: isolated (any Actor)? = #isolation, publishedFileId: PublishedFileID, maxSecondsOld: Int) async -> RemoteStorageGetPublishedFileDetailsResult? {
         await withUnsafeContinuation {
             getPublishedFileDetails(publishedFileId: publishedFileId, maxSecondsOld: maxSecondsOld, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::GetPublishedItemVoteDetails()`, callback
-    public func getPublishedItemVoteDetails(publishedFileId: PublishedFileID, completion: @escaping (RemoteStorageGetPublishedItemVoteDetailsResult?) -> Void) {
+    public func getPublishedItemVoteDetails(publishedFileId: PublishedFileID, completion: @Sendable @escaping (RemoteStorageGetPublishedItemVoteDetailsResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_GetPublishedItemVoteDetails(interface, PublishedFileId_t(publishedFileId))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::GetPublishedItemVoteDetails()`, async
-    public func getPublishedItemVoteDetails(publishedFileId: PublishedFileID) async -> RemoteStorageGetPublishedItemVoteDetailsResult? {
+    public func getPublishedItemVoteDetails(isolation: isolated (any Actor)? = #isolation, publishedFileId: PublishedFileID) async -> RemoteStorageGetPublishedItemVoteDetailsResult? {
         await withUnsafeContinuation {
             getPublishedItemVoteDetails(publishedFileId: publishedFileId, completion: $0.resume)
         }
@@ -323,13 +323,13 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::GetUserPublishedItemVoteDetails()`, callback
-    public func getUserPublishedItemVoteDetails(publishedFileId: PublishedFileID, completion: @escaping (RemoteStorageGetPublishedItemVoteDetailsResult?) -> Void) {
+    public func getUserPublishedItemVoteDetails(publishedFileId: PublishedFileID, completion: @Sendable @escaping (RemoteStorageGetPublishedItemVoteDetailsResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_GetUserPublishedItemVoteDetails(interface, PublishedFileId_t(publishedFileId))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::GetUserPublishedItemVoteDetails()`, async
-    public func getUserPublishedItemVoteDetails(publishedFileId: PublishedFileID) async -> RemoteStorageGetPublishedItemVoteDetailsResult? {
+    public func getUserPublishedItemVoteDetails(isolation: isolated (any Actor)? = #isolation, publishedFileId: PublishedFileID) async -> RemoteStorageGetPublishedItemVoteDetailsResult? {
         await withUnsafeContinuation {
             getUserPublishedItemVoteDetails(publishedFileId: publishedFileId, completion: $0.resume)
         }
@@ -346,7 +346,7 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::PublishVideo()`, callback
-    public func publishVideo(videoProvider: WorkshopVideoProvider, videoAccount: String, videoIdentifier: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], completion: @escaping (RemoteStoragePublishFileProgress?) -> Void) {
+    public func publishVideo(videoProvider: WorkshopVideoProvider, videoAccount: String, videoIdentifier: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], completion: @Sendable @escaping (RemoteStoragePublishFileProgress?) -> Void) {
         let tmpTags = StringArray(tags)
         defer { tmpTags.deallocate() }
         let rc = SteamAPI_ISteamRemoteStorage_PublishVideo(interface, EWorkshopVideoProvider(videoProvider), videoAccount, videoIdentifier, previewFile, AppId_t(consumerAppId), title, description, ERemoteStoragePublishedFileVisibility(visibility), .init(tmpTags))
@@ -354,14 +354,14 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::PublishVideo()`, async
-    public func publishVideo(videoProvider: WorkshopVideoProvider, videoAccount: String, videoIdentifier: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String]) async -> RemoteStoragePublishFileProgress? {
+    public func publishVideo(isolation: isolated (any Actor)? = #isolation, videoProvider: WorkshopVideoProvider, videoAccount: String, videoIdentifier: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String]) async -> RemoteStoragePublishFileProgress? {
         await withUnsafeContinuation {
             publishVideo(videoProvider: videoProvider, videoAccount: videoAccount, videoIdentifier: videoIdentifier, previewFile: previewFile, consumerAppId: consumerAppId, title: title, description: description, visibility: visibility, tags: tags, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::PublishWorkshopFile()`, callback
-    public func publishWorkshopFile(file: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], workshopFileType: WorkshopFileType, completion: @escaping (RemoteStoragePublishFileProgress?) -> Void) {
+    public func publishWorkshopFile(file: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], workshopFileType: WorkshopFileType, completion: @Sendable @escaping (RemoteStoragePublishFileProgress?) -> Void) {
         let tmpTags = StringArray(tags)
         defer { tmpTags.deallocate() }
         let rc = SteamAPI_ISteamRemoteStorage_PublishWorkshopFile(interface, file, previewFile, AppId_t(consumerAppId), title, description, ERemoteStoragePublishedFileVisibility(visibility), .init(tmpTags), EWorkshopFileType(workshopFileType))
@@ -369,7 +369,7 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::PublishWorkshopFile()`, async
-    public func publishWorkshopFile(file: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], workshopFileType: WorkshopFileType) async -> RemoteStoragePublishFileProgress? {
+    public func publishWorkshopFile(isolation: isolated (any Actor)? = #isolation, file: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], workshopFileType: WorkshopFileType) async -> RemoteStoragePublishFileProgress? {
         await withUnsafeContinuation {
             publishWorkshopFile(file: file, previewFile: previewFile, consumerAppId: consumerAppId, title: title, description: description, visibility: visibility, tags: tags, workshopFileType: workshopFileType, completion: $0.resume)
         }
@@ -386,52 +386,52 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::SetUserPublishedFileAction()`, callback
-    public func setUserPublishedFileAction(publishedFileId: PublishedFileID, action: WorkshopFileAction, completion: @escaping (RemoteStorageSetUserPublishedFileActionResult?) -> Void) {
+    public func setUserPublishedFileAction(publishedFileId: PublishedFileID, action: WorkshopFileAction, completion: @Sendable @escaping (RemoteStorageSetUserPublishedFileActionResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_SetUserPublishedFileAction(interface, PublishedFileId_t(publishedFileId), EWorkshopFileAction(action))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::SetUserPublishedFileAction()`, async
-    public func setUserPublishedFileAction(publishedFileId: PublishedFileID, action: WorkshopFileAction) async -> RemoteStorageSetUserPublishedFileActionResult? {
+    public func setUserPublishedFileAction(isolation: isolated (any Actor)? = #isolation, publishedFileId: PublishedFileID, action: WorkshopFileAction) async -> RemoteStorageSetUserPublishedFileActionResult? {
         await withUnsafeContinuation {
             setUserPublishedFileAction(publishedFileId: publishedFileId, action: action, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::SubscribePublishedFile()`, callback
-    public func subscribePublishedFile(publishedFileId: PublishedFileID, completion: @escaping (RemoteStorageSubscribePublishedFileResult?) -> Void) {
+    public func subscribePublishedFile(publishedFileId: PublishedFileID, completion: @Sendable @escaping (RemoteStorageSubscribePublishedFileResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_SubscribePublishedFile(interface, PublishedFileId_t(publishedFileId))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::SubscribePublishedFile()`, async
-    public func subscribePublishedFile(publishedFileId: PublishedFileID) async -> RemoteStorageSubscribePublishedFileResult? {
+    public func subscribePublishedFile(isolation: isolated (any Actor)? = #isolation, publishedFileId: PublishedFileID) async -> RemoteStorageSubscribePublishedFileResult? {
         await withUnsafeContinuation {
             subscribePublishedFile(publishedFileId: publishedFileId, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::UGCDownload()`, callback
-    public func ugcDownload(content: UGCHandle, priority: Int, completion: @escaping (RemoteStorageDownloadUGCResult?) -> Void) {
+    public func ugcDownload(content: UGCHandle, priority: Int, completion: @Sendable @escaping (RemoteStorageDownloadUGCResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_UGCDownload(interface, UGCHandle_t(content), uint32(priority))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::UGCDownload()`, async
-    public func ugcDownload(content: UGCHandle, priority: Int) async -> RemoteStorageDownloadUGCResult? {
+    public func ugcDownload(isolation: isolated (any Actor)? = #isolation, content: UGCHandle, priority: Int) async -> RemoteStorageDownloadUGCResult? {
         await withUnsafeContinuation {
             ugcDownload(content: content, priority: priority, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamRemoteStorage::UGCDownloadToLocation()`, callback
-    public func ugcDownloadToLocation(content: UGCHandle, location: String, priority: Int, completion: @escaping (RemoteStorageDownloadUGCResult?) -> Void) {
+    public func ugcDownloadToLocation(content: UGCHandle, location: String, priority: Int, completion: @Sendable @escaping (RemoteStorageDownloadUGCResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_UGCDownloadToLocation(interface, UGCHandle_t(content), location, uint32(priority))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::UGCDownloadToLocation()`, async
-    public func ugcDownloadToLocation(content: UGCHandle, location: String, priority: Int) async -> RemoteStorageDownloadUGCResult? {
+    public func ugcDownloadToLocation(isolation: isolated (any Actor)? = #isolation, content: UGCHandle, location: String, priority: Int) async -> RemoteStorageDownloadUGCResult? {
         await withUnsafeContinuation {
             ugcDownloadToLocation(content: content, location: location, priority: priority, completion: $0.resume)
         }
@@ -443,13 +443,13 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::UnsubscribePublishedFile()`, callback
-    public func unsubscribePublishedFile(publishedFileId: PublishedFileID, completion: @escaping (RemoteStorageUnsubscribePublishedFileResult?) -> Void) {
+    public func unsubscribePublishedFile(publishedFileId: PublishedFileID, completion: @Sendable @escaping (RemoteStorageUnsubscribePublishedFileResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_UnsubscribePublishedFile(interface, PublishedFileId_t(publishedFileId))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::UnsubscribePublishedFile()`, async
-    public func unsubscribePublishedFile(publishedFileId: PublishedFileID) async -> RemoteStorageUnsubscribePublishedFileResult? {
+    public func unsubscribePublishedFile(isolation: isolated (any Actor)? = #isolation, publishedFileId: PublishedFileID) async -> RemoteStorageUnsubscribePublishedFileResult? {
         await withUnsafeContinuation {
             unsubscribePublishedFile(publishedFileId: publishedFileId, completion: $0.resume)
         }
@@ -493,13 +493,13 @@ public struct SteamRemoteStorage: Sendable {
     }
 
     /// Steamworks `ISteamRemoteStorage::UpdateUserPublishedItemVote()`, callback
-    public func updateUserPublishedItemVote(publishedFileId: PublishedFileID, voteUp: Bool, completion: @escaping (RemoteStorageUpdateUserPublishedItemVoteResult?) -> Void) {
+    public func updateUserPublishedItemVote(publishedFileId: PublishedFileID, voteUp: Bool, completion: @Sendable @escaping (RemoteStorageUpdateUserPublishedItemVoteResult?) -> Void) {
         let rc = SteamAPI_ISteamRemoteStorage_UpdateUserPublishedItemVote(interface, PublishedFileId_t(publishedFileId), voteUp)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamRemoteStorage::UpdateUserPublishedItemVote()`, async
-    public func updateUserPublishedItemVote(publishedFileId: PublishedFileID, voteUp: Bool) async -> RemoteStorageUpdateUserPublishedItemVoteResult? {
+    public func updateUserPublishedItemVote(isolation: isolated (any Actor)? = #isolation, publishedFileId: PublishedFileID, voteUp: Bool) async -> RemoteStorageUpdateUserPublishedItemVoteResult? {
         await withUnsafeContinuation {
             updateUserPublishedItemVote(publishedFileId: publishedFileId, voteUp: voteUp, completion: $0.resume)
         }

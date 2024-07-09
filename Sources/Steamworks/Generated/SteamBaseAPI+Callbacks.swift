@@ -12,717 +12,717 @@ public extension SteamBaseAPI {
     // MARK: Callbacks
 
     /// Registration for Steamworks `ActiveBeaconsUpdated_t` callback
-    func onActiveBeaconsUpdated(_ client: @escaping (ActiveBeaconsUpdated) -> Void) {
+    func onActiveBeaconsUpdated(_ client: @Sendable @escaping (ActiveBeaconsUpdated) -> Void) {
         callbacks.add(callbackID: CallbackID(5306), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `AppProofOfPurchaseKeyResponse_t` callback
-    func onAppProofOfPurchaseKeyResponse(_ client: @escaping (AppProofOfPurchaseKeyResponse) -> Void) {
+    func onAppProofOfPurchaseKeyResponse(_ client: @Sendable @escaping (AppProofOfPurchaseKeyResponse) -> Void) {
         callbacks.add(callbackID: CallbackID(1021), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `AppResumingFromSuspend_t` callback
-    func onAppResumingFromSuspend(_ client: @escaping (AppResumingFromSuspend) -> Void) {
+    func onAppResumingFromSuspend(_ client: @Sendable @escaping (AppResumingFromSuspend) -> Void) {
         callbacks.add(callbackID: CallbackID(736), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `AvailableBeaconLocationsUpdated_t` callback
-    func onAvailableBeaconLocationsUpdated(_ client: @escaping (AvailableBeaconLocationsUpdated) -> Void) {
+    func onAvailableBeaconLocationsUpdated(_ client: @Sendable @escaping (AvailableBeaconLocationsUpdated) -> Void) {
         callbacks.add(callbackID: CallbackID(5305), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `AvatarImageLoaded_t` callback
-    func onAvatarImageLoaded(_ client: @escaping (AvatarImageLoaded) -> Void) {
+    func onAvatarImageLoaded(_ client: @Sendable @escaping (AvatarImageLoaded) -> Void) {
         callbacks.add(callbackID: CallbackID(334), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `ClientGameServerDeny_t` callback
-    func onClientGameServerDeny(_ client: @escaping (ClientGameServerDeny) -> Void) {
+    func onClientGameServerDeny(_ client: @Sendable @escaping (ClientGameServerDeny) -> Void) {
         callbacks.add(callbackID: CallbackID(113), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `DlcInstalled_t` callback
-    func onDlcInstalled(_ client: @escaping (DlcInstalled) -> Void) {
+    func onDlcInstalled(_ client: @Sendable @escaping (DlcInstalled) -> Void) {
         callbacks.add(callbackID: CallbackID(1005), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `DownloadItemResult_t` callback
-    func onDownloadItemResult(_ client: @escaping (DownloadItemResult) -> Void) {
+    func onDownloadItemResult(_ client: @Sendable @escaping (DownloadItemResult) -> Void) {
         callbacks.add(callbackID: CallbackID(3406), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `DurationControl_t` callback
-    func onDurationControl(_ client: @escaping (DurationControl) -> Void) {
+    func onDurationControl(_ client: @Sendable @escaping (DurationControl) -> Void) {
         callbacks.add(callbackID: CallbackID(167), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `EndGameResultCallback_t` callback
-    func onEndGameResultCallback(_ client: @escaping (EndGameResultCallback) -> Void) {
+    func onEndGameResultCallback(_ client: @Sendable @escaping (EndGameResultCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5215), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `EquippedProfileItemsChanged_t` callback
-    func onEquippedProfileItemsChanged(_ client: @escaping (EquippedProfileItemsChanged) -> Void) {
+    func onEquippedProfileItemsChanged(_ client: @Sendable @escaping (EquippedProfileItemsChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(350), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `FavoritesListAccountsUpdated_t` callback
-    func onFavoritesListAccountsUpdated(_ client: @escaping (FavoritesListAccountsUpdated) -> Void) {
+    func onFavoritesListAccountsUpdated(_ client: @Sendable @escaping (FavoritesListAccountsUpdated) -> Void) {
         callbacks.add(callbackID: CallbackID(516), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `FavoritesListChanged_t` callback
-    func onFavoritesListChanged(_ client: @escaping (FavoritesListChanged) -> Void) {
+    func onFavoritesListChanged(_ client: @Sendable @escaping (FavoritesListChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(502), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `FilterTextDictionaryChanged_t` callback
-    func onFilterTextDictionaryChanged(_ client: @escaping (FilterTextDictionaryChanged) -> Void) {
+    func onFilterTextDictionaryChanged(_ client: @Sendable @escaping (FilterTextDictionaryChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(739), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `FloatingGamepadTextInputDismissed_t` callback
-    func onFloatingGamepadTextInputDismissed(_ client: @escaping (FloatingGamepadTextInputDismissed) -> Void) {
+    func onFloatingGamepadTextInputDismissed(_ client: @Sendable @escaping (FloatingGamepadTextInputDismissed) -> Void) {
         callbacks.add(callbackID: CallbackID(738), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `FriendRichPresenceUpdate_t` callback
-    func onFriendRichPresenceUpdate(_ client: @escaping (FriendRichPresenceUpdate) -> Void) {
+    func onFriendRichPresenceUpdate(_ client: @Sendable @escaping (FriendRichPresenceUpdate) -> Void) {
         callbacks.add(callbackID: CallbackID(336), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GSClientAchievementStatus_t` callback
-    func onGSClientAchievementStatus(_ client: @escaping (GSClientAchievementStatus) -> Void) {
+    func onGSClientAchievementStatus(_ client: @Sendable @escaping (GSClientAchievementStatus) -> Void) {
         callbacks.add(callbackID: CallbackID(206), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GSClientApprove_t` callback
-    func onGSClientApprove(_ client: @escaping (GSClientApprove) -> Void) {
+    func onGSClientApprove(_ client: @Sendable @escaping (GSClientApprove) -> Void) {
         callbacks.add(callbackID: CallbackID(201), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GSClientDeny_t` callback
-    func onGSClientDeny(_ client: @escaping (GSClientDeny) -> Void) {
+    func onGSClientDeny(_ client: @Sendable @escaping (GSClientDeny) -> Void) {
         callbacks.add(callbackID: CallbackID(202), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GSClientGroupStatus_t` callback
-    func onGSClientGroupStatus(_ client: @escaping (GSClientGroupStatus) -> Void) {
+    func onGSClientGroupStatus(_ client: @Sendable @escaping (GSClientGroupStatus) -> Void) {
         callbacks.add(callbackID: CallbackID(208), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GSClientKick_t` callback
-    func onGSClientKick(_ client: @escaping (GSClientKick) -> Void) {
+    func onGSClientKick(_ client: @Sendable @escaping (GSClientKick) -> Void) {
         callbacks.add(callbackID: CallbackID(203), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GSGameplayStats_t` callback
-    func onGSGameplayStats(_ client: @escaping (GSGameplayStats) -> Void) {
+    func onGSGameplayStats(_ client: @Sendable @escaping (GSGameplayStats) -> Void) {
         callbacks.add(callbackID: CallbackID(207), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GSPolicyResponse_t` callback
-    func onGSPolicyResponse(_ client: @escaping (GSPolicyResponse) -> Void) {
+    func onGSPolicyResponse(_ client: @Sendable @escaping (GSPolicyResponse) -> Void) {
         callbacks.add(callbackID: CallbackID(115), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GSStatsUnloaded_t` callback
-    func onGSStatsUnloaded(_ client: @escaping (GSStatsUnloaded) -> Void) {
+    func onGSStatsUnloaded(_ client: @Sendable @escaping (GSStatsUnloaded) -> Void) {
         callbacks.add(callbackID: CallbackID(1108), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameConnectedChatJoin_t` callback
-    func onGameConnectedChatJoin(_ client: @escaping (GameConnectedChatJoin) -> Void) {
+    func onGameConnectedChatJoin(_ client: @Sendable @escaping (GameConnectedChatJoin) -> Void) {
         callbacks.add(callbackID: CallbackID(339), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameConnectedChatLeave_t` callback
-    func onGameConnectedChatLeave(_ client: @escaping (GameConnectedChatLeave) -> Void) {
+    func onGameConnectedChatLeave(_ client: @Sendable @escaping (GameConnectedChatLeave) -> Void) {
         callbacks.add(callbackID: CallbackID(340), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameConnectedClanChatMsg_t` callback
-    func onGameConnectedClanChatMsg(_ client: @escaping (GameConnectedClanChatMsg) -> Void) {
+    func onGameConnectedClanChatMsg(_ client: @Sendable @escaping (GameConnectedClanChatMsg) -> Void) {
         callbacks.add(callbackID: CallbackID(338), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameConnectedFriendChatMsg_t` callback
-    func onGameConnectedFriendChatMsg(_ client: @escaping (GameConnectedFriendChatMsg) -> Void) {
+    func onGameConnectedFriendChatMsg(_ client: @Sendable @escaping (GameConnectedFriendChatMsg) -> Void) {
         callbacks.add(callbackID: CallbackID(343), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameLobbyJoinRequested_t` callback
-    func onGameLobbyJoinRequested(_ client: @escaping (GameLobbyJoinRequested) -> Void) {
+    func onGameLobbyJoinRequested(_ client: @Sendable @escaping (GameLobbyJoinRequested) -> Void) {
         callbacks.add(callbackID: CallbackID(333), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameOverlayActivated_t` callback
-    func onGameOverlayActivated(_ client: @escaping (GameOverlayActivated) -> Void) {
+    func onGameOverlayActivated(_ client: @Sendable @escaping (GameOverlayActivated) -> Void) {
         callbacks.add(callbackID: CallbackID(331), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameRichPresenceJoinRequested_t` callback
-    func onGameRichPresenceJoinRequested(_ client: @escaping (GameRichPresenceJoinRequested) -> Void) {
+    func onGameRichPresenceJoinRequested(_ client: @Sendable @escaping (GameRichPresenceJoinRequested) -> Void) {
         callbacks.add(callbackID: CallbackID(337), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameServerChangeRequested_t` callback
-    func onGameServerChangeRequested(_ client: @escaping (GameServerChangeRequested) -> Void) {
+    func onGameServerChangeRequested(_ client: @Sendable @escaping (GameServerChangeRequested) -> Void) {
         callbacks.add(callbackID: CallbackID(332), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GameWebCallback_t` callback
-    func onGameWebCallback(_ client: @escaping (GameWebCallback) -> Void) {
+    func onGameWebCallback(_ client: @Sendable @escaping (GameWebCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(164), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GamepadTextInputDismissed_t` callback
-    func onGamepadTextInputDismissed(_ client: @escaping (GamepadTextInputDismissed) -> Void) {
+    func onGamepadTextInputDismissed(_ client: @Sendable @escaping (GamepadTextInputDismissed) -> Void) {
         callbacks.add(callbackID: CallbackID(714), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GetAuthSessionTicketResponse_t` callback
-    func onGetAuthSessionTicketResponse(_ client: @escaping (GetAuthSessionTicketResponse) -> Void) {
+    func onGetAuthSessionTicketResponse(_ client: @Sendable @escaping (GetAuthSessionTicketResponse) -> Void) {
         callbacks.add(callbackID: CallbackID(163), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GetOPFSettingsResult_t` callback
-    func onGetOPFSettingsResult(_ client: @escaping (GetOPFSettingsResult) -> Void) {
+    func onGetOPFSettingsResult(_ client: @Sendable @escaping (GetOPFSettingsResult) -> Void) {
         callbacks.add(callbackID: CallbackID(4624), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GetTicketForWebApiResponse_t` callback
-    func onGetTicketForWebApiResponse(_ client: @escaping (GetTicketForWebApiResponse) -> Void) {
+    func onGetTicketForWebApiResponse(_ client: @Sendable @escaping (GetTicketForWebApiResponse) -> Void) {
         callbacks.add(callbackID: CallbackID(168), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `GetVideoURLResult_t` callback
-    func onGetVideoURLResult(_ client: @escaping (GetVideoURLResult) -> Void) {
+    func onGetVideoURLResult(_ client: @Sendable @escaping (GetVideoURLResult) -> Void) {
         callbacks.add(callbackID: CallbackID(4611), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_BrowserRestarted_t` callback
-    func onHTMLBrowserRestarted(_ client: @escaping (HTMLBrowserRestarted) -> Void) {
+    func onHTMLBrowserRestarted(_ client: @Sendable @escaping (HTMLBrowserRestarted) -> Void) {
         callbacks.add(callbackID: CallbackID(4527), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_CanGoBackAndForward_t` callback
-    func onHTMLCanGoBackAndForward(_ client: @escaping (HTMLCanGoBackAndForward) -> Void) {
+    func onHTMLCanGoBackAndForward(_ client: @Sendable @escaping (HTMLCanGoBackAndForward) -> Void) {
         callbacks.add(callbackID: CallbackID(4510), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_ChangedTitle_t` callback
-    func onHTMLChangedTitle(_ client: @escaping (HTMLChangedTitle) -> Void) {
+    func onHTMLChangedTitle(_ client: @Sendable @escaping (HTMLChangedTitle) -> Void) {
         callbacks.add(callbackID: CallbackID(4508), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_CloseBrowser_t` callback
-    func onHTMLCloseBrowser(_ client: @escaping (HTMLCloseBrowser) -> Void) {
+    func onHTMLCloseBrowser(_ client: @Sendable @escaping (HTMLCloseBrowser) -> Void) {
         callbacks.add(callbackID: CallbackID(4504), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_FileOpenDialog_t` callback
-    func onHTMLFileOpenDialog(_ client: @escaping (HTMLFileOpenDialog) -> Void) {
+    func onHTMLFileOpenDialog(_ client: @Sendable @escaping (HTMLFileOpenDialog) -> Void) {
         callbacks.add(callbackID: CallbackID(4516), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_FinishedRequest_t` callback
-    func onHTMLFinishedRequest(_ client: @escaping (HTMLFinishedRequest) -> Void) {
+    func onHTMLFinishedRequest(_ client: @Sendable @escaping (HTMLFinishedRequest) -> Void) {
         callbacks.add(callbackID: CallbackID(4506), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_HideToolTip_t` callback
-    func onHTMLHideToolTip(_ client: @escaping (HTMLHideToolTip) -> Void) {
+    func onHTMLHideToolTip(_ client: @Sendable @escaping (HTMLHideToolTip) -> Void) {
         callbacks.add(callbackID: CallbackID(4526), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_HorizontalScroll_t` callback
-    func onHTMLHorizontalScroll(_ client: @escaping (HTMLHorizontalScroll) -> Void) {
+    func onHTMLHorizontalScroll(_ client: @Sendable @escaping (HTMLHorizontalScroll) -> Void) {
         callbacks.add(callbackID: CallbackID(4511), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_JSAlert_t` callback
-    func onHTMLJSAlert(_ client: @escaping (HTMLJSAlert) -> Void) {
+    func onHTMLJSAlert(_ client: @Sendable @escaping (HTMLJSAlert) -> Void) {
         callbacks.add(callbackID: CallbackID(4514), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_JSConfirm_t` callback
-    func onHTMLJSConfirm(_ client: @escaping (HTMLJSConfirm) -> Void) {
+    func onHTMLJSConfirm(_ client: @Sendable @escaping (HTMLJSConfirm) -> Void) {
         callbacks.add(callbackID: CallbackID(4515), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_LinkAtPosition_t` callback
-    func onHTMLLinkAtPosition(_ client: @escaping (HTMLLinkAtPosition) -> Void) {
+    func onHTMLLinkAtPosition(_ client: @Sendable @escaping (HTMLLinkAtPosition) -> Void) {
         callbacks.add(callbackID: CallbackID(4513), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_NeedsPaint_t` callback
-    func onHTMLNeedsPaint(_ client: @escaping (HTMLNeedsPaint) -> Void) {
+    func onHTMLNeedsPaint(_ client: @Sendable @escaping (HTMLNeedsPaint) -> Void) {
         callbacks.add(callbackID: CallbackID(4502), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_NewWindow_t` callback
-    func onHTMLNewWindow(_ client: @escaping (HTMLNewWindow) -> Void) {
+    func onHTMLNewWindow(_ client: @Sendable @escaping (HTMLNewWindow) -> Void) {
         callbacks.add(callbackID: CallbackID(4521), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_OpenLinkInNewTab_t` callback
-    func onHTMLOpenLinkInNewTab(_ client: @escaping (HTMLOpenLinkInNewTab) -> Void) {
+    func onHTMLOpenLinkInNewTab(_ client: @Sendable @escaping (HTMLOpenLinkInNewTab) -> Void) {
         callbacks.add(callbackID: CallbackID(4507), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_SearchResults_t` callback
-    func onHTMLSearchResults(_ client: @escaping (HTMLSearchResults) -> Void) {
+    func onHTMLSearchResults(_ client: @Sendable @escaping (HTMLSearchResults) -> Void) {
         callbacks.add(callbackID: CallbackID(4509), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_SetCursor_t` callback
-    func onHTMLSetCursor(_ client: @escaping (HTMLSetCursor) -> Void) {
+    func onHTMLSetCursor(_ client: @Sendable @escaping (HTMLSetCursor) -> Void) {
         callbacks.add(callbackID: CallbackID(4522), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_ShowToolTip_t` callback
-    func onHTMLShowToolTip(_ client: @escaping (HTMLShowToolTip) -> Void) {
+    func onHTMLShowToolTip(_ client: @Sendable @escaping (HTMLShowToolTip) -> Void) {
         callbacks.add(callbackID: CallbackID(4524), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_StartRequest_t` callback
-    func onHTMLStartRequest(_ client: @escaping (HTMLStartRequest) -> Void) {
+    func onHTMLStartRequest(_ client: @Sendable @escaping (HTMLStartRequest) -> Void) {
         callbacks.add(callbackID: CallbackID(4503), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_StatusText_t` callback
-    func onHTMLStatusText(_ client: @escaping (HTMLStatusText) -> Void) {
+    func onHTMLStatusText(_ client: @Sendable @escaping (HTMLStatusText) -> Void) {
         callbacks.add(callbackID: CallbackID(4523), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_URLChanged_t` callback
-    func onHTMLURLChanged(_ client: @escaping (HTMLURLChanged) -> Void) {
+    func onHTMLURLChanged(_ client: @Sendable @escaping (HTMLURLChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(4505), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_UpdateToolTip_t` callback
-    func onHTMLUpdateToolTip(_ client: @escaping (HTMLUpdateToolTip) -> Void) {
+    func onHTMLUpdateToolTip(_ client: @Sendable @escaping (HTMLUpdateToolTip) -> Void) {
         callbacks.add(callbackID: CallbackID(4525), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTML_VerticalScroll_t` callback
-    func onHTMLVerticalScroll(_ client: @escaping (HTMLVerticalScroll) -> Void) {
+    func onHTMLVerticalScroll(_ client: @Sendable @escaping (HTMLVerticalScroll) -> Void) {
         callbacks.add(callbackID: CallbackID(4512), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTTPRequestDataReceived_t` callback
-    func onHTTPRequestDataReceived(_ client: @escaping (HTTPRequestDataReceived) -> Void) {
+    func onHTTPRequestDataReceived(_ client: @Sendable @escaping (HTTPRequestDataReceived) -> Void) {
         callbacks.add(callbackID: CallbackID(2103), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `HTTPRequestHeadersReceived_t` callback
-    func onHTTPRequestHeadersReceived(_ client: @escaping (HTTPRequestHeadersReceived) -> Void) {
+    func onHTTPRequestHeadersReceived(_ client: @Sendable @escaping (HTTPRequestHeadersReceived) -> Void) {
         callbacks.add(callbackID: CallbackID(2102), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `IPCFailure_t` callback
-    func onIPCFailure(_ client: @escaping (IPCFailure) -> Void) {
+    func onIPCFailure(_ client: @Sendable @escaping (IPCFailure) -> Void) {
         callbacks.add(callbackID: CallbackID(117), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `IPCountry_t` callback
-    func onIPCountry(_ client: @escaping (IPCountry) -> Void) {
+    func onIPCountry(_ client: @Sendable @escaping (IPCountry) -> Void) {
         callbacks.add(callbackID: CallbackID(701), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `ItemInstalled_t` callback
-    func onItemInstalled(_ client: @escaping (ItemInstalled) -> Void) {
+    func onItemInstalled(_ client: @Sendable @escaping (ItemInstalled) -> Void) {
         callbacks.add(callbackID: CallbackID(3405), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `LicensesUpdated_t` callback
-    func onLicensesUpdated(_ client: @escaping (LicensesUpdated) -> Void) {
+    func onLicensesUpdated(_ client: @Sendable @escaping (LicensesUpdated) -> Void) {
         callbacks.add(callbackID: CallbackID(125), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `LobbyChatMsg_t` callback
-    func onLobbyChatMsg(_ client: @escaping (LobbyChatMsg) -> Void) {
+    func onLobbyChatMsg(_ client: @Sendable @escaping (LobbyChatMsg) -> Void) {
         callbacks.add(callbackID: CallbackID(507), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `LobbyChatUpdate_t` callback
-    func onLobbyChatUpdate(_ client: @escaping (LobbyChatUpdate) -> Void) {
+    func onLobbyChatUpdate(_ client: @Sendable @escaping (LobbyChatUpdate) -> Void) {
         callbacks.add(callbackID: CallbackID(506), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `LobbyDataUpdate_t` callback
-    func onLobbyDataUpdate(_ client: @escaping (LobbyDataUpdate) -> Void) {
+    func onLobbyDataUpdate(_ client: @Sendable @escaping (LobbyDataUpdate) -> Void) {
         callbacks.add(callbackID: CallbackID(505), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `LobbyGameCreated_t` callback
-    func onLobbyGameCreated(_ client: @escaping (LobbyGameCreated) -> Void) {
+    func onLobbyGameCreated(_ client: @Sendable @escaping (LobbyGameCreated) -> Void) {
         callbacks.add(callbackID: CallbackID(509), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `LobbyInvite_t` callback
-    func onLobbyInvite(_ client: @escaping (LobbyInvite) -> Void) {
+    func onLobbyInvite(_ client: @Sendable @escaping (LobbyInvite) -> Void) {
         callbacks.add(callbackID: CallbackID(503), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `LobbyKicked_t` callback
-    func onLobbyKicked(_ client: @escaping (LobbyKicked) -> Void) {
+    func onLobbyKicked(_ client: @Sendable @escaping (LobbyKicked) -> Void) {
         callbacks.add(callbackID: CallbackID(512), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `LowBatteryPower_t` callback
-    func onLowBatteryPower(_ client: @escaping (LowBatteryPower) -> Void) {
+    func onLowBatteryPower(_ client: @Sendable @escaping (LowBatteryPower) -> Void) {
         callbacks.add(callbackID: CallbackID(702), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MicroTxnAuthorizationResponse_t` callback
-    func onMicroTxnAuthorizationResponse(_ client: @escaping (MicroTxnAuthorizationResponse) -> Void) {
+    func onMicroTxnAuthorizationResponse(_ client: @Sendable @escaping (MicroTxnAuthorizationResponse) -> Void) {
         callbacks.add(callbackID: CallbackID(152), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerRemoteToFront_t` callback
-    func onMusicPlayerRemoteToFront(_ client: @escaping (MusicPlayerRemoteToFront) -> Void) {
+    func onMusicPlayerRemoteToFront(_ client: @Sendable @escaping (MusicPlayerRemoteToFront) -> Void) {
         callbacks.add(callbackID: CallbackID(4103), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerRemoteWillActivate_t` callback
-    func onMusicPlayerRemoteWillActivate(_ client: @escaping (MusicPlayerRemoteWillActivate) -> Void) {
+    func onMusicPlayerRemoteWillActivate(_ client: @Sendable @escaping (MusicPlayerRemoteWillActivate) -> Void) {
         callbacks.add(callbackID: CallbackID(4101), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerRemoteWillDeactivate_t` callback
-    func onMusicPlayerRemoteWillDeactivate(_ client: @escaping (MusicPlayerRemoteWillDeactivate) -> Void) {
+    func onMusicPlayerRemoteWillDeactivate(_ client: @Sendable @escaping (MusicPlayerRemoteWillDeactivate) -> Void) {
         callbacks.add(callbackID: CallbackID(4102), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerSelectsPlaylistEntry_t` callback
-    func onMusicPlayerSelectsPlaylistEntry(_ client: @escaping (MusicPlayerSelectsPlaylistEntry) -> Void) {
+    func onMusicPlayerSelectsPlaylistEntry(_ client: @Sendable @escaping (MusicPlayerSelectsPlaylistEntry) -> Void) {
         callbacks.add(callbackID: CallbackID(4013), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerSelectsQueueEntry_t` callback
-    func onMusicPlayerSelectsQueueEntry(_ client: @escaping (MusicPlayerSelectsQueueEntry) -> Void) {
+    func onMusicPlayerSelectsQueueEntry(_ client: @Sendable @escaping (MusicPlayerSelectsQueueEntry) -> Void) {
         callbacks.add(callbackID: CallbackID(4012), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWantsLooped_t` callback
-    func onMusicPlayerWantsLooped(_ client: @escaping (MusicPlayerWantsLooped) -> Void) {
+    func onMusicPlayerWantsLooped(_ client: @Sendable @escaping (MusicPlayerWantsLooped) -> Void) {
         callbacks.add(callbackID: CallbackID(4110), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWantsPause_t` callback
-    func onMusicPlayerWantsPause(_ client: @escaping (MusicPlayerWantsPause) -> Void) {
+    func onMusicPlayerWantsPause(_ client: @Sendable @escaping (MusicPlayerWantsPause) -> Void) {
         callbacks.add(callbackID: CallbackID(4106), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWantsPlayNext_t` callback
-    func onMusicPlayerWantsPlayNext(_ client: @escaping (MusicPlayerWantsPlayNext) -> Void) {
+    func onMusicPlayerWantsPlayNext(_ client: @Sendable @escaping (MusicPlayerWantsPlayNext) -> Void) {
         callbacks.add(callbackID: CallbackID(4108), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWantsPlayPrevious_t` callback
-    func onMusicPlayerWantsPlayPrevious(_ client: @escaping (MusicPlayerWantsPlayPrevious) -> Void) {
+    func onMusicPlayerWantsPlayPrevious(_ client: @Sendable @escaping (MusicPlayerWantsPlayPrevious) -> Void) {
         callbacks.add(callbackID: CallbackID(4107), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWantsPlay_t` callback
-    func onMusicPlayerWantsPlay(_ client: @escaping (MusicPlayerWantsPlay) -> Void) {
+    func onMusicPlayerWantsPlay(_ client: @Sendable @escaping (MusicPlayerWantsPlay) -> Void) {
         callbacks.add(callbackID: CallbackID(4105), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWantsPlayingRepeatStatus_t` callback
-    func onMusicPlayerWantsPlayingRepeatStatus(_ client: @escaping (MusicPlayerWantsPlayingRepeatStatus) -> Void) {
+    func onMusicPlayerWantsPlayingRepeatStatus(_ client: @Sendable @escaping (MusicPlayerWantsPlayingRepeatStatus) -> Void) {
         callbacks.add(callbackID: CallbackID(4114), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWantsShuffled_t` callback
-    func onMusicPlayerWantsShuffled(_ client: @escaping (MusicPlayerWantsShuffled) -> Void) {
+    func onMusicPlayerWantsShuffled(_ client: @Sendable @escaping (MusicPlayerWantsShuffled) -> Void) {
         callbacks.add(callbackID: CallbackID(4109), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWantsVolume_t` callback
-    func onMusicPlayerWantsVolume(_ client: @escaping (MusicPlayerWantsVolume) -> Void) {
+    func onMusicPlayerWantsVolume(_ client: @Sendable @escaping (MusicPlayerWantsVolume) -> Void) {
         callbacks.add(callbackID: CallbackID(4011), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `MusicPlayerWillQuit_t` callback
-    func onMusicPlayerWillQuit(_ client: @escaping (MusicPlayerWillQuit) -> Void) {
+    func onMusicPlayerWillQuit(_ client: @Sendable @escaping (MusicPlayerWillQuit) -> Void) {
         callbacks.add(callbackID: CallbackID(4104), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `NewUrlLaunchParameters_t` callback
-    func onNewUrlLaunchParameters(_ client: @escaping (NewUrlLaunchParameters) -> Void) {
+    func onNewUrlLaunchParameters(_ client: @Sendable @escaping (NewUrlLaunchParameters) -> Void) {
         callbacks.add(callbackID: CallbackID(1014), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `OverlayBrowserProtocolNavigation_t` callback
-    func onOverlayBrowserProtocolNavigation(_ client: @escaping (OverlayBrowserProtocolNavigation) -> Void) {
+    func onOverlayBrowserProtocolNavigation(_ client: @Sendable @escaping (OverlayBrowserProtocolNavigation) -> Void) {
         callbacks.add(callbackID: CallbackID(349), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `PS3TrophiesInstalled_t` callback
-    func onPS3TrophiesInstalled(_ client: @escaping (PS3TrophiesInstalled) -> Void) {
+    func onPS3TrophiesInstalled(_ client: @Sendable @escaping (PS3TrophiesInstalled) -> Void) {
         callbacks.add(callbackID: CallbackID(1112), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `PSNGameBootInviteResult_t` callback
-    func onPSNGameBootInviteResult(_ client: @escaping (PSNGameBootInviteResult) -> Void) {
+    func onPSNGameBootInviteResult(_ client: @Sendable @escaping (PSNGameBootInviteResult) -> Void) {
         callbacks.add(callbackID: CallbackID(515), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `PersonaStateChange_t` callback
-    func onPersonaStateChange(_ client: @escaping (PersonaStateChange) -> Void) {
+    func onPersonaStateChange(_ client: @Sendable @escaping (PersonaStateChange) -> Void) {
         callbacks.add(callbackID: CallbackID(304), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `PlaybackStatusHasChanged_t` callback
-    func onPlaybackStatusHasChanged(_ client: @escaping (PlaybackStatusHasChanged) -> Void) {
+    func onPlaybackStatusHasChanged(_ client: @Sendable @escaping (PlaybackStatusHasChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(4001), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RemoteStorageEnumerateUserSharedWorkshopFilesResult_t` callback
-    func onRemoteStorageEnumerateUserSharedWorkshopFilesResult(_ client: @escaping (RemoteStorageEnumerateUserSharedWorkshopFilesResult) -> Void) {
+    func onRemoteStorageEnumerateUserSharedWorkshopFilesResult(_ client: @Sendable @escaping (RemoteStorageEnumerateUserSharedWorkshopFilesResult) -> Void) {
         callbacks.add(callbackID: CallbackID(1326), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RemoteStorageLocalFileChange_t` callback
-    func onRemoteStorageLocalFileChange(_ client: @escaping (RemoteStorageLocalFileChange) -> Void) {
+    func onRemoteStorageLocalFileChange(_ client: @Sendable @escaping (RemoteStorageLocalFileChange) -> Void) {
         callbacks.add(callbackID: CallbackID(1333), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RemoteStoragePublishFileResult_t` callback
-    func onRemoteStoragePublishFileResult(_ client: @escaping (RemoteStoragePublishFileResult) -> Void) {
+    func onRemoteStoragePublishFileResult(_ client: @Sendable @escaping (RemoteStoragePublishFileResult) -> Void) {
         callbacks.add(callbackID: CallbackID(1309), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RemoteStoragePublishedFileDeleted_t` callback
-    func onRemoteStoragePublishedFileDeleted(_ client: @escaping (RemoteStoragePublishedFileDeleted) -> Void) {
+    func onRemoteStoragePublishedFileDeleted(_ client: @Sendable @escaping (RemoteStoragePublishedFileDeleted) -> Void) {
         callbacks.add(callbackID: CallbackID(1323), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RemoteStoragePublishedFileSubscribed_t` callback
-    func onRemoteStoragePublishedFileSubscribed(_ client: @escaping (RemoteStoragePublishedFileSubscribed) -> Void) {
+    func onRemoteStoragePublishedFileSubscribed(_ client: @Sendable @escaping (RemoteStoragePublishedFileSubscribed) -> Void) {
         callbacks.add(callbackID: CallbackID(1321), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RemoteStoragePublishedFileUnsubscribed_t` callback
-    func onRemoteStoragePublishedFileUnsubscribed(_ client: @escaping (RemoteStoragePublishedFileUnsubscribed) -> Void) {
+    func onRemoteStoragePublishedFileUnsubscribed(_ client: @Sendable @escaping (RemoteStoragePublishedFileUnsubscribed) -> Void) {
         callbacks.add(callbackID: CallbackID(1322), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RemoteStoragePublishedFileUpdated_t` callback
-    func onRemoteStoragePublishedFileUpdated(_ client: @escaping (RemoteStoragePublishedFileUpdated) -> Void) {
+    func onRemoteStoragePublishedFileUpdated(_ client: @Sendable @escaping (RemoteStoragePublishedFileUpdated) -> Void) {
         callbacks.add(callbackID: CallbackID(1330), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RemoteStorageUserVoteDetails_t` callback
-    func onRemoteStorageUserVoteDetails(_ client: @escaping (RemoteStorageUserVoteDetails) -> Void) {
+    func onRemoteStorageUserVoteDetails(_ client: @Sendable @escaping (RemoteStorageUserVoteDetails) -> Void) {
         callbacks.add(callbackID: CallbackID(1325), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RequestPlayersForGameFinalResultCallback_t` callback
-    func onRequestPlayersForGameFinalResultCallback(_ client: @escaping (RequestPlayersForGameFinalResultCallback) -> Void) {
+    func onRequestPlayersForGameFinalResultCallback(_ client: @Sendable @escaping (RequestPlayersForGameFinalResultCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5213), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RequestPlayersForGameProgressCallback_t` callback
-    func onRequestPlayersForGameProgressCallback(_ client: @escaping (RequestPlayersForGameProgressCallback) -> Void) {
+    func onRequestPlayersForGameProgressCallback(_ client: @Sendable @escaping (RequestPlayersForGameProgressCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5211), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `RequestPlayersForGameResultCallback_t` callback
-    func onRequestPlayersForGameResultCallback(_ client: @escaping (RequestPlayersForGameResultCallback) -> Void) {
+    func onRequestPlayersForGameResultCallback(_ client: @Sendable @escaping (RequestPlayersForGameResultCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5212), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `ReservationNotificationCallback_t` callback
-    func onReservationNotificationCallback(_ client: @escaping (ReservationNotificationCallback) -> Void) {
+    func onReservationNotificationCallback(_ client: @Sendable @escaping (ReservationNotificationCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5303), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `ScreenshotReady_t` callback
-    func onScreenshotReady(_ client: @escaping (ScreenshotReady) -> Void) {
+    func onScreenshotReady(_ client: @Sendable @escaping (ScreenshotReady) -> Void) {
         callbacks.add(callbackID: CallbackID(2301), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `ScreenshotRequested_t` callback
-    func onScreenshotRequested(_ client: @escaping (ScreenshotRequested) -> Void) {
+    func onScreenshotRequested(_ client: @Sendable @escaping (ScreenshotRequested) -> Void) {
         callbacks.add(callbackID: CallbackID(2302), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SearchForGameProgressCallback_t` callback
-    func onSearchForGameProgressCallback(_ client: @escaping (SearchForGameProgressCallback) -> Void) {
+    func onSearchForGameProgressCallback(_ client: @Sendable @escaping (SearchForGameProgressCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5201), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SearchForGameResultCallback_t` callback
-    func onSearchForGameResultCallback(_ client: @escaping (SearchForGameResultCallback) -> Void) {
+    func onSearchForGameResultCallback(_ client: @Sendable @escaping (SearchForGameResultCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5202), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamAPICallCompleted_t` callback
-    func onSteamAPICallCompleted(_ client: @escaping (SteamAPICallCompleted) -> Void) {
+    func onSteamAPICallCompleted(_ client: @Sendable @escaping (SteamAPICallCompleted) -> Void) {
         callbacks.add(callbackID: CallbackID(703), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamInputConfigurationLoaded_t` callback
-    func onSteamInputConfigurationLoaded(_ client: @escaping (SteamInputConfigurationLoaded) -> Void) {
+    func onSteamInputConfigurationLoaded(_ client: @Sendable @escaping (SteamInputConfigurationLoaded) -> Void) {
         callbacks.add(callbackID: CallbackID(2803), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamInputDeviceConnected_t` callback
-    func onSteamInputDeviceConnected(_ client: @escaping (SteamInputDeviceConnected) -> Void) {
+    func onSteamInputDeviceConnected(_ client: @Sendable @escaping (SteamInputDeviceConnected) -> Void) {
         callbacks.add(callbackID: CallbackID(2801), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamInputDeviceDisconnected_t` callback
-    func onSteamInputDeviceDisconnected(_ client: @escaping (SteamInputDeviceDisconnected) -> Void) {
+    func onSteamInputDeviceDisconnected(_ client: @Sendable @escaping (SteamInputDeviceDisconnected) -> Void) {
         callbacks.add(callbackID: CallbackID(2802), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamInputGamepadSlotChange_t` callback
-    func onSteamInputGamepadSlotChange(_ client: @escaping (SteamInputGamepadSlotChange) -> Void) {
+    func onSteamInputGamepadSlotChange(_ client: @Sendable @escaping (SteamInputGamepadSlotChange) -> Void) {
         callbacks.add(callbackID: CallbackID(2804), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamInventoryDefinitionUpdate_t` callback
-    func onSteamInventoryDefinitionUpdate(_ client: @escaping (SteamInventoryDefinitionUpdate) -> Void) {
+    func onSteamInventoryDefinitionUpdate(_ client: @Sendable @escaping (SteamInventoryDefinitionUpdate) -> Void) {
         callbacks.add(callbackID: CallbackID(4702), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamInventoryFullUpdate_t` callback
-    func onSteamInventoryFullUpdate(_ client: @escaping (SteamInventoryFullUpdate) -> Void) {
+    func onSteamInventoryFullUpdate(_ client: @Sendable @escaping (SteamInventoryFullUpdate) -> Void) {
         callbacks.add(callbackID: CallbackID(4701), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamInventoryResultReady_t` callback
-    func onSteamInventoryResultReady(_ client: @escaping (SteamInventoryResultReady) -> Void) {
+    func onSteamInventoryResultReady(_ client: @Sendable @escaping (SteamInventoryResultReady) -> Void) {
         callbacks.add(callbackID: CallbackID(4700), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamNetAuthenticationStatus_t` callback
-    func onSteamNetAuthenticationStatus(_ client: @escaping (SteamNetAuthenticationStatus) -> Void) {
+    func onSteamNetAuthenticationStatus(_ client: @Sendable @escaping (SteamNetAuthenticationStatus) -> Void) {
         callbacks.add(callbackID: CallbackID(1222), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamNetConnectionStatusChangedCallback_t` callback
-    func onSteamNetConnectionStatusChangedCallback(_ client: @escaping (SteamNetConnectionStatusChangedCallback) -> Void) {
+    func onSteamNetConnectionStatusChangedCallback(_ client: @Sendable @escaping (SteamNetConnectionStatusChangedCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(1221), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamNetworkingFakeIPResult_t` callback
-    func onSteamNetworkingFakeIPResult(_ client: @escaping (SteamNetworkingFakeIPResult) -> Void) {
+    func onSteamNetworkingFakeIPResult(_ client: @Sendable @escaping (SteamNetworkingFakeIPResult) -> Void) {
         callbacks.add(callbackID: CallbackID(1223), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamNetworkingMessagesSessionFailed_t` callback
-    func onSteamNetworkingMessagesSessionFailed(_ client: @escaping (SteamNetworkingMessagesSessionFailed) -> Void) {
+    func onSteamNetworkingMessagesSessionFailed(_ client: @Sendable @escaping (SteamNetworkingMessagesSessionFailed) -> Void) {
         callbacks.add(callbackID: CallbackID(1252), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamNetworkingMessagesSessionRequest_t` callback
-    func onSteamNetworkingMessagesSessionRequest(_ client: @escaping (SteamNetworkingMessagesSessionRequest) -> Void) {
+    func onSteamNetworkingMessagesSessionRequest(_ client: @Sendable @escaping (SteamNetworkingMessagesSessionRequest) -> Void) {
         callbacks.add(callbackID: CallbackID(1251), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamParentalSettingsChanged_t` callback
-    func onSteamParentalSettingsChanged(_ client: @escaping (SteamParentalSettingsChanged) -> Void) {
+    func onSteamParentalSettingsChanged(_ client: @Sendable @escaping (SteamParentalSettingsChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(5001), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamRelayNetworkStatus_t` callback
-    func onSteamRelayNetworkStatus(_ client: @escaping (SteamRelayNetworkStatus) -> Void) {
+    func onSteamRelayNetworkStatus(_ client: @Sendable @escaping (SteamRelayNetworkStatus) -> Void) {
         callbacks.add(callbackID: CallbackID(1281), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamRemotePlaySessionConnected_t` callback
-    func onSteamRemotePlaySessionConnected(_ client: @escaping (SteamRemotePlaySessionConnected) -> Void) {
+    func onSteamRemotePlaySessionConnected(_ client: @Sendable @escaping (SteamRemotePlaySessionConnected) -> Void) {
         callbacks.add(callbackID: CallbackID(5701), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamRemotePlaySessionDisconnected_t` callback
-    func onSteamRemotePlaySessionDisconnected(_ client: @escaping (SteamRemotePlaySessionDisconnected) -> Void) {
+    func onSteamRemotePlaySessionDisconnected(_ client: @Sendable @escaping (SteamRemotePlaySessionDisconnected) -> Void) {
         callbacks.add(callbackID: CallbackID(5702), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamRemotePlayTogetherGuestInvite_t` callback
-    func onSteamRemotePlayTogetherGuestInvite(_ client: @escaping (SteamRemotePlayTogetherGuestInvite) -> Void) {
+    func onSteamRemotePlayTogetherGuestInvite(_ client: @Sendable @escaping (SteamRemotePlayTogetherGuestInvite) -> Void) {
         callbacks.add(callbackID: CallbackID(5703), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamServerConnectFailure_t` callback
-    func onSteamServerConnectFailure(_ client: @escaping (SteamServerConnectFailure) -> Void) {
+    func onSteamServerConnectFailure(_ client: @Sendable @escaping (SteamServerConnectFailure) -> Void) {
         callbacks.add(callbackID: CallbackID(102), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamServersConnected_t` callback
-    func onSteamServersConnected(_ client: @escaping (SteamServersConnected) -> Void) {
+    func onSteamServersConnected(_ client: @Sendable @escaping (SteamServersConnected) -> Void) {
         callbacks.add(callbackID: CallbackID(101), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamServersDisconnected_t` callback
-    func onSteamServersDisconnected(_ client: @escaping (SteamServersDisconnected) -> Void) {
+    func onSteamServersDisconnected(_ client: @Sendable @escaping (SteamServersDisconnected) -> Void) {
         callbacks.add(callbackID: CallbackID(103), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamShutdown_t` callback
-    func onSteamShutdown(_ client: @escaping (SteamShutdown) -> Void) {
+    func onSteamShutdown(_ client: @Sendable @escaping (SteamShutdown) -> Void) {
         callbacks.add(callbackID: CallbackID(704), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SubmitPlayerResultResultCallback_t` callback
-    func onSubmitPlayerResultResultCallback(_ client: @escaping (SubmitPlayerResultResultCallback) -> Void) {
+    func onSubmitPlayerResultResultCallback(_ client: @Sendable @escaping (SubmitPlayerResultResultCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5214), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `TimedTrialStatus_t` callback
-    func onTimedTrialStatus(_ client: @escaping (TimedTrialStatus) -> Void) {
+    func onTimedTrialStatus(_ client: @Sendable @escaping (TimedTrialStatus) -> Void) {
         callbacks.add(callbackID: CallbackID(1030), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `UnreadChatMessagesChanged_t` callback
-    func onUnreadChatMessagesChanged(_ client: @escaping (UnreadChatMessagesChanged) -> Void) {
+    func onUnreadChatMessagesChanged(_ client: @Sendable @escaping (UnreadChatMessagesChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(348), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `UserAchievementIconFetched_t` callback
-    func onUserAchievementIconFetched(_ client: @escaping (UserAchievementIconFetched) -> Void) {
+    func onUserAchievementIconFetched(_ client: @Sendable @escaping (UserAchievementIconFetched) -> Void) {
         callbacks.add(callbackID: CallbackID(1109), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `UserAchievementStored_t` callback
-    func onUserAchievementStored(_ client: @escaping (UserAchievementStored) -> Void) {
+    func onUserAchievementStored(_ client: @Sendable @escaping (UserAchievementStored) -> Void) {
         callbacks.add(callbackID: CallbackID(1103), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `UserStatsReceived_t` callback
-    func onUserStatsReceived(_ client: @escaping (UserStatsReceived) -> Void) {
+    func onUserStatsReceived(_ client: @Sendable @escaping (UserStatsReceived) -> Void) {
         callbacks.add(callbackID: CallbackID(1101), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `UserStatsStored_t` callback
-    func onUserStatsStored(_ client: @escaping (UserStatsStored) -> Void) {
+    func onUserStatsStored(_ client: @Sendable @escaping (UserStatsStored) -> Void) {
         callbacks.add(callbackID: CallbackID(1102), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `UserStatsUnloaded_t` callback
-    func onUserStatsUnloaded(_ client: @escaping (UserStatsUnloaded) -> Void) {
+    func onUserStatsUnloaded(_ client: @Sendable @escaping (UserStatsUnloaded) -> Void) {
         callbacks.add(callbackID: CallbackID(1108), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `UserSubscribedItemsListChanged_t` callback
-    func onUserSubscribedItemsListChanged(_ client: @escaping (UserSubscribedItemsListChanged) -> Void) {
+    func onUserSubscribedItemsListChanged(_ client: @Sendable @escaping (UserSubscribedItemsListChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(3418), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `ValidateAuthTicketResponse_t` callback
-    func onValidateAuthTicketResponse(_ client: @escaping (ValidateAuthTicketResponse) -> Void) {
+    func onValidateAuthTicketResponse(_ client: @Sendable @escaping (ValidateAuthTicketResponse) -> Void) {
         callbacks.add(callbackID: CallbackID(143), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `VolumeHasChanged_t` callback
-    func onVolumeHasChanged(_ client: @escaping (VolumeHasChanged) -> Void) {
+    func onVolumeHasChanged(_ client: @Sendable @escaping (VolumeHasChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(4002), rawClient: SteamBaseAPI.makeRaw(client))
     }
 }

@@ -375,7 +375,7 @@ extension Array where Element == UInt8 {
 
 /// A quick helper to reduce generated code size
 extension AsyncStream.Continuation {
-    func yield0(_ thing: Element) {
+    func yield0(_ thing: sending Element) {
         _ = yield(thing)
     }
 }

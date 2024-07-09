@@ -108,13 +108,13 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::GetDurationControl()`, callback
-    public func getDurationControl(completion: @escaping (DurationControl?) -> Void) {
+    public func getDurationControl(completion: @Sendable @escaping (DurationControl?) -> Void) {
         let rc = SteamAPI_ISteamUser_GetDurationControl(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUser::GetDurationControl()`, async
-    public func getDurationControl() async -> DurationControl? {
+    public func getDurationControl(isolation: isolated (any Actor)? = #isolation) async -> DurationControl? {
         await withUnsafeContinuation {
             getDurationControl(completion: $0.resume)
         }
@@ -141,13 +141,13 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::GetMarketEligibility()`, callback
-    public func getMarketEligibility(completion: @escaping (MarketEligibilityResponse?) -> Void) {
+    public func getMarketEligibility(completion: @Sendable @escaping (MarketEligibilityResponse?) -> Void) {
         let rc = SteamAPI_ISteamUser_GetMarketEligibility(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUser::GetMarketEligibility()`, async
-    public func getMarketEligibility() async -> MarketEligibilityResponse? {
+    public func getMarketEligibility(isolation: isolated (any Actor)? = #isolation) async -> MarketEligibilityResponse? {
         await withUnsafeContinuation {
             getMarketEligibility(completion: $0.resume)
         }
@@ -195,26 +195,26 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, callback
-    public func requestEncryptedAppTicket(dataToInclude: [UInt8], completion: @escaping (EncryptedAppTicketResponse?) -> Void) {
+    public func requestEncryptedAppTicket(dataToInclude: [UInt8], completion: @Sendable @escaping (EncryptedAppTicketResponse?) -> Void) {
         let rc = CSteamAPI_ISteamUser_RequestEncryptedAppTicket(interface, dataToInclude, CInt(dataToInclude.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, async
-    public func requestEncryptedAppTicket(dataToInclude: [UInt8]) async -> EncryptedAppTicketResponse? {
+    public func requestEncryptedAppTicket(isolation: isolated (any Actor)? = #isolation, dataToInclude: [UInt8]) async -> EncryptedAppTicketResponse? {
         await withUnsafeContinuation {
             requestEncryptedAppTicket(dataToInclude: dataToInclude, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamUser::RequestStoreAuthURL()`, callback
-    public func requestStoreAuthURL(redirectURL: String, completion: @escaping (StoreAuthURLResponse?) -> Void) {
+    public func requestStoreAuthURL(redirectURL: String, completion: @Sendable @escaping (StoreAuthURLResponse?) -> Void) {
         let rc = SteamAPI_ISteamUser_RequestStoreAuthURL(interface, redirectURL)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUser::RequestStoreAuthURL()`, async
-    public func requestStoreAuthURL(redirectURL: String) async -> StoreAuthURLResponse? {
+    public func requestStoreAuthURL(isolation: isolated (any Actor)? = #isolation, redirectURL: String) async -> StoreAuthURLResponse? {
         await withUnsafeContinuation {
             requestStoreAuthURL(redirectURL: redirectURL, completion: $0.resume)
         }

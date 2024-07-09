@@ -22,13 +22,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::AddAppDependency()`, callback
-    public func addAppDependency(publishedFileID: PublishedFileID, appID: AppID, completion: @escaping (AddAppDependencyResult?) -> Void) {
+    public func addAppDependency(publishedFileID: PublishedFileID, appID: AppID, completion: @Sendable @escaping (AddAppDependencyResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_AddAppDependency(interface, PublishedFileId_t(publishedFileID), AppId_t(appID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::AddAppDependency()`, async
-    public func addAppDependency(publishedFileID: PublishedFileID, appID: AppID) async -> AddAppDependencyResult? {
+    public func addAppDependency(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID, appID: AppID) async -> AddAppDependencyResult? {
         await withUnsafeContinuation {
             addAppDependency(publishedFileID: publishedFileID, appID: appID, completion: $0.resume)
         }
@@ -40,13 +40,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::AddDependency()`, callback
-    public func addDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID, completion: @escaping (AddUGCDependencyResult?) -> Void) {
+    public func addDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID, completion: @Sendable @escaping (AddUGCDependencyResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_AddDependency(interface, PublishedFileId_t(parentPublishedFileID), PublishedFileId_t(childPublishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::AddDependency()`, async
-    public func addDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -> AddUGCDependencyResult? {
+    public func addDependency(isolation: isolated (any Actor)? = #isolation, parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -> AddUGCDependencyResult? {
         await withUnsafeContinuation {
             addDependency(parentPublishedFileID: parentPublishedFileID, childPublishedFileID: childPublishedFileID, completion: $0.resume)
         }
@@ -77,13 +77,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::AddItemToFavorites()`, callback
-    public func addItemToFavorites(appId: AppID, publishedFileID: PublishedFileID, completion: @escaping (UserFavoriteItemsListChanged?) -> Void) {
+    public func addItemToFavorites(appId: AppID, publishedFileID: PublishedFileID, completion: @Sendable @escaping (UserFavoriteItemsListChanged?) -> Void) {
         let rc = SteamAPI_ISteamUGC_AddItemToFavorites(interface, AppId_t(appId), PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::AddItemToFavorites()`, async
-    public func addItemToFavorites(appId: AppID, publishedFileID: PublishedFileID) async -> UserFavoriteItemsListChanged? {
+    public func addItemToFavorites(isolation: isolated (any Actor)? = #isolation, appId: AppID, publishedFileID: PublishedFileID) async -> UserFavoriteItemsListChanged? {
         await withUnsafeContinuation {
             addItemToFavorites(appId: appId, publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -115,13 +115,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::CreateItem()`, callback
-    public func createItem(consumerAppId: AppID, fileType: WorkshopFileType, completion: @escaping (CreateItemResult?) -> Void) {
+    public func createItem(consumerAppId: AppID, fileType: WorkshopFileType, completion: @Sendable @escaping (CreateItemResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_CreateItem(interface, AppId_t(consumerAppId), EWorkshopFileType(fileType))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::CreateItem()`, async
-    public func createItem(consumerAppId: AppID, fileType: WorkshopFileType) async -> CreateItemResult? {
+    public func createItem(isolation: isolated (any Actor)? = #isolation, consumerAppId: AppID, fileType: WorkshopFileType) async -> CreateItemResult? {
         await withUnsafeContinuation {
             createItem(consumerAppId: consumerAppId, fileType: fileType, completion: $0.resume)
         }
@@ -149,13 +149,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::DeleteItem()`, callback
-    public func deleteItem(publishedFileID: PublishedFileID, completion: @escaping (DeleteItemResult?) -> Void) {
+    public func deleteItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (DeleteItemResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_DeleteItem(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::DeleteItem()`, async
-    public func deleteItem(publishedFileID: PublishedFileID) async -> DeleteItemResult? {
+    public func deleteItem(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID) async -> DeleteItemResult? {
         await withUnsafeContinuation {
             deleteItem(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -167,13 +167,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::GetAppDependencies()`, callback
-    public func getAppDependencies(publishedFileID: PublishedFileID, completion: @escaping (GetAppDependenciesResult?) -> Void) {
+    public func getAppDependencies(publishedFileID: PublishedFileID, completion: @Sendable @escaping (GetAppDependenciesResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_GetAppDependencies(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::GetAppDependencies()`, async
-    public func getAppDependencies(publishedFileID: PublishedFileID) async -> GetAppDependenciesResult? {
+    public func getAppDependencies(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID) async -> GetAppDependenciesResult? {
         await withUnsafeContinuation {
             getAppDependencies(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -380,26 +380,26 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::GetUserItemVote()`, callback
-    public func getUserItemVote(publishedFileID: PublishedFileID, completion: @escaping (GetUserItemVoteResult?) -> Void) {
+    public func getUserItemVote(publishedFileID: PublishedFileID, completion: @Sendable @escaping (GetUserItemVoteResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_GetUserItemVote(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::GetUserItemVote()`, async
-    public func getUserItemVote(publishedFileID: PublishedFileID) async -> GetUserItemVoteResult? {
+    public func getUserItemVote(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID) async -> GetUserItemVoteResult? {
         await withUnsafeContinuation {
             getUserItemVote(publishedFileID: publishedFileID, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamUGC::GetWorkshopEULAStatus()`, callback
-    public func getWorkshopEULAStatus(completion: @escaping (WorkshopEULAStatus?) -> Void) {
+    public func getWorkshopEULAStatus(completion: @Sendable @escaping (WorkshopEULAStatus?) -> Void) {
         let rc = SteamAPI_ISteamUGC_GetWorkshopEULAStatus(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::GetWorkshopEULAStatus()`, async
-    public func getWorkshopEULAStatus() async -> WorkshopEULAStatus? {
+    public func getWorkshopEULAStatus(isolation: isolated (any Actor)? = #isolation) async -> WorkshopEULAStatus? {
         await withUnsafeContinuation {
             getWorkshopEULAStatus(completion: $0.resume)
         }
@@ -417,13 +417,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::RemoveAppDependency()`, callback
-    public func removeAppDependency(publishedFileID: PublishedFileID, appID: AppID, completion: @escaping (RemoveAppDependencyResult?) -> Void) {
+    public func removeAppDependency(publishedFileID: PublishedFileID, appID: AppID, completion: @Sendable @escaping (RemoveAppDependencyResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_RemoveAppDependency(interface, PublishedFileId_t(publishedFileID), AppId_t(appID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::RemoveAppDependency()`, async
-    public func removeAppDependency(publishedFileID: PublishedFileID, appID: AppID) async -> RemoveAppDependencyResult? {
+    public func removeAppDependency(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID, appID: AppID) async -> RemoveAppDependencyResult? {
         await withUnsafeContinuation {
             removeAppDependency(publishedFileID: publishedFileID, appID: appID, completion: $0.resume)
         }
@@ -435,26 +435,26 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::RemoveDependency()`, callback
-    public func removeDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID, completion: @escaping (RemoveUGCDependencyResult?) -> Void) {
+    public func removeDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID, completion: @Sendable @escaping (RemoveUGCDependencyResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_RemoveDependency(interface, PublishedFileId_t(parentPublishedFileID), PublishedFileId_t(childPublishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::RemoveDependency()`, async
-    public func removeDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -> RemoveUGCDependencyResult? {
+    public func removeDependency(isolation: isolated (any Actor)? = #isolation, parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -> RemoveUGCDependencyResult? {
         await withUnsafeContinuation {
             removeDependency(parentPublishedFileID: parentPublishedFileID, childPublishedFileID: childPublishedFileID, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamUGC::RemoveItemFromFavorites()`, callback
-    public func removeItemFromFavorites(appId: AppID, publishedFileID: PublishedFileID, completion: @escaping (UserFavoriteItemsListChanged?) -> Void) {
+    public func removeItemFromFavorites(appId: AppID, publishedFileID: PublishedFileID, completion: @Sendable @escaping (UserFavoriteItemsListChanged?) -> Void) {
         let rc = SteamAPI_ISteamUGC_RemoveItemFromFavorites(interface, AppId_t(appId), PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::RemoveItemFromFavorites()`, async
-    public func removeItemFromFavorites(appId: AppID, publishedFileID: PublishedFileID) async -> UserFavoriteItemsListChanged? {
+    public func removeItemFromFavorites(isolation: isolated (any Actor)? = #isolation, appId: AppID, publishedFileID: PublishedFileID) async -> UserFavoriteItemsListChanged? {
         await withUnsafeContinuation {
             removeItemFromFavorites(appId: appId, publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -473,26 +473,26 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::RequestUGCDetails()`, callback
-    public func requestUGCDetails(publishedFileID: PublishedFileID, maxAgeSeconds: Int, completion: @escaping (SteamUGCRequestUGCDetailsResult?) -> Void) {
+    public func requestUGCDetails(publishedFileID: PublishedFileID, maxAgeSeconds: Int, completion: @Sendable @escaping (SteamUGCRequestUGCDetailsResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_RequestUGCDetails(interface, PublishedFileId_t(publishedFileID), uint32(maxAgeSeconds))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::RequestUGCDetails()`, async
-    public func requestUGCDetails(publishedFileID: PublishedFileID, maxAgeSeconds: Int) async -> SteamUGCRequestUGCDetailsResult? {
+    public func requestUGCDetails(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID, maxAgeSeconds: Int) async -> SteamUGCRequestUGCDetailsResult? {
         await withUnsafeContinuation {
             requestUGCDetails(publishedFileID: publishedFileID, maxAgeSeconds: maxAgeSeconds, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamUGC::SendQueryUGCRequest()`, callback
-    public func sendQueryUGCRequest(handle: UGCQueryHandle, completion: @escaping (SteamUGCQueryCompleted?) -> Void) {
+    public func sendQueryUGCRequest(handle: UGCQueryHandle, completion: @Sendable @escaping (SteamUGCQueryCompleted?) -> Void) {
         let rc = SteamAPI_ISteamUGC_SendQueryUGCRequest(interface, UGCQueryHandle_t(handle))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::SendQueryUGCRequest()`, async
-    public func sendQueryUGCRequest(handle: UGCQueryHandle) async -> SteamUGCQueryCompleted? {
+    public func sendQueryUGCRequest(isolation: isolated (any Actor)? = #isolation, handle: UGCQueryHandle) async -> SteamUGCQueryCompleted? {
         await withUnsafeContinuation {
             sendQueryUGCRequest(handle: handle, completion: $0.resume)
         }
@@ -648,13 +648,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::SetUserItemVote()`, callback
-    public func setUserItemVote(publishedFileID: PublishedFileID, voteUp: Bool, completion: @escaping (SetUserItemVoteResult?) -> Void) {
+    public func setUserItemVote(publishedFileID: PublishedFileID, voteUp: Bool, completion: @Sendable @escaping (SetUserItemVoteResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_SetUserItemVote(interface, PublishedFileId_t(publishedFileID), voteUp)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::SetUserItemVote()`, async
-    public func setUserItemVote(publishedFileID: PublishedFileID, voteUp: Bool) async -> SetUserItemVoteResult? {
+    public func setUserItemVote(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID, voteUp: Bool) async -> SetUserItemVoteResult? {
         await withUnsafeContinuation {
             setUserItemVote(publishedFileID: publishedFileID, voteUp: voteUp, completion: $0.resume)
         }
@@ -671,67 +671,67 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::StartPlaytimeTracking()`, callback
-    public func startPlaytimeTracking(publishedFileID: [PublishedFileID], completion: @escaping (StartPlaytimeTrackingResult?) -> Void) {
+    public func startPlaytimeTracking(publishedFileID: [PublishedFileID], completion: @Sendable @escaping (StartPlaytimeTrackingResult?) -> Void) {
         var tmpPublishedFileID = publishedFileID.map { PublishedFileId_t($0) }
         let rc = SteamAPI_ISteamUGC_StartPlaytimeTracking(interface, &tmpPublishedFileID, uint32(publishedFileID.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::StartPlaytimeTracking()`, async
-    public func startPlaytimeTracking(publishedFileID: [PublishedFileID]) async -> StartPlaytimeTrackingResult? {
+    public func startPlaytimeTracking(isolation: isolated (any Actor)? = #isolation, publishedFileID: [PublishedFileID]) async -> StartPlaytimeTrackingResult? {
         await withUnsafeContinuation {
             startPlaytimeTracking(publishedFileID: publishedFileID, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamUGC::StopPlaytimeTracking()`, callback
-    public func stopPlaytimeTracking(publishedFileID: [PublishedFileID], completion: @escaping (StopPlaytimeTrackingResult?) -> Void) {
+    public func stopPlaytimeTracking(publishedFileID: [PublishedFileID], completion: @Sendable @escaping (StopPlaytimeTrackingResult?) -> Void) {
         var tmpPublishedFileID = publishedFileID.map { PublishedFileId_t($0) }
         let rc = SteamAPI_ISteamUGC_StopPlaytimeTracking(interface, &tmpPublishedFileID, uint32(publishedFileID.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::StopPlaytimeTracking()`, async
-    public func stopPlaytimeTracking(publishedFileID: [PublishedFileID]) async -> StopPlaytimeTrackingResult? {
+    public func stopPlaytimeTracking(isolation: isolated (any Actor)? = #isolation, publishedFileID: [PublishedFileID]) async -> StopPlaytimeTrackingResult? {
         await withUnsafeContinuation {
             stopPlaytimeTracking(publishedFileID: publishedFileID, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamUGC::StopPlaytimeTrackingForAllItems()`, callback
-    public func stopPlaytimeTrackingForAllItems(completion: @escaping (StopPlaytimeTrackingResult?) -> Void) {
+    public func stopPlaytimeTrackingForAllItems(completion: @Sendable @escaping (StopPlaytimeTrackingResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_StopPlaytimeTrackingForAllItems(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::StopPlaytimeTrackingForAllItems()`, async
-    public func stopPlaytimeTrackingForAllItems() async -> StopPlaytimeTrackingResult? {
+    public func stopPlaytimeTrackingForAllItems(isolation: isolated (any Actor)? = #isolation) async -> StopPlaytimeTrackingResult? {
         await withUnsafeContinuation {
             stopPlaytimeTrackingForAllItems(completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamUGC::SubmitItemUpdate()`, callback
-    public func submitItemUpdate(handle: UGCUpdateHandle, changeNote: String?, completion: @escaping (SubmitItemUpdateResult?) -> Void) {
+    public func submitItemUpdate(handle: UGCUpdateHandle, changeNote: String?, completion: @Sendable @escaping (SubmitItemUpdateResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_SubmitItemUpdate(interface, UGCUpdateHandle_t(handle), changeNote)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::SubmitItemUpdate()`, async
-    public func submitItemUpdate(handle: UGCUpdateHandle, changeNote: String?) async -> SubmitItemUpdateResult? {
+    public func submitItemUpdate(isolation: isolated (any Actor)? = #isolation, handle: UGCUpdateHandle, changeNote: String?) async -> SubmitItemUpdateResult? {
         await withUnsafeContinuation {
             submitItemUpdate(handle: handle, changeNote: changeNote, completion: $0.resume)
         }
     }
 
     /// Steamworks `ISteamUGC::SubscribeItem()`, callback
-    public func subscribeItem(publishedFileID: PublishedFileID, completion: @escaping (RemoteStorageSubscribePublishedFileResult?) -> Void) {
+    public func subscribeItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (RemoteStorageSubscribePublishedFileResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_SubscribeItem(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::SubscribeItem()`, async
-    public func subscribeItem(publishedFileID: PublishedFileID) async -> RemoteStorageSubscribePublishedFileResult? {
+    public func subscribeItem(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID) async -> RemoteStorageSubscribePublishedFileResult? {
         await withUnsafeContinuation {
             subscribeItem(publishedFileID: publishedFileID, completion: $0.resume)
         }
@@ -743,13 +743,13 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::UnsubscribeItem()`, callback
-    public func unsubscribeItem(publishedFileID: PublishedFileID, completion: @escaping (RemoteStorageUnsubscribePublishedFileResult?) -> Void) {
+    public func unsubscribeItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (RemoteStorageUnsubscribePublishedFileResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_UnsubscribeItem(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
 
     /// Steamworks `ISteamUGC::UnsubscribeItem()`, async
-    public func unsubscribeItem(publishedFileID: PublishedFileID) async -> RemoteStorageUnsubscribePublishedFileResult? {
+    public func unsubscribeItem(isolation: isolated (any Actor)? = #isolation, publishedFileID: PublishedFileID) async -> RemoteStorageUnsubscribePublishedFileResult? {
         await withUnsafeContinuation {
             unsubscribeItem(publishedFileID: publishedFileID, completion: $0.resume)
         }
