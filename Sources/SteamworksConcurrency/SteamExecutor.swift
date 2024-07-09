@@ -58,11 +58,11 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     // MARK: Lifecycle
 
     /// A Steam API Client to be periodically polled
-    public struct APIClient {
+    public struct APIClient: Sendable {
         // MARK: Configuration
 
         /// The kind of polling to perform
-        public enum PollKind {
+        public enum PollKind: Sendable {
             /// Call ``SteamBaseAPI.runCallbacks()``
             case runCallbacks
             /// Call ``SteamBaseAPI.releaseCurrentThreadMemory()``

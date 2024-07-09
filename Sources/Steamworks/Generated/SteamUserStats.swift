@@ -20,7 +20,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::AttachLeaderboardUGC()`, callback
-    public func attachLeaderboardUGC(steamLeaderboard: SteamLeaderboard, ugc: UGCHandle, completion: @escaping (LeaderboardUGCSet?) -> Void) {
+    public func attachLeaderboardUGC(steamLeaderboard: SteamLeaderboard, ugc: UGCHandle, completion: @Sendable @escaping (LeaderboardUGCSet?) -> Void) {
         let rc = SteamAPI_ISteamUserStats_AttachLeaderboardUGC(interface, SteamLeaderboard_t(steamLeaderboard), UGCHandle_t(ugc))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -38,7 +38,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::DownloadLeaderboardEntries()`, callback
-    public func downloadLeaderboardEntries(steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int, completion: @escaping (LeaderboardScoresDownloaded?) -> Void) {
+    public func downloadLeaderboardEntries(steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int, completion: @Sendable @escaping (LeaderboardScoresDownloaded?) -> Void) {
         let rc = SteamAPI_ISteamUserStats_DownloadLeaderboardEntries(interface, SteamLeaderboard_t(steamLeaderboard), ELeaderboardDataRequest(leaderboardDataRequest), CInt(rangeStart), CInt(rangeEnd))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -51,7 +51,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::DownloadLeaderboardEntriesForUsers()`, callback
-    public func downloadLeaderboardEntriesForUsers(steamLeaderboard: SteamLeaderboard, users: [SteamID], completion: @escaping (LeaderboardScoresDownloaded?) -> Void) {
+    public func downloadLeaderboardEntriesForUsers(steamLeaderboard: SteamLeaderboard, users: [SteamID], completion: @Sendable @escaping (LeaderboardScoresDownloaded?) -> Void) {
         var tmpUsers = users.map { CSteamID($0) }
         let rc = SteamAPI_ISteamUserStats_DownloadLeaderboardEntriesForUsers(interface, SteamLeaderboard_t(steamLeaderboard), &tmpUsers, CInt(users.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
@@ -65,7 +65,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::FindLeaderboard()`, callback
-    public func findLeaderboard(leaderboardName: String, completion: @escaping (LeaderboardFindResult?) -> Void) {
+    public func findLeaderboard(leaderboardName: String, completion: @Sendable @escaping (LeaderboardFindResult?) -> Void) {
         let rc = SteamAPI_ISteamUserStats_FindLeaderboard(interface, leaderboardName)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -78,7 +78,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::FindOrCreateLeaderboard()`, callback
-    public func findOrCreateLeaderboard(leaderboardName: String, leaderboardSortMethod: LeaderboardSortMethod, leaderboardDisplayType: LeaderboardDisplayType, completion: @escaping (LeaderboardFindResult?) -> Void) {
+    public func findOrCreateLeaderboard(leaderboardName: String, leaderboardSortMethod: LeaderboardSortMethod, leaderboardDisplayType: LeaderboardDisplayType, completion: @Sendable @escaping (LeaderboardFindResult?) -> Void) {
         let rc = SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(interface, leaderboardName, ELeaderboardSortMethod(leaderboardSortMethod), ELeaderboardDisplayType(leaderboardDisplayType))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -245,7 +245,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::GetNumberOfCurrentPlayers()`, callback
-    public func getNumberOfCurrentPlayers(completion: @escaping (NumberOfCurrentPlayers?) -> Void) {
+    public func getNumberOfCurrentPlayers(completion: @Sendable @escaping (NumberOfCurrentPlayers?) -> Void) {
         let rc = SteamAPI_ISteamUserStats_GetNumberOfCurrentPlayers(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -323,7 +323,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::RequestGlobalAchievementPercentages()`, callback
-    public func requestGlobalAchievementPercentages(completion: @escaping (GlobalAchievementPercentagesReady?) -> Void) {
+    public func requestGlobalAchievementPercentages(completion: @Sendable @escaping (GlobalAchievementPercentagesReady?) -> Void) {
         let rc = SteamAPI_ISteamUserStats_RequestGlobalAchievementPercentages(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -336,7 +336,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::RequestGlobalStats()`, callback
-    public func requestGlobalStats(historyDays: Int, completion: @escaping (GlobalStatsReceived?) -> Void) {
+    public func requestGlobalStats(historyDays: Int, completion: @Sendable @escaping (GlobalStatsReceived?) -> Void) {
         let rc = SteamAPI_ISteamUserStats_RequestGlobalStats(interface, CInt(historyDays))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -349,7 +349,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::RequestUserStats()`, callback
-    public func requestUserStats(user: SteamID, completion: @escaping (UserStatsReceived?) -> Void) {
+    public func requestUserStats(user: SteamID, completion: @Sendable @escaping (UserStatsReceived?) -> Void) {
         let rc = SteamAPI_ISteamUserStats_RequestUserStats(interface, CUnsignedLongLong(user))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -392,7 +392,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::UploadLeaderboardScore()`, callback
-    public func uploadLeaderboardScore(steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int], completion: @escaping (LeaderboardScoreUploaded?) -> Void) {
+    public func uploadLeaderboardScore(steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int], completion: @Sendable @escaping (LeaderboardScoreUploaded?) -> Void) {
         var tmpScoreDetails = scoreDetails.map { int32($0) }
         let rc = SteamAPI_ISteamUserStats_UploadLeaderboardScore(interface, SteamLeaderboard_t(steamLeaderboard), ELeaderboardUploadScoreMethod(leaderboardUploadScoreMethod), int32(score), &tmpScoreDetails, CInt(scoreDetails.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))

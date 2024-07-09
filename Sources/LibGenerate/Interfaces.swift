@@ -675,7 +675,7 @@ struct SteamMethod {
 
         case .callReturn(let type):
             precondition(!db.isVar)
-            let done = "completion: @escaping (\(type)?) -> Void"
+            let done = "completion: @Sendable @escaping (\(type)?) -> Void"
             return "public func \(db.funcName)(\(params.functionParams.commaAppend(done))) {"
         }
     }

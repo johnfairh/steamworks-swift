@@ -6,6 +6,7 @@
 //
 
 // Swift 5.7 -- `import Dispatch` appears to work again in C++ mode...
+// Swift 6 - can move to Swift.Mutex only when macOS 2024 is min level...
 import Dispatch
 
 final class Lock: Sendable {

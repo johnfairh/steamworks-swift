@@ -16,7 +16,7 @@ import Logging
 /// a boolean to indicate failure instead of using `k_uAPICallInvalid`.  Fix them up.
 extension SteamHTTP {
     /// Steamworks `ISteamHTTP::SendHTTPRequest()`
-    public func sendHTTPRequest(request: HTTPRequestHandle, completion: @escaping (HTTPRequestCompleted?) -> Void) {
+    public func sendHTTPRequest(request: HTTPRequestHandle, completion: sending @escaping (HTTPRequestCompleted?) -> Void) {
         var callHandle = SteamAPICall_t()
         if !SteamAPI_ISteamHTTP_SendHTTPRequest(interface, CSteamworks.HTTPRequestHandle(request), &callHandle) {
             callHandle = k_uAPICallInvalid
@@ -25,7 +25,7 @@ extension SteamHTTP {
     }
 
     /// Steamworks `ISteamHTTP::SendHTTPRequestAndStreamResponse()`
-    public func sendHTTPRequestAndStreamResponse(request: HTTPRequestHandle, completion: @escaping (HTTPRequestCompleted?) -> Void) {
+    public func sendHTTPRequestAndStreamResponse(request: HTTPRequestHandle, completion: sending @escaping (HTTPRequestCompleted?) -> Void) {
         var callHandle = SteamAPICall_t()
         if !SteamAPI_ISteamHTTP_SendHTTPRequestAndStreamResponse(interface, CSteamworks.HTTPRequestHandle(request), &callHandle) {
             callHandle = k_uAPICallInvalid

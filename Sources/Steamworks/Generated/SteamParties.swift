@@ -25,7 +25,7 @@ public struct SteamParties: Sendable {
     }
 
     /// Steamworks `ISteamParties::ChangeNumOpenSlots()`, callback
-    public func changeNumOpenSlots(beacon: PartyBeaconID, openSlots: Int, completion: @escaping (ChangeNumOpenSlotsCallback?) -> Void) {
+    public func changeNumOpenSlots(beacon: PartyBeaconID, openSlots: Int, completion: @Sendable @escaping (ChangeNumOpenSlotsCallback?) -> Void) {
         let rc = SteamAPI_ISteamParties_ChangeNumOpenSlots(interface, PartyBeaconID_t(beacon), uint32(openSlots))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -38,7 +38,7 @@ public struct SteamParties: Sendable {
     }
 
     /// Steamworks `ISteamParties::CreateBeacon()`, callback
-    public func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String, completion: @escaping (CreateBeaconCallback?) -> Void) {
+    public func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String, completion: @Sendable @escaping (CreateBeaconCallback?) -> Void) {
         let rc = CSteamAPI_ISteamParties_CreateBeacon(interface, uint32(openSlots), SteamPartyBeaconLocation_t(beaconLocation), connectString, metadata)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -101,7 +101,7 @@ public struct SteamParties: Sendable {
     }
 
     /// Steamworks `ISteamParties::JoinParty()`, callback
-    public func joinParty(beaconID: PartyBeaconID, completion: @escaping (JoinPartyCallback?) -> Void) {
+    public func joinParty(beaconID: PartyBeaconID, completion: @Sendable @escaping (JoinPartyCallback?) -> Void) {
         let rc = SteamAPI_ISteamParties_JoinParty(interface, PartyBeaconID_t(beaconID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }

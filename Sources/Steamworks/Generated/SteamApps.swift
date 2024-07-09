@@ -148,7 +148,7 @@ public struct SteamApps: Sendable {
     }
 
     /// Steamworks `ISteamApps::GetFileDetails()`, callback
-    public func getFileDetails(fileName: String, completion: @escaping (FileDetailsResult?) -> Void) {
+    public func getFileDetails(fileName: String, completion: @Sendable @escaping (FileDetailsResult?) -> Void) {
         let rc = SteamAPI_ISteamApps_GetFileDetails(interface, fileName)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }

@@ -108,7 +108,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::GetDurationControl()`, callback
-    public func getDurationControl(completion: @escaping (DurationControl?) -> Void) {
+    public func getDurationControl(completion: @Sendable @escaping (DurationControl?) -> Void) {
         let rc = SteamAPI_ISteamUser_GetDurationControl(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -141,7 +141,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::GetMarketEligibility()`, callback
-    public func getMarketEligibility(completion: @escaping (MarketEligibilityResponse?) -> Void) {
+    public func getMarketEligibility(completion: @Sendable @escaping (MarketEligibilityResponse?) -> Void) {
         let rc = SteamAPI_ISteamUser_GetMarketEligibility(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -195,7 +195,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, callback
-    public func requestEncryptedAppTicket(dataToInclude: [UInt8], completion: @escaping (EncryptedAppTicketResponse?) -> Void) {
+    public func requestEncryptedAppTicket(dataToInclude: [UInt8], completion: @Sendable @escaping (EncryptedAppTicketResponse?) -> Void) {
         let rc = CSteamAPI_ISteamUser_RequestEncryptedAppTicket(interface, dataToInclude, CInt(dataToInclude.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -208,7 +208,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::RequestStoreAuthURL()`, callback
-    public func requestStoreAuthURL(redirectURL: String, completion: @escaping (StoreAuthURLResponse?) -> Void) {
+    public func requestStoreAuthURL(redirectURL: String, completion: @Sendable @escaping (StoreAuthURLResponse?) -> Void) {
         let rc = SteamAPI_ISteamUser_RequestStoreAuthURL(interface, redirectURL)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }

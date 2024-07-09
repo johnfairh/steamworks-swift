@@ -35,7 +35,7 @@ public struct SteamHTMLSurface: Sendable {
     }
 
     /// Steamworks `ISteamHTMLSurface::CreateBrowser()`, callback
-    public func createBrowser(userAgent: String?, userCSS: String?, completion: @escaping (HTMLBrowserReady?) -> Void) {
+    public func createBrowser(userAgent: String?, userCSS: String?, completion: @Sendable @escaping (HTMLBrowserReady?) -> Void) {
         let rc = SteamAPI_ISteamHTMLSurface_CreateBrowser(interface, userAgent, userCSS)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
