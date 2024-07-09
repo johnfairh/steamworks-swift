@@ -55,8 +55,9 @@ class CShimServerListResponse: ISteamMatchmakingServerListResponse {
     // Help poor confused Swift get hold of the superclass interface.
     // Swift 5.8: It's, somehow, even more confused: the member version of this no longer works
     // Swift 5.9: Still borked - member version appears as an '__.Unsafe' monstrosity.
-    static _Nonnull ISteamMatchmakingServerListResponse *GetSteamInterface(_Nonnull CShimServerListResponse *thiz) {
-        return thiz;
+    // Swift 6.0: Back to the 5.7 level of confusion.  hooray?
+    _Nonnull ISteamMatchmakingServerListResponse *GetSteamInterface() {
+        return this;
     }
 
     // Overrides - proxy to vtable
@@ -89,8 +90,8 @@ class CShimPingResponse: ISteamMatchmakingPingResponse {
         delete this;
     }
 
-    static _Nonnull ISteamMatchmakingPingResponse *GetSteamInterface(_Nonnull CShimPingResponse *thiz) {
-        return thiz;
+    _Nonnull ISteamMatchmakingPingResponse *GetSteamInterface() {
+        return this;
     }
 
     // Steamworks doesn't put this in the callbacks so we have to stash it in order
@@ -126,8 +127,8 @@ class CShimPlayersResponse: ISteamMatchmakingPlayersResponse {
         delete this;
     }
 
-    static _Nonnull ISteamMatchmakingPlayersResponse *GetSteamInterface(_Nonnull CShimPlayersResponse *thiz) {
-        return thiz;
+    _Nonnull ISteamMatchmakingPlayersResponse *GetSteamInterface() {
+        return this;
     }
 
     HServerQuery handle;
@@ -164,10 +165,9 @@ class CShimRulesResponse: ISteamMatchmakingRulesResponse {
         delete this;
     }
 
-    static _Nonnull ISteamMatchmakingRulesResponse *GetSteamInterface(_Nonnull CShimRulesResponse *thiz) {
-        return thiz;
+    _Nonnull ISteamMatchmakingRulesResponse *GetSteamInterface() {
+        return this;
     }
-
 
     HServerQuery handle;
 

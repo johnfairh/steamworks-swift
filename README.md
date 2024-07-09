@@ -7,7 +7,7 @@
 
 A practical interface to the Steamworks SDK using the Swift C++ importer.
 
-**Caveat Integrator: The Swift C++ importer is new and shaky; this package is built on top**
+**Caveat Integrator: The Swift C++ importer is new and evolving; this package is built on top**
 
 Current state:
 * All Steamworks interfaces complete - see [API docs](https://johnfairh.github.io/steamworks-swift/index.html)
@@ -306,31 +306,35 @@ Fully-fledged AppKit/Metal demo [here](https://github.com/johnfairh/spacewar-swi
 
 ### Swift C++ Bugs
 
-_to recheck in Swift 6, noticed 5.10 has fewer simd screw-ups at least_
+_to recheck in Swift 6 for Linux - looking good though_
 
-Tech limitations, on 5.9 Xcode 15.b6:
+Tech limitations, on 6.0 Xcode 16.b3:
 * Some structures/classes aren't imported -- is the common factor a `protected`
   destructor?  Verify by trying to use `SteamNetworkingMessage_t`.
-* Something goes wrong storing pointers to classes and they get nobbled by something.
+* ~Something goes wrong storing pointers to classes and they get nobbled by something.
   Verify by making `SteamIPAddress` a struct and running `TestApiServer`.  Or change
-  interfaces to cache the interface pointers.
-* Calls to virtual functions aren't generated properly: Swift generates a ref
+  interfaces to cache the interface pointers.~ incredibly, fixed in Swift 6
+* ~Calls to virtual functions aren't generated properly: Swift generates a ref
   to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
-  usable in practice.  Will use the flat API.
+  usable in practice.  Will use the flat API.~ allegedly fixed in Swift 6 but don't
+  need due to history.
 * Anonymous enums are not imported at all.  Affects callback etc. ID constants.
   Will work around.
 * ~sourcekit won't give me a module interface for `CSteamworks` to see what else the
   importer is doing.  Probably Xcode's fault, still not passing the user's flags to
   sourcekit and still doing insultingly bad error-reporting.~ fixed in Xcode 15?!
 * Linux only: random parts of Glibc silently fail to import. SMH.  Work around in C++.
+  See `swift_shims.h`.
 * ~Linux only: implicit struct constructors are not created, Swift generates a ref
   to a non-existent method that fails at link time.  Work around with dumb C++
   allocate shim.~  Sort of fixed in 5.9, but instead `swiftc` crashes on some uses -- on
-  both macOS and Linux.  Check by refs to eg. `CSteamNetworkingIPAddr_Allocate()`.`
+  both macOS and Linux.  Check by refs to eg. `CSteamNetworkingIPAddr_Allocate()`, see
+  `steam_missing.h`.
 * Linux only, _again_: SPM test auto-discovery has no clue about C++ interop.  Work around by
   smashing in the flag everywhere...
-* Swift 5.8+ adopts a broken/paranoid model about 'projected pointers' requiring some fairly
-  ugly code to work around.   Verify with the `__ unsafe` stuff in `ManualTypes.swift`.
+* ~Swift 5.8+ adopts a broken/paranoid model about 'projected pointers' requiring some fairly
+  ugly code to work around.   Verify with the `__ unsafe` stuff in `ManualTypes.swift`.~
+  fixed by Swift 6ish
 
 ### Non-Swift Problems
 

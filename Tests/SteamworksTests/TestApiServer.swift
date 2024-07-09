@@ -31,7 +31,7 @@ class TestApiServer: XCTestCase {
         client.runCallbacks()
     }
 
-    override func tearDown() {
-        _ = try? TestClient.recycleClient()
-    }
+//    override func tearDown() {
+//        _ = try? TestClient.recycleClient()
+//    }
 }
