@@ -223,7 +223,7 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::RequestEligiblePromoItemDefinitionsIDs()`, async
-    public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID) async -> SteamInventoryEligiblePromoItemDefIDs? {
+    public func requestEligiblePromoItemDefinitionsIDs(isolation: isolated (any Actor)? = #isolation, steamID: SteamID) async -> SteamInventoryEligiblePromoItemDefIDs? {
         await withUnsafeContinuation {
             requestEligiblePromoItemDefinitionsIDs(steamID: steamID, completion: $0.resume)
         }
@@ -236,7 +236,7 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::RequestPrices()`, async
-    public func requestPrices() async -> SteamInventoryRequestPricesResult? {
+    public func requestPrices(isolation: isolated (any Actor)? = #isolation) async -> SteamInventoryRequestPricesResult? {
         await withUnsafeContinuation {
             requestPrices(completion: $0.resume)
         }
@@ -286,7 +286,7 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::StartPurchase()`, async
-    public func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int]) async -> SteamInventoryStartPurchaseResult? {
+    public func startPurchase(isolation: isolated (any Actor)? = #isolation, arrayItemDefs: [SteamItemDef], arrayQuantity: [Int]) async -> SteamInventoryStartPurchaseResult? {
         await withUnsafeContinuation {
             startPurchase(arrayItemDefs: arrayItemDefs, arrayQuantity: arrayQuantity, completion: $0.resume)
         }

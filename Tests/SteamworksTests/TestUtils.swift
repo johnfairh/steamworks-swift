@@ -111,6 +111,13 @@ enum TestClient {
     nonisolated(unsafe) private static var client: Client?
     nonisolated(unsafe) private static var asyncClient: AsyncClient?
 
+    @discardableResult
+    static func recycleClient() throws -> SteamAPI{
+        TestClient.asyncClient = nil
+        TestClient.client = nil // -> steam_shutdown_api
+        return try getClient()
+    }
+
     static func getClient() throws -> SteamAPI {
         if let client {
             return client.steam

@@ -90,4 +90,8 @@ class TestApiMatchmaking: XCTestCase {
 
         TestClient.runFrames() // until we finish...
     }
+
+    override func tearDown() {
+        try! TestClient.recycleClient()
+    }
 }

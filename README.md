@@ -20,9 +20,9 @@ Current state:
   `SteamworksConcurrency` module
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
-* Requires Swift 5.10, Xcode 15.3 -- Linux C++ interop is a bit better in 5.10 but still curious
+* Requires Swift 6, Xcode 16 beta -- Linux not building right now, wait for 6 GA
 * The Xcode project basically works.
-* Unit tests sometimes crash inside steam on exit - some kind of XCTest incompatibility?
+* ~Unit tests sometimes crash inside steam on exit~ fixed!
 
 Below:
 * [Concept](#concept)
@@ -53,7 +53,6 @@ Below:
 
 ### Next
 
-* Finish practical Swift concurrency support in Swift 6
 * More SpaceWar porting over to Swift to check general practicality, somewhat real-world usage,
   general interest - see [spacewar-swift](https://github.com/johnfairh/spacewar-swift).
 
@@ -145,8 +144,8 @@ There are async versions:
 ```swift
 let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
 ```
-...but do check [Swift concurrency concerns](#swift-concurrency-concerns): this form is
-not safe right now, though this should be fixable in Swift 6.
+...which are finally safe, as of Swift 6, but do check
+[Swift concurrency concerns](#swift-concurrency-concerns).
 
 ### Array-length parameters
 
@@ -216,7 +215,7 @@ you must regularly call `SteamAPI.runCallbacks()` or `SteamAPI.releaseCurrentThr
 The former synchronously calls back into your code to fulfill callbacks; they both do
 internal thread-specific housekeeping.
 
-Swift concurrency and its built-in libdispatch-based executors are dead-set against users
+Swift concurrency and its built-in libdispatch-based executors are dead set against users
 thinking about threads, with a begrudging exception for 'the main thread'.
 
 To use async-await with Steamworks I think there are two approaches:
@@ -244,7 +243,7 @@ executors to look after gameservers or lower-priority work.
 ## How To Use This Project
 
 Prereqs:
-* Needs Swift 5.10 (Xcode 15.3)
+* Needs Swift 6 beta (Xcode 16 beta)
 * Needs Steam client installed (and logged-in, running for the tests or to do anything useful)
 * I'm using macOS 14; should work on Linux; might work on Windows eventually
 
@@ -255,7 +254,7 @@ Install the Steamworks SDK:
 
 Sample `Package.swift`:
 ```swift
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 
 import PackageDescription
 

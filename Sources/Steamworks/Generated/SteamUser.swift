@@ -114,7 +114,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::GetDurationControl()`, async
-    public func getDurationControl() async -> DurationControl? {
+    public func getDurationControl(isolation: isolated (any Actor)? = #isolation) async -> DurationControl? {
         await withUnsafeContinuation {
             getDurationControl(completion: $0.resume)
         }
@@ -147,7 +147,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::GetMarketEligibility()`, async
-    public func getMarketEligibility() async -> MarketEligibilityResponse? {
+    public func getMarketEligibility(isolation: isolated (any Actor)? = #isolation) async -> MarketEligibilityResponse? {
         await withUnsafeContinuation {
             getMarketEligibility(completion: $0.resume)
         }
@@ -201,7 +201,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::RequestEncryptedAppTicket()`, async
-    public func requestEncryptedAppTicket(dataToInclude: [UInt8]) async -> EncryptedAppTicketResponse? {
+    public func requestEncryptedAppTicket(isolation: isolated (any Actor)? = #isolation, dataToInclude: [UInt8]) async -> EncryptedAppTicketResponse? {
         await withUnsafeContinuation {
             requestEncryptedAppTicket(dataToInclude: dataToInclude, completion: $0.resume)
         }
@@ -214,7 +214,7 @@ public struct SteamUser: Sendable {
     }
 
     /// Steamworks `ISteamUser::RequestStoreAuthURL()`, async
-    public func requestStoreAuthURL(redirectURL: String) async -> StoreAuthURLResponse? {
+    public func requestStoreAuthURL(isolation: isolated (any Actor)? = #isolation, redirectURL: String) async -> StoreAuthURLResponse? {
         await withUnsafeContinuation {
             requestStoreAuthURL(redirectURL: redirectURL, completion: $0.resume)
         }

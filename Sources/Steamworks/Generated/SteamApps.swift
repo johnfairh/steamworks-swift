@@ -154,7 +154,7 @@ public struct SteamApps: Sendable {
     }
 
     /// Steamworks `ISteamApps::GetFileDetails()`, async
-    public func getFileDetails(fileName: String) async -> FileDetailsResult? {
+    public func getFileDetails(isolation: isolated (any Actor)? = #isolation, fileName: String) async -> FileDetailsResult? {
         await withUnsafeContinuation {
             getFileDetails(fileName: fileName, completion: $0.resume)
         }

@@ -549,9 +549,18 @@ extension Array where Element == MetadataDB.Method.Param {
 }
 
 extension Array where Element == SteamParam {
+    private var functionParamList: [String] {
+        compactMap(\.swiftParamClause)
+    }
+
     /// Formal parameter list
     var functionParams: String {
-        compactMap(\.swiftParamClause).commaJoined
+        functionParamList.commaJoined
+    }
+
+    /// Formal parameter list including isolation inheritance
+    var functionParamsWithIsolation: String {
+        (["isolation: isolated (any Actor)? = #isolation"] + functionParamList).commaJoined
     }
 
     /// Steamworks call parameter list
@@ -783,7 +792,7 @@ struct SteamMethod {
         return [
             "",
             "\(comment), async",
-            "public func \(db.funcName)(\(params.functionParams)) async -> \(type)? {",
+            "public func \(db.funcName)(\(params.functionParamsWithIsolation)) async -> \(type)? {",
             "    await withUnsafeContinuation {",
             "        \(db.funcName)(\(params.asyncForwardingParams.commaAppend("completion: $0.resume")))",
             "    }",

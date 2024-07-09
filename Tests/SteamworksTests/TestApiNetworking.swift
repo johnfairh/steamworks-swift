@@ -41,8 +41,11 @@ class TestApiNetworking: XCTestCase {
         let steamID = steam.user.getSteamID()
         let message: [UInt8] = [1,2,3,4]
 
-        steam.onSteamNetworkingMessagesSessionRequest { req in
+        steam.onSteamNetworkingMessagesSessionRequest { [weak steam] req in
             print("Session Request from \(req.identityRemote)")
+            guard let steam else {
+                return
+            }
 
             let (count, msgs) = steam.networkingMessages.receiveMessagesOnChannel(localChannel: 0, maxMessages: 1)
             XCTAssertEqual(1, count)
@@ -106,7 +109,9 @@ class TestApiNetworking: XCTestCase {
         }
 
         // callback for connection state machine -- we get both ends here!
-        steam.onSteamNetConnectionStatusChangedCallback { req in
+        steam.onSteamNetConnectionStatusChangedCallback { [weak steam] req in
+            guard let steam else { return }
+
             let isClient = req.conn == clientConnection
             let connName = isClient ? "Client" : "Server"
             let (rc, steamConnName) = steam.networkingSockets.getConnectionName(peer: req.conn, maxLen: 100)
@@ -175,9 +180,19 @@ class TestApiNetworking: XCTestCase {
 
         TestClient.runFrames(callback: pollFrameCallback)
 
-        // If we run *just this* test then get "Trying to close low level socket support, but we still have sockets open!"
-        // but all 3 sockets are definitely fully closed.  The message doesn't happen if we run the full suite, so I guess
-        // there is some undocumented async cleanup work.  CBA to write an async sleep, untestable and would just break.
+        // If we run just this test and let the process exit then get "Trying to close low level socket support, but we still have sockets open!"
+        // but all 3 sockets are definitely fully closed.  So slip in a recycle - doing a controlled shutdown before too much other network stuff
+        // seems to sort things out.
+        needRecycle = true
+    }
+
+    var needRecycle = false
+
+    override func tearDown() {
+        if needRecycle {
+            needRecycle = false
+            _ = try? TestClient.recycleClient()
+        }
     }
 
     /// API shape test

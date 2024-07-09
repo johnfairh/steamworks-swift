@@ -38,8 +38,8 @@ class TestCallbacks: XCTestCase {
         var counter = 0
         let callbackID = CallbackID(100)
 
-        api.callbacks.add(callbackID: callbackID) { _ in
-            api.callbacks.add(callbackID: callbackID) { _ in counter += 1 }
+        api.callbacks.add(callbackID: callbackID) { [weak api] _ in
+            api?.callbacks.add(callbackID: callbackID) { _ in counter += 1 }
         }
 
         let raw = UnsafeMutableRawPointer.allocate(byteCount: 1, alignment: 1)
@@ -78,9 +78,9 @@ class TestCallbacks: XCTestCase {
         var counter = 0
         let callID = UInt64(22)
 
-        system.add(callID: callID) { _ in
+        system.add(callID: callID) { [weak system] _ in
             counter += 1
-            system.add(callID: callID) { _ in counter += 1 }
+            system?.add(callID: callID) { _ in counter += 1 }
         }
 
         let raw = UnsafeMutableRawPointer.allocate(byteCount: 1, alignment: 1)

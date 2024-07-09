@@ -12,6 +12,8 @@ import Steamworks
 //
 // 1) foundation APIs don't match
 // 2) swift-atomics doesn't link (maybe C++ breakage?)
+//
+// WBN to use Swift 6's built-in atomics but need macOS 2024
 
 #if !os(Linux)
 
@@ -31,16 +33,13 @@ import Atomics
 /// main thread.
 ///
 /// Problems:
-/// 1. Until Swift 6 makes isolation inheritance work, it's still not safe to actually use the
-///   `async` version of the APIs.
-///
-/// 2. The poll resolution promised by the API is dubious -- probably because of the
+/// 1. The poll resolution promised by the API is dubious -- probably because of the
 ///   thread priorities available via ``NSThread`` getting anything below 100ms is a
 ///   bit sketchy.
 ///
 /// To Do (perhaps):
 /// * Change the API clients at runtime - eg. creation of a server or something
-/// * Figure out what on earth is wrong with Linux vs. swift-atomics
+/// * Figure out what on earth is wrong with Linux vs. swift-atomics (or more likely move to built-in atomics)
 public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
     /// Combination mutex & CV protecting ``jobs`` and ``quit`` and ``thread``
     private let cond: NSCondition

@@ -41,7 +41,7 @@ public struct SteamHTMLSurface: Sendable {
     }
 
     /// Steamworks `ISteamHTMLSurface::CreateBrowser()`, async
-    public func createBrowser(userAgent: String?, userCSS: String?) async -> HTMLBrowserReady? {
+    public func createBrowser(isolation: isolated (any Actor)? = #isolation, userAgent: String?, userCSS: String?) async -> HTMLBrowserReady? {
         await withUnsafeContinuation {
             createBrowser(userAgent: userAgent, userCSS: userCSS, completion: $0.resume)
         }

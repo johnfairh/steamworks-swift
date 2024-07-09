@@ -60,8 +60,6 @@ class TestApiSimple: XCTestCase {
             group.addTask { @MainActor in
                 MainActor.assertIsolated()
 
-                // XXX wrong! This await switches executors -- need to
-                // XXX inherit the caller's isolation (Swift 6 #isolation probably).
                 if let res = await steam.friends.getFollowerCount(steamID: steamID),
                    res.result == .ok {
                     MainActor.assertIsolated()
@@ -161,7 +159,8 @@ class TestApiSimple: XCTestCase {
     func testHTTP() throws {
         let steam = try TestClient.getClient()
         let req = steam.http.createHTTPRequest(httpRequestMethod: .get, absoluteURL: "http://example.com")
-        steam.http.sendHTTPRequest(request: req) { done in
+        steam.http.sendHTTPRequest(request: req) { [weak steam] done in
+            guard let steam else { return }
             defer {
                 steam.http.releaseHTTPRequest(request: req)
                 TestClient.stopRunningFrames()
@@ -189,7 +188,9 @@ class TestApiSimple: XCTestCase {
     func testInventory() throws {
         let steam = try TestClient.getClient()
 
-        steam.onSteamInventoryResultReady { r in
+        steam.onSteamInventoryResultReady { [weak steam] r in
+            guard let steam else { return }
+
             print("InventoryResultReady: \(r.result)")
             guard r.result == .ok else {
                 return // we wait

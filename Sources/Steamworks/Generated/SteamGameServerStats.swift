@@ -52,7 +52,7 @@ public struct SteamGameServerStats: Sendable {
     }
 
     /// Steamworks `ISteamGameServerStats::RequestUserStats()`, async
-    public func requestUserStats(user: SteamID) async -> GSStatsReceived? {
+    public func requestUserStats(isolation: isolated (any Actor)? = #isolation, user: SteamID) async -> GSStatsReceived? {
         await withUnsafeContinuation {
             requestUserStats(user: user, completion: $0.resume)
         }
@@ -80,7 +80,7 @@ public struct SteamGameServerStats: Sendable {
     }
 
     /// Steamworks `ISteamGameServerStats::StoreUserStats()`, async
-    public func storeUserStats(user: SteamID) async -> GSStatsStored? {
+    public func storeUserStats(isolation: isolated (any Actor)? = #isolation, user: SteamID) async -> GSStatsStored? {
         await withUnsafeContinuation {
             storeUserStats(user: user, completion: $0.resume)
         }

@@ -77,7 +77,7 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::DownloadClanActivityCounts()`, async
-    public func downloadClanActivityCounts(clans: [SteamID]) async -> DownloadClanActivityCountsResult? {
+    public func downloadClanActivityCounts(isolation: isolated (any Actor)? = #isolation, clans: [SteamID]) async -> DownloadClanActivityCountsResult? {
         await withUnsafeContinuation {
             downloadClanActivityCounts(clans: clans, completion: $0.resume)
         }
@@ -90,7 +90,7 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::EnumerateFollowingList()`, async
-    public func enumerateFollowingList(startIndex: Int) async -> FriendsEnumerateFollowingList? {
+    public func enumerateFollowingList(isolation: isolated (any Actor)? = #isolation, startIndex: Int) async -> FriendsEnumerateFollowingList? {
         await withUnsafeContinuation {
             enumerateFollowingList(startIndex: startIndex, completion: $0.resume)
         }
@@ -178,7 +178,7 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::GetFollowerCount()`, async
-    public func getFollowerCount(steamID: SteamID) async -> FriendsGetFollowerCount? {
+    public func getFollowerCount(isolation: isolated (any Actor)? = #isolation, steamID: SteamID) async -> FriendsGetFollowerCount? {
         await withUnsafeContinuation {
             getFollowerCount(steamID: steamID, completion: $0.resume)
         }
@@ -389,7 +389,7 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::IsFollowing()`, async
-    public func isFollowing(steamID: SteamID) async -> FriendsIsFollowing? {
+    public func isFollowing(isolation: isolated (any Actor)? = #isolation, steamID: SteamID) async -> FriendsIsFollowing? {
         await withUnsafeContinuation {
             isFollowing(steamID: steamID, completion: $0.resume)
         }
@@ -407,7 +407,7 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::JoinClanChatRoom()`, async
-    public func joinClanChatRoom(clan: SteamID) async -> JoinClanChatRoomCompletionResult? {
+    public func joinClanChatRoom(isolation: isolated (any Actor)? = #isolation, clan: SteamID) async -> JoinClanChatRoomCompletionResult? {
         await withUnsafeContinuation {
             joinClanChatRoom(clan: clan, completion: $0.resume)
         }
@@ -440,7 +440,7 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::RequestClanOfficerList()`, async
-    public func requestClanOfficerList(clan: SteamID) async -> ClanOfficerListResponse? {
+    public func requestClanOfficerList(isolation: isolated (any Actor)? = #isolation, clan: SteamID) async -> ClanOfficerListResponse? {
         await withUnsafeContinuation {
             requestClanOfficerList(clan: clan, completion: $0.resume)
         }
@@ -453,7 +453,7 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::RequestEquippedProfileItems()`, async
-    public func requestEquippedProfileItems(steamID: SteamID) async -> EquippedProfileItems? {
+    public func requestEquippedProfileItems(isolation: isolated (any Actor)? = #isolation, steamID: SteamID) async -> EquippedProfileItems? {
         await withUnsafeContinuation {
             requestEquippedProfileItems(steamID: steamID, completion: $0.resume)
         }
@@ -492,7 +492,7 @@ public struct SteamFriends: Sendable {
     }
 
     /// Steamworks `ISteamFriends::SetPersonaName()`, async
-    public func setPersonaName(personaName: String) async -> SetPersonaNameResponse? {
+    public func setPersonaName(isolation: isolated (any Actor)? = #isolation, personaName: String) async -> SetPersonaNameResponse? {
         await withUnsafeContinuation {
             setPersonaName(personaName: personaName, completion: $0.resume)
         }

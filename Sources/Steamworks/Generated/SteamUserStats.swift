@@ -26,7 +26,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::AttachLeaderboardUGC()`, async
-    public func attachLeaderboardUGC(steamLeaderboard: SteamLeaderboard, ugc: UGCHandle) async -> LeaderboardUGCSet? {
+    public func attachLeaderboardUGC(isolation: isolated (any Actor)? = #isolation, steamLeaderboard: SteamLeaderboard, ugc: UGCHandle) async -> LeaderboardUGCSet? {
         await withUnsafeContinuation {
             attachLeaderboardUGC(steamLeaderboard: steamLeaderboard, ugc: ugc, completion: $0.resume)
         }
@@ -44,7 +44,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::DownloadLeaderboardEntries()`, async
-    public func downloadLeaderboardEntries(steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int) async -> LeaderboardScoresDownloaded? {
+    public func downloadLeaderboardEntries(isolation: isolated (any Actor)? = #isolation, steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int) async -> LeaderboardScoresDownloaded? {
         await withUnsafeContinuation {
             downloadLeaderboardEntries(steamLeaderboard: steamLeaderboard, leaderboardDataRequest: leaderboardDataRequest, rangeStart: rangeStart, rangeEnd: rangeEnd, completion: $0.resume)
         }
@@ -58,7 +58,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::DownloadLeaderboardEntriesForUsers()`, async
-    public func downloadLeaderboardEntriesForUsers(steamLeaderboard: SteamLeaderboard, users: [SteamID]) async -> LeaderboardScoresDownloaded? {
+    public func downloadLeaderboardEntriesForUsers(isolation: isolated (any Actor)? = #isolation, steamLeaderboard: SteamLeaderboard, users: [SteamID]) async -> LeaderboardScoresDownloaded? {
         await withUnsafeContinuation {
             downloadLeaderboardEntriesForUsers(steamLeaderboard: steamLeaderboard, users: users, completion: $0.resume)
         }
@@ -71,7 +71,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::FindLeaderboard()`, async
-    public func findLeaderboard(leaderboardName: String) async -> LeaderboardFindResult? {
+    public func findLeaderboard(isolation: isolated (any Actor)? = #isolation, leaderboardName: String) async -> LeaderboardFindResult? {
         await withUnsafeContinuation {
             findLeaderboard(leaderboardName: leaderboardName, completion: $0.resume)
         }
@@ -84,7 +84,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::FindOrCreateLeaderboard()`, async
-    public func findOrCreateLeaderboard(leaderboardName: String, leaderboardSortMethod: LeaderboardSortMethod, leaderboardDisplayType: LeaderboardDisplayType) async -> LeaderboardFindResult? {
+    public func findOrCreateLeaderboard(isolation: isolated (any Actor)? = #isolation, leaderboardName: String, leaderboardSortMethod: LeaderboardSortMethod, leaderboardDisplayType: LeaderboardDisplayType) async -> LeaderboardFindResult? {
         await withUnsafeContinuation {
             findOrCreateLeaderboard(leaderboardName: leaderboardName, leaderboardSortMethod: leaderboardSortMethod, leaderboardDisplayType: leaderboardDisplayType, completion: $0.resume)
         }
@@ -251,7 +251,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::GetNumberOfCurrentPlayers()`, async
-    public func getNumberOfCurrentPlayers() async -> NumberOfCurrentPlayers? {
+    public func getNumberOfCurrentPlayers(isolation: isolated (any Actor)? = #isolation) async -> NumberOfCurrentPlayers? {
         await withUnsafeContinuation {
             getNumberOfCurrentPlayers(completion: $0.resume)
         }
@@ -329,7 +329,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::RequestGlobalAchievementPercentages()`, async
-    public func requestGlobalAchievementPercentages() async -> GlobalAchievementPercentagesReady? {
+    public func requestGlobalAchievementPercentages(isolation: isolated (any Actor)? = #isolation) async -> GlobalAchievementPercentagesReady? {
         await withUnsafeContinuation {
             requestGlobalAchievementPercentages(completion: $0.resume)
         }
@@ -342,7 +342,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::RequestGlobalStats()`, async
-    public func requestGlobalStats(historyDays: Int) async -> GlobalStatsReceived? {
+    public func requestGlobalStats(isolation: isolated (any Actor)? = #isolation, historyDays: Int) async -> GlobalStatsReceived? {
         await withUnsafeContinuation {
             requestGlobalStats(historyDays: historyDays, completion: $0.resume)
         }
@@ -355,7 +355,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::RequestUserStats()`, async
-    public func requestUserStats(user: SteamID) async -> UserStatsReceived? {
+    public func requestUserStats(isolation: isolated (any Actor)? = #isolation, user: SteamID) async -> UserStatsReceived? {
         await withUnsafeContinuation {
             requestUserStats(user: user, completion: $0.resume)
         }
@@ -399,7 +399,7 @@ public struct SteamUserStats: Sendable {
     }
 
     /// Steamworks `ISteamUserStats::UploadLeaderboardScore()`, async
-    public func uploadLeaderboardScore(steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int]) async -> LeaderboardScoreUploaded? {
+    public func uploadLeaderboardScore(isolation: isolated (any Actor)? = #isolation, steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int]) async -> LeaderboardScoreUploaded? {
         await withUnsafeContinuation {
             uploadLeaderboardScore(steamLeaderboard: steamLeaderboard, leaderboardUploadScoreMethod: leaderboardUploadScoreMethod, score: score, scoreDetails: scoreDetails, completion: $0.resume)
         }

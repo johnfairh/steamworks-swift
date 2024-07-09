@@ -18,9 +18,9 @@ class TestHtmlSurface: XCTestCase {
             return
         }
 
-        steam.onHTMLStartRequest { request in
+        steam.onHTMLStartRequest { [weak steam] request in
             print("onHTMLStartRequest: \(request)")
-            steam.htmlSurface.allowStartRequest(browserHandle: request.browserHandle, allowed: true)
+            steam?.htmlSurface.allowStartRequest(browserHandle: request.browserHandle, allowed: true)
         }
 
         steam.onHTMLFinishedRequest { request in
@@ -31,7 +31,9 @@ class TestHtmlSurface: XCTestCase {
             print("onHTMLChangedTitle: \(msg.title)")
         }
 
-        steam.onHTMLNeedsPaint{ paint in
+        steam.onHTMLNeedsPaint { [weak steam] paint in
+            guard let steam else { return }
+
             print("onHTMLNeedsPaint: \(paint)")
 
             // wait for the real draw call
