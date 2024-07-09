@@ -2449,11 +2449,17 @@ public struct ItemInstalled: Sendable {
     public let appID: AppID
     /// Steamworks `m_nPublishedFileId`
     public let publishedFileId: PublishedFileID
+    /// Steamworks `m_hLegacyContent`
+    public let legacyContent: UGCHandle
+    /// Steamworks `m_unManifestID`
+    public let manifestID: UInt64
 
     /// Create a customized `ItemInstalled`
-    public init(appID: AppID = 0, publishedFileId: PublishedFileID = 0) {
+    public init(appID: AppID = 0, publishedFileId: PublishedFileID = 0, legacyContent: UGCHandle = 0, manifestID: UInt64 = 0) {
         self.appID = appID
         self.publishedFileId = publishedFileId
+        self.legacyContent = legacyContent
+        self.manifestID = manifestID
     }
 }
 
@@ -2462,6 +2468,8 @@ extension ItemInstalled: SteamCreatable {
     init(_ steam: CSteamworks.ItemInstalled_t) {
         appID = .init(steam.m_unAppID)
         publishedFileId = .init(steam.m_nPublishedFileId)
+        legacyContent = .init(steam.m_hLegacyContent)
+        manifestID = .init(steam.m_unManifestID)
     }
 }
 
@@ -5273,9 +5281,11 @@ public struct SteamUGCDetails: Sendable {
     public let score: Float
     /// Steamworks `m_unNumChildren`
     public let numChildren: Int
+    /// Steamworks `m_ulTotalFilesSize`
+    public let totalFilesSize: UInt64
 
     /// Create a customized `SteamUGCDetails`
-    public init(publishedFileId: PublishedFileID = 0, result: Result = .none, fileType: WorkshopFileType = .first, creatorAppID: AppID = 0, consumerAppID: AppID = 0, title: String = "", description: String = "", steamIDOwner: SteamID = SteamID(), rtimeCreated: Int = 0, rtimeUpdated: Int = 0, rtimeAddedToUserList: Int = 0, visibility: RemoteStoragePublishedFileVisibility = .`public`, banned: Bool = false, acceptedForUse: Bool = false, tagsTruncated: Bool = false, tags: String = "", file: UGCHandle = 0, previewFile: UGCHandle = 0, fileName: String = "", fileSize: Int = 0, previewFileSize: Int = 0, url: String = "", votesUp: Int = 0, votesDown: Int = 0, score: Float = 0, numChildren: Int = 0) {
+    public init(publishedFileId: PublishedFileID = 0, result: Result = .none, fileType: WorkshopFileType = .first, creatorAppID: AppID = 0, consumerAppID: AppID = 0, title: String = "", description: String = "", steamIDOwner: SteamID = SteamID(), rtimeCreated: Int = 0, rtimeUpdated: Int = 0, rtimeAddedToUserList: Int = 0, visibility: RemoteStoragePublishedFileVisibility = .`public`, banned: Bool = false, acceptedForUse: Bool = false, tagsTruncated: Bool = false, tags: String = "", file: UGCHandle = 0, previewFile: UGCHandle = 0, fileName: String = "", fileSize: Int = 0, previewFileSize: Int = 0, url: String = "", votesUp: Int = 0, votesDown: Int = 0, score: Float = 0, numChildren: Int = 0, totalFilesSize: UInt64 = 0) {
         self.publishedFileId = publishedFileId
         self.result = result
         self.fileType = fileType
@@ -5302,6 +5312,7 @@ public struct SteamUGCDetails: Sendable {
         self.votesDown = votesDown
         self.score = score
         self.numChildren = numChildren
+        self.totalFilesSize = totalFilesSize
     }
 }
 
@@ -5334,6 +5345,7 @@ extension SteamUGCDetails: SteamCreatable {
         votesDown = .init(steam.m_unVotesDown)
         score = .init(steam.m_flScore)
         numChildren = .init(steam.m_unNumChildren)
+        totalFilesSize = .init(steam.m_ulTotalFilesSize)
     }
 }
 

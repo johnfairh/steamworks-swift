@@ -128,6 +128,30 @@ extension EBeginAuthSessionResult: RawConvertible { typealias From = BeginAuthSe
 extension BeginAuthSessionResult: EnumWithUnrepresented { typealias From = EBeginAuthSessionResult }
 extension BeginAuthSessionResult: SteamCreatable {}
 
+/// Steamworks `EBetaBranchFlags`
+public struct BetaBranchFlags: OptionSet, Sendable {
+    /// The flags value.
+    public let rawValue: CUnsignedInt
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
+    /// Steamworks `k_EBetaBranch_None`
+    public static let none = BetaBranchFlags([])
+    /// Steamworks `k_EBetaBranch_Default`
+    public static let `default` = BetaBranchFlags(rawValue: 1)
+    /// Steamworks `k_EBetaBranch_Available`
+    public static let available = BetaBranchFlags(rawValue: 2)
+    /// Steamworks `k_EBetaBranch_Private`
+    public static let `private` = BetaBranchFlags(rawValue: 4)
+    /// Steamworks `k_EBetaBranch_Selected`
+    public static let selected = BetaBranchFlags(rawValue: 8)
+    /// Steamworks `k_EBetaBranch_Installed`
+    public static let installed = BetaBranchFlags(rawValue: 16)
+}
+
+extension EBetaBranchFlags: RawConvertible { typealias From = BetaBranchFlags }
+extension BetaBranchFlags: RawConvertible { typealias From = EBetaBranchFlags }
+extension BetaBranchFlags: SteamCreatable {}
+
 /// Steamworks `EBroadcastUploadResult`
 public enum BroadcastUploadResult: CUnsignedInt, Sendable {
     /// Steamworks `k_EBroadcastUploadResultNone`
@@ -2042,10 +2066,12 @@ public enum ParentalFeature: CUnsignedInt, Sendable {
     case siteLicense = 13
     /// Steamworks `k_EFeatureKioskMode_Deprecated`
     case kioskModeDeprecated = 14
+    /// Steamworks `k_EFeatureBlockAlways`
+    case blockAlways = 15
     /// Steamworks `k_EFeatureMax`
-    case max = 15
+    case max = 16
     /// Some undocumented value
-    case unrepresentedInSwift = 16
+    case unrepresentedInSwift = 17
 }
 
 extension EParentalFeature: RawConvertible { typealias From = ParentalFeature }
@@ -2974,6 +3000,8 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt, Sendable {
     case nagleTime = 12
     /// Steamworks `k_ESteamNetworkingConfig_IP_AllowWithoutAuth`
     case ipAllowWithoutAuth = 23
+    /// Steamworks `k_ESteamNetworkingConfig_IPLocalHost_AllowWithoutAuth`
+    case ipLocalHostAllowWithoutAuth = 52
     /// Steamworks `k_ESteamNetworkingConfig_MTU_PacketSize`
     case mtuPacketSize = 32
     /// Steamworks `k_ESteamNetworkingConfig_MTU_DataSize`
@@ -3297,6 +3325,46 @@ public enum TextFilteringContext: CUnsignedInt, Sendable {
 extension ETextFilteringContext: RawConvertible { typealias From = TextFilteringContext }
 extension TextFilteringContext: EnumWithUnrepresented { typealias From = ETextFilteringContext }
 extension TextFilteringContext: SteamCreatable {}
+
+/// Steamworks `ETimelineEventClipPriority`
+public enum TimelineEventClipPriority: CUnsignedInt, Sendable {
+    /// Steamworks `k_ETimelineEventClipPriority_Invalid`
+    case invalid = 0
+    /// Steamworks `k_ETimelineEventClipPriority_None`
+    case none = 1
+    /// Steamworks `k_ETimelineEventClipPriority_Standard`
+    case standard = 2
+    /// Steamworks `k_ETimelineEventClipPriority_Featured`
+    case featured = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
+}
+
+extension ETimelineEventClipPriority: RawConvertible { typealias From = TimelineEventClipPriority }
+extension TimelineEventClipPriority: EnumWithUnrepresented { typealias From = ETimelineEventClipPriority }
+extension TimelineEventClipPriority: SteamCreatable {}
+
+/// Steamworks `ETimelineGameMode`
+public enum TimelineGameMode: CUnsignedInt, Sendable {
+    /// Steamworks `k_ETimelineGameMode_Invalid`
+    case invalid = 0
+    /// Steamworks `k_ETimelineGameMode_Playing`
+    case playing = 1
+    /// Steamworks `k_ETimelineGameMode_Staging`
+    case staging = 2
+    /// Steamworks `k_ETimelineGameMode_Menus`
+    case menus = 3
+    /// Steamworks `k_ETimelineGameMode_LoadingScreen`
+    case loadingScreen = 4
+    /// Steamworks `k_ETimelineGameMode_Max`
+    case max = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
+}
+
+extension ETimelineGameMode: RawConvertible { typealias From = TimelineGameMode }
+extension TimelineGameMode: EnumWithUnrepresented { typealias From = ETimelineGameMode }
+extension TimelineGameMode: SteamCreatable {}
 
 /// Steamworks `EUGCContentDescriptorID`
 public enum UGCContentDescriptorID: CUnsignedInt, Sendable {

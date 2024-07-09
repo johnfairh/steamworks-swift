@@ -28,10 +28,12 @@
 - <doc:SteamRemotePlay-Interface>
 - <doc:SteamRemoteStorage-Interface>
 - <doc:SteamScreenshots-Interface>
+- <doc:SteamTimeline-Interface>
 - <doc:SteamUGC-Interface>
 - <doc:SteamUser-Interface>
 - <doc:SteamUserStats-Interface>
 - <doc:SteamUtils-Interface>
+- <doc:SteamVideo-Interface>
 ### Common Types
 - <doc:Common-Types>
 - ``SteamConstants``

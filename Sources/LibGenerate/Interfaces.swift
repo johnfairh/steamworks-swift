@@ -202,7 +202,8 @@ extension SteamHungarianName {
 private extension SwiftExpr {
     /// New identifiers from old
     func withPrefix(_ prefix: String) -> SwiftExpr {
-        "\(prefix)\(expr.prefix(1).uppercased())\(expr.dropFirst())"
+        let bareExpr = expr.replacingOccurrences(of: "`", with: "")
+        return "\(prefix)\(bareExpr.prefix(1).uppercased())\(bareExpr.dropFirst())"
     }
 }
 
@@ -583,7 +584,7 @@ extension Array where Element == SteamParam {
         } else {
             let rcTuple = rcText.flatMap { "rc: \($0), "} ?? ""
             let outTuple = map { param in
-                "\(param.swiftName): \(param[keyPath: paramField])"
+                "\(param.swiftName.withoutBackticks): \(param[keyPath: paramField])"
             }.commaJoined
             return T("(\(rcTuple)\(outTuple))")
         }

@@ -22,6 +22,7 @@
 - ``AccountType``
 - ``AuthSessionResponse``
 - ``BeginAuthSessionResult``
+- ``BetaBranchFlags``
 - ``BroadcastUploadResult``
 - ``ChatEntryType``
 - ``ChatRoomEnterResponse``

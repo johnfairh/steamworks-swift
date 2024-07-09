@@ -14,7 +14,7 @@ internal import CSteamworks
 public struct SteamUGC: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamUGC> {
-        isServer ? SteamAPI_SteamGameServerUGC_v018() : SteamAPI_SteamUGC_v018()
+        isServer ? SteamAPI_SteamGameServerUGC_v020() : SteamAPI_SteamUGC_v020()
     }
 
     init(isServer: Bool) {
@@ -220,6 +220,11 @@ public struct SteamUGC: Sendable {
         Int(SteamAPI_ISteamUGC_GetNumSubscribedItems(interface))
     }
 
+    /// Steamworks `ISteamUGC::GetNumSupportedGameVersions()`
+    public func getNumSupportedGameVersions(handle: UGCQueryHandle, index: Int) -> Int {
+        Int(SteamAPI_ISteamUGC_GetNumSupportedGameVersions(interface, UGCQueryHandle_t(handle), uint32(index)))
+    }
+
     /// Steamworks `ISteamUGC::GetQueryUGCKeyValueTag()`
     public func getQueryUGCKeyValueTag(handle: UGCQueryHandle, index: Int, key: String, valueSize: Int = SteamConstants.ugcKeyValueMaxSize + 1) -> (rc: Bool, value: String) {
         var tmpValue = SteamOutString(length: valueSize)
@@ -372,6 +377,18 @@ public struct SteamUGC: Sendable {
         return (rc: rc, publishedFileID: tmpPublishedFileID.swiftArray(Int(rc)))
     }
 
+    /// Steamworks `ISteamUGC::GetSupportedGameVersionData()`
+    public func getSupportedGameVersionData(handle: UGCQueryHandle, index: Int, versionIndex: Int, gameBranchSize: Int) -> (rc: Bool, gameBranchMin: String, gameBranchMax: String) {
+        var tmpGameBranchMin = SteamOutString(length: gameBranchSize)
+        var tmpGameBranchMax = SteamOutString(length: gameBranchSize)
+        let rc = tmpGameBranchMin.setContent { nstGameBranchMin in
+            tmpGameBranchMax.setContent { nstGameBranchMax in
+                SteamAPI_ISteamUGC_GetSupportedGameVersionData(interface, UGCQueryHandle_t(handle), uint32(index), uint32(versionIndex), nstGameBranchMin, nstGameBranchMax, uint32(gameBranchSize))
+            }
+        }
+        return (rc: rc, gameBranchMin: tmpGameBranchMin.swiftString, gameBranchMax: tmpGameBranchMax.swiftString)
+    }
+
     /// Steamworks `ISteamUGC::GetUserContentDescriptorPreferences()`
     public func getUserContentDescriptorPreferences(maxEntries: Int) -> (rc: Int, descriptors: [UGCContentDescriptorID]) {
         let tmpDescriptors = SteamOutArray<EUGCContentDescriptorID>(maxEntries)
@@ -498,6 +515,11 @@ public struct SteamUGC: Sendable {
         }
     }
 
+    /// Steamworks `ISteamUGC::SetAdminQuery()`
+    public func setAdminQuery(handle: UGCUpdateHandle, adminQuery: Bool) -> Bool {
+        SteamAPI_ISteamUGC_SetAdminQuery(interface, UGCUpdateHandle_t(handle), adminQuery)
+    }
+
     /// Steamworks `ISteamUGC::SetAllowCachedResponse()`
     @discardableResult
     public func setAllowCachedResponse(handle: UGCQueryHandle, maxAgeSeconds: Int) -> Bool {
@@ -581,6 +603,11 @@ public struct SteamUGC: Sendable {
     @discardableResult
     public func setRankedByTrendDays(handle: UGCQueryHandle, days: Int) -> Bool {
         SteamAPI_ISteamUGC_SetRankedByTrendDays(interface, UGCQueryHandle_t(handle), uint32(days))
+    }
+
+    /// Steamworks `ISteamUGC::SetRequiredGameVersions()`
+    public func setRequiredGameVersions(handle: UGCUpdateHandle, gameBranchMin: String, gameBranchMax: String) -> Bool {
+        SteamAPI_ISteamUGC_SetRequiredGameVersions(interface, UGCUpdateHandle_t(handle), gameBranchMin, gameBranchMax)
     }
 
     /// Steamworks `ISteamUGC::SetReturnAdditionalPreviews()`

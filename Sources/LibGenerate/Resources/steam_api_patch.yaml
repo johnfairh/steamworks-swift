@@ -9,6 +9,8 @@ consts:
     type: HHTMLBrowser
   STEAM_INPUT_HANDLE_ALL_CONTROLLERS:
     nested_name: allControllers
+  k_flMaxTimelineEventDuration:
+    value: '600'
 consts_to_ignore:
 - k_cchMaxSteamErrMsg
 - k_cchPublishedDocumentChangeDescriptionMax
@@ -69,6 +71,9 @@ typedefs_to_ignore:
 enums:
   AudioPlayback_Status:
     prefix: AudioPlayback
+  EBetaBranchFlags:
+    is_set: uint32
+    prefix: EBetaBranch
   EChatEntryType:
     intx_to_self: uint8
   EChatMemberStateChange:
@@ -161,8 +166,6 @@ enums:
   ESteamNetworkingSendFlags:
     is_set: Int32
     prefix: nSteamNetworkingSend
-  ETimelineGameMode:
-    ignore: "In metadata but not header"
   EUGCContentDescriptorID:
     prefix: EUGCContentDescriptor
   EUGCReadAction:
@@ -226,6 +229,14 @@ methods:
         out_string_count: cchFolderBufferSize
       cchFolderBufferSize:
          default_value: k_cchFilenameMax
+  SteamAPI_ISteamApps_GetBetaInfo:
+    params:
+      punFlags:
+        type: EBetaBranchFlags *
+      pchBetaName:
+        out_string_count: cchBetaName
+      pchDescription:
+        out_string_count: cchDescription
   SteamAPI_ISteamApps_GetCurrentBetaName:
     params:
       pchName:
@@ -1039,6 +1050,10 @@ methods:
       pvecPublishedFileID:
         out_array_count: cMaxEntries
         out_array_valid_count: 'rc'
+  SteamAPI_ISteamUGC_GetSupportedGameVersionData:
+    params:
+      versionIndex:
+        name: iVersionIndex
   SteamAPI_ISteamUGC_ReleaseQueryUGCRequest:
     discardable_result: true
   SteamAPI_ISteamUGC_RemoveItemKeyValueTags:

@@ -447,4 +447,8 @@ struct SwiftExpr: StringFungible {
     }
 
     var _val: String { expr }
+
+    var withoutBackticks: SwiftExpr {
+        SwiftExpr(expr.re_sub("`", with: ""))
+    }
 }
