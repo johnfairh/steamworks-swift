@@ -144,8 +144,6 @@ struct DocStructure {
             "isteamgamecoordinator.h", // ??
             "isteamps3overlayrenderer.h", // PS3
             "isteamnetworking.h", // deprecated
-
-            "isteamvideo.h" // randomly broken in 1.59
         ])
 
         guard !ignoredISteamHeaders.contains(filename) else {

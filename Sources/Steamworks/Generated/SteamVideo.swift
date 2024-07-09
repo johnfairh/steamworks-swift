@@ -13,7 +13,7 @@ internal import CSteamworks
 /// Access via ``SteamAPI/video``.
 public struct SteamVideo: Sendable {
     var interface: UnsafeMutablePointer<ISteamVideo> {
-        SteamAPI_SteamVideo_v004()
+        SteamAPI_SteamVideo_v007()
     }
 
     init() {

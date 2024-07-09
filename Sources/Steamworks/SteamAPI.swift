@@ -104,6 +104,8 @@ public final class SteamAPI: SteamBaseAPI, @unchecked Sendable {
     public let remoteStorage = SteamRemoteStorage()
     /// Access the Steamworks `ISteamScreenshots` interface
     public let screenshots = SteamScreenshots()
+    /// Access the Steamworks `ISteamTimeline` interface
+    public let timeline = SteamTimeline()
     /// Access the Steamworks `ISteamUser` interface
     public let user = SteamUser()
     /// Access the Steamworks `ISteamUserStats` interface

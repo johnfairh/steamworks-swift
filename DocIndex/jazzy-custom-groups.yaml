@@ -494,6 +494,15 @@
       children:
         - ScreenshotReady
         - ScreenshotRequested
+  - name: SteamTimeline
+    topics:
+    - name: Interfaces
+      children:
+        - SteamTimeline
+    - name: Enumerations and Option Sets
+      children:
+        - TimelineEventClipPriority
+        - TimelineGameMode
   - name: SteamUGC
     topics:
     - name: Interfaces
@@ -624,6 +633,15 @@
         - LowBatteryPower
         - SteamAPICallCompleted
         - SteamShutdown
+  - name: SteamVideo
+    topics:
+    - name: Interfaces
+      children:
+        - SteamVideo
+    - name: Callbacks
+      children:
+        - GetOPFSettingsResult
+        - GetVideoURLResult
   - name: Common Types
     topics:
     - name: Simple types
@@ -647,6 +665,7 @@
         - AccountType
         - AuthSessionResponse
         - BeginAuthSessionResult
+        - BetaBranchFlags
         - BroadcastUploadResult
         - ChatEntryType
         - ChatRoomEnterResponse
