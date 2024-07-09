@@ -25,11 +25,8 @@ import Darwin
 // A very rough manual wrap to work around the union implementation
 // and expose the static getters.
 
-// if we make `SteamIPAddress` a `struct` as it should be then the
-// embedded `SteamIPAddress_t` gets nobbled somehow during runtime...
-
 /// Steamworks `SteamIPAddress_t`
-public final class SteamIPAddress {
+public struct SteamIPAddress {
     private let ip: SteamIPAddress_t
 
     // MARK: Properties
@@ -164,7 +161,6 @@ extension SteamInputActionEvent: SteamCreatable {}
 // MARK: servernetadr
 
 // Some more bizarreness from MMS.  What even is `SteamIPAddress`...
-// Again we have to be `final class` to avoid the weird corruption of the embedded C++ thing.
 //
 // This is read-only type afaics so just port the getters.
 // None of them are const-correct...
@@ -173,23 +169,8 @@ extension SteamInputActionEvent: SteamCreatable {}
 //
 // Can't implement comparable because Swift C++ import doesn't understand C++ operator overloads.
 
-#if $NewCxxMethodSafetyHeuristics
-#else
-/// Swift 5.8+ workarounds for C++ importer being dumb
-/// (though in this case the C++ implementation is shockingly unsafe for utterly  non-C++ reasons)
-extension servernetadr_t {
-    func GetConnectionAddressString() -> String {
-        String(__GetConnectionAddressStringUnsafe())
-    }
-
-    func GetQueryAddressString() -> String {
-        String(__GetQueryAddressStringUnsafe())
-    }
-}
-#endif
-
 /// Steamworks `servernetadr`
-public final class ServerNetAdr: Sendable {
+public struct ServerNetAdr: Sendable {
     private let adr: servernetadr_t
 
     init(_ steam: servernetadr_t) {
@@ -229,7 +210,7 @@ extension ServerNetAdr: SteamCreatable {}
 // that users can instantiate.
 
 /// Steamworks `SteamNetworkingIPAddr`
-public final class SteamNetworkingIPAddr: @unchecked Sendable {
+public struct SteamNetworkingIPAddr: @unchecked Sendable {
     typealias SteamType = CSteamworks.SteamNetworkingIPAddr
     let adr: SteamType
 
@@ -292,7 +273,7 @@ public final class SteamNetworkingIPAddr: @unchecked Sendable {
     }
 
     /// `INADDR_ANY` with some port
-    public convenience init(inaddrAnyPort port: UInt16) {
+    public init(inaddrAnyPort port: UInt16) {
         var adr = SteamType()
         adr.Clear()
         adr.m_port = port
@@ -300,7 +281,7 @@ public final class SteamNetworkingIPAddr: @unchecked Sendable {
     }
 
     /// Sets to IPv4 mapped address.  IP and port are in host byte order.
-    public convenience init(ipv4: Int, port: UInt16) {
+    public init(ipv4: Int, port: UInt16) {
         var adr = SteamType()
         adr.SetIPv4(UInt32(ipv4), port)
         self.init(adr)
@@ -308,14 +289,14 @@ public final class SteamNetworkingIPAddr: @unchecked Sendable {
 
     /// IP is interpreted as bytes, so there are no endian issues.  (Same as `inaddr_in6`.)
     /// The IP can be a mapped IPv4 address.
-    public convenience init(ipv6: [UInt8], port: UInt16) {
+    public init(ipv6: [UInt8], port: UInt16) {
         var adr = SteamType()
         adr.SetIPv6(ipv6, port)
         self.init(adr)
     }
 
     /// Parse an IP address and optional port.  If a port is not present, it is set to 0.
-    public convenience init?(addressAndPort: String) {
+    public init?(addressAndPort: String) {
         var adr = SteamType()
         adr.Clear()
         guard adr.ParseString(addressAndPort) else {
@@ -346,30 +327,10 @@ extension CSteamworks.SteamNetworkingIPAddr {
 // MARK: SteamNetworkingIdentity
 
 // Again model as immutable thing that can be created.
-// Can't quite `enum`-ify this because:
-// 1) The random non-class-corruption issue;
-// 2) The 'types' enum is large and weird.
-
-#if $NewCxxMethodSafetyHeuristics
-#else
-/// Swift 5.8 workarounds for the C++ importer trying to be clever but ending up being really dumb
-extension CSteamworks.SteamNetworkingIdentity {
-    func GetIPAddr() -> UnsafePointer<CSteamworks.SteamNetworkingIPAddr>! {
-        __GetIPAddrUnsafe()
-    }
-
-    func GetGenericString() -> UnsafePointer<CChar>! {
-        __GetGenericStringUnsafe()
-    }
-
-    func GetGenericBytes(_ cbLen: inout int32) -> UnsafePointer<uint8>! {
-        __GetGenericBytesUnsafe(&cbLen)
-    }
-}
-#endif
+// Can't quite `enum`-ify this because the 'types' enum is large and weird.
 
 /// Steamworks `SteamNetworkingIdentity`
-public final class SteamNetworkingIdentity: @unchecked Sendable {
+public struct SteamNetworkingIdentity: Sendable {
     typealias SteamType = CSteamworks.SteamNetworkingIdentity
     let identity: SteamType
 
@@ -450,14 +411,14 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
     }
 
     /// Init from a Steam ID
-    public convenience init(_ steamID: SteamID) {
+    public init(_ steamID: SteamID) {
         var identity = SteamType()
         identity.SetSteamID64(steamID.asUInt64) // also sets type
         self.init(identity)
     }
 
     /// Init from an IP address
-    public convenience init(_ ipaddr: SteamNetworkingIPAddr) {
+    public init(_ ipaddr: SteamNetworkingIPAddr) {
         var identity = SteamType()
         identity.SetIPAddr(ipaddr.adr) // also sets type
         self.init(identity)
@@ -471,7 +432,7 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
     }
 
     /// Init generic string or some other type.  Max length 31 bytes.
-    public convenience init?(genericString: String, type: SteamNetworkingIdentityType = .genericString) {
+    public init?(genericString: String, type: SteamNetworkingIdentityType = .genericString) {
         var identity = SteamType()
         guard identity.SetGenericString(genericString) else {
             return nil
@@ -481,7 +442,7 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
     }
 
     /// Init from a `description` string.
-    public convenience init?(description: String) {
+    public init?(description: String) {
         var identity = SteamType()
         guard identity.ParseString(description) else {
             return nil
@@ -490,7 +451,7 @@ public final class SteamNetworkingIdentity: @unchecked Sendable {
     }
 
     /// Init generic bytes or some other type.  Max 32 bytes.
-    public convenience init?(_ bytes: [UInt8], type: SteamNetworkingIdentityType = .genericBytes) {
+    public init?(_ bytes: [UInt8], type: SteamNetworkingIdentityType = .genericBytes) {
         var identity = SteamType()
         guard identity.SetGenericBytes(bytes, bytes.count) else {
             return nil
@@ -649,6 +610,7 @@ extension SteamNetworkingMessage: SteamCreatable {
 // MARK: SteamNetworkingConfigValue
 
 // Another enum-y union thing, used for writing to SteamNetworking
+// (This is intentionally a class to get a deinit for the owned storage...)
 
 /// Steamworks `SteamNetworkingConfigValue_t`
 public final class SteamNetworkingConfigValue: @unchecked Sendable {
@@ -719,3 +681,4 @@ extension AppID {
     /// The well-known _SpaceWar_ ``AppID``
     public static let spaceWar = Self(480)
 }
+
