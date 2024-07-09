@@ -48,7 +48,11 @@ class TestExecutor: XCTestCase {
             if let fc, fc.result == .ok {
                 print("GetFollowerCount: \(fc.count) followers")
             } else {
-                XCTFail("GetFollowerCount async failed in some way.")
+                if let fc {
+                    XCTFail("GetFollowerCount async failed: \(fc)")
+                } else {
+                    XCTFail("GetFollowerCount async failed, nil fc")
+                }
             }
         }
     }

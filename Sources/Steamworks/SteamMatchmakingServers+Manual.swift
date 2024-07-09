@@ -270,7 +270,7 @@ enum MatchmakingServersControl {
     }
 
     private static let lock = Lock()
-    nonisolated(unsafe) private static let store = Store()
+    private static let store = Store()
 
     // MARK: The list of glue callbacks exposed to C++ shim
 
