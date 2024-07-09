@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamGameServerStats - Steamworks v0.5.2</title>
+   <title>SteamGameServerStats - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamgameserverstats.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4149,6 +4190,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -4749,7 +4799,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestUserStats(
-    user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/gsstatsreceived.html?swift">GSStatsReceived</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsstatsreceived.html?swift">GSStatsReceived</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4776,16 +4826,16 @@
   
   
   
-    <section id="requestuserstatsuser" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestUserStats(user%3A%20SteamID)%20async%20-%3E%20GSStatsReceived%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestuserstatsuser"></a>
-    <h4 class="visually-hidden">func requestUserStats(user: SteamID) async -&gt; GSStatsReceived?</h4>
+    <section id="requestuserstatsisolationuser" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestUserStats(isolation%3A%20isolated%20(any%20Actor)%3F,%20user%3A%20SteamID)%20async%20-%3E%20GSStatsReceived%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestuserstatsisolationuser"></a>
+    <h4 class="visually-hidden">func requestUserStats(isolation: isolated (any Actor)?, user: SteamID) async -&gt; GSStatsReceived?</h4>
     
     
-    <a class="j2-item-title" href="#_requestuserstatsuser" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestuserstatsuser"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestUserStats<span class="j2-item-secondary">(</span>user<span class="j2-item-secondary">: SteamID) async -&gt; GSStatsReceived?</span></span>
+    <a class="j2-item-title" href="#_requestuserstatsisolationuser" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestuserstatsisolationuser"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestUserStats<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>user<span class="j2-item-secondary">: SteamID) async -&gt; GSStatsReceived?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestuserstatsuser">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestuserstatsisolationuser">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4809,7 +4859,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestUserStats(user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async -&gt; <a href="../../steamworks/types/gsstatsreceived.html?swift">GSStatsReceived</a>?</code></pre>
+    <pre><code class="language-swift">public func requestUserStats(
+    isolation: isolated (any Actor)? = #isolation, user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
+) async -&gt; <a href="../../steamworks/types/gsstatsreceived.html?swift">GSStatsReceived</a>?</code></pre>
   </div>
 
 
@@ -5050,7 +5102,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func storeUserStats(
-    user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/gsstatsstored.html?swift">GSStatsStored</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsstatsstored.html?swift">GSStatsStored</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5077,16 +5129,16 @@
   
   
   
-    <section id="storeuserstatsuser" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20storeUserStats(user%3A%20SteamID)%20async%20-%3E%20GSStatsStored%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="storeuserstatsuser"></a>
-    <h4 class="visually-hidden">func storeUserStats(user: SteamID) async -&gt; GSStatsStored?</h4>
+    <section id="storeuserstatsisolationuser" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20storeUserStats(isolation%3A%20isolated%20(any%20Actor)%3F,%20user%3A%20SteamID)%20async%20-%3E%20GSStatsStored%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="storeuserstatsisolationuser"></a>
+    <h4 class="visually-hidden">func storeUserStats(isolation: isolated (any Actor)?, user: SteamID) async -&gt; GSStatsStored?</h4>
     
     
-    <a class="j2-item-title" href="#_storeuserstatsuser" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_storeuserstatsuser"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>storeUserStats<span class="j2-item-secondary">(</span>user<span class="j2-item-secondary">: SteamID) async -&gt; GSStatsStored?</span></span>
+    <a class="j2-item-title" href="#_storeuserstatsisolationuser" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_storeuserstatsisolationuser"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>storeUserStats<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>user<span class="j2-item-secondary">: SteamID) async -&gt; GSStatsStored?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_storeuserstatsuser">
+    <div class="collapse  j2-item-popopen-wrapper" id="_storeuserstatsisolationuser">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5110,7 +5162,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func storeUserStats(user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async -&gt; <a href="../../steamworks/types/gsstatsstored.html?swift">GSStatsStored</a>?</code></pre>
+    <pre><code class="language-swift">public func storeUserStats(
+    isolation: isolated (any Actor)? = #isolation, user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
+) async -&gt; <a href="../../steamworks/types/gsstatsstored.html?swift">GSStatsStored</a>?</code></pre>
   </div>
 
 

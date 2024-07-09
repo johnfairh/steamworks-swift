@@ -143,7 +143,7 @@
     "abstract" : "Steamworks ActiveBeaconsUpdated_t",
     "name" : "ActiveBeaconsUpdated"
   },
-  "steamworks\/types\/activebeaconsupdated1.html?swift#init21" : {
+  "steamworks\/types\/activebeaconsupdated1.html?swift#init22" : {
     "abstract" : "Create a customized ActiveBeaconsUpdated",
     "name" : "init()",
     "parent_name" : "ActiveBeaconsUpdated"
@@ -258,7 +258,7 @@
     "abstract" : "Steamworks AppResumingFromSuspend_t",
     "name" : "AppResumingFromSuspend"
   },
-  "steamworks\/types\/appresumingfromsuspend1.html?swift#init22" : {
+  "steamworks\/types\/appresumingfromsuspend1.html?swift#init23" : {
     "abstract" : "Create a customized AppResumingFromSuspend",
     "name" : "init()",
     "parent_name" : "AppResumingFromSuspend"
@@ -374,7 +374,7 @@
     "abstract" : "Steamworks AvailableBeaconLocationsUpdated_t",
     "name" : "AvailableBeaconLocationsUpdated"
   },
-  "steamworks\/types\/availablebeaconlocationsupdated1.html?swift#init23" : {
+  "steamworks\/types\/availablebeaconlocationsupdated1.html?swift#init24" : {
     "abstract" : "Create a customized AvailableBeaconLocationsUpdated",
     "name" : "init()",
     "parent_name" : "AvailableBeaconLocationsUpdated"
@@ -446,6 +446,50 @@
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "BeginAuthSessionResult"
+  },
+  "steamworks\/types\/betabranchflags.html?swift" : {
+    "abstract" : "Steamworks EBetaBranchFlags",
+    "name" : "BetaBranchFlags"
+  },
+  "steamworks\/types\/betabranchflags.html?swift#available" : {
+    "abstract" : "Steamworks k_EBetaBranch_Available",
+    "name" : "available",
+    "parent_name" : "BetaBranchFlags"
+  },
+  "steamworks\/types\/betabranchflags.html?swift#default1" : {
+    "abstract" : "Steamworks k_EBetaBranch_Default",
+    "name" : "default",
+    "parent_name" : "BetaBranchFlags"
+  },
+  "steamworks\/types\/betabranchflags.html?swift#initrawvalue" : {
+    "abstract" : "Create a new instance with rawValue flags set.",
+    "name" : "init(rawValue:)",
+    "parent_name" : "BetaBranchFlags"
+  },
+  "steamworks\/types\/betabranchflags.html?swift#installed" : {
+    "abstract" : "Steamworks k_EBetaBranch_Installed",
+    "name" : "installed",
+    "parent_name" : "BetaBranchFlags"
+  },
+  "steamworks\/types\/betabranchflags.html?swift#none" : {
+    "abstract" : "Steamworks k_EBetaBranch_None",
+    "name" : "none",
+    "parent_name" : "BetaBranchFlags"
+  },
+  "steamworks\/types\/betabranchflags.html?swift#private" : {
+    "abstract" : "Steamworks k_EBetaBranch_Private",
+    "name" : "private",
+    "parent_name" : "BetaBranchFlags"
+  },
+  "steamworks\/types\/betabranchflags.html?swift#rawvalue" : {
+    "abstract" : "The flags value.",
+    "name" : "rawValue",
+    "parent_name" : "BetaBranchFlags"
+  },
+  "steamworks\/types\/betabranchflags.html?swift#selected" : {
+    "abstract" : "Steamworks k_EBetaBranch_Selected",
+    "name" : "selected",
+    "parent_name" : "BetaBranchFlags"
   },
   "steamworks\/types\/broadcastuploadresult.html?swift" : {
     "abstract" : "Steamworks EBroadcastUploadResult",
@@ -521,7 +565,7 @@
     "name" : "noConnection",
     "parent_name" : "BroadcastUploadResult"
   },
-  "steamworks\/types\/broadcastuploadresult.html?swift#none" : {
+  "steamworks\/types\/broadcastuploadresult.html?swift#none1" : {
     "abstract" : "Steamworks k_EBroadcastUploadResultNone",
     "name" : "none",
     "parent_name" : "BroadcastUploadResult"
@@ -678,7 +722,7 @@
     "name" : "entered",
     "parent_name" : "ChatMemberStateChange"
   },
-  "steamworks\/types\/chatmemberstatechange.html?swift#initrawvalue" : {
+  "steamworks\/types\/chatmemberstatechange.html?swift#initrawvalue1" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "ChatMemberStateChange"
@@ -693,7 +737,7 @@
     "name" : "left",
     "parent_name" : "ChatMemberStateChange"
   },
-  "steamworks\/types\/chatmemberstatechange.html?swift#rawvalue" : {
+  "steamworks\/types\/chatmemberstatechange.html?swift#rawvalue1" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "ChatMemberStateChange"
@@ -781,7 +825,7 @@
     "name" : "clan",
     "parent_name" : "ChatSteamIDInstanceFlags"
   },
-  "steamworks\/types\/chatsteamidinstanceflags.html?swift#initrawvalue1" : {
+  "steamworks\/types\/chatsteamidinstanceflags.html?swift#initrawvalue2" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "ChatSteamIDInstanceFlags"
@@ -796,7 +840,7 @@
     "name" : "mmsLobby",
     "parent_name" : "ChatSteamIDInstanceFlags"
   },
-  "steamworks\/types\/chatsteamidinstanceflags.html?swift#rawvalue1" : {
+  "steamworks\/types\/chatsteamidinstanceflags.html?swift#rawvalue2" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "ChatSteamIDInstanceFlags"
@@ -1402,7 +1446,7 @@
     "name" : "in3Hours",
     "parent_name" : "DurationControlNotification"
   },
-  "steamworks\/types\/durationcontrolnotification.html?swift#none1" : {
+  "steamworks\/types\/durationcontrolnotification.html?swift#none2" : {
     "abstract" : "Steamworks k_EDurationControlNotification_None",
     "name" : "none",
     "parent_name" : "DurationControlNotification"
@@ -1475,7 +1519,7 @@
     "name" : "half",
     "parent_name" : "DurationControlProgress"
   },
-  "steamworks\/types\/durationcontrolprogress.html?swift#none2" : {
+  "steamworks\/types\/durationcontrolprogress.html?swift#none3" : {
     "abstract" : "Steamworks k_EDurationControlProgress_None",
     "name" : "none",
     "parent_name" : "DurationControlProgress"
@@ -1590,7 +1634,7 @@
     "name" : "history",
     "parent_name" : "FavoriteFlags"
   },
-  "steamworks\/types\/favoriteflags.html?swift#none3" : {
+  "steamworks\/types\/favoriteflags.html?swift#none4" : {
     "abstract" : "Steamworks k_unFavoriteFlagNone",
     "name" : "none",
     "parent_name" : "FavoriteFlags"
@@ -1705,7 +1749,7 @@
     "abstract" : "Steamworks FloatingGamepadTextInputDismissed_t",
     "name" : "FloatingGamepadTextInputDismissed"
   },
-  "steamworks\/types\/floatinggamepadtextinputdismissed1.html?swift#init24" : {
+  "steamworks\/types\/floatinggamepadtextinputdismissed1.html?swift#init25" : {
     "abstract" : "Create a customized FloatingGamepadTextInputDismissed",
     "name" : "init()",
     "parent_name" : "FloatingGamepadTextInputDismissed"
@@ -1783,12 +1827,12 @@
     "name" : "immediate",
     "parent_name" : "FriendFlags"
   },
-  "steamworks\/types\/friendflags.html?swift#initrawvalue2" : {
+  "steamworks\/types\/friendflags.html?swift#initrawvalue3" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "FriendFlags"
   },
-  "steamworks\/types\/friendflags.html?swift#none4" : {
+  "steamworks\/types\/friendflags.html?swift#none5" : {
     "abstract" : "Steamworks k_EFriendFlagNone",
     "name" : "none",
     "parent_name" : "FriendFlags"
@@ -1798,7 +1842,7 @@
     "name" : "onGameServer",
     "parent_name" : "FriendFlags"
   },
-  "steamworks\/types\/friendflags.html?swift#rawvalue2" : {
+  "steamworks\/types\/friendflags.html?swift#rawvalue3" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "FriendFlags"
@@ -1876,7 +1920,7 @@
     "name" : "max",
     "parent_name" : "FriendRelationship"
   },
-  "steamworks\/types\/friendrelationship.html?swift#none5" : {
+  "steamworks\/types\/friendrelationship.html?swift#none6" : {
     "abstract" : "Steamworks k_EFriendRelationshipNone",
     "name" : "none",
     "parent_name" : "FriendRelationship"
@@ -2999,7 +3043,7 @@
     "name" : "init(_:)",
     "parent_name" : "HServerListRequest"
   },
-  "steamworks\/types\/hserverlistrequest.html?swift#invalid44" : {
+  "steamworks\/types\/hserverlistrequest.html?swift#invalid46" : {
     "abstract" : "",
     "name" : "invalid",
     "parent_name" : "HServerListRequest"
@@ -3386,17 +3430,17 @@
     "name" : "ctrlDown",
     "parent_name" : "HTMLKeyModifiers"
   },
-  "steamworks\/types\/htmlkeymodifiers.html?swift#initrawvalue14" : {
+  "steamworks\/types\/htmlkeymodifiers.html?swift#initrawvalue15" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "HTMLKeyModifiers"
   },
-  "steamworks\/types\/htmlkeymodifiers.html?swift#none23" : {
+  "steamworks\/types\/htmlkeymodifiers.html?swift#none25" : {
     "abstract" : "Steamworks k_eHTMLKeyModifier_None",
     "name" : "none",
     "parent_name" : "HTMLKeyModifiers"
   },
-  "steamworks\/types\/htmlkeymodifiers.html?swift#rawvalue14" : {
+  "steamworks\/types\/htmlkeymodifiers.html?swift#rawvalue15" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "HTMLKeyModifiers"
@@ -3464,7 +3508,7 @@
     "name" : "right",
     "parent_name" : "HTMLMouseButton"
   },
-  "steamworks\/types\/htmlmousebutton.html?swift#unrepresentedinswift89" : {
+  "steamworks\/types\/htmlmousebutton.html?swift#unrepresentedinswift91" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "HTMLMouseButton"
@@ -3553,7 +3597,7 @@
     "name" : "no",
     "parent_name" : "HTMLMouseCursor"
   },
-  "steamworks\/types\/htmlmousecursor.html?swift#none24" : {
+  "steamworks\/types\/htmlmousecursor.html?swift#none26" : {
     "abstract" : "Steamworks dc_none",
     "name" : "none",
     "parent_name" : "HTMLMouseCursor"
@@ -3648,7 +3692,7 @@
     "name" : "southwestpan",
     "parent_name" : "HTMLMouseCursor"
   },
-  "steamworks\/types\/htmlmousecursor.html?swift#unrepresentedinswift90" : {
+  "steamworks\/types\/htmlmousecursor.html?swift#unrepresentedinswift92" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "HTMLMouseCursor"
@@ -4454,7 +4498,7 @@
     "name" : "maximumPossibleValue",
     "parent_name" : "InputActionOrigin"
   },
-  "steamworks\/types\/inputactionorigin.html?swift#none6" : {
+  "steamworks\/types\/inputactionorigin.html?swift#none7" : {
     "abstract" : "Steamworks k_EInputActionOrigin_None",
     "name" : "none",
     "parent_name" : "InputActionOrigin"
@@ -6731,7 +6775,7 @@
     "name" : "mouseRegion",
     "parent_name" : "InputSourceMode"
   },
-  "steamworks\/types\/inputsourcemode.html?swift#none7" : {
+  "steamworks\/types\/inputsourcemode.html?swift#none8" : {
     "abstract" : "Steamworks k_EInputSourceMode_None",
     "name" : "none",
     "parent_name" : "InputSourceMode"
@@ -6804,7 +6848,7 @@
     "name" : "pipeFail",
     "parent_name" : "IPCFailureType"
   },
-  "steamworks\/types\/ipcfailuretype.html?swift#unrepresentedinswift88" : {
+  "steamworks\/types\/ipcfailuretype.html?swift#unrepresentedinswift90" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "IPCFailureType"
@@ -6813,7 +6857,7 @@
     "abstract" : "Steamworks IPCountry_t",
     "name" : "IPCountry"
   },
-  "steamworks\/types\/ipcountry1.html?swift#init25" : {
+  "steamworks\/types\/ipcountry1.html?swift#init26" : {
     "abstract" : "Create a customized IPCountry",
     "name" : "init()",
     "parent_name" : "IPCountry"
@@ -6827,9 +6871,19 @@
     "name" : "appID",
     "parent_name" : "ItemInstalled"
   },
-  "steamworks\/types\/iteminstalled1.html?swift#initappidpublishedfileid" : {
+  "steamworks\/types\/iteminstalled1.html?swift#initappidpublishedfileidlegacycontentmanifestid" : {
     "abstract" : "Create a customized ItemInstalled",
-    "name" : "init(appID:publishedFileId:)",
+    "name" : "init(appID:publishedFileId:legacyContent:manifestID:)",
+    "parent_name" : "ItemInstalled"
+  },
+  "steamworks\/types\/iteminstalled1.html?swift#legacycontent" : {
+    "abstract" : "Steamworks m_hLegacyContent",
+    "name" : "legacyContent",
+    "parent_name" : "ItemInstalled"
+  },
+  "steamworks\/types\/iteminstalled1.html?swift#manifestid" : {
+    "abstract" : "Steamworks m_unManifestID",
+    "name" : "manifestID",
     "parent_name" : "ItemInstalled"
   },
   "steamworks\/types\/iteminstalled1.html?swift#publishedfileid8" : {
@@ -6900,12 +6954,12 @@
     "name" : "downloadPending",
     "parent_name" : "ItemState"
   },
-  "steamworks\/types\/itemstate.html?swift#initrawvalue3" : {
+  "steamworks\/types\/itemstate.html?swift#initrawvalue4" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "ItemState"
   },
-  "steamworks\/types\/itemstate.html?swift#installed" : {
+  "steamworks\/types\/itemstate.html?swift#installed1" : {
     "abstract" : "Steamworks k_EItemStateInstalled",
     "name" : "installed",
     "parent_name" : "ItemState"
@@ -6920,12 +6974,12 @@
     "name" : "needsUpdate",
     "parent_name" : "ItemState"
   },
-  "steamworks\/types\/itemstate.html?swift#none8" : {
+  "steamworks\/types\/itemstate.html?swift#none9" : {
     "abstract" : "Steamworks k_EItemStateNone",
     "name" : "none",
     "parent_name" : "ItemState"
   },
-  "steamworks\/types\/itemstate.html?swift#rawvalue3" : {
+  "steamworks\/types\/itemstate.html?swift#rawvalue4" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "ItemState"
@@ -7129,7 +7183,7 @@
     "abstract" : "Steamworks ELeaderboardDisplayType",
     "name" : "LeaderboardDisplayType"
   },
-  "steamworks\/types\/leaderboarddisplaytype.html?swift#none9" : {
+  "steamworks\/types\/leaderboarddisplaytype.html?swift#none10" : {
     "abstract" : "Steamworks k_ELeaderboardDisplayTypeNone",
     "name" : "none",
     "parent_name" : "LeaderboardDisplayType"
@@ -7284,7 +7338,7 @@
     "name" : "descending",
     "parent_name" : "LeaderboardSortMethod"
   },
-  "steamworks\/types\/leaderboardsortmethod.html?swift#none10" : {
+  "steamworks\/types\/leaderboardsortmethod.html?swift#none11" : {
     "abstract" : "Steamworks k_ELeaderboardSortMethodNone",
     "name" : "none",
     "parent_name" : "LeaderboardSortMethod"
@@ -7327,7 +7381,7 @@
     "name" : "keepBest",
     "parent_name" : "LeaderboardUploadScoreMethod"
   },
-  "steamworks\/types\/leaderboarduploadscoremethod.html?swift#none11" : {
+  "steamworks\/types\/leaderboarduploadscoremethod.html?swift#none12" : {
     "abstract" : "Steamworks k_ELeaderboardUploadScoreMethodNone",
     "name" : "none",
     "parent_name" : "LeaderboardUploadScoreMethod"
@@ -7341,7 +7395,7 @@
     "abstract" : "Steamworks LicensesUpdated_t",
     "name" : "LicensesUpdated"
   },
-  "steamworks\/types\/licensesupdated1.html?swift#init26" : {
+  "steamworks\/types\/licensesupdated1.html?swift#init27" : {
     "abstract" : "Create a customized LicensesUpdated",
     "name" : "init()",
     "parent_name" : "LicensesUpdated"
@@ -7495,7 +7549,7 @@
     "name" : "close",
     "parent_name" : "LobbyDistanceFilter"
   },
-  "steamworks\/types\/lobbydistancefilter.html?swift#default1" : {
+  "steamworks\/types\/lobbydistancefilter.html?swift#default2" : {
     "abstract" : "Steamworks k_ELobbyDistanceFilterDefault",
     "name" : "default",
     "parent_name" : "LobbyDistanceFilter"
@@ -7649,7 +7703,7 @@
     "name" : "invisible",
     "parent_name" : "LobbyType"
   },
-  "steamworks\/types\/lobbytype.html?swift#private" : {
+  "steamworks\/types\/lobbytype.html?swift#private1" : {
     "abstract" : "Steamworks k_ELobbyTypePrivate",
     "name" : "private",
     "parent_name" : "LobbyType"
@@ -7746,7 +7800,7 @@
     "name" : "accountNotTrusted",
     "parent_name" : "MarketNotAllowedReasonFlags"
   },
-  "steamworks\/types\/marketnotallowedreasonflags.html?swift#initrawvalue4" : {
+  "steamworks\/types\/marketnotallowedreasonflags.html?swift#initrawvalue5" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "MarketNotAllowedReasonFlags"
@@ -7766,7 +7820,7 @@
     "name" : "newPaymentMethodCannotBeVerified",
     "parent_name" : "MarketNotAllowedReasonFlags"
   },
-  "steamworks\/types\/marketnotallowedreasonflags.html?swift#none12" : {
+  "steamworks\/types\/marketnotallowedreasonflags.html?swift#none13" : {
     "abstract" : "Steamworks k_EMarketNotAllowedReason_None",
     "name" : "none",
     "parent_name" : "MarketNotAllowedReasonFlags"
@@ -7776,7 +7830,7 @@
     "name" : "noRecentPurchases",
     "parent_name" : "MarketNotAllowedReasonFlags"
   },
-  "steamworks\/types\/marketnotallowedreasonflags.html?swift#rawvalue4" : {
+  "steamworks\/types\/marketnotallowedreasonflags.html?swift#rawvalue5" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "MarketNotAllowedReasonFlags"
@@ -7868,7 +7922,7 @@
     "abstract" : "Steamworks MusicPlayerRemoteToFront_t",
     "name" : "MusicPlayerRemoteToFront"
   },
-  "steamworks\/types\/musicplayerremotetofront1.html?swift#init27" : {
+  "steamworks\/types\/musicplayerremotetofront1.html?swift#init28" : {
     "abstract" : "Create a customized MusicPlayerRemoteToFront",
     "name" : "init()",
     "parent_name" : "MusicPlayerRemoteToFront"
@@ -7877,7 +7931,7 @@
     "abstract" : "Steamworks MusicPlayerRemoteWillActivate_t",
     "name" : "MusicPlayerRemoteWillActivate"
   },
-  "steamworks\/types\/musicplayerremotewillactivate1.html?swift#init28" : {
+  "steamworks\/types\/musicplayerremotewillactivate1.html?swift#init29" : {
     "abstract" : "Create a customized MusicPlayerRemoteWillActivate",
     "name" : "init()",
     "parent_name" : "MusicPlayerRemoteWillActivate"
@@ -7886,7 +7940,7 @@
     "abstract" : "Steamworks MusicPlayerRemoteWillDeactivate_t",
     "name" : "MusicPlayerRemoteWillDeactivate"
   },
-  "steamworks\/types\/musicplayerremotewilldeactivate1.html?swift#init29" : {
+  "steamworks\/types\/musicplayerremotewilldeactivate1.html?swift#init30" : {
     "abstract" : "Create a customized MusicPlayerRemoteWillDeactivate",
     "name" : "init()",
     "parent_name" : "MusicPlayerRemoteWillDeactivate"
@@ -7937,7 +7991,7 @@
     "abstract" : "Steamworks MusicPlayerWantsPause_t",
     "name" : "MusicPlayerWantsPause"
   },
-  "steamworks\/types\/musicplayerwantspause1.html?swift#init30" : {
+  "steamworks\/types\/musicplayerwantspause1.html?swift#init31" : {
     "abstract" : "Create a customized MusicPlayerWantsPause",
     "name" : "init()",
     "parent_name" : "MusicPlayerWantsPause"
@@ -7946,7 +8000,7 @@
     "abstract" : "Steamworks MusicPlayerWantsPlay_t",
     "name" : "MusicPlayerWantsPlay"
   },
-  "steamworks\/types\/musicplayerwantsplay1.html?swift#init33" : {
+  "steamworks\/types\/musicplayerwantsplay1.html?swift#init34" : {
     "abstract" : "Create a customized MusicPlayerWantsPlay",
     "name" : "init()",
     "parent_name" : "MusicPlayerWantsPlay"
@@ -7969,7 +8023,7 @@
     "abstract" : "Steamworks MusicPlayerWantsPlayNext_t",
     "name" : "MusicPlayerWantsPlayNext"
   },
-  "steamworks\/types\/musicplayerwantsplaynext1.html?swift#init31" : {
+  "steamworks\/types\/musicplayerwantsplaynext1.html?swift#init32" : {
     "abstract" : "Create a customized MusicPlayerWantsPlayNext",
     "name" : "init()",
     "parent_name" : "MusicPlayerWantsPlayNext"
@@ -7978,7 +8032,7 @@
     "abstract" : "Steamworks MusicPlayerWantsPlayPrevious_t",
     "name" : "MusicPlayerWantsPlayPrevious"
   },
-  "steamworks\/types\/musicplayerwantsplayprevious1.html?swift#init32" : {
+  "steamworks\/types\/musicplayerwantsplayprevious1.html?swift#init33" : {
     "abstract" : "Create a customized MusicPlayerWantsPlayPrevious",
     "name" : "init()",
     "parent_name" : "MusicPlayerWantsPlayPrevious"
@@ -8015,7 +8069,7 @@
     "abstract" : "Steamworks MusicPlayerWillQuit_t",
     "name" : "MusicPlayerWillQuit"
   },
-  "steamworks\/types\/musicplayerwillquit1.html?swift#init34" : {
+  "steamworks\/types\/musicplayerwillquit1.html?swift#init35" : {
     "abstract" : "Create a customized MusicPlayerWillQuit",
     "name" : "init()",
     "parent_name" : "MusicPlayerWillQuit"
@@ -8024,7 +8078,7 @@
     "abstract" : "Steamworks NewUrlLaunchParameters_t",
     "name" : "NewUrlLaunchParameters"
   },
-  "steamworks\/types\/newurllaunchparameters1.html?swift#init35" : {
+  "steamworks\/types\/newurllaunchparameters1.html?swift#init36" : {
     "abstract" : "Create a customized NewUrlLaunchParameters",
     "name" : "init()",
     "parent_name" : "NewUrlLaunchParameters"
@@ -8110,7 +8164,7 @@
     "name" : "addToCartAndShow",
     "parent_name" : "OverlayToStoreFlag"
   },
-  "steamworks\/types\/overlaytostoreflag.html?swift#none13" : {
+  "steamworks\/types\/overlaytostoreflag.html?swift#none14" : {
     "abstract" : "Steamworks k_EOverlayToStoreFlag_None",
     "name" : "none",
     "parent_name" : "OverlayToStoreFlag"
@@ -8123,6 +8177,11 @@
   "steamworks\/types\/parentalfeature.html?swift" : {
     "abstract" : "Steamworks EParentalFeature",
     "name" : "ParentalFeature"
+  },
+  "steamworks\/types\/parentalfeature.html?swift#blockalways" : {
+    "abstract" : "Steamworks k_EFeatureBlockAlways",
+    "name" : "blockAlways",
+    "parent_name" : "ParentalFeature"
   },
   "steamworks\/types\/parentalfeature.html?swift#browser" : {
     "abstract" : "Steamworks k_EFeatureBrowser",
@@ -8267,7 +8326,7 @@
     "name" : "goneOffline",
     "parent_name" : "PersonaChange"
   },
-  "steamworks\/types\/personachange.html?swift#initrawvalue5" : {
+  "steamworks\/types\/personachange.html?swift#initrawvalue6" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "PersonaChange"
@@ -8297,7 +8356,7 @@
     "name" : "nickname",
     "parent_name" : "PersonaChange"
   },
-  "steamworks\/types\/personachange.html?swift#rawvalue5" : {
+  "steamworks\/types\/personachange.html?swift#rawvalue6" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "PersonaChange"
@@ -8399,7 +8458,7 @@
     "abstract" : "Steamworks PlaybackStatusHasChanged_t",
     "name" : "PlaybackStatusHasChanged"
   },
-  "steamworks\/types\/playbackstatushaschanged1.html?swift#init36" : {
+  "steamworks\/types\/playbackstatushaschanged1.html?swift#init37" : {
     "abstract" : "Create a customized PlaybackStatusHasChanged",
     "name" : "init()",
     "parent_name" : "PlaybackStatusHasChanged"
@@ -8423,7 +8482,7 @@
     "name" : "unknown",
     "parent_name" : "PlayerAcceptState"
   },
-  "steamworks\/types\/playeracceptstate.html?swift#unrepresentedinswift91" : {
+  "steamworks\/types\/playeracceptstate.html?swift#unrepresentedinswift93" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "PlayerAcceptState"
@@ -9058,7 +9117,7 @@
     "abstract" : "Steamworks RemoteStorageLocalFileChange_t",
     "name" : "RemoteStorageLocalFileChange"
   },
-  "steamworks\/types\/remotestoragelocalfilechange1.html?swift#init37" : {
+  "steamworks\/types\/remotestoragelocalfilechange1.html?swift#init38" : {
     "abstract" : "Create a customized RemoteStorageLocalFileChange",
     "name" : "init()",
     "parent_name" : "RemoteStorageLocalFileChange"
@@ -9101,7 +9160,7 @@
     "name" : "android",
     "parent_name" : "RemoteStoragePlatform"
   },
-  "steamworks\/types\/remotestorageplatform.html?swift#initrawvalue6" : {
+  "steamworks\/types\/remotestorageplatform.html?swift#initrawvalue7" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "RemoteStoragePlatform"
@@ -9116,7 +9175,7 @@
     "name" : "linux",
     "parent_name" : "RemoteStoragePlatform"
   },
-  "steamworks\/types\/remotestorageplatform.html?swift#none14" : {
+  "steamworks\/types\/remotestorageplatform.html?swift#none15" : {
     "abstract" : "Steamworks k_ERemoteStoragePlatformNone",
     "name" : "none",
     "parent_name" : "RemoteStoragePlatform"
@@ -9131,7 +9190,7 @@
     "name" : "ps3",
     "parent_name" : "RemoteStoragePlatform"
   },
-  "steamworks\/types\/remotestorageplatform.html?swift#rawvalue6" : {
+  "steamworks\/types\/remotestorageplatform.html?swift#rawvalue7" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "RemoteStoragePlatform"
@@ -9231,7 +9290,7 @@
     "name" : "friendsOnly",
     "parent_name" : "RemoteStoragePublishedFileVisibility"
   },
-  "steamworks\/types\/remotestoragepublishedfilevisibility.html?swift#private1" : {
+  "steamworks\/types\/remotestoragepublishedfilevisibility.html?swift#private2" : {
     "abstract" : "Steamworks k_ERemoteStoragePublishedFileVisibilityPrivate",
     "name" : "private",
     "parent_name" : "RemoteStoragePublishedFileVisibility"
@@ -10031,7 +10090,7 @@
     "name" : "noMobileDevice",
     "parent_name" : "Result"
   },
-  "steamworks\/types\/result.html?swift#none15" : {
+  "steamworks\/types\/result.html?swift#none16" : {
     "abstract" : "Steamworks k_EResultNone",
     "name" : "none",
     "parent_name" : "Result"
@@ -10312,7 +10371,7 @@
     "abstract" : "Steamworks ScreenshotRequested_t",
     "name" : "ScreenshotRequested"
   },
-  "steamworks\/types\/screenshotrequested1.html?swift#init38" : {
+  "steamworks\/types\/screenshotrequested1.html?swift#init39" : {
     "abstract" : "Create a customized ScreenshotRequested",
     "name" : "init()",
     "parent_name" : "ScreenshotRequested"
@@ -10438,7 +10497,7 @@
     "name" : "connectionPort",
     "parent_name" : "ServerNetAdr"
   },
-  "steamworks\/types\/servernetadr.html?swift#init45" : {
+  "steamworks\/types\/servernetadr.html?swift#init46" : {
     "abstract" : "",
     "name" : "init()",
     "parent_name" : "ServerNetAdr"
@@ -10609,6 +10668,11 @@
     "name" : "screenshots",
     "parent_name" : "SteamAPI"
   },
+  "steamworks\/types\/steamapi.html?swift#timeline" : {
+    "abstract" : "Access the Steamworks ISteamTimeline interface",
+    "name" : "timeline",
+    "parent_name" : "SteamAPI"
+  },
   "steamworks\/types\/steamapi.html?swift#user12" : {
     "abstract" : "Access the Steamworks ISteamUser interface",
     "name" : "user",
@@ -10691,7 +10755,7 @@
     "name" : "networkFailure",
     "parent_name" : "SteamAPICallFailure"
   },
-  "steamworks\/types\/steamapicallfailure.html?swift#none16" : {
+  "steamworks\/types\/steamapicallfailure.html?swift#none17" : {
     "abstract" : "Steamworks k_ESteamAPICallFailureNone",
     "name" : "none",
     "parent_name" : "SteamAPICallFailure"
@@ -10759,6 +10823,11 @@
     "name" : "getAvailableGameLanguages()",
     "parent_name" : "SteamApps"
   },
+  "steamworks\/types\/steamapps.html?swift#getbetainfoappidbetaindexbetanamesizedescriptionsize" : {
+    "abstract" : "Steamworks ISteamApps::GetBetaInfo()",
+    "name" : "getBetaInfo(appID:betaIndex:betaNameSize:descriptionSize:)",
+    "parent_name" : "SteamApps"
+  },
   "steamworks\/types\/steamapps.html?swift#getcurrentbetanamenamebuffersize" : {
     "abstract" : "Steamworks ISteamApps::GetCurrentBetaName()",
     "name" : "getCurrentBetaName(nameBufferSize:)",
@@ -10789,14 +10858,14 @@
     "name" : "getEarliestPurchaseUnixTime(appID:)",
     "parent_name" : "SteamApps"
   },
-  "steamworks\/types\/steamapps.html?swift#getfiledetailsfilename" : {
-    "abstract" : "Steamworks ISteamApps::GetFileDetails(), async",
-    "name" : "getFileDetails(fileName:)",
-    "parent_name" : "SteamApps"
-  },
   "steamworks\/types\/steamapps.html?swift#getfiledetailsfilenamecompletion" : {
     "abstract" : "Steamworks ISteamApps::GetFileDetails(), callback",
     "name" : "getFileDetails(fileName:completion:)",
+    "parent_name" : "SteamApps"
+  },
+  "steamworks\/types\/steamapps.html?swift#getfiledetailsisolationfilename" : {
+    "abstract" : "Steamworks ISteamApps::GetFileDetails(), async",
+    "name" : "getFileDetails(isolation:fileName:)",
     "parent_name" : "SteamApps"
   },
   "steamworks\/types\/steamapps.html?swift#getinstalleddepotsidmaxdepots" : {
@@ -10812,6 +10881,11 @@
   "steamworks\/types\/steamapps.html?swift#getlaunchqueryparamkey" : {
     "abstract" : "Steamworks ISteamApps::GetLaunchQueryParam()",
     "name" : "getLaunchQueryParam(key:)",
+    "parent_name" : "SteamApps"
+  },
+  "steamworks\/types\/steamapps.html?swift#getnumbetasappid" : {
+    "abstract" : "Steamworks ISteamApps::GetNumBetas()",
+    "name" : "getNumBetas(appID:)",
     "parent_name" : "SteamApps"
   },
   "steamworks\/types\/steamapps.html?swift#installdlcappid" : {
@@ -10882,6 +10956,11 @@
   "steamworks\/types\/steamapps.html?swift#requestappproofofpurchasekeyappid" : {
     "abstract" : "Steamworks ISteamApps::RequestAppProofOfPurchaseKey()",
     "name" : "requestAppProofOfPurchaseKey(appID:)",
+    "parent_name" : "SteamApps"
+  },
+  "steamworks\/types\/steamapps.html?swift#setactivebetaappidbetaname" : {
+    "abstract" : "Steamworks ISteamApps::SetActiveBeta()",
+    "name" : "setActiveBeta(appID:betaName:)",
     "parent_name" : "SteamApps"
   },
   "steamworks\/types\/steamapps.html?swift#setdlccontextappid" : {
@@ -12502,9 +12581,14 @@
     "name" : "maxSteamNetworkingSocketsMessageSizeSendSize",
     "parent_name" : "SteamConstants"
   },
-  "steamworks\/types\/steamconstants.html?swift#maxtimelinerangeidlength" : {
-    "abstract" : "Steamworks k_nMaxTimelineRangeIDLength",
-    "name" : "maxTimelineRangeIDLength",
+  "steamworks\/types\/steamconstants.html?swift#maxtimelineeventduration" : {
+    "abstract" : "Steamworks k_flMaxTimelineEventDuration",
+    "name" : "maxTimelineEventDuration",
+    "parent_name" : "SteamConstants"
+  },
+  "steamworks\/types\/steamconstants.html?swift#maxtimelinepriority" : {
+    "abstract" : "Steamworks k_unMaxTimelinePriority",
+    "name" : "maxTimelinePriority",
     "parent_name" : "SteamConstants"
   },
   "steamworks\/types\/steamconstants.html?swift#numugcresultsperpage" : {
@@ -12738,19 +12822,19 @@
     "name" : "closeClanChatWindowInSteam(clanChat:)",
     "parent_name" : "SteamFriends"
   },
-  "steamworks\/types\/steamfriends.html?swift#downloadclanactivitycountsclans" : {
-    "abstract" : "Steamworks ISteamFriends::DownloadClanActivityCounts(), async",
-    "name" : "downloadClanActivityCounts(clans:)",
-    "parent_name" : "SteamFriends"
-  },
   "steamworks\/types\/steamfriends.html?swift#downloadclanactivitycountsclanscompletion" : {
     "abstract" : "Steamworks ISteamFriends::DownloadClanActivityCounts(), callback",
     "name" : "downloadClanActivityCounts(clans:completion:)",
     "parent_name" : "SteamFriends"
   },
-  "steamworks\/types\/steamfriends.html?swift#enumeratefollowingliststartindex" : {
+  "steamworks\/types\/steamfriends.html?swift#downloadclanactivitycountsisolationclans" : {
+    "abstract" : "Steamworks ISteamFriends::DownloadClanActivityCounts(), async",
+    "name" : "downloadClanActivityCounts(isolation:clans:)",
+    "parent_name" : "SteamFriends"
+  },
+  "steamworks\/types\/steamfriends.html?swift#enumeratefollowinglistisolationstartindex" : {
     "abstract" : "Steamworks ISteamFriends::EnumerateFollowingList(), async",
-    "name" : "enumerateFollowingList(startIndex:)",
+    "name" : "enumerateFollowingList(isolation:startIndex:)",
     "parent_name" : "SteamFriends"
   },
   "steamworks\/types\/steamfriends.html?swift#enumeratefollowingliststartindexcompletion" : {
@@ -12823,9 +12907,9 @@
     "name" : "getCoplayFriendCount()",
     "parent_name" : "SteamFriends"
   },
-  "steamworks\/types\/steamfriends.html?swift#getfollowercountsteamid" : {
+  "steamworks\/types\/steamfriends.html?swift#getfollowercountisolationsteamid" : {
     "abstract" : "Steamworks ISteamFriends::GetFollowerCount(), async",
-    "name" : "getFollowerCount(steamID:)",
+    "name" : "getFollowerCount(isolation:steamID:)",
     "parent_name" : "SteamFriends"
   },
   "steamworks\/types\/steamfriends.html?swift#getfollowercountsteamidcompletion" : {
@@ -13028,9 +13112,9 @@
     "name" : "isClanPublic(clan:)",
     "parent_name" : "SteamFriends"
   },
-  "steamworks\/types\/steamfriends.html?swift#isfollowingsteamid" : {
+  "steamworks\/types\/steamfriends.html?swift#isfollowingisolationsteamid" : {
     "abstract" : "Steamworks ISteamFriends::IsFollowing(), async",
-    "name" : "isFollowing(steamID:)",
+    "name" : "isFollowing(isolation:steamID:)",
     "parent_name" : "SteamFriends"
   },
   "steamworks\/types\/steamfriends.html?swift#isfollowingsteamidcompletion" : {
@@ -13043,14 +13127,14 @@
     "name" : "isUserInSource(user:source:)",
     "parent_name" : "SteamFriends"
   },
-  "steamworks\/types\/steamfriends.html?swift#joinclanchatroomclan" : {
-    "abstract" : "Steamworks ISteamFriends::JoinClanChatRoom(), async",
-    "name" : "joinClanChatRoom(clan:)",
-    "parent_name" : "SteamFriends"
-  },
   "steamworks\/types\/steamfriends.html?swift#joinclanchatroomclancompletion" : {
     "abstract" : "Steamworks ISteamFriends::JoinClanChatRoom(), callback",
     "name" : "joinClanChatRoom(clan:completion:)",
+    "parent_name" : "SteamFriends"
+  },
+  "steamworks\/types\/steamfriends.html?swift#joinclanchatroomisolationclan" : {
+    "abstract" : "Steamworks ISteamFriends::JoinClanChatRoom(), async",
+    "name" : "joinClanChatRoom(isolation:clan:)",
     "parent_name" : "SteamFriends"
   },
   "steamworks\/types\/steamfriends.html?swift#leaveclanchatroomclan" : {
@@ -13073,19 +13157,19 @@
     "name" : "replyToFriendMessage(friend:msgToSend:)",
     "parent_name" : "SteamFriends"
   },
-  "steamworks\/types\/steamfriends.html?swift#requestclanofficerlistclan" : {
-    "abstract" : "Steamworks ISteamFriends::RequestClanOfficerList(), async",
-    "name" : "requestClanOfficerList(clan:)",
-    "parent_name" : "SteamFriends"
-  },
   "steamworks\/types\/steamfriends.html?swift#requestclanofficerlistclancompletion" : {
     "abstract" : "Steamworks ISteamFriends::RequestClanOfficerList(), callback",
     "name" : "requestClanOfficerList(clan:completion:)",
     "parent_name" : "SteamFriends"
   },
-  "steamworks\/types\/steamfriends.html?swift#requestequippedprofileitemssteamid" : {
+  "steamworks\/types\/steamfriends.html?swift#requestclanofficerlistisolationclan" : {
+    "abstract" : "Steamworks ISteamFriends::RequestClanOfficerList(), async",
+    "name" : "requestClanOfficerList(isolation:clan:)",
+    "parent_name" : "SteamFriends"
+  },
+  "steamworks\/types\/steamfriends.html?swift#requestequippedprofileitemsisolationsteamid" : {
     "abstract" : "Steamworks ISteamFriends::RequestEquippedProfileItems(), async",
-    "name" : "requestEquippedProfileItems(steamID:)",
+    "name" : "requestEquippedProfileItems(isolation:steamID:)",
     "parent_name" : "SteamFriends"
   },
   "steamworks\/types\/steamfriends.html?swift#requestequippedprofileitemssteamidcompletion" : {
@@ -13118,9 +13202,9 @@
     "name" : "setListenForFriendsMessages(interceptEnabled:)",
     "parent_name" : "SteamFriends"
   },
-  "steamworks\/types\/steamfriends.html?swift#setpersonanamepersonaname" : {
+  "steamworks\/types\/steamfriends.html?swift#setpersonanameisolationpersonaname" : {
     "abstract" : "Steamworks ISteamFriends::SetPersonaName(), async",
-    "name" : "setPersonaName(personaName:)",
+    "name" : "setPersonaName(isolation:personaName:)",
     "parent_name" : "SteamFriends"
   },
   "steamworks\/types\/steamfriends.html?swift#setpersonanamepersonanamecompletion" : {
@@ -13216,14 +13300,14 @@
     "abstract" : "Steamworks ISteamGameServer",
     "name" : "SteamGameServer"
   },
-  "steamworks\/types\/steamgameserver.html?swift#associatewithclanclan" : {
-    "abstract" : "Steamworks ISteamGameServer::AssociateWithClan(), async",
-    "name" : "associateWithClan(clan:)",
-    "parent_name" : "SteamGameServer"
-  },
   "steamworks\/types\/steamgameserver.html?swift#associatewithclanclancompletion" : {
     "abstract" : "Steamworks ISteamGameServer::AssociateWithClan(), callback",
     "name" : "associateWithClan(clan:completion:)",
+    "parent_name" : "SteamGameServer"
+  },
+  "steamworks\/types\/steamgameserver.html?swift#associatewithclanisolationclan" : {
+    "abstract" : "Steamworks ISteamGameServer::AssociateWithClan(), async",
+    "name" : "associateWithClan(isolation:clan:)",
     "parent_name" : "SteamGameServer"
   },
   "steamworks\/types\/steamgameserver.html?swift#beginauthsessionauthticketsteamid" : {
@@ -13241,9 +13325,9 @@
     "name" : "clearAllKeyValues()",
     "parent_name" : "SteamGameServer"
   },
-  "steamworks\/types\/steamgameserver.html?swift#computenewplayercompatibilitynewplayer" : {
+  "steamworks\/types\/steamgameserver.html?swift#computenewplayercompatibilityisolationnewplayer" : {
     "abstract" : "Steamworks ISteamGameServer::ComputeNewPlayerCompatibility(), async",
-    "name" : "computeNewPlayerCompatibility(newPlayer:)",
+    "name" : "computeNewPlayerCompatibility(isolation:newPlayer:)",
     "parent_name" : "SteamGameServer"
   },
   "steamworks\/types\/steamgameserver.html?swift#computenewplayercompatibilitynewplayercompletion" : {
@@ -13281,14 +13365,14 @@
     "name" : "getPublicIP()",
     "parent_name" : "SteamGameServer"
   },
-  "steamworks\/types\/steamgameserver.html?swift#getserverreputation" : {
-    "abstract" : "Steamworks ISteamGameServer::GetServerReputation(), async",
-    "name" : "getServerReputation()",
-    "parent_name" : "SteamGameServer"
-  },
   "steamworks\/types\/steamgameserver.html?swift#getserverreputationcompletion" : {
     "abstract" : "Steamworks ISteamGameServer::GetServerReputation(), callback",
     "name" : "getServerReputation(completion:)",
+    "parent_name" : "SteamGameServer"
+  },
+  "steamworks\/types\/steamgameserver.html?swift#getserverreputationisolation" : {
+    "abstract" : "Steamworks ISteamGameServer::GetServerReputation(), async",
+    "name" : "getServerReputation(isolation:)",
     "parent_name" : "SteamGameServer"
   },
   "steamworks\/types\/steamgameserver.html?swift#getsteamid" : {
@@ -13479,9 +13563,9 @@
     "name" : "getUserStatInt(user:name:)",
     "parent_name" : "SteamGameServerStats"
   },
-  "steamworks\/types\/steamgameserverstats.html?swift#requestuserstatsuser" : {
+  "steamworks\/types\/steamgameserverstats.html?swift#requestuserstatsisolationuser" : {
     "abstract" : "Steamworks ISteamGameServerStats::RequestUserStats(), async",
-    "name" : "requestUserStats(user:)",
+    "name" : "requestUserStats(isolation:user:)",
     "parent_name" : "SteamGameServerStats"
   },
   "steamworks\/types\/steamgameserverstats.html?swift#requestuserstatsusercompletion" : {
@@ -13504,9 +13588,9 @@
     "name" : "setUserStat(user:name:data:)",
     "parent_name" : "SteamGameServerStats"
   },
-  "steamworks\/types\/steamgameserverstats.html?swift#storeuserstatsuser" : {
+  "steamworks\/types\/steamgameserverstats.html?swift#storeuserstatsisolationuser" : {
     "abstract" : "Steamworks ISteamGameServerStats::StoreUserStats(), async",
-    "name" : "storeUserStats(user:)",
+    "name" : "storeUserStats(isolation:user:)",
     "parent_name" : "SteamGameServerStats"
   },
   "steamworks\/types\/steamgameserverstats.html?swift#storeuserstatsusercompletion" : {
@@ -13538,9 +13622,9 @@
     "name" : "copyToClipboard(browserHandle:)",
     "parent_name" : "SteamHTMLSurface"
   },
-  "steamworks\/types\/steamhtmlsurface.html?swift#createbrowseruseragentusercss" : {
+  "steamworks\/types\/steamhtmlsurface.html?swift#createbrowserisolationuseragentusercss" : {
     "abstract" : "Steamworks ISteamHTMLSurface::CreateBrowser(), async",
-    "name" : "createBrowser(userAgent:userCSS:)",
+    "name" : "createBrowser(isolation:userAgent:userCSS:)",
     "parent_name" : "SteamHTMLSurface"
   },
   "steamworks\/types\/steamhtmlsurface.html?swift#createbrowseruseragentusercsscompletion" : {
@@ -13901,12 +13985,12 @@
     "name" : "fullSet(identifier:universe:accountType:)",
     "parent_name" : "SteamID"
   },
-  "steamworks\/types\/steamid16.html?swift#init_289" : {
+  "steamworks\/types\/steamid16.html?swift#init_290" : {
     "abstract" : "Create a Steam ID from a 64-bit representation",
     "name" : "init(_:)",
     "parent_name" : "SteamID"
   },
-  "steamworks\/types\/steamid16.html?swift#init49" : {
+  "steamworks\/types\/steamid16.html?swift#init50" : {
     "abstract" : "Create a fresh invalid SteamID.",
     "name" : "init()",
     "parent_name" : "SteamID"
@@ -14309,7 +14393,7 @@
     "name" : "digital(_:_:)",
     "parent_name" : "Event"
   },
-  "steamworks\/types\/steaminputactionevent\/event.html?swift#unrepresentedinswift92" : {
+  "steamworks\/types\/steaminputactionevent\/event.html?swift#unrepresentedinswift94" : {
     "abstract" : "",
     "name" : "unrepresentedInSwift",
     "parent_name" : "Event"
@@ -14342,12 +14426,12 @@
     "name" : "generic",
     "parent_name" : "SteamInputConfigurationEnableType"
   },
-  "steamworks\/types\/steaminputconfigurationenabletype.html?swift#initrawvalue7" : {
+  "steamworks\/types\/steaminputconfigurationenabletype.html?swift#initrawvalue8" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "SteamInputConfigurationEnableType"
   },
-  "steamworks\/types\/steaminputconfigurationenabletype.html?swift#none17" : {
+  "steamworks\/types\/steaminputconfigurationenabletype.html?swift#none18" : {
     "abstract" : "Steamworks k_ESteamInputConfigurationEnableType_None",
     "name" : "none",
     "parent_name" : "SteamInputConfigurationEnableType"
@@ -14357,7 +14441,7 @@
     "name" : "playstation",
     "parent_name" : "SteamInputConfigurationEnableType"
   },
-  "steamworks\/types\/steaminputconfigurationenabletype.html?swift#rawvalue7" : {
+  "steamworks\/types\/steaminputconfigurationenabletype.html?swift#rawvalue8" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "SteamInputConfigurationEnableType"
@@ -14516,7 +14600,7 @@
     "name" : "dark",
     "parent_name" : "SteamInputGlyphStyle"
   },
-  "steamworks\/types\/steaminputglyphstyle.html?swift#initrawvalue8" : {
+  "steamworks\/types\/steaminputglyphstyle.html?swift#initrawvalue9" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "SteamInputGlyphStyle"
@@ -14536,7 +14620,7 @@
     "name" : "neutralColorABXY",
     "parent_name" : "SteamInputGlyphStyle"
   },
-  "steamworks\/types\/steaminputglyphstyle.html?swift#rawvalue8" : {
+  "steamworks\/types\/steaminputglyphstyle.html?swift#rawvalue9" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "SteamInputGlyphStyle"
@@ -14550,12 +14634,12 @@
     "abstract" : "Steamworks ESteamInputLEDFlag",
     "name" : "SteamInputLEDFlag"
   },
-  "steamworks\/types\/steaminputledflag.html?swift#initrawvalue9" : {
+  "steamworks\/types\/steaminputledflag.html?swift#initrawvalue10" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "SteamInputLEDFlag"
   },
-  "steamworks\/types\/steaminputledflag.html?swift#rawvalue9" : {
+  "steamworks\/types\/steaminputledflag.html?swift#rawvalue10" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "SteamInputLEDFlag"
@@ -14813,9 +14897,9 @@
     "name" : "removeProperty(handle:itemID:propertyName:)",
     "parent_name" : "SteamInventory"
   },
-  "steamworks\/types\/steaminventory.html?swift#requesteligiblepromoitemdefinitionsidssteamid" : {
+  "steamworks\/types\/steaminventory.html?swift#requesteligiblepromoitemdefinitionsidsisolationsteamid" : {
     "abstract" : "Steamworks ISteamInventory::RequestEligiblePromoItemDefinitionsIDs(), async",
-    "name" : "requestEligiblePromoItemDefinitionsIDs(steamID:)",
+    "name" : "requestEligiblePromoItemDefinitionsIDs(isolation:steamID:)",
     "parent_name" : "SteamInventory"
   },
   "steamworks\/types\/steaminventory.html?swift#requesteligiblepromoitemdefinitionsidssteamidcompletion" : {
@@ -14823,14 +14907,14 @@
     "name" : "requestEligiblePromoItemDefinitionsIDs(steamID:completion:)",
     "parent_name" : "SteamInventory"
   },
-  "steamworks\/types\/steaminventory.html?swift#requestprices" : {
-    "abstract" : "Steamworks ISteamInventory::RequestPrices(), async",
-    "name" : "requestPrices()",
-    "parent_name" : "SteamInventory"
-  },
   "steamworks\/types\/steaminventory.html?swift#requestpricescompletion" : {
     "abstract" : "Steamworks ISteamInventory::RequestPrices(), callback",
     "name" : "requestPrices(completion:)",
+    "parent_name" : "SteamInventory"
+  },
+  "steamworks\/types\/steaminventory.html?swift#requestpricesisolation" : {
+    "abstract" : "Steamworks ISteamInventory::RequestPrices(), async",
+    "name" : "requestPrices(isolation:)",
     "parent_name" : "SteamInventory"
   },
   "steamworks\/types\/steaminventory.html?swift#senditemdropheartbeat" : {
@@ -14868,14 +14952,14 @@
     "name" : "setProperty(handle:itemID:propertyName:value:)",
     "parent_name" : "SteamInventory"
   },
-  "steamworks\/types\/steaminventory.html?swift#startpurchasearrayitemdefsarrayquantity" : {
-    "abstract" : "Steamworks ISteamInventory::StartPurchase(), async",
-    "name" : "startPurchase(arrayItemDefs:arrayQuantity:)",
-    "parent_name" : "SteamInventory"
-  },
   "steamworks\/types\/steaminventory.html?swift#startpurchasearrayitemdefsarrayquantitycompletion" : {
     "abstract" : "Steamworks ISteamInventory::StartPurchase(), callback",
     "name" : "startPurchase(arrayItemDefs:arrayQuantity:completion:)",
+    "parent_name" : "SteamInventory"
+  },
+  "steamworks\/types\/steaminventory.html?swift#startpurchaseisolationarrayitemdefsarrayquantity" : {
+    "abstract" : "Steamworks ISteamInventory::StartPurchase(), async",
+    "name" : "startPurchase(isolation:arrayItemDefs:arrayQuantity:)",
     "parent_name" : "SteamInventory"
   },
   "steamworks\/types\/steaminventory.html?swift#startupdateproperties" : {
@@ -14902,7 +14986,7 @@
     "abstract" : "Steamworks SteamInventoryDefinitionUpdate_t",
     "name" : "SteamInventoryDefinitionUpdate"
   },
-  "steamworks\/types\/steaminventorydefinitionupdate1.html?swift#init39" : {
+  "steamworks\/types\/steaminventorydefinitionupdate1.html?swift#init40" : {
     "abstract" : "Create a customized SteamInventoryDefinitionUpdate",
     "name" : "init()",
     "parent_name" : "SteamInventoryDefinitionUpdate"
@@ -15228,7 +15312,7 @@
     "name" : "consumed",
     "parent_name" : "SteamItemFlags"
   },
-  "steamworks\/types\/steamitemflags.html?swift#initrawvalue10" : {
+  "steamworks\/types\/steamitemflags.html?swift#initrawvalue11" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "SteamItemFlags"
@@ -15238,7 +15322,7 @@
     "name" : "noTrade",
     "parent_name" : "SteamItemFlags"
   },
-  "steamworks\/types\/steamitemflags.html?swift#rawvalue10" : {
+  "steamworks\/types\/steamitemflags.html?swift#rawvalue11" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "SteamItemFlags"
@@ -15354,9 +15438,9 @@
     "name" : "addRequestLobbyListStringFilter(keyToMatch:valueToMatch:comparisonType:)",
     "parent_name" : "SteamMatchmaking"
   },
-  "steamworks\/types\/steammatchmaking.html?swift#createlobbylobbytypemaxmembers" : {
+  "steamworks\/types\/steammatchmaking.html?swift#createlobbyisolationlobbytypemaxmembers" : {
     "abstract" : "Steamworks ISteamMatchmaking::CreateLobby(), async",
-    "name" : "createLobby(lobbyType:maxMembers:)",
+    "name" : "createLobby(isolation:lobbyType:maxMembers:)",
     "parent_name" : "SteamMatchmaking"
   },
   "steamworks\/types\/steammatchmaking.html?swift#createlobbylobbytypemaxmemberscompletion" : {
@@ -15444,9 +15528,9 @@
     "name" : "inviteUserToLobby(lobby:invitee:)",
     "parent_name" : "SteamMatchmaking"
   },
-  "steamworks\/types\/steammatchmaking.html?swift#joinlobbylobby" : {
+  "steamworks\/types\/steammatchmaking.html?swift#joinlobbyisolationlobby" : {
     "abstract" : "Steamworks ISteamMatchmaking::JoinLobby(), async",
-    "name" : "joinLobby(lobby:)",
+    "name" : "joinLobby(isolation:lobby:)",
     "parent_name" : "SteamMatchmaking"
   },
   "steamworks\/types\/steammatchmaking.html?swift#joinlobbylobbycompletion" : {
@@ -15469,14 +15553,14 @@
     "name" : "requestLobbyData(lobby:)",
     "parent_name" : "SteamMatchmaking"
   },
-  "steamworks\/types\/steammatchmaking.html?swift#requestlobbylist" : {
-    "abstract" : "Steamworks ISteamMatchmaking::RequestLobbyList(), async",
-    "name" : "requestLobbyList()",
-    "parent_name" : "SteamMatchmaking"
-  },
   "steamworks\/types\/steammatchmaking.html?swift#requestlobbylistcompletion" : {
     "abstract" : "Steamworks ISteamMatchmaking::RequestLobbyList(), callback",
     "name" : "requestLobbyList(completion:)",
+    "parent_name" : "SteamMatchmaking"
+  },
+  "steamworks\/types\/steammatchmaking.html?swift#requestlobbylistisolation" : {
+    "abstract" : "Steamworks ISteamMatchmaking::RequestLobbyList(), async",
+    "name" : "requestLobbyList(isolation:)",
     "parent_name" : "SteamMatchmaking"
   },
   "steamworks\/types\/steammatchmaking.html?swift#sendlobbychatmsglobbymsg" : {
@@ -16295,7 +16379,7 @@
     "name" : "fast",
     "parent_name" : "SteamNetworkConnectionInfoFlags"
   },
-  "steamworks\/types\/steamnetworkconnectioninfoflags.html?swift#initrawvalue11" : {
+  "steamworks\/types\/steamnetworkconnectioninfoflags.html?swift#initrawvalue12" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "SteamNetworkConnectionInfoFlags"
@@ -16305,7 +16389,7 @@
     "name" : "loopbackBuffers",
     "parent_name" : "SteamNetworkConnectionInfoFlags"
   },
-  "steamworks\/types\/steamnetworkconnectioninfoflags.html?swift#rawvalue11" : {
+  "steamworks\/types\/steamnetworkconnectioninfoflags.html?swift#rawvalue12" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "SteamNetworkConnectionInfoFlags"
@@ -16605,6 +16689,11 @@
     "name" : "ipAllowWithoutAuth",
     "parent_name" : "SteamNetworkingConfigValueSetting"
   },
+  "steamworks\/types\/steamnetworkingconfigvaluesetting.html?swift#iplocalhostallowwithoutauth" : {
+    "abstract" : "Steamworks k_ESteamNetworkingConfig_IPLocalHost_AllowWithoutAuth",
+    "name" : "ipLocalHostAllowWithoutAuth",
+    "parent_name" : "SteamNetworkingConfigValueSetting"
+  },
   "steamworks\/types\/steamnetworkingconfigvaluesetting.html?swift#localvirtualport" : {
     "abstract" : "Steamworks k_ESteamNetworkingConfig_LocalVirtualPort",
     "name" : "localVirtualPort",
@@ -16849,7 +16938,7 @@
     "name" : "linger",
     "parent_name" : "SteamNetworkingConnectionState"
   },
-  "steamworks\/types\/steamnetworkingconnectionstate.html?swift#none18" : {
+  "steamworks\/types\/steamnetworkingconnectionstate.html?swift#none19" : {
     "abstract" : "Steamworks k_ESteamNetworkingConnectionState_None",
     "name" : "none",
     "parent_name" : "SteamNetworkingConnectionState"
@@ -17033,7 +17122,7 @@
     "name" : "init(_:type:)",
     "parent_name" : "SteamNetworkingIdentity"
   },
-  "steamworks\/types\/steamnetworkingidentity.html?swift#init47" : {
+  "steamworks\/types\/steamnetworkingidentity.html?swift#init48" : {
     "abstract" : "Create an invalid identity",
     "name" : "init()",
     "parent_name" : "SteamNetworkingIdentity"
@@ -17156,7 +17245,7 @@
     "name" : "fakeIPType",
     "parent_name" : "SteamNetworkingIPAddr"
   },
-  "steamworks\/types\/steamnetworkingipaddr.html?swift#init46" : {
+  "steamworks\/types\/steamnetworkingipaddr.html?swift#init47" : {
     "abstract" : "An invalid address",
     "name" : "init()",
     "parent_name" : "SteamNetworkingIPAddr"
@@ -17414,7 +17503,7 @@
     "name" : "autoRestartBrokenSession",
     "parent_name" : "SteamNetworkingSendFlags"
   },
-  "steamworks\/types\/steamnetworkingsendflags.html?swift#initrawvalue12" : {
+  "steamworks\/types\/steamnetworkingsendflags.html?swift#initrawvalue13" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "SteamNetworkingSendFlags"
@@ -17429,7 +17518,7 @@
     "name" : "noNagle",
     "parent_name" : "SteamNetworkingSendFlags"
   },
-  "steamworks\/types\/steamnetworkingsendflags.html?swift#rawvalue12" : {
+  "steamworks\/types\/steamnetworkingsendflags.html?swift#rawvalue13" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "SteamNetworkingSendFlags"
@@ -17722,7 +17811,7 @@
     "name" : "msg",
     "parent_name" : "SteamNetworkingSocketsDebugOutputType"
   },
-  "steamworks\/types\/steamnetworkingsocketsdebugoutputtype.html?swift#none19" : {
+  "steamworks\/types\/steamnetworkingsocketsdebugoutputtype.html?swift#none20" : {
     "abstract" : "Steamworks k_ESteamNetworkingSocketsDebugOutputType_None",
     "name" : "none",
     "parent_name" : "SteamNetworkingSocketsDebugOutputType"
@@ -17988,7 +18077,7 @@
     "abstract" : "Steamworks SteamParentalSettingsChanged_t",
     "name" : "SteamParentalSettingsChanged"
   },
-  "steamworks\/types\/steamparentalsettingschanged1.html?swift#init40" : {
+  "steamworks\/types\/steamparentalsettingschanged1.html?swift#init41" : {
     "abstract" : "Create a customized SteamParentalSettingsChanged",
     "name" : "init()",
     "parent_name" : "SteamParentalSettingsChanged"
@@ -18002,19 +18091,19 @@
     "name" : "cancelReservation(beacon:user:)",
     "parent_name" : "SteamParties"
   },
-  "steamworks\/types\/steamparties.html?swift#changenumopenslotsbeaconopenslots" : {
-    "abstract" : "Steamworks ISteamParties::ChangeNumOpenSlots(), async",
-    "name" : "changeNumOpenSlots(beacon:openSlots:)",
-    "parent_name" : "SteamParties"
-  },
   "steamworks\/types\/steamparties.html?swift#changenumopenslotsbeaconopenslotscompletion" : {
     "abstract" : "Steamworks ISteamParties::ChangeNumOpenSlots(), callback",
     "name" : "changeNumOpenSlots(beacon:openSlots:completion:)",
     "parent_name" : "SteamParties"
   },
-  "steamworks\/types\/steamparties.html?swift#createbeaconopenslotsbeaconlocationconnectstringmetadata" : {
+  "steamworks\/types\/steamparties.html?swift#changenumopenslotsisolationbeaconopenslots" : {
+    "abstract" : "Steamworks ISteamParties::ChangeNumOpenSlots(), async",
+    "name" : "changeNumOpenSlots(isolation:beacon:openSlots:)",
+    "parent_name" : "SteamParties"
+  },
+  "steamworks\/types\/steamparties.html?swift#createbeaconisolationopenslotsbeaconlocationconnectstringmetadata" : {
     "abstract" : "Steamworks ISteamParties::CreateBeacon(), async",
-    "name" : "createBeacon(openSlots:beaconLocation:connectString:metadata:)",
+    "name" : "createBeacon(isolation:openSlots:beaconLocation:connectString:metadata:)",
     "parent_name" : "SteamParties"
   },
   "steamworks\/types\/steamparties.html?swift#createbeaconopenslotsbeaconlocationconnectstringmetadatacompletion" : {
@@ -18062,14 +18151,14 @@
     "name" : "getNumAvailableBeaconLocations()",
     "parent_name" : "SteamParties"
   },
-  "steamworks\/types\/steamparties.html?swift#joinpartybeaconid" : {
-    "abstract" : "Steamworks ISteamParties::JoinParty(), async",
-    "name" : "joinParty(beaconID:)",
-    "parent_name" : "SteamParties"
-  },
   "steamworks\/types\/steamparties.html?swift#joinpartybeaconidcompletion" : {
     "abstract" : "Steamworks ISteamParties::JoinParty(), callback",
     "name" : "joinParty(beaconID:completion:)",
+    "parent_name" : "SteamParties"
+  },
+  "steamworks\/types\/steamparties.html?swift#joinpartyisolationbeaconid" : {
+    "abstract" : "Steamworks ISteamParties::JoinParty(), async",
+    "name" : "joinParty(isolation:beaconID:)",
     "parent_name" : "SteamParties"
   },
   "steamworks\/types\/steamparties.html?swift#onreservationcompletedbeaconuser" : {
@@ -18283,14 +18372,14 @@
     "name" : "beginFileWriteBatch()",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#commitpublishedfileupdatehandle" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::CommitPublishedFileUpdate(), async",
-    "name" : "commitPublishedFileUpdate(handle:)",
-    "parent_name" : "SteamRemoteStorage"
-  },
   "steamworks\/types\/steamremotestorage.html?swift#commitpublishedfileupdatehandlecompletion" : {
     "abstract" : "Steamworks ISteamRemoteStorage::CommitPublishedFileUpdate(), callback",
     "name" : "commitPublishedFileUpdate(handle:completion:)",
+    "parent_name" : "SteamRemoteStorage"
+  },
+  "steamworks\/types\/steamremotestorage.html?swift#commitpublishedfileupdateisolationhandle" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::CommitPublishedFileUpdate(), async",
+    "name" : "commitPublishedFileUpdate(isolation:handle:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#createpublishedfileupdaterequestpublishedfileid" : {
@@ -18298,9 +18387,9 @@
     "name" : "createPublishedFileUpdateRequest(publishedFileId:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#deletepublishedfilepublishedfileid" : {
+  "steamworks\/types\/steamremotestorage.html?swift#deletepublishedfileisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamRemoteStorage::DeletePublishedFile(), async",
-    "name" : "deletePublishedFile(publishedFileId:)",
+    "name" : "deletePublishedFile(isolation:publishedFileId:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#deletepublishedfilepublishedfileidcompletion" : {
@@ -18313,19 +18402,14 @@
     "name" : "endFileWriteBatch()",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#enumeratepublishedfilesbyuseractionactionstartindex" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::EnumeratePublishedFilesByUserAction(), async",
-    "name" : "enumeratePublishedFilesByUserAction(action:startIndex:)",
-    "parent_name" : "SteamRemoteStorage"
-  },
   "steamworks\/types\/steamremotestorage.html?swift#enumeratepublishedfilesbyuseractionactionstartindexcompletion" : {
     "abstract" : "Steamworks ISteamRemoteStorage::EnumeratePublishedFilesByUserAction(), callback",
     "name" : "enumeratePublishedFilesByUserAction(action:startIndex:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertags" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::EnumeratePublishedWorkshopFiles(), async",
-    "name" : "enumeratePublishedWorkshopFiles(enumerationType:startIndex:count:days:tags:userTags:)",
+  "steamworks\/types\/steamremotestorage.html?swift#enumeratepublishedfilesbyuseractionisolationactionstartindex" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::EnumeratePublishedFilesByUserAction(), async",
+    "name" : "enumeratePublishedFilesByUserAction(isolation:action:startIndex:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertagscompletion" : {
@@ -18333,9 +18417,14 @@
     "name" : "enumeratePublishedWorkshopFiles(enumerationType:startIndex:count:days:tags:userTags:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#enumerateuserpublishedfilesstartindex" : {
+  "steamworks\/types\/steamremotestorage.html?swift#enumeratepublishedworkshopfilesisolationenumerationtypestartindexcountdaystagsusertags" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::EnumeratePublishedWorkshopFiles(), async",
+    "name" : "enumeratePublishedWorkshopFiles(isolation:enumerationType:startIndex:count:days:tags:userTags:)",
+    "parent_name" : "SteamRemoteStorage"
+  },
+  "steamworks\/types\/steamremotestorage.html?swift#enumerateuserpublishedfilesisolationstartindex" : {
     "abstract" : "Steamworks ISteamRemoteStorage::EnumerateUserPublishedFiles(), async",
-    "name" : "enumerateUserPublishedFiles(startIndex:)",
+    "name" : "enumerateUserPublishedFiles(isolation:startIndex:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#enumerateuserpublishedfilesstartindexcompletion" : {
@@ -18343,9 +18432,9 @@
     "name" : "enumerateUserPublishedFiles(startIndex:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtags" : {
+  "steamworks\/types\/steamremotestorage.html?swift#enumerateusersharedworkshopfilesisolationsteamidstartindexrequiredtagsexcludedtags" : {
     "abstract" : "Steamworks ISteamRemoteStorage::EnumerateUserSharedWorkshopFiles(), async",
-    "name" : "enumerateUserSharedWorkshopFiles(steamId:startIndex:requiredTags:excludedTags:)",
+    "name" : "enumerateUserSharedWorkshopFiles(isolation:steamId:startIndex:requiredTags:excludedTags:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtagscompletion" : {
@@ -18353,9 +18442,9 @@
     "name" : "enumerateUserSharedWorkshopFiles(steamId:startIndex:requiredTags:excludedTags:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#enumerateusersubscribedfilesstartindex" : {
+  "steamworks\/types\/steamremotestorage.html?swift#enumerateusersubscribedfilesisolationstartindex" : {
     "abstract" : "Steamworks ISteamRemoteStorage::EnumerateUserSubscribedFiles(), async",
-    "name" : "enumerateUserSubscribedFiles(startIndex:)",
+    "name" : "enumerateUserSubscribedFiles(isolation:startIndex:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#enumerateusersubscribedfilesstartindexcompletion" : {
@@ -18388,14 +18477,14 @@
     "name" : "fileReadAsyncComplete(readCall:buffer:toReadSize:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#filereadasyncfileoffsettoreadsize" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::FileReadAsync(), async",
-    "name" : "fileReadAsync(file:offset:toReadSize:)",
-    "parent_name" : "SteamRemoteStorage"
-  },
   "steamworks\/types\/steamremotestorage.html?swift#filereadasyncfileoffsettoreadsizecompletion" : {
     "abstract" : "Steamworks ISteamRemoteStorage::FileReadAsync(), callback",
     "name" : "fileReadAsync(file:offset:toReadSize:completion:)",
+    "parent_name" : "SteamRemoteStorage"
+  },
+  "steamworks\/types\/steamremotestorage.html?swift#filereadasyncisolationfileoffsettoreadsize" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::FileReadAsync(), async",
+    "name" : "fileReadAsync(isolation:file:offset:toReadSize:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#filereadfiledatadatatoreadsize" : {
@@ -18403,24 +18492,24 @@
     "name" : "fileRead(file:data:dataToReadSize:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#filesharefile" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::FileShare(), async",
-    "name" : "fileShare(file:)",
-    "parent_name" : "SteamRemoteStorage"
-  },
   "steamworks\/types\/steamremotestorage.html?swift#filesharefilecompletion" : {
     "abstract" : "Steamworks ISteamRemoteStorage::FileShare(), callback",
     "name" : "fileShare(file:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#filewriteasyncfiledatadatasize" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::FileWriteAsync(), async",
-    "name" : "fileWriteAsync(file:data:dataSize:)",
+  "steamworks\/types\/steamremotestorage.html?swift#fileshareisolationfile" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::FileShare(), async",
+    "name" : "fileShare(isolation:file:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#filewriteasyncfiledatadatasizecompletion" : {
     "abstract" : "Steamworks ISteamRemoteStorage::FileWriteAsync(), callback",
     "name" : "fileWriteAsync(file:data:dataSize:completion:)",
+    "parent_name" : "SteamRemoteStorage"
+  },
+  "steamworks\/types\/steamremotestorage.html?swift#filewriteasyncisolationfiledatadatasize" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::FileWriteAsync(), async",
+    "name" : "fileWriteAsync(isolation:file:data:dataSize:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#filewritefiledatadatasize" : {
@@ -18488,9 +18577,9 @@
     "name" : "getLocalFileChange(fileIndex:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#getpublishedfiledetailspublishedfileidmaxsecondsold" : {
+  "steamworks\/types\/steamremotestorage.html?swift#getpublishedfiledetailsisolationpublishedfileidmaxsecondsold" : {
     "abstract" : "Steamworks ISteamRemoteStorage::GetPublishedFileDetails(), async",
-    "name" : "getPublishedFileDetails(publishedFileId:maxSecondsOld:)",
+    "name" : "getPublishedFileDetails(isolation:publishedFileId:maxSecondsOld:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#getpublishedfiledetailspublishedfileidmaxsecondsoldcompletion" : {
@@ -18498,9 +18587,9 @@
     "name" : "getPublishedFileDetails(publishedFileId:maxSecondsOld:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#getpublisheditemvotedetailspublishedfileid" : {
+  "steamworks\/types\/steamremotestorage.html?swift#getpublisheditemvotedetailsisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamRemoteStorage::GetPublishedItemVoteDetails(), async",
-    "name" : "getPublishedItemVoteDetails(publishedFileId:)",
+    "name" : "getPublishedItemVoteDetails(isolation:publishedFileId:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#getpublisheditemvotedetailspublishedfileidcompletion" : {
@@ -18528,9 +18617,9 @@
     "name" : "getUGCDownloadProgress(content:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#getuserpublisheditemvotedetailspublishedfileid" : {
+  "steamworks\/types\/steamremotestorage.html?swift#getuserpublisheditemvotedetailsisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamRemoteStorage::GetUserPublishedItemVoteDetails(), async",
-    "name" : "getUserPublishedItemVoteDetails(publishedFileId:)",
+    "name" : "getUserPublishedItemVoteDetails(isolation:publishedFileId:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#getuserpublisheditemvotedetailspublishedfileidcompletion" : {
@@ -18548,9 +18637,9 @@
     "name" : "isCloudEnabledForApp()",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags" : {
+  "steamworks\/types\/steamremotestorage.html?swift#publishvideoisolationvideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags" : {
     "abstract" : "Steamworks ISteamRemoteStorage::PublishVideo(), async",
-    "name" : "publishVideo(videoProvider:videoAccount:videoIdentifier:previewFile:consumerAppId:title:description:visibility:tags:)",
+    "name" : "publishVideo(isolation:videoProvider:videoAccount:videoIdentifier:previewFile:consumerAppId:title:description:visibility:tags:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytagscompletion" : {
@@ -18558,14 +18647,14 @@
     "name" : "publishVideo(videoProvider:videoAccount:videoIdentifier:previewFile:consumerAppId:title:description:visibility:tags:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::PublishWorkshopFile(), async",
-    "name" : "publishWorkshopFile(file:previewFile:consumerAppId:title:description:visibility:tags:workshopFileType:)",
-    "parent_name" : "SteamRemoteStorage"
-  },
   "steamworks\/types\/steamremotestorage.html?swift#publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletypecompletion" : {
     "abstract" : "Steamworks ISteamRemoteStorage::PublishWorkshopFile(), callback",
     "name" : "publishWorkshopFile(file:previewFile:consumerAppId:title:description:visibility:tags:workshopFileType:completion:)",
+    "parent_name" : "SteamRemoteStorage"
+  },
+  "steamworks\/types\/steamremotestorage.html?swift#publishworkshopfileisolationfilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::PublishWorkshopFile(), async",
+    "name" : "publishWorkshopFile(isolation:file:previewFile:consumerAppId:title:description:visibility:tags:workshopFileType:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#setcloudenabledforappenabled" : {
@@ -18578,9 +18667,9 @@
     "name" : "setSyncPlatforms(file:remoteStoragePlatform:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#setuserpublishedfileactionpublishedfileidaction" : {
+  "steamworks\/types\/steamremotestorage.html?swift#setuserpublishedfileactionisolationpublishedfileidaction" : {
     "abstract" : "Steamworks ISteamRemoteStorage::SetUserPublishedFileAction(), async",
-    "name" : "setUserPublishedFileAction(publishedFileId:action:)",
+    "name" : "setUserPublishedFileAction(isolation:publishedFileId:action:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#setuserpublishedfileactionpublishedfileidactioncompletion" : {
@@ -18588,9 +18677,9 @@
     "name" : "setUserPublishedFileAction(publishedFileId:action:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#subscribepublishedfilepublishedfileid" : {
+  "steamworks\/types\/steamremotestorage.html?swift#subscribepublishedfileisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamRemoteStorage::SubscribePublishedFile(), async",
-    "name" : "subscribePublishedFile(publishedFileId:)",
+    "name" : "subscribePublishedFile(isolation:publishedFileId:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#subscribepublishedfilepublishedfileidcompletion" : {
@@ -18598,19 +18687,14 @@
     "name" : "subscribePublishedFile(publishedFileId:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#ugcdownloadcontentpriority" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::UGCDownload(), async",
-    "name" : "ugcDownload(content:priority:)",
-    "parent_name" : "SteamRemoteStorage"
-  },
   "steamworks\/types\/steamremotestorage.html?swift#ugcdownloadcontentprioritycompletion" : {
     "abstract" : "Steamworks ISteamRemoteStorage::UGCDownload(), callback",
     "name" : "ugcDownload(content:priority:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#ugcdownloadtolocationcontentlocationpriority" : {
-    "abstract" : "Steamworks ISteamRemoteStorage::UGCDownloadToLocation(), async",
-    "name" : "ugcDownloadToLocation(content:location:priority:)",
+  "steamworks\/types\/steamremotestorage.html?swift#ugcdownloadisolationcontentpriority" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::UGCDownload(), async",
+    "name" : "ugcDownload(isolation:content:priority:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#ugcdownloadtolocationcontentlocationprioritycompletion" : {
@@ -18618,14 +18702,19 @@
     "name" : "ugcDownloadToLocation(content:location:priority:completion:)",
     "parent_name" : "SteamRemoteStorage"
   },
+  "steamworks\/types\/steamremotestorage.html?swift#ugcdownloadtolocationisolationcontentlocationpriority" : {
+    "abstract" : "Steamworks ISteamRemoteStorage::UGCDownloadToLocation(), async",
+    "name" : "ugcDownloadToLocation(isolation:content:location:priority:)",
+    "parent_name" : "SteamRemoteStorage"
+  },
   "steamworks\/types\/steamremotestorage.html?swift#ugcreadcontentdatadatatoreadsizeoffsetaction" : {
     "abstract" : "Steamworks ISteamRemoteStorage::UGCRead()",
     "name" : "ugcRead(content:data:dataToReadSize:offset:action:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#unsubscribepublishedfilepublishedfileid" : {
+  "steamworks\/types\/steamremotestorage.html?swift#unsubscribepublishedfileisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamRemoteStorage::UnsubscribePublishedFile(), async",
-    "name" : "unsubscribePublishedFile(publishedFileId:)",
+    "name" : "unsubscribePublishedFile(isolation:publishedFileId:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#unsubscribepublishedfilepublishedfileidcompletion" : {
@@ -18668,9 +18757,9 @@
     "name" : "updatePublishedFileVisibility(handle:visibility:)",
     "parent_name" : "SteamRemoteStorage"
   },
-  "steamworks\/types\/steamremotestorage.html?swift#updateuserpublisheditemvotepublishedfileidvoteup" : {
+  "steamworks\/types\/steamremotestorage.html?swift#updateuserpublisheditemvoteisolationpublishedfileidvoteup" : {
     "abstract" : "Steamworks ISteamRemoteStorage::UpdateUserPublishedItemVote(), async",
-    "name" : "updateUserPublishedItemVote(publishedFileId:voteUp:)",
+    "name" : "updateUserPublishedItemVote(isolation:publishedFileId:voteUp:)",
     "parent_name" : "SteamRemoteStorage"
   },
   "steamworks\/types\/steamremotestorage.html?swift#updateuserpublisheditemvotepublishedfileidvoteupcompletion" : {
@@ -18750,7 +18839,7 @@
     "abstract" : "Steamworks SteamServersConnected_t",
     "name" : "SteamServersConnected"
   },
-  "steamworks\/types\/steamserversconnected1.html?swift#init41" : {
+  "steamworks\/types\/steamserversconnected1.html?swift#init42" : {
     "abstract" : "Create a customized SteamServersConnected",
     "name" : "init()",
     "parent_name" : "SteamServersConnected"
@@ -18773,18 +18862,42 @@
     "abstract" : "Steamworks SteamShutdown_t",
     "name" : "SteamShutdown"
   },
-  "steamworks\/types\/steamshutdown1.html?swift#init42" : {
+  "steamworks\/types\/steamshutdown1.html?swift#init43" : {
     "abstract" : "Create a customized SteamShutdown",
     "name" : "init()",
     "parent_name" : "SteamShutdown"
+  },
+  "steamworks\/types\/steamtimeline.html?swift" : {
+    "abstract" : "Steamworks ISteamTimeline",
+    "name" : "SteamTimeline"
+  },
+  "steamworks\/types\/steamtimeline.html?swift#addtimelineeventicontitledescriptionprioritystartoffsetsecondsdurationsecondspossibleclip" : {
+    "abstract" : "Steamworks ISteamTimeline::AddTimelineEvent()",
+    "name" : "addTimelineEvent(icon:title:description:priority:startOffsetSeconds:durationSeconds:possibleClip:)",
+    "parent_name" : "SteamTimeline"
+  },
+  "steamworks\/types\/steamtimeline.html?swift#cleartimelinestatedescriptiontimedelta" : {
+    "abstract" : "Steamworks ISteamTimeline::ClearTimelineStateDescription()",
+    "name" : "clearTimelineStateDescription(timeDelta:)",
+    "parent_name" : "SteamTimeline"
+  },
+  "steamworks\/types\/steamtimeline.html?swift#settimelinegamemodemode" : {
+    "abstract" : "Steamworks ISteamTimeline::SetTimelineGameMode()",
+    "name" : "setTimelineGameMode(mode:)",
+    "parent_name" : "SteamTimeline"
+  },
+  "steamworks\/types\/steamtimeline.html?swift#settimelinestatedescriptiondescriptiontimedelta" : {
+    "abstract" : "Steamworks ISteamTimeline::SetTimelineStateDescription()",
+    "name" : "setTimelineStateDescription(description:timeDelta:)",
+    "parent_name" : "SteamTimeline"
   },
   "steamworks\/types\/steamugc.html?swift" : {
     "abstract" : "Steamworks ISteamUGC",
     "name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#addappdependencypublishedfileidappid" : {
+  "steamworks\/types\/steamugc.html?swift#addappdependencyisolationpublishedfileidappid" : {
     "abstract" : "Steamworks ISteamUGC::AddAppDependency(), async",
-    "name" : "addAppDependency(publishedFileID:appID:)",
+    "name" : "addAppDependency(isolation:publishedFileID:appID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#addappdependencypublishedfileidappidcompletion" : {
@@ -18797,9 +18910,9 @@
     "name" : "addContentDescriptor(handle:descid:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#adddependencyparentpublishedfileidchildpublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#adddependencyisolationparentpublishedfileidchildpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::AddDependency(), async",
-    "name" : "addDependency(parentPublishedFileID:childPublishedFileID:)",
+    "name" : "addDependency(isolation:parentPublishedFileID:childPublishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#adddependencyparentpublishedfileidchildpublishedfileidcompletion" : {
@@ -18827,14 +18940,14 @@
     "name" : "addItemPreviewVideo(handle:videoID:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#additemtofavoritesappidpublishedfileid" : {
-    "abstract" : "Steamworks ISteamUGC::AddItemToFavorites(), async",
-    "name" : "addItemToFavorites(appId:publishedFileID:)",
-    "parent_name" : "SteamUGC"
-  },
   "steamworks\/types\/steamugc.html?swift#additemtofavoritesappidpublishedfileidcompletion" : {
     "abstract" : "Steamworks ISteamUGC::AddItemToFavorites(), callback",
     "name" : "addItemToFavorites(appId:publishedFileID:completion:)",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#additemtofavoritesisolationappidpublishedfileid" : {
+    "abstract" : "Steamworks ISteamUGC::AddItemToFavorites(), async",
+    "name" : "addItemToFavorites(isolation:appId:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#addrequiredkeyvaluetaghandlekeyvalue" : {
@@ -18852,14 +18965,14 @@
     "name" : "addRequiredTag(handle:tagName:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#createitemconsumerappidfiletype" : {
-    "abstract" : "Steamworks ISteamUGC::CreateItem(), async",
-    "name" : "createItem(consumerAppId:fileType:)",
-    "parent_name" : "SteamUGC"
-  },
   "steamworks\/types\/steamugc.html?swift#createitemconsumerappidfiletypecompletion" : {
     "abstract" : "Steamworks ISteamUGC::CreateItem(), callback",
     "name" : "createItem(consumerAppId:fileType:completion:)",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#createitemisolationconsumerappidfiletype" : {
+    "abstract" : "Steamworks ISteamUGC::CreateItem(), async",
+    "name" : "createItem(isolation:consumerAppId:fileType:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#createqueryallugcrequestquerytypematchingematchingugctypefiletypecreatorappidconsumerappidcursor" : {
@@ -18882,9 +18995,9 @@
     "name" : "createQueryUserUGCRequest(accountID:listType:matchingUGCType:sortOrder:creatorAppID:consumerAppID:page:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#deleteitempublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#deleteitemisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::DeleteItem(), async",
-    "name" : "deleteItem(publishedFileID:)",
+    "name" : "deleteItem(isolation:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#deleteitempublishedfileidcompletion" : {
@@ -18897,9 +19010,9 @@
     "name" : "downloadItem(publishedFileID:highPriority:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#getappdependenciespublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#getappdependenciesisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::GetAppDependencies(), async",
-    "name" : "getAppDependencies(publishedFileID:)",
+    "name" : "getAppDependencies(isolation:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#getappdependenciespublishedfileidcompletion" : {
@@ -18930,6 +19043,11 @@
   "steamworks\/types\/steamugc.html?swift#getnumsubscribeditems" : {
     "abstract" : "Steamworks ISteamUGC::GetNumSubscribedItems()",
     "name" : "getNumSubscribedItems()",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#getnumsupportedgameversionshandleindex" : {
+    "abstract" : "Steamworks ISteamUGC::GetNumSupportedGameVersions()",
+    "name" : "getNumSupportedGameVersions(handle:index:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#getqueryugcadditionalpreviewhandleindexpreviewindexurlsizereturnoriginalfilenameoriginalfilenamesize" : {
@@ -19012,14 +19130,19 @@
     "name" : "getSubscribedItems(maxEntries:)",
     "parent_name" : "SteamUGC"
   },
+  "steamworks\/types\/steamugc.html?swift#getsupportedgameversiondatahandleindexversionindexgamebranchsize" : {
+    "abstract" : "Steamworks ISteamUGC::GetSupportedGameVersionData()",
+    "name" : "getSupportedGameVersionData(handle:index:versionIndex:gameBranchSize:)",
+    "parent_name" : "SteamUGC"
+  },
   "steamworks\/types\/steamugc.html?swift#getusercontentdescriptorpreferencesmaxentries" : {
     "abstract" : "Steamworks ISteamUGC::GetUserContentDescriptorPreferences()",
     "name" : "getUserContentDescriptorPreferences(maxEntries:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#getuseritemvotepublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#getuseritemvoteisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::GetUserItemVote(), async",
-    "name" : "getUserItemVote(publishedFileID:)",
+    "name" : "getUserItemVote(isolation:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#getuseritemvotepublishedfileidcompletion" : {
@@ -19027,14 +19150,14 @@
     "name" : "getUserItemVote(publishedFileID:completion:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#getworkshopeulastatus" : {
-    "abstract" : "Steamworks ISteamUGC::GetWorkshopEULAStatus(), async",
-    "name" : "getWorkshopEULAStatus()",
-    "parent_name" : "SteamUGC"
-  },
   "steamworks\/types\/steamugc.html?swift#getworkshopeulastatuscompletion" : {
     "abstract" : "Steamworks ISteamUGC::GetWorkshopEULAStatus(), callback",
     "name" : "getWorkshopEULAStatus(completion:)",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#getworkshopeulastatusisolation" : {
+    "abstract" : "Steamworks ISteamUGC::GetWorkshopEULAStatus(), async",
+    "name" : "getWorkshopEULAStatus(isolation:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#initworkshopforgameserverworkshopdepotidfolder" : {
@@ -19052,9 +19175,9 @@
     "name" : "removeAllItemKeyValueTags(handle:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#removeappdependencypublishedfileidappid" : {
+  "steamworks\/types\/steamugc.html?swift#removeappdependencyisolationpublishedfileidappid" : {
     "abstract" : "Steamworks ISteamUGC::RemoveAppDependency(), async",
-    "name" : "removeAppDependency(publishedFileID:appID:)",
+    "name" : "removeAppDependency(isolation:publishedFileID:appID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#removeappdependencypublishedfileidappidcompletion" : {
@@ -19067,9 +19190,9 @@
     "name" : "removeContentDescriptor(handle:descid:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#removedependencyparentpublishedfileidchildpublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#removedependencyisolationparentpublishedfileidchildpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::RemoveDependency(), async",
-    "name" : "removeDependency(parentPublishedFileID:childPublishedFileID:)",
+    "name" : "removeDependency(isolation:parentPublishedFileID:childPublishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#removedependencyparentpublishedfileidchildpublishedfileidcompletion" : {
@@ -19077,14 +19200,14 @@
     "name" : "removeDependency(parentPublishedFileID:childPublishedFileID:completion:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#removeitemfromfavoritesappidpublishedfileid" : {
-    "abstract" : "Steamworks ISteamUGC::RemoveItemFromFavorites(), async",
-    "name" : "removeItemFromFavorites(appId:publishedFileID:)",
-    "parent_name" : "SteamUGC"
-  },
   "steamworks\/types\/steamugc.html?swift#removeitemfromfavoritesappidpublishedfileidcompletion" : {
     "abstract" : "Steamworks ISteamUGC::RemoveItemFromFavorites(), callback",
     "name" : "removeItemFromFavorites(appId:publishedFileID:completion:)",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#removeitemfromfavoritesisolationappidpublishedfileid" : {
+    "abstract" : "Steamworks ISteamUGC::RemoveItemFromFavorites(), async",
+    "name" : "removeItemFromFavorites(isolation:appId:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#removeitemkeyvaluetagshandlekey" : {
@@ -19097,9 +19220,9 @@
     "name" : "removeItemPreview(handle:index:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#requestugcdetailspublishedfileidmaxageseconds" : {
+  "steamworks\/types\/steamugc.html?swift#requestugcdetailsisolationpublishedfileidmaxageseconds" : {
     "abstract" : "Steamworks ISteamUGC::RequestUGCDetails(), async",
-    "name" : "requestUGCDetails(publishedFileID:maxAgeSeconds:)",
+    "name" : "requestUGCDetails(isolation:publishedFileID:maxAgeSeconds:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#requestugcdetailspublishedfileidmaxagesecondscompletion" : {
@@ -19107,14 +19230,19 @@
     "name" : "requestUGCDetails(publishedFileID:maxAgeSeconds:completion:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#sendqueryugcrequesthandle" : {
-    "abstract" : "Steamworks ISteamUGC::SendQueryUGCRequest(), async",
-    "name" : "sendQueryUGCRequest(handle:)",
-    "parent_name" : "SteamUGC"
-  },
   "steamworks\/types\/steamugc.html?swift#sendqueryugcrequesthandlecompletion" : {
     "abstract" : "Steamworks ISteamUGC::SendQueryUGCRequest(), callback",
     "name" : "sendQueryUGCRequest(handle:completion:)",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#sendqueryugcrequestisolationhandle" : {
+    "abstract" : "Steamworks ISteamUGC::SendQueryUGCRequest(), async",
+    "name" : "sendQueryUGCRequest(isolation:handle:)",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#setadminqueryhandleadminquery" : {
+    "abstract" : "Steamworks ISteamUGC::SetAdminQuery()",
+    "name" : "setAdminQuery(handle:adminQuery:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#setallowcachedresponsehandlemaxageseconds" : {
@@ -19187,6 +19315,11 @@
     "name" : "setRankedByTrendDays(handle:days:)",
     "parent_name" : "SteamUGC"
   },
+  "steamworks\/types\/steamugc.html?swift#setrequiredgameversionshandlegamebranchmingamebranchmax" : {
+    "abstract" : "Steamworks ISteamUGC::SetRequiredGameVersions()",
+    "name" : "setRequiredGameVersions(handle:gameBranchMin:gameBranchMax:)",
+    "parent_name" : "SteamUGC"
+  },
   "steamworks\/types\/steamugc.html?swift#setreturnadditionalpreviewshandlereturnadditionalpreviews" : {
     "abstract" : "Steamworks ISteamUGC::SetReturnAdditionalPreviews()",
     "name" : "setReturnAdditionalPreviews(handle:returnAdditionalPreviews:)",
@@ -19242,9 +19375,9 @@
     "name" : "setTimeUpdatedDateRange(handle:start:end:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#setuseritemvotepublishedfileidvoteup" : {
+  "steamworks\/types\/steamugc.html?swift#setuseritemvoteisolationpublishedfileidvoteup" : {
     "abstract" : "Steamworks ISteamUGC::SetUserItemVote(), async",
-    "name" : "setUserItemVote(publishedFileID:voteUp:)",
+    "name" : "setUserItemVote(isolation:publishedFileID:voteUp:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#setuseritemvotepublishedfileidvoteupcompletion" : {
@@ -19262,9 +19395,9 @@
     "name" : "startItemUpdate(consumerAppId:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#startplaytimetrackingpublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#startplaytimetrackingisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::StartPlaytimeTracking(), async",
-    "name" : "startPlaytimeTracking(publishedFileID:)",
+    "name" : "startPlaytimeTracking(isolation:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#startplaytimetrackingpublishedfileidcompletion" : {
@@ -19272,19 +19405,19 @@
     "name" : "startPlaytimeTracking(publishedFileID:completion:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#stopplaytimetrackingforallitems" : {
-    "abstract" : "Steamworks ISteamUGC::StopPlaytimeTrackingForAllItems(), async",
-    "name" : "stopPlaytimeTrackingForAllItems()",
-    "parent_name" : "SteamUGC"
-  },
   "steamworks\/types\/steamugc.html?swift#stopplaytimetrackingforallitemscompletion" : {
     "abstract" : "Steamworks ISteamUGC::StopPlaytimeTrackingForAllItems(), callback",
     "name" : "stopPlaytimeTrackingForAllItems(completion:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#stopplaytimetrackingpublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#stopplaytimetrackingforallitemsisolation" : {
+    "abstract" : "Steamworks ISteamUGC::StopPlaytimeTrackingForAllItems(), async",
+    "name" : "stopPlaytimeTrackingForAllItems(isolation:)",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#stopplaytimetrackingisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::StopPlaytimeTracking(), async",
-    "name" : "stopPlaytimeTracking(publishedFileID:)",
+    "name" : "stopPlaytimeTracking(isolation:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#stopplaytimetrackingpublishedfileidcompletion" : {
@@ -19292,19 +19425,19 @@
     "name" : "stopPlaytimeTracking(publishedFileID:completion:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#submititemupdatehandlechangenote" : {
-    "abstract" : "Steamworks ISteamUGC::SubmitItemUpdate(), async",
-    "name" : "submitItemUpdate(handle:changeNote:)",
-    "parent_name" : "SteamUGC"
-  },
   "steamworks\/types\/steamugc.html?swift#submititemupdatehandlechangenotecompletion" : {
     "abstract" : "Steamworks ISteamUGC::SubmitItemUpdate(), callback",
     "name" : "submitItemUpdate(handle:changeNote:completion:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#subscribeitempublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#submititemupdateisolationhandlechangenote" : {
+    "abstract" : "Steamworks ISteamUGC::SubmitItemUpdate(), async",
+    "name" : "submitItemUpdate(isolation:handle:changeNote:)",
+    "parent_name" : "SteamUGC"
+  },
+  "steamworks\/types\/steamugc.html?swift#subscribeitemisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::SubscribeItem(), async",
-    "name" : "subscribeItem(publishedFileID:)",
+    "name" : "subscribeItem(isolation:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#subscribeitempublishedfileidcompletion" : {
@@ -19317,9 +19450,9 @@
     "name" : "suspendDownloads(suspend:)",
     "parent_name" : "SteamUGC"
   },
-  "steamworks\/types\/steamugc.html?swift#unsubscribeitempublishedfileid" : {
+  "steamworks\/types\/steamugc.html?swift#unsubscribeitemisolationpublishedfileid" : {
     "abstract" : "Steamworks ISteamUGC::UnsubscribeItem(), async",
-    "name" : "unsubscribeItem(publishedFileID:)",
+    "name" : "unsubscribeItem(isolation:publishedFileID:)",
     "parent_name" : "SteamUGC"
   },
   "steamworks\/types\/steamugc.html?swift#unsubscribeitempublishedfileidcompletion" : {
@@ -19386,9 +19519,9 @@
     "name" : "fileType",
     "parent_name" : "SteamUGCDetails"
   },
-  "steamworks\/types\/steamugcdetails.html?swift#initpublishedfileidresultfiletypecreatorappidconsumerappidtitledescriptionsteamidownerrtimecreatedrtimeupdatedrtimeaddedtouserlistvisibilitybannedacceptedforusetagstruncatedtagsfilepreviewfilefilenamefilesizepreviewfilesizeurlvotesupvotesdownscorenumchildren" : {
+  "steamworks\/types\/steamugcdetails.html?swift#initpublishedfileidresultfiletypecreatorappidconsumerappidtitledescriptionsteamidownerrtimecreatedrtimeupdatedrtimeaddedtouserlistvisibilitybannedacceptedforusetagstruncatedtagsfilepreviewfilefilenamefilesizepreviewfilesizeurlvotesupvotesdownscorenumchildrentotalfilessize" : {
     "abstract" : "Create a customized SteamUGCDetails",
-    "name" : "init(publishedFileId:result:fileType:creatorAppID:consumerAppID:title:description:steamIDOwner:rtimeCreated:rtimeUpdated:rtimeAddedToUserList:visibility:banned:acceptedForUse:tagsTruncated:tags:file:previewFile:fileName:fileSize:previewFileSize:url:votesUp:votesDown:score:numChildren:)",
+    "name" : "init(publishedFileId:result:fileType:creatorAppID:consumerAppID:title:description:steamIDOwner:rtimeCreated:rtimeUpdated:rtimeAddedToUserList:visibility:banned:acceptedForUse:tagsTruncated:tags:file:previewFile:fileName:fileSize:previewFileSize:url:votesUp:votesDown:score:numChildren:totalFilesSize:)",
     "parent_name" : "SteamUGCDetails"
   },
   "steamworks\/types\/steamugcdetails.html?swift#numchildren" : {
@@ -19454,6 +19587,11 @@
   "steamworks\/types\/steamugcdetails.html?swift#title4" : {
     "abstract" : "Steamworks m_rgchTitle",
     "name" : "title",
+    "parent_name" : "SteamUGCDetails"
+  },
+  "steamworks\/types\/steamugcdetails.html?swift#totalfilessize" : {
+    "abstract" : "Steamworks m_ulTotalFilesSize",
+    "name" : "totalFilesSize",
     "parent_name" : "SteamUGCDetails"
   },
   "steamworks\/types\/steamugcdetails.html?swift#url9" : {
@@ -19578,14 +19716,14 @@
     "name" : "getAvailableVoice(uncompressedVoiceDesiredSampleRateDeprecated:)",
     "parent_name" : "SteamUser"
   },
-  "steamworks\/types\/steamuser.html?swift#getdurationcontrol" : {
-    "abstract" : "Steamworks ISteamUser::GetDurationControl(), async",
-    "name" : "getDurationControl()",
-    "parent_name" : "SteamUser"
-  },
   "steamworks\/types\/steamuser.html?swift#getdurationcontrolcompletion" : {
     "abstract" : "Steamworks ISteamUser::GetDurationControl(), callback",
     "name" : "getDurationControl(completion:)",
+    "parent_name" : "SteamUser"
+  },
+  "steamworks\/types\/steamuser.html?swift#getdurationcontrolisolation" : {
+    "abstract" : "Steamworks ISteamUser::GetDurationControl(), async",
+    "name" : "getDurationControl(isolation:)",
     "parent_name" : "SteamUser"
   },
   "steamworks\/types\/steamuser.html?swift#getencryptedappticket" : {
@@ -19608,14 +19746,14 @@
     "name" : "getHSteamUser()",
     "parent_name" : "SteamUser"
   },
-  "steamworks\/types\/steamuser.html?swift#getmarketeligibility" : {
-    "abstract" : "Steamworks ISteamUser::GetMarketEligibility(), async",
-    "name" : "getMarketEligibility()",
-    "parent_name" : "SteamUser"
-  },
   "steamworks\/types\/steamuser.html?swift#getmarketeligibilitycompletion" : {
     "abstract" : "Steamworks ISteamUser::GetMarketEligibility(), callback",
     "name" : "getMarketEligibility(completion:)",
+    "parent_name" : "SteamUser"
+  },
+  "steamworks\/types\/steamuser.html?swift#getmarketeligibilityisolation" : {
+    "abstract" : "Steamworks ISteamUser::GetMarketEligibility(), async",
+    "name" : "getMarketEligibility(isolation:)",
     "parent_name" : "SteamUser"
   },
   "steamworks\/types\/steamuser.html?swift#getplayersteamlevel" : {
@@ -19678,19 +19816,19 @@
     "name" : "loggedOn()",
     "parent_name" : "SteamUser"
   },
-  "steamworks\/types\/steamuser.html?swift#requestencryptedappticketdatatoinclude" : {
-    "abstract" : "Steamworks ISteamUser::RequestEncryptedAppTicket(), async",
-    "name" : "requestEncryptedAppTicket(dataToInclude:)",
-    "parent_name" : "SteamUser"
-  },
   "steamworks\/types\/steamuser.html?swift#requestencryptedappticketdatatoincludecompletion" : {
     "abstract" : "Steamworks ISteamUser::RequestEncryptedAppTicket(), callback",
     "name" : "requestEncryptedAppTicket(dataToInclude:completion:)",
     "parent_name" : "SteamUser"
   },
-  "steamworks\/types\/steamuser.html?swift#requeststoreauthurlredirecturl" : {
+  "steamworks\/types\/steamuser.html?swift#requestencryptedappticketisolationdatatoinclude" : {
+    "abstract" : "Steamworks ISteamUser::RequestEncryptedAppTicket(), async",
+    "name" : "requestEncryptedAppTicket(isolation:dataToInclude:)",
+    "parent_name" : "SteamUser"
+  },
+  "steamworks\/types\/steamuser.html?swift#requeststoreauthurlisolationredirecturl" : {
     "abstract" : "Steamworks ISteamUser::RequestStoreAuthURL(), async",
-    "name" : "requestStoreAuthURL(redirectURL:)",
+    "name" : "requestStoreAuthURL(isolation:redirectURL:)",
     "parent_name" : "SteamUser"
   },
   "steamworks\/types\/steamuser.html?swift#requeststoreauthurlredirecturlcompletion" : {
@@ -19732,9 +19870,9 @@
     "abstract" : "Steamworks ISteamUserStats",
     "name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#attachleaderboardugcsteamleaderboardugc" : {
+  "steamworks\/types\/steamuserstats.html?swift#attachleaderboardugcisolationsteamleaderboardugc" : {
     "abstract" : "Steamworks ISteamUserStats::AttachLeaderboardUGC(), async",
-    "name" : "attachLeaderboardUGC(steamLeaderboard:ugc:)",
+    "name" : "attachLeaderboardUGC(isolation:steamLeaderboard:ugc:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#attachleaderboardugcsteamleaderboardugccompletion" : {
@@ -19747,9 +19885,9 @@
     "name" : "clearAchievement(name:)",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#downloadleaderboardentriesforuserssteamleaderboardusers" : {
+  "steamworks\/types\/steamuserstats.html?swift#downloadleaderboardentriesforusersisolationsteamleaderboardusers" : {
     "abstract" : "Steamworks ISteamUserStats::DownloadLeaderboardEntriesForUsers(), async",
-    "name" : "downloadLeaderboardEntriesForUsers(steamLeaderboard:users:)",
+    "name" : "downloadLeaderboardEntriesForUsers(isolation:steamLeaderboard:users:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#downloadleaderboardentriesforuserssteamleaderboarduserscompletion" : {
@@ -19757,9 +19895,9 @@
     "name" : "downloadLeaderboardEntriesForUsers(steamLeaderboard:users:completion:)",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#downloadleaderboardentriessteamleaderboardleaderboarddatarequestrangestartrangeend" : {
+  "steamworks\/types\/steamuserstats.html?swift#downloadleaderboardentriesisolationsteamleaderboardleaderboarddatarequestrangestartrangeend" : {
     "abstract" : "Steamworks ISteamUserStats::DownloadLeaderboardEntries(), async",
-    "name" : "downloadLeaderboardEntries(steamLeaderboard:leaderboardDataRequest:rangeStart:rangeEnd:)",
+    "name" : "downloadLeaderboardEntries(isolation:steamLeaderboard:leaderboardDataRequest:rangeStart:rangeEnd:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#downloadleaderboardentriessteamleaderboardleaderboarddatarequestrangestartrangeendcompletion" : {
@@ -19767,9 +19905,9 @@
     "name" : "downloadLeaderboardEntries(steamLeaderboard:leaderboardDataRequest:rangeStart:rangeEnd:completion:)",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#findleaderboardleaderboardname" : {
+  "steamworks\/types\/steamuserstats.html?swift#findleaderboardisolationleaderboardname" : {
     "abstract" : "Steamworks ISteamUserStats::FindLeaderboard(), async",
-    "name" : "findLeaderboard(leaderboardName:)",
+    "name" : "findLeaderboard(isolation:leaderboardName:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#findleaderboardleaderboardnamecompletion" : {
@@ -19777,9 +19915,9 @@
     "name" : "findLeaderboard(leaderboardName:completion:)",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#findorcreateleaderboardleaderboardnameleaderboardsortmethodleaderboarddisplaytype" : {
+  "steamworks\/types\/steamuserstats.html?swift#findorcreateleaderboardisolationleaderboardnameleaderboardsortmethodleaderboarddisplaytype" : {
     "abstract" : "Steamworks ISteamUserStats::FindOrCreateLeaderboard(), async",
-    "name" : "findOrCreateLeaderboard(leaderboardName:leaderboardSortMethod:leaderboardDisplayType:)",
+    "name" : "findOrCreateLeaderboard(isolation:leaderboardName:leaderboardSortMethod:leaderboardDisplayType:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#findorcreateleaderboardleaderboardnameleaderboardsortmethodleaderboarddisplaytypecompletion" : {
@@ -19887,14 +20025,14 @@
     "name" : "getNumAchievements()",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#getnumberofcurrentplayers" : {
-    "abstract" : "Steamworks ISteamUserStats::GetNumberOfCurrentPlayers(), async",
-    "name" : "getNumberOfCurrentPlayers()",
-    "parent_name" : "SteamUserStats"
-  },
   "steamworks\/types\/steamuserstats.html?swift#getnumberofcurrentplayerscompletion" : {
     "abstract" : "Steamworks ISteamUserStats::GetNumberOfCurrentPlayers(), callback",
     "name" : "getNumberOfCurrentPlayers(completion:)",
+    "parent_name" : "SteamUserStats"
+  },
+  "steamworks\/types\/steamuserstats.html?swift#getnumberofcurrentplayersisolation" : {
+    "abstract" : "Steamworks ISteamUserStats::GetNumberOfCurrentPlayers(), async",
+    "name" : "getNumberOfCurrentPlayers(isolation:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#getstatfloatname" : {
@@ -19937,19 +20075,14 @@
     "name" : "requestCurrentStats()",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#requestglobalachievementpercentages" : {
-    "abstract" : "Steamworks ISteamUserStats::RequestGlobalAchievementPercentages(), async",
-    "name" : "requestGlobalAchievementPercentages()",
-    "parent_name" : "SteamUserStats"
-  },
   "steamworks\/types\/steamuserstats.html?swift#requestglobalachievementpercentagescompletion" : {
     "abstract" : "Steamworks ISteamUserStats::RequestGlobalAchievementPercentages(), callback",
     "name" : "requestGlobalAchievementPercentages(completion:)",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#requestglobalstatshistorydays" : {
-    "abstract" : "Steamworks ISteamUserStats::RequestGlobalStats(), async",
-    "name" : "requestGlobalStats(historyDays:)",
+  "steamworks\/types\/steamuserstats.html?swift#requestglobalachievementpercentagesisolation" : {
+    "abstract" : "Steamworks ISteamUserStats::RequestGlobalAchievementPercentages(), async",
+    "name" : "requestGlobalAchievementPercentages(isolation:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#requestglobalstatshistorydayscompletion" : {
@@ -19957,9 +20090,14 @@
     "name" : "requestGlobalStats(historyDays:completion:)",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#requestuserstatsuser1" : {
+  "steamworks\/types\/steamuserstats.html?swift#requestglobalstatsisolationhistorydays" : {
+    "abstract" : "Steamworks ISteamUserStats::RequestGlobalStats(), async",
+    "name" : "requestGlobalStats(isolation:historyDays:)",
+    "parent_name" : "SteamUserStats"
+  },
+  "steamworks\/types\/steamuserstats.html?swift#requestuserstatsisolationuser1" : {
     "abstract" : "Steamworks ISteamUserStats::RequestUserStats(), async",
-    "name" : "requestUserStats(user:)",
+    "name" : "requestUserStats(isolation:user:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#requestuserstatsusercompletion1" : {
@@ -19997,9 +20135,9 @@
     "name" : "updateAvgRateStat(name:countThisSession:sessionLength:)",
     "parent_name" : "SteamUserStats"
   },
-  "steamworks\/types\/steamuserstats.html?swift#uploadleaderboardscoresteamleaderboardleaderboarduploadscoremethodscorescoredetails" : {
+  "steamworks\/types\/steamuserstats.html?swift#uploadleaderboardscoreisolationsteamleaderboardleaderboarduploadscoremethodscorescoredetails" : {
     "abstract" : "Steamworks ISteamUserStats::UploadLeaderboardScore(), async",
-    "name" : "uploadLeaderboardScore(steamLeaderboard:leaderboardUploadScoreMethod:score:scoreDetails:)",
+    "name" : "uploadLeaderboardScore(isolation:steamLeaderboard:leaderboardUploadScoreMethod:score:scoreDetails:)",
     "parent_name" : "SteamUserStats"
   },
   "steamworks\/types\/steamuserstats.html?swift#uploadleaderboardscoresteamleaderboardleaderboarduploadscoremethodscorescoredetailscompletion" : {
@@ -20011,14 +20149,14 @@
     "abstract" : "Steamworks ISteamUtils",
     "name" : "SteamUtils"
   },
-  "steamworks\/types\/steamutils.html?swift#checkfilesignaturefilename" : {
-    "abstract" : "Steamworks ISteamUtils::CheckFileSignature(), async",
-    "name" : "checkFileSignature(fileName:)",
-    "parent_name" : "SteamUtils"
-  },
   "steamworks\/types\/steamutils.html?swift#checkfilesignaturefilenamecompletion" : {
     "abstract" : "Steamworks ISteamUtils::CheckFileSignature(), callback",
     "name" : "checkFileSignature(fileName:completion:)",
+    "parent_name" : "SteamUtils"
+  },
+  "steamworks\/types\/steamutils.html?swift#checkfilesignatureisolationfilename" : {
+    "abstract" : "Steamworks ISteamUtils::CheckFileSignature(), async",
+    "name" : "checkFileSignature(isolation:fileName:)",
     "parent_name" : "SteamUtils"
   },
   "steamworks\/types\/steamutils.html?swift#dismissfloatinggamepadtextinput" : {
@@ -20374,6 +20512,74 @@
     "name" : "secondsPlayed",
     "parent_name" : "TimedTrialStatus"
   },
+  "steamworks\/types\/timelineeventclippriority.html?swift" : {
+    "abstract" : "Steamworks ETimelineEventClipPriority",
+    "name" : "TimelineEventClipPriority"
+  },
+  "steamworks\/types\/timelineeventclippriority.html?swift#featured" : {
+    "abstract" : "Steamworks k_ETimelineEventClipPriority_Featured",
+    "name" : "featured",
+    "parent_name" : "TimelineEventClipPriority"
+  },
+  "steamworks\/types\/timelineeventclippriority.html?swift#invalid43" : {
+    "abstract" : "Steamworks k_ETimelineEventClipPriority_Invalid",
+    "name" : "invalid",
+    "parent_name" : "TimelineEventClipPriority"
+  },
+  "steamworks\/types\/timelineeventclippriority.html?swift#none21" : {
+    "abstract" : "Steamworks k_ETimelineEventClipPriority_None",
+    "name" : "none",
+    "parent_name" : "TimelineEventClipPriority"
+  },
+  "steamworks\/types\/timelineeventclippriority.html?swift#standard" : {
+    "abstract" : "Steamworks k_ETimelineEventClipPriority_Standard",
+    "name" : "standard",
+    "parent_name" : "TimelineEventClipPriority"
+  },
+  "steamworks\/types\/timelineeventclippriority.html?swift#unrepresentedinswift72" : {
+    "abstract" : "Some undocumented value",
+    "name" : "unrepresentedInSwift",
+    "parent_name" : "TimelineEventClipPriority"
+  },
+  "steamworks\/types\/timelinegamemode.html?swift" : {
+    "abstract" : "Steamworks ETimelineGameMode",
+    "name" : "TimelineGameMode"
+  },
+  "steamworks\/types\/timelinegamemode.html?swift#invalid44" : {
+    "abstract" : "Steamworks k_ETimelineGameMode_Invalid",
+    "name" : "invalid",
+    "parent_name" : "TimelineGameMode"
+  },
+  "steamworks\/types\/timelinegamemode.html?swift#loadingscreen" : {
+    "abstract" : "Steamworks k_ETimelineGameMode_LoadingScreen",
+    "name" : "loadingScreen",
+    "parent_name" : "TimelineGameMode"
+  },
+  "steamworks\/types\/timelinegamemode.html?swift#max5" : {
+    "abstract" : "Steamworks k_ETimelineGameMode_Max",
+    "name" : "max",
+    "parent_name" : "TimelineGameMode"
+  },
+  "steamworks\/types\/timelinegamemode.html?swift#menus" : {
+    "abstract" : "Steamworks k_ETimelineGameMode_Menus",
+    "name" : "menus",
+    "parent_name" : "TimelineGameMode"
+  },
+  "steamworks\/types\/timelinegamemode.html?swift#playing1" : {
+    "abstract" : "Steamworks k_ETimelineGameMode_Playing",
+    "name" : "playing",
+    "parent_name" : "TimelineGameMode"
+  },
+  "steamworks\/types\/timelinegamemode.html?swift#staging" : {
+    "abstract" : "Steamworks k_ETimelineGameMode_Staging",
+    "name" : "staging",
+    "parent_name" : "TimelineGameMode"
+  },
+  "steamworks\/types\/timelinegamemode.html?swift#unrepresentedinswift73" : {
+    "abstract" : "Some undocumented value",
+    "name" : "unrepresentedInSwift",
+    "parent_name" : "TimelineGameMode"
+  },
   "steamworks\/types\/ugccontentdescriptorid.html?swift" : {
     "abstract" : "Steamworks EUGCContentDescriptorID",
     "name" : "UGCContentDescriptorID"
@@ -20403,7 +20609,7 @@
     "name" : "nudityOrSexualContent",
     "parent_name" : "UGCContentDescriptorID"
   },
-  "steamworks\/types\/ugccontentdescriptorid.html?swift#unrepresentedinswift72" : {
+  "steamworks\/types\/ugccontentdescriptorid.html?swift#unrepresentedinswift74" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UGCContentDescriptorID"
@@ -20515,7 +20721,7 @@
     "name" : "screenshots",
     "parent_name" : "UGCMatchingUGCType"
   },
-  "steamworks\/types\/ugcmatchingugctype.html?swift#unrepresentedinswift73" : {
+  "steamworks\/types\/ugcmatchingugctype.html?swift#unrepresentedinswift75" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UGCMatchingUGCType"
@@ -20639,7 +20845,7 @@
     "name" : "rankedByVotesUp",
     "parent_name" : "UGCQuery"
   },
-  "steamworks\/types\/ugcquery.html?swift#unrepresentedinswift74" : {
+  "steamworks\/types\/ugcquery.html?swift#unrepresentedinswift76" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UGCQuery"
@@ -20687,7 +20893,7 @@
     "name" : "continueReadingUntilFinished",
     "parent_name" : "UGCReadAction"
   },
-  "steamworks\/types\/ugcreadaction.html?swift#unrepresentedinswift75" : {
+  "steamworks\/types\/ugcreadaction.html?swift#unrepresentedinswift77" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UGCReadAction"
@@ -20735,12 +20941,12 @@
     "name" : "internal",
     "parent_name" : "Universe"
   },
-  "steamworks\/types\/universe.html?swift#invalid43" : {
+  "steamworks\/types\/universe.html?swift#invalid45" : {
     "abstract" : "Steamworks k_EUniverseInvalid",
     "name" : "invalid",
     "parent_name" : "Universe"
   },
-  "steamworks\/types\/universe.html?swift#max5" : {
+  "steamworks\/types\/universe.html?swift#max6" : {
     "abstract" : "Steamworks k_EUniverseMax",
     "name" : "max",
     "parent_name" : "Universe"
@@ -20750,7 +20956,7 @@
     "name" : "public",
     "parent_name" : "Universe"
   },
-  "steamworks\/types\/universe.html?swift#unrepresentedinswift76" : {
+  "steamworks\/types\/universe.html?swift#unrepresentedinswift78" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "Universe"
@@ -20759,7 +20965,7 @@
     "abstract" : "Steamworks UnreadChatMessagesChanged_t",
     "name" : "UnreadChatMessagesChanged"
   },
-  "steamworks\/types\/unreadchatmessageschanged1.html?swift#init43" : {
+  "steamworks\/types\/unreadchatmessageschanged1.html?swift#init44" : {
     "abstract" : "Create a customized UnreadChatMessagesChanged",
     "name" : "init()",
     "parent_name" : "UnreadChatMessagesChanged"
@@ -20870,7 +21076,7 @@
     "name" : "noAuth",
     "parent_name" : "UserHasLicenseForAppResult"
   },
-  "steamworks\/types\/userhaslicenseforappresult.html?swift#unrepresentedinswift77" : {
+  "steamworks\/types\/userhaslicenseforappresult.html?swift#unrepresentedinswift79" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UserHasLicenseForAppResult"
@@ -20894,12 +21100,12 @@
     "name" : "groupChat",
     "parent_name" : "UserRestriction"
   },
-  "steamworks\/types\/userrestriction.html?swift#initrawvalue13" : {
+  "steamworks\/types\/userrestriction.html?swift#initrawvalue14" : {
     "abstract" : "Create a new instance with rawValue flags set.",
     "name" : "init(rawValue:)",
     "parent_name" : "UserRestriction"
   },
-  "steamworks\/types\/userrestriction.html?swift#none20" : {
+  "steamworks\/types\/userrestriction.html?swift#none22" : {
     "abstract" : "Steamworks k_nUserRestrictionNone",
     "name" : "none",
     "parent_name" : "UserRestriction"
@@ -20909,7 +21115,7 @@
     "name" : "rating",
     "parent_name" : "UserRestriction"
   },
-  "steamworks\/types\/userrestriction.html?swift#rawvalue13" : {
+  "steamworks\/types\/userrestriction.html?swift#rawvalue14" : {
     "abstract" : "The flags value.",
     "name" : "rawValue",
     "parent_name" : "UserRestriction"
@@ -21024,7 +21230,7 @@
     "name" : "subscribed",
     "parent_name" : "UserUGCList"
   },
-  "steamworks\/types\/userugclist.html?swift#unrepresentedinswift78" : {
+  "steamworks\/types\/userugclist.html?swift#unrepresentedinswift80" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UserUGCList"
@@ -21088,7 +21294,7 @@
     "name" : "titleAsc",
     "parent_name" : "UserUGCListSortOrder"
   },
-  "steamworks\/types\/userugclistsortorder.html?swift#unrepresentedinswift79" : {
+  "steamworks\/types\/userugclistsortorder.html?swift#unrepresentedinswift81" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UserUGCListSortOrder"
@@ -21171,7 +21377,7 @@
     "name" : "restricted",
     "parent_name" : "VoiceResult"
   },
-  "steamworks\/types\/voiceresult.html?swift#unrepresentedinswift81" : {
+  "steamworks\/types\/voiceresult.html?swift#unrepresentedinswift83" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "VoiceResult"
@@ -21214,7 +21420,7 @@
     "name" : "monoPanorama",
     "parent_name" : "VRScreenshotType"
   },
-  "steamworks\/types\/vrscreenshottype.html?swift#none21" : {
+  "steamworks\/types\/vrscreenshottype.html?swift#none23" : {
     "abstract" : "Steamworks k_EVRScreenshotType_None",
     "name" : "none",
     "parent_name" : "VRScreenshotType"
@@ -21229,7 +21435,7 @@
     "name" : "stereoPanorama",
     "parent_name" : "VRScreenshotType"
   },
-  "steamworks\/types\/vrscreenshottype.html?swift#unrepresentedinswift80" : {
+  "steamworks\/types\/vrscreenshottype.html?swift#unrepresentedinswift82" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "VRScreenshotType"
@@ -21268,7 +21474,7 @@
     "name" : "trending",
     "parent_name" : "WorkshopEnumerationType"
   },
-  "steamworks\/types\/workshopenumerationtype.html?swift#unrepresentedinswift82" : {
+  "steamworks\/types\/workshopenumerationtype.html?swift#unrepresentedinswift84" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopEnumerationType"
@@ -21331,7 +21537,7 @@
     "name" : "played",
     "parent_name" : "WorkshopFileAction"
   },
-  "steamworks\/types\/workshopfileaction.html?swift#unrepresentedinswift83" : {
+  "steamworks\/types\/workshopfileaction.html?swift#unrepresentedinswift85" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopFileAction"
@@ -21390,7 +21596,7 @@
     "name" : "integratedGuide",
     "parent_name" : "WorkshopFileType"
   },
-  "steamworks\/types\/workshopfiletype.html?swift#max6" : {
+  "steamworks\/types\/workshopfiletype.html?swift#max7" : {
     "abstract" : "Steamworks k_EWorkshopFileTypeMax",
     "name" : "max",
     "parent_name" : "WorkshopFileType"
@@ -21425,7 +21631,7 @@
     "name" : "steamworksAccessInvite",
     "parent_name" : "WorkshopFileType"
   },
-  "steamworks\/types\/workshopfiletype.html?swift#unrepresentedinswift84" : {
+  "steamworks\/types\/workshopfiletype.html?swift#unrepresentedinswift86" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopFileType"
@@ -21444,12 +21650,12 @@
     "abstract" : "Steamworks EWorkshopVideoProvider",
     "name" : "WorkshopVideoProvider"
   },
-  "steamworks\/types\/workshopvideoprovider.html?swift#none22" : {
+  "steamworks\/types\/workshopvideoprovider.html?swift#none24" : {
     "abstract" : "Steamworks k_EWorkshopVideoProviderNone",
     "name" : "none",
     "parent_name" : "WorkshopVideoProvider"
   },
-  "steamworks\/types\/workshopvideoprovider.html?swift#unrepresentedinswift85" : {
+  "steamworks\/types\/workshopvideoprovider.html?swift#unrepresentedinswift87" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopVideoProvider"
@@ -21478,7 +21684,7 @@
     "name" : "later",
     "parent_name" : "WorkshopVote"
   },
-  "steamworks\/types\/workshopvote.html?swift#unrepresentedinswift86" : {
+  "steamworks\/types\/workshopvote.html?swift#unrepresentedinswift88" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopVote"
@@ -21622,7 +21828,7 @@
     "name" : "rightTriggerPull",
     "parent_name" : "XboxOrigin"
   },
-  "steamworks\/types\/xboxorigin.html?swift#unrepresentedinswift87" : {
+  "steamworks\/types\/xboxorigin.html?swift#unrepresentedinswift89" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "XboxOrigin"

@@ -22,8 +22,8 @@ build_tool_arguments:
   - "-I${PWD}/sdk/public"
   - "-Xlinker"
   - "-lc++"
-title: Steamworks v0.5.2
-module_version: 0.5.2
+title: Steamworks v0.5.3
+module_version: 0.5.3
 topic_style: source-order-defs
 hide_coverage: true
 undocumented_text: ""
@@ -525,6 +525,15 @@ custom_groups:
       children:
         - ScreenshotReady
         - ScreenshotRequested
+  - name: SteamTimeline
+    topics:
+    - name: Interfaces
+      children:
+        - SteamTimeline
+    - name: Enumerations and Option Sets
+      children:
+        - TimelineEventClipPriority
+        - TimelineGameMode
   - name: SteamUGC
     topics:
     - name: Interfaces
@@ -687,6 +696,7 @@ custom_groups:
         - AccountType
         - AuthSessionResponse
         - BeginAuthSessionResult
+        - BetaBranchFlags
         - BroadcastUploadResult
         - ChatEntryType
         - ChatRoomEnterResponse

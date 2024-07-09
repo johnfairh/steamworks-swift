@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamUser - Steamworks v0.5.2</title>
+   <title>SteamUser - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamuser.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4141,6 +4182,15 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/beginauthsessionresult.html?swift">BeginAuthSessionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
 
 
 
@@ -5417,7 +5467,8 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getDurationControl(completion: @escaping (<a href="../../steamworks/types/durationcontrol1.html?swift">DurationControl</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">public func getDurationControl(
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/durationcontrol1.html?swift">DurationControl</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5444,16 +5495,16 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
   
   
   
-    <section id="getdurationcontrol" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getDurationControl()%20async%20-%3E%20DurationControl%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getdurationcontrol"></a>
-    <h4 class="visually-hidden">func getDurationControl() async -&gt; DurationControl?</h4>
+    <section id="getdurationcontrolisolation" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getDurationControl(isolation%3A%20isolated%20(any%20Actor)%3F)%20async%20-%3E%20DurationControl%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getdurationcontrolisolation"></a>
+    <h4 class="visually-hidden">func getDurationControl(isolation: isolated (any Actor)?) async -&gt; DurationControl?</h4>
     
     
-    <a class="j2-item-title" href="#_getdurationcontrol" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getdurationcontrol"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getDurationControl<span class="j2-item-secondary">() async -&gt; DurationControl?</span></span>
+    <a class="j2-item-title" href="#_getdurationcontrolisolation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getdurationcontrolisolation"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getDurationControl<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?) async -&gt; DurationControl?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getdurationcontrol">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getdurationcontrolisolation">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5477,7 +5528,8 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getDurationControl() async -&gt; <a href="../../steamworks/types/durationcontrol1.html?swift">DurationControl</a>?</code></pre>
+    <pre><code class="language-swift">public func getDurationControl(isolation: isolated (any Actor)? = #isolation)
+    async -&gt; <a href="../../steamworks/types/durationcontrol1.html?swift">DurationControl</a>?</code></pre>
   </div>
 
 
@@ -5719,7 +5771,7 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getMarketEligibility(
-    completion: @escaping (<a href="../../steamworks/types/marketeligibilityresponse.html?swift">MarketEligibilityResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/marketeligibilityresponse.html?swift">MarketEligibilityResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5746,16 +5798,16 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
   
   
   
-    <section id="getmarketeligibility" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getMarketEligibility()%20async%20-%3E%20MarketEligibilityResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getmarketeligibility"></a>
-    <h4 class="visually-hidden">func getMarketEligibility() async -&gt; MarketEligibilityResponse?</h4>
+    <section id="getmarketeligibilityisolation" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getMarketEligibility(isolation%3A%20isolated%20(any%20Actor)%3F)%20async%20-%3E%20MarketEligibilityResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getmarketeligibilityisolation"></a>
+    <h4 class="visually-hidden">func getMarketEligibility(isolation: isolated (any Actor)?) async -&gt; MarketEligibilityResponse?</h4>
     
     
-    <a class="j2-item-title" href="#_getmarketeligibility" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getmarketeligibility"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getMarketEligibility<span class="j2-item-secondary">() async -&gt; MarketEligibilityResponse?</span></span>
+    <a class="j2-item-title" href="#_getmarketeligibilityisolation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getmarketeligibilityisolation"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getMarketEligibility<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?) async -&gt; MarketEligibilityResponse?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getmarketeligibility">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getmarketeligibilityisolation">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5779,7 +5831,8 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getMarketEligibility() async -&gt; <a href="../../steamworks/types/marketeligibilityresponse.html?swift">MarketEligibilityResponse</a>?</code></pre>
+    <pre><code class="language-swift">public func getMarketEligibility(isolation: isolated (any Actor)? = #isolation)
+    async -&gt; <a href="../../steamworks/types/marketeligibilityresponse.html?swift">MarketEligibilityResponse</a>?</code></pre>
   </div>
 
 
@@ -6211,7 +6264,7 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestEncryptedAppTicket(
     dataToInclude: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>],
-    completion: @escaping (<a href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6238,16 +6291,16 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
   
   
   
-    <section id="requestencryptedappticketdatatoinclude" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestEncryptedAppTicket(dataToInclude%3A%20%5BUInt8%5D)%20async%20-%3E%20EncryptedAppTicketResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestencryptedappticketdatatoinclude"></a>
-    <h4 class="visually-hidden">func requestEncryptedAppTicket(dataToInclude: [UInt8]) async -&gt; EncryptedAppTicketResponse?</h4>
+    <section id="requestencryptedappticketisolationdatatoinclude" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestEncryptedAppTicket(isolation%3A%20isolated%20(any%20Actor)%3F,%20dataToInclude%3A%20%5BUInt8%5D)%20async%20-%3E%20EncryptedAppTicketResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestencryptedappticketisolationdatatoinclude"></a>
+    <h4 class="visually-hidden">func requestEncryptedAppTicket(isolation: isolated (any Actor)?, dataToInclude: [UInt8]) async -&gt; EncryptedAppTicketResponse?</h4>
     
     
-    <a class="j2-item-title" href="#_requestencryptedappticketdatatoinclude" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestencryptedappticketdatatoinclude"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEncryptedAppTicket<span class="j2-item-secondary">(</span>dataToInclude<span class="j2-item-secondary">: [UInt8]) async -&gt; EncryptedAppTicketResponse?</span></span>
+    <a class="j2-item-title" href="#_requestencryptedappticketisolationdatatoinclude" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestencryptedappticketisolationdatatoinclude"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEncryptedAppTicket<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>dataToInclude<span class="j2-item-secondary">: [UInt8]) async -&gt; EncryptedAppTicketResponse?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestencryptedappticketdatatoinclude">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestencryptedappticketisolationdatatoinclude">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6271,8 +6324,9 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestEncryptedAppTicket(dataToInclude: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>]) async
-    -&gt; <a href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>?</code></pre>
+    <pre><code class="language-swift">public func requestEncryptedAppTicket(
+    isolation: isolated (any Actor)? = #isolation, dataToInclude: [<a href="https://developer.apple.com/documentation/swift/uint8?language=swift">UInt8</a>]
+) async -&gt; <a href="../../steamworks/types/encryptedappticketresponse.html?swift">EncryptedAppTicketResponse</a>?</code></pre>
   </div>
 
 
@@ -6333,7 +6387,8 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestStoreAuthURL(
-    redirectURL: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, completion: @escaping (<a href="../../steamworks/types/storeauthurlresponse.html?swift">StoreAuthURLResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    redirectURL: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/storeauthurlresponse.html?swift">StoreAuthURLResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6360,16 +6415,16 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
   
   
   
-    <section id="requeststoreauthurlredirecturl" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestStoreAuthURL(redirectURL%3A%20String)%20async%20-%3E%20StoreAuthURLResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requeststoreauthurlredirecturl"></a>
-    <h4 class="visually-hidden">func requestStoreAuthURL(redirectURL: String) async -&gt; StoreAuthURLResponse?</h4>
+    <section id="requeststoreauthurlisolationredirecturl" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestStoreAuthURL(isolation%3A%20isolated%20(any%20Actor)%3F,%20redirectURL%3A%20String)%20async%20-%3E%20StoreAuthURLResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requeststoreauthurlisolationredirecturl"></a>
+    <h4 class="visually-hidden">func requestStoreAuthURL(isolation: isolated (any Actor)?, redirectURL: String) async -&gt; StoreAuthURLResponse?</h4>
     
     
-    <a class="j2-item-title" href="#_requeststoreauthurlredirecturl" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requeststoreauthurlredirecturl"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestStoreAuthURL<span class="j2-item-secondary">(</span>redirectURL<span class="j2-item-secondary">: String) async -&gt; StoreAuthURLResponse?</span></span>
+    <a class="j2-item-title" href="#_requeststoreauthurlisolationredirecturl" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requeststoreauthurlisolationredirecturl"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestStoreAuthURL<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>redirectURL<span class="j2-item-secondary">: String) async -&gt; StoreAuthURLResponse?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requeststoreauthurlredirecturl">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requeststoreauthurlisolationredirecturl">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6393,8 +6448,9 @@ public func setDurationControlOnlineState(newState: <a href="../../steamworks/ty
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestStoreAuthURL(redirectURL: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) async
-    -&gt; <a href="../../steamworks/types/storeauthurlresponse.html?swift">StoreAuthURLResponse</a>?</code></pre>
+    <pre><code class="language-swift">public func requestStoreAuthURL(
+    isolation: isolated (any Actor)? = #isolation, redirectURL: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>
+) async -&gt; <a href="../../steamworks/types/storeauthurlresponse.html?swift">StoreAuthURLResponse</a>?</code></pre>
   </div>
 
 

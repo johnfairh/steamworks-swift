@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamExecutor - Steamworks v0.5.2</title>
+   <title>SteamExecutor - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworksconcurrency/types/steamexecutor.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4149,6 +4190,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -4425,7 +4475,7 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public final class SteamExecutor: <a href="https://developer.apple.com/documentation/swift/serialexecutor?language=swift">SerialExecutor</a>, @unchecked <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
+    <pre><code class="language-swift">public final class SteamExecutor: <a href="https://developer.apple.com/documentation/swift/serialexecutor?language=swift">SerialExecutor</a>, <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -4450,20 +4500,14 @@ gameserver and client API from the same thread.</p>
 main thread.</p>
 <p>Problems:</p>
 <ol>
-<li>
-<p>Until Swift 6 makes isolation inheritance work, it’s still not safe to actually use the
-<code>async</code> version of the APIs.</p>
-</li>
-<li>
-<p>The poll resolution promised by the API is dubious – probably because of the
+<li>The poll resolution promised by the API is dubious – probably because of the
 thread priorities available via <code>NSThread</code> getting anything below 100ms is a
-bit sketchy.</p>
-</li>
+bit sketchy.</li>
 </ol>
 <p>To Do (perhaps):</p>
 <ul>
 <li>Change the API clients at runtime - eg. creation of a server or something</li>
-<li>Figure out what on earth is wrong with Linux vs. swift-atomics</li>
+<li>Figure out what on earth is wrong with Linux vs. swift-atomics (or more likely move to built-in atomics)</li>
 </ul>
 
 
@@ -4476,7 +4520,7 @@ bit sketchy.</p>
           
           
           <nav aria-label="item details" class="j2-main-item-nav">
-            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L44-L315">Show on GitHub</a>
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L43-L314">Show on GitHub</a>
           </nav>
           
           
@@ -4532,7 +4576,7 @@ bit sketchy.</p>
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public struct APIClient</code></pre>
+    <pre><code class="language-swift">public struct APIClient: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -4554,7 +4598,7 @@ bit sketchy.</p>
             </span>
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L62-L102">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L61-L101">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4638,7 +4682,7 @@ bit sketchy.</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L112-L131">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L111-L130">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4700,7 +4744,7 @@ bit sketchy.</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L136-L138">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L135-L137">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4761,7 +4805,7 @@ this then they will stop working in a bad way.</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L144-L156">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L143-L155">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4833,7 +4877,7 @@ this then they will stop working in a bad way.</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L161">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L160">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4893,7 +4937,7 @@ this then they will stop working in a bad way.</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L164">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L163">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -4953,7 +4997,7 @@ this then they will stop working in a bad way.</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L169-L176">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L168-L175">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5032,7 +5076,7 @@ this then they will stop working in a bad way.</p>
             </span>
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L181-L195">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L180-L194">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -5092,7 +5136,7 @@ this then they will stop working in a bad way.</p>
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L198-L201">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/SteamworksConcurrency/SteamExecutor.swift#L197-L200">Show on GitHub</a></span>
             
           </nav>
         </div>

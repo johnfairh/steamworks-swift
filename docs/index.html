@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/fw2020.css">
     
     
-   <title>Steamworks v0.5.2</title>
+   <title>Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./" data-doc-path="index.html" data-assets-path="">
@@ -31,7 +31,7 @@
     
     <a href="index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3106,6 +3106,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="steamugc.html?swift">SteamUGC</a>
 
 
@@ -4138,6 +4179,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -4403,7 +4453,7 @@
           
           
           <p><img src="https://shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20%3F%3F-lightgrey" alt="macOS" />
-<img src="https://shields.io/badge/steamworks-1.59-lightgrey" alt="Steamworks 1.59" />
+<img src="https://shields.io/badge/steamworks-1.60-lightgrey" alt="Steamworks 1.60" />
 <a href="https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml"><img src="https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml/badge.svg" alt="Test" /></a>
 <img src="https://shields.io/badge/license-MIT-black" alt="MIT" /></p>
 <h1 class="j2-anchor j2-heading heading" id="steamworksswift">
@@ -4424,9 +4474,9 @@ doing various sync and async tasks.</li>
 <code>SteamworksConcurrency</code> module</li>
 <li>Encrypted app ticket support in separate <code>SteamworksEncryptedAppTicket</code> module</li>
 <li>Separate demo showing encrypted app-ticket stuff, <code>make run_ticket</code></li>
-<li>Requires Swift 5.10, Xcode 15.3 – Linux C++ interop is a bit better in 5.10 but still curious</li>
+<li>Requires Swift 6, Xcode 16 beta – Linux not building right now, wait for 6 GA</li>
 <li>The Xcode project basically works.</li>
-<li>Unit tests sometimes crash inside steam on exit - some kind of XCTest incompatibility?</li>
+<li><del>Unit tests sometimes crash inside steam on exit</del> fixed!</li>
 </ul>
 <p>Below:</p>
 <ul>
@@ -4467,7 +4517,6 @@ involving multiple calls, usually determining buffer lengths</li>
 Next
 </span></h3>
 <ul>
-<li>Finish practical Swift concurrency support in Swift 6</li>
 <li>More SpaceWar porting over to Swift to check general practicality, somewhat real-world usage,
 general interest - see <a href="https://github.com/johnfairh/spacewar-swift">spacewar-swift</a>.</li>
 </ul>
@@ -4555,8 +4604,8 @@ void MyClass::OnGetFollowerCount(FriendsGetFollowerCount_t *pCallback, bool bIOF
 <p>There are async versions:</p>
 <pre><code class="language-swift">let getFollowerCount = await steam.friends.getFollowerCount(steamID: steamID)
 </code></pre>
-<p>…but do check <a href="#swift-concurrency-concerns">Swift concurrency concerns</a>: this form is
-not safe right now, though this should be fixable in Swift 6.</p>
+<p>…which are finally safe, as of Swift 6, but do check
+<a href="#swift-concurrency-concerns">Swift concurrency concerns</a>.</p>
 <h3 class="j2-anchor j2-heading heading" id="arraylength-parameters">
 <span data-anchor-id="arraylength-parameters">
 Array-length parameters
@@ -4621,7 +4670,7 @@ Swift Concurrency Concerns
 you must regularly call <code>SteamAPI.runCallbacks()</code> or <code>SteamAPI.releaseCurrentThreadMemory()</code>.
 The former synchronously calls back into your code to fulfill callbacks; they both do
 internal thread-specific housekeeping.</p>
-<p>Swift concurrency and its built-in libdispatch-based executors are dead-set against users
+<p>Swift concurrency and its built-in libdispatch-based executors are dead set against users
 thinking about threads, with a begrudging exception for ‘the main thread’.</p>
 <p>To use async-await with Steamworks I think there are two approaches:</p>
 <ol>
@@ -4651,7 +4700,7 @@ How To Use This Project
 </span></h2>
 <p>Prereqs:</p>
 <ul>
-<li>Needs Swift 5.10 (Xcode 15.3)</li>
+<li>Needs Swift 6 beta (Xcode 16 beta)</li>
 <li>Needs Steam client installed (and logged-in, running for the tests or to do anything useful)</li>
 <li>I’m using macOS 14; should work on Linux; might work on Windows eventually</li>
 </ul>
@@ -4662,7 +4711,7 @@ How To Use This Project
 (this is far from ideal but hard stuck behind various Swift issues)</li>
 </ul>
 <p>Sample <code>Package.swift</code>:</p>
-<pre><code class="language-swift">// swift-tools-version: 5.9
+<pre><code class="language-swift">// swift-tools-version: 6.0
 
 import PackageDescription
 

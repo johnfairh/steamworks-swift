@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamUserStats - Steamworks v0.5.2</title>
+   <title>SteamUserStats - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamuserstats.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4149,6 +4190,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -4506,7 +4556,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func attachLeaderboardUGC(
     steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>, ugc: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>,
-    completion: @escaping (<a href="../../steamworks/types/leaderboardugcset.html?swift">LeaderboardUGCSet</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/leaderboardugcset.html?swift">LeaderboardUGCSet</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4533,16 +4583,16 @@
   
   
   
-    <section id="attachleaderboardugcsteamleaderboardugc" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20attachLeaderboardUGC(steamLeaderboard%3A%20SteamLeaderboard,%20ugc%3A%20UGCHandle)%20async%20-%3E%20LeaderboardUGCSet%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="attachleaderboardugcsteamleaderboardugc"></a>
-    <h4 class="visually-hidden">func attachLeaderboardUGC(steamLeaderboard: SteamLeaderboard, ugc: UGCHandle) async -&gt; LeaderboardUGCSet?</h4>
+    <section id="attachleaderboardugcisolationsteamleaderboardugc" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20attachLeaderboardUGC(isolation%3A%20isolated%20(any%20Actor)%3F,%20steamLeaderboard%3A%20SteamLeaderboard,%20ugc%3A%20UGCHandle)%20async%20-%3E%20LeaderboardUGCSet%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="attachleaderboardugcisolationsteamleaderboardugc"></a>
+    <h4 class="visually-hidden">func attachLeaderboardUGC(isolation: isolated (any Actor)?, steamLeaderboard: SteamLeaderboard, ugc: UGCHandle) async -&gt; LeaderboardUGCSet?</h4>
     
     
-    <a class="j2-item-title" href="#_attachleaderboardugcsteamleaderboardugc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_attachleaderboardugcsteamleaderboardugc"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>attachLeaderboardUGC<span class="j2-item-secondary">(</span>steamLeaderboard<span class="j2-item-secondary">: SteamLeaderboard, </span>ugc<span class="j2-item-secondary">: UGCHandle) async -&gt; LeaderboardUGCSet?</span></span>
+    <a class="j2-item-title" href="#_attachleaderboardugcisolationsteamleaderboardugc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_attachleaderboardugcisolationsteamleaderboardugc"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>attachLeaderboardUGC<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>steamLeaderboard<span class="j2-item-secondary">: SteamLeaderboard, </span>ugc<span class="j2-item-secondary">: UGCHandle) async -&gt; LeaderboardUGCSet?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_attachleaderboardugcsteamleaderboardugc">
+    <div class="collapse  j2-item-popopen-wrapper" id="_attachleaderboardugcisolationsteamleaderboardugc">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4567,6 +4617,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func attachLeaderboardUGC(
+    isolation: isolated (any Actor)? = #isolation,
     steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>, ugc: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>
 ) async -&gt; <a href="../../steamworks/types/leaderboardugcset.html?swift">LeaderboardUGCSet</a>?</code></pre>
   </div>
@@ -4691,7 +4742,8 @@
     <pre><code class="language-swift">public func downloadLeaderboardEntries(
     steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>,
     leaderboardDataRequest: <a href="../../steamworks/types/leaderboarddatarequest.html?swift">LeaderboardDataRequest</a>, rangeStart: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    rangeEnd: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, completion: @escaping (<a href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    rangeEnd: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4718,16 +4770,16 @@
   
   
   
-    <section id="downloadleaderboardentriessteamleaderboardleaderboarddatarequestrangestartrangeend" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20downloadLeaderboardEntries(steamLeaderboard%3A%20SteamLeaderboard,%20leaderboardDataRequest%3A%20LeaderboardDataRequest,%20rangeStart%3A%20Int,%20rangeEnd%3A%20Int)%20async%20-%3E%20LeaderboardScoresDownloaded%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="downloadleaderboardentriessteamleaderboardleaderboarddatarequestrangestartrangeend"></a>
-    <h4 class="visually-hidden">func downloadLeaderboardEntries(steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int) async -&gt; LeaderboardScoresDownloaded?</h4>
+    <section id="downloadleaderboardentriesisolationsteamleaderboardleaderboarddatarequestrangestartrangeend" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20downloadLeaderboardEntries(isolation%3A%20isolated%20(any%20Actor)%3F,%20steamLeaderboard%3A%20SteamLeaderboard,%20leaderboardDataRequest%3A%20LeaderboardDataRequest,%20rangeStart%3A%20Int,%20rangeEnd%3A%20Int)%20async%20-%3E%20LeaderboardScoresDownloaded%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="downloadleaderboardentriesisolationsteamleaderboardleaderboarddatarequestrangestartrangeend"></a>
+    <h4 class="visually-hidden">func downloadLeaderboardEntries(isolation: isolated (any Actor)?, steamLeaderboard: SteamLeaderboard, leaderboardDataRequest: LeaderboardDataRequest, rangeStart: Int, rangeEnd: Int) async -&gt; LeaderboardScoresDownloaded?</h4>
     
     
-    <a class="j2-item-title" href="#_downloadleaderboardentriessteamleaderboardleaderboarddatarequestrangestartrangeend" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_downloadleaderboardentriessteamleaderboardleaderboarddatarequestrangestartrangeend"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>downloadLeaderboardEntries<span class="j2-item-secondary">(</span>steamLeaderboard<span class="j2-item-secondary">: SteamLeaderboard, </span>leaderboardDataRequest<span class="j2-item-secondary">: LeaderboardDataRequest, </span>rangeStart<span class="j2-item-secondary">: Int, </span>rangeEnd<span class="j2-item-secondary">: Int) async -&gt; LeaderboardScoresDownloaded?</span></span>
+    <a class="j2-item-title" href="#_downloadleaderboardentriesisolationsteamleaderboardleaderboarddatarequestrangestartrangeend" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_downloadleaderboardentriesisolationsteamleaderboardleaderboarddatarequestrangestartrangeend"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>downloadLeaderboardEntries<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>steamLeaderboard<span class="j2-item-secondary">: SteamLeaderboard, </span>leaderboardDataRequest<span class="j2-item-secondary">: LeaderboardDataRequest, </span>rangeStart<span class="j2-item-secondary">: Int, </span>rangeEnd<span class="j2-item-secondary">: Int) async -&gt; LeaderboardScoresDownloaded?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_downloadleaderboardentriessteamleaderboardleaderboarddatarequestrangestartrangeend">
+    <div class="collapse  j2-item-popopen-wrapper" id="_downloadleaderboardentriesisolationsteamleaderboardleaderboarddatarequestrangestartrangeend">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4752,6 +4804,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func downloadLeaderboardEntries(
+    isolation: isolated (any Actor)? = #isolation,
     steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>,
     leaderboardDataRequest: <a href="../../steamworks/types/leaderboarddatarequest.html?swift">LeaderboardDataRequest</a>, rangeStart: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     rangeEnd: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
@@ -4817,7 +4870,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func downloadLeaderboardEntriesForUsers(
     steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>, users: [<a href="../../steamworks/types/steamid16.html?swift">SteamID</a>],
-    completion: @escaping (<a href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4844,16 +4897,16 @@
   
   
   
-    <section id="downloadleaderboardentriesforuserssteamleaderboardusers" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20downloadLeaderboardEntriesForUsers(steamLeaderboard%3A%20SteamLeaderboard,%20users%3A%20%5BSteamID%5D)%20async%20-%3E%20LeaderboardScoresDownloaded%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="downloadleaderboardentriesforuserssteamleaderboardusers"></a>
-    <h4 class="visually-hidden">func downloadLeaderboardEntriesForUsers(steamLeaderboard: SteamLeaderboard, users: [SteamID]) async -&gt; LeaderboardScoresDownloaded?</h4>
+    <section id="downloadleaderboardentriesforusersisolationsteamleaderboardusers" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20downloadLeaderboardEntriesForUsers(isolation%3A%20isolated%20(any%20Actor)%3F,%20steamLeaderboard%3A%20SteamLeaderboard,%20users%3A%20%5BSteamID%5D)%20async%20-%3E%20LeaderboardScoresDownloaded%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="downloadleaderboardentriesforusersisolationsteamleaderboardusers"></a>
+    <h4 class="visually-hidden">func downloadLeaderboardEntriesForUsers(isolation: isolated (any Actor)?, steamLeaderboard: SteamLeaderboard, users: [SteamID]) async -&gt; LeaderboardScoresDownloaded?</h4>
     
     
-    <a class="j2-item-title" href="#_downloadleaderboardentriesforuserssteamleaderboardusers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_downloadleaderboardentriesforuserssteamleaderboardusers"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>downloadLeaderboardEntriesForUsers<span class="j2-item-secondary">(</span>steamLeaderboard<span class="j2-item-secondary">: SteamLeaderboard, </span>users<span class="j2-item-secondary">: [SteamID]) async -&gt; LeaderboardScoresDownloaded?</span></span>
+    <a class="j2-item-title" href="#_downloadleaderboardentriesforusersisolationsteamleaderboardusers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_downloadleaderboardentriesforusersisolationsteamleaderboardusers"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>downloadLeaderboardEntriesForUsers<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>steamLeaderboard<span class="j2-item-secondary">: SteamLeaderboard, </span>users<span class="j2-item-secondary">: [SteamID]) async -&gt; LeaderboardScoresDownloaded?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_downloadleaderboardentriesforuserssteamleaderboardusers">
+    <div class="collapse  j2-item-popopen-wrapper" id="_downloadleaderboardentriesforusersisolationsteamleaderboardusers">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4878,6 +4931,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func downloadLeaderboardEntriesForUsers(
+    isolation: isolated (any Actor)? = #isolation,
     steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>, users: [<a href="../../steamworks/types/steamid16.html?swift">SteamID</a>]
 ) async -&gt; <a href="../../steamworks/types/leaderboardscoresdownloaded.html?swift">LeaderboardScoresDownloaded</a>?</code></pre>
   </div>
@@ -4941,7 +4995,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func findLeaderboard(
     leaderboardName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
-    completion: @escaping (<a href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4968,16 +5022,16 @@
   
   
   
-    <section id="findleaderboardleaderboardname" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20findLeaderboard(leaderboardName%3A%20String)%20async%20-%3E%20LeaderboardFindResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="findleaderboardleaderboardname"></a>
-    <h4 class="visually-hidden">func findLeaderboard(leaderboardName: String) async -&gt; LeaderboardFindResult?</h4>
+    <section id="findleaderboardisolationleaderboardname" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20findLeaderboard(isolation%3A%20isolated%20(any%20Actor)%3F,%20leaderboardName%3A%20String)%20async%20-%3E%20LeaderboardFindResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="findleaderboardisolationleaderboardname"></a>
+    <h4 class="visually-hidden">func findLeaderboard(isolation: isolated (any Actor)?, leaderboardName: String) async -&gt; LeaderboardFindResult?</h4>
     
     
-    <a class="j2-item-title" href="#_findleaderboardleaderboardname" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_findleaderboardleaderboardname"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>findLeaderboard<span class="j2-item-secondary">(</span>leaderboardName<span class="j2-item-secondary">: String) async -&gt; LeaderboardFindResult?</span></span>
+    <a class="j2-item-title" href="#_findleaderboardisolationleaderboardname" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_findleaderboardisolationleaderboardname"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>findLeaderboard<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>leaderboardName<span class="j2-item-secondary">: String) async -&gt; LeaderboardFindResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_findleaderboardleaderboardname">
+    <div class="collapse  j2-item-popopen-wrapper" id="_findleaderboardisolationleaderboardname">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5001,8 +5055,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func findLeaderboard(leaderboardName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) async
-    -&gt; <a href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>?</code></pre>
+    <pre><code class="language-swift">public func findLeaderboard(
+    isolation: isolated (any Actor)? = #isolation, leaderboardName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>
+) async -&gt; <a href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>?</code></pre>
   </div>
 
 
@@ -5065,7 +5120,7 @@
     <pre><code class="language-swift">public func findOrCreateLeaderboard(
     leaderboardName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, leaderboardSortMethod: <a href="../../steamworks/types/leaderboardsortmethod.html?swift">LeaderboardSortMethod</a>,
     leaderboardDisplayType: <a href="../../steamworks/types/leaderboarddisplaytype.html?swift">LeaderboardDisplayType</a>,
-    completion: @escaping (<a href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5092,16 +5147,16 @@
   
   
   
-    <section id="findorcreateleaderboardleaderboardnameleaderboardsortmethodleaderboarddisplaytype" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20findOrCreateLeaderboard(leaderboardName%3A%20String,%20leaderboardSortMethod%3A%20LeaderboardSortMethod,%20leaderboardDisplayType%3A%20LeaderboardDisplayType)%20async%20-%3E%20LeaderboardFindResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="findorcreateleaderboardleaderboardnameleaderboardsortmethodleaderboarddisplaytype"></a>
-    <h4 class="visually-hidden">func findOrCreateLeaderboard(leaderboardName: String, leaderboardSortMethod: LeaderboardSortMethod, leaderboardDisplayType: LeaderboardDisplayType) async -&gt; LeaderboardFindResult?</h4>
+    <section id="findorcreateleaderboardisolationleaderboardnameleaderboardsortmethodleaderboarddisplaytype" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20findOrCreateLeaderboard(isolation%3A%20isolated%20(any%20Actor)%3F,%20leaderboardName%3A%20String,%20leaderboardSortMethod%3A%20LeaderboardSortMethod,%20leaderboardDisplayType%3A%20LeaderboardDisplayType)%20async%20-%3E%20LeaderboardFindResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="findorcreateleaderboardisolationleaderboardnameleaderboardsortmethodleaderboarddisplaytype"></a>
+    <h4 class="visually-hidden">func findOrCreateLeaderboard(isolation: isolated (any Actor)?, leaderboardName: String, leaderboardSortMethod: LeaderboardSortMethod, leaderboardDisplayType: LeaderboardDisplayType) async -&gt; LeaderboardFindResult?</h4>
     
     
-    <a class="j2-item-title" href="#_findorcreateleaderboardleaderboardnameleaderboardsortmethodleaderboarddisplaytype" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_findorcreateleaderboardleaderboardnameleaderboardsortmethodleaderboarddisplaytype"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>findOrCreateLeaderboard<span class="j2-item-secondary">(</span>leaderboardName<span class="j2-item-secondary">: String, </span>leaderboardSortMethod<span class="j2-item-secondary">: LeaderboardSortMethod, </span>leaderboardDisplayType<span class="j2-item-secondary">: LeaderboardDisplayType) async -&gt; LeaderboardFindResult?</span></span>
+    <a class="j2-item-title" href="#_findorcreateleaderboardisolationleaderboardnameleaderboardsortmethodleaderboarddisplaytype" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_findorcreateleaderboardisolationleaderboardnameleaderboardsortmethodleaderboarddisplaytype"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>findOrCreateLeaderboard<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>leaderboardName<span class="j2-item-secondary">: String, </span>leaderboardSortMethod<span class="j2-item-secondary">: LeaderboardSortMethod, </span>leaderboardDisplayType<span class="j2-item-secondary">: LeaderboardDisplayType) async -&gt; LeaderboardFindResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_findorcreateleaderboardleaderboardnameleaderboardsortmethodleaderboarddisplaytype">
+    <div class="collapse  j2-item-popopen-wrapper" id="_findorcreateleaderboardisolationleaderboardnameleaderboardsortmethodleaderboarddisplaytype">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5126,7 +5181,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func findOrCreateLeaderboard(
-    leaderboardName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, leaderboardSortMethod: <a href="../../steamworks/types/leaderboardsortmethod.html?swift">LeaderboardSortMethod</a>,
+    isolation: isolated (any Actor)? = #isolation, leaderboardName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    leaderboardSortMethod: <a href="../../steamworks/types/leaderboardsortmethod.html?swift">LeaderboardSortMethod</a>,
     leaderboardDisplayType: <a href="../../steamworks/types/leaderboarddisplaytype.html?swift">LeaderboardDisplayType</a>
 ) async -&gt; <a href="../../steamworks/types/leaderboardfindresult.html?swift">LeaderboardFindResult</a>?</code></pre>
   </div>
@@ -6411,7 +6467,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getNumberOfCurrentPlayers(
-    completion: @escaping (<a href="../../steamworks/types/numberofcurrentplayers.html?swift">NumberOfCurrentPlayers</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/numberofcurrentplayers.html?swift">NumberOfCurrentPlayers</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6438,16 +6494,16 @@
   
   
   
-    <section id="getnumberofcurrentplayers" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getNumberOfCurrentPlayers()%20async%20-%3E%20NumberOfCurrentPlayers%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getnumberofcurrentplayers"></a>
-    <h4 class="visually-hidden">func getNumberOfCurrentPlayers() async -&gt; NumberOfCurrentPlayers?</h4>
+    <section id="getnumberofcurrentplayersisolation" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getNumberOfCurrentPlayers(isolation%3A%20isolated%20(any%20Actor)%3F)%20async%20-%3E%20NumberOfCurrentPlayers%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getnumberofcurrentplayersisolation"></a>
+    <h4 class="visually-hidden">func getNumberOfCurrentPlayers(isolation: isolated (any Actor)?) async -&gt; NumberOfCurrentPlayers?</h4>
     
     
-    <a class="j2-item-title" href="#_getnumberofcurrentplayers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getnumberofcurrentplayers"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getNumberOfCurrentPlayers<span class="j2-item-secondary">() async -&gt; NumberOfCurrentPlayers?</span></span>
+    <a class="j2-item-title" href="#_getnumberofcurrentplayersisolation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getnumberofcurrentplayersisolation"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getNumberOfCurrentPlayers<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?) async -&gt; NumberOfCurrentPlayers?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getnumberofcurrentplayers">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getnumberofcurrentplayersisolation">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6471,7 +6527,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getNumberOfCurrentPlayers() async -&gt; <a href="../../steamworks/types/numberofcurrentplayers.html?swift">NumberOfCurrentPlayers</a>?</code></pre>
+    <pre><code class="language-swift">public func getNumberOfCurrentPlayers(
+    isolation: isolated (any Actor)? = #isolation
+) async -&gt; <a href="../../steamworks/types/numberofcurrentplayers.html?swift">NumberOfCurrentPlayers</a>?</code></pre>
   </div>
 
 
@@ -7020,7 +7078,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestGlobalAchievementPercentages(
-    completion: @escaping (<a href="../../steamworks/types/globalachievementpercentagesready.html?swift">GlobalAchievementPercentagesReady</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/globalachievementpercentagesready.html?swift">GlobalAchievementPercentagesReady</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
+)</code></pre>
   </div>
 
 
@@ -7047,16 +7106,16 @@
   
   
   
-    <section id="requestglobalachievementpercentages" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestGlobalAchievementPercentages()%20async%20-%3E%20GlobalAchievementPercentagesReady%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestglobalachievementpercentages"></a>
-    <h4 class="visually-hidden">func requestGlobalAchievementPercentages() async -&gt; GlobalAchievementPercentagesReady?</h4>
+    <section id="requestglobalachievementpercentagesisolation" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestGlobalAchievementPercentages(isolation%3A%20isolated%20(any%20Actor)%3F)%20async%20-%3E%20GlobalAchievementPercentagesReady%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestglobalachievementpercentagesisolation"></a>
+    <h4 class="visually-hidden">func requestGlobalAchievementPercentages(isolation: isolated (any Actor)?) async -&gt; GlobalAchievementPercentagesReady?</h4>
     
     
-    <a class="j2-item-title" href="#_requestglobalachievementpercentages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestglobalachievementpercentages"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestGlobalAchievementPercentages<span class="j2-item-secondary">() async -&gt; GlobalAchievementPercentagesReady?</span></span>
+    <a class="j2-item-title" href="#_requestglobalachievementpercentagesisolation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestglobalachievementpercentagesisolation"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestGlobalAchievementPercentages<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?) async -&gt; GlobalAchievementPercentagesReady?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestglobalachievementpercentages">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestglobalachievementpercentagesisolation">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7080,8 +7139,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestGlobalAchievementPercentages() async
-    -&gt; <a href="../../steamworks/types/globalachievementpercentagesready.html?swift">GlobalAchievementPercentagesReady</a>?</code></pre>
+    <pre><code class="language-swift">public func requestGlobalAchievementPercentages(
+    isolation: isolated (any Actor)? = #isolation
+) async -&gt; <a href="../../steamworks/types/globalachievementpercentagesready.html?swift">GlobalAchievementPercentagesReady</a>?</code></pre>
   </div>
 
 
@@ -7142,7 +7202,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestGlobalStats(
-    historyDays: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, completion: @escaping (<a href="../../steamworks/types/globalstatsreceived.html?swift">GlobalStatsReceived</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    historyDays: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/globalstatsreceived.html?swift">GlobalStatsReceived</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7169,16 +7230,16 @@
   
   
   
-    <section id="requestglobalstatshistorydays" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestGlobalStats(historyDays%3A%20Int)%20async%20-%3E%20GlobalStatsReceived%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestglobalstatshistorydays"></a>
-    <h4 class="visually-hidden">func requestGlobalStats(historyDays: Int) async -&gt; GlobalStatsReceived?</h4>
+    <section id="requestglobalstatsisolationhistorydays" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestGlobalStats(isolation%3A%20isolated%20(any%20Actor)%3F,%20historyDays%3A%20Int)%20async%20-%3E%20GlobalStatsReceived%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestglobalstatsisolationhistorydays"></a>
+    <h4 class="visually-hidden">func requestGlobalStats(isolation: isolated (any Actor)?, historyDays: Int) async -&gt; GlobalStatsReceived?</h4>
     
     
-    <a class="j2-item-title" href="#_requestglobalstatshistorydays" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestglobalstatshistorydays"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestGlobalStats<span class="j2-item-secondary">(</span>historyDays<span class="j2-item-secondary">: Int) async -&gt; GlobalStatsReceived?</span></span>
+    <a class="j2-item-title" href="#_requestglobalstatsisolationhistorydays" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestglobalstatsisolationhistorydays"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestGlobalStats<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>historyDays<span class="j2-item-secondary">: Int) async -&gt; GlobalStatsReceived?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestglobalstatshistorydays">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestglobalstatsisolationhistorydays">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7202,7 +7263,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestGlobalStats(historyDays: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) async -&gt; <a href="../../steamworks/types/globalstatsreceived.html?swift">GlobalStatsReceived</a>?</code></pre>
+    <pre><code class="language-swift">public func requestGlobalStats(
+    isolation: isolated (any Actor)? = #isolation, historyDays: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) async -&gt; <a href="../../steamworks/types/globalstatsreceived.html?swift">GlobalStatsReceived</a>?</code></pre>
   </div>
 
 
@@ -7263,7 +7326,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestUserStats(
-    user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7290,16 +7353,16 @@
   
   
   
-    <section id="requestuserstatsuser1" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestUserStats(user%3A%20SteamID)%20async%20-%3E%20UserStatsReceived%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestuserstatsuser1"></a>
-    <h4 class="visually-hidden">func requestUserStats(user: SteamID) async -&gt; UserStatsReceived?</h4>
+    <section id="requestuserstatsisolationuser1" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestUserStats(isolation%3A%20isolated%20(any%20Actor)%3F,%20user%3A%20SteamID)%20async%20-%3E%20UserStatsReceived%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestuserstatsisolationuser1"></a>
+    <h4 class="visually-hidden">func requestUserStats(isolation: isolated (any Actor)?, user: SteamID) async -&gt; UserStatsReceived?</h4>
     
     
-    <a class="j2-item-title" href="#_requestuserstatsuser1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestuserstatsuser1"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestUserStats<span class="j2-item-secondary">(</span>user<span class="j2-item-secondary">: SteamID) async -&gt; UserStatsReceived?</span></span>
+    <a class="j2-item-title" href="#_requestuserstatsisolationuser1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestuserstatsisolationuser1"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestUserStats<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>user<span class="j2-item-secondary">: SteamID) async -&gt; UserStatsReceived?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestuserstatsuser1">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestuserstatsisolationuser1">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7323,7 +7386,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestUserStats(user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async -&gt; <a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>?</code></pre>
+    <pre><code class="language-swift">public func requestUserStats(
+    isolation: isolated (any Actor)? = #isolation, user: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
+) async -&gt; <a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>?</code></pre>
   </div>
 
 
@@ -7749,7 +7814,7 @@
     steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>,
     leaderboardUploadScoreMethod: <a href="../../steamworks/types/leaderboarduploadscoremethod.html?swift">LeaderboardUploadScoreMethod</a>, score: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     scoreDetails: [<a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>],
-    completion: @escaping (<a href="../../steamworks/types/leaderboardscoreuploaded.html?swift">LeaderboardScoreUploaded</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/leaderboardscoreuploaded.html?swift">LeaderboardScoreUploaded</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7776,16 +7841,16 @@
   
   
   
-    <section id="uploadleaderboardscoresteamleaderboardleaderboarduploadscoremethodscorescoredetails" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20uploadLeaderboardScore(steamLeaderboard%3A%20SteamLeaderboard,%20leaderboardUploadScoreMethod%3A%20LeaderboardUploadScoreMethod,%20score%3A%20Int,%20scoreDetails%3A%20%5BInt%5D)%20async%20-%3E%20LeaderboardScoreUploaded%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="uploadleaderboardscoresteamleaderboardleaderboarduploadscoremethodscorescoredetails"></a>
-    <h4 class="visually-hidden">func uploadLeaderboardScore(steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int]) async -&gt; LeaderboardScoreUploaded?</h4>
+    <section id="uploadleaderboardscoreisolationsteamleaderboardleaderboarduploadscoremethodscorescoredetails" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20uploadLeaderboardScore(isolation%3A%20isolated%20(any%20Actor)%3F,%20steamLeaderboard%3A%20SteamLeaderboard,%20leaderboardUploadScoreMethod%3A%20LeaderboardUploadScoreMethod,%20score%3A%20Int,%20scoreDetails%3A%20%5BInt%5D)%20async%20-%3E%20LeaderboardScoreUploaded%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="uploadleaderboardscoreisolationsteamleaderboardleaderboarduploadscoremethodscorescoredetails"></a>
+    <h4 class="visually-hidden">func uploadLeaderboardScore(isolation: isolated (any Actor)?, steamLeaderboard: SteamLeaderboard, leaderboardUploadScoreMethod: LeaderboardUploadScoreMethod, score: Int, scoreDetails: [Int]) async -&gt; LeaderboardScoreUploaded?</h4>
     
     
-    <a class="j2-item-title" href="#_uploadleaderboardscoresteamleaderboardleaderboarduploadscoremethodscorescoredetails" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_uploadleaderboardscoresteamleaderboardleaderboarduploadscoremethodscorescoredetails"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>uploadLeaderboardScore<span class="j2-item-secondary">(</span>steamLeaderboard<span class="j2-item-secondary">: SteamLeaderboard, </span>leaderboardUploadScoreMethod<span class="j2-item-secondary">: LeaderboardUploadScoreMethod, </span>score<span class="j2-item-secondary">: Int, </span>scoreDetails<span class="j2-item-secondary">: [Int]) async -&gt; LeaderboardScoreUploaded?</span></span>
+    <a class="j2-item-title" href="#_uploadleaderboardscoreisolationsteamleaderboardleaderboarduploadscoremethodscorescoredetails" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_uploadleaderboardscoreisolationsteamleaderboardleaderboarduploadscoremethodscorescoredetails"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>uploadLeaderboardScore<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>steamLeaderboard<span class="j2-item-secondary">: SteamLeaderboard, </span>leaderboardUploadScoreMethod<span class="j2-item-secondary">: LeaderboardUploadScoreMethod, </span>score<span class="j2-item-secondary">: Int, </span>scoreDetails<span class="j2-item-secondary">: [Int]) async -&gt; LeaderboardScoreUploaded?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_uploadleaderboardscoresteamleaderboardleaderboarduploadscoremethodscorescoredetails">
+    <div class="collapse  j2-item-popopen-wrapper" id="_uploadleaderboardscoreisolationsteamleaderboardleaderboarduploadscoremethodscorescoredetails">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7810,6 +7875,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func uploadLeaderboardScore(
+    isolation: isolated (any Actor)? = #isolation,
     steamLeaderboard: <a href="../../steamworks/types/steamleaderboard4.html?swift">SteamLeaderboard</a>,
     leaderboardUploadScoreMethod: <a href="../../steamworks/types/leaderboarduploadscoremethod.html?swift">LeaderboardUploadScoreMethod</a>, score: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     scoreDetails: [<a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>]

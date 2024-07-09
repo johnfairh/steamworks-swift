@@ -13,8 +13,8 @@ All the words
 - ``SteamAPI``
 - ``SteamGameServerAPI``
 - ``SteamEncryptedAppTicket``
+- ``SteamExecutor``
 ### Interfaces
-- <doc:SteamAppList-Interface>
 - <doc:SteamApps-Interface>
 - <doc:SteamFriends-Interface>
 - <doc:SteamGameSearch-Interface>
@@ -36,6 +36,7 @@ All the words
 - <doc:SteamRemotePlay-Interface>
 - <doc:SteamRemoteStorage-Interface>
 - <doc:SteamScreenshots-Interface>
+- <doc:SteamTimeline-Interface>
 - <doc:SteamUGC-Interface>
 - <doc:SteamUser-Interface>
 - <doc:SteamUserStats-Interface>

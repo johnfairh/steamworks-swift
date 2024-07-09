@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamFriends - Steamworks v0.5.2</title>
+   <title>SteamFriends - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamfriends.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4149,6 +4190,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -5109,7 +5159,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func downloadClanActivityCounts(
     clans: [<a href="../../steamworks/types/steamid16.html?swift">SteamID</a>],
-    completion: @escaping (<a href="../../steamworks/types/downloadclanactivitycountsresult.html?swift">DownloadClanActivityCountsResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/downloadclanactivitycountsresult.html?swift">DownloadClanActivityCountsResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5136,16 +5186,16 @@
   
   
   
-    <section id="downloadclanactivitycountsclans" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20downloadClanActivityCounts(clans%3A%20%5BSteamID%5D)%20async%20-%3E%20DownloadClanActivityCountsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="downloadclanactivitycountsclans"></a>
-    <h4 class="visually-hidden">func downloadClanActivityCounts(clans: [SteamID]) async -&gt; DownloadClanActivityCountsResult?</h4>
+    <section id="downloadclanactivitycountsisolationclans" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20downloadClanActivityCounts(isolation%3A%20isolated%20(any%20Actor)%3F,%20clans%3A%20%5BSteamID%5D)%20async%20-%3E%20DownloadClanActivityCountsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="downloadclanactivitycountsisolationclans"></a>
+    <h4 class="visually-hidden">func downloadClanActivityCounts(isolation: isolated (any Actor)?, clans: [SteamID]) async -&gt; DownloadClanActivityCountsResult?</h4>
     
     
-    <a class="j2-item-title" href="#_downloadclanactivitycountsclans" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_downloadclanactivitycountsclans"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>downloadClanActivityCounts<span class="j2-item-secondary">(</span>clans<span class="j2-item-secondary">: [SteamID]) async -&gt; DownloadClanActivityCountsResult?</span></span>
+    <a class="j2-item-title" href="#_downloadclanactivitycountsisolationclans" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_downloadclanactivitycountsisolationclans"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>downloadClanActivityCounts<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>clans<span class="j2-item-secondary">: [SteamID]) async -&gt; DownloadClanActivityCountsResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_downloadclanactivitycountsclans">
+    <div class="collapse  j2-item-popopen-wrapper" id="_downloadclanactivitycountsisolationclans">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5169,8 +5219,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func downloadClanActivityCounts(clans: [<a href="../../steamworks/types/steamid16.html?swift">SteamID</a>]) async
-    -&gt; <a href="../../steamworks/types/downloadclanactivitycountsresult.html?swift">DownloadClanActivityCountsResult</a>?</code></pre>
+    <pre><code class="language-swift">public func downloadClanActivityCounts(
+    isolation: isolated (any Actor)? = #isolation, clans: [<a href="../../steamworks/types/steamid16.html?swift">SteamID</a>]
+) async -&gt; <a href="../../steamworks/types/downloadclanactivitycountsresult.html?swift">DownloadClanActivityCountsResult</a>?</code></pre>
   </div>
 
 
@@ -5232,7 +5283,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumerateFollowingList(
     startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/friendsenumeratefollowinglist.html?swift">FriendsEnumerateFollowingList</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/friendsenumeratefollowinglist.html?swift">FriendsEnumerateFollowingList</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5259,16 +5310,16 @@
   
   
   
-    <section id="enumeratefollowingliststartindex" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumerateFollowingList(startIndex%3A%20Int)%20async%20-%3E%20FriendsEnumerateFollowingList%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratefollowingliststartindex"></a>
-    <h4 class="visually-hidden">func enumerateFollowingList(startIndex: Int) async -&gt; FriendsEnumerateFollowingList?</h4>
+    <section id="enumeratefollowinglistisolationstartindex" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20enumerateFollowingList(isolation%3A%20isolated%20(any%20Actor)%3F,%20startIndex%3A%20Int)%20async%20-%3E%20FriendsEnumerateFollowingList%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratefollowinglistisolationstartindex"></a>
+    <h4 class="visually-hidden">func enumerateFollowingList(isolation: isolated (any Actor)?, startIndex: Int) async -&gt; FriendsEnumerateFollowingList?</h4>
     
     
-    <a class="j2-item-title" href="#_enumeratefollowingliststartindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumeratefollowingliststartindex"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateFollowingList<span class="j2-item-secondary">(</span>startIndex<span class="j2-item-secondary">: Int) async -&gt; FriendsEnumerateFollowingList?</span></span>
+    <a class="j2-item-title" href="#_enumeratefollowinglistisolationstartindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumeratefollowinglistisolationstartindex"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateFollowingList<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>startIndex<span class="j2-item-secondary">: Int) async -&gt; FriendsEnumerateFollowingList?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_enumeratefollowingliststartindex">
+    <div class="collapse  j2-item-popopen-wrapper" id="_enumeratefollowinglistisolationstartindex">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5292,8 +5343,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func enumerateFollowingList(startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) async
-    -&gt; <a href="../../steamworks/types/friendsenumeratefollowinglist.html?swift">FriendsEnumerateFollowingList</a>?</code></pre>
+    <pre><code class="language-swift">public func enumerateFollowingList(
+    isolation: isolated (any Actor)? = #isolation, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) async -&gt; <a href="../../steamworks/types/friendsenumeratefollowinglist.html?swift">FriendsEnumerateFollowingList</a>?</code></pre>
   </div>
 
 
@@ -6139,7 +6191,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getFollowerCount(
-    steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/friendsgetfollowercount.html?swift">FriendsGetFollowerCount</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/friendsgetfollowercount.html?swift">FriendsGetFollowerCount</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6166,16 +6219,16 @@
   
   
   
-    <section id="getfollowercountsteamid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getFollowerCount(steamID%3A%20SteamID)%20async%20-%3E%20FriendsGetFollowerCount%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getfollowercountsteamid"></a>
-    <h4 class="visually-hidden">func getFollowerCount(steamID: SteamID) async -&gt; FriendsGetFollowerCount?</h4>
+    <section id="getfollowercountisolationsteamid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getFollowerCount(isolation%3A%20isolated%20(any%20Actor)%3F,%20steamID%3A%20SteamID)%20async%20-%3E%20FriendsGetFollowerCount%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getfollowercountisolationsteamid"></a>
+    <h4 class="visually-hidden">func getFollowerCount(isolation: isolated (any Actor)?, steamID: SteamID) async -&gt; FriendsGetFollowerCount?</h4>
     
     
-    <a class="j2-item-title" href="#_getfollowercountsteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getfollowercountsteamid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getFollowerCount<span class="j2-item-secondary">(</span>steamID<span class="j2-item-secondary">: SteamID) async -&gt; FriendsGetFollowerCount?</span></span>
+    <a class="j2-item-title" href="#_getfollowercountisolationsteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getfollowercountisolationsteamid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getFollowerCount<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>steamID<span class="j2-item-secondary">: SteamID) async -&gt; FriendsGetFollowerCount?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getfollowercountsteamid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getfollowercountisolationsteamid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6199,7 +6252,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getFollowerCount(steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async -&gt; <a href="../../steamworks/types/friendsgetfollowercount.html?swift">FriendsGetFollowerCount</a>?</code></pre>
+    <pre><code class="language-swift">public func getFollowerCount(
+    isolation: isolated (any Actor)? = #isolation, steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
+) async -&gt; <a href="../../steamworks/types/friendsgetfollowercount.html?swift">FriendsGetFollowerCount</a>?</code></pre>
   </div>
 
 
@@ -8497,7 +8552,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func isFollowing(
-    steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/friendsisfollowing.html?swift">FriendsIsFollowing</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/friendsisfollowing.html?swift">FriendsIsFollowing</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8524,16 +8580,16 @@
   
   
   
-    <section id="isfollowingsteamid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20isFollowing(steamID%3A%20SteamID)%20async%20-%3E%20FriendsIsFollowing%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="isfollowingsteamid"></a>
-    <h4 class="visually-hidden">func isFollowing(steamID: SteamID) async -&gt; FriendsIsFollowing?</h4>
+    <section id="isfollowingisolationsteamid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20isFollowing(isolation%3A%20isolated%20(any%20Actor)%3F,%20steamID%3A%20SteamID)%20async%20-%3E%20FriendsIsFollowing%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="isfollowingisolationsteamid"></a>
+    <h4 class="visually-hidden">func isFollowing(isolation: isolated (any Actor)?, steamID: SteamID) async -&gt; FriendsIsFollowing?</h4>
     
     
-    <a class="j2-item-title" href="#_isfollowingsteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_isfollowingsteamid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>isFollowing<span class="j2-item-secondary">(</span>steamID<span class="j2-item-secondary">: SteamID) async -&gt; FriendsIsFollowing?</span></span>
+    <a class="j2-item-title" href="#_isfollowingisolationsteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_isfollowingisolationsteamid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>isFollowing<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>steamID<span class="j2-item-secondary">: SteamID) async -&gt; FriendsIsFollowing?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_isfollowingsteamid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_isfollowingisolationsteamid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8557,7 +8613,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func isFollowing(steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async -&gt; <a href="../../steamworks/types/friendsisfollowing.html?swift">FriendsIsFollowing</a>?</code></pre>
+    <pre><code class="language-swift">public func isFollowing(
+    isolation: isolated (any Actor)? = #isolation, steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
+) async -&gt; <a href="../../steamworks/types/friendsisfollowing.html?swift">FriendsIsFollowing</a>?</code></pre>
   </div>
 
 
@@ -8679,7 +8737,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func joinClanChatRoom(
     clan: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
-    completion: @escaping (<a href="../../steamworks/types/joinclanchatroomcompletionresult.html?swift">JoinClanChatRoomCompletionResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/joinclanchatroomcompletionresult.html?swift">JoinClanChatRoomCompletionResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8706,16 +8764,16 @@
   
   
   
-    <section id="joinclanchatroomclan" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20joinClanChatRoom(clan%3A%20SteamID)%20async%20-%3E%20JoinClanChatRoomCompletionResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="joinclanchatroomclan"></a>
-    <h4 class="visually-hidden">func joinClanChatRoom(clan: SteamID) async -&gt; JoinClanChatRoomCompletionResult?</h4>
+    <section id="joinclanchatroomisolationclan" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20joinClanChatRoom(isolation%3A%20isolated%20(any%20Actor)%3F,%20clan%3A%20SteamID)%20async%20-%3E%20JoinClanChatRoomCompletionResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="joinclanchatroomisolationclan"></a>
+    <h4 class="visually-hidden">func joinClanChatRoom(isolation: isolated (any Actor)?, clan: SteamID) async -&gt; JoinClanChatRoomCompletionResult?</h4>
     
     
-    <a class="j2-item-title" href="#_joinclanchatroomclan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_joinclanchatroomclan"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>joinClanChatRoom<span class="j2-item-secondary">(</span>clan<span class="j2-item-secondary">: SteamID) async -&gt; JoinClanChatRoomCompletionResult?</span></span>
+    <a class="j2-item-title" href="#_joinclanchatroomisolationclan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_joinclanchatroomisolationclan"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>joinClanChatRoom<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>clan<span class="j2-item-secondary">: SteamID) async -&gt; JoinClanChatRoomCompletionResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_joinclanchatroomclan">
+    <div class="collapse  j2-item-popopen-wrapper" id="_joinclanchatroomisolationclan">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8739,8 +8797,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func joinClanChatRoom(clan: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async
-    -&gt; <a href="../../steamworks/types/joinclanchatroomcompletionresult.html?swift">JoinClanChatRoomCompletionResult</a>?</code></pre>
+    <pre><code class="language-swift">public func joinClanChatRoom(
+    isolation: isolated (any Actor)? = #isolation, clan: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
+) async -&gt; <a href="../../steamworks/types/joinclanchatroomcompletionresult.html?swift">JoinClanChatRoomCompletionResult</a>?</code></pre>
   </div>
 
 
@@ -9041,7 +9100,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestClanOfficerList(
-    clan: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/clanofficerlistresponse.html?swift">ClanOfficerListResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    clan: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/clanofficerlistresponse.html?swift">ClanOfficerListResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9068,16 +9128,16 @@
   
   
   
-    <section id="requestclanofficerlistclan" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestClanOfficerList(clan%3A%20SteamID)%20async%20-%3E%20ClanOfficerListResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestclanofficerlistclan"></a>
-    <h4 class="visually-hidden">func requestClanOfficerList(clan: SteamID) async -&gt; ClanOfficerListResponse?</h4>
+    <section id="requestclanofficerlistisolationclan" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestClanOfficerList(isolation%3A%20isolated%20(any%20Actor)%3F,%20clan%3A%20SteamID)%20async%20-%3E%20ClanOfficerListResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestclanofficerlistisolationclan"></a>
+    <h4 class="visually-hidden">func requestClanOfficerList(isolation: isolated (any Actor)?, clan: SteamID) async -&gt; ClanOfficerListResponse?</h4>
     
     
-    <a class="j2-item-title" href="#_requestclanofficerlistclan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestclanofficerlistclan"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestClanOfficerList<span class="j2-item-secondary">(</span>clan<span class="j2-item-secondary">: SteamID) async -&gt; ClanOfficerListResponse?</span></span>
+    <a class="j2-item-title" href="#_requestclanofficerlistisolationclan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestclanofficerlistisolationclan"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestClanOfficerList<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>clan<span class="j2-item-secondary">: SteamID) async -&gt; ClanOfficerListResponse?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestclanofficerlistclan">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestclanofficerlistisolationclan">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -9101,8 +9161,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestClanOfficerList(clan: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async
-    -&gt; <a href="../../steamworks/types/clanofficerlistresponse.html?swift">ClanOfficerListResponse</a>?</code></pre>
+    <pre><code class="language-swift">public func requestClanOfficerList(
+    isolation: isolated (any Actor)? = #isolation, clan: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
+) async -&gt; <a href="../../steamworks/types/clanofficerlistresponse.html?swift">ClanOfficerListResponse</a>?</code></pre>
   </div>
 
 
@@ -9163,7 +9224,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestEquippedProfileItems(
-    steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: @escaping (<a href="../../steamworks/types/equippedprofileitems.html?swift">EquippedProfileItems</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/equippedprofileitems.html?swift">EquippedProfileItems</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9190,16 +9252,16 @@
   
   
   
-    <section id="requestequippedprofileitemssteamid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestEquippedProfileItems(steamID%3A%20SteamID)%20async%20-%3E%20EquippedProfileItems%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestequippedprofileitemssteamid"></a>
-    <h4 class="visually-hidden">func requestEquippedProfileItems(steamID: SteamID) async -&gt; EquippedProfileItems?</h4>
+    <section id="requestequippedprofileitemsisolationsteamid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestEquippedProfileItems(isolation%3A%20isolated%20(any%20Actor)%3F,%20steamID%3A%20SteamID)%20async%20-%3E%20EquippedProfileItems%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestequippedprofileitemsisolationsteamid"></a>
+    <h4 class="visually-hidden">func requestEquippedProfileItems(isolation: isolated (any Actor)?, steamID: SteamID) async -&gt; EquippedProfileItems?</h4>
     
     
-    <a class="j2-item-title" href="#_requestequippedprofileitemssteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestequippedprofileitemssteamid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEquippedProfileItems<span class="j2-item-secondary">(</span>steamID<span class="j2-item-secondary">: SteamID) async -&gt; EquippedProfileItems?</span></span>
+    <a class="j2-item-title" href="#_requestequippedprofileitemsisolationsteamid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestequippedprofileitemsisolationsteamid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEquippedProfileItems<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>steamID<span class="j2-item-secondary">: SteamID) async -&gt; EquippedProfileItems?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestequippedprofileitemssteamid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestequippedprofileitemsisolationsteamid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -9223,8 +9285,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func requestEquippedProfileItems(steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>) async
-    -&gt; <a href="../../steamworks/types/equippedprofileitems.html?swift">EquippedProfileItems</a>?</code></pre>
+    <pre><code class="language-swift">public func requestEquippedProfileItems(
+    isolation: isolated (any Actor)? = #isolation, steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>
+) async -&gt; <a href="../../steamworks/types/equippedprofileitems.html?swift">EquippedProfileItems</a>?</code></pre>
   </div>
 
 
@@ -9586,8 +9649,8 @@ public func setListenForFriendsMessages(interceptEnabled: <a href="https://devel
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func setPersonaName(
-    personaName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, completion: @escaping (<a href="../../steamworks/types/setpersonanameresponse.html?swift">SetPersonaNameResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
-)</code></pre>
+    personaName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/setpersonanameresponse.html?swift">SetPersonaNameResponse</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9614,16 +9677,16 @@ public func setListenForFriendsMessages(interceptEnabled: <a href="https://devel
   
   
   
-    <section id="setpersonanamepersonaname" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20setPersonaName(personaName%3A%20String)%20async%20-%3E%20SetPersonaNameResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="setpersonanamepersonaname"></a>
-    <h4 class="visually-hidden">func setPersonaName(personaName: String) async -&gt; SetPersonaNameResponse?</h4>
+    <section id="setpersonanameisolationpersonaname" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setPersonaName(isolation%3A%20isolated%20(any%20Actor)%3F,%20personaName%3A%20String)%20async%20-%3E%20SetPersonaNameResponse%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="setpersonanameisolationpersonaname"></a>
+    <h4 class="visually-hidden">func setPersonaName(isolation: isolated (any Actor)?, personaName: String) async -&gt; SetPersonaNameResponse?</h4>
     
     
-    <a class="j2-item-title" href="#_setpersonanamepersonaname" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setpersonanamepersonaname"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>setPersonaName<span class="j2-item-secondary">(</span>personaName<span class="j2-item-secondary">: String) async -&gt; SetPersonaNameResponse?</span></span>
+    <a class="j2-item-title" href="#_setpersonanameisolationpersonaname" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setpersonanameisolationpersonaname"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setPersonaName<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>personaName<span class="j2-item-secondary">: String) async -&gt; SetPersonaNameResponse?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_setpersonanamepersonaname">
+    <div class="collapse  j2-item-popopen-wrapper" id="_setpersonanameisolationpersonaname">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -9647,7 +9710,9 @@ public func setListenForFriendsMessages(interceptEnabled: <a href="https://devel
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func setPersonaName(personaName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) async -&gt; <a href="../../steamworks/types/setpersonanameresponse.html?swift">SetPersonaNameResponse</a>?</code></pre>
+    <pre><code class="language-swift">public func setPersonaName(
+    isolation: isolated (any Actor)? = #isolation, personaName: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>
+) async -&gt; <a href="../../steamworks/types/setpersonanameresponse.html?swift">SetPersonaNameResponse</a>?</code></pre>
   </div>
 
 

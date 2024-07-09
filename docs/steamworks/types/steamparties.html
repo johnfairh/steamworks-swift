@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamParties - Steamworks v0.5.2</title>
+   <title>SteamParties - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamparties.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4149,6 +4190,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -4566,7 +4616,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func changeNumOpenSlots(
     beacon: <a href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>, openSlots: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/changenumopenslotscallback.html?swift">ChangeNumOpenSlotsCallback</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/changenumopenslotscallback.html?swift">ChangeNumOpenSlotsCallback</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4593,16 +4643,16 @@
   
   
   
-    <section id="changenumopenslotsbeaconopenslots" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20changeNumOpenSlots(beacon%3A%20PartyBeaconID,%20openSlots%3A%20Int)%20async%20-%3E%20ChangeNumOpenSlotsCallback%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="changenumopenslotsbeaconopenslots"></a>
-    <h4 class="visually-hidden">func changeNumOpenSlots(beacon: PartyBeaconID, openSlots: Int) async -&gt; ChangeNumOpenSlotsCallback?</h4>
+    <section id="changenumopenslotsisolationbeaconopenslots" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20changeNumOpenSlots(isolation%3A%20isolated%20(any%20Actor)%3F,%20beacon%3A%20PartyBeaconID,%20openSlots%3A%20Int)%20async%20-%3E%20ChangeNumOpenSlotsCallback%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="changenumopenslotsisolationbeaconopenslots"></a>
+    <h4 class="visually-hidden">func changeNumOpenSlots(isolation: isolated (any Actor)?, beacon: PartyBeaconID, openSlots: Int) async -&gt; ChangeNumOpenSlotsCallback?</h4>
     
     
-    <a class="j2-item-title" href="#_changenumopenslotsbeaconopenslots" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_changenumopenslotsbeaconopenslots"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>changeNumOpenSlots<span class="j2-item-secondary">(</span>beacon<span class="j2-item-secondary">: PartyBeaconID, </span>openSlots<span class="j2-item-secondary">: Int) async -&gt; ChangeNumOpenSlotsCallback?</span></span>
+    <a class="j2-item-title" href="#_changenumopenslotsisolationbeaconopenslots" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_changenumopenslotsisolationbeaconopenslots"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>changeNumOpenSlots<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>beacon<span class="j2-item-secondary">: PartyBeaconID, </span>openSlots<span class="j2-item-secondary">: Int) async -&gt; ChangeNumOpenSlotsCallback?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_changenumopenslotsbeaconopenslots">
+    <div class="collapse  j2-item-popopen-wrapper" id="_changenumopenslotsisolationbeaconopenslots">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4626,8 +4676,10 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func changeNumOpenSlots(beacon: <a href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>, openSlots: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) async
-    -&gt; <a href="../../steamworks/types/changenumopenslotscallback.html?swift">ChangeNumOpenSlotsCallback</a>?</code></pre>
+    <pre><code class="language-swift">public func changeNumOpenSlots(
+    isolation: isolated (any Actor)? = #isolation, beacon: <a href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>,
+    openSlots: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) async -&gt; <a href="../../steamworks/types/changenumopenslotscallback.html?swift">ChangeNumOpenSlotsCallback</a>?</code></pre>
   </div>
 
 
@@ -4690,7 +4742,7 @@
     <pre><code class="language-swift">public func createBeacon(
     openSlots: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, beaconLocation: <a href="../../steamworks/types/steampartybeaconlocation.html?swift">SteamPartyBeaconLocation</a>,
     connectString: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, metadata: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
-    completion: @escaping (<a href="../../steamworks/types/createbeaconcallback.html?swift">CreateBeaconCallback</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/createbeaconcallback.html?swift">CreateBeaconCallback</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4717,16 +4769,16 @@
   
   
   
-    <section id="createbeaconopenslotsbeaconlocationconnectstringmetadata" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20createBeacon(openSlots%3A%20Int,%20beaconLocation%3A%20SteamPartyBeaconLocation,%20connectString%3A%20String,%20metadata%3A%20String)%20async%20-%3E%20CreateBeaconCallback%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="createbeaconopenslotsbeaconlocationconnectstringmetadata"></a>
-    <h4 class="visually-hidden">func createBeacon(openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String) async -&gt; CreateBeaconCallback?</h4>
+    <section id="createbeaconisolationopenslotsbeaconlocationconnectstringmetadata" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createBeacon(isolation%3A%20isolated%20(any%20Actor)%3F,%20openSlots%3A%20Int,%20beaconLocation%3A%20SteamPartyBeaconLocation,%20connectString%3A%20String,%20metadata%3A%20String)%20async%20-%3E%20CreateBeaconCallback%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="createbeaconisolationopenslotsbeaconlocationconnectstringmetadata"></a>
+    <h4 class="visually-hidden">func createBeacon(isolation: isolated (any Actor)?, openSlots: Int, beaconLocation: SteamPartyBeaconLocation, connectString: String, metadata: String) async -&gt; CreateBeaconCallback?</h4>
     
     
-    <a class="j2-item-title" href="#_createbeaconopenslotsbeaconlocationconnectstringmetadata" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createbeaconopenslotsbeaconlocationconnectstringmetadata"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>createBeacon<span class="j2-item-secondary">(</span>openSlots<span class="j2-item-secondary">: Int, </span>beaconLocation<span class="j2-item-secondary">: SteamPartyBeaconLocation, </span>connectString<span class="j2-item-secondary">: String, </span>metadata<span class="j2-item-secondary">: String) async -&gt; CreateBeaconCallback?</span></span>
+    <a class="j2-item-title" href="#_createbeaconisolationopenslotsbeaconlocationconnectstringmetadata" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createbeaconisolationopenslotsbeaconlocationconnectstringmetadata"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createBeacon<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>openSlots<span class="j2-item-secondary">: Int, </span>beaconLocation<span class="j2-item-secondary">: SteamPartyBeaconLocation, </span>connectString<span class="j2-item-secondary">: String, </span>metadata<span class="j2-item-secondary">: String) async -&gt; CreateBeaconCallback?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_createbeaconopenslotsbeaconlocationconnectstringmetadata">
+    <div class="collapse  j2-item-popopen-wrapper" id="_createbeaconisolationopenslotsbeaconlocationconnectstringmetadata">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4751,8 +4803,9 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func createBeacon(
-    openSlots: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, beaconLocation: <a href="../../steamworks/types/steampartybeaconlocation.html?swift">SteamPartyBeaconLocation</a>,
-    connectString: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, metadata: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>
+    isolation: isolated (any Actor)? = #isolation, openSlots: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    beaconLocation: <a href="../../steamworks/types/steampartybeaconlocation.html?swift">SteamPartyBeaconLocation</a>, connectString: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    metadata: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>
 ) async -&gt; <a href="../../steamworks/types/createbeaconcallback.html?swift">CreateBeaconCallback</a>?</code></pre>
   </div>
 
@@ -5243,7 +5296,8 @@ public func destroyBeacon(beacon: <a href="../../steamworks/types/partybeaconid1
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func joinParty(
-    beaconID: <a href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>, completion: @escaping (<a href="../../steamworks/types/joinpartycallback.html?swift">JoinPartyCallback</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    beaconID: <a href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/joinpartycallback.html?swift">JoinPartyCallback</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5270,16 +5324,16 @@ public func destroyBeacon(beacon: <a href="../../steamworks/types/partybeaconid1
   
   
   
-    <section id="joinpartybeaconid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20joinParty(beaconID%3A%20PartyBeaconID)%20async%20-%3E%20JoinPartyCallback%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="joinpartybeaconid"></a>
-    <h4 class="visually-hidden">func joinParty(beaconID: PartyBeaconID) async -&gt; JoinPartyCallback?</h4>
+    <section id="joinpartyisolationbeaconid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20joinParty(isolation%3A%20isolated%20(any%20Actor)%3F,%20beaconID%3A%20PartyBeaconID)%20async%20-%3E%20JoinPartyCallback%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="joinpartyisolationbeaconid"></a>
+    <h4 class="visually-hidden">func joinParty(isolation: isolated (any Actor)?, beaconID: PartyBeaconID) async -&gt; JoinPartyCallback?</h4>
     
     
-    <a class="j2-item-title" href="#_joinpartybeaconid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_joinpartybeaconid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>joinParty<span class="j2-item-secondary">(</span>beaconID<span class="j2-item-secondary">: PartyBeaconID) async -&gt; JoinPartyCallback?</span></span>
+    <a class="j2-item-title" href="#_joinpartyisolationbeaconid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_joinpartyisolationbeaconid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>joinParty<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>beaconID<span class="j2-item-secondary">: PartyBeaconID) async -&gt; JoinPartyCallback?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_joinpartybeaconid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_joinpartyisolationbeaconid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5303,7 +5357,9 @@ public func destroyBeacon(beacon: <a href="../../steamworks/types/partybeaconid1
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func joinParty(beaconID: <a href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>) async -&gt; <a href="../../steamworks/types/joinpartycallback.html?swift">JoinPartyCallback</a>?</code></pre>
+    <pre><code class="language-swift">public func joinParty(
+    isolation: isolated (any Actor)? = #isolation, beaconID: <a href="../../steamworks/types/partybeaconid1.html?swift">PartyBeaconID</a>
+) async -&gt; <a href="../../steamworks/types/joinpartycallback.html?swift">JoinPartyCallback</a>?</code></pre>
   </div>
 
 

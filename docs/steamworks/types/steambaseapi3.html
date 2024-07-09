@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamBaseAPI - Steamworks v0.5.2</title>
+   <title>SteamBaseAPI - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steambaseapi3.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4149,6 +4190,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -4425,7 +4475,7 @@
             
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public class SteamBaseAPI: @unchecked <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
+    <pre><code class="language-swift">public class SteamBaseAPI: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">Sendable</a></code></pre>
   </div>
 
 
@@ -5156,7 +5206,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onActiveBeaconsUpdated(_ client: @escaping (<a href="../../steamworks/types/activebeaconsupdated1.html?swift">ActiveBeaconsUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onActiveBeaconsUpdated(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/activebeaconsupdated1.html?swift">ActiveBeaconsUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5217,7 +5268,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onAppProofOfPurchaseKeyResponse(
-    _ client: @escaping (<a href="../../steamworks/types/appproofofpurchasekeyresponse1.html?swift">AppProofOfPurchaseKeyResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/appproofofpurchasekeyresponse1.html?swift">AppProofOfPurchaseKeyResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5278,7 +5329,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onAppResumingFromSuspend(
-    _ client: @escaping (<a href="../../steamworks/types/appresumingfromsuspend1.html?swift">AppResumingFromSuspend</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/appresumingfromsuspend1.html?swift">AppResumingFromSuspend</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5339,7 +5390,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onAvailableBeaconLocationsUpdated(
-    _ client: @escaping (<a href="../../steamworks/types/availablebeaconlocationsupdated1.html?swift">AvailableBeaconLocationsUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/availablebeaconlocationsupdated1.html?swift">AvailableBeaconLocationsUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5399,7 +5450,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onAvatarImageLoaded(_ client: @escaping (<a href="../../steamworks/types/avatarimageloaded1.html?swift">AvatarImageLoaded</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onAvatarImageLoaded(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/avatarimageloaded1.html?swift">AvatarImageLoaded</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5459,7 +5511,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onClientGameServerDeny(_ client: @escaping (<a href="../../steamworks/types/clientgameserverdeny1.html?swift">ClientGameServerDeny</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onClientGameServerDeny(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/clientgameserverdeny1.html?swift">ClientGameServerDeny</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5519,7 +5572,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onDlcInstalled(_ client: @escaping (<a href="../../steamworks/types/dlcinstalled1.html?swift">DlcInstalled</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onDlcInstalled(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/dlcinstalled1.html?swift">DlcInstalled</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5579,7 +5632,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onDownloadItemResult(_ client: @escaping (<a href="../../steamworks/types/downloaditemresult1.html?swift">DownloadItemResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onDownloadItemResult(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/downloaditemresult1.html?swift">DownloadItemResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5639,7 +5693,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onDurationControl(_ client: @escaping (<a href="../../steamworks/types/durationcontrol1.html?swift">DurationControl</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onDurationControl(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/durationcontrol1.html?swift">DurationControl</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5700,7 +5754,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onEndGameResultCallback(
-    _ client: @escaping (<a href="../../steamworks/types/endgameresultcallback1.html?swift">EndGameResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/endgameresultcallback1.html?swift">EndGameResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5761,7 +5815,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onEquippedProfileItemsChanged(
-    _ client: @escaping (<a href="../../steamworks/types/equippedprofileitemschanged1.html?swift">EquippedProfileItemsChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/equippedprofileitemschanged1.html?swift">EquippedProfileItemsChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5822,7 +5876,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onFavoritesListAccountsUpdated(
-    _ client: @escaping (<a href="../../steamworks/types/favoriteslistaccountsupdated1.html?swift">FavoritesListAccountsUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/favoriteslistaccountsupdated1.html?swift">FavoritesListAccountsUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5882,7 +5936,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onFavoritesListChanged(_ client: @escaping (<a href="../../steamworks/types/favoriteslistchanged1.html?swift">FavoritesListChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onFavoritesListChanged(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/favoriteslistchanged1.html?swift">FavoritesListChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5943,7 +5998,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onFilterTextDictionaryChanged(
-    _ client: @escaping (<a href="../../steamworks/types/filtertextdictionarychanged1.html?swift">FilterTextDictionaryChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/filtertextdictionarychanged1.html?swift">FilterTextDictionaryChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6004,7 +6059,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onFloatingGamepadTextInputDismissed(
-    _ client: @escaping (<a href="../../steamworks/types/floatinggamepadtextinputdismissed1.html?swift">FloatingGamepadTextInputDismissed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/floatinggamepadtextinputdismissed1.html?swift">FloatingGamepadTextInputDismissed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6065,7 +6120,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onFriendRichPresenceUpdate(
-    _ client: @escaping (<a href="../../steamworks/types/friendrichpresenceupdate1.html?swift">FriendRichPresenceUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/friendrichpresenceupdate1.html?swift">FriendRichPresenceUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6126,7 +6181,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGSClientAchievementStatus(
-    _ client: @escaping (<a href="../../steamworks/types/gsclientachievementstatus1.html?swift">GSClientAchievementStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsclientachievementstatus1.html?swift">GSClientAchievementStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6186,7 +6241,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGSClientApprove(_ client: @escaping (<a href="../../steamworks/types/gsclientapprove1.html?swift">GSClientApprove</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGSClientApprove(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsclientapprove1.html?swift">GSClientApprove</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6246,7 +6301,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGSClientDeny(_ client: @escaping (<a href="../../steamworks/types/gsclientdeny1.html?swift">GSClientDeny</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGSClientDeny(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsclientdeny1.html?swift">GSClientDeny</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6306,7 +6361,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGSClientGroupStatus(_ client: @escaping (<a href="../../steamworks/types/gsclientgroupstatus1.html?swift">GSClientGroupStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGSClientGroupStatus(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsclientgroupstatus1.html?swift">GSClientGroupStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6366,7 +6422,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGSClientKick(_ client: @escaping (<a href="../../steamworks/types/gsclientkick1.html?swift">GSClientKick</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGSClientKick(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsclientkick1.html?swift">GSClientKick</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6426,7 +6482,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGSGameplayStats(_ client: @escaping (<a href="../../steamworks/types/gsgameplaystats1.html?swift">GSGameplayStats</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGSGameplayStats(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsgameplaystats1.html?swift">GSGameplayStats</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6486,7 +6542,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGSPolicyResponse(_ client: @escaping (<a href="../../steamworks/types/gspolicyresponse1.html?swift">GSPolicyResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGSPolicyResponse(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gspolicyresponse1.html?swift">GSPolicyResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6546,7 +6603,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGSStatsUnloaded(_ client: @escaping (<a href="../../steamworks/types/gsstatsunloaded1.html?swift">GSStatsUnloaded</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGSStatsUnloaded(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsstatsunloaded1.html?swift">GSStatsUnloaded</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6607,7 +6664,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGameConnectedChatJoin(
-    _ client: @escaping (<a href="../../steamworks/types/gameconnectedchatjoin1.html?swift">GameConnectedChatJoin</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gameconnectedchatjoin1.html?swift">GameConnectedChatJoin</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6668,7 +6725,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGameConnectedChatLeave(
-    _ client: @escaping (<a href="../../steamworks/types/gameconnectedchatleave1.html?swift">GameConnectedChatLeave</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gameconnectedchatleave1.html?swift">GameConnectedChatLeave</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6729,7 +6786,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGameConnectedClanChatMsg(
-    _ client: @escaping (<a href="../../steamworks/types/gameconnectedclanchatmsg1.html?swift">GameConnectedClanChatMsg</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gameconnectedclanchatmsg1.html?swift">GameConnectedClanChatMsg</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6790,7 +6847,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGameConnectedFriendChatMsg(
-    _ client: @escaping (<a href="../../steamworks/types/gameconnectedfriendchatmsg1.html?swift">GameConnectedFriendChatMsg</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gameconnectedfriendchatmsg1.html?swift">GameConnectedFriendChatMsg</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6851,7 +6908,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGameLobbyJoinRequested(
-    _ client: @escaping (<a href="../../steamworks/types/gamelobbyjoinrequested1.html?swift">GameLobbyJoinRequested</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gamelobbyjoinrequested1.html?swift">GameLobbyJoinRequested</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6911,7 +6968,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGameOverlayActivated(_ client: @escaping (<a href="../../steamworks/types/gameoverlayactivated1.html?swift">GameOverlayActivated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGameOverlayActivated(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gameoverlayactivated1.html?swift">GameOverlayActivated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6972,7 +7030,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGameRichPresenceJoinRequested(
-    _ client: @escaping (<a href="../../steamworks/types/gamerichpresencejoinrequested1.html?swift">GameRichPresenceJoinRequested</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gamerichpresencejoinrequested1.html?swift">GameRichPresenceJoinRequested</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7033,7 +7091,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGameServerChangeRequested(
-    _ client: @escaping (<a href="../../steamworks/types/gameserverchangerequested1.html?swift">GameServerChangeRequested</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gameserverchangerequested1.html?swift">GameServerChangeRequested</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7093,7 +7151,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGameWebCallback(_ client: @escaping (<a href="../../steamworks/types/gamewebcallback1.html?swift">GameWebCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGameWebCallback(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gamewebcallback1.html?swift">GameWebCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7154,7 +7212,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGamepadTextInputDismissed(
-    _ client: @escaping (<a href="../../steamworks/types/gamepadtextinputdismissed1.html?swift">GamepadTextInputDismissed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gamepadtextinputdismissed1.html?swift">GamepadTextInputDismissed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7215,7 +7273,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGetAuthSessionTicketResponse(
-    _ client: @escaping (<a href="../../steamworks/types/getauthsessionticketresponse1.html?swift">GetAuthSessionTicketResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/getauthsessionticketresponse1.html?swift">GetAuthSessionTicketResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7275,7 +7333,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGetOPFSettingsResult(_ client: @escaping (<a href="../../steamworks/types/getopfsettingsresult1.html?swift">GetOPFSettingsResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGetOPFSettingsResult(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/getopfsettingsresult1.html?swift">GetOPFSettingsResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7336,7 +7395,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onGetTicketForWebApiResponse(
-    _ client: @escaping (<a href="../../steamworks/types/getticketforwebapiresponse1.html?swift">GetTicketForWebApiResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/getticketforwebapiresponse1.html?swift">GetTicketForWebApiResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7396,7 +7455,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onGetVideoURLResult(_ client: @escaping (<a href="../../steamworks/types/getvideourlresult1.html?swift">GetVideoURLResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onGetVideoURLResult(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/getvideourlresult1.html?swift">GetVideoURLResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7456,7 +7516,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLBrowserRestarted(_ client: @escaping (<a href="../../steamworks/types/htmlbrowserrestarted1.html?swift">HTMLBrowserRestarted</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLBrowserRestarted(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlbrowserrestarted1.html?swift">HTMLBrowserRestarted</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7517,7 +7578,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onHTMLCanGoBackAndForward(
-    _ client: @escaping (<a href="../../steamworks/types/htmlcangobackandforward1.html?swift">HTMLCanGoBackAndForward</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlcangobackandforward1.html?swift">HTMLCanGoBackAndForward</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7577,7 +7638,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLChangedTitle(_ client: @escaping (<a href="../../steamworks/types/htmlchangedtitle1.html?swift">HTMLChangedTitle</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLChangedTitle(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlchangedtitle1.html?swift">HTMLChangedTitle</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7637,7 +7699,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLCloseBrowser(_ client: @escaping (<a href="../../steamworks/types/htmlclosebrowser1.html?swift">HTMLCloseBrowser</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLCloseBrowser(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlclosebrowser1.html?swift">HTMLCloseBrowser</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7697,7 +7760,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLFileOpenDialog(_ client: @escaping (<a href="../../steamworks/types/htmlfileopendialog1.html?swift">HTMLFileOpenDialog</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLFileOpenDialog(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlfileopendialog1.html?swift">HTMLFileOpenDialog</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7757,7 +7821,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLFinishedRequest(_ client: @escaping (<a href="../../steamworks/types/htmlfinishedrequest1.html?swift">HTMLFinishedRequest</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLFinishedRequest(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlfinishedrequest1.html?swift">HTMLFinishedRequest</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7817,7 +7882,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLHideToolTip(_ client: @escaping (<a href="../../steamworks/types/htmlhidetooltip1.html?swift">HTMLHideToolTip</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLHideToolTip(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlhidetooltip1.html?swift">HTMLHideToolTip</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7877,7 +7942,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLHorizontalScroll(_ client: @escaping (<a href="../../steamworks/types/htmlhorizontalscroll1.html?swift">HTMLHorizontalScroll</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLHorizontalScroll(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlhorizontalscroll1.html?swift">HTMLHorizontalScroll</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7937,7 +8003,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLJSAlert(_ client: @escaping (<a href="../../steamworks/types/htmljsalert1.html?swift">HTMLJSAlert</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLJSAlert(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmljsalert1.html?swift">HTMLJSAlert</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7997,7 +8063,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLJSConfirm(_ client: @escaping (<a href="../../steamworks/types/htmljsconfirm1.html?swift">HTMLJSConfirm</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLJSConfirm(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmljsconfirm1.html?swift">HTMLJSConfirm</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8057,7 +8123,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLLinkAtPosition(_ client: @escaping (<a href="../../steamworks/types/htmllinkatposition1.html?swift">HTMLLinkAtPosition</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLLinkAtPosition(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmllinkatposition1.html?swift">HTMLLinkAtPosition</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8117,7 +8184,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLNeedsPaint(_ client: @escaping (<a href="../../steamworks/types/htmlneedspaint1.html?swift">HTMLNeedsPaint</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLNeedsPaint(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlneedspaint1.html?swift">HTMLNeedsPaint</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8177,7 +8244,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLNewWindow(_ client: @escaping (<a href="../../steamworks/types/htmlnewwindow1.html?swift">HTMLNewWindow</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLNewWindow(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlnewwindow1.html?swift">HTMLNewWindow</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8237,7 +8304,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLOpenLinkInNewTab(_ client: @escaping (<a href="../../steamworks/types/htmlopenlinkinnewtab1.html?swift">HTMLOpenLinkInNewTab</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLOpenLinkInNewTab(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlopenlinkinnewtab1.html?swift">HTMLOpenLinkInNewTab</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8297,7 +8365,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLSearchResults(_ client: @escaping (<a href="../../steamworks/types/htmlsearchresults1.html?swift">HTMLSearchResults</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLSearchResults(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlsearchresults1.html?swift">HTMLSearchResults</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8357,7 +8426,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLSetCursor(_ client: @escaping (<a href="../../steamworks/types/htmlsetcursor1.html?swift">HTMLSetCursor</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLSetCursor(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlsetcursor1.html?swift">HTMLSetCursor</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8417,7 +8486,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLShowToolTip(_ client: @escaping (<a href="../../steamworks/types/htmlshowtooltip1.html?swift">HTMLShowToolTip</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLShowToolTip(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlshowtooltip1.html?swift">HTMLShowToolTip</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8477,7 +8546,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLStartRequest(_ client: @escaping (<a href="../../steamworks/types/htmlstartrequest1.html?swift">HTMLStartRequest</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLStartRequest(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlstartrequest1.html?swift">HTMLStartRequest</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8537,7 +8607,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLStatusText(_ client: @escaping (<a href="../../steamworks/types/htmlstatustext1.html?swift">HTMLStatusText</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLStatusText(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlstatustext1.html?swift">HTMLStatusText</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8597,7 +8667,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLURLChanged(_ client: @escaping (<a href="../../steamworks/types/htmlurlchanged1.html?swift">HTMLURLChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLURLChanged(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlurlchanged1.html?swift">HTMLURLChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8657,7 +8727,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLUpdateToolTip(_ client: @escaping (<a href="../../steamworks/types/htmlupdatetooltip1.html?swift">HTMLUpdateToolTip</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLUpdateToolTip(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlupdatetooltip1.html?swift">HTMLUpdateToolTip</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8717,7 +8788,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onHTMLVerticalScroll(_ client: @escaping (<a href="../../steamworks/types/htmlverticalscroll1.html?swift">HTMLVerticalScroll</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onHTMLVerticalScroll(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/htmlverticalscroll1.html?swift">HTMLVerticalScroll</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8778,7 +8850,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onHTTPRequestDataReceived(
-    _ client: @escaping (<a href="../../steamworks/types/httprequestdatareceived1.html?swift">HTTPRequestDataReceived</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/httprequestdatareceived1.html?swift">HTTPRequestDataReceived</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8839,7 +8911,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onHTTPRequestHeadersReceived(
-    _ client: @escaping (<a href="../../steamworks/types/httprequestheadersreceived1.html?swift">HTTPRequestHeadersReceived</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/httprequestheadersreceived1.html?swift">HTTPRequestHeadersReceived</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8899,7 +8971,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onIPCFailure(_ client: @escaping (<a href="../../steamworks/types/ipcfailure1.html?swift">IPCFailure</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onIPCFailure(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/ipcfailure1.html?swift">IPCFailure</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8959,7 +9031,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onIPCountry(_ client: @escaping (<a href="../../steamworks/types/ipcountry1.html?swift">IPCountry</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onIPCountry(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/ipcountry1.html?swift">IPCountry</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9019,7 +9091,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onItemInstalled(_ client: @escaping (<a href="../../steamworks/types/iteminstalled1.html?swift">ItemInstalled</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onItemInstalled(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/iteminstalled1.html?swift">ItemInstalled</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9079,7 +9151,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onLicensesUpdated(_ client: @escaping (<a href="../../steamworks/types/licensesupdated1.html?swift">LicensesUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onLicensesUpdated(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/licensesupdated1.html?swift">LicensesUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9139,7 +9211,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onLobbyChatMsg(_ client: @escaping (<a href="../../steamworks/types/lobbychatmsg1.html?swift">LobbyChatMsg</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onLobbyChatMsg(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbychatmsg1.html?swift">LobbyChatMsg</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9199,7 +9271,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onLobbyChatUpdate(_ client: @escaping (<a href="../../steamworks/types/lobbychatupdate1.html?swift">LobbyChatUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onLobbyChatUpdate(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbychatupdate1.html?swift">LobbyChatUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9259,7 +9331,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onLobbyDataUpdate(_ client: @escaping (<a href="../../steamworks/types/lobbydataupdate1.html?swift">LobbyDataUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onLobbyDataUpdate(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbydataupdate1.html?swift">LobbyDataUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9319,7 +9391,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onLobbyGameCreated(_ client: @escaping (<a href="../../steamworks/types/lobbygamecreated1.html?swift">LobbyGameCreated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onLobbyGameCreated(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbygamecreated1.html?swift">LobbyGameCreated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9379,7 +9452,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onLobbyInvite(_ client: @escaping (<a href="../../steamworks/types/lobbyinvite1.html?swift">LobbyInvite</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onLobbyInvite(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbyinvite1.html?swift">LobbyInvite</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9439,7 +9512,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onLobbyKicked(_ client: @escaping (<a href="../../steamworks/types/lobbykicked1.html?swift">LobbyKicked</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onLobbyKicked(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbykicked1.html?swift">LobbyKicked</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9499,7 +9572,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onLowBatteryPower(_ client: @escaping (<a href="../../steamworks/types/lowbatterypower1.html?swift">LowBatteryPower</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onLowBatteryPower(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lowbatterypower1.html?swift">LowBatteryPower</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9560,7 +9633,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMicroTxnAuthorizationResponse(
-    _ client: @escaping (<a href="../../steamworks/types/microtxnauthorizationresponse1.html?swift">MicroTxnAuthorizationResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/microtxnauthorizationresponse1.html?swift">MicroTxnAuthorizationResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9621,7 +9694,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerRemoteToFront(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerremotetofront1.html?swift">MusicPlayerRemoteToFront</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerremotetofront1.html?swift">MusicPlayerRemoteToFront</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9682,7 +9755,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerRemoteWillActivate(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerremotewillactivate1.html?swift">MusicPlayerRemoteWillActivate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerremotewillactivate1.html?swift">MusicPlayerRemoteWillActivate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9743,7 +9816,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerRemoteWillDeactivate(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerremotewilldeactivate1.html?swift">MusicPlayerRemoteWillDeactivate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerremotewilldeactivate1.html?swift">MusicPlayerRemoteWillDeactivate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9804,7 +9877,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerSelectsPlaylistEntry(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerselectsplaylistentry1.html?swift">MusicPlayerSelectsPlaylistEntry</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerselectsplaylistentry1.html?swift">MusicPlayerSelectsPlaylistEntry</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9865,7 +9938,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerSelectsQueueEntry(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerselectsqueueentry1.html?swift">MusicPlayerSelectsQueueEntry</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerselectsqueueentry1.html?swift">MusicPlayerSelectsQueueEntry</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9926,7 +9999,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerWantsLooped(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerwantslooped1.html?swift">MusicPlayerWantsLooped</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwantslooped1.html?swift">MusicPlayerWantsLooped</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9987,7 +10060,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerWantsPause(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerwantspause1.html?swift">MusicPlayerWantsPause</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwantspause1.html?swift">MusicPlayerWantsPause</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10048,7 +10121,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerWantsPlayNext(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerwantsplaynext1.html?swift">MusicPlayerWantsPlayNext</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwantsplaynext1.html?swift">MusicPlayerWantsPlayNext</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10109,7 +10182,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerWantsPlayPrevious(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerwantsplayprevious1.html?swift">MusicPlayerWantsPlayPrevious</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwantsplayprevious1.html?swift">MusicPlayerWantsPlayPrevious</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10169,7 +10242,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onMusicPlayerWantsPlay(_ client: @escaping (<a href="../../steamworks/types/musicplayerwantsplay1.html?swift">MusicPlayerWantsPlay</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onMusicPlayerWantsPlay(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwantsplay1.html?swift">MusicPlayerWantsPlay</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10230,7 +10304,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerWantsPlayingRepeatStatus(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerwantsplayingrepeatstatus1.html?swift">MusicPlayerWantsPlayingRepeatStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwantsplayingrepeatstatus1.html?swift">MusicPlayerWantsPlayingRepeatStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10291,7 +10365,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerWantsShuffled(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerwantsshuffled1.html?swift">MusicPlayerWantsShuffled</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwantsshuffled1.html?swift">MusicPlayerWantsShuffled</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10352,7 +10426,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onMusicPlayerWantsVolume(
-    _ client: @escaping (<a href="../../steamworks/types/musicplayerwantsvolume1.html?swift">MusicPlayerWantsVolume</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwantsvolume1.html?swift">MusicPlayerWantsVolume</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10412,7 +10486,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onMusicPlayerWillQuit(_ client: @escaping (<a href="../../steamworks/types/musicplayerwillquit1.html?swift">MusicPlayerWillQuit</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onMusicPlayerWillQuit(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/musicplayerwillquit1.html?swift">MusicPlayerWillQuit</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10473,7 +10548,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onNewUrlLaunchParameters(
-    _ client: @escaping (<a href="../../steamworks/types/newurllaunchparameters1.html?swift">NewUrlLaunchParameters</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/newurllaunchparameters1.html?swift">NewUrlLaunchParameters</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10534,7 +10609,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onOverlayBrowserProtocolNavigation(
-    _ client: @escaping (<a href="../../steamworks/types/overlaybrowserprotocolnavigation1.html?swift">OverlayBrowserProtocolNavigation</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/overlaybrowserprotocolnavigation1.html?swift">OverlayBrowserProtocolNavigation</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10594,7 +10669,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onPS3TrophiesInstalled(_ client: @escaping (<a href="../../steamworks/types/ps3trophiesinstalled1.html?swift">PS3TrophiesInstalled</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onPS3TrophiesInstalled(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/ps3trophiesinstalled1.html?swift">PS3TrophiesInstalled</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10655,7 +10731,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onPSNGameBootInviteResult(
-    _ client: @escaping (<a href="../../steamworks/types/psngamebootinviteresult1.html?swift">PSNGameBootInviteResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/psngamebootinviteresult1.html?swift">PSNGameBootInviteResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10715,7 +10791,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onPersonaStateChange(_ client: @escaping (<a href="../../steamworks/types/personastatechange1.html?swift">PersonaStateChange</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onPersonaStateChange(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/personastatechange1.html?swift">PersonaStateChange</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10776,7 +10853,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onPlaybackStatusHasChanged(
-    _ client: @escaping (<a href="../../steamworks/types/playbackstatushaschanged1.html?swift">PlaybackStatusHasChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/playbackstatushaschanged1.html?swift">PlaybackStatusHasChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10837,8 +10914,9 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRemoteStorageEnumerateUserSharedWorkshopFilesResult(
-    _ client: @escaping (<a href="../../steamworks/types/remotestorageenumerateusersharedworkshopfilesresult1.html?swift">RemoteStorageEnumerateUserSharedWorkshopFilesResult</a>) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestorageenumerateusersharedworkshopfilesresult1.html?swift">RemoteStorageEnumerateUserSharedWorkshopFilesResult</a>
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10899,7 +10977,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRemoteStorageLocalFileChange(
-    _ client: @escaping (<a href="../../steamworks/types/remotestoragelocalfilechange1.html?swift">RemoteStorageLocalFileChange</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragelocalfilechange1.html?swift">RemoteStorageLocalFileChange</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10960,7 +11038,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRemoteStoragePublishFileResult(
-    _ client: @escaping (<a href="../../steamworks/types/remotestoragepublishfileresult1.html?swift">RemoteStoragePublishFileResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishfileresult1.html?swift">RemoteStoragePublishFileResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11021,7 +11099,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRemoteStoragePublishedFileDeleted(
-    _ client: @escaping (<a href="../../steamworks/types/remotestoragepublishedfiledeleted1.html?swift">RemoteStoragePublishedFileDeleted</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishedfiledeleted1.html?swift">RemoteStoragePublishedFileDeleted</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11082,7 +11160,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRemoteStoragePublishedFileSubscribed(
-    _ client: @escaping (<a href="../../steamworks/types/remotestoragepublishedfilesubscribed1.html?swift">RemoteStoragePublishedFileSubscribed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishedfilesubscribed1.html?swift">RemoteStoragePublishedFileSubscribed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
+)</code></pre>
   </div>
 
 
@@ -11143,7 +11222,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRemoteStoragePublishedFileUnsubscribed(
-    _ client: @escaping (<a href="../../steamworks/types/remotestoragepublishedfileunsubscribed1.html?swift">RemoteStoragePublishedFileUnsubscribed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishedfileunsubscribed1.html?swift">RemoteStoragePublishedFileUnsubscribed</a>) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11204,7 +11284,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRemoteStoragePublishedFileUpdated(
-    _ client: @escaping (<a href="../../steamworks/types/remotestoragepublishedfileupdated1.html?swift">RemoteStoragePublishedFileUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishedfileupdated1.html?swift">RemoteStoragePublishedFileUpdated</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11265,7 +11345,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRemoteStorageUserVoteDetails(
-    _ client: @escaping (<a href="../../steamworks/types/remotestorageuservotedetails1.html?swift">RemoteStorageUserVoteDetails</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestorageuservotedetails1.html?swift">RemoteStorageUserVoteDetails</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11326,7 +11406,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRequestPlayersForGameFinalResultCallback(
-    _ client: @escaping (<a href="../../steamworks/types/requestplayersforgamefinalresultcallback1.html?swift">RequestPlayersForGameFinalResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/requestplayersforgamefinalresultcallback1.html?swift">RequestPlayersForGameFinalResultCallback</a>) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11387,7 +11468,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRequestPlayersForGameProgressCallback(
-    _ client: @escaping (<a href="../../steamworks/types/requestplayersforgameprogresscallback1.html?swift">RequestPlayersForGameProgressCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/requestplayersforgameprogresscallback1.html?swift">RequestPlayersForGameProgressCallback</a>) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11448,7 +11530,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onRequestPlayersForGameResultCallback(
-    _ client: @escaping (<a href="../../steamworks/types/requestplayersforgameresultcallback1.html?swift">RequestPlayersForGameResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/requestplayersforgameresultcallback1.html?swift">RequestPlayersForGameResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11509,7 +11591,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onReservationNotificationCallback(
-    _ client: @escaping (<a href="../../steamworks/types/reservationnotificationcallback1.html?swift">ReservationNotificationCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/reservationnotificationcallback1.html?swift">ReservationNotificationCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11569,7 +11651,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onScreenshotReady(_ client: @escaping (<a href="../../steamworks/types/screenshotready1.html?swift">ScreenshotReady</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onScreenshotReady(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/screenshotready1.html?swift">ScreenshotReady</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11629,7 +11711,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onScreenshotRequested(_ client: @escaping (<a href="../../steamworks/types/screenshotrequested1.html?swift">ScreenshotRequested</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onScreenshotRequested(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/screenshotrequested1.html?swift">ScreenshotRequested</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11690,7 +11773,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSearchForGameProgressCallback(
-    _ client: @escaping (<a href="../../steamworks/types/searchforgameprogresscallback1.html?swift">SearchForGameProgressCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/searchforgameprogresscallback1.html?swift">SearchForGameProgressCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11751,7 +11834,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSearchForGameResultCallback(
-    _ client: @escaping (<a href="../../steamworks/types/searchforgameresultcallback1.html?swift">SearchForGameResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/searchforgameresultcallback1.html?swift">SearchForGameResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11812,7 +11895,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamAPICallCompleted(
-    _ client: @escaping (<a href="../../steamworks/types/steamapicallcompleted1.html?swift">SteamAPICallCompleted</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamapicallcompleted1.html?swift">SteamAPICallCompleted</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11873,7 +11956,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamInputConfigurationLoaded(
-    _ client: @escaping (<a href="../../steamworks/types/steaminputconfigurationloaded1.html?swift">SteamInputConfigurationLoaded</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminputconfigurationloaded1.html?swift">SteamInputConfigurationLoaded</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11934,7 +12017,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamInputDeviceConnected(
-    _ client: @escaping (<a href="../../steamworks/types/steaminputdeviceconnected1.html?swift">SteamInputDeviceConnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminputdeviceconnected1.html?swift">SteamInputDeviceConnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11995,7 +12078,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamInputDeviceDisconnected(
-    _ client: @escaping (<a href="../../steamworks/types/steaminputdevicedisconnected1.html?swift">SteamInputDeviceDisconnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminputdevicedisconnected1.html?swift">SteamInputDeviceDisconnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12056,7 +12139,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamInputGamepadSlotChange(
-    _ client: @escaping (<a href="../../steamworks/types/steaminputgamepadslotchange1.html?swift">SteamInputGamepadSlotChange</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminputgamepadslotchange1.html?swift">SteamInputGamepadSlotChange</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12117,7 +12200,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamInventoryDefinitionUpdate(
-    _ client: @escaping (<a href="../../steamworks/types/steaminventorydefinitionupdate1.html?swift">SteamInventoryDefinitionUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminventorydefinitionupdate1.html?swift">SteamInventoryDefinitionUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12178,7 +12261,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamInventoryFullUpdate(
-    _ client: @escaping (<a href="../../steamworks/types/steaminventoryfullupdate1.html?swift">SteamInventoryFullUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminventoryfullupdate1.html?swift">SteamInventoryFullUpdate</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12239,7 +12322,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamInventoryResultReady(
-    _ client: @escaping (<a href="../../steamworks/types/steaminventoryresultready1.html?swift">SteamInventoryResultReady</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminventoryresultready1.html?swift">SteamInventoryResultReady</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12300,7 +12383,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamNetAuthenticationStatus(
-    _ client: @escaping (<a href="../../steamworks/types/steamnetauthenticationstatus1.html?swift">SteamNetAuthenticationStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamnetauthenticationstatus1.html?swift">SteamNetAuthenticationStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12361,7 +12444,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamNetConnectionStatusChangedCallback(
-    _ client: @escaping (<a href="../../steamworks/types/steamnetconnectionstatuschangedcallback1.html?swift">SteamNetConnectionStatusChangedCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamnetconnectionstatuschangedcallback1.html?swift">SteamNetConnectionStatusChangedCallback</a>) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12422,7 +12506,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamNetworkingFakeIPResult(
-    _ client: @escaping (<a href="../../steamworks/types/steamnetworkingfakeipresult1.html?swift">SteamNetworkingFakeIPResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamnetworkingfakeipresult1.html?swift">SteamNetworkingFakeIPResult</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12483,7 +12567,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamNetworkingMessagesSessionFailed(
-    _ client: @escaping (<a href="../../steamworks/types/steamnetworkingmessagessessionfailed1.html?swift">SteamNetworkingMessagesSessionFailed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamnetworkingmessagessessionfailed1.html?swift">SteamNetworkingMessagesSessionFailed</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
+)</code></pre>
   </div>
 
 
@@ -12544,7 +12629,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamNetworkingMessagesSessionRequest(
-    _ client: @escaping (<a href="../../steamworks/types/steamnetworkingmessagessessionrequest1.html?swift">SteamNetworkingMessagesSessionRequest</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamnetworkingmessagessessionrequest1.html?swift">SteamNetworkingMessagesSessionRequest</a>) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12605,7 +12691,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamParentalSettingsChanged(
-    _ client: @escaping (<a href="../../steamworks/types/steamparentalsettingschanged1.html?swift">SteamParentalSettingsChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamparentalsettingschanged1.html?swift">SteamParentalSettingsChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12666,7 +12752,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamRelayNetworkStatus(
-    _ client: @escaping (<a href="../../steamworks/types/steamrelaynetworkstatus1.html?swift">SteamRelayNetworkStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamrelaynetworkstatus1.html?swift">SteamRelayNetworkStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12727,7 +12813,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamRemotePlaySessionConnected(
-    _ client: @escaping (<a href="../../steamworks/types/steamremoteplaysessionconnected1.html?swift">SteamRemotePlaySessionConnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamremoteplaysessionconnected1.html?swift">SteamRemotePlaySessionConnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12788,7 +12874,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamRemotePlaySessionDisconnected(
-    _ client: @escaping (<a href="../../steamworks/types/steamremoteplaysessiondisconnected1.html?swift">SteamRemotePlaySessionDisconnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamremoteplaysessiondisconnected1.html?swift">SteamRemotePlaySessionDisconnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12849,7 +12935,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamRemotePlayTogetherGuestInvite(
-    _ client: @escaping (<a href="../../steamworks/types/steamremoteplaytogetherguestinvite1.html?swift">SteamRemotePlayTogetherGuestInvite</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamremoteplaytogetherguestinvite1.html?swift">SteamRemotePlayTogetherGuestInvite</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12910,7 +12996,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamServerConnectFailure(
-    _ client: @escaping (<a href="../../steamworks/types/steamserverconnectfailure1.html?swift">SteamServerConnectFailure</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamserverconnectfailure1.html?swift">SteamServerConnectFailure</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -12971,7 +13057,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamServersConnected(
-    _ client: @escaping (<a href="../../steamworks/types/steamserversconnected1.html?swift">SteamServersConnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamserversconnected1.html?swift">SteamServersConnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13032,7 +13118,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSteamServersDisconnected(
-    _ client: @escaping (<a href="../../steamworks/types/steamserversdisconnected1.html?swift">SteamServersDisconnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamserversdisconnected1.html?swift">SteamServersDisconnected</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13092,7 +13178,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onSteamShutdown(_ client: @escaping (<a href="../../steamworks/types/steamshutdown1.html?swift">SteamShutdown</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onSteamShutdown(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamshutdown1.html?swift">SteamShutdown</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13153,7 +13239,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onSubmitPlayerResultResultCallback(
-    _ client: @escaping (<a href="../../steamworks/types/submitplayerresultresultcallback1.html?swift">SubmitPlayerResultResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/submitplayerresultresultcallback1.html?swift">SubmitPlayerResultResultCallback</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13213,7 +13299,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onTimedTrialStatus(_ client: @escaping (<a href="../../steamworks/types/timedtrialstatus1.html?swift">TimedTrialStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onTimedTrialStatus(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/timedtrialstatus1.html?swift">TimedTrialStatus</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13274,7 +13361,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onUnreadChatMessagesChanged(
-    _ client: @escaping (<a href="../../steamworks/types/unreadchatmessageschanged1.html?swift">UnreadChatMessagesChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/unreadchatmessageschanged1.html?swift">UnreadChatMessagesChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13335,7 +13422,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onUserAchievementIconFetched(
-    _ client: @escaping (<a href="../../steamworks/types/userachievementiconfetched1.html?swift">UserAchievementIconFetched</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/userachievementiconfetched1.html?swift">UserAchievementIconFetched</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13396,7 +13483,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onUserAchievementStored(
-    _ client: @escaping (<a href="../../steamworks/types/userachievementstored1.html?swift">UserAchievementStored</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/userachievementstored1.html?swift">UserAchievementStored</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13456,7 +13543,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onUserStatsReceived(_ client: @escaping (<a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onUserStatsReceived(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/userstatsreceived1.html?swift">UserStatsReceived</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13516,7 +13604,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onUserStatsStored(_ client: @escaping (<a href="../../steamworks/types/userstatsstored1.html?swift">UserStatsStored</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onUserStatsStored(_ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/userstatsstored1.html?swift">UserStatsStored</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13576,7 +13664,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onUserStatsUnloaded(_ client: @escaping (<a href="../../steamworks/types/userstatsunloaded1.html?swift">UserStatsUnloaded</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onUserStatsUnloaded(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/userstatsunloaded1.html?swift">UserStatsUnloaded</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13637,7 +13726,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onUserSubscribedItemsListChanged(
-    _ client: @escaping (<a href="../../steamworks/types/usersubscribeditemslistchanged1.html?swift">UserSubscribedItemsListChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/usersubscribeditemslistchanged1.html?swift">UserSubscribedItemsListChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13698,7 +13787,7 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">func onValidateAuthTicketResponse(
-    _ client: @escaping (<a href="../../steamworks/types/validateauthticketresponse1.html?swift">ValidateAuthTicketResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/validateauthticketresponse1.html?swift">ValidateAuthTicketResponse</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -13758,7 +13847,8 @@ certain API functions such as <a href="../../steamworks/types/steamfriends.html?
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">func onVolumeHasChanged(_ client: @escaping (<a href="../../steamworks/types/volumehaschanged1.html?swift">VolumeHasChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">func onVolumeHasChanged(
+    _ client: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/volumehaschanged1.html?swift">VolumeHasChanged</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 

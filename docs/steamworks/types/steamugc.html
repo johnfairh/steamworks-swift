@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamUGC - Steamworks v0.5.2</title>
+   <title>SteamUGC - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamugc.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4149,6 +4190,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -4453,7 +4503,7 @@
           
           
           <nav aria-label="item details" class="j2-main-item-nav">
-            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L14-L769">Show on GitHub</a>
+            <a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L14-L796">Show on GitHub</a>
           </nav>
           
           
@@ -4506,7 +4556,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func addAppDependency(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, appID: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
-    completion: @escaping (<a href="../../steamworks/types/addappdependencyresult.html?swift">AddAppDependencyResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/addappdependencyresult.html?swift">AddAppDependencyResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4533,16 +4583,16 @@
   
   
   
-    <section id="addappdependencypublishedfileidappid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20addAppDependency(publishedFileID%3A%20PublishedFileID,%20appID%3A%20AppID)%20async%20-%3E%20AddAppDependencyResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="addappdependencypublishedfileidappid"></a>
-    <h4 class="visually-hidden">func addAppDependency(publishedFileID: PublishedFileID, appID: AppID) async -&gt; AddAppDependencyResult?</h4>
+    <section id="addappdependencyisolationpublishedfileidappid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20addAppDependency(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID,%20appID%3A%20AppID)%20async%20-%3E%20AddAppDependencyResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="addappdependencyisolationpublishedfileidappid"></a>
+    <h4 class="visually-hidden">func addAppDependency(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID, appID: AppID) async -&gt; AddAppDependencyResult?</h4>
     
     
-    <a class="j2-item-title" href="#_addappdependencypublishedfileidappid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_addappdependencypublishedfileidappid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>addAppDependency<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>appID<span class="j2-item-secondary">: AppID) async -&gt; AddAppDependencyResult?</span></span>
+    <a class="j2-item-title" href="#_addappdependencyisolationpublishedfileidappid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_addappdependencyisolationpublishedfileidappid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>addAppDependency<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>appID<span class="j2-item-secondary">: AppID) async -&gt; AddAppDependencyResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_addappdependencypublishedfileidappid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_addappdependencyisolationpublishedfileidappid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4566,8 +4616,10 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func addAppDependency(publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, appID: <a href="../../steamworks/types/appid28.html?swift">AppID</a>)
-    async -&gt; <a href="../../steamworks/types/addappdependencyresult.html?swift">AddAppDependencyResult</a>?</code></pre>
+    <pre><code class="language-swift">public func addAppDependency(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, appID: <a href="../../steamworks/types/appid28.html?swift">AppID</a>
+) async -&gt; <a href="../../steamworks/types/addappdependencyresult.html?swift">AddAppDependencyResult</a>?</code></pre>
   </div>
 
 
@@ -4692,7 +4744,7 @@
     <pre><code class="language-swift">public func addDependency(
     parentPublishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
     childPublishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/addugcdependencyresult.html?swift">AddUGCDependencyResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/addugcdependencyresult.html?swift">AddUGCDependencyResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4719,16 +4771,16 @@
   
   
   
-    <section id="adddependencyparentpublishedfileidchildpublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20addDependency(parentPublishedFileID%3A%20PublishedFileID,%20childPublishedFileID%3A%20PublishedFileID)%20async%20-%3E%20AddUGCDependencyResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="adddependencyparentpublishedfileidchildpublishedfileid"></a>
-    <h4 class="visually-hidden">func addDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -&gt; AddUGCDependencyResult?</h4>
+    <section id="adddependencyisolationparentpublishedfileidchildpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20addDependency(isolation%3A%20isolated%20(any%20Actor)%3F,%20parentPublishedFileID%3A%20PublishedFileID,%20childPublishedFileID%3A%20PublishedFileID)%20async%20-%3E%20AddUGCDependencyResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="adddependencyisolationparentpublishedfileidchildpublishedfileid"></a>
+    <h4 class="visually-hidden">func addDependency(isolation: isolated (any Actor)?, parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -&gt; AddUGCDependencyResult?</h4>
     
     
-    <a class="j2-item-title" href="#_adddependencyparentpublishedfileidchildpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_adddependencyparentpublishedfileidchildpublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>addDependency<span class="j2-item-secondary">(</span>parentPublishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>childPublishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; AddUGCDependencyResult?</span></span>
+    <a class="j2-item-title" href="#_adddependencyisolationparentpublishedfileidchildpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_adddependencyisolationparentpublishedfileidchildpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>addDependency<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>parentPublishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>childPublishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; AddUGCDependencyResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_adddependencyparentpublishedfileidchildpublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_adddependencyisolationparentpublishedfileidchildpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4753,6 +4805,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func addDependency(
+    isolation: isolated (any Actor)? = #isolation,
     parentPublishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
     childPublishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
 ) async -&gt; <a href="../../steamworks/types/addugcdependencyresult.html?swift">AddUGCDependencyResult</a>?</code></pre>
@@ -5066,7 +5119,7 @@ public func addItemPreviewVideo(handle: <a href="../../steamworks/types/ugcupdat
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func addItemToFavorites(
     appId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5093,16 +5146,16 @@ public func addItemPreviewVideo(handle: <a href="../../steamworks/types/ugcupdat
   
   
   
-    <section id="additemtofavoritesappidpublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20addItemToFavorites(appId%3A%20AppID,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20UserFavoriteItemsListChanged%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="additemtofavoritesappidpublishedfileid"></a>
-    <h4 class="visually-hidden">func addItemToFavorites(appId: AppID, publishedFileID: PublishedFileID) async -&gt; UserFavoriteItemsListChanged?</h4>
+    <section id="additemtofavoritesisolationappidpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20addItemToFavorites(isolation%3A%20isolated%20(any%20Actor)%3F,%20appId%3A%20AppID,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20UserFavoriteItemsListChanged%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="additemtofavoritesisolationappidpublishedfileid"></a>
+    <h4 class="visually-hidden">func addItemToFavorites(isolation: isolated (any Actor)?, appId: AppID, publishedFileID: PublishedFileID) async -&gt; UserFavoriteItemsListChanged?</h4>
     
     
-    <a class="j2-item-title" href="#_additemtofavoritesappidpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_additemtofavoritesappidpublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>addItemToFavorites<span class="j2-item-secondary">(</span>appId<span class="j2-item-secondary">: AppID, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; UserFavoriteItemsListChanged?</span></span>
+    <a class="j2-item-title" href="#_additemtofavoritesisolationappidpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_additemtofavoritesisolationappidpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>addItemToFavorites<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>appId<span class="j2-item-secondary">: AppID, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; UserFavoriteItemsListChanged?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_additemtofavoritesappidpublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_additemtofavoritesisolationappidpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5126,8 +5179,10 @@ public func addItemPreviewVideo(handle: <a href="../../steamworks/types/ugcupdat
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func addItemToFavorites(appId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>)
-    async -&gt; <a href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>?</code></pre>
+    <pre><code class="language-swift">public func addItemToFavorites(
+    isolation: isolated (any Actor)? = #isolation, appId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>?</code></pre>
   </div>
 
 
@@ -5436,7 +5491,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func createItem(
     consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, fileType: <a href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>,
-    completion: @escaping (<a href="../../steamworks/types/createitemresult.html?swift">CreateItemResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/createitemresult.html?swift">CreateItemResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5463,16 +5518,16 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
   
   
   
-    <section id="createitemconsumerappidfiletype" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20createItem(consumerAppId%3A%20AppID,%20fileType%3A%20WorkshopFileType)%20async%20-%3E%20CreateItemResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="createitemconsumerappidfiletype"></a>
-    <h4 class="visually-hidden">func createItem(consumerAppId: AppID, fileType: WorkshopFileType) async -&gt; CreateItemResult?</h4>
+    <section id="createitemisolationconsumerappidfiletype" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createItem(isolation%3A%20isolated%20(any%20Actor)%3F,%20consumerAppId%3A%20AppID,%20fileType%3A%20WorkshopFileType)%20async%20-%3E%20CreateItemResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="createitemisolationconsumerappidfiletype"></a>
+    <h4 class="visually-hidden">func createItem(isolation: isolated (any Actor)?, consumerAppId: AppID, fileType: WorkshopFileType) async -&gt; CreateItemResult?</h4>
     
     
-    <a class="j2-item-title" href="#_createitemconsumerappidfiletype" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createitemconsumerappidfiletype"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>createItem<span class="j2-item-secondary">(</span>consumerAppId<span class="j2-item-secondary">: AppID, </span>fileType<span class="j2-item-secondary">: WorkshopFileType) async -&gt; CreateItemResult?</span></span>
+    <a class="j2-item-title" href="#_createitemisolationconsumerappidfiletype" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createitemisolationconsumerappidfiletype"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createItem<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>fileType<span class="j2-item-secondary">: WorkshopFileType) async -&gt; CreateItemResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_createitemconsumerappidfiletype">
+    <div class="collapse  j2-item-popopen-wrapper" id="_createitemisolationconsumerappidfiletype">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5496,8 +5551,10 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func createItem(consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, fileType: <a href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>) async
-    -&gt; <a href="../../steamworks/types/createitemresult.html?swift">CreateItemResult</a>?</code></pre>
+    <pre><code class="language-swift">public func createItem(
+    isolation: isolated (any Actor)? = #isolation, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
+    fileType: <a href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>
+) async -&gt; <a href="../../steamworks/types/createitemresult.html?swift">CreateItemResult</a>?</code></pre>
   </div>
 
 
@@ -5810,7 +5867,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func deleteItem(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/deleteitemresult.html?swift">DeleteItemResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/deleteitemresult.html?swift">DeleteItemResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5837,16 +5894,16 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
   
   
   
-    <section id="deleteitempublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20deleteItem(publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20DeleteItemResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="deleteitempublishedfileid"></a>
-    <h4 class="visually-hidden">func deleteItem(publishedFileID: PublishedFileID) async -&gt; DeleteItemResult?</h4>
+    <section id="deleteitemisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20deleteItem(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20DeleteItemResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="deleteitemisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func deleteItem(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID) async -&gt; DeleteItemResult?</h4>
     
     
-    <a class="j2-item-title" href="#_deleteitempublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_deleteitempublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>deleteItem<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; DeleteItemResult?</span></span>
+    <a class="j2-item-title" href="#_deleteitemisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_deleteitemisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>deleteItem<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; DeleteItemResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_deleteitempublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_deleteitemisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5870,8 +5927,10 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func deleteItem(publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/deleteitemresult.html?swift">DeleteItemResult</a>?</code></pre>
+    <pre><code class="language-swift">public func deleteItem(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/deleteitemresult.html?swift">DeleteItemResult</a>?</code></pre>
   </div>
 
 
@@ -5994,7 +6053,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getAppDependencies(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/getappdependenciesresult.html?swift">GetAppDependenciesResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/getappdependenciesresult.html?swift">GetAppDependenciesResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6021,16 +6080,16 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
   
   
   
-    <section id="getappdependenciespublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getAppDependencies(publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20GetAppDependenciesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getappdependenciespublishedfileid"></a>
-    <h4 class="visually-hidden">func getAppDependencies(publishedFileID: PublishedFileID) async -&gt; GetAppDependenciesResult?</h4>
+    <section id="getappdependenciesisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getAppDependencies(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20GetAppDependenciesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getappdependenciesisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func getAppDependencies(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID) async -&gt; GetAppDependenciesResult?</h4>
     
     
-    <a class="j2-item-title" href="#_getappdependenciespublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getappdependenciespublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getAppDependencies<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; GetAppDependenciesResult?</span></span>
+    <a class="j2-item-title" href="#_getappdependenciesisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getappdependenciesisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getAppDependencies<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; GetAppDependenciesResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getappdependenciespublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getappdependenciesisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6054,8 +6113,10 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getAppDependencies(publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/getappdependenciesresult.html?swift">GetAppDependenciesResult</a>?</code></pre>
+    <pre><code class="language-swift">public func getAppDependencies(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/getappdependenciesresult.html?swift">GetAppDependenciesResult</a>?</code></pre>
   </div>
 
 
@@ -6389,6 +6450,67 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
   
   
   
+    <section id="getnumsupportedgameversionshandleindex" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getNumSupportedGameVersions(handle%3A%20UGCQueryHandle,%20index%3A%20Int)%20-%3E%20Int" class="dashAnchor j2-item-dash-anchor" data-item-id="getnumsupportedgameversionshandleindex"></a>
+    <h4 class="visually-hidden">func getNumSupportedGameVersions(handle: UGCQueryHandle, index: Int) -&gt; Int</h4>
+    
+    
+    <a class="j2-item-title" href="#_getnumsupportedgameversionshandleindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getnumsupportedgameversionshandleindex"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getNumSupportedGameVersions<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: UGCQueryHandle, </span>index<span class="j2-item-secondary">: Int) -&gt; Int</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getnumsupportedgameversionshandleindex">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamUGC::GetNumSupportedGameVersions()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getNumSupportedGameVersions(handle: <a href="../../steamworks/types/ugcqueryhandle1.html?swift">UGCQueryHandle</a>, index: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
+    -&gt; <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L224-L226">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
     <section id="getqueryugckeyvaluetaghandleindexkeyvaluesize" class="j2-item j2-swift">
     <a name="//apple_ref/cpp/Method/func%20getQueryUGCKeyValueTag(handle%3A%20UGCQueryHandle,%20index%3A%20Int,%20key%3A%20String,%20valueSize%3A%20Int)%20-%3E%20(rc%3A%20Bool,%20value%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="getqueryugckeyvaluetaghandleindexkeyvaluesize"></a>
     <h4 class="visually-hidden">func getQueryUGCKeyValueTag(handle: UGCQueryHandle, index: Int, key: String, valueSize: Int) -&gt; (rc: Bool, value: String)</h4>
@@ -6440,7 +6562,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L224-L230">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L229-L235">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6508,7 +6630,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L233-L247">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L238-L252">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6570,7 +6692,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L250-L258">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L255-L263">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6632,7 +6754,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L261-L265">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L266-L270">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6696,7 +6818,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L268-L281">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L273-L286">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6758,7 +6880,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L284-L294">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L289-L299">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6819,7 +6941,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L297-L299">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L302-L304">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6880,7 +7002,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L302-L304">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L307-L309">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -6940,7 +7062,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L307-L309">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L312-L314">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7003,7 +7125,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L312-L322">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L317-L327">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7065,7 +7187,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L325-L333">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L330-L338">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7127,7 +7249,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L336-L340">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L341-L345">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7190,7 +7312,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L343-L353">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L348-L358">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7253,7 +7375,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L356-L366">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L361-L371">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7315,7 +7437,69 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L369-L373">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L374-L378">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="getsupportedgameversiondatahandleindexversionindexgamebranchsize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getSupportedGameVersionData(handle%3A%20UGCQueryHandle,%20index%3A%20Int,%20versionIndex%3A%20Int,%20gameBranchSize%3A%20Int)%20-%3E%20(rc%3A%20Bool,%20gameBranchMin%3A%20String,%20gameBranchMax%3A%20String)" class="dashAnchor j2-item-dash-anchor" data-item-id="getsupportedgameversiondatahandleindexversionindexgamebranchsize"></a>
+    <h4 class="visually-hidden">func getSupportedGameVersionData(handle: UGCQueryHandle, index: Int, versionIndex: Int, gameBranchSize: Int) -&gt; (rc: Bool, gameBranchMin: String, gameBranchMax: String)</h4>
+    
+    
+    <a class="j2-item-title" href="#_getsupportedgameversiondatahandleindexversionindexgamebranchsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getsupportedgameversiondatahandleindexversionindexgamebranchsize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getSupportedGameVersionData<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: UGCQueryHandle, </span>index<span class="j2-item-secondary">: Int, </span>versionIndex<span class="j2-item-secondary">: Int, </span>gameBranchSize<span class="j2-item-secondary">: Int) -&gt; (rc: Bool, gameBranchMin: String, gameBranchMax: String)</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_getsupportedgameversiondatahandleindexversionindexgamebranchsize">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamUGC::GetSupportedGameVersionData()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func getSupportedGameVersionData(
+    handle: <a href="../../steamworks/types/ugcqueryhandle1.html?swift">UGCQueryHandle</a>, index: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, versionIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, gameBranchSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) -&gt; (rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, gameBranchMin: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, gameBranchMax: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>)</code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L381-L390">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7377,7 +7561,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L376-L380">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L393-L397">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7424,7 +7608,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getUserItemVote(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/getuseritemvoteresult.html?swift">GetUserItemVoteResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/getuseritemvoteresult.html?swift">GetUserItemVoteResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7439,7 +7623,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L383-L386">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L400-L403">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7451,16 +7635,16 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
   
   
   
-    <section id="getuseritemvotepublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getUserItemVote(publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20GetUserItemVoteResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getuseritemvotepublishedfileid"></a>
-    <h4 class="visually-hidden">func getUserItemVote(publishedFileID: PublishedFileID) async -&gt; GetUserItemVoteResult?</h4>
+    <section id="getuseritemvoteisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getUserItemVote(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20GetUserItemVoteResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getuseritemvoteisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func getUserItemVote(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID) async -&gt; GetUserItemVoteResult?</h4>
     
     
-    <a class="j2-item-title" href="#_getuseritemvotepublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getuseritemvotepublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getUserItemVote<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; GetUserItemVoteResult?</span></span>
+    <a class="j2-item-title" href="#_getuseritemvoteisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getuseritemvoteisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getUserItemVote<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; GetUserItemVoteResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getuseritemvotepublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getuseritemvoteisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7484,8 +7668,10 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getUserItemVote(publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/getuseritemvoteresult.html?swift">GetUserItemVoteResult</a>?</code></pre>
+    <pre><code class="language-swift">public func getUserItemVote(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/getuseritemvoteresult.html?swift">GetUserItemVoteResult</a>?</code></pre>
   </div>
 
 
@@ -7500,7 +7686,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L389-L393">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L406-L410">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7546,7 +7732,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getWorkshopEULAStatus(
-    completion: @escaping (<a href="../../steamworks/types/workshopeulastatus.html?swift">WorkshopEULAStatus</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/workshopeulastatus.html?swift">WorkshopEULAStatus</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7561,7 +7747,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L396-L399">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L413-L416">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7573,16 +7759,16 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
   
   
   
-    <section id="getworkshopeulastatus" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getWorkshopEULAStatus()%20async%20-%3E%20WorkshopEULAStatus%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getworkshopeulastatus"></a>
-    <h4 class="visually-hidden">func getWorkshopEULAStatus() async -&gt; WorkshopEULAStatus?</h4>
+    <section id="getworkshopeulastatusisolation" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getWorkshopEULAStatus(isolation%3A%20isolated%20(any%20Actor)%3F)%20async%20-%3E%20WorkshopEULAStatus%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getworkshopeulastatusisolation"></a>
+    <h4 class="visually-hidden">func getWorkshopEULAStatus(isolation: isolated (any Actor)?) async -&gt; WorkshopEULAStatus?</h4>
     
     
-    <a class="j2-item-title" href="#_getworkshopeulastatus" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getworkshopeulastatus"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getWorkshopEULAStatus<span class="j2-item-secondary">() async -&gt; WorkshopEULAStatus?</span></span>
+    <a class="j2-item-title" href="#_getworkshopeulastatusisolation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getworkshopeulastatusisolation"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getWorkshopEULAStatus<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?) async -&gt; WorkshopEULAStatus?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getworkshopeulastatus">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getworkshopeulastatusisolation">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7606,7 +7792,8 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getWorkshopEULAStatus() async -&gt; <a href="../../steamworks/types/workshopeulastatus.html?swift">WorkshopEULAStatus</a>?</code></pre>
+    <pre><code class="language-swift">public func getWorkshopEULAStatus(isolation: isolated (any Actor)? = #isolation)
+    async -&gt; <a href="../../steamworks/types/workshopeulastatus.html?swift">WorkshopEULAStatus</a>?</code></pre>
   </div>
 
 
@@ -7621,7 +7808,7 @@ public func addRequiredTagGroup(handle: <a href="../../steamworks/types/ugcquery
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L402-L406">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L419-L423">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7682,7 +7869,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L410-L412">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L427-L429">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7742,7 +7929,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L415-L417">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L432-L434">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7789,7 +7976,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func removeAppDependency(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, appID: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
-    completion: @escaping (<a href="../../steamworks/types/removeappdependencyresult.html?swift">RemoveAppDependencyResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/removeappdependencyresult.html?swift">RemoveAppDependencyResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7804,7 +7991,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L420-L423">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L437-L440">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7816,16 +8003,16 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
   
   
   
-    <section id="removeappdependencypublishedfileidappid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20removeAppDependency(publishedFileID%3A%20PublishedFileID,%20appID%3A%20AppID)%20async%20-%3E%20RemoveAppDependencyResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="removeappdependencypublishedfileidappid"></a>
-    <h4 class="visually-hidden">func removeAppDependency(publishedFileID: PublishedFileID, appID: AppID) async -&gt; RemoveAppDependencyResult?</h4>
+    <section id="removeappdependencyisolationpublishedfileidappid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20removeAppDependency(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID,%20appID%3A%20AppID)%20async%20-%3E%20RemoveAppDependencyResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="removeappdependencyisolationpublishedfileidappid"></a>
+    <h4 class="visually-hidden">func removeAppDependency(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID, appID: AppID) async -&gt; RemoveAppDependencyResult?</h4>
     
     
-    <a class="j2-item-title" href="#_removeappdependencypublishedfileidappid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_removeappdependencypublishedfileidappid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>removeAppDependency<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>appID<span class="j2-item-secondary">: AppID) async -&gt; RemoveAppDependencyResult?</span></span>
+    <a class="j2-item-title" href="#_removeappdependencyisolationpublishedfileidappid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_removeappdependencyisolationpublishedfileidappid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>removeAppDependency<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>appID<span class="j2-item-secondary">: AppID) async -&gt; RemoveAppDependencyResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_removeappdependencypublishedfileidappid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_removeappdependencyisolationpublishedfileidappid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7849,8 +8036,10 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func removeAppDependency(publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, appID: <a href="../../steamworks/types/appid28.html?swift">AppID</a>)
-    async -&gt; <a href="../../steamworks/types/removeappdependencyresult.html?swift">RemoveAppDependencyResult</a>?</code></pre>
+    <pre><code class="language-swift">public func removeAppDependency(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, appID: <a href="../../steamworks/types/appid28.html?swift">AppID</a>
+) async -&gt; <a href="../../steamworks/types/removeappdependencyresult.html?swift">RemoveAppDependencyResult</a>?</code></pre>
   </div>
 
 
@@ -7865,7 +8054,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L426-L430">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L443-L447">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7927,7 +8116,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L433-L435">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L450-L452">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -7975,7 +8164,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
     <pre><code class="language-swift">public func removeDependency(
     parentPublishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
     childPublishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/removeugcdependencyresult.html?swift">RemoveUGCDependencyResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/removeugcdependencyresult.html?swift">RemoveUGCDependencyResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7990,7 +8179,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L438-L441">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L455-L458">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8002,16 +8191,16 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
   
   
   
-    <section id="removedependencyparentpublishedfileidchildpublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20removeDependency(parentPublishedFileID%3A%20PublishedFileID,%20childPublishedFileID%3A%20PublishedFileID)%20async%20-%3E%20RemoveUGCDependencyResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="removedependencyparentpublishedfileidchildpublishedfileid"></a>
-    <h4 class="visually-hidden">func removeDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -&gt; RemoveUGCDependencyResult?</h4>
+    <section id="removedependencyisolationparentpublishedfileidchildpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20removeDependency(isolation%3A%20isolated%20(any%20Actor)%3F,%20parentPublishedFileID%3A%20PublishedFileID,%20childPublishedFileID%3A%20PublishedFileID)%20async%20-%3E%20RemoveUGCDependencyResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="removedependencyisolationparentpublishedfileidchildpublishedfileid"></a>
+    <h4 class="visually-hidden">func removeDependency(isolation: isolated (any Actor)?, parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID) async -&gt; RemoveUGCDependencyResult?</h4>
     
     
-    <a class="j2-item-title" href="#_removedependencyparentpublishedfileidchildpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_removedependencyparentpublishedfileidchildpublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>removeDependency<span class="j2-item-secondary">(</span>parentPublishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>childPublishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoveUGCDependencyResult?</span></span>
+    <a class="j2-item-title" href="#_removedependencyisolationparentpublishedfileidchildpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_removedependencyisolationparentpublishedfileidchildpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>removeDependency<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>parentPublishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>childPublishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoveUGCDependencyResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_removedependencyparentpublishedfileidchildpublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_removedependencyisolationparentpublishedfileidchildpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8036,6 +8225,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func removeDependency(
+    isolation: isolated (any Actor)? = #isolation,
     parentPublishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
     childPublishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
 ) async -&gt; <a href="../../steamworks/types/removeugcdependencyresult.html?swift">RemoveUGCDependencyResult</a>?</code></pre>
@@ -8053,7 +8243,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L444-L448">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L461-L465">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8100,7 +8290,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func removeItemFromFavorites(
     appId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8115,7 +8305,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L451-L454">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L468-L471">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8127,16 +8317,16 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
   
   
   
-    <section id="removeitemfromfavoritesappidpublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20removeItemFromFavorites(appId%3A%20AppID,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20UserFavoriteItemsListChanged%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="removeitemfromfavoritesappidpublishedfileid"></a>
-    <h4 class="visually-hidden">func removeItemFromFavorites(appId: AppID, publishedFileID: PublishedFileID) async -&gt; UserFavoriteItemsListChanged?</h4>
+    <section id="removeitemfromfavoritesisolationappidpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20removeItemFromFavorites(isolation%3A%20isolated%20(any%20Actor)%3F,%20appId%3A%20AppID,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20UserFavoriteItemsListChanged%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="removeitemfromfavoritesisolationappidpublishedfileid"></a>
+    <h4 class="visually-hidden">func removeItemFromFavorites(isolation: isolated (any Actor)?, appId: AppID, publishedFileID: PublishedFileID) async -&gt; UserFavoriteItemsListChanged?</h4>
     
     
-    <a class="j2-item-title" href="#_removeitemfromfavoritesappidpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_removeitemfromfavoritesappidpublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>removeItemFromFavorites<span class="j2-item-secondary">(</span>appId<span class="j2-item-secondary">: AppID, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; UserFavoriteItemsListChanged?</span></span>
+    <a class="j2-item-title" href="#_removeitemfromfavoritesisolationappidpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_removeitemfromfavoritesisolationappidpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>removeItemFromFavorites<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>appId<span class="j2-item-secondary">: AppID, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; UserFavoriteItemsListChanged?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_removeitemfromfavoritesappidpublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_removeitemfromfavoritesisolationappidpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8161,7 +8351,8 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func removeItemFromFavorites(
-    appId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+    isolation: isolated (any Actor)? = #isolation, appId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
 ) async -&gt; <a href="../../steamworks/types/userfavoriteitemslistchanged.html?swift">UserFavoriteItemsListChanged</a>?</code></pre>
   </div>
 
@@ -8177,7 +8368,7 @@ public func releaseQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L457-L461">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L474-L478">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8238,7 +8429,7 @@ public func removeItemKeyValueTags(handle: <a href="../../steamworks/types/ugcup
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L465-L467">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L482-L484">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8299,7 +8490,7 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L471-L473">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L488-L490">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8346,7 +8537,7 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestUGCDetails(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, maxAgeSeconds: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/steamugcrequestugcdetailsresult.html?swift">SteamUGCRequestUGCDetailsResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamugcrequestugcdetailsresult.html?swift">SteamUGCRequestUGCDetailsResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8361,7 +8552,7 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L476-L479">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L493-L496">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8373,16 +8564,16 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
   
   
   
-    <section id="requestugcdetailspublishedfileidmaxageseconds" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestUGCDetails(publishedFileID%3A%20PublishedFileID,%20maxAgeSeconds%3A%20Int)%20async%20-%3E%20SteamUGCRequestUGCDetailsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestugcdetailspublishedfileidmaxageseconds"></a>
-    <h4 class="visually-hidden">func requestUGCDetails(publishedFileID: PublishedFileID, maxAgeSeconds: Int) async -&gt; SteamUGCRequestUGCDetailsResult?</h4>
+    <section id="requestugcdetailsisolationpublishedfileidmaxageseconds" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20requestUGCDetails(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID,%20maxAgeSeconds%3A%20Int)%20async%20-%3E%20SteamUGCRequestUGCDetailsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="requestugcdetailsisolationpublishedfileidmaxageseconds"></a>
+    <h4 class="visually-hidden">func requestUGCDetails(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID, maxAgeSeconds: Int) async -&gt; SteamUGCRequestUGCDetailsResult?</h4>
     
     
-    <a class="j2-item-title" href="#_requestugcdetailspublishedfileidmaxageseconds" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestugcdetailspublishedfileidmaxageseconds"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestUGCDetails<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>maxAgeSeconds<span class="j2-item-secondary">: Int) async -&gt; SteamUGCRequestUGCDetailsResult?</span></span>
+    <a class="j2-item-title" href="#_requestugcdetailsisolationpublishedfileidmaxageseconds" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestugcdetailsisolationpublishedfileidmaxageseconds"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestUGCDetails<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>maxAgeSeconds<span class="j2-item-secondary">: Int) async -&gt; SteamUGCRequestUGCDetailsResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_requestugcdetailspublishedfileidmaxageseconds">
+    <div class="collapse  j2-item-popopen-wrapper" id="_requestugcdetailsisolationpublishedfileidmaxageseconds">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8407,6 +8598,7 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestUGCDetails(
+    isolation: isolated (any Actor)? = #isolation,
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, maxAgeSeconds: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
 ) async -&gt; <a href="../../steamworks/types/steamugcrequestugcdetailsresult.html?swift">SteamUGCRequestUGCDetailsResult</a>?</code></pre>
   </div>
@@ -8423,7 +8615,7 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L482-L486">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L499-L503">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8470,7 +8662,7 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func sendQueryUGCRequest(
     handle: <a href="../../steamworks/types/ugcqueryhandle1.html?swift">UGCQueryHandle</a>,
-    completion: @escaping (<a href="../../steamworks/types/steamugcquerycompleted.html?swift">SteamUGCQueryCompleted</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steamugcquerycompleted.html?swift">SteamUGCQueryCompleted</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8485,7 +8677,7 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L489-L492">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L506-L509">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8497,16 +8689,16 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
   
   
   
-    <section id="sendqueryugcrequesthandle" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20sendQueryUGCRequest(handle%3A%20UGCQueryHandle)%20async%20-%3E%20SteamUGCQueryCompleted%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="sendqueryugcrequesthandle"></a>
-    <h4 class="visually-hidden">func sendQueryUGCRequest(handle: UGCQueryHandle) async -&gt; SteamUGCQueryCompleted?</h4>
+    <section id="sendqueryugcrequestisolationhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20sendQueryUGCRequest(isolation%3A%20isolated%20(any%20Actor)%3F,%20handle%3A%20UGCQueryHandle)%20async%20-%3E%20SteamUGCQueryCompleted%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="sendqueryugcrequestisolationhandle"></a>
+    <h4 class="visually-hidden">func sendQueryUGCRequest(isolation: isolated (any Actor)?, handle: UGCQueryHandle) async -&gt; SteamUGCQueryCompleted?</h4>
     
     
-    <a class="j2-item-title" href="#_sendqueryugcrequesthandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sendqueryugcrequesthandle"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendQueryUGCRequest<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: UGCQueryHandle) async -&gt; SteamUGCQueryCompleted?</span></span>
+    <a class="j2-item-title" href="#_sendqueryugcrequestisolationhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sendqueryugcrequestisolationhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendQueryUGCRequest<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>handle<span class="j2-item-secondary">: UGCQueryHandle) async -&gt; SteamUGCQueryCompleted?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_sendqueryugcrequesthandle">
+    <div class="collapse  j2-item-popopen-wrapper" id="_sendqueryugcrequestisolationhandle">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8530,8 +8722,9 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func sendQueryUGCRequest(handle: <a href="../../steamworks/types/ugcqueryhandle1.html?swift">UGCQueryHandle</a>) async
-    -&gt; <a href="../../steamworks/types/steamugcquerycompleted.html?swift">SteamUGCQueryCompleted</a>?</code></pre>
+    <pre><code class="language-swift">public func sendQueryUGCRequest(
+    isolation: isolated (any Actor)? = #isolation, handle: <a href="../../steamworks/types/ugcqueryhandle1.html?swift">UGCQueryHandle</a>
+) async -&gt; <a href="../../steamworks/types/steamugcquerycompleted.html?swift">SteamUGCQueryCompleted</a>?</code></pre>
   </div>
 
 
@@ -8546,7 +8739,67 @@ public func removeItemPreview(handle: <a href="../../steamworks/types/ugcupdateh
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L495-L499">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L512-L516">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setadminqueryhandleadminquery" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setAdminQuery(handle%3A%20UGCUpdateHandle,%20adminQuery%3A%20Bool)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="setadminqueryhandleadminquery"></a>
+    <h4 class="visually-hidden">func setAdminQuery(handle: UGCUpdateHandle, adminQuery: Bool) -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_setadminqueryhandleadminquery" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setadminqueryhandleadminquery"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setAdminQuery<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: UGCUpdateHandle, </span>adminQuery<span class="j2-item-secondary">: Bool) -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setadminqueryhandleadminquery">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamUGC::SetAdminQuery()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setAdminQuery(handle: <a href="../../steamworks/types/ugcupdatehandle1.html?swift">UGCUpdateHandle</a>, adminQuery: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L519-L521">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8608,7 +8861,7 @@ public func setAllowCachedResponse(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L503-L505">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L525-L527">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8670,7 +8923,7 @@ public func setAllowCachedResponse(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L508-L510">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L530-L532">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8733,7 +8986,7 @@ public func setCloudFileNameFilter(
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L514-L516">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L536-L538">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8795,7 +9048,7 @@ public func setItemContent(handle: <a href="../../steamworks/types/ugcupdatehand
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L520-L522">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L542-L544">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8857,7 +9110,7 @@ public func setItemDescription(handle: <a href="../../steamworks/types/ugcupdate
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L526-L528">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L548-L550">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8918,7 +9171,7 @@ public func setItemMetadata(handle: <a href="../../steamworks/types/ugcupdatehan
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L532-L534">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L554-L556">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -8979,7 +9232,7 @@ public func setItemPreview(handle: <a href="../../steamworks/types/ugcupdatehand
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L538-L540">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L560-L562">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9042,7 +9295,7 @@ public func setItemTags(
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L544-L548">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L566-L570">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9103,7 +9356,7 @@ public func setItemTitle(handle: <a href="../../steamworks/types/ugcupdatehandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L552-L554">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L574-L576">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9165,7 +9418,7 @@ public func setItemUpdateLanguage(handle: <a href="../../steamworks/types/ugcupd
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L558-L560">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L580-L582">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9228,7 +9481,7 @@ public func setItemVisibility(
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L564-L566">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L586-L588">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9289,7 +9542,7 @@ public func setLanguage(handle: <a href="../../steamworks/types/ugcqueryhandle1.
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L570-L572">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L592-L594">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9350,7 +9603,7 @@ public func setMatchAnyTag(handle: <a href="../../steamworks/types/ugcqueryhandl
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L576-L578">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L598-L600">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9411,7 +9664,69 @@ public func setRankedByTrendDays(handle: <a href="../../steamworks/types/ugcquer
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L582-L584">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L604-L606">Show on GitHub</a></span>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+  
+  
+  
+    <section id="setrequiredgameversionshandlegamebranchmingamebranchmax" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setRequiredGameVersions(handle%3A%20UGCUpdateHandle,%20gameBranchMin%3A%20String,%20gameBranchMax%3A%20String)%20-%3E%20Bool" class="dashAnchor j2-item-dash-anchor" data-item-id="setrequiredgameversionshandlegamebranchmingamebranchmax"></a>
+    <h4 class="visually-hidden">func setRequiredGameVersions(handle: UGCUpdateHandle, gameBranchMin: String, gameBranchMax: String) -&gt; Bool</h4>
+    
+    
+    <a class="j2-item-title" href="#_setrequiredgameversionshandlegamebranchmingamebranchmax" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setrequiredgameversionshandlegamebranchmingamebranchmax"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setRequiredGameVersions<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: UGCUpdateHandle, </span>gameBranchMin<span class="j2-item-secondary">: String, </span>gameBranchMax<span class="j2-item-secondary">: String) -&gt; Bool</span></span>
+        
+      </code></a>
+    <div class="collapse  j2-item-popopen-wrapper" id="_setrequiredgameversionshandlegamebranchmingamebranchmax">
+      <div class="j2-item-popopen">
+        <div class="j2-item-popopen-pointer" role="none presentation"></div>
+        <div class="j2-item-popopen-body">
+          
+            <div class="clearfix">
+              
+  
+
+
+              
+
+
+<p>Steamworks <code>ISteamUGC::SetRequiredGameVersions()</code></p>
+
+
+
+
+            </div>
+            <h5>Declaration</h5>
+            <div class="j2-item-declaration">
+              
+  <div class="j2-swift">
+    <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
+    <pre><code class="language-swift">public func setRequiredGameVersions(
+    handle: <a href="../../steamworks/types/ugcupdatehandle1.html?swift">UGCUpdateHandle</a>, gameBranchMin: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, gameBranchMax: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>
+) -&gt; <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a></code></pre>
+  </div>
+
+
+
+            </div>
+            
+
+
+
+          
+
+          <nav class="j2-item-nav" aria-label="item details">
+            
+            
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L609-L611">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9474,7 +9789,7 @@ public func setReturnAdditionalPreviews(
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L588-L590">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L615-L617">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9536,7 +9851,7 @@ public func setReturnChildren(handle: <a href="../../steamworks/types/ugcqueryha
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L594-L596">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L621-L623">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9599,7 +9914,7 @@ public func setReturnKeyValueTags(
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L600-L602">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L627-L629">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9662,7 +9977,7 @@ public func setReturnLongDescription(
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L606-L608">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L633-L635">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9724,7 +10039,7 @@ public func setReturnMetadata(handle: <a href="../../steamworks/types/ugcqueryha
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L612-L614">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L639-L641">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9786,7 +10101,7 @@ public func setReturnOnlyIDs(handle: <a href="../../steamworks/types/ugcqueryhan
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L618-L620">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L645-L647">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9847,7 +10162,7 @@ public func setReturnPlaytimeStats(handle: <a href="../../steamworks/types/ugcqu
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L624-L626">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L651-L653">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9909,7 +10224,7 @@ public func setReturnTotalOnly(handle: <a href="../../steamworks/types/ugcqueryh
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L630-L632">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L657-L659">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -9970,7 +10285,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L636-L638">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L663-L665">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10032,7 +10347,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L641-L643">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L668-L670">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10094,7 +10409,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L646-L648">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L673-L675">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10141,7 +10456,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func setUserItemVote(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, voteUp: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>,
-    completion: @escaping (<a href="../../steamworks/types/setuseritemvoteresult.html?swift">SetUserItemVoteResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/setuseritemvoteresult.html?swift">SetUserItemVoteResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10156,7 +10471,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L651-L654">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L678-L681">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10168,16 +10483,16 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
   
   
   
-    <section id="setuseritemvotepublishedfileidvoteup" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20setUserItemVote(publishedFileID%3A%20PublishedFileID,%20voteUp%3A%20Bool)%20async%20-%3E%20SetUserItemVoteResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="setuseritemvotepublishedfileidvoteup"></a>
-    <h4 class="visually-hidden">func setUserItemVote(publishedFileID: PublishedFileID, voteUp: Bool) async -&gt; SetUserItemVoteResult?</h4>
+    <section id="setuseritemvoteisolationpublishedfileidvoteup" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setUserItemVote(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID,%20voteUp%3A%20Bool)%20async%20-%3E%20SetUserItemVoteResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="setuseritemvoteisolationpublishedfileidvoteup"></a>
+    <h4 class="visually-hidden">func setUserItemVote(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID, voteUp: Bool) async -&gt; SetUserItemVoteResult?</h4>
     
     
-    <a class="j2-item-title" href="#_setuseritemvotepublishedfileidvoteup" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setuseritemvotepublishedfileidvoteup"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>setUserItemVote<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>voteUp<span class="j2-item-secondary">: Bool) async -&gt; SetUserItemVoteResult?</span></span>
+    <a class="j2-item-title" href="#_setuseritemvoteisolationpublishedfileidvoteup" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setuseritemvoteisolationpublishedfileidvoteup"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setUserItemVote<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID, </span>voteUp<span class="j2-item-secondary">: Bool) async -&gt; SetUserItemVoteResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_setuseritemvotepublishedfileidvoteup">
+    <div class="collapse  j2-item-popopen-wrapper" id="_setuseritemvoteisolationpublishedfileidvoteup">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -10201,8 +10516,10 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func setUserItemVote(publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, voteUp: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>)
-    async -&gt; <a href="../../steamworks/types/setuseritemvoteresult.html?swift">SetUserItemVoteResult</a>?</code></pre>
+    <pre><code class="language-swift">public func setUserItemVote(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, voteUp: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
+) async -&gt; <a href="../../steamworks/types/setuseritemvoteresult.html?swift">SetUserItemVoteResult</a>?</code></pre>
   </div>
 
 
@@ -10217,7 +10534,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L657-L661">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L684-L688">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10277,7 +10594,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L664-L666">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L691-L693">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10339,7 +10656,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L669-L671">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L696-L698">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10386,7 +10703,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func startPlaytimeTracking(
     publishedFileID: [<a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>],
-    completion: @escaping (<a href="../../steamworks/types/startplaytimetrackingresult.html?swift">StartPlaytimeTrackingResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/startplaytimetrackingresult.html?swift">StartPlaytimeTrackingResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10401,7 +10718,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L674-L678">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L701-L705">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10413,16 +10730,16 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
   
   
   
-    <section id="startplaytimetrackingpublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20startPlaytimeTracking(publishedFileID%3A%20%5BPublishedFileID%5D)%20async%20-%3E%20StartPlaytimeTrackingResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="startplaytimetrackingpublishedfileid"></a>
-    <h4 class="visually-hidden">func startPlaytimeTracking(publishedFileID: [PublishedFileID]) async -&gt; StartPlaytimeTrackingResult?</h4>
+    <section id="startplaytimetrackingisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20startPlaytimeTracking(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20%5BPublishedFileID%5D)%20async%20-%3E%20StartPlaytimeTrackingResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="startplaytimetrackingisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func startPlaytimeTracking(isolation: isolated (any Actor)?, publishedFileID: [PublishedFileID]) async -&gt; StartPlaytimeTrackingResult?</h4>
     
     
-    <a class="j2-item-title" href="#_startplaytimetrackingpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_startplaytimetrackingpublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>startPlaytimeTracking<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: [PublishedFileID]) async -&gt; StartPlaytimeTrackingResult?</span></span>
+    <a class="j2-item-title" href="#_startplaytimetrackingisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_startplaytimetrackingisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>startPlaytimeTracking<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: [PublishedFileID]) async -&gt; StartPlaytimeTrackingResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_startplaytimetrackingpublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_startplaytimetrackingisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -10446,8 +10763,10 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func startPlaytimeTracking(publishedFileID: [<a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>]) async
-    -&gt; <a href="../../steamworks/types/startplaytimetrackingresult.html?swift">StartPlaytimeTrackingResult</a>?</code></pre>
+    <pre><code class="language-swift">public func startPlaytimeTracking(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: [<a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>]
+) async -&gt; <a href="../../steamworks/types/startplaytimetrackingresult.html?swift">StartPlaytimeTrackingResult</a>?</code></pre>
   </div>
 
 
@@ -10462,7 +10781,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L681-L685">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L708-L712">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10509,7 +10828,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func stopPlaytimeTracking(
     publishedFileID: [<a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>],
-    completion: @escaping (<a href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10524,7 +10843,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L688-L692">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L715-L719">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10536,16 +10855,16 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
   
   
   
-    <section id="stopplaytimetrackingpublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20stopPlaytimeTracking(publishedFileID%3A%20%5BPublishedFileID%5D)%20async%20-%3E%20StopPlaytimeTrackingResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="stopplaytimetrackingpublishedfileid"></a>
-    <h4 class="visually-hidden">func stopPlaytimeTracking(publishedFileID: [PublishedFileID]) async -&gt; StopPlaytimeTrackingResult?</h4>
+    <section id="stopplaytimetrackingisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20stopPlaytimeTracking(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20%5BPublishedFileID%5D)%20async%20-%3E%20StopPlaytimeTrackingResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="stopplaytimetrackingisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func stopPlaytimeTracking(isolation: isolated (any Actor)?, publishedFileID: [PublishedFileID]) async -&gt; StopPlaytimeTrackingResult?</h4>
     
     
-    <a class="j2-item-title" href="#_stopplaytimetrackingpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_stopplaytimetrackingpublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>stopPlaytimeTracking<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: [PublishedFileID]) async -&gt; StopPlaytimeTrackingResult?</span></span>
+    <a class="j2-item-title" href="#_stopplaytimetrackingisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_stopplaytimetrackingisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>stopPlaytimeTracking<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: [PublishedFileID]) async -&gt; StopPlaytimeTrackingResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_stopplaytimetrackingpublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_stopplaytimetrackingisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -10569,8 +10888,10 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func stopPlaytimeTracking(publishedFileID: [<a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>]) async
-    -&gt; <a href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>?</code></pre>
+    <pre><code class="language-swift">public func stopPlaytimeTracking(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: [<a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>]
+) async -&gt; <a href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>?</code></pre>
   </div>
 
 
@@ -10585,7 +10906,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L695-L699">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L722-L726">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10631,7 +10952,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func stopPlaytimeTrackingForAllItems(
-    completion: @escaping (<a href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10646,7 +10967,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L702-L705">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L729-L732">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10658,16 +10979,16 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
   
   
   
-    <section id="stopplaytimetrackingforallitems" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20stopPlaytimeTrackingForAllItems()%20async%20-%3E%20StopPlaytimeTrackingResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="stopplaytimetrackingforallitems"></a>
-    <h4 class="visually-hidden">func stopPlaytimeTrackingForAllItems() async -&gt; StopPlaytimeTrackingResult?</h4>
+    <section id="stopplaytimetrackingforallitemsisolation" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20stopPlaytimeTrackingForAllItems(isolation%3A%20isolated%20(any%20Actor)%3F)%20async%20-%3E%20StopPlaytimeTrackingResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="stopplaytimetrackingforallitemsisolation"></a>
+    <h4 class="visually-hidden">func stopPlaytimeTrackingForAllItems(isolation: isolated (any Actor)?) async -&gt; StopPlaytimeTrackingResult?</h4>
     
     
-    <a class="j2-item-title" href="#_stopplaytimetrackingforallitems" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_stopplaytimetrackingforallitems"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>stopPlaytimeTrackingForAllItems<span class="j2-item-secondary">() async -&gt; StopPlaytimeTrackingResult?</span></span>
+    <a class="j2-item-title" href="#_stopplaytimetrackingforallitemsisolation" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_stopplaytimetrackingforallitemsisolation"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>stopPlaytimeTrackingForAllItems<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?) async -&gt; StopPlaytimeTrackingResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_stopplaytimetrackingforallitems">
+    <div class="collapse  j2-item-popopen-wrapper" id="_stopplaytimetrackingforallitemsisolation">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -10691,8 +11012,9 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func stopPlaytimeTrackingForAllItems() async
-    -&gt; <a href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>?</code></pre>
+    <pre><code class="language-swift">public func stopPlaytimeTrackingForAllItems(
+    isolation: isolated (any Actor)? = #isolation
+) async -&gt; <a href="../../steamworks/types/stopplaytimetrackingresult.html?swift">StopPlaytimeTrackingResult</a>?</code></pre>
   </div>
 
 
@@ -10707,7 +11029,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L708-L712">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L735-L739">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10754,7 +11076,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func submitItemUpdate(
     handle: <a href="../../steamworks/types/ugcupdatehandle1.html?swift">UGCUpdateHandle</a>, changeNote: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>?,
-    completion: @escaping (<a href="../../steamworks/types/submititemupdateresult.html?swift">SubmitItemUpdateResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/submititemupdateresult.html?swift">SubmitItemUpdateResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10769,7 +11091,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L715-L718">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L742-L745">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10781,16 +11103,16 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
   
   
   
-    <section id="submititemupdatehandlechangenote" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20submitItemUpdate(handle%3A%20UGCUpdateHandle,%20changeNote%3A%20String%3F)%20async%20-%3E%20SubmitItemUpdateResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="submititemupdatehandlechangenote"></a>
-    <h4 class="visually-hidden">func submitItemUpdate(handle: UGCUpdateHandle, changeNote: String?) async -&gt; SubmitItemUpdateResult?</h4>
+    <section id="submititemupdateisolationhandlechangenote" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20submitItemUpdate(isolation%3A%20isolated%20(any%20Actor)%3F,%20handle%3A%20UGCUpdateHandle,%20changeNote%3A%20String%3F)%20async%20-%3E%20SubmitItemUpdateResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="submititemupdateisolationhandlechangenote"></a>
+    <h4 class="visually-hidden">func submitItemUpdate(isolation: isolated (any Actor)?, handle: UGCUpdateHandle, changeNote: String?) async -&gt; SubmitItemUpdateResult?</h4>
     
     
-    <a class="j2-item-title" href="#_submititemupdatehandlechangenote" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_submititemupdatehandlechangenote"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>submitItemUpdate<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: UGCUpdateHandle, </span>changeNote<span class="j2-item-secondary">: String?) async -&gt; SubmitItemUpdateResult?</span></span>
+    <a class="j2-item-title" href="#_submititemupdateisolationhandlechangenote" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_submititemupdateisolationhandlechangenote"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>submitItemUpdate<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>handle<span class="j2-item-secondary">: UGCUpdateHandle, </span>changeNote<span class="j2-item-secondary">: String?) async -&gt; SubmitItemUpdateResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_submititemupdatehandlechangenote">
+    <div class="collapse  j2-item-popopen-wrapper" id="_submititemupdateisolationhandlechangenote">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -10814,8 +11136,10 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func submitItemUpdate(handle: <a href="../../steamworks/types/ugcupdatehandle1.html?swift">UGCUpdateHandle</a>, changeNote: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>?) async
-    -&gt; <a href="../../steamworks/types/submititemupdateresult.html?swift">SubmitItemUpdateResult</a>?</code></pre>
+    <pre><code class="language-swift">public func submitItemUpdate(
+    isolation: isolated (any Actor)? = #isolation, handle: <a href="../../steamworks/types/ugcupdatehandle1.html?swift">UGCUpdateHandle</a>,
+    changeNote: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>?
+) async -&gt; <a href="../../steamworks/types/submititemupdateresult.html?swift">SubmitItemUpdateResult</a>?</code></pre>
   </div>
 
 
@@ -10830,7 +11154,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L721-L725">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L748-L752">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10877,7 +11201,8 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func subscribeItem(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -10892,7 +11217,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L728-L731">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L755-L758">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -10904,16 +11229,16 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
   
   
   
-    <section id="subscribeitempublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20subscribeItem(publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageSubscribePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="subscribeitempublishedfileid"></a>
-    <h4 class="visually-hidden">func subscribeItem(publishedFileID: PublishedFileID) async -&gt; RemoteStorageSubscribePublishedFileResult?</h4>
+    <section id="subscribeitemisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20subscribeItem(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageSubscribePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="subscribeitemisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func subscribeItem(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID) async -&gt; RemoteStorageSubscribePublishedFileResult?</h4>
     
     
-    <a class="j2-item-title" href="#_subscribeitempublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_subscribeitempublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>subscribeItem<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageSubscribePublishedFileResult?</span></span>
+    <a class="j2-item-title" href="#_subscribeitemisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_subscribeitemisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>subscribeItem<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageSubscribePublishedFileResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_subscribeitempublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_subscribeitemisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -10937,8 +11262,10 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func subscribeItem(publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?</code></pre>
+    <pre><code class="language-swift">public func subscribeItem(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?</code></pre>
   </div>
 
 
@@ -10953,7 +11280,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L734-L738">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L761-L765">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -11013,7 +11340,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L741-L743">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L768-L770">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -11060,8 +11387,9 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func unsubscribeItem(
     publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
-)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -11076,7 +11404,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L746-L749">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L773-L776">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -11088,16 +11416,16 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
   
   
   
-    <section id="unsubscribeitempublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20unsubscribeItem(publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageUnsubscribePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="unsubscribeitempublishedfileid"></a>
-    <h4 class="visually-hidden">func unsubscribeItem(publishedFileID: PublishedFileID) async -&gt; RemoteStorageUnsubscribePublishedFileResult?</h4>
+    <section id="unsubscribeitemisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20unsubscribeItem(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileID%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageUnsubscribePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="unsubscribeitemisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func unsubscribeItem(isolation: isolated (any Actor)?, publishedFileID: PublishedFileID) async -&gt; RemoteStorageUnsubscribePublishedFileResult?</h4>
     
     
-    <a class="j2-item-title" href="#_unsubscribeitempublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_unsubscribeitempublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>unsubscribeItem<span class="j2-item-secondary">(</span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageUnsubscribePublishedFileResult?</span></span>
+    <a class="j2-item-title" href="#_unsubscribeitemisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_unsubscribeitemisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>unsubscribeItem<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileID<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageUnsubscribePublishedFileResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_unsubscribeitempublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_unsubscribeitemisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -11121,8 +11449,10 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func unsubscribeItem(publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?</code></pre>
+    <pre><code class="language-swift">public func unsubscribeItem(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileID: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?</code></pre>
   </div>
 
 
@@ -11137,7 +11467,7 @@ public func setSearchText(handle: <a href="../../steamworks/types/ugcqueryhandle
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L752-L756">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L779-L783">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -11200,7 +11530,7 @@ public func updateItemPreviewFile(
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L760-L762">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L787-L789">Show on GitHub</a></span>
             
           </nav>
         </div>
@@ -11263,7 +11593,7 @@ public func updateItemPreviewVideo(
           <nav class="j2-item-nav" aria-label="item details">
             
             
-            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L766-L768">Show on GitHub</a></span>
+            <span class="j2-item-nav-item"><a href="https://github.com/johnfairh/swift-steamworks/blob/main/Sources/Steamworks/Generated/SteamUGC.swift#L793-L795">Show on GitHub</a></span>
             
           </nav>
         </div>

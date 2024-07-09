@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamRemoteStorage - Steamworks v0.5.2</title>
+   <title>SteamRemoteStorage - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamremotestorage.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4149,6 +4190,15 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/broadcastuploadresult.html?swift">BroadcastUploadResult</a>
 
 
@@ -4566,7 +4616,8 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func commitPublishedFileUpdate(
     handle: <a href="../../steamworks/types/publishedfileupdatehandle1.html?swift">PublishedFileUpdateHandle</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4593,16 +4644,16 @@
   
   
   
-    <section id="commitpublishedfileupdatehandle" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20commitPublishedFileUpdate(handle%3A%20PublishedFileUpdateHandle)%20async%20-%3E%20RemoteStorageUpdatePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="commitpublishedfileupdatehandle"></a>
-    <h4 class="visually-hidden">func commitPublishedFileUpdate(handle: PublishedFileUpdateHandle) async -&gt; RemoteStorageUpdatePublishedFileResult?</h4>
+    <section id="commitpublishedfileupdateisolationhandle" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20commitPublishedFileUpdate(isolation%3A%20isolated%20(any%20Actor)%3F,%20handle%3A%20PublishedFileUpdateHandle)%20async%20-%3E%20RemoteStorageUpdatePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="commitpublishedfileupdateisolationhandle"></a>
+    <h4 class="visually-hidden">func commitPublishedFileUpdate(isolation: isolated (any Actor)?, handle: PublishedFileUpdateHandle) async -&gt; RemoteStorageUpdatePublishedFileResult?</h4>
     
     
-    <a class="j2-item-title" href="#_commitpublishedfileupdatehandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_commitpublishedfileupdatehandle"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>commitPublishedFileUpdate<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: PublishedFileUpdateHandle) async -&gt; RemoteStorageUpdatePublishedFileResult?</span></span>
+    <a class="j2-item-title" href="#_commitpublishedfileupdateisolationhandle" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_commitpublishedfileupdateisolationhandle"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>commitPublishedFileUpdate<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>handle<span class="j2-item-secondary">: PublishedFileUpdateHandle) async -&gt; RemoteStorageUpdatePublishedFileResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_commitpublishedfileupdatehandle">
+    <div class="collapse  j2-item-popopen-wrapper" id="_commitpublishedfileupdateisolationhandle">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4626,8 +4677,10 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func commitPublishedFileUpdate(handle: <a href="../../steamworks/types/publishedfileupdatehandle1.html?swift">PublishedFileUpdateHandle</a>) async
-    -&gt; <a href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>?</code></pre>
+    <pre><code class="language-swift">public func commitPublishedFileUpdate(
+    isolation: isolated (any Actor)? = #isolation,
+    handle: <a href="../../steamworks/types/publishedfileupdatehandle1.html?swift">PublishedFileUpdateHandle</a>
+) async -&gt; <a href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>?</code></pre>
   </div>
 
 
@@ -4750,7 +4803,8 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func deletePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4777,16 +4831,16 @@
   
   
   
-    <section id="deletepublishedfilepublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20deletePublishedFile(publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageDeletePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="deletepublishedfilepublishedfileid"></a>
-    <h4 class="visually-hidden">func deletePublishedFile(publishedFileId: PublishedFileID) async -&gt; RemoteStorageDeletePublishedFileResult?</h4>
+    <section id="deletepublishedfileisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20deletePublishedFile(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageDeletePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="deletepublishedfileisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func deletePublishedFile(isolation: isolated (any Actor)?, publishedFileId: PublishedFileID) async -&gt; RemoteStorageDeletePublishedFileResult?</h4>
     
     
-    <a class="j2-item-title" href="#_deletepublishedfilepublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_deletepublishedfilepublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>deletePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageDeletePublishedFileResult?</span></span>
+    <a class="j2-item-title" href="#_deletepublishedfileisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_deletepublishedfileisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>deletePublishedFile<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageDeletePublishedFileResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_deletepublishedfilepublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_deletepublishedfileisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4810,8 +4864,10 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func deletePublishedFile(publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>?</code></pre>
+    <pre><code class="language-swift">public func deletePublishedFile(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>?</code></pre>
   </div>
 
 
@@ -4933,7 +4989,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumeratePublishedFilesByUserAction(
     action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
         <a href="../../steamworks/types/remotestorageenumeratepublishedfilesbyuseractionresult.html?swift">RemoteStorageEnumeratePublishedFilesByUserActionResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
@@ -4962,16 +5018,16 @@
   
   
   
-    <section id="enumeratepublishedfilesbyuseractionactionstartindex" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumeratePublishedFilesByUserAction(action%3A%20WorkshopFileAction,%20startIndex%3A%20Int)%20async%20-%3E%20RemoteStorageEnumeratePublishedFilesByUserActionResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratepublishedfilesbyuseractionactionstartindex"></a>
-    <h4 class="visually-hidden">func enumeratePublishedFilesByUserAction(action: WorkshopFileAction, startIndex: Int) async -&gt; RemoteStorageEnumeratePublishedFilesByUserActionResult?</h4>
+    <section id="enumeratepublishedfilesbyuseractionisolationactionstartindex" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20enumeratePublishedFilesByUserAction(isolation%3A%20isolated%20(any%20Actor)%3F,%20action%3A%20WorkshopFileAction,%20startIndex%3A%20Int)%20async%20-%3E%20RemoteStorageEnumeratePublishedFilesByUserActionResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratepublishedfilesbyuseractionisolationactionstartindex"></a>
+    <h4 class="visually-hidden">func enumeratePublishedFilesByUserAction(isolation: isolated (any Actor)?, action: WorkshopFileAction, startIndex: Int) async -&gt; RemoteStorageEnumeratePublishedFilesByUserActionResult?</h4>
     
     
-    <a class="j2-item-title" href="#_enumeratepublishedfilesbyuseractionactionstartindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumeratepublishedfilesbyuseractionactionstartindex"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumeratePublishedFilesByUserAction<span class="j2-item-secondary">(</span>action<span class="j2-item-secondary">: WorkshopFileAction, </span>startIndex<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageEnumeratePublishedFilesByUserActionResult?</span></span>
+    <a class="j2-item-title" href="#_enumeratepublishedfilesbyuseractionisolationactionstartindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumeratepublishedfilesbyuseractionisolationactionstartindex"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumeratePublishedFilesByUserAction<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>action<span class="j2-item-secondary">: WorkshopFileAction, </span>startIndex<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageEnumeratePublishedFilesByUserActionResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_enumeratepublishedfilesbyuseractionactionstartindex">
+    <div class="collapse  j2-item-popopen-wrapper" id="_enumeratepublishedfilesbyuseractionisolationactionstartindex">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -4996,7 +5052,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumeratePublishedFilesByUserAction(
-    action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+    isolation: isolated (any Actor)? = #isolation, action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>,
+    startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
 ) async -&gt; <a href="../../steamworks/types/remotestorageenumeratepublishedfilesbyuseractionresult.html?swift">RemoteStorageEnumeratePublishedFilesByUserActionResult</a>?</code></pre>
   </div>
 
@@ -5060,7 +5117,8 @@
     <pre><code class="language-swift">public func enumeratePublishedWorkshopFiles(
     enumerationType: <a href="../../steamworks/types/workshopenumerationtype.html?swift">WorkshopEnumerationType</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, count: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     days: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], userTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    completion: @escaping (<a href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5087,16 +5145,16 @@
   
   
   
-    <section id="enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertags" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumeratePublishedWorkshopFiles(enumerationType%3A%20WorkshopEnumerationType,%20startIndex%3A%20Int,%20count%3A%20Int,%20days%3A%20Int,%20tags%3A%20%5BString%5D,%20userTags%3A%20%5BString%5D)%20async%20-%3E%20RemoteStorageEnumerateWorkshopFilesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertags"></a>
-    <h4 class="visually-hidden">func enumeratePublishedWorkshopFiles(enumerationType: WorkshopEnumerationType, startIndex: Int, count: Int, days: Int, tags: [String], userTags: [String]) async -&gt; RemoteStorageEnumerateWorkshopFilesResult?</h4>
+    <section id="enumeratepublishedworkshopfilesisolationenumerationtypestartindexcountdaystagsusertags" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20enumeratePublishedWorkshopFiles(isolation%3A%20isolated%20(any%20Actor)%3F,%20enumerationType%3A%20WorkshopEnumerationType,%20startIndex%3A%20Int,%20count%3A%20Int,%20days%3A%20Int,%20tags%3A%20%5BString%5D,%20userTags%3A%20%5BString%5D)%20async%20-%3E%20RemoteStorageEnumerateWorkshopFilesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratepublishedworkshopfilesisolationenumerationtypestartindexcountdaystagsusertags"></a>
+    <h4 class="visually-hidden">func enumeratePublishedWorkshopFiles(isolation: isolated (any Actor)?, enumerationType: WorkshopEnumerationType, startIndex: Int, count: Int, days: Int, tags: [String], userTags: [String]) async -&gt; RemoteStorageEnumerateWorkshopFilesResult?</h4>
     
     
-    <a class="j2-item-title" href="#_enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertags" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertags"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumeratePublishedWorkshopFiles<span class="j2-item-secondary">(</span>enumerationType<span class="j2-item-secondary">: WorkshopEnumerationType, </span>startIndex<span class="j2-item-secondary">: Int, </span>count<span class="j2-item-secondary">: Int, </span>days<span class="j2-item-secondary">: Int, </span>tags<span class="j2-item-secondary">: [String], </span>userTags<span class="j2-item-secondary">: [String]) async -&gt; RemoteStorageEnumerateWorkshopFilesResult?</span></span>
+    <a class="j2-item-title" href="#_enumeratepublishedworkshopfilesisolationenumerationtypestartindexcountdaystagsusertags" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumeratepublishedworkshopfilesisolationenumerationtypestartindexcountdaystagsusertags"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumeratePublishedWorkshopFiles<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>enumerationType<span class="j2-item-secondary">: WorkshopEnumerationType, </span>startIndex<span class="j2-item-secondary">: Int, </span>count<span class="j2-item-secondary">: Int, </span>days<span class="j2-item-secondary">: Int, </span>tags<span class="j2-item-secondary">: [String], </span>userTags<span class="j2-item-secondary">: [String]) async -&gt; RemoteStorageEnumerateWorkshopFilesResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertags">
+    <div class="collapse  j2-item-popopen-wrapper" id="_enumeratepublishedworkshopfilesisolationenumerationtypestartindexcountdaystagsusertags">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5121,6 +5179,7 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumeratePublishedWorkshopFiles(
+    isolation: isolated (any Actor)? = #isolation,
     enumerationType: <a href="../../steamworks/types/workshopenumerationtype.html?swift">WorkshopEnumerationType</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, count: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     days: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], userTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>]
 ) async -&gt; <a href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>?</code></pre>
@@ -5185,8 +5244,9 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumerateUserPublishedFiles(
     startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5213,16 +5273,16 @@
   
   
   
-    <section id="enumerateuserpublishedfilesstartindex" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumerateUserPublishedFiles(startIndex%3A%20Int)%20async%20-%3E%20RemoteStorageEnumerateUserPublishedFilesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateuserpublishedfilesstartindex"></a>
-    <h4 class="visually-hidden">func enumerateUserPublishedFiles(startIndex: Int) async -&gt; RemoteStorageEnumerateUserPublishedFilesResult?</h4>
+    <section id="enumerateuserpublishedfilesisolationstartindex" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20enumerateUserPublishedFiles(isolation%3A%20isolated%20(any%20Actor)%3F,%20startIndex%3A%20Int)%20async%20-%3E%20RemoteStorageEnumerateUserPublishedFilesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateuserpublishedfilesisolationstartindex"></a>
+    <h4 class="visually-hidden">func enumerateUserPublishedFiles(isolation: isolated (any Actor)?, startIndex: Int) async -&gt; RemoteStorageEnumerateUserPublishedFilesResult?</h4>
     
     
-    <a class="j2-item-title" href="#_enumerateuserpublishedfilesstartindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateuserpublishedfilesstartindex"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserPublishedFiles<span class="j2-item-secondary">(</span>startIndex<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageEnumerateUserPublishedFilesResult?</span></span>
+    <a class="j2-item-title" href="#_enumerateuserpublishedfilesisolationstartindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateuserpublishedfilesisolationstartindex"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserPublishedFiles<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>startIndex<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageEnumerateUserPublishedFilesResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_enumerateuserpublishedfilesstartindex">
+    <div class="collapse  j2-item-popopen-wrapper" id="_enumerateuserpublishedfilesisolationstartindex">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5246,8 +5306,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func enumerateUserPublishedFiles(startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) async
-    -&gt; <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?</code></pre>
+    <pre><code class="language-swift">public func enumerateUserPublishedFiles(
+    isolation: isolated (any Actor)? = #isolation, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) async -&gt; <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?</code></pre>
   </div>
 
 
@@ -5310,8 +5371,9 @@
     <pre><code class="language-swift">public func enumerateUserSharedWorkshopFiles(
     steamId: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, requiredTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
     excludedTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    completion: @escaping (<a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5338,16 +5400,16 @@
   
   
   
-    <section id="enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtags" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumerateUserSharedWorkshopFiles(steamId%3A%20SteamID,%20startIndex%3A%20Int,%20requiredTags%3A%20%5BString%5D,%20excludedTags%3A%20%5BString%5D)%20async%20-%3E%20RemoteStorageEnumerateUserPublishedFilesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtags"></a>
-    <h4 class="visually-hidden">func enumerateUserSharedWorkshopFiles(steamId: SteamID, startIndex: Int, requiredTags: [String], excludedTags: [String]) async -&gt; RemoteStorageEnumerateUserPublishedFilesResult?</h4>
+    <section id="enumerateusersharedworkshopfilesisolationsteamidstartindexrequiredtagsexcludedtags" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20enumerateUserSharedWorkshopFiles(isolation%3A%20isolated%20(any%20Actor)%3F,%20steamId%3A%20SteamID,%20startIndex%3A%20Int,%20requiredTags%3A%20%5BString%5D,%20excludedTags%3A%20%5BString%5D)%20async%20-%3E%20RemoteStorageEnumerateUserPublishedFilesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateusersharedworkshopfilesisolationsteamidstartindexrequiredtagsexcludedtags"></a>
+    <h4 class="visually-hidden">func enumerateUserSharedWorkshopFiles(isolation: isolated (any Actor)?, steamId: SteamID, startIndex: Int, requiredTags: [String], excludedTags: [String]) async -&gt; RemoteStorageEnumerateUserPublishedFilesResult?</h4>
     
     
-    <a class="j2-item-title" href="#_enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtags" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtags"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserSharedWorkshopFiles<span class="j2-item-secondary">(</span>steamId<span class="j2-item-secondary">: SteamID, </span>startIndex<span class="j2-item-secondary">: Int, </span>requiredTags<span class="j2-item-secondary">: [String], </span>excludedTags<span class="j2-item-secondary">: [String]) async -&gt; RemoteStorageEnumerateUserPublishedFilesResult?</span></span>
+    <a class="j2-item-title" href="#_enumerateusersharedworkshopfilesisolationsteamidstartindexrequiredtagsexcludedtags" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateusersharedworkshopfilesisolationsteamidstartindexrequiredtagsexcludedtags"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserSharedWorkshopFiles<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>steamId<span class="j2-item-secondary">: SteamID, </span>startIndex<span class="j2-item-secondary">: Int, </span>requiredTags<span class="j2-item-secondary">: [String], </span>excludedTags<span class="j2-item-secondary">: [String]) async -&gt; RemoteStorageEnumerateUserPublishedFilesResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtags">
+    <div class="collapse  j2-item-popopen-wrapper" id="_enumerateusersharedworkshopfilesisolationsteamidstartindexrequiredtagsexcludedtags">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5372,8 +5434,8 @@
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumerateUserSharedWorkshopFiles(
-    steamId: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, requiredTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    excludedTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>]
+    isolation: isolated (any Actor)? = #isolation, steamId: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
+    startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, requiredTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], excludedTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>]
 ) async -&gt; <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?</code></pre>
   </div>
 
@@ -5436,8 +5498,9 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumerateUserSubscribedFiles(
     startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5464,16 +5527,16 @@
   
   
   
-    <section id="enumerateusersubscribedfilesstartindex" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumerateUserSubscribedFiles(startIndex%3A%20Int)%20async%20-%3E%20RemoteStorageEnumerateUserSubscribedFilesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateusersubscribedfilesstartindex"></a>
-    <h4 class="visually-hidden">func enumerateUserSubscribedFiles(startIndex: Int) async -&gt; RemoteStorageEnumerateUserSubscribedFilesResult?</h4>
+    <section id="enumerateusersubscribedfilesisolationstartindex" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20enumerateUserSubscribedFiles(isolation%3A%20isolated%20(any%20Actor)%3F,%20startIndex%3A%20Int)%20async%20-%3E%20RemoteStorageEnumerateUserSubscribedFilesResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateusersubscribedfilesisolationstartindex"></a>
+    <h4 class="visually-hidden">func enumerateUserSubscribedFiles(isolation: isolated (any Actor)?, startIndex: Int) async -&gt; RemoteStorageEnumerateUserSubscribedFilesResult?</h4>
     
     
-    <a class="j2-item-title" href="#_enumerateusersubscribedfilesstartindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateusersubscribedfilesstartindex"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserSubscribedFiles<span class="j2-item-secondary">(</span>startIndex<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageEnumerateUserSubscribedFilesResult?</span></span>
+    <a class="j2-item-title" href="#_enumerateusersubscribedfilesisolationstartindex" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateusersubscribedfilesisolationstartindex"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserSubscribedFiles<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>startIndex<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageEnumerateUserSubscribedFilesResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_enumerateusersubscribedfilesstartindex">
+    <div class="collapse  j2-item-popopen-wrapper" id="_enumerateusersubscribedfilesisolationstartindex">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5497,8 +5560,9 @@
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func enumerateUserSubscribedFiles(startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) async
-    -&gt; <a href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>?</code></pre>
+    <pre><code class="language-swift">public func enumerateUserSubscribedFiles(
+    isolation: isolated (any Actor)? = #isolation, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) async -&gt; <a href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>?</code></pre>
   </div>
 
 
@@ -5864,7 +5928,8 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileReadAsync(
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, offset: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, toReadSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5891,16 +5956,16 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
   
   
   
-    <section id="filereadasyncfileoffsettoreadsize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20fileReadAsync(file%3A%20String,%20offset%3A%20Int,%20toReadSize%3A%20Int)%20async%20-%3E%20RemoteStorageFileReadAsyncComplete%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="filereadasyncfileoffsettoreadsize"></a>
-    <h4 class="visually-hidden">func fileReadAsync(file: String, offset: Int, toReadSize: Int) async -&gt; RemoteStorageFileReadAsyncComplete?</h4>
+    <section id="filereadasyncisolationfileoffsettoreadsize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20fileReadAsync(isolation%3A%20isolated%20(any%20Actor)%3F,%20file%3A%20String,%20offset%3A%20Int,%20toReadSize%3A%20Int)%20async%20-%3E%20RemoteStorageFileReadAsyncComplete%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="filereadasyncisolationfileoffsettoreadsize"></a>
+    <h4 class="visually-hidden">func fileReadAsync(isolation: isolated (any Actor)?, file: String, offset: Int, toReadSize: Int) async -&gt; RemoteStorageFileReadAsyncComplete?</h4>
     
     
-    <a class="j2-item-title" href="#_filereadasyncfileoffsettoreadsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_filereadasyncfileoffsettoreadsize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileReadAsync<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>offset<span class="j2-item-secondary">: Int, </span>toReadSize<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageFileReadAsyncComplete?</span></span>
+    <a class="j2-item-title" href="#_filereadasyncisolationfileoffsettoreadsize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_filereadasyncisolationfileoffsettoreadsize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileReadAsync<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>file<span class="j2-item-secondary">: String, </span>offset<span class="j2-item-secondary">: Int, </span>toReadSize<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageFileReadAsyncComplete?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_filereadasyncfileoffsettoreadsize">
+    <div class="collapse  j2-item-popopen-wrapper" id="_filereadasyncisolationfileoffsettoreadsize">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5924,8 +5989,10 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func fileReadAsync(file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, offset: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, toReadSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) async
-    -&gt; <a href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>?</code></pre>
+    <pre><code class="language-swift">public func fileReadAsync(
+    isolation: isolated (any Actor)? = #isolation, file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, offset: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
+    toReadSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>?</code></pre>
   </div>
 
 
@@ -6048,7 +6115,8 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileShare(
-    file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, completion: @escaping (<a href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6075,16 +6143,16 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
   
   
   
-    <section id="filesharefile" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20fileShare(file%3A%20String)%20async%20-%3E%20RemoteStorageFileShareResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="filesharefile"></a>
-    <h4 class="visually-hidden">func fileShare(file: String) async -&gt; RemoteStorageFileShareResult?</h4>
+    <section id="fileshareisolationfile" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20fileShare(isolation%3A%20isolated%20(any%20Actor)%3F,%20file%3A%20String)%20async%20-%3E%20RemoteStorageFileShareResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="fileshareisolationfile"></a>
+    <h4 class="visually-hidden">func fileShare(isolation: isolated (any Actor)?, file: String) async -&gt; RemoteStorageFileShareResult?</h4>
     
     
-    <a class="j2-item-title" href="#_filesharefile" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_filesharefile"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileShare<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String) async -&gt; RemoteStorageFileShareResult?</span></span>
+    <a class="j2-item-title" href="#_fileshareisolationfile" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_fileshareisolationfile"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileShare<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>file<span class="j2-item-secondary">: String) async -&gt; RemoteStorageFileShareResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_filesharefile">
+    <div class="collapse  j2-item-popopen-wrapper" id="_fileshareisolationfile">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6108,7 +6176,9 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func fileShare(file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>) async -&gt; <a href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>?</code></pre>
+    <pre><code class="language-swift">public func fileShare(
+    isolation: isolated (any Actor)? = #isolation, file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>?</code></pre>
   </div>
 
 
@@ -6231,7 +6301,8 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileWriteAsync(
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, data: UnsafeRawPointer, dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6258,16 +6329,16 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
   
   
   
-    <section id="filewriteasyncfiledatadatasize" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20fileWriteAsync(file%3A%20String,%20data%3A%20UnsafeRawPointer,%20dataSize%3A%20Int)%20async%20-%3E%20RemoteStorageFileWriteAsyncComplete%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="filewriteasyncfiledatadatasize"></a>
-    <h4 class="visually-hidden">func fileWriteAsync(file: String, data: UnsafeRawPointer, dataSize: Int) async -&gt; RemoteStorageFileWriteAsyncComplete?</h4>
+    <section id="filewriteasyncisolationfiledatadatasize" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20fileWriteAsync(isolation%3A%20isolated%20(any%20Actor)%3F,%20file%3A%20String,%20data%3A%20UnsafeRawPointer,%20dataSize%3A%20Int)%20async%20-%3E%20RemoteStorageFileWriteAsyncComplete%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="filewriteasyncisolationfiledatadatasize"></a>
+    <h4 class="visually-hidden">func fileWriteAsync(isolation: isolated (any Actor)?, file: String, data: UnsafeRawPointer, dataSize: Int) async -&gt; RemoteStorageFileWriteAsyncComplete?</h4>
     
     
-    <a class="j2-item-title" href="#_filewriteasyncfiledatadatasize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_filewriteasyncfiledatadatasize"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileWriteAsync<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>data<span class="j2-item-secondary">: UnsafeRawPointer, </span>dataSize<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageFileWriteAsyncComplete?</span></span>
+    <a class="j2-item-title" href="#_filewriteasyncisolationfiledatadatasize" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_filewriteasyncisolationfiledatadatasize"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileWriteAsync<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>file<span class="j2-item-secondary">: String, </span>data<span class="j2-item-secondary">: UnsafeRawPointer, </span>dataSize<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageFileWriteAsyncComplete?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_filewriteasyncfiledatadatasize">
+    <div class="collapse  j2-item-popopen-wrapper" id="_filewriteasyncisolationfiledatadatasize">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6291,8 +6362,10 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func fileWriteAsync(file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, data: UnsafeRawPointer, dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>)
-    async -&gt; <a href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>?</code></pre>
+    <pre><code class="language-swift">public func fileWriteAsync(
+    isolation: isolated (any Actor)? = #isolation, file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    data: UnsafeRawPointer, dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>?</code></pre>
   </div>
 
 
@@ -7082,7 +7155,9 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getPublishedFileDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, maxSecondsOld: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7109,16 +7184,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="getpublishedfiledetailspublishedfileidmaxsecondsold" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getPublishedFileDetails(publishedFileId%3A%20PublishedFileID,%20maxSecondsOld%3A%20Int)%20async%20-%3E%20RemoteStorageGetPublishedFileDetailsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getpublishedfiledetailspublishedfileidmaxsecondsold"></a>
-    <h4 class="visually-hidden">func getPublishedFileDetails(publishedFileId: PublishedFileID, maxSecondsOld: Int) async -&gt; RemoteStorageGetPublishedFileDetailsResult?</h4>
+    <section id="getpublishedfiledetailsisolationpublishedfileidmaxsecondsold" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getPublishedFileDetails(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileId%3A%20PublishedFileID,%20maxSecondsOld%3A%20Int)%20async%20-%3E%20RemoteStorageGetPublishedFileDetailsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getpublishedfiledetailsisolationpublishedfileidmaxsecondsold"></a>
+    <h4 class="visually-hidden">func getPublishedFileDetails(isolation: isolated (any Actor)?, publishedFileId: PublishedFileID, maxSecondsOld: Int) async -&gt; RemoteStorageGetPublishedFileDetailsResult?</h4>
     
     
-    <a class="j2-item-title" href="#_getpublishedfiledetailspublishedfileidmaxsecondsold" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getpublishedfiledetailspublishedfileidmaxsecondsold"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getPublishedFileDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>maxSecondsOld<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageGetPublishedFileDetailsResult?</span></span>
+    <a class="j2-item-title" href="#_getpublishedfiledetailsisolationpublishedfileidmaxsecondsold" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getpublishedfiledetailsisolationpublishedfileidmaxsecondsold"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getPublishedFileDetails<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>maxSecondsOld<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageGetPublishedFileDetailsResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getpublishedfiledetailspublishedfileidmaxsecondsold">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getpublishedfiledetailsisolationpublishedfileidmaxsecondsold">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7143,6 +7218,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getPublishedFileDetails(
+    isolation: isolated (any Actor)? = #isolation,
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, maxSecondsOld: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
 ) async -&gt; <a href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>?</code></pre>
   </div>
@@ -7206,8 +7282,9 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getPublishedItemVoteDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7234,16 +7311,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="getpublisheditemvotedetailspublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getPublishedItemVoteDetails(publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageGetPublishedItemVoteDetailsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getpublisheditemvotedetailspublishedfileid"></a>
-    <h4 class="visually-hidden">func getPublishedItemVoteDetails(publishedFileId: PublishedFileID) async -&gt; RemoteStorageGetPublishedItemVoteDetailsResult?</h4>
+    <section id="getpublisheditemvotedetailsisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getPublishedItemVoteDetails(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageGetPublishedItemVoteDetailsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getpublisheditemvotedetailsisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func getPublishedItemVoteDetails(isolation: isolated (any Actor)?, publishedFileId: PublishedFileID) async -&gt; RemoteStorageGetPublishedItemVoteDetailsResult?</h4>
     
     
-    <a class="j2-item-title" href="#_getpublisheditemvotedetailspublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getpublisheditemvotedetailspublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getPublishedItemVoteDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageGetPublishedItemVoteDetailsResult?</span></span>
+    <a class="j2-item-title" href="#_getpublisheditemvotedetailsisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getpublisheditemvotedetailsisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getPublishedItemVoteDetails<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageGetPublishedItemVoteDetailsResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getpublisheditemvotedetailspublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getpublisheditemvotedetailsisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7267,8 +7344,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getPublishedItemVoteDetails(publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?</code></pre>
+    <pre><code class="language-swift">public func getPublishedItemVoteDetails(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?</code></pre>
   </div>
 
 
@@ -7512,8 +7591,9 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getUserPublishedItemVoteDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7540,16 +7620,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="getuserpublisheditemvotedetailspublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getUserPublishedItemVoteDetails(publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageGetPublishedItemVoteDetailsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getuserpublisheditemvotedetailspublishedfileid"></a>
-    <h4 class="visually-hidden">func getUserPublishedItemVoteDetails(publishedFileId: PublishedFileID) async -&gt; RemoteStorageGetPublishedItemVoteDetailsResult?</h4>
+    <section id="getuserpublisheditemvotedetailsisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20getUserPublishedItemVoteDetails(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageGetPublishedItemVoteDetailsResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="getuserpublisheditemvotedetailsisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func getUserPublishedItemVoteDetails(isolation: isolated (any Actor)?, publishedFileId: PublishedFileID) async -&gt; RemoteStorageGetPublishedItemVoteDetailsResult?</h4>
     
     
-    <a class="j2-item-title" href="#_getuserpublisheditemvotedetailspublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getuserpublisheditemvotedetailspublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getUserPublishedItemVoteDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageGetPublishedItemVoteDetailsResult?</span></span>
+    <a class="j2-item-title" href="#_getuserpublisheditemvotedetailsisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getuserpublisheditemvotedetailsisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getUserPublishedItemVoteDetails<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageGetPublishedItemVoteDetailsResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_getuserpublisheditemvotedetailspublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_getuserpublisheditemvotedetailsisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7573,8 +7653,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func getUserPublishedItemVoteDetails(publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>)
-    async -&gt; <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?</code></pre>
+    <pre><code class="language-swift">public func getUserPublishedItemVoteDetails(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?</code></pre>
   </div>
 
 
@@ -7759,7 +7841,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     videoIdentifier: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
     title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, description: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
     visibility: <a href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>, tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    completion: @escaping (<a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7786,16 +7868,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20publishVideo(videoProvider%3A%20WorkshopVideoProvider,%20videoAccount%3A%20String,%20videoIdentifier%3A%20String,%20previewFile%3A%20String,%20consumerAppId%3A%20AppID,%20title%3A%20String,%20description%3A%20String,%20visibility%3A%20RemoteStoragePublishedFileVisibility,%20tags%3A%20%5BString%5D)%20async%20-%3E%20RemoteStoragePublishFileProgress%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags"></a>
-    <h4 class="visually-hidden">func publishVideo(videoProvider: WorkshopVideoProvider, videoAccount: String, videoIdentifier: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String]) async -&gt; RemoteStoragePublishFileProgress?</h4>
+    <section id="publishvideoisolationvideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20publishVideo(isolation%3A%20isolated%20(any%20Actor)%3F,%20videoProvider%3A%20WorkshopVideoProvider,%20videoAccount%3A%20String,%20videoIdentifier%3A%20String,%20previewFile%3A%20String,%20consumerAppId%3A%20AppID,%20title%3A%20String,%20description%3A%20String,%20visibility%3A%20RemoteStoragePublishedFileVisibility,%20tags%3A%20%5BString%5D)%20async%20-%3E%20RemoteStoragePublishFileProgress%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="publishvideoisolationvideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags"></a>
+    <h4 class="visually-hidden">func publishVideo(isolation: isolated (any Actor)?, videoProvider: WorkshopVideoProvider, videoAccount: String, videoIdentifier: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String]) async -&gt; RemoteStoragePublishFileProgress?</h4>
     
     
-    <a class="j2-item-title" href="#_publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>publishVideo<span class="j2-item-secondary">(</span>videoProvider<span class="j2-item-secondary">: WorkshopVideoProvider, </span>videoAccount<span class="j2-item-secondary">: String, </span>videoIdentifier<span class="j2-item-secondary">: String, </span>previewFile<span class="j2-item-secondary">: String, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>title<span class="j2-item-secondary">: String, </span>description<span class="j2-item-secondary">: String, </span>visibility<span class="j2-item-secondary">: RemoteStoragePublishedFileVisibility, </span>tags<span class="j2-item-secondary">: [String]) async -&gt; RemoteStoragePublishFileProgress?</span></span>
+    <a class="j2-item-title" href="#_publishvideoisolationvideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_publishvideoisolationvideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>publishVideo<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>videoProvider<span class="j2-item-secondary">: WorkshopVideoProvider, </span>videoAccount<span class="j2-item-secondary">: String, </span>videoIdentifier<span class="j2-item-secondary">: String, </span>previewFile<span class="j2-item-secondary">: String, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>title<span class="j2-item-secondary">: String, </span>description<span class="j2-item-secondary">: String, </span>visibility<span class="j2-item-secondary">: RemoteStoragePublishedFileVisibility, </span>tags<span class="j2-item-secondary">: [String]) async -&gt; RemoteStoragePublishFileProgress?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags">
+    <div class="collapse  j2-item-popopen-wrapper" id="_publishvideoisolationvideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytags">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7820,6 +7902,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func publishVideo(
+    isolation: isolated (any Actor)? = #isolation,
     videoProvider: <a href="../../steamworks/types/workshopvideoprovider.html?swift">WorkshopVideoProvider</a>, videoAccount: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
     videoIdentifier: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
     title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, description: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
@@ -7888,7 +7971,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
     description: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, visibility: <a href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>,
     tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], workshopFileType: <a href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7915,16 +7998,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20publishWorkshopFile(file%3A%20String,%20previewFile%3A%20String,%20consumerAppId%3A%20AppID,%20title%3A%20String,%20description%3A%20String,%20visibility%3A%20RemoteStoragePublishedFileVisibility,%20tags%3A%20%5BString%5D,%20workshopFileType%3A%20WorkshopFileType)%20async%20-%3E%20RemoteStoragePublishFileProgress%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype"></a>
-    <h4 class="visually-hidden">func publishWorkshopFile(file: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], workshopFileType: WorkshopFileType) async -&gt; RemoteStoragePublishFileProgress?</h4>
+    <section id="publishworkshopfileisolationfilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20publishWorkshopFile(isolation%3A%20isolated%20(any%20Actor)%3F,%20file%3A%20String,%20previewFile%3A%20String,%20consumerAppId%3A%20AppID,%20title%3A%20String,%20description%3A%20String,%20visibility%3A%20RemoteStoragePublishedFileVisibility,%20tags%3A%20%5BString%5D,%20workshopFileType%3A%20WorkshopFileType)%20async%20-%3E%20RemoteStoragePublishFileProgress%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="publishworkshopfileisolationfilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype"></a>
+    <h4 class="visually-hidden">func publishWorkshopFile(isolation: isolated (any Actor)?, file: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], workshopFileType: WorkshopFileType) async -&gt; RemoteStoragePublishFileProgress?</h4>
     
     
-    <a class="j2-item-title" href="#_publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>publishWorkshopFile<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>previewFile<span class="j2-item-secondary">: String, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>title<span class="j2-item-secondary">: String, </span>description<span class="j2-item-secondary">: String, </span>visibility<span class="j2-item-secondary">: RemoteStoragePublishedFileVisibility, </span>tags<span class="j2-item-secondary">: [String], </span>workshopFileType<span class="j2-item-secondary">: WorkshopFileType) async -&gt; RemoteStoragePublishFileProgress?</span></span>
+    <a class="j2-item-title" href="#_publishworkshopfileisolationfilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_publishworkshopfileisolationfilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>publishWorkshopFile<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>file<span class="j2-item-secondary">: String, </span>previewFile<span class="j2-item-secondary">: String, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>title<span class="j2-item-secondary">: String, </span>description<span class="j2-item-secondary">: String, </span>visibility<span class="j2-item-secondary">: RemoteStoragePublishedFileVisibility, </span>tags<span class="j2-item-secondary">: [String], </span>workshopFileType<span class="j2-item-secondary">: WorkshopFileType) async -&gt; RemoteStoragePublishFileProgress?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype">
+    <div class="collapse  j2-item-popopen-wrapper" id="_publishworkshopfileisolationfilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletype">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -7949,7 +8032,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func publishWorkshopFile(
-    file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    isolation: isolated (any Actor)? = #isolation, file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
+    previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
     description: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, visibility: <a href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>,
     tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], workshopFileType: <a href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>
 ) async -&gt; <a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?</code></pre>
@@ -8136,8 +8220,9 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func setUserPublishedFileAction(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8164,16 +8249,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="setuserpublishedfileactionpublishedfileidaction" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20setUserPublishedFileAction(publishedFileId%3A%20PublishedFileID,%20action%3A%20WorkshopFileAction)%20async%20-%3E%20RemoteStorageSetUserPublishedFileActionResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="setuserpublishedfileactionpublishedfileidaction"></a>
-    <h4 class="visually-hidden">func setUserPublishedFileAction(publishedFileId: PublishedFileID, action: WorkshopFileAction) async -&gt; RemoteStorageSetUserPublishedFileActionResult?</h4>
+    <section id="setuserpublishedfileactionisolationpublishedfileidaction" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20setUserPublishedFileAction(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileId%3A%20PublishedFileID,%20action%3A%20WorkshopFileAction)%20async%20-%3E%20RemoteStorageSetUserPublishedFileActionResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="setuserpublishedfileactionisolationpublishedfileidaction"></a>
+    <h4 class="visually-hidden">func setUserPublishedFileAction(isolation: isolated (any Actor)?, publishedFileId: PublishedFileID, action: WorkshopFileAction) async -&gt; RemoteStorageSetUserPublishedFileActionResult?</h4>
     
     
-    <a class="j2-item-title" href="#_setuserpublishedfileactionpublishedfileidaction" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setuserpublishedfileactionpublishedfileidaction"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>setUserPublishedFileAction<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>action<span class="j2-item-secondary">: WorkshopFileAction) async -&gt; RemoteStorageSetUserPublishedFileActionResult?</span></span>
+    <a class="j2-item-title" href="#_setuserpublishedfileactionisolationpublishedfileidaction" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setuserpublishedfileactionisolationpublishedfileidaction"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setUserPublishedFileAction<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>action<span class="j2-item-secondary">: WorkshopFileAction) async -&gt; RemoteStorageSetUserPublishedFileActionResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_setuserpublishedfileactionpublishedfileidaction">
+    <div class="collapse  j2-item-popopen-wrapper" id="_setuserpublishedfileactionisolationpublishedfileidaction">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8198,6 +8283,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func setUserPublishedFileAction(
+    isolation: isolated (any Actor)? = #isolation,
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>
 ) async -&gt; <a href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>?</code></pre>
   </div>
@@ -8261,7 +8347,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func subscribePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8288,16 +8375,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="subscribepublishedfilepublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20subscribePublishedFile(publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageSubscribePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="subscribepublishedfilepublishedfileid"></a>
-    <h4 class="visually-hidden">func subscribePublishedFile(publishedFileId: PublishedFileID) async -&gt; RemoteStorageSubscribePublishedFileResult?</h4>
+    <section id="subscribepublishedfileisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20subscribePublishedFile(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageSubscribePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="subscribepublishedfileisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func subscribePublishedFile(isolation: isolated (any Actor)?, publishedFileId: PublishedFileID) async -&gt; RemoteStorageSubscribePublishedFileResult?</h4>
     
     
-    <a class="j2-item-title" href="#_subscribepublishedfilepublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_subscribepublishedfilepublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>subscribePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageSubscribePublishedFileResult?</span></span>
+    <a class="j2-item-title" href="#_subscribepublishedfileisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_subscribepublishedfileisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>subscribePublishedFile<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageSubscribePublishedFileResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_subscribepublishedfilepublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_subscribepublishedfileisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8321,8 +8408,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func subscribePublishedFile(publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?</code></pre>
+    <pre><code class="language-swift">public func subscribePublishedFile(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?</code></pre>
   </div>
 
 
@@ -8384,7 +8473,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func ugcDownload(
     content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8411,16 +8500,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="ugcdownloadcontentpriority" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20ugcDownload(content%3A%20UGCHandle,%20priority%3A%20Int)%20async%20-%3E%20RemoteStorageDownloadUGCResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="ugcdownloadcontentpriority"></a>
-    <h4 class="visually-hidden">func ugcDownload(content: UGCHandle, priority: Int) async -&gt; RemoteStorageDownloadUGCResult?</h4>
+    <section id="ugcdownloadisolationcontentpriority" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20ugcDownload(isolation%3A%20isolated%20(any%20Actor)%3F,%20content%3A%20UGCHandle,%20priority%3A%20Int)%20async%20-%3E%20RemoteStorageDownloadUGCResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="ugcdownloadisolationcontentpriority"></a>
+    <h4 class="visually-hidden">func ugcDownload(isolation: isolated (any Actor)?, content: UGCHandle, priority: Int) async -&gt; RemoteStorageDownloadUGCResult?</h4>
     
     
-    <a class="j2-item-title" href="#_ugcdownloadcontentpriority" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_ugcdownloadcontentpriority"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>ugcDownload<span class="j2-item-secondary">(</span>content<span class="j2-item-secondary">: UGCHandle, </span>priority<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageDownloadUGCResult?</span></span>
+    <a class="j2-item-title" href="#_ugcdownloadisolationcontentpriority" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_ugcdownloadisolationcontentpriority"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>ugcDownload<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>content<span class="j2-item-secondary">: UGCHandle, </span>priority<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageDownloadUGCResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_ugcdownloadcontentpriority">
+    <div class="collapse  j2-item-popopen-wrapper" id="_ugcdownloadisolationcontentpriority">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8444,8 +8533,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func ugcDownload(content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>) async
-    -&gt; <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?</code></pre>
+    <pre><code class="language-swift">public func ugcDownload(
+    isolation: isolated (any Actor)? = #isolation, content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>,
+    priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+) async -&gt; <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?</code></pre>
   </div>
 
 
@@ -8507,7 +8598,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func ugcDownloadToLocation(
     content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>, location: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8534,16 +8625,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="ugcdownloadtolocationcontentlocationpriority" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20ugcDownloadToLocation(content%3A%20UGCHandle,%20location%3A%20String,%20priority%3A%20Int)%20async%20-%3E%20RemoteStorageDownloadUGCResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="ugcdownloadtolocationcontentlocationpriority"></a>
-    <h4 class="visually-hidden">func ugcDownloadToLocation(content: UGCHandle, location: String, priority: Int) async -&gt; RemoteStorageDownloadUGCResult?</h4>
+    <section id="ugcdownloadtolocationisolationcontentlocationpriority" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20ugcDownloadToLocation(isolation%3A%20isolated%20(any%20Actor)%3F,%20content%3A%20UGCHandle,%20location%3A%20String,%20priority%3A%20Int)%20async%20-%3E%20RemoteStorageDownloadUGCResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="ugcdownloadtolocationisolationcontentlocationpriority"></a>
+    <h4 class="visually-hidden">func ugcDownloadToLocation(isolation: isolated (any Actor)?, content: UGCHandle, location: String, priority: Int) async -&gt; RemoteStorageDownloadUGCResult?</h4>
     
     
-    <a class="j2-item-title" href="#_ugcdownloadtolocationcontentlocationpriority" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_ugcdownloadtolocationcontentlocationpriority"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>ugcDownloadToLocation<span class="j2-item-secondary">(</span>content<span class="j2-item-secondary">: UGCHandle, </span>location<span class="j2-item-secondary">: String, </span>priority<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageDownloadUGCResult?</span></span>
+    <a class="j2-item-title" href="#_ugcdownloadtolocationisolationcontentlocationpriority" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_ugcdownloadtolocationisolationcontentlocationpriority"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>ugcDownloadToLocation<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>content<span class="j2-item-secondary">: UGCHandle, </span>location<span class="j2-item-secondary">: String, </span>priority<span class="j2-item-secondary">: Int) async -&gt; RemoteStorageDownloadUGCResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_ugcdownloadtolocationcontentlocationpriority">
+    <div class="collapse  j2-item-popopen-wrapper" id="_ugcdownloadtolocationisolationcontentlocationpriority">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8568,7 +8659,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func ugcDownloadToLocation(
-    content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>, location: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
+    isolation: isolated (any Actor)? = #isolation, content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>,
+    location: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>
 ) async -&gt; <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?</code></pre>
   </div>
 
@@ -8694,8 +8786,9 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func unsubscribePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
-)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8722,16 +8815,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="unsubscribepublishedfilepublishedfileid" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20unsubscribePublishedFile(publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageUnsubscribePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="unsubscribepublishedfilepublishedfileid"></a>
-    <h4 class="visually-hidden">func unsubscribePublishedFile(publishedFileId: PublishedFileID) async -&gt; RemoteStorageUnsubscribePublishedFileResult?</h4>
+    <section id="unsubscribepublishedfileisolationpublishedfileid" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20unsubscribePublishedFile(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileId%3A%20PublishedFileID)%20async%20-%3E%20RemoteStorageUnsubscribePublishedFileResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="unsubscribepublishedfileisolationpublishedfileid"></a>
+    <h4 class="visually-hidden">func unsubscribePublishedFile(isolation: isolated (any Actor)?, publishedFileId: PublishedFileID) async -&gt; RemoteStorageUnsubscribePublishedFileResult?</h4>
     
     
-    <a class="j2-item-title" href="#_unsubscribepublishedfilepublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_unsubscribepublishedfilepublishedfileid"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>unsubscribePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageUnsubscribePublishedFileResult?</span></span>
+    <a class="j2-item-title" href="#_unsubscribepublishedfileisolationpublishedfileid" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_unsubscribepublishedfileisolationpublishedfileid"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>unsubscribePublishedFile<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileId<span class="j2-item-secondary">: PublishedFileID) async -&gt; RemoteStorageUnsubscribePublishedFileResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_unsubscribepublishedfilepublishedfileid">
+    <div class="collapse  j2-item-popopen-wrapper" id="_unsubscribepublishedfileisolationpublishedfileid">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -8755,8 +8848,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func unsubscribePublishedFile(publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>) async
-    -&gt; <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?</code></pre>
+    <pre><code class="language-swift">public func unsubscribePublishedFile(
+    isolation: isolated (any Actor)? = #isolation,
+    publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>
+) async -&gt; <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?</code></pre>
   </div>
 
 
@@ -9253,8 +9348,9 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func updateUserPublishedItemVote(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, voteUp: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>,
-    completion: @escaping (<a href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        <a href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9281,16 +9377,16 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
   
-    <section id="updateuserpublisheditemvotepublishedfileidvoteup" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20updateUserPublishedItemVote(publishedFileId%3A%20PublishedFileID,%20voteUp%3A%20Bool)%20async%20-%3E%20RemoteStorageUpdateUserPublishedItemVoteResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="updateuserpublisheditemvotepublishedfileidvoteup"></a>
-    <h4 class="visually-hidden">func updateUserPublishedItemVote(publishedFileId: PublishedFileID, voteUp: Bool) async -&gt; RemoteStorageUpdateUserPublishedItemVoteResult?</h4>
+    <section id="updateuserpublisheditemvoteisolationpublishedfileidvoteup" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20updateUserPublishedItemVote(isolation%3A%20isolated%20(any%20Actor)%3F,%20publishedFileId%3A%20PublishedFileID,%20voteUp%3A%20Bool)%20async%20-%3E%20RemoteStorageUpdateUserPublishedItemVoteResult%3F" class="dashAnchor j2-item-dash-anchor" data-item-id="updateuserpublisheditemvoteisolationpublishedfileidvoteup"></a>
+    <h4 class="visually-hidden">func updateUserPublishedItemVote(isolation: isolated (any Actor)?, publishedFileId: PublishedFileID, voteUp: Bool) async -&gt; RemoteStorageUpdateUserPublishedItemVoteResult?</h4>
     
     
-    <a class="j2-item-title" href="#_updateuserpublisheditemvotepublishedfileidvoteup" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_updateuserpublisheditemvotepublishedfileidvoteup"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>updateUserPublishedItemVote<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>voteUp<span class="j2-item-secondary">: Bool) async -&gt; RemoteStorageUpdateUserPublishedItemVoteResult?</span></span>
+    <a class="j2-item-title" href="#_updateuserpublisheditemvoteisolationpublishedfileidvoteup" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_updateuserpublisheditemvoteisolationpublishedfileidvoteup"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>updateUserPublishedItemVote<span class="j2-item-secondary">(</span>isolation<span class="j2-item-secondary">: isolated (any Actor)?, </span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>voteUp<span class="j2-item-secondary">: Bool) async -&gt; RemoteStorageUpdateUserPublishedItemVoteResult?</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_updateuserpublisheditemvotepublishedfileidvoteup">
+    <div class="collapse  j2-item-popopen-wrapper" id="_updateuserpublisheditemvoteisolationpublishedfileidvoteup">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -9315,6 +9411,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func updateUserPublishedItemVote(
+    isolation: isolated (any Actor)? = #isolation,
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, voteUp: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
 ) async -&gt; <a href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>?</code></pre>
   </div>

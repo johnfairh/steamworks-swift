@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamHTTP - Steamworks v0.5.2</title>
+   <title>SteamHTTP - Steamworks v0.5.3</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamhttp.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.2</a>
+    Steamworks v0.5.3</a>
   </div>
   
 
@@ -3117,6 +3117,47 @@
       <li class="j2-nav-group">
         
 
+  <a class="j2-nav-item" href="../../steamtimeline.html?swift">SteamTimeline</a>
+
+
+  <ul class="j2-nav-sublist">
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamtimeline.html?swift">SteamTimeline</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelineeventclippriority.html?swift">TimelineEventClipPriority</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/timelinegamemode.html?swift">TimelineGameMode</a>
+
+
+
+  </li>
+  
+</ul>
+
+
+
+      </li>
+      
+      <li class="j2-nav-group">
+        
+
   <a class="j2-nav-item" href="../../steamugc.html?swift">SteamUGC</a>
 
 
@@ -4141,6 +4182,15 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/beginauthsessionresult.html?swift">BeginAuthSessionResult</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/betabranchflags.html?swift">BetaBranchFlags</a>
 
 
 
@@ -5898,12 +5948,12 @@ public func setHTTPRequestUserAgentInfo(
   
   
     <section id="sendhttprequestrequestcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20sendHTTPRequest(request%3A%20HTTPRequestHandle,%20completion%3A%20(HTTPRequestCompleted%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="sendhttprequestrequestcompletion"></a>
-    <h4 class="visually-hidden">func sendHTTPRequest(request: HTTPRequestHandle, completion: (HTTPRequestCompleted?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20sendHTTPRequest(request%3A%20HTTPRequestHandle,%20completion%3A%20sending@escaping%20(HTTPRequestCompleted%3F)%20-%3E%20Void" class="dashAnchor j2-item-dash-anchor" data-item-id="sendhttprequestrequestcompletion"></a>
+    <h4 class="visually-hidden">func sendHTTPRequest(request: HTTPRequestHandle, completion: sending@escaping (HTTPRequestCompleted?) -&gt; Void</h4>
     
     
     <a class="j2-item-title" href="#_sendhttprequestrequestcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sendhttprequestrequestcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendHTTPRequest<span class="j2-item-secondary">(</span>request<span class="j2-item-secondary">: HTTPRequestHandle, </span>completion<span class="j2-item-secondary">: (HTTPRequestCompleted?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendHTTPRequest<span class="j2-item-secondary">(</span>request<span class="j2-item-secondary">: HTTPRequestHandle, </span>completion<span class="j2-item-secondary">: sending</span><span class="j2-item-secondary">@escaping (HTTPRequestCompleted?) -&gt; Void</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_sendhttprequestrequestcompletion">
@@ -5930,9 +5980,8 @@ public func setHTTPRequestUserAgentInfo(
               
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
-    <pre><code class="language-swift">public func sendHTTPRequest(
-    request: <a href="../../steamworks/types/httprequesthandle.html?swift">HTTPRequestHandle</a>,
-    completion: @escaping (<a href="../../steamworks/types/httprequestcompleted.html?swift">HTTPRequestCompleted</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    <pre><code class="language-swift">public func sendHTTPRequest(request: <a href="../../steamworks/types/httprequesthandle.html?swift">HTTPRequestHandle</a>, completion: sending
+@escaping (<a href="../../steamworks/types/httprequestcompleted.html?swift">HTTPRequestCompleted</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5960,12 +6009,12 @@ public func setHTTPRequestUserAgentInfo(
   
   
     <section id="sendhttprequestandstreamresponserequestcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20sendHTTPRequestAndStreamResponse(request%3A%20HTTPRequestHandle,%20completion%3A%20(HTTPRequestCompleted%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="sendhttprequestandstreamresponserequestcompletion"></a>
-    <h4 class="visually-hidden">func sendHTTPRequestAndStreamResponse(request: HTTPRequestHandle, completion: (HTTPRequestCompleted?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20sendHTTPRequestAndStreamResponse(request%3A%20HTTPRequestHandle,%20completion%3A%20sending@escaping%20(HTTPRequestCompleted%3F)%20-%3E%20Void" class="dashAnchor j2-item-dash-anchor" data-item-id="sendhttprequestandstreamresponserequestcompletion"></a>
+    <h4 class="visually-hidden">func sendHTTPRequestAndStreamResponse(request: HTTPRequestHandle, completion: sending@escaping (HTTPRequestCompleted?) -&gt; Void</h4>
     
     
     <a class="j2-item-title" href="#_sendhttprequestandstreamresponserequestcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sendhttprequestandstreamresponserequestcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendHTTPRequestAndStreamResponse<span class="j2-item-secondary">(</span>request<span class="j2-item-secondary">: HTTPRequestHandle, </span>completion<span class="j2-item-secondary">: (HTTPRequestCompleted?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendHTTPRequestAndStreamResponse<span class="j2-item-secondary">(</span>request<span class="j2-item-secondary">: HTTPRequestHandle, </span>completion<span class="j2-item-secondary">: sending</span><span class="j2-item-secondary">@escaping (HTTPRequestCompleted?) -&gt; Void</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_sendhttprequestandstreamresponserequestcompletion">
@@ -5993,8 +6042,8 @@ public func setHTTPRequestUserAgentInfo(
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func sendHTTPRequestAndStreamResponse(
-    request: <a href="../../steamworks/types/httprequesthandle.html?swift">HTTPRequestHandle</a>,
-    completion: @escaping (<a href="../../steamworks/types/httprequestcompleted.html?swift">HTTPRequestCompleted</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    request: <a href="../../steamworks/types/httprequesthandle.html?swift">HTTPRequestHandle</a>, completion: sending
+@escaping (<a href="../../steamworks/types/httprequestcompleted.html?swift">HTTPRequestCompleted</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
