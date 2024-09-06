@@ -46,7 +46,7 @@ public struct SteamGameServerStats: Sendable {
     }
 
     /// Steamworks `ISteamGameServerStats::RequestUserStats()`, callback
-    public func requestUserStats(user: SteamID, completion: @Sendable @escaping (GSStatsReceived?) -> Void) {
+    public func requestUserStats(user: SteamID, completion: @Sendable @escaping (sending GSStatsReceived?) -> Void) {
         let rc = SteamAPI_ISteamGameServerStats_RequestUserStats(interface, CUnsignedLongLong(user))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -74,7 +74,7 @@ public struct SteamGameServerStats: Sendable {
     }
 
     /// Steamworks `ISteamGameServerStats::StoreUserStats()`, callback
-    public func storeUserStats(user: SteamID, completion: @Sendable @escaping (GSStatsStored?) -> Void) {
+    public func storeUserStats(user: SteamID, completion: @Sendable @escaping (sending GSStatsStored?) -> Void) {
         let rc = SteamAPI_ISteamGameServerStats_StoreUserStats(interface, CUnsignedLongLong(user))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }

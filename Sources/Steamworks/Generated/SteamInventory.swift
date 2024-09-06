@@ -217,7 +217,7 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::RequestEligiblePromoItemDefinitionsIDs()`, callback
-    public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID, completion: @Sendable @escaping (SteamInventoryEligiblePromoItemDefIDs?) -> Void) {
+    public func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID, completion: @Sendable @escaping (sending SteamInventoryEligiblePromoItemDefIDs?) -> Void) {
         let rc = SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs(interface, CUnsignedLongLong(steamID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -230,7 +230,7 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::RequestPrices()`, callback
-    public func requestPrices(completion: @Sendable @escaping (SteamInventoryRequestPricesResult?) -> Void) {
+    public func requestPrices(completion: @Sendable @escaping (sending SteamInventoryRequestPricesResult?) -> Void) {
         let rc = SteamAPI_ISteamInventory_RequestPrices(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -278,7 +278,7 @@ public struct SteamInventory: Sendable {
     }
 
     /// Steamworks `ISteamInventory::StartPurchase()`, callback
-    public func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int], completion: @Sendable @escaping (SteamInventoryStartPurchaseResult?) -> Void) {
+    public func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int], completion: @Sendable @escaping (sending SteamInventoryStartPurchaseResult?) -> Void) {
         var tmpArrayItemDefs = arrayItemDefs.map { SteamItemDef_t($0) }
         var tmpArrayQuantity = arrayQuantity.map { uint32($0) }
         let rc = SteamAPI_ISteamInventory_StartPurchase(interface, &tmpArrayItemDefs, &tmpArrayQuantity, uint32(arrayQuantity.count))

@@ -60,7 +60,7 @@ public struct SteamMatchmaking: Sendable {
     }
 
     /// Steamworks `ISteamMatchmaking::CreateLobby()`, callback
-    public func createLobby(lobbyType: LobbyType, maxMembers: Int, completion: @Sendable @escaping (LobbyCreated?) -> Void) {
+    public func createLobby(lobbyType: LobbyType, maxMembers: Int, completion: @Sendable @escaping (sending LobbyCreated?) -> Void) {
         let rc = SteamAPI_ISteamMatchmaking_CreateLobby(interface, ELobbyType(lobbyType), CInt(maxMembers))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -179,7 +179,7 @@ public struct SteamMatchmaking: Sendable {
     }
 
     /// Steamworks `ISteamMatchmaking::JoinLobby()`, callback
-    public func joinLobby(lobby: SteamID, completion: @Sendable @escaping (LobbyEnter?) -> Void) {
+    public func joinLobby(lobby: SteamID, completion: @Sendable @escaping (sending LobbyEnter?) -> Void) {
         let rc = SteamAPI_ISteamMatchmaking_JoinLobby(interface, CUnsignedLongLong(lobby))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -209,7 +209,7 @@ public struct SteamMatchmaking: Sendable {
     }
 
     /// Steamworks `ISteamMatchmaking::RequestLobbyList()`, callback
-    public func requestLobbyList(completion: @Sendable @escaping (LobbyMatchList?) -> Void) {
+    public func requestLobbyList(completion: @Sendable @escaping (sending LobbyMatchList?) -> Void) {
         let rc = SteamAPI_ISteamMatchmaking_RequestLobbyList(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }

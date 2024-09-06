@@ -69,7 +69,7 @@ extension MetadataDB.Struct {
         let swiftType = name.swiftType
         return """
                    /// Registration for Steamworks `\(name)` callback
-                   func on\(swiftType)(_ client: @Sendable @escaping (\(swiftType)) -> Void) {
+                   func on\(swiftType)(_ client: @Sendable @escaping (sending \(swiftType)) -> Void) {
                        callbacks.add(callbackID: CallbackID(\(callbackID!)), rawClient: SteamBaseAPI.makeRaw(client))
                    }
                """

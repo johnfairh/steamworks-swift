@@ -32,14 +32,14 @@ public class SteamBaseAPI: @unchecked Sendable {
     typealias RawClient = (UnsafeMutableRawPointer?) -> Void
 
     /// Type-eraser for client callback closures, again exposed to other files because of code gen
-    static func makeRaw<SteamType, SwiftType>(_ client: @escaping (SwiftType) -> Void)
-        -> RawClient where SwiftType : SteamCreatable, SwiftType.SteamType == SteamType {
+    static func makeRaw<SteamType, SwiftType>(_ client: @escaping (sending SwiftType) -> Void)
+        -> RawClient where SwiftType : SteamCreatable, SwiftType.SteamType == SteamType, SwiftType: Sendable {
         { $0.map { client(SwiftType($0.bindMemory(to: SteamType.self, capacity: 1).pointee)) } }
     }
 
     /// Type-eraser for call-return closures, that can actually fail and need to be signalled back as such
-    static func makeRaw<SteamType, SwiftType>(_ client: @escaping (Optional<SwiftType>) -> Void)
-        -> RawClient where SwiftType : SteamCreatable, SwiftType.SteamType == SteamType {
+    static func makeRaw<SteamType, SwiftType>(_ client: @escaping (sending Optional<SwiftType>) -> Void)
+        -> RawClient where SwiftType : SteamCreatable, SwiftType.SteamType == SteamType, SwiftType: Sendable {
         { client($0.map { SwiftType($0.bindMemory(to: SteamType.self, capacity: 1).pointee) }) }
     }
 

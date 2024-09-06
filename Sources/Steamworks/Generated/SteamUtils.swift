@@ -27,7 +27,7 @@ public struct SteamUtils: Sendable {
     }
 
     /// Steamworks `ISteamUtils::CheckFileSignature()`, callback
-    public func checkFileSignature(fileName: String, completion: @Sendable @escaping (CheckFileSignature?) -> Void) {
+    public func checkFileSignature(fileName: String, completion: @Sendable @escaping (sending CheckFileSignature?) -> Void) {
         let rc = SteamAPI_ISteamUtils_CheckFileSignature(interface, fileName)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
