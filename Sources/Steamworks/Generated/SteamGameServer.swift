@@ -20,7 +20,7 @@ public struct SteamGameServer: Sendable {
     }
 
     /// Steamworks `ISteamGameServer::AssociateWithClan()`, callback
-    public func associateWithClan(clan: SteamID, completion: @Sendable @escaping (AssociateWithClanResult?) -> Void) {
+    public func associateWithClan(clan: SteamID, completion: @Sendable @escaping (sending AssociateWithClanResult?) -> Void) {
         let rc = SteamAPI_ISteamGameServer_AssociateWithClan(interface, CUnsignedLongLong(clan))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -64,7 +64,7 @@ public struct SteamGameServer: Sendable {
     }
 
     /// Steamworks `ISteamGameServer::ComputeNewPlayerCompatibility()`, callback
-    public func computeNewPlayerCompatibility(newPlayer: SteamID, completion: @Sendable @escaping (ComputeNewPlayerCompatibilityResult?) -> Void) {
+    public func computeNewPlayerCompatibility(newPlayer: SteamID, completion: @Sendable @escaping (sending ComputeNewPlayerCompatibilityResult?) -> Void) {
         let rc = SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility(interface, CUnsignedLongLong(newPlayer))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -117,7 +117,7 @@ public struct SteamGameServer: Sendable {
     }
 
     /// Steamworks `ISteamGameServer::GetServerReputation()`, callback
-    public func getServerReputation(completion: @Sendable @escaping (GSReputation?) -> Void) {
+    public func getServerReputation(completion: @Sendable @escaping (sending GSReputation?) -> Void) {
         let rc = SteamAPI_ISteamGameServer_GetServerReputation(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }

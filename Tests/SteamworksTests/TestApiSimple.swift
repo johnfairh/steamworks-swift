@@ -57,7 +57,7 @@ class TestApiSimple: XCTestCase {
         print("SteamID = \(steamID)")
 
         await withTaskGroup(of: Void.self) { group in
-            group.addTask { @MainActor in
+            group.addTask { @Sendable @MainActor in
                 MainActor.assertIsolated()
 
                 if let res = await steam.friends.getFollowerCount(steamID: steamID),
@@ -75,6 +75,8 @@ class TestApiSimple: XCTestCase {
                 // This ends up running frames on the main actor
                 await TestClient.runFramesAsync()
             }
+
+            await group.waitForAll()
         }
     }
 

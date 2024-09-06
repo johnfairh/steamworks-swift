@@ -22,7 +22,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::AddAppDependency()`, callback
-    public func addAppDependency(publishedFileID: PublishedFileID, appID: AppID, completion: @Sendable @escaping (AddAppDependencyResult?) -> Void) {
+    public func addAppDependency(publishedFileID: PublishedFileID, appID: AppID, completion: @Sendable @escaping (sending AddAppDependencyResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_AddAppDependency(interface, PublishedFileId_t(publishedFileID), AppId_t(appID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -40,7 +40,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::AddDependency()`, callback
-    public func addDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID, completion: @Sendable @escaping (AddUGCDependencyResult?) -> Void) {
+    public func addDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID, completion: @Sendable @escaping (sending AddUGCDependencyResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_AddDependency(interface, PublishedFileId_t(parentPublishedFileID), PublishedFileId_t(childPublishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -77,7 +77,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::AddItemToFavorites()`, callback
-    public func addItemToFavorites(appId: AppID, publishedFileID: PublishedFileID, completion: @Sendable @escaping (UserFavoriteItemsListChanged?) -> Void) {
+    public func addItemToFavorites(appId: AppID, publishedFileID: PublishedFileID, completion: @Sendable @escaping (sending UserFavoriteItemsListChanged?) -> Void) {
         let rc = SteamAPI_ISteamUGC_AddItemToFavorites(interface, AppId_t(appId), PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -115,7 +115,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::CreateItem()`, callback
-    public func createItem(consumerAppId: AppID, fileType: WorkshopFileType, completion: @Sendable @escaping (CreateItemResult?) -> Void) {
+    public func createItem(consumerAppId: AppID, fileType: WorkshopFileType, completion: @Sendable @escaping (sending CreateItemResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_CreateItem(interface, AppId_t(consumerAppId), EWorkshopFileType(fileType))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -149,7 +149,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::DeleteItem()`, callback
-    public func deleteItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (DeleteItemResult?) -> Void) {
+    public func deleteItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (sending DeleteItemResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_DeleteItem(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -167,7 +167,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::GetAppDependencies()`, callback
-    public func getAppDependencies(publishedFileID: PublishedFileID, completion: @Sendable @escaping (GetAppDependenciesResult?) -> Void) {
+    public func getAppDependencies(publishedFileID: PublishedFileID, completion: @Sendable @escaping (sending GetAppDependenciesResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_GetAppDependencies(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -397,7 +397,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::GetUserItemVote()`, callback
-    public func getUserItemVote(publishedFileID: PublishedFileID, completion: @Sendable @escaping (GetUserItemVoteResult?) -> Void) {
+    public func getUserItemVote(publishedFileID: PublishedFileID, completion: @Sendable @escaping (sending GetUserItemVoteResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_GetUserItemVote(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -410,7 +410,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::GetWorkshopEULAStatus()`, callback
-    public func getWorkshopEULAStatus(completion: @Sendable @escaping (WorkshopEULAStatus?) -> Void) {
+    public func getWorkshopEULAStatus(completion: @Sendable @escaping (sending WorkshopEULAStatus?) -> Void) {
         let rc = SteamAPI_ISteamUGC_GetWorkshopEULAStatus(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -434,7 +434,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::RemoveAppDependency()`, callback
-    public func removeAppDependency(publishedFileID: PublishedFileID, appID: AppID, completion: @Sendable @escaping (RemoveAppDependencyResult?) -> Void) {
+    public func removeAppDependency(publishedFileID: PublishedFileID, appID: AppID, completion: @Sendable @escaping (sending RemoveAppDependencyResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_RemoveAppDependency(interface, PublishedFileId_t(publishedFileID), AppId_t(appID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -452,7 +452,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::RemoveDependency()`, callback
-    public func removeDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID, completion: @Sendable @escaping (RemoveUGCDependencyResult?) -> Void) {
+    public func removeDependency(parentPublishedFileID: PublishedFileID, childPublishedFileID: PublishedFileID, completion: @Sendable @escaping (sending RemoveUGCDependencyResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_RemoveDependency(interface, PublishedFileId_t(parentPublishedFileID), PublishedFileId_t(childPublishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -465,7 +465,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::RemoveItemFromFavorites()`, callback
-    public func removeItemFromFavorites(appId: AppID, publishedFileID: PublishedFileID, completion: @Sendable @escaping (UserFavoriteItemsListChanged?) -> Void) {
+    public func removeItemFromFavorites(appId: AppID, publishedFileID: PublishedFileID, completion: @Sendable @escaping (sending UserFavoriteItemsListChanged?) -> Void) {
         let rc = SteamAPI_ISteamUGC_RemoveItemFromFavorites(interface, AppId_t(appId), PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -490,7 +490,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::RequestUGCDetails()`, callback
-    public func requestUGCDetails(publishedFileID: PublishedFileID, maxAgeSeconds: Int, completion: @Sendable @escaping (SteamUGCRequestUGCDetailsResult?) -> Void) {
+    public func requestUGCDetails(publishedFileID: PublishedFileID, maxAgeSeconds: Int, completion: @Sendable @escaping (sending SteamUGCRequestUGCDetailsResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_RequestUGCDetails(interface, PublishedFileId_t(publishedFileID), uint32(maxAgeSeconds))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -503,7 +503,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::SendQueryUGCRequest()`, callback
-    public func sendQueryUGCRequest(handle: UGCQueryHandle, completion: @Sendable @escaping (SteamUGCQueryCompleted?) -> Void) {
+    public func sendQueryUGCRequest(handle: UGCQueryHandle, completion: @Sendable @escaping (sending SteamUGCQueryCompleted?) -> Void) {
         let rc = SteamAPI_ISteamUGC_SendQueryUGCRequest(interface, UGCQueryHandle_t(handle))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -675,7 +675,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::SetUserItemVote()`, callback
-    public func setUserItemVote(publishedFileID: PublishedFileID, voteUp: Bool, completion: @Sendable @escaping (SetUserItemVoteResult?) -> Void) {
+    public func setUserItemVote(publishedFileID: PublishedFileID, voteUp: Bool, completion: @Sendable @escaping (sending SetUserItemVoteResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_SetUserItemVote(interface, PublishedFileId_t(publishedFileID), voteUp)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -698,7 +698,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::StartPlaytimeTracking()`, callback
-    public func startPlaytimeTracking(publishedFileID: [PublishedFileID], completion: @Sendable @escaping (StartPlaytimeTrackingResult?) -> Void) {
+    public func startPlaytimeTracking(publishedFileID: [PublishedFileID], completion: @Sendable @escaping (sending StartPlaytimeTrackingResult?) -> Void) {
         var tmpPublishedFileID = publishedFileID.map { PublishedFileId_t($0) }
         let rc = SteamAPI_ISteamUGC_StartPlaytimeTracking(interface, &tmpPublishedFileID, uint32(publishedFileID.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
@@ -712,7 +712,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::StopPlaytimeTracking()`, callback
-    public func stopPlaytimeTracking(publishedFileID: [PublishedFileID], completion: @Sendable @escaping (StopPlaytimeTrackingResult?) -> Void) {
+    public func stopPlaytimeTracking(publishedFileID: [PublishedFileID], completion: @Sendable @escaping (sending StopPlaytimeTrackingResult?) -> Void) {
         var tmpPublishedFileID = publishedFileID.map { PublishedFileId_t($0) }
         let rc = SteamAPI_ISteamUGC_StopPlaytimeTracking(interface, &tmpPublishedFileID, uint32(publishedFileID.count))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
@@ -726,7 +726,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::StopPlaytimeTrackingForAllItems()`, callback
-    public func stopPlaytimeTrackingForAllItems(completion: @Sendable @escaping (StopPlaytimeTrackingResult?) -> Void) {
+    public func stopPlaytimeTrackingForAllItems(completion: @Sendable @escaping (sending StopPlaytimeTrackingResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_StopPlaytimeTrackingForAllItems(interface)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -739,7 +739,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::SubmitItemUpdate()`, callback
-    public func submitItemUpdate(handle: UGCUpdateHandle, changeNote: String?, completion: @Sendable @escaping (SubmitItemUpdateResult?) -> Void) {
+    public func submitItemUpdate(handle: UGCUpdateHandle, changeNote: String?, completion: @Sendable @escaping (sending SubmitItemUpdateResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_SubmitItemUpdate(interface, UGCUpdateHandle_t(handle), changeNote)
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -752,7 +752,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::SubscribeItem()`, callback
-    public func subscribeItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (RemoteStorageSubscribePublishedFileResult?) -> Void) {
+    public func subscribeItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (sending RemoteStorageSubscribePublishedFileResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_SubscribeItem(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
@@ -770,7 +770,7 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::UnsubscribeItem()`, callback
-    public func unsubscribeItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (RemoteStorageUnsubscribePublishedFileResult?) -> Void) {
+    public func unsubscribeItem(publishedFileID: PublishedFileID, completion: @Sendable @escaping (sending RemoteStorageUnsubscribePublishedFileResult?) -> Void) {
         let rc = SteamAPI_ISteamUGC_UnsubscribeItem(interface, PublishedFileId_t(publishedFileID))
         SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
     }
