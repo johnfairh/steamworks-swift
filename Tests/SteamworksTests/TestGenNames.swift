@@ -5,6 +5,8 @@
 //  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
+#if !os(Linux)
+
 @testable import LibGenerate
 import XCTest
 
@@ -113,3 +115,5 @@ class TestNames: XCTestCase {
         XCTAssertEqual("expr.map { T($0) }", SwiftExpr("expr").asCast(to: SwiftType("T?")).expr)
     }
 }
+
+#endif

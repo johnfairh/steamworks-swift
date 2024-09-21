@@ -20,7 +20,7 @@ Current state:
   `SteamworksConcurrency` module
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
-* Requires Swift 6, Xcode 16 beta -- Linux not building right now, wait for 6 GA
+* Requires Swift 6 / Xcode 16
 * The Xcode project basically works.
 * ~Unit tests sometimes crash inside steam on exit~ fixed!
 
@@ -306,7 +306,7 @@ Fully-fledged AppKit/Metal demo [here](https://github.com/johnfairh/spacewar-swi
 
 ### Swift C++ Bugs
 
-_to recheck in Swift 6 for Linux - looking good though_
+Mostly fixed in Swift 6.  Linux still suffering a bit.
 
 Tech limitations, on 6.0 Xcode 16.b3:
 * Some structures/classes aren't imported -- is the common factor a `protected`
@@ -323,15 +323,17 @@ Tech limitations, on 6.0 Xcode 16.b3:
 * ~sourcekit won't give me a module interface for `CSteamworks` to see what else the
   importer is doing.  Probably Xcode's fault, still not passing the user's flags to
   sourcekit and still doing insultingly bad error-reporting.~ fixed in Xcode 15?!
-* Linux only: random parts of Glibc silently fail to import. SMH.  Work around in C++.
-  See `swift_shims.h`.
+* ~Linux only: random parts of Glibc silently fail to import. SMH.  Work around in C++.
+  See `swift_shims.h`.~ Fixed in 6.0 ("for now")
 * ~Linux only: implicit struct constructors are not created, Swift generates a ref
   to a non-existent method that fails at link time.  Work around with dumb C++
-  allocate shim.~  Sort of fixed in 5.9, but instead `swiftc` crashes on some uses -- on
+  allocate shim.~  ~Sort of fixed in 5.9, but instead `swiftc` crashes on some uses -- on
   both macOS and Linux.  Check by refs to eg. `CSteamNetworkingIPAddr_Allocate()`, see
-  `steam_missing.h`.
+  `steam_missing.h`.~ Fixed in 6.0.
 * Linux only, _again_: SPM test auto-discovery has no clue about C++ interop.  Work around by
-  smashing in the flag everywhere...
+  smashing in the flag everywhere... Swift 6 - worse now, utterly broken on Linux with
+  yams 3rd-party dependency.  Maybe fixable with swift-testing - for now nobbled those tests
+  on Linux.  Yay?
 * ~Swift 5.8+ adopts a broken/paranoid model about 'projected pointers' requiring some fairly
   ugly code to work around.   Verify with the `__ unsafe` stuff in `ManualTypes.swift`.~
   fixed by Swift 6ish

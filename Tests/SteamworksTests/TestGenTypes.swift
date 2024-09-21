@@ -5,6 +5,8 @@
 //  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
+#if !os(Linux)
+
 import XCTest
 @testable import Steamworks
 
@@ -77,3 +79,5 @@ class TestTypes: XCTestCase {
         XCTAssertEqual(strings, oStrings)
     }
 }
+
+#endif

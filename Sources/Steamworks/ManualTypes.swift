@@ -268,8 +268,7 @@ public struct SteamNetworkingIPAddr: @unchecked Sendable {
 
     /// An invalid address
     public init() {
-        // Crashes Swift 5.9 compiler without thunk...
-        adr = CSteamNetworkingIPAddr_Allocate() // SteamType
+        adr = SteamType()
     }
 
     /// `INADDR_ANY` with some port
@@ -406,8 +405,7 @@ public struct SteamNetworkingIdentity: Sendable {
 
     /// Create an invalid identity
     public init() {
-        // Crashes Swift 5.9 compiler without thunk...
-        identity = CSteamNetworkingIdentity_Allocate() //SteamType()
+        identity = SteamType()
     }
 
     /// Init from a Steam ID
