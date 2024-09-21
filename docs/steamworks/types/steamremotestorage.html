@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamRemoteStorage - Steamworks v0.5.3</title>
+   <title>SteamRemoteStorage - Steamworks v1.0.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamremotestorage.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.3</a>
+    Steamworks v1.0.0</a>
   </div>
   
 
@@ -4582,12 +4582,12 @@
   
   
     <section id="commitpublishedfileupdatehandlecompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20commitPublishedFileUpdate(handle%3A%20PublishedFileUpdateHandle,%20completion%3A%20(RemoteStorageUpdatePublishedFileResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="commitpublishedfileupdatehandlecompletion"></a>
-    <h4 class="visually-hidden">func commitPublishedFileUpdate(handle: PublishedFileUpdateHandle, completion: (RemoteStorageUpdatePublishedFileResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20commitPublishedFileUpdate(handle%3A%20PublishedFileUpdateHandle,%20completion%3A%20(sending%20RemoteStorageUpdatePublishedFileResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="commitpublishedfileupdatehandlecompletion"></a>
+    <h4 class="visually-hidden">func commitPublishedFileUpdate(handle: PublishedFileUpdateHandle, completion: (sending RemoteStorageUpdatePublishedFileResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_commitpublishedfileupdatehandlecompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_commitpublishedfileupdatehandlecompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>commitPublishedFileUpdate<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: PublishedFileUpdateHandle, </span>completion<span class="j2-item-secondary">: (RemoteStorageUpdatePublishedFileResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>commitPublishedFileUpdate<span class="j2-item-secondary">(</span>handle<span class="j2-item-secondary">: PublishedFileUpdateHandle, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageUpdatePublishedFileResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_commitpublishedfileupdatehandlecompletion">
@@ -4616,8 +4616,9 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func commitPublishedFileUpdate(
     handle: <a href="../../steamworks/types/publishedfileupdatehandle1.html?swift">PublishedFileUpdateHandle</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        sending <a href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4769,12 +4770,12 @@
   
   
     <section id="deletepublishedfilepublishedfileidcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20deletePublishedFile(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(RemoteStorageDeletePublishedFileResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="deletepublishedfilepublishedfileidcompletion"></a>
-    <h4 class="visually-hidden">func deletePublishedFile(publishedFileId: PublishedFileID, completion: (RemoteStorageDeletePublishedFileResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20deletePublishedFile(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(sending%20RemoteStorageDeletePublishedFileResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="deletepublishedfilepublishedfileidcompletion"></a>
+    <h4 class="visually-hidden">func deletePublishedFile(publishedFileId: PublishedFileID, completion: (sending RemoteStorageDeletePublishedFileResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_deletepublishedfilepublishedfileidcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_deletepublishedfilepublishedfileidcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>deletePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (RemoteStorageDeletePublishedFileResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>deletePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageDeletePublishedFileResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_deletepublishedfilepublishedfileidcompletion">
@@ -4803,8 +4804,9 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func deletePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        sending <a href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4955,12 +4957,12 @@
   
   
     <section id="enumeratepublishedfilesbyuseractionactionstartindexcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumeratePublishedFilesByUserAction(action%3A%20WorkshopFileAction,%20startIndex%3A%20Int,%20completion%3A%20(RemoteStorageEnumeratePublishedFilesByUserActionResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratepublishedfilesbyuseractionactionstartindexcompletion"></a>
-    <h4 class="visually-hidden">func enumeratePublishedFilesByUserAction(action: WorkshopFileAction, startIndex: Int, completion: (RemoteStorageEnumeratePublishedFilesByUserActionResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20enumeratePublishedFilesByUserAction(action%3A%20WorkshopFileAction,%20startIndex%3A%20Int,%20completion%3A%20(sending%20RemoteStorageEnumeratePublishedFilesByUserActionResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratepublishedfilesbyuseractionactionstartindexcompletion"></a>
+    <h4 class="visually-hidden">func enumeratePublishedFilesByUserAction(action: WorkshopFileAction, startIndex: Int, completion: (sending RemoteStorageEnumeratePublishedFilesByUserActionResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_enumeratepublishedfilesbyuseractionactionstartindexcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumeratepublishedfilesbyuseractionactionstartindexcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumeratePublishedFilesByUserAction<span class="j2-item-secondary">(</span>action<span class="j2-item-secondary">: WorkshopFileAction, </span>startIndex<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (RemoteStorageEnumeratePublishedFilesByUserActionResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumeratePublishedFilesByUserAction<span class="j2-item-secondary">(</span>action<span class="j2-item-secondary">: WorkshopFileAction, </span>startIndex<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageEnumeratePublishedFilesByUserActionResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_enumeratepublishedfilesbyuseractionactionstartindexcompletion">
@@ -4990,7 +4992,7 @@
     <pre><code class="language-swift">public func enumeratePublishedFilesByUserAction(
     action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestorageenumeratepublishedfilesbyuseractionresult.html?swift">RemoteStorageEnumeratePublishedFilesByUserActionResult</a>?
+        sending <a href="../../steamworks/types/remotestorageenumeratepublishedfilesbyuseractionresult.html?swift">RemoteStorageEnumeratePublishedFilesByUserActionResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -5082,12 +5084,12 @@
   
   
     <section id="enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertagscompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumeratePublishedWorkshopFiles(enumerationType%3A%20WorkshopEnumerationType,%20startIndex%3A%20Int,%20count%3A%20Int,%20days%3A%20Int,%20tags%3A%20%5BString%5D,%20userTags%3A%20%5BString%5D,%20completion%3A%20(RemoteStorageEnumerateWorkshopFilesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertagscompletion"></a>
-    <h4 class="visually-hidden">func enumeratePublishedWorkshopFiles(enumerationType: WorkshopEnumerationType, startIndex: Int, count: Int, days: Int, tags: [String], userTags: [String], completion: (RemoteStorageEnumerateWorkshopFilesResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20enumeratePublishedWorkshopFiles(enumerationType%3A%20WorkshopEnumerationType,%20startIndex%3A%20Int,%20count%3A%20Int,%20days%3A%20Int,%20tags%3A%20%5BString%5D,%20userTags%3A%20%5BString%5D,%20completion%3A%20(sending%20RemoteStorageEnumerateWorkshopFilesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertagscompletion"></a>
+    <h4 class="visually-hidden">func enumeratePublishedWorkshopFiles(enumerationType: WorkshopEnumerationType, startIndex: Int, count: Int, days: Int, tags: [String], userTags: [String], completion: (sending RemoteStorageEnumerateWorkshopFilesResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertagscompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertagscompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumeratePublishedWorkshopFiles<span class="j2-item-secondary">(</span>enumerationType<span class="j2-item-secondary">: WorkshopEnumerationType, </span>startIndex<span class="j2-item-secondary">: Int, </span>count<span class="j2-item-secondary">: Int, </span>days<span class="j2-item-secondary">: Int, </span>tags<span class="j2-item-secondary">: [String], </span>userTags<span class="j2-item-secondary">: [String], </span>completion<span class="j2-item-secondary">: (RemoteStorageEnumerateWorkshopFilesResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumeratePublishedWorkshopFiles<span class="j2-item-secondary">(</span>enumerationType<span class="j2-item-secondary">: WorkshopEnumerationType, </span>startIndex<span class="j2-item-secondary">: Int, </span>count<span class="j2-item-secondary">: Int, </span>days<span class="j2-item-secondary">: Int, </span>tags<span class="j2-item-secondary">: [String], </span>userTags<span class="j2-item-secondary">: [String], </span>completion<span class="j2-item-secondary">: (sending RemoteStorageEnumerateWorkshopFilesResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_enumeratepublishedworkshopfilesenumerationtypestartindexcountdaystagsusertagscompletion">
@@ -5117,8 +5119,9 @@
     <pre><code class="language-swift">public func enumeratePublishedWorkshopFiles(
     enumerationType: <a href="../../steamworks/types/workshopenumerationtype.html?swift">WorkshopEnumerationType</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, count: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     days: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], userTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>?)
-        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        sending <a href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5210,12 +5213,12 @@
   
   
     <section id="enumerateuserpublishedfilesstartindexcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumerateUserPublishedFiles(startIndex%3A%20Int,%20completion%3A%20(RemoteStorageEnumerateUserPublishedFilesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateuserpublishedfilesstartindexcompletion"></a>
-    <h4 class="visually-hidden">func enumerateUserPublishedFiles(startIndex: Int, completion: (RemoteStorageEnumerateUserPublishedFilesResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20enumerateUserPublishedFiles(startIndex%3A%20Int,%20completion%3A%20(sending%20RemoteStorageEnumerateUserPublishedFilesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateuserpublishedfilesstartindexcompletion"></a>
+    <h4 class="visually-hidden">func enumerateUserPublishedFiles(startIndex: Int, completion: (sending RemoteStorageEnumerateUserPublishedFilesResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_enumerateuserpublishedfilesstartindexcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateuserpublishedfilesstartindexcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserPublishedFiles<span class="j2-item-secondary">(</span>startIndex<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (RemoteStorageEnumerateUserPublishedFilesResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserPublishedFiles<span class="j2-item-secondary">(</span>startIndex<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageEnumerateUserPublishedFilesResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_enumerateuserpublishedfilesstartindexcompletion">
@@ -5245,7 +5248,7 @@
     <pre><code class="language-swift">public func enumerateUserPublishedFiles(
     startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
+        sending <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -5336,12 +5339,12 @@
   
   
     <section id="enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtagscompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumerateUserSharedWorkshopFiles(steamId%3A%20SteamID,%20startIndex%3A%20Int,%20requiredTags%3A%20%5BString%5D,%20excludedTags%3A%20%5BString%5D,%20completion%3A%20(RemoteStorageEnumerateUserPublishedFilesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtagscompletion"></a>
-    <h4 class="visually-hidden">func enumerateUserSharedWorkshopFiles(steamId: SteamID, startIndex: Int, requiredTags: [String], excludedTags: [String], completion: (RemoteStorageEnumerateUserPublishedFilesResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20enumerateUserSharedWorkshopFiles(steamId%3A%20SteamID,%20startIndex%3A%20Int,%20requiredTags%3A%20%5BString%5D,%20excludedTags%3A%20%5BString%5D,%20completion%3A%20(sending%20RemoteStorageEnumerateUserPublishedFilesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtagscompletion"></a>
+    <h4 class="visually-hidden">func enumerateUserSharedWorkshopFiles(steamId: SteamID, startIndex: Int, requiredTags: [String], excludedTags: [String], completion: (sending RemoteStorageEnumerateUserPublishedFilesResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtagscompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtagscompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserSharedWorkshopFiles<span class="j2-item-secondary">(</span>steamId<span class="j2-item-secondary">: SteamID, </span>startIndex<span class="j2-item-secondary">: Int, </span>requiredTags<span class="j2-item-secondary">: [String], </span>excludedTags<span class="j2-item-secondary">: [String], </span>completion<span class="j2-item-secondary">: (RemoteStorageEnumerateUserPublishedFilesResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserSharedWorkshopFiles<span class="j2-item-secondary">(</span>steamId<span class="j2-item-secondary">: SteamID, </span>startIndex<span class="j2-item-secondary">: Int, </span>requiredTags<span class="j2-item-secondary">: [String], </span>excludedTags<span class="j2-item-secondary">: [String], </span>completion<span class="j2-item-secondary">: (sending RemoteStorageEnumerateUserPublishedFilesResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_enumerateusersharedworkshopfilessteamidstartindexrequiredtagsexcludedtagscompletion">
@@ -5372,7 +5375,7 @@
     steamId: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, requiredTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
     excludedTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
+        sending <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -5464,12 +5467,12 @@
   
   
     <section id="enumerateusersubscribedfilesstartindexcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20enumerateUserSubscribedFiles(startIndex%3A%20Int,%20completion%3A%20(RemoteStorageEnumerateUserSubscribedFilesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateusersubscribedfilesstartindexcompletion"></a>
-    <h4 class="visually-hidden">func enumerateUserSubscribedFiles(startIndex: Int, completion: (RemoteStorageEnumerateUserSubscribedFilesResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20enumerateUserSubscribedFiles(startIndex%3A%20Int,%20completion%3A%20(sending%20RemoteStorageEnumerateUserSubscribedFilesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="enumerateusersubscribedfilesstartindexcompletion"></a>
+    <h4 class="visually-hidden">func enumerateUserSubscribedFiles(startIndex: Int, completion: (sending RemoteStorageEnumerateUserSubscribedFilesResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_enumerateusersubscribedfilesstartindexcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_enumerateusersubscribedfilesstartindexcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserSubscribedFiles<span class="j2-item-secondary">(</span>startIndex<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (RemoteStorageEnumerateUserSubscribedFilesResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>enumerateUserSubscribedFiles<span class="j2-item-secondary">(</span>startIndex<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageEnumerateUserSubscribedFilesResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_enumerateusersubscribedfilesstartindexcompletion">
@@ -5499,7 +5502,7 @@
     <pre><code class="language-swift">public func enumerateUserSubscribedFiles(
     startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>?
+        sending <a href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -5894,12 +5897,12 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
   
   
     <section id="filereadasyncfileoffsettoreadsizecompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20fileReadAsync(file%3A%20String,%20offset%3A%20Int,%20toReadSize%3A%20Int,%20completion%3A%20(RemoteStorageFileReadAsyncComplete%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="filereadasyncfileoffsettoreadsizecompletion"></a>
-    <h4 class="visually-hidden">func fileReadAsync(file: String, offset: Int, toReadSize: Int, completion: (RemoteStorageFileReadAsyncComplete?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20fileReadAsync(file%3A%20String,%20offset%3A%20Int,%20toReadSize%3A%20Int,%20completion%3A%20(sending%20RemoteStorageFileReadAsyncComplete%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="filereadasyncfileoffsettoreadsizecompletion"></a>
+    <h4 class="visually-hidden">func fileReadAsync(file: String, offset: Int, toReadSize: Int, completion: (sending RemoteStorageFileReadAsyncComplete?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_filereadasyncfileoffsettoreadsizecompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_filereadasyncfileoffsettoreadsizecompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileReadAsync<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>offset<span class="j2-item-secondary">: Int, </span>toReadSize<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (RemoteStorageFileReadAsyncComplete?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileReadAsync<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>offset<span class="j2-item-secondary">: Int, </span>toReadSize<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageFileReadAsyncComplete?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_filereadasyncfileoffsettoreadsizecompletion">
@@ -5928,8 +5931,9 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileReadAsync(
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, offset: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, toReadSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        sending <a href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6082,12 +6086,12 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
   
   
     <section id="filesharefilecompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20fileShare(file%3A%20String,%20completion%3A%20(RemoteStorageFileShareResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="filesharefilecompletion"></a>
-    <h4 class="visually-hidden">func fileShare(file: String, completion: (RemoteStorageFileShareResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20fileShare(file%3A%20String,%20completion%3A%20(sending%20RemoteStorageFileShareResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="filesharefilecompletion"></a>
+    <h4 class="visually-hidden">func fileShare(file: String, completion: (sending RemoteStorageFileShareResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_filesharefilecompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_filesharefilecompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileShare<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>completion<span class="j2-item-secondary">: (RemoteStorageFileShareResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileShare<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageFileShareResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_filesharefilecompletion">
@@ -6116,7 +6120,8 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileShare(
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6267,12 +6272,12 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
   
   
     <section id="filewriteasyncfiledatadatasizecompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20fileWriteAsync(file%3A%20String,%20data%3A%20UnsafeRawPointer,%20dataSize%3A%20Int,%20completion%3A%20(RemoteStorageFileWriteAsyncComplete%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="filewriteasyncfiledatadatasizecompletion"></a>
-    <h4 class="visually-hidden">func fileWriteAsync(file: String, data: UnsafeRawPointer, dataSize: Int, completion: (RemoteStorageFileWriteAsyncComplete?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20fileWriteAsync(file%3A%20String,%20data%3A%20UnsafeRawPointer,%20dataSize%3A%20Int,%20completion%3A%20(sending%20RemoteStorageFileWriteAsyncComplete%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="filewriteasyncfiledatadatasizecompletion"></a>
+    <h4 class="visually-hidden">func fileWriteAsync(file: String, data: UnsafeRawPointer, dataSize: Int, completion: (sending RemoteStorageFileWriteAsyncComplete?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_filewriteasyncfiledatadatasizecompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_filewriteasyncfiledatadatasizecompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileWriteAsync<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>data<span class="j2-item-secondary">: UnsafeRawPointer, </span>dataSize<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (RemoteStorageFileWriteAsyncComplete?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>fileWriteAsync<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>data<span class="j2-item-secondary">: UnsafeRawPointer, </span>dataSize<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageFileWriteAsyncComplete?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_filewriteasyncfiledatadatasizecompletion">
@@ -6301,8 +6306,9 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileWriteAsync(
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, data: UnsafeRawPointer, dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        sending <a href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7121,12 +7127,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="getpublishedfiledetailspublishedfileidmaxsecondsoldcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getPublishedFileDetails(publishedFileId%3A%20PublishedFileID,%20maxSecondsOld%3A%20Int,%20completion%3A%20(RemoteStorageGetPublishedFileDetailsResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="getpublishedfiledetailspublishedfileidmaxsecondsoldcompletion"></a>
-    <h4 class="visually-hidden">func getPublishedFileDetails(publishedFileId: PublishedFileID, maxSecondsOld: Int, completion: (RemoteStorageGetPublishedFileDetailsResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20getPublishedFileDetails(publishedFileId%3A%20PublishedFileID,%20maxSecondsOld%3A%20Int,%20completion%3A%20(sending%20RemoteStorageGetPublishedFileDetailsResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="getpublishedfiledetailspublishedfileidmaxsecondsoldcompletion"></a>
+    <h4 class="visually-hidden">func getPublishedFileDetails(publishedFileId: PublishedFileID, maxSecondsOld: Int, completion: (sending RemoteStorageGetPublishedFileDetailsResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_getpublishedfiledetailspublishedfileidmaxsecondsoldcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getpublishedfiledetailspublishedfileidmaxsecondsoldcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getPublishedFileDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>maxSecondsOld<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (RemoteStorageGetPublishedFileDetailsResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getPublishedFileDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>maxSecondsOld<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageGetPublishedFileDetailsResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_getpublishedfiledetailspublishedfileidmaxsecondsoldcompletion">
@@ -7156,7 +7162,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <pre><code class="language-swift">public func getPublishedFileDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, maxSecondsOld: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>?
+        sending <a href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -7248,12 +7254,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="getpublisheditemvotedetailspublishedfileidcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getPublishedItemVoteDetails(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(RemoteStorageGetPublishedItemVoteDetailsResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="getpublisheditemvotedetailspublishedfileidcompletion"></a>
-    <h4 class="visually-hidden">func getPublishedItemVoteDetails(publishedFileId: PublishedFileID, completion: (RemoteStorageGetPublishedItemVoteDetailsResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20getPublishedItemVoteDetails(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(sending%20RemoteStorageGetPublishedItemVoteDetailsResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="getpublisheditemvotedetailspublishedfileidcompletion"></a>
+    <h4 class="visually-hidden">func getPublishedItemVoteDetails(publishedFileId: PublishedFileID, completion: (sending RemoteStorageGetPublishedItemVoteDetailsResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_getpublisheditemvotedetailspublishedfileidcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getpublisheditemvotedetailspublishedfileidcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getPublishedItemVoteDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (RemoteStorageGetPublishedItemVoteDetailsResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getPublishedItemVoteDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageGetPublishedItemVoteDetailsResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_getpublisheditemvotedetailspublishedfileidcompletion">
@@ -7283,7 +7289,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <pre><code class="language-swift">public func getPublishedItemVoteDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
+        sending <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -7557,12 +7563,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="getuserpublisheditemvotedetailspublishedfileidcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getUserPublishedItemVoteDetails(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(RemoteStorageGetPublishedItemVoteDetailsResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="getuserpublisheditemvotedetailspublishedfileidcompletion"></a>
-    <h4 class="visually-hidden">func getUserPublishedItemVoteDetails(publishedFileId: PublishedFileID, completion: (RemoteStorageGetPublishedItemVoteDetailsResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20getUserPublishedItemVoteDetails(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(sending%20RemoteStorageGetPublishedItemVoteDetailsResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="getuserpublisheditemvotedetailspublishedfileidcompletion"></a>
+    <h4 class="visually-hidden">func getUserPublishedItemVoteDetails(publishedFileId: PublishedFileID, completion: (sending RemoteStorageGetPublishedItemVoteDetailsResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_getuserpublisheditemvotedetailspublishedfileidcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getuserpublisheditemvotedetailspublishedfileidcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getUserPublishedItemVoteDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (RemoteStorageGetPublishedItemVoteDetailsResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getUserPublishedItemVoteDetails<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageGetPublishedItemVoteDetailsResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_getuserpublisheditemvotedetailspublishedfileidcompletion">
@@ -7592,7 +7598,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <pre><code class="language-swift">public func getUserPublishedItemVoteDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
+        sending <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -7804,12 +7810,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytagscompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20publishVideo(videoProvider%3A%20WorkshopVideoProvider,%20videoAccount%3A%20String,%20videoIdentifier%3A%20String,%20previewFile%3A%20String,%20consumerAppId%3A%20AppID,%20title%3A%20String,%20description%3A%20String,%20visibility%3A%20RemoteStoragePublishedFileVisibility,%20tags%3A%20%5BString%5D,%20completion%3A%20(RemoteStoragePublishFileProgress%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytagscompletion"></a>
-    <h4 class="visually-hidden">func publishVideo(videoProvider: WorkshopVideoProvider, videoAccount: String, videoIdentifier: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], completion: (RemoteStoragePublishFileProgress?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20publishVideo(videoProvider%3A%20WorkshopVideoProvider,%20videoAccount%3A%20String,%20videoIdentifier%3A%20String,%20previewFile%3A%20String,%20consumerAppId%3A%20AppID,%20title%3A%20String,%20description%3A%20String,%20visibility%3A%20RemoteStoragePublishedFileVisibility,%20tags%3A%20%5BString%5D,%20completion%3A%20(sending%20RemoteStoragePublishFileProgress%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytagscompletion"></a>
+    <h4 class="visually-hidden">func publishVideo(videoProvider: WorkshopVideoProvider, videoAccount: String, videoIdentifier: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], completion: (sending RemoteStoragePublishFileProgress?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytagscompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytagscompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>publishVideo<span class="j2-item-secondary">(</span>videoProvider<span class="j2-item-secondary">: WorkshopVideoProvider, </span>videoAccount<span class="j2-item-secondary">: String, </span>videoIdentifier<span class="j2-item-secondary">: String, </span>previewFile<span class="j2-item-secondary">: String, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>title<span class="j2-item-secondary">: String, </span>description<span class="j2-item-secondary">: String, </span>visibility<span class="j2-item-secondary">: RemoteStoragePublishedFileVisibility, </span>tags<span class="j2-item-secondary">: [String], </span>completion<span class="j2-item-secondary">: (RemoteStoragePublishFileProgress?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>publishVideo<span class="j2-item-secondary">(</span>videoProvider<span class="j2-item-secondary">: WorkshopVideoProvider, </span>videoAccount<span class="j2-item-secondary">: String, </span>videoIdentifier<span class="j2-item-secondary">: String, </span>previewFile<span class="j2-item-secondary">: String, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>title<span class="j2-item-secondary">: String, </span>description<span class="j2-item-secondary">: String, </span>visibility<span class="j2-item-secondary">: RemoteStoragePublishedFileVisibility, </span>tags<span class="j2-item-secondary">: [String], </span>completion<span class="j2-item-secondary">: (sending RemoteStoragePublishFileProgress?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_publishvideovideoprovidervideoaccountvideoidentifierpreviewfileconsumerappidtitledescriptionvisibilitytagscompletion">
@@ -7841,7 +7847,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     videoIdentifier: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
     title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, description: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
     visibility: <a href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>, tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7935,12 +7942,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletypecompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20publishWorkshopFile(file%3A%20String,%20previewFile%3A%20String,%20consumerAppId%3A%20AppID,%20title%3A%20String,%20description%3A%20String,%20visibility%3A%20RemoteStoragePublishedFileVisibility,%20tags%3A%20%5BString%5D,%20workshopFileType%3A%20WorkshopFileType,%20completion%3A%20(RemoteStoragePublishFileProgress%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletypecompletion"></a>
-    <h4 class="visually-hidden">func publishWorkshopFile(file: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], workshopFileType: WorkshopFileType, completion: (RemoteStoragePublishFileProgress?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20publishWorkshopFile(file%3A%20String,%20previewFile%3A%20String,%20consumerAppId%3A%20AppID,%20title%3A%20String,%20description%3A%20String,%20visibility%3A%20RemoteStoragePublishedFileVisibility,%20tags%3A%20%5BString%5D,%20workshopFileType%3A%20WorkshopFileType,%20completion%3A%20(sending%20RemoteStoragePublishFileProgress%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletypecompletion"></a>
+    <h4 class="visually-hidden">func publishWorkshopFile(file: String, previewFile: String, consumerAppId: AppID, title: String, description: String, visibility: RemoteStoragePublishedFileVisibility, tags: [String], workshopFileType: WorkshopFileType, completion: (sending RemoteStoragePublishFileProgress?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletypecompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletypecompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>publishWorkshopFile<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>previewFile<span class="j2-item-secondary">: String, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>title<span class="j2-item-secondary">: String, </span>description<span class="j2-item-secondary">: String, </span>visibility<span class="j2-item-secondary">: RemoteStoragePublishedFileVisibility, </span>tags<span class="j2-item-secondary">: [String], </span>workshopFileType<span class="j2-item-secondary">: WorkshopFileType, </span>completion<span class="j2-item-secondary">: (RemoteStoragePublishFileProgress?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>publishWorkshopFile<span class="j2-item-secondary">(</span>file<span class="j2-item-secondary">: String, </span>previewFile<span class="j2-item-secondary">: String, </span>consumerAppId<span class="j2-item-secondary">: AppID, </span>title<span class="j2-item-secondary">: String, </span>description<span class="j2-item-secondary">: String, </span>visibility<span class="j2-item-secondary">: RemoteStoragePublishedFileVisibility, </span>tags<span class="j2-item-secondary">: [String], </span>workshopFileType<span class="j2-item-secondary">: WorkshopFileType, </span>completion<span class="j2-item-secondary">: (sending RemoteStoragePublishFileProgress?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_publishworkshopfilefilepreviewfileconsumerappidtitledescriptionvisibilitytagsworkshopfiletypecompletion">
@@ -7971,7 +7978,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
     description: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, visibility: <a href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>,
     tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], workshopFileType: <a href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8186,12 +8194,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="setuserpublishedfileactionpublishedfileidactioncompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20setUserPublishedFileAction(publishedFileId%3A%20PublishedFileID,%20action%3A%20WorkshopFileAction,%20completion%3A%20(RemoteStorageSetUserPublishedFileActionResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="setuserpublishedfileactionpublishedfileidactioncompletion"></a>
-    <h4 class="visually-hidden">func setUserPublishedFileAction(publishedFileId: PublishedFileID, action: WorkshopFileAction, completion: (RemoteStorageSetUserPublishedFileActionResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20setUserPublishedFileAction(publishedFileId%3A%20PublishedFileID,%20action%3A%20WorkshopFileAction,%20completion%3A%20(sending%20RemoteStorageSetUserPublishedFileActionResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="setuserpublishedfileactionpublishedfileidactioncompletion"></a>
+    <h4 class="visually-hidden">func setUserPublishedFileAction(publishedFileId: PublishedFileID, action: WorkshopFileAction, completion: (sending RemoteStorageSetUserPublishedFileActionResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_setuserpublishedfileactionpublishedfileidactioncompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_setuserpublishedfileactionpublishedfileidactioncompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>setUserPublishedFileAction<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>action<span class="j2-item-secondary">: WorkshopFileAction, </span>completion<span class="j2-item-secondary">: (RemoteStorageSetUserPublishedFileActionResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>setUserPublishedFileAction<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>action<span class="j2-item-secondary">: WorkshopFileAction, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageSetUserPublishedFileActionResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_setuserpublishedfileactionpublishedfileidactioncompletion">
@@ -8221,7 +8229,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <pre><code class="language-swift">public func setUserPublishedFileAction(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>?
+        sending <a href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -8313,12 +8321,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="subscribepublishedfilepublishedfileidcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20subscribePublishedFile(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(RemoteStorageSubscribePublishedFileResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="subscribepublishedfilepublishedfileidcompletion"></a>
-    <h4 class="visually-hidden">func subscribePublishedFile(publishedFileId: PublishedFileID, completion: (RemoteStorageSubscribePublishedFileResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20subscribePublishedFile(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(sending%20RemoteStorageSubscribePublishedFileResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="subscribepublishedfilepublishedfileidcompletion"></a>
+    <h4 class="visually-hidden">func subscribePublishedFile(publishedFileId: PublishedFileID, completion: (sending RemoteStorageSubscribePublishedFileResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_subscribepublishedfilepublishedfileidcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_subscribepublishedfilepublishedfileidcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>subscribePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (RemoteStorageSubscribePublishedFileResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>subscribePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageSubscribePublishedFileResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_subscribepublishedfilepublishedfileidcompletion">
@@ -8347,8 +8355,9 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func subscribePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?)
-        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        sending <a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8439,12 +8448,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="ugcdownloadcontentprioritycompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20ugcDownload(content%3A%20UGCHandle,%20priority%3A%20Int,%20completion%3A%20(RemoteStorageDownloadUGCResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="ugcdownloadcontentprioritycompletion"></a>
-    <h4 class="visually-hidden">func ugcDownload(content: UGCHandle, priority: Int, completion: (RemoteStorageDownloadUGCResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20ugcDownload(content%3A%20UGCHandle,%20priority%3A%20Int,%20completion%3A%20(sending%20RemoteStorageDownloadUGCResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="ugcdownloadcontentprioritycompletion"></a>
+    <h4 class="visually-hidden">func ugcDownload(content: UGCHandle, priority: Int, completion: (sending RemoteStorageDownloadUGCResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_ugcdownloadcontentprioritycompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_ugcdownloadcontentprioritycompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>ugcDownload<span class="j2-item-secondary">(</span>content<span class="j2-item-secondary">: UGCHandle, </span>priority<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (RemoteStorageDownloadUGCResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>ugcDownload<span class="j2-item-secondary">(</span>content<span class="j2-item-secondary">: UGCHandle, </span>priority<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageDownloadUGCResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_ugcdownloadcontentprioritycompletion">
@@ -8473,7 +8482,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func ugcDownload(
     content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8564,12 +8574,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="ugcdownloadtolocationcontentlocationprioritycompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20ugcDownloadToLocation(content%3A%20UGCHandle,%20location%3A%20String,%20priority%3A%20Int,%20completion%3A%20(RemoteStorageDownloadUGCResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="ugcdownloadtolocationcontentlocationprioritycompletion"></a>
-    <h4 class="visually-hidden">func ugcDownloadToLocation(content: UGCHandle, location: String, priority: Int, completion: (RemoteStorageDownloadUGCResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20ugcDownloadToLocation(content%3A%20UGCHandle,%20location%3A%20String,%20priority%3A%20Int,%20completion%3A%20(sending%20RemoteStorageDownloadUGCResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="ugcdownloadtolocationcontentlocationprioritycompletion"></a>
+    <h4 class="visually-hidden">func ugcDownloadToLocation(content: UGCHandle, location: String, priority: Int, completion: (sending RemoteStorageDownloadUGCResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_ugcdownloadtolocationcontentlocationprioritycompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_ugcdownloadtolocationcontentlocationprioritycompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>ugcDownloadToLocation<span class="j2-item-secondary">(</span>content<span class="j2-item-secondary">: UGCHandle, </span>location<span class="j2-item-secondary">: String, </span>priority<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (RemoteStorageDownloadUGCResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>ugcDownloadToLocation<span class="j2-item-secondary">(</span>content<span class="j2-item-secondary">: UGCHandle, </span>location<span class="j2-item-secondary">: String, </span>priority<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageDownloadUGCResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_ugcdownloadtolocationcontentlocationprioritycompletion">
@@ -8598,7 +8608,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func ugcDownloadToLocation(
     content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>, location: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8752,12 +8763,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="unsubscribepublishedfilepublishedfileidcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20unsubscribePublishedFile(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(RemoteStorageUnsubscribePublishedFileResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="unsubscribepublishedfilepublishedfileidcompletion"></a>
-    <h4 class="visually-hidden">func unsubscribePublishedFile(publishedFileId: PublishedFileID, completion: (RemoteStorageUnsubscribePublishedFileResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20unsubscribePublishedFile(publishedFileId%3A%20PublishedFileID,%20completion%3A%20(sending%20RemoteStorageUnsubscribePublishedFileResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="unsubscribepublishedfilepublishedfileidcompletion"></a>
+    <h4 class="visually-hidden">func unsubscribePublishedFile(publishedFileId: PublishedFileID, completion: (sending RemoteStorageUnsubscribePublishedFileResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_unsubscribepublishedfilepublishedfileidcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_unsubscribepublishedfilepublishedfileidcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>unsubscribePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (RemoteStorageUnsubscribePublishedFileResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>unsubscribePublishedFile<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageUnsubscribePublishedFileResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_unsubscribepublishedfilepublishedfileidcompletion">
@@ -8787,7 +8798,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <pre><code class="language-swift">public func unsubscribePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?
+        sending <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
@@ -9314,12 +9325,12 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
   
   
     <section id="updateuserpublisheditemvotepublishedfileidvoteupcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20updateUserPublishedItemVote(publishedFileId%3A%20PublishedFileID,%20voteUp%3A%20Bool,%20completion%3A%20(RemoteStorageUpdateUserPublishedItemVoteResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="updateuserpublisheditemvotepublishedfileidvoteupcompletion"></a>
-    <h4 class="visually-hidden">func updateUserPublishedItemVote(publishedFileId: PublishedFileID, voteUp: Bool, completion: (RemoteStorageUpdateUserPublishedItemVoteResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20updateUserPublishedItemVote(publishedFileId%3A%20PublishedFileID,%20voteUp%3A%20Bool,%20completion%3A%20(sending%20RemoteStorageUpdateUserPublishedItemVoteResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="updateuserpublisheditemvotepublishedfileidvoteupcompletion"></a>
+    <h4 class="visually-hidden">func updateUserPublishedItemVote(publishedFileId: PublishedFileID, voteUp: Bool, completion: (sending RemoteStorageUpdateUserPublishedItemVoteResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_updateuserpublisheditemvotepublishedfileidvoteupcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_updateuserpublisheditemvotepublishedfileidvoteupcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>updateUserPublishedItemVote<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>voteUp<span class="j2-item-secondary">: Bool, </span>completion<span class="j2-item-secondary">: (RemoteStorageUpdateUserPublishedItemVoteResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>updateUserPublishedItemVote<span class="j2-item-secondary">(</span>publishedFileId<span class="j2-item-secondary">: PublishedFileID, </span>voteUp<span class="j2-item-secondary">: Bool, </span>completion<span class="j2-item-secondary">: (sending RemoteStorageUpdateUserPublishedItemVoteResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_updateuserpublisheditemvotepublishedfileidvoteupcompletion">
@@ -9349,7 +9360,7 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <pre><code class="language-swift">public func updateUserPublishedItemVote(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, voteUp: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>,
     completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        <a href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>?
+        sending <a href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>?
     ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 

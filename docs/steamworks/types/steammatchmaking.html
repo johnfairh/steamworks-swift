@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamMatchmaking - Steamworks v0.5.3</title>
+   <title>SteamMatchmaking - Steamworks v1.0.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steammatchmaking.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.3</a>
+    Steamworks v1.0.0</a>
   </div>
   
 
@@ -5009,12 +5009,12 @@
   
   
     <section id="createlobbylobbytypemaxmemberscompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20createLobby(lobbyType%3A%20LobbyType,%20maxMembers%3A%20Int,%20completion%3A%20(LobbyCreated%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="createlobbylobbytypemaxmemberscompletion"></a>
-    <h4 class="visually-hidden">func createLobby(lobbyType: LobbyType, maxMembers: Int, completion: (LobbyCreated?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20createLobby(lobbyType%3A%20LobbyType,%20maxMembers%3A%20Int,%20completion%3A%20(sending%20LobbyCreated%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="createlobbylobbytypemaxmemberscompletion"></a>
+    <h4 class="visually-hidden">func createLobby(lobbyType: LobbyType, maxMembers: Int, completion: (sending LobbyCreated?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_createlobbylobbytypemaxmemberscompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createlobbylobbytypemaxmemberscompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>createLobby<span class="j2-item-secondary">(</span>lobbyType<span class="j2-item-secondary">: LobbyType, </span>maxMembers<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (LobbyCreated?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createLobby<span class="j2-item-secondary">(</span>lobbyType<span class="j2-item-secondary">: LobbyType, </span>maxMembers<span class="j2-item-secondary">: Int, </span>completion<span class="j2-item-secondary">: (sending LobbyCreated?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_createlobbylobbytypemaxmemberscompletion">
@@ -5043,7 +5043,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func createLobby(
     lobbyType: <a href="../../steamworks/types/lobbytype.html?swift">LobbyType</a>, maxMembers: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbycreated.html?swift">LobbyCreated</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/lobbycreated.html?swift">LobbyCreated</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6049,12 +6049,12 @@ public func inviteUserToLobby(lobby: <a href="../../steamworks/types/steamid16.h
   
   
     <section id="joinlobbylobbycompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20joinLobby(lobby%3A%20SteamID,%20completion%3A%20(LobbyEnter%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="joinlobbylobbycompletion"></a>
-    <h4 class="visually-hidden">func joinLobby(lobby: SteamID, completion: (LobbyEnter?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20joinLobby(lobby%3A%20SteamID,%20completion%3A%20(sending%20LobbyEnter%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="joinlobbylobbycompletion"></a>
+    <h4 class="visually-hidden">func joinLobby(lobby: SteamID, completion: (sending LobbyEnter?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_joinlobbylobbycompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_joinlobbylobbycompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>joinLobby<span class="j2-item-secondary">(</span>lobby<span class="j2-item-secondary">: SteamID, </span>completion<span class="j2-item-secondary">: (LobbyEnter?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>joinLobby<span class="j2-item-secondary">(</span>lobby<span class="j2-item-secondary">: SteamID, </span>completion<span class="j2-item-secondary">: (sending LobbyEnter?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_joinlobbylobbycompletion">
@@ -6082,7 +6082,8 @@ public func inviteUserToLobby(lobby: <a href="../../steamworks/types/steamid16.h
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func joinLobby(
-    lobby: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbyenter.html?swift">LobbyEnter</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    lobby: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/lobbyenter.html?swift">LobbyEnter</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6357,12 +6358,12 @@ public func requestLobbyData(lobby: <a href="../../steamworks/types/steamid16.ht
   
   
     <section id="requestlobbylistcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestLobbyList(completion%3A%20(LobbyMatchList%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="requestlobbylistcompletion"></a>
-    <h4 class="visually-hidden">func requestLobbyList(completion: (LobbyMatchList?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20requestLobbyList(completion%3A%20(sending%20LobbyMatchList%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="requestlobbylistcompletion"></a>
+    <h4 class="visually-hidden">func requestLobbyList(completion: (sending LobbyMatchList?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_requestlobbylistcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestlobbylistcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestLobbyList<span class="j2-item-secondary">(</span>completion<span class="j2-item-secondary">: (LobbyMatchList?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestLobbyList<span class="j2-item-secondary">(</span>completion<span class="j2-item-secondary">: (sending LobbyMatchList?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_requestlobbylistcompletion">
@@ -6390,7 +6391,7 @@ public func requestLobbyData(lobby: <a href="../../steamworks/types/steamid16.ht
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestLobbyList(
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/lobbymatchlist.html?swift">LobbyMatchList</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/lobbymatchlist.html?swift">LobbyMatchList</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 

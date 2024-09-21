@@ -9,6 +9,9 @@ A practical interface to the Steamworks SDK using the Swift C++ importer.
 
 **Caveat Integrator: The Swift C++ importer is new and evolving; this package is built on top**
 
+As of Swift 6, C++ finally seems solid on macOS.  On Linux it's tough to recommend:
+still tends to break in weird non-portable ways.  I haven't tried Windows.
+
 Current state:
 * All Steamworks interfaces complete - see [API docs](https://johnfairh.github.io/steamworks-swift/index.html)
 * Code gen creates Swift versions of Steam types; callbacks and call-returns work
@@ -264,7 +267,7 @@ let package = Package(
     .macOS("14.0"),
   ],
   dependencies: [
-    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "0.5.2"),
+    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "1.0.0"),
   ],
   targets: [
     .executableTarget(

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamInventory - Steamworks v0.5.3</title>
+   <title>SteamInventory - Steamworks v1.0.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steaminventory.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.3</a>
+    Steamworks v1.0.0</a>
   </div>
   
 
@@ -6001,12 +6001,12 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
   
   
     <section id="requesteligiblepromoitemdefinitionsidssteamidcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestEligiblePromoItemDefinitionsIDs(steamID%3A%20SteamID,%20completion%3A%20(SteamInventoryEligiblePromoItemDefIDs%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="requesteligiblepromoitemdefinitionsidssteamidcompletion"></a>
-    <h4 class="visually-hidden">func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID, completion: (SteamInventoryEligiblePromoItemDefIDs?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20requestEligiblePromoItemDefinitionsIDs(steamID%3A%20SteamID,%20completion%3A%20(sending%20SteamInventoryEligiblePromoItemDefIDs%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="requesteligiblepromoitemdefinitionsidssteamidcompletion"></a>
+    <h4 class="visually-hidden">func requestEligiblePromoItemDefinitionsIDs(steamID: SteamID, completion: (sending SteamInventoryEligiblePromoItemDefIDs?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_requesteligiblepromoitemdefinitionsidssteamidcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requesteligiblepromoitemdefinitionsidssteamidcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEligiblePromoItemDefinitionsIDs<span class="j2-item-secondary">(</span>steamID<span class="j2-item-secondary">: SteamID, </span>completion<span class="j2-item-secondary">: (SteamInventoryEligiblePromoItemDefIDs?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestEligiblePromoItemDefinitionsIDs<span class="j2-item-secondary">(</span>steamID<span class="j2-item-secondary">: SteamID, </span>completion<span class="j2-item-secondary">: (sending SteamInventoryEligiblePromoItemDefIDs?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_requesteligiblepromoitemdefinitionsidssteamidcompletion">
@@ -6035,8 +6035,9 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestEligiblePromoItemDefinitionsIDs(
     steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminventoryeligiblepromoitemdefids.html?swift">SteamInventoryEligiblePromoItemDefIDs</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        sending <a href="../../steamworks/types/steaminventoryeligiblepromoitemdefids.html?swift">SteamInventoryEligiblePromoItemDefIDs</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6126,12 +6127,12 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
   
   
     <section id="requestpricescompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20requestPrices(completion%3A%20(SteamInventoryRequestPricesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="requestpricescompletion"></a>
-    <h4 class="visually-hidden">func requestPrices(completion: (SteamInventoryRequestPricesResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20requestPrices(completion%3A%20(sending%20SteamInventoryRequestPricesResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="requestpricescompletion"></a>
+    <h4 class="visually-hidden">func requestPrices(completion: (sending SteamInventoryRequestPricesResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_requestpricescompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_requestpricescompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestPrices<span class="j2-item-secondary">(</span>completion<span class="j2-item-secondary">: (SteamInventoryRequestPricesResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>requestPrices<span class="j2-item-secondary">(</span>completion<span class="j2-item-secondary">: (sending SteamInventoryRequestPricesResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_requestpricescompletion">
@@ -6159,8 +6160,8 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestPrices(
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminventoryrequestpricesresult.html?swift">SteamInventoryRequestPricesResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
-)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/steaminventoryrequestpricesresult.html?swift">SteamInventoryRequestPricesResult</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6623,12 +6624,12 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
   
   
     <section id="startpurchasearrayitemdefsarrayquantitycompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20startPurchase(arrayItemDefs%3A%20%5BSteamItemDef%5D,%20arrayQuantity%3A%20%5BInt%5D,%20completion%3A%20(SteamInventoryStartPurchaseResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="startpurchasearrayitemdefsarrayquantitycompletion"></a>
-    <h4 class="visually-hidden">func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int], completion: (SteamInventoryStartPurchaseResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20startPurchase(arrayItemDefs%3A%20%5BSteamItemDef%5D,%20arrayQuantity%3A%20%5BInt%5D,%20completion%3A%20(sending%20SteamInventoryStartPurchaseResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="startpurchasearrayitemdefsarrayquantitycompletion"></a>
+    <h4 class="visually-hidden">func startPurchase(arrayItemDefs: [SteamItemDef], arrayQuantity: [Int], completion: (sending SteamInventoryStartPurchaseResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_startpurchasearrayitemdefsarrayquantitycompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_startpurchasearrayitemdefsarrayquantitycompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>startPurchase<span class="j2-item-secondary">(</span>arrayItemDefs<span class="j2-item-secondary">: [SteamItemDef], </span>arrayQuantity<span class="j2-item-secondary">: [Int], </span>completion<span class="j2-item-secondary">: (SteamInventoryStartPurchaseResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>startPurchase<span class="j2-item-secondary">(</span>arrayItemDefs<span class="j2-item-secondary">: [SteamItemDef], </span>arrayQuantity<span class="j2-item-secondary">: [Int], </span>completion<span class="j2-item-secondary">: (sending SteamInventoryStartPurchaseResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_startpurchasearrayitemdefsarrayquantitycompletion">
@@ -6657,8 +6658,8 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func startPurchase(
     arrayItemDefs: [<a href="../../steamworks/types/steamitemdef.html?swift">SteamItemDef</a>], arrayQuantity: [<a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>],
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/steaminventorystartpurchaseresult.html?swift">SteamInventoryStartPurchaseResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
-)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/steaminventorystartpurchaseresult.html?swift">SteamInventoryStartPurchaseResult</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
