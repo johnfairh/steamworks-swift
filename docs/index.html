@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/fw2020.css">
     
     
-   <title>Steamworks v0.5.3</title>
+   <title>Steamworks v1.0.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./" data-doc-path="index.html" data-assets-path="">
@@ -31,7 +31,7 @@
     
     <a href="index.html">
     
-    Steamworks v0.5.3</a>
+    Steamworks v1.0.0</a>
   </div>
   
 
@@ -4461,7 +4461,9 @@
 steamworks-swift
 </span></h1>
 <p>A practical interface to the Steamworks SDK using the Swift C++ importer.</p>
-<p><strong>Caveat Integrator: The Swift C++ importer is new and shaky; this package is built on top</strong></p>
+<p><strong>Caveat Integrator: The Swift C++ importer is new and evolving; this package is built on top</strong></p>
+<p>As of Swift 6, C++ finally seems solid on macOS.  On Linux it’s tough to recommend:
+still tends to break in weird non-portable ways.  I haven’t tried Windows.</p>
 <p>Current state:</p>
 <ul>
 <li>All Steamworks interfaces complete - see <a href="https://johnfairh.github.io/steamworks-swift/index.html">API docs</a></li>
@@ -4474,7 +4476,7 @@ doing various sync and async tasks.</li>
 <code>SteamworksConcurrency</code> module</li>
 <li>Encrypted app ticket support in separate <code>SteamworksEncryptedAppTicket</code> module</li>
 <li>Separate demo showing encrypted app-ticket stuff, <code>make run_ticket</code></li>
-<li>Requires Swift 6, Xcode 16 beta – Linux not building right now, wait for 6 GA</li>
+<li>Requires Swift 6 / Xcode 16</li>
 <li>The Xcode project basically works.</li>
 <li><del>Unit tests sometimes crash inside steam on exit</del> fixed!</li>
 </ul>
@@ -4721,7 +4723,7 @@ let package = Package(
     .macOS(&quot;14.0&quot;),
   ],
   dependencies: [
-    .package(url: &quot;https://github.com/johnfairh/steamworks-swift&quot;, from: &quot;0.5.2&quot;),
+    .package(url: &quot;https://github.com/johnfairh/steamworks-swift&quot;, from: &quot;1.0.0&quot;),
   ],
   targets: [
     .executableTarget(
@@ -4761,31 +4763,37 @@ Implementation notes
 <span data-anchor-id="swift-c-bugs">
 Swift C++ Bugs
 </span></h3>
-<p><em>to recheck in Swift 6, noticed 5.10 has fewer simd screw-ups at least</em></p>
-<p>Tech limitations, on 5.9 Xcode 15.b6:</p>
+<p>Mostly fixed in Swift 6.  Linux still suffering a bit.</p>
+<p>Tech limitations, on 6.0 Xcode 16.b3:</p>
 <ul>
 <li>Some structures/classes aren’t imported – is the common factor a <code>protected</code>
 destructor?  Verify by trying to use <code>SteamNetworkingMessage_t</code>.</li>
-<li>Something goes wrong storing pointers to classes and they get nobbled by something.
+<li><del>Something goes wrong storing pointers to classes and they get nobbled by something.
 Verify by making <a href="steamworks/types/steamipaddress.html?swift"><code>SteamIPAddress</code></a> a struct and running <code>TestApiServer</code>.  Or change
-interfaces to cache the interface pointers.</li>
-<li>Calls to virtual functions aren’t generated properly: Swift generates a ref
+interfaces to cache the interface pointers.</del> incredibly, fixed in Swift 6</li>
+<li><del>Calls to virtual functions aren’t generated properly: Swift generates a ref
 to a symbol instead of doing the vtable call.  So the actual C++ interfaces are not
-usable in practice.  Will use the flat API.</li>
+usable in practice.  Will use the flat API.</del> allegedly fixed in Swift 6 but don’t
+need due to history.</li>
 <li>Anonymous enums are not imported at all.  Affects callback etc. ID constants.
 Will work around.</li>
 <li><del>sourcekit won’t give me a module interface for <code>CSteamworks</code> to see what else the
 importer is doing.  Probably Xcode’s fault, still not passing the user’s flags to
 sourcekit and still doing insultingly bad error-reporting.</del> fixed in Xcode 15?!</li>
-<li>Linux only: random parts of Glibc silently fail to import. SMH.  Work around in C++.</li>
+<li><del>Linux only: random parts of Glibc silently fail to import. SMH.  Work around in C++.
+See <code>swift_shims.h</code>.</del> Fixed in 6.0 (“for now”)</li>
 <li><del>Linux only: implicit struct constructors are not created, Swift generates a ref
 to a non-existent method that fails at link time.  Work around with dumb C++
-allocate shim.</del>  Sort of fixed in 5.9, but instead <code>swiftc</code> crashes on some uses – on
-both macOS and Linux.  Check by refs to eg. <code>CSteamNetworkingIPAddr_Allocate()</code>.`</li>
+allocate shim.</del>  <del>Sort of fixed in 5.9, but instead <code>swiftc</code> crashes on some uses – on
+both macOS and Linux.  Check by refs to eg. <code>CSteamNetworkingIPAddr_Allocate()</code>, see
+<code>steam_missing.h</code>.</del> Fixed in 6.0.</li>
 <li>Linux only, <em>again</em>: SPM test auto-discovery has no clue about C++ interop.  Work around by
-smashing in the flag everywhere…</li>
-<li>Swift 5.8+ adopts a broken/paranoid model about ‘projected pointers’ requiring some fairly
-ugly code to work around.   Verify with the <code>__ unsafe</code> stuff in <code>ManualTypes.swift</code>.</li>
+smashing in the flag everywhere… Swift 6 - worse now, utterly broken on Linux with
+yams 3rd-party dependency.  Maybe fixable with swift-testing - for now nobbled those tests
+on Linux.  Yay?</li>
+<li><del>Swift 5.8+ adopts a broken/paranoid model about ‘projected pointers’ requiring some fairly
+ugly code to work around.   Verify with the <code>__ unsafe</code> stuff in <code>ManualTypes.swift</code>.</del>
+fixed by Swift 6ish</li>
 </ul>
 <h3 class="j2-anchor j2-heading heading" id="nonswift-problems">
 <span data-anchor-id="nonswift-problems">

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamGameServer - Steamworks v0.5.3</title>
+   <title>SteamGameServer - Steamworks v1.0.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamgameserver.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v0.5.3</a>
+    Steamworks v1.0.0</a>
   </div>
   
 
@@ -4522,12 +4522,12 @@
   
   
     <section id="associatewithclanclancompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20associateWithClan(clan%3A%20SteamID,%20completion%3A%20(AssociateWithClanResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="associatewithclanclancompletion"></a>
-    <h4 class="visually-hidden">func associateWithClan(clan: SteamID, completion: (AssociateWithClanResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20associateWithClan(clan%3A%20SteamID,%20completion%3A%20(sending%20AssociateWithClanResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="associatewithclanclancompletion"></a>
+    <h4 class="visually-hidden">func associateWithClan(clan: SteamID, completion: (sending AssociateWithClanResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_associatewithclanclancompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_associatewithclanclancompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>associateWithClan<span class="j2-item-secondary">(</span>clan<span class="j2-item-secondary">: SteamID, </span>completion<span class="j2-item-secondary">: (AssociateWithClanResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>associateWithClan<span class="j2-item-secondary">(</span>clan<span class="j2-item-secondary">: SteamID, </span>completion<span class="j2-item-secondary">: (sending AssociateWithClanResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_associatewithclanclancompletion">
@@ -4556,7 +4556,7 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func associateWithClan(
     clan: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/associatewithclanresult.html?swift">AssociateWithClanResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/associatewithclanresult.html?swift">AssociateWithClanResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5009,12 +5009,12 @@ public func updateUserData(user: <a href="../../steamworks/types/steamid16.html?
   
   
     <section id="computenewplayercompatibilitynewplayercompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20computeNewPlayerCompatibility(newPlayer%3A%20SteamID,%20completion%3A%20(ComputeNewPlayerCompatibilityResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="computenewplayercompatibilitynewplayercompletion"></a>
-    <h4 class="visually-hidden">func computeNewPlayerCompatibility(newPlayer: SteamID, completion: (ComputeNewPlayerCompatibilityResult?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20computeNewPlayerCompatibility(newPlayer%3A%20SteamID,%20completion%3A%20(sending%20ComputeNewPlayerCompatibilityResult%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="computenewplayercompatibilitynewplayercompletion"></a>
+    <h4 class="visually-hidden">func computeNewPlayerCompatibility(newPlayer: SteamID, completion: (sending ComputeNewPlayerCompatibilityResult?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_computenewplayercompatibilitynewplayercompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_computenewplayercompatibilitynewplayercompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>computeNewPlayerCompatibility<span class="j2-item-secondary">(</span>newPlayer<span class="j2-item-secondary">: SteamID, </span>completion<span class="j2-item-secondary">: (ComputeNewPlayerCompatibilityResult?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>computeNewPlayerCompatibility<span class="j2-item-secondary">(</span>newPlayer<span class="j2-item-secondary">: SteamID, </span>completion<span class="j2-item-secondary">: (sending ComputeNewPlayerCompatibilityResult?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_computenewplayercompatibilitynewplayercompletion">
@@ -5043,8 +5043,9 @@ public func updateUserData(user: <a href="../../steamworks/types/steamid16.html?
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func computeNewPlayerCompatibility(
     newPlayer: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/computenewplayercompatibilityresult.html?swift">ComputeNewPlayerCompatibilityResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+        sending <a href="../../steamworks/types/computenewplayercompatibilityresult.html?swift">ComputeNewPlayerCompatibilityResult</a>?
+    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5497,12 +5498,12 @@ public func updateUserData(user: <a href="../../steamworks/types/steamid16.html?
   
   
     <section id="getserverreputationcompletion" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20getServerReputation(completion%3A%20(GSReputation%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="getserverreputationcompletion"></a>
-    <h4 class="visually-hidden">func getServerReputation(completion: (GSReputation?) -&gt; Void)</h4>
+    <a name="//apple_ref/cpp/Method/func%20getServerReputation(completion%3A%20(sending%20GSReputation%3F)%20-%3E%20Void)" class="dashAnchor j2-item-dash-anchor" data-item-id="getserverreputationcompletion"></a>
+    <h4 class="visually-hidden">func getServerReputation(completion: (sending GSReputation?) -&gt; Void)</h4>
     
     
     <a class="j2-item-title" href="#_getserverreputationcompletion" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_getserverreputationcompletion"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>getServerReputation<span class="j2-item-secondary">(</span>completion<span class="j2-item-secondary">: (GSReputation?) -&gt; Void)</span></span>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>getServerReputation<span class="j2-item-secondary">(</span>completion<span class="j2-item-secondary">: (sending GSReputation?) -&gt; Void)</span></span>
         
       </code></a>
     <div class="collapse  j2-item-popopen-wrapper" id="_getserverreputationcompletion">
@@ -5530,7 +5531,7 @@ public func updateUserData(user: <a href="../../steamworks/types/steamid16.html?
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getServerReputation(
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (<a href="../../steamworks/types/gsreputation.html?swift">GSReputation</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/gsreputation.html?swift">GSReputation</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
