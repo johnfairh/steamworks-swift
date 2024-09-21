@@ -16,6 +16,10 @@
 internal import CSteamworks
 import Logging
 
+#if canImport(Glibc)
+import Glibc
+#endif
+
 /// An instance of the Steamworks user API
 ///
 /// Create and retain one of these to access and use the Steamworks APIs.
@@ -47,7 +51,7 @@ public final class SteamAPI: SteamBaseAPI, @unchecked Sendable {
             return nil
         }
         if fakeAppIdTxtFile {
-            my_setenv("SteamAppId", "\(appID.value)")
+            setenv("SteamAppId", "\(appID.value)", 1)
         }
         if let initSteamCEG, !initSteamCEG() {
             logError("SteamAPI.init() failed: Steamworks_InitCEGLibrary() returned false")

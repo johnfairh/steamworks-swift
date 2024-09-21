@@ -7,16 +7,10 @@
 
 import Foundation
 import XCTest
+#if !os(Linux)
 @testable import LibGenerate
+#endif
 import Steamworks
-import CSteamworks // for weird 'Linux C++ mode erase random stdlib calls' issue
-
-#if canImport(Darwin)
-import Darwin
-#endif
-#if canImport(GLibc)
-import Glibc
-#endif
 
 /// Wrapper for Steam API initialization
 ///
@@ -225,6 +219,8 @@ extension XCTestCase {
         fixturesURL.appendingPathComponent("steam_api_extra.json")
     }
 
+    #if !os(Linux)
+
     class Harness {
         let swiftOutputDirURL: URL
         let cOutputDirURL: URL
@@ -233,8 +229,8 @@ extension XCTestCase {
         let generator: Generator
 
         init() throws {
-            my_setenv(IO.PATCH_YAML_PATH_VAR, patchYAMLURL.path)
-            my_setenv(IO.SDK_EXTRA_JSON_PATH_VAR, sdkExtraJSONURL.path)
+            setenv(IO.PATCH_YAML_PATH_VAR, patchYAMLURL.path, 1)
+            setenv(IO.SDK_EXTRA_JSON_PATH_VAR, sdkExtraJSONURL.path, 1)
             swiftOutputDirURL = try! FileManager.default.createTemporaryDirectory()
             cOutputDirURL = try! FileManager.default.createTemporaryDirectory()
             docsOutputDirURL = try! FileManager.default.createTemporaryDirectory()
@@ -252,8 +248,10 @@ extension XCTestCase {
             try? FileManager.default.removeItem(at: cOutputDirURL)
             try? FileManager.default.removeItem(at: docsOutputDirURL)
             try? FileManager.default.removeItem(at: doccCollectionOutputDirURL)
-            my_unsetenv(IO.PATCH_YAML_PATH_VAR)
-            my_unsetenv(IO.SDK_EXTRA_JSON_PATH_VAR)
+            unsetenv(IO.PATCH_YAML_PATH_VAR)
+            unsetenv(IO.SDK_EXTRA_JSON_PATH_VAR)
         }
     }
+
+    #endif
 }

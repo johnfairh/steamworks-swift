@@ -110,7 +110,7 @@ final class IO: Sendable {
             print("\(Colors.red)\(message)\(Colors.reset)")
         }
         guard let url = resources.url(forResource: "EXPECTED_SDK", withExtension: nil),
-              let expected = try? String(contentsOf: url).trimmingCharacters(in: .newlines) else {
+              let expected = try? String(contentsOf: url, encoding: .utf8).trimmingCharacters(in: .newlines) else {
             warn("Can't resolve EXPECTED_SDK")
             return
         }
@@ -177,7 +177,7 @@ final class IO: Sendable {
         let url = baseURL.appendingPathComponent(fileName)
         let fullContents = (header.map { $0 + "\n\n" } ?? "") + contents + "\n"
 
-        if let existing = try? String(contentsOf: url) {
+        if let existing = try? String(contentsOf: url, encoding: .utf8) {
             if existing == fullContents {
                 print("\(Colors.green)\(fileName): unchanged\(Colors.reset)")
                 return

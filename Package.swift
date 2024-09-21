@@ -196,7 +196,13 @@ let package = Package(
     ),
     .testTarget(
       name: "SteamworksTests",
-      dependencies: ["Steamworks", "SteamworksHelpers", "LibGenerate", "SteamworksConcurrency"],
+      dependencies: [
+        .target(name: "Steamworks"),
+        .target(name: "SteamworksHelpers"),
+        .target(name: "SteamworksConcurrency"),
+        .target(name: "LibGenerate",
+            condition: .when(platforms: [.macOS])),
+      ],
       exclude: ["Fixtures"],
       swiftSettings: [.interoperabilityMode(.Cxx)], // lies lies lies
       linkerSettings: clientLinkerSettings

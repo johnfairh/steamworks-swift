@@ -407,7 +407,6 @@
 		02B81B202886C82400780A57 /* SteamMatchmaking+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamMatchmaking+Helpers.swift"; sourceTree = "<group>"; };
 		02B81B232886D68B00780A57 /* SteamUser+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamUser+Helpers.swift"; sourceTree = "<group>"; };
 		02BD4F5A2C3D43B100A50860 /* SteamTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamTimeline.swift; sourceTree = "<group>"; };
-		02BD4F5C2C3D63D700A50860 /* swift_shims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swift_shims.h; sourceTree = "<group>"; };
 		02D309D62722C49B00DE64F0 /* SteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamAPI.swift; sourceTree = "<group>"; };
 		02D309DD2722D81E00DE64F0 /* SteamBaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamBaseAPI.swift; sourceTree = "<group>"; };
 		02D309E22728111A00DE64F0 /* Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
@@ -761,7 +760,6 @@
 		OBJ_8 /* CSteamworks */ = {
 			isa = PBXGroup;
 			children = (
-				02BD4F5C2C3D63D700A50860 /* swift_shims.h */,
 				OBJ_9 /* steamapi_headers.h */,
 				02AD45712751565E00BD93ED /* steam_missing.h */,
 				02AD45EF2758F01100BD93ED /* steam_matchmaking_shims.h */,

@@ -5,8 +5,10 @@
 //  Licensed under MIT (https://github.com/johnfairh/steamworks-swift/blob/main/LICENSE
 //
 
-@testable import LibGenerate
+#if !os(Linux)
+
 import XCTest
+@testable import LibGenerate
 
 /// Readme.txt version parsing ... thought there was going to be more here!
 ///
@@ -34,3 +36,5 @@ class TestVersion: XCTestCase {
         XCTAssertEqual("1.2", version)
     }
 }
+
+#endif
