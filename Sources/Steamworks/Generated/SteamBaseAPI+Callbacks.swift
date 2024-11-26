@@ -366,6 +366,11 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(505), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
+    /// Registration for Steamworks `LobbyEnter_t` callback
+    func onLobbyEnter(_ client: @Sendable @escaping (sending LobbyEnter) -> Void) {
+        callbacks.add(callbackID: CallbackID(504), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
     /// Registration for Steamworks `LobbyGameCreated_t` callback
     func onLobbyGameCreated(_ client: @Sendable @escaping (sending LobbyGameCreated) -> Void) {
         callbacks.add(callbackID: CallbackID(509), rawClient: SteamBaseAPI.makeRaw(client))
@@ -1088,6 +1093,11 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `LobbyDataUpdate_t` callbacks
     var lobbyDataUpdate: AsyncStream<LobbyDataUpdate> {
         AsyncStream { onLobbyDataUpdate($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `LobbyEnter_t` callbacks
+    var lobbyEnter: AsyncStream<LobbyEnter> {
+        AsyncStream { onLobbyEnter($0.yield0) }
     }
 
     /// Async stream of Steamworks `LobbyGameCreated_t` callbacks

@@ -22,8 +22,8 @@ build_tool_arguments:
   - "-I${PWD}/sdk/public"
   - "-Xlinker"
   - "-lc++"
-title: Steamworks v1.0.0
-module_version: 1.0.0
+title: Steamworks v1.1.0
+module_version: 1.1.0
 topic_style: source-order-defs
 hide_coverage: true
 undocumented_text: ""
@@ -289,7 +289,6 @@ custom_groups:
       children:
         - GameServerItem
         - LobbyCreated
-        - LobbyEnter
         - LobbyMatchList
         - ServerNetAdr
     - name: Callbacks
@@ -299,6 +298,7 @@ custom_groups:
         - LobbyChatMsg
         - LobbyChatUpdate
         - LobbyDataUpdate
+        - LobbyEnter
         - LobbyGameCreated
         - LobbyInvite
         - LobbyKicked

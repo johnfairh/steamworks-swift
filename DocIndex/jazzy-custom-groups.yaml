@@ -258,7 +258,6 @@
       children:
         - GameServerItem
         - LobbyCreated
-        - LobbyEnter
         - LobbyMatchList
         - ServerNetAdr
     - name: Callbacks
@@ -268,6 +267,7 @@
         - LobbyChatMsg
         - LobbyChatUpdate
         - LobbyDataUpdate
+        - LobbyEnter
         - LobbyGameCreated
         - LobbyInvite
         - LobbyKicked

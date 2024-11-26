@@ -70,6 +70,7 @@
 - ``onLobbyChatMsg(_:)``
 - ``onLobbyChatUpdate(_:)``
 - ``onLobbyDataUpdate(_:)``
+- ``onLobbyEnter(_:)``
 - ``onLobbyGameCreated(_:)``
 - ``onLobbyInvite(_:)``
 - ``onLobbyKicked(_:)``
@@ -216,6 +217,7 @@
 - ``lobbyChatMsg``
 - ``lobbyChatUpdate``
 - ``lobbyDataUpdate``
+- ``lobbyEnter``
 - ``lobbyGameCreated``
 - ``lobbyInvite``
 - ``lobbyKicked``

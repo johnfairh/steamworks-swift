@@ -18,7 +18,6 @@
 ### Structures
 - ``GameServerItem``
 - ``LobbyCreated``
-- ``LobbyEnter``
 - ``LobbyMatchList``
 - ``ServerNetAdr``
 
@@ -28,6 +27,7 @@
 - ``LobbyChatMsg``
 - ``LobbyChatUpdate``
 - ``LobbyDataUpdate``
+- ``LobbyEnter``
 - ``LobbyGameCreated``
 - ``LobbyInvite``
 - ``LobbyKicked``
