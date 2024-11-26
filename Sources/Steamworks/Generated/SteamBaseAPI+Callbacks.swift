@@ -36,6 +36,16 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(334), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
+    /// Registration for Steamworks `BroadcastUploadStart_t` callback
+    func onBroadcastUploadStart(_ client: @Sendable @escaping (sending BroadcastUploadStart) -> Void) {
+        callbacks.add(callbackID: CallbackID(4604), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
+    /// Registration for Steamworks `BroadcastUploadStop_t` callback
+    func onBroadcastUploadStop(_ client: @Sendable @escaping (sending BroadcastUploadStop) -> Void) {
+        callbacks.add(callbackID: CallbackID(4605), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
     /// Registration for Steamworks `ClientGameServerDeny_t` callback
     func onClientGameServerDeny(_ client: @Sendable @escaping (sending ClientGameServerDeny) -> Void) {
         callbacks.add(callbackID: CallbackID(113), rawClient: SteamBaseAPI.makeRaw(client))
@@ -696,11 +706,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(1103), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `UserStatsReceived_t` callback
-    func onUserStatsReceived(_ client: @Sendable @escaping (sending UserStatsReceived) -> Void) {
-        callbacks.add(callbackID: CallbackID(1101), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `UserStatsStored_t` callback
     func onUserStatsStored(_ client: @Sendable @escaping (sending UserStatsStored) -> Void) {
         callbacks.add(callbackID: CallbackID(1102), rawClient: SteamBaseAPI.makeRaw(client))
@@ -753,6 +758,16 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `AvatarImageLoaded_t` callbacks
     var avatarImageLoaded: AsyncStream<AvatarImageLoaded> {
         AsyncStream { onAvatarImageLoaded($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `BroadcastUploadStart_t` callbacks
+    var broadcastUploadStart: AsyncStream<BroadcastUploadStart> {
+        AsyncStream { onBroadcastUploadStart($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `BroadcastUploadStop_t` callbacks
+    var broadcastUploadStop: AsyncStream<BroadcastUploadStop> {
+        AsyncStream { onBroadcastUploadStop($0.yield0) }
     }
 
     /// Async stream of Steamworks `ClientGameServerDeny_t` callbacks
@@ -1413,11 +1428,6 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `UserAchievementStored_t` callbacks
     var userAchievementStored: AsyncStream<UserAchievementStored> {
         AsyncStream { onUserAchievementStored($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `UserStatsReceived_t` callbacks
-    var userStatsReceived: AsyncStream<UserStatsReceived> {
-        AsyncStream { onUserStatsReceived($0.yield0) }
     }
 
     /// Async stream of Steamworks `UserStatsStored_t` callbacks

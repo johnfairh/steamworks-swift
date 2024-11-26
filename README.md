@@ -1,5 +1,5 @@
 ![macOS](https://shields.io/badge/platform-macOS%20|%20Linux%20|%20%3F%3F-lightgrey)
-![Steamworks 1.60](https://shields.io/badge/steamworks-1.60-lightgrey)
+![Steamworks 1.61](https://shields.io/badge/steamworks-1.61-lightgrey)
 [![Test](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml/badge.svg)](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml)
 ![MIT](https://shields.io/badge/license-MIT-black)
 
@@ -246,9 +246,9 @@ executors to look after gameservers or lower-priority work.
 ## How To Use This Project
 
 Prereqs:
-* Needs Swift 6 beta (Xcode 16 beta)
+* Needs Swift 6 beta (Xcode 16+)
 * Needs Steam client installed (and logged-in, running for the tests or to do anything useful)
-* I'm using macOS 14; should work on Linux; might work on Windows eventually
+* I'm using macOS 15; should work on Linux; might work on Windows eventually
 
 Install the Steamworks SDK:
 * Clone [steamworks-swift-sdk](https://github.com/johnfairh/steamworks-swift-sdk)
@@ -264,7 +264,7 @@ import PackageDescription
 let package = Package(
   name: "MySteamApp",
   platforms: [
-    .macOS("14.0"),
+    .macOS("15.0"),
   ],
   dependencies: [
     .package(url: "https://github.com/johnfairh/steamworks-swift", from: "1.0.0"),

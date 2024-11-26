@@ -112,14 +112,14 @@ public struct SteamApps: Sendable {
     }
 
     /// Steamworks `ISteamApps::GetBetaInfo()`
-    public func getBetaInfo(appID: AppID, betaIndex: Int, betaNameSize: Int, descriptionSize: Int) -> (rc: Bool, flags: BetaBranchFlags, buildID: Int, betaName: String, description: String) {
+    public func getBetaInfo(betaIndex: Int, betaNameSize: Int, descriptionSize: Int) -> (rc: Bool, flags: BetaBranchFlags, buildID: Int, betaName: String, description: String) {
         var tmpFlags = uint32()
         var tmpBuildID = uint32()
         var tmpBetaName = SteamOutString(length: betaNameSize)
         var tmpDescription = SteamOutString(length: descriptionSize)
         let rc = tmpBetaName.setContent { nstBetaName in
             tmpDescription.setContent { nstDescription in
-                SteamAPI_ISteamApps_GetBetaInfo(interface, AppId_t(appID), CInt(betaIndex), &tmpFlags, &tmpBuildID, nstBetaName, CInt(betaNameSize), nstDescription, CInt(descriptionSize))
+                SteamAPI_ISteamApps_GetBetaInfo(interface, CInt(betaIndex), &tmpFlags, &tmpBuildID, nstBetaName, CInt(betaNameSize), nstDescription, CInt(descriptionSize))
             }
         }
         return (rc: rc, flags: BetaBranchFlags(tmpFlags), buildID: Int(tmpBuildID), betaName: tmpBetaName.swiftString, description: tmpDescription.swiftString)
@@ -196,10 +196,10 @@ public struct SteamApps: Sendable {
     }
 
     /// Steamworks `ISteamApps::GetNumBetas()`
-    public func getNumBetas(appID: AppID) -> (rc: Int, available: Int, private: Int) {
+    public func getNumBetas() -> (rc: Int, available: Int, private: Int) {
         var tmpAvailable = CInt()
         var tmpPrivate = CInt()
-        let rc = Int(SteamAPI_ISteamApps_GetNumBetas(interface, AppId_t(appID), &tmpAvailable, &tmpPrivate))
+        let rc = Int(SteamAPI_ISteamApps_GetNumBetas(interface, &tmpAvailable, &tmpPrivate))
         return (rc: rc, available: Int(tmpAvailable), private: Int(tmpPrivate))
     }
 
@@ -224,8 +224,8 @@ public struct SteamApps: Sendable {
     }
 
     /// Steamworks `ISteamApps::SetActiveBeta()`
-    public func setActiveBeta(appID: AppID, betaName: String) -> Bool {
-        SteamAPI_ISteamApps_SetActiveBeta(interface, AppId_t(appID), betaName)
+    public func setActiveBeta(betaName: String) -> Bool {
+        SteamAPI_ISteamApps_SetActiveBeta(interface, betaName)
     }
 
     /// Steamworks `ISteamApps::SetDlcContext()`

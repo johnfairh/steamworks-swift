@@ -260,6 +260,13 @@ static inline const char * _Nonnull SteamRemotePlayTogetherGuestInvite_t_m_szCon
     return s->m_szConnectURL;
 }
 
+__attribute__((swift_name("getter:SteamTimelineGamePhaseRecordingExists_t.m_rgchPhaseID_ptr(self:)")))
+static inline const char * _Nonnull SteamTimelineGamePhaseRecordingExists_t_m_rgchPhaseID_ptr(const SteamTimelineGamePhaseRecordingExists_t * _Nonnull s)
+{
+    const_cast<SteamTimelineGamePhaseRecordingExists_t *>(s)->m_rgchPhaseID[63] = 0;
+    return s->m_rgchPhaseID;
+}
+
 __attribute__((swift_name("getter:SteamUGCDetails_t.m_rgchTitle_ptr(self:)")))
 static inline const char * _Nonnull SteamUGCDetails_t_m_rgchTitle_ptr(const SteamUGCDetails_t * _Nonnull s)
 {

@@ -399,6 +399,17 @@ extension SteamNetworkingPOPID: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: CUnsignedInt) { self.init(value) }
 }
 
+/// Steamworks `TimelineEventHandle_t`
+public struct TimelineEventHandle: Hashable, Sendable {
+    public let value: CUnsignedLongLong
+    public init(_ value: CUnsignedLongLong) { self.value = value }
+}
+
+extension TimelineEventHandle: SteamTypeAlias, SteamCreatable {}
+extension TimelineEventHandle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: CUnsignedLongLong) { self.init(value) }
+}
+
 /// Steamworks `UGCFileWriteStreamHandle_t`
 public struct UGCFileWriteStreamHandle: Hashable, Sendable {
     public let value: CUnsignedLongLong

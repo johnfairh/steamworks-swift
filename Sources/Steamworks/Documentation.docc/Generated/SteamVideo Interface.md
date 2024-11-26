@@ -6,5 +6,7 @@
 - ``SteamVideo``
 
 ### Callbacks
+- ``BroadcastUploadStart``
+- ``BroadcastUploadStop``
 - ``GetOPFSettingsResult``
 - ``GetVideoURLResult``

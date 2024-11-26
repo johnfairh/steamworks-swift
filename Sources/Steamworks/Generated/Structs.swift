@@ -177,6 +177,42 @@ extension AvatarImageLoaded: SteamCreatable {
     }
 }
 
+/// Steamworks `BroadcastUploadStart_t`
+public struct BroadcastUploadStart: Sendable {
+    /// Steamworks `m_bIsRTMP`
+    public let isRTMP: Bool
+
+    /// Create a customized `BroadcastUploadStart`
+    public init(isRTMP: Bool = false) {
+        self.isRTMP = isRTMP
+    }
+}
+
+extension BroadcastUploadStart: SteamCreatable {
+    typealias SteamType = CSteamworks.BroadcastUploadStart_t
+    init(_ steam: CSteamworks.BroadcastUploadStart_t) {
+        isRTMP = .init(steam.m_bIsRTMP)
+    }
+}
+
+/// Steamworks `BroadcastUploadStop_t`
+public struct BroadcastUploadStop: Sendable {
+    /// Steamworks `m_eResult`
+    public let result: BroadcastUploadResult
+
+    /// Create a customized `BroadcastUploadStop`
+    public init(result: BroadcastUploadResult = .none) {
+        self.result = result
+    }
+}
+
+extension BroadcastUploadStop: SteamCreatable {
+    typealias SteamType = CSteamworks.BroadcastUploadStop_t
+    init(_ steam: CSteamworks.BroadcastUploadStop_t) {
+        result = .init(steam.m_eResult)
+    }
+}
+
 /// Steamworks `ChangeNumOpenSlotsCallback_t`
 public struct ChangeNumOpenSlotsCallback: Sendable {
     /// Steamworks `m_eResult`
@@ -559,9 +595,11 @@ public struct EquippedProfileItems: Sendable {
     public let hasProfileBackground: Bool
     /// Steamworks `m_bHasMiniProfileBackground`
     public let hasMiniProfileBackground: Bool
+    /// Steamworks `m_bFromCache`
+    public let fromCache: Bool
 
     /// Create a customized `EquippedProfileItems`
-    public init(result: Result = .none, steamID: SteamID = SteamID(), hasAnimatedAvatar: Bool = false, hasAvatarFrame: Bool = false, hasProfileModifier: Bool = false, hasProfileBackground: Bool = false, hasMiniProfileBackground: Bool = false) {
+    public init(result: Result = .none, steamID: SteamID = SteamID(), hasAnimatedAvatar: Bool = false, hasAvatarFrame: Bool = false, hasProfileModifier: Bool = false, hasProfileBackground: Bool = false, hasMiniProfileBackground: Bool = false, fromCache: Bool = false) {
         self.result = result
         self.steamID = steamID
         self.hasAnimatedAvatar = hasAnimatedAvatar
@@ -569,6 +607,7 @@ public struct EquippedProfileItems: Sendable {
         self.hasProfileModifier = hasProfileModifier
         self.hasProfileBackground = hasProfileBackground
         self.hasMiniProfileBackground = hasMiniProfileBackground
+        self.fromCache = fromCache
     }
 }
 
@@ -582,6 +621,7 @@ extension EquippedProfileItems: SteamCreatable {
         hasProfileModifier = .init(steam.m_bHasProfileModifier)
         hasProfileBackground = .init(steam.m_bHasProfileBackground)
         hasMiniProfileBackground = .init(steam.m_bHasMiniProfileBackground)
+        fromCache = .init(steam.m_bFromCache)
     }
 }
 
@@ -5224,6 +5264,62 @@ public struct SteamShutdown: Sendable {
 extension SteamShutdown: SteamCreatable {
     typealias SteamType = CSteamworks.SteamShutdown_t
     init(_ steam: CSteamworks.SteamShutdown_t) {
+    }
+}
+
+/// Steamworks `SteamTimelineEventRecordingExists_t`
+public struct SteamTimelineEventRecordingExists: Sendable {
+    /// Steamworks `m_ulEventID`
+    public let eventID: UInt64
+    /// Steamworks `m_bRecordingExists`
+    public let recordingExists: Bool
+
+    /// Create a customized `SteamTimelineEventRecordingExists`
+    public init(eventID: UInt64 = 0, recordingExists: Bool = false) {
+        self.eventID = eventID
+        self.recordingExists = recordingExists
+    }
+}
+
+extension SteamTimelineEventRecordingExists: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamTimelineEventRecordingExists_t
+    init(_ steam: CSteamworks.SteamTimelineEventRecordingExists_t) {
+        eventID = .init(steam.m_ulEventID)
+        recordingExists = .init(steam.m_bRecordingExists)
+    }
+}
+
+/// Steamworks `SteamTimelineGamePhaseRecordingExists_t`
+public struct SteamTimelineGamePhaseRecordingExists: Sendable {
+    /// Steamworks `m_rgchPhaseID`
+    public let phaseID: String
+    /// Steamworks `m_ulRecordingMS`
+    public let recordingMS: UInt64
+    /// Steamworks `m_ulLongestClipMS`
+    public let longestClipMS: UInt64
+    /// Steamworks `m_unClipCount`
+    public let clipCount: Int
+    /// Steamworks `m_unScreenshotCount`
+    public let screenshotCount: Int
+
+    /// Create a customized `SteamTimelineGamePhaseRecordingExists`
+    public init(phaseID: String = "", recordingMS: UInt64 = 0, longestClipMS: UInt64 = 0, clipCount: Int = 0, screenshotCount: Int = 0) {
+        self.phaseID = phaseID
+        self.recordingMS = recordingMS
+        self.longestClipMS = longestClipMS
+        self.clipCount = clipCount
+        self.screenshotCount = screenshotCount
+    }
+}
+
+extension SteamTimelineGamePhaseRecordingExists: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamTimelineGamePhaseRecordingExists_t
+    init(_ steam: CSteamworks.SteamTimelineGamePhaseRecordingExists_t) {
+        phaseID = .init(steam.m_rgchPhaseID_ptr)
+        recordingMS = .init(steam.m_ulRecordingMS)
+        longestClipMS = .init(steam.m_ulLongestClipMS)
+        clipCount = .init(steam.m_unClipCount)
+        screenshotCount = .init(steam.m_unScreenshotCount)
     }
 }
 

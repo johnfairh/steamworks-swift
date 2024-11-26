@@ -499,10 +499,17 @@
     - name: Interfaces
       children:
         - SteamTimeline
+    - name: Simple types
+      children:
+        - TimelineEventHandle
     - name: Enumerations and Option Sets
       children:
         - TimelineEventClipPriority
         - TimelineGameMode
+    - name: Structures
+      children:
+        - SteamTimelineEventRecordingExists
+        - SteamTimelineGamePhaseRecordingExists
   - name: SteamUGC
     topics:
     - name: Interfaces
@@ -599,12 +606,12 @@
         - LeaderboardScoresDownloaded
         - LeaderboardUGCSet
         - NumberOfCurrentPlayers
+        - UserStatsReceived
     - name: Callbacks
       children:
         - PS3TrophiesInstalled
         - UserAchievementIconFetched
         - UserAchievementStored
-        - UserStatsReceived
         - UserStatsStored
         - UserStatsUnloaded
   - name: SteamUtils
@@ -640,6 +647,8 @@
         - SteamVideo
     - name: Callbacks
       children:
+        - BroadcastUploadStart
+        - BroadcastUploadStop
         - GetOPFSettingsResult
         - GetVideoURLResult
   - name: Common Types
