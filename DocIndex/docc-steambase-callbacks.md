@@ -4,6 +4,8 @@
 - ``onAppResumingFromSuspend(_:)``
 - ``onAvailableBeaconLocationsUpdated(_:)``
 - ``onAvatarImageLoaded(_:)``
+- ``onBroadcastUploadStart(_:)``
+- ``onBroadcastUploadStop(_:)``
 - ``onClientGameServerDeny(_:)``
 - ``onDlcInstalled(_:)``
 - ``onDownloadItemResult(_:)``
@@ -68,6 +70,7 @@
 - ``onLobbyChatMsg(_:)``
 - ``onLobbyChatUpdate(_:)``
 - ``onLobbyDataUpdate(_:)``
+- ``onLobbyEnter(_:)``
 - ``onLobbyGameCreated(_:)``
 - ``onLobbyInvite(_:)``
 - ``onLobbyKicked(_:)``
@@ -136,7 +139,6 @@
 - ``onUnreadChatMessagesChanged(_:)``
 - ``onUserAchievementIconFetched(_:)``
 - ``onUserAchievementStored(_:)``
-- ``onUserStatsReceived(_:)``
 - ``onUserStatsStored(_:)``
 - ``onUserStatsUnloaded(_:)``
 - ``onUserSubscribedItemsListChanged(_:)``
@@ -149,6 +151,8 @@
 - ``appResumingFromSuspend``
 - ``availableBeaconLocationsUpdated``
 - ``avatarImageLoaded``
+- ``broadcastUploadStart``
+- ``broadcastUploadStop``
 - ``clientGameServerDeny``
 - ``dlcInstalled``
 - ``downloadItemResult``
@@ -213,6 +217,7 @@
 - ``lobbyChatMsg``
 - ``lobbyChatUpdate``
 - ``lobbyDataUpdate``
+- ``lobbyEnter``
 - ``lobbyGameCreated``
 - ``lobbyInvite``
 - ``lobbyKicked``
@@ -281,7 +286,6 @@
 - ``unreadChatMessagesChanged``
 - ``userAchievementIconFetched``
 - ``userAchievementStored``
-- ``userStatsReceived``
 - ``userStatsStored``
 - ``userStatsUnloaded``
 - ``userSubscribedItemsListChanged``

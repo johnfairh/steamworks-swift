@@ -1642,8 +1642,16 @@ public enum InputActionOrigin: CUnsignedInt, Sendable {
     case steamDeckReserved19 = 404
     /// Steamworks `k_EInputActionOrigin_SteamDeck_Reserved20`
     case steamDeckReserved20 = 405
+    /// Steamworks `k_EInputActionOrigin_Horipad_M1`
+    case horipadM1 = 406
+    /// Steamworks `k_EInputActionOrigin_Horipad_M2`
+    case horipadM2 = 407
+    /// Steamworks `k_EInputActionOrigin_Horipad_L4`
+    case horipadL4 = 408
+    /// Steamworks `k_EInputActionOrigin_Horipad_R4`
+    case horipadR4 = 409
     /// Steamworks `k_EInputActionOrigin_Count`
-    case count = 406
+    case count = 410
     /// Steamworks `k_EInputActionOrigin_MaximumPossibleValue`
     case maximumPossibleValue = 32767
     /// Some undocumented value
@@ -2508,8 +2516,10 @@ public enum Result: CUnsignedInt, Sendable {
     case notSupported = 128
     /// Steamworks `k_EResultFamilySizeLimitExceeded`
     case familySizeLimitExceeded = 129
+    /// Steamworks `k_EResultOfflineAppCacheInvalid`
+    case offlineAppCacheInvalid = 130
     /// Some undocumented value
-    case unrepresentedInSwift = 130
+    case unrepresentedInSwift = 131
 }
 
 extension EResult: RawConvertible { typealias From = Result }
@@ -3016,6 +3026,8 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt, Sendable {
     case dualWifiEnable = 39
     /// Steamworks `k_ESteamNetworkingConfig_EnableDiagnosticsUI`
     case enableDiagnosticsUI = 46
+    /// Steamworks `k_ESteamNetworkingConfig_SendTimeSincePreviousPacket`
+    case sendTimeSincePreviousPacket = 59
     /// Steamworks `k_ESteamNetworkingConfig_FakePacketLoss_Send`
     case fakePacketLossSend = 2
     /// Steamworks `k_ESteamNetworkingConfig_FakePacketLoss_Recv`
@@ -3024,6 +3036,18 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt, Sendable {
     case fakePacketLagSend = 4
     /// Steamworks `k_ESteamNetworkingConfig_FakePacketLag_Recv`
     case fakePacketLagRecv = 5
+    /// Steamworks `k_ESteamNetworkingConfig_FakePacketJitter_Send_Avg`
+    case fakePacketJitterSendAvg = 53
+    /// Steamworks `k_ESteamNetworkingConfig_FakePacketJitter_Send_Max`
+    case fakePacketJitterSendMax = 54
+    /// Steamworks `k_ESteamNetworkingConfig_FakePacketJitter_Send_Pct`
+    case fakePacketJitterSendPct = 55
+    /// Steamworks `k_ESteamNetworkingConfig_FakePacketJitter_Recv_Avg`
+    case fakePacketJitterRecvAvg = 56
+    /// Steamworks `k_ESteamNetworkingConfig_FakePacketJitter_Recv_Max`
+    case fakePacketJitterRecvMax = 57
+    /// Steamworks `k_ESteamNetworkingConfig_FakePacketJitter_Recv_Pct`
+    case fakePacketJitterRecvPct = 58
     /// Steamworks `k_ESteamNetworkingConfig_FakePacketReorder_Send`
     case fakePacketReorderSend = 6
     /// Steamworks `k_ESteamNetworkingConfig_FakePacketReorder_Recv`
@@ -3196,8 +3220,6 @@ public enum SteamNetworkingIdentityType: CUnsignedInt, Sendable {
     case xboxPairwiseID = 17
     /// Steamworks `k_ESteamNetworkingIdentityType_SonyPSN`
     case sonyPSN = 18
-    /// Steamworks `k_ESteamNetworkingIdentityType_GoogleStadia`
-    case googleStadia = 19
     /// Steamworks `k_ESteamNetworkingIdentityType_IPAddress`
     case ipAddress = 1
     /// Steamworks `k_ESteamNetworkingIdentityType_GenericString`
@@ -3207,7 +3229,7 @@ public enum SteamNetworkingIdentityType: CUnsignedInt, Sendable {
     /// Steamworks `k_ESteamNetworkingIdentityType_UnknownType`
     case unknownType = 4
     /// Some undocumented value
-    case unrepresentedInSwift = 20
+    case unrepresentedInSwift = 19
 }
 
 extension ESteamNetworkingIdentityType: RawConvertible { typealias From = SteamNetworkingIdentityType }

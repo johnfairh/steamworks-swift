@@ -25,6 +25,8 @@
 - ``onAppResumingFromSuspend(_:)``
 - ``onAvailableBeaconLocationsUpdated(_:)``
 - ``onAvatarImageLoaded(_:)``
+- ``onBroadcastUploadStart(_:)``
+- ``onBroadcastUploadStop(_:)``
 - ``onClientGameServerDeny(_:)``
 - ``onDlcInstalled(_:)``
 - ``onDownloadItemResult(_:)``
@@ -157,7 +159,6 @@
 - ``onUnreadChatMessagesChanged(_:)``
 - ``onUserAchievementIconFetched(_:)``
 - ``onUserAchievementStored(_:)``
-- ``onUserStatsReceived(_:)``
 - ``onUserStatsStored(_:)``
 - ``onUserStatsUnloaded(_:)``
 - ``onUserSubscribedItemsListChanged(_:)``
@@ -170,6 +171,8 @@
 - ``appResumingFromSuspend``
 - ``availableBeaconLocationsUpdated``
 - ``avatarImageLoaded``
+- ``broadcastUploadStart``
+- ``broadcastUploadStop``
 - ``clientGameServerDeny``
 - ``dlcInstalled``
 - ``downloadItemResult``
@@ -302,7 +305,6 @@
 - ``unreadChatMessagesChanged``
 - ``userAchievementIconFetched``
 - ``userAchievementStored``
-- ``userStatsReceived``
 - ``userStatsStored``
 - ``userStatsUnloaded``
 - ``userSubscribedItemsListChanged``

@@ -64,6 +64,9 @@ public enum SteamConstants {
     /// Steamworks `k_nMaxLobbyKeyLength`
     public static let maxLobbyKeyLength = Int(255)
 
+    /// Steamworks `k_cchMaxPhaseIDLength`
+    public static let maxPhaseIDSize = Int(64)
+
     /// Steamworks `k_cbMaxSteamDatagramGameCoordinatorServerLoginAppData`
     public static let maxSteamDatagramGameCoordinatorServerLoginAppDataSize = Int(2048)
 
@@ -144,6 +147,9 @@ public enum SteamConstants {
 
     /// Steamworks `k_cchTagListMax`
     public static let tagListMaxSize = Int(1024 + 1)
+
+    /// Steamworks `k_unTimelinePriority_KeepCurrentValue`
+    public static let timelinePriorityKeepCurrentValue = Int(1000000)
 
     /// Steamworks `k_cubUFSTagValueMax`
     public static let ufsTagValueMaxSize = Int(255)

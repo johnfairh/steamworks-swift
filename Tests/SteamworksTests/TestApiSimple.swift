@@ -81,27 +81,27 @@ class TestApiSimple: XCTestCase {
     }
 
     /// Callbacks - pure async notifications
-    func testCallback() throws {
+    func testCallback() async throws {
         let steam = try TestClient.getClient()
         nonisolated(unsafe) var count = 0
-        steam.onUserStatsReceived { statsMsg in
-            XCTAssertNotNil(statsMsg)
+
+        steam.onGetVideoURLResult { gvMsg in
+            XCTAssertNotNil(gvMsg)
             guard count == 0 else {
                 return
             }
             count = 1
-            print("User stats received: \(statsMsg)")
+            // this is supposed to fail, point is the callback...
+            XCTAssertEqual(gvMsg.result, .invalidParam)
+            print("Video URL received: \(gvMsg)")
 
             TestClient.stopRunningFrames()
         }
 
-        let rc = steam.userStats.requestCurrentStats()
-        guard rc else {
-            XCTFail("RequestCurrentStats failed")
-            return
-        }
+        steam.video.getVideoURL(videoAppID: .spaceWar)
 
         TestClient.runFrames() // until callback
+        print("done")
     }
 
     /// Version of the same code using async-await
@@ -117,9 +117,9 @@ class TestApiSimple: XCTestCase {
                 // Probably not on main actor here, but that's fine, these guys
                 // don't actually call C Steamworks - they just register a function
                 // on the Swift side to get called later by the frameloop.
-                for await statsMsg in steam.userStatsReceived {
+                for await gvMsg in steam.getVideoURLResult {
                     // On same executor as above, probably not main, can't call steam
-                    print("User stats received: \(statsMsg)")
+                    print("VideoURL rceived: \(gvMsg)")
                     await TestClient.stopRunningFramesAsync()
                     break
                 }
@@ -127,11 +127,7 @@ class TestApiSimple: XCTestCase {
 
             group.addTask { @MainActor in
                 MainActor.assertIsolated()
-                let rc = steam.userStats.requestCurrentStats()
-                guard rc else {
-                    XCTFail("RequestCurrentStats failed")
-                    return
-                }
+                steam.video.getVideoURL(videoAppID: .spaceWar)
             }
 
             group.addTask {

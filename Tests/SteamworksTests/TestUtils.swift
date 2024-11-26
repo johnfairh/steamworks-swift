@@ -51,7 +51,8 @@ enum TestClient {
             precondition(!runningFrames)
             frameCallback = callback
             runningFrames = true
-            while runningFrames && RunLoop.current.run(mode: .default, before: .distantFuture) {
+            while runningFrames {
+                RunLoop.main.run(mode: .default, before: .distantFuture)
             }
         }
 

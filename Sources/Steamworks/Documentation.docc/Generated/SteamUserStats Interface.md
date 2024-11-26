@@ -24,11 +24,11 @@
 - ``LeaderboardScoresDownloaded``
 - ``LeaderboardUGCSet``
 - ``NumberOfCurrentPlayers``
+- ``UserStatsReceived``
 
 ### Callbacks
 - ``PS3TrophiesInstalled``
 - ``UserAchievementIconFetched``
 - ``UserAchievementStored``
-- ``UserStatsReceived``
 - ``UserStatsStored``
 - ``UserStatsUnloaded``

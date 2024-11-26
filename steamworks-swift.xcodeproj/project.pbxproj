@@ -613,7 +613,6 @@
 		02D309E6272813B200DE64F0 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				02BD4F5A2C3D43B100A50860 /* SteamTimeline.swift */,
 				020860CF2730493300725122 /* SteamBaseAPI+Version.swift */,
 				02D309E7272813CF00DE64F0 /* SteamBaseAPI+Callbacks.swift */,
 				020860F7273FED5A00725122 /* Typedefs.swift */,
@@ -642,6 +641,7 @@
 				02AD457C27524E6400BD93ED /* SteamRemotePlay.swift */,
 				02AD45882754EFF800BD93ED /* SteamRemoteStorage.swift */,
 				02AD457E275251E700BD93ED /* SteamScreenshots.swift */,
+				02BD4F5A2C3D43B100A50860 /* SteamTimeline.swift */,
 				02AD458A275636A200BD93ED /* SteamUGC.swift */,
 				027F837A274C0B0500963383 /* SteamUtils.swift */,
 				02AD454D274E4AA000BD93ED /* SteamUser.swift */,

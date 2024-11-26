@@ -538,6 +538,8 @@ methods:
         type: RTime32
       unFlags:
         type: EFavoriteFlags
+  SteamAPI_ISteamMatchmaking_CreateLobby:
+    callback: LobbyEnter_t
   SteamAPI_ISteamMatchmaking_DeleteLobbyData:
     discardable_result: true
   SteamAPI_ISteamMatchmaking_GetFavoriteGame:

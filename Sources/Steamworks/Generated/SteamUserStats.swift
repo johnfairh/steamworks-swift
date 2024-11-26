@@ -13,7 +13,7 @@ internal import CSteamworks
 /// Access via ``SteamAPI/userStats``.
 public struct SteamUserStats: Sendable {
     var interface: UnsafeMutablePointer<ISteamUserStats> {
-        SteamAPI_SteamUserStats_v012()
+        SteamAPI_SteamUserStats_v013()
     }
 
     init() {
@@ -315,11 +315,6 @@ public struct SteamUserStats: Sendable {
     /// Steamworks `ISteamUserStats::IndicateAchievementProgress()`
     public func indicateAchievementProgress(name: String, curProgress: Int, maxProgress: Int) -> Bool {
         SteamAPI_ISteamUserStats_IndicateAchievementProgress(interface, name, uint32(curProgress), uint32(maxProgress))
-    }
-
-    /// Steamworks `ISteamUserStats::RequestCurrentStats()`
-    public func requestCurrentStats() -> Bool {
-        SteamAPI_ISteamUserStats_RequestCurrentStats(interface)
     }
 
     /// Steamworks `ISteamUserStats::RequestGlobalAchievementPercentages()`, callback
