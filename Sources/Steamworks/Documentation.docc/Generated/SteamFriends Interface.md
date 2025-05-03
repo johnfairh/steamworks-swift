@@ -17,7 +17,6 @@
 - ``OverlayToStoreFlag``
 - ``PersonaChange``
 - ``PersonaState``
-- ``UserRestriction``
 
 ### Structures
 - ``ClanOfficerListResponse``
@@ -28,7 +27,6 @@
 - ``FriendsGetFollowerCount``
 - ``FriendsIsFollowing``
 - ``JoinClanChatRoomCompletionResult``
-- ``SetPersonaNameResponse``
 
 ### Callbacks
 - ``AvatarImageLoaded``

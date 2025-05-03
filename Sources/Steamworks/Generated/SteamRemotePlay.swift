@@ -13,10 +13,15 @@ internal import CSteamworks
 /// Access via ``SteamAPI/remotePlay``.
 public struct SteamRemotePlay: Sendable {
     var interface: UnsafeMutablePointer<ISteamRemotePlay> {
-        SteamAPI_SteamRemotePlay_v002()
+        SteamAPI_SteamRemotePlay_v003()
     }
 
     init() {
+    }
+
+    /// Steamworks `ISteamRemotePlay::BEnableRemotePlayTogetherDirectInput()`
+    public func enableRemotePlayTogetherDirectInput() -> Bool {
+        SteamAPI_ISteamRemotePlay_BEnableRemotePlayTogetherDirectInput(interface)
     }
 
     /// Steamworks `ISteamRemotePlay::BGetSessionClientResolution()`
@@ -32,9 +37,21 @@ public struct SteamRemotePlay: Sendable {
         SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite(interface, CUnsignedLongLong(friend))
     }
 
-    /// Steamworks `ISteamRemotePlay::BStartRemotePlayTogether()`
-    public func startRemotePlayTogether(showOverlay: Bool = true) -> Bool {
-        SteamAPI_ISteamRemotePlay_BStartRemotePlayTogether(interface, showOverlay)
+    /// Steamworks `ISteamRemotePlay::CreateMouseCursor()`
+    public func createMouseCursor(width: Int, height: Int, hotX: Int, hotY: Int, bgra: UnsafeRawPointer, pitch: Int = 0) -> RemotePlayCursorID {
+        RemotePlayCursorID(SteamAPI_ISteamRemotePlay_CreateMouseCursor(interface, CInt(width), CInt(height), CInt(hotX), CInt(hotY), bgra, CInt(pitch)))
+    }
+
+    /// Steamworks `ISteamRemotePlay::DisableRemotePlayTogetherDirectInput()`
+    public func disableRemotePlayTogetherDirectInput() {
+        SteamAPI_ISteamRemotePlay_DisableRemotePlayTogetherDirectInput(interface)
+    }
+
+    /// Steamworks `ISteamRemotePlay::GetInput()`
+    public func getInput(returnInput: Bool = true, maxEvents: Int) -> (rc: Int, input: [RemotePlayInput]) {
+        let tmpInput = SteamOutArray<RemotePlayInput_t>(maxEvents, returnInput)
+        let rc = Int(SteamAPI_ISteamRemotePlay_GetInput(interface, tmpInput.steamArray, uint32(maxEvents)))
+        return (rc: rc, input: tmpInput.swiftArray(Int(rc)))
     }
 
     /// Steamworks `ISteamRemotePlay::GetSessionClientFormFactor()`
@@ -60,5 +77,25 @@ public struct SteamRemotePlay: Sendable {
     /// Steamworks `ISteamRemotePlay::GetSessionSteamID()`
     public func getSessionSteamID(sessionID: RemotePlaySessionID) -> SteamID {
         SteamID(SteamAPI_ISteamRemotePlay_GetSessionSteamID(interface, RemotePlaySessionID_t(sessionID)))
+    }
+
+    /// Steamworks `ISteamRemotePlay::SetMouseCursor()`
+    public func setMouseCursor(sessionID: RemotePlaySessionID, cursorID: RemotePlayCursorID) {
+        SteamAPI_ISteamRemotePlay_SetMouseCursor(interface, RemotePlaySessionID_t(sessionID), RemotePlayCursorID_t(cursorID))
+    }
+
+    /// Steamworks `ISteamRemotePlay::SetMousePosition()`
+    public func setMousePosition(sessionID: RemotePlaySessionID, normalizedX: Float, normalizedY: Float) {
+        SteamAPI_ISteamRemotePlay_SetMousePosition(interface, RemotePlaySessionID_t(sessionID), normalizedX, normalizedY)
+    }
+
+    /// Steamworks `ISteamRemotePlay::SetMouseVisibility()`
+    public func setMouseVisibility(sessionID: RemotePlaySessionID, visible: Bool) {
+        SteamAPI_ISteamRemotePlay_SetMouseVisibility(interface, RemotePlaySessionID_t(sessionID), visible)
+    }
+
+    /// Steamworks `ISteamRemotePlay::ShowRemotePlayTogetherUI()`
+    public func showRemotePlayTogetherUI() -> Bool {
+        SteamAPI_ISteamRemotePlay_ShowRemotePlayTogetherUI(interface)
     }
 }

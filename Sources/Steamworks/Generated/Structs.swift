@@ -3301,54 +3301,6 @@ extension OverlayBrowserProtocolNavigation: SteamCreatable {
     }
 }
 
-/// Steamworks `PS3TrophiesInstalled_t`
-public struct PS3TrophiesInstalled: Sendable {
-    /// Steamworks `m_nGameID`
-    public let gameID: GameID
-    /// Steamworks `m_eResult`
-    public let result: Result
-    /// Steamworks `m_ulRequiredDiskSpace`
-    public let requiredDiskSpace: UInt64
-
-    /// Create a customized `PS3TrophiesInstalled`
-    public init(gameID: GameID = GameID(), result: Result = .none, requiredDiskSpace: UInt64 = 0) {
-        self.gameID = gameID
-        self.result = result
-        self.requiredDiskSpace = requiredDiskSpace
-    }
-}
-
-extension PS3TrophiesInstalled: SteamCreatable {
-    typealias SteamType = CSteamworks.PS3TrophiesInstalled_t
-    init(_ steam: CSteamworks.PS3TrophiesInstalled_t) {
-        gameID = .init(steam.m_nGameID)
-        result = .init(steam.m_eResult)
-        requiredDiskSpace = .init(steam.m_ulRequiredDiskSpace)
-    }
-}
-
-/// Steamworks `PSNGameBootInviteResult_t`
-public struct PSNGameBootInviteResult: Sendable {
-    /// Steamworks `m_bGameBootInviteExists`
-    public let gameBootInviteExists: Bool
-    /// Steamworks `m_steamIDLobby`
-    public let lobby: SteamID
-
-    /// Create a customized `PSNGameBootInviteResult`
-    public init(gameBootInviteExists: Bool = false, lobby: SteamID = SteamID()) {
-        self.gameBootInviteExists = gameBootInviteExists
-        self.lobby = lobby
-    }
-}
-
-extension PSNGameBootInviteResult: SteamCreatable {
-    typealias SteamType = CSteamworks.PSNGameBootInviteResult_t
-    init(_ steam: CSteamworks.PSNGameBootInviteResult_t) {
-        gameBootInviteExists = .init(steam.m_bGameBootInviteExists)
-        lobby = .init(steam.m_steamIDLobby)
-    }
-}
-
 /// Steamworks `PersonaStateChange_t`
 public struct PersonaStateChange: Sendable {
     /// Steamworks `m_ulSteamID`
@@ -3381,6 +3333,88 @@ public struct PlaybackStatusHasChanged: Sendable {
 extension PlaybackStatusHasChanged: SteamCreatable {
     typealias SteamType = CSteamworks.PlaybackStatusHasChanged_t
     init(_ steam: CSteamworks.PlaybackStatusHasChanged_t) {
+    }
+}
+
+/// Steamworks `RemotePlayInputKey_t`
+public struct RemotePlayInputKey: Sendable {
+    /// Steamworks `m_eScancode`
+    public let scancode: RemotePlayScancode
+    /// Steamworks `m_unModifiers`
+    public let modifiers: RemotePlayKeyModifier
+    /// Steamworks `m_unKeycode`
+    public let keycode: Int
+
+    /// Create a customized `RemotePlayInputKey`
+    public init(scancode: RemotePlayScancode = .unknown, modifiers: RemotePlayKeyModifier = [], keycode: Int = 0) {
+        self.scancode = scancode
+        self.modifiers = modifiers
+        self.keycode = keycode
+    }
+}
+
+extension RemotePlayInputKey: SteamCreatable {
+    typealias SteamType = CSteamworks.RemotePlayInputKey_t
+    init(_ steam: CSteamworks.RemotePlayInputKey_t) {
+        scancode = .init(steam.m_eScancode)
+        modifiers = .init(steam.m_unModifiers)
+        keycode = .init(steam.m_unKeycode)
+    }
+}
+
+/// Steamworks `RemotePlayInputMouseMotion_t`
+public struct RemotePlayInputMouseMotion: Sendable {
+    /// Steamworks `m_bAbsolute`
+    public let absolute: Bool
+    /// Steamworks `m_flNormalizedX`
+    public let normalizedX: Float
+    /// Steamworks `m_flNormalizedY`
+    public let normalizedY: Float
+    /// Steamworks `m_nDeltaX`
+    public let deltaX: Int
+    /// Steamworks `m_nDeltaY`
+    public let deltaY: Int
+
+    /// Create a customized `RemotePlayInputMouseMotion`
+    public init(absolute: Bool = false, normalizedX: Float = 0, normalizedY: Float = 0, deltaX: Int = 0, deltaY: Int = 0) {
+        self.absolute = absolute
+        self.normalizedX = normalizedX
+        self.normalizedY = normalizedY
+        self.deltaX = deltaX
+        self.deltaY = deltaY
+    }
+}
+
+extension RemotePlayInputMouseMotion: SteamCreatable {
+    typealias SteamType = CSteamworks.RemotePlayInputMouseMotion_t
+    init(_ steam: CSteamworks.RemotePlayInputMouseMotion_t) {
+        absolute = .init(steam.m_bAbsolute)
+        normalizedX = .init(steam.m_flNormalizedX)
+        normalizedY = .init(steam.m_flNormalizedY)
+        deltaX = .init(steam.m_nDeltaX)
+        deltaY = .init(steam.m_nDeltaY)
+    }
+}
+
+/// Steamworks `RemotePlayInputMouseWheel_t`
+public struct RemotePlayInputMouseWheel: Sendable {
+    /// Steamworks `m_eDirection`
+    public let direction: RemotePlayMouseWheelDirection
+    /// Steamworks `m_flAmount`
+    public let amount: Float
+
+    /// Create a customized `RemotePlayInputMouseWheel`
+    public init(direction: RemotePlayMouseWheelDirection = .up, amount: Float = 0) {
+        self.direction = direction
+        self.amount = amount
+    }
+}
+
+extension RemotePlayInputMouseWheel: SteamCreatable {
+    typealias SteamType = CSteamworks.RemotePlayInputMouseWheel_t
+    init(_ steam: CSteamworks.RemotePlayInputMouseWheel_t) {
+        direction = .init(steam.m_eDirection)
+        amount = .init(steam.m_flAmount)
     }
 }
 
@@ -4405,32 +4439,6 @@ extension SearchForGameResultCallback: SteamCreatable {
         countAcceptedGame = .init(steam.m_nCountAcceptedGame)
         host = .init(steam.m_steamIDHost)
         finalCallback = .init(steam.m_bFinalCallback)
-    }
-}
-
-/// Steamworks `SetPersonaNameResponse_t`
-public struct SetPersonaNameResponse: Sendable {
-    /// Steamworks `m_bSuccess`
-    public let success: Bool
-    /// Steamworks `m_bLocalSuccess`
-    public let localSuccess: Bool
-    /// Steamworks `m_result`
-    public let result: Result
-
-    /// Create a customized `SetPersonaNameResponse`
-    public init(success: Bool = false, localSuccess: Bool = false, result: Result = .none) {
-        self.success = success
-        self.localSuccess = localSuccess
-        self.result = result
-    }
-}
-
-extension SetPersonaNameResponse: SteamCreatable {
-    typealias SteamType = CSteamworks.SetPersonaNameResponse_t
-    init(_ steam: CSteamworks.SetPersonaNameResponse_t) {
-        success = .init(steam.m_bSuccess)
-        localSuccess = .init(steam.m_bLocalSuccess)
-        result = .init(steam.m_result)
     }
 }
 

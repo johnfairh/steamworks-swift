@@ -59,7 +59,8 @@ final class Generated {
         ("SteamMatchmakingPlayersResponse", .protocol),
         ("SteamMatchmakingRulesResponse", .protocol),
         ("SteamMatchmakingServerListResponse", .protocol),
-        ("MatchMakingKeyValuePairs", .typedef)
+        ("MatchMakingKeyValuePairs", .typedef),
+        ("RemotePlayInput", .struct),
     ]
 
     private func addManualTypes() {

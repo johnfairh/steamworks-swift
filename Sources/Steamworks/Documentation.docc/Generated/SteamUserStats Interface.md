@@ -27,7 +27,6 @@
 - ``UserStatsReceived``
 
 ### Callbacks
-- ``PS3TrophiesInstalled``
 - ``UserAchievementIconFetched``
 - ``UserAchievementStored``
 - ``UserStatsStored``

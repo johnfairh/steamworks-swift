@@ -91,6 +91,7 @@
 - ``onLobbyChatMsg(_:)``
 - ``onLobbyChatUpdate(_:)``
 - ``onLobbyDataUpdate(_:)``
+- ``onLobbyEnter(_:)``
 - ``onLobbyGameCreated(_:)``
 - ``onLobbyInvite(_:)``
 - ``onLobbyKicked(_:)``
@@ -112,8 +113,6 @@
 - ``onMusicPlayerWillQuit(_:)``
 - ``onNewUrlLaunchParameters(_:)``
 - ``onOverlayBrowserProtocolNavigation(_:)``
-- ``onPS3TrophiesInstalled(_:)``
-- ``onPSNGameBootInviteResult(_:)``
 - ``onPersonaStateChange(_:)``
 - ``onPlaybackStatusHasChanged(_:)``
 - ``onRemoteStorageEnumerateUserSharedWorkshopFilesResult(_:)``
@@ -237,6 +236,7 @@
 - ``lobbyChatMsg``
 - ``lobbyChatUpdate``
 - ``lobbyDataUpdate``
+- ``lobbyEnter``
 - ``lobbyGameCreated``
 - ``lobbyInvite``
 - ``lobbyKicked``
@@ -258,8 +258,6 @@
 - ``musicPlayerWillQuit``
 - ``newUrlLaunchParameters``
 - ``overlayBrowserProtocolNavigation``
-- ``ps3TrophiesInstalled``
-- ``psnGameBootInviteResult``
 - ``personaStateChange``
 - ``playbackStatusHasChanged``
 - ``remoteStorageEnumerateUserSharedWorkshopFilesResult``

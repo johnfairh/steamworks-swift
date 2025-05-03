@@ -31,4 +31,3 @@
 - ``LobbyGameCreated``
 - ``LobbyInvite``
 - ``LobbyKicked``
-- ``PSNGameBootInviteResult``

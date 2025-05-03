@@ -476,16 +476,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(349), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `PS3TrophiesInstalled_t` callback
-    func onPS3TrophiesInstalled(_ client: @Sendable @escaping (sending PS3TrophiesInstalled) -> Void) {
-        callbacks.add(callbackID: CallbackID(1112), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `PSNGameBootInviteResult_t` callback
-    func onPSNGameBootInviteResult(_ client: @Sendable @escaping (sending PSNGameBootInviteResult) -> Void) {
-        callbacks.add(callbackID: CallbackID(515), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `PersonaStateChange_t` callback
     func onPersonaStateChange(_ client: @Sendable @escaping (sending PersonaStateChange) -> Void) {
         callbacks.add(callbackID: CallbackID(304), rawClient: SteamBaseAPI.makeRaw(client))
@@ -1203,16 +1193,6 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `OverlayBrowserProtocolNavigation_t` callbacks
     var overlayBrowserProtocolNavigation: AsyncStream<OverlayBrowserProtocolNavigation> {
         AsyncStream { onOverlayBrowserProtocolNavigation($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `PS3TrophiesInstalled_t` callbacks
-    var ps3TrophiesInstalled: AsyncStream<PS3TrophiesInstalled> {
-        AsyncStream { onPS3TrophiesInstalled($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `PSNGameBootInviteResult_t` callbacks
-    var psnGameBootInviteResult: AsyncStream<PSNGameBootInviteResult> {
-        AsyncStream { onPSNGameBootInviteResult($0.yield0) }
     }
 
     /// Async stream of Steamworks `PersonaStateChange_t` callbacks

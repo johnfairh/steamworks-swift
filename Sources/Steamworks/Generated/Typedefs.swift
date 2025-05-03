@@ -259,6 +259,17 @@ extension RTime32: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: CUnsignedInt) { self.init(value) }
 }
 
+/// Steamworks `RemotePlayCursorID_t`
+public struct RemotePlayCursorID: Hashable, Sendable {
+    public let value: CUnsignedInt
+    public init(_ value: CUnsignedInt) { self.value = value }
+}
+
+extension RemotePlayCursorID: SteamTypeAlias, SteamCreatable {}
+extension RemotePlayCursorID: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: CUnsignedInt) { self.init(value) }
+}
+
 /// Steamworks `RemotePlaySessionID_t`
 public struct RemotePlaySessionID: Hashable, Sendable {
     public let value: CUnsignedInt

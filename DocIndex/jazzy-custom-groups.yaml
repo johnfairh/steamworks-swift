@@ -39,7 +39,6 @@
         - OverlayToStoreFlag
         - PersonaChange
         - PersonaState
-        - UserRestriction
     - name: Structures
       children:
         - ClanOfficerListResponse
@@ -50,7 +49,6 @@
         - FriendsGetFollowerCount
         - FriendsIsFollowing
         - JoinClanChatRoomCompletionResult
-        - SetPersonaNameResponse
     - name: Callbacks
       children:
         - AvatarImageLoaded
@@ -271,7 +269,6 @@
         - LobbyGameCreated
         - LobbyInvite
         - LobbyKicked
-        - PSNGameBootInviteResult
   - name: SteamMatchmakingServers
     topics:
     - name: Interfaces
@@ -418,10 +415,22 @@
         - SteamRemotePlay
     - name: Simple types
       children:
+        - RemotePlayCursorID
         - RemotePlaySessionID
     - name: Enumerations and Option Sets
       children:
+        - RemotePlayInputType
+        - RemotePlayKeyModifier
+        - RemotePlayMouseButton
+        - RemotePlayMouseWheelDirection
+        - RemotePlayScancode
         - SteamDeviceFormFactor
+    - name: Structures
+      children:
+        - RemotePlayInput
+        - RemotePlayInputKey
+        - RemotePlayInputMouseMotion
+        - RemotePlayInputMouseWheel
     - name: Callbacks
       children:
         - SteamRemotePlaySessionConnected
@@ -609,7 +618,6 @@
         - UserStatsReceived
     - name: Callbacks
       children:
-        - PS3TrophiesInstalled
         - UserAchievementIconFetched
         - UserAchievementStored
         - UserStatsStored

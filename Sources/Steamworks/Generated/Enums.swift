@@ -2176,6 +2176,290 @@ extension EPlayerResult_t: RawConvertible { typealias From = PlayerResult }
 extension PlayerResult: EnumWithUnrepresented { typealias From = EPlayerResult_t }
 extension PlayerResult: SteamCreatable {}
 
+/// Steamworks `ERemotePlayInputType`
+public enum RemotePlayInputType: CUnsignedInt, Sendable {
+    /// Steamworks `k_ERemotePlayInputUnknown`
+    case unknown = 0
+    /// Steamworks `k_ERemotePlayInputMouseMotion`
+    case mouseMotion = 1
+    /// Steamworks `k_ERemotePlayInputMouseButtonDown`
+    case mouseButtonDown = 2
+    /// Steamworks `k_ERemotePlayInputMouseButtonUp`
+    case mouseButtonUp = 3
+    /// Steamworks `k_ERemotePlayInputMouseWheel`
+    case mouseWheel = 4
+    /// Steamworks `k_ERemotePlayInputKeyDown`
+    case keyDown = 5
+    /// Steamworks `k_ERemotePlayInputKeyUp`
+    case keyUp = 6
+    /// Some undocumented value
+    case unrepresentedInSwift = 7
+}
+
+extension ERemotePlayInputType: RawConvertible { typealias From = RemotePlayInputType }
+extension RemotePlayInputType: EnumWithUnrepresented { typealias From = ERemotePlayInputType }
+extension RemotePlayInputType: SteamCreatable {}
+
+/// Steamworks `ERemotePlayKeyModifier`
+public struct RemotePlayKeyModifier: OptionSet, Sendable {
+    /// The flags value.
+    public let rawValue: CUnsignedInt
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
+    /// Steamworks `k_ERemotePlayKeyModifierNone`
+    public static let none = RemotePlayKeyModifier([])
+    /// Steamworks `k_ERemotePlayKeyModifierLeftShift`
+    public static let leftShift = RemotePlayKeyModifier(rawValue: 1)
+    /// Steamworks `k_ERemotePlayKeyModifierRightShift`
+    public static let rightShift = RemotePlayKeyModifier(rawValue: 2)
+    /// Steamworks `k_ERemotePlayKeyModifierLeftControl`
+    public static let leftControl = RemotePlayKeyModifier(rawValue: 64)
+    /// Steamworks `k_ERemotePlayKeyModifierRightControl`
+    public static let rightControl = RemotePlayKeyModifier(rawValue: 128)
+    /// Steamworks `k_ERemotePlayKeyModifierLeftAlt`
+    public static let leftAlt = RemotePlayKeyModifier(rawValue: 256)
+    /// Steamworks `k_ERemotePlayKeyModifierRightAlt`
+    public static let rightAlt = RemotePlayKeyModifier(rawValue: 512)
+    /// Steamworks `k_ERemotePlayKeyModifierLeftGUI`
+    public static let leftGUI = RemotePlayKeyModifier(rawValue: 1024)
+    /// Steamworks `k_ERemotePlayKeyModifierRightGUI`
+    public static let rightGUI = RemotePlayKeyModifier(rawValue: 2048)
+    /// Steamworks `k_ERemotePlayKeyModifierNumLock`
+    public static let numLock = RemotePlayKeyModifier(rawValue: 4096)
+    /// Steamworks `k_ERemotePlayKeyModifierCapsLock`
+    public static let capsLock = RemotePlayKeyModifier(rawValue: 8192)
+    /// Steamworks `k_ERemotePlayKeyModifierMask`
+    public static let mask = RemotePlayKeyModifier(rawValue: 65535)
+}
+
+extension ERemotePlayKeyModifier: RawConvertible { typealias From = RemotePlayKeyModifier }
+extension RemotePlayKeyModifier: RawConvertible { typealias From = ERemotePlayKeyModifier }
+extension RemotePlayKeyModifier: SteamCreatable {}
+
+/// Steamworks `ERemotePlayMouseButton`
+public struct RemotePlayMouseButton: OptionSet, Sendable {
+    /// The flags value.
+    public let rawValue: CUnsignedInt
+    /// Create a new instance with `rawValue` flags set.
+    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
+    /// Steamworks `k_ERemotePlayMouseButtonLeft`
+    public static let left = RemotePlayMouseButton(rawValue: 1)
+    /// Steamworks `k_ERemotePlayMouseButtonRight`
+    public static let right = RemotePlayMouseButton(rawValue: 2)
+    /// Steamworks `k_ERemotePlayMouseButtonMiddle`
+    public static let middle = RemotePlayMouseButton(rawValue: 16)
+    /// Steamworks `k_ERemotePlayMouseButtonX1`
+    public static let x1 = RemotePlayMouseButton(rawValue: 32)
+    /// Steamworks `k_ERemotePlayMouseButtonX2`
+    public static let x2 = RemotePlayMouseButton(rawValue: 64)
+}
+
+extension ERemotePlayMouseButton: RawConvertible { typealias From = RemotePlayMouseButton }
+extension RemotePlayMouseButton: RawConvertible { typealias From = ERemotePlayMouseButton }
+extension RemotePlayMouseButton: SteamCreatable {}
+
+/// Steamworks `ERemotePlayMouseWheelDirection`
+public enum RemotePlayMouseWheelDirection: CUnsignedInt, Sendable {
+    /// Steamworks `k_ERemotePlayMouseWheelUp`
+    case up = 1
+    /// Steamworks `k_ERemotePlayMouseWheelDown`
+    case down = 2
+    /// Steamworks `k_ERemotePlayMouseWheelLeft`
+    case left = 3
+    /// Steamworks `k_ERemotePlayMouseWheelRight`
+    case right = 4
+    /// Some undocumented value
+    case unrepresentedInSwift = 5
+}
+
+extension ERemotePlayMouseWheelDirection: RawConvertible { typealias From = RemotePlayMouseWheelDirection }
+extension RemotePlayMouseWheelDirection: EnumWithUnrepresented { typealias From = ERemotePlayMouseWheelDirection }
+extension RemotePlayMouseWheelDirection: SteamCreatable {}
+
+/// Steamworks `ERemotePlayScancode`
+public enum RemotePlayScancode: CUnsignedInt, Sendable {
+    /// Steamworks `k_ERemotePlayScancodeUnknown`
+    case unknown = 0
+    /// Steamworks `k_ERemotePlayScancodeA`
+    case a = 4
+    /// Steamworks `k_ERemotePlayScancodeB`
+    case b = 5
+    /// Steamworks `k_ERemotePlayScancodeC`
+    case c = 6
+    /// Steamworks `k_ERemotePlayScancodeD`
+    case d = 7
+    /// Steamworks `k_ERemotePlayScancodeE`
+    case e = 8
+    /// Steamworks `k_ERemotePlayScancodeF`
+    case f = 9
+    /// Steamworks `k_ERemotePlayScancodeG`
+    case g = 10
+    /// Steamworks `k_ERemotePlayScancodeH`
+    case h = 11
+    /// Steamworks `k_ERemotePlayScancodeI`
+    case i = 12
+    /// Steamworks `k_ERemotePlayScancodeJ`
+    case j = 13
+    /// Steamworks `k_ERemotePlayScancodeK`
+    case k = 14
+    /// Steamworks `k_ERemotePlayScancodeL`
+    case l = 15
+    /// Steamworks `k_ERemotePlayScancodeM`
+    case m = 16
+    /// Steamworks `k_ERemotePlayScancodeN`
+    case n = 17
+    /// Steamworks `k_ERemotePlayScancodeO`
+    case o = 18
+    /// Steamworks `k_ERemotePlayScancodeP`
+    case p = 19
+    /// Steamworks `k_ERemotePlayScancodeQ`
+    case q = 20
+    /// Steamworks `k_ERemotePlayScancodeR`
+    case r = 21
+    /// Steamworks `k_ERemotePlayScancodeS`
+    case s = 22
+    /// Steamworks `k_ERemotePlayScancodeT`
+    case t = 23
+    /// Steamworks `k_ERemotePlayScancodeU`
+    case u = 24
+    /// Steamworks `k_ERemotePlayScancodeV`
+    case v = 25
+    /// Steamworks `k_ERemotePlayScancodeW`
+    case w = 26
+    /// Steamworks `k_ERemotePlayScancodeX`
+    case x = 27
+    /// Steamworks `k_ERemotePlayScancodeY`
+    case y = 28
+    /// Steamworks `k_ERemotePlayScancodeZ`
+    case z = 29
+    /// Steamworks `k_ERemotePlayScancode1`
+    case num1 = 30
+    /// Steamworks `k_ERemotePlayScancode2`
+    case num2 = 31
+    /// Steamworks `k_ERemotePlayScancode3`
+    case num3 = 32
+    /// Steamworks `k_ERemotePlayScancode4`
+    case num4 = 33
+    /// Steamworks `k_ERemotePlayScancode5`
+    case num5 = 34
+    /// Steamworks `k_ERemotePlayScancode6`
+    case num6 = 35
+    /// Steamworks `k_ERemotePlayScancode7`
+    case num7 = 36
+    /// Steamworks `k_ERemotePlayScancode8`
+    case num8 = 37
+    /// Steamworks `k_ERemotePlayScancode9`
+    case num9 = 38
+    /// Steamworks `k_ERemotePlayScancode0`
+    case num0 = 39
+    /// Steamworks `k_ERemotePlayScancodeReturn`
+    case `return` = 40
+    /// Steamworks `k_ERemotePlayScancodeEscape`
+    case escape = 41
+    /// Steamworks `k_ERemotePlayScancodeBackspace`
+    case backspace = 42
+    /// Steamworks `k_ERemotePlayScancodeTab`
+    case tab = 43
+    /// Steamworks `k_ERemotePlayScancodeSpace`
+    case space = 44
+    /// Steamworks `k_ERemotePlayScancodeMinus`
+    case minus = 45
+    /// Steamworks `k_ERemotePlayScancodeEquals`
+    case equals = 46
+    /// Steamworks `k_ERemotePlayScancodeLeftBracket`
+    case leftBracket = 47
+    /// Steamworks `k_ERemotePlayScancodeRightBracket`
+    case rightBracket = 48
+    /// Steamworks `k_ERemotePlayScancodeBackslash`
+    case backslash = 49
+    /// Steamworks `k_ERemotePlayScancodeSemicolon`
+    case semicolon = 51
+    /// Steamworks `k_ERemotePlayScancodeApostrophe`
+    case apostrophe = 52
+    /// Steamworks `k_ERemotePlayScancodeGrave`
+    case grave = 53
+    /// Steamworks `k_ERemotePlayScancodeComma`
+    case comma = 54
+    /// Steamworks `k_ERemotePlayScancodePeriod`
+    case period = 55
+    /// Steamworks `k_ERemotePlayScancodeSlash`
+    case slash = 56
+    /// Steamworks `k_ERemotePlayScancodeCapsLock`
+    case capsLock = 57
+    /// Steamworks `k_ERemotePlayScancodeF1`
+    case f1 = 58
+    /// Steamworks `k_ERemotePlayScancodeF2`
+    case f2 = 59
+    /// Steamworks `k_ERemotePlayScancodeF3`
+    case f3 = 60
+    /// Steamworks `k_ERemotePlayScancodeF4`
+    case f4 = 61
+    /// Steamworks `k_ERemotePlayScancodeF5`
+    case f5 = 62
+    /// Steamworks `k_ERemotePlayScancodeF6`
+    case f6 = 63
+    /// Steamworks `k_ERemotePlayScancodeF7`
+    case f7 = 64
+    /// Steamworks `k_ERemotePlayScancodeF8`
+    case f8 = 65
+    /// Steamworks `k_ERemotePlayScancodeF9`
+    case f9 = 66
+    /// Steamworks `k_ERemotePlayScancodeF10`
+    case f10 = 67
+    /// Steamworks `k_ERemotePlayScancodeF11`
+    case f11 = 68
+    /// Steamworks `k_ERemotePlayScancodeF12`
+    case f12 = 69
+    /// Steamworks `k_ERemotePlayScancodeInsert`
+    case insert = 73
+    /// Steamworks `k_ERemotePlayScancodeHome`
+    case home = 74
+    /// Steamworks `k_ERemotePlayScancodePageUp`
+    case pageUp = 75
+    /// Steamworks `k_ERemotePlayScancodeDelete`
+    case delete = 76
+    /// Steamworks `k_ERemotePlayScancodeEnd`
+    case end = 77
+    /// Steamworks `k_ERemotePlayScancodePageDown`
+    case pageDown = 78
+    /// Steamworks `k_ERemotePlayScancodeRight`
+    case right = 79
+    /// Steamworks `k_ERemotePlayScancodeLeft`
+    case left = 80
+    /// Steamworks `k_ERemotePlayScancodeDown`
+    case down = 81
+    /// Steamworks `k_ERemotePlayScancodeUp`
+    case up = 82
+    /// Steamworks `k_ERemotePlayScancodeLeftControl`
+    case leftControl = 224
+    /// Steamworks `k_ERemotePlayScancodeLeftShift`
+    case leftShift = 225
+    /// Steamworks `k_ERemotePlayScancodeLeftAlt`
+    case leftAlt = 226
+    /// Steamworks `k_ERemotePlayScancodeLeftGUI`
+    case leftGUI = 227
+    /// Steamworks `k_ERemotePlayScancodeRightControl`
+    case rightControl = 228
+    /// Steamworks `k_ERemotePlayScancodeRightShift`
+    case rightShift = 229
+    /// Steamworks `k_ERemotePlayScancodeRightALT`
+    case rightALT = 230
+    /// Steamworks `k_ERemotePlayScancodeRightGUI`
+    case rightGUI = 231
+    /// Some undocumented value
+    case unrepresentedInSwift = 232
+}
+
+extension ERemotePlayScancode: RawConvertible { typealias From = RemotePlayScancode }
+extension RemotePlayScancode: EnumWithUnrepresented { typealias From = ERemotePlayScancode }
+extension RemotePlayScancode: SteamCreatable {}
+
+extension RemotePlayScancode {
+    init(_ from: CInt) {
+        self.init(From(rawValue: CUnsignedInt(from)))
+    }
+}
+
 /// Steamworks `ERemoteStorageFilePathType`
 public enum RemoteStorageFilePathType: CUnsignedInt, Sendable {
     /// Steamworks `k_ERemoteStorageFilePathType_Invalid`
@@ -3550,34 +3834,6 @@ extension EUserHasLicenseForAppResult: RawConvertible { typealias From = UserHas
 extension UserHasLicenseForAppResult: EnumWithUnrepresented { typealias From = EUserHasLicenseForAppResult }
 extension UserHasLicenseForAppResult: SteamCreatable {}
 
-/// Steamworks `EUserRestriction`
-public struct UserRestriction: OptionSet, Sendable {
-    /// The flags value.
-    public let rawValue: CUnsignedInt
-    /// Create a new instance with `rawValue` flags set.
-    public init(rawValue: CUnsignedInt) { self.rawValue = rawValue }
-    /// Steamworks `k_nUserRestrictionNone`
-    public static let none = UserRestriction([])
-    /// Steamworks `k_nUserRestrictionUnknown`
-    public static let unknown = UserRestriction(rawValue: 1)
-    /// Steamworks `k_nUserRestrictionAnyChat`
-    public static let anyChat = UserRestriction(rawValue: 2)
-    /// Steamworks `k_nUserRestrictionVoiceChat`
-    public static let voiceChat = UserRestriction(rawValue: 4)
-    /// Steamworks `k_nUserRestrictionGroupChat`
-    public static let groupChat = UserRestriction(rawValue: 8)
-    /// Steamworks `k_nUserRestrictionRating`
-    public static let rating = UserRestriction(rawValue: 16)
-    /// Steamworks `k_nUserRestrictionGameInvites`
-    public static let gameInvites = UserRestriction(rawValue: 32)
-    /// Steamworks `k_nUserRestrictionTrading`
-    public static let trading = UserRestriction(rawValue: 64)
-}
-
-extension EUserRestriction: RawConvertible { typealias From = UserRestriction }
-extension UserRestriction: RawConvertible { typealias From = EUserRestriction }
-extension UserRestriction: SteamCreatable {}
-
 /// Steamworks `EUserUGCList`
 public enum UserUGCList: CUnsignedInt, Sendable {
     /// Steamworks `k_EUserUGCList_Published`
@@ -3924,98 +4180,102 @@ extension ISteamHTMLSurface.EHTMLMouseButton: RawConvertible { typealias From = 
 extension HTMLMouseButton: EnumWithUnrepresented { typealias From = ISteamHTMLSurface.EHTMLMouseButton }
 extension HTMLMouseButton: SteamCreatable {}
 
-/// Steamworks `ISteamHTMLSurface::EMouseCursor`
+/// Steamworks `ISteamHTMLSurface::EHTMLMouseCursor`
 public enum HTMLMouseCursor: CUnsignedInt, Sendable {
-    /// Steamworks `dc_user`
+    /// Steamworks `k_EHTMLMouseCursor_User`
     case user = 0
-    /// Steamworks `dc_none`
+    /// Steamworks `k_EHTMLMouseCursor_None`
     case none = 1
-    /// Steamworks `dc_arrow`
+    /// Steamworks `k_EHTMLMouseCursor_Arrow`
     case arrow = 2
-    /// Steamworks `dc_ibeam`
-    case ibeam = 3
-    /// Steamworks `dc_hourglass`
+    /// Steamworks `k_EHTMLMouseCursor_IBeam`
+    case iBeam = 3
+    /// Steamworks `k_EHTMLMouseCursor_Hourglass`
     case hourglass = 4
-    /// Steamworks `dc_waitarrow`
-    case waitarrow = 5
-    /// Steamworks `dc_crosshair`
+    /// Steamworks `k_EHTMLMouseCursor_WaitArrow`
+    case waitArrow = 5
+    /// Steamworks `k_EHTMLMouseCursor_Crosshair`
     case crosshair = 6
-    /// Steamworks `dc_up`
+    /// Steamworks `k_EHTMLMouseCursor_Up`
     case up = 7
-    /// Steamworks `dc_sizenw`
-    case sizenw = 8
-    /// Steamworks `dc_sizese`
-    case sizese = 9
-    /// Steamworks `dc_sizene`
-    case sizene = 10
-    /// Steamworks `dc_sizesw`
-    case sizesw = 11
-    /// Steamworks `dc_sizew`
-    case sizew = 12
-    /// Steamworks `dc_sizee`
-    case sizee = 13
-    /// Steamworks `dc_sizen`
-    case sizen = 14
-    /// Steamworks `dc_sizes`
-    case sizes = 15
-    /// Steamworks `dc_sizewe`
-    case sizewe = 16
-    /// Steamworks `dc_sizens`
-    case sizens = 17
-    /// Steamworks `dc_sizeall`
-    case sizeall = 18
-    /// Steamworks `dc_no`
+    /// Steamworks `k_EHTMLMouseCursor_SizeNW`
+    case sizeNW = 8
+    /// Steamworks `k_EHTMLMouseCursor_SizeSE`
+    case sizeSE = 9
+    /// Steamworks `k_EHTMLMouseCursor_SizeNE`
+    case sizeNE = 10
+    /// Steamworks `k_EHTMLMouseCursor_SizeSW`
+    case sizeSW = 11
+    /// Steamworks `k_EHTMLMouseCursor_SizeW`
+    case sizeW = 12
+    /// Steamworks `k_EHTMLMouseCursor_SizeE`
+    case sizeE = 13
+    /// Steamworks `k_EHTMLMouseCursor_SizeN`
+    case sizeN = 14
+    /// Steamworks `k_EHTMLMouseCursor_SizeS`
+    case sizeS = 15
+    /// Steamworks `k_EHTMLMouseCursor_SizeWE`
+    case sizeWE = 16
+    /// Steamworks `k_EHTMLMouseCursor_SizeNS`
+    case sizeNS = 17
+    /// Steamworks `k_EHTMLMouseCursor_SizeAll`
+    case sizeAll = 18
+    /// Steamworks `k_EHTMLMouseCursor_No`
     case no = 19
-    /// Steamworks `dc_hand`
+    /// Steamworks `k_EHTMLMouseCursor_Hand`
     case hand = 20
-    /// Steamworks `dc_blank`
+    /// Steamworks `k_EHTMLMouseCursor_Blank`
     case blank = 21
-    /// Steamworks `dc_middle_pan`
-    case middlepan = 22
-    /// Steamworks `dc_north_pan`
-    case northpan = 23
-    /// Steamworks `dc_north_east_pan`
-    case northeastpan = 24
-    /// Steamworks `dc_east_pan`
-    case eastpan = 25
-    /// Steamworks `dc_south_east_pan`
-    case southeastpan = 26
-    /// Steamworks `dc_south_pan`
-    case southpan = 27
-    /// Steamworks `dc_south_west_pan`
-    case southwestpan = 28
-    /// Steamworks `dc_west_pan`
-    case westpan = 29
-    /// Steamworks `dc_north_west_pan`
-    case northwestpan = 30
-    /// Steamworks `dc_alias`
+    /// Steamworks `k_EHTMLMouseCursor_MiddlePan`
+    case middlePan = 22
+    /// Steamworks `k_EHTMLMouseCursor_NorthPan`
+    case northPan = 23
+    /// Steamworks `k_EHTMLMouseCursor_NorthEastPan`
+    case northEastPan = 24
+    /// Steamworks `k_EHTMLMouseCursor_EastPan`
+    case eastPan = 25
+    /// Steamworks `k_EHTMLMouseCursor_SouthEastPan`
+    case southEastPan = 26
+    /// Steamworks `k_EHTMLMouseCursor_SouthPan`
+    case southPan = 27
+    /// Steamworks `k_EHTMLMouseCursor_SouthWestPan`
+    case southWestPan = 28
+    /// Steamworks `k_EHTMLMouseCursor_WestPan`
+    case westPan = 29
+    /// Steamworks `k_EHTMLMouseCursor_NorthWestPan`
+    case northWestPan = 30
+    /// Steamworks `k_EHTMLMouseCursor_Alias`
     case alias = 31
-    /// Steamworks `dc_cell`
+    /// Steamworks `k_EHTMLMouseCursor_Cell`
     case cell = 32
-    /// Steamworks `dc_colresize`
-    case colresize = 33
-    /// Steamworks `dc_copycur`
-    case copycur = 34
-    /// Steamworks `dc_verticaltext`
-    case verticaltext = 35
-    /// Steamworks `dc_rowresize`
-    case rowresize = 36
-    /// Steamworks `dc_zoomin`
-    case zoomin = 37
-    /// Steamworks `dc_zoomout`
-    case zoomout = 38
-    /// Steamworks `dc_help`
+    /// Steamworks `k_EHTMLMouseCursor_ColResize`
+    case colResize = 33
+    /// Steamworks `k_EHTMLMouseCursor_CopyCur`
+    case copyCur = 34
+    /// Steamworks `k_EHTMLMouseCursor_VerticalText`
+    case verticalText = 35
+    /// Steamworks `k_EHTMLMouseCursor_RowResize`
+    case rowResize = 36
+    /// Steamworks `k_EHTMLMouseCursor_ZoomIn`
+    case zoomIn = 37
+    /// Steamworks `k_EHTMLMouseCursor_ZoomOut`
+    case zoomOut = 38
+    /// Steamworks `k_EHTMLMouseCursor_Help`
     case help = 39
-    /// Steamworks `dc_custom`
+    /// Steamworks `k_EHTMLMouseCursor_Custom`
     case custom = 40
-    /// Steamworks `dc_last`
-    case last = 41
+    /// Steamworks `k_EHTMLMouseCursor_SizeNWSE`
+    case sizeNWSE = 41
+    /// Steamworks `k_EHTMLMouseCursor_SizeNESW`
+    case sizeNESW = 42
+    /// Steamworks `k_EHTMLMouseCursor_last`
+    case last = 43
     /// Some undocumented value
-    case unrepresentedInSwift = 42
+    case unrepresentedInSwift = 44
 }
 
-extension ISteamHTMLSurface.EMouseCursor: RawConvertible { typealias From = HTMLMouseCursor }
-extension HTMLMouseCursor: EnumWithUnrepresented { typealias From = ISteamHTMLSurface.EMouseCursor }
+extension ISteamHTMLSurface.EHTMLMouseCursor: RawConvertible { typealias From = HTMLMouseCursor }
+extension HTMLMouseCursor: EnumWithUnrepresented { typealias From = ISteamHTMLSurface.EHTMLMouseCursor }
 extension HTMLMouseCursor: SteamCreatable {}
 
 extension HTMLMouseCursor {
