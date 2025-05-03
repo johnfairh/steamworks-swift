@@ -30,7 +30,6 @@ struct Callbacks {
                 }
                 if let cb = method.callback {
                     explicitCallbacks.insert(cb)
-                    print("Add ExCB: \(cb)")
                 }
             }
         }

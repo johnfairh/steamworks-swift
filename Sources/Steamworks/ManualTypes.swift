@@ -680,3 +680,47 @@ extension AppID {
     public static let spaceWar = Self(480)
 }
 
+// MARK: RemotePlayInput
+
+// A new union in 2025.  What is this.
+
+/// Steamworks `RemotePlayInput_t`
+public struct RemotePlayInput: Sendable {
+    private let steam: RemotePlayInput_t
+
+    /// Steamworks `m_unSessionID`
+    public var sessionID: RemotePlaySessionID {
+        RemotePlaySessionID(steam.m_unSessionID)
+    }
+
+    /// Steamworks `m_eType`
+    public var type: RemotePlayInputType {
+        RemotePlayInputType(steam.m_eType)
+    }
+
+    /// Steamworks `m_MouseMotion`
+    public var mouseMotion: RemotePlayInputMouseMotion {
+        RemotePlayInputMouseMotion(steam.__Anonymous_field2.m_MouseMotion)
+    }
+
+    /// Steamworks `m_eMouseButton`
+    public var mouseButton: RemotePlayMouseButton {
+        RemotePlayMouseButton(steam.__Anonymous_field2.m_eMouseButton)
+    }
+
+    /// Steamworks `m_MouseWheel`
+    public var mouseWheel: RemotePlayInputMouseWheel {
+        RemotePlayInputMouseWheel(steam.__Anonymous_field2.m_MouseWheel)
+    }
+
+    /// Steamworks `m_Key`
+    public var key: RemotePlayInputKey {
+        RemotePlayInputKey(steam.__Anonymous_field2.m_Key)
+    }
+
+    init(_ steam: RemotePlayInput_t) {
+        self.steam = steam
+    }
+}
+
+extension RemotePlayInput: SteamCreatable {}

@@ -92,8 +92,6 @@
 - ``onMusicPlayerWillQuit(_:)``
 - ``onNewUrlLaunchParameters(_:)``
 - ``onOverlayBrowserProtocolNavigation(_:)``
-- ``onPS3TrophiesInstalled(_:)``
-- ``onPSNGameBootInviteResult(_:)``
 - ``onPersonaStateChange(_:)``
 - ``onPlaybackStatusHasChanged(_:)``
 - ``onRemoteStorageEnumerateUserSharedWorkshopFilesResult(_:)``
@@ -239,8 +237,6 @@
 - ``musicPlayerWillQuit``
 - ``newUrlLaunchParameters``
 - ``overlayBrowserProtocolNavigation``
-- ``ps3TrophiesInstalled``
-- ``psnGameBootInviteResult``
 - ``personaStateChange``
 - ``playbackStatusHasChanged``
 - ``remoteStorageEnumerateUserSharedWorkshopFilesResult``

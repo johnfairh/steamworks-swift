@@ -14,7 +14,7 @@ internal import CSteamworks
 public struct SteamUGC: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamUGC> {
-        isServer ? SteamAPI_SteamGameServerUGC_v020() : SteamAPI_SteamUGC_v020()
+        isServer ? SteamAPI_SteamGameServerUGC_v021() : SteamAPI_SteamUGC_v021()
     }
 
     init(isServer: Bool) {
@@ -216,8 +216,8 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::GetNumSubscribedItems()`
-    public func getNumSubscribedItems() -> Int {
-        Int(SteamAPI_ISteamUGC_GetNumSubscribedItems(interface))
+    public func getNumSubscribedItems(includeLocallyDisabled: Bool) -> Int {
+        Int(SteamAPI_ISteamUGC_GetNumSubscribedItems(interface, includeLocallyDisabled))
     }
 
     /// Steamworks `ISteamUGC::GetNumSupportedGameVersions()`
@@ -237,7 +237,7 @@ public struct SteamUGC: Sendable {
     /// Steamworks `ISteamUGC::GetQueryUGCAdditionalPreview()`
     public func getQueryUGCAdditionalPreview(handle: UGCQueryHandle, index: Int, previewIndex: Int, urlSize: Int = SteamConstants.filenameMaxSize, returnOriginalFileName: Bool = true, originalFileNameSize: Int = SteamConstants.filenameMaxSize) -> (rc: Bool, urlOrVideoID: String, originalFileName: String, previewType: ItemPreviewType) {
         var tmpUrlOrVideoID = SteamOutString(length: urlSize)
-        var tmpOriginalFileName = SteamOutString(length: urlSize, isReal: returnOriginalFileName)
+        var tmpOriginalFileName = SteamOutString(length: originalFileNameSize, isReal: returnOriginalFileName)
         var tmpPreviewType = EItemPreviewType(rawValue: 0)
         let rc = tmpUrlOrVideoID.setContent { nstUrlOrVideoID in
             tmpOriginalFileName.setContent { nstOriginalFileName in
@@ -371,9 +371,9 @@ public struct SteamUGC: Sendable {
     }
 
     /// Steamworks `ISteamUGC::GetSubscribedItems()`
-    public func getSubscribedItems(maxEntries: Int) -> (rc: Int, publishedFileID: [PublishedFileID]) {
+    public func getSubscribedItems(maxEntries: Int, includeLocallyDisabled: Bool) -> (rc: Int, publishedFileID: [PublishedFileID]) {
         let tmpPublishedFileID = SteamOutArray<PublishedFileId_t>(maxEntries)
-        let rc = Int(SteamAPI_ISteamUGC_GetSubscribedItems(interface, tmpPublishedFileID.steamArray, uint32(maxEntries)))
+        let rc = Int(SteamAPI_ISteamUGC_GetSubscribedItems(interface, tmpPublishedFileID.steamArray, uint32(maxEntries), includeLocallyDisabled))
         return (rc: rc, publishedFileID: tmpPublishedFileID.swiftArray(Int(rc)))
     }
 
@@ -587,6 +587,13 @@ public struct SteamUGC: Sendable {
         SteamAPI_ISteamUGC_SetItemVisibility(interface, UGCUpdateHandle_t(handle), ERemoteStoragePublishedFileVisibility(visibility))
     }
 
+    /// Steamworks `ISteamUGC::SetItemsDisabledLocally()`
+    public func setItemsDisabledLocally(numPublishedFileIDs: Int, disabledLocally: Bool) -> (rc: Bool, publishedFileIDs: PublishedFileID) {
+        var tmpPublishedFileIDs = PublishedFileId_t()
+        let rc = SteamAPI_ISteamUGC_SetItemsDisabledLocally(interface, &tmpPublishedFileIDs, uint32(numPublishedFileIDs), disabledLocally)
+        return (rc: rc, publishedFileIDs: PublishedFileID(tmpPublishedFileIDs))
+    }
+
     /// Steamworks `ISteamUGC::SetLanguage()`
     @discardableResult
     public func setLanguage(handle: UGCQueryHandle, language: String) -> Bool {
@@ -662,6 +669,13 @@ public struct SteamUGC: Sendable {
     @discardableResult
     public func setSearchText(handle: UGCQueryHandle, searchText: String) -> Bool {
         SteamAPI_ISteamUGC_SetSearchText(interface, UGCQueryHandle_t(handle), searchText)
+    }
+
+    /// Steamworks `ISteamUGC::SetSubscriptionsLoadOrder()`
+    public func setSubscriptionsLoadOrder(numPublishedFileIDs: Int) -> (rc: Bool, publishedFileIDs: PublishedFileID) {
+        var tmpPublishedFileIDs = PublishedFileId_t()
+        let rc = SteamAPI_ISteamUGC_SetSubscriptionsLoadOrder(interface, &tmpPublishedFileIDs, uint32(numPublishedFileIDs))
+        return (rc: rc, publishedFileIDs: PublishedFileID(tmpPublishedFileIDs))
     }
 
     /// Steamworks `ISteamUGC::SetTimeCreatedDateRange()`

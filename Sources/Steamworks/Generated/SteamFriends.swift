@@ -13,7 +13,7 @@ internal import CSteamworks
 /// Access via ``SteamAPI/friends``.
 public struct SteamFriends: Sendable {
     var interface: UnsafeMutablePointer<ISteamFriends> {
-        SteamAPI_SteamFriends_v017()
+        SteamAPI_SteamFriends_v018()
     }
 
     init() {
@@ -347,11 +347,6 @@ public struct SteamFriends: Sendable {
         Int(SteamAPI_ISteamFriends_GetSmallFriendAvatar(interface, CUnsignedLongLong(friend)))
     }
 
-    /// Steamworks `ISteamFriends::GetUserRestrictions()`
-    public func getUserRestrictions() -> UserRestriction {
-        UserRestriction(SteamAPI_ISteamFriends_GetUserRestrictions(interface))
-    }
-
     /// Steamworks `ISteamFriends::HasFriend()`
     public func hasFriend(friend: SteamID, friendFlags: FriendFlags) -> Bool {
         SteamAPI_ISteamFriends_HasFriend(interface, CUnsignedLongLong(friend), Int32(friendFlags))
@@ -483,19 +478,6 @@ public struct SteamFriends: Sendable {
     @discardableResult
     public func setListenForFriendsMessages(interceptEnabled: Bool) -> Bool {
         SteamAPI_ISteamFriends_SetListenForFriendsMessages(interface, interceptEnabled)
-    }
-
-    /// Steamworks `ISteamFriends::SetPersonaName()`, callback
-    public func setPersonaName(personaName: String, completion: @Sendable @escaping (sending SetPersonaNameResponse?) -> Void) {
-        let rc = SteamAPI_ISteamFriends_SetPersonaName(interface, personaName)
-        SteamBaseAPI.CallResults.shared.add(callID: rc, rawClient: SteamBaseAPI.makeRaw(completion))
-    }
-
-    /// Steamworks `ISteamFriends::SetPersonaName()`, async
-    public func setPersonaName(isolation: isolated (any Actor)? = #isolation, personaName: String) async -> SetPersonaNameResponse? {
-        await withUnsafeContinuation {
-            setPersonaName(personaName: personaName, completion: $0.resume)
-        }
     }
 
     /// Steamworks `ISteamFriends::SetPlayedWith()`

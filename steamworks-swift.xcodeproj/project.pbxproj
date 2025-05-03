@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020808652DC63BC0002F902A /* SteamRemotePlay+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020808642DC63BBA002F902A /* SteamRemotePlay+Helpers.swift */; };
+		020808662DC63BC0002F902A /* SteamRemotePlay+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020808642DC63BBA002F902A /* SteamRemotePlay+Helpers.swift */; };
 		02086095272C194A00725122 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 02086094272C194A00725122 /* Logging */; };
 		020860A8273014B900725122 /* TestGenVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860A7273014B900725122 /* TestGenVersion.swift */; };
 		020860B6273047E200725122 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020860A3272EBEE800725122 /* Generator.swift */; };
@@ -315,6 +317,7 @@
 
 /* Begin PBXFileReference section */
 		02071237276146B1000D5B4A /* Generated */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Generated; sourceTree = "<group>"; };
+		020808642DC63BBA002F902A /* SteamRemotePlay+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteamRemotePlay+Helpers.swift"; sourceTree = "<group>"; };
 		020860A1272EBEC500725122 /* IO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IO.swift; sourceTree = "<group>"; };
 		020860A3272EBEE800725122 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		020860A527300E5F00725122 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
@@ -602,6 +605,7 @@
 				02B81B0F287C4B9500780A57 /* SteamNetworkingSockets+Helpers.swift */,
 				02B81B09287AC6B900780A57 /* SteamNetworkingUtils+Helpers.swift */,
 				02B81B0B287AC7C000780A57 /* SteamParties+Helpers.swift */,
+				020808642DC63BBA002F902A /* SteamRemotePlay+Helpers.swift */,
 				02B81B0D287AC88300780A57 /* SteamUGC+Helpers.swift */,
 				02B81B232886D68B00780A57 /* SteamUser+Helpers.swift */,
 				02B81B11287CA1CE00780A57 /* SteamUtils+Helpers.swift */,
@@ -1111,6 +1115,7 @@
 				021D5CD92BE69F6F00AC6757 /* SteamNetworkingSockets+Helpers.swift in Sources */,
 				021D5CDA2BE69F6F00AC6757 /* SteamParties+Helpers.swift in Sources */,
 				021D5CDB2BE69F6F00AC6757 /* SteamUtils+Helpers.swift in Sources */,
+				020808662DC63BC0002F902A /* SteamRemotePlay+Helpers.swift in Sources */,
 				021D5CDD2BE69F6F00AC6757 /* SteamNetworkingUtils+Helpers.swift in Sources */,
 				021D5CDE2BE69F6F00AC6757 /* SteamUGC+Helpers.swift in Sources */,
 				021D5CDF2BE69F6F00AC6757 /* SteamInventory+Helpers.swift in Sources */,
@@ -1144,6 +1149,7 @@
 				02B81B252886D69000780A57 /* SteamUser+Helpers.swift in Sources */,
 				02B81B10287C4B9500780A57 /* SteamNetworkingSockets+Helpers.swift in Sources */,
 				02B81B0C287AC7C000780A57 /* SteamParties+Helpers.swift in Sources */,
+				020808652DC63BC0002F902A /* SteamRemotePlay+Helpers.swift in Sources */,
 				02B81B12287CA1CE00780A57 /* SteamUtils+Helpers.swift in Sources */,
 				02B81B0A287AC6B900780A57 /* SteamNetworkingUtils+Helpers.swift in Sources */,
 				02B81B0E287AC88300780A57 /* SteamUGC+Helpers.swift in Sources */,
