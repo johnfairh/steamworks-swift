@@ -341,14 +341,6 @@ methods:
         default_value: 1024 # docs
       pSnid:
         nullable: true
-  SteamAPI_ISteamUser_GetAuthSessionTicket:
-    params:
-      pTicket:
-        type: uint8 *
-        out_array_count: cbMaxTicket
-        out_array_valid_count: tmpTicketSize
-      cbMaxTicket:
-        default_value: 1024 # docs
 
 #
 # ISteamHTMLSurface
