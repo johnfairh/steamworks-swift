@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamRemoteStorage - Steamworks v1.2.0</title>
+   <title>SteamRemoteStorage - Steamworks v1.3.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamremotestorage.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v1.2.0</a>
+    Steamworks v1.3.0</a>
   </div>
   
 
@@ -4715,9 +4715,9 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func commitPublishedFileUpdate(
     handle: <a href="../../steamworks/types/publishedfileupdatehandle1.html?swift">PublishedFileUpdateHandle</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestorageupdatepublishedfileresult.html?swift">RemoteStorageUpdatePublishedFileResult</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -4903,9 +4903,9 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func deletePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragedeletepublishedfileresult.html?swift">RemoteStorageDeletePublishedFileResult</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5090,9 +5090,10 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumeratePublishedFilesByUserAction(
     action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestorageenumeratepublishedfilesbyuseractionresult.html?swift">RemoteStorageEnumeratePublishedFilesByUserActionResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestorageenumeratepublishedfilesbyuseractionresult.html?swift">RemoteStorageEnumeratePublishedFilesByUserActionResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5218,9 +5219,9 @@
     <pre><code class="language-swift">public func enumeratePublishedWorkshopFiles(
     enumerationType: <a href="../../steamworks/types/workshopenumerationtype.html?swift">WorkshopEnumerationType</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, count: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
     days: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], userTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestorageenumerateworkshopfilesresult.html?swift">RemoteStorageEnumerateWorkshopFilesResult</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5346,9 +5347,10 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumerateUserPublishedFiles(
     startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5473,9 +5475,10 @@
     <pre><code class="language-swift">public func enumerateUserSharedWorkshopFiles(
     steamId: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>, startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, requiredTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
     excludedTags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestorageenumerateuserpublishedfilesresult.html?swift">RemoteStorageEnumerateUserPublishedFilesResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -5600,9 +5603,10 @@
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func enumerateUserSubscribedFiles(
     startIndex: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestorageenumerateusersubscribedfilesresult.html?swift">RemoteStorageEnumerateUserSubscribedFilesResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6030,9 +6034,9 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileReadAsync(
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, offset: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>, toReadSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragefilereadasynccomplete.html?swift">RemoteStorageFileReadAsyncComplete</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6219,8 +6223,8 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileShare(
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragefileshareresult.html?swift">RemoteStorageFileShareResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6405,9 +6409,9 @@ public func fileForget(file: <a href="https://developer.apple.com/documentation/
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func fileWriteAsync(
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, data: UnsafeRawPointer, dataSize: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragefilewriteasynccomplete.html?swift">RemoteStorageFileWriteAsyncComplete</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7260,9 +7264,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getPublishedFileDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, maxSecondsOld: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestoragegetpublishedfiledetailsresult.html?swift">RemoteStorageGetPublishedFileDetailsResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7387,9 +7392,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getPublishedItemVoteDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7696,9 +7702,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func getUserPublishedItemVoteDetails(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestoragegetpublisheditemvotedetailsresult.html?swift">RemoteStorageGetPublishedItemVoteDetailsResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -7946,8 +7953,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     videoIdentifier: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>,
     title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, description: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
     visibility: <a href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>, tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>],
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?)
-        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8077,8 +8084,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     file: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, previewFile: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, consumerAppId: <a href="../../steamworks/types/appid28.html?swift">AppID</a>, title: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>,
     description: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, visibility: <a href="../../steamworks/types/remotestoragepublishedfilevisibility.html?swift">RemoteStoragePublishedFileVisibility</a>,
     tags: [<a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>], workshopFileType: <a href="../../steamworks/types/workshopfiletype.html?swift">WorkshopFileType</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?)
-        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragepublishfileprogress.html?swift">RemoteStoragePublishFileProgress</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8327,9 +8334,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func setUserPublishedFileAction(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, action: <a href="../../steamworks/types/workshopfileaction.html?swift">WorkshopFileAction</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestoragesetuserpublishedfileactionresult.html?swift">RemoteStorageSetUserPublishedFileActionResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8454,9 +8462,9 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func subscribePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragesubscribepublishedfileresult.html?swift">RemoteStorageSubscribePublishedFileResult</a>?)
+        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8581,8 +8589,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func ugcDownload(
     content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8707,8 +8715,8 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func ugcDownloadToLocation(
     content: <a href="../../steamworks/types/ugchandle1.html?swift">UGCHandle</a>, location: <a href="https://developer.apple.com/documentation/swift/string?language=swift">String</a>, priority: <a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt;
-        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/remotestoragedownloadugcresult.html?swift">RemoteStorageDownloadUGCResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -8896,9 +8904,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func unsubscribePublishedFile(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestorageunsubscribepublishedfileresult.html?swift">RemoteStorageUnsubscribePublishedFileResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -9458,9 +9467,10 @@ public func fileWriteStreamClose(handle: <a href="../../steamworks/types/ugcfile
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func updateUserPublishedItemVote(
     publishedFileId: <a href="../../steamworks/types/publishedfileid34.html?swift">PublishedFileID</a>, voteUp: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
+            sending <a href="../../steamworks/types/remotestorageupdateuserpublisheditemvoteresult.html?swift">RemoteStorageUpdateUserPublishedItemVoteResult</a>?
+        ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 

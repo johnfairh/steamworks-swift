@@ -267,7 +267,7 @@ let package = Package(
     .macOS("15.0"),
   ],
   dependencies: [
-    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "1.2.0"),
+    .package(url: "https://github.com/johnfairh/steamworks-swift", from: "1.3.0"),
   ],
   targets: [
     .executableTarget(

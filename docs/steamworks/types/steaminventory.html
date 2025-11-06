@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamInventory - Steamworks v1.2.0</title>
+   <title>SteamInventory - Steamworks v1.3.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steaminventory.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v1.2.0</a>
+    Steamworks v1.3.0</a>
   </div>
   
 
@@ -6134,9 +6134,9 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestEligiblePromoItemDefinitionsIDs(
     steamID: <a href="../../steamworks/types/steamid16.html?swift">SteamID</a>,
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (
-        sending <a href="../../steamworks/types/steaminventoryeligiblepromoitemdefids.html?swift">SteamInventoryEligiblePromoItemDefIDs</a>?
-    ) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/steaminventoryeligiblepromoitemdefids.html?swift">SteamInventoryEligiblePromoItemDefIDs</a>?) -&gt;
+        <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
   </div>
 
 
@@ -6259,8 +6259,9 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func requestPrices(
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/steaminventoryrequestpricesresult.html?swift">SteamInventoryRequestPricesResult</a>?)
-        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/steaminventoryrequestpricesresult.html?swift">SteamInventoryRequestPricesResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
+)</code></pre>
   </div>
 
 
@@ -6757,8 +6758,9 @@ public func loadItemDefinitions() -&gt; <a href="https://developer.apple.com/doc
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func startPurchase(
     arrayItemDefs: [<a href="../../steamworks/types/steamitemdef.html?swift">SteamItemDef</a>], arrayQuantity: [<a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>],
-    completion: <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/steaminventorystartpurchaseresult.html?swift">SteamInventoryStartPurchaseResult</a>?)
-        -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>)</code></pre>
+    completion:
+        <a href="https://developer.apple.com/documentation/swift/sendable?language=swift">@Sendable</a> @escaping (sending <a href="../../steamworks/types/steaminventorystartpurchaseresult.html?swift">SteamInventoryStartPurchaseResult</a>?) -&gt; <a href="https://developer.apple.com/documentation/swift/void?language=swift">Void</a>
+)</code></pre>
   </div>
 
 

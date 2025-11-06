@@ -22,8 +22,8 @@ build_tool_arguments:
   - "-I${PWD}/sdk/public"
   - "-Xlinker"
   - "-lc++"
-title: Steamworks v1.2.0
-module_version: 1.2.0
+title: Steamworks v1.3.0
+module_version: 1.3.0
 topic_style: source-order-defs
 hide_coverage: true
 undocumented_text: ""
