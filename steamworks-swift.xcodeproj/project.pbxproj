@@ -70,8 +70,6 @@
 		02ABAD16276B959C003F0A31 /* SteamNetworkingSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABAD15276B959B003F0A31 /* SteamNetworkingSockets.swift */; };
 		02AD454E274E4AA000BD93ED /* SteamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD454D274E4AA000BD93ED /* SteamUser.swift */; };
 		02AD4550274E644D00BD93ED /* SteamUserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD454F274E644D00BD93ED /* SteamUserStats.swift */; };
-		02AD4553274FA54B00BD93ED /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 02AD4552274FA54B00BD93ED /* Yams */; };
-		02AD4555274FA55600BD93ED /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 02AD4554274FA55600BD93ED /* Yams */; };
 		02AD4559274FB30700BD93ED /* SteamApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD4558274FB30700BD93ED /* SteamApps.swift */; };
 		02AD455B2750099B00BD93ED /* SteamGameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD455A2750099B00BD93ED /* SteamGameServer.swift */; };
 		02AD455D27500E5400BD93ED /* ManualTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD455C27500E5400BD93ED /* ManualTypes.swift */; };
@@ -131,6 +129,7 @@
 		02D309E8272813D000DE64F0 /* SteamBaseAPI+Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E7272813CF00DE64F0 /* SteamBaseAPI+Callbacks.swift */; };
 		02D309F02729730A00DE64F0 /* SteamGameServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EF2729730A00DE64F0 /* SteamGameServerAPI.swift */; };
 		02D4F6672A3F250C0061C798 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D4F6652A3F24BA0061C798 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		02F994E02EBCDF28002027A1 /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 02F994DF2EBCDF28002027A1 /* Yams */; };
 		02FD863C28D48BC900E4DE85 /* TestHtmlSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD863B28D48BC900E4DE85 /* TestHtmlSurface.swift */; };
 		OBJ_33 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Client.swift */; };
 		OBJ_47 /* TestCallbackImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* TestCallbackImpl.swift */; };
@@ -437,7 +436,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02AD4555274FA55600BD93ED /* Yams in Frameworks */,
+				02F994E02EBCDF28002027A1 /* Yams in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +496,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				02AD4553274FA54B00BD93ED /* Yams in Frameworks */,
 				02086095272C194A00725122 /* Logging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,7 +815,7 @@
 			);
 			name = LibGenerate;
 			packageProductDependencies = (
-				02AD4554274FA55600BD93ED /* Yams */,
+				02F994DF2EBCDF28002027A1 /* Yams */,
 			);
 			productName = Generate;
 			productReference = 020860AE273047D100725122 /* LibGenerate.framework */;
@@ -961,7 +959,6 @@
 			name = Steamworks;
 			packageProductDependencies = (
 				02086094272C194A00725122 /* Logging */,
-				02AD4552274FA54B00BD93ED /* Yams */,
 			);
 			productName = Steamworks;
 			productReference = "swift-steamworks::Steamworks::Product" /* Steamworks.framework */;
@@ -1021,8 +1018,8 @@
 			mainGroup = OBJ_5;
 			packageReferences = (
 				02086093272C194A00725122 /* XCRemoteSwiftPackageReference "swift-log" */,
-				02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */,
 				021D5CF82BECCBD400AC6757 /* XCRemoteSwiftPackageReference "swift-atomics" */,
+				02F994DE2EBCDF05002027A1 /* XCRemoteSwiftPackageReference "Yams" */,
 			);
 			productRefGroup = OBJ_18 /* Products */;
 			projectDirPath = "";
@@ -2463,12 +2460,12 @@
 				kind = branch;
 			};
 		};
-		02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */ = {
+		02F994DE2EBCDF05002027A1 /* XCRemoteSwiftPackageReference "Yams" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jpsim/Yams.git";
+			repositoryURL = "git@github.com:johnfairh/Yams.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				branch = "cyaml-swift-cpp";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2484,14 +2481,9 @@
 			package = 021D5CF82BECCBD400AC6757 /* XCRemoteSwiftPackageReference "swift-atomics" */;
 			productName = Atomics;
 		};
-		02AD4552274FA54B00BD93ED /* Yams */ = {
+		02F994DF2EBCDF28002027A1 /* Yams */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */;
-			productName = Yams;
-		};
-		02AD4554274FA55600BD93ED /* Yams */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02AD4551274FA54B00BD93ED /* XCRemoteSwiftPackageReference "Yams" */;
+			package = 02F994DE2EBCDF05002027A1 /* XCRemoteSwiftPackageReference "Yams" */;
 			productName = Yams;
 		};
 /* End XCSwiftPackageProductDependency section */
