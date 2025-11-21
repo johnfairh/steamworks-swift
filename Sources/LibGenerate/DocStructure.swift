@@ -313,17 +313,16 @@ struct DocStructure {
 
     /// isteammatchmaking is annoying because it contains four separate interfaces that would
     /// normally be in their own header file.  Hard-coded here what to do:
+    ///
     /// start of file: isteammatchmaking
     /// ...
     /// HServerListRequest: start ISteamMatchmakingServers
     /// ...
-    /// k_unFavoriteFlagNone: start ISteamGameSearch
+    /// EChatMemberStateChange: Back to isteammatchmaking
     /// ...
     /// ESteamPartyBeaconLocationType: start ISteamParties
     /// ...
     /// FavoritesListChanged_t: start callbacks for ISteamMatchmaking
-    /// ...
-    /// SearchForGameProgressCallback_t: start callbacks for ISteamGameSearch
     /// ...
     /// JoinPartyCallback_t: start callbacks for ISteamParties
     ///
@@ -333,17 +332,19 @@ struct DocStructure {
         var nodes = nodes
 
         var mm = nodes.removeNodesUpToDecl(name: "HServerListRequest")
+
         nodes[0] = ClangNode(from: nodes[0], filename: "isteammatchmakingservers.h")
-        let mms = nodes.removeNodesUpToDecl(name: "k_unFavoriteFlagNone")
-        nodes[0] = ClangNode(from: nodes[0], filename: "isteamgamesearch.h")
-        var gs = nodes.removeNodesUpToDecl(name: "ESteamPartyBeaconLocationType")
+        let mms = nodes.removeNodesUpToDecl(name: "EChatMemberStateChange")
+
+        mm += nodes.removeNodesUpToDecl(name: "ESteamPartyBeaconLocationType")
+
         nodes[0] = ClangNode(from: nodes[0], filename: "isteamparties.h")
         var ps = nodes.removeNodesUpToDecl(name: "FavoritesListChanged_t")
-        mm += nodes.removeNodesUpToDecl(name: "SearchForGameProgressCallback_t")
-        gs += nodes.removeNodesUpToDecl(name: "JoinPartyCallback_t")
+        
+        mm += nodes.removeNodesUpToDecl(name: "JoinPartyCallback_t")
         ps += nodes
 
-        return [mm, mms, gs, ps]
+        return [mm, mms, ps]
     }
 }
 

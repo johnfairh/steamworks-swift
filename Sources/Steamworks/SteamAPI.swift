@@ -84,8 +84,6 @@ public final class SteamAPI: SteamBaseAPI, @unchecked Sendable {
     public let apps = SteamApps()
     /// Access the Steamworks `ISteamFriends` interface
     public let friends = SteamFriends()
-    /// Access the Steamworks `ISteamGameSearch` interface
-    public let gameSearch = SteamGameSearch()
     /// Access the Steamworks `ISteamHTMLSurface` interface
     public let htmlSurface = SteamHTMLSurface()
     /// Access the Steamworks `ISteamInput` interface
@@ -96,8 +94,6 @@ public final class SteamAPI: SteamBaseAPI, @unchecked Sendable {
     public let matchmakingServers = SteamMatchmakingServers()
     /// Access the Steamworks `ISteamMusic` interface
     public let music = SteamMusic()
-    /// Access the Steamworks `ISteamMusicRemote` interface
-    public let musicRemote = SteamMusicRemote()
     /// Access the Steamworks `ISteamParentalSettings` interface
     public let parentalSettings = SteamParentalSettings()
     /// Access the Steamworks `ISteamParties` interface
