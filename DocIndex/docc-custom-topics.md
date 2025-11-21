@@ -9,7 +9,6 @@
 ### Interfaces
 - <doc:SteamApps-Interface>
 - <doc:SteamFriends-Interface>
-- <doc:SteamGameSearch-Interface>
 - <doc:SteamGameServer-Interface>
 - <doc:SteamGameServerStats-Interface>
 - <doc:SteamHTMLSurface-Interface>
@@ -19,7 +18,6 @@
 - <doc:SteamMatchmaking-Interface>
 - <doc:SteamMatchmakingServers-Interface>
 - <doc:SteamMusic-Interface>
-- <doc:SteamMusicRemote-Interface>
 - <doc:SteamNetworkingMessages-Interface>
 - <doc:SteamNetworkingSockets-Interface>
 - <doc:SteamNetworkingUtils-Interface>
