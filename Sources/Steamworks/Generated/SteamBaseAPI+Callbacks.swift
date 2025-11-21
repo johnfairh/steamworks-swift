@@ -66,11 +66,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(167), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `EndGameResultCallback_t` callback
-    func onEndGameResultCallback(_ client: @Sendable @escaping (sending EndGameResultCallback) -> Void) {
-        callbacks.add(callbackID: CallbackID(5215), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `EquippedProfileItemsChanged_t` callback
     func onEquippedProfileItemsChanged(_ client: @Sendable @escaping (sending EquippedProfileItemsChanged) -> Void) {
         callbacks.add(callbackID: CallbackID(350), rawClient: SteamBaseAPI.makeRaw(client))
@@ -396,76 +391,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(152), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `MusicPlayerRemoteToFront_t` callback
-    func onMusicPlayerRemoteToFront(_ client: @Sendable @escaping (sending MusicPlayerRemoteToFront) -> Void) {
-        callbacks.add(callbackID: CallbackID(4103), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerRemoteWillActivate_t` callback
-    func onMusicPlayerRemoteWillActivate(_ client: @Sendable @escaping (sending MusicPlayerRemoteWillActivate) -> Void) {
-        callbacks.add(callbackID: CallbackID(4101), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerRemoteWillDeactivate_t` callback
-    func onMusicPlayerRemoteWillDeactivate(_ client: @Sendable @escaping (sending MusicPlayerRemoteWillDeactivate) -> Void) {
-        callbacks.add(callbackID: CallbackID(4102), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerSelectsPlaylistEntry_t` callback
-    func onMusicPlayerSelectsPlaylistEntry(_ client: @Sendable @escaping (sending MusicPlayerSelectsPlaylistEntry) -> Void) {
-        callbacks.add(callbackID: CallbackID(4013), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerSelectsQueueEntry_t` callback
-    func onMusicPlayerSelectsQueueEntry(_ client: @Sendable @escaping (sending MusicPlayerSelectsQueueEntry) -> Void) {
-        callbacks.add(callbackID: CallbackID(4012), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWantsLooped_t` callback
-    func onMusicPlayerWantsLooped(_ client: @Sendable @escaping (sending MusicPlayerWantsLooped) -> Void) {
-        callbacks.add(callbackID: CallbackID(4110), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWantsPause_t` callback
-    func onMusicPlayerWantsPause(_ client: @Sendable @escaping (sending MusicPlayerWantsPause) -> Void) {
-        callbacks.add(callbackID: CallbackID(4106), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWantsPlayNext_t` callback
-    func onMusicPlayerWantsPlayNext(_ client: @Sendable @escaping (sending MusicPlayerWantsPlayNext) -> Void) {
-        callbacks.add(callbackID: CallbackID(4108), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWantsPlayPrevious_t` callback
-    func onMusicPlayerWantsPlayPrevious(_ client: @Sendable @escaping (sending MusicPlayerWantsPlayPrevious) -> Void) {
-        callbacks.add(callbackID: CallbackID(4107), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWantsPlay_t` callback
-    func onMusicPlayerWantsPlay(_ client: @Sendable @escaping (sending MusicPlayerWantsPlay) -> Void) {
-        callbacks.add(callbackID: CallbackID(4105), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWantsPlayingRepeatStatus_t` callback
-    func onMusicPlayerWantsPlayingRepeatStatus(_ client: @Sendable @escaping (sending MusicPlayerWantsPlayingRepeatStatus) -> Void) {
-        callbacks.add(callbackID: CallbackID(4114), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWantsShuffled_t` callback
-    func onMusicPlayerWantsShuffled(_ client: @Sendable @escaping (sending MusicPlayerWantsShuffled) -> Void) {
-        callbacks.add(callbackID: CallbackID(4109), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWantsVolume_t` callback
-    func onMusicPlayerWantsVolume(_ client: @Sendable @escaping (sending MusicPlayerWantsVolume) -> Void) {
-        callbacks.add(callbackID: CallbackID(4011), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `MusicPlayerWillQuit_t` callback
-    func onMusicPlayerWillQuit(_ client: @Sendable @escaping (sending MusicPlayerWillQuit) -> Void) {
-        callbacks.add(callbackID: CallbackID(4104), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `NewUrlLaunchParameters_t` callback
     func onNewUrlLaunchParameters(_ client: @Sendable @escaping (sending NewUrlLaunchParameters) -> Void) {
         callbacks.add(callbackID: CallbackID(1014), rawClient: SteamBaseAPI.makeRaw(client))
@@ -526,21 +451,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(1325), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `RequestPlayersForGameFinalResultCallback_t` callback
-    func onRequestPlayersForGameFinalResultCallback(_ client: @Sendable @escaping (sending RequestPlayersForGameFinalResultCallback) -> Void) {
-        callbacks.add(callbackID: CallbackID(5213), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `RequestPlayersForGameProgressCallback_t` callback
-    func onRequestPlayersForGameProgressCallback(_ client: @Sendable @escaping (sending RequestPlayersForGameProgressCallback) -> Void) {
-        callbacks.add(callbackID: CallbackID(5211), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `RequestPlayersForGameResultCallback_t` callback
-    func onRequestPlayersForGameResultCallback(_ client: @Sendable @escaping (sending RequestPlayersForGameResultCallback) -> Void) {
-        callbacks.add(callbackID: CallbackID(5212), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `ReservationNotificationCallback_t` callback
     func onReservationNotificationCallback(_ client: @Sendable @escaping (sending ReservationNotificationCallback) -> Void) {
         callbacks.add(callbackID: CallbackID(5303), rawClient: SteamBaseAPI.makeRaw(client))
@@ -554,16 +464,6 @@ public extension SteamBaseAPI {
     /// Registration for Steamworks `ScreenshotRequested_t` callback
     func onScreenshotRequested(_ client: @Sendable @escaping (sending ScreenshotRequested) -> Void) {
         callbacks.add(callbackID: CallbackID(2302), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `SearchForGameProgressCallback_t` callback
-    func onSearchForGameProgressCallback(_ client: @Sendable @escaping (sending SearchForGameProgressCallback) -> Void) {
-        callbacks.add(callbackID: CallbackID(5201), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
-    /// Registration for Steamworks `SearchForGameResultCallback_t` callback
-    func onSearchForGameResultCallback(_ client: @Sendable @escaping (sending SearchForGameResultCallback) -> Void) {
-        callbacks.add(callbackID: CallbackID(5202), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
     /// Registration for Steamworks `SteamAPICallCompleted_t` callback
@@ -676,11 +576,6 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(704), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
-    /// Registration for Steamworks `SubmitPlayerResultResultCallback_t` callback
-    func onSubmitPlayerResultResultCallback(_ client: @Sendable @escaping (sending SubmitPlayerResultResultCallback) -> Void) {
-        callbacks.add(callbackID: CallbackID(5214), rawClient: SteamBaseAPI.makeRaw(client))
-    }
-
     /// Registration for Steamworks `TimedTrialStatus_t` callback
     func onTimedTrialStatus(_ client: @Sendable @escaping (sending TimedTrialStatus) -> Void) {
         callbacks.add(callbackID: CallbackID(1030), rawClient: SteamBaseAPI.makeRaw(client))
@@ -783,11 +678,6 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `DurationControl_t` callbacks
     var durationControl: AsyncStream<DurationControl> {
         AsyncStream { onDurationControl($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `EndGameResultCallback_t` callbacks
-    var endGameResultCallback: AsyncStream<EndGameResultCallback> {
-        AsyncStream { onEndGameResultCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `EquippedProfileItemsChanged_t` callbacks
@@ -1115,76 +1005,6 @@ public extension SteamBaseAPI {
         AsyncStream { onMicroTxnAuthorizationResponse($0.yield0) }
     }
 
-    /// Async stream of Steamworks `MusicPlayerRemoteToFront_t` callbacks
-    var musicPlayerRemoteToFront: AsyncStream<MusicPlayerRemoteToFront> {
-        AsyncStream { onMusicPlayerRemoteToFront($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerRemoteWillActivate_t` callbacks
-    var musicPlayerRemoteWillActivate: AsyncStream<MusicPlayerRemoteWillActivate> {
-        AsyncStream { onMusicPlayerRemoteWillActivate($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerRemoteWillDeactivate_t` callbacks
-    var musicPlayerRemoteWillDeactivate: AsyncStream<MusicPlayerRemoteWillDeactivate> {
-        AsyncStream { onMusicPlayerRemoteWillDeactivate($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerSelectsPlaylistEntry_t` callbacks
-    var musicPlayerSelectsPlaylistEntry: AsyncStream<MusicPlayerSelectsPlaylistEntry> {
-        AsyncStream { onMusicPlayerSelectsPlaylistEntry($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerSelectsQueueEntry_t` callbacks
-    var musicPlayerSelectsQueueEntry: AsyncStream<MusicPlayerSelectsQueueEntry> {
-        AsyncStream { onMusicPlayerSelectsQueueEntry($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWantsLooped_t` callbacks
-    var musicPlayerWantsLooped: AsyncStream<MusicPlayerWantsLooped> {
-        AsyncStream { onMusicPlayerWantsLooped($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWantsPause_t` callbacks
-    var musicPlayerWantsPause: AsyncStream<MusicPlayerWantsPause> {
-        AsyncStream { onMusicPlayerWantsPause($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWantsPlayNext_t` callbacks
-    var musicPlayerWantsPlayNext: AsyncStream<MusicPlayerWantsPlayNext> {
-        AsyncStream { onMusicPlayerWantsPlayNext($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWantsPlayPrevious_t` callbacks
-    var musicPlayerWantsPlayPrevious: AsyncStream<MusicPlayerWantsPlayPrevious> {
-        AsyncStream { onMusicPlayerWantsPlayPrevious($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWantsPlay_t` callbacks
-    var musicPlayerWantsPlay: AsyncStream<MusicPlayerWantsPlay> {
-        AsyncStream { onMusicPlayerWantsPlay($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWantsPlayingRepeatStatus_t` callbacks
-    var musicPlayerWantsPlayingRepeatStatus: AsyncStream<MusicPlayerWantsPlayingRepeatStatus> {
-        AsyncStream { onMusicPlayerWantsPlayingRepeatStatus($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWantsShuffled_t` callbacks
-    var musicPlayerWantsShuffled: AsyncStream<MusicPlayerWantsShuffled> {
-        AsyncStream { onMusicPlayerWantsShuffled($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWantsVolume_t` callbacks
-    var musicPlayerWantsVolume: AsyncStream<MusicPlayerWantsVolume> {
-        AsyncStream { onMusicPlayerWantsVolume($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `MusicPlayerWillQuit_t` callbacks
-    var musicPlayerWillQuit: AsyncStream<MusicPlayerWillQuit> {
-        AsyncStream { onMusicPlayerWillQuit($0.yield0) }
-    }
-
     /// Async stream of Steamworks `NewUrlLaunchParameters_t` callbacks
     var newUrlLaunchParameters: AsyncStream<NewUrlLaunchParameters> {
         AsyncStream { onNewUrlLaunchParameters($0.yield0) }
@@ -1245,21 +1065,6 @@ public extension SteamBaseAPI {
         AsyncStream { onRemoteStorageUserVoteDetails($0.yield0) }
     }
 
-    /// Async stream of Steamworks `RequestPlayersForGameFinalResultCallback_t` callbacks
-    var requestPlayersForGameFinalResultCallback: AsyncStream<RequestPlayersForGameFinalResultCallback> {
-        AsyncStream { onRequestPlayersForGameFinalResultCallback($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `RequestPlayersForGameProgressCallback_t` callbacks
-    var requestPlayersForGameProgressCallback: AsyncStream<RequestPlayersForGameProgressCallback> {
-        AsyncStream { onRequestPlayersForGameProgressCallback($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `RequestPlayersForGameResultCallback_t` callbacks
-    var requestPlayersForGameResultCallback: AsyncStream<RequestPlayersForGameResultCallback> {
-        AsyncStream { onRequestPlayersForGameResultCallback($0.yield0) }
-    }
-
     /// Async stream of Steamworks `ReservationNotificationCallback_t` callbacks
     var reservationNotificationCallback: AsyncStream<ReservationNotificationCallback> {
         AsyncStream { onReservationNotificationCallback($0.yield0) }
@@ -1273,16 +1078,6 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `ScreenshotRequested_t` callbacks
     var screenshotRequested: AsyncStream<ScreenshotRequested> {
         AsyncStream { onScreenshotRequested($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `SearchForGameProgressCallback_t` callbacks
-    var searchForGameProgressCallback: AsyncStream<SearchForGameProgressCallback> {
-        AsyncStream { onSearchForGameProgressCallback($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `SearchForGameResultCallback_t` callbacks
-    var searchForGameResultCallback: AsyncStream<SearchForGameResultCallback> {
-        AsyncStream { onSearchForGameResultCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamAPICallCompleted_t` callbacks
@@ -1393,11 +1188,6 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `SteamShutdown_t` callbacks
     var steamShutdown: AsyncStream<SteamShutdown> {
         AsyncStream { onSteamShutdown($0.yield0) }
-    }
-
-    /// Async stream of Steamworks `SubmitPlayerResultResultCallback_t` callbacks
-    var submitPlayerResultResultCallback: AsyncStream<SubmitPlayerResultResultCallback> {
-        AsyncStream { onSubmitPlayerResultResultCallback($0.yield0) }
     }
 
     /// Async stream of Steamworks `TimedTrialStatus_t` callbacks

@@ -644,34 +644,6 @@ extension EFriendRelationship: RawConvertible { typealias From = FriendRelations
 extension FriendRelationship: EnumWithUnrepresented { typealias From = EFriendRelationship }
 extension FriendRelationship: SteamCreatable {}
 
-/// Steamworks `EGameSearchErrorCode_t`
-public enum GameSearchErrorCode: CUnsignedInt, Sendable {
-    /// Steamworks `k_EGameSearchErrorCode_OK`
-    case ok = 1
-    /// Steamworks `k_EGameSearchErrorCode_Failed_Search_Already_In_Progress`
-    case failedSearchAlreadyInProgress = 2
-    /// Steamworks `k_EGameSearchErrorCode_Failed_No_Search_In_Progress`
-    case failedNoSearchInProgress = 3
-    /// Steamworks `k_EGameSearchErrorCode_Failed_Not_Lobby_Leader`
-    case failedNotLobbyLeader = 4
-    /// Steamworks `k_EGameSearchErrorCode_Failed_No_Host_Available`
-    case failedNoHostAvailable = 5
-    /// Steamworks `k_EGameSearchErrorCode_Failed_Search_Params_Invalid`
-    case failedSearchParamsInvalid = 6
-    /// Steamworks `k_EGameSearchErrorCode_Failed_Offline`
-    case failedOffline = 7
-    /// Steamworks `k_EGameSearchErrorCode_Failed_NotAuthorized`
-    case failedNotAuthorized = 8
-    /// Steamworks `k_EGameSearchErrorCode_Failed_Unknown_Error`
-    case failedUnknownError = 9
-    /// Some undocumented value
-    case unrepresentedInSwift = 10
-}
-
-extension EGameSearchErrorCode_t: RawConvertible { typealias From = GameSearchErrorCode }
-extension GameSearchErrorCode: EnumWithUnrepresented { typealias From = EGameSearchErrorCode_t }
-extension GameSearchErrorCode: SteamCreatable {}
-
 /// Steamworks `EGamepadTextInputLineMode`
 public enum GamepadTextInputLineMode: CUnsignedInt, Sendable {
     /// Steamworks `k_EGamepadTextInputLineModeSingleLine`
@@ -802,10 +774,28 @@ public enum HTTPStatusCode: CUnsignedInt, Sendable {
     case http417ExpectationFailed = 417
     /// Steamworks `k_EHTTPStatusCode4xxUnknown`
     case http4xxUnknown = 418
+    /// Steamworks `k_EHTTPStatusCode421MisdirectedRequest`
+    case http421MisdirectedRequest = 421
+    /// Steamworks `k_EHTTPStatusCode422UnprocessableContent`
+    case http422UnprocessableContent = 422
+    /// Steamworks `k_EHTTPStatusCode423Locked`
+    case http423Locked = 423
+    /// Steamworks `k_EHTTPStatusCode424FailedDependency`
+    case http424FailedDependency = 424
+    /// Steamworks `k_EHTTPStatusCode425TooEarly`
+    case http425TooEarly = 425
+    /// Steamworks `k_EHTTPStatusCode426UpgradeRequired`
+    case http426UpgradeRequired = 426
+    /// Steamworks `k_EHTTPStatusCode428PreconditionRequired`
+    case http428PreconditionRequired = 428
     /// Steamworks `k_EHTTPStatusCode429TooManyRequests`
     case http429TooManyRequests = 429
+    /// Steamworks `k_EHTTPStatusCode431RequestHeaderFieldsTooLarge`
+    case http431RequestHeaderFieldsTooLarge = 431
     /// Steamworks `k_EHTTPStatusCode444ConnectionClosed`
     case http444ConnectionClosed = 444
+    /// Steamworks `k_EHTTPStatusCode451UnavailableForLegalReasons`
+    case http451UnavailableForLegalReasons = 451
     /// Steamworks `k_EHTTPStatusCode500InternalServerError`
     case http500InternalServerError = 500
     /// Steamworks `k_EHTTPStatusCode501NotImplemented`
@@ -818,6 +808,16 @@ public enum HTTPStatusCode: CUnsignedInt, Sendable {
     case http504GatewayTimeout = 504
     /// Steamworks `k_EHTTPStatusCode505HTTPVersionNotSupported`
     case http505HTTPVersionNotSupported = 505
+    /// Steamworks `k_EHTTPStatusCode506VariantAlsoNegotiates`
+    case http506VariantAlsoNegotiates = 506
+    /// Steamworks `k_EHTTPStatusCode507InsufficientStorage`
+    case http507InsufficientStorage = 507
+    /// Steamworks `k_EHTTPStatusCode508LoopDetected`
+    case http508LoopDetected = 508
+    /// Steamworks `k_EHTTPStatusCode510NotExtended`
+    case http510NotExtended = 510
+    /// Steamworks `k_EHTTPStatusCode511NetworkAuthenticationRequired`
+    case http511NetworkAuthenticationRequired = 511
     /// Steamworks `k_EHTTPStatusCode5xxUnknown`
     case http5xxUnknown = 599
     /// Some undocumented value
@@ -1650,8 +1650,178 @@ public enum InputActionOrigin: CUnsignedInt, Sendable {
     case horipadL4 = 408
     /// Steamworks `k_EInputActionOrigin_Horipad_R4`
     case horipadR4 = 409
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_A`
+    case lenovoLegionGoA = 410
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_B`
+    case lenovoLegionGoB = 411
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_X`
+    case lenovoLegionGoX = 412
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Y`
+    case lenovoLegionGoY = 413
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LB`
+    case lenovoLegionGoLB = 414
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RB`
+    case lenovoLegionGoRB = 415
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Menu`
+    case lenovoLegionGoMenu = 416
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_View`
+    case lenovoLegionGoView = 417
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftPad_Touch`
+    case lenovoLegionGoLeftPadTouch = 418
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftPad_Swipe`
+    case lenovoLegionGoLeftPadSwipe = 419
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftPad_Click`
+    case lenovoLegionGoLeftPadClick = 420
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftPad_DPadNorth`
+    case lenovoLegionGoLeftPadDPadNorth = 421
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftPad_DPadSouth`
+    case lenovoLegionGoLeftPadDPadSouth = 422
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftPad_DPadWest`
+    case lenovoLegionGoLeftPadDPadWest = 423
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftPad_DPadEast`
+    case lenovoLegionGoLeftPadDPadEast = 424
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightPad_Touch`
+    case lenovoLegionGoRightPadTouch = 425
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightPad_Swipe`
+    case lenovoLegionGoRightPadSwipe = 426
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightPad_Click`
+    case lenovoLegionGoRightPadClick = 427
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightPad_DPadNorth`
+    case lenovoLegionGoRightPadDPadNorth = 428
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightPad_DPadSouth`
+    case lenovoLegionGoRightPadDPadSouth = 429
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightPad_DPadWest`
+    case lenovoLegionGoRightPadDPadWest = 430
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightPad_DPadEast`
+    case lenovoLegionGoRightPadDPadEast = 431
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LT_SoftPull`
+    case lenovoLegionGoLTSoftPull = 432
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LT`
+    case lenovoLegionGoLT = 433
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RT_SoftPull`
+    case lenovoLegionGoRTSoftPull = 434
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RT`
+    case lenovoLegionGoRT = 435
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftStick_Move`
+    case lenovoLegionGoLeftStickMove = 436
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LS`
+    case lenovoLegionGoLS = 437
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftStick_DPadNorth`
+    case lenovoLegionGoLeftStickDPadNorth = 438
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftStick_DPadSouth`
+    case lenovoLegionGoLeftStickDPadSouth = 439
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftStick_DPadWest`
+    case lenovoLegionGoLeftStickDPadWest = 440
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_LeftStick_DPadEast`
+    case lenovoLegionGoLeftStickDPadEast = 441
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightStick_Move`
+    case lenovoLegionGoRightStickMove = 442
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RS`
+    case lenovoLegionGoRS = 443
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightStick_DPadNorth`
+    case lenovoLegionGoRightStickDPadNorth = 444
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightStick_DPadSouth`
+    case lenovoLegionGoRightStickDPadSouth = 445
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightStick_DPadWest`
+    case lenovoLegionGoRightStickDPadWest = 446
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_RightStick_DPadEast`
+    case lenovoLegionGoRightStickDPadEast = 447
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Y1`
+    case lenovoLegionGoY1 = 448
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Y2`
+    case lenovoLegionGoY2 = 449
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_DPad_Move`
+    case lenovoLegionGoDPadMove = 450
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_DPad_North`
+    case lenovoLegionGoDPadNorth = 451
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_DPad_South`
+    case lenovoLegionGoDPadSouth = 452
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_DPad_West`
+    case lenovoLegionGoDPadWest = 453
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_DPad_East`
+    case lenovoLegionGoDPadEast = 454
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Gyro_Move`
+    case lenovoLegionGoGyroMove = 455
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Gyro_Pitch`
+    case lenovoLegionGoGyroPitch = 456
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Gyro_Yaw`
+    case lenovoLegionGoGyroYaw = 457
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Gyro_Roll`
+    case lenovoLegionGoGyroRoll = 458
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved1`
+    case lenovoLegionGoReserved1 = 459
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved2`
+    case lenovoLegionGoReserved2 = 460
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved3`
+    case lenovoLegionGoReserved3 = 461
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved4`
+    case lenovoLegionGoReserved4 = 462
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved5`
+    case lenovoLegionGoReserved5 = 463
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved6`
+    case lenovoLegionGoReserved6 = 464
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved7`
+    case lenovoLegionGoReserved7 = 465
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved8`
+    case lenovoLegionGoReserved8 = 466
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved9`
+    case lenovoLegionGoReserved9 = 467
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved10`
+    case lenovoLegionGoReserved10 = 468
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved11`
+    case lenovoLegionGoReserved11 = 469
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved12`
+    case lenovoLegionGoReserved12 = 470
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved13`
+    case lenovoLegionGoReserved13 = 471
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved14`
+    case lenovoLegionGoReserved14 = 472
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved15`
+    case lenovoLegionGoReserved15 = 473
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved16`
+    case lenovoLegionGoReserved16 = 474
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved17`
+    case lenovoLegionGoReserved17 = 475
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved18`
+    case lenovoLegionGoReserved18 = 476
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved19`
+    case lenovoLegionGoReserved19 = 477
+    /// Steamworks `k_EInputActionOrigin_LenovoLegionGo_Reserved20`
+    case lenovoLegionGoReserved20 = 478
+    /// Steamworks `k_EInputActionOrigin_Generic_L4`
+    case genericL4 = 479
+    /// Steamworks `k_EInputActionOrigin_Generic_R4`
+    case genericR4 = 480
+    /// Steamworks `k_EInputActionOrigin_Generic_L5`
+    case genericL5 = 481
+    /// Steamworks `k_EInputActionOrigin_Generic_R5`
+    case genericR5 = 482
+    /// Steamworks `k_EInputActionOrigin_Generic_PL`
+    case genericPL = 483
+    /// Steamworks `k_EInputActionOrigin_Generic_PR`
+    case genericPR = 484
+    /// Steamworks `k_EInputActionOrigin_Generic_C`
+    case genericC = 485
+    /// Steamworks `k_EInputActionOrigin_Generic_Z`
+    case genericZ = 486
+    /// Steamworks `k_EInputActionOrigin_Generic_MISC1`
+    case genericMISC1 = 487
+    /// Steamworks `k_EInputActionOrigin_Generic_MISC2`
+    case genericMISC2 = 488
+    /// Steamworks `k_EInputActionOrigin_Generic_MISC3`
+    case genericMISC3 = 489
+    /// Steamworks `k_EInputActionOrigin_Generic_MISC4`
+    case genericMISC4 = 490
+    /// Steamworks `k_EInputActionOrigin_Generic_MISC5`
+    case genericMISC5 = 491
+    /// Steamworks `k_EInputActionOrigin_Generic_MISC6`
+    case genericMISC6 = 492
+    /// Steamworks `k_EInputActionOrigin_Generic_MISC7`
+    case genericMISC7 = 493
+    /// Steamworks `k_EInputActionOrigin_Generic_MISC8`
+    case genericMISC8 = 494
     /// Steamworks `k_EInputActionOrigin_Count`
-    case count = 410
+    case count = 495
     /// Steamworks `k_EInputActionOrigin_MaximumPossibleValue`
     case maximumPossibleValue = 32767
     /// Some undocumented value
@@ -1984,6 +2154,8 @@ public struct MarketNotAllowedReasonFlags: OptionSet, Sendable {
     public static let noRecentPurchases = MarketNotAllowedReasonFlags(rawValue: 16384)
     /// Steamworks `k_EMarketNotAllowedReason_AcceptedWalletGift`
     public static let acceptedWalletGift = MarketNotAllowedReasonFlags(rawValue: 32768)
+    /// Steamworks `k_EMarketNotAllowedReason_TradeCooldown`
+    public static let tradeCooldown = MarketNotAllowedReasonFlags(rawValue: 65536)
 }
 
 extension EMarketNotAllowedReasonFlags: RawConvertible { typealias From = MarketNotAllowedReasonFlags }
@@ -2155,26 +2327,6 @@ public enum PersonaState: CUnsignedInt, Sendable {
 extension EPersonaState: RawConvertible { typealias From = PersonaState }
 extension PersonaState: EnumWithUnrepresented { typealias From = EPersonaState }
 extension PersonaState: SteamCreatable {}
-
-/// Steamworks `EPlayerResult_t`
-public enum PlayerResult: CUnsignedInt, Sendable {
-    /// Steamworks `k_EPlayerResultFailedToConnect`
-    case failedToConnect = 1
-    /// Steamworks `k_EPlayerResultAbandoned`
-    case abandoned = 2
-    /// Steamworks `k_EPlayerResultKicked`
-    case kicked = 3
-    /// Steamworks `k_EPlayerResultIncomplete`
-    case incomplete = 4
-    /// Steamworks `k_EPlayerResultCompleted`
-    case completed = 5
-    /// Some undocumented value
-    case unrepresentedInSwift = 6
-}
-
-extension EPlayerResult_t: RawConvertible { typealias From = PlayerResult }
-extension PlayerResult: EnumWithUnrepresented { typealias From = EPlayerResult_t }
-extension PlayerResult: SteamCreatable {}
 
 /// Steamworks `ERemotePlayInputType`
 public enum RemotePlayInputType: CUnsignedInt, Sendable {
@@ -2430,6 +2582,38 @@ public enum RemotePlayScancode: CUnsignedInt, Sendable {
     case down = 81
     /// Steamworks `k_ERemotePlayScancodeUp`
     case up = 82
+    /// Steamworks `k_ERemotePlayScancodeKeypadDivide`
+    case keypadDivide = 84
+    /// Steamworks `k_ERemotePlayScancodeKeypadMultiply`
+    case keypadMultiply = 85
+    /// Steamworks `k_ERemotePlayScancodeKeypadMinus`
+    case keypadMinus = 86
+    /// Steamworks `k_ERemotePlayScancodeKeypadPlus`
+    case keypadPlus = 87
+    /// Steamworks `k_ERemotePlayScancodeKeypadEnter`
+    case keypadEnter = 88
+    /// Steamworks `k_ERemotePlayScancodeKeypad1`
+    case keypad1 = 89
+    /// Steamworks `k_ERemotePlayScancodeKeypad2`
+    case keypad2 = 90
+    /// Steamworks `k_ERemotePlayScancodeKeypad3`
+    case keypad3 = 91
+    /// Steamworks `k_ERemotePlayScancodeKeypad4`
+    case keypad4 = 92
+    /// Steamworks `k_ERemotePlayScancodeKeypad5`
+    case keypad5 = 93
+    /// Steamworks `k_ERemotePlayScancodeKeypad6`
+    case keypad6 = 94
+    /// Steamworks `k_ERemotePlayScancodeKeypad7`
+    case keypad7 = 95
+    /// Steamworks `k_ERemotePlayScancodeKeypad8`
+    case keypad8 = 96
+    /// Steamworks `k_ERemotePlayScancodeKeypad9`
+    case keypad9 = 97
+    /// Steamworks `k_ERemotePlayScancodeKeypad0`
+    case keypad0 = 98
+    /// Steamworks `k_ERemotePlayScancodeKeypadPeriod`
+    case keypadPeriod = 99
     /// Steamworks `k_ERemotePlayScancodeLeftControl`
     case leftControl = 224
     /// Steamworks `k_ERemotePlayScancodeLeftShift`
@@ -2802,8 +2986,10 @@ public enum Result: CUnsignedInt, Sendable {
     case familySizeLimitExceeded = 129
     /// Steamworks `k_EResultOfflineAppCacheInvalid`
     case offlineAppCacheInvalid = 130
+    /// Steamworks `k_EResultTryLater`
+    case tryLater = 131
     /// Some undocumented value
-    case unrepresentedInSwift = 131
+    case unrepresentedInSwift = 132
 }
 
 extension EResult: RawConvertible { typealias From = Result }
@@ -4283,19 +4469,3 @@ extension HTMLMouseCursor {
         self.init(From(rawValue: CUnsignedInt(from)))
     }
 }
-
-/// Steamworks `RequestPlayersForGameResultCallback_t::PlayerAcceptState_t`
-public enum PlayerAcceptState: CUnsignedInt, Sendable {
-    /// Steamworks `k_EStateUnknown`
-    case unknown = 0
-    /// Steamworks `k_EStatePlayerAccepted`
-    case playerAccepted = 1
-    /// Steamworks `k_EStatePlayerDeclined`
-    case playerDeclined = 2
-    /// Some undocumented value
-    case unrepresentedInSwift = 3
-}
-
-extension RequestPlayersForGameResultCallback_t.PlayerAcceptState_t: RawConvertible { typealias From = PlayerAcceptState }
-extension PlayerAcceptState: EnumWithUnrepresented { typealias From = RequestPlayersForGameResultCallback_t.PlayerAcceptState_t }
-extension PlayerAcceptState: SteamCreatable {}

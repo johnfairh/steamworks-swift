@@ -9,6 +9,7 @@
 - ``MatchMakingKeyValuePairs``
 
 ### Enumerations and Option Sets
+- ``ChatMemberStateChange``
 - ``FavoriteFlags``
 - ``LobbyComparison``
 - ``LobbyDistanceFilter``

@@ -1,5 +1,5 @@
 ![macOS](https://shields.io/badge/platform-macOS%20|%20Linux%20|%20%3F%3F-lightgrey)
-![Steamworks 1.62](https://shields.io/badge/steamworks-1.62-lightgrey)
+![Steamworks 1.63](https://shields.io/badge/steamworks-1.63-lightgrey)
 [![Test](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml/badge.svg)](https://github.com/johnfairh/steamworks-swift/actions/workflows/test.yml)
 ![MIT](https://shields.io/badge/license-MIT-black)
 
@@ -23,7 +23,7 @@ Current state:
   `SteamworksConcurrency` module
 * Encrypted app ticket support in separate `SteamworksEncryptedAppTicket` module
 * Separate demo showing encrypted app-ticket stuff, `make run_ticket`
-* Requires Swift 6 / Xcode 16
+* Requires Swift 6.2 / Xcode 26
 * The Xcode project basically works.
 * ~Unit tests sometimes crash inside steam on exit~ fixed!
 

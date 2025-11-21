@@ -65,24 +65,6 @@
         - OverlayBrowserProtocolNavigation
         - PersonaStateChange
         - UnreadChatMessagesChanged
-  - name: SteamGameSearch
-    topics:
-    - name: Interfaces
-      children:
-        - SteamGameSearch
-    - name: Enumerations and Option Sets
-      children:
-        - ChatMemberStateChange
-        - PlayerAcceptState
-    - name: Callbacks
-      children:
-        - EndGameResultCallback
-        - RequestPlayersForGameFinalResultCallback
-        - RequestPlayersForGameProgressCallback
-        - RequestPlayersForGameResultCallback
-        - SearchForGameProgressCallback
-        - SearchForGameResultCallback
-        - SubmitPlayerResultResultCallback
   - name: SteamGameServer
     topics:
     - name: Interfaces
@@ -247,6 +229,7 @@
         - MatchMakingKeyValuePairs
     - name: Enumerations and Option Sets
       children:
+        - ChatMemberStateChange
         - FavoriteFlags
         - LobbyComparison
         - LobbyDistanceFilter
@@ -296,27 +279,6 @@
       children:
         - PlaybackStatusHasChanged
         - VolumeHasChanged
-  - name: SteamMusicRemote
-    topics:
-    - name: Interfaces
-      children:
-        - SteamMusicRemote
-    - name: Callbacks
-      children:
-        - MusicPlayerRemoteToFront
-        - MusicPlayerRemoteWillActivate
-        - MusicPlayerRemoteWillDeactivate
-        - MusicPlayerSelectsPlaylistEntry
-        - MusicPlayerSelectsQueueEntry
-        - MusicPlayerWantsLooped
-        - MusicPlayerWantsPause
-        - MusicPlayerWantsPlay
-        - MusicPlayerWantsPlayNext
-        - MusicPlayerWantsPlayPrevious
-        - MusicPlayerWantsPlayingRepeatStatus
-        - MusicPlayerWantsShuffled
-        - MusicPlayerWantsVolume
-        - MusicPlayerWillQuit
   - name: SteamNetworkingMessages
     topics:
     - name: Interfaces
@@ -691,10 +653,8 @@
         - DurationControlNotification
         - DurationControlOnlineState
         - DurationControlProgress
-        - GameSearchErrorCode
         - MarketNotAllowedReasonFlags
         - NotificationPosition
-        - PlayerResult
         - Result
         - ServerMode
         - SteamAPIInitResult
