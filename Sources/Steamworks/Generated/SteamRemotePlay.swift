@@ -13,7 +13,7 @@ internal import CSteamworks
 /// Access via ``SteamAPI/remotePlay``.
 public struct SteamRemotePlay: Sendable {
     var interface: UnsafeMutablePointer<ISteamRemotePlay> {
-        SteamAPI_SteamRemotePlay_v003()
+        SteamAPI_SteamRemotePlay_v004()
     }
 
     init() {
@@ -37,6 +37,11 @@ public struct SteamRemotePlay: Sendable {
         SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite(interface, CUnsignedLongLong(friend))
     }
 
+    /// Steamworks `ISteamRemotePlay::BSessionRemotePlayTogether()`
+    public func sessionRemotePlayTogether(sessionID: RemotePlaySessionID) -> Bool {
+        SteamAPI_ISteamRemotePlay_BSessionRemotePlayTogether(interface, RemotePlaySessionID_t(sessionID))
+    }
+
     /// Steamworks `ISteamRemotePlay::CreateMouseCursor()`
     public func createMouseCursor(width: Int, height: Int, hotX: Int, hotY: Int, bgra: UnsafeRawPointer, pitch: Int = 0) -> RemotePlayCursorID {
         RemotePlayCursorID(SteamAPI_ISteamRemotePlay_CreateMouseCursor(interface, CInt(width), CInt(height), CInt(hotX), CInt(hotY), bgra, CInt(pitch)))
@@ -54,6 +59,16 @@ public struct SteamRemotePlay: Sendable {
         return (rc: rc, input: tmpInput.swiftArray(Int(rc)))
     }
 
+    /// Steamworks `ISteamRemotePlay::GetLargeSessionAvatar()`
+    public func getLargeSessionAvatar(sessionID: RemotePlaySessionID) -> Int {
+        Int(SteamAPI_ISteamRemotePlay_GetLargeSessionAvatar(interface, RemotePlaySessionID_t(sessionID)))
+    }
+
+    /// Steamworks `ISteamRemotePlay::GetMediumSessionAvatar()`
+    public func getMediumSessionAvatar(sessionID: RemotePlaySessionID) -> Int {
+        Int(SteamAPI_ISteamRemotePlay_GetMediumSessionAvatar(interface, RemotePlaySessionID_t(sessionID)))
+    }
+
     /// Steamworks `ISteamRemotePlay::GetSessionClientFormFactor()`
     public func getSessionClientFormFactor(sessionID: RemotePlaySessionID) -> SteamDeviceFormFactor {
         SteamDeviceFormFactor(SteamAPI_ISteamRemotePlay_GetSessionClientFormFactor(interface, RemotePlaySessionID_t(sessionID)))
@@ -69,6 +84,11 @@ public struct SteamRemotePlay: Sendable {
         Int(SteamAPI_ISteamRemotePlay_GetSessionCount(interface))
     }
 
+    /// Steamworks `ISteamRemotePlay::GetSessionGuestID()`
+    public func getSessionGuestID(sessionID: RemotePlaySessionID) -> Int {
+        Int(SteamAPI_ISteamRemotePlay_GetSessionGuestID(interface, RemotePlaySessionID_t(sessionID)))
+    }
+
     /// Steamworks `ISteamRemotePlay::GetSessionID()`
     public func getSessionID(sessionIndex: Int) -> RemotePlaySessionID {
         RemotePlaySessionID(SteamAPI_ISteamRemotePlay_GetSessionID(interface, CInt(sessionIndex)))
@@ -77,6 +97,11 @@ public struct SteamRemotePlay: Sendable {
     /// Steamworks `ISteamRemotePlay::GetSessionSteamID()`
     public func getSessionSteamID(sessionID: RemotePlaySessionID) -> SteamID {
         SteamID(SteamAPI_ISteamRemotePlay_GetSessionSteamID(interface, RemotePlaySessionID_t(sessionID)))
+    }
+
+    /// Steamworks `ISteamRemotePlay::GetSmallSessionAvatar()`
+    public func getSmallSessionAvatar(sessionID: RemotePlaySessionID) -> Int {
+        Int(SteamAPI_ISteamRemotePlay_GetSmallSessionAvatar(interface, RemotePlaySessionID_t(sessionID)))
     }
 
     /// Steamworks `ISteamRemotePlay::SetMouseCursor()`

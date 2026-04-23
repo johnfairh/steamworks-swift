@@ -4511,9 +4511,11 @@ public struct SteamNetConnectionRealTimeStatus: Sendable {
     public let sentUnackedReliableSize: Int
     /// Steamworks `m_usecQueueTime`
     public let queueTime: SteamNetworkingMicroseconds
+    /// Steamworks `m_usecMaxJitter`
+    public let maxJitter: Int
 
     /// Create a customized `SteamNetConnectionRealTimeStatus`
-    public init(state: SteamNetworkingConnectionState = .none, ping: Int = 0, connectionQualityLocal: Float = 0, connectionQualityRemote: Float = 0, outPacketsPerSec: Float = 0, outBytesPerSec: Float = 0, inPacketsPerSec: Float = 0, inBytesPerSec: Float = 0, sendRateBytesPerSecond: Int = 0, pendingUnreliableSize: Int = 0, pendingReliableSize: Int = 0, sentUnackedReliableSize: Int = 0, queueTime: SteamNetworkingMicroseconds = 0) {
+    public init(state: SteamNetworkingConnectionState = .none, ping: Int = 0, connectionQualityLocal: Float = 0, connectionQualityRemote: Float = 0, outPacketsPerSec: Float = 0, outBytesPerSec: Float = 0, inPacketsPerSec: Float = 0, inBytesPerSec: Float = 0, sendRateBytesPerSecond: Int = 0, pendingUnreliableSize: Int = 0, pendingReliableSize: Int = 0, sentUnackedReliableSize: Int = 0, queueTime: SteamNetworkingMicroseconds = 0, maxJitter: Int = 0) {
         self.state = state
         self.ping = ping
         self.connectionQualityLocal = connectionQualityLocal
@@ -4527,6 +4529,7 @@ public struct SteamNetConnectionRealTimeStatus: Sendable {
         self.pendingReliableSize = pendingReliableSize
         self.sentUnackedReliableSize = sentUnackedReliableSize
         self.queueTime = queueTime
+        self.maxJitter = maxJitter
     }
 }
 
@@ -4546,6 +4549,7 @@ extension SteamNetConnectionRealTimeStatus: SteamCreatable {
         pendingReliableSize = .init(steam.m_cbPendingReliable)
         sentUnackedReliableSize = .init(steam.m_cbSentUnackedReliable)
         queueTime = .init(steam.m_usecQueueTime)
+        maxJitter = .init(steam.m_usecMaxJitter)
     }
 }
 
@@ -4740,6 +4744,36 @@ extension SteamRelayNetworkStatus: SteamCreatable {
         availNetworkConfig = .init(steam.m_eAvailNetworkConfig)
         availAnyRelay = .init(steam.m_eAvailAnyRelay)
         debugMsg = .init(steam.m_debugMsg_ptr)
+    }
+}
+
+/// Steamworks `SteamRemotePlaySessionAvatarLoaded_t`
+public struct SteamRemotePlaySessionAvatarLoaded: Sendable {
+    /// Steamworks `m_unSessionID`
+    public let sessionID: RemotePlaySessionID
+    /// Steamworks `m_iImage`
+    public let imageIndex: Int
+    /// Steamworks `m_iWide`
+    public let wideIndex: Int
+    /// Steamworks `m_iTall`
+    public let tallIndex: Int
+
+    /// Create a customized `SteamRemotePlaySessionAvatarLoaded`
+    public init(sessionID: RemotePlaySessionID = 0, imageIndex: Int = 0, wideIndex: Int = 0, tallIndex: Int = 0) {
+        self.sessionID = sessionID
+        self.imageIndex = imageIndex
+        self.wideIndex = wideIndex
+        self.tallIndex = tallIndex
+    }
+}
+
+extension SteamRemotePlaySessionAvatarLoaded: SteamCreatable {
+    typealias SteamType = CSteamworks.SteamRemotePlaySessionAvatarLoaded_t
+    init(_ steam: CSteamworks.SteamRemotePlaySessionAvatarLoaded_t) {
+        sessionID = .init(steam.m_unSessionID)
+        imageIndex = .init(steam.m_iImage)
+        wideIndex = .init(steam.m_iWide)
+        tallIndex = .init(steam.m_iTall)
     }
 }
 

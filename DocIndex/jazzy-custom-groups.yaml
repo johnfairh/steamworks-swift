@@ -395,6 +395,7 @@
         - RemotePlayInputMouseWheel
     - name: Callbacks
       children:
+        - SteamRemotePlaySessionAvatarLoaded
         - SteamRemotePlaySessionConnected
         - SteamRemotePlaySessionDisconnected
         - SteamRemotePlayTogetherGuestInvite

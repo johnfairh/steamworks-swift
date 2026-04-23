@@ -13,7 +13,7 @@ internal import CSteamworks
 /// Access via ``SteamAPI/apps``.
 public struct SteamApps: Sendable {
     var interface: UnsafeMutablePointer<ISteamApps> {
-        SteamAPI_SteamApps_v008()
+        SteamAPI_SteamApps_v009()
     }
 
     init() {
@@ -112,17 +112,18 @@ public struct SteamApps: Sendable {
     }
 
     /// Steamworks `ISteamApps::GetBetaInfo()`
-    public func getBetaInfo(betaIndex: Int, betaNameSize: Int, descriptionSize: Int) -> (rc: Bool, flags: BetaBranchFlags, buildID: Int, betaName: String, description: String) {
+    public func getBetaInfo(betaIndex: Int, betaNameSize: Int, descriptionSize: Int) -> (rc: Bool, flags: BetaBranchFlags, buildID: Int, betaName: String, description: String, lastUpdated: Int) {
         var tmpFlags = uint32()
         var tmpBuildID = uint32()
         var tmpBetaName = SteamOutString(length: betaNameSize)
         var tmpDescription = SteamOutString(length: descriptionSize)
+        var tmpLastUpdated = uint32()
         let rc = tmpBetaName.setContent { nstBetaName in
             tmpDescription.setContent { nstDescription in
-                SteamAPI_ISteamApps_GetBetaInfo(interface, CInt(betaIndex), &tmpFlags, &tmpBuildID, nstBetaName, CInt(betaNameSize), nstDescription, CInt(descriptionSize))
+                SteamAPI_ISteamApps_GetBetaInfo(interface, CInt(betaIndex), &tmpFlags, &tmpBuildID, nstBetaName, CInt(betaNameSize), nstDescription, CInt(descriptionSize), &tmpLastUpdated)
             }
         }
-        return (rc: rc, flags: BetaBranchFlags(tmpFlags), buildID: Int(tmpBuildID), betaName: tmpBetaName.swiftString, description: tmpDescription.swiftString)
+        return (rc: rc, flags: BetaBranchFlags(tmpFlags), buildID: Int(tmpBuildID), betaName: tmpBetaName.swiftString, description: tmpDescription.swiftString, lastUpdated: Int(tmpLastUpdated))
     }
 
     /// Steamworks `ISteamApps::GetCurrentBetaName()`

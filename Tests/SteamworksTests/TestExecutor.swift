@@ -73,7 +73,7 @@ class TestExecutor: XCTestCase {
         try skipLinux()
 
         let threadName = "TestExec"
-        let executor = SteamExecutor(apiClient: .init(nil), name: threadName)
+        let executor = SteamExecutor(apiClient: .init(nil), qos: .userInitiated, name: threadName)
         defer { executor.stop() }
 
         let actor = SteamActor(executor: executor)
@@ -97,7 +97,7 @@ class TestExecutor: XCTestCase {
     func testExecutorSinglePolling() async throws {
         try skipLinux()
 
-        let executor = SteamExecutor(apiClient: .init(nil, interval: 0.5)) // poll every 0.5s
+        let executor = SteamExecutor(apiClient: .init(nil, interval: 0.5), qos: .userInitiated) // poll every 0.5s
         defer { executor.stop() }
 
         let actor = SteamActor(executor: executor)
@@ -115,7 +115,7 @@ class TestExecutor: XCTestCase {
             .init(nil, interval: 0.5, name: "500ms"),
             .init(nil, interval: 0.1, name: "100ms"),
             .init(nil, interval: 1.0, name: "1s")
-        ], qos: .userInteractive)
+        ], qos: .userInitiated)
         defer { executor.stop() }
 
         let actor = SteamActor(executor: executor)
@@ -143,7 +143,7 @@ class TestExecutor: XCTestCase {
 
         let steam = try TestClient.getClient()
 
-        let executor = SteamExecutor(apiClient: .init(steam, interval: 0.1, name: "SteamClient"))
+        let executor = SteamExecutor(apiClient: .init(steam, interval: 0.1, name: "SteamClient"), qos: .userInitiated)
         defer { executor.stop() }
 
         let actor = SteamActor(executor: executor)

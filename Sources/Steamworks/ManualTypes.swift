@@ -700,22 +700,22 @@ public struct RemotePlayInput: Sendable {
 
     /// Steamworks `m_MouseMotion`
     public var mouseMotion: RemotePlayInputMouseMotion {
-        RemotePlayInputMouseMotion(steam.__Anonymous_field2.m_MouseMotion)
+        RemotePlayInputMouseMotion(steam.m_MouseMotion)
     }
 
     /// Steamworks `m_eMouseButton`
     public var mouseButton: RemotePlayMouseButton {
-        RemotePlayMouseButton(steam.__Anonymous_field2.m_eMouseButton)
+        RemotePlayMouseButton(steam.m_eMouseButton)
     }
 
     /// Steamworks `m_MouseWheel`
     public var mouseWheel: RemotePlayInputMouseWheel {
-        RemotePlayInputMouseWheel(steam.__Anonymous_field2.m_MouseWheel)
+        RemotePlayInputMouseWheel(steam.m_MouseWheel)
     }
 
     /// Steamworks `m_Key`
     public var key: RemotePlayInputKey {
-        RemotePlayInputKey(steam.__Anonymous_field2.m_Key)
+        RemotePlayInputKey(steam.m_Key)
     }
 
     init(_ steam: RemotePlayInput_t) {
