@@ -2248,10 +2248,12 @@ public enum ParentalFeature: CUnsignedInt, Sendable {
     case kioskModeDeprecated = 14
     /// Steamworks `k_EFeatureBlockAlways`
     case blockAlways = 15
+    /// Steamworks `k_EFeatureDesktop`
+    case desktop = 16
     /// Steamworks `k_EFeatureMax`
-    case max = 16
+    case max = 17
     /// Some undocumented value
-    case unrepresentedInSwift = 17
+    case unrepresentedInSwift = 18
 }
 
 extension EParentalFeature: RawConvertible { typealias From = ParentalFeature }
@@ -3604,6 +3606,8 @@ public enum SteamNetworkingConfigValueSetting: CUnsignedInt, Sendable {
     case logLevelSDRRelayPings = 18
     /// Steamworks `k_ESteamNetworkingConfig_ECN`
     case ecn = 999
+    /// Steamworks `k_ESteamNetworkingConfig_SDRClient_EnableTOSProbes`
+    case sdrClientEnableTOSProbes = 998
     /// Steamworks `k_ESteamNetworkingConfig_DELETED_EnumerateDevVars`
     case deletedEnumerateDevVars = 35
     /// Some undocumented value

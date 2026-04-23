@@ -541,6 +541,11 @@ public extension SteamBaseAPI {
         callbacks.add(callbackID: CallbackID(1281), rawClient: SteamBaseAPI.makeRaw(client))
     }
 
+    /// Registration for Steamworks `SteamRemotePlaySessionAvatarLoaded_t` callback
+    func onSteamRemotePlaySessionAvatarLoaded(_ client: @Sendable @escaping (sending SteamRemotePlaySessionAvatarLoaded) -> Void) {
+        callbacks.add(callbackID: CallbackID(5704), rawClient: SteamBaseAPI.makeRaw(client))
+    }
+
     /// Registration for Steamworks `SteamRemotePlaySessionConnected_t` callback
     func onSteamRemotePlaySessionConnected(_ client: @Sendable @escaping (sending SteamRemotePlaySessionConnected) -> Void) {
         callbacks.add(callbackID: CallbackID(5701), rawClient: SteamBaseAPI.makeRaw(client))
@@ -1153,6 +1158,11 @@ public extension SteamBaseAPI {
     /// Async stream of Steamworks `SteamRelayNetworkStatus_t` callbacks
     var steamRelayNetworkStatus: AsyncStream<SteamRelayNetworkStatus> {
         AsyncStream { onSteamRelayNetworkStatus($0.yield0) }
+    }
+
+    /// Async stream of Steamworks `SteamRemotePlaySessionAvatarLoaded_t` callbacks
+    var steamRemotePlaySessionAvatarLoaded: AsyncStream<SteamRemotePlaySessionAvatarLoaded> {
+        AsyncStream { onSteamRemotePlaySessionAvatarLoaded($0.yield0) }
     }
 
     /// Async stream of Steamworks `SteamRemotePlaySessionConnected_t` callbacks

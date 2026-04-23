@@ -24,6 +24,7 @@
 - ``RemotePlayInputMouseWheel``
 
 ### Callbacks
+- ``SteamRemotePlaySessionAvatarLoaded``
 - ``SteamRemotePlaySessionConnected``
 - ``SteamRemotePlaySessionDisconnected``
 - ``SteamRemotePlayTogetherGuestInvite``

@@ -999,6 +999,10 @@ methods:
     params:
       pvecPublishedFileID:
         array_count: unNumPublishedFileIDs
+  SteamAPI_ISteamUGC_GetDownloadedItems:
+    params:
+      pvecPublishedFileIDs:
+        out_array_count: cMaxEntries
   SteamAPI_ISteamUGC_GetUserContentDescriptorPreferences:
     params:
       pvecDescriptors:

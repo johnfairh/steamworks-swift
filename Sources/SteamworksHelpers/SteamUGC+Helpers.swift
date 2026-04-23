@@ -12,4 +12,9 @@ extension SteamUGC {
     public func getSubscribedItems(includeLocallyDisabled: Bool) -> (rc: Int, publishedFileID: [PublishedFileID]) {
         getSubscribedItems(maxEntries: getNumSubscribedItems(includeLocallyDisabled: includeLocallyDisabled), includeLocallyDisabled: includeLocallyDisabled)
     }
+
+    /// Steamworks `ISteamUGC::GetDownloadedItems()`
+    public func getDownloadedItems() -> (rc: Int, publishedFileIDs: [PublishedFileID]) {
+        getDownloadedItems(maxEntries: getNumDownloadedItems())
+    }
 }

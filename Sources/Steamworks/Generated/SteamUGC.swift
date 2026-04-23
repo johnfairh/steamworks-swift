@@ -179,6 +179,13 @@ public struct SteamUGC: Sendable {
         }
     }
 
+    /// Steamworks `ISteamUGC::GetDownloadedItems()`
+    public func getDownloadedItems(maxEntries: Int) -> (rc: Int, publishedFileIDs: [PublishedFileID]) {
+        let tmpPublishedFileIDs = SteamOutArray<PublishedFileId_t>(maxEntries)
+        let rc = Int(SteamAPI_ISteamUGC_GetDownloadedItems(interface, tmpPublishedFileIDs.steamArray, uint32(maxEntries)))
+        return (rc: rc, publishedFileIDs: tmpPublishedFileIDs.swiftArray())
+    }
+
     /// Steamworks `ISteamUGC::GetItemDownloadInfo()`
     public func getItemDownloadInfo(publishedFileID: PublishedFileID) -> (rc: Bool, bytesDownloaded: UInt64, bytesTotal: UInt64) {
         var tmpBytesDownloaded = uint64()
@@ -213,6 +220,11 @@ public struct SteamUGC: Sendable {
         var tmpBytesTotal = uint64()
         let rc = ItemUpdateStatus(SteamAPI_ISteamUGC_GetItemUpdateProgress(interface, UGCUpdateHandle_t(handle), &tmpBytesProcessed, &tmpBytesTotal))
         return (rc: rc, bytesProcessed: tmpBytesProcessed, bytesTotal: tmpBytesTotal)
+    }
+
+    /// Steamworks `ISteamUGC::GetNumDownloadedItems()`
+    public func getNumDownloadedItems() -> Int {
+        Int(SteamAPI_ISteamUGC_GetNumDownloadedItems(interface))
     }
 
     /// Steamworks `ISteamUGC::GetNumSubscribedItems()`
@@ -420,6 +432,11 @@ public struct SteamUGC: Sendable {
         await withUnsafeContinuation {
             getWorkshopEULAStatus(completion: $0.resume)
         }
+    }
+
+    /// Steamworks `ISteamUGC::MarkDownloadedItemAsUnused()`
+    public func markDownloadedItemAsUnused(publishedFileID: PublishedFileID) -> Bool {
+        SteamAPI_ISteamUGC_MarkDownloadedItemAsUnused(interface, PublishedFileId_t(publishedFileID))
     }
 
     /// Steamworks `ISteamUGC::ReleaseQueryUGCRequest()`

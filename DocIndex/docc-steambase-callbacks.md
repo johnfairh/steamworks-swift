@@ -105,6 +105,7 @@
 - ``onSteamNetworkingMessagesSessionRequest(_:)``
 - ``onSteamParentalSettingsChanged(_:)``
 - ``onSteamRelayNetworkStatus(_:)``
+- ``onSteamRemotePlaySessionAvatarLoaded(_:)``
 - ``onSteamRemotePlaySessionConnected(_:)``
 - ``onSteamRemotePlaySessionDisconnected(_:)``
 - ``onSteamRemotePlayTogetherGuestInvite(_:)``
@@ -229,6 +230,7 @@
 - ``steamNetworkingMessagesSessionRequest``
 - ``steamParentalSettingsChanged``
 - ``steamRelayNetworkStatus``
+- ``steamRemotePlaySessionAvatarLoaded``
 - ``steamRemotePlaySessionConnected``
 - ``steamRemotePlaySessionDisconnected``
 - ``steamRemotePlayTogetherGuestInvite``

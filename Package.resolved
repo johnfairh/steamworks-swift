@@ -1,5 +1,5 @@
 {
-  "originHash" : "5653e8021ff825e820ba2a7bc186521c7c6365fc19f98ad31991809dcfe93301",
+  "originHash" : "9e04d42222864d413c750b362ee8c6e9657cd735598068a75558ddaf62f5300b",
   "pins" : [
     {
       "identity" : "swift-atomics",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/apple/swift-atomics.git",
       "state" : {
         "branch" : "main",
-        "revision" : "537d0e74c72e83ad8fa677c718ff11450766b2dd"
+        "revision" : "713601069b7d1fedeb9d0c86fbfb3ce9359a75fb"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-docc-plugin",
       "state" : {
-        "revision" : "3e4f133a77e644a5812911a0513aeb7288b07d06",
-        "version" : "1.4.5"
+        "revision" : "e977f65879f82b375a044c8837597f690c067da6",
+        "version" : "1.4.6"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log.git",
       "state" : {
-        "revision" : "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
-        "version" : "1.6.4"
+        "revision" : "5073617dac96330a486245e4c0179cb0a6fd2256",
+        "version" : "1.12.0"
       }
     },
     {
