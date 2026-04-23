@@ -120,13 +120,15 @@ public final class SteamExecutor: SerialExecutor, @unchecked Sendable {
         self.apiPollDue = .distantPast
         self.jobCount = .init(0)
 
-        Thread.detachNewThread { [unowned self] in
-            Thread.current.qualityOfService = qos
-            Thread.current.name = name
-            thread = Thread.current
+        let thread = Thread { [unowned self] in
             threadMain()
-            thread = nil
+            self.thread = nil
         }
+
+        thread.qualityOfService = qos
+        thread.name = name
+        self.thread = thread
+        thread.start()
     }
 
     /// Create an executor to service a single Steam API client.
