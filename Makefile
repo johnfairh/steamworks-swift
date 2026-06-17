@@ -25,9 +25,8 @@ generate:
 clean:
 	swift package clean
 
-# Random flags here to get around crap Linux C++ support
 test_linux:
-	docker run -v `pwd`:`pwd` -w `pwd` --name steamworks --rm swift:6.2 /bin/bash -c "apt-get update; apt-get install make; (cd sdk && make install); swift test"
+	docker run -v `pwd`:`pwd` -w `pwd` --name steamworks --rm swift:6.3 /bin/bash -c "apt-get update; apt-get install make; (cd sdk && make install); swift test"
 
 shell_linux:
-	docker run -it -v `pwd`:`pwd` -w `pwd` --name steamworks --rm swift:6.2 /bin/bash
+	docker run -it -v `pwd`:`pwd` -w `pwd` --name steamworks --rm swift:6.3 /bin/bash

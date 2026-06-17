@@ -59,7 +59,6 @@
 		0251F12D2A82430B00D70E15 /* DocStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251F12B2A8242EC00D70E15 /* DocStructure.swift */; };
 		0264BCD32865CFBB00AF26D1 /* SteamSwiftTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264BCD22865CFBB00AF26D1 /* SteamSwiftTypes.swift */; };
 		0264BCD52873026B00AF26D1 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264BCD42873026B00AF26D1 /* String+Utils.swift */; };
-		026CDE372FE29EB300D08D3F /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 026CDE362FE29EB300D08D3F /* Yams */; };
 		027F8375274A681F00963383 /* SteamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F8374274A681F00963383 /* SteamID.swift */; };
 		027F8377274BB8E900963383 /* TestSteamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F8376274BB8E900963383 /* TestSteamID.swift */; };
 		027F8379274BC05F00963383 /* GameID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F8378274BC05F00963383 /* GameID.swift */; };
@@ -128,6 +127,7 @@
 		02D309E8272813D000DE64F0 /* SteamBaseAPI+Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309E7272813CF00DE64F0 /* SteamBaseAPI+Callbacks.swift */; };
 		02D309F02729730A00DE64F0 /* SteamGameServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D309EF2729730A00DE64F0 /* SteamGameServerAPI.swift */; };
 		02D4F6672A3F250C0061C798 /* libsteam_api.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02D4F6652A3F24BA0061C798 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		02DF60572FE2DCD600B1BA54 /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 02DF60562FE2DCD600B1BA54 /* Yams */; };
 		02FD863C28D48BC900E4DE85 /* TestHtmlSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD863B28D48BC900E4DE85 /* TestHtmlSurface.swift */; };
 		OBJ_33 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Client.swift */; };
 		OBJ_47 /* TestCallbackImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* TestCallbackImpl.swift */; };
@@ -432,7 +432,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026CDE372FE29EB300D08D3F /* Yams in Frameworks */,
+				02DF60572FE2DCD600B1BA54 /* Yams in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,7 +809,7 @@
 			);
 			name = LibGenerate;
 			packageProductDependencies = (
-				026CDE362FE29EB300D08D3F /* Yams */,
+				02DF60562FE2DCD600B1BA54 /* Yams */,
 			);
 			productName = Generate;
 			productReference = 020860AE273047D100725122 /* LibGenerate.framework */;
@@ -1013,7 +1013,7 @@
 			packageReferences = (
 				02086093272C194A00725122 /* XCRemoteSwiftPackageReference "swift-log" */,
 				021D5CF82BECCBD400AC6757 /* XCRemoteSwiftPackageReference "swift-atomics" */,
-				02F994DE2EBCDF05002027A1 /* XCRemoteSwiftPackageReference "Yams" */,
+				02DF60552FE2DCC700B1BA54 /* XCRemoteSwiftPackageReference "Yams" */,
 			);
 			productRefGroup = OBJ_18 /* Products */;
 			projectDirPath = "";
@@ -2452,12 +2452,12 @@
 				kind = branch;
 			};
 		};
-		02F994DE2EBCDF05002027A1 /* XCRemoteSwiftPackageReference "Yams" */ = {
+		02DF60552FE2DCC700B1BA54 /* XCRemoteSwiftPackageReference "Yams" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:johnfairh/Yams.git";
+			repositoryURL = "https://github.com/jpsim/Yams.git";
 			requirement = {
-				branch = "cyaml-swift-cpp";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2473,9 +2473,9 @@
 			package = 021D5CF82BECCBD400AC6757 /* XCRemoteSwiftPackageReference "swift-atomics" */;
 			productName = Atomics;
 		};
-		026CDE362FE29EB300D08D3F /* Yams */ = {
+		02DF60562FE2DCD600B1BA54 /* Yams */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 02F994DE2EBCDF05002027A1 /* XCRemoteSwiftPackageReference "Yams" */;
+			package = 02DF60552FE2DCC700B1BA54 /* XCRemoteSwiftPackageReference "Yams" */;
 			productName = Yams;
 		};
 /* End XCSwiftPackageProductDependency section */

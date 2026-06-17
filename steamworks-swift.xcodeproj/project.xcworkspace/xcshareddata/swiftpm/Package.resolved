@@ -1,5 +1,5 @@
 {
-  "originHash" : "c853500a5d2eeb2746ef642b40abf22b5d7e876e90de8bf0894898c060296b85",
+  "originHash" : "c03fc818d809bb85548536c25ff3fcd618c0ed550ba69c5f94386d8d76c37a80",
   "pins" : [
     {
       "identity" : "swift-atomics",
@@ -22,10 +22,10 @@
     {
       "identity" : "yams",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:johnfairh/Yams.git",
+      "location" : "https://github.com/jpsim/Yams.git",
       "state" : {
-        "branch" : "cyaml-swift-cpp",
-        "revision" : "87f0ced9f9682d2b5bb1ae1544a311b663abdd33"
+        "revision" : "a27b21e0c81c5bf42049b897a62aaf387e80f279",
+        "version" : "6.2.2"
       }
     }
   ],

@@ -124,7 +124,7 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/apple/swift-log.git", from: "1.4.2"),
-    .package(url: "https://github.com/johnfairh/Yams.git", branch: "cyaml-swift-cpp"),
+    .package(url: "https://github.com/jpsim/Yams.git", from: "6.2.2"),
     .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
     .package(url: "https://github.com/apple/swift-atomics.git", branch: "main"),
   ],
