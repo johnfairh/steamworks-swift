@@ -7,7 +7,7 @@
       "location" : "https://github.com/apple/swift-atomics.git",
       "state" : {
         "branch" : "main",
-        "revision" : "537d0e74c72e83ad8fa677c718ff11450766b2dd"
+        "revision" : "713601069b7d1fedeb9d0c86fbfb3ce9359a75fb"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log.git",
       "state" : {
-        "revision" : "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
-        "version" : "1.6.4"
+        "revision" : "92448c359f00ebe36ae97d3bd9086f13c7692b5a",
+        "version" : "1.13.2"
       }
     },
     {
