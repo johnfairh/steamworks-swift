@@ -13,7 +13,7 @@ internal import CSteamworks
 /// Access via ``SteamAPI/matchmakingServers``.
 public struct SteamMatchmakingServers: Sendable {
     var interface: UnsafeMutablePointer<ISteamMatchmakingServers> {
-        SteamAPI_SteamMatchmakingServers_v002()
+        SteamAPI_SteamMatchmakingServers_v003()
     }
 
     init() {
