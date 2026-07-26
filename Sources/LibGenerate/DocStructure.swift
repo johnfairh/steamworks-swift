@@ -292,7 +292,15 @@ struct DocStructure {
                 typesByKind[kind, default: []].append(swiftType)
             }
             Metadata.extraEnumsFor(header: filename).map {
-                typesByKind[.enum, default: []].append(contentsOf: $0.map(\.swiftType))
+                var enums = typesByKind[.enum, default: []]
+                // eliminate dups caused by 'extra enums' providing defs for stuff
+                // just missing from the json
+                for swiftType in $0.map(\.swiftType) {
+                    if !enums.contains(swiftType) {
+                        enums.append(swiftType)
+                    }
+                }
+                typesByKind[.enum] = enums
             }
             let items = typesByKind.mapValues { $0.sorted() }
 

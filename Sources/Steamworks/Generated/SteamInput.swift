@@ -13,7 +13,7 @@ internal import CSteamworks
 /// Access via ``SteamAPI/input``.
 public struct SteamInput: Sendable {
     var interface: UnsafeMutablePointer<ISteamInput> {
-        SteamAPI_SteamInput_v006()
+        SteamAPI_SteamInput_v007()
     }
 
     init() {

@@ -39,6 +39,30 @@
     "filename": "isteamnetworkingutils.h"
   },
   {
+    "enumname": "ESteamHardwareType",
+    "values": [
+      {"name":"k_ESteamHardwareTypeNone", "value":"0" },
+      {"name":"k_ESteamHardwareTypeSteamDeck", "value":"1" },
+      {"name":"k_ESteamHardwareTypeSteamMachine", "value":"2" },
+      {"name":"k_ESteamHardwareTypeSteamFrame", "value":"3" },
+    ],
+    "filename": "isteamutils.h"
+  },
+  {
+    "enumname": "ESteamHardwareDefaultConfig",
+    "values": [
+      {"name":"k_ESteamHardwareDefaultConfigNone", "value":"0" },
+      {"name":"k_ESteamHardwareDefaultConfigLow", "value":"1" },
+      {"name":"k_ESteamHardwareDefaultConfigMedium", "value":"2" },
+      {"name":"k_ESteamHardwareDefaultConfigHigh", "value":"3" },
+      {"name":"k_ESteamHardwareDefaultConfigMax", "value":"4" },
+      {"name":"k_ESteamHardwareDefaultConfigSteamDeck", "value":"5" },
+      {"name":"k_ESteamHardwareDefaultConfigSteamMachine", "value":"6" },
+      {"name":"k_ESteamHardwareDefaultConfigSteamFrame", "value":"7" },
+    ],
+    "filename": "isteamutils.h"
+  },
+  {
     "enumname": "ESteamNetworkConnectionInfoFlags",
     "values": [
       {"name":"k_nSteamNetworkConnectionInfoFlags_Unauthenticated", "value":"1" },

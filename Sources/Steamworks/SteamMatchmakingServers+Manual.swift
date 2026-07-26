@@ -45,6 +45,11 @@ internal import CSteamworks
 // go back to the generator side and generate all the C++/Swift code here -- seems too
 // special-case.
 
+// XXX GameServerItem -- has fields added in 1.65 (Current/TotalFriendCount) which are
+// XXX missing from the json - don't have facility to express this in patch/extra arch
+// XXX so am ignoring for now.  Myriad other issues here as well - bad release really.
+// XXX Anyway, hope they fix it next time.
+
 // MARK: Client Protocols
 
 /// Steamworks `ISteamMatchmakingServerListResponse`
@@ -83,6 +88,18 @@ public protocol SteamMatchmakingRulesResponse: Sendable {
     func rulesFailedToRespond()
     /// The server has finished responding to the rule details request
     func rulesRefreshComplete()
+}
+
+/// Steamworks `ISteamMatchmakingServerFriendsResponse`
+public protocol SteamMatchmakingServerFriendsResponse: Sendable {
+    /// Got data on a friend who has played on the server -- you'll get this callback once per player
+    /// on the server which you have requested player data on.
+    func addFriendToList(steamID: SteamID, name: String, currentlyConnected: Bool)
+    /// The server failed to respond to the request for player details
+    func friendsFailedToRespond()
+    /// The server has finished responding to the player details request
+    /// (ie, you won't get anymore AddPlayerToList callbacks)
+    func friendsRefreshComplete()
 }
 
 // MARK: Query lifetime interfaces
@@ -238,6 +255,22 @@ extension SteamMatchmakingServers {
         return rc
     }
 
+    /// Steamworks `ISteamMatchmakingServers::ServerFriends()`
+    public func serverFriends(ip: Int, port: UInt16, response: SteamMatchmakingServerFriendsResponse) -> HServerQuery {
+        let shim = CShimServerFriendsResponse.Allocate(MatchmakingServersControl.vtable)
+        let rc = HServerQuery(SteamAPI_ISteamMatchmakingServers_ServerFriends(interface,
+                                                                              UInt32(ip),
+                                                                              port,
+                                                                              shim.pointee.GetSteamInterface()))
+        guard rc != .invalid else {
+            shim.pointee.Deallocate()
+            return .invalid
+        }
+        shim.pointee.handle = rc.value
+        MatchmakingServersControl.bind(handle: rc, friends: response) { shim.pointee.Deallocate() }
+        return rc
+    }
+
     /// Steamworks `ISteamMatchmakingServers::CancelServerQuery()`
     public func cancelServerQuery(_ serverQuery: HServerQuery) {
         MatchmakingServersControl.unbind(handle: serverQuery)
@@ -261,6 +294,7 @@ enum MatchmakingServersControl {
         let ping: SteamMatchmakingPingResponse?
         let players: SteamMatchmakingPlayersResponse?
         let rules: SteamMatchmakingRulesResponse?
+        let friends: SteamMatchmakingServerFriendsResponse?
         let cppDeallocate: () -> Void
     }
 
@@ -327,6 +361,20 @@ enum MatchmakingServersControl {
                 let hsq = HServerQuery(chsq)
                 find(handle: hsq)?.rules?.rulesRefreshComplete()
                 unbind(handle: hsq) // as above
+            },
+            addFriendToList: { chsq, sid, n, c in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.friends?.addFriendToList(steamID: SteamID(sid), name: String(n), currentlyConnected: c)
+            },
+            friendsFailedToRespond: { chsq in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.friends?.friendsFailedToRespond()
+                unbind(handle: hsq) // as above
+            },
+            friendsRefreshComplete: { chsq in
+                let hsq = HServerQuery(chsq)
+                find(handle: hsq)?.friends?.friendsRefreshComplete()
+                unbind(handle: hsq) // as above
             }
         ))
         return UnsafePointer(ptr)
@@ -362,11 +410,13 @@ enum MatchmakingServersControl {
                      ping: SteamMatchmakingPingResponse? = nil,
                      players: SteamMatchmakingPlayersResponse? = nil,
                      rules: SteamMatchmakingRulesResponse? = nil,
+                     friends: SteamMatchmakingServerFriendsResponse? = nil,
                      cppDeallocate: @escaping () -> Void) {
         lock.locked {
             store.queryQueries[handle] = QueryClient(ping: ping,
                                                      players: players,
                                                      rules: rules,
+                                                     friends: friends,
                                                      cppDeallocate: cppDeallocate)
         }
     }

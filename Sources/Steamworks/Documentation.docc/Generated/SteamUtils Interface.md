@@ -11,6 +11,8 @@
 - ``GamepadTextInputLineMode``
 - ``GamepadTextInputMode``
 - ``SteamAPICallFailure``
+- ``SteamHardwareDefaultConfig``
+- ``SteamHardwareType``
 - ``TextFilteringContext``
 
 ### Structures

@@ -644,6 +644,28 @@ extension EFriendRelationship: RawConvertible { typealias From = FriendRelations
 extension FriendRelationship: EnumWithUnrepresented { typealias From = EFriendRelationship }
 extension FriendRelationship: SteamCreatable {}
 
+/// Steamworks `EGamePerformanceSetting`
+public enum GamePerformanceSetting: CUnsignedInt, Sendable {
+    /// Steamworks `k_EGamePerformanceSetting_NotSet`
+    case notSet = 0
+    /// Steamworks `k_EGamePerformanceSetting_Low`
+    case low = 1
+    /// Steamworks `k_EGamePerformanceSetting_Medium`
+    case medium = 2
+    /// Steamworks `k_EGamePerformanceSetting_High`
+    case high = 3
+    /// Steamworks `k_EGamePerformanceSetting_Ultra`
+    case ultra = 4
+    /// Steamworks `k_EGamePerformanceSetting_Custom`
+    case custom = 5
+    /// Some undocumented value
+    case unrepresentedInSwift = 6
+}
+
+extension EGamePerformanceSetting: RawConvertible { typealias From = GamePerformanceSetting }
+extension GamePerformanceSetting: EnumWithUnrepresented { typealias From = EGamePerformanceSetting }
+extension GamePerformanceSetting: SteamCreatable {}
+
 /// Steamworks `EGamepadTextInputLineMode`
 public enum GamepadTextInputLineMode: CUnsignedInt, Sendable {
     /// Steamworks `k_EGamepadTextInputLineModeSingleLine`
@@ -1820,8 +1842,408 @@ public enum InputActionOrigin: CUnsignedInt, Sendable {
     case genericMISC7 = 493
     /// Steamworks `k_EInputActionOrigin_Generic_MISC8`
     case genericMISC8 = 494
+    /// Steamworks `k_EInputActionOrigin_Switch2_A`
+    case switch2A = 495
+    /// Steamworks `k_EInputActionOrigin_Switch2_B`
+    case switch2B = 496
+    /// Steamworks `k_EInputActionOrigin_Switch2_X`
+    case switch2X = 497
+    /// Steamworks `k_EInputActionOrigin_Switch2_Y`
+    case switch2Y = 498
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftBumper`
+    case switch2LeftBumper = 499
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightBumper`
+    case switch2RightBumper = 500
+    /// Steamworks `k_EInputActionOrigin_Switch2_Plus`
+    case switch2Plus = 501
+    /// Steamworks `k_EInputActionOrigin_Switch2_Minus`
+    case switch2Minus = 502
+    /// Steamworks `k_EInputActionOrigin_Switch2_Capture`
+    case switch2Capture = 503
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftTrigger_Pull`
+    case switch2LeftTriggerPull = 504
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftTrigger_Click`
+    case switch2LeftTriggerClick = 505
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightTrigger_Pull`
+    case switch2RightTriggerPull = 506
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightTrigger_Click`
+    case switch2RightTriggerClick = 507
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftStick_Move`
+    case switch2LeftStickMove = 508
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftStick_Click`
+    case switch2LeftStickClick = 509
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftStick_DPadNorth`
+    case switch2LeftStickDPadNorth = 510
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftStick_DPadSouth`
+    case switch2LeftStickDPadSouth = 511
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftStick_DPadWest`
+    case switch2LeftStickDPadWest = 512
+    /// Steamworks `k_EInputActionOrigin_Switch2_LeftStick_DPadEast`
+    case switch2LeftStickDPadEast = 513
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightStick_Move`
+    case switch2RightStickMove = 514
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightStick_Click`
+    case switch2RightStickClick = 515
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightStick_DPadNorth`
+    case switch2RightStickDPadNorth = 516
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightStick_DPadSouth`
+    case switch2RightStickDPadSouth = 517
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightStick_DPadWest`
+    case switch2RightStickDPadWest = 518
+    /// Steamworks `k_EInputActionOrigin_Switch2_RightStick_DPadEast`
+    case switch2RightStickDPadEast = 519
+    /// Steamworks `k_EInputActionOrigin_Switch2_DPad_Move`
+    case switch2DPadMove = 520
+    /// Steamworks `k_EInputActionOrigin_Switch2_DPad_North`
+    case switch2DPadNorth = 521
+    /// Steamworks `k_EInputActionOrigin_Switch2_DPad_South`
+    case switch2DPadSouth = 522
+    /// Steamworks `k_EInputActionOrigin_Switch2_DPad_West`
+    case switch2DPadWest = 523
+    /// Steamworks `k_EInputActionOrigin_Switch2_DPad_East`
+    case switch2DPadEast = 524
+    /// Steamworks `k_EInputActionOrigin_Switch2_ProGyro_Move`
+    case switch2ProGyroMove = 525
+    /// Steamworks `k_EInputActionOrigin_Switch2_ProGyro_Pitch`
+    case switch2ProGyroPitch = 526
+    /// Steamworks `k_EInputActionOrigin_Switch2_ProGyro_Yaw`
+    case switch2ProGyroYaw = 527
+    /// Steamworks `k_EInputActionOrigin_Switch2_ProGyro_Roll`
+    case switch2ProGyroRoll = 528
+    /// Steamworks `k_EInputActionOrigin_Switch2_GL`
+    case switch2GL = 529
+    /// Steamworks `k_EInputActionOrigin_Switch2_GR`
+    case switch2GR = 530
+    /// Steamworks `k_EInputActionOrigin_Switch2_C`
+    case switch2C = 531
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved1`
+    case switch2Reserved1 = 532
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved2`
+    case switch2Reserved2 = 533
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved3`
+    case switch2Reserved3 = 534
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved4`
+    case switch2Reserved4 = 535
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved5`
+    case switch2Reserved5 = 536
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved6`
+    case switch2Reserved6 = 537
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved7`
+    case switch2Reserved7 = 538
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved8`
+    case switch2Reserved8 = 539
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved9`
+    case switch2Reserved9 = 540
+    /// Steamworks `k_EInputActionOrigin_Switch2_Reserved10`
+    case switch2Reserved10 = 541
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_A`
+    case steamController2026A = 542
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_B`
+    case steamController2026B = 543
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_X`
+    case steamController2026X = 544
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Y`
+    case steamController2026Y = 545
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_L1`
+    case steamController2026L1 = 546
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_R1`
+    case steamController2026R1 = 547
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Menu`
+    case steamController2026Menu = 548
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_View`
+    case steamController2026View = 549
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftPad_Touch`
+    case steamController2026LeftPadTouch = 550
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftPad_Swipe`
+    case steamController2026LeftPadSwipe = 551
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftPad_Click`
+    case steamController2026LeftPadClick = 552
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftPad_DPadNorth`
+    case steamController2026LeftPadDPadNorth = 553
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftPad_DPadSouth`
+    case steamController2026LeftPadDPadSouth = 554
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftPad_DPadWest`
+    case steamController2026LeftPadDPadWest = 555
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftPad_DPadEast`
+    case steamController2026LeftPadDPadEast = 556
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightPad_Touch`
+    case steamController2026RightPadTouch = 557
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightPad_Swipe`
+    case steamController2026RightPadSwipe = 558
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightPad_Click`
+    case steamController2026RightPadClick = 559
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightPad_DPadNorth`
+    case steamController2026RightPadDPadNorth = 560
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightPad_DPadSouth`
+    case steamController2026RightPadDPadSouth = 561
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightPad_DPadWest`
+    case steamController2026RightPadDPadWest = 562
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightPad_DPadEast`
+    case steamController2026RightPadDPadEast = 563
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_L2_SoftPull`
+    case steamController2026L2SoftPull = 564
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_L2`
+    case steamController2026L2 = 565
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_R2_SoftPull`
+    case steamController2026R2SoftPull = 566
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_R2`
+    case steamController2026R2 = 567
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftStick_Move`
+    case steamController2026LeftStickMove = 568
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_L3`
+    case steamController2026L3 = 569
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftStick_DPadNorth`
+    case steamController2026LeftStickDPadNorth = 570
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftStick_DPadSouth`
+    case steamController2026LeftStickDPadSouth = 571
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftStick_DPadWest`
+    case steamController2026LeftStickDPadWest = 572
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftStick_DPadEast`
+    case steamController2026LeftStickDPadEast = 573
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LeftStick_Touch`
+    case steamController2026LeftStickTouch = 574
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightStick_Move`
+    case steamController2026RightStickMove = 575
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_R3`
+    case steamController2026R3 = 576
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightStick_DPadNorth`
+    case steamController2026RightStickDPadNorth = 577
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightStick_DPadSouth`
+    case steamController2026RightStickDPadSouth = 578
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightStick_DPadWest`
+    case steamController2026RightStickDPadWest = 579
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightStick_DPadEast`
+    case steamController2026RightStickDPadEast = 580
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RightStick_Touch`
+    case steamController2026RightStickTouch = 581
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_L4`
+    case steamController2026L4 = 582
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_R4`
+    case steamController2026R4 = 583
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_L5`
+    case steamController2026L5 = 584
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_R5`
+    case steamController2026R5 = 585
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_DPad_Move`
+    case steamController2026DPadMove = 586
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_DPad_North`
+    case steamController2026DPadNorth = 587
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_DPad_South`
+    case steamController2026DPadSouth = 588
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_DPad_West`
+    case steamController2026DPadWest = 589
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_DPad_East`
+    case steamController2026DPadEast = 590
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Gyro_Move`
+    case steamController2026GyroMove = 591
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Gyro_Pitch`
+    case steamController2026GyroPitch = 592
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Gyro_Yaw`
+    case steamController2026GyroYaw = 593
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Gyro_Roll`
+    case steamController2026GyroRoll = 594
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_LGrip`
+    case steamController2026LGrip = 595
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_RGrip`
+    case steamController2026RGrip = 596
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved1`
+    case steamController2026Reserved1 = 597
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved2`
+    case steamController2026Reserved2 = 598
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved3`
+    case steamController2026Reserved3 = 599
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved4`
+    case steamController2026Reserved4 = 600
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved5`
+    case steamController2026Reserved5 = 601
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved6`
+    case steamController2026Reserved6 = 602
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved7`
+    case steamController2026Reserved7 = 603
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved8`
+    case steamController2026Reserved8 = 604
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved9`
+    case steamController2026Reserved9 = 605
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved10`
+    case steamController2026Reserved10 = 606
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved11`
+    case steamController2026Reserved11 = 607
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved12`
+    case steamController2026Reserved12 = 608
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved13`
+    case steamController2026Reserved13 = 609
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved14`
+    case steamController2026Reserved14 = 610
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved15`
+    case steamController2026Reserved15 = 611
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved16`
+    case steamController2026Reserved16 = 612
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved17`
+    case steamController2026Reserved17 = 613
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved18`
+    case steamController2026Reserved18 = 614
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved19`
+    case steamController2026Reserved19 = 615
+    /// Steamworks `k_EInputActionOrigin_SteamController2026_Reserved20`
+    case steamController2026Reserved20 = 616
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_A_Click`
+    case steamFrameControllerAClick = 617
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_A_Touch`
+    case steamFrameControllerATouch = 618
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_B_Click`
+    case steamFrameControllerBClick = 619
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_B_Touch`
+    case steamFrameControllerBTouch = 620
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_X_Click`
+    case steamFrameControllerXClick = 621
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_X_Touch`
+    case steamFrameControllerXTouch = 622
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Y_Click`
+    case steamFrameControllerYClick = 623
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Y_Touch`
+    case steamFrameControllerYTouch = 624
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftTrigger_Pull`
+    case steamFrameControllerLeftTriggerPull = 625
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftTrigger_Click`
+    case steamFrameControllerLeftTriggerClick = 626
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftTrigger_Touch`
+    case steamFrameControllerLeftTriggerTouch = 627
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightTrigger_Pull`
+    case steamFrameControllerRightTriggerPull = 628
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightTrigger_Click`
+    case steamFrameControllerRightTriggerClick = 629
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightTrigger_Touch`
+    case steamFrameControllerRightTriggerTouch = 630
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Menu_Click`
+    case steamFrameControllerMenuClick = 631
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Menu_Touch`
+    case steamFrameControllerMenuTouch = 632
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_View_Click`
+    case steamFrameControllerViewClick = 633
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_View_Touch`
+    case steamFrameControllerViewTouch = 634
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftBumper_Click`
+    case steamFrameControllerLeftBumperClick = 635
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftBumper_Touch`
+    case steamFrameControllerLeftBumperTouch = 636
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightBumper_Click`
+    case steamFrameControllerRightBumperClick = 637
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightBumper_Touch`
+    case steamFrameControllerRightBumperTouch = 638
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftStick_Move`
+    case steamFrameControllerLeftStickMove = 639
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftStick_Click`
+    case steamFrameControllerLeftStickClick = 640
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftStick_DPadNorth`
+    case steamFrameControllerLeftStickDPadNorth = 641
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftStick_DPadSouth`
+    case steamFrameControllerLeftStickDPadSouth = 642
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftStick_DPadWest`
+    case steamFrameControllerLeftStickDPadWest = 643
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftStick_DPadEast`
+    case steamFrameControllerLeftStickDPadEast = 644
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftStick_Touch`
+    case steamFrameControllerLeftStickTouch = 645
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightStick_Move`
+    case steamFrameControllerRightStickMove = 646
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightStick_Click`
+    case steamFrameControllerRightStickClick = 647
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightStick_DPadNorth`
+    case steamFrameControllerRightStickDPadNorth = 648
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightStick_DPadSouth`
+    case steamFrameControllerRightStickDPadSouth = 649
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightStick_DPadWest`
+    case steamFrameControllerRightStickDPadWest = 650
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightStick_DPadEast`
+    case steamFrameControllerRightStickDPadEast = 651
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightStick_Touch`
+    case steamFrameControllerRightStickTouch = 652
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_DPad_Move`
+    case steamFrameControllerDPadMove = 653
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_DPad_North`
+    case steamFrameControllerDPadNorth = 654
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_DPad_South`
+    case steamFrameControllerDPadSouth = 655
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_DPad_West`
+    case steamFrameControllerDPadWest = 656
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_DPad_East`
+    case steamFrameControllerDPadEast = 657
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_DPad_Touch`
+    case steamFrameControllerDPadTouch = 658
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftGyro_Move`
+    case steamFrameControllerLeftGyroMove = 659
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftGyro_Pitch`
+    case steamFrameControllerLeftGyroPitch = 660
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftGyro_Yaw`
+    case steamFrameControllerLeftGyroYaw = 661
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftGyro_Roll`
+    case steamFrameControllerLeftGyroRoll = 662
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightGyro_Move`
+    case steamFrameControllerRightGyroMove = 663
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightGyro_Pitch`
+    case steamFrameControllerRightGyroPitch = 664
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightGyro_Yaw`
+    case steamFrameControllerRightGyroYaw = 665
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightGyro_Roll`
+    case steamFrameControllerRightGyroRoll = 666
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftGrip_Pull`
+    case steamFrameControllerLeftGripPull = 667
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftGrip_Click`
+    case steamFrameControllerLeftGripClick = 668
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftGrip_Touch`
+    case steamFrameControllerLeftGripTouch = 669
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightGrip_Pull`
+    case steamFrameControllerRightGripPull = 670
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightGrip_Click`
+    case steamFrameControllerRightGripClick = 671
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightGrip_Touch`
+    case steamFrameControllerRightGripTouch = 672
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_LeftThumbrest_Touch`
+    case steamFrameControllerLeftThumbrestTouch = 673
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_RightThumbrest_Touch`
+    case steamFrameControllerRightThumbrestTouch = 674
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved1`
+    case steamFrameControllerReserved1 = 675
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved2`
+    case steamFrameControllerReserved2 = 676
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved3`
+    case steamFrameControllerReserved3 = 677
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved4`
+    case steamFrameControllerReserved4 = 678
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved5`
+    case steamFrameControllerReserved5 = 679
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved6`
+    case steamFrameControllerReserved6 = 680
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved7`
+    case steamFrameControllerReserved7 = 681
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved8`
+    case steamFrameControllerReserved8 = 682
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved9`
+    case steamFrameControllerReserved9 = 683
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved10`
+    case steamFrameControllerReserved10 = 684
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved11`
+    case steamFrameControllerReserved11 = 685
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved12`
+    case steamFrameControllerReserved12 = 686
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved13`
+    case steamFrameControllerReserved13 = 687
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved14`
+    case steamFrameControllerReserved14 = 688
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved15`
+    case steamFrameControllerReserved15 = 689
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved16`
+    case steamFrameControllerReserved16 = 690
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved17`
+    case steamFrameControllerReserved17 = 691
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved18`
+    case steamFrameControllerReserved18 = 692
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved19`
+    case steamFrameControllerReserved19 = 693
+    /// Steamworks `k_EInputActionOrigin_SteamFrameController_Reserved20`
+    case steamFrameControllerReserved20 = 694
     /// Steamworks `k_EInputActionOrigin_Count`
-    case count = 495
+    case count = 695
     /// Steamworks `k_EInputActionOrigin_MaximumPossibleValue`
     case maximumPossibleValue = 32767
     /// Some undocumented value
@@ -3057,11 +3479,19 @@ extension SteamAPIInitResult: SteamCreatable {}
 /// Steamworks `ESteamControllerPad`
 public enum SteamControllerPad: CUnsignedInt, Sendable {
     /// Steamworks `k_ESteamControllerPad_Left`
-    case left = 0
+    case padLeft = 0
     /// Steamworks `k_ESteamControllerPad_Right`
-    case right = 1
+    case padRight = 1
+    /// Steamworks `k_ESteamControllerPad_Both`
+    case padBoth = 2
+    /// Steamworks `k_ESteamControllerGrip_Left`
+    case gripLeft = 3
+    /// Steamworks `k_ESteamControllerGrip_Right`
+    case gripRight = 4
+    /// Steamworks `k_ESteamControllerGrip_Both`
+    case gripBoth = 5
     /// Some undocumented value
-    case unrepresentedInSwift = 2
+    case unrepresentedInSwift = 6
 }
 
 extension ESteamControllerPad: RawConvertible { typealias From = SteamControllerPad }
@@ -3089,6 +3519,50 @@ public enum SteamDeviceFormFactor: CUnsignedInt, Sendable {
 extension ESteamDeviceFormFactor: RawConvertible { typealias From = SteamDeviceFormFactor }
 extension SteamDeviceFormFactor: EnumWithUnrepresented { typealias From = ESteamDeviceFormFactor }
 extension SteamDeviceFormFactor: SteamCreatable {}
+
+/// Steamworks `ESteamHardwareDefaultConfig`
+public enum SteamHardwareDefaultConfig: CUnsignedInt, Sendable {
+    /// Steamworks `k_ESteamHardwareDefaultConfigNone`
+    case none = 0
+    /// Steamworks `k_ESteamHardwareDefaultConfigLow`
+    case low = 1
+    /// Steamworks `k_ESteamHardwareDefaultConfigMedium`
+    case medium = 2
+    /// Steamworks `k_ESteamHardwareDefaultConfigHigh`
+    case high = 3
+    /// Steamworks `k_ESteamHardwareDefaultConfigMax`
+    case max = 4
+    /// Steamworks `k_ESteamHardwareDefaultConfigSteamDeck`
+    case steamDeck = 5
+    /// Steamworks `k_ESteamHardwareDefaultConfigSteamMachine`
+    case steamMachine = 6
+    /// Steamworks `k_ESteamHardwareDefaultConfigSteamFrame`
+    case steamFrame = 7
+    /// Some undocumented value
+    case unrepresentedInSwift = 8
+}
+
+extension ESteamHardwareDefaultConfig: RawConvertible { typealias From = SteamHardwareDefaultConfig }
+extension SteamHardwareDefaultConfig: EnumWithUnrepresented { typealias From = ESteamHardwareDefaultConfig }
+extension SteamHardwareDefaultConfig: SteamCreatable {}
+
+/// Steamworks `ESteamHardwareType`
+public enum SteamHardwareType: CUnsignedInt, Sendable {
+    /// Steamworks `k_ESteamHardwareTypeNone`
+    case none = 0
+    /// Steamworks `k_ESteamHardwareTypeSteamDeck`
+    case steamDeck = 1
+    /// Steamworks `k_ESteamHardwareTypeSteamMachine`
+    case steamMachine = 2
+    /// Steamworks `k_ESteamHardwareTypeSteamFrame`
+    case steamFrame = 3
+    /// Some undocumented value
+    case unrepresentedInSwift = 4
+}
+
+extension ESteamHardwareType: RawConvertible { typealias From = SteamHardwareType }
+extension SteamHardwareType: EnumWithUnrepresented { typealias From = ESteamHardwareType }
+extension SteamHardwareType: SteamCreatable {}
 
 /// Steamworks `ESteamIPType`
 public enum SteamIPType: CUnsignedInt, Sendable {
@@ -3260,8 +3734,16 @@ public enum SteamInputType: CUnsignedInt, Sendable {
     case ps5Controller = 13
     /// Steamworks `k_ESteamInputType_SteamDeckController`
     case steamDeckController = 14
+    /// Steamworks `k_ESteamInputType_SteamOSHandheld`
+    case steamOSHandheld = 15
+    /// Steamworks `k_ESteamInputType_Switch2ProController`
+    case switch2ProController = 16
+    /// Steamworks `k_ESteamInputType_SteamController2026`
+    case steamController2026 = 17
+    /// Steamworks `k_ESteamInputType_SteamFrameControllerPair`
+    case steamFrameControllerPair = 18
     /// Steamworks `k_ESteamInputType_Count`
-    case count = 15
+    case count = 19
     /// Steamworks `k_ESteamInputType_MaximumPossibleValue`
     case maximumPossibleValue = 255
     /// Some undocumented value
@@ -3962,8 +4444,12 @@ public enum UGCQuery: CUnsignedInt, Sendable {
     case rankedByLifetimePlaytimeSessions = 18
     /// Steamworks `k_EUGCQuery_RankedByLastUpdatedDate`
     case rankedByLastUpdatedDate = 19
+    /// Steamworks `k_EUGCQuery_RankedByNumParentItems`
+    case rankedByNumParentItems = 20
+    /// Steamworks `k_EUGCQuery_RankedByNumParentCollections`
+    case rankedByNumParentCollections = 21
     /// Some undocumented value
-    case unrepresentedInSwift = 20
+    case unrepresentedInSwift = 22
 }
 
 extension EUGCQuery: RawConvertible { typealias From = UGCQuery }

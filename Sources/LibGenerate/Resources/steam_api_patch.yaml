@@ -147,6 +147,8 @@ enums:
     ignore: "deprecated steamnetworking"
   ESteamControllerLEDFlag:
     ignore: "deprecated steamcontroller"
+  ESteamControllerPad:
+    prefix: k_ESteamController
   ESteamInputGlyphStyle:
     is_set: UInt32 # guess, not used anywhere yet?
   ESteamInputConfigurationEnableType:
@@ -744,9 +746,9 @@ methods:
         array_count: nOptions
   SteamAPI_ISteamNetworkingSockets_CreateSocketPair:
     params:
-      pIdentity1:
+      pPeerIdentity1:
         nullable: true
-      pIdentity2:
+      pPeerIdentity2:
         nullable: true
   SteamAPI_ISteamNetworkingSockets_DestroyPollGroup:
     discardable_result: true
@@ -1278,6 +1280,8 @@ methods:
     params:
       unFilterOptions:
         default_value: 0
+  SteamAPI_ISteamUtils_IsSteamRunningOnSteamDeck:
+    ignore: "Deprecated"
 
 #
 # ISteamVideo
@@ -1428,8 +1432,12 @@ interfaces:
     ignore: "Private / weird"
   ISteamController:
     ignore: "Deprecated"
+  ISteamGameServerUtils:
+    getter: "SteamAPI_SteamGameServerUtils_v011"
   ISteamMatchmakingServerListResponse:
     ignore: "Callbacks"
+  ISteamMatchmakingServers:
+    getter: "SteamAPI_SteamMatchmakingServers_v003"
   ISteamMatchmakingPingResponse:
     ignore: "Callbacks"
   ISteamMatchmakingPlayersResponse:
@@ -1444,3 +1452,5 @@ interfaces:
     real_classname: OpaquePointer
   ISteamNetworkingUtils:
     real_classname: OpaquePointer
+  ISteamUtils:
+    getter: "SteamAPI_SteamUtils_v011"

@@ -12,6 +12,9 @@
     - name: Interfaces
       children:
         - SteamApps
+    - name: Enumerations and Option Sets
+      children:
+        - GamePerformanceSetting
     - name: Structures
       children:
         - FileDetailsResult
@@ -597,6 +600,8 @@
         - GamepadTextInputLineMode
         - GamepadTextInputMode
         - SteamAPICallFailure
+        - SteamHardwareDefaultConfig
+        - SteamHardwareType
         - TextFilteringContext
     - name: Structures
       children:

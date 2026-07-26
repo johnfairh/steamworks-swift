@@ -5,6 +5,9 @@
 ### Interfaces
 - ``SteamApps``
 
+### Enumerations and Option Sets
+- ``GamePerformanceSetting``
+
 ### Structures
 - ``FileDetailsResult``
 

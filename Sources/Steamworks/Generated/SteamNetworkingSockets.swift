@@ -14,7 +14,7 @@ internal import CSteamworks
 public struct SteamNetworkingSockets: Sendable {
     private let isServer: Bool
     var interface: OpaquePointer {
-        isServer ? SteamAPI_SteamGameServerNetworkingSockets_SteamAPI_v012() : SteamAPI_SteamNetworkingSockets_SteamAPI_v012()
+        isServer ? SteamAPI_SteamGameServerNetworkingSockets_SteamAPI_v013() : SteamAPI_SteamNetworkingSockets_SteamAPI_v013()
     }
 
     init(isServer: Bool) {
@@ -102,14 +102,14 @@ public struct SteamNetworkingSockets: Sendable {
     }
 
     /// Steamworks `ISteamNetworkingSockets::CreateSocketPair()`
-    public func createSocketPair(useNetworkLoopback: Bool, identity1: SteamNetworkingIdentity?, identity2: SteamNetworkingIdentity?) -> (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection) {
+    public func createSocketPair(useNetworkLoopback: Bool, peerIdentity1: SteamNetworkingIdentity?, peerIdentity2: SteamNetworkingIdentity?) -> (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection) {
         var tmpConnection1 = CSteamworks.HSteamNetConnection()
         var tmpConnection2 = CSteamworks.HSteamNetConnection()
-        let tmpIdentity1 = SteamNullable<CSteamworks.SteamNetworkingIdentity>(identity1)
-        defer { tmpIdentity1.deallocate() }
-        let tmpIdentity2 = SteamNullable<CSteamworks.SteamNetworkingIdentity>(identity2)
-        defer { tmpIdentity2.deallocate() }
-        let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmpConnection1, &tmpConnection2, useNetworkLoopback, tmpIdentity1.steamValue, tmpIdentity2.steamValue)
+        let tmpPeerIdentity1 = SteamNullable<CSteamworks.SteamNetworkingIdentity>(peerIdentity1)
+        defer { tmpPeerIdentity1.deallocate() }
+        let tmpPeerIdentity2 = SteamNullable<CSteamworks.SteamNetworkingIdentity>(peerIdentity2)
+        defer { tmpPeerIdentity2.deallocate() }
+        let rc = SteamAPI_ISteamNetworkingSockets_CreateSocketPair(interface, &tmpConnection1, &tmpConnection2, useNetworkLoopback, tmpPeerIdentity1.steamValue, tmpPeerIdentity2.steamValue)
         return (rc: rc, connection1: HSteamNetConnection(tmpConnection1), connection2: HSteamNetConnection(tmpConnection2))
     }
 
@@ -300,10 +300,10 @@ public struct SteamNetworkingSockets: Sendable {
     }
 
     /// Steamworks `ISteamNetworkingSockets::SendMessages()`
-    public func sendMessages(messages: [SteamNetworkingMessage], returnMessageNumberOrResult: Bool = true) -> [Int] {
+    public func sendMessages(messages: [SteamNetworkingMessage], returnMessageNumberOrResult: Bool = true, deleteFailedMessages: Bool) -> [Int] {
         var tmpMessages = messages.map { OpaquePointer?($0) }
         let tmpMessageNumberOrResult = SteamOutArray<int64>(messages.count, returnMessageNumberOrResult)
-        SteamAPI_ISteamNetworkingSockets_SendMessages(interface, CInt(messages.count), &tmpMessages, tmpMessageNumberOrResult.steamArray)
+        SteamAPI_ISteamNetworkingSockets_SendMessages(interface, CInt(messages.count), &tmpMessages, tmpMessageNumberOrResult.steamArray, deleteFailedMessages)
         return tmpMessageNumberOrResult.swiftArray()
     }
 

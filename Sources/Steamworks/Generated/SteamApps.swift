@@ -234,6 +234,16 @@ public struct SteamApps: Sendable {
         SteamAPI_ISteamApps_SetDlcContext(interface, AppId_t(appID))
     }
 
+    /// Steamworks `ISteamApps::SetGamePerformanceSetting()`
+    public func setGamePerformanceSetting(setting: GamePerformanceSetting) {
+        SteamAPI_ISteamApps_SetGamePerformanceSetting(interface, EGamePerformanceSetting(setting))
+    }
+
+    /// Steamworks `ISteamApps::SetGameRenderResolution()`
+    public func setGameRenderResolution(width: Int, height: Int) {
+        SteamAPI_ISteamApps_SetGameRenderResolution(interface, uint32(width), uint32(height))
+    }
+
     /// Steamworks `ISteamApps::UninstallDLC()`
     public func uninstallDLC(appID: AppID) {
         SteamAPI_ISteamApps_UninstallDLC(interface, AppId_t(appID))

@@ -17,6 +17,7 @@ typedef void (__cdecl *ShimPingResponded_t)(HServerQuery, _Nonnull gameserverite
 typedef void (__cdecl *ShimServerQuery_t)(HServerQuery);
 typedef void (__cdecl *ShimAddPlayerToList_t)(HServerQuery, const char *, int, float);
 typedef void (__cdecl *ShimRulesResponded_t)(HServerQuery, const char *, const char *);
+typedef void (__cdecl *ShimAddFriendToList_t)(HServerQuery, CSteamID, const char *, bool);
 
 struct ShimMatchmakingVTable_t {
     ShimServerResponded_t serverResponded;
@@ -30,6 +31,9 @@ struct ShimMatchmakingVTable_t {
     ShimRulesResponded_t rulesResponded;
     ShimServerQuery_t rulesFailedToRespond;
     ShimServerQuery_t rulesRefreshComplete;
+    ShimAddFriendToList_t addFriendToList;
+    ShimServerQuery_t friendsFailedToRespond;
+    ShimServerQuery_t friendsRefreshComplete;
 };
 
 } // extern "C"
@@ -186,6 +190,45 @@ class CShimRulesResponse: ISteamMatchmakingRulesResponse {
     // The server has finished responding to the rule details request
     void RulesRefreshComplete() {
         vtable->rulesRefreshComplete(handle);
+    }
+};
+
+class CShimServerFriendsResponse: ISteamMatchmakingServerFriendsResponse {
+    const ShimMatchmakingVTable_t *vtable;
+
+    CShimServerFriendsResponse(const ShimMatchmakingVTable_t *vtable): vtable(vtable) {
+    }
+  public:
+    static _Nonnull CShimServerFriendsResponse *Allocate(const ShimMatchmakingVTable_t *vtable) {
+        return new CShimServerFriendsResponse(vtable);
+    }
+
+    void Deallocate() {
+        delete this;
+    }
+
+    _Nonnull ISteamMatchmakingServerFriendsResponse *GetSteamInterface() {
+        return this;
+    }
+
+    HServerQuery handle;
+
+    // Overrides
+
+    // Got data on a friend who has played on the server
+    void AddFriendToList( CSteamID steamID, const char *pchName, bool bCurrentlyConnected ) {
+        vtable->addFriendToList(handle, steamID, pchName, bCurrentlyConnected);
+    }
+
+    // The server failed to respond to the request for player details
+    void FriendsFailedToRespond() {
+        vtable->friendsFailedToRespond(handle);
+    }
+
+    // The server has finished responding to the player details request
+    // (ie, you won't get anymore AddPlayerToList callbacks)
+    void FriendsRefreshComplete() {
+        vtable->friendsRefreshComplete(handle);
     }
 };
 
