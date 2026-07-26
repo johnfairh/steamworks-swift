@@ -12,8 +12,6 @@
 - ``GamepadTextInputMode``
 - ``SteamAPICallFailure``
 - ``SteamHardwareDefaultConfig``
-- ``SteamHardwareDefaultConfig``
-- ``SteamHardwareType``
 - ``SteamHardwareType``
 - ``TextFilteringContext``
 

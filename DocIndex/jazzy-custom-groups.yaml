@@ -601,8 +601,6 @@
         - GamepadTextInputMode
         - SteamAPICallFailure
         - SteamHardwareDefaultConfig
-        - SteamHardwareDefaultConfig
-        - SteamHardwareType
         - SteamHardwareType
         - TextFilteringContext
     - name: Structures
