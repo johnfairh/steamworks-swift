@@ -21,6 +21,11 @@ class TestApiSimple: XCTestCase {
         print("friendCount = \(friendCount)")
         let nickname = steam.friends.getPlayerNickname(player: SteamID(22))
         XCTAssertNil(nickname)
+        let hwType = steam.utils.isRunningOnSteamHardware()
+        let hwConfig = steam.utils.getSteamHardwareDefaultConfig()
+        print("Steam HWType and Config: \(hwType) \(hwConfig)")
+        XCTAssertEqual(hwType, .none)
+        XCTAssertEqual(hwConfig, .none) // ??
     }
 
     /// CallReturn -- async callbacks

@@ -164,3 +164,17 @@ extension SteamUtils {
         return (rc: rc, text: tmpText.swiftString)
     }
 }
+
+// Stuff missing from the 1.65 json
+
+extension SteamUtils {
+    /// Steamworks `ISteamUtils::IsRunningOnSteamHardware()`
+    public func isRunningOnSteamHardware() -> SteamHardwareType {
+        SteamHardwareType(SteamAPI_ISteamUtils_IsRunningOnSteamHardware(interface))
+    }
+
+    /// Steamworks `ISteamUtils::GetSteamHardwareDefaultConfig()`
+    public func getSteamHardwareDefaultConfig() -> SteamHardwareDefaultConfig {
+        SteamHardwareDefaultConfig(SteamAPI_ISteamUtils_GetSteamHardwareDefaultConfig(interface))
+    }
+}
