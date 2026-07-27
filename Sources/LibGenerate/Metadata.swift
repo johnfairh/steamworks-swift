@@ -370,12 +370,12 @@ struct MetadataDB: Sendable {
                 let g = accessorMap["gameserver"]
                 if let u = u {
                     if let g = g {
-                        access = .userAndServer(ipatch?.getter ?? u, ipatch?.getter ?? g)
+                        access = .userAndServer(u, g)
                     } else {
-                        access = .user(ipatch?.getter ?? u)
+                        access = .user(u)
                     }
                 } else if let g = g {
-                    access = .gameserver(ipatch?.getter ?? g)
+                    access = .gameserver(g)
                 } else {
                     preconditionFailure("Confused by accessors for \(base.classname)")
                 }

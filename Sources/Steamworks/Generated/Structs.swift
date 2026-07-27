@@ -5532,9 +5532,13 @@ public struct GameServerItem: Sendable {
     public let gameTags: String
     /// Steamworks `m_steamID`
     public let steamID: SteamID
+    /// Steamworks `m_nCurrentFriendCount`
+    public let currentFriendCount: Int
+    /// Steamworks `m_nTotalFriendCount`
+    public let totalFriendCount: Int
 
     /// Create a customized `GameServerItem`
-    public init(netAdr: ServerNetAdr = ServerNetAdr(), ping: Int = 0, hadSuccessfulResponse: Bool = false, doNotRefresh: Bool = false, gameDir: String = "", map: String = "", gameDescription: String = "", appID: AppID = 0, players: Int = 0, maxPlayers: Int = 0, botPlayers: Int = 0, password: Bool = false, secure: Bool = false, timeLastPlayed: RTime32 = 0, serverVersion: Int = 0, gameTags: String = "", steamID: SteamID = SteamID()) {
+    public init(netAdr: ServerNetAdr = ServerNetAdr(), ping: Int = 0, hadSuccessfulResponse: Bool = false, doNotRefresh: Bool = false, gameDir: String = "", map: String = "", gameDescription: String = "", appID: AppID = 0, players: Int = 0, maxPlayers: Int = 0, botPlayers: Int = 0, password: Bool = false, secure: Bool = false, timeLastPlayed: RTime32 = 0, serverVersion: Int = 0, gameTags: String = "", steamID: SteamID = SteamID(), currentFriendCount: Int = 0, totalFriendCount: Int = 0) {
         self.netAdr = netAdr
         self.ping = ping
         self.hadSuccessfulResponse = hadSuccessfulResponse
@@ -5552,6 +5556,8 @@ public struct GameServerItem: Sendable {
         self.serverVersion = serverVersion
         self.gameTags = gameTags
         self.steamID = steamID
+        self.currentFriendCount = currentFriendCount
+        self.totalFriendCount = totalFriendCount
     }
 }
 
@@ -5575,5 +5581,7 @@ extension GameServerItem: SteamCreatable {
         serverVersion = .init(steam.m_nServerVersion)
         gameTags = .init(steam.m_szGameTags_ptr)
         steamID = .init(steam.m_steamID)
+        currentFriendCount = .init(steam.m_nCurrentFriendCount)
+        totalFriendCount = .init(steam.m_nTotalFriendCount)
     }
 }

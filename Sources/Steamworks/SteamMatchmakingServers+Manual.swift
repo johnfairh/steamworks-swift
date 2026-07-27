@@ -45,11 +45,6 @@ internal import CSteamworks
 // go back to the generator side and generate all the C++/Swift code here -- seems too
 // special-case.
 
-// XXX GameServerItem -- has fields added in 1.65 (Current/TotalFriendCount) which are
-// XXX missing from the json - don't have facility to express this in patch/extra arch
-// XXX so am ignoring for now.  Myriad other issues here as well - bad release really.
-// XXX Anyway, hope they fix it next time.
-
 // MARK: Client Protocols
 
 /// Steamworks `ISteamMatchmakingServerListResponse`

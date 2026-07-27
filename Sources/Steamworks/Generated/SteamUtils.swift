@@ -14,7 +14,7 @@ internal import CSteamworks
 public struct SteamUtils: Sendable {
     private let isServer: Bool
     var interface: UnsafeMutablePointer<ISteamUtils> {
-        isServer ? SteamAPI_SteamUtils_v011() : SteamAPI_SteamUtils_v011()
+        isServer ? SteamAPI_SteamGameServerUtils_v011() : SteamAPI_SteamUtils_v011()
     }
 
     init(isServer: Bool) {
@@ -150,6 +150,11 @@ public struct SteamUtils: Sendable {
         RTime32(SteamAPI_ISteamUtils_GetServerRealTime(interface))
     }
 
+    /// Steamworks `ISteamUtils::GetSteamHardwareDefaultConfig()`
+    public func getSteamHardwareDefaultConfig() -> SteamHardwareDefaultConfig {
+        SteamHardwareDefaultConfig(SteamAPI_ISteamUtils_GetSteamHardwareDefaultConfig(interface))
+    }
+
     /// Steamworks `ISteamUtils::GetSteamUILanguage()`
     public func getSteamUILanguage() -> String {
         String(SteamAPI_ISteamUtils_GetSteamUILanguage(interface))
@@ -170,6 +175,11 @@ public struct SteamUtils: Sendable {
     /// Steamworks `ISteamUtils::IsOverlayEnabled()`
     public func isOverlayEnabled() -> Bool {
         SteamAPI_ISteamUtils_IsOverlayEnabled(interface)
+    }
+
+    /// Steamworks `ISteamUtils::IsRunningOnSteamHardware()`
+    public func isRunningOnSteamHardware() -> SteamHardwareType {
+        SteamHardwareType(SteamAPI_ISteamUtils_IsRunningOnSteamHardware(interface))
     }
 
     /// Steamworks `ISteamUtils::IsRunningUnderProton()`
