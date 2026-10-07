@@ -269,6 +269,7 @@
         - SteamMatchmakingPingResponse
         - SteamMatchmakingPlayersResponse
         - SteamMatchmakingRulesResponse
+        - SteamMatchmakingServerFriendsResponse
         - SteamMatchmakingServerListResponse
   - name: SteamMusic
     topics:

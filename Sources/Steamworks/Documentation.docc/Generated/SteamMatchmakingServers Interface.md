@@ -13,4 +13,5 @@
 - ``SteamMatchmakingPingResponse``
 - ``SteamMatchmakingPlayersResponse``
 - ``SteamMatchmakingRulesResponse``
+- ``SteamMatchmakingServerFriendsResponse``
 - ``SteamMatchmakingServerListResponse``

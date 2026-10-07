@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/fw2020.css">
     
     
-   <title>SteamNetworkingSockets - Steamworks v1.5.0</title>
+   <title>SteamNetworkingSockets - Steamworks v1.6.0</title>
     
   </head>
   <body class="j2-swift " data-root-path="./../../" data-doc-path="steamworks/types/steamnetworkingsockets.html" data-assets-path="../../">
@@ -31,7 +31,7 @@
     
     <a href="../../index.html">
     
-    Steamworks v1.5.0</a>
+    Steamworks v1.6.0</a>
   </div>
   
 
@@ -235,6 +235,15 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/steamapps.html?swift">SteamApps</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/gameperformancesetting.html?swift">GamePerformanceSetting</a>
 
 
 
@@ -1761,6 +1770,15 @@
     
 
   <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingrulesresponse.html?swift">SteamMatchmakingRulesResponse</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steammatchmakingserverfriendsresponse.html?swift">SteamMatchmakingServerFriendsResponse</a>
 
 
 
@@ -3738,6 +3756,24 @@
   <li>
     
 
+  <a class="j2-nav-item" href="../../steamworks/types/steamhardwaredefaultconfig.html?swift">SteamHardwareDefaultConfig</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
+  <a class="j2-nav-item" href="../../steamworks/types/steamhardwaretype.html?swift">SteamHardwareType</a>
+
+
+
+  </li>
+  
+  <li>
+    
+
   <a class="j2-nav-item" href="../../steamworks/types/textfilteringcontext.html?swift">TextFilteringContext</a>
 
 
@@ -5229,16 +5265,16 @@ public func closeListenSocket(socket: <a href="../../steamworks/types/hsteamlist
   
   
   
-    <section id="createsocketpairusenetworkloopbackidentity1identity2" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20createSocketPair(useNetworkLoopback%3A%20Bool,%20identity1%3A%20SteamNetworkingIdentity%3F,%20identity2%3A%20SteamNetworkingIdentity%3F)%20-%3E%20(rc%3A%20Bool,%20connection1%3A%20HSteamNetConnection,%20connection2%3A%20HSteamNetConnection)" class="dashAnchor j2-item-dash-anchor" data-item-id="createsocketpairusenetworkloopbackidentity1identity2"></a>
-    <h4 class="visually-hidden">func createSocketPair(useNetworkLoopback: Bool, identity1: SteamNetworkingIdentity?, identity2: SteamNetworkingIdentity?) -&gt; (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection)</h4>
+    <section id="createsocketpairusenetworkloopbackpeeridentity1peeridentity2" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20createSocketPair(useNetworkLoopback%3A%20Bool,%20peerIdentity1%3A%20SteamNetworkingIdentity%3F,%20peerIdentity2%3A%20SteamNetworkingIdentity%3F)%20-%3E%20(rc%3A%20Bool,%20connection1%3A%20HSteamNetConnection,%20connection2%3A%20HSteamNetConnection)" class="dashAnchor j2-item-dash-anchor" data-item-id="createsocketpairusenetworkloopbackpeeridentity1peeridentity2"></a>
+    <h4 class="visually-hidden">func createSocketPair(useNetworkLoopback: Bool, peerIdentity1: SteamNetworkingIdentity?, peerIdentity2: SteamNetworkingIdentity?) -&gt; (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection)</h4>
     
     
-    <a class="j2-item-title" href="#_createsocketpairusenetworkloopbackidentity1identity2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createsocketpairusenetworkloopbackidentity1identity2"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>createSocketPair<span class="j2-item-secondary">(</span>useNetworkLoopback<span class="j2-item-secondary">: Bool, </span>identity1<span class="j2-item-secondary">: SteamNetworkingIdentity?, </span>identity2<span class="j2-item-secondary">: SteamNetworkingIdentity?) -&gt; (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection)</span></span>
+    <a class="j2-item-title" href="#_createsocketpairusenetworkloopbackpeeridentity1peeridentity2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_createsocketpairusenetworkloopbackpeeridentity1peeridentity2"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>createSocketPair<span class="j2-item-secondary">(</span>useNetworkLoopback<span class="j2-item-secondary">: Bool, </span>peerIdentity1<span class="j2-item-secondary">: SteamNetworkingIdentity?, </span>peerIdentity2<span class="j2-item-secondary">: SteamNetworkingIdentity?) -&gt; (rc: Bool, connection1: HSteamNetConnection, connection2: HSteamNetConnection)</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_createsocketpairusenetworkloopbackidentity1identity2">
+    <div class="collapse  j2-item-popopen-wrapper" id="_createsocketpairusenetworkloopbackpeeridentity1peeridentity2">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -5263,8 +5299,8 @@ public func closeListenSocket(socket: <a href="../../steamworks/types/hsteamlist
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func createSocketPair(
-    useNetworkLoopback: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, identity1: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>?,
-    identity2: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>?
+    useNetworkLoopback: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, peerIdentity1: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>?,
+    peerIdentity2: <a href="../../steamworks/types/steamnetworkingidentity.html?swift">SteamNetworkingIdentity</a>?
 ) -&gt; (
     rc: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>, connection1: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>, connection2: <a href="../../steamworks/types/hsteamnetconnection1.html?swift">HSteamNetConnection</a>
 )</code></pre>
@@ -6584,16 +6620,16 @@ public func initAuthentication() -&gt; <a href="../../steamworks/types/steamnetw
   
   
   
-    <section id="sendmessagesmessagesreturnmessagenumberorresult" class="j2-item j2-swift">
-    <a name="//apple_ref/cpp/Method/func%20sendMessages(messages%3A%20%5BSteamNetworkingMessage%5D,%20returnMessageNumberOrResult%3A%20Bool)%20-%3E%20%5BInt%5D" class="dashAnchor j2-item-dash-anchor" data-item-id="sendmessagesmessagesreturnmessagenumberorresult"></a>
-    <h4 class="visually-hidden">func sendMessages(messages: [SteamNetworkingMessage], returnMessageNumberOrResult: Bool) -&gt; [Int]</h4>
+    <section id="sendmessagesmessagesreturnmessagenumberorresultdeletefailedmessages" class="j2-item j2-swift">
+    <a name="//apple_ref/cpp/Method/func%20sendMessages(messages%3A%20%5BSteamNetworkingMessage%5D,%20returnMessageNumberOrResult%3A%20Bool,%20deleteFailedMessages%3A%20Bool)%20-%3E%20%5BInt%5D" class="dashAnchor j2-item-dash-anchor" data-item-id="sendmessagesmessagesreturnmessagenumberorresultdeletefailedmessages"></a>
+    <h4 class="visually-hidden">func sendMessages(messages: [SteamNetworkingMessage], returnMessageNumberOrResult: Bool, deleteFailedMessages: Bool) -&gt; [Int]</h4>
     
     
-    <a class="j2-item-title" href="#_sendmessagesmessagesreturnmessagenumberorresult" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sendmessagesmessagesreturnmessagenumberorresult"><code>
-        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendMessages<span class="j2-item-secondary">(</span>messages<span class="j2-item-secondary">: [SteamNetworkingMessage], </span>returnMessageNumberOrResult<span class="j2-item-secondary">: Bool) -&gt; [Int]</span></span>
+    <a class="j2-item-title" href="#_sendmessagesmessagesreturnmessagenumberorresultdeletefailedmessages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="_sendmessagesmessagesreturnmessagenumberorresultdeletefailedmessages"><code>
+        <span class="j2-swift"><span class="j2-item-secondary">func </span>sendMessages<span class="j2-item-secondary">(</span>messages<span class="j2-item-secondary">: [SteamNetworkingMessage], </span>returnMessageNumberOrResult<span class="j2-item-secondary">: Bool, </span>deleteFailedMessages<span class="j2-item-secondary">: Bool) -&gt; [Int]</span></span>
         
       </code></a>
-    <div class="collapse  j2-item-popopen-wrapper" id="_sendmessagesmessagesreturnmessagenumberorresult">
+    <div class="collapse  j2-item-popopen-wrapper" id="_sendmessagesmessagesreturnmessagenumberorresultdeletefailedmessages">
       <div class="j2-item-popopen">
         <div class="j2-item-popopen-pointer" role="none presentation"></div>
         <div class="j2-item-popopen-body">
@@ -6618,7 +6654,8 @@ public func initAuthentication() -&gt; <a href="../../steamworks/types/steamnetw
   <div class="j2-swift">
     <div class="j2-callout-title" role="heading" aria-level="6">Swift</div>
     <pre><code class="language-swift">public func sendMessages(
-    messages: [<a href="../../steamworks/types/steamnetworkingmessage.html?swift">SteamNetworkingMessage</a>], returnMessageNumberOrResult: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = true
+    messages: [<a href="../../steamworks/types/steamnetworkingmessage.html?swift">SteamNetworkingMessage</a>],
+    returnMessageNumberOrResult: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a> = true, deleteFailedMessages: <a href="https://developer.apple.com/documentation/swift/bool?language=swift">Bool</a>
 ) -&gt; [<a href="https://developer.apple.com/documentation/swift/int?language=swift">Int</a>]</code></pre>
   </div>
 
@@ -7175,7 +7212,7 @@ public func closeConnection(
   <div class="col j2-footer small pt-2">
     <p>Distributed under the MIT license.  Maintained by <a href="mailto:johnfairh@gmail.com">John Fairhurst</a>.</p>
     
-    <p>Generated by <a class="link" href="https://github.com/johnfairh/Bebop" target="_blank" rel="external noopener">Bebop v1.12.0</a> using the FW2020 theme, based on technology from <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫</a>.</p>
+    <p>Generated by <a class="link" href="https://github.com/johnfairh/Bebop" target="_blank" rel="external noopener">Bebop v1.13.0</a> using the FW2020 theme, based on technology from <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫</a>.</p>
     
   </div>
 </footer>

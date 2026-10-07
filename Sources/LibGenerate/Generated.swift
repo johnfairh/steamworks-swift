@@ -59,6 +59,7 @@ final class Generated {
         ("SteamMatchmakingPlayersResponse", .protocol),
         ("SteamMatchmakingRulesResponse", .protocol),
         ("SteamMatchmakingServerListResponse", .protocol),
+        ("SteamMatchmakingServerFriendsResponse", .protocol),
         ("MatchMakingKeyValuePairs", .typedef),
         ("RemotePlayInput", .struct),
     ]

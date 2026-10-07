@@ -2325,7 +2325,7 @@
     "name" : "singleLine",
     "parent_name" : "GamepadTextInputLineMode"
   },
-  "steamworks\/types\/gamepadtextinputlinemode.html?swift#unrepresentedinswift21" : {
+  "steamworks\/types\/gamepadtextinputlinemode.html?swift#unrepresentedinswift22" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "GamepadTextInputLineMode"
@@ -2344,10 +2344,49 @@
     "name" : "password",
     "parent_name" : "GamepadTextInputMode"
   },
-  "steamworks\/types\/gamepadtextinputmode.html?swift#unrepresentedinswift22" : {
+  "steamworks\/types\/gamepadtextinputmode.html?swift#unrepresentedinswift23" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "GamepadTextInputMode"
+  },
+  "steamworks\/types\/gameperformancesetting.html?swift" : {
+    "abstract" : "Steamworks EGamePerformanceSetting",
+    "name" : "GamePerformanceSetting"
+  },
+  "steamworks\/types\/gameperformancesetting.html?swift#custom" : {
+    "abstract" : "Steamworks k_EGamePerformanceSetting_Custom",
+    "name" : "custom",
+    "parent_name" : "GamePerformanceSetting"
+  },
+  "steamworks\/types\/gameperformancesetting.html?swift#high" : {
+    "abstract" : "Steamworks k_EGamePerformanceSetting_High",
+    "name" : "high",
+    "parent_name" : "GamePerformanceSetting"
+  },
+  "steamworks\/types\/gameperformancesetting.html?swift#low" : {
+    "abstract" : "Steamworks k_EGamePerformanceSetting_Low",
+    "name" : "low",
+    "parent_name" : "GamePerformanceSetting"
+  },
+  "steamworks\/types\/gameperformancesetting.html?swift#medium" : {
+    "abstract" : "Steamworks k_EGamePerformanceSetting_Medium",
+    "name" : "medium",
+    "parent_name" : "GamePerformanceSetting"
+  },
+  "steamworks\/types\/gameperformancesetting.html?swift#notset" : {
+    "abstract" : "Steamworks k_EGamePerformanceSetting_NotSet",
+    "name" : "notSet",
+    "parent_name" : "GamePerformanceSetting"
+  },
+  "steamworks\/types\/gameperformancesetting.html?swift#ultra" : {
+    "abstract" : "Steamworks k_EGamePerformanceSetting_Ultra",
+    "name" : "ultra",
+    "parent_name" : "GamePerformanceSetting"
+  },
+  "steamworks\/types\/gameperformancesetting.html?swift#unrepresentedinswift21" : {
+    "abstract" : "Some undocumented value",
+    "name" : "unrepresentedInSwift",
+    "parent_name" : "GamePerformanceSetting"
   },
   "steamworks\/types\/gamerichpresencejoinrequested1.html?swift" : {
     "abstract" : "Steamworks GameRichPresenceJoinRequested_t",
@@ -2401,6 +2440,11 @@
     "name" : "botPlayers",
     "parent_name" : "GameServerItem"
   },
+  "steamworks\/types\/gameserveritem.html?swift#currentfriendcount" : {
+    "abstract" : "Steamworks m_nCurrentFriendCount",
+    "name" : "currentFriendCount",
+    "parent_name" : "GameServerItem"
+  },
   "steamworks\/types\/gameserveritem.html?swift#donotrefresh" : {
     "abstract" : "Steamworks m_bDoNotRefresh",
     "name" : "doNotRefresh",
@@ -2426,9 +2470,9 @@
     "name" : "hadSuccessfulResponse",
     "parent_name" : "GameServerItem"
   },
-  "steamworks\/types\/gameserveritem.html?swift#initnetadrpinghadsuccessfulresponsedonotrefreshgamedirmapgamedescriptionappidplayersmaxplayersbotplayerspasswordsecuretimelastplayedserverversiongametagssteamid" : {
+  "steamworks\/types\/gameserveritem.html?swift#initnetadrpinghadsuccessfulresponsedonotrefreshgamedirmapgamedescriptionappidplayersmaxplayersbotplayerspasswordsecuretimelastplayedserverversiongametagssteamidcurrentfriendcounttotalfriendcount" : {
     "abstract" : "Create a customized GameServerItem",
-    "name" : "init(netAdr:ping:hadSuccessfulResponse:doNotRefresh:gameDir:map:gameDescription:appID:players:maxPlayers:botPlayers:password:secure:timeLastPlayed:serverVersion:gameTags:steamID:)",
+    "name" : "init(netAdr:ping:hadSuccessfulResponse:doNotRefresh:gameDir:map:gameDescription:appID:players:maxPlayers:botPlayers:password:secure:timeLastPlayed:serverVersion:gameTags:steamID:currentFriendCount:totalFriendCount:)",
     "parent_name" : "GameServerItem"
   },
   "steamworks\/types\/gameserveritem.html?swift#map" : {
@@ -2479,6 +2523,11 @@
   "steamworks\/types\/gameserveritem.html?swift#timelastplayed" : {
     "abstract" : "Steamworks m_ulTimeLastPlayed",
     "name" : "timeLastPlayed",
+    "parent_name" : "GameServerItem"
+  },
+  "steamworks\/types\/gameserveritem.html?swift#totalfriendcount" : {
+    "abstract" : "Steamworks m_nTotalFriendCount",
+    "name" : "totalFriendCount",
     "parent_name" : "GameServerItem"
   },
   "steamworks\/types\/gamewebcallback1.html?swift" : {
@@ -3395,7 +3444,7 @@
     "name" : "init(rawValue:)",
     "parent_name" : "HTMLKeyModifiers"
   },
-  "steamworks\/types\/htmlkeymodifiers.html?swift#none25" : {
+  "steamworks\/types\/htmlkeymodifiers.html?swift#none27" : {
     "abstract" : "Steamworks k_eHTMLKeyModifier_None",
     "name" : "none",
     "parent_name" : "HTMLKeyModifiers"
@@ -3453,7 +3502,7 @@
     "abstract" : "Steamworks ISteamHTMLSurface::EHTMLMouseButton",
     "name" : "HTMLMouseButton"
   },
-  "steamworks\/types\/htmlmousebutton.html?swift#left6" : {
+  "steamworks\/types\/htmlmousebutton.html?swift#left5" : {
     "abstract" : "Steamworks eHTMLMouseButton_Left",
     "name" : "left",
     "parent_name" : "HTMLMouseButton"
@@ -3463,12 +3512,12 @@
     "name" : "middle",
     "parent_name" : "HTMLMouseButton"
   },
-  "steamworks\/types\/htmlmousebutton.html?swift#right5" : {
+  "steamworks\/types\/htmlmousebutton.html?swift#right4" : {
     "abstract" : "Steamworks eHTMLMouseButton_Right",
     "name" : "right",
     "parent_name" : "HTMLMouseButton"
   },
-  "steamworks\/types\/htmlmousebutton.html?swift#unrepresentedinswift92" : {
+  "steamworks\/types\/htmlmousebutton.html?swift#unrepresentedinswift95" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "HTMLMouseButton"
@@ -3512,7 +3561,7 @@
     "name" : "crosshair",
     "parent_name" : "HTMLMouseCursor"
   },
-  "steamworks\/types\/htmlmousecursor.html?swift#custom" : {
+  "steamworks\/types\/htmlmousecursor.html?swift#custom1" : {
     "abstract" : "Steamworks k_EHTMLMouseCursor_Custom",
     "name" : "custom",
     "parent_name" : "HTMLMouseCursor"
@@ -3557,7 +3606,7 @@
     "name" : "no",
     "parent_name" : "HTMLMouseCursor"
   },
-  "steamworks\/types\/htmlmousecursor.html?swift#none26" : {
+  "steamworks\/types\/htmlmousecursor.html?swift#none28" : {
     "abstract" : "Steamworks k_EHTMLMouseCursor_None",
     "name" : "none",
     "parent_name" : "HTMLMouseCursor"
@@ -3662,7 +3711,7 @@
     "name" : "southWestPan",
     "parent_name" : "HTMLMouseCursor"
   },
-  "steamworks\/types\/htmlmousecursor.html?swift#unrepresentedinswift93" : {
+  "steamworks\/types\/htmlmousecursor.html?swift#unrepresentedinswift96" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "HTMLMouseCursor"
@@ -4109,7 +4158,7 @@
     "name" : "put",
     "parent_name" : "HTTPMethod"
   },
-  "steamworks\/types\/httpmethod.html?swift#unrepresentedinswift23" : {
+  "steamworks\/types\/httpmethod.html?swift#unrepresentedinswift24" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "HTTPMethod"
@@ -4519,7 +4568,7 @@
     "name" : "invalid",
     "parent_name" : "HTTPStatusCode"
   },
-  "steamworks\/types\/httpstatuscode.html?swift#unrepresentedinswift24" : {
+  "steamworks\/types\/httpstatuscode.html?swift#unrepresentedinswift25" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "HTTPStatusCode"
@@ -5683,6 +5732,381 @@
     "name" : "ps5X",
     "parent_name" : "InputActionOrigin"
   },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026a" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_A",
+    "name" : "steamController2026A",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026b" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_B",
+    "name" : "steamController2026B",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026dpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_DPad_East",
+    "name" : "steamController2026DPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026dpadmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_DPad_Move",
+    "name" : "steamController2026DPadMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026dpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_DPad_North",
+    "name" : "steamController2026DPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026dpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_DPad_South",
+    "name" : "steamController2026DPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026dpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_DPad_West",
+    "name" : "steamController2026DPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026gyromove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Gyro_Move",
+    "name" : "steamController2026GyroMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026gyropitch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Gyro_Pitch",
+    "name" : "steamController2026GyroPitch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026gyroroll" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Gyro_Roll",
+    "name" : "steamController2026GyroRoll",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026gyroyaw" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Gyro_Yaw",
+    "name" : "steamController2026GyroYaw",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026l1" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_L1",
+    "name" : "steamController2026L1",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026l2" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_L2",
+    "name" : "steamController2026L2",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026l2softpull" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_L2_SoftPull",
+    "name" : "steamController2026L2SoftPull",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026l3" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_L3",
+    "name" : "steamController2026L3",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026l4" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_L4",
+    "name" : "steamController2026L4",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026l5" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_L5",
+    "name" : "steamController2026L5",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftpadclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftPad_Click",
+    "name" : "steamController2026LeftPadClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftpaddpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftPad_DPadEast",
+    "name" : "steamController2026LeftPadDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftpaddpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftPad_DPadNorth",
+    "name" : "steamController2026LeftPadDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftpaddpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftPad_DPadSouth",
+    "name" : "steamController2026LeftPadDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftpaddpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftPad_DPadWest",
+    "name" : "steamController2026LeftPadDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftpadswipe" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftPad_Swipe",
+    "name" : "steamController2026LeftPadSwipe",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftpadtouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftPad_Touch",
+    "name" : "steamController2026LeftPadTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftstickdpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftStick_DPadEast",
+    "name" : "steamController2026LeftStickDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftstickdpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftStick_DPadNorth",
+    "name" : "steamController2026LeftStickDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftstickdpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftStick_DPadSouth",
+    "name" : "steamController2026LeftStickDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftstickdpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftStick_DPadWest",
+    "name" : "steamController2026LeftStickDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftstickmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftStick_Move",
+    "name" : "steamController2026LeftStickMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026leftsticktouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LeftStick_Touch",
+    "name" : "steamController2026LeftStickTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026lgrip" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_LGrip",
+    "name" : "steamController2026LGrip",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026menu" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Menu",
+    "name" : "steamController2026Menu",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026r1" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_R1",
+    "name" : "steamController2026R1",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026r2" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_R2",
+    "name" : "steamController2026R2",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026r2softpull" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_R2_SoftPull",
+    "name" : "steamController2026R2SoftPull",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026r3" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_R3",
+    "name" : "steamController2026R3",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026r4" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_R4",
+    "name" : "steamController2026R4",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026r5" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_R5",
+    "name" : "steamController2026R5",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved1" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved1",
+    "name" : "steamController2026Reserved1",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved10" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved10",
+    "name" : "steamController2026Reserved10",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved11" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved11",
+    "name" : "steamController2026Reserved11",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved12" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved12",
+    "name" : "steamController2026Reserved12",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved13" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved13",
+    "name" : "steamController2026Reserved13",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved14" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved14",
+    "name" : "steamController2026Reserved14",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved15" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved15",
+    "name" : "steamController2026Reserved15",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved16" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved16",
+    "name" : "steamController2026Reserved16",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved17" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved17",
+    "name" : "steamController2026Reserved17",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved18" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved18",
+    "name" : "steamController2026Reserved18",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved19" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved19",
+    "name" : "steamController2026Reserved19",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved2" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved2",
+    "name" : "steamController2026Reserved2",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved20" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved20",
+    "name" : "steamController2026Reserved20",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved3" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved3",
+    "name" : "steamController2026Reserved3",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved4" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved4",
+    "name" : "steamController2026Reserved4",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved5" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved5",
+    "name" : "steamController2026Reserved5",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved6" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved6",
+    "name" : "steamController2026Reserved6",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved7" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved7",
+    "name" : "steamController2026Reserved7",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved8" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved8",
+    "name" : "steamController2026Reserved8",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026reserved9" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Reserved9",
+    "name" : "steamController2026Reserved9",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rgrip" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RGrip",
+    "name" : "steamController2026RGrip",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightpadclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightPad_Click",
+    "name" : "steamController2026RightPadClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightpaddpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightPad_DPadEast",
+    "name" : "steamController2026RightPadDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightpaddpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightPad_DPadNorth",
+    "name" : "steamController2026RightPadDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightpaddpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightPad_DPadSouth",
+    "name" : "steamController2026RightPadDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightpaddpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightPad_DPadWest",
+    "name" : "steamController2026RightPadDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightpadswipe" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightPad_Swipe",
+    "name" : "steamController2026RightPadSwipe",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightpadtouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightPad_Touch",
+    "name" : "steamController2026RightPadTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightstickdpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightStick_DPadEast",
+    "name" : "steamController2026RightStickDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightstickdpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightStick_DPadNorth",
+    "name" : "steamController2026RightStickDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightstickdpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightStick_DPadSouth",
+    "name" : "steamController2026RightStickDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightstickdpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightStick_DPadWest",
+    "name" : "steamController2026RightStickDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightstickmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightStick_Move",
+    "name" : "steamController2026RightStickMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026rightsticktouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_RightStick_Touch",
+    "name" : "steamController2026RightStickTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026view" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_View",
+    "name" : "steamController2026View",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026x" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_X",
+    "name" : "steamController2026X",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamcontroller2026y" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamController2026_Y",
+    "name" : "steamController2026Y",
+    "parent_name" : "InputActionOrigin"
+  },
   "steamworks\/types\/inputactionorigin.html?swift#steamcontrollera" : {
     "abstract" : "Steamworks k_EInputActionOrigin_SteamController_A",
     "name" : "steamControllerA",
@@ -6293,6 +6717,631 @@
     "name" : "steamDeckY",
     "parent_name" : "InputActionOrigin"
   },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrolleraclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_A_Click",
+    "name" : "steamFrameControllerAClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrolleratouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_A_Touch",
+    "name" : "steamFrameControllerATouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerbclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_B_Click",
+    "name" : "steamFrameControllerBClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerbtouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_B_Touch",
+    "name" : "steamFrameControllerBTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerdpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_DPad_East",
+    "name" : "steamFrameControllerDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerdpadmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_DPad_Move",
+    "name" : "steamFrameControllerDPadMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerdpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_DPad_North",
+    "name" : "steamFrameControllerDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerdpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_DPad_South",
+    "name" : "steamFrameControllerDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerdpadtouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_DPad_Touch",
+    "name" : "steamFrameControllerDPadTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerdpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_DPad_West",
+    "name" : "steamFrameControllerDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftbumperclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftBumper_Click",
+    "name" : "steamFrameControllerLeftBumperClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftbumpertouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftBumper_Touch",
+    "name" : "steamFrameControllerLeftBumperTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftgripclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftGrip_Click",
+    "name" : "steamFrameControllerLeftGripClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftgrippull" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftGrip_Pull",
+    "name" : "steamFrameControllerLeftGripPull",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftgriptouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftGrip_Touch",
+    "name" : "steamFrameControllerLeftGripTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftgyromove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftGyro_Move",
+    "name" : "steamFrameControllerLeftGyroMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftgyropitch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftGyro_Pitch",
+    "name" : "steamFrameControllerLeftGyroPitch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftgyroroll" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftGyro_Roll",
+    "name" : "steamFrameControllerLeftGyroRoll",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftgyroyaw" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftGyro_Yaw",
+    "name" : "steamFrameControllerLeftGyroYaw",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftstickclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftStick_Click",
+    "name" : "steamFrameControllerLeftStickClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftstickdpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftStick_DPadEast",
+    "name" : "steamFrameControllerLeftStickDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftstickdpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftStick_DPadNorth",
+    "name" : "steamFrameControllerLeftStickDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftstickdpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftStick_DPadSouth",
+    "name" : "steamFrameControllerLeftStickDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftstickdpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftStick_DPadWest",
+    "name" : "steamFrameControllerLeftStickDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftstickmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftStick_Move",
+    "name" : "steamFrameControllerLeftStickMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftsticktouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftStick_Touch",
+    "name" : "steamFrameControllerLeftStickTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerleftthumbresttouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftThumbrest_Touch",
+    "name" : "steamFrameControllerLeftThumbrestTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerlefttriggerclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftTrigger_Click",
+    "name" : "steamFrameControllerLeftTriggerClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerlefttriggerpull" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftTrigger_Pull",
+    "name" : "steamFrameControllerLeftTriggerPull",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerlefttriggertouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_LeftTrigger_Touch",
+    "name" : "steamFrameControllerLeftTriggerTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollermenuclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Menu_Click",
+    "name" : "steamFrameControllerMenuClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollermenutouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Menu_Touch",
+    "name" : "steamFrameControllerMenuTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved1" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved1",
+    "name" : "steamFrameControllerReserved1",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved10" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved10",
+    "name" : "steamFrameControllerReserved10",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved11" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved11",
+    "name" : "steamFrameControllerReserved11",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved12" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved12",
+    "name" : "steamFrameControllerReserved12",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved13" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved13",
+    "name" : "steamFrameControllerReserved13",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved14" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved14",
+    "name" : "steamFrameControllerReserved14",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved15" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved15",
+    "name" : "steamFrameControllerReserved15",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved16" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved16",
+    "name" : "steamFrameControllerReserved16",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved17" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved17",
+    "name" : "steamFrameControllerReserved17",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved18" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved18",
+    "name" : "steamFrameControllerReserved18",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved19" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved19",
+    "name" : "steamFrameControllerReserved19",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved2" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved2",
+    "name" : "steamFrameControllerReserved2",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved20" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved20",
+    "name" : "steamFrameControllerReserved20",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved3" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved3",
+    "name" : "steamFrameControllerReserved3",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved4" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved4",
+    "name" : "steamFrameControllerReserved4",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved5" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved5",
+    "name" : "steamFrameControllerReserved5",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved6" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved6",
+    "name" : "steamFrameControllerReserved6",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved7" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved7",
+    "name" : "steamFrameControllerReserved7",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved8" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved8",
+    "name" : "steamFrameControllerReserved8",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerreserved9" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Reserved9",
+    "name" : "steamFrameControllerReserved9",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightbumperclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightBumper_Click",
+    "name" : "steamFrameControllerRightBumperClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightbumpertouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightBumper_Touch",
+    "name" : "steamFrameControllerRightBumperTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightgripclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightGrip_Click",
+    "name" : "steamFrameControllerRightGripClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightgrippull" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightGrip_Pull",
+    "name" : "steamFrameControllerRightGripPull",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightgriptouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightGrip_Touch",
+    "name" : "steamFrameControllerRightGripTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightgyromove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightGyro_Move",
+    "name" : "steamFrameControllerRightGyroMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightgyropitch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightGyro_Pitch",
+    "name" : "steamFrameControllerRightGyroPitch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightgyroroll" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightGyro_Roll",
+    "name" : "steamFrameControllerRightGyroRoll",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightgyroyaw" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightGyro_Yaw",
+    "name" : "steamFrameControllerRightGyroYaw",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightstickclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightStick_Click",
+    "name" : "steamFrameControllerRightStickClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightstickdpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightStick_DPadEast",
+    "name" : "steamFrameControllerRightStickDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightstickdpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightStick_DPadNorth",
+    "name" : "steamFrameControllerRightStickDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightstickdpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightStick_DPadSouth",
+    "name" : "steamFrameControllerRightStickDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightstickdpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightStick_DPadWest",
+    "name" : "steamFrameControllerRightStickDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightstickmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightStick_Move",
+    "name" : "steamFrameControllerRightStickMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightsticktouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightStick_Touch",
+    "name" : "steamFrameControllerRightStickTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrightthumbresttouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightThumbrest_Touch",
+    "name" : "steamFrameControllerRightThumbrestTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrighttriggerclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightTrigger_Click",
+    "name" : "steamFrameControllerRightTriggerClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrighttriggerpull" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightTrigger_Pull",
+    "name" : "steamFrameControllerRightTriggerPull",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerrighttriggertouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_RightTrigger_Touch",
+    "name" : "steamFrameControllerRightTriggerTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerviewclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_View_Click",
+    "name" : "steamFrameControllerViewClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerviewtouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_View_Touch",
+    "name" : "steamFrameControllerViewTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerxclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_X_Click",
+    "name" : "steamFrameControllerXClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerxtouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_X_Touch",
+    "name" : "steamFrameControllerXTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrolleryclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Y_Click",
+    "name" : "steamFrameControllerYClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#steamframecontrollerytouch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_SteamFrameController_Y_Touch",
+    "name" : "steamFrameControllerYTouch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2a" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_A",
+    "name" : "switch2A",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2b" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_B",
+    "name" : "switch2B",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2c" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_C",
+    "name" : "switch2C",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2capture" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Capture",
+    "name" : "switch2Capture",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2dpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_DPad_East",
+    "name" : "switch2DPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2dpadmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_DPad_Move",
+    "name" : "switch2DPadMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2dpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_DPad_North",
+    "name" : "switch2DPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2dpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_DPad_South",
+    "name" : "switch2DPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2dpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_DPad_West",
+    "name" : "switch2DPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2gl" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_GL",
+    "name" : "switch2GL",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2gr" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_GR",
+    "name" : "switch2GR",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2leftbumper" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftBumper",
+    "name" : "switch2LeftBumper",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2leftstickclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftStick_Click",
+    "name" : "switch2LeftStickClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2leftstickdpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftStick_DPadEast",
+    "name" : "switch2LeftStickDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2leftstickdpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftStick_DPadNorth",
+    "name" : "switch2LeftStickDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2leftstickdpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftStick_DPadSouth",
+    "name" : "switch2LeftStickDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2leftstickdpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftStick_DPadWest",
+    "name" : "switch2LeftStickDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2leftstickmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftStick_Move",
+    "name" : "switch2LeftStickMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2lefttriggerclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftTrigger_Click",
+    "name" : "switch2LeftTriggerClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2lefttriggerpull" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_LeftTrigger_Pull",
+    "name" : "switch2LeftTriggerPull",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2minus" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Minus",
+    "name" : "switch2Minus",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2plus" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Plus",
+    "name" : "switch2Plus",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2progyromove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_ProGyro_Move",
+    "name" : "switch2ProGyroMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2progyropitch" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_ProGyro_Pitch",
+    "name" : "switch2ProGyroPitch",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2progyroroll" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_ProGyro_Roll",
+    "name" : "switch2ProGyroRoll",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2progyroyaw" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_ProGyro_Yaw",
+    "name" : "switch2ProGyroYaw",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved1" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved1",
+    "name" : "switch2Reserved1",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved10" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved10",
+    "name" : "switch2Reserved10",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved2" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved2",
+    "name" : "switch2Reserved2",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved3" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved3",
+    "name" : "switch2Reserved3",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved4" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved4",
+    "name" : "switch2Reserved4",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved5" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved5",
+    "name" : "switch2Reserved5",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved6" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved6",
+    "name" : "switch2Reserved6",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved7" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved7",
+    "name" : "switch2Reserved7",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved8" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved8",
+    "name" : "switch2Reserved8",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2reserved9" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Reserved9",
+    "name" : "switch2Reserved9",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2rightbumper" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightBumper",
+    "name" : "switch2RightBumper",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2rightstickclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightStick_Click",
+    "name" : "switch2RightStickClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2rightstickdpadeast" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightStick_DPadEast",
+    "name" : "switch2RightStickDPadEast",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2rightstickdpadnorth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightStick_DPadNorth",
+    "name" : "switch2RightStickDPadNorth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2rightstickdpadsouth" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightStick_DPadSouth",
+    "name" : "switch2RightStickDPadSouth",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2rightstickdpadwest" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightStick_DPadWest",
+    "name" : "switch2RightStickDPadWest",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2rightstickmove" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightStick_Move",
+    "name" : "switch2RightStickMove",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2righttriggerclick" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightTrigger_Click",
+    "name" : "switch2RightTriggerClick",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2righttriggerpull" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_RightTrigger_Pull",
+    "name" : "switch2RightTriggerPull",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2x" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_X",
+    "name" : "switch2X",
+    "parent_name" : "InputActionOrigin"
+  },
+  "steamworks\/types\/inputactionorigin.html?swift#switch2y" : {
+    "abstract" : "Steamworks k_EInputActionOrigin_Switch2_Y",
+    "name" : "switch2Y",
+    "parent_name" : "InputActionOrigin"
+  },
   "steamworks\/types\/inputactionorigin.html?swift#switcha" : {
     "abstract" : "Steamworks k_EInputActionOrigin_Switch_A",
     "name" : "switchA",
@@ -6623,7 +7672,7 @@
     "name" : "switchY",
     "parent_name" : "InputActionOrigin"
   },
-  "steamworks\/types\/inputactionorigin.html?swift#unrepresentedinswift25" : {
+  "steamworks\/types\/inputactionorigin.html?swift#unrepresentedinswift26" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "InputActionOrigin"
@@ -7300,7 +8349,7 @@
     "name" : "trigger",
     "parent_name" : "InputSourceMode"
   },
-  "steamworks\/types\/inputsourcemode.html?swift#unrepresentedinswift26" : {
+  "steamworks\/types\/inputsourcemode.html?swift#unrepresentedinswift27" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "InputSourceMode"
@@ -7333,7 +8382,7 @@
     "name" : "pipeFail",
     "parent_name" : "IPCFailureType"
   },
-  "steamworks\/types\/ipcfailuretype.html?swift#unrepresentedinswift91" : {
+  "steamworks\/types\/ipcfailuretype.html?swift#unrepresentedinswift94" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "IPCFailureType"
@@ -7410,7 +8459,7 @@
     "name" : "sketchfab",
     "parent_name" : "ItemPreviewType"
   },
-  "steamworks\/types\/itempreviewtype.html?swift#unrepresentedinswift27" : {
+  "steamworks\/types\/itempreviewtype.html?swift#unrepresentedinswift28" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "ItemPreviewType"
@@ -7543,7 +8592,7 @@
     "name" : "reportScore",
     "parent_name" : "ItemStatistic"
   },
-  "steamworks\/types\/itemstatistic.html?swift#unrepresentedinswift28" : {
+  "steamworks\/types\/itemstatistic.html?swift#unrepresentedinswift29" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "ItemStatistic"
@@ -7572,7 +8621,7 @@
     "name" : "preparingContent",
     "parent_name" : "ItemUpdateStatus"
   },
-  "steamworks\/types\/itemupdatestatus.html?swift#unrepresentedinswift29" : {
+  "steamworks\/types\/itemupdatestatus.html?swift#unrepresentedinswift30" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "ItemUpdateStatus"
@@ -7654,7 +8703,7 @@
     "name" : "globalAroundUser",
     "parent_name" : "LeaderboardDataRequest"
   },
-  "steamworks\/types\/leaderboarddatarequest.html?swift#unrepresentedinswift30" : {
+  "steamworks\/types\/leaderboarddatarequest.html?swift#unrepresentedinswift31" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "LeaderboardDataRequest"
@@ -7688,7 +8737,7 @@
     "name" : "timeSeconds",
     "parent_name" : "LeaderboardDisplayType"
   },
-  "steamworks\/types\/leaderboarddisplaytype.html?swift#unrepresentedinswift31" : {
+  "steamworks\/types\/leaderboarddisplaytype.html?swift#unrepresentedinswift32" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "LeaderboardDisplayType"
@@ -7828,7 +8877,7 @@
     "name" : "none",
     "parent_name" : "LeaderboardSortMethod"
   },
-  "steamworks\/types\/leaderboardsortmethod.html?swift#unrepresentedinswift32" : {
+  "steamworks\/types\/leaderboardsortmethod.html?swift#unrepresentedinswift33" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "LeaderboardSortMethod"
@@ -7871,7 +8920,7 @@
     "name" : "none",
     "parent_name" : "LeaderboardUploadScoreMethod"
   },
-  "steamworks\/types\/leaderboarduploadscoremethod.html?swift#unrepresentedinswift33" : {
+  "steamworks\/types\/leaderboarduploadscoremethod.html?swift#unrepresentedinswift34" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "LeaderboardUploadScoreMethod"
@@ -7977,7 +9026,7 @@
     "name" : "notEqual",
     "parent_name" : "LobbyComparison"
   },
-  "steamworks\/types\/lobbycomparison.html?swift#unrepresentedinswift34" : {
+  "steamworks\/types\/lobbycomparison.html?swift#unrepresentedinswift35" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "LobbyComparison"
@@ -8044,7 +9093,7 @@
     "name" : "far",
     "parent_name" : "LobbyDistanceFilter"
   },
-  "steamworks\/types\/lobbydistancefilter.html?swift#unrepresentedinswift35" : {
+  "steamworks\/types\/lobbydistancefilter.html?swift#unrepresentedinswift36" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "LobbyDistanceFilter"
@@ -8203,7 +9252,7 @@
     "name" : "public",
     "parent_name" : "LobbyType"
   },
-  "steamworks\/types\/lobbytype.html?swift#unrepresentedinswift36" : {
+  "steamworks\/types\/lobbytype.html?swift#unrepresentedinswift37" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "LobbyType"
@@ -8379,7 +9428,7 @@
     "name" : "eServerResponded",
     "parent_name" : "MatchMakingServerResponse"
   },
-  "steamworks\/types\/matchmakingserverresponse.html?swift#unrepresentedinswift37" : {
+  "steamworks\/types\/matchmakingserverresponse.html?swift#unrepresentedinswift38" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "MatchMakingServerResponse"
@@ -8446,7 +9495,7 @@
     "name" : "topRight",
     "parent_name" : "NotificationPosition"
   },
-  "steamworks\/types\/notificationposition.html?swift#unrepresentedinswift38" : {
+  "steamworks\/types\/notificationposition.html?swift#unrepresentedinswift39" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "NotificationPosition"
@@ -8503,7 +9552,7 @@
     "name" : "none",
     "parent_name" : "OverlayToStoreFlag"
   },
-  "steamworks\/types\/overlaytostoreflag.html?swift#unrepresentedinswift39" : {
+  "steamworks\/types\/overlaytostoreflag.html?swift#unrepresentedinswift40" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "OverlayToStoreFlag"
@@ -8602,7 +9651,7 @@
     "name" : "trading",
     "parent_name" : "ParentalFeature"
   },
-  "steamworks\/types\/parentalfeature.html?swift#unrepresentedinswift40" : {
+  "steamworks\/types\/parentalfeature.html?swift#unrepresentedinswift41" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "ParentalFeature"
@@ -8769,7 +9818,7 @@
     "name" : "snooze",
     "parent_name" : "PersonaState"
   },
-  "steamworks\/types\/personastate.html?swift#unrepresentedinswift41" : {
+  "steamworks\/types\/personastate.html?swift#unrepresentedinswift42" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "PersonaState"
@@ -9019,7 +10068,7 @@
     "name" : "unknown",
     "parent_name" : "RemotePlayInputType"
   },
-  "steamworks\/types\/remoteplayinputtype.html?swift#unrepresentedinswift42" : {
+  "steamworks\/types\/remoteplayinputtype.html?swift#unrepresentedinswift43" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "RemotePlayInputType"
@@ -9156,7 +10205,7 @@
     "name" : "right",
     "parent_name" : "RemotePlayMouseWheelDirection"
   },
-  "steamworks\/types\/remoteplaymousewheeldirection.html?swift#unrepresentedinswift43" : {
+  "steamworks\/types\/remoteplaymousewheeldirection.html?swift#unrepresentedinswift44" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "RemotePlayMouseWheelDirection"
@@ -9640,7 +10689,7 @@
     "name" : "unknown",
     "parent_name" : "RemotePlayScancode"
   },
-  "steamworks\/types\/remoteplayscancode.html?swift#unrepresentedinswift44" : {
+  "steamworks\/types\/remoteplayscancode.html?swift#unrepresentedinswift45" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "RemotePlayScancode"
@@ -9951,7 +11000,7 @@
     "name" : "invalid",
     "parent_name" : "RemoteStorageFilePathType"
   },
-  "steamworks\/types\/remotestoragefilepathtype.html?swift#unrepresentedinswift45" : {
+  "steamworks\/types\/remotestoragefilepathtype.html?swift#unrepresentedinswift46" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "RemoteStorageFilePathType"
@@ -10204,7 +11253,7 @@
     "name" : "invalid",
     "parent_name" : "RemoteStorageLocalFileChangeType"
   },
-  "steamworks\/types\/remotestoragelocalfilechangetype.html?swift#unrepresentedinswift46" : {
+  "steamworks\/types\/remotestoragelocalfilechangetype.html?swift#unrepresentedinswift47" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "RemoteStorageLocalFileChangeType"
@@ -10368,7 +11417,7 @@
     "name" : "unlisted",
     "parent_name" : "RemoteStoragePublishedFileVisibility"
   },
-  "steamworks\/types\/remotestoragepublishedfilevisibility.html?swift#unrepresentedinswift47" : {
+  "steamworks\/types\/remotestoragepublishedfilevisibility.html?swift#unrepresentedinswift48" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "RemoteStoragePublishedFileVisibility"
@@ -11261,7 +12310,7 @@
     "name" : "unexpectedError",
     "parent_name" : "Result"
   },
-  "steamworks\/types\/result.html?swift#unrepresentedinswift48" : {
+  "steamworks\/types\/result.html?swift#unrepresentedinswift49" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "Result"
@@ -11371,7 +12420,7 @@
     "name" : "noAuthentication",
     "parent_name" : "ServerMode"
   },
-  "steamworks\/types\/servermode.html?swift#unrepresentedinswift49" : {
+  "steamworks\/types\/servermode.html?swift#unrepresentedinswift50" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "ServerMode"
@@ -11624,7 +12673,7 @@
     "name" : "steamGone",
     "parent_name" : "SteamAPICallFailure"
   },
-  "steamworks\/types\/steamapicallfailure.html?swift#unrepresentedinswift50" : {
+  "steamworks\/types\/steamapicallfailure.html?swift#unrepresentedinswift51" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamAPICallFailure"
@@ -11648,7 +12697,7 @@
     "name" : "ok",
     "parent_name" : "SteamAPIInitResult"
   },
-  "steamworks\/types\/steamapiinitresult.html?swift#unrepresentedinswift51" : {
+  "steamworks\/types\/steamapiinitresult.html?swift#unrepresentedinswift52" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamAPIInitResult"
@@ -11825,6 +12874,16 @@
   "steamworks\/types\/steamapps.html?swift#setdlccontextappid" : {
     "abstract" : "Steamworks ISteamApps::SetDlcContext()",
     "name" : "setDlcContext(appID:)",
+    "parent_name" : "SteamApps"
+  },
+  "steamworks\/types\/steamapps.html?swift#setgameperformancesettingsetting" : {
+    "abstract" : "Steamworks ISteamApps::SetGamePerformanceSetting()",
+    "name" : "setGamePerformanceSetting(setting:)",
+    "parent_name" : "SteamApps"
+  },
+  "steamworks\/types\/steamapps.html?swift#setgamerenderresolutionwidthheight" : {
+    "abstract" : "Steamworks ISteamApps::SetGameRenderResolution()",
+    "name" : "setGameRenderResolution(width:height:)",
     "parent_name" : "SteamApps"
   },
   "steamworks\/types\/steamapps.html?swift#uninstalldlcappid" : {
@@ -13374,17 +14433,37 @@
     "abstract" : "Steamworks ESteamControllerPad",
     "name" : "SteamControllerPad"
   },
-  "steamworks\/types\/steamcontrollerpad.html?swift#left5" : {
+  "steamworks\/types\/steamcontrollerpad.html?swift#gripboth" : {
+    "abstract" : "Steamworks k_ESteamControllerGrip_Both",
+    "name" : "gripBoth",
+    "parent_name" : "SteamControllerPad"
+  },
+  "steamworks\/types\/steamcontrollerpad.html?swift#gripleft" : {
+    "abstract" : "Steamworks k_ESteamControllerGrip_Left",
+    "name" : "gripLeft",
+    "parent_name" : "SteamControllerPad"
+  },
+  "steamworks\/types\/steamcontrollerpad.html?swift#gripright" : {
+    "abstract" : "Steamworks k_ESteamControllerGrip_Right",
+    "name" : "gripRight",
+    "parent_name" : "SteamControllerPad"
+  },
+  "steamworks\/types\/steamcontrollerpad.html?swift#padboth" : {
+    "abstract" : "Steamworks k_ESteamControllerPad_Both",
+    "name" : "padBoth",
+    "parent_name" : "SteamControllerPad"
+  },
+  "steamworks\/types\/steamcontrollerpad.html?swift#padleft" : {
     "abstract" : "Steamworks k_ESteamControllerPad_Left",
-    "name" : "left",
+    "name" : "padLeft",
     "parent_name" : "SteamControllerPad"
   },
-  "steamworks\/types\/steamcontrollerpad.html?swift#right4" : {
+  "steamworks\/types\/steamcontrollerpad.html?swift#padright" : {
     "abstract" : "Steamworks k_ESteamControllerPad_Right",
-    "name" : "right",
+    "name" : "padRight",
     "parent_name" : "SteamControllerPad"
   },
-  "steamworks\/types\/steamcontrollerpad.html?swift#unrepresentedinswift52" : {
+  "steamworks\/types\/steamcontrollerpad.html?swift#unrepresentedinswift53" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamControllerPad"
@@ -13418,7 +14497,7 @@
     "name" : "unknown",
     "parent_name" : "SteamDeviceFormFactor"
   },
-  "steamworks\/types\/steamdeviceformfactor.html?swift#unrepresentedinswift53" : {
+  "steamworks\/types\/steamdeviceformfactor.html?swift#unrepresentedinswift54" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamDeviceFormFactor"
@@ -14182,6 +15261,84 @@
     "abstract" : "Steamworks ISteamGameServerStats::UpdateUserAvgRateStat()",
     "name" : "updateUserAvgRateStat(user:name:countThisSession:sessionLength:)",
     "parent_name" : "SteamGameServerStats"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift" : {
+    "abstract" : "Steamworks ESteamHardwareDefaultConfig",
+    "name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#high1" : {
+    "abstract" : "Steamworks k_ESteamHardwareDefaultConfigHigh",
+    "name" : "high",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#low1" : {
+    "abstract" : "Steamworks k_ESteamHardwareDefaultConfigLow",
+    "name" : "low",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#max4" : {
+    "abstract" : "Steamworks k_ESteamHardwareDefaultConfigMax",
+    "name" : "max",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#medium1" : {
+    "abstract" : "Steamworks k_ESteamHardwareDefaultConfigMedium",
+    "name" : "medium",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#none19" : {
+    "abstract" : "Steamworks k_ESteamHardwareDefaultConfigNone",
+    "name" : "none",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#steamdeck" : {
+    "abstract" : "Steamworks k_ESteamHardwareDefaultConfigSteamDeck",
+    "name" : "steamDeck",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#steamframe" : {
+    "abstract" : "Steamworks k_ESteamHardwareDefaultConfigSteamFrame",
+    "name" : "steamFrame",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#steammachine" : {
+    "abstract" : "Steamworks k_ESteamHardwareDefaultConfigSteamMachine",
+    "name" : "steamMachine",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaredefaultconfig.html?swift#unrepresentedinswift55" : {
+    "abstract" : "Some undocumented value",
+    "name" : "unrepresentedInSwift",
+    "parent_name" : "SteamHardwareDefaultConfig"
+  },
+  "steamworks\/types\/steamhardwaretype.html?swift" : {
+    "abstract" : "Steamworks ESteamHardwareType",
+    "name" : "SteamHardwareType"
+  },
+  "steamworks\/types\/steamhardwaretype.html?swift#none20" : {
+    "abstract" : "Steamworks k_ESteamHardwareTypeNone",
+    "name" : "none",
+    "parent_name" : "SteamHardwareType"
+  },
+  "steamworks\/types\/steamhardwaretype.html?swift#steamdeck1" : {
+    "abstract" : "Steamworks k_ESteamHardwareTypeSteamDeck",
+    "name" : "steamDeck",
+    "parent_name" : "SteamHardwareType"
+  },
+  "steamworks\/types\/steamhardwaretype.html?swift#steamframe1" : {
+    "abstract" : "Steamworks k_ESteamHardwareTypeSteamFrame",
+    "name" : "steamFrame",
+    "parent_name" : "SteamHardwareType"
+  },
+  "steamworks\/types\/steamhardwaretype.html?swift#steammachine1" : {
+    "abstract" : "Steamworks k_ESteamHardwareTypeSteamMachine",
+    "name" : "steamMachine",
+    "parent_name" : "SteamHardwareType"
+  },
+  "steamworks\/types\/steamhardwaretype.html?swift#unrepresentedinswift56" : {
+    "abstract" : "Some undocumented value",
+    "name" : "unrepresentedInSwift",
+    "parent_name" : "SteamHardwareType"
   },
   "steamworks\/types\/steamhtmlsurface.html?swift" : {
     "abstract" : "Steamworks ISteamHTMLSurface",
@@ -14973,7 +16130,7 @@
     "name" : "digital(_:_:)",
     "parent_name" : "Event"
   },
-  "steamworks\/types\/steaminputactionevent\/event.html?swift#unrepresentedinswift94" : {
+  "steamworks\/types\/steaminputactionevent\/event.html?swift#unrepresentedinswift97" : {
     "abstract" : "",
     "name" : "unrepresentedInSwift",
     "parent_name" : "Event"
@@ -14992,7 +16149,7 @@
     "name" : "digitalAction",
     "parent_name" : "SteamInputActionEventType"
   },
-  "steamworks\/types\/steaminputactioneventtype.html?swift#unrepresentedinswift57" : {
+  "steamworks\/types\/steaminputactioneventtype.html?swift#unrepresentedinswift60" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamInputActionEventType"
@@ -15011,7 +16168,7 @@
     "name" : "init(rawValue:)",
     "parent_name" : "SteamInputConfigurationEnableType"
   },
-  "steamworks\/types\/steaminputconfigurationenabletype.html?swift#none19" : {
+  "steamworks\/types\/steaminputconfigurationenabletype.html?swift#none21" : {
     "abstract" : "Steamworks k_ESteamInputConfigurationEnableType_None",
     "name" : "none",
     "parent_name" : "SteamInputConfigurationEnableType"
@@ -15156,7 +16313,7 @@
     "name" : "large",
     "parent_name" : "SteamInputGlyphSize"
   },
-  "steamworks\/types\/steaminputglyphsize.html?swift#medium" : {
+  "steamworks\/types\/steaminputglyphsize.html?swift#medium2" : {
     "abstract" : "Steamworks k_ESteamInputGlyphSize_Medium",
     "name" : "medium",
     "parent_name" : "SteamInputGlyphSize"
@@ -15166,7 +16323,7 @@
     "name" : "small",
     "parent_name" : "SteamInputGlyphSize"
   },
-  "steamworks\/types\/steaminputglyphsize.html?swift#unrepresentedinswift58" : {
+  "steamworks\/types\/steaminputglyphsize.html?swift#unrepresentedinswift61" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamInputGlyphSize"
@@ -15288,9 +16445,29 @@
     "name" : "steamController",
     "parent_name" : "SteamInputType"
   },
+  "steamworks\/types\/steaminputtype.html?swift#steamcontroller2026" : {
+    "abstract" : "Steamworks k_ESteamInputType_SteamController2026",
+    "name" : "steamController2026",
+    "parent_name" : "SteamInputType"
+  },
   "steamworks\/types\/steaminputtype.html?swift#steamdeckcontroller" : {
     "abstract" : "Steamworks k_ESteamInputType_SteamDeckController",
     "name" : "steamDeckController",
+    "parent_name" : "SteamInputType"
+  },
+  "steamworks\/types\/steaminputtype.html?swift#steamframecontrollerpair" : {
+    "abstract" : "Steamworks k_ESteamInputType_SteamFrameControllerPair",
+    "name" : "steamFrameControllerPair",
+    "parent_name" : "SteamInputType"
+  },
+  "steamworks\/types\/steaminputtype.html?swift#steamoshandheld" : {
+    "abstract" : "Steamworks k_ESteamInputType_SteamOSHandheld",
+    "name" : "steamOSHandheld",
+    "parent_name" : "SteamInputType"
+  },
+  "steamworks\/types\/steaminputtype.html?swift#switch2procontroller" : {
+    "abstract" : "Steamworks k_ESteamInputType_Switch2ProController",
+    "name" : "switch2ProController",
     "parent_name" : "SteamInputType"
   },
   "steamworks\/types\/steaminputtype.html?swift#switchjoyconpair" : {
@@ -15313,7 +16490,7 @@
     "name" : "unknown",
     "parent_name" : "SteamInputType"
   },
-  "steamworks\/types\/steaminputtype.html?swift#unrepresentedinswift59" : {
+  "steamworks\/types\/steaminputtype.html?swift#unrepresentedinswift62" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamInputType"
@@ -15782,7 +16959,7 @@
     "name" : "ipv6",
     "parent_name" : "SteamIPType"
   },
-  "steamworks\/types\/steamiptype.html?swift#unrepresentedinswift54" : {
+  "steamworks\/types\/steamiptype.html?swift#unrepresentedinswift57" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamIPType"
@@ -15806,7 +16983,7 @@
     "name" : "udp",
     "parent_name" : "SteamIPv6ConnectivityProtocol"
   },
-  "steamworks\/types\/steamipv6connectivityprotocol.html?swift#unrepresentedinswift55" : {
+  "steamworks\/types\/steamipv6connectivityprotocol.html?swift#unrepresentedinswift58" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamIPv6ConnectivityProtocol"
@@ -15830,7 +17007,7 @@
     "name" : "unknown",
     "parent_name" : "SteamIPv6ConnectivityState"
   },
-  "steamworks\/types\/steamipv6connectivitystate.html?swift#unrepresentedinswift56" : {
+  "steamworks\/types\/steamipv6connectivitystate.html?swift#unrepresentedinswift59" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamIPv6ConnectivityState"
@@ -16245,6 +17422,25 @@
     "name" : "rulesResponded(rule:value:)",
     "parent_name" : "SteamMatchmakingRulesResponse"
   },
+  "steamworks\/types\/steammatchmakingserverfriendsresponse.html?swift" : {
+    "abstract" : "Steamworks ISteamMatchmakingServerFriendsResponse",
+    "name" : "SteamMatchmakingServerFriendsResponse"
+  },
+  "steamworks\/types\/steammatchmakingserverfriendsresponse.html?swift#addfriendtoliststeamidnamecurrentlyconnected" : {
+    "abstract" : "Got data on a friend who has played on the server – you’ll get this callback once per player\non the server which you have requested player data on.",
+    "name" : "addFriendToList(steamID:name:currentlyConnected:)",
+    "parent_name" : "SteamMatchmakingServerFriendsResponse"
+  },
+  "steamworks\/types\/steammatchmakingserverfriendsresponse.html?swift#friendsfailedtorespond" : {
+    "abstract" : "The server failed to respond to the request for player details",
+    "name" : "friendsFailedToRespond()",
+    "parent_name" : "SteamMatchmakingServerFriendsResponse"
+  },
+  "steamworks\/types\/steammatchmakingserverfriendsresponse.html?swift#friendsrefreshcomplete" : {
+    "abstract" : "The server has finished responding to the player details request\n(ie, you won’t get anymore AddPlayerToList callbacks)",
+    "name" : "friendsRefreshComplete()",
+    "parent_name" : "SteamMatchmakingServerFriendsResponse"
+  },
   "steamworks\/types\/steammatchmakingserverlistresponse.html?swift" : {
     "abstract" : "Steamworks ISteamMatchmakingServerListResponse",
     "name" : "SteamMatchmakingServerListResponse"
@@ -16346,6 +17542,11 @@
   "steamworks\/types\/steammatchmakingservers.html?swift#requestspectatorserverlistappindexfiltersrequestserversresponse" : {
     "abstract" : "Steamworks ISteamMatchmakingServers::RequestSpectatorServerList()",
     "name" : "requestSpectatorServerList(appIndex:filters:requestServersResponse:)",
+    "parent_name" : "SteamMatchmakingServers"
+  },
+  "steamworks\/types\/steammatchmakingservers.html?swift#serverfriendsipportresponse" : {
+    "abstract" : "Steamworks ISteamMatchmakingServers::ServerFriends()",
+    "name" : "serverFriends(ip:port:response:)",
     "parent_name" : "SteamMatchmakingServers"
   },
   "steamworks\/types\/steammatchmakingservers.html?swift#serverrulesipportresponse" : {
@@ -16585,7 +17786,7 @@
     "name" : "remoteTimeout",
     "parent_name" : "SteamNetConnectionEnd"
   },
-  "steamworks\/types\/steamnetconnectionend.html?swift#unrepresentedinswift60" : {
+  "steamworks\/types\/steamnetconnectionend.html?swift#unrepresentedinswift63" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetConnectionEnd"
@@ -16874,7 +18075,7 @@
     "name" : "unknown",
     "parent_name" : "SteamNetworkingAvailability"
   },
-  "steamworks\/types\/steamnetworkingavailability.html?swift#unrepresentedinswift61" : {
+  "steamworks\/types\/steamnetworkingavailability.html?swift#unrepresentedinswift64" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingAvailability"
@@ -16913,7 +18114,7 @@
     "name" : "string",
     "parent_name" : "SteamNetworkingConfigDataType"
   },
-  "steamworks\/types\/steamnetworkingconfigdatatype.html?swift#unrepresentedinswift62" : {
+  "steamworks\/types\/steamnetworkingconfigdatatype.html?swift#unrepresentedinswift65" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingConfigDataType"
@@ -16942,7 +18143,7 @@
     "name" : "socketsInterface",
     "parent_name" : "SteamNetworkingConfigScope"
   },
-  "steamworks\/types\/steamnetworkingconfigscope.html?swift#unrepresentedinswift63" : {
+  "steamworks\/types\/steamnetworkingconfigscope.html?swift#unrepresentedinswift66" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingConfigScope"
@@ -17355,7 +18556,7 @@
     "name" : "unencrypted",
     "parent_name" : "SteamNetworkingConfigValueSetting"
   },
-  "steamworks\/types\/steamnetworkingconfigvaluesetting.html?swift#unrepresentedinswift64" : {
+  "steamworks\/types\/steamnetworkingconfigvaluesetting.html?swift#unrepresentedinswift67" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingConfigValueSetting"
@@ -17399,7 +18600,7 @@
     "name" : "linger",
     "parent_name" : "SteamNetworkingConnectionState"
   },
-  "steamworks\/types\/steamnetworkingconnectionstate.html?swift#none20" : {
+  "steamworks\/types\/steamnetworkingconnectionstate.html?swift#none22" : {
     "abstract" : "Steamworks k_ESteamNetworkingConnectionState_None",
     "name" : "none",
     "parent_name" : "SteamNetworkingConnectionState"
@@ -17409,7 +18610,7 @@
     "name" : "problemDetectedLocally",
     "parent_name" : "SteamNetworkingConnectionState"
   },
-  "steamworks\/types\/steamnetworkingconnectionstate.html?swift#unrepresentedinswift65" : {
+  "steamworks\/types\/steamnetworkingconnectionstate.html?swift#unrepresentedinswift68" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingConnectionState"
@@ -17481,7 +18682,7 @@
     "name" : "notFake",
     "parent_name" : "SteamNetworkingFakeIPType"
   },
-  "steamworks\/types\/steamnetworkingfakeiptype.html?swift#unrepresentedinswift66" : {
+  "steamworks\/types\/steamnetworkingfakeiptype.html?swift#unrepresentedinswift69" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingFakeIPType"
@@ -17539,7 +18740,7 @@
     "name" : "okInherited",
     "parent_name" : "SteamNetworkingGetConfigValueResult"
   },
-  "steamworks\/types\/steamnetworkinggetconfigvalueresult.html?swift#unrepresentedinswift67" : {
+  "steamworks\/types\/steamnetworkinggetconfigvalueresult.html?swift#unrepresentedinswift70" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingGetConfigValueResult"
@@ -17677,7 +18878,7 @@
     "name" : "unknownType",
     "parent_name" : "SteamNetworkingIdentityType"
   },
-  "steamworks\/types\/steamnetworkingidentitytype.html?swift#unrepresentedinswift68" : {
+  "steamworks\/types\/steamnetworkingidentitytype.html?swift#unrepresentedinswift71" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingIdentityType"
@@ -18088,9 +19289,9 @@
     "name" : "createPollGroup()",
     "parent_name" : "SteamNetworkingSockets"
   },
-  "steamworks\/types\/steamnetworkingsockets.html?swift#createsocketpairusenetworkloopbackidentity1identity2" : {
+  "steamworks\/types\/steamnetworkingsockets.html?swift#createsocketpairusenetworkloopbackpeeridentity1peeridentity2" : {
     "abstract" : "Steamworks ISteamNetworkingSockets::CreateSocketPair()",
-    "name" : "createSocketPair(useNetworkLoopback:identity1:identity2:)",
+    "name" : "createSocketPair(useNetworkLoopback:peerIdentity1:peerIdentity2:)",
     "parent_name" : "SteamNetworkingSockets"
   },
   "steamworks\/types\/steamnetworkingsockets.html?swift#destroypollgrouppollgroup" : {
@@ -18203,9 +19404,9 @@
     "name" : "runCallbacks()",
     "parent_name" : "SteamNetworkingSockets"
   },
-  "steamworks\/types\/steamnetworkingsockets.html?swift#sendmessagesmessagesreturnmessagenumberorresult" : {
+  "steamworks\/types\/steamnetworkingsockets.html?swift#sendmessagesmessagesreturnmessagenumberorresultdeletefailedmessages" : {
     "abstract" : "Steamworks ISteamNetworkingSockets::SendMessages()",
-    "name" : "sendMessages(messages:returnMessageNumberOrResult:)",
+    "name" : "sendMessages(messages:returnMessageNumberOrResult:deleteFailedMessages:)",
     "parent_name" : "SteamNetworkingSockets"
   },
   "steamworks\/types\/steamnetworkingsockets.html?swift#sendmessagetoconnectionconndatadatasizesendflagsreturnmessagenumber" : {
@@ -18267,12 +19468,12 @@
     "name" : "msg",
     "parent_name" : "SteamNetworkingSocketsDebugOutputType"
   },
-  "steamworks\/types\/steamnetworkingsocketsdebugoutputtype.html?swift#none21" : {
+  "steamworks\/types\/steamnetworkingsocketsdebugoutputtype.html?swift#none23" : {
     "abstract" : "Steamworks k_ESteamNetworkingSocketsDebugOutputType_None",
     "name" : "none",
     "parent_name" : "SteamNetworkingSocketsDebugOutputType"
   },
-  "steamworks\/types\/steamnetworkingsocketsdebugoutputtype.html?swift#unrepresentedinswift69" : {
+  "steamworks\/types\/steamnetworkingsocketsdebugoutputtype.html?swift#unrepresentedinswift72" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamNetworkingSocketsDebugOutputType"
@@ -18670,7 +19871,7 @@
     "name" : "name",
     "parent_name" : "SteamPartyBeaconLocationData"
   },
-  "steamworks\/types\/steampartybeaconlocationdata.html?swift#unrepresentedinswift70" : {
+  "steamworks\/types\/steampartybeaconlocationdata.html?swift#unrepresentedinswift73" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamPartyBeaconLocationData"
@@ -18689,12 +19890,12 @@
     "name" : "invalid",
     "parent_name" : "SteamPartyBeaconLocationType"
   },
-  "steamworks\/types\/steampartybeaconlocationtype.html?swift#max4" : {
+  "steamworks\/types\/steampartybeaconlocationtype.html?swift#max5" : {
     "abstract" : "Steamworks k_ESteamPartyBeaconLocationType_Max",
     "name" : "max",
     "parent_name" : "SteamPartyBeaconLocationType"
   },
-  "steamworks\/types\/steampartybeaconlocationtype.html?swift#unrepresentedinswift71" : {
+  "steamworks\/types\/steampartybeaconlocationtype.html?swift#unrepresentedinswift74" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "SteamPartyBeaconLocationType"
@@ -20972,6 +22173,11 @@
     "name" : "getServerRealTime()",
     "parent_name" : "SteamUtils"
   },
+  "steamworks\/types\/steamutils.html?swift#getsteamhardwaredefaultconfig" : {
+    "abstract" : "Steamworks ISteamUtils::GetSteamHardwareDefaultConfig()",
+    "name" : "getSteamHardwareDefaultConfig()",
+    "parent_name" : "SteamUtils"
+  },
   "steamworks\/types\/steamutils.html?swift#getsteamuilanguage" : {
     "abstract" : "Steamworks ISteamUtils::GetSteamUILanguage()",
     "name" : "getSteamUILanguage()",
@@ -20992,6 +22198,16 @@
     "name" : "isOverlayEnabled()",
     "parent_name" : "SteamUtils"
   },
+  "steamworks\/types\/steamutils.html?swift#isrunningonsteamhardware" : {
+    "abstract" : "Steamworks ISteamUtils::IsRunningOnSteamHardware()",
+    "name" : "isRunningOnSteamHardware()",
+    "parent_name" : "SteamUtils"
+  },
+  "steamworks\/types\/steamutils.html?swift#isrunningunderproton" : {
+    "abstract" : "Steamworks ISteamUtils::IsRunningUnderProton()",
+    "name" : "isRunningUnderProton()",
+    "parent_name" : "SteamUtils"
+  },
   "steamworks\/types\/steamutils.html?swift#issteamchinalauncher" : {
     "abstract" : "Steamworks ISteamUtils::IsSteamChinaLauncher()",
     "name" : "isSteamChinaLauncher()",
@@ -21005,11 +22221,6 @@
   "steamworks\/types\/steamutils.html?swift#issteamrunninginvr" : {
     "abstract" : "Steamworks ISteamUtils::IsSteamRunningInVR()",
     "name" : "isSteamRunningInVR()",
-    "parent_name" : "SteamUtils"
-  },
-  "steamworks\/types\/steamutils.html?swift#issteamrunningonsteamdeck" : {
-    "abstract" : "Steamworks ISteamUtils::IsSteamRunningOnSteamDeck()",
-    "name" : "isSteamRunningOnSteamDeck()",
     "parent_name" : "SteamUtils"
   },
   "steamworks\/types\/steamutils.html?swift#isvrheadsetstreamingenabled" : {
@@ -21162,7 +22373,7 @@
     "name" : "unknown",
     "parent_name" : "TextFilteringContext"
   },
-  "steamworks\/types\/textfilteringcontext.html?swift#unrepresentedinswift72" : {
+  "steamworks\/types\/textfilteringcontext.html?swift#unrepresentedinswift75" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "TextFilteringContext"
@@ -21210,7 +22421,7 @@
     "name" : "invalid",
     "parent_name" : "TimelineEventClipPriority"
   },
-  "steamworks\/types\/timelineeventclippriority.html?swift#none22" : {
+  "steamworks\/types\/timelineeventclippriority.html?swift#none24" : {
     "abstract" : "Steamworks k_ETimelineEventClipPriority_None",
     "name" : "none",
     "parent_name" : "TimelineEventClipPriority"
@@ -21220,7 +22431,7 @@
     "name" : "standard",
     "parent_name" : "TimelineEventClipPriority"
   },
-  "steamworks\/types\/timelineeventclippriority.html?swift#unrepresentedinswift73" : {
+  "steamworks\/types\/timelineeventclippriority.html?swift#unrepresentedinswift76" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "TimelineEventClipPriority"
@@ -21258,7 +22469,7 @@
     "name" : "loadingScreen",
     "parent_name" : "TimelineGameMode"
   },
-  "steamworks\/types\/timelinegamemode.html?swift#max5" : {
+  "steamworks\/types\/timelinegamemode.html?swift#max6" : {
     "abstract" : "Steamworks k_ETimelineGameMode_Max",
     "name" : "max",
     "parent_name" : "TimelineGameMode"
@@ -21278,7 +22489,7 @@
     "name" : "staging",
     "parent_name" : "TimelineGameMode"
   },
-  "steamworks\/types\/timelinegamemode.html?swift#unrepresentedinswift74" : {
+  "steamworks\/types\/timelinegamemode.html?swift#unrepresentedinswift77" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "TimelineGameMode"
@@ -21312,7 +22523,7 @@
     "name" : "nudityOrSexualContent",
     "parent_name" : "UGCContentDescriptorID"
   },
-  "steamworks\/types\/ugccontentdescriptorid.html?swift#unrepresentedinswift75" : {
+  "steamworks\/types\/ugccontentdescriptorid.html?swift#unrepresentedinswift78" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UGCContentDescriptorID"
@@ -21424,7 +22635,7 @@
     "name" : "screenshots",
     "parent_name" : "UGCMatchingUGCType"
   },
-  "steamworks\/types\/ugcmatchingugctype.html?swift#unrepresentedinswift76" : {
+  "steamworks\/types\/ugcmatchingugctype.html?swift#unrepresentedinswift79" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UGCMatchingUGCType"
@@ -21493,6 +22704,16 @@
     "name" : "rankedByLifetimePlaytimeSessions",
     "parent_name" : "UGCQuery"
   },
+  "steamworks\/types\/ugcquery.html?swift#rankedbynumparentcollections" : {
+    "abstract" : "Steamworks k_EUGCQuery_RankedByNumParentCollections",
+    "name" : "rankedByNumParentCollections",
+    "parent_name" : "UGCQuery"
+  },
+  "steamworks\/types\/ugcquery.html?swift#rankedbynumparentitems" : {
+    "abstract" : "Steamworks k_EUGCQuery_RankedByNumParentItems",
+    "name" : "rankedByNumParentItems",
+    "parent_name" : "UGCQuery"
+  },
   "steamworks\/types\/ugcquery.html?swift#rankedbynumtimesreported" : {
     "abstract" : "Steamworks k_EUGCQuery_RankedByNumTimesReported",
     "name" : "rankedByNumTimesReported",
@@ -21548,7 +22769,7 @@
     "name" : "rankedByVotesUp",
     "parent_name" : "UGCQuery"
   },
-  "steamworks\/types\/ugcquery.html?swift#unrepresentedinswift77" : {
+  "steamworks\/types\/ugcquery.html?swift#unrepresentedinswift80" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UGCQuery"
@@ -21596,7 +22817,7 @@
     "name" : "continueReadingUntilFinished",
     "parent_name" : "UGCReadAction"
   },
-  "steamworks\/types\/ugcreadaction.html?swift#unrepresentedinswift78" : {
+  "steamworks\/types\/ugcreadaction.html?swift#unrepresentedinswift81" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UGCReadAction"
@@ -21649,7 +22870,7 @@
     "name" : "invalid",
     "parent_name" : "Universe"
   },
-  "steamworks\/types\/universe.html?swift#max6" : {
+  "steamworks\/types\/universe.html?swift#max7" : {
     "abstract" : "Steamworks k_EUniverseMax",
     "name" : "max",
     "parent_name" : "Universe"
@@ -21659,7 +22880,7 @@
     "name" : "public",
     "parent_name" : "Universe"
   },
-  "steamworks\/types\/universe.html?swift#unrepresentedinswift79" : {
+  "steamworks\/types\/universe.html?swift#unrepresentedinswift82" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "Universe"
@@ -21779,7 +23000,7 @@
     "name" : "noAuth",
     "parent_name" : "UserHasLicenseForAppResult"
   },
-  "steamworks\/types\/userhaslicenseforappresult.html?swift#unrepresentedinswift80" : {
+  "steamworks\/types\/userhaslicenseforappresult.html?swift#unrepresentedinswift83" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UserHasLicenseForAppResult"
@@ -21879,7 +23100,7 @@
     "name" : "subscribed",
     "parent_name" : "UserUGCList"
   },
-  "steamworks\/types\/userugclist.html?swift#unrepresentedinswift81" : {
+  "steamworks\/types\/userugclist.html?swift#unrepresentedinswift84" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UserUGCList"
@@ -21943,7 +23164,7 @@
     "name" : "titleAsc",
     "parent_name" : "UserUGCListSortOrder"
   },
-  "steamworks\/types\/userugclistsortorder.html?swift#unrepresentedinswift82" : {
+  "steamworks\/types\/userugclistsortorder.html?swift#unrepresentedinswift85" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "UserUGCListSortOrder"
@@ -22026,7 +23247,7 @@
     "name" : "restricted",
     "parent_name" : "VoiceResult"
   },
-  "steamworks\/types\/voiceresult.html?swift#unrepresentedinswift84" : {
+  "steamworks\/types\/voiceresult.html?swift#unrepresentedinswift87" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "VoiceResult"
@@ -22069,7 +23290,7 @@
     "name" : "monoPanorama",
     "parent_name" : "VRScreenshotType"
   },
-  "steamworks\/types\/vrscreenshottype.html?swift#none23" : {
+  "steamworks\/types\/vrscreenshottype.html?swift#none25" : {
     "abstract" : "Steamworks k_EVRScreenshotType_None",
     "name" : "none",
     "parent_name" : "VRScreenshotType"
@@ -22084,7 +23305,7 @@
     "name" : "stereoPanorama",
     "parent_name" : "VRScreenshotType"
   },
-  "steamworks\/types\/vrscreenshottype.html?swift#unrepresentedinswift83" : {
+  "steamworks\/types\/vrscreenshottype.html?swift#unrepresentedinswift86" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "VRScreenshotType"
@@ -22123,7 +23344,7 @@
     "name" : "trending",
     "parent_name" : "WorkshopEnumerationType"
   },
-  "steamworks\/types\/workshopenumerationtype.html?swift#unrepresentedinswift85" : {
+  "steamworks\/types\/workshopenumerationtype.html?swift#unrepresentedinswift88" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopEnumerationType"
@@ -22186,7 +23407,7 @@
     "name" : "played",
     "parent_name" : "WorkshopFileAction"
   },
-  "steamworks\/types\/workshopfileaction.html?swift#unrepresentedinswift86" : {
+  "steamworks\/types\/workshopfileaction.html?swift#unrepresentedinswift89" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopFileAction"
@@ -22245,7 +23466,7 @@
     "name" : "integratedGuide",
     "parent_name" : "WorkshopFileType"
   },
-  "steamworks\/types\/workshopfiletype.html?swift#max7" : {
+  "steamworks\/types\/workshopfiletype.html?swift#max8" : {
     "abstract" : "Steamworks k_EWorkshopFileTypeMax",
     "name" : "max",
     "parent_name" : "WorkshopFileType"
@@ -22280,7 +23501,7 @@
     "name" : "steamworksAccessInvite",
     "parent_name" : "WorkshopFileType"
   },
-  "steamworks\/types\/workshopfiletype.html?swift#unrepresentedinswift87" : {
+  "steamworks\/types\/workshopfiletype.html?swift#unrepresentedinswift90" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopFileType"
@@ -22299,12 +23520,12 @@
     "abstract" : "Steamworks EWorkshopVideoProvider",
     "name" : "WorkshopVideoProvider"
   },
-  "steamworks\/types\/workshopvideoprovider.html?swift#none24" : {
+  "steamworks\/types\/workshopvideoprovider.html?swift#none26" : {
     "abstract" : "Steamworks k_EWorkshopVideoProviderNone",
     "name" : "none",
     "parent_name" : "WorkshopVideoProvider"
   },
-  "steamworks\/types\/workshopvideoprovider.html?swift#unrepresentedinswift88" : {
+  "steamworks\/types\/workshopvideoprovider.html?swift#unrepresentedinswift91" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopVideoProvider"
@@ -22333,7 +23554,7 @@
     "name" : "later",
     "parent_name" : "WorkshopVote"
   },
-  "steamworks\/types\/workshopvote.html?swift#unrepresentedinswift89" : {
+  "steamworks\/types\/workshopvote.html?swift#unrepresentedinswift92" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "WorkshopVote"
@@ -22477,7 +23698,7 @@
     "name" : "rightTriggerPull",
     "parent_name" : "XboxOrigin"
   },
-  "steamworks\/types\/xboxorigin.html?swift#unrepresentedinswift90" : {
+  "steamworks\/types\/xboxorigin.html?swift#unrepresentedinswift93" : {
     "abstract" : "Some undocumented value",
     "name" : "unrepresentedInSwift",
     "parent_name" : "XboxOrigin"

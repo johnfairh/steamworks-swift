@@ -83,7 +83,7 @@ let hasPkgConfig =
 if !hasPkgConfig {
   let curdir = Context.packageDirectory
   steamworksSwiftFlags += [
-    .unsafeFlags(["-I\(curdir)/sdk/redist/include"])
+    .unsafeFlags(["-Xcc", "-I\(curdir)/sdk/redist/include"])
   ]
 
   let linkBase = "-L\(curdir)/sdk/redist/lib/"
@@ -158,7 +158,7 @@ let package = Package(
       dependencies: [
         "Steamworks"
       ],
-      swiftSettings: [.interoperabilityMode(.Cxx)] // lies lies lies
+      swiftSettings: steamworksSwiftFlags
     ),
     .target(
       name: "SteamworksConcurrency",
@@ -167,18 +167,18 @@ let package = Package(
         .product(name: "Atomics", package: "swift-atomics",
                  condition: .when(platforms: [.macOS]))
       ],
-      swiftSettings: [.interoperabilityMode(.Cxx)] // lies lies lies
+      swiftSettings: steamworksSwiftFlags
     ),
     .executableTarget(
       name: "Client",
       dependencies: ["Steamworks", "SteamworksHelpers"],
-      swiftSettings: [.interoperabilityMode(.Cxx)], // lies lies lies
+      swiftSettings: steamworksSwiftFlags,
       linkerSettings: clientLinkerSettings
     ),
     .executableTarget(
       name: "TicketClient",
       dependencies: ["SteamworksEncryptedAppTicket", "SteamworksHelpers"],
-      swiftSettings: [.interoperabilityMode(.Cxx)], // lies lies lies
+      swiftSettings: steamworksSwiftFlags,
       linkerSettings: clientLinkerSettings
     ),
     .executableTarget(
@@ -204,7 +204,7 @@ let package = Package(
             condition: .when(platforms: [.macOS])),
       ],
       exclude: ["Fixtures"],
-      swiftSettings: [.interoperabilityMode(.Cxx)], // lies lies lies
+      swiftSettings: steamworksSwiftFlags,
       linkerSettings: clientLinkerSettings
     )
   ],
